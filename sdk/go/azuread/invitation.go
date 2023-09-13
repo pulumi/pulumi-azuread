@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages an invitation of a guest user within Azure Active Directory.
@@ -258,6 +259,12 @@ func (i *Invitation) ToInvitationOutputWithContext(ctx context.Context) Invitati
 	return pulumi.ToOutputWithContext(ctx, i).(InvitationOutput)
 }
 
+func (i *Invitation) ToOutput(ctx context.Context) pulumix.Output[*Invitation] {
+	return pulumix.Output[*Invitation]{
+		OutputState: i.ToInvitationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InvitationArrayInput is an input type that accepts InvitationArray and InvitationArrayOutput values.
 // You can construct a concrete instance of `InvitationArrayInput` via:
 //
@@ -281,6 +288,12 @@ func (i InvitationArray) ToInvitationArrayOutput() InvitationArrayOutput {
 
 func (i InvitationArray) ToInvitationArrayOutputWithContext(ctx context.Context) InvitationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InvitationArrayOutput)
+}
+
+func (i InvitationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Invitation] {
+	return pulumix.Output[[]*Invitation]{
+		OutputState: i.ToInvitationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InvitationMapInput is an input type that accepts InvitationMap and InvitationMapOutput values.
@@ -308,6 +321,12 @@ func (i InvitationMap) ToInvitationMapOutputWithContext(ctx context.Context) Inv
 	return pulumi.ToOutputWithContext(ctx, i).(InvitationMapOutput)
 }
 
+func (i InvitationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Invitation] {
+	return pulumix.Output[map[string]*Invitation]{
+		OutputState: i.ToInvitationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InvitationOutput struct{ *pulumi.OutputState }
 
 func (InvitationOutput) ElementType() reflect.Type {
@@ -320,6 +339,12 @@ func (o InvitationOutput) ToInvitationOutput() InvitationOutput {
 
 func (o InvitationOutput) ToInvitationOutputWithContext(ctx context.Context) InvitationOutput {
 	return o
+}
+
+func (o InvitationOutput) ToOutput(ctx context.Context) pulumix.Output[*Invitation] {
+	return pulumix.Output[*Invitation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
@@ -371,6 +396,12 @@ func (o InvitationArrayOutput) ToInvitationArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o InvitationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Invitation] {
+	return pulumix.Output[[]*Invitation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InvitationArrayOutput) Index(i pulumi.IntInput) InvitationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Invitation {
 		return vs[0].([]*Invitation)[vs[1].(int)]
@@ -389,6 +420,12 @@ func (o InvitationMapOutput) ToInvitationMapOutput() InvitationMapOutput {
 
 func (o InvitationMapOutput) ToInvitationMapOutputWithContext(ctx context.Context) InvitationMapOutput {
 	return o
+}
+
+func (o InvitationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Invitation] {
+	return pulumix.Output[map[string]*Invitation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InvitationMapOutput) MapIndex(k pulumi.StringInput) InvitationOutput {

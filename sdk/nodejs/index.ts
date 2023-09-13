@@ -137,7 +137,8 @@ utilities.lazyLoad(exports, ["getApplication","getApplicationOutput"], () => req
 
 export { GetApplicationPublishedAppIdsResult } from "./getApplicationPublishedAppIds";
 export const getApplicationPublishedAppIds: typeof import("./getApplicationPublishedAppIds").getApplicationPublishedAppIds = null as any;
-utilities.lazyLoad(exports, ["getApplicationPublishedAppIds"], () => require("./getApplicationPublishedAppIds"));
+export const getApplicationPublishedAppIdsOutput: typeof import("./getApplicationPublishedAppIds").getApplicationPublishedAppIdsOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationPublishedAppIds","getApplicationPublishedAppIdsOutput"], () => require("./getApplicationPublishedAppIds"));
 
 export { GetApplicationTemplateArgs, GetApplicationTemplateResult, GetApplicationTemplateOutputArgs } from "./getApplicationTemplate";
 export const getApplicationTemplate: typeof import("./getApplicationTemplate").getApplicationTemplate = null as any;
@@ -146,7 +147,8 @@ utilities.lazyLoad(exports, ["getApplicationTemplate","getApplicationTemplateOut
 
 export { GetClientConfigResult } from "./getClientConfig";
 export const getClientConfig: typeof import("./getClientConfig").getClientConfig = null as any;
-utilities.lazyLoad(exports, ["getClientConfig"], () => require("./getClientConfig"));
+export const getClientConfigOutput: typeof import("./getClientConfig").getClientConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getClientConfig","getClientConfigOutput"], () => require("./getClientConfig"));
 
 export { GetDirectoryObjectArgs, GetDirectoryObjectResult, GetDirectoryObjectOutputArgs } from "./getDirectoryObject";
 export const getDirectoryObject: typeof import("./getDirectoryObject").getDirectoryObject = null as any;
@@ -155,11 +157,13 @@ utilities.lazyLoad(exports, ["getDirectoryObject","getDirectoryObjectOutput"], (
 
 export { GetDirectoryRoleTemplatesResult } from "./getDirectoryRoleTemplates";
 export const getDirectoryRoleTemplates: typeof import("./getDirectoryRoleTemplates").getDirectoryRoleTemplates = null as any;
-utilities.lazyLoad(exports, ["getDirectoryRoleTemplates"], () => require("./getDirectoryRoleTemplates"));
+export const getDirectoryRoleTemplatesOutput: typeof import("./getDirectoryRoleTemplates").getDirectoryRoleTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getDirectoryRoleTemplates","getDirectoryRoleTemplatesOutput"], () => require("./getDirectoryRoleTemplates"));
 
 export { GetDirectoryRolesResult } from "./getDirectoryRoles";
 export const getDirectoryRoles: typeof import("./getDirectoryRoles").getDirectoryRoles = null as any;
-utilities.lazyLoad(exports, ["getDirectoryRoles"], () => require("./getDirectoryRoles"));
+export const getDirectoryRolesOutput: typeof import("./getDirectoryRoles").getDirectoryRolesOutput = null as any;
+utilities.lazyLoad(exports, ["getDirectoryRoles","getDirectoryRolesOutput"], () => require("./getDirectoryRoles"));
 
 export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
 export const getDomains: typeof import("./getDomains").getDomains = null as any;

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about an existing service principal associated with an application within Azure Active Directory.
@@ -225,6 +226,12 @@ func (o LookupServicePrincipalResultOutput) ToLookupServicePrincipalResultOutput
 
 func (o LookupServicePrincipalResultOutput) ToLookupServicePrincipalResultOutputWithContext(ctx context.Context) LookupServicePrincipalResultOutput {
 	return o
+}
+
+func (o LookupServicePrincipalResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServicePrincipalResult] {
+	return pulumix.Output[LookupServicePrincipalResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether or not the service principal account is enabled.

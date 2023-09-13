@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Custom Directory Role within Azure Active Directory.
@@ -226,6 +227,12 @@ func (i *CustomDirectoryRole) ToCustomDirectoryRoleOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDirectoryRoleOutput)
 }
 
+func (i *CustomDirectoryRole) ToOutput(ctx context.Context) pulumix.Output[*CustomDirectoryRole] {
+	return pulumix.Output[*CustomDirectoryRole]{
+		OutputState: i.ToCustomDirectoryRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomDirectoryRoleArrayInput is an input type that accepts CustomDirectoryRoleArray and CustomDirectoryRoleArrayOutput values.
 // You can construct a concrete instance of `CustomDirectoryRoleArrayInput` via:
 //
@@ -249,6 +256,12 @@ func (i CustomDirectoryRoleArray) ToCustomDirectoryRoleArrayOutput() CustomDirec
 
 func (i CustomDirectoryRoleArray) ToCustomDirectoryRoleArrayOutputWithContext(ctx context.Context) CustomDirectoryRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDirectoryRoleArrayOutput)
+}
+
+func (i CustomDirectoryRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomDirectoryRole] {
+	return pulumix.Output[[]*CustomDirectoryRole]{
+		OutputState: i.ToCustomDirectoryRoleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CustomDirectoryRoleMapInput is an input type that accepts CustomDirectoryRoleMap and CustomDirectoryRoleMapOutput values.
@@ -276,6 +289,12 @@ func (i CustomDirectoryRoleMap) ToCustomDirectoryRoleMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDirectoryRoleMapOutput)
 }
 
+func (i CustomDirectoryRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomDirectoryRole] {
+	return pulumix.Output[map[string]*CustomDirectoryRole]{
+		OutputState: i.ToCustomDirectoryRoleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomDirectoryRoleOutput struct{ *pulumi.OutputState }
 
 func (CustomDirectoryRoleOutput) ElementType() reflect.Type {
@@ -288,6 +307,12 @@ func (o CustomDirectoryRoleOutput) ToCustomDirectoryRoleOutput() CustomDirectory
 
 func (o CustomDirectoryRoleOutput) ToCustomDirectoryRoleOutputWithContext(ctx context.Context) CustomDirectoryRoleOutput {
 	return o
+}
+
+func (o CustomDirectoryRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomDirectoryRole] {
+	return pulumix.Output[*CustomDirectoryRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the custom directory role.
@@ -339,6 +364,12 @@ func (o CustomDirectoryRoleArrayOutput) ToCustomDirectoryRoleArrayOutputWithCont
 	return o
 }
 
+func (o CustomDirectoryRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomDirectoryRole] {
+	return pulumix.Output[[]*CustomDirectoryRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomDirectoryRoleArrayOutput) Index(i pulumi.IntInput) CustomDirectoryRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomDirectoryRole {
 		return vs[0].([]*CustomDirectoryRole)[vs[1].(int)]
@@ -357,6 +388,12 @@ func (o CustomDirectoryRoleMapOutput) ToCustomDirectoryRoleMapOutput() CustomDir
 
 func (o CustomDirectoryRoleMapOutput) ToCustomDirectoryRoleMapOutputWithContext(ctx context.Context) CustomDirectoryRoleMapOutput {
 	return o
+}
+
+func (o CustomDirectoryRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomDirectoryRole] {
+	return pulumix.Output[map[string]*CustomDirectoryRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomDirectoryRoleMapOutput) MapIndex(k pulumi.StringInput) CustomDirectoryRoleOutput {

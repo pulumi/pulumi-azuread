@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages the resources added to access packages within Identity Governance in Azure Active Directory.
@@ -200,6 +201,12 @@ func (i *AccessPackageResourcePackageAssociation) ToAccessPackageResourcePackage
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageResourcePackageAssociationOutput)
 }
 
+func (i *AccessPackageResourcePackageAssociation) ToOutput(ctx context.Context) pulumix.Output[*AccessPackageResourcePackageAssociation] {
+	return pulumix.Output[*AccessPackageResourcePackageAssociation]{
+		OutputState: i.ToAccessPackageResourcePackageAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessPackageResourcePackageAssociationArrayInput is an input type that accepts AccessPackageResourcePackageAssociationArray and AccessPackageResourcePackageAssociationArrayOutput values.
 // You can construct a concrete instance of `AccessPackageResourcePackageAssociationArrayInput` via:
 //
@@ -223,6 +230,12 @@ func (i AccessPackageResourcePackageAssociationArray) ToAccessPackageResourcePac
 
 func (i AccessPackageResourcePackageAssociationArray) ToAccessPackageResourcePackageAssociationArrayOutputWithContext(ctx context.Context) AccessPackageResourcePackageAssociationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageResourcePackageAssociationArrayOutput)
+}
+
+func (i AccessPackageResourcePackageAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPackageResourcePackageAssociation] {
+	return pulumix.Output[[]*AccessPackageResourcePackageAssociation]{
+		OutputState: i.ToAccessPackageResourcePackageAssociationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessPackageResourcePackageAssociationMapInput is an input type that accepts AccessPackageResourcePackageAssociationMap and AccessPackageResourcePackageAssociationMapOutput values.
@@ -250,6 +263,12 @@ func (i AccessPackageResourcePackageAssociationMap) ToAccessPackageResourcePacka
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageResourcePackageAssociationMapOutput)
 }
 
+func (i AccessPackageResourcePackageAssociationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPackageResourcePackageAssociation] {
+	return pulumix.Output[map[string]*AccessPackageResourcePackageAssociation]{
+		OutputState: i.ToAccessPackageResourcePackageAssociationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessPackageResourcePackageAssociationOutput struct{ *pulumi.OutputState }
 
 func (AccessPackageResourcePackageAssociationOutput) ElementType() reflect.Type {
@@ -262,6 +281,12 @@ func (o AccessPackageResourcePackageAssociationOutput) ToAccessPackageResourcePa
 
 func (o AccessPackageResourcePackageAssociationOutput) ToAccessPackageResourcePackageAssociationOutputWithContext(ctx context.Context) AccessPackageResourcePackageAssociationOutput {
 	return o
+}
+
+func (o AccessPackageResourcePackageAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPackageResourcePackageAssociation] {
+	return pulumix.Output[*AccessPackageResourcePackageAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
@@ -295,6 +320,12 @@ func (o AccessPackageResourcePackageAssociationArrayOutput) ToAccessPackageResou
 	return o
 }
 
+func (o AccessPackageResourcePackageAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPackageResourcePackageAssociation] {
+	return pulumix.Output[[]*AccessPackageResourcePackageAssociation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessPackageResourcePackageAssociationArrayOutput) Index(i pulumi.IntInput) AccessPackageResourcePackageAssociationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessPackageResourcePackageAssociation {
 		return vs[0].([]*AccessPackageResourcePackageAssociation)[vs[1].(int)]
@@ -313,6 +344,12 @@ func (o AccessPackageResourcePackageAssociationMapOutput) ToAccessPackageResourc
 
 func (o AccessPackageResourcePackageAssociationMapOutput) ToAccessPackageResourcePackageAssociationMapOutputWithContext(ctx context.Context) AccessPackageResourcePackageAssociationMapOutput {
 	return o
+}
+
+func (o AccessPackageResourcePackageAssociationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPackageResourcePackageAssociation] {
+	return pulumix.Output[map[string]*AccessPackageResourcePackageAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessPackageResourcePackageAssociationMapOutput) MapIndex(k pulumi.StringInput) AccessPackageResourcePackageAssociationOutput {

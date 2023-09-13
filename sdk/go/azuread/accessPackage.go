@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages an Access Package within Identity Governance in Azure Active Directory.
@@ -189,6 +190,12 @@ func (i *AccessPackage) ToAccessPackageOutputWithContext(ctx context.Context) Ac
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageOutput)
 }
 
+func (i *AccessPackage) ToOutput(ctx context.Context) pulumix.Output[*AccessPackage] {
+	return pulumix.Output[*AccessPackage]{
+		OutputState: i.ToAccessPackageOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessPackageArrayInput is an input type that accepts AccessPackageArray and AccessPackageArrayOutput values.
 // You can construct a concrete instance of `AccessPackageArrayInput` via:
 //
@@ -212,6 +219,12 @@ func (i AccessPackageArray) ToAccessPackageArrayOutput() AccessPackageArrayOutpu
 
 func (i AccessPackageArray) ToAccessPackageArrayOutputWithContext(ctx context.Context) AccessPackageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageArrayOutput)
+}
+
+func (i AccessPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPackage] {
+	return pulumix.Output[[]*AccessPackage]{
+		OutputState: i.ToAccessPackageArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessPackageMapInput is an input type that accepts AccessPackageMap and AccessPackageMapOutput values.
@@ -239,6 +252,12 @@ func (i AccessPackageMap) ToAccessPackageMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageMapOutput)
 }
 
+func (i AccessPackageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPackage] {
+	return pulumix.Output[map[string]*AccessPackage]{
+		OutputState: i.ToAccessPackageMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessPackageOutput struct{ *pulumi.OutputState }
 
 func (AccessPackageOutput) ElementType() reflect.Type {
@@ -251,6 +270,12 @@ func (o AccessPackageOutput) ToAccessPackageOutput() AccessPackageOutput {
 
 func (o AccessPackageOutput) ToAccessPackageOutputWithContext(ctx context.Context) AccessPackageOutput {
 	return o
+}
+
+func (o AccessPackageOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPackage] {
+	return pulumix.Output[*AccessPackage]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Catalog this access package will be created in.
@@ -287,6 +312,12 @@ func (o AccessPackageArrayOutput) ToAccessPackageArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o AccessPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPackage] {
+	return pulumix.Output[[]*AccessPackage]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessPackageArrayOutput) Index(i pulumi.IntInput) AccessPackageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessPackage {
 		return vs[0].([]*AccessPackage)[vs[1].(int)]
@@ -305,6 +336,12 @@ func (o AccessPackageMapOutput) ToAccessPackageMapOutput() AccessPackageMapOutpu
 
 func (o AccessPackageMapOutput) ToAccessPackageMapOutputWithContext(ctx context.Context) AccessPackageMapOutput {
 	return o
+}
+
+func (o AccessPackageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPackage] {
+	return pulumix.Output[map[string]*AccessPackage]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessPackageMapOutput) MapIndex(k pulumi.StringInput) AccessPackageOutput {

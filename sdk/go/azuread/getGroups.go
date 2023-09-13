@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets Object IDs or Display Names for multiple Azure Active Directory groups.
@@ -248,6 +249,12 @@ func (o GetGroupsResultOutput) ToGetGroupsResultOutput() GetGroupsResultOutput {
 
 func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Context) GetGroupsResultOutput {
 	return o
+}
+
+func (o GetGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsResult] {
+	return pulumix.Output[GetGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetGroupsResultOutput) DisplayNamePrefix() pulumi.StringOutput {

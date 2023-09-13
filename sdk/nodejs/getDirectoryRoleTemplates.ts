@@ -51,3 +51,27 @@ export interface GetDirectoryRoleTemplatesResult {
      */
     readonly roleTemplates: outputs.GetDirectoryRoleTemplatesRoleTemplate[];
 }
+/**
+ * Use this data source to access information about directory role templates within Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getDirectoryRoleTemplates({});
+ * export const roles = current.then(current => current.objectIds);
+ * ```
+ */
+export function getDirectoryRoleTemplatesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryRoleTemplatesResult> {
+    return pulumi.output(getDirectoryRoleTemplates(opts))
+}

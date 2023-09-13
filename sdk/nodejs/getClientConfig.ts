@@ -49,3 +49,23 @@ export interface GetClientConfigResult {
      */
     readonly tenantId: string;
 }
+/**
+ * Use this data source to access the configuration of the AzureAD provider.
+ *
+ * ## API Permissions
+ *
+ * No additional roles are required to use this data source.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getClientConfig({});
+ * export const objectId = current.then(current => current.objectId);
+ * ```
+ */
+export function getClientConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientConfigResult> {
+    return pulumi.output(getClientConfig(opts))
+}

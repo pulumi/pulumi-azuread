@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a single directory role membership (assignment) within Azure Active Directory.
@@ -167,6 +168,12 @@ func (i *DirectoryRoleMember) ToDirectoryRoleMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleMemberOutput)
 }
 
+func (i *DirectoryRoleMember) ToOutput(ctx context.Context) pulumix.Output[*DirectoryRoleMember] {
+	return pulumix.Output[*DirectoryRoleMember]{
+		OutputState: i.ToDirectoryRoleMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DirectoryRoleMemberArrayInput is an input type that accepts DirectoryRoleMemberArray and DirectoryRoleMemberArrayOutput values.
 // You can construct a concrete instance of `DirectoryRoleMemberArrayInput` via:
 //
@@ -190,6 +197,12 @@ func (i DirectoryRoleMemberArray) ToDirectoryRoleMemberArrayOutput() DirectoryRo
 
 func (i DirectoryRoleMemberArray) ToDirectoryRoleMemberArrayOutputWithContext(ctx context.Context) DirectoryRoleMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleMemberArrayOutput)
+}
+
+func (i DirectoryRoleMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*DirectoryRoleMember] {
+	return pulumix.Output[[]*DirectoryRoleMember]{
+		OutputState: i.ToDirectoryRoleMemberArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DirectoryRoleMemberMapInput is an input type that accepts DirectoryRoleMemberMap and DirectoryRoleMemberMapOutput values.
@@ -217,6 +230,12 @@ func (i DirectoryRoleMemberMap) ToDirectoryRoleMemberMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleMemberMapOutput)
 }
 
+func (i DirectoryRoleMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DirectoryRoleMember] {
+	return pulumix.Output[map[string]*DirectoryRoleMember]{
+		OutputState: i.ToDirectoryRoleMemberMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DirectoryRoleMemberOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleMemberOutput) ElementType() reflect.Type {
@@ -229,6 +248,12 @@ func (o DirectoryRoleMemberOutput) ToDirectoryRoleMemberOutput() DirectoryRoleMe
 
 func (o DirectoryRoleMemberOutput) ToDirectoryRoleMemberOutputWithContext(ctx context.Context) DirectoryRoleMemberOutput {
 	return o
+}
+
+func (o DirectoryRoleMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DirectoryRoleMember] {
+	return pulumix.Output[*DirectoryRoleMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
@@ -255,6 +280,12 @@ func (o DirectoryRoleMemberArrayOutput) ToDirectoryRoleMemberArrayOutputWithCont
 	return o
 }
 
+func (o DirectoryRoleMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DirectoryRoleMember] {
+	return pulumix.Output[[]*DirectoryRoleMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DirectoryRoleMemberArrayOutput) Index(i pulumi.IntInput) DirectoryRoleMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DirectoryRoleMember {
 		return vs[0].([]*DirectoryRoleMember)[vs[1].(int)]
@@ -273,6 +304,12 @@ func (o DirectoryRoleMemberMapOutput) ToDirectoryRoleMemberMapOutput() Directory
 
 func (o DirectoryRoleMemberMapOutput) ToDirectoryRoleMemberMapOutputWithContext(ctx context.Context) DirectoryRoleMemberMapOutput {
 	return o
+}
+
+func (o DirectoryRoleMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DirectoryRoleMember] {
+	return pulumix.Output[map[string]*DirectoryRoleMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DirectoryRoleMemberMapOutput) MapIndex(k pulumi.StringInput) DirectoryRoleMemberOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets basic information for multiple Azure Active Directory service principals.
@@ -199,6 +200,12 @@ func (o GetServicePrincipalsResultOutput) ToGetServicePrincipalsResultOutput() G
 
 func (o GetServicePrincipalsResultOutput) ToGetServicePrincipalsResultOutputWithContext(ctx context.Context) GetServicePrincipalsResultOutput {
 	return o
+}
+
+func (o GetServicePrincipalsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServicePrincipalsResult] {
+	return pulumix.Output[GetServicePrincipalsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of application IDs (client IDs) of the applications associated with the service principals.

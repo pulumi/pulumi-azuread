@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Named Location within Azure Active Directory.
@@ -194,6 +195,12 @@ func (i *NamedLocation) ToNamedLocationOutputWithContext(ctx context.Context) Na
 	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationOutput)
 }
 
+func (i *NamedLocation) ToOutput(ctx context.Context) pulumix.Output[*NamedLocation] {
+	return pulumix.Output[*NamedLocation]{
+		OutputState: i.ToNamedLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NamedLocationArrayInput is an input type that accepts NamedLocationArray and NamedLocationArrayOutput values.
 // You can construct a concrete instance of `NamedLocationArrayInput` via:
 //
@@ -217,6 +224,12 @@ func (i NamedLocationArray) ToNamedLocationArrayOutput() NamedLocationArrayOutpu
 
 func (i NamedLocationArray) ToNamedLocationArrayOutputWithContext(ctx context.Context) NamedLocationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationArrayOutput)
+}
+
+func (i NamedLocationArray) ToOutput(ctx context.Context) pulumix.Output[[]*NamedLocation] {
+	return pulumix.Output[[]*NamedLocation]{
+		OutputState: i.ToNamedLocationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NamedLocationMapInput is an input type that accepts NamedLocationMap and NamedLocationMapOutput values.
@@ -244,6 +257,12 @@ func (i NamedLocationMap) ToNamedLocationMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationMapOutput)
 }
 
+func (i NamedLocationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NamedLocation] {
+	return pulumix.Output[map[string]*NamedLocation]{
+		OutputState: i.ToNamedLocationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NamedLocationOutput struct{ *pulumi.OutputState }
 
 func (NamedLocationOutput) ElementType() reflect.Type {
@@ -256,6 +275,12 @@ func (o NamedLocationOutput) ToNamedLocationOutput() NamedLocationOutput {
 
 func (o NamedLocationOutput) ToNamedLocationOutputWithContext(ctx context.Context) NamedLocationOutput {
 	return o
+}
+
+func (o NamedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[*NamedLocation] {
+	return pulumix.Output[*NamedLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A `country` block as documented below, which configures a country-based named location.
@@ -289,6 +314,12 @@ func (o NamedLocationArrayOutput) ToNamedLocationArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o NamedLocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NamedLocation] {
+	return pulumix.Output[[]*NamedLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NamedLocationArrayOutput) Index(i pulumi.IntInput) NamedLocationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NamedLocation {
 		return vs[0].([]*NamedLocation)[vs[1].(int)]
@@ -307,6 +338,12 @@ func (o NamedLocationMapOutput) ToNamedLocationMapOutput() NamedLocationMapOutpu
 
 func (o NamedLocationMapOutput) ToNamedLocationMapOutputWithContext(ctx context.Context) NamedLocationMapOutput {
 	return o
+}
+
+func (o NamedLocationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NamedLocation] {
+	return pulumix.Output[map[string]*NamedLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NamedLocationMapOutput) MapIndex(k pulumi.StringInput) NamedLocationOutput {

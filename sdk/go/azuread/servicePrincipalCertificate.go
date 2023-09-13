@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a certificate associated with a service principal within Azure Active Directory.
@@ -220,6 +221,12 @@ func (i *ServicePrincipalCertificate) ToServicePrincipalCertificateOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificateOutput)
 }
 
+func (i *ServicePrincipalCertificate) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalCertificate] {
+	return pulumix.Output[*ServicePrincipalCertificate]{
+		OutputState: i.ToServicePrincipalCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServicePrincipalCertificateArrayInput is an input type that accepts ServicePrincipalCertificateArray and ServicePrincipalCertificateArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalCertificateArrayInput` via:
 //
@@ -243,6 +250,12 @@ func (i ServicePrincipalCertificateArray) ToServicePrincipalCertificateArrayOutp
 
 func (i ServicePrincipalCertificateArray) ToServicePrincipalCertificateArrayOutputWithContext(ctx context.Context) ServicePrincipalCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificateArrayOutput)
+}
+
+func (i ServicePrincipalCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalCertificate] {
+	return pulumix.Output[[]*ServicePrincipalCertificate]{
+		OutputState: i.ToServicePrincipalCertificateArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServicePrincipalCertificateMapInput is an input type that accepts ServicePrincipalCertificateMap and ServicePrincipalCertificateMapOutput values.
@@ -270,6 +283,12 @@ func (i ServicePrincipalCertificateMap) ToServicePrincipalCertificateMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificateMapOutput)
 }
 
+func (i ServicePrincipalCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalCertificate] {
+	return pulumix.Output[map[string]*ServicePrincipalCertificate]{
+		OutputState: i.ToServicePrincipalCertificateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServicePrincipalCertificateOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalCertificateOutput) ElementType() reflect.Type {
@@ -282,6 +301,12 @@ func (o ServicePrincipalCertificateOutput) ToServicePrincipalCertificateOutput()
 
 func (o ServicePrincipalCertificateOutput) ToServicePrincipalCertificateOutputWithContext(ctx context.Context) ServicePrincipalCertificateOutput {
 	return o
+}
+
+func (o ServicePrincipalCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalCertificate] {
+	return pulumix.Output[*ServicePrincipalCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
@@ -342,6 +367,12 @@ func (o ServicePrincipalCertificateArrayOutput) ToServicePrincipalCertificateArr
 	return o
 }
 
+func (o ServicePrincipalCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalCertificate] {
+	return pulumix.Output[[]*ServicePrincipalCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServicePrincipalCertificateArrayOutput) Index(i pulumi.IntInput) ServicePrincipalCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePrincipalCertificate {
 		return vs[0].([]*ServicePrincipalCertificate)[vs[1].(int)]
@@ -360,6 +391,12 @@ func (o ServicePrincipalCertificateMapOutput) ToServicePrincipalCertificateMapOu
 
 func (o ServicePrincipalCertificateMapOutput) ToServicePrincipalCertificateMapOutputWithContext(ctx context.Context) ServicePrincipalCertificateMapOutput {
 	return o
+}
+
+func (o ServicePrincipalCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalCertificate] {
+	return pulumix.Output[map[string]*ServicePrincipalCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServicePrincipalCertificateMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalCertificateOutput {

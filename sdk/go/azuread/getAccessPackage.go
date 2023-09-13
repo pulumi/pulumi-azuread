@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.
@@ -152,6 +153,12 @@ func (o LookupAccessPackageResultOutput) ToLookupAccessPackageResultOutput() Loo
 
 func (o LookupAccessPackageResultOutput) ToLookupAccessPackageResultOutputWithContext(ctx context.Context) LookupAccessPackageResultOutput {
 	return o
+}
+
+func (o LookupAccessPackageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessPackageResult] {
+	return pulumix.Output[LookupAccessPackageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupAccessPackageResultOutput) CatalogId() pulumi.StringPtrOutput {
