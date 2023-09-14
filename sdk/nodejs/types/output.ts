@@ -609,7 +609,7 @@ export interface ConditionalAccessPolicyGrantControls {
     /**
      * List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      */
-    builtInControls: string[];
+    builtInControls?: string[];
     /**
      * List of custom controls IDs required by the policy.
      */
@@ -620,6 +620,8 @@ export interface ConditionalAccessPolicyGrantControls {
     operator: string;
     /**
      * List of terms of use IDs required by the policy.
+     *
+     * > At least one of `builtInControls` or `termsOfUse` must be specified.
      */
     termsOfUses?: string[];
 }

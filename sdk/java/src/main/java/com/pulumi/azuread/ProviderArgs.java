@@ -82,6 +82,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The path to a file containing the Client ID which should be used for service principal authentication
+     * 
+     */
+    @Import(name="clientIdFilePath")
+    private @Nullable Output<String> clientIdFilePath;
+
+    /**
+     * @return The path to a file containing the Client ID which should be used for service principal authentication
+     * 
+     */
+    public Optional<Output<String>> clientIdFilePath() {
+        return Optional.ofNullable(this.clientIdFilePath);
+    }
+
+    /**
      * The application password to use when authenticating as a Service Principal using a Client Secret
      * 
      */
@@ -94,6 +109,23 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
+    }
+
+    /**
+     * The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+     * Secret
+     * 
+     */
+    @Import(name="clientSecretFilePath")
+    private @Nullable Output<String> clientSecretFilePath;
+
+    /**
+     * @return The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+     * Secret
+     * 
+     */
+    public Optional<Output<String>> clientSecretFilePath() {
+        return Optional.ofNullable(this.clientSecretFilePath);
     }
 
     /**
@@ -304,7 +336,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientCertificatePassword = $.clientCertificatePassword;
         this.clientCertificatePath = $.clientCertificatePath;
         this.clientId = $.clientId;
+        this.clientIdFilePath = $.clientIdFilePath;
         this.clientSecret = $.clientSecret;
+        this.clientSecretFilePath = $.clientSecretFilePath;
         this.disableTerraformPartnerId = $.disableTerraformPartnerId;
         this.environment = $.environment;
         this.metadataHost = $.metadataHost;
@@ -427,6 +461,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param clientIdFilePath The path to a file containing the Client ID which should be used for service principal authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientIdFilePath(@Nullable Output<String> clientIdFilePath) {
+            $.clientIdFilePath = clientIdFilePath;
+            return this;
+        }
+
+        /**
+         * @param clientIdFilePath The path to a file containing the Client ID which should be used for service principal authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientIdFilePath(String clientIdFilePath) {
+            return clientIdFilePath(Output.of(clientIdFilePath));
+        }
+
+        /**
          * @param clientSecret The application password to use when authenticating as a Service Principal using a Client Secret
          * 
          * @return builder
@@ -445,6 +500,29 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
+        }
+
+        /**
+         * @param clientSecretFilePath The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+         * Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecretFilePath(@Nullable Output<String> clientSecretFilePath) {
+            $.clientSecretFilePath = clientSecretFilePath;
+            return this;
+        }
+
+        /**
+         * @param clientSecretFilePath The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+         * Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecretFilePath(String clientSecretFilePath) {
+            return clientSecretFilePath(Output.of(clientSecretFilePath));
         }
 
         /**

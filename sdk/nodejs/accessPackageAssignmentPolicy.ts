@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
  *
- * When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Idneity Governance.
+ * When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
  *
  * ## Example Usage
  *
@@ -36,8 +36,8 @@ import * as utilities from "./utilities";
  *     displayName: "access-package",
  *     description: "Access Package",
  * });
- * const test = new azuread.AccessPackageAssignmentPolicy("test", {
- *     accessPackageId: azuread_access_package.test.id,
+ * const exampleAccessPackageAssignmentPolicy = new azuread.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy", {
+ *     accessPackageId: exampleAccessPackage.id,
  *     displayName: "assignment-policy",
  *     description: "My assignment policy",
  *     durationInDays: 90,
@@ -49,7 +49,7 @@ import * as utilities from "./utilities";
  *         approvalStages: [{
  *             approvalTimeoutInDays: 14,
  *             primaryApprovers: [{
- *                 objectId: azuread_group.test.object_id,
+ *                 objectId: exampleGroup.objectId,
  *                 subjectType: "groupMembers",
  *             }],
  *         }],

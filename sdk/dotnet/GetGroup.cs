@@ -104,6 +104,12 @@ namespace Pulumi.AzureAD
         public bool? MailEnabled { get; set; }
 
         /// <summary>
+        /// The mail alias for the group, unique in the organisation.
+        /// </summary>
+        [Input("mailNickname")]
+        public string? MailNickname { get; set; }
+
+        /// <summary>
         /// Specifies the object ID of the group.
         /// </summary>
         [Input("objectId")]
@@ -112,7 +118,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Whether the group is a security group.
         /// 
-        /// &gt; One of `display_name` or `object_id` must be specified.
+        /// &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
         /// </summary>
         [Input("securityEnabled")]
         public bool? SecurityEnabled { get; set; }
@@ -138,6 +144,12 @@ namespace Pulumi.AzureAD
         public Input<bool>? MailEnabled { get; set; }
 
         /// <summary>
+        /// The mail alias for the group, unique in the organisation.
+        /// </summary>
+        [Input("mailNickname")]
+        public Input<string>? MailNickname { get; set; }
+
+        /// <summary>
         /// Specifies the object ID of the group.
         /// </summary>
         [Input("objectId")]
@@ -146,7 +158,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Whether the group is a security group.
         /// 
-        /// &gt; One of `display_name` or `object_id` must be specified.
+        /// &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
         /// </summary>
         [Input("securityEnabled")]
         public Input<bool>? SecurityEnabled { get; set; }

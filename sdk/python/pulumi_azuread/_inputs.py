@@ -2276,34 +2276,25 @@ class ConditionalAccessPolicyConditionsUsersArgs:
 @pulumi.input_type
 class ConditionalAccessPolicyGrantControlsArgs:
     def __init__(__self__, *,
-                 built_in_controls: pulumi.Input[Sequence[pulumi.Input[str]]],
                  operator: pulumi.Input[str],
+                 built_in_controls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_authentication_factors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  terms_of_uses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] built_in_controls: List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
         :param pulumi.Input[str] operator: Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] built_in_controls: List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_authentication_factors: List of custom controls IDs required by the policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] terms_of_uses: List of terms of use IDs required by the policy.
+               
+               > At least one of `built_in_controls` or `terms_of_use` must be specified.
         """
-        pulumi.set(__self__, "built_in_controls", built_in_controls)
         pulumi.set(__self__, "operator", operator)
+        if built_in_controls is not None:
+            pulumi.set(__self__, "built_in_controls", built_in_controls)
         if custom_authentication_factors is not None:
             pulumi.set(__self__, "custom_authentication_factors", custom_authentication_factors)
         if terms_of_uses is not None:
             pulumi.set(__self__, "terms_of_uses", terms_of_uses)
-
-    @property
-    @pulumi.getter(name="builtInControls")
-    def built_in_controls(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
-        """
-        return pulumi.get(self, "built_in_controls")
-
-    @built_in_controls.setter
-    def built_in_controls(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "built_in_controls", value)
 
     @property
     @pulumi.getter
@@ -2316,6 +2307,18 @@ class ConditionalAccessPolicyGrantControlsArgs:
     @operator.setter
     def operator(self, value: pulumi.Input[str]):
         pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter(name="builtInControls")
+    def built_in_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
+        """
+        return pulumi.get(self, "built_in_controls")
+
+    @built_in_controls.setter
+    def built_in_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "built_in_controls", value)
 
     @property
     @pulumi.getter(name="customAuthenticationFactors")
@@ -2334,6 +2337,8 @@ class ConditionalAccessPolicyGrantControlsArgs:
     def terms_of_uses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of terms of use IDs required by the policy.
+
+        > At least one of `built_in_controls` or `terms_of_use` must be specified.
         """
         return pulumi.get(self, "terms_of_uses")
 

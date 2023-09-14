@@ -74,6 +74,16 @@ namespace Pulumi.AzureAD
             set => _clientId.Set(value);
         }
 
+        private static readonly __Value<string?> _clientIdFilePath = new __Value<string?>(() => __config.Get("clientIdFilePath"));
+        /// <summary>
+        /// The path to a file containing the Client ID which should be used for service principal authentication
+        /// </summary>
+        public static string? ClientIdFilePath
+        {
+            get => _clientIdFilePath.Get();
+            set => _clientIdFilePath.Set(value);
+        }
+
         private static readonly __Value<string?> _clientSecret = new __Value<string?>(() => __config.Get("clientSecret"));
         /// <summary>
         /// The application password to use when authenticating as a Service Principal using a Client Secret
@@ -82,6 +92,17 @@ namespace Pulumi.AzureAD
         {
             get => _clientSecret.Get();
             set => _clientSecret.Set(value);
+        }
+
+        private static readonly __Value<string?> _clientSecretFilePath = new __Value<string?>(() => __config.Get("clientSecretFilePath"));
+        /// <summary>
+        /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+        /// Secret
+        /// </summary>
+        public static string? ClientSecretFilePath
+        {
+            get => _clientSecretFilePath.Get();
+            set => _clientSecretFilePath.Set(value);
         }
 
         private static readonly __Value<bool?> _disableTerraformPartnerId = new __Value<bool?>(() => __config.GetBoolean("disableTerraformPartnerId"));

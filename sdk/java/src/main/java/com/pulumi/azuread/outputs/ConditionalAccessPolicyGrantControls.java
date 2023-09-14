@@ -15,7 +15,7 @@ public final class ConditionalAccessPolicyGrantControls {
      * @return List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      * 
      */
-    private List<String> builtInControls;
+    private @Nullable List<String> builtInControls;
     /**
      * @return List of custom controls IDs required by the policy.
      * 
@@ -29,6 +29,8 @@ public final class ConditionalAccessPolicyGrantControls {
     /**
      * @return List of terms of use IDs required by the policy.
      * 
+     * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+     * 
      */
     private @Nullable List<String> termsOfUses;
 
@@ -38,7 +40,7 @@ public final class ConditionalAccessPolicyGrantControls {
      * 
      */
     public List<String> builtInControls() {
-        return this.builtInControls;
+        return this.builtInControls == null ? List.of() : this.builtInControls;
     }
     /**
      * @return List of custom controls IDs required by the policy.
@@ -57,6 +59,8 @@ public final class ConditionalAccessPolicyGrantControls {
     /**
      * @return List of terms of use IDs required by the policy.
      * 
+     * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+     * 
      */
     public List<String> termsOfUses() {
         return this.termsOfUses == null ? List.of() : this.termsOfUses;
@@ -71,7 +75,7 @@ public final class ConditionalAccessPolicyGrantControls {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> builtInControls;
+        private @Nullable List<String> builtInControls;
         private @Nullable List<String> customAuthenticationFactors;
         private String operator;
         private @Nullable List<String> termsOfUses;
@@ -85,8 +89,8 @@ public final class ConditionalAccessPolicyGrantControls {
         }
 
         @CustomType.Setter
-        public Builder builtInControls(List<String> builtInControls) {
-            this.builtInControls = Objects.requireNonNull(builtInControls);
+        public Builder builtInControls(@Nullable List<String> builtInControls) {
+            this.builtInControls = builtInControls;
             return this;
         }
         public Builder builtInControls(String... builtInControls) {

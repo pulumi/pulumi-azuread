@@ -21,7 +21,7 @@ import (
 //
 // When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
 //
-// When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Idneity Governance.
+// When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
 //
 // ## Example Usage
 //
@@ -37,7 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
 //				DisplayName:     pulumi.String("group-name"),
 //				SecurityEnabled: pulumi.Bool(true),
 //			})
@@ -51,7 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewAccessPackage(ctx, "exampleAccessPackage", &azuread.AccessPackageArgs{
+//			exampleAccessPackage, err := azuread.NewAccessPackage(ctx, "exampleAccessPackage", &azuread.AccessPackageArgs{
 //				CatalogId:   exampleAccessPackageCatalog.ID(),
 //				DisplayName: pulumi.String("access-package"),
 //				Description: pulumi.String("Access Package"),
@@ -59,8 +59,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewAccessPackageAssignmentPolicy(ctx, "test", &azuread.AccessPackageAssignmentPolicyArgs{
-//				AccessPackageId: pulumi.Any(azuread_access_package.Test.Id),
+//			_, err = azuread.NewAccessPackageAssignmentPolicy(ctx, "exampleAccessPackageAssignmentPolicy", &azuread.AccessPackageAssignmentPolicyArgs{
+//				AccessPackageId: exampleAccessPackage.ID(),
 //				DisplayName:     pulumi.String("assignment-policy"),
 //				Description:     pulumi.String("My assignment policy"),
 //				DurationInDays:  pulumi.Int(90),
@@ -74,7 +74,7 @@ import (
 //							ApprovalTimeoutInDays: pulumi.Int(14),
 //							PrimaryApprovers: azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray{
 //								&azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs{
-//									ObjectId:    pulumi.Any(azuread_group.Test.Object_id),
+//									ObjectId:    exampleGroup.ObjectId,
 //									SubjectType: pulumi.String("groupMembers"),
 //								},
 //							},

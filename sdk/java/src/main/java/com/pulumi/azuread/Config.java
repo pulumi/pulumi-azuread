@@ -42,11 +42,26 @@ public final class Config {
         return Codegen.stringProp("clientId").config(config).get();
     }
 /**
+ * The path to a file containing the Client ID which should be used for service principal authentication
+ * 
+ */
+    public Optional<String> clientIdFilePath() {
+        return Codegen.stringProp("clientIdFilePath").config(config).get();
+    }
+/**
  * The application password to use when authenticating as a Service Principal using a Client Secret
  * 
  */
     public Optional<String> clientSecret() {
         return Codegen.stringProp("clientSecret").config(config).get();
+    }
+/**
+ * The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+ * Secret
+ * 
+ */
+    public Optional<String> clientSecretFilePath() {
+        return Codegen.stringProp("clientSecretFilePath").config(config).get();
     }
 /**
  * Disable the Terraform Partner ID, which is used if a custom `partner_id` isn&#39;t specified

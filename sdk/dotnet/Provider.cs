@@ -45,10 +45,23 @@ namespace Pulumi.AzureAD
         public Output<string?> ClientId { get; private set; } = null!;
 
         /// <summary>
+        /// The path to a file containing the Client ID which should be used for service principal authentication
+        /// </summary>
+        [Output("clientIdFilePath")]
+        public Output<string?> ClientIdFilePath { get; private set; } = null!;
+
+        /// <summary>
         /// The application password to use when authenticating as a Service Principal using a Client Secret
         /// </summary>
         [Output("clientSecret")]
         public Output<string?> ClientSecret { get; private set; } = null!;
+
+        /// <summary>
+        /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+        /// Secret
+        /// </summary>
+        [Output("clientSecretFilePath")]
+        public Output<string?> ClientSecretFilePath { get; private set; } = null!;
 
         /// <summary>
         /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
@@ -162,10 +175,23 @@ namespace Pulumi.AzureAD
         public Input<string>? ClientId { get; set; }
 
         /// <summary>
+        /// The path to a file containing the Client ID which should be used for service principal authentication
+        /// </summary>
+        [Input("clientIdFilePath")]
+        public Input<string>? ClientIdFilePath { get; set; }
+
+        /// <summary>
         /// The application password to use when authenticating as a Service Principal using a Client Secret
         /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
+
+        /// <summary>
+        /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+        /// Secret
+        /// </summary>
+        [Input("clientSecretFilePath")]
+        public Input<string>? ClientSecretFilePath { get; set; }
 
         /// <summary>
         /// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified

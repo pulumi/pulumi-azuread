@@ -20,15 +20,15 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
      * List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      * 
      */
-    @Import(name="builtInControls", required=true)
-    private Output<List<String>> builtInControls;
+    @Import(name="builtInControls")
+    private @Nullable Output<List<String>> builtInControls;
 
     /**
      * @return List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      * 
      */
-    public Output<List<String>> builtInControls() {
-        return this.builtInControls;
+    public Optional<Output<List<String>>> builtInControls() {
+        return Optional.ofNullable(this.builtInControls);
     }
 
     /**
@@ -64,12 +64,16 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
     /**
      * List of terms of use IDs required by the policy.
      * 
+     * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+     * 
      */
     @Import(name="termsOfUses")
     private @Nullable Output<List<String>> termsOfUses;
 
     /**
      * @return List of terms of use IDs required by the policy.
+     * 
+     * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
      * 
      */
     public Optional<Output<List<String>>> termsOfUses() {
@@ -109,7 +113,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder builtInControls(Output<List<String>> builtInControls) {
+        public Builder builtInControls(@Nullable Output<List<String>> builtInControls) {
             $.builtInControls = builtInControls;
             return this;
         }
@@ -189,6 +193,8 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         /**
          * @param termsOfUses List of terms of use IDs required by the policy.
          * 
+         * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+         * 
          * @return builder
          * 
          */
@@ -200,6 +206,8 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         /**
          * @param termsOfUses List of terms of use IDs required by the policy.
          * 
+         * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+         * 
          * @return builder
          * 
          */
@@ -210,6 +218,8 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         /**
          * @param termsOfUses List of terms of use IDs required by the policy.
          * 
+         * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+         * 
          * @return builder
          * 
          */
@@ -218,7 +228,6 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         }
 
         public ConditionalAccessPolicyGrantControlsArgs build() {
-            $.builtInControls = Objects.requireNonNull($.builtInControls, "expected parameter 'builtInControls' to be non-null");
             $.operator = Objects.requireNonNull($.operator, "expected parameter 'operator' to be non-null");
             return $;
         }

@@ -27,6 +27,8 @@ namespace Pulumi.AzureAD.Outputs
         public readonly string Operator;
         /// <summary>
         /// List of terms of use IDs required by the policy.
+        /// 
+        /// &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
         /// </summary>
         public readonly ImmutableArray<string> TermsOfUses;
 
