@@ -395,6 +395,7 @@ class AwaitableGetGroupResult(GetGroupResult):
 
 def get_group(display_name: Optional[str] = None,
               mail_enabled: Optional[bool] = None,
+              mail_nickname: Optional[str] = None,
               object_id: Optional[str] = None,
               security_enabled: Optional[bool] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
@@ -423,14 +424,16 @@ def get_group(display_name: Optional[str] = None,
 
     :param str display_name: The display name for the group.
     :param bool mail_enabled: Whether the group is mail-enabled.
+    :param str mail_nickname: The mail alias for the group, unique in the organisation.
     :param str object_id: Specifies the object ID of the group.
     :param bool security_enabled: Whether the group is a security group.
            
-           > One of `display_name` or `object_id` must be specified.
+           > One of `display_name`, `object_id` or `mail_nickname` must be specified.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
     __args__['mailEnabled'] = mail_enabled
+    __args__['mailNickname'] = mail_nickname
     __args__['objectId'] = object_id
     __args__['securityEnabled'] = security_enabled
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -472,6 +475,7 @@ def get_group(display_name: Optional[str] = None,
 @_utilities.lift_output_func(get_group)
 def get_group_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                      mail_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                     mail_nickname: Optional[pulumi.Input[Optional[str]]] = None,
                      object_id: Optional[pulumi.Input[Optional[str]]] = None,
                      security_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
@@ -500,9 +504,10 @@ def get_group_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str display_name: The display name for the group.
     :param bool mail_enabled: Whether the group is mail-enabled.
+    :param str mail_nickname: The mail alias for the group, unique in the organisation.
     :param str object_id: Specifies the object ID of the group.
     :param bool security_enabled: Whether the group is a security group.
            
-           > One of `display_name` or `object_id` must be specified.
+           > One of `display_name`, `object_id` or `mail_nickname` must be specified.
     """
     ...

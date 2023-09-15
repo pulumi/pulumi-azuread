@@ -33,9 +33,20 @@ func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:clientId")
 }
 
+// The path to a file containing the Client ID which should be used for service principal authentication
+func GetClientIdFilePath(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azuread:clientIdFilePath")
+}
+
 // The application password to use when authenticating as a Service Principal using a Client Secret
 func GetClientSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:clientSecret")
+}
+
+// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+// Secret
+func GetClientSecretFilePath(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azuread:clientSecretFilePath")
 }
 
 // Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified

@@ -65,11 +65,13 @@ type LookupGroupArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Whether the group is mail-enabled.
 	MailEnabled *bool `pulumi:"mailEnabled"`
+	// The mail alias for the group, unique in the organisation.
+	MailNickname *string `pulumi:"mailNickname"`
 	// Specifies the object ID of the group.
 	ObjectId *string `pulumi:"objectId"`
 	// Whether the group is a security group.
 	//
-	// > One of `displayName` or `objectId` must be specified.
+	// > One of `displayName`, `objectId` or `mailNickname` must be specified.
 	SecurityEnabled *bool `pulumi:"securityEnabled"`
 }
 
@@ -156,11 +158,13 @@ type LookupGroupOutputArgs struct {
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Whether the group is mail-enabled.
 	MailEnabled pulumi.BoolPtrInput `pulumi:"mailEnabled"`
+	// The mail alias for the group, unique in the organisation.
+	MailNickname pulumi.StringPtrInput `pulumi:"mailNickname"`
 	// Specifies the object ID of the group.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 	// Whether the group is a security group.
 	//
-	// > One of `displayName` or `objectId` must be specified.
+	// > One of `displayName`, `objectId` or `mailNickname` must be specified.
 	SecurityEnabled pulumi.BoolPtrInput `pulumi:"securityEnabled"`
 }
 

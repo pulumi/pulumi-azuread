@@ -31,9 +31,20 @@ clientId: Optional[str]
 The Client ID which should be used for service principal authentication
 """
 
+clientIdFilePath: Optional[str]
+"""
+The path to a file containing the Client ID which should be used for service principal authentication
+"""
+
 clientSecret: Optional[str]
 """
 The application password to use when authenticating as a Service Principal using a Client Secret
+"""
+
+clientSecretFilePath: Optional[str]
+"""
+The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+Secret
 """
 
 disableTerraformPartnerId: Optional[bool]

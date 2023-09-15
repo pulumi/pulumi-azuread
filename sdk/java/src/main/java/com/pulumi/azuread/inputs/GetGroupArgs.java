@@ -47,6 +47,21 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The mail alias for the group, unique in the organisation.
+     * 
+     */
+    @Import(name="mailNickname")
+    private @Nullable Output<String> mailNickname;
+
+    /**
+     * @return The mail alias for the group, unique in the organisation.
+     * 
+     */
+    public Optional<Output<String>> mailNickname() {
+        return Optional.ofNullable(this.mailNickname);
+    }
+
+    /**
      * Specifies the object ID of the group.
      * 
      */
@@ -64,7 +79,7 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Whether the group is a security group.
      * 
-     * &gt; One of `display_name` or `object_id` must be specified.
+     * &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
      * 
      */
     @Import(name="securityEnabled")
@@ -73,7 +88,7 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return Whether the group is a security group.
      * 
-     * &gt; One of `display_name` or `object_id` must be specified.
+     * &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
      * 
      */
     public Optional<Output<Boolean>> securityEnabled() {
@@ -85,6 +100,7 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
     private GetGroupArgs(GetGroupArgs $) {
         this.displayName = $.displayName;
         this.mailEnabled = $.mailEnabled;
+        this.mailNickname = $.mailNickname;
         this.objectId = $.objectId;
         this.securityEnabled = $.securityEnabled;
     }
@@ -150,6 +166,27 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param mailNickname The mail alias for the group, unique in the organisation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mailNickname(@Nullable Output<String> mailNickname) {
+            $.mailNickname = mailNickname;
+            return this;
+        }
+
+        /**
+         * @param mailNickname The mail alias for the group, unique in the organisation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mailNickname(String mailNickname) {
+            return mailNickname(Output.of(mailNickname));
+        }
+
+        /**
          * @param objectId Specifies the object ID of the group.
          * 
          * @return builder
@@ -173,7 +210,7 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param securityEnabled Whether the group is a security group.
          * 
-         * &gt; One of `display_name` or `object_id` must be specified.
+         * &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
          * 
          * @return builder
          * 
@@ -186,7 +223,7 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param securityEnabled Whether the group is a security group.
          * 
-         * &gt; One of `display_name` or `object_id` must be specified.
+         * &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
          * 
          * @return builder
          * 

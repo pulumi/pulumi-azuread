@@ -37,6 +37,7 @@ export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Prom
     return pulumi.runtime.invoke("azuread:index/getGroup:getGroup", {
         "displayName": args.displayName,
         "mailEnabled": args.mailEnabled,
+        "mailNickname": args.mailNickname,
         "objectId": args.objectId,
         "securityEnabled": args.securityEnabled,
     }, opts);
@@ -55,13 +56,17 @@ export interface GetGroupArgs {
      */
     mailEnabled?: boolean;
     /**
+     * The mail alias for the group, unique in the organisation.
+     */
+    mailNickname?: string;
+    /**
      * Specifies the object ID of the group.
      */
     objectId?: string;
     /**
      * Whether the group is a security group.
      *
-     * > One of `displayName` or `objectId` must be specified.
+     * > One of `displayName`, `objectId` or `mailNickname` must be specified.
      */
     securityEnabled?: boolean;
 }
@@ -232,13 +237,17 @@ export interface GetGroupOutputArgs {
      */
     mailEnabled?: pulumi.Input<boolean>;
     /**
+     * The mail alias for the group, unique in the organisation.
+     */
+    mailNickname?: pulumi.Input<string>;
+    /**
      * Specifies the object ID of the group.
      */
     objectId?: pulumi.Input<string>;
     /**
      * Whether the group is a security group.
      *
-     * > One of `displayName` or `objectId` must be specified.
+     * > One of `displayName`, `objectId` or `mailNickname` must be specified.
      */
     securityEnabled?: pulumi.Input<boolean>;
 }

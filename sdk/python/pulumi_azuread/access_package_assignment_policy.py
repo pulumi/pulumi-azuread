@@ -371,7 +371,7 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
 
         When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
 
-        When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Idneity Governance.
+        When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
 
         ## Example Usage
 
@@ -389,8 +389,8 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
             catalog_id=example_access_package_catalog.id,
             display_name="access-package",
             description="Access Package")
-        test = azuread.AccessPackageAssignmentPolicy("test",
-            access_package_id=azuread_access_package["test"]["id"],
+        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy",
+            access_package_id=example_access_package.id,
             display_name="assignment-policy",
             description="My assignment policy",
             duration_in_days=90,
@@ -402,7 +402,7 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
                 approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
                     approval_timeout_in_days=14,
                     primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
-                        object_id=azuread_group["test"]["object_id"],
+                        object_id=example_group.object_id,
                         subject_type="groupMembers",
                     )],
                 )],
@@ -457,7 +457,7 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
 
         When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
 
-        When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Idneity Governance.
+        When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
 
         ## Example Usage
 
@@ -475,8 +475,8 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
             catalog_id=example_access_package_catalog.id,
             display_name="access-package",
             description="Access Package")
-        test = azuread.AccessPackageAssignmentPolicy("test",
-            access_package_id=azuread_access_package["test"]["id"],
+        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy",
+            access_package_id=example_access_package.id,
             display_name="assignment-policy",
             description="My assignment policy",
             duration_in_days=90,
@@ -488,7 +488,7 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
                 approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
                     approval_timeout_in_days=14,
                     primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
-                        object_id=azuread_group["test"]["object_id"],
+                        object_id=example_group.object_id,
                         subject_type="groupMembers",
                     )],
                 )],

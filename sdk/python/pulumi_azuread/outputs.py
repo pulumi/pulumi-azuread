@@ -2469,30 +2469,25 @@ class ConditionalAccessPolicyGrantControls(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 built_in_controls: Sequence[str],
                  operator: str,
+                 built_in_controls: Optional[Sequence[str]] = None,
                  custom_authentication_factors: Optional[Sequence[str]] = None,
                  terms_of_uses: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] built_in_controls: List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
         :param str operator: Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+        :param Sequence[str] built_in_controls: List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
         :param Sequence[str] custom_authentication_factors: List of custom controls IDs required by the policy.
         :param Sequence[str] terms_of_uses: List of terms of use IDs required by the policy.
+               
+               > At least one of `built_in_controls` or `terms_of_use` must be specified.
         """
-        pulumi.set(__self__, "built_in_controls", built_in_controls)
         pulumi.set(__self__, "operator", operator)
+        if built_in_controls is not None:
+            pulumi.set(__self__, "built_in_controls", built_in_controls)
         if custom_authentication_factors is not None:
             pulumi.set(__self__, "custom_authentication_factors", custom_authentication_factors)
         if terms_of_uses is not None:
             pulumi.set(__self__, "terms_of_uses", terms_of_uses)
-
-    @property
-    @pulumi.getter(name="builtInControls")
-    def built_in_controls(self) -> Sequence[str]:
-        """
-        List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
-        """
-        return pulumi.get(self, "built_in_controls")
 
     @property
     @pulumi.getter
@@ -2501,6 +2496,14 @@ class ConditionalAccessPolicyGrantControls(dict):
         Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="builtInControls")
+    def built_in_controls(self) -> Optional[Sequence[str]]:
+        """
+        List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
+        """
+        return pulumi.get(self, "built_in_controls")
 
     @property
     @pulumi.getter(name="customAuthenticationFactors")
@@ -2515,6 +2518,8 @@ class ConditionalAccessPolicyGrantControls(dict):
     def terms_of_uses(self) -> Optional[Sequence[str]]:
         """
         List of terms of use IDs required by the policy.
+
+        > At least one of `built_in_controls` or `terms_of_use` must be specified.
         """
         return pulumi.get(self, "terms_of_uses")
 

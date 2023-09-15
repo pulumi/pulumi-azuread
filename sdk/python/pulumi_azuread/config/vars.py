@@ -46,11 +46,26 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('clientId')
 
     @property
+    def client_id_file_path(self) -> Optional[str]:
+        """
+        The path to a file containing the Client ID which should be used for service principal authentication
+        """
+        return __config__.get('clientIdFilePath')
+
+    @property
     def client_secret(self) -> Optional[str]:
         """
         The application password to use when authenticating as a Service Principal using a Client Secret
         """
         return __config__.get('clientSecret')
+
+    @property
+    def client_secret_file_path(self) -> Optional[str]:
+        """
+        The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+        Secret
+        """
+        return __config__.get('clientSecretFilePath')
 
     @property
     def disable_terraform_partner_id(self) -> Optional[bool]:

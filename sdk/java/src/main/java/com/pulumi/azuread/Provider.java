@@ -83,6 +83,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.clientId);
     }
     /**
+     * The path to a file containing the Client ID which should be used for service principal authentication
+     * 
+     */
+    @Export(name="clientIdFilePath", type=String.class, parameters={})
+    private Output</* @Nullable */ String> clientIdFilePath;
+
+    /**
+     * @return The path to a file containing the Client ID which should be used for service principal authentication
+     * 
+     */
+    public Output<Optional<String>> clientIdFilePath() {
+        return Codegen.optional(this.clientIdFilePath);
+    }
+    /**
      * The application password to use when authenticating as a Service Principal using a Client Secret
      * 
      */
@@ -95,6 +109,22 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      */
     public Output<Optional<String>> clientSecret() {
         return Codegen.optional(this.clientSecret);
+    }
+    /**
+     * The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+     * Secret
+     * 
+     */
+    @Export(name="clientSecretFilePath", type=String.class, parameters={})
+    private Output</* @Nullable */ String> clientSecretFilePath;
+
+    /**
+     * @return The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+     * Secret
+     * 
+     */
+    public Output<Optional<String>> clientSecretFilePath() {
+        return Codegen.optional(this.clientSecretFilePath);
     }
     /**
      * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also

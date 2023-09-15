@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * 
  * When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
  * 
- * When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Idneity Governance.
+ * When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
  * 
  * ## Example Usage
  * ```java
@@ -81,8 +81,8 @@ import javax.annotation.Nullable;
  *             .description(&#34;Access Package&#34;)
  *             .build());
  * 
- *         var test = new AccessPackageAssignmentPolicy(&#34;test&#34;, AccessPackageAssignmentPolicyArgs.builder()        
- *             .accessPackageId(azuread_access_package.test().id())
+ *         var exampleAccessPackageAssignmentPolicy = new AccessPackageAssignmentPolicy(&#34;exampleAccessPackageAssignmentPolicy&#34;, AccessPackageAssignmentPolicyArgs.builder()        
+ *             .accessPackageId(exampleAccessPackage.id())
  *             .displayName(&#34;assignment-policy&#34;)
  *             .description(&#34;My assignment policy&#34;)
  *             .durationInDays(90)
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *                 .approvalStages(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs.builder()
  *                     .approvalTimeoutInDays(14)
  *                     .primaryApprovers(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs.builder()
- *                         .objectId(azuread_group.test().object_id())
+ *                         .objectId(exampleGroup.objectId())
  *                         .subjectType(&#34;groupMembers&#34;)
  *                         .build())
  *                     .build())

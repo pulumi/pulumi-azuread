@@ -54,12 +54,35 @@ Object.defineProperty(exports, "clientId", {
 });
 
 /**
+ * The path to a file containing the Client ID which should be used for service principal authentication
+ */
+export declare const clientIdFilePath: string | undefined;
+Object.defineProperty(exports, "clientIdFilePath", {
+    get() {
+        return __config.get("clientIdFilePath");
+    },
+    enumerable: true,
+});
+
+/**
  * The application password to use when authenticating as a Service Principal using a Client Secret
  */
 export declare const clientSecret: string | undefined;
 Object.defineProperty(exports, "clientSecret", {
     get() {
         return __config.get("clientSecret");
+    },
+    enumerable: true,
+});
+
+/**
+ * The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+ * Secret
+ */
+export declare const clientSecretFilePath: string | undefined;
+Object.defineProperty(exports, "clientSecretFilePath", {
+    get() {
+        return __config.get("clientSecretFilePath");
     },
     enumerable: true,
 });

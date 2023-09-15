@@ -18,7 +18,7 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
     /// 
-    /// When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Idneity Governance.
+    /// When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
     /// 
     /// ## Example Usage
     /// 
@@ -49,9 +49,9 @@ namespace Pulumi.AzureAD
     ///         Description = "Access Package",
     ///     });
     /// 
-    ///     var test = new AzureAD.AccessPackageAssignmentPolicy("test", new()
+    ///     var exampleAccessPackageAssignmentPolicy = new AzureAD.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy", new()
     ///     {
-    ///         AccessPackageId = azuread_access_package.Test.Id,
+    ///         AccessPackageId = exampleAccessPackage.Id,
     ///         DisplayName = "assignment-policy",
     ///         Description = "My assignment policy",
     ///         DurationInDays = 90,
@@ -71,7 +71,7 @@ namespace Pulumi.AzureAD
     ///                     {
     ///                         new AzureAD.Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs
     ///                         {
-    ///                             ObjectId = azuread_group.Test.Object_id,
+    ///                             ObjectId = exampleGroup.ObjectId,
     ///                             SubjectType = "groupMembers",
     ///                         },
     ///                     },

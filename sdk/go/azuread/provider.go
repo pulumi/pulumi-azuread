@@ -30,8 +30,13 @@ type Provider struct {
 	ClientCertificatePath pulumi.StringPtrOutput `pulumi:"clientCertificatePath"`
 	// The Client ID which should be used for service principal authentication
 	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
+	// The path to a file containing the Client ID which should be used for service principal authentication
+	ClientIdFilePath pulumi.StringPtrOutput `pulumi:"clientIdFilePath"`
 	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
+	// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+	// Secret
+	ClientSecretFilePath pulumi.StringPtrOutput `pulumi:"clientSecretFilePath"`
 	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
 	// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
@@ -100,8 +105,13 @@ type providerArgs struct {
 	ClientCertificatePath *string `pulumi:"clientCertificatePath"`
 	// The Client ID which should be used for service principal authentication
 	ClientId *string `pulumi:"clientId"`
+	// The path to a file containing the Client ID which should be used for service principal authentication
+	ClientIdFilePath *string `pulumi:"clientIdFilePath"`
 	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret *string `pulumi:"clientSecret"`
+	// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+	// Secret
+	ClientSecretFilePath *string `pulumi:"clientSecretFilePath"`
 	// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
 	DisableTerraformPartnerId *bool `pulumi:"disableTerraformPartnerId"`
 	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
@@ -145,8 +155,13 @@ type ProviderArgs struct {
 	ClientCertificatePath pulumi.StringPtrInput
 	// The Client ID which should be used for service principal authentication
 	ClientId pulumi.StringPtrInput
+	// The path to a file containing the Client ID which should be used for service principal authentication
+	ClientIdFilePath pulumi.StringPtrInput
 	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret pulumi.StringPtrInput
+	// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+	// Secret
+	ClientSecretFilePath pulumi.StringPtrInput
 	// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
 	DisableTerraformPartnerId pulumi.BoolPtrInput
 	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
@@ -249,9 +264,20 @@ func (o ProviderOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
+// The path to a file containing the Client ID which should be used for service principal authentication
+func (o ProviderOutput) ClientIdFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientIdFilePath }).(pulumi.StringPtrOutput)
+}
+
 // The application password to use when authenticating as a Service Principal using a Client Secret
 func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+// Secret
+func (o ProviderOutput) ClientSecretFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecretFilePath }).(pulumi.StringPtrOutput)
 }
 
 // The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also

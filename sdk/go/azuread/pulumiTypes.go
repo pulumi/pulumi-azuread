@@ -6227,6 +6227,8 @@ type ConditionalAccessPolicyGrantControls struct {
 	// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
 	Operator string `pulumi:"operator"`
 	// List of terms of use IDs required by the policy.
+	//
+	// > At least one of `builtInControls` or `termsOfUse` must be specified.
 	TermsOfUses []string `pulumi:"termsOfUses"`
 }
 
@@ -6249,6 +6251,8 @@ type ConditionalAccessPolicyGrantControlsArgs struct {
 	// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// List of terms of use IDs required by the policy.
+	//
+	// > At least one of `builtInControls` or `termsOfUse` must be specified.
 	TermsOfUses pulumi.StringArrayInput `pulumi:"termsOfUses"`
 }
 
@@ -6363,6 +6367,8 @@ func (o ConditionalAccessPolicyGrantControlsOutput) Operator() pulumi.StringOutp
 }
 
 // List of terms of use IDs required by the policy.
+//
+// > At least one of `builtInControls` or `termsOfUse` must be specified.
 func (o ConditionalAccessPolicyGrantControlsOutput) TermsOfUses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) []string { return v.TermsOfUses }).(pulumi.StringArrayOutput)
 }
@@ -6428,6 +6434,8 @@ func (o ConditionalAccessPolicyGrantControlsPtrOutput) Operator() pulumi.StringP
 }
 
 // List of terms of use IDs required by the policy.
+//
+// > At least one of `builtInControls` or `termsOfUse` must be specified.
 func (o ConditionalAccessPolicyGrantControlsPtrOutput) TermsOfUses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) []string {
 		if v == nil {

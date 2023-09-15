@@ -44,9 +44,18 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly clientId!: pulumi.Output<string | undefined>;
     /**
+     * The path to a file containing the Client ID which should be used for service principal authentication
+     */
+    public readonly clientIdFilePath!: pulumi.Output<string | undefined>;
+    /**
      * The application password to use when authenticating as a Service Principal using a Client Secret
      */
     public readonly clientSecret!: pulumi.Output<string | undefined>;
+    /**
+     * The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+     * Secret
+     */
+    public readonly clientSecretFilePath!: pulumi.Output<string | undefined>;
     /**
      * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
      * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
@@ -105,7 +114,9 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientCertificatePassword"] = args ? args.clientCertificatePassword : undefined;
             resourceInputs["clientCertificatePath"] = args ? args.clientCertificatePath : undefined;
             resourceInputs["clientId"] = args ? args.clientId : undefined;
+            resourceInputs["clientIdFilePath"] = args ? args.clientIdFilePath : undefined;
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
+            resourceInputs["clientSecretFilePath"] = args ? args.clientSecretFilePath : undefined;
             resourceInputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined).apply(JSON.stringify);
             resourceInputs["environment"] = (args ? args.environment : undefined) ?? (utilities.getEnv("ARM_ENVIRONMENT") || "public");
             resourceInputs["metadataHost"] = args ? args.metadataHost : undefined;
@@ -148,9 +159,18 @@ export interface ProviderArgs {
      */
     clientId?: pulumi.Input<string>;
     /**
+     * The path to a file containing the Client ID which should be used for service principal authentication
+     */
+    clientIdFilePath?: pulumi.Input<string>;
+    /**
      * The application password to use when authenticating as a Service Principal using a Client Secret
      */
     clientSecret?: pulumi.Input<string>;
+    /**
+     * The path to a file containing the application password to use when authenticating as a Service Principal using a Client
+     * Secret
+     */
+    clientSecretFilePath?: pulumi.Input<string>;
     /**
      * Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
      */
