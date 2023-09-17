@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-azuread/examples/v5
 
-go 1.19
+go 1.21
 
 require github.com/pulumi/pulumi/pkg/v3 v3.43.1
 
