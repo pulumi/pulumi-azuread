@@ -1670,8 +1670,8 @@ github.com/hashicorp/terraform-plugin-log v0.9.0/go.mod h1:rKL8egZQ/eXSyDqzLUuwU
 github.com/hashicorp/terraform-plugin-sdk v1.7.0 h1:B//oq0ZORG+EkVrIJy0uPGSonvmXqxSzXe8+GhknoW0=
 github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230914232049-efbb8f33a95e h1:o8e7foUdD8S1e0H90HXKkTwpqK+r7uEhnspD1NJmDVc=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230914232049-efbb8f33a95e/go.mod h1:FPBStSHIBUhggh9nR401e++98vmPhz3Q3ROmZmUR6FM=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230922011146-5db577517513 h1:4J+XJc7S/KB8pDGWWNvn6sS7OlgzWV0zLFTKbJ9mxtQ=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230922011146-5db577517513/go.mod h1:FPBStSHIBUhggh9nR401e++98vmPhz3Q3ROmZmUR6FM=
 github.com/hashicorp/terraform-registry-address v0.0.0-20220623143253-7d51757b572c/go.mod h1:Wn3Na71knbXc1G8Lh+yu/dQWWJeFQEpDeJMtWMtlmNI=
 github.com/hashicorp/terraform-registry-address v0.2.2 h1:lPQBg403El8PPicg/qONZJDC6YlgCVbWDtNmmZKtBno=
 github.com/hashicorp/terraform-registry-address v0.2.2/go.mod h1:LtwNbCihUoUZ3RYriyS2wF/lGPB6gF9ICLRtuDk7hSo=
@@ -2188,8 +2188,8 @@ github.com/prometheus/tsdb v0.7.1/go.mod h1:qhTCs0VvXwvX/y3TZrWD7rabWM+ijKTux40T
 github.com/pulumi/pulumi-java/pkg v0.9.6 h1:UJrOAsYHRchwb4QlfI9Q224qg1TOI3rIsI6DDTUnn30=
 github.com/pulumi/pulumi-java/pkg v0.9.6/go.mod h1:c6rSw/+q4O0IImgJ9axxoC6QesbPYWBaG5gimbHouUQ=
 github.com/pulumi/pulumi-terraform-bridge/testing v0.0.1 h1:SCg1gjfY9N4yn8U8peIUYATifjoDABkyR7H9lmefsfc=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.59.0 h1:55mlXQtnYo2Pa1y0VeILi1W382vK10raX4z69LX2jn0=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.59.0/go.mod h1:o0Vfch2UXtHOnGYpNElzGg4htT6B8X8hS9fa5AguP7g=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.1 h1:+W2JHLi4y+G57jLPLJbDLv1xvm/9L2NO0gWXrtR8MDM=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.60.1/go.mod h1:o0Vfch2UXtHOnGYpNElzGg4htT6B8X8hS9fa5AguP7g=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 h1:rIzMmtcVpPX8ynaz6/nW5AHNY63DiNfCohqmxWvMpM4=
 github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4/go.mod h1:Kt8RIZWa/N8rW3+0g6NrqCBmF3o+HuIhFaZpssEkG6w=
 github.com/pulumi/pulumi-yaml v1.2.2 h1:W6BeUBLhDrJ2GSU0em1AUVelG9PBI4ABY61DdhJOO3E=

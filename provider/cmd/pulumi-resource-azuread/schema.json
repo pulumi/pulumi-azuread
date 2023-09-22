@@ -4648,6 +4648,87 @@
                 "type": "object"
             }
         },
+        "azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest": {
+            "description": "Manages a single directory role eligibility schedule request within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nThe calling principal requires one of the following application roles: `RoleEligibilitySchedule.ReadWrite.Directory` or `RoleManagement.ReadWrite.Directory`.\n\nThe calling principal requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleUser = azuread.getUser({\n    userPrincipalName: \"jdoe@hashicorp.com\",\n});\nconst exampleDirectoryRole = new azuread.DirectoryRole(\"exampleDirectoryRole\", {displayName: \"Application Administrator\"});\nconst exampleDirectoryRoleEligibilityScheduleRequest = new azuread.DirectoryRoleEligibilityScheduleRequest(\"exampleDirectoryRoleEligibilityScheduleRequest\", {\n    roleDefinitionId: exampleDirectoryRole.templateId,\n    principalId: azuread_user.example.object_id,\n    directoryScopeId: \"/\",\n    justification: \"Example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_user = azuread.get_user(user_principal_name=\"jdoe@hashicorp.com\")\nexample_directory_role = azuread.DirectoryRole(\"exampleDirectoryRole\", display_name=\"Application Administrator\")\nexample_directory_role_eligibility_schedule_request = azuread.DirectoryRoleEligibilityScheduleRequest(\"exampleDirectoryRoleEligibilityScheduleRequest\",\n    role_definition_id=example_directory_role.template_id,\n    principal_id=azuread_user[\"example\"][\"object_id\"],\n    directory_scope_id=\"/\",\n    justification=\"Example\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUser = AzureAD.GetUser.Invoke(new()\n    {\n        UserPrincipalName = \"jdoe@hashicorp.com\",\n    });\n\n    var exampleDirectoryRole = new AzureAD.DirectoryRole(\"exampleDirectoryRole\", new()\n    {\n        DisplayName = \"Application Administrator\",\n    });\n\n    var exampleDirectoryRoleEligibilityScheduleRequest = new AzureAD.DirectoryRoleEligibilityScheduleRequest(\"exampleDirectoryRoleEligibilityScheduleRequest\", new()\n    {\n        RoleDefinitionId = exampleDirectoryRole.TemplateId,\n        PrincipalId = azuread_user.Example.Object_id,\n        DirectoryScopeId = \"/\",\n        Justification = \"Example\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.LookupUser(ctx, \u0026azuread.LookupUserArgs{\n\t\t\tUserPrincipalName: pulumi.StringRef(\"jdoe@hashicorp.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, \"exampleDirectoryRole\", \u0026azuread.DirectoryRoleArgs{\n\t\t\tDisplayName: pulumi.String(\"Application Administrator\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewDirectoryRoleEligibilityScheduleRequest(ctx, \"exampleDirectoryRoleEligibilityScheduleRequest\", \u0026azuread.DirectoryRoleEligibilityScheduleRequestArgs{\n\t\t\tRoleDefinitionId: exampleDirectoryRole.TemplateId,\n\t\t\tPrincipalId:      pulumi.Any(azuread_user.Example.Object_id),\n\t\t\tDirectoryScopeId: pulumi.String(\"/\"),\n\t\t\tJustification:    pulumi.String(\"Example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetUserArgs;\nimport com.pulumi.azuread.DirectoryRole;\nimport com.pulumi.azuread.DirectoryRoleArgs;\nimport com.pulumi.azuread.DirectoryRoleEligibilityScheduleRequest;\nimport com.pulumi.azuread.DirectoryRoleEligibilityScheduleRequestArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()\n            .userPrincipalName(\"jdoe@hashicorp.com\")\n            .build());\n\n        var exampleDirectoryRole = new DirectoryRole(\"exampleDirectoryRole\", DirectoryRoleArgs.builder()        \n            .displayName(\"Application Administrator\")\n            .build());\n\n        var exampleDirectoryRoleEligibilityScheduleRequest = new DirectoryRoleEligibilityScheduleRequest(\"exampleDirectoryRoleEligibilityScheduleRequest\", DirectoryRoleEligibilityScheduleRequestArgs.builder()        \n            .roleDefinitionId(exampleDirectoryRole.templateId())\n            .principalId(azuread_user.example().object_id())\n            .directoryScopeId(\"/\")\n            .justification(\"Example\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleDirectoryRole:\n    type: azuread:DirectoryRole\n    properties:\n      displayName: Application Administrator\n  exampleDirectoryRoleEligibilityScheduleRequest:\n    type: azuread:DirectoryRoleEligibilityScheduleRequest\n    properties:\n      roleDefinitionId: ${exampleDirectoryRole.templateId}\n      principalId: ${azuread_user.example.object_id}\n      directoryScopeId: /\n      justification: Example\nvariables:\n  exampleUser:\n    fn::invoke:\n      Function: azuread:getUser\n      Arguments:\n        userPrincipalName: jdoe@hashicorp.com\n```\n\n\u003e Note the use of the `template_id` attribute when referencing built-in roles.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDirectory role eligibility schedule requests can be imported using the ID of the assignment, e.g.\n\n```sh\n $ pulumi import azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest example 822ec710-4c9f-4f71-a27a-451759cc7522\n```\n\n ",
+            "properties": {
+                "directoryScopeId": {
+                    "type": "string",
+                    "description": "Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.\n"
+                },
+                "justification": {
+                    "type": "string",
+                    "description": "Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.\n"
+                },
+                "principalId": {
+                    "type": "string",
+                    "description": "The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.\n"
+                },
+                "roleDefinitionId": {
+                    "type": "string",
+                    "description": "The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.\n"
+                }
+            },
+            "required": [
+                "directoryScopeId",
+                "justification",
+                "principalId",
+                "roleDefinitionId"
+            ],
+            "inputProperties": {
+                "directoryScopeId": {
+                    "type": "string",
+                    "description": "Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "justification": {
+                    "type": "string",
+                    "description": "Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "principalId": {
+                    "type": "string",
+                    "description": "The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "roleDefinitionId": {
+                    "type": "string",
+                    "description": "The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "directoryScopeId",
+                "justification",
+                "principalId",
+                "roleDefinitionId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DirectoryRoleEligibilityScheduleRequest resources.\n",
+                "properties": {
+                    "directoryScopeId": {
+                        "type": "string",
+                        "description": "Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "justification": {
+                        "type": "string",
+                        "description": "Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "principalId": {
+                        "type": "string",
+                        "description": "The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "roleDefinitionId": {
+                        "type": "string",
+                        "description": "The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "azuread:index/directoryRoleMember:DirectoryRoleMember": {
             "description": "Manages a single directory role membership (assignment) within Azure Active Directory.\n\n\u003e **Deprecation Warning:** This resource has been superseded by the azuread.DirectoryRoleAssignment resource and will be removed in version 3.0 of the AzureAD provider\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleUser = azuread.getUser({\n    userPrincipalName: \"jdoe@hashicorp.com\",\n});\nconst exampleDirectoryRole = new azuread.DirectoryRole(\"exampleDirectoryRole\", {displayName: \"Security administrator\"});\nconst exampleDirectoryRoleMember = new azuread.DirectoryRoleMember(\"exampleDirectoryRoleMember\", {\n    roleObjectId: exampleDirectoryRole.objectId,\n    memberObjectId: exampleUser.then(exampleUser =\u003e exampleUser.objectId),\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_user = azuread.get_user(user_principal_name=\"jdoe@hashicorp.com\")\nexample_directory_role = azuread.DirectoryRole(\"exampleDirectoryRole\", display_name=\"Security administrator\")\nexample_directory_role_member = azuread.DirectoryRoleMember(\"exampleDirectoryRoleMember\",\n    role_object_id=example_directory_role.object_id,\n    member_object_id=example_user.object_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUser = AzureAD.GetUser.Invoke(new()\n    {\n        UserPrincipalName = \"jdoe@hashicorp.com\",\n    });\n\n    var exampleDirectoryRole = new AzureAD.DirectoryRole(\"exampleDirectoryRole\", new()\n    {\n        DisplayName = \"Security administrator\",\n    });\n\n    var exampleDirectoryRoleMember = new AzureAD.DirectoryRoleMember(\"exampleDirectoryRoleMember\", new()\n    {\n        RoleObjectId = exampleDirectoryRole.ObjectId,\n        MemberObjectId = exampleUser.Apply(getUserResult =\u003e getUserResult.ObjectId),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleUser, err := azuread.LookupUser(ctx, \u0026azuread.LookupUserArgs{\n\t\t\tUserPrincipalName: pulumi.StringRef(\"jdoe@hashicorp.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, \"exampleDirectoryRole\", \u0026azuread.DirectoryRoleArgs{\n\t\t\tDisplayName: pulumi.String(\"Security administrator\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewDirectoryRoleMember(ctx, \"exampleDirectoryRoleMember\", \u0026azuread.DirectoryRoleMemberArgs{\n\t\t\tRoleObjectId:   exampleDirectoryRole.ObjectId,\n\t\t\tMemberObjectId: *pulumi.String(exampleUser.ObjectId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetUserArgs;\nimport com.pulumi.azuread.DirectoryRole;\nimport com.pulumi.azuread.DirectoryRoleArgs;\nimport com.pulumi.azuread.DirectoryRoleMember;\nimport com.pulumi.azuread.DirectoryRoleMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()\n            .userPrincipalName(\"jdoe@hashicorp.com\")\n            .build());\n\n        var exampleDirectoryRole = new DirectoryRole(\"exampleDirectoryRole\", DirectoryRoleArgs.builder()        \n            .displayName(\"Security administrator\")\n            .build());\n\n        var exampleDirectoryRoleMember = new DirectoryRoleMember(\"exampleDirectoryRoleMember\", DirectoryRoleMemberArgs.builder()        \n            .roleObjectId(exampleDirectoryRole.objectId())\n            .memberObjectId(exampleUser.applyValue(getUserResult -\u003e getUserResult.objectId()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleDirectoryRole:\n    type: azuread:DirectoryRole\n    properties:\n      displayName: Security administrator\n  exampleDirectoryRoleMember:\n    type: azuread:DirectoryRoleMember\n    properties:\n      roleObjectId: ${exampleDirectoryRole.objectId}\n      memberObjectId: ${exampleUser.objectId}\nvariables:\n  exampleUser:\n    fn::invoke:\n      Function: azuread:getUser\n      Arguments:\n        userPrincipalName: jdoe@hashicorp.com\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDirectory role members can be imported using the object ID of the role and the object ID of the member, e.g.\n\n```sh\n $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111\n```\n\n -\u003e This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`. ",
             "properties": {
