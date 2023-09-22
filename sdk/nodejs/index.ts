@@ -105,6 +105,11 @@ export type DirectoryRoleAssignment = import("./directoryRoleAssignment").Direct
 export const DirectoryRoleAssignment: typeof import("./directoryRoleAssignment").DirectoryRoleAssignment = null as any;
 utilities.lazyLoad(exports, ["DirectoryRoleAssignment"], () => require("./directoryRoleAssignment"));
 
+export { DirectoryRoleEligibilityScheduleRequestArgs, DirectoryRoleEligibilityScheduleRequestState } from "./directoryRoleEligibilityScheduleRequest";
+export type DirectoryRoleEligibilityScheduleRequest = import("./directoryRoleEligibilityScheduleRequest").DirectoryRoleEligibilityScheduleRequest;
+export const DirectoryRoleEligibilityScheduleRequest: typeof import("./directoryRoleEligibilityScheduleRequest").DirectoryRoleEligibilityScheduleRequest = null as any;
+utilities.lazyLoad(exports, ["DirectoryRoleEligibilityScheduleRequest"], () => require("./directoryRoleEligibilityScheduleRequest"));
+
 export { DirectoryRoleMemberArgs, DirectoryRoleMemberState } from "./directoryRoleMember";
 export type DirectoryRoleMember = import("./directoryRoleMember").DirectoryRoleMember;
 export const DirectoryRoleMember: typeof import("./directoryRoleMember").DirectoryRoleMember = null as any;
@@ -334,6 +339,8 @@ const _module = {
                 return new DirectoryRole(name, <any>undefined, { urn })
             case "azuread:index/directoryRoleAssignment:DirectoryRoleAssignment":
                 return new DirectoryRoleAssignment(name, <any>undefined, { urn })
+            case "azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest":
+                return new DirectoryRoleEligibilityScheduleRequest(name, <any>undefined, { urn })
             case "azuread:index/directoryRoleMember:DirectoryRoleMember":
                 return new DirectoryRoleMember(name, <any>undefined, { urn })
             case "azuread:index/group:Group":
@@ -389,6 +396,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/conditionalAccessPolicy"
 pulumi.runtime.registerResourceModule("azuread", "index/customDirectoryRole", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/directoryRole", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleAssignment", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleEligibilityScheduleRequest", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/group", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupMember", _module)

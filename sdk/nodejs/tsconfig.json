@@ -35,6 +35,7 @@
         "customDirectoryRole.ts",
         "directoryRole.ts",
         "directoryRoleAssignment.ts",
+        "directoryRoleEligibilityScheduleRequest.ts",
         "directoryRoleMember.ts",
         "getAccessPackage.ts",
         "getAccessPackageCatalog.ts",
