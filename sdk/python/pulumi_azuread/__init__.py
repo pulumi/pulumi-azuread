@@ -25,6 +25,7 @@ from .conditional_access_policy import *
 from .custom_directory_role import *
 from .directory_role import *
 from .directory_role_assignment import *
+from .directory_role_eligibility_schedule_request import *
 from .directory_role_member import *
 from .get_access_package import *
 from .get_access_package_catalog import *
@@ -231,6 +232,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/directoryRoleAssignment:DirectoryRoleAssignment": "DirectoryRoleAssignment"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/directoryRoleEligibilityScheduleRequest",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest": "DirectoryRoleEligibilityScheduleRequest"
   }
  },
  {

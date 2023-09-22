@@ -718,6 +718,9 @@
                     "role_id": {}
                 }
             },
+            "azuread_directory_role_eligibility_schedule_request": {
+                "current": "azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest"
+            },
             "azuread_directory_role_member": {
                 "current": "azuread:index/directoryRoleMember:DirectoryRoleMember",
                 "fields": {
@@ -1529,6 +1532,7 @@
             "azuread:index/customDirectoryRole:CustomDirectoryRole": "azuread_custom_directory_role",
             "azuread:index/directoryRole:DirectoryRole": "azuread_directory_role",
             "azuread:index/directoryRoleAssignment:DirectoryRoleAssignment": "azuread_directory_role_assignment",
+            "azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest": "azuread_directory_role_eligibility_schedule_request",
             "azuread:index/directoryRoleMember:DirectoryRoleMember": "azuread_directory_role_member",
             "azuread:index/group:Group": "azuread_group",
             "azuread:index/groupMember:GroupMember": "azuread_group_member",
@@ -1905,6 +1909,11 @@
                 "directoryScopeObjectId": "directory_scope_object_id",
                 "principalObjectId": "principal_object_id",
                 "roleId": "role_id"
+            },
+            "azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest": {
+                "directoryScopeId": "directory_scope_id",
+                "principalId": "principal_id",
+                "roleDefinitionId": "role_definition_id"
             },
             "azuread:index/directoryRoleMember:DirectoryRoleMember": {
                 "memberObjectId": "member_object_id",
