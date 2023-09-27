@@ -207,7 +207,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * Whether or not the service principal account is enabled. Defaults to `true`.
      * 
      */
-    @Export(name="accountEnabled", type=Boolean.class, parameters={})
+    @Export(name="accountEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> accountEnabled;
 
     /**
@@ -221,7 +221,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
      * 
      */
-    @Export(name="alternativeNames", type=List.class, parameters={String.class})
+    @Export(name="alternativeNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> alternativeNames;
 
     /**
@@ -235,7 +235,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
      * 
      */
-    @Export(name="appRoleAssignmentRequired", type=Boolean.class, parameters={})
+    @Export(name="appRoleAssignmentRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> appRoleAssignmentRequired;
 
     /**
@@ -249,7 +249,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
      * 
      */
-    @Export(name="appRoleIds", type=Map.class, parameters={String.class, String.class})
+    @Export(name="appRoleIds", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> appRoleIds;
 
     /**
@@ -263,7 +263,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      * 
      */
-    @Export(name="appRoles", type=List.class, parameters={ServicePrincipalAppRole.class})
+    @Export(name="appRoles", refs={List.class,ServicePrincipalAppRole.class}, tree="[0,1]")
     private Output<List<ServicePrincipalAppRole>> appRoles;
 
     /**
@@ -277,7 +277,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * The application ID (client ID) of the application for which to create a service principal.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -291,7 +291,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * The tenant ID where the associated application is registered.
      * 
      */
-    @Export(name="applicationTenantId", type=String.class, parameters={})
+    @Export(name="applicationTenantId", refs={String.class}, tree="[0]")
     private Output<String> applicationTenantId;
 
     /**
@@ -305,7 +305,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A description of the service principal provided for internal end-users.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -319,7 +319,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * Display name for the app role that appears during app role assignment and in consent experiences.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -335,7 +335,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
      * 
      */
-    @Export(name="featureTags", type=List.class, parameters={ServicePrincipalFeatureTag.class})
+    @Export(name="featureTags", refs={List.class,ServicePrincipalFeatureTag.class}, tree="[0,1]")
     private Output<List<ServicePrincipalFeatureTag>> featureTags;
 
     /**
@@ -355,7 +355,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider */
-    @Export(name="features", type=List.class, parameters={ServicePrincipalFeature.class})
+    @Export(name="features", refs={List.class,ServicePrincipalFeature.class}, tree="[0,1]")
     private Output<List<ServicePrincipalFeature>> features;
 
     /**
@@ -369,7 +369,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * Home page or landing page of the associated application.
      * 
      */
-    @Export(name="homepageUrl", type=String.class, parameters={})
+    @Export(name="homepageUrl", refs={String.class}, tree="[0]")
     private Output<String> homepageUrl;
 
     /**
@@ -383,7 +383,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
      * 
      */
-    @Export(name="loginUrl", type=String.class, parameters={})
+    @Export(name="loginUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loginUrl;
 
     /**
@@ -397,7 +397,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * The URL that will be used by Microsoft&#39;s authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
      * 
      */
-    @Export(name="logoutUrl", type=String.class, parameters={})
+    @Export(name="logoutUrl", refs={String.class}, tree="[0]")
     private Output<String> logoutUrl;
 
     /**
@@ -411,7 +411,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A free text field to capture information about the service principal, typically used for operational purposes.
      * 
      */
-    @Export(name="notes", type=String.class, parameters={})
+    @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
     /**
@@ -425,7 +425,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
      * 
      */
-    @Export(name="notificationEmailAddresses", type=List.class, parameters={String.class})
+    @Export(name="notificationEmailAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationEmailAddresses;
 
     /**
@@ -439,7 +439,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
      * 
      */
-    @Export(name="oauth2PermissionScopeIds", type=Map.class, parameters={String.class, String.class})
+    @Export(name="oauth2PermissionScopeIds", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> oauth2PermissionScopeIds;
 
     /**
@@ -453,7 +453,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
      * 
      */
-    @Export(name="oauth2PermissionScopes", type=List.class, parameters={ServicePrincipalOauth2PermissionScope.class})
+    @Export(name="oauth2PermissionScopes", refs={List.class,ServicePrincipalOauth2PermissionScope.class}, tree="[0,1]")
     private Output<List<ServicePrincipalOauth2PermissionScope>> oauth2PermissionScopes;
 
     /**
@@ -467,7 +467,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * The object ID of the service principal.
      * 
      */
-    @Export(name="objectId", type=String.class, parameters={})
+    @Export(name="objectId", refs={String.class}, tree="[0]")
     private Output<String> objectId;
 
     /**
@@ -481,7 +481,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A list of object IDs of principals that will be granted ownership of the service principal
      * 
      */
-    @Export(name="owners", type=List.class, parameters={String.class})
+    @Export(name="owners", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> owners;
 
     /**
@@ -495,7 +495,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
      * 
      */
-    @Export(name="preferredSingleSignOnMode", type=String.class, parameters={})
+    @Export(name="preferredSingleSignOnMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> preferredSingleSignOnMode;
 
     /**
@@ -509,7 +509,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
      * 
      */
-    @Export(name="redirectUris", type=List.class, parameters={String.class})
+    @Export(name="redirectUris", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> redirectUris;
 
     /**
@@ -523,7 +523,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * The URL where the service exposes SAML metadata for federation.
      * 
      */
-    @Export(name="samlMetadataUrl", type=String.class, parameters={})
+    @Export(name="samlMetadataUrl", refs={String.class}, tree="[0]")
     private Output<String> samlMetadataUrl;
 
     /**
@@ -537,7 +537,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A `saml_single_sign_on` block as documented below.
      * 
      */
-    @Export(name="samlSingleSignOn", type=ServicePrincipalSamlSingleSignOn.class, parameters={})
+    @Export(name="samlSingleSignOn", refs={ServicePrincipalSamlSingleSignOn.class}, tree="[0]")
     private Output</* @Nullable */ ServicePrincipalSamlSingleSignOn> samlSingleSignOn;
 
     /**
@@ -551,7 +551,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * A list of identifier URI(s), copied over from the associated application.
      * 
      */
-    @Export(name="servicePrincipalNames", type=List.class, parameters={String.class})
+    @Export(name="servicePrincipalNames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> servicePrincipalNames;
 
     /**
@@ -565,7 +565,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
      * 
      */
-    @Export(name="signInAudience", type=String.class, parameters={})
+    @Export(name="signInAudience", refs={String.class}, tree="[0]")
     private Output<String> signInAudience;
 
     /**
@@ -581,7 +581,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
 
     /**
@@ -597,7 +597,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -611,7 +611,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * When true, the resource will return an existing service principal instead of failing with an error
      * 
      */
-    @Export(name="useExisting", type=Boolean.class, parameters={})
+    @Export(name="useExisting", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useExisting;
 
     /**

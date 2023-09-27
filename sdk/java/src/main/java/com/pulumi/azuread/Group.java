@@ -228,7 +228,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * !&gt; **Warning** Do not use the `administrative_unit_ids` property at the same time as the azuread.AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
      * 
      */
-    @Export(name="administrativeUnitIds", type=List.class, parameters={String.class})
+    @Export(name="administrativeUnitIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> administrativeUnitIds;
 
     /**
@@ -244,7 +244,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="assignableToRole", type=Boolean.class, parameters={})
+    @Export(name="assignableToRole", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> assignableToRole;
 
     /**
@@ -260,7 +260,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * &gt; **Known Permissions Issue** The `auto_subscribe_new_members` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
-    @Export(name="autoSubscribeNewMembers", type=Boolean.class, parameters={})
+    @Export(name="autoSubscribeNewMembers", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoSubscribeNewMembers;
 
     /**
@@ -276,7 +276,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="behaviors", type=List.class, parameters={String.class})
+    @Export(name="behaviors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> behaviors;
 
     /**
@@ -290,7 +290,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The description for the group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -304,7 +304,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The display name for the group.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -318,7 +318,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
      * 
      */
-    @Export(name="dynamicMembership", type=GroupDynamicMembership.class, parameters={})
+    @Export(name="dynamicMembership", refs={GroupDynamicMembership.class}, tree="[0]")
     private Output</* @Nullable */ GroupDynamicMembership> dynamicMembership;
 
     /**
@@ -334,7 +334,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * &gt; **Known Permissions Issue** The `external_senders_allowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
-    @Export(name="externalSendersAllowed", type=Boolean.class, parameters={})
+    @Export(name="externalSendersAllowed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> externalSendersAllowed;
 
     /**
@@ -352,7 +352,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * &gt; **Known Permissions Issue** The `hide_from_address_lists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
-    @Export(name="hideFromAddressLists", type=Boolean.class, parameters={})
+    @Export(name="hideFromAddressLists", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hideFromAddressLists;
 
     /**
@@ -370,7 +370,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * &gt; **Known Permissions Issue** The `hide_from_outlook_clients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
-    @Export(name="hideFromOutlookClients", type=Boolean.class, parameters={})
+    @Export(name="hideFromOutlookClients", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hideFromOutlookClients;
 
     /**
@@ -386,7 +386,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The SMTP address for the group.
      * 
      */
-    @Export(name="mail", type=String.class, parameters={})
+    @Export(name="mail", refs={String.class}, tree="[0]")
     private Output<String> mail;
 
     /**
@@ -400,7 +400,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
      * 
      */
-    @Export(name="mailEnabled", type=Boolean.class, parameters={})
+    @Export(name="mailEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mailEnabled;
 
     /**
@@ -414,7 +414,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="mailNickname", type=String.class, parameters={})
+    @Export(name="mailNickname", refs={String.class}, tree="[0]")
     private Output<String> mailNickname;
 
     /**
@@ -430,7 +430,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * !&gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
      * 
      */
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     /**
@@ -446,7 +446,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The object ID of the group.
      * 
      */
-    @Export(name="objectId", type=String.class, parameters={})
+    @Export(name="objectId", refs={String.class}, tree="[0]")
     private Output<String> objectId;
 
     /**
@@ -460,7 +460,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    @Export(name="onpremisesDomainName", type=String.class, parameters={})
+    @Export(name="onpremisesDomainName", refs={String.class}, tree="[0]")
     private Output<String> onpremisesDomainName;
 
     /**
@@ -474,7 +474,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
      * 
      */
-    @Export(name="onpremisesGroupType", type=String.class, parameters={})
+    @Export(name="onpremisesGroupType", refs={String.class}, tree="[0]")
     private Output<String> onpremisesGroupType;
 
     /**
@@ -488,7 +488,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    @Export(name="onpremisesNetbiosName", type=String.class, parameters={})
+    @Export(name="onpremisesNetbiosName", refs={String.class}, tree="[0]")
     private Output<String> onpremisesNetbiosName;
 
     /**
@@ -502,7 +502,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    @Export(name="onpremisesSamAccountName", type=String.class, parameters={})
+    @Export(name="onpremisesSamAccountName", refs={String.class}, tree="[0]")
     private Output<String> onpremisesSamAccountName;
 
     /**
@@ -516,7 +516,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    @Export(name="onpremisesSecurityIdentifier", type=String.class, parameters={})
+    @Export(name="onpremisesSecurityIdentifier", refs={String.class}, tree="[0]")
     private Output<String> onpremisesSecurityIdentifier;
 
     /**
@@ -530,7 +530,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
      * 
      */
-    @Export(name="onpremisesSyncEnabled", type=Boolean.class, parameters={})
+    @Export(name="onpremisesSyncEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> onpremisesSyncEnabled;
 
     /**
@@ -544,7 +544,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * A set of owners who own this group. Supported object types are Users or Service Principals
      * 
      */
-    @Export(name="owners", type=List.class, parameters={String.class})
+    @Export(name="owners", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> owners;
 
     /**
@@ -558,7 +558,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
      * 
      */
-    @Export(name="preferredLanguage", type=String.class, parameters={})
+    @Export(name="preferredLanguage", refs={String.class}, tree="[0]")
     private Output<String> preferredLanguage;
 
     /**
@@ -572,7 +572,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
      * 
      */
-    @Export(name="preventDuplicateNames", type=Boolean.class, parameters={})
+    @Export(name="preventDuplicateNames", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> preventDuplicateNames;
 
     /**
@@ -586,7 +586,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="provisioningOptions", type=List.class, parameters={String.class})
+    @Export(name="provisioningOptions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> provisioningOptions;
 
     /**
@@ -600,7 +600,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * List of email addresses for the group that direct to the same group mailbox.
      * 
      */
-    @Export(name="proxyAddresses", type=List.class, parameters={String.class})
+    @Export(name="proxyAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> proxyAddresses;
 
     /**
@@ -614,7 +614,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
      * 
      */
-    @Export(name="securityEnabled", type=Boolean.class, parameters={})
+    @Export(name="securityEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> securityEnabled;
 
     /**
@@ -628,7 +628,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
      * 
      */
-    @Export(name="theme", type=String.class, parameters={})
+    @Export(name="theme", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> theme;
 
     /**
@@ -644,7 +644,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * &gt; **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
      * 
      */
-    @Export(name="types", type=List.class, parameters={String.class})
+    @Export(name="types", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> types;
 
     /**
@@ -662,7 +662,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * &gt; **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing groups if you want to avoid name collisions.
      * 
      */
-    @Export(name="visibility", type=String.class, parameters={})
+    @Export(name="visibility", refs={String.class}, tree="[0]")
     private Output<String> visibility;
 
     /**
@@ -678,7 +678,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
      * 
      */
-    @Export(name="writebackEnabled", type=Boolean.class, parameters={})
+    @Export(name="writebackEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> writebackEnabled;
 
     /**

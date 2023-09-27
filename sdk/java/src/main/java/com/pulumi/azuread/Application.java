@@ -227,7 +227,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * An `api` block as documented below, which configures API related settings for this application.
      * 
      */
-    @Export(name="api", type=ApplicationApi.class, parameters={})
+    @Export(name="api", refs={ApplicationApi.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationApi> api;
 
     /**
@@ -241,7 +241,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
      * 
      */
-    @Export(name="appRoleIds", type=Map.class, parameters={String.class, String.class})
+    @Export(name="appRoleIds", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> appRoleIds;
 
     /**
@@ -255,7 +255,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      * 
      */
-    @Export(name="appRoles", type=List.class, parameters={ApplicationAppRole.class})
+    @Export(name="appRoles", refs={List.class,ApplicationAppRole.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApplicationAppRole>> appRoles;
 
     /**
@@ -269,7 +269,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The Application ID (also called Client ID).
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -283,7 +283,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * A description of the application, as shown to end users.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -297,7 +297,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      * 
      */
-    @Export(name="deviceOnlyAuthEnabled", type=Boolean.class, parameters={})
+    @Export(name="deviceOnlyAuthEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deviceOnlyAuthEnabled;
 
     /**
@@ -311,7 +311,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
      * 
      */
-    @Export(name="disabledByMicrosoft", type=String.class, parameters={})
+    @Export(name="disabledByMicrosoft", refs={String.class}, tree="[0]")
     private Output<String> disabledByMicrosoft;
 
     /**
@@ -325,7 +325,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The display name for the application.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -339,7 +339,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Specifies whether the application is a public client. Appropriate for apps using token grant flows that don&#39;t use a redirect URI. Defaults to `false`.
      * 
      */
-    @Export(name="fallbackPublicClientEnabled", type=Boolean.class, parameters={})
+    @Export(name="fallbackPublicClientEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> fallbackPublicClientEnabled;
 
     /**
@@ -355,7 +355,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
      * 
      */
-    @Export(name="featureTags", type=List.class, parameters={ApplicationFeatureTag.class})
+    @Export(name="featureTags", refs={List.class,ApplicationFeatureTag.class}, tree="[0,1]")
     private Output<List<ApplicationFeatureTag>> featureTags;
 
     /**
@@ -371,7 +371,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      * 
      */
-    @Export(name="groupMembershipClaims", type=List.class, parameters={String.class})
+    @Export(name="groupMembershipClaims", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupMembershipClaims;
 
     /**
@@ -385,7 +385,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      * 
      */
-    @Export(name="identifierUris", type=List.class, parameters={String.class})
+    @Export(name="identifierUris", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> identifierUris;
 
     /**
@@ -399,7 +399,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
      * 
      */
-    @Export(name="logoImage", type=String.class, parameters={})
+    @Export(name="logoImage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logoImage;
 
     /**
@@ -413,7 +413,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * CDN URL to the application&#39;s logo, as uploaded with the `logo_image` property.
      * 
      */
-    @Export(name="logoUrl", type=String.class, parameters={})
+    @Export(name="logoUrl", refs={String.class}, tree="[0]")
     private Output<String> logoUrl;
 
     /**
@@ -427,7 +427,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * URL of the application&#39;s marketing page.
      * 
      */
-    @Export(name="marketingUrl", type=String.class, parameters={})
+    @Export(name="marketingUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> marketingUrl;
 
     /**
@@ -441,7 +441,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * User-specified notes relevant for the management of the application.
      * 
      */
-    @Export(name="notes", type=String.class, parameters={})
+    @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
     /**
@@ -455,7 +455,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
      * 
      */
-    @Export(name="oauth2PermissionScopeIds", type=Map.class, parameters={String.class, String.class})
+    @Export(name="oauth2PermissionScopeIds", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> oauth2PermissionScopeIds;
 
     /**
@@ -469,7 +469,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
      * 
      */
-    @Export(name="oauth2PostResponseRequired", type=Boolean.class, parameters={})
+    @Export(name="oauth2PostResponseRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> oauth2PostResponseRequired;
 
     /**
@@ -483,7 +483,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The application&#39;s object ID.
      * 
      */
-    @Export(name="objectId", type=String.class, parameters={})
+    @Export(name="objectId", refs={String.class}, tree="[0]")
     private Output<String> objectId;
 
     /**
@@ -497,7 +497,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * An `optional_claims` block as documented below.
      * 
      */
-    @Export(name="optionalClaims", type=ApplicationOptionalClaims.class, parameters={})
+    @Export(name="optionalClaims", refs={ApplicationOptionalClaims.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationOptionalClaims> optionalClaims;
 
     /**
@@ -511,7 +511,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * A list of object IDs of principals that will be granted ownership of the application
      * 
      */
-    @Export(name="owners", type=List.class, parameters={String.class})
+    @Export(name="owners", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> owners;
 
     /**
@@ -525,7 +525,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      * 
      */
-    @Export(name="preventDuplicateNames", type=Boolean.class, parameters={})
+    @Export(name="preventDuplicateNames", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> preventDuplicateNames;
 
     /**
@@ -539,7 +539,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * URL of the application&#39;s privacy statement.
      * 
      */
-    @Export(name="privacyStatementUrl", type=String.class, parameters={})
+    @Export(name="privacyStatementUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privacyStatementUrl;
 
     /**
@@ -553,7 +553,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
      * 
      */
-    @Export(name="publicClient", type=ApplicationPublicClient.class, parameters={})
+    @Export(name="publicClient", refs={ApplicationPublicClient.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationPublicClient> publicClient;
 
     /**
@@ -567,7 +567,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The verified publisher domain for the application.
      * 
      */
-    @Export(name="publisherDomain", type=String.class, parameters={})
+    @Export(name="publisherDomain", refs={String.class}, tree="[0]")
     private Output<String> publisherDomain;
 
     /**
@@ -581,7 +581,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * A collection of `required_resource_access` blocks as documented below.
      * 
      */
-    @Export(name="requiredResourceAccesses", type=List.class, parameters={ApplicationRequiredResourceAccess.class})
+    @Export(name="requiredResourceAccesses", refs={List.class,ApplicationRequiredResourceAccess.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApplicationRequiredResourceAccess>> requiredResourceAccesses;
 
     /**
@@ -595,7 +595,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * References application context information from a Service or Asset Management database.
      * 
      */
-    @Export(name="serviceManagementReference", type=String.class, parameters={})
+    @Export(name="serviceManagementReference", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceManagementReference;
 
     /**
@@ -611,7 +611,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
      * 
      */
-    @Export(name="signInAudience", type=String.class, parameters={})
+    @Export(name="signInAudience", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> signInAudience;
 
     /**
@@ -627,7 +627,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
      * 
      */
-    @Export(name="singlePageApplication", type=ApplicationSinglePageApplication.class, parameters={})
+    @Export(name="singlePageApplication", refs={ApplicationSinglePageApplication.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationSinglePageApplication> singlePageApplication;
 
     /**
@@ -641,7 +641,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * URL of the application&#39;s support page.
      * 
      */
-    @Export(name="supportUrl", type=String.class, parameters={})
+    @Export(name="supportUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> supportUrl;
 
     /**
@@ -657,7 +657,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
 
     /**
@@ -673,7 +673,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="templateId", type=String.class, parameters={})
+    @Export(name="templateId", refs={String.class}, tree="[0]")
     private Output<String> templateId;
 
     /**
@@ -687,7 +687,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * URL of the application&#39;s terms of service statement.
      * 
      */
-    @Export(name="termsOfServiceUrl", type=String.class, parameters={})
+    @Export(name="termsOfServiceUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> termsOfServiceUrl;
 
     /**
@@ -703,7 +703,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
      * 
      */
-    @Export(name="web", type=ApplicationWeb.class, parameters={})
+    @Export(name="web", refs={ApplicationWeb.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationWeb> web;
 
     /**
