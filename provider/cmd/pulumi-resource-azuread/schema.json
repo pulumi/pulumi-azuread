@@ -370,14 +370,14 @@
             "properties": {
                 "defaultText": {
                     "type": "string",
-                    "description": "The default text of this question.\n"
+                    "description": "The default text of this question choice.\n"
                 },
                 "localizedTexts": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText:AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText"
                     },
-                    "description": "One or more blocks describing localized text of this question, as documented below.\n"
+                    "description": "One or more blocks describing localized text of this question choice, as documented below.\n"
                 }
             },
             "type": "object",
@@ -389,11 +389,11 @@
             "properties": {
                 "content": {
                     "type": "string",
-                    "description": "The localized content of this question.\n"
+                    "description": "The localized content of this question choice.\n"
                 },
                 "languageCode": {
                     "type": "string",
-                    "description": "The ISO 639 language code for this question content.\n"
+                    "description": "The ISO 639 language code for this question choice content.\n"
                 }
             },
             "type": "object",
@@ -406,14 +406,14 @@
             "properties": {
                 "defaultText": {
                     "type": "string",
-                    "description": "The default text of this question.\n"
+                    "description": "The default text of this question choice.\n"
                 },
                 "localizedTexts": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionTextLocalizedText:AccessPackageAssignmentPolicyQuestionTextLocalizedText"
                     },
-                    "description": "One or more blocks describing localized text of this question, as documented below.\n"
+                    "description": "One or more blocks describing localized text of this question choice, as documented below.\n"
                 }
             },
             "type": "object",
@@ -425,11 +425,11 @@
             "properties": {
                 "content": {
                     "type": "string",
-                    "description": "The localized content of this question.\n"
+                    "description": "The localized content of this question choice.\n"
                 },
                 "languageCode": {
                     "type": "string",
-                    "description": "The ISO 639 language code for this question content.\n"
+                    "description": "The ISO 639 language code for this question choice content.\n"
                 }
             },
             "type": "object",
