@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,11 +27,24 @@ class NamedLocationArgs:
                
                > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        NamedLocationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            country=country,
+            ip=ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             country: Optional[pulumi.Input['NamedLocationCountryArgs']] = None,
+             ip: Optional[pulumi.Input['NamedLocationIpArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
         if country is not None:
-            pulumi.set(__self__, "country", country)
+            _setter("country", country)
         if ip is not None:
-            pulumi.set(__self__, "ip", ip)
+            _setter("ip", ip)
 
     @property
     @pulumi.getter(name="displayName")
@@ -86,12 +99,25 @@ class _NamedLocationState:
                
                > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
+        _NamedLocationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            country=country,
+            display_name=display_name,
+            ip=ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             country: Optional[pulumi.Input['NamedLocationCountryArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             ip: Optional[pulumi.Input['NamedLocationIpArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if country is not None:
-            pulumi.set(__self__, "country", country)
+            _setter("country", country)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if ip is not None:
-            pulumi.set(__self__, "ip", ip)
+            _setter("ip", ip)
 
     @property
     @pulumi.getter
@@ -255,6 +281,10 @@ class NamedLocation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NamedLocationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -272,10 +302,20 @@ class NamedLocation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NamedLocationArgs.__new__(NamedLocationArgs)
 
+            if country is not None and not isinstance(country, NamedLocationCountryArgs):
+                country = country or {}
+                def _setter(key, value):
+                    country[key] = value
+                NamedLocationCountryArgs._configure(_setter, **country)
             __props__.__dict__["country"] = country
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if ip is not None and not isinstance(ip, NamedLocationIpArgs):
+                ip = ip or {}
+                def _setter(key, value):
+                    ip[key] = value
+                NamedLocationIpArgs._configure(_setter, **ip)
             __props__.__dict__["ip"] = ip
         super(NamedLocation, __self__).__init__(
             'azuread:index/namedLocation:NamedLocation',

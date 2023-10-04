@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServicePrincipalClaimsMappingPolicyAssignmentArgs', 'ServicePrincipalClaimsMappingPolicyAssignment']
@@ -21,8 +21,19 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
         :param pulumi.Input[str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the policy assignment.
         """
-        pulumi.set(__self__, "claims_mapping_policy_id", claims_mapping_policy_id)
-        pulumi.set(__self__, "service_principal_id", service_principal_id)
+        ServicePrincipalClaimsMappingPolicyAssignmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            claims_mapping_policy_id=claims_mapping_policy_id,
+            service_principal_id=service_principal_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             claims_mapping_policy_id: pulumi.Input[str],
+             service_principal_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("claims_mapping_policy_id", claims_mapping_policy_id)
+        _setter("service_principal_id", service_principal_id)
 
     @property
     @pulumi.getter(name="claimsMappingPolicyId")
@@ -59,10 +70,21 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
         :param pulumi.Input[str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the policy assignment.
         """
+        _ServicePrincipalClaimsMappingPolicyAssignmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            claims_mapping_policy_id=claims_mapping_policy_id,
+            service_principal_id=service_principal_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             claims_mapping_policy_id: Optional[pulumi.Input[str]] = None,
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if claims_mapping_policy_id is not None:
-            pulumi.set(__self__, "claims_mapping_policy_id", claims_mapping_policy_id)
+            _setter("claims_mapping_policy_id", claims_mapping_policy_id)
         if service_principal_id is not None:
-            pulumi.set(__self__, "service_principal_id", service_principal_id)
+            _setter("service_principal_id", service_principal_id)
 
     @property
     @pulumi.getter(name="claimsMappingPolicyId")
@@ -178,6 +200,10 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServicePrincipalClaimsMappingPolicyAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

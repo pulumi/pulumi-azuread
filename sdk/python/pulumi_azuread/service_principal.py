@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,38 +53,75 @@ class ServicePrincipalArgs:
                > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
         :param pulumi.Input[bool] use_existing: When true, the resource will return an existing service principal instead of failing with an error
         """
-        pulumi.set(__self__, "application_id", application_id)
+        ServicePrincipalArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            account_enabled=account_enabled,
+            alternative_names=alternative_names,
+            app_role_assignment_required=app_role_assignment_required,
+            description=description,
+            feature_tags=feature_tags,
+            features=features,
+            login_url=login_url,
+            notes=notes,
+            notification_email_addresses=notification_email_addresses,
+            owners=owners,
+            preferred_single_sign_on_mode=preferred_single_sign_on_mode,
+            saml_single_sign_on=saml_single_sign_on,
+            tags=tags,
+            use_existing=use_existing,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: pulumi.Input[str],
+             account_enabled: Optional[pulumi.Input[bool]] = None,
+             alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]] = None,
+             features: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]] = None,
+             login_url: Optional[pulumi.Input[str]] = None,
+             notes: Optional[pulumi.Input[str]] = None,
+             notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
+             saml_single_sign_on: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             use_existing: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_id", application_id)
         if account_enabled is not None:
-            pulumi.set(__self__, "account_enabled", account_enabled)
+            _setter("account_enabled", account_enabled)
         if alternative_names is not None:
-            pulumi.set(__self__, "alternative_names", alternative_names)
+            _setter("alternative_names", alternative_names)
         if app_role_assignment_required is not None:
-            pulumi.set(__self__, "app_role_assignment_required", app_role_assignment_required)
+            _setter("app_role_assignment_required", app_role_assignment_required)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if feature_tags is not None:
-            pulumi.set(__self__, "feature_tags", feature_tags)
+            _setter("feature_tags", feature_tags)
         if features is not None:
             warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
             pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
         if features is not None:
-            pulumi.set(__self__, "features", features)
+            _setter("features", features)
         if login_url is not None:
-            pulumi.set(__self__, "login_url", login_url)
+            _setter("login_url", login_url)
         if notes is not None:
-            pulumi.set(__self__, "notes", notes)
+            _setter("notes", notes)
         if notification_email_addresses is not None:
-            pulumi.set(__self__, "notification_email_addresses", notification_email_addresses)
+            _setter("notification_email_addresses", notification_email_addresses)
         if owners is not None:
-            pulumi.set(__self__, "owners", owners)
+            _setter("owners", owners)
         if preferred_single_sign_on_mode is not None:
-            pulumi.set(__self__, "preferred_single_sign_on_mode", preferred_single_sign_on_mode)
+            _setter("preferred_single_sign_on_mode", preferred_single_sign_on_mode)
         if saml_single_sign_on is not None:
-            pulumi.set(__self__, "saml_single_sign_on", saml_single_sign_on)
+            _setter("saml_single_sign_on", saml_single_sign_on)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if use_existing is not None:
-            pulumi.set(__self__, "use_existing", use_existing)
+            _setter("use_existing", use_existing)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -342,67 +379,132 @@ class _ServicePrincipalState:
         :param pulumi.Input[str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
         :param pulumi.Input[bool] use_existing: When true, the resource will return an existing service principal instead of failing with an error
         """
+        _ServicePrincipalState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_enabled=account_enabled,
+            alternative_names=alternative_names,
+            app_role_assignment_required=app_role_assignment_required,
+            app_role_ids=app_role_ids,
+            app_roles=app_roles,
+            application_id=application_id,
+            application_tenant_id=application_tenant_id,
+            description=description,
+            display_name=display_name,
+            feature_tags=feature_tags,
+            features=features,
+            homepage_url=homepage_url,
+            login_url=login_url,
+            logout_url=logout_url,
+            notes=notes,
+            notification_email_addresses=notification_email_addresses,
+            oauth2_permission_scope_ids=oauth2_permission_scope_ids,
+            oauth2_permission_scopes=oauth2_permission_scopes,
+            object_id=object_id,
+            owners=owners,
+            preferred_single_sign_on_mode=preferred_single_sign_on_mode,
+            redirect_uris=redirect_uris,
+            saml_metadata_url=saml_metadata_url,
+            saml_single_sign_on=saml_single_sign_on,
+            service_principal_names=service_principal_names,
+            sign_in_audience=sign_in_audience,
+            tags=tags,
+            type=type,
+            use_existing=use_existing,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_enabled: Optional[pulumi.Input[bool]] = None,
+             alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
+             app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             application_tenant_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]] = None,
+             features: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]] = None,
+             homepage_url: Optional[pulumi.Input[str]] = None,
+             login_url: Optional[pulumi.Input[str]] = None,
+             logout_url: Optional[pulumi.Input[str]] = None,
+             notes: Optional[pulumi.Input[str]] = None,
+             notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]] = None,
+             object_id: Optional[pulumi.Input[str]] = None,
+             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
+             redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             saml_metadata_url: Optional[pulumi.Input[str]] = None,
+             saml_single_sign_on: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']] = None,
+             service_principal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             sign_in_audience: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             use_existing: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_enabled is not None:
-            pulumi.set(__self__, "account_enabled", account_enabled)
+            _setter("account_enabled", account_enabled)
         if alternative_names is not None:
-            pulumi.set(__self__, "alternative_names", alternative_names)
+            _setter("alternative_names", alternative_names)
         if app_role_assignment_required is not None:
-            pulumi.set(__self__, "app_role_assignment_required", app_role_assignment_required)
+            _setter("app_role_assignment_required", app_role_assignment_required)
         if app_role_ids is not None:
-            pulumi.set(__self__, "app_role_ids", app_role_ids)
+            _setter("app_role_ids", app_role_ids)
         if app_roles is not None:
-            pulumi.set(__self__, "app_roles", app_roles)
+            _setter("app_roles", app_roles)
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if application_tenant_id is not None:
-            pulumi.set(__self__, "application_tenant_id", application_tenant_id)
+            _setter("application_tenant_id", application_tenant_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if feature_tags is not None:
-            pulumi.set(__self__, "feature_tags", feature_tags)
+            _setter("feature_tags", feature_tags)
         if features is not None:
             warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
             pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
         if features is not None:
-            pulumi.set(__self__, "features", features)
+            _setter("features", features)
         if homepage_url is not None:
-            pulumi.set(__self__, "homepage_url", homepage_url)
+            _setter("homepage_url", homepage_url)
         if login_url is not None:
-            pulumi.set(__self__, "login_url", login_url)
+            _setter("login_url", login_url)
         if logout_url is not None:
-            pulumi.set(__self__, "logout_url", logout_url)
+            _setter("logout_url", logout_url)
         if notes is not None:
-            pulumi.set(__self__, "notes", notes)
+            _setter("notes", notes)
         if notification_email_addresses is not None:
-            pulumi.set(__self__, "notification_email_addresses", notification_email_addresses)
+            _setter("notification_email_addresses", notification_email_addresses)
         if oauth2_permission_scope_ids is not None:
-            pulumi.set(__self__, "oauth2_permission_scope_ids", oauth2_permission_scope_ids)
+            _setter("oauth2_permission_scope_ids", oauth2_permission_scope_ids)
         if oauth2_permission_scopes is not None:
-            pulumi.set(__self__, "oauth2_permission_scopes", oauth2_permission_scopes)
+            _setter("oauth2_permission_scopes", oauth2_permission_scopes)
         if object_id is not None:
-            pulumi.set(__self__, "object_id", object_id)
+            _setter("object_id", object_id)
         if owners is not None:
-            pulumi.set(__self__, "owners", owners)
+            _setter("owners", owners)
         if preferred_single_sign_on_mode is not None:
-            pulumi.set(__self__, "preferred_single_sign_on_mode", preferred_single_sign_on_mode)
+            _setter("preferred_single_sign_on_mode", preferred_single_sign_on_mode)
         if redirect_uris is not None:
-            pulumi.set(__self__, "redirect_uris", redirect_uris)
+            _setter("redirect_uris", redirect_uris)
         if saml_metadata_url is not None:
-            pulumi.set(__self__, "saml_metadata_url", saml_metadata_url)
+            _setter("saml_metadata_url", saml_metadata_url)
         if saml_single_sign_on is not None:
-            pulumi.set(__self__, "saml_single_sign_on", saml_single_sign_on)
+            _setter("saml_single_sign_on", saml_single_sign_on)
         if service_principal_names is not None:
-            pulumi.set(__self__, "service_principal_names", service_principal_names)
+            _setter("service_principal_names", service_principal_names)
         if sign_in_audience is not None:
-            pulumi.set(__self__, "sign_in_audience", sign_in_audience)
+            _setter("sign_in_audience", sign_in_audience)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if use_existing is not None:
-            pulumi.set(__self__, "use_existing", use_existing)
+            _setter("use_existing", use_existing)
 
     @property
     @pulumi.getter(name="accountEnabled")
@@ -967,6 +1069,10 @@ class ServicePrincipal(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServicePrincipalArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1004,15 +1110,17 @@ class ServicePrincipal(pulumi.CustomResource):
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["description"] = description
             __props__.__dict__["feature_tags"] = feature_tags
-            if features is not None and not opts.urn:
-                warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
-                pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
             __props__.__dict__["features"] = features
             __props__.__dict__["login_url"] = login_url
             __props__.__dict__["notes"] = notes
             __props__.__dict__["notification_email_addresses"] = notification_email_addresses
             __props__.__dict__["owners"] = owners
             __props__.__dict__["preferred_single_sign_on_mode"] = preferred_single_sign_on_mode
+            if saml_single_sign_on is not None and not isinstance(saml_single_sign_on, ServicePrincipalSamlSingleSignOnArgs):
+                saml_single_sign_on = saml_single_sign_on or {}
+                def _setter(key, value):
+                    saml_single_sign_on[key] = value
+                ServicePrincipalSamlSingleSignOnArgs._configure(_setter, **saml_single_sign_on)
             __props__.__dict__["saml_single_sign_on"] = saml_single_sign_on
             __props__.__dict__["tags"] = tags
             __props__.__dict__["use_existing"] = use_existing

@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetApplicationPublishedAppIdsResult',
     'AwaitableGetApplicationPublishedAppIdsResult',
     'get_application_published_app_ids',
+    'get_application_published_app_ids_output',
 ]
 
 @pulumi.output_type
@@ -109,3 +110,54 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
     return AwaitableGetApplicationPublishedAppIdsResult(
         id=pulumi.get(__ret__, 'id'),
         result=pulumi.get(__ret__, 'result'))
+
+
+@_utilities.lift_output_func(get_application_published_app_ids)
+def get_application_published_app_ids_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationPublishedAppIdsResult]:
+    """
+    Use this data source to discover application IDs for APIs published by Microsoft.
+
+    This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
+
+    The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
+
+    ## Example Usage
+
+    *Listing well-known application IDs*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    well_known = azuread.get_application_published_app_ids()
+    pulumi.export("publishedAppIds", well_known.result)
+    ```
+
+    *Granting access to an application*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    well_known = azuread.get_application_published_app_ids()
+    msgraph = azuread.ServicePrincipal("msgraph",
+        application_id=well_known.result["MicrosoftGraph"],
+        use_existing=True)
+    example = azuread.Application("example",
+        display_name="example",
+        required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+            resource_app_id=well_known.result["MicrosoftGraph"],
+            resource_accesses=[
+                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    id=msgraph.app_role_ids["User.Read.All"],
+                    type="Role",
+                ),
+                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
+                    type="Scope",
+                ),
+            ],
+        )])
+    ```
+    """
+    ...

@@ -1443,9 +1443,9 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceArrayOutput) Index(i pulumi.I
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValue struct {
-	// The default text of this question.
+	// The default text of this question choice.
 	DefaultText string `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question, as documented below.
+	// One or more blocks describing localized text of this question choice, as documented below.
 	LocalizedTexts []AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText `pulumi:"localizedTexts"`
 }
 
@@ -1461,9 +1461,9 @@ type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs struct {
-	// The default text of this question.
+	// The default text of this question choice.
 	DefaultText pulumi.StringInput `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question, as documented below.
+	// One or more blocks describing localized text of this question choice, as documented below.
 	LocalizedTexts AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayInput `pulumi:"localizedTexts"`
 }
 
@@ -1505,12 +1505,12 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) ToOutput(
 	}
 }
 
-// The default text of this question.
+// The default text of this question choice.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) DefaultText() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValue) string { return v.DefaultText }).(pulumi.StringOutput)
 }
 
-// One or more blocks describing localized text of this question, as documented below.
+// One or more blocks describing localized text of this question choice, as documented below.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) LocalizedTexts() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValue) []AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
 		return v.LocalizedTexts
@@ -1518,9 +1518,9 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) Localized
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText struct {
-	// The localized content of this question.
+	// The localized content of this question choice.
 	Content string `pulumi:"content"`
-	// The ISO 639 language code for this question content.
+	// The ISO 639 language code for this question choice content.
 	LanguageCode string `pulumi:"languageCode"`
 }
 
@@ -1536,9 +1536,9 @@ type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextInput i
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs struct {
-	// The localized content of this question.
+	// The localized content of this question choice.
 	Content pulumi.StringInput `pulumi:"content"`
-	// The ISO 639 language code for this question content.
+	// The ISO 639 language code for this question choice content.
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 }
 
@@ -1611,12 +1611,12 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutp
 	}
 }
 
-// The localized content of this question.
+// The localized content of this question choice.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// The ISO 639 language code for this question content.
+// The ISO 639 language code for this question choice content.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText) string {
 		return v.LanguageCode
@@ -1650,9 +1650,9 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArra
 }
 
 type AccessPackageAssignmentPolicyQuestionText struct {
-	// The default text of this question.
+	// The default text of this question choice.
 	DefaultText string `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question, as documented below.
+	// One or more blocks describing localized text of this question choice, as documented below.
 	LocalizedTexts []AccessPackageAssignmentPolicyQuestionTextLocalizedText `pulumi:"localizedTexts"`
 }
 
@@ -1668,9 +1668,9 @@ type AccessPackageAssignmentPolicyQuestionTextInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionTextArgs struct {
-	// The default text of this question.
+	// The default text of this question choice.
 	DefaultText pulumi.StringInput `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question, as documented below.
+	// One or more blocks describing localized text of this question choice, as documented below.
 	LocalizedTexts AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayInput `pulumi:"localizedTexts"`
 }
 
@@ -1712,12 +1712,12 @@ func (o AccessPackageAssignmentPolicyQuestionTextOutput) ToOutput(ctx context.Co
 	}
 }
 
-// The default text of this question.
+// The default text of this question choice.
 func (o AccessPackageAssignmentPolicyQuestionTextOutput) DefaultText() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionText) string { return v.DefaultText }).(pulumi.StringOutput)
 }
 
-// One or more blocks describing localized text of this question, as documented below.
+// One or more blocks describing localized text of this question choice, as documented below.
 func (o AccessPackageAssignmentPolicyQuestionTextOutput) LocalizedTexts() AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionText) []AccessPackageAssignmentPolicyQuestionTextLocalizedText {
 		return v.LocalizedTexts
@@ -1725,9 +1725,9 @@ func (o AccessPackageAssignmentPolicyQuestionTextOutput) LocalizedTexts() Access
 }
 
 type AccessPackageAssignmentPolicyQuestionTextLocalizedText struct {
-	// The localized content of this question.
+	// The localized content of this question choice.
 	Content string `pulumi:"content"`
-	// The ISO 639 language code for this question content.
+	// The ISO 639 language code for this question choice content.
 	LanguageCode string `pulumi:"languageCode"`
 }
 
@@ -1743,9 +1743,9 @@ type AccessPackageAssignmentPolicyQuestionTextLocalizedTextInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs struct {
-	// The localized content of this question.
+	// The localized content of this question choice.
 	Content pulumi.StringInput `pulumi:"content"`
-	// The ISO 639 language code for this question content.
+	// The ISO 639 language code for this question choice content.
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 }
 
@@ -1818,12 +1818,12 @@ func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) ToOutput(c
 	}
 }
 
-// The localized content of this question.
+// The localized content of this question choice.
 func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionTextLocalizedText) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// The ISO 639 language code for this question content.
+// The ISO 639 language code for this question choice content.
 func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionTextLocalizedText) string { return v.LanguageCode }).(pulumi.StringOutput)
 }

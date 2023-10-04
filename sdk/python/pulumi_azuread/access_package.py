@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccessPackageArgs', 'AccessPackage']
@@ -25,11 +25,26 @@ class AccessPackageArgs:
         :param pulumi.Input[str] display_name: The display name of the access package.
         :param pulumi.Input[bool] hidden: Whether the access package is hidden from the requestor.
         """
-        pulumi.set(__self__, "catalog_id", catalog_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "display_name", display_name)
+        AccessPackageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_id=catalog_id,
+            description=description,
+            display_name=display_name,
+            hidden=hidden,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_id: pulumi.Input[str],
+             description: pulumi.Input[str],
+             display_name: pulumi.Input[str],
+             hidden: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("catalog_id", catalog_id)
+        _setter("description", description)
+        _setter("display_name", display_name)
         if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
+            _setter("hidden", hidden)
 
     @property
     @pulumi.getter(name="catalogId")
@@ -94,14 +109,29 @@ class _AccessPackageState:
         :param pulumi.Input[str] display_name: The display name of the access package.
         :param pulumi.Input[bool] hidden: Whether the access package is hidden from the requestor.
         """
+        _AccessPackageState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_id=catalog_id,
+            description=description,
+            display_name=display_name,
+            hidden=hidden,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             hidden: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if catalog_id is not None:
-            pulumi.set(__self__, "catalog_id", catalog_id)
+            _setter("catalog_id", catalog_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
+            _setter("hidden", hidden)
 
     @property
     @pulumi.getter(name="catalogId")
@@ -253,6 +283,10 @@ class AccessPackage(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessPackageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

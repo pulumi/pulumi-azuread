@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationFederatedIdentityCredentialArgs', 'ApplicationFederatedIdentityCredential']
@@ -29,13 +29,32 @@ class ApplicationFederatedIdentityCredentialArgs:
         :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
         :param pulumi.Input[str] description: A description for the federated identity credential.
         """
-        pulumi.set(__self__, "application_object_id", application_object_id)
-        pulumi.set(__self__, "audiences", audiences)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "issuer", issuer)
-        pulumi.set(__self__, "subject", subject)
+        ApplicationFederatedIdentityCredentialArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_object_id=application_object_id,
+            audiences=audiences,
+            display_name=display_name,
+            issuer=issuer,
+            subject=subject,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_object_id: pulumi.Input[str],
+             audiences: pulumi.Input[Sequence[pulumi.Input[str]]],
+             display_name: pulumi.Input[str],
+             issuer: pulumi.Input[str],
+             subject: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_object_id", application_object_id)
+        _setter("audiences", audiences)
+        _setter("display_name", display_name)
+        _setter("issuer", issuer)
+        _setter("subject", subject)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="applicationObjectId")
@@ -130,20 +149,41 @@ class _ApplicationFederatedIdentityCredentialState:
         :param pulumi.Input[str] issuer: The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
         :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
         """
+        _ApplicationFederatedIdentityCredentialState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_object_id=application_object_id,
+            audiences=audiences,
+            credential_id=credential_id,
+            description=description,
+            display_name=display_name,
+            issuer=issuer,
+            subject=subject,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_object_id: Optional[pulumi.Input[str]] = None,
+             audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             credential_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             issuer: Optional[pulumi.Input[str]] = None,
+             subject: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if application_object_id is not None:
-            pulumi.set(__self__, "application_object_id", application_object_id)
+            _setter("application_object_id", application_object_id)
         if audiences is not None:
-            pulumi.set(__self__, "audiences", audiences)
+            _setter("audiences", audiences)
         if credential_id is not None:
-            pulumi.set(__self__, "credential_id", credential_id)
+            _setter("credential_id", credential_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
+            _setter("issuer", issuer)
         if subject is not None:
-            pulumi.set(__self__, "subject", subject)
+            _setter("subject", subject)
 
     @property
     @pulumi.getter(name="applicationObjectId")
@@ -321,6 +361,10 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationFederatedIdentityCredentialArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,14 +31,33 @@ class CustomDirectoryRoleArgs:
         :param pulumi.Input[str] description: The description of the custom directory role.
         :param pulumi.Input[str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "version", version)
+        CustomDirectoryRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            enabled=enabled,
+            permissions=permissions,
+            version=version,
+            description=description,
+            template_id=template_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             enabled: pulumi.Input[bool],
+             permissions: pulumi.Input[Sequence[pulumi.Input['CustomDirectoryRolePermissionArgs']]],
+             version: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
+        _setter("enabled", enabled)
+        _setter("permissions", permissions)
+        _setter("version", version)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if template_id is not None:
-            pulumi.set(__self__, "template_id", template_id)
+            _setter("template_id", template_id)
 
     @property
     @pulumi.getter(name="displayName")
@@ -133,20 +152,41 @@ class _CustomDirectoryRoleState:
         :param pulumi.Input[str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
         :param pulumi.Input[str] version: The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """
+        _CustomDirectoryRoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            display_name=display_name,
+            enabled=enabled,
+            object_id=object_id,
+            permissions=permissions,
+            template_id=template_id,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             object_id: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDirectoryRolePermissionArgs']]]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if object_id is not None:
-            pulumi.set(__self__, "object_id", object_id)
+            _setter("object_id", object_id)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if template_id is not None:
-            pulumi.set(__self__, "template_id", template_id)
+            _setter("template_id", template_id)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -366,6 +406,10 @@ class CustomDirectoryRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CustomDirectoryRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

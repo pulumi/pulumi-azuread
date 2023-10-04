@@ -14,11 +14,11 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue
     {
         /// <summary>
-        /// The default text of this question.
+        /// The default text of this question choice.
         /// </summary>
         public readonly string DefaultText;
         /// <summary>
-        /// One or more blocks describing localized text of this question, as documented below.
+        /// One or more blocks describing localized text of this question choice, as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText> LocalizedTexts;
 
