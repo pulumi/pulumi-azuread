@@ -16,3 +16,4 @@ plugins:
     version: "1.4.0"
   - name: azure
     version: "5.52.0"
+javaGenVersion: "v0.9.7"
