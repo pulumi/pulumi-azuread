@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationPreAuthorizedArgs', 'ApplicationPreAuthorized']
@@ -23,9 +23,22 @@ class ApplicationPreAuthorizedArgs:
         :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
         """
-        pulumi.set(__self__, "application_object_id", application_object_id)
-        pulumi.set(__self__, "authorized_app_id", authorized_app_id)
-        pulumi.set(__self__, "permission_ids", permission_ids)
+        ApplicationPreAuthorizedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_object_id=application_object_id,
+            authorized_app_id=authorized_app_id,
+            permission_ids=permission_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_object_id: pulumi.Input[str],
+             authorized_app_id: pulumi.Input[str],
+             permission_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_object_id", application_object_id)
+        _setter("authorized_app_id", authorized_app_id)
+        _setter("permission_ids", permission_ids)
 
     @property
     @pulumi.getter(name="applicationObjectId")
@@ -76,12 +89,25 @@ class _ApplicationPreAuthorizedState:
         :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
         """
+        _ApplicationPreAuthorizedState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_object_id=application_object_id,
+            authorized_app_id=authorized_app_id,
+            permission_ids=permission_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_object_id: Optional[pulumi.Input[str]] = None,
+             authorized_app_id: Optional[pulumi.Input[str]] = None,
+             permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if application_object_id is not None:
-            pulumi.set(__self__, "application_object_id", application_object_id)
+            _setter("application_object_id", application_object_id)
         if authorized_app_id is not None:
-            pulumi.set(__self__, "authorized_app_id", authorized_app_id)
+            _setter("authorized_app_id", authorized_app_id)
         if permission_ids is not None:
-            pulumi.set(__self__, "permission_ids", permission_ids)
+            _setter("permission_ids", permission_ids)
 
     @property
     @pulumi.getter(name="applicationObjectId")
@@ -253,6 +279,10 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationPreAuthorizedArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

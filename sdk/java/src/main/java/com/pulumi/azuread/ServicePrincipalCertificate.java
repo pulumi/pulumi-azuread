@@ -45,7 +45,7 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
      * 
      */
-    @Export(name="encoding", type=String.class, parameters={})
+    @Export(name="encoding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encoding;
 
     /**
@@ -61,7 +61,7 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="endDate", type=String.class, parameters={})
+    @Export(name="endDate", refs={String.class}, tree="[0]")
     private Output<String> endDate;
 
     /**
@@ -77,7 +77,7 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
      * 
      */
-    @Export(name="endDateRelative", type=String.class, parameters={})
+    @Export(name="endDateRelative", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endDateRelative;
 
     /**
@@ -93,7 +93,7 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="keyId", type=String.class, parameters={})
+    @Export(name="keyId", refs={String.class}, tree="[0]")
     private Output<String> keyId;
 
     /**
@@ -107,7 +107,7 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="servicePrincipalId", type=String.class, parameters={})
+    @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**
@@ -121,7 +121,7 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn&#39;t specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="startDate", type=String.class, parameters={})
+    @Export(name="startDate", refs={String.class}, tree="[0]")
     private Output<String> startDate;
 
     /**
@@ -135,7 +135,7 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -149,7 +149,7 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

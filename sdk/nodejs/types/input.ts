@@ -167,44 +167,44 @@ export interface AccessPackageAssignmentPolicyQuestionChoice {
 
 export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
     /**
-     * The default text of this question.
+     * The default text of this question choice.
      */
     defaultText: pulumi.Input<string>;
     /**
-     * One or more blocks describing localized text of this question, as documented below.
+     * One or more blocks describing localized text of this question choice, as documented below.
      */
     localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>[]>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
     /**
-     * The localized content of this question.
+     * The localized content of this question choice.
      */
     content: pulumi.Input<string>;
     /**
-     * The ISO 639 language code for this question content.
+     * The ISO 639 language code for this question choice content.
      */
     languageCode: pulumi.Input<string>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionText {
     /**
-     * The default text of this question.
+     * The default text of this question choice.
      */
     defaultText: pulumi.Input<string>;
     /**
-     * One or more blocks describing localized text of this question, as documented below.
+     * One or more blocks describing localized text of this question choice, as documented below.
      */
     localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText>[]>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionTextLocalizedText {
     /**
-     * The localized content of this question.
+     * The localized content of this question choice.
      */
     content: pulumi.Input<string>;
     /**
-     * The ISO 639 language code for this question content.
+     * The ISO 639 language code for this question choice content.
      */
     languageCode: pulumi.Input<string>;
 }

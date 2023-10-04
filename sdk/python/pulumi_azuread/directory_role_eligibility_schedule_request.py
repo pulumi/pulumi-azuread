@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DirectoryRoleEligibilityScheduleRequestArgs', 'DirectoryRoleEligibilityScheduleRequest']
@@ -25,10 +25,25 @@ class DirectoryRoleEligibilityScheduleRequestArgs:
         :param pulumi.Input[str] principal_id: The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
         :param pulumi.Input[str] role_definition_id: The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
         """
-        pulumi.set(__self__, "directory_scope_id", directory_scope_id)
-        pulumi.set(__self__, "justification", justification)
-        pulumi.set(__self__, "principal_id", principal_id)
-        pulumi.set(__self__, "role_definition_id", role_definition_id)
+        DirectoryRoleEligibilityScheduleRequestArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            directory_scope_id=directory_scope_id,
+            justification=justification,
+            principal_id=principal_id,
+            role_definition_id=role_definition_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             directory_scope_id: pulumi.Input[str],
+             justification: pulumi.Input[str],
+             principal_id: pulumi.Input[str],
+             role_definition_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("directory_scope_id", directory_scope_id)
+        _setter("justification", justification)
+        _setter("principal_id", principal_id)
+        _setter("role_definition_id", role_definition_id)
 
     @property
     @pulumi.getter(name="directoryScopeId")
@@ -93,14 +108,29 @@ class _DirectoryRoleEligibilityScheduleRequestState:
         :param pulumi.Input[str] principal_id: The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
         :param pulumi.Input[str] role_definition_id: The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
         """
+        _DirectoryRoleEligibilityScheduleRequestState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            directory_scope_id=directory_scope_id,
+            justification=justification,
+            principal_id=principal_id,
+            role_definition_id=role_definition_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             directory_scope_id: Optional[pulumi.Input[str]] = None,
+             justification: Optional[pulumi.Input[str]] = None,
+             principal_id: Optional[pulumi.Input[str]] = None,
+             role_definition_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if directory_scope_id is not None:
-            pulumi.set(__self__, "directory_scope_id", directory_scope_id)
+            _setter("directory_scope_id", directory_scope_id)
         if justification is not None:
-            pulumi.set(__self__, "justification", justification)
+            _setter("justification", justification)
         if principal_id is not None:
-            pulumi.set(__self__, "principal_id", principal_id)
+            _setter("principal_id", principal_id)
         if role_definition_id is not None:
-            pulumi.set(__self__, "role_definition_id", role_definition_id)
+            _setter("role_definition_id", role_definition_id)
 
     @property
     @pulumi.getter(name="directoryScopeId")
@@ -256,6 +286,10 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DirectoryRoleEligibilityScheduleRequestArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

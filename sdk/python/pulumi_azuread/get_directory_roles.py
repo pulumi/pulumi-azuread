@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetDirectoryRolesResult',
     'AwaitableGetDirectoryRolesResult',
     'get_directory_roles',
+    'get_directory_roles_output',
 ]
 
 @pulumi.output_type
@@ -111,3 +112,29 @@ def get_directory_roles(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
         object_ids=pulumi.get(__ret__, 'object_ids'),
         roles=pulumi.get(__ret__, 'roles'),
         template_ids=pulumi.get(__ret__, 'template_ids'))
+
+
+@_utilities.lift_output_func(get_directory_roles)
+def get_directory_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoryRolesResult]:
+    """
+    Use this data source to access information about activated directory roles within Azure Active Directory.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this resource.
+
+    When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    current = azuread.get_directory_roles()
+    pulumi.export("roles", current.object_ids)
+    ```
+    """
+    ...

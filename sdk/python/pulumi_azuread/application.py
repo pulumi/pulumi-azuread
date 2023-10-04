@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -81,59 +81,120 @@ class ApplicationArgs:
                
                > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        ApplicationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            api=api,
+            app_roles=app_roles,
+            description=description,
+            device_only_auth_enabled=device_only_auth_enabled,
+            fallback_public_client_enabled=fallback_public_client_enabled,
+            feature_tags=feature_tags,
+            group_membership_claims=group_membership_claims,
+            identifier_uris=identifier_uris,
+            logo_image=logo_image,
+            marketing_url=marketing_url,
+            notes=notes,
+            oauth2_post_response_required=oauth2_post_response_required,
+            optional_claims=optional_claims,
+            owners=owners,
+            prevent_duplicate_names=prevent_duplicate_names,
+            privacy_statement_url=privacy_statement_url,
+            public_client=public_client,
+            required_resource_accesses=required_resource_accesses,
+            service_management_reference=service_management_reference,
+            sign_in_audience=sign_in_audience,
+            single_page_application=single_page_application,
+            support_url=support_url,
+            tags=tags,
+            template_id=template_id,
+            terms_of_service_url=terms_of_service_url,
+            web=web,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             api: Optional[pulumi.Input['ApplicationApiArgs']] = None,
+             app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
+             fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
+             feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]] = None,
+             group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             logo_image: Optional[pulumi.Input[str]] = None,
+             marketing_url: Optional[pulumi.Input[str]] = None,
+             notes: Optional[pulumi.Input[str]] = None,
+             oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
+             optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']] = None,
+             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+             privacy_statement_url: Optional[pulumi.Input[str]] = None,
+             public_client: Optional[pulumi.Input['ApplicationPublicClientArgs']] = None,
+             required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]] = None,
+             service_management_reference: Optional[pulumi.Input[str]] = None,
+             sign_in_audience: Optional[pulumi.Input[str]] = None,
+             single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
+             support_url: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             terms_of_service_url: Optional[pulumi.Input[str]] = None,
+             web: Optional[pulumi.Input['ApplicationWebArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
         if api is not None:
-            pulumi.set(__self__, "api", api)
+            _setter("api", api)
         if app_roles is not None:
-            pulumi.set(__self__, "app_roles", app_roles)
+            _setter("app_roles", app_roles)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if device_only_auth_enabled is not None:
-            pulumi.set(__self__, "device_only_auth_enabled", device_only_auth_enabled)
+            _setter("device_only_auth_enabled", device_only_auth_enabled)
         if fallback_public_client_enabled is not None:
-            pulumi.set(__self__, "fallback_public_client_enabled", fallback_public_client_enabled)
+            _setter("fallback_public_client_enabled", fallback_public_client_enabled)
         if feature_tags is not None:
-            pulumi.set(__self__, "feature_tags", feature_tags)
+            _setter("feature_tags", feature_tags)
         if group_membership_claims is not None:
-            pulumi.set(__self__, "group_membership_claims", group_membership_claims)
+            _setter("group_membership_claims", group_membership_claims)
         if identifier_uris is not None:
-            pulumi.set(__self__, "identifier_uris", identifier_uris)
+            _setter("identifier_uris", identifier_uris)
         if logo_image is not None:
-            pulumi.set(__self__, "logo_image", logo_image)
+            _setter("logo_image", logo_image)
         if marketing_url is not None:
-            pulumi.set(__self__, "marketing_url", marketing_url)
+            _setter("marketing_url", marketing_url)
         if notes is not None:
-            pulumi.set(__self__, "notes", notes)
+            _setter("notes", notes)
         if oauth2_post_response_required is not None:
-            pulumi.set(__self__, "oauth2_post_response_required", oauth2_post_response_required)
+            _setter("oauth2_post_response_required", oauth2_post_response_required)
         if optional_claims is not None:
-            pulumi.set(__self__, "optional_claims", optional_claims)
+            _setter("optional_claims", optional_claims)
         if owners is not None:
-            pulumi.set(__self__, "owners", owners)
+            _setter("owners", owners)
         if prevent_duplicate_names is not None:
-            pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
+            _setter("prevent_duplicate_names", prevent_duplicate_names)
         if privacy_statement_url is not None:
-            pulumi.set(__self__, "privacy_statement_url", privacy_statement_url)
+            _setter("privacy_statement_url", privacy_statement_url)
         if public_client is not None:
-            pulumi.set(__self__, "public_client", public_client)
+            _setter("public_client", public_client)
         if required_resource_accesses is not None:
-            pulumi.set(__self__, "required_resource_accesses", required_resource_accesses)
+            _setter("required_resource_accesses", required_resource_accesses)
         if service_management_reference is not None:
-            pulumi.set(__self__, "service_management_reference", service_management_reference)
+            _setter("service_management_reference", service_management_reference)
         if sign_in_audience is not None:
-            pulumi.set(__self__, "sign_in_audience", sign_in_audience)
+            _setter("sign_in_audience", sign_in_audience)
         if single_page_application is not None:
-            pulumi.set(__self__, "single_page_application", single_page_application)
+            _setter("single_page_application", single_page_application)
         if support_url is not None:
-            pulumi.set(__self__, "support_url", support_url)
+            _setter("support_url", support_url)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template_id is not None:
-            pulumi.set(__self__, "template_id", template_id)
+            _setter("template_id", template_id)
         if terms_of_service_url is not None:
-            pulumi.set(__self__, "terms_of_service_url", terms_of_service_url)
+            _setter("terms_of_service_url", terms_of_service_url)
         if web is not None:
-            pulumi.set(__self__, "web", web)
+            _setter("web", web)
 
     @property
     @pulumi.getter(name="displayName")
@@ -550,74 +611,149 @@ class _ApplicationState:
                
                > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
+        _ApplicationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api=api,
+            app_role_ids=app_role_ids,
+            app_roles=app_roles,
+            application_id=application_id,
+            description=description,
+            device_only_auth_enabled=device_only_auth_enabled,
+            disabled_by_microsoft=disabled_by_microsoft,
+            display_name=display_name,
+            fallback_public_client_enabled=fallback_public_client_enabled,
+            feature_tags=feature_tags,
+            group_membership_claims=group_membership_claims,
+            identifier_uris=identifier_uris,
+            logo_image=logo_image,
+            logo_url=logo_url,
+            marketing_url=marketing_url,
+            notes=notes,
+            oauth2_permission_scope_ids=oauth2_permission_scope_ids,
+            oauth2_post_response_required=oauth2_post_response_required,
+            object_id=object_id,
+            optional_claims=optional_claims,
+            owners=owners,
+            prevent_duplicate_names=prevent_duplicate_names,
+            privacy_statement_url=privacy_statement_url,
+            public_client=public_client,
+            publisher_domain=publisher_domain,
+            required_resource_accesses=required_resource_accesses,
+            service_management_reference=service_management_reference,
+            sign_in_audience=sign_in_audience,
+            single_page_application=single_page_application,
+            support_url=support_url,
+            tags=tags,
+            template_id=template_id,
+            terms_of_service_url=terms_of_service_url,
+            web=web,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api: Optional[pulumi.Input['ApplicationApiArgs']] = None,
+             app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
+             disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
+             feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]] = None,
+             group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             logo_image: Optional[pulumi.Input[str]] = None,
+             logo_url: Optional[pulumi.Input[str]] = None,
+             marketing_url: Optional[pulumi.Input[str]] = None,
+             notes: Optional[pulumi.Input[str]] = None,
+             oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
+             object_id: Optional[pulumi.Input[str]] = None,
+             optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']] = None,
+             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+             privacy_statement_url: Optional[pulumi.Input[str]] = None,
+             public_client: Optional[pulumi.Input['ApplicationPublicClientArgs']] = None,
+             publisher_domain: Optional[pulumi.Input[str]] = None,
+             required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]] = None,
+             service_management_reference: Optional[pulumi.Input[str]] = None,
+             sign_in_audience: Optional[pulumi.Input[str]] = None,
+             single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
+             support_url: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             terms_of_service_url: Optional[pulumi.Input[str]] = None,
+             web: Optional[pulumi.Input['ApplicationWebArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api is not None:
-            pulumi.set(__self__, "api", api)
+            _setter("api", api)
         if app_role_ids is not None:
-            pulumi.set(__self__, "app_role_ids", app_role_ids)
+            _setter("app_role_ids", app_role_ids)
         if app_roles is not None:
-            pulumi.set(__self__, "app_roles", app_roles)
+            _setter("app_roles", app_roles)
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if device_only_auth_enabled is not None:
-            pulumi.set(__self__, "device_only_auth_enabled", device_only_auth_enabled)
+            _setter("device_only_auth_enabled", device_only_auth_enabled)
         if disabled_by_microsoft is not None:
-            pulumi.set(__self__, "disabled_by_microsoft", disabled_by_microsoft)
+            _setter("disabled_by_microsoft", disabled_by_microsoft)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if fallback_public_client_enabled is not None:
-            pulumi.set(__self__, "fallback_public_client_enabled", fallback_public_client_enabled)
+            _setter("fallback_public_client_enabled", fallback_public_client_enabled)
         if feature_tags is not None:
-            pulumi.set(__self__, "feature_tags", feature_tags)
+            _setter("feature_tags", feature_tags)
         if group_membership_claims is not None:
-            pulumi.set(__self__, "group_membership_claims", group_membership_claims)
+            _setter("group_membership_claims", group_membership_claims)
         if identifier_uris is not None:
-            pulumi.set(__self__, "identifier_uris", identifier_uris)
+            _setter("identifier_uris", identifier_uris)
         if logo_image is not None:
-            pulumi.set(__self__, "logo_image", logo_image)
+            _setter("logo_image", logo_image)
         if logo_url is not None:
-            pulumi.set(__self__, "logo_url", logo_url)
+            _setter("logo_url", logo_url)
         if marketing_url is not None:
-            pulumi.set(__self__, "marketing_url", marketing_url)
+            _setter("marketing_url", marketing_url)
         if notes is not None:
-            pulumi.set(__self__, "notes", notes)
+            _setter("notes", notes)
         if oauth2_permission_scope_ids is not None:
-            pulumi.set(__self__, "oauth2_permission_scope_ids", oauth2_permission_scope_ids)
+            _setter("oauth2_permission_scope_ids", oauth2_permission_scope_ids)
         if oauth2_post_response_required is not None:
-            pulumi.set(__self__, "oauth2_post_response_required", oauth2_post_response_required)
+            _setter("oauth2_post_response_required", oauth2_post_response_required)
         if object_id is not None:
-            pulumi.set(__self__, "object_id", object_id)
+            _setter("object_id", object_id)
         if optional_claims is not None:
-            pulumi.set(__self__, "optional_claims", optional_claims)
+            _setter("optional_claims", optional_claims)
         if owners is not None:
-            pulumi.set(__self__, "owners", owners)
+            _setter("owners", owners)
         if prevent_duplicate_names is not None:
-            pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
+            _setter("prevent_duplicate_names", prevent_duplicate_names)
         if privacy_statement_url is not None:
-            pulumi.set(__self__, "privacy_statement_url", privacy_statement_url)
+            _setter("privacy_statement_url", privacy_statement_url)
         if public_client is not None:
-            pulumi.set(__self__, "public_client", public_client)
+            _setter("public_client", public_client)
         if publisher_domain is not None:
-            pulumi.set(__self__, "publisher_domain", publisher_domain)
+            _setter("publisher_domain", publisher_domain)
         if required_resource_accesses is not None:
-            pulumi.set(__self__, "required_resource_accesses", required_resource_accesses)
+            _setter("required_resource_accesses", required_resource_accesses)
         if service_management_reference is not None:
-            pulumi.set(__self__, "service_management_reference", service_management_reference)
+            _setter("service_management_reference", service_management_reference)
         if sign_in_audience is not None:
-            pulumi.set(__self__, "sign_in_audience", sign_in_audience)
+            _setter("sign_in_audience", sign_in_audience)
         if single_page_application is not None:
-            pulumi.set(__self__, "single_page_application", single_page_application)
+            _setter("single_page_application", single_page_application)
         if support_url is not None:
-            pulumi.set(__self__, "support_url", support_url)
+            _setter("support_url", support_url)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template_id is not None:
-            pulumi.set(__self__, "template_id", template_id)
+            _setter("template_id", template_id)
         if terms_of_service_url is not None:
-            pulumi.set(__self__, "terms_of_service_url", terms_of_service_url)
+            _setter("terms_of_service_url", terms_of_service_url)
         if web is not None:
-            pulumi.set(__self__, "web", web)
+            _setter("web", web)
 
     @property
     @pulumi.getter
@@ -1413,6 +1549,10 @@ class Application(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1454,6 +1594,11 @@ class Application(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApplicationArgs.__new__(ApplicationArgs)
 
+            if api is not None and not isinstance(api, ApplicationApiArgs):
+                api = api or {}
+                def _setter(key, value):
+                    api[key] = value
+                ApplicationApiArgs._configure(_setter, **api)
             __props__.__dict__["api"] = api
             __props__.__dict__["app_roles"] = app_roles
             __props__.__dict__["description"] = description
@@ -1469,19 +1614,39 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["marketing_url"] = marketing_url
             __props__.__dict__["notes"] = notes
             __props__.__dict__["oauth2_post_response_required"] = oauth2_post_response_required
+            if optional_claims is not None and not isinstance(optional_claims, ApplicationOptionalClaimsArgs):
+                optional_claims = optional_claims or {}
+                def _setter(key, value):
+                    optional_claims[key] = value
+                ApplicationOptionalClaimsArgs._configure(_setter, **optional_claims)
             __props__.__dict__["optional_claims"] = optional_claims
             __props__.__dict__["owners"] = owners
             __props__.__dict__["prevent_duplicate_names"] = prevent_duplicate_names
             __props__.__dict__["privacy_statement_url"] = privacy_statement_url
+            if public_client is not None and not isinstance(public_client, ApplicationPublicClientArgs):
+                public_client = public_client or {}
+                def _setter(key, value):
+                    public_client[key] = value
+                ApplicationPublicClientArgs._configure(_setter, **public_client)
             __props__.__dict__["public_client"] = public_client
             __props__.__dict__["required_resource_accesses"] = required_resource_accesses
             __props__.__dict__["service_management_reference"] = service_management_reference
             __props__.__dict__["sign_in_audience"] = sign_in_audience
+            if single_page_application is not None and not isinstance(single_page_application, ApplicationSinglePageApplicationArgs):
+                single_page_application = single_page_application or {}
+                def _setter(key, value):
+                    single_page_application[key] = value
+                ApplicationSinglePageApplicationArgs._configure(_setter, **single_page_application)
             __props__.__dict__["single_page_application"] = single_page_application
             __props__.__dict__["support_url"] = support_url
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template_id"] = template_id
             __props__.__dict__["terms_of_service_url"] = terms_of_service_url
+            if web is not None and not isinstance(web, ApplicationWebArgs):
+                web = web or {}
+                def _setter(key, value):
+                    web[key] = value
+                ApplicationWebArgs._configure(_setter, **web)
             __props__.__dict__["web"] = web
             __props__.__dict__["app_role_ids"] = None
             __props__.__dict__["application_id"] = None

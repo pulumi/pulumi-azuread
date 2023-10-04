@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -14,6 +14,7 @@ __all__ = [
     'GetDirectoryRoleTemplatesResult',
     'AwaitableGetDirectoryRoleTemplatesResult',
     'get_directory_role_templates',
+    'get_directory_role_templates_output',
 ]
 
 @pulumi.output_type
@@ -98,3 +99,29 @@ def get_directory_role_templates(opts: Optional[pulumi.InvokeOptions] = None) ->
         id=pulumi.get(__ret__, 'id'),
         object_ids=pulumi.get(__ret__, 'object_ids'),
         role_templates=pulumi.get(__ret__, 'role_templates'))
+
+
+@_utilities.lift_output_func(get_directory_role_templates)
+def get_directory_role_templates_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoryRoleTemplatesResult]:
+    """
+    Use this data source to access information about directory role templates within Azure Active Directory.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this resource.
+
+    When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    current = azuread.get_directory_role_templates()
+    pulumi.export("roles", current.object_ids)
+    ```
+    """
+    ...

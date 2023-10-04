@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserFlowAttributeArgs', 'UserFlowAttribute']
@@ -23,9 +23,22 @@ class UserFlowAttributeArgs:
         :param pulumi.Input[str] description: The description of the user flow attribute that is shown to the user at the time of sign-up.
         :param pulumi.Input[str] display_name: The display name of the user flow attribute. Changing this forces a new resource to be created.
         """
-        pulumi.set(__self__, "data_type", data_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "display_name", display_name)
+        UserFlowAttributeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_type=data_type,
+            description=description,
+            display_name=display_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_type: pulumi.Input[str],
+             description: pulumi.Input[str],
+             display_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data_type", data_type)
+        _setter("description", description)
+        _setter("display_name", display_name)
 
     @property
     @pulumi.getter(name="dataType")
@@ -78,14 +91,29 @@ class _UserFlowAttributeState:
         :param pulumi.Input[str] description: The description of the user flow attribute that is shown to the user at the time of sign-up.
         :param pulumi.Input[str] display_name: The display name of the user flow attribute. Changing this forces a new resource to be created.
         """
+        _UserFlowAttributeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attribute_type=attribute_type,
+            data_type=data_type,
+            description=description,
+            display_name=display_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attribute_type: Optional[pulumi.Input[str]] = None,
+             data_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if attribute_type is not None:
-            pulumi.set(__self__, "attribute_type", attribute_type)
+            _setter("attribute_type", attribute_type)
         if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
+            _setter("data_type", data_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
 
     @property
     @pulumi.getter(name="attributeType")
@@ -233,6 +261,10 @@ class UserFlowAttribute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserFlowAttributeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

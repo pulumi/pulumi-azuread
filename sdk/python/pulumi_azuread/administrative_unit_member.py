@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AdministrativeUnitMemberArgs', 'AdministrativeUnitMember']
@@ -21,10 +21,21 @@ class AdministrativeUnitMemberArgs:
         :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         """
+        AdministrativeUnitMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            administrative_unit_object_id=administrative_unit_object_id,
+            member_object_id=member_object_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
+             member_object_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if administrative_unit_object_id is not None:
-            pulumi.set(__self__, "administrative_unit_object_id", administrative_unit_object_id)
+            _setter("administrative_unit_object_id", administrative_unit_object_id)
         if member_object_id is not None:
-            pulumi.set(__self__, "member_object_id", member_object_id)
+            _setter("member_object_id", member_object_id)
 
     @property
     @pulumi.getter(name="administrativeUnitObjectId")
@@ -61,10 +72,21 @@ class _AdministrativeUnitMemberState:
         :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         """
+        _AdministrativeUnitMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            administrative_unit_object_id=administrative_unit_object_id,
+            member_object_id=member_object_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
+             member_object_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if administrative_unit_object_id is not None:
-            pulumi.set(__self__, "administrative_unit_object_id", administrative_unit_object_id)
+            _setter("administrative_unit_object_id", administrative_unit_object_id)
         if member_object_id is not None:
-            pulumi.set(__self__, "member_object_id", member_object_id)
+            _setter("member_object_id", member_object_id)
 
     @property
     @pulumi.getter(name="administrativeUnitObjectId")
@@ -192,6 +214,10 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AdministrativeUnitMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

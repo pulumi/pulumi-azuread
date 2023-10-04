@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccessPackageCatalogRoleAssignmentArgs', 'AccessPackageCatalogRoleAssignment']
@@ -23,9 +23,22 @@ class AccessPackageCatalogRoleAssignmentArgs:
         :param pulumi.Input[str] principal_object_id: The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[str] role_id: The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
         """
-        pulumi.set(__self__, "catalog_id", catalog_id)
-        pulumi.set(__self__, "principal_object_id", principal_object_id)
-        pulumi.set(__self__, "role_id", role_id)
+        AccessPackageCatalogRoleAssignmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_id=catalog_id,
+            principal_object_id=principal_object_id,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_id: pulumi.Input[str],
+             principal_object_id: pulumi.Input[str],
+             role_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("catalog_id", catalog_id)
+        _setter("principal_object_id", principal_object_id)
+        _setter("role_id", role_id)
 
     @property
     @pulumi.getter(name="catalogId")
@@ -76,12 +89,25 @@ class _AccessPackageCatalogRoleAssignmentState:
         :param pulumi.Input[str] principal_object_id: The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[str] role_id: The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
         """
+        _AccessPackageCatalogRoleAssignmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_id=catalog_id,
+            principal_object_id=principal_object_id,
+            role_id=role_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_id: Optional[pulumi.Input[str]] = None,
+             principal_object_id: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if catalog_id is not None:
-            pulumi.set(__self__, "catalog_id", catalog_id)
+            _setter("catalog_id", catalog_id)
         if principal_object_id is not None:
-            pulumi.set(__self__, "principal_object_id", principal_object_id)
+            _setter("principal_object_id", principal_object_id)
         if role_id is not None:
-            pulumi.set(__self__, "role_id", role_id)
+            _setter("role_id", role_id)
 
     @property
     @pulumi.getter(name="catalogId")
@@ -223,6 +249,10 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessPackageCatalogRoleAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

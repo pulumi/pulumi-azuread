@@ -75,7 +75,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * A freeform field for the user to describe themselves
      * 
      */
-    @Export(name="aboutMe", type=String.class, parameters={})
+    @Export(name="aboutMe", refs={String.class}, tree="[0]")
     private Output<String> aboutMe;
 
     /**
@@ -89,7 +89,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Whether or not the account should be enabled.
      * 
      */
-    @Export(name="accountEnabled", type=Boolean.class, parameters={})
+    @Export(name="accountEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> accountEnabled;
 
     /**
@@ -103,7 +103,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
      * 
      */
-    @Export(name="ageGroup", type=String.class, parameters={})
+    @Export(name="ageGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ageGroup;
 
     /**
@@ -117,7 +117,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * A list of telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure AD Connect.
      * 
      */
-    @Export(name="businessPhones", type=List.class, parameters={String.class})
+    @Export(name="businessPhones", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> businessPhones;
 
     /**
@@ -131,7 +131,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The city in which the user is located.
      * 
      */
-    @Export(name="city", type=String.class, parameters={})
+    @Export(name="city", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> city;
 
     /**
@@ -145,7 +145,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
      * 
      */
-    @Export(name="companyName", type=String.class, parameters={})
+    @Export(name="companyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> companyName;
 
     /**
@@ -159,7 +159,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
      * 
      */
-    @Export(name="consentProvidedForMinor", type=String.class, parameters={})
+    @Export(name="consentProvidedForMinor", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> consentProvidedForMinor;
 
     /**
@@ -173,7 +173,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The cost center associated with the user.
      * 
      */
-    @Export(name="costCenter", type=String.class, parameters={})
+    @Export(name="costCenter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> costCenter;
 
     /**
@@ -187,7 +187,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
      * 
      */
-    @Export(name="country", type=String.class, parameters={})
+    @Export(name="country", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> country;
 
     /**
@@ -201,7 +201,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
      * 
      */
-    @Export(name="creationType", type=String.class, parameters={})
+    @Export(name="creationType", refs={String.class}, tree="[0]")
     private Output<String> creationType;
 
     /**
@@ -215,7 +215,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The name for the department in which the user works.
      * 
      */
-    @Export(name="department", type=String.class, parameters={})
+    @Export(name="department", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> department;
 
     /**
@@ -229,7 +229,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Whether the user&#39;s password is exempt from expiring. Defaults to `false`.
      * 
      */
-    @Export(name="disablePasswordExpiration", type=Boolean.class, parameters={})
+    @Export(name="disablePasswordExpiration", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disablePasswordExpiration;
 
     /**
@@ -243,7 +243,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
      * 
      */
-    @Export(name="disableStrongPassword", type=Boolean.class, parameters={})
+    @Export(name="disableStrongPassword", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableStrongPassword;
 
     /**
@@ -257,7 +257,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The name to display in the address book for the user.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -271,7 +271,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The name of the division in which the user works.
      * 
      */
-    @Export(name="division", type=String.class, parameters={})
+    @Export(name="division", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> division;
 
     /**
@@ -285,7 +285,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The employee identifier assigned to the user by the organisation.
      * 
      */
-    @Export(name="employeeId", type=String.class, parameters={})
+    @Export(name="employeeId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> employeeId;
 
     /**
@@ -299,7 +299,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
      * 
      */
-    @Export(name="employeeType", type=String.class, parameters={})
+    @Export(name="employeeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> employeeType;
 
     /**
@@ -313,7 +313,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * For an external user invited to the tenant, this property represents the invited user&#39;s invitation status. Possible values are `PendingAcceptance` or `Accepted`.
      * 
      */
-    @Export(name="externalUserState", type=String.class, parameters={})
+    @Export(name="externalUserState", refs={String.class}, tree="[0]")
     private Output<String> externalUserState;
 
     /**
@@ -327,7 +327,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The fax number of the user.
      * 
      */
-    @Export(name="faxNumber", type=String.class, parameters={})
+    @Export(name="faxNumber", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> faxNumber;
 
     /**
@@ -341,7 +341,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
      * 
      */
-    @Export(name="forcePasswordChange", type=Boolean.class, parameters={})
+    @Export(name="forcePasswordChange", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forcePasswordChange;
 
     /**
@@ -355,7 +355,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The given name (first name) of the user.
      * 
      */
-    @Export(name="givenName", type=String.class, parameters={})
+    @Export(name="givenName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> givenName;
 
     /**
@@ -369,7 +369,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
      * 
      */
-    @Export(name="imAddresses", type=List.class, parameters={String.class})
+    @Export(name="imAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> imAddresses;
 
     /**
@@ -383,7 +383,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user’s job title.
      * 
      */
-    @Export(name="jobTitle", type=String.class, parameters={})
+    @Export(name="jobTitle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jobTitle;
 
     /**
@@ -397,7 +397,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The SMTP address for the user. This property cannot be unset once specified.
      * 
      */
-    @Export(name="mail", type=String.class, parameters={})
+    @Export(name="mail", refs={String.class}, tree="[0]")
     private Output<String> mail;
 
     /**
@@ -411,7 +411,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
      * 
      */
-    @Export(name="mailNickname", type=String.class, parameters={})
+    @Export(name="mailNickname", refs={String.class}, tree="[0]")
     private Output<String> mailNickname;
 
     /**
@@ -425,7 +425,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The object ID of the user&#39;s manager.
      * 
      */
-    @Export(name="managerId", type=String.class, parameters={})
+    @Export(name="managerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> managerId;
 
     /**
@@ -439,7 +439,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The primary cellular telephone number for the user.
      * 
      */
-    @Export(name="mobilePhone", type=String.class, parameters={})
+    @Export(name="mobilePhone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mobilePhone;
 
     /**
@@ -453,7 +453,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The object ID of the user.
      * 
      */
-    @Export(name="objectId", type=String.class, parameters={})
+    @Export(name="objectId", refs={String.class}, tree="[0]")
     private Output<String> objectId;
 
     /**
@@ -467,7 +467,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The office location in the user&#39;s place of business.
      * 
      */
-    @Export(name="officeLocation", type=String.class, parameters={})
+    @Export(name="officeLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> officeLocation;
 
     /**
@@ -481,7 +481,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    @Export(name="onpremisesDistinguishedName", type=String.class, parameters={})
+    @Export(name="onpremisesDistinguishedName", refs={String.class}, tree="[0]")
     private Output<String> onpremisesDistinguishedName;
 
     /**
@@ -495,7 +495,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    @Export(name="onpremisesDomainName", type=String.class, parameters={})
+    @Export(name="onpremisesDomainName", refs={String.class}, tree="[0]")
     private Output<String> onpremisesDomainName;
 
     /**
@@ -509,7 +509,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `user_principal_name` property when creating a new user account.
      * 
      */
-    @Export(name="onpremisesImmutableId", type=String.class, parameters={})
+    @Export(name="onpremisesImmutableId", refs={String.class}, tree="[0]")
     private Output<String> onpremisesImmutableId;
 
     /**
@@ -523,7 +523,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The on-premise SAM account name of the user.
      * 
      */
-    @Export(name="onpremisesSamAccountName", type=String.class, parameters={})
+    @Export(name="onpremisesSamAccountName", refs={String.class}, tree="[0]")
     private Output<String> onpremisesSamAccountName;
 
     /**
@@ -537,7 +537,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    @Export(name="onpremisesSecurityIdentifier", type=String.class, parameters={})
+    @Export(name="onpremisesSecurityIdentifier", refs={String.class}, tree="[0]")
     private Output<String> onpremisesSecurityIdentifier;
 
     /**
@@ -551,7 +551,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
      * 
      */
-    @Export(name="onpremisesSyncEnabled", type=Boolean.class, parameters={})
+    @Export(name="onpremisesSyncEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> onpremisesSyncEnabled;
 
     /**
@@ -565,7 +565,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The on-premise user principal name of the user.
      * 
      */
-    @Export(name="onpremisesUserPrincipalName", type=String.class, parameters={})
+    @Export(name="onpremisesUserPrincipalName", refs={String.class}, tree="[0]")
     private Output<String> onpremisesUserPrincipalName;
 
     /**
@@ -579,7 +579,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * A list of additional email addresses for the user.
      * 
      */
-    @Export(name="otherMails", type=List.class, parameters={String.class})
+    @Export(name="otherMails", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> otherMails;
 
     /**
@@ -594,7 +594,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * maximum length is 256 characters. This property is required when creating a new user
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -609,7 +609,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The postal code for the user&#39;s postal address. The postal code is specific to the user&#39;s country/region. In the United States of America, this attribute contains the ZIP code.
      * 
      */
-    @Export(name="postalCode", type=String.class, parameters={})
+    @Export(name="postalCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> postalCode;
 
     /**
@@ -623,7 +623,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user&#39;s preferred language, in ISO 639-1 notation.
      * 
      */
-    @Export(name="preferredLanguage", type=String.class, parameters={})
+    @Export(name="preferredLanguage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> preferredLanguage;
 
     /**
@@ -637,7 +637,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * List of email addresses for the user that direct to the same mailbox.
      * 
      */
-    @Export(name="proxyAddresses", type=List.class, parameters={String.class})
+    @Export(name="proxyAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> proxyAddresses;
 
     /**
@@ -651,7 +651,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Whether or not the Outlook global address list should include this user. Defaults to `true`.
      * 
      */
-    @Export(name="showInAddressList", type=Boolean.class, parameters={})
+    @Export(name="showInAddressList", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showInAddressList;
 
     /**
@@ -665,7 +665,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The state or province in the user&#39;s address.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
@@ -679,7 +679,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The street address of the user&#39;s place of business.
      * 
      */
-    @Export(name="streetAddress", type=String.class, parameters={})
+    @Export(name="streetAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> streetAddress;
 
     /**
@@ -693,7 +693,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user&#39;s surname (family name or last name).
      * 
      */
-    @Export(name="surname", type=String.class, parameters={})
+    @Export(name="surname", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> surname;
 
     /**
@@ -707,7 +707,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
      * 
      */
-    @Export(name="usageLocation", type=String.class, parameters={})
+    @Export(name="usageLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> usageLocation;
 
     /**
@@ -721,7 +721,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user principal name (UPN) of the user.
      * 
      */
-    @Export(name="userPrincipalName", type=String.class, parameters={})
+    @Export(name="userPrincipalName", refs={String.class}, tree="[0]")
     private Output<String> userPrincipalName;
 
     /**
@@ -735,7 +735,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user type in the directory. Possible values are `Guest` or `Member`.
      * 
      */
-    @Export(name="userType", type=String.class, parameters={})
+    @Export(name="userType", refs={String.class}, tree="[0]")
     private Output<String> userType;
 
     /**

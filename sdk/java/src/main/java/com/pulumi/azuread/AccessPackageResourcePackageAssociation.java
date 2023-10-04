@@ -103,7 +103,7 @@ public class AccessPackageResourcePackageAssociation extends com.pulumi.resource
      * The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="accessPackageId", type=String.class, parameters={})
+    @Export(name="accessPackageId", refs={String.class}, tree="[0]")
     private Output<String> accessPackageId;
 
     /**
@@ -117,7 +117,7 @@ public class AccessPackageResourcePackageAssociation extends com.pulumi.resource
      * The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="accessType", type=String.class, parameters={})
+    @Export(name="accessType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessType;
 
     /**
@@ -131,7 +131,7 @@ public class AccessPackageResourcePackageAssociation extends com.pulumi.resource
      * The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="catalogResourceAssociationId", type=String.class, parameters={})
+    @Export(name="catalogResourceAssociationId", refs={String.class}, tree="[0]")
     private Output<String> catalogResourceAssociationId;
 
     /**

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,14 +29,31 @@ class InvitationArgs:
         :param pulumi.Input[str] user_display_name: The display name of the user being invited.
         :param pulumi.Input[str] user_type: The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
-        pulumi.set(__self__, "redirect_url", redirect_url)
-        pulumi.set(__self__, "user_email_address", user_email_address)
+        InvitationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            redirect_url=redirect_url,
+            user_email_address=user_email_address,
+            message=message,
+            user_display_name=user_display_name,
+            user_type=user_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             redirect_url: pulumi.Input[str],
+             user_email_address: pulumi.Input[str],
+             message: Optional[pulumi.Input['InvitationMessageArgs']] = None,
+             user_display_name: Optional[pulumi.Input[str]] = None,
+             user_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("redirect_url", redirect_url)
+        _setter("user_email_address", user_email_address)
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if user_display_name is not None:
-            pulumi.set(__self__, "user_display_name", user_display_name)
+            _setter("user_display_name", user_display_name)
         if user_type is not None:
-            pulumi.set(__self__, "user_type", user_type)
+            _setter("user_type", user_type)
 
     @property
     @pulumi.getter(name="redirectUrl")
@@ -119,20 +136,41 @@ class _InvitationState:
         :param pulumi.Input[str] user_id: Object ID of the invited user.
         :param pulumi.Input[str] user_type: The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
+        _InvitationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            message=message,
+            redeem_url=redeem_url,
+            redirect_url=redirect_url,
+            user_display_name=user_display_name,
+            user_email_address=user_email_address,
+            user_id=user_id,
+            user_type=user_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             message: Optional[pulumi.Input['InvitationMessageArgs']] = None,
+             redeem_url: Optional[pulumi.Input[str]] = None,
+             redirect_url: Optional[pulumi.Input[str]] = None,
+             user_display_name: Optional[pulumi.Input[str]] = None,
+             user_email_address: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             user_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if message is not None:
-            pulumi.set(__self__, "message", message)
+            _setter("message", message)
         if redeem_url is not None:
-            pulumi.set(__self__, "redeem_url", redeem_url)
+            _setter("redeem_url", redeem_url)
         if redirect_url is not None:
-            pulumi.set(__self__, "redirect_url", redirect_url)
+            _setter("redirect_url", redirect_url)
         if user_display_name is not None:
-            pulumi.set(__self__, "user_display_name", user_display_name)
+            _setter("user_display_name", user_display_name)
         if user_email_address is not None:
-            pulumi.set(__self__, "user_email_address", user_email_address)
+            _setter("user_email_address", user_email_address)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if user_type is not None:
-            pulumi.set(__self__, "user_type", user_type)
+            _setter("user_type", user_type)
 
     @property
     @pulumi.getter
@@ -370,6 +408,10 @@ class Invitation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InvitationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -389,6 +431,11 @@ class Invitation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InvitationArgs.__new__(InvitationArgs)
 
+            if message is not None and not isinstance(message, InvitationMessageArgs):
+                message = message or {}
+                def _setter(key, value):
+                    message[key] = value
+                InvitationMessageArgs._configure(_setter, **message)
             __props__.__dict__["message"] = message
             if redirect_url is None and not opts.urn:
                 raise TypeError("Missing required property 'redirect_url'")
