@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,23 +39,50 @@ class AccessPackageAssignmentPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionArgs']]] questions: One or more `question` blocks for the requestor, as documented below.
         :param pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsArgs'] requestor_settings: A `requestor_settings` block to configure the users who can request access, as documented below.
         """
-        pulumi.set(__self__, "access_package_id", access_package_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "display_name", display_name)
+        AccessPackageAssignmentPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_package_id=access_package_id,
+            description=description,
+            display_name=display_name,
+            approval_settings=approval_settings,
+            assignment_review_settings=assignment_review_settings,
+            duration_in_days=duration_in_days,
+            expiration_date=expiration_date,
+            extension_enabled=extension_enabled,
+            questions=questions,
+            requestor_settings=requestor_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_package_id: pulumi.Input[str],
+             description: pulumi.Input[str],
+             display_name: pulumi.Input[str],
+             approval_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsArgs']] = None,
+             assignment_review_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs']] = None,
+             duration_in_days: Optional[pulumi.Input[int]] = None,
+             expiration_date: Optional[pulumi.Input[str]] = None,
+             extension_enabled: Optional[pulumi.Input[bool]] = None,
+             questions: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionArgs']]]] = None,
+             requestor_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_package_id", access_package_id)
+        _setter("description", description)
+        _setter("display_name", display_name)
         if approval_settings is not None:
-            pulumi.set(__self__, "approval_settings", approval_settings)
+            _setter("approval_settings", approval_settings)
         if assignment_review_settings is not None:
-            pulumi.set(__self__, "assignment_review_settings", assignment_review_settings)
+            _setter("assignment_review_settings", assignment_review_settings)
         if duration_in_days is not None:
-            pulumi.set(__self__, "duration_in_days", duration_in_days)
+            _setter("duration_in_days", duration_in_days)
         if expiration_date is not None:
-            pulumi.set(__self__, "expiration_date", expiration_date)
+            _setter("expiration_date", expiration_date)
         if extension_enabled is not None:
-            pulumi.set(__self__, "extension_enabled", extension_enabled)
+            _setter("extension_enabled", extension_enabled)
         if questions is not None:
-            pulumi.set(__self__, "questions", questions)
+            _setter("questions", questions)
         if requestor_settings is not None:
-            pulumi.set(__self__, "requestor_settings", requestor_settings)
+            _setter("requestor_settings", requestor_settings)
 
     @property
     @pulumi.getter(name="accessPackageId")
@@ -204,26 +231,53 @@ class _AccessPackageAssignmentPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionArgs']]] questions: One or more `question` blocks for the requestor, as documented below.
         :param pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsArgs'] requestor_settings: A `requestor_settings` block to configure the users who can request access, as documented below.
         """
+        _AccessPackageAssignmentPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_package_id=access_package_id,
+            approval_settings=approval_settings,
+            assignment_review_settings=assignment_review_settings,
+            description=description,
+            display_name=display_name,
+            duration_in_days=duration_in_days,
+            expiration_date=expiration_date,
+            extension_enabled=extension_enabled,
+            questions=questions,
+            requestor_settings=requestor_settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_package_id: Optional[pulumi.Input[str]] = None,
+             approval_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsArgs']] = None,
+             assignment_review_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             duration_in_days: Optional[pulumi.Input[int]] = None,
+             expiration_date: Optional[pulumi.Input[str]] = None,
+             extension_enabled: Optional[pulumi.Input[bool]] = None,
+             questions: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionArgs']]]] = None,
+             requestor_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_package_id is not None:
-            pulumi.set(__self__, "access_package_id", access_package_id)
+            _setter("access_package_id", access_package_id)
         if approval_settings is not None:
-            pulumi.set(__self__, "approval_settings", approval_settings)
+            _setter("approval_settings", approval_settings)
         if assignment_review_settings is not None:
-            pulumi.set(__self__, "assignment_review_settings", assignment_review_settings)
+            _setter("assignment_review_settings", assignment_review_settings)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if duration_in_days is not None:
-            pulumi.set(__self__, "duration_in_days", duration_in_days)
+            _setter("duration_in_days", duration_in_days)
         if expiration_date is not None:
-            pulumi.set(__self__, "expiration_date", expiration_date)
+            _setter("expiration_date", expiration_date)
         if extension_enabled is not None:
-            pulumi.set(__self__, "extension_enabled", extension_enabled)
+            _setter("extension_enabled", extension_enabled)
         if questions is not None:
-            pulumi.set(__self__, "questions", questions)
+            _setter("questions", questions)
         if requestor_settings is not None:
-            pulumi.set(__self__, "requestor_settings", requestor_settings)
+            _setter("requestor_settings", requestor_settings)
 
     @property
     @pulumi.getter(name="accessPackageId")
@@ -525,6 +579,10 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessPackageAssignmentPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -552,7 +610,17 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
             if access_package_id is None and not opts.urn:
                 raise TypeError("Missing required property 'access_package_id'")
             __props__.__dict__["access_package_id"] = access_package_id
+            if approval_settings is not None and not isinstance(approval_settings, AccessPackageAssignmentPolicyApprovalSettingsArgs):
+                approval_settings = approval_settings or {}
+                def _setter(key, value):
+                    approval_settings[key] = value
+                AccessPackageAssignmentPolicyApprovalSettingsArgs._configure(_setter, **approval_settings)
             __props__.__dict__["approval_settings"] = approval_settings
+            if assignment_review_settings is not None and not isinstance(assignment_review_settings, AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs):
+                assignment_review_settings = assignment_review_settings or {}
+                def _setter(key, value):
+                    assignment_review_settings[key] = value
+                AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs._configure(_setter, **assignment_review_settings)
             __props__.__dict__["assignment_review_settings"] = assignment_review_settings
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
@@ -564,6 +632,11 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
             __props__.__dict__["expiration_date"] = expiration_date
             __props__.__dict__["extension_enabled"] = extension_enabled
             __props__.__dict__["questions"] = questions
+            if requestor_settings is not None and not isinstance(requestor_settings, AccessPackageAssignmentPolicyRequestorSettingsArgs):
+                requestor_settings = requestor_settings or {}
+                def _setter(key, value):
+                    requestor_settings[key] = value
+                AccessPackageAssignmentPolicyRequestorSettingsArgs._configure(_setter, **requestor_settings)
             __props__.__dict__["requestor_settings"] = requestor_settings
         super(AccessPackageAssignmentPolicy, __self__).__init__(
             'azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy',

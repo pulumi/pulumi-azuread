@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetClientConfigResult',
     'AwaitableGetClientConfigResult',
     'get_client_config',
+    'get_client_config_output',
 ]
 
 @pulumi.output_type
@@ -106,3 +107,25 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'))
+
+
+@_utilities.lift_output_func(get_client_config)
+def get_client_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientConfigResult]:
+    """
+    Use this data source to access the configuration of the AzureAD provider.
+
+    ## API Permissions
+
+    No additional roles are required to use this data source.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    current = azuread.get_client_config()
+    pulumi.export("objectId", current.object_id)
+    ```
+    """
+    ...

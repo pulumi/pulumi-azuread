@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccessPackageCatalogArgs', 'AccessPackageCatalog']
@@ -25,12 +25,27 @@ class AccessPackageCatalogArgs:
         :param pulumi.Input[bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant.
         :param pulumi.Input[bool] published: Whether the access packages in this catalog are available for management.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "display_name", display_name)
+        AccessPackageCatalogArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            display_name=display_name,
+            externally_visible=externally_visible,
+            published=published,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: pulumi.Input[str],
+             display_name: pulumi.Input[str],
+             externally_visible: Optional[pulumi.Input[bool]] = None,
+             published: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("display_name", display_name)
         if externally_visible is not None:
-            pulumi.set(__self__, "externally_visible", externally_visible)
+            _setter("externally_visible", externally_visible)
         if published is not None:
-            pulumi.set(__self__, "published", published)
+            _setter("published", published)
 
     @property
     @pulumi.getter
@@ -95,14 +110,29 @@ class _AccessPackageCatalogState:
         :param pulumi.Input[bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant.
         :param pulumi.Input[bool] published: Whether the access packages in this catalog are available for management.
         """
+        _AccessPackageCatalogState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            display_name=display_name,
+            externally_visible=externally_visible,
+            published=published,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             externally_visible: Optional[pulumi.Input[bool]] = None,
+             published: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if externally_visible is not None:
-            pulumi.set(__self__, "externally_visible", externally_visible)
+            _setter("externally_visible", externally_visible)
         if published is not None:
-            pulumi.set(__self__, "published", published)
+            _setter("published", published)
 
     @property
     @pulumi.getter
@@ -246,6 +276,10 @@ class AccessPackageCatalog(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessPackageCatalogArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServicePrincipalTokenSigningCertificateArgs', 'ServicePrincipalTokenSigningCertificate']
@@ -26,11 +26,24 @@ class ServicePrincipalTokenSigningCertificateArgs:
                > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
         :param pulumi.Input[str] end_date: The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         """
-        pulumi.set(__self__, "service_principal_id", service_principal_id)
+        ServicePrincipalTokenSigningCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_principal_id=service_principal_id,
+            display_name=display_name,
+            end_date=end_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_principal_id: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             end_date: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service_principal_id", service_principal_id)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if end_date is not None:
-            pulumi.set(__self__, "end_date", end_date)
+            _setter("end_date", end_date)
 
     @property
     @pulumi.getter(name="servicePrincipalId")
@@ -96,20 +109,41 @@ class _ServicePrincipalTokenSigningCertificateState:
         :param pulumi.Input[str] value: The certificate data, which is PEM encoded but does not include the
                header `-----BEGIN CERTIFICATE-----\\n` or the footer `\\n-----END CERTIFICATE-----`.
         """
+        _ServicePrincipalTokenSigningCertificateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            end_date=end_date,
+            key_id=key_id,
+            service_principal_id=service_principal_id,
+            start_date=start_date,
+            thumbprint=thumbprint,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             end_date: Optional[pulumi.Input[str]] = None,
+             key_id: Optional[pulumi.Input[str]] = None,
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             start_date: Optional[pulumi.Input[str]] = None,
+             thumbprint: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if end_date is not None:
-            pulumi.set(__self__, "end_date", end_date)
+            _setter("end_date", end_date)
         if key_id is not None:
-            pulumi.set(__self__, "key_id", key_id)
+            _setter("key_id", key_id)
         if service_principal_id is not None:
-            pulumi.set(__self__, "service_principal_id", service_principal_id)
+            _setter("service_principal_id", service_principal_id)
         if start_date is not None:
-            pulumi.set(__self__, "start_date", start_date)
+            _setter("start_date", start_date)
         if thumbprint is not None:
-            pulumi.set(__self__, "thumbprint", thumbprint)
+            _setter("thumbprint", thumbprint)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -330,6 +364,10 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServicePrincipalTokenSigningCertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

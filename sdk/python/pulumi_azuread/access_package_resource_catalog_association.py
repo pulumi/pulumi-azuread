@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccessPackageResourceCatalogAssociationArgs', 'AccessPackageResourceCatalogAssociation']
@@ -23,9 +23,22 @@ class AccessPackageResourceCatalogAssociationArgs:
         :param pulumi.Input[str] resource_origin_id: The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_origin_system: The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
         """
-        pulumi.set(__self__, "catalog_id", catalog_id)
-        pulumi.set(__self__, "resource_origin_id", resource_origin_id)
-        pulumi.set(__self__, "resource_origin_system", resource_origin_system)
+        AccessPackageResourceCatalogAssociationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_id=catalog_id,
+            resource_origin_id=resource_origin_id,
+            resource_origin_system=resource_origin_system,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_id: pulumi.Input[str],
+             resource_origin_id: pulumi.Input[str],
+             resource_origin_system: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("catalog_id", catalog_id)
+        _setter("resource_origin_id", resource_origin_id)
+        _setter("resource_origin_system", resource_origin_system)
 
     @property
     @pulumi.getter(name="catalogId")
@@ -76,12 +89,25 @@ class _AccessPackageResourceCatalogAssociationState:
         :param pulumi.Input[str] resource_origin_id: The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_origin_system: The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
         """
+        _AccessPackageResourceCatalogAssociationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_id=catalog_id,
+            resource_origin_id=resource_origin_id,
+            resource_origin_system=resource_origin_system,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_id: Optional[pulumi.Input[str]] = None,
+             resource_origin_id: Optional[pulumi.Input[str]] = None,
+             resource_origin_system: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if catalog_id is not None:
-            pulumi.set(__self__, "catalog_id", catalog_id)
+            _setter("catalog_id", catalog_id)
         if resource_origin_id is not None:
-            pulumi.set(__self__, "resource_origin_id", resource_origin_id)
+            _setter("resource_origin_id", resource_origin_id)
         if resource_origin_system is not None:
-            pulumi.set(__self__, "resource_origin_system", resource_origin_system)
+            _setter("resource_origin_system", resource_origin_system)
 
     @property
     @pulumi.getter(name="catalogId")
@@ -229,6 +255,10 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessPackageResourceCatalogAssociationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

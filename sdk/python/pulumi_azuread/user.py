@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -88,74 +88,151 @@ class UserArgs:
         :param pulumi.Input[str] surname: The user's surname (family name or last name).
         :param pulumi.Input[str] usage_location: The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "user_principal_name", user_principal_name)
+        UserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            user_principal_name=user_principal_name,
+            account_enabled=account_enabled,
+            age_group=age_group,
+            business_phones=business_phones,
+            city=city,
+            company_name=company_name,
+            consent_provided_for_minor=consent_provided_for_minor,
+            cost_center=cost_center,
+            country=country,
+            department=department,
+            disable_password_expiration=disable_password_expiration,
+            disable_strong_password=disable_strong_password,
+            division=division,
+            employee_id=employee_id,
+            employee_type=employee_type,
+            fax_number=fax_number,
+            force_password_change=force_password_change,
+            given_name=given_name,
+            job_title=job_title,
+            mail=mail,
+            mail_nickname=mail_nickname,
+            manager_id=manager_id,
+            mobile_phone=mobile_phone,
+            office_location=office_location,
+            onpremises_immutable_id=onpremises_immutable_id,
+            other_mails=other_mails,
+            password=password,
+            postal_code=postal_code,
+            preferred_language=preferred_language,
+            show_in_address_list=show_in_address_list,
+            state=state,
+            street_address=street_address,
+            surname=surname,
+            usage_location=usage_location,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             user_principal_name: pulumi.Input[str],
+             account_enabled: Optional[pulumi.Input[bool]] = None,
+             age_group: Optional[pulumi.Input[str]] = None,
+             business_phones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             city: Optional[pulumi.Input[str]] = None,
+             company_name: Optional[pulumi.Input[str]] = None,
+             consent_provided_for_minor: Optional[pulumi.Input[str]] = None,
+             cost_center: Optional[pulumi.Input[str]] = None,
+             country: Optional[pulumi.Input[str]] = None,
+             department: Optional[pulumi.Input[str]] = None,
+             disable_password_expiration: Optional[pulumi.Input[bool]] = None,
+             disable_strong_password: Optional[pulumi.Input[bool]] = None,
+             division: Optional[pulumi.Input[str]] = None,
+             employee_id: Optional[pulumi.Input[str]] = None,
+             employee_type: Optional[pulumi.Input[str]] = None,
+             fax_number: Optional[pulumi.Input[str]] = None,
+             force_password_change: Optional[pulumi.Input[bool]] = None,
+             given_name: Optional[pulumi.Input[str]] = None,
+             job_title: Optional[pulumi.Input[str]] = None,
+             mail: Optional[pulumi.Input[str]] = None,
+             mail_nickname: Optional[pulumi.Input[str]] = None,
+             manager_id: Optional[pulumi.Input[str]] = None,
+             mobile_phone: Optional[pulumi.Input[str]] = None,
+             office_location: Optional[pulumi.Input[str]] = None,
+             onpremises_immutable_id: Optional[pulumi.Input[str]] = None,
+             other_mails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             postal_code: Optional[pulumi.Input[str]] = None,
+             preferred_language: Optional[pulumi.Input[str]] = None,
+             show_in_address_list: Optional[pulumi.Input[bool]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             street_address: Optional[pulumi.Input[str]] = None,
+             surname: Optional[pulumi.Input[str]] = None,
+             usage_location: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
+        _setter("user_principal_name", user_principal_name)
         if account_enabled is not None:
-            pulumi.set(__self__, "account_enabled", account_enabled)
+            _setter("account_enabled", account_enabled)
         if age_group is not None:
-            pulumi.set(__self__, "age_group", age_group)
+            _setter("age_group", age_group)
         if business_phones is not None:
-            pulumi.set(__self__, "business_phones", business_phones)
+            _setter("business_phones", business_phones)
         if city is not None:
-            pulumi.set(__self__, "city", city)
+            _setter("city", city)
         if company_name is not None:
-            pulumi.set(__self__, "company_name", company_name)
+            _setter("company_name", company_name)
         if consent_provided_for_minor is not None:
-            pulumi.set(__self__, "consent_provided_for_minor", consent_provided_for_minor)
+            _setter("consent_provided_for_minor", consent_provided_for_minor)
         if cost_center is not None:
-            pulumi.set(__self__, "cost_center", cost_center)
+            _setter("cost_center", cost_center)
         if country is not None:
-            pulumi.set(__self__, "country", country)
+            _setter("country", country)
         if department is not None:
-            pulumi.set(__self__, "department", department)
+            _setter("department", department)
         if disable_password_expiration is not None:
-            pulumi.set(__self__, "disable_password_expiration", disable_password_expiration)
+            _setter("disable_password_expiration", disable_password_expiration)
         if disable_strong_password is not None:
-            pulumi.set(__self__, "disable_strong_password", disable_strong_password)
+            _setter("disable_strong_password", disable_strong_password)
         if division is not None:
-            pulumi.set(__self__, "division", division)
+            _setter("division", division)
         if employee_id is not None:
-            pulumi.set(__self__, "employee_id", employee_id)
+            _setter("employee_id", employee_id)
         if employee_type is not None:
-            pulumi.set(__self__, "employee_type", employee_type)
+            _setter("employee_type", employee_type)
         if fax_number is not None:
-            pulumi.set(__self__, "fax_number", fax_number)
+            _setter("fax_number", fax_number)
         if force_password_change is not None:
-            pulumi.set(__self__, "force_password_change", force_password_change)
+            _setter("force_password_change", force_password_change)
         if given_name is not None:
-            pulumi.set(__self__, "given_name", given_name)
+            _setter("given_name", given_name)
         if job_title is not None:
-            pulumi.set(__self__, "job_title", job_title)
+            _setter("job_title", job_title)
         if mail is not None:
-            pulumi.set(__self__, "mail", mail)
+            _setter("mail", mail)
         if mail_nickname is not None:
-            pulumi.set(__self__, "mail_nickname", mail_nickname)
+            _setter("mail_nickname", mail_nickname)
         if manager_id is not None:
-            pulumi.set(__self__, "manager_id", manager_id)
+            _setter("manager_id", manager_id)
         if mobile_phone is not None:
-            pulumi.set(__self__, "mobile_phone", mobile_phone)
+            _setter("mobile_phone", mobile_phone)
         if office_location is not None:
-            pulumi.set(__self__, "office_location", office_location)
+            _setter("office_location", office_location)
         if onpremises_immutable_id is not None:
-            pulumi.set(__self__, "onpremises_immutable_id", onpremises_immutable_id)
+            _setter("onpremises_immutable_id", onpremises_immutable_id)
         if other_mails is not None:
-            pulumi.set(__self__, "other_mails", other_mails)
+            _setter("other_mails", other_mails)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if postal_code is not None:
-            pulumi.set(__self__, "postal_code", postal_code)
+            _setter("postal_code", postal_code)
         if preferred_language is not None:
-            pulumi.set(__self__, "preferred_language", preferred_language)
+            _setter("preferred_language", preferred_language)
         if show_in_address_list is not None:
-            pulumi.set(__self__, "show_in_address_list", show_in_address_list)
+            _setter("show_in_address_list", show_in_address_list)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if street_address is not None:
-            pulumi.set(__self__, "street_address", street_address)
+            _setter("street_address", street_address)
         if surname is not None:
-            pulumi.set(__self__, "surname", surname)
+            _setter("surname", surname)
         if usage_location is not None:
-            pulumi.set(__self__, "usage_location", usage_location)
+            _setter("usage_location", usage_location)
 
     @property
     @pulumi.getter(name="displayName")
@@ -682,102 +759,205 @@ class _UserState:
         :param pulumi.Input[str] user_principal_name: The user principal name (UPN) of the user.
         :param pulumi.Input[str] user_type: The user type in the directory. Possible values are `Guest` or `Member`.
         """
+        _UserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            about_me=about_me,
+            account_enabled=account_enabled,
+            age_group=age_group,
+            business_phones=business_phones,
+            city=city,
+            company_name=company_name,
+            consent_provided_for_minor=consent_provided_for_minor,
+            cost_center=cost_center,
+            country=country,
+            creation_type=creation_type,
+            department=department,
+            disable_password_expiration=disable_password_expiration,
+            disable_strong_password=disable_strong_password,
+            display_name=display_name,
+            division=division,
+            employee_id=employee_id,
+            employee_type=employee_type,
+            external_user_state=external_user_state,
+            fax_number=fax_number,
+            force_password_change=force_password_change,
+            given_name=given_name,
+            im_addresses=im_addresses,
+            job_title=job_title,
+            mail=mail,
+            mail_nickname=mail_nickname,
+            manager_id=manager_id,
+            mobile_phone=mobile_phone,
+            object_id=object_id,
+            office_location=office_location,
+            onpremises_distinguished_name=onpremises_distinguished_name,
+            onpremises_domain_name=onpremises_domain_name,
+            onpremises_immutable_id=onpremises_immutable_id,
+            onpremises_sam_account_name=onpremises_sam_account_name,
+            onpremises_security_identifier=onpremises_security_identifier,
+            onpremises_sync_enabled=onpremises_sync_enabled,
+            onpremises_user_principal_name=onpremises_user_principal_name,
+            other_mails=other_mails,
+            password=password,
+            postal_code=postal_code,
+            preferred_language=preferred_language,
+            proxy_addresses=proxy_addresses,
+            show_in_address_list=show_in_address_list,
+            state=state,
+            street_address=street_address,
+            surname=surname,
+            usage_location=usage_location,
+            user_principal_name=user_principal_name,
+            user_type=user_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             about_me: Optional[pulumi.Input[str]] = None,
+             account_enabled: Optional[pulumi.Input[bool]] = None,
+             age_group: Optional[pulumi.Input[str]] = None,
+             business_phones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             city: Optional[pulumi.Input[str]] = None,
+             company_name: Optional[pulumi.Input[str]] = None,
+             consent_provided_for_minor: Optional[pulumi.Input[str]] = None,
+             cost_center: Optional[pulumi.Input[str]] = None,
+             country: Optional[pulumi.Input[str]] = None,
+             creation_type: Optional[pulumi.Input[str]] = None,
+             department: Optional[pulumi.Input[str]] = None,
+             disable_password_expiration: Optional[pulumi.Input[bool]] = None,
+             disable_strong_password: Optional[pulumi.Input[bool]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             division: Optional[pulumi.Input[str]] = None,
+             employee_id: Optional[pulumi.Input[str]] = None,
+             employee_type: Optional[pulumi.Input[str]] = None,
+             external_user_state: Optional[pulumi.Input[str]] = None,
+             fax_number: Optional[pulumi.Input[str]] = None,
+             force_password_change: Optional[pulumi.Input[bool]] = None,
+             given_name: Optional[pulumi.Input[str]] = None,
+             im_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             job_title: Optional[pulumi.Input[str]] = None,
+             mail: Optional[pulumi.Input[str]] = None,
+             mail_nickname: Optional[pulumi.Input[str]] = None,
+             manager_id: Optional[pulumi.Input[str]] = None,
+             mobile_phone: Optional[pulumi.Input[str]] = None,
+             object_id: Optional[pulumi.Input[str]] = None,
+             office_location: Optional[pulumi.Input[str]] = None,
+             onpremises_distinguished_name: Optional[pulumi.Input[str]] = None,
+             onpremises_domain_name: Optional[pulumi.Input[str]] = None,
+             onpremises_immutable_id: Optional[pulumi.Input[str]] = None,
+             onpremises_sam_account_name: Optional[pulumi.Input[str]] = None,
+             onpremises_security_identifier: Optional[pulumi.Input[str]] = None,
+             onpremises_sync_enabled: Optional[pulumi.Input[bool]] = None,
+             onpremises_user_principal_name: Optional[pulumi.Input[str]] = None,
+             other_mails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             postal_code: Optional[pulumi.Input[str]] = None,
+             preferred_language: Optional[pulumi.Input[str]] = None,
+             proxy_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             show_in_address_list: Optional[pulumi.Input[bool]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             street_address: Optional[pulumi.Input[str]] = None,
+             surname: Optional[pulumi.Input[str]] = None,
+             usage_location: Optional[pulumi.Input[str]] = None,
+             user_principal_name: Optional[pulumi.Input[str]] = None,
+             user_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if about_me is not None:
-            pulumi.set(__self__, "about_me", about_me)
+            _setter("about_me", about_me)
         if account_enabled is not None:
-            pulumi.set(__self__, "account_enabled", account_enabled)
+            _setter("account_enabled", account_enabled)
         if age_group is not None:
-            pulumi.set(__self__, "age_group", age_group)
+            _setter("age_group", age_group)
         if business_phones is not None:
-            pulumi.set(__self__, "business_phones", business_phones)
+            _setter("business_phones", business_phones)
         if city is not None:
-            pulumi.set(__self__, "city", city)
+            _setter("city", city)
         if company_name is not None:
-            pulumi.set(__self__, "company_name", company_name)
+            _setter("company_name", company_name)
         if consent_provided_for_minor is not None:
-            pulumi.set(__self__, "consent_provided_for_minor", consent_provided_for_minor)
+            _setter("consent_provided_for_minor", consent_provided_for_minor)
         if cost_center is not None:
-            pulumi.set(__self__, "cost_center", cost_center)
+            _setter("cost_center", cost_center)
         if country is not None:
-            pulumi.set(__self__, "country", country)
+            _setter("country", country)
         if creation_type is not None:
-            pulumi.set(__self__, "creation_type", creation_type)
+            _setter("creation_type", creation_type)
         if department is not None:
-            pulumi.set(__self__, "department", department)
+            _setter("department", department)
         if disable_password_expiration is not None:
-            pulumi.set(__self__, "disable_password_expiration", disable_password_expiration)
+            _setter("disable_password_expiration", disable_password_expiration)
         if disable_strong_password is not None:
-            pulumi.set(__self__, "disable_strong_password", disable_strong_password)
+            _setter("disable_strong_password", disable_strong_password)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if division is not None:
-            pulumi.set(__self__, "division", division)
+            _setter("division", division)
         if employee_id is not None:
-            pulumi.set(__self__, "employee_id", employee_id)
+            _setter("employee_id", employee_id)
         if employee_type is not None:
-            pulumi.set(__self__, "employee_type", employee_type)
+            _setter("employee_type", employee_type)
         if external_user_state is not None:
-            pulumi.set(__self__, "external_user_state", external_user_state)
+            _setter("external_user_state", external_user_state)
         if fax_number is not None:
-            pulumi.set(__self__, "fax_number", fax_number)
+            _setter("fax_number", fax_number)
         if force_password_change is not None:
-            pulumi.set(__self__, "force_password_change", force_password_change)
+            _setter("force_password_change", force_password_change)
         if given_name is not None:
-            pulumi.set(__self__, "given_name", given_name)
+            _setter("given_name", given_name)
         if im_addresses is not None:
-            pulumi.set(__self__, "im_addresses", im_addresses)
+            _setter("im_addresses", im_addresses)
         if job_title is not None:
-            pulumi.set(__self__, "job_title", job_title)
+            _setter("job_title", job_title)
         if mail is not None:
-            pulumi.set(__self__, "mail", mail)
+            _setter("mail", mail)
         if mail_nickname is not None:
-            pulumi.set(__self__, "mail_nickname", mail_nickname)
+            _setter("mail_nickname", mail_nickname)
         if manager_id is not None:
-            pulumi.set(__self__, "manager_id", manager_id)
+            _setter("manager_id", manager_id)
         if mobile_phone is not None:
-            pulumi.set(__self__, "mobile_phone", mobile_phone)
+            _setter("mobile_phone", mobile_phone)
         if object_id is not None:
-            pulumi.set(__self__, "object_id", object_id)
+            _setter("object_id", object_id)
         if office_location is not None:
-            pulumi.set(__self__, "office_location", office_location)
+            _setter("office_location", office_location)
         if onpremises_distinguished_name is not None:
-            pulumi.set(__self__, "onpremises_distinguished_name", onpremises_distinguished_name)
+            _setter("onpremises_distinguished_name", onpremises_distinguished_name)
         if onpremises_domain_name is not None:
-            pulumi.set(__self__, "onpremises_domain_name", onpremises_domain_name)
+            _setter("onpremises_domain_name", onpremises_domain_name)
         if onpremises_immutable_id is not None:
-            pulumi.set(__self__, "onpremises_immutable_id", onpremises_immutable_id)
+            _setter("onpremises_immutable_id", onpremises_immutable_id)
         if onpremises_sam_account_name is not None:
-            pulumi.set(__self__, "onpremises_sam_account_name", onpremises_sam_account_name)
+            _setter("onpremises_sam_account_name", onpremises_sam_account_name)
         if onpremises_security_identifier is not None:
-            pulumi.set(__self__, "onpremises_security_identifier", onpremises_security_identifier)
+            _setter("onpremises_security_identifier", onpremises_security_identifier)
         if onpremises_sync_enabled is not None:
-            pulumi.set(__self__, "onpremises_sync_enabled", onpremises_sync_enabled)
+            _setter("onpremises_sync_enabled", onpremises_sync_enabled)
         if onpremises_user_principal_name is not None:
-            pulumi.set(__self__, "onpremises_user_principal_name", onpremises_user_principal_name)
+            _setter("onpremises_user_principal_name", onpremises_user_principal_name)
         if other_mails is not None:
-            pulumi.set(__self__, "other_mails", other_mails)
+            _setter("other_mails", other_mails)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if postal_code is not None:
-            pulumi.set(__self__, "postal_code", postal_code)
+            _setter("postal_code", postal_code)
         if preferred_language is not None:
-            pulumi.set(__self__, "preferred_language", preferred_language)
+            _setter("preferred_language", preferred_language)
         if proxy_addresses is not None:
-            pulumi.set(__self__, "proxy_addresses", proxy_addresses)
+            _setter("proxy_addresses", proxy_addresses)
         if show_in_address_list is not None:
-            pulumi.set(__self__, "show_in_address_list", show_in_address_list)
+            _setter("show_in_address_list", show_in_address_list)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if street_address is not None:
-            pulumi.set(__self__, "street_address", street_address)
+            _setter("street_address", street_address)
         if surname is not None:
-            pulumi.set(__self__, "surname", surname)
+            _setter("surname", surname)
         if usage_location is not None:
-            pulumi.set(__self__, "usage_location", usage_location)
+            _setter("usage_location", usage_location)
         if user_principal_name is not None:
-            pulumi.set(__self__, "user_principal_name", user_principal_name)
+            _setter("user_principal_name", user_principal_name)
         if user_type is not None:
-            pulumi.set(__self__, "user_type", user_type)
+            _setter("user_type", user_type)
 
     @property
     @pulumi.getter(name="aboutMe")
@@ -1517,6 +1697,10 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -14,14 +14,14 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocali
     public static final AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs Empty = new AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs();
 
     /**
-     * The localized content of this question.
+     * The localized content of this question choice.
      * 
      */
     @Import(name="content", required=true)
     private Output<String> content;
 
     /**
-     * @return The localized content of this question.
+     * @return The localized content of this question choice.
      * 
      */
     public Output<String> content() {
@@ -29,14 +29,14 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocali
     }
 
     /**
-     * The ISO 639 language code for this question content.
+     * The ISO 639 language code for this question choice content.
      * 
      */
     @Import(name="languageCode", required=true)
     private Output<String> languageCode;
 
     /**
-     * @return The ISO 639 language code for this question content.
+     * @return The ISO 639 language code for this question choice content.
      * 
      */
     public Output<String> languageCode() {
@@ -69,7 +69,7 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocali
         }
 
         /**
-         * @param content The localized content of this question.
+         * @param content The localized content of this question choice.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocali
         }
 
         /**
-         * @param content The localized content of this question.
+         * @param content The localized content of this question choice.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocali
         }
 
         /**
-         * @param languageCode The ISO 639 language code for this question content.
+         * @param languageCode The ISO 639 language code for this question choice content.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocali
         }
 
         /**
-         * @param languageCode The ISO 639 language code for this question content.
+         * @param languageCode The ISO 639 language code for this question choice content.
          * 
          * @return builder
          * 

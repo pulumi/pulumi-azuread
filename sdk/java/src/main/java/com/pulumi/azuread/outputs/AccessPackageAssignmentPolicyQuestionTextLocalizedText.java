@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class AccessPackageAssignmentPolicyQuestionTextLocalizedText {
     /**
-     * @return The localized content of this question.
+     * @return The localized content of this question choice.
      * 
      */
     private String content;
     /**
-     * @return The ISO 639 language code for this question content.
+     * @return The ISO 639 language code for this question choice content.
      * 
      */
     private String languageCode;
 
     private AccessPackageAssignmentPolicyQuestionTextLocalizedText() {}
     /**
-     * @return The localized content of this question.
+     * @return The localized content of this question choice.
      * 
      */
     public String content() {
         return this.content;
     }
     /**
-     * @return The ISO 639 language code for this question content.
+     * @return The ISO 639 language code for this question choice content.
      * 
      */
     public String languageCode() {

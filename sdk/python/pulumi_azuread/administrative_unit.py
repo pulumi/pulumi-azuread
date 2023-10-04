@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AdministrativeUnitArgs', 'AdministrativeUnit']
@@ -29,15 +29,32 @@ class AdministrativeUnitArgs:
                !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
         """
-        pulumi.set(__self__, "display_name", display_name)
+        AdministrativeUnitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            description=description,
+            hidden_membership_enabled=hidden_membership_enabled,
+            members=members,
+            prevent_duplicate_names=prevent_duplicate_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             hidden_membership_enabled: Optional[pulumi.Input[bool]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if hidden_membership_enabled is not None:
-            pulumi.set(__self__, "hidden_membership_enabled", hidden_membership_enabled)
+            _setter("hidden_membership_enabled", hidden_membership_enabled)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if prevent_duplicate_names is not None:
-            pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
+            _setter("prevent_duplicate_names", prevent_duplicate_names)
 
     @property
     @pulumi.getter(name="displayName")
@@ -122,18 +139,37 @@ class _AdministrativeUnitState:
         :param pulumi.Input[str] object_id: The object ID of the administrative unit.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
         """
+        _AdministrativeUnitState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            display_name=display_name,
+            hidden_membership_enabled=hidden_membership_enabled,
+            members=members,
+            object_id=object_id,
+            prevent_duplicate_names=prevent_duplicate_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             hidden_membership_enabled: Optional[pulumi.Input[bool]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             object_id: Optional[pulumi.Input[str]] = None,
+             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if hidden_membership_enabled is not None:
-            pulumi.set(__self__, "hidden_membership_enabled", hidden_membership_enabled)
+            _setter("hidden_membership_enabled", hidden_membership_enabled)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if object_id is not None:
-            pulumi.set(__self__, "object_id", object_id)
+            _setter("object_id", object_id)
         if prevent_duplicate_names is not None:
-            pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
+            _setter("prevent_duplicate_names", prevent_duplicate_names)
 
     @property
     @pulumi.getter
@@ -309,6 +345,10 @@ class AdministrativeUnit(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AdministrativeUnitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

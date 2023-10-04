@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,9 +23,20 @@ class SynchronizationSecretArgs:
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]] credentials: One or more `credential` blocks as documented below.
         """
-        pulumi.set(__self__, "service_principal_id", service_principal_id)
+        SynchronizationSecretArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_principal_id=service_principal_id,
+            credentials=credentials,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_principal_id: pulumi.Input[str],
+             credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service_principal_id", service_principal_id)
         if credentials is not None:
-            pulumi.set(__self__, "credentials", credentials)
+            _setter("credentials", credentials)
 
     @property
     @pulumi.getter(name="servicePrincipalId")
@@ -62,10 +73,21 @@ class _SynchronizationSecretState:
         :param pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]] credentials: One or more `credential` blocks as documented below.
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
+        _SynchronizationSecretState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            credentials=credentials,
+            service_principal_id=service_principal_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None,
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if credentials is not None:
-            pulumi.set(__self__, "credentials", credentials)
+            _setter("credentials", credentials)
         if service_principal_id is not None:
-            pulumi.set(__self__, "service_principal_id", service_principal_id)
+            _setter("service_principal_id", service_principal_id)
 
     @property
     @pulumi.getter
@@ -213,6 +235,10 @@ class SynchronizationSecret(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SynchronizationSecretArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -167,44 +167,44 @@ export interface AccessPackageAssignmentPolicyQuestionChoice {
 
 export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
     /**
-     * The default text of this question.
+     * The default text of this question choice.
      */
     defaultText: string;
     /**
-     * One or more blocks describing localized text of this question, as documented below.
+     * One or more blocks describing localized text of this question choice, as documented below.
      */
     localizedTexts?: outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText[];
 }
 
 export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
     /**
-     * The localized content of this question.
+     * The localized content of this question choice.
      */
     content: string;
     /**
-     * The ISO 639 language code for this question content.
+     * The ISO 639 language code for this question choice content.
      */
     languageCode: string;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionText {
     /**
-     * The default text of this question.
+     * The default text of this question choice.
      */
     defaultText: string;
     /**
-     * One or more blocks describing localized text of this question, as documented below.
+     * One or more blocks describing localized text of this question choice, as documented below.
      */
     localizedTexts?: outputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText[];
 }
 
 export interface AccessPackageAssignmentPolicyQuestionTextLocalizedText {
     /**
-     * The localized content of this question.
+     * The localized content of this question choice.
      */
     content: string;
     /**
-     * The ISO 639 language code for this question content.
+     * The ISO 639 language code for this question choice content.
      */
     languageCode: string;
 }
