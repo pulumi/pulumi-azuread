@@ -9,7 +9,7 @@ TFGEN := pulumi-tfgen-$(PACK)
 PROVIDER := pulumi-resource-$(PACK)
 VERSION := $(shell pulumictl get version)
 JAVA_GEN := pulumi-java-gen
-JAVA_GEN_VERSION := v0.9.7
+JAVA_GEN_VERSION := v0.5.4
 TESTPARALLELISM := 10
 WORKING_DIR := $(shell pwd)
 
@@ -96,7 +96,8 @@ install_nodejs_sdk:
 install_plugins:
 	[ -x "$(shell command -v pulumi 2>/dev/null)" ] || curl -fsSL https://get.pulumi.com | sh
 	pulumi plugin install resource time 0.0.15
-
+	pulumi plugin install resource std 1.4.0
+	pulumi plugin install resource azure 5.52.0
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
@@ -126,4 +127,18 @@ upstream.rebase:
 bin/pulumi-java-gen:
 	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
 
-.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase
+# To make an immediately observable change to .ci-mgmt.yaml:
+#
+# - Edit .ci-mgmt.yaml
+# - Run make ci-mgmt to apply the change locally.
+#
+ci-mgmt: .ci-mgmt.yaml
+	rm .github/workflows/*.yml # Copied from update-workflows.yml
+	go run github.com/pulumi/ci-mgmt/provider-ci@master generate \
+		--name pulumi/pulumi-$(PACK) \
+		--out . \
+		--template bridged-provider \
+		--config $<
+
+
+.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase ci-mgmt
