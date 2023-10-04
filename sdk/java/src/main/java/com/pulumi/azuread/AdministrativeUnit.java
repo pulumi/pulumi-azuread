@@ -74,7 +74,7 @@ public class AdministrativeUnit extends com.pulumi.resources.CustomResource {
      * The description of the administrative unit.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -88,7 +88,7 @@ public class AdministrativeUnit extends com.pulumi.resources.CustomResource {
      * The display name of the administrative unit.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -102,7 +102,7 @@ public class AdministrativeUnit extends com.pulumi.resources.CustomResource {
      * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      * 
      */
-    @Export(name="hiddenMembershipEnabled", type=Boolean.class, parameters={})
+    @Export(name="hiddenMembershipEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hiddenMembershipEnabled;
 
     /**
@@ -118,7 +118,7 @@ public class AdministrativeUnit extends com.pulumi.resources.CustomResource {
      * !&gt; **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      * 
      */
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     /**
@@ -134,7 +134,7 @@ public class AdministrativeUnit extends com.pulumi.resources.CustomResource {
      * The object ID of the administrative unit.
      * 
      */
-    @Export(name="objectId", type=String.class, parameters={})
+    @Export(name="objectId", refs={String.class}, tree="[0]")
     private Output<String> objectId;
 
     /**
@@ -148,7 +148,7 @@ public class AdministrativeUnit extends com.pulumi.resources.CustomResource {
      * If `true`, will return an error if an existing administrative unit is found with the same name
      * 
      */
-    @Export(name="preventDuplicateNames", type=Boolean.class, parameters={})
+    @Export(name="preventDuplicateNames", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> preventDuplicateNames;
 
     /**

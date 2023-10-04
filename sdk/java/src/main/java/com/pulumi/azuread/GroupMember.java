@@ -89,7 +89,7 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
      * The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="groupObjectId", type=String.class, parameters={})
+    @Export(name="groupObjectId", refs={String.class}, tree="[0]")
     private Output<String> groupObjectId;
 
     /**
@@ -103,7 +103,7 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
      * The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="memberObjectId", type=String.class, parameters={})
+    @Export(name="memberObjectId", refs={String.class}, tree="[0]")
     private Output<String> memberObjectId;
 
     /**

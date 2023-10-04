@@ -74,7 +74,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="applicationObjectId", type=String.class, parameters={})
+    @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
     private Output<String> applicationObjectId;
 
     /**
@@ -88,7 +88,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      * 
      */
-    @Export(name="audiences", type=List.class, parameters={String.class})
+    @Export(name="audiences", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> audiences;
 
     /**
@@ -102,7 +102,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * A UUID used to uniquely identify this federated identity credential.
      * 
      */
-    @Export(name="credentialId", type=String.class, parameters={})
+    @Export(name="credentialId", refs={String.class}, tree="[0]")
     private Output<String> credentialId;
 
     /**
@@ -116,7 +116,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * A description for the federated identity credential.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -130,7 +130,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * A unique display name for the federated identity credential. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -144,7 +144,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
      * 
      */
-    @Export(name="issuer", type=String.class, parameters={})
+    @Export(name="issuer", refs={String.class}, tree="[0]")
     private Output<String> issuer;
 
     /**
@@ -158,7 +158,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
      * 
      */
-    @Export(name="subject", type=String.class, parameters={})
+    @Export(name="subject", refs={String.class}, tree="[0]")
     private Output<String> subject;
 
     /**

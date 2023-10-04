@@ -98,7 +98,7 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
      * The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="applicationObjectId", type=String.class, parameters={})
+    @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
     private Output<String> applicationObjectId;
 
     /**
@@ -112,7 +112,7 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
      * The application ID of the pre-authorized application
      * 
      */
-    @Export(name="authorizedAppId", type=String.class, parameters={})
+    @Export(name="authorizedAppId", refs={String.class}, tree="[0]")
     private Output<String> authorizedAppId;
 
     /**
@@ -126,7 +126,7 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
      * A set of permission scope IDs required by the authorized application.
      * 
      */
-    @Export(name="permissionIds", type=List.class, parameters={String.class})
+    @Export(name="permissionIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> permissionIds;
 
     /**
