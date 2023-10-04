@@ -9,3 +9,6 @@ env:
   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
 makeTemplate: bridged
 team: ecosystem
+plugins:
+  - name: time
+    version: "0.0.15"
