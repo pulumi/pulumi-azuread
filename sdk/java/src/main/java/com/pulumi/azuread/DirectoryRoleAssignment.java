@@ -39,7 +39,7 @@ public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource
      * Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="appScopeId", type=String.class, parameters={})
+    @Export(name="appScopeId", refs={String.class}, tree="[0]")
     private Output<String> appScopeId;
 
     /**
@@ -57,7 +57,7 @@ public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource
      * 
      */
     @Deprecated /* `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider */
-    @Export(name="appScopeObjectId", type=String.class, parameters={})
+    @Export(name="appScopeObjectId", refs={String.class}, tree="[0]")
     private Output<String> appScopeObjectId;
 
     /**
@@ -71,7 +71,7 @@ public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource
      * Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="directoryScopeId", type=String.class, parameters={})
+    @Export(name="directoryScopeId", refs={String.class}, tree="[0]")
     private Output<String> directoryScopeId;
 
     /**
@@ -85,7 +85,7 @@ public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource
      * Identifier of the directory object representing the scope of the assignment
      * 
      */
-    @Export(name="directoryScopeObjectId", type=String.class, parameters={})
+    @Export(name="directoryScopeObjectId", refs={String.class}, tree="[0]")
     private Output<String> directoryScopeObjectId;
 
     /**
@@ -99,7 +99,7 @@ public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource
      * The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="principalObjectId", type=String.class, parameters={})
+    @Export(name="principalObjectId", refs={String.class}, tree="[0]")
     private Output<String> principalObjectId;
 
     /**
@@ -113,7 +113,7 @@ public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource
      * The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**

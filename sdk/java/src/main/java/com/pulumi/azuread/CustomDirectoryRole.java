@@ -90,7 +90,7 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
      * The description of the custom directory role.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -104,7 +104,7 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
      * The display name of the custom directory role.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -118,7 +118,7 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
      * Indicates whether the role is enabled for assignment.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -132,7 +132,7 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
      * The object ID of the custom directory role.
      * 
      */
-    @Export(name="objectId", type=String.class, parameters={})
+    @Export(name="objectId", refs={String.class}, tree="[0]")
     private Output<String> objectId;
 
     /**
@@ -146,7 +146,7 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
      * A collection of `permissions` blocks as documented below.
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={CustomDirectoryRolePermission.class})
+    @Export(name="permissions", refs={List.class,CustomDirectoryRolePermission.class}, tree="[0,1]")
     private Output<List<CustomDirectoryRolePermission>> permissions;
 
     /**
@@ -160,7 +160,7 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
      * Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="templateId", type=String.class, parameters={})
+    @Export(name="templateId", refs={String.class}, tree="[0]")
     private Output<String> templateId;
 
     /**
@@ -174,7 +174,7 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
      * The version of the role definition. This can be any arbitrary string between 1-128 characters.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**

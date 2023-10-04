@@ -142,7 +142,7 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      * A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
      * 
      */
-    @Export(name="message", type=InvitationMessage.class, parameters={})
+    @Export(name="message", refs={InvitationMessage.class}, tree="[0]")
     private Output</* @Nullable */ InvitationMessage> message;
 
     /**
@@ -156,7 +156,7 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      * The URL the user can use to redeem their invitation.
      * 
      */
-    @Export(name="redeemUrl", type=String.class, parameters={})
+    @Export(name="redeemUrl", refs={String.class}, tree="[0]")
     private Output<String> redeemUrl;
 
     /**
@@ -170,7 +170,7 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      * The URL that the user should be redirected to once the invitation is redeemed.
      * 
      */
-    @Export(name="redirectUrl", type=String.class, parameters={})
+    @Export(name="redirectUrl", refs={String.class}, tree="[0]")
     private Output<String> redirectUrl;
 
     /**
@@ -184,7 +184,7 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      * The display name of the user being invited.
      * 
      */
-    @Export(name="userDisplayName", type=String.class, parameters={})
+    @Export(name="userDisplayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userDisplayName;
 
     /**
@@ -198,7 +198,7 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      * The email address of the user being invited.
      * 
      */
-    @Export(name="userEmailAddress", type=String.class, parameters={})
+    @Export(name="userEmailAddress", refs={String.class}, tree="[0]")
     private Output<String> userEmailAddress;
 
     /**
@@ -212,7 +212,7 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      * Object ID of the invited user.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
@@ -226,7 +226,7 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      * The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
      * 
      */
-    @Export(name="userType", type=String.class, parameters={})
+    @Export(name="userType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userType;
 
     /**
