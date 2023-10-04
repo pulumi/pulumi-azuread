@@ -12,3 +12,7 @@ team: ecosystem
 plugins:
   - name: time
     version: "0.0.15"
+  - name: std
+    version: "1.4.0"
+  - name: azure
+    version: "5.52.0"
