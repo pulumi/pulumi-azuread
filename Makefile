@@ -93,6 +93,9 @@ install_nodejs_sdk:
 install_plugins:
 	[ -x "$(shell command -v pulumi 2>/dev/null)" ] || curl -fsSL https://get.pulumi.com | sh
 		pulumi plugin install resource time 0.0.15
+		pulumi plugin install resource std 1.4.0
+		pulumi plugin install resource azure 5.52.0
+		pulumi plugin install converter terraform 1.0.9
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
