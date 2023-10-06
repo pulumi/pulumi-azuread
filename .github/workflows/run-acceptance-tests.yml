@@ -187,6 +187,8 @@ jobs:
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
         repo: pulumi/schema-tools
+    - name: Unit-test provider code
+      run: make test_provider
     - name: Build tfgen & provider binaries
       run: make provider
     - if: github.event_name == 'pull_request'
