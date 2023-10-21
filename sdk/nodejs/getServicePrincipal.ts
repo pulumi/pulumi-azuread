@@ -30,14 +30,14 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * *Look up by application ID (client ID)*
+ * *Look up by client ID*
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = azuread.getServicePrincipal({
- *     applicationId: "00000000-0000-0000-0000-000000000000",
+ *     clientId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
  *
@@ -58,6 +58,7 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
         "applicationId": args.applicationId,
+        "clientId": args.clientId,
         "displayName": args.displayName,
         "objectId": args.objectId,
     }, opts);
@@ -68,9 +69,13 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
  */
 export interface GetServicePrincipalArgs {
     /**
-     * The application ID (client ID) of the application associated with this service principal.
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: string;
+    /**
+     * The client ID of the application associated with this service principal.
+     */
+    clientId?: string;
     /**
      * The display name of the application associated with this service principal.
      */
@@ -78,7 +83,7 @@ export interface GetServicePrincipalArgs {
     /**
      * The object ID of the service principal.
      *
-     * > One of `applicationId`, `displayName` or `objectId` must be specified.
+     * > One of `clientId`, `displayName` or `objectId` must be specified.
      */
     objectId?: string;
 }
@@ -88,7 +93,7 @@ export interface GetServicePrincipalArgs {
  */
 export interface GetServicePrincipalResult {
     /**
-     * Whether or not the service principal account is enabled.
+     * Whether the service principal account is enabled.
      */
     readonly accountEnabled: boolean;
     /**
@@ -108,13 +113,17 @@ export interface GetServicePrincipalResult {
      */
     readonly appRoles: outputs.GetServicePrincipalAppRole[];
     /**
-     * The application ID (client ID) of the application associated with this service principal.
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     readonly applicationId: string;
     /**
      * The tenant ID where the associated application is registered.
      */
     readonly applicationTenantId: string;
+    /**
+     * The client ID of the application associated with this service principal.
+     */
+    readonly clientId: string;
     /**
      * Permission help text that appears in the admin app assignment and consent experiences.
      */
@@ -223,14 +232,14 @@ export interface GetServicePrincipalResult {
  * });
  * ```
  *
- * *Look up by application ID (client ID)*
+ * *Look up by client ID*
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = azuread.getServicePrincipal({
- *     applicationId: "00000000-0000-0000-0000-000000000000",
+ *     clientId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
  *
@@ -254,9 +263,13 @@ export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, 
  */
 export interface GetServicePrincipalOutputArgs {
     /**
-     * The application ID (client ID) of the application associated with this service principal.
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: pulumi.Input<string>;
+    /**
+     * The client ID of the application associated with this service principal.
+     */
+    clientId?: pulumi.Input<string>;
     /**
      * The display name of the application associated with this service principal.
      */
@@ -264,7 +277,7 @@ export interface GetServicePrincipalOutputArgs {
     /**
      * The object ID of the service principal.
      *
-     * > One of `applicationId`, `displayName` or `objectId` must be specified.
+     * > One of `clientId`, `displayName` or `objectId` must be specified.
      */
     objectId?: pulumi.Input<string>;
 }

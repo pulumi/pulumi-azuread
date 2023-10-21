@@ -59,7 +59,19 @@ class ServicePrincipalCertificateArgs:
              key_id: Optional[pulumi.Input[str]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         _setter("service_principal_id", service_principal_id)
         _setter("value", value)
         if encoding is not None:
@@ -224,7 +236,19 @@ class _ServicePrincipalCertificateState:
              start_date: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         if encoding is not None:
             _setter("encoding", encoding)
         if end_date is not None:
@@ -358,22 +382,12 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a certificate associated with a service principal within Azure Active Directory.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-
         ## Import
 
         Certificates can be imported using the object ID of the associated service principal and the key ID of the certificate credential, e.g.
 
         ```sh
-         $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+         $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
 
          -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
@@ -400,22 +414,12 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
                  args: ServicePrincipalCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a certificate associated with a service principal within Azure Active Directory.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-
         ## Import
 
         Certificates can be imported using the object ID of the associated service principal and the key ID of the certificate credential, e.g.
 
         ```sh
-         $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+         $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
 
          -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.

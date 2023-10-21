@@ -86,7 +86,7 @@ public class DirectoryRoleEligibilityScheduleRequest extends com.pulumi.resource
      * Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="directoryScopeId", refs={String.class}, tree="[0]")
+    @Export(name="directoryScopeId", type=String.class, parameters={})
     private Output<String> directoryScopeId;
 
     /**
@@ -100,7 +100,7 @@ public class DirectoryRoleEligibilityScheduleRequest extends com.pulumi.resource
      * Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="justification", refs={String.class}, tree="[0]")
+    @Export(name="justification", type=String.class, parameters={})
     private Output<String> justification;
 
     /**
@@ -114,7 +114,7 @@ public class DirectoryRoleEligibilityScheduleRequest extends com.pulumi.resource
      * The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="principalId", refs={String.class}, tree="[0]")
+    @Export(name="principalId", type=String.class, parameters={})
     private Output<String> principalId;
 
     /**
@@ -128,7 +128,7 @@ public class DirectoryRoleEligibilityScheduleRequest extends com.pulumi.resource
      * The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="roleDefinitionId", refs={String.class}, tree="[0]")
+    @Export(name="roleDefinitionId", type=String.class, parameters={})
     private Output<String> roleDefinitionId;
 
     /**

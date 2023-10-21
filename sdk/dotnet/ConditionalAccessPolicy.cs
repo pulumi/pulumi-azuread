@@ -39,7 +39,7 @@ namespace Pulumi.AzureAD
     ///         {
     ///             Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs
     ///             {
-    ///                 ExcludedApplications = new[] {},
+    ///                 ExcludedApplications = new() { },
     ///                 IncludedApplications = new[]
     ///                 {
     ///                     "All",
@@ -156,7 +156,7 @@ namespace Pulumi.AzureAD
     ///                 {
     ///                     current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
     ///                 },
-    ///                 ExcludedServicePrincipals = new[] {},
+    ///                 ExcludedServicePrincipals = new() { },
     ///             },
     ///             Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs
     ///             {

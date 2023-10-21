@@ -16,10 +16,21 @@ from .administrative_unit_member import *
 from .administrative_unit_role_member import *
 from .app_role_assignment import *
 from .application import *
+from .application_api_access import *
+from .application_app_role import *
 from .application_certificate import *
+from .application_fallback_public_client import *
 from .application_federated_identity_credential import *
+from .application_from_template import *
+from .application_identifier_uri import *
+from .application_known_clients import *
+from .application_owner import *
 from .application_password import *
+from .application_permission_scope import *
 from .application_pre_authorized import *
+from .application_redirect_uris import *
+from .application_registration import *
+from .authentication_strength_policy import *
 from .claims_mapping_policy import *
 from .conditional_access_policy import *
 from .custom_directory_role import *
@@ -164,10 +175,34 @@ _utilities.register(
  },
  {
   "pkg": "azuread",
+  "mod": "index/applicationApiAccess",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationApiAccess:ApplicationApiAccess": "ApplicationApiAccess"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/applicationAppRole",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationAppRole:ApplicationAppRole": "ApplicationAppRole"
+  }
+ },
+ {
+  "pkg": "azuread",
   "mod": "index/applicationCertificate",
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/applicationCertificate:ApplicationCertificate": "ApplicationCertificate"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/applicationFallbackPublicClient",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient": "ApplicationFallbackPublicClient"
   }
  },
  {
@@ -180,6 +215,38 @@ _utilities.register(
  },
  {
   "pkg": "azuread",
+  "mod": "index/applicationFromTemplate",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationFromTemplate:ApplicationFromTemplate": "ApplicationFromTemplate"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/applicationIdentifierUri",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationIdentifierUri:ApplicationIdentifierUri": "ApplicationIdentifierUri"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/applicationKnownClients",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationKnownClients:ApplicationKnownClients": "ApplicationKnownClients"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/applicationOwner",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationOwner:ApplicationOwner": "ApplicationOwner"
+  }
+ },
+ {
+  "pkg": "azuread",
   "mod": "index/applicationPassword",
   "fqn": "pulumi_azuread",
   "classes": {
@@ -188,10 +255,42 @@ _utilities.register(
  },
  {
   "pkg": "azuread",
+  "mod": "index/applicationPermissionScope",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationPermissionScope:ApplicationPermissionScope": "ApplicationPermissionScope"
+  }
+ },
+ {
+  "pkg": "azuread",
   "mod": "index/applicationPreAuthorized",
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized": "ApplicationPreAuthorized"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/applicationRedirectUris",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationRedirectUris:ApplicationRedirectUris": "ApplicationRedirectUris"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/applicationRegistration",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationRegistration:ApplicationRegistration": "ApplicationRegistration"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/authenticationStrengthPolicy",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy": "AuthenticationStrengthPolicy"
   }
  },
  {

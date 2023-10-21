@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * const example = azuread.getApplication({
  *     displayName: "My First AzureAD Application",
  * });
- * export const applicationObjectId = example.then(example => example.id);
+ * export const applicationObjectId = example.then(example => example.objectId);
  * ```
  */
 export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
@@ -35,6 +35,7 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getApplication:getApplication", {
         "applicationId": args.applicationId,
+        "clientId": args.clientId,
         "displayName": args.displayName,
         "objectId": args.objectId,
     }, opts);
@@ -45,9 +46,13 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
  */
 export interface GetApplicationArgs {
     /**
-     * Specifies the Application ID (also called Client ID).
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: string;
+    /**
+     * Specifies the Client ID of the application.
+     */
+    clientId?: string;
     /**
      * Specifies the display name of the application.
      */
@@ -55,7 +60,7 @@ export interface GetApplicationArgs {
     /**
      * Specifies the Object ID of the application.
      *
-     * > One of `objectId`, `applicationId` or `displayName` must be specified.
+     * > One of `clientId`, `displayName`, or `objectId` must be specified.
      */
     objectId?: string;
 }
@@ -77,9 +82,13 @@ export interface GetApplicationResult {
      */
     readonly appRoles: outputs.GetApplicationAppRole[];
     /**
-     * The Application ID (also called Client ID).
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     readonly applicationId: string;
+    /**
+     * The Client ID for the application.
+     */
+    readonly clientId: string;
     /**
      * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
      */
@@ -213,7 +222,7 @@ export interface GetApplicationResult {
  * const example = azuread.getApplication({
  *     displayName: "My First AzureAD Application",
  * });
- * export const applicationObjectId = example.then(example => example.id);
+ * export const applicationObjectId = example.then(example => example.objectId);
  * ```
  */
 export function getApplicationOutput(args?: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
@@ -225,9 +234,13 @@ export function getApplicationOutput(args?: GetApplicationOutputArgs, opts?: pul
  */
 export interface GetApplicationOutputArgs {
     /**
-     * Specifies the Application ID (also called Client ID).
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: pulumi.Input<string>;
+    /**
+     * Specifies the Client ID of the application.
+     */
+    clientId?: pulumi.Input<string>;
     /**
      * Specifies the display name of the application.
      */
@@ -235,7 +248,7 @@ export interface GetApplicationOutputArgs {
     /**
      * Specifies the Object ID of the application.
      *
-     * > One of `objectId`, `applicationId` or `displayName` must be specified.
+     * > One of `clientId`, `displayName`, or `objectId` must be specified.
      */
     objectId?: pulumi.Input<string>;
 }

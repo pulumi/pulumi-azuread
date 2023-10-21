@@ -31,7 +31,13 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
              _setter: Callable[[Any, Any], None],
              claims_mapping_policy_id: pulumi.Input[str],
              service_principal_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'claimsMappingPolicyId' in kwargs:
+            claims_mapping_policy_id = kwargs['claimsMappingPolicyId']
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+
         _setter("claims_mapping_policy_id", claims_mapping_policy_id)
         _setter("service_principal_id", service_principal_id)
 
@@ -80,7 +86,13 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
              _setter: Callable[[Any, Any], None],
              claims_mapping_policy_id: Optional[pulumi.Input[str]] = None,
              service_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'claimsMappingPolicyId' in kwargs:
+            claims_mapping_policy_id = kwargs['claimsMappingPolicyId']
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+
         if claims_mapping_policy_id is not None:
             _setter("claims_mapping_policy_id", claims_mapping_policy_id)
         if service_principal_id is not None:

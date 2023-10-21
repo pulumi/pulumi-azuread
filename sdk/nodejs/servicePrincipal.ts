@@ -86,7 +86,7 @@ import * as utilities from "./utilities";
  * Service principals can be imported using their object ID, e.g.
  *
  * ```sh
- *  $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
+ *  $ pulumi import azuread:index/servicePrincipal:ServicePrincipal example 00000000-0000-0000-0000-000000000000
  * ```
  */
 export class ServicePrincipal extends pulumi.CustomResource {
@@ -138,13 +138,19 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly appRoles!: pulumi.Output<outputs.ServicePrincipalAppRole[]>;
     /**
-     * The application ID (client ID) of the application for which to create a service principal.
+     * The application ID (client ID) of the application for which to create a service principal
+     *
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
      * The tenant ID where the associated application is registered.
      */
     public /*out*/ readonly applicationTenantId!: pulumi.Output<string>;
+    /**
+     * The client ID of the application for which to create a service principal.
+     */
+    public readonly clientId!: pulumi.Output<string>;
     /**
      * A description of the service principal provided for internal end-users.
      */
@@ -247,7 +253,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ServicePrincipalArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ServicePrincipalArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePrincipalArgs | ServicePrincipalState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -260,6 +266,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             resourceInputs["appRoles"] = state ? state.appRoles : undefined;
             resourceInputs["applicationId"] = state ? state.applicationId : undefined;
             resourceInputs["applicationTenantId"] = state ? state.applicationTenantId : undefined;
+            resourceInputs["clientId"] = state ? state.clientId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["featureTags"] = state ? state.featureTags : undefined;
@@ -284,13 +291,11 @@ export class ServicePrincipal extends pulumi.CustomResource {
             resourceInputs["useExisting"] = state ? state.useExisting : undefined;
         } else {
             const args = argsOrState as ServicePrincipalArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'applicationId'");
-            }
             resourceInputs["accountEnabled"] = args ? args.accountEnabled : undefined;
             resourceInputs["alternativeNames"] = args ? args.alternativeNames : undefined;
             resourceInputs["appRoleAssignmentRequired"] = args ? args.appRoleAssignmentRequired : undefined;
             resourceInputs["applicationId"] = args ? args.applicationId : undefined;
+            resourceInputs["clientId"] = args ? args.clientId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["featureTags"] = args ? args.featureTags : undefined;
             resourceInputs["features"] = args ? args.features : undefined;
@@ -347,13 +352,19 @@ export interface ServicePrincipalState {
      */
     appRoles?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalAppRole>[]>;
     /**
-     * The application ID (client ID) of the application for which to create a service principal.
+     * The application ID (client ID) of the application for which to create a service principal
+     *
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: pulumi.Input<string>;
     /**
      * The tenant ID where the associated application is registered.
      */
     applicationTenantId?: pulumi.Input<string>;
+    /**
+     * The client ID of the application for which to create a service principal.
+     */
+    clientId?: pulumi.Input<string>;
     /**
      * A description of the service principal provided for internal end-users.
      */
@@ -467,9 +478,15 @@ export interface ServicePrincipalArgs {
      */
     appRoleAssignmentRequired?: pulumi.Input<boolean>;
     /**
-     * The application ID (client ID) of the application for which to create a service principal.
+     * The application ID (client ID) of the application for which to create a service principal
+     *
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
-    applicationId: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string>;
+    /**
+     * The client ID of the application for which to create a service principal.
+     */
+    clientId?: pulumi.Input<string>;
     /**
      * A description of the service principal provided for internal end-users.
      */

@@ -47,7 +47,21 @@ class DirectoryRoleAssignmentArgs:
              app_scope_object_id: Optional[pulumi.Input[str]] = None,
              directory_scope_id: Optional[pulumi.Input[str]] = None,
              directory_scope_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'principalObjectId' in kwargs:
+            principal_object_id = kwargs['principalObjectId']
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if 'appScopeId' in kwargs:
+            app_scope_id = kwargs['appScopeId']
+        if 'appScopeObjectId' in kwargs:
+            app_scope_object_id = kwargs['appScopeObjectId']
+        if 'directoryScopeId' in kwargs:
+            directory_scope_id = kwargs['directoryScopeId']
+        if 'directoryScopeObjectId' in kwargs:
+            directory_scope_object_id = kwargs['directoryScopeObjectId']
+
         _setter("principal_object_id", principal_object_id)
         _setter("role_id", role_id)
         if app_scope_id is not None:
@@ -174,7 +188,21 @@ class _DirectoryRoleAssignmentState:
              directory_scope_object_id: Optional[pulumi.Input[str]] = None,
              principal_object_id: Optional[pulumi.Input[str]] = None,
              role_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appScopeId' in kwargs:
+            app_scope_id = kwargs['appScopeId']
+        if 'appScopeObjectId' in kwargs:
+            app_scope_object_id = kwargs['appScopeObjectId']
+        if 'directoryScopeId' in kwargs:
+            directory_scope_id = kwargs['directoryScopeId']
+        if 'directoryScopeObjectId' in kwargs:
+            directory_scope_object_id = kwargs['directoryScopeObjectId']
+        if 'principalObjectId' in kwargs:
+            principal_object_id = kwargs['principalObjectId']
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         if app_scope_id is not None:
             _setter("app_scope_id", app_scope_id)
         if app_scope_object_id is not None:
@@ -295,7 +323,7 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
         Directory role assignments can be imported using the ID of the assignment, e.g.
 
         ```sh
-         $ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment test ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
+         $ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment example ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
         ```
 
         :param str resource_name: The name of the resource.
@@ -329,7 +357,7 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
         Directory role assignments can be imported using the ID of the assignment, e.g.
 
         ```sh
-         $ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment test ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
+         $ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment example ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
         ```
 
         :param str resource_name: The name of the resource.

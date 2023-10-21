@@ -15,18 +15,37 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     public static final GetServicePrincipalPlainArgs Empty = new GetServicePrincipalPlainArgs();
 
     /**
-     * The application ID (client ID) of the application associated with this service principal.
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     @Import(name="applicationId")
     private @Nullable String applicationId;
 
     /**
-     * @return The application ID (client ID) of the application associated with this service principal.
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     public Optional<String> applicationId() {
         return Optional.ofNullable(this.applicationId);
+    }
+
+    /**
+     * The client ID of the application associated with this service principal.
+     * 
+     */
+    @Import(name="clientId")
+    private @Nullable String clientId;
+
+    /**
+     * @return The client ID of the application associated with this service principal.
+     * 
+     */
+    public Optional<String> clientId() {
+        return Optional.ofNullable(this.clientId);
     }
 
     /**
@@ -47,7 +66,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     /**
      * The object ID of the service principal.
      * 
-     * &gt; One of `application_id`, `display_name` or `object_id` must be specified.
+     * &gt; One of `client_id`, `display_name` or `object_id` must be specified.
      * 
      */
     @Import(name="objectId")
@@ -56,7 +75,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     /**
      * @return The object ID of the service principal.
      * 
-     * &gt; One of `application_id`, `display_name` or `object_id` must be specified.
+     * &gt; One of `client_id`, `display_name` or `object_id` must be specified.
      * 
      */
     public Optional<String> objectId() {
@@ -67,6 +86,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
 
     private GetServicePrincipalPlainArgs(GetServicePrincipalPlainArgs $) {
         this.applicationId = $.applicationId;
+        this.clientId = $.clientId;
         this.displayName = $.displayName;
         this.objectId = $.objectId;
     }
@@ -90,13 +110,26 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param applicationId The application ID (client ID) of the application associated with this service principal.
+         * @return builder
+         * 
+         * @deprecated
+         * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
+         */
+        @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
+        public Builder applicationId(@Nullable String applicationId) {
+            $.applicationId = applicationId;
+            return this;
+        }
+
+        /**
+         * @param clientId The client ID of the application associated with this service principal.
          * 
          * @return builder
          * 
          */
-        public Builder applicationId(@Nullable String applicationId) {
-            $.applicationId = applicationId;
+        public Builder clientId(@Nullable String clientId) {
+            $.clientId = clientId;
             return this;
         }
 
@@ -114,7 +147,7 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
         /**
          * @param objectId The object ID of the service principal.
          * 
-         * &gt; One of `application_id`, `display_name` or `object_id` must be specified.
+         * &gt; One of `client_id`, `display_name` or `object_id` must be specified.
          * 
          * @return builder
          * 

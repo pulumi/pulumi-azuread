@@ -44,7 +44,7 @@ namespace Pulumi.AzureAD
         /// });
         /// ```
         /// 
-        /// *Look up by application ID (client ID)*
+        /// *Look up by client ID*
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
         ///     {
-        ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
+        ///         ClientId = "00000000-0000-0000-0000-000000000000",
         ///     });
         /// 
         /// });
@@ -118,7 +118,7 @@ namespace Pulumi.AzureAD
         /// });
         /// ```
         /// 
-        /// *Look up by application ID (client ID)*
+        /// *Look up by client ID*
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -130,7 +130,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
         ///     {
-        ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
+        ///         ClientId = "00000000-0000-0000-0000-000000000000",
         ///     });
         /// 
         /// });
@@ -163,11 +163,14 @@ namespace Pulumi.AzureAD
 
     public sealed class GetServicePrincipalArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The application ID (client ID) of the application associated with this service principal.
-        /// </summary>
         [Input("applicationId")]
         public string? ApplicationId { get; set; }
+
+        /// <summary>
+        /// The client ID of the application associated with this service principal.
+        /// </summary>
+        [Input("clientId")]
+        public string? ClientId { get; set; }
 
         /// <summary>
         /// The display name of the application associated with this service principal.
@@ -178,7 +181,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The object ID of the service principal.
         /// 
-        /// &gt; One of `application_id`, `display_name` or `object_id` must be specified.
+        /// &gt; One of `client_id`, `display_name` or `object_id` must be specified.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -191,11 +194,14 @@ namespace Pulumi.AzureAD
 
     public sealed class GetServicePrincipalInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The application ID (client ID) of the application associated with this service principal.
-        /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// The client ID of the application associated with this service principal.
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
 
         /// <summary>
         /// The display name of the application associated with this service principal.
@@ -206,7 +212,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The object ID of the service principal.
         /// 
-        /// &gt; One of `application_id`, `display_name` or `object_id` must be specified.
+        /// &gt; One of `client_id`, `display_name` or `object_id` must be specified.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
@@ -222,7 +228,7 @@ namespace Pulumi.AzureAD
     public sealed class GetServicePrincipalResult
     {
         /// <summary>
-        /// Whether or not the service principal account is enabled.
+        /// Whether the service principal account is enabled.
         /// </summary>
         public readonly bool AccountEnabled;
         /// <summary>
@@ -241,14 +247,15 @@ namespace Pulumi.AzureAD
         /// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServicePrincipalAppRoleResult> AppRoles;
-        /// <summary>
-        /// The application ID (client ID) of the application associated with this service principal.
-        /// </summary>
         public readonly string ApplicationId;
         /// <summary>
         /// The tenant ID where the associated application is registered.
         /// </summary>
         public readonly string ApplicationTenantId;
+        /// <summary>
+        /// The client ID of the application associated with this service principal.
+        /// </summary>
+        public readonly string ClientId;
         /// <summary>
         /// Permission help text that appears in the admin app assignment and consent experiences.
         /// </summary>
@@ -347,6 +354,8 @@ namespace Pulumi.AzureAD
 
             string applicationTenantId,
 
+            string clientId,
+
             string description,
 
             string displayName,
@@ -396,6 +405,7 @@ namespace Pulumi.AzureAD
             AppRoles = appRoles;
             ApplicationId = applicationId;
             ApplicationTenantId = applicationTenantId;
+            ClientId = clientId;
             Description = description;
             DisplayName = displayName;
             FeatureTags = featureTags;

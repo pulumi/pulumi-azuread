@@ -73,7 +73,7 @@ public class UserFlowAttribute extends com.pulumi.resources.CustomResource {
      * The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
      * 
      */
-    @Export(name="attributeType", refs={String.class}, tree="[0]")
+    @Export(name="attributeType", type=String.class, parameters={})
     private Output<String> attributeType;
 
     /**
@@ -87,7 +87,7 @@ public class UserFlowAttribute extends com.pulumi.resources.CustomResource {
      * The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="dataType", refs={String.class}, tree="[0]")
+    @Export(name="dataType", type=String.class, parameters={})
     private Output<String> dataType;
 
     /**
@@ -101,7 +101,7 @@ public class UserFlowAttribute extends com.pulumi.resources.CustomResource {
      * The description of the user flow attribute that is shown to the user at the time of sign-up.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -115,7 +115,7 @@ public class UserFlowAttribute extends com.pulumi.resources.CustomResource {
      * The display name of the user flow attribute. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**

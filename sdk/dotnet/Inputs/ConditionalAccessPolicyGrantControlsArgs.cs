@@ -12,6 +12,12 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class ConditionalAccessPolicyGrantControlsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ID of an Authentication Strength Policy to use in this policy.
+        /// </summary>
+        [Input("authenticationStrengthPolicyId")]
+        public Input<string>? AuthenticationStrengthPolicyId { get; set; }
+
         [Input("builtInControls")]
         private InputList<string>? _builtInControls;
 
@@ -48,7 +54,7 @@ namespace Pulumi.AzureAD.Inputs
         /// <summary>
         /// List of terms of use IDs required by the policy.
         /// 
-        /// &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+        /// &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
         /// </summary>
         public InputList<string> TermsOfUses
         {

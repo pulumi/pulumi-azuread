@@ -103,7 +103,7 @@ public class SynchronizationSecret extends com.pulumi.resources.CustomResource {
      * One or more `credential` blocks as documented below.
      * 
      */
-    @Export(name="credentials", refs={List.class,SynchronizationSecretCredential.class}, tree="[0,1]")
+    @Export(name="credentials", type=List.class, parameters={SynchronizationSecretCredential.class})
     private Output</* @Nullable */ List<SynchronizationSecretCredential>> credentials;
 
     /**
@@ -117,7 +117,7 @@ public class SynchronizationSecret extends com.pulumi.resources.CustomResource {
      * The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
+    @Export(name="servicePrincipalId", type=String.class, parameters={})
     private Output<String> servicePrincipalId;
 
     /**

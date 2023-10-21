@@ -7,10 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ConditionalAccessPolicyGrantControls {
+    /**
+     * @return ID of an Authentication Strength Policy to use in this policy.
+     * 
+     */
+    private @Nullable String authenticationStrengthPolicyId;
     /**
      * @return List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      * 
@@ -29,12 +35,19 @@ public final class ConditionalAccessPolicyGrantControls {
     /**
      * @return List of terms of use IDs required by the policy.
      * 
-     * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+     * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
      * 
      */
     private @Nullable List<String> termsOfUses;
 
     private ConditionalAccessPolicyGrantControls() {}
+    /**
+     * @return ID of an Authentication Strength Policy to use in this policy.
+     * 
+     */
+    public Optional<String> authenticationStrengthPolicyId() {
+        return Optional.ofNullable(this.authenticationStrengthPolicyId);
+    }
     /**
      * @return List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      * 
@@ -59,7 +72,7 @@ public final class ConditionalAccessPolicyGrantControls {
     /**
      * @return List of terms of use IDs required by the policy.
      * 
-     * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+     * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
      * 
      */
     public List<String> termsOfUses() {
@@ -75,6 +88,7 @@ public final class ConditionalAccessPolicyGrantControls {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String authenticationStrengthPolicyId;
         private @Nullable List<String> builtInControls;
         private @Nullable List<String> customAuthenticationFactors;
         private String operator;
@@ -82,12 +96,18 @@ public final class ConditionalAccessPolicyGrantControls {
         public Builder() {}
         public Builder(ConditionalAccessPolicyGrantControls defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authenticationStrengthPolicyId = defaults.authenticationStrengthPolicyId;
     	      this.builtInControls = defaults.builtInControls;
     	      this.customAuthenticationFactors = defaults.customAuthenticationFactors;
     	      this.operator = defaults.operator;
     	      this.termsOfUses = defaults.termsOfUses;
         }
 
+        @CustomType.Setter
+        public Builder authenticationStrengthPolicyId(@Nullable String authenticationStrengthPolicyId) {
+            this.authenticationStrengthPolicyId = authenticationStrengthPolicyId;
+            return this;
+        }
         @CustomType.Setter
         public Builder builtInControls(@Nullable List<String> builtInControls) {
             this.builtInControls = builtInControls;
@@ -119,6 +139,7 @@ public final class ConditionalAccessPolicyGrantControls {
         }
         public ConditionalAccessPolicyGrantControls build() {
             final var o = new ConditionalAccessPolicyGrantControls();
+            o.authenticationStrengthPolicyId = authenticationStrengthPolicyId;
             o.builtInControls = builtInControls;
             o.customAuthenticationFactors = customAuthenticationFactors;
             o.operator = operator;

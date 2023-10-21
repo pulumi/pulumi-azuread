@@ -113,8 +113,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("internal"),
-//				AppRoles: azuread.ApplicationAppRoleArray{
-//					&azuread.ApplicationAppRoleArgs{
+//				AppRoles: azuread.ApplicationAppRoleTypeArray{
+//					&azuread.ApplicationAppRoleTypeArgs{
 //						AllowedMemberTypes: pulumi.StringArray{
 //							pulumi.String("Application"),
 //						},
@@ -200,8 +200,8 @@ import (
 //			}
 //			internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("internal"),
-//				AppRoles: azuread.ApplicationAppRoleArray{
-//					&azuread.ApplicationAppRoleArgs{
+//				AppRoles: azuread.ApplicationAppRoleTypeArray{
+//					&azuread.ApplicationAppRoleTypeArgs{
 //						AllowedMemberTypes: pulumi.StringArray{
 //							pulumi.String("Application"),
 //							pulumi.String("User"),

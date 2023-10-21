@@ -234,7 +234,7 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
      * A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
      * 
      */
-    @Export(name="conditions", refs={ConditionalAccessPolicyConditions.class}, tree="[0]")
+    @Export(name="conditions", type=ConditionalAccessPolicyConditions.class, parameters={})
     private Output<ConditionalAccessPolicyConditions> conditions;
 
     /**
@@ -248,7 +248,7 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
      * The friendly name for this Conditional Access Policy.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -262,7 +262,7 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
      * A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      * 
      */
-    @Export(name="grantControls", refs={ConditionalAccessPolicyGrantControls.class}, tree="[0]")
+    @Export(name="grantControls", type=ConditionalAccessPolicyGrantControls.class, parameters={})
     private Output</* @Nullable */ ConditionalAccessPolicyGrantControls> grantControls;
 
     /**
@@ -278,7 +278,7 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
      * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
      * 
      */
-    @Export(name="sessionControls", refs={ConditionalAccessPolicySessionControls.class}, tree="[0]")
+    @Export(name="sessionControls", type=ConditionalAccessPolicySessionControls.class, parameters={})
     private Output</* @Nullable */ ConditionalAccessPolicySessionControls> sessionControls;
 
     /**
@@ -294,7 +294,7 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
      * Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**

@@ -31,7 +31,13 @@ class DirectoryRoleMemberArgs:
              _setter: Callable[[Any, Any], None],
              member_object_id: Optional[pulumi.Input[str]] = None,
              role_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+        if 'roleObjectId' in kwargs:
+            role_object_id = kwargs['roleObjectId']
+
         if member_object_id is not None:
             _setter("member_object_id", member_object_id)
         if role_object_id is not None:
@@ -82,7 +88,13 @@ class _DirectoryRoleMemberState:
              _setter: Callable[[Any, Any], None],
              member_object_id: Optional[pulumi.Input[str]] = None,
              role_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+        if 'roleObjectId' in kwargs:
+            role_object_id = kwargs['roleObjectId']
+
         if member_object_id is not None:
             _setter("member_object_id", member_object_id)
         if role_object_id is not None:
@@ -152,7 +164,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
         Directory role members can be imported using the object ID of the role and the object ID of the member, e.g.
 
         ```sh
-         $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+         $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
         ```
 
          -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
@@ -199,7 +211,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
         Directory role members can be imported using the object ID of the role and the object ID of the member, e.g.
 
         ```sh
-         $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+         $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
         ```
 
          -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.

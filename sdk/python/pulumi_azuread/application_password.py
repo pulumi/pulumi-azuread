@@ -14,7 +14,8 @@ __all__ = ['ApplicationPasswordArgs', 'ApplicationPassword']
 @pulumi.input_type
 class ApplicationPasswordArgs:
     def __init__(__self__, *,
-                 application_object_id: pulumi.Input[str],
+                 application_id: Optional[pulumi.Input[str]] = None,
+                 application_object_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
                  end_date_relative: Optional[pulumi.Input[str]] = None,
@@ -22,7 +23,8 @@ class ApplicationPasswordArgs:
                  start_date: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApplicationPassword resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created
         :param pulumi.Input[str] display_name: A display name for the password. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -31,6 +33,7 @@ class ApplicationPasswordArgs:
         """
         ApplicationPasswordArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
             application_object_id=application_object_id,
             display_name=display_name,
             end_date=end_date,
@@ -41,14 +44,37 @@ class ApplicationPasswordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_object_id: pulumi.Input[str],
+             application_id: Optional[pulumi.Input[str]] = None,
+             application_object_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              end_date: Optional[pulumi.Input[str]] = None,
              end_date_relative: Optional[pulumi.Input[str]] = None,
              rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("application_object_id", application_object_id)
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if 'rotateWhenChanged' in kwargs:
+            rotate_when_changed = kwargs['rotateWhenChanged']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
+        if application_id is not None:
+            _setter("application_id", application_id)
+        if application_object_id is not None:
+            warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+        if application_object_id is not None:
+            _setter("application_object_id", application_object_id)
         if display_name is not None:
             _setter("display_name", display_name)
         if end_date is not None:
@@ -61,15 +87,30 @@ class ApplicationPasswordArgs:
             _setter("start_date", start_date)
 
     @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_id", value)
+
+    @property
     @pulumi.getter(name="applicationObjectId")
-    def application_object_id(self) -> pulumi.Input[str]:
+    def application_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        The object ID of the application for which this password should be created
         """
+        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_object_id")
 
     @application_object_id.setter
-    def application_object_id(self, value: pulumi.Input[str]):
+    def application_object_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "application_object_id", value)
 
     @property
@@ -136,6 +177,7 @@ class ApplicationPasswordArgs:
 @pulumi.input_type
 class _ApplicationPasswordState:
     def __init__(__self__, *,
+                 application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
@@ -146,7 +188,8 @@ class _ApplicationPasswordState:
                  value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApplicationPassword resources.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created
         :param pulumi.Input[str] display_name: A display name for the password. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -157,6 +200,7 @@ class _ApplicationPasswordState:
         """
         _ApplicationPasswordState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
             application_object_id=application_object_id,
             display_name=display_name,
             end_date=end_date,
@@ -169,6 +213,7 @@ class _ApplicationPasswordState:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
              application_object_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              end_date: Optional[pulumi.Input[str]] = None,
@@ -177,7 +222,30 @@ class _ApplicationPasswordState:
              rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'rotateWhenChanged' in kwargs:
+            rotate_when_changed = kwargs['rotateWhenChanged']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
+        if application_id is not None:
+            _setter("application_id", application_id)
+        if application_object_id is not None:
+            warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
         if application_object_id is not None:
             _setter("application_object_id", application_object_id)
         if display_name is not None:
@@ -196,11 +264,26 @@ class _ApplicationPasswordState:
             _setter("value", value)
 
     @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_id", value)
+
+    @property
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        The object ID of the application for which this password should be created
         """
+        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_object_id")
 
     @application_object_id.setter
@@ -297,6 +380,7 @@ class ApplicationPassword(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
@@ -313,8 +397,8 @@ class ApplicationPassword(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword", application_object_id=example_application.object_id)
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword", application_id=example_application_registration.id)
         ```
 
         *Time-based rotation*
@@ -324,10 +408,10 @@ class ApplicationPassword(pulumi.CustomResource):
         import pulumi_azuread as azuread
         import pulumiverse_time as time
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
         example_rotating = time.Rotating("exampleRotating", rotation_days=7)
         example_application_password = azuread.ApplicationPassword("exampleApplicationPassword",
-            application_object_id=example_application.object_id,
+            application_id=example_application_registration.id,
             rotate_when_changed={
                 "rotation": example_rotating.id,
             })
@@ -339,7 +423,8 @@ class ApplicationPassword(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created
         :param pulumi.Input[str] display_name: A display name for the password. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -350,7 +435,7 @@ class ApplicationPassword(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApplicationPasswordArgs,
+                 args: Optional[ApplicationPasswordArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -361,8 +446,8 @@ class ApplicationPassword(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword", application_object_id=example_application.object_id)
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword", application_id=example_application_registration.id)
         ```
 
         *Time-based rotation*
@@ -372,10 +457,10 @@ class ApplicationPassword(pulumi.CustomResource):
         import pulumi_azuread as azuread
         import pulumiverse_time as time
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
         example_rotating = time.Rotating("exampleRotating", rotation_days=7)
         example_application_password = azuread.ApplicationPassword("exampleApplicationPassword",
-            application_object_id=example_application.object_id,
+            application_id=example_application_registration.id,
             rotate_when_changed={
                 "rotation": example_rotating.id,
             })
@@ -404,6 +489,7 @@ class ApplicationPassword(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
@@ -419,8 +505,7 @@ class ApplicationPassword(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApplicationPasswordArgs.__new__(ApplicationPasswordArgs)
 
-            if application_object_id is None and not opts.urn:
-                raise TypeError("Missing required property 'application_object_id'")
+            __props__.__dict__["application_id"] = application_id
             __props__.__dict__["application_object_id"] = application_object_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["end_date"] = end_date
@@ -441,6 +526,7 @@ class ApplicationPassword(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            application_id: Optional[pulumi.Input[str]] = None,
             application_object_id: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             end_date: Optional[pulumi.Input[str]] = None,
@@ -456,7 +542,8 @@ class ApplicationPassword(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created
         :param pulumi.Input[str] display_name: A display name for the password. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -469,6 +556,7 @@ class ApplicationPassword(pulumi.CustomResource):
 
         __props__ = _ApplicationPasswordState.__new__(_ApplicationPasswordState)
 
+        __props__.__dict__["application_id"] = application_id
         __props__.__dict__["application_object_id"] = application_object_id
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["end_date"] = end_date
@@ -480,11 +568,22 @@ class ApplicationPassword(pulumi.CustomResource):
         return ApplicationPassword(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> pulumi.Output[str]:
+        """
+        The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_id")
+
+    @property
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        The object ID of the application for which this password should be created
         """
+        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_object_id")
 
     @property

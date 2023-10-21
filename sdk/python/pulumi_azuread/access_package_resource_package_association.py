@@ -35,7 +35,15 @@ class AccessPackageResourcePackageAssociationArgs:
              access_package_id: pulumi.Input[str],
              catalog_resource_association_id: pulumi.Input[str],
              access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPackageId' in kwargs:
+            access_package_id = kwargs['accessPackageId']
+        if 'catalogResourceAssociationId' in kwargs:
+            catalog_resource_association_id = kwargs['catalogResourceAssociationId']
+        if 'accessType' in kwargs:
+            access_type = kwargs['accessType']
+
         _setter("access_package_id", access_package_id)
         _setter("catalog_resource_association_id", catalog_resource_association_id)
         if access_type is not None:
@@ -102,7 +110,15 @@ class _AccessPackageResourcePackageAssociationState:
              access_package_id: Optional[pulumi.Input[str]] = None,
              access_type: Optional[pulumi.Input[str]] = None,
              catalog_resource_association_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPackageId' in kwargs:
+            access_package_id = kwargs['accessPackageId']
+        if 'accessType' in kwargs:
+            access_type = kwargs['accessType']
+        if 'catalogResourceAssociationId' in kwargs:
+            catalog_resource_association_id = kwargs['catalogResourceAssociationId']
+
         if access_package_id is not None:
             _setter("access_package_id", access_package_id)
         if access_type is not None:

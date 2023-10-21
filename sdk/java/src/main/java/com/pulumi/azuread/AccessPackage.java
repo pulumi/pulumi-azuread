@@ -80,7 +80,7 @@ public class AccessPackage extends com.pulumi.resources.CustomResource {
      * The ID of the Catalog this access package will be created in.
      * 
      */
-    @Export(name="catalogId", refs={String.class}, tree="[0]")
+    @Export(name="catalogId", type=String.class, parameters={})
     private Output<String> catalogId;
 
     /**
@@ -94,7 +94,7 @@ public class AccessPackage extends com.pulumi.resources.CustomResource {
      * The description of the access package.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -108,7 +108,7 @@ public class AccessPackage extends com.pulumi.resources.CustomResource {
      * The display name of the access package.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -122,7 +122,7 @@ public class AccessPackage extends com.pulumi.resources.CustomResource {
      * Whether the access package is hidden from the requestor.
      * 
      */
-    @Export(name="hidden", refs={Boolean.class}, tree="[0]")
+    @Export(name="hidden", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> hidden;
 
     /**

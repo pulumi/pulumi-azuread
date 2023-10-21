@@ -310,7 +310,7 @@ public class AppRoleAssignment extends com.pulumi.resources.CustomResource {
      * The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="appRoleId", refs={String.class}, tree="[0]")
+    @Export(name="appRoleId", type=String.class, parameters={})
     private Output<String> appRoleId;
 
     /**
@@ -324,7 +324,7 @@ public class AppRoleAssignment extends com.pulumi.resources.CustomResource {
      * The display name of the principal to which the app role is assigned.
      * 
      */
-    @Export(name="principalDisplayName", refs={String.class}, tree="[0]")
+    @Export(name="principalDisplayName", type=String.class, parameters={})
     private Output<String> principalDisplayName;
 
     /**
@@ -338,7 +338,7 @@ public class AppRoleAssignment extends com.pulumi.resources.CustomResource {
      * The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="principalObjectId", refs={String.class}, tree="[0]")
+    @Export(name="principalObjectId", type=String.class, parameters={})
     private Output<String> principalObjectId;
 
     /**
@@ -352,7 +352,7 @@ public class AppRoleAssignment extends com.pulumi.resources.CustomResource {
      * The object type of the principal to which the app role is assigned.
      * 
      */
-    @Export(name="principalType", refs={String.class}, tree="[0]")
+    @Export(name="principalType", type=String.class, parameters={})
     private Output<String> principalType;
 
     /**
@@ -366,7 +366,7 @@ public class AppRoleAssignment extends com.pulumi.resources.CustomResource {
      * The display name of the application representing the resource.
      * 
      */
-    @Export(name="resourceDisplayName", refs={String.class}, tree="[0]")
+    @Export(name="resourceDisplayName", type=String.class, parameters={})
     private Output<String> resourceDisplayName;
 
     /**
@@ -380,7 +380,7 @@ public class AppRoleAssignment extends com.pulumi.resources.CustomResource {
      * The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="resourceObjectId", refs={String.class}, tree="[0]")
+    @Export(name="resourceObjectId", type=String.class, parameters={})
     private Output<String> resourceObjectId;
 
     /**

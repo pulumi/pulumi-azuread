@@ -75,7 +75,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember test 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
+//	$ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
 //
 // ```
 //

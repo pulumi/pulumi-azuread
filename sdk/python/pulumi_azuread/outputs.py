@@ -140,7 +140,17 @@ class AccessPackageAssignmentPolicyApprovalSettings(dict):
              approval_required_for_extension: Optional[bool] = None,
              approval_stages: Optional[Sequence['outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStage']] = None,
              requestor_justification_required: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'approvalRequired' in kwargs:
+            approval_required = kwargs['approvalRequired']
+        if 'approvalRequiredForExtension' in kwargs:
+            approval_required_for_extension = kwargs['approvalRequiredForExtension']
+        if 'approvalStages' in kwargs:
+            approval_stages = kwargs['approvalStages']
+        if 'requestorJustificationRequired' in kwargs:
+            requestor_justification_required = kwargs['requestorJustificationRequired']
+
         if approval_required is not None:
             _setter("approval_required", approval_required)
         if approval_required_for_extension is not None:
@@ -245,7 +255,21 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
              approver_justification_required: Optional[bool] = None,
              enable_alternative_approval_in_days: Optional[int] = None,
              primary_approvers: Optional[Sequence['outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'approvalTimeoutInDays' in kwargs:
+            approval_timeout_in_days = kwargs['approvalTimeoutInDays']
+        if 'alternativeApprovalEnabled' in kwargs:
+            alternative_approval_enabled = kwargs['alternativeApprovalEnabled']
+        if 'alternativeApprovers' in kwargs:
+            alternative_approvers = kwargs['alternativeApprovers']
+        if 'approverJustificationRequired' in kwargs:
+            approver_justification_required = kwargs['approverJustificationRequired']
+        if 'enableAlternativeApprovalInDays' in kwargs:
+            enable_alternative_approval_in_days = kwargs['enableAlternativeApprovalInDays']
+        if 'primaryApprovers' in kwargs:
+            primary_approvers = kwargs['primaryApprovers']
+
         _setter("approval_timeout_in_days", approval_timeout_in_days)
         if alternative_approval_enabled is not None:
             _setter("alternative_approval_enabled", alternative_approval_enabled)
@@ -349,7 +373,13 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
              subject_type: str,
              backup: Optional[bool] = None,
              object_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subjectType' in kwargs:
+            subject_type = kwargs['subjectType']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+
         _setter("subject_type", subject_type)
         if backup is not None:
             _setter("backup", backup)
@@ -423,7 +453,13 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover(
              subject_type: str,
              backup: Optional[bool] = None,
              object_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subjectType' in kwargs:
+            subject_type = kwargs['subjectType']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+
         _setter("subject_type", subject_type)
         if backup is not None:
             _setter("backup", backup)
@@ -531,7 +567,23 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings(dict):
              review_type: Optional[str] = None,
              reviewers: Optional[Sequence['outputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer']] = None,
              starting_on: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessRecommendationEnabled' in kwargs:
+            access_recommendation_enabled = kwargs['accessRecommendationEnabled']
+        if 'accessReviewTimeoutBehavior' in kwargs:
+            access_review_timeout_behavior = kwargs['accessReviewTimeoutBehavior']
+        if 'approverJustificationRequired' in kwargs:
+            approver_justification_required = kwargs['approverJustificationRequired']
+        if 'durationInDays' in kwargs:
+            duration_in_days = kwargs['durationInDays']
+        if 'reviewFrequency' in kwargs:
+            review_frequency = kwargs['reviewFrequency']
+        if 'reviewType' in kwargs:
+            review_type = kwargs['reviewType']
+        if 'startingOn' in kwargs:
+            starting_on = kwargs['startingOn']
+
         if access_recommendation_enabled is not None:
             _setter("access_recommendation_enabled", access_recommendation_enabled)
         if access_review_timeout_behavior is not None:
@@ -666,7 +718,13 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(dict):
              subject_type: str,
              backup: Optional[bool] = None,
              object_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subjectType' in kwargs:
+            subject_type = kwargs['subjectType']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+
         _setter("subject_type", subject_type)
         if backup is not None:
             _setter("backup", backup)
@@ -725,7 +783,9 @@ class AccessPackageAssignmentPolicyQuestion(dict):
              choices: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionChoice']] = None,
              required: Optional[bool] = None,
              sequence: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("text", text)
         if choices is not None:
             _setter("choices", choices)
@@ -805,7 +865,13 @@ class AccessPackageAssignmentPolicyQuestionChoice(dict):
              _setter: Callable[[Any, Any], None],
              actual_value: str,
              display_value: 'outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'actualValue' in kwargs:
+            actual_value = kwargs['actualValue']
+        if 'displayValue' in kwargs:
+            display_value = kwargs['displayValue']
+
         _setter("actual_value", actual_value)
         _setter("display_value", display_value)
 
@@ -864,7 +930,13 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
              _setter: Callable[[Any, Any], None],
              default_text: str,
              localized_texts: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultText' in kwargs:
+            default_text = kwargs['defaultText']
+        if 'localizedTexts' in kwargs:
+            localized_texts = kwargs['localizedTexts']
+
         _setter("default_text", default_text)
         if localized_texts is not None:
             _setter("localized_texts", localized_texts)
@@ -922,7 +994,11 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText(dict)
              _setter: Callable[[Any, Any], None],
              content: str,
              language_code: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+
         _setter("content", content)
         _setter("language_code", language_code)
 
@@ -981,7 +1057,13 @@ class AccessPackageAssignmentPolicyQuestionText(dict):
              _setter: Callable[[Any, Any], None],
              default_text: str,
              localized_texts: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultText' in kwargs:
+            default_text = kwargs['defaultText']
+        if 'localizedTexts' in kwargs:
+            localized_texts = kwargs['localizedTexts']
+
         _setter("default_text", default_text)
         if localized_texts is not None:
             _setter("localized_texts", localized_texts)
@@ -1039,7 +1121,11 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText(dict):
              _setter: Callable[[Any, Any], None],
              content: str,
              language_code: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'languageCode' in kwargs:
+            language_code = kwargs['languageCode']
+
         _setter("content", content)
         _setter("language_code", language_code)
 
@@ -1102,7 +1188,13 @@ class AccessPackageAssignmentPolicyRequestorSettings(dict):
              requestors: Optional[Sequence['outputs.AccessPackageAssignmentPolicyRequestorSettingsRequestor']] = None,
              requests_accepted: Optional[bool] = None,
              scope_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'requestsAccepted' in kwargs:
+            requests_accepted = kwargs['requestsAccepted']
+        if 'scopeType' in kwargs:
+            scope_type = kwargs['scopeType']
+
         if requestors is not None:
             _setter("requestors", requestors)
         if requests_accepted is not None:
@@ -1177,7 +1269,13 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestor(dict):
              subject_type: str,
              backup: Optional[bool] = None,
              object_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subjectType' in kwargs:
+            subject_type = kwargs['subjectType']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+
         _setter("subject_type", subject_type)
         if backup is not None:
             _setter("backup", backup)
@@ -1259,7 +1357,17 @@ class ApplicationApi(dict):
              mapped_claims_enabled: Optional[bool] = None,
              oauth2_permission_scopes: Optional[Sequence['outputs.ApplicationApiOauth2PermissionScope']] = None,
              requested_access_token_version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'knownClientApplications' in kwargs:
+            known_client_applications = kwargs['knownClientApplications']
+        if 'mappedClaimsEnabled' in kwargs:
+            mapped_claims_enabled = kwargs['mappedClaimsEnabled']
+        if 'oauth2PermissionScopes' in kwargs:
+            oauth2_permission_scopes = kwargs['oauth2PermissionScopes']
+        if 'requestedAccessTokenVersion' in kwargs:
+            requested_access_token_version = kwargs['requestedAccessTokenVersion']
+
         if known_client_applications is not None:
             _setter("known_client_applications", known_client_applications)
         if mapped_claims_enabled is not None:
@@ -1366,7 +1474,17 @@ class ApplicationApiOauth2PermissionScope(dict):
              user_consent_description: Optional[str] = None,
              user_consent_display_name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adminConsentDescription' in kwargs:
+            admin_consent_description = kwargs['adminConsentDescription']
+        if 'adminConsentDisplayName' in kwargs:
+            admin_consent_display_name = kwargs['adminConsentDisplayName']
+        if 'userConsentDescription' in kwargs:
+            user_consent_description = kwargs['userConsentDescription']
+        if 'userConsentDisplayName' in kwargs:
+            user_consent_display_name = kwargs['userConsentDisplayName']
+
         _setter("id", id)
         if admin_consent_description is not None:
             _setter("admin_consent_description", admin_consent_description)
@@ -1494,7 +1612,13 @@ class ApplicationAppRole(dict):
              id: str,
              enabled: Optional[bool] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedMemberTypes' in kwargs:
+            allowed_member_types = kwargs['allowedMemberTypes']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("allowed_member_types", allowed_member_types)
         _setter("description", description)
         _setter("display_name", display_name)
@@ -1591,7 +1715,11 @@ class ApplicationFeatureTag(dict):
              enterprise: Optional[bool] = None,
              gallery: Optional[bool] = None,
              hide: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customSingleSignOn' in kwargs:
+            custom_single_sign_on = kwargs['customSingleSignOn']
+
         if custom_single_sign_on is not None:
             _setter("custom_single_sign_on", custom_single_sign_on)
         if enterprise is not None:
@@ -1678,7 +1806,15 @@ class ApplicationOptionalClaims(dict):
              access_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsAccessToken']] = None,
              id_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsIdToken']] = None,
              saml2_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsSaml2Token']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessTokens' in kwargs:
+            access_tokens = kwargs['accessTokens']
+        if 'idTokens' in kwargs:
+            id_tokens = kwargs['idTokens']
+        if 'saml2Tokens' in kwargs:
+            saml2_tokens = kwargs['saml2Tokens']
+
         if access_tokens is not None:
             _setter("access_tokens", access_tokens)
         if id_tokens is not None:
@@ -1755,7 +1891,11 @@ class ApplicationOptionalClaimsAccessToken(dict):
              additional_properties: Optional[Sequence[str]] = None,
              essential: Optional[bool] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalProperties' in kwargs:
+            additional_properties = kwargs['additionalProperties']
+
         _setter("name", name)
         if additional_properties is not None:
             _setter("additional_properties", additional_properties)
@@ -1841,7 +1981,11 @@ class ApplicationOptionalClaimsIdToken(dict):
              additional_properties: Optional[Sequence[str]] = None,
              essential: Optional[bool] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalProperties' in kwargs:
+            additional_properties = kwargs['additionalProperties']
+
         _setter("name", name)
         if additional_properties is not None:
             _setter("additional_properties", additional_properties)
@@ -1927,7 +2071,11 @@ class ApplicationOptionalClaimsSaml2Token(dict):
              additional_properties: Optional[Sequence[str]] = None,
              essential: Optional[bool] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalProperties' in kwargs:
+            additional_properties = kwargs['additionalProperties']
+
         _setter("name", name)
         if additional_properties is not None:
             _setter("additional_properties", additional_properties)
@@ -2001,7 +2149,11 @@ class ApplicationPublicClient(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              redirect_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'redirectUris' in kwargs:
+            redirect_uris = kwargs['redirectUris']
+
         if redirect_uris is not None:
             _setter("redirect_uris", redirect_uris)
 
@@ -2054,7 +2206,13 @@ class ApplicationRequiredResourceAccess(dict):
              _setter: Callable[[Any, Any], None],
              resource_accesses: Sequence['outputs.ApplicationRequiredResourceAccessResourceAccess'],
              resource_app_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceAccesses' in kwargs:
+            resource_accesses = kwargs['resourceAccesses']
+        if 'resourceAppId' in kwargs:
+            resource_app_id = kwargs['resourceAppId']
+
         _setter("resource_accesses", resource_accesses)
         _setter("resource_app_id", resource_app_id)
 
@@ -2096,7 +2254,9 @@ class ApplicationRequiredResourceAccessResourceAccess(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
         _setter("type", type)
 
@@ -2149,7 +2309,11 @@ class ApplicationSinglePageApplication(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              redirect_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'redirectUris' in kwargs:
+            redirect_uris = kwargs['redirectUris']
+
         if redirect_uris is not None:
             _setter("redirect_uris", redirect_uris)
 
@@ -2212,7 +2376,17 @@ class ApplicationWeb(dict):
              implicit_grant: Optional['outputs.ApplicationWebImplicitGrant'] = None,
              logout_url: Optional[str] = None,
              redirect_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'homepageUrl' in kwargs:
+            homepage_url = kwargs['homepageUrl']
+        if 'implicitGrant' in kwargs:
+            implicit_grant = kwargs['implicitGrant']
+        if 'logoutUrl' in kwargs:
+            logout_url = kwargs['logoutUrl']
+        if 'redirectUris' in kwargs:
+            redirect_uris = kwargs['redirectUris']
+
         if homepage_url is not None:
             _setter("homepage_url", homepage_url)
         if implicit_grant is not None:
@@ -2293,7 +2467,13 @@ class ApplicationWebImplicitGrant(dict):
              _setter: Callable[[Any, Any], None],
              access_token_issuance_enabled: Optional[bool] = None,
              id_token_issuance_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessTokenIssuanceEnabled' in kwargs:
+            access_token_issuance_enabled = kwargs['accessTokenIssuanceEnabled']
+        if 'idTokenIssuanceEnabled' in kwargs:
+            id_token_issuance_enabled = kwargs['idTokenIssuanceEnabled']
+
         if access_token_issuance_enabled is not None:
             _setter("access_token_issuance_enabled", access_token_issuance_enabled)
         if id_token_issuance_enabled is not None:
@@ -2392,7 +2572,19 @@ class ConditionalAccessPolicyConditions(dict):
              service_principal_risk_levels: Optional[Sequence[str]] = None,
              sign_in_risk_levels: Optional[Sequence[str]] = None,
              user_risk_levels: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientAppTypes' in kwargs:
+            client_app_types = kwargs['clientAppTypes']
+        if 'clientApplications' in kwargs:
+            client_applications = kwargs['clientApplications']
+        if 'servicePrincipalRiskLevels' in kwargs:
+            service_principal_risk_levels = kwargs['servicePrincipalRiskLevels']
+        if 'signInRiskLevels' in kwargs:
+            sign_in_risk_levels = kwargs['signInRiskLevels']
+        if 'userRiskLevels' in kwargs:
+            user_risk_levels = kwargs['userRiskLevels']
+
         _setter("applications", applications)
         _setter("client_app_types", client_app_types)
         _setter("users", users)
@@ -2536,7 +2728,15 @@ class ConditionalAccessPolicyConditionsApplications(dict):
              excluded_applications: Optional[Sequence[str]] = None,
              included_applications: Optional[Sequence[str]] = None,
              included_user_actions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'excludedApplications' in kwargs:
+            excluded_applications = kwargs['excludedApplications']
+        if 'includedApplications' in kwargs:
+            included_applications = kwargs['includedApplications']
+        if 'includedUserActions' in kwargs:
+            included_user_actions = kwargs['includedUserActions']
+
         if excluded_applications is not None:
             _setter("excluded_applications", excluded_applications)
         if included_applications is not None:
@@ -2607,7 +2807,13 @@ class ConditionalAccessPolicyConditionsClientApplications(dict):
              _setter: Callable[[Any, Any], None],
              excluded_service_principals: Optional[Sequence[str]] = None,
              included_service_principals: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'excludedServicePrincipals' in kwargs:
+            excluded_service_principals = kwargs['excludedServicePrincipals']
+        if 'includedServicePrincipals' in kwargs:
+            included_service_principals = kwargs['includedServicePrincipals']
+
         if excluded_service_principals is not None:
             _setter("excluded_service_principals", excluded_service_principals)
         if included_service_principals is not None:
@@ -2645,7 +2851,9 @@ class ConditionalAccessPolicyConditionsDevices(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              filter: Optional['outputs.ConditionalAccessPolicyConditionsDevicesFilter'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if filter is not None:
             _setter("filter", filter)
 
@@ -2677,7 +2885,9 @@ class ConditionalAccessPolicyConditionsDevicesFilter(dict):
              _setter: Callable[[Any, Any], None],
              mode: str,
              rule: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("mode", mode)
         _setter("rule", rule)
 
@@ -2736,7 +2946,13 @@ class ConditionalAccessPolicyConditionsLocations(dict):
              _setter: Callable[[Any, Any], None],
              included_locations: Sequence[str],
              excluded_locations: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'includedLocations' in kwargs:
+            included_locations = kwargs['includedLocations']
+        if 'excludedLocations' in kwargs:
+            excluded_locations = kwargs['excludedLocations']
+
         _setter("included_locations", included_locations)
         if excluded_locations is not None:
             _setter("excluded_locations", excluded_locations)
@@ -2796,7 +3012,13 @@ class ConditionalAccessPolicyConditionsPlatforms(dict):
              _setter: Callable[[Any, Any], None],
              included_platforms: Sequence[str],
              excluded_platforms: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'includedPlatforms' in kwargs:
+            included_platforms = kwargs['includedPlatforms']
+        if 'excludedPlatforms' in kwargs:
+            excluded_platforms = kwargs['excludedPlatforms']
+
         _setter("included_platforms", included_platforms)
         if excluded_platforms is not None:
             _setter("excluded_platforms", excluded_platforms)
@@ -2882,7 +3104,21 @@ class ConditionalAccessPolicyConditionsUsers(dict):
              included_groups: Optional[Sequence[str]] = None,
              included_roles: Optional[Sequence[str]] = None,
              included_users: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'excludedGroups' in kwargs:
+            excluded_groups = kwargs['excludedGroups']
+        if 'excludedRoles' in kwargs:
+            excluded_roles = kwargs['excludedRoles']
+        if 'excludedUsers' in kwargs:
+            excluded_users = kwargs['excludedUsers']
+        if 'includedGroups' in kwargs:
+            included_groups = kwargs['includedGroups']
+        if 'includedRoles' in kwargs:
+            included_roles = kwargs['includedRoles']
+        if 'includedUsers' in kwargs:
+            included_users = kwargs['includedUsers']
+
         if excluded_groups is not None:
             _setter("excluded_groups", excluded_groups)
         if excluded_roles is not None:
@@ -2952,7 +3188,9 @@ class ConditionalAccessPolicyGrantControls(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "builtInControls":
+        if key == "authenticationStrengthPolicyId":
+            suggest = "authentication_strength_policy_id"
+        elif key == "builtInControls":
             suggest = "built_in_controls"
         elif key == "customAuthenticationFactors":
             suggest = "custom_authentication_factors"
@@ -2972,20 +3210,23 @@ class ConditionalAccessPolicyGrantControls(dict):
 
     def __init__(__self__, *,
                  operator: str,
+                 authentication_strength_policy_id: Optional[str] = None,
                  built_in_controls: Optional[Sequence[str]] = None,
                  custom_authentication_factors: Optional[Sequence[str]] = None,
                  terms_of_uses: Optional[Sequence[str]] = None):
         """
         :param str operator: Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+        :param str authentication_strength_policy_id: ID of an Authentication Strength Policy to use in this policy.
         :param Sequence[str] built_in_controls: List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
         :param Sequence[str] custom_authentication_factors: List of custom controls IDs required by the policy.
         :param Sequence[str] terms_of_uses: List of terms of use IDs required by the policy.
                
-               > At least one of `built_in_controls` or `terms_of_use` must be specified.
+               > At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
         """
         ConditionalAccessPolicyGrantControls._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             operator=operator,
+            authentication_strength_policy_id=authentication_strength_policy_id,
             built_in_controls=built_in_controls,
             custom_authentication_factors=custom_authentication_factors,
             terms_of_uses=terms_of_uses,
@@ -2994,11 +3235,24 @@ class ConditionalAccessPolicyGrantControls(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              operator: str,
+             authentication_strength_policy_id: Optional[str] = None,
              built_in_controls: Optional[Sequence[str]] = None,
              custom_authentication_factors: Optional[Sequence[str]] = None,
              terms_of_uses: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authenticationStrengthPolicyId' in kwargs:
+            authentication_strength_policy_id = kwargs['authenticationStrengthPolicyId']
+        if 'builtInControls' in kwargs:
+            built_in_controls = kwargs['builtInControls']
+        if 'customAuthenticationFactors' in kwargs:
+            custom_authentication_factors = kwargs['customAuthenticationFactors']
+        if 'termsOfUses' in kwargs:
+            terms_of_uses = kwargs['termsOfUses']
+
         _setter("operator", operator)
+        if authentication_strength_policy_id is not None:
+            _setter("authentication_strength_policy_id", authentication_strength_policy_id)
         if built_in_controls is not None:
             _setter("built_in_controls", built_in_controls)
         if custom_authentication_factors is not None:
@@ -3013,6 +3267,14 @@ class ConditionalAccessPolicyGrantControls(dict):
         Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
         """
         return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter(name="authenticationStrengthPolicyId")
+    def authentication_strength_policy_id(self) -> Optional[str]:
+        """
+        ID of an Authentication Strength Policy to use in this policy.
+        """
+        return pulumi.get(self, "authentication_strength_policy_id")
 
     @property
     @pulumi.getter(name="builtInControls")
@@ -3036,7 +3298,7 @@ class ConditionalAccessPolicyGrantControls(dict):
         """
         List of terms of use IDs required by the policy.
 
-        > At least one of `built_in_controls` or `terms_of_use` must be specified.
+        > At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
         """
         return pulumi.get(self, "terms_of_uses")
 
@@ -3078,12 +3340,12 @@ class ConditionalAccessPolicySessionControls(dict):
                  sign_in_frequency: Optional[int] = None,
                  sign_in_frequency_period: Optional[str] = None):
         """
-        :param bool application_enforced_restrictions_enabled: Whether or not application enforced restrictions are enabled. Defaults to `false`.
+        :param bool application_enforced_restrictions_enabled: Whether application enforced restrictions are enabled. Defaults to `false`.
                
                > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
         :param str cloud_app_security_policy: Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
         :param bool disable_resilience_defaults: Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
-        :param str persistent_browser_mode: Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+        :param str persistent_browser_mode: Session control to define whether to persist cookies. Possible values are: `always` or `never`.
         :param int sign_in_frequency: Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         :param str sign_in_frequency_period: The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         """
@@ -3105,7 +3367,21 @@ class ConditionalAccessPolicySessionControls(dict):
              persistent_browser_mode: Optional[str] = None,
              sign_in_frequency: Optional[int] = None,
              sign_in_frequency_period: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationEnforcedRestrictionsEnabled' in kwargs:
+            application_enforced_restrictions_enabled = kwargs['applicationEnforcedRestrictionsEnabled']
+        if 'cloudAppSecurityPolicy' in kwargs:
+            cloud_app_security_policy = kwargs['cloudAppSecurityPolicy']
+        if 'disableResilienceDefaults' in kwargs:
+            disable_resilience_defaults = kwargs['disableResilienceDefaults']
+        if 'persistentBrowserMode' in kwargs:
+            persistent_browser_mode = kwargs['persistentBrowserMode']
+        if 'signInFrequency' in kwargs:
+            sign_in_frequency = kwargs['signInFrequency']
+        if 'signInFrequencyPeriod' in kwargs:
+            sign_in_frequency_period = kwargs['signInFrequencyPeriod']
+
         if application_enforced_restrictions_enabled is not None:
             _setter("application_enforced_restrictions_enabled", application_enforced_restrictions_enabled)
         if cloud_app_security_policy is not None:
@@ -3123,7 +3399,7 @@ class ConditionalAccessPolicySessionControls(dict):
     @pulumi.getter(name="applicationEnforcedRestrictionsEnabled")
     def application_enforced_restrictions_enabled(self) -> Optional[bool]:
         """
-        Whether or not application enforced restrictions are enabled. Defaults to `false`.
+        Whether application enforced restrictions are enabled. Defaults to `false`.
 
         > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
         """
@@ -3149,7 +3425,7 @@ class ConditionalAccessPolicySessionControls(dict):
     @pulumi.getter(name="persistentBrowserMode")
     def persistent_browser_mode(self) -> Optional[str]:
         """
-        Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+        Session control to define whether to persist cookies. Possible values are: `always` or `never`.
         """
         return pulumi.get(self, "persistent_browser_mode")
 
@@ -3202,7 +3478,11 @@ class CustomDirectoryRolePermission(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              allowed_resource_actions: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedResourceActions' in kwargs:
+            allowed_resource_actions = kwargs['allowedResourceActions']
+
         _setter("allowed_resource_actions", allowed_resource_actions)
 
     @property
@@ -3235,7 +3515,9 @@ class GroupDynamicMembership(dict):
              _setter: Callable[[Any, Any], None],
              enabled: bool,
              rule: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("enabled", enabled)
         _setter("rule", rule)
 
@@ -3298,7 +3580,11 @@ class InvitationMessage(dict):
              additional_recipients: Optional[str] = None,
              body: Optional[str] = None,
              language: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalRecipients' in kwargs:
+            additional_recipients = kwargs['additionalRecipients']
+
         if additional_recipients is not None:
             _setter("additional_recipients", additional_recipients)
         if body is not None:
@@ -3369,7 +3655,13 @@ class NamedLocationCountry(dict):
              _setter: Callable[[Any, Any], None],
              countries_and_regions: Sequence[str],
              include_unknown_countries_and_regions: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'countriesAndRegions' in kwargs:
+            countries_and_regions = kwargs['countriesAndRegions']
+        if 'includeUnknownCountriesAndRegions' in kwargs:
+            include_unknown_countries_and_regions = kwargs['includeUnknownCountriesAndRegions']
+
         _setter("countries_and_regions", countries_and_regions)
         if include_unknown_countries_and_regions is not None:
             _setter("include_unknown_countries_and_regions", include_unknown_countries_and_regions)
@@ -3427,7 +3719,11 @@ class NamedLocationIp(dict):
              _setter: Callable[[Any, Any], None],
              ip_ranges: Sequence[str],
              trusted: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipRanges' in kwargs:
+            ip_ranges = kwargs['ipRanges']
+
         _setter("ip_ranges", ip_ranges)
         if trusted is not None:
             _setter("trusted", trusted)
@@ -3503,7 +3799,13 @@ class ServicePrincipalAppRole(dict):
              enabled: Optional[bool] = None,
              id: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedMemberTypes' in kwargs:
+            allowed_member_types = kwargs['allowedMemberTypes']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if allowed_member_types is not None:
             _setter("allowed_member_types", allowed_member_types)
         if description is not None:
@@ -3610,7 +3912,17 @@ class ServicePrincipalFeature(dict):
              enterprise_application: Optional[bool] = None,
              gallery_application: Optional[bool] = None,
              visible_to_users: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customSingleSignOnApp' in kwargs:
+            custom_single_sign_on_app = kwargs['customSingleSignOnApp']
+        if 'enterpriseApplication' in kwargs:
+            enterprise_application = kwargs['enterpriseApplication']
+        if 'galleryApplication' in kwargs:
+            gallery_application = kwargs['galleryApplication']
+        if 'visibleToUsers' in kwargs:
+            visible_to_users = kwargs['visibleToUsers']
+
         if custom_single_sign_on_app is not None:
             _setter("custom_single_sign_on_app", custom_single_sign_on_app)
         if enterprise_application is not None:
@@ -3685,7 +3997,11 @@ class ServicePrincipalFeatureTag(dict):
              enterprise: Optional[bool] = None,
              gallery: Optional[bool] = None,
              hide: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customSingleSignOn' in kwargs:
+            custom_single_sign_on = kwargs['customSingleSignOn']
+
         if custom_single_sign_on is not None:
             _setter("custom_single_sign_on", custom_single_sign_on)
         if enterprise is not None:
@@ -3794,7 +4110,17 @@ class ServicePrincipalOauth2PermissionScope(dict):
              user_consent_description: Optional[str] = None,
              user_consent_display_name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adminConsentDescription' in kwargs:
+            admin_consent_description = kwargs['adminConsentDescription']
+        if 'adminConsentDisplayName' in kwargs:
+            admin_consent_display_name = kwargs['adminConsentDisplayName']
+        if 'userConsentDescription' in kwargs:
+            user_consent_description = kwargs['userConsentDescription']
+        if 'userConsentDisplayName' in kwargs:
+            user_consent_display_name = kwargs['userConsentDisplayName']
+
         if admin_consent_description is not None:
             _setter("admin_consent_description", admin_consent_description)
         if admin_consent_display_name is not None:
@@ -3909,7 +4235,11 @@ class ServicePrincipalSamlSingleSignOn(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              relay_state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'relayState' in kwargs:
+            relay_state = kwargs['relayState']
+
         if relay_state is not None:
             _setter("relay_state", relay_state)
 
@@ -3945,7 +4275,9 @@ class SynchronizationJobSchedule(dict):
              expiration: Optional[str] = None,
              interval: Optional[str] = None,
              state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if expiration is not None:
             _setter("expiration", expiration)
         if interval is not None:
@@ -3997,7 +4329,9 @@ class SynchronizationSecretCredential(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -4045,7 +4379,17 @@ class GetApplicationApiResult(dict):
              mapped_claims_enabled: bool,
              oauth2_permission_scopes: Sequence['outputs.GetApplicationApiOauth2PermissionScopeResult'],
              requested_access_token_version: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'knownClientApplications' in kwargs:
+            known_client_applications = kwargs['knownClientApplications']
+        if 'mappedClaimsEnabled' in kwargs:
+            mapped_claims_enabled = kwargs['mappedClaimsEnabled']
+        if 'oauth2PermissionScopes' in kwargs:
+            oauth2_permission_scopes = kwargs['oauth2PermissionScopes']
+        if 'requestedAccessTokenVersion' in kwargs:
+            requested_access_token_version = kwargs['requestedAccessTokenVersion']
+
         _setter("known_client_applications", known_client_applications)
         _setter("mapped_claims_enabled", mapped_claims_enabled)
         _setter("oauth2_permission_scopes", oauth2_permission_scopes)
@@ -4127,7 +4471,17 @@ class GetApplicationApiOauth2PermissionScopeResult(dict):
              user_consent_description: str,
              user_consent_display_name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adminConsentDescription' in kwargs:
+            admin_consent_description = kwargs['adminConsentDescription']
+        if 'adminConsentDisplayName' in kwargs:
+            admin_consent_display_name = kwargs['adminConsentDisplayName']
+        if 'userConsentDescription' in kwargs:
+            user_consent_description = kwargs['userConsentDescription']
+        if 'userConsentDisplayName' in kwargs:
+            user_consent_display_name = kwargs['userConsentDisplayName']
+
         _setter("admin_consent_description", admin_consent_description)
         _setter("admin_consent_display_name", admin_consent_display_name)
         _setter("enabled", enabled)
@@ -4237,7 +4591,13 @@ class GetApplicationAppRoleResult(dict):
              enabled: bool,
              id: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedMemberTypes' in kwargs:
+            allowed_member_types = kwargs['allowedMemberTypes']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("allowed_member_types", allowed_member_types)
         _setter("description", description)
         _setter("display_name", display_name)
@@ -4321,7 +4681,11 @@ class GetApplicationFeatureTagResult(dict):
              enterprise: Optional[bool] = None,
              gallery: Optional[bool] = None,
              hide: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customSingleSignOn' in kwargs:
+            custom_single_sign_on = kwargs['customSingleSignOn']
+
         if custom_single_sign_on is not None:
             _setter("custom_single_sign_on", custom_single_sign_on)
         if enterprise is not None:
@@ -4387,7 +4751,15 @@ class GetApplicationOptionalClaimResult(dict):
              access_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimAccessTokenResult']] = None,
              id_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimIdTokenResult']] = None,
              saml2_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimSaml2TokenResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessTokens' in kwargs:
+            access_tokens = kwargs['accessTokens']
+        if 'idTokens' in kwargs:
+            id_tokens = kwargs['idTokens']
+        if 'saml2Tokens' in kwargs:
+            saml2_tokens = kwargs['saml2Tokens']
+
         if access_tokens is not None:
             _setter("access_tokens", access_tokens)
         if id_tokens is not None:
@@ -4447,7 +4819,11 @@ class GetApplicationOptionalClaimAccessTokenResult(dict):
              additional_properties: Optional[Sequence[str]] = None,
              essential: Optional[bool] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalProperties' in kwargs:
+            additional_properties = kwargs['additionalProperties']
+
         _setter("name", name)
         if additional_properties is not None:
             _setter("additional_properties", additional_properties)
@@ -4516,7 +4892,11 @@ class GetApplicationOptionalClaimIdTokenResult(dict):
              additional_properties: Optional[Sequence[str]] = None,
              essential: Optional[bool] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalProperties' in kwargs:
+            additional_properties = kwargs['additionalProperties']
+
         _setter("name", name)
         if additional_properties is not None:
             _setter("additional_properties", additional_properties)
@@ -4585,7 +4965,11 @@ class GetApplicationOptionalClaimSaml2TokenResult(dict):
              additional_properties: Optional[Sequence[str]] = None,
              essential: Optional[bool] = None,
              source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalProperties' in kwargs:
+            additional_properties = kwargs['additionalProperties']
+
         _setter("name", name)
         if additional_properties is not None:
             _setter("additional_properties", additional_properties)
@@ -4642,7 +5026,11 @@ class GetApplicationPublicClientResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              redirect_uris: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'redirectUris' in kwargs:
+            redirect_uris = kwargs['redirectUris']
+
         _setter("redirect_uris", redirect_uris)
 
     @property
@@ -4673,7 +5061,13 @@ class GetApplicationRequiredResourceAccessResult(dict):
              _setter: Callable[[Any, Any], None],
              resource_accesses: Sequence['outputs.GetApplicationRequiredResourceAccessResourceAccessResult'],
              resource_app_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceAccesses' in kwargs:
+            resource_accesses = kwargs['resourceAccesses']
+        if 'resourceAppId' in kwargs:
+            resource_app_id = kwargs['resourceAppId']
+
         _setter("resource_accesses", resource_accesses)
         _setter("resource_app_id", resource_app_id)
 
@@ -4713,7 +5107,9 @@ class GetApplicationRequiredResourceAccessResourceAccessResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
         _setter("type", type)
 
@@ -4749,7 +5145,11 @@ class GetApplicationSinglePageApplicationResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              redirect_uris: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'redirectUris' in kwargs:
+            redirect_uris = kwargs['redirectUris']
+
         _setter("redirect_uris", redirect_uris)
 
     @property
@@ -4788,7 +5188,17 @@ class GetApplicationWebResult(dict):
              implicit_grants: Sequence['outputs.GetApplicationWebImplicitGrantResult'],
              logout_url: str,
              redirect_uris: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'homepageUrl' in kwargs:
+            homepage_url = kwargs['homepageUrl']
+        if 'implicitGrants' in kwargs:
+            implicit_grants = kwargs['implicitGrants']
+        if 'logoutUrl' in kwargs:
+            logout_url = kwargs['logoutUrl']
+        if 'redirectUris' in kwargs:
+            redirect_uris = kwargs['redirectUris']
+
         _setter("homepage_url", homepage_url)
         _setter("implicit_grants", implicit_grants)
         _setter("logout_url", logout_url)
@@ -4846,7 +5256,13 @@ class GetApplicationWebImplicitGrantResult(dict):
              _setter: Callable[[Any, Any], None],
              access_token_issuance_enabled: bool,
              id_token_issuance_enabled: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessTokenIssuanceEnabled' in kwargs:
+            access_token_issuance_enabled = kwargs['accessTokenIssuanceEnabled']
+        if 'idTokenIssuanceEnabled' in kwargs:
+            id_token_issuance_enabled = kwargs['idTokenIssuanceEnabled']
+
         _setter("access_token_issuance_enabled", access_token_issuance_enabled)
         _setter("id_token_issuance_enabled", id_token_issuance_enabled)
 
@@ -4890,7 +5306,13 @@ class GetDirectoryRoleTemplatesRoleTemplateResult(dict):
              description: str,
              display_name: str,
              object_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+
         _setter("description", description)
         _setter("display_name", display_name)
         _setter("object_id", object_id)
@@ -4947,7 +5369,15 @@ class GetDirectoryRolesRoleResult(dict):
              display_name: str,
              object_id: str,
              template_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         _setter("description", description)
         _setter("display_name", display_name)
         _setter("object_id", object_id)
@@ -5029,7 +5459,17 @@ class GetDomainsDomainResult(dict):
              root: bool,
              supported_services: Sequence[str],
              verified: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adminManaged' in kwargs:
+            admin_managed = kwargs['adminManaged']
+        if 'authenticationType' in kwargs:
+            authentication_type = kwargs['authenticationType']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'supportedServices' in kwargs:
+            supported_services = kwargs['supportedServices']
+
         _setter("admin_managed", admin_managed)
         _setter("authentication_type", authentication_type)
         _setter("default", default)
@@ -5123,7 +5563,9 @@ class GetGroupDynamicMembershipResult(dict):
              _setter: Callable[[Any, Any], None],
              enabled: bool,
              rule: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("enabled", enabled)
         _setter("rule", rule)
 
@@ -5159,7 +5601,13 @@ class GetNamedLocationCountryResult(dict):
              _setter: Callable[[Any, Any], None],
              countries_and_regions: Sequence[str],
              include_unknown_countries_and_regions: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'countriesAndRegions' in kwargs:
+            countries_and_regions = kwargs['countriesAndRegions']
+        if 'includeUnknownCountriesAndRegions' in kwargs:
+            include_unknown_countries_and_regions = kwargs['includeUnknownCountriesAndRegions']
+
         _setter("countries_and_regions", countries_and_regions)
         _setter("include_unknown_countries_and_regions", include_unknown_countries_and_regions)
 
@@ -5189,7 +5637,11 @@ class GetNamedLocationIpResult(dict):
              _setter: Callable[[Any, Any], None],
              ip_ranges: Sequence[str],
              trusted: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipRanges' in kwargs:
+            ip_ranges = kwargs['ipRanges']
+
         _setter("ip_ranges", ip_ranges)
         _setter("trusted", trusted)
 
@@ -5239,7 +5691,13 @@ class GetServicePrincipalAppRoleResult(dict):
              enabled: bool,
              id: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowedMemberTypes' in kwargs:
+            allowed_member_types = kwargs['allowedMemberTypes']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("allowed_member_types", allowed_member_types)
         _setter("description", description)
         _setter("display_name", display_name)
@@ -5323,7 +5781,17 @@ class GetServicePrincipalFeatureResult(dict):
              enterprise_application: bool,
              gallery_application: bool,
              visible_to_users: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customSingleSignOnApp' in kwargs:
+            custom_single_sign_on_app = kwargs['customSingleSignOnApp']
+        if 'enterpriseApplication' in kwargs:
+            enterprise_application = kwargs['enterpriseApplication']
+        if 'galleryApplication' in kwargs:
+            gallery_application = kwargs['galleryApplication']
+        if 'visibleToUsers' in kwargs:
+            visible_to_users = kwargs['visibleToUsers']
+
         _setter("custom_single_sign_on_app", custom_single_sign_on_app)
         _setter("enterprise_application", enterprise_application)
         _setter("gallery_application", gallery_application)
@@ -5383,7 +5851,11 @@ class GetServicePrincipalFeatureTagResult(dict):
              enterprise: bool,
              gallery: bool,
              hide: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customSingleSignOn' in kwargs:
+            custom_single_sign_on = kwargs['customSingleSignOn']
+
         _setter("custom_single_sign_on", custom_single_sign_on)
         _setter("enterprise", enterprise)
         _setter("gallery", gallery)
@@ -5453,7 +5925,17 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
              user_consent_description: str,
              user_consent_display_name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adminConsentDescription' in kwargs:
+            admin_consent_description = kwargs['adminConsentDescription']
+        if 'adminConsentDisplayName' in kwargs:
+            admin_consent_display_name = kwargs['adminConsentDisplayName']
+        if 'userConsentDescription' in kwargs:
+            user_consent_description = kwargs['userConsentDescription']
+        if 'userConsentDisplayName' in kwargs:
+            user_consent_display_name = kwargs['userConsentDisplayName']
+
         _setter("admin_consent_description", admin_consent_description)
         _setter("admin_consent_display_name", admin_consent_display_name)
         _setter("enabled", enabled)
@@ -5543,7 +6025,11 @@ class GetServicePrincipalSamlSingleSignOnResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              relay_state: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'relayState' in kwargs:
+            relay_state = kwargs['relayState']
+
         _setter("relay_state", relay_state)
 
     @property
@@ -5562,6 +6048,7 @@ class GetServicePrincipalsServicePrincipalResult(dict):
                  app_role_assignment_required: bool,
                  application_id: str,
                  application_tenant_id: str,
+                 client_id: str,
                  display_name: str,
                  object_id: str,
                  preferred_single_sign_on_mode: str,
@@ -5571,9 +6058,8 @@ class GetServicePrincipalsServicePrincipalResult(dict):
                  tags: Sequence[str],
                  type: str):
         """
-        :param bool account_enabled: Whether or not the service principal account is enabled.
+        :param bool account_enabled: Whether the service principal account is enabled.
         :param bool app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
-        :param str application_id: The application ID (client ID) of the application associated with this service principal.
         :param str application_tenant_id: The tenant ID where the associated application is registered.
         :param str display_name: The display name of the application associated with this service principal.
         :param str object_id: The object ID of the service principal.
@@ -5590,6 +6076,7 @@ class GetServicePrincipalsServicePrincipalResult(dict):
             app_role_assignment_required=app_role_assignment_required,
             application_id=application_id,
             application_tenant_id=application_tenant_id,
+            client_id=client_id,
             display_name=display_name,
             object_id=object_id,
             preferred_single_sign_on_mode=preferred_single_sign_on_mode,
@@ -5606,6 +6093,7 @@ class GetServicePrincipalsServicePrincipalResult(dict):
              app_role_assignment_required: bool,
              application_id: str,
              application_tenant_id: str,
+             client_id: str,
              display_name: str,
              object_id: str,
              preferred_single_sign_on_mode: str,
@@ -5614,11 +6102,36 @@ class GetServicePrincipalsServicePrincipalResult(dict):
              sign_in_audience: str,
              tags: Sequence[str],
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountEnabled' in kwargs:
+            account_enabled = kwargs['accountEnabled']
+        if 'appRoleAssignmentRequired' in kwargs:
+            app_role_assignment_required = kwargs['appRoleAssignmentRequired']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationTenantId' in kwargs:
+            application_tenant_id = kwargs['applicationTenantId']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if 'preferredSingleSignOnMode' in kwargs:
+            preferred_single_sign_on_mode = kwargs['preferredSingleSignOnMode']
+        if 'samlMetadataUrl' in kwargs:
+            saml_metadata_url = kwargs['samlMetadataUrl']
+        if 'servicePrincipalNames' in kwargs:
+            service_principal_names = kwargs['servicePrincipalNames']
+        if 'signInAudience' in kwargs:
+            sign_in_audience = kwargs['signInAudience']
+
         _setter("account_enabled", account_enabled)
         _setter("app_role_assignment_required", app_role_assignment_required)
         _setter("application_id", application_id)
         _setter("application_tenant_id", application_tenant_id)
+        _setter("client_id", client_id)
         _setter("display_name", display_name)
         _setter("object_id", object_id)
         _setter("preferred_single_sign_on_mode", preferred_single_sign_on_mode)
@@ -5632,7 +6145,7 @@ class GetServicePrincipalsServicePrincipalResult(dict):
     @pulumi.getter(name="accountEnabled")
     def account_enabled(self) -> bool:
         """
-        Whether or not the service principal account is enabled.
+        Whether the service principal account is enabled.
         """
         return pulumi.get(self, "account_enabled")
 
@@ -5647,9 +6160,9 @@ class GetServicePrincipalsServicePrincipalResult(dict):
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
-        """
-        The application ID (client ID) of the application associated with this service principal.
-        """
+        warnings.warn("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_id is deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_id")
 
     @property
@@ -5659,6 +6172,11 @@ class GetServicePrincipalsServicePrincipalResult(dict):
         The tenant ID where the associated application is registered.
         """
         return pulumi.get(self, "application_tenant_id")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter(name="displayName")
@@ -5780,7 +6298,29 @@ class GetUsersUserResult(dict):
              onpremises_user_principal_name: str,
              usage_location: str,
              user_principal_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountEnabled' in kwargs:
+            account_enabled = kwargs['accountEnabled']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'employeeId' in kwargs:
+            employee_id = kwargs['employeeId']
+        if 'mailNickname' in kwargs:
+            mail_nickname = kwargs['mailNickname']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if 'onpremisesImmutableId' in kwargs:
+            onpremises_immutable_id = kwargs['onpremisesImmutableId']
+        if 'onpremisesSamAccountName' in kwargs:
+            onpremises_sam_account_name = kwargs['onpremisesSamAccountName']
+        if 'onpremisesUserPrincipalName' in kwargs:
+            onpremises_user_principal_name = kwargs['onpremisesUserPrincipalName']
+        if 'usageLocation' in kwargs:
+            usage_location = kwargs['usageLocation']
+        if 'userPrincipalName' in kwargs:
+            user_principal_name = kwargs['userPrincipalName']
+
         _setter("account_enabled", account_enabled)
         _setter("display_name", display_name)
         _setter("employee_id", employee_id)

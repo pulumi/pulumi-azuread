@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.ApplicationRegistration;
+ * import com.pulumi.azuread.ApplicationRegistrationArgs;
  * import com.pulumi.azuread.Application;
  * import com.pulumi.azuread.ApplicationArgs;
  * import com.pulumi.azuread.inputs.ApplicationApiArgs;
@@ -40,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var authorized = new Application(&#34;authorized&#34;, ApplicationArgs.builder()        
+ *         var authorized = new ApplicationRegistration(&#34;authorized&#34;, ApplicationRegistrationArgs.builder()        
  *             .displayName(&#34;example-authorized-app&#34;)
  *             .build());
  * 
@@ -52,7 +54,7 @@ import javax.annotation.Nullable;
  *                         .adminConsentDescription(&#34;Administer the application&#34;)
  *                         .adminConsentDisplayName(&#34;Administer&#34;)
  *                         .enabled(true)
- *                         .id(&#34;ced9c4c3-c273-4f0f-ac71-a20377b90f9c&#34;)
+ *                         .id(&#34;00000000-0000-0000-0000-000000000000&#34;)
  *                         .type(&#34;Admin&#34;)
  *                         .value(&#34;administer&#34;)
  *                         .build(),
@@ -60,7 +62,7 @@ import javax.annotation.Nullable;
  *                         .adminConsentDescription(&#34;Access the application&#34;)
  *                         .adminConsentDisplayName(&#34;Access&#34;)
  *                         .enabled(true)
- *                         .id(&#34;2d5e07ca-664d-4d9b-ad61-ec07fd215213&#34;)
+ *                         .id(&#34;11111111-1111-1111-1111-111111111111&#34;)
  *                         .type(&#34;User&#34;)
  *                         .userConsentDescription(&#34;Access the application&#34;)
  *                         .userConsentDisplayName(&#34;Access&#34;)
@@ -70,11 +72,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new ApplicationPreAuthorized(&#34;example&#34;, ApplicationPreAuthorizedArgs.builder()        
- *             .applicationObjectId(authorizer.objectId())
- *             .authorizedAppId(authorized.applicationId())
+ *             .applicationId(authorizer.id())
+ *             .authorizedClientId(authorized.clientId())
  *             .permissionIds(            
- *                 &#34;ced9c4c3-c273-4f0f-ac71-a20377b90f9c&#34;,
- *                 &#34;2d5e07ca-664d-4d9b-ad61-ec07fd215213&#34;)
+ *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
+ *                 &#34;11111111-1111-1111-1111-111111111111&#34;)
  *             .build());
  * 
  *     }
@@ -95,14 +97,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/applicationPreAuthorized:ApplicationPreAuthorized")
 public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResource {
     /**
-     * The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
+    @Export(name="applicationId", type=String.class, parameters={})
+    private Output<String> applicationId;
+
+    /**
+     * @return The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     * 
+     */
+    public Output<String> applicationId() {
+        return this.applicationId;
+    }
+    /**
+     * The object ID of the application to which this pre-authorized application should be added
+     * 
+     * @deprecated
+     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
+     */
+    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
+    @Export(name="applicationObjectId", type=String.class, parameters={})
     private Output<String> applicationObjectId;
 
     /**
-     * @return The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     * @return The object ID of the application to which this pre-authorized application should be added
      * 
      */
     public Output<String> applicationObjectId() {
@@ -111,8 +131,12 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
     /**
      * The application ID of the pre-authorized application
      * 
+     * @deprecated
+     * The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
      */
-    @Export(name="authorizedAppId", refs={String.class}, tree="[0]")
+    @Deprecated /* The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider */
+    @Export(name="authorizedAppId", type=String.class, parameters={})
     private Output<String> authorizedAppId;
 
     /**
@@ -123,10 +147,24 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
         return this.authorizedAppId;
     }
     /**
+     * The client ID of the application being authorized. Changing this field forces a new resource to be created.
+     * 
+     */
+    @Export(name="authorizedClientId", type=String.class, parameters={})
+    private Output<String> authorizedClientId;
+
+    /**
+     * @return The client ID of the application being authorized. Changing this field forces a new resource to be created.
+     * 
+     */
+    public Output<String> authorizedClientId() {
+        return this.authorizedClientId;
+    }
+    /**
      * A set of permission scope IDs required by the authorized application.
      * 
      */
-    @Export(name="permissionIds", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="permissionIds", type=List.class, parameters={String.class})
     private Output<List<String>> permissionIds;
 
     /**

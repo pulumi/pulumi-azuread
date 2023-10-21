@@ -90,7 +90,7 @@ public class NamedLocation extends com.pulumi.resources.CustomResource {
      * A `country` block as documented below, which configures a country-based named location.
      * 
      */
-    @Export(name="country", refs={NamedLocationCountry.class}, tree="[0]")
+    @Export(name="country", type=NamedLocationCountry.class, parameters={})
     private Output</* @Nullable */ NamedLocationCountry> country;
 
     /**
@@ -104,7 +104,7 @@ public class NamedLocation extends com.pulumi.resources.CustomResource {
      * The friendly name for this named location.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -120,7 +120,7 @@ public class NamedLocation extends com.pulumi.resources.CustomResource {
      * &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
      * 
      */
-    @Export(name="ip", refs={NamedLocationIp.class}, tree="[0]")
+    @Export(name="ip", type=NamedLocationIp.class, parameters={})
     private Output</* @Nullable */ NamedLocationIp> ip;
 
     /**

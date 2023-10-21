@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * Group members can be imported using the object ID of the group and the object ID of the member, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+ *  $ pulumi import azuread:index/groupMember:GroupMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
  * ```
  * 
  *  -&gt; This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
@@ -89,7 +89,7 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
      * The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="groupObjectId", refs={String.class}, tree="[0]")
+    @Export(name="groupObjectId", type=String.class, parameters={})
     private Output<String> groupObjectId;
 
     /**
@@ -103,7 +103,7 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
      * The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="memberObjectId", refs={String.class}, tree="[0]")
+    @Export(name="memberObjectId", type=String.class, parameters={})
     private Output<String> memberObjectId;
 
     /**

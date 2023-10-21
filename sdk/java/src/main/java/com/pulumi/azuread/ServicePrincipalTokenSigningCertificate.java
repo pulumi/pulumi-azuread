@@ -15,16 +15,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Manages a token signing certificate associated with a service principal within Azure Active Directory.
- * 
- * ## API Permissions
- * 
- * The following API permissions are required in order to use this resource.
- * 
- * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
- * 
- * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
- * 
  * ## Example Usage
  * 
  * *Using default settings*
@@ -133,7 +123,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -150,7 +140,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="endDate", refs={String.class}, tree="[0]")
+    @Export(name="endDate", type=String.class, parameters={})
     private Output<String> endDate;
 
     /**
@@ -164,7 +154,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * A UUID used to uniquely identify the verify certificate.
      * 
      */
-    @Export(name="keyId", refs={String.class}, tree="[0]")
+    @Export(name="keyId", type=String.class, parameters={})
     private Output<String> keyId;
 
     /**
@@ -178,7 +168,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
+    @Export(name="servicePrincipalId", type=String.class, parameters={})
     private Output<String> servicePrincipalId;
 
     /**
@@ -192,7 +182,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
      * 
      */
-    @Export(name="startDate", refs={String.class}, tree="[0]")
+    @Export(name="startDate", type=String.class, parameters={})
     private Output<String> startDate;
 
     /**
@@ -206,7 +196,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
      * 
      */
-    @Export(name="thumbprint", refs={String.class}, tree="[0]")
+    @Export(name="thumbprint", type=String.class, parameters={})
     private Output<String> thumbprint;
 
     /**
@@ -221,7 +211,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
      * 
      */
-    @Export(name="value", refs={String.class}, tree="[0]")
+    @Export(name="value", type=String.class, parameters={})
     private Output<String> value;
 
     /**

@@ -68,7 +68,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.GetServicePrincipals(ctx, &azuread.GetServicePrincipalsArgs{
-//				ApplicationIds: []string{
+//				ClientIds: []string{
 //					"11111111-0000-0000-0000-000000000000",
 //					"22222222-0000-0000-0000-000000000000",
 //					"33333333-0000-0000-0000-000000000000",
@@ -124,8 +124,12 @@ func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, o
 
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsArgs struct {
-	// A list of application IDs (client IDs) of the applications associated with the service principals.
+	// A list of client IDs of the applications associated with the service principals.
+	//
+	// Deprecated: The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationIds []string `pulumi:"applicationIds"`
+	// A list of client IDs of the applications associated with the service principals.
+	ClientIds []string `pulumi:"clientIds"`
 	// A list of display names of the applications associated with the service principals.
 	DisplayNames []string `pulumi:"displayNames"`
 	// Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
@@ -134,14 +138,18 @@ type GetServicePrincipalsArgs struct {
 	ObjectIds []string `pulumi:"objectIds"`
 	// When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
 	//
-	// > Either `returnAll`, or one of `applicationIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+	// > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
 	ReturnAll *bool `pulumi:"returnAll"`
 }
 
 // A collection of values returned by getServicePrincipals.
 type GetServicePrincipalsResult struct {
-	// A list of application IDs (client IDs) of the applications associated with the service principals.
+	// A list of client IDs of the applications associated with the service principals.
+	//
+	// Deprecated: The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationIds []string `pulumi:"applicationIds"`
+	// The client ID of the application associated with this service principal.
+	ClientIds []string `pulumi:"clientIds"`
 	// A list of display names of the applications associated with the service principals.
 	DisplayNames []string `pulumi:"displayNames"`
 	// The provider-assigned unique ID for this managed resource.
@@ -169,8 +177,12 @@ func GetServicePrincipalsOutput(ctx *pulumi.Context, args GetServicePrincipalsOu
 
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsOutputArgs struct {
-	// A list of application IDs (client IDs) of the applications associated with the service principals.
+	// A list of client IDs of the applications associated with the service principals.
+	//
+	// Deprecated: The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationIds pulumi.StringArrayInput `pulumi:"applicationIds"`
+	// A list of client IDs of the applications associated with the service principals.
+	ClientIds pulumi.StringArrayInput `pulumi:"clientIds"`
 	// A list of display names of the applications associated with the service principals.
 	DisplayNames pulumi.StringArrayInput `pulumi:"displayNames"`
 	// Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
@@ -179,7 +191,7 @@ type GetServicePrincipalsOutputArgs struct {
 	ObjectIds pulumi.StringArrayInput `pulumi:"objectIds"`
 	// When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
 	//
-	// > Either `returnAll`, or one of `applicationIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+	// > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
 	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
 }
 
@@ -208,9 +220,16 @@ func (o GetServicePrincipalsResultOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// A list of application IDs (client IDs) of the applications associated with the service principals.
+// A list of client IDs of the applications associated with the service principals.
+//
+// Deprecated: The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
 func (o GetServicePrincipalsResultOutput) ApplicationIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.ApplicationIds }).(pulumi.StringArrayOutput)
+}
+
+// The client ID of the application associated with this service principal.
+func (o GetServicePrincipalsResultOutput) ClientIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.ClientIds }).(pulumi.StringArrayOutput)
 }
 
 // A list of display names of the applications associated with the service principals.

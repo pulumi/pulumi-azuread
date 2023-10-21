@@ -15,10 +15,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServicePrincipalsResult {
     /**
-     * @return A list of application IDs (client IDs) of the applications associated with the service principals.
+     * @return A list of client IDs of the applications associated with the service principals.
+     * 
+     * @deprecated
+     * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
     private List<String> applicationIds;
+    /**
+     * @return The client ID of the application associated with this service principal.
+     * 
+     */
+    private List<String> clientIds;
     /**
      * @return A list of display names of the applications associated with the service principals.
      * 
@@ -44,11 +53,22 @@ public final class GetServicePrincipalsResult {
 
     private GetServicePrincipalsResult() {}
     /**
-     * @return A list of application IDs (client IDs) of the applications associated with the service principals.
+     * @return A list of client IDs of the applications associated with the service principals.
+     * 
+     * @deprecated
+     * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
     public List<String> applicationIds() {
         return this.applicationIds;
+    }
+    /**
+     * @return The client ID of the application associated with this service principal.
+     * 
+     */
+    public List<String> clientIds() {
+        return this.clientIds;
     }
     /**
      * @return A list of display names of the applications associated with the service principals.
@@ -95,6 +115,7 @@ public final class GetServicePrincipalsResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> applicationIds;
+        private List<String> clientIds;
         private List<String> displayNames;
         private String id;
         private @Nullable Boolean ignoreMissing;
@@ -105,6 +126,7 @@ public final class GetServicePrincipalsResult {
         public Builder(GetServicePrincipalsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationIds = defaults.applicationIds;
+    	      this.clientIds = defaults.clientIds;
     	      this.displayNames = defaults.displayNames;
     	      this.id = defaults.id;
     	      this.ignoreMissing = defaults.ignoreMissing;
@@ -120,6 +142,14 @@ public final class GetServicePrincipalsResult {
         }
         public Builder applicationIds(String... applicationIds) {
             return applicationIds(List.of(applicationIds));
+        }
+        @CustomType.Setter
+        public Builder clientIds(List<String> clientIds) {
+            this.clientIds = Objects.requireNonNull(clientIds);
+            return this;
+        }
+        public Builder clientIds(String... clientIds) {
+            return clientIds(List.of(clientIds));
         }
         @CustomType.Setter
         public Builder displayNames(List<String> displayNames) {
@@ -163,6 +193,7 @@ public final class GetServicePrincipalsResult {
         public GetServicePrincipalsResult build() {
             final var o = new GetServicePrincipalsResult();
             o.applicationIds = applicationIds;
+            o.clientIds = clientIds;
             o.displayNames = displayNames;
             o.id = id;
             o.ignoreMissing = ignoreMissing;

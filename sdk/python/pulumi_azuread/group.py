@@ -129,7 +129,39 @@ class GroupArgs:
              types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              visibility: Optional[pulumi.Input[str]] = None,
              writeback_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'administrativeUnitIds' in kwargs:
+            administrative_unit_ids = kwargs['administrativeUnitIds']
+        if 'assignableToRole' in kwargs:
+            assignable_to_role = kwargs['assignableToRole']
+        if 'autoSubscribeNewMembers' in kwargs:
+            auto_subscribe_new_members = kwargs['autoSubscribeNewMembers']
+        if 'dynamicMembership' in kwargs:
+            dynamic_membership = kwargs['dynamicMembership']
+        if 'externalSendersAllowed' in kwargs:
+            external_senders_allowed = kwargs['externalSendersAllowed']
+        if 'hideFromAddressLists' in kwargs:
+            hide_from_address_lists = kwargs['hideFromAddressLists']
+        if 'hideFromOutlookClients' in kwargs:
+            hide_from_outlook_clients = kwargs['hideFromOutlookClients']
+        if 'mailEnabled' in kwargs:
+            mail_enabled = kwargs['mailEnabled']
+        if 'mailNickname' in kwargs:
+            mail_nickname = kwargs['mailNickname']
+        if 'onpremisesGroupType' in kwargs:
+            onpremises_group_type = kwargs['onpremisesGroupType']
+        if 'preventDuplicateNames' in kwargs:
+            prevent_duplicate_names = kwargs['preventDuplicateNames']
+        if 'provisioningOptions' in kwargs:
+            provisioning_options = kwargs['provisioningOptions']
+        if 'securityEnabled' in kwargs:
+            security_enabled = kwargs['securityEnabled']
+        if 'writebackEnabled' in kwargs:
+            writeback_enabled = kwargs['writebackEnabled']
+
         _setter("display_name", display_name)
         if administrative_unit_ids is not None:
             _setter("administrative_unit_ids", administrative_unit_ids)
@@ -607,7 +639,55 @@ class _GroupState:
              types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              visibility: Optional[pulumi.Input[str]] = None,
              writeback_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'administrativeUnitIds' in kwargs:
+            administrative_unit_ids = kwargs['administrativeUnitIds']
+        if 'assignableToRole' in kwargs:
+            assignable_to_role = kwargs['assignableToRole']
+        if 'autoSubscribeNewMembers' in kwargs:
+            auto_subscribe_new_members = kwargs['autoSubscribeNewMembers']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'dynamicMembership' in kwargs:
+            dynamic_membership = kwargs['dynamicMembership']
+        if 'externalSendersAllowed' in kwargs:
+            external_senders_allowed = kwargs['externalSendersAllowed']
+        if 'hideFromAddressLists' in kwargs:
+            hide_from_address_lists = kwargs['hideFromAddressLists']
+        if 'hideFromOutlookClients' in kwargs:
+            hide_from_outlook_clients = kwargs['hideFromOutlookClients']
+        if 'mailEnabled' in kwargs:
+            mail_enabled = kwargs['mailEnabled']
+        if 'mailNickname' in kwargs:
+            mail_nickname = kwargs['mailNickname']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if 'onpremisesDomainName' in kwargs:
+            onpremises_domain_name = kwargs['onpremisesDomainName']
+        if 'onpremisesGroupType' in kwargs:
+            onpremises_group_type = kwargs['onpremisesGroupType']
+        if 'onpremisesNetbiosName' in kwargs:
+            onpremises_netbios_name = kwargs['onpremisesNetbiosName']
+        if 'onpremisesSamAccountName' in kwargs:
+            onpremises_sam_account_name = kwargs['onpremisesSamAccountName']
+        if 'onpremisesSecurityIdentifier' in kwargs:
+            onpremises_security_identifier = kwargs['onpremisesSecurityIdentifier']
+        if 'onpremisesSyncEnabled' in kwargs:
+            onpremises_sync_enabled = kwargs['onpremisesSyncEnabled']
+        if 'preferredLanguage' in kwargs:
+            preferred_language = kwargs['preferredLanguage']
+        if 'preventDuplicateNames' in kwargs:
+            prevent_duplicate_names = kwargs['preventDuplicateNames']
+        if 'provisioningOptions' in kwargs:
+            provisioning_options = kwargs['provisioningOptions']
+        if 'proxyAddresses' in kwargs:
+            proxy_addresses = kwargs['proxyAddresses']
+        if 'securityEnabled' in kwargs:
+            security_enabled = kwargs['securityEnabled']
+        if 'writebackEnabled' in kwargs:
+            writeback_enabled = kwargs['writebackEnabled']
+
         if administrative_unit_ids is not None:
             _setter("administrative_unit_ids", administrative_unit_ids)
         if assignable_to_role is not None:

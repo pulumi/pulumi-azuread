@@ -41,7 +41,17 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
              resource_service_principal_object_id: pulumi.Input[str],
              service_principal_object_id: pulumi.Input[str],
              user_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'claimValues' in kwargs:
+            claim_values = kwargs['claimValues']
+        if 'resourceServicePrincipalObjectId' in kwargs:
+            resource_service_principal_object_id = kwargs['resourceServicePrincipalObjectId']
+        if 'servicePrincipalObjectId' in kwargs:
+            service_principal_object_id = kwargs['servicePrincipalObjectId']
+        if 'userObjectId' in kwargs:
+            user_object_id = kwargs['userObjectId']
+
         _setter("claim_values", claim_values)
         _setter("resource_service_principal_object_id", resource_service_principal_object_id)
         _setter("service_principal_object_id", service_principal_object_id)
@@ -129,7 +139,17 @@ class _ServicePrincipalDelegatedPermissionGrantState:
              resource_service_principal_object_id: Optional[pulumi.Input[str]] = None,
              service_principal_object_id: Optional[pulumi.Input[str]] = None,
              user_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'claimValues' in kwargs:
+            claim_values = kwargs['claimValues']
+        if 'resourceServicePrincipalObjectId' in kwargs:
+            resource_service_principal_object_id = kwargs['resourceServicePrincipalObjectId']
+        if 'servicePrincipalObjectId' in kwargs:
+            service_principal_object_id = kwargs['servicePrincipalObjectId']
+        if 'userObjectId' in kwargs:
+            user_object_id = kwargs['userObjectId']
+
         if claim_values is not None:
             _setter("claim_values", claim_values)
         if resource_service_principal_object_id is not None:

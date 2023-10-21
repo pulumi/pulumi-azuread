@@ -442,6 +442,25 @@
                     }
                 }
             },
+            "azuread_application_api_access": {
+                "current": "azuread:index/applicationApiAccess:ApplicationApiAccess",
+                "fields": {
+                    "role_ids": {
+                        "maxItemsOne": false
+                    },
+                    "scope_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "azuread_application_app_role": {
+                "current": "azuread:index/applicationAppRole:ApplicationAppRole",
+                "fields": {
+                    "allowed_member_types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "azuread_application_certificate": {
                 "current": "azuread:index/applicationCertificate:ApplicationCertificate",
                 "fields": {
@@ -454,6 +473,9 @@
                     "type": {},
                     "value": {}
                 }
+            },
+            "azuread_application_fallback_public_client": {
+                "current": "azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient"
             },
             "azuread_application_federated_identity_credential": {
                 "current": "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential",
@@ -470,6 +492,23 @@
                     "subject": {}
                 }
             },
+            "azuread_application_from_template": {
+                "current": "azuread:index/applicationFromTemplate:ApplicationFromTemplate"
+            },
+            "azuread_application_identifier_uri": {
+                "current": "azuread:index/applicationIdentifierUri:ApplicationIdentifierUri"
+            },
+            "azuread_application_known_clients": {
+                "current": "azuread:index/applicationKnownClients:ApplicationKnownClients",
+                "fields": {
+                    "known_client_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "azuread_application_owner": {
+                "current": "azuread:index/applicationOwner:ApplicationOwner"
+            },
             "azuread_application_password": {
                 "current": "azuread:index/applicationPassword:ApplicationPassword",
                 "fields": {
@@ -485,6 +524,9 @@
                     "value": {}
                 }
             },
+            "azuread_application_permission_scope": {
+                "current": "azuread:index/applicationPermissionScope:ApplicationPermissionScope"
+            },
             "azuread_application_pre_authorized": {
                 "current": "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized",
                 "fields": {
@@ -493,6 +535,30 @@
                     "permission_ids": {
                         "maxItemsOne": false,
                         "elem": {}
+                    }
+                }
+            },
+            "azuread_application_redirect_uris": {
+                "current": "azuread:index/applicationRedirectUris:ApplicationRedirectUris",
+                "fields": {
+                    "redirect_uris": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "azuread_application_registration": {
+                "current": "azuread:index/applicationRegistration:ApplicationRegistration",
+                "fields": {
+                    "group_membership_claims": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "azuread_authentication_strength_policy": {
+                "current": "azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy",
+                "fields": {
+                    "allowed_combinations": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1450,6 +1516,9 @@
                     "application_ids": {
                         "maxItemsOne": false
                     },
+                    "client_ids": {
+                        "maxItemsOne": false
+                    },
                     "display_names": {
                         "maxItemsOne": false
                     },
@@ -1523,10 +1592,21 @@
             "azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember": "azuread_administrative_unit_role_member",
             "azuread:index/appRoleAssignment:AppRoleAssignment": "azuread_app_role_assignment",
             "azuread:index/application:Application": "azuread_application",
+            "azuread:index/applicationApiAccess:ApplicationApiAccess": "azuread_application_api_access",
+            "azuread:index/applicationAppRole:ApplicationAppRole": "azuread_application_app_role",
             "azuread:index/applicationCertificate:ApplicationCertificate": "azuread_application_certificate",
+            "azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient": "azuread_application_fallback_public_client",
             "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential": "azuread_application_federated_identity_credential",
+            "azuread:index/applicationFromTemplate:ApplicationFromTemplate": "azuread_application_from_template",
+            "azuread:index/applicationIdentifierUri:ApplicationIdentifierUri": "azuread_application_identifier_uri",
+            "azuread:index/applicationKnownClients:ApplicationKnownClients": "azuread_application_known_clients",
+            "azuread:index/applicationOwner:ApplicationOwner": "azuread_application_owner",
             "azuread:index/applicationPassword:ApplicationPassword": "azuread_application_password",
+            "azuread:index/applicationPermissionScope:ApplicationPermissionScope": "azuread_application_permission_scope",
             "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized": "azuread_application_pre_authorized",
+            "azuread:index/applicationRedirectUris:ApplicationRedirectUris": "azuread_application_redirect_uris",
+            "azuread:index/applicationRegistration:ApplicationRegistration": "azuread_application_registration",
+            "azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy": "azuread_authentication_strength_policy",
             "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy": "azuread_claims_mapping_policy",
             "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy": "azuread_conditional_access_policy",
             "azuread:index/customDirectoryRole:CustomDirectoryRole": "azuread_custom_directory_role",
@@ -1723,6 +1803,7 @@
                 "includedUsers": "included_users"
             },
             "azuread:index/ConditionalAccessPolicyGrantControls:ConditionalAccessPolicyGrantControls": {
+                "authenticationStrengthPolicyId": "authentication_strength_policy_id",
                 "builtInControls": "built_in_controls",
                 "customAuthenticationFactors": "custom_authentication_factors",
                 "termsOfUses": "terms_of_use"
@@ -1831,6 +1912,7 @@
                 "appRoleIds": "app_role_ids",
                 "appRoles": "app_role",
                 "applicationId": "application_id",
+                "clientId": "client_id",
                 "deviceOnlyAuthEnabled": "device_only_auth_enabled",
                 "disabledByMicrosoft": "disabled_by_microsoft",
                 "displayName": "display_name",
@@ -1857,19 +1939,57 @@
                 "templateId": "template_id",
                 "termsOfServiceUrl": "terms_of_service_url"
             },
+            "azuread:index/applicationApiAccess:ApplicationApiAccess": {
+                "apiClientId": "api_client_id",
+                "applicationId": "application_id",
+                "roleIds": "role_ids",
+                "scopeIds": "scope_ids"
+            },
+            "azuread:index/applicationAppRole:ApplicationAppRole": {
+                "allowedMemberTypes": "allowed_member_types",
+                "applicationId": "application_id",
+                "displayName": "display_name",
+                "roleId": "role_id"
+            },
             "azuread:index/applicationCertificate:ApplicationCertificate": {
+                "applicationId": "application_id",
                 "applicationObjectId": "application_object_id",
                 "endDate": "end_date",
                 "endDateRelative": "end_date_relative",
                 "keyId": "key_id",
                 "startDate": "start_date"
             },
+            "azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient": {
+                "applicationId": "application_id"
+            },
             "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential": {
+                "applicationId": "application_id",
                 "applicationObjectId": "application_object_id",
                 "credentialId": "credential_id",
                 "displayName": "display_name"
             },
+            "azuread:index/applicationFromTemplate:ApplicationFromTemplate": {
+                "applicationId": "application_id",
+                "applicationObjectId": "application_object_id",
+                "displayName": "display_name",
+                "servicePrincipalId": "service_principal_id",
+                "servicePrincipalObjectId": "service_principal_object_id",
+                "templateId": "template_id"
+            },
+            "azuread:index/applicationIdentifierUri:ApplicationIdentifierUri": {
+                "applicationId": "application_id",
+                "identifierUri": "identifier_uri"
+            },
+            "azuread:index/applicationKnownClients:ApplicationKnownClients": {
+                "applicationId": "application_id",
+                "knownClientIds": "known_client_ids"
+            },
+            "azuread:index/applicationOwner:ApplicationOwner": {
+                "applicationId": "application_id",
+                "ownerObjectId": "owner_object_id"
+            },
             "azuread:index/applicationPassword:ApplicationPassword": {
+                "applicationId": "application_id",
                 "applicationObjectId": "application_object_id",
                 "displayName": "display_name",
                 "endDate": "end_date",
@@ -1878,10 +1998,47 @@
                 "rotateWhenChanged": "rotate_when_changed",
                 "startDate": "start_date"
             },
+            "azuread:index/applicationPermissionScope:ApplicationPermissionScope": {
+                "adminConsentDescription": "admin_consent_description",
+                "adminConsentDisplayName": "admin_consent_display_name",
+                "applicationId": "application_id",
+                "scopeId": "scope_id",
+                "userConsentDescription": "user_consent_description",
+                "userConsentDisplayName": "user_consent_display_name"
+            },
             "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized": {
+                "applicationId": "application_id",
                 "applicationObjectId": "application_object_id",
                 "authorizedAppId": "authorized_app_id",
+                "authorizedClientId": "authorized_client_id",
                 "permissionIds": "permission_ids"
+            },
+            "azuread:index/applicationRedirectUris:ApplicationRedirectUris": {
+                "applicationId": "application_id",
+                "redirectUris": "redirect_uris"
+            },
+            "azuread:index/applicationRegistration:ApplicationRegistration": {
+                "clientId": "client_id",
+                "disabledByMicrosoft": "disabled_by_microsoft",
+                "displayName": "display_name",
+                "groupMembershipClaims": "group_membership_claims",
+                "homepageUrl": "homepage_url",
+                "implicitAccessTokenIssuanceEnabled": "implicit_access_token_issuance_enabled",
+                "implicitIdTokenIssuanceEnabled": "implicit_id_token_issuance_enabled",
+                "logoutUrl": "logout_url",
+                "marketingUrl": "marketing_url",
+                "objectId": "object_id",
+                "privacyStatementUrl": "privacy_statement_url",
+                "publisherDomain": "publisher_domain",
+                "requestedAccessTokenVersion": "requested_access_token_version",
+                "serviceManagementReference": "service_management_reference",
+                "signInAudience": "sign_in_audience",
+                "supportUrl": "support_url",
+                "termsOfServiceUrl": "terms_of_service_url"
+            },
+            "azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy": {
+                "allowedCombinations": "allowed_combinations",
+                "displayName": "display_name"
             },
             "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy": {
                 "definitions": "definition",
@@ -1943,6 +2100,7 @@
                 "appRoleIds": "app_role_ids",
                 "appRoles": "app_roles",
                 "applicationId": "application_id",
+                "clientId": "client_id",
                 "deviceOnlyAuthEnabled": "device_only_auth_enabled",
                 "disabledByMicrosoft": "disabled_by_microsoft",
                 "displayName": "display_name",
@@ -2119,6 +2277,7 @@
                 "appRoles": "app_roles",
                 "applicationId": "application_id",
                 "applicationTenantId": "application_tenant_id",
+                "clientId": "client_id",
                 "displayName": "display_name",
                 "featureTags": "feature_tags",
                 "homepageUrl": "homepage_url",
@@ -2159,6 +2318,7 @@
             },
             "azuread:index/getServicePrincipals:getServicePrincipals": {
                 "applicationIds": "application_ids",
+                "clientIds": "client_ids",
                 "displayNames": "display_names",
                 "ignoreMissing": "ignore_missing",
                 "objectIds": "object_ids",
@@ -2170,6 +2330,7 @@
                 "appRoleAssignmentRequired": "app_role_assignment_required",
                 "applicationId": "application_id",
                 "applicationTenantId": "application_tenant_id",
+                "clientId": "client_id",
                 "displayName": "display_name",
                 "objectId": "object_id",
                 "preferredSingleSignOnMode": "preferred_single_sign_on_mode",
@@ -2283,6 +2444,7 @@
                 "appRoles": "app_roles",
                 "applicationId": "application_id",
                 "applicationTenantId": "application_tenant_id",
+                "clientId": "client_id",
                 "displayName": "display_name",
                 "featureTags": "feature_tags",
                 "homepageUrl": "homepage_url",

@@ -70,7 +70,7 @@ public class ServicePrincipalClaimsMappingPolicyAssignment extends com.pulumi.re
      * The ID of the claims mapping policy to assign.
      * 
      */
-    @Export(name="claimsMappingPolicyId", refs={String.class}, tree="[0]")
+    @Export(name="claimsMappingPolicyId", type=String.class, parameters={})
     private Output<String> claimsMappingPolicyId;
 
     /**
@@ -84,7 +84,7 @@ public class ServicePrincipalClaimsMappingPolicyAssignment extends com.pulumi.re
      * The object ID of the service principal for the policy assignment.
      * 
      */
-    @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
+    @Export(name="servicePrincipalId", type=String.class, parameters={})
     private Output<String> servicePrincipalId;
 
     /**

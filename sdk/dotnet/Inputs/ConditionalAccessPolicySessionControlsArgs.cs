@@ -13,7 +13,7 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class ConditionalAccessPolicySessionControlsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+        /// Whether application enforced restrictions are enabled. Defaults to `false`.
         /// 
         /// &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
         /// </summary>
@@ -33,7 +33,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<bool>? DisableResilienceDefaults { get; set; }
 
         /// <summary>
-        /// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+        /// Session control to define whether to persist cookies. Possible values are: `always` or `never`.
         /// </summary>
         [Input("persistentBrowserMode")]
         public Input<string>? PersistentBrowserMode { get; set; }

@@ -1970,7 +1970,7 @@ public final class AzureadFunctions {
      *             .displayName(&#34;My First AzureAD Application&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
      *     }
      * }
      * ```
@@ -2016,7 +2016,7 @@ public final class AzureadFunctions {
      *             .displayName(&#34;My First AzureAD Application&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
      *     }
      * }
      * ```
@@ -2062,7 +2062,7 @@ public final class AzureadFunctions {
      *             .displayName(&#34;My First AzureAD Application&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
      *     }
      * }
      * ```
@@ -2108,7 +2108,7 @@ public final class AzureadFunctions {
      *             .displayName(&#34;My First AzureAD Application&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
      *     }
      * }
      * ```
@@ -2154,7 +2154,7 @@ public final class AzureadFunctions {
      *             .displayName(&#34;My First AzureAD Application&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
      *     }
      * }
      * ```
@@ -2200,7 +2200,7 @@ public final class AzureadFunctions {
      *             .displayName(&#34;My First AzureAD Application&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
      *     }
      * }
      * ```
@@ -5876,7 +5876,7 @@ public final class AzureadFunctions {
      * }
      * ```
      * 
-     * *Look up by application ID (client ID)*
+     * *Look up by client ID*
      * ```java
      * package generated_program;
      * 
@@ -5899,7 +5899,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
      *             .build());
      * 
      *     }
@@ -5983,7 +5983,7 @@ public final class AzureadFunctions {
      * }
      * ```
      * 
-     * *Look up by application ID (client ID)*
+     * *Look up by client ID*
      * ```java
      * package generated_program;
      * 
@@ -6006,7 +6006,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
      *             .build());
      * 
      *     }
@@ -6090,7 +6090,7 @@ public final class AzureadFunctions {
      * }
      * ```
      * 
-     * *Look up by application ID (client ID)*
+     * *Look up by client ID*
      * ```java
      * package generated_program;
      * 
@@ -6113,7 +6113,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
      *             .build());
      * 
      *     }
@@ -6197,7 +6197,7 @@ public final class AzureadFunctions {
      * }
      * ```
      * 
-     * *Look up by application ID (client ID)*
+     * *Look up by client ID*
      * ```java
      * package generated_program;
      * 
@@ -6220,7 +6220,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
      *             .build());
      * 
      *     }
@@ -6304,7 +6304,7 @@ public final class AzureadFunctions {
      * }
      * ```
      * 
-     * *Look up by application ID (client ID)*
+     * *Look up by client ID*
      * ```java
      * package generated_program;
      * 
@@ -6327,7 +6327,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
      *             .build());
      * 
      *     }
@@ -6411,7 +6411,7 @@ public final class AzureadFunctions {
      * }
      * ```
      * 
-     * *Look up by application ID (client ID)*
+     * *Look up by client ID*
      * ```java
      * package generated_program;
      * 
@@ -6434,7 +6434,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
      *             .build());
      * 
      *     }
@@ -6543,7 +6543,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .applicationIds(            
+     *             .clientIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
@@ -6658,7 +6658,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .applicationIds(            
+     *             .clientIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
@@ -6773,7 +6773,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .applicationIds(            
+     *             .clientIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
@@ -6888,7 +6888,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .applicationIds(            
+     *             .clientIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
@@ -7003,7 +7003,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .applicationIds(            
+     *             .clientIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
@@ -7118,7 +7118,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .applicationIds(            
+     *             .clientIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)

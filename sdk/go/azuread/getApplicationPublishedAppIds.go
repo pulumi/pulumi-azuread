@@ -4,8 +4,12 @@
 package azuread
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to discover application IDs for APIs published by Microsoft.
@@ -112,4 +116,50 @@ type GetApplicationPublishedAppIdsResult struct {
 	Id string `pulumi:"id"`
 	// A map of application names to application IDs.
 	Result map[string]string `pulumi:"result"`
+}
+
+func GetApplicationPublishedAppIdsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetApplicationPublishedAppIdsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetApplicationPublishedAppIdsResult, error) {
+		r, err := GetApplicationPublishedAppIds(ctx, opts...)
+		var s GetApplicationPublishedAppIdsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetApplicationPublishedAppIdsResultOutput)
+}
+
+// A collection of values returned by getApplicationPublishedAppIds.
+type GetApplicationPublishedAppIdsResultOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationPublishedAppIdsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationPublishedAppIdsResult)(nil)).Elem()
+}
+
+func (o GetApplicationPublishedAppIdsResultOutput) ToGetApplicationPublishedAppIdsResultOutput() GetApplicationPublishedAppIdsResultOutput {
+	return o
+}
+
+func (o GetApplicationPublishedAppIdsResultOutput) ToGetApplicationPublishedAppIdsResultOutputWithContext(ctx context.Context) GetApplicationPublishedAppIdsResultOutput {
+	return o
+}
+
+func (o GetApplicationPublishedAppIdsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationPublishedAppIdsResult] {
+	return pulumix.Output[GetApplicationPublishedAppIdsResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetApplicationPublishedAppIdsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationPublishedAppIdsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A map of application names to application IDs.
+func (o GetApplicationPublishedAppIdsResultOutput) Result() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApplicationPublishedAppIdsResult) map[string]string { return v.Result }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetApplicationPublishedAppIdsResultOutput{})
 }

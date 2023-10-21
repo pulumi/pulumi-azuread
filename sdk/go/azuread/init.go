@@ -43,14 +43,36 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppRoleAssignment{}
 	case "azuread:index/application:Application":
 		r = &Application{}
+	case "azuread:index/applicationApiAccess:ApplicationApiAccess":
+		r = &ApplicationApiAccess{}
+	case "azuread:index/applicationAppRole:ApplicationAppRole":
+		r = &ApplicationAppRole{}
 	case "azuread:index/applicationCertificate:ApplicationCertificate":
 		r = &ApplicationCertificate{}
+	case "azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient":
+		r = &ApplicationFallbackPublicClient{}
 	case "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential":
 		r = &ApplicationFederatedIdentityCredential{}
+	case "azuread:index/applicationFromTemplate:ApplicationFromTemplate":
+		r = &ApplicationFromTemplate{}
+	case "azuread:index/applicationIdentifierUri:ApplicationIdentifierUri":
+		r = &ApplicationIdentifierUri{}
+	case "azuread:index/applicationKnownClients:ApplicationKnownClients":
+		r = &ApplicationKnownClients{}
+	case "azuread:index/applicationOwner:ApplicationOwner":
+		r = &ApplicationOwner{}
 	case "azuread:index/applicationPassword:ApplicationPassword":
 		r = &ApplicationPassword{}
+	case "azuread:index/applicationPermissionScope:ApplicationPermissionScope":
+		r = &ApplicationPermissionScope{}
 	case "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized":
 		r = &ApplicationPreAuthorized{}
+	case "azuread:index/applicationRedirectUris:ApplicationRedirectUris":
+		r = &ApplicationRedirectUris{}
+	case "azuread:index/applicationRegistration:ApplicationRegistration":
+		r = &ApplicationRegistration{}
+	case "azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy":
+		r = &AuthenticationStrengthPolicy{}
 	case "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy":
 		r = &ClaimsMappingPolicy{}
 	case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
@@ -181,7 +203,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"azuread",
+		"index/applicationApiAccess",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/applicationAppRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
 		"index/applicationCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/applicationFallbackPublicClient",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -191,12 +228,52 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"azuread",
+		"index/applicationFromTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/applicationIdentifierUri",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/applicationKnownClients",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/applicationOwner",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
 		"index/applicationPassword",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"azuread",
+		"index/applicationPermissionScope",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
 		"index/applicationPreAuthorized",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/applicationRedirectUris",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/applicationRegistration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/authenticationStrengthPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -47,7 +47,21 @@ class ServicePrincipalPasswordArgs:
              end_date_relative: Optional[pulumi.Input[str]] = None,
              rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if 'rotateWhenChanged' in kwargs:
+            rotate_when_changed = kwargs['rotateWhenChanged']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         _setter("service_principal_id", service_principal_id)
         if display_name is not None:
             _setter("display_name", display_name)
@@ -177,7 +191,23 @@ class _ServicePrincipalPasswordState:
              service_principal_id: Optional[pulumi.Input[str]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'rotateWhenChanged' in kwargs:
+            rotate_when_changed = kwargs['rotateWhenChanged']
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if end_date is not None:
@@ -305,16 +335,6 @@ class ServicePrincipalPassword(pulumi.CustomResource):
                  start_date: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a password credential associated with a service principal within Azure Active Directory. See also the ApplicationPassword resource.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-
         ## Example Usage
 
         *Basic example*
@@ -365,16 +385,6 @@ class ServicePrincipalPassword(pulumi.CustomResource):
                  args: ServicePrincipalPasswordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a password credential associated with a service principal within Azure Active Directory. See also the ApplicationPassword resource.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-
         ## Example Usage
 
         *Basic example*

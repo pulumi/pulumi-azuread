@@ -65,7 +65,25 @@ class AccessPackageAssignmentPolicyArgs:
              extension_enabled: Optional[pulumi.Input[bool]] = None,
              questions: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionArgs']]]] = None,
              requestor_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPackageId' in kwargs:
+            access_package_id = kwargs['accessPackageId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'approvalSettings' in kwargs:
+            approval_settings = kwargs['approvalSettings']
+        if 'assignmentReviewSettings' in kwargs:
+            assignment_review_settings = kwargs['assignmentReviewSettings']
+        if 'durationInDays' in kwargs:
+            duration_in_days = kwargs['durationInDays']
+        if 'expirationDate' in kwargs:
+            expiration_date = kwargs['expirationDate']
+        if 'extensionEnabled' in kwargs:
+            extension_enabled = kwargs['extensionEnabled']
+        if 'requestorSettings' in kwargs:
+            requestor_settings = kwargs['requestorSettings']
+
         _setter("access_package_id", access_package_id)
         _setter("description", description)
         _setter("display_name", display_name)
@@ -257,7 +275,25 @@ class _AccessPackageAssignmentPolicyState:
              extension_enabled: Optional[pulumi.Input[bool]] = None,
              questions: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionArgs']]]] = None,
              requestor_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPackageId' in kwargs:
+            access_package_id = kwargs['accessPackageId']
+        if 'approvalSettings' in kwargs:
+            approval_settings = kwargs['approvalSettings']
+        if 'assignmentReviewSettings' in kwargs:
+            assignment_review_settings = kwargs['assignmentReviewSettings']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'durationInDays' in kwargs:
+            duration_in_days = kwargs['durationInDays']
+        if 'expirationDate' in kwargs:
+            expiration_date = kwargs['expirationDate']
+        if 'extensionEnabled' in kwargs:
+            extension_enabled = kwargs['extensionEnabled']
+        if 'requestorSettings' in kwargs:
+            requestor_settings = kwargs['requestorSettings']
+
         if access_package_id is not None:
             _setter("access_package_id", access_package_id)
         if approval_settings is not None:

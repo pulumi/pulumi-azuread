@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * Administrative unit members can be imported using the object ID of the administrative unit and the object ID of the member, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+ *  $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
  * ```
  * 
  *  -&gt; This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
@@ -87,7 +87,7 @@ public class AdministrativeUnitMember extends com.pulumi.resources.CustomResourc
      * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="administrativeUnitObjectId", refs={String.class}, tree="[0]")
+    @Export(name="administrativeUnitObjectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> administrativeUnitObjectId;
 
     /**
@@ -101,7 +101,7 @@ public class AdministrativeUnitMember extends com.pulumi.resources.CustomResourc
      * The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="memberObjectId", refs={String.class}, tree="[0]")
+    @Export(name="memberObjectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> memberObjectId;
 
     /**

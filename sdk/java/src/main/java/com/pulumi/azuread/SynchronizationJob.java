@@ -118,7 +118,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * Whether or not the provisioning job is enabled. Default state is `true`.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -132,7 +132,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * A `schedule` list as documented below.
      * 
      */
-    @Export(name="schedules", refs={List.class,SynchronizationJobSchedule.class}, tree="[0,1]")
+    @Export(name="schedules", type=List.class, parameters={SynchronizationJobSchedule.class})
     private Output<List<SynchronizationJobSchedule>> schedules;
 
     /**
@@ -146,7 +146,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
+    @Export(name="servicePrincipalId", type=String.class, parameters={})
     private Output<String> servicePrincipalId;
 
     /**
@@ -160,7 +160,7 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * Identifier of the synchronization template this job is based on.
      * 
      */
-    @Export(name="templateId", refs={String.class}, tree="[0]")
+    @Export(name="templateId", type=String.class, parameters={})
     private Output<String> templateId;
 
     /**

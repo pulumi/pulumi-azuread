@@ -132,7 +132,7 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
      * The ID of the access package that will contain the policy.
      * 
      */
-    @Export(name="accessPackageId", refs={String.class}, tree="[0]")
+    @Export(name="accessPackageId", type=String.class, parameters={})
     private Output<String> accessPackageId;
 
     /**
@@ -146,7 +146,7 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
      * An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
      * 
      */
-    @Export(name="approvalSettings", refs={AccessPackageAssignmentPolicyApprovalSettings.class}, tree="[0]")
+    @Export(name="approvalSettings", type=AccessPackageAssignmentPolicyApprovalSettings.class, parameters={})
     private Output</* @Nullable */ AccessPackageAssignmentPolicyApprovalSettings> approvalSettings;
 
     /**
@@ -160,7 +160,7 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
      * An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
      * 
      */
-    @Export(name="assignmentReviewSettings", refs={AccessPackageAssignmentPolicyAssignmentReviewSettings.class}, tree="[0]")
+    @Export(name="assignmentReviewSettings", type=AccessPackageAssignmentPolicyAssignmentReviewSettings.class, parameters={})
     private Output</* @Nullable */ AccessPackageAssignmentPolicyAssignmentReviewSettings> assignmentReviewSettings;
 
     /**
@@ -174,7 +174,7 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
      * The description of the policy.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -188,7 +188,7 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
      * The display name of the policy.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -202,7 +202,7 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
      * How many days this assignment is valid for.
      * 
      */
-    @Export(name="durationInDays", refs={Integer.class}, tree="[0]")
+    @Export(name="durationInDays", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> durationInDays;
 
     /**
@@ -216,7 +216,7 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
      * The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
      * 
      */
-    @Export(name="expirationDate", refs={String.class}, tree="[0]")
+    @Export(name="expirationDate", type=String.class, parameters={})
     private Output</* @Nullable */ String> expirationDate;
 
     /**
@@ -230,7 +230,7 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
      * Whether users will be able to request extension of their access to this package before their access expires.
      * 
      */
-    @Export(name="extensionEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="extensionEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> extensionEnabled;
 
     /**
@@ -244,7 +244,7 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
      * One or more `question` blocks for the requestor, as documented below.
      * 
      */
-    @Export(name="questions", refs={List.class,AccessPackageAssignmentPolicyQuestion.class}, tree="[0,1]")
+    @Export(name="questions", type=List.class, parameters={AccessPackageAssignmentPolicyQuestion.class})
     private Output</* @Nullable */ List<AccessPackageAssignmentPolicyQuestion>> questions;
 
     /**
@@ -258,7 +258,7 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
      * A `requestor_settings` block to configure the users who can request access, as documented below.
      * 
      */
-    @Export(name="requestorSettings", refs={AccessPackageAssignmentPolicyRequestorSettings.class}, tree="[0]")
+    @Export(name="requestorSettings", type=AccessPackageAssignmentPolicyRequestorSettings.class, parameters={})
     private Output</* @Nullable */ AccessPackageAssignmentPolicyRequestorSettings> requestorSettings;
 
     /**

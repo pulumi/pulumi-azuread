@@ -22,7 +22,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, application_id=None, description=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, feature_tags=None, group_membership_claims=None, id=None, identifier_uris=None, logo_url=None, marketing_url=None, notes=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, service_management_reference=None, sign_in_audience=None, single_page_applications=None, support_url=None, tags=None, terms_of_service_url=None, webs=None):
+    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, application_id=None, client_id=None, description=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, feature_tags=None, group_membership_claims=None, id=None, identifier_uris=None, logo_url=None, marketing_url=None, notes=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, service_management_reference=None, sign_in_audience=None, single_page_applications=None, support_url=None, tags=None, terms_of_service_url=None, webs=None):
         if apis and not isinstance(apis, list):
             raise TypeError("Expected argument 'apis' to be a list")
         pulumi.set(__self__, "apis", apis)
@@ -35,6 +35,9 @@ class GetApplicationResult:
         if application_id and not isinstance(application_id, str):
             raise TypeError("Expected argument 'application_id' to be a str")
         pulumi.set(__self__, "application_id", application_id)
+        if client_id and not isinstance(client_id, str):
+            raise TypeError("Expected argument 'client_id' to be a str")
+        pulumi.set(__self__, "client_id", client_id)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -147,10 +150,18 @@ class GetApplicationResult:
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
-        """
-        The Application ID (also called Client ID).
-        """
+        warnings.warn("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_id is deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The Client ID for the application.
+        """
+        return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter
@@ -387,6 +398,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             app_role_ids=self.app_role_ids,
             app_roles=self.app_roles,
             application_id=self.application_id,
+            client_id=self.client_id,
             description=self.description,
             device_only_auth_enabled=self.device_only_auth_enabled,
             disabled_by_microsoft=self.disabled_by_microsoft,
@@ -418,6 +430,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
 
 
 def get_application(application_id: Optional[str] = None,
+                    client_id: Optional[str] = None,
                     display_name: Optional[str] = None,
                     object_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationResult:
@@ -439,18 +452,19 @@ def get_application(application_id: Optional[str] = None,
     import pulumi_azuread as azuread
 
     example = azuread.get_application(display_name="My First AzureAD Application")
-    pulumi.export("applicationObjectId", example.id)
+    pulumi.export("applicationObjectId", example.object_id)
     ```
 
 
-    :param str application_id: Specifies the Application ID (also called Client ID).
+    :param str client_id: Specifies the Client ID of the application.
     :param str display_name: Specifies the display name of the application.
     :param str object_id: Specifies the Object ID of the application.
            
-           > One of `object_id`, `application_id` or `display_name` must be specified.
+           > One of `client_id`, `display_name`, or `object_id` must be specified.
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
+    __args__['clientId'] = client_id
     __args__['displayName'] = display_name
     __args__['objectId'] = object_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -461,6 +475,7 @@ def get_application(application_id: Optional[str] = None,
         app_role_ids=pulumi.get(__ret__, 'app_role_ids'),
         app_roles=pulumi.get(__ret__, 'app_roles'),
         application_id=pulumi.get(__ret__, 'application_id'),
+        client_id=pulumi.get(__ret__, 'client_id'),
         description=pulumi.get(__ret__, 'description'),
         device_only_auth_enabled=pulumi.get(__ret__, 'device_only_auth_enabled'),
         disabled_by_microsoft=pulumi.get(__ret__, 'disabled_by_microsoft'),
@@ -493,6 +508,7 @@ def get_application(application_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_application)
 def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           client_id: Optional[pulumi.Input[Optional[str]]] = None,
                            display_name: Optional[pulumi.Input[Optional[str]]] = None,
                            object_id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationResult]:
@@ -514,14 +530,14 @@ def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]]
     import pulumi_azuread as azuread
 
     example = azuread.get_application(display_name="My First AzureAD Application")
-    pulumi.export("applicationObjectId", example.id)
+    pulumi.export("applicationObjectId", example.object_id)
     ```
 
 
-    :param str application_id: Specifies the Application ID (also called Client ID).
+    :param str client_id: Specifies the Client ID of the application.
     :param str display_name: Specifies the display name of the application.
     :param str object_id: Specifies the Object ID of the application.
            
-           > One of `object_id`, `application_id` or `display_name` must be specified.
+           > One of `client_id`, `display_name`, or `object_id` must be specified.
     """
     ...

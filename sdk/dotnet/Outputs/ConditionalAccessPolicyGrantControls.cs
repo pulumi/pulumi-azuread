@@ -14,6 +14,10 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ConditionalAccessPolicyGrantControls
     {
         /// <summary>
+        /// ID of an Authentication Strength Policy to use in this policy.
+        /// </summary>
+        public readonly string? AuthenticationStrengthPolicyId;
+        /// <summary>
         /// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
         /// </summary>
         public readonly ImmutableArray<string> BuiltInControls;
@@ -28,12 +32,14 @@ namespace Pulumi.AzureAD.Outputs
         /// <summary>
         /// List of terms of use IDs required by the policy.
         /// 
-        /// &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+        /// &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
         /// </summary>
         public readonly ImmutableArray<string> TermsOfUses;
 
         [OutputConstructor]
         private ConditionalAccessPolicyGrantControls(
+            string? authenticationStrengthPolicyId,
+
             ImmutableArray<string> builtInControls,
 
             ImmutableArray<string> customAuthenticationFactors,
@@ -42,6 +48,7 @@ namespace Pulumi.AzureAD.Outputs
 
             ImmutableArray<string> termsOfUses)
         {
+            AuthenticationStrengthPolicyId = authenticationStrengthPolicyId;
             BuiltInControls = builtInControls;
             CustomAuthenticationFactors = customAuthenticationFactors;
             Operator = @operator;

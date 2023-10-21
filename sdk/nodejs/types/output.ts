@@ -607,6 +607,10 @@ export interface ConditionalAccessPolicyConditionsUsers {
 
 export interface ConditionalAccessPolicyGrantControls {
     /**
+     * ID of an Authentication Strength Policy to use in this policy.
+     */
+    authenticationStrengthPolicyId?: string;
+    /**
      * List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      */
     builtInControls?: string[];
@@ -621,14 +625,14 @@ export interface ConditionalAccessPolicyGrantControls {
     /**
      * List of terms of use IDs required by the policy.
      *
-     * > At least one of `builtInControls` or `termsOfUse` must be specified.
+     * > At least one of `authenticationStrengthPolicyId`, `builtInControls` or `termsOfUse` must be specified.
      */
     termsOfUses?: string[];
 }
 
 export interface ConditionalAccessPolicySessionControls {
     /**
-     * Whether or not application enforced restrictions are enabled. Defaults to `false`.
+     * Whether application enforced restrictions are enabled. Defaults to `false`.
      *
      * > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
      */
@@ -642,7 +646,7 @@ export interface ConditionalAccessPolicySessionControls {
      */
     disableResilienceDefaults?: boolean;
     /**
-     * Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+     * Session control to define whether to persist cookies. Possible values are: `always` or `never`.
      */
     persistentBrowserMode?: string;
     /**
@@ -1087,7 +1091,7 @@ export interface GetServicePrincipalSamlSingleSignOn {
 
 export interface GetServicePrincipalsServicePrincipal {
     /**
-     * Whether or not the service principal account is enabled.
+     * Whether the service principal account is enabled.
      */
     accountEnabled: boolean;
     /**
@@ -1095,13 +1099,14 @@ export interface GetServicePrincipalsServicePrincipal {
      */
     appRoleAssignmentRequired: boolean;
     /**
-     * The application ID (client ID) of the application associated with this service principal.
+     * @deprecated The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId: string;
     /**
      * The tenant ID where the associated application is registered.
      */
     applicationTenantId: string;
+    clientId: string;
     /**
      * The display name of the application associated with this service principal.
      */

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
@@ -184,7 +183,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
+//	$ pulumi import azuread:index/servicePrincipal:ServicePrincipal example 00000000-0000-0000-0000-000000000000
 //
 // ```
 type ServicePrincipal struct {
@@ -200,10 +199,14 @@ type ServicePrincipal struct {
 	AppRoleIds pulumi.StringMapOutput `pulumi:"appRoleIds"`
 	// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles ServicePrincipalAppRoleArrayOutput `pulumi:"appRoles"`
-	// The application ID (client ID) of the application for which to create a service principal.
+	// The application ID (client ID) of the application for which to create a service principal
+	//
+	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId pulumi.StringOutput `pulumi:"applicationTenantId"`
+	// The client ID of the application for which to create a service principal.
+	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// A description of the service principal provided for internal end-users.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name for the app role that appears during app role assignment and in consent experiences.
@@ -260,12 +263,9 @@ type ServicePrincipal struct {
 func NewServicePrincipal(ctx *pulumi.Context,
 	name string, args *ServicePrincipalArgs, opts ...pulumi.ResourceOption) (*ServicePrincipal, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ServicePrincipalArgs{}
 	}
 
-	if args.ApplicationId == nil {
-		return nil, errors.New("invalid value for required argument 'ApplicationId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServicePrincipal
 	err := ctx.RegisterResource("azuread:index/servicePrincipal:ServicePrincipal", name, args, &resource, opts...)
@@ -299,10 +299,14 @@ type servicePrincipalState struct {
 	AppRoleIds map[string]string `pulumi:"appRoleIds"`
 	// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles []ServicePrincipalAppRole `pulumi:"appRoles"`
-	// The application ID (client ID) of the application for which to create a service principal.
+	// The application ID (client ID) of the application for which to create a service principal
+	//
+	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId *string `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId *string `pulumi:"applicationTenantId"`
+	// The client ID of the application for which to create a service principal.
+	ClientId *string `pulumi:"clientId"`
 	// A description of the service principal provided for internal end-users.
 	Description *string `pulumi:"description"`
 	// Display name for the app role that appears during app role assignment and in consent experiences.
@@ -366,10 +370,14 @@ type ServicePrincipalState struct {
 	AppRoleIds pulumi.StringMapInput
 	// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles ServicePrincipalAppRoleArrayInput
-	// The application ID (client ID) of the application for which to create a service principal.
+	// The application ID (client ID) of the application for which to create a service principal
+	//
+	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringPtrInput
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId pulumi.StringPtrInput
+	// The client ID of the application for which to create a service principal.
+	ClientId pulumi.StringPtrInput
 	// A description of the service principal provided for internal end-users.
 	Description pulumi.StringPtrInput
 	// Display name for the app role that appears during app role assignment and in consent experiences.
@@ -433,8 +441,12 @@ type servicePrincipalArgs struct {
 	AlternativeNames []string `pulumi:"alternativeNames"`
 	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
 	AppRoleAssignmentRequired *bool `pulumi:"appRoleAssignmentRequired"`
-	// The application ID (client ID) of the application for which to create a service principal.
-	ApplicationId string `pulumi:"applicationId"`
+	// The application ID (client ID) of the application for which to create a service principal
+	//
+	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+	ApplicationId *string `pulumi:"applicationId"`
+	// The client ID of the application for which to create a service principal.
+	ClientId *string `pulumi:"clientId"`
 	// A description of the service principal provided for internal end-users.
 	Description *string `pulumi:"description"`
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
@@ -473,8 +485,12 @@ type ServicePrincipalArgs struct {
 	AlternativeNames pulumi.StringArrayInput
 	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
 	AppRoleAssignmentRequired pulumi.BoolPtrInput
-	// The application ID (client ID) of the application for which to create a service principal.
-	ApplicationId pulumi.StringInput
+	// The application ID (client ID) of the application for which to create a service principal
+	//
+	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+	ApplicationId pulumi.StringPtrInput
+	// The client ID of the application for which to create a service principal.
+	ClientId pulumi.StringPtrInput
 	// A description of the service principal provided for internal end-users.
 	Description pulumi.StringPtrInput
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
@@ -641,7 +657,9 @@ func (o ServicePrincipalOutput) AppRoles() ServicePrincipalAppRoleArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalAppRoleArrayOutput { return v.AppRoles }).(ServicePrincipalAppRoleArrayOutput)
 }
 
-// The application ID (client ID) of the application for which to create a service principal.
+// The application ID (client ID) of the application for which to create a service principal
+//
+// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 func (o ServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
@@ -649,6 +667,11 @@ func (o ServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
 // The tenant ID where the associated application is registered.
 func (o ServicePrincipalOutput) ApplicationTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ApplicationTenantId }).(pulumi.StringOutput)
+}
+
+// The client ID of the application for which to create a service principal.
+func (o ServicePrincipalOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
 // A description of the service principal provided for internal end-users.

@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember test 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
+ *  $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
  * ```
  * 
  *  -&gt; This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.
@@ -91,7 +91,7 @@ public class AdministrativeUnitRoleMember extends com.pulumi.resources.CustomRes
      * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="administrativeUnitObjectId", refs={String.class}, tree="[0]")
+    @Export(name="administrativeUnitObjectId", type=String.class, parameters={})
     private Output<String> administrativeUnitObjectId;
 
     /**
@@ -105,7 +105,7 @@ public class AdministrativeUnitRoleMember extends com.pulumi.resources.CustomRes
      * The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="memberObjectId", refs={String.class}, tree="[0]")
+    @Export(name="memberObjectId", type=String.class, parameters={})
     private Output<String> memberObjectId;
 
     /**
@@ -119,7 +119,7 @@ public class AdministrativeUnitRoleMember extends com.pulumi.resources.CustomRes
      * The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="roleObjectId", refs={String.class}, tree="[0]")
+    @Export(name="roleObjectId", type=String.class, parameters={})
     private Output<String> roleObjectId;
 
     /**

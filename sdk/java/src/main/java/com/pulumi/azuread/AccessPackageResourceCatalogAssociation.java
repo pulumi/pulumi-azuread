@@ -87,7 +87,7 @@ public class AccessPackageResourceCatalogAssociation extends com.pulumi.resource
      * The unique ID of the access package catalog. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="catalogId", refs={String.class}, tree="[0]")
+    @Export(name="catalogId", type=String.class, parameters={})
     private Output<String> catalogId;
 
     /**
@@ -101,7 +101,7 @@ public class AccessPackageResourceCatalogAssociation extends com.pulumi.resource
      * The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="resourceOriginId", refs={String.class}, tree="[0]")
+    @Export(name="resourceOriginId", type=String.class, parameters={})
     private Output<String> resourceOriginId;
 
     /**
@@ -115,7 +115,7 @@ public class AccessPackageResourceCatalogAssociation extends com.pulumi.resource
      * The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="resourceOriginSystem", refs={String.class}, tree="[0]")
+    @Export(name="resourceOriginSystem", type=String.class, parameters={})
     private Output<String> resourceOriginSystem;
 
     /**

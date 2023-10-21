@@ -36,10 +36,17 @@ public final class GetApplicationResult {
      */
     private List<GetApplicationAppRole> appRoles;
     /**
-     * @return The Application ID (also called Client ID).
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     private String applicationId;
+    /**
+     * @return The Client ID for the application.
+     * 
+     */
+    private String clientId;
     /**
      * @return Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
      * 
@@ -204,11 +211,20 @@ public final class GetApplicationResult {
         return this.appRoles;
     }
     /**
-     * @return The Application ID (also called Client ID).
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     public String applicationId() {
         return this.applicationId;
+    }
+    /**
+     * @return The Client ID for the application.
+     * 
+     */
+    public String clientId() {
+        return this.clientId;
     }
     /**
      * @return Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
@@ -420,6 +436,7 @@ public final class GetApplicationResult {
         private Map<String,String> appRoleIds;
         private List<GetApplicationAppRole> appRoles;
         private String applicationId;
+        private String clientId;
         private String description;
         private Boolean deviceOnlyAuthEnabled;
         private String disabledByMicrosoft;
@@ -455,6 +472,7 @@ public final class GetApplicationResult {
     	      this.appRoleIds = defaults.appRoleIds;
     	      this.appRoles = defaults.appRoles;
     	      this.applicationId = defaults.applicationId;
+    	      this.clientId = defaults.clientId;
     	      this.description = defaults.description;
     	      this.deviceOnlyAuthEnabled = defaults.deviceOnlyAuthEnabled;
     	      this.disabledByMicrosoft = defaults.disabledByMicrosoft;
@@ -509,6 +527,11 @@ public final class GetApplicationResult {
         @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientId(String clientId) {
+            this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
         @CustomType.Setter
@@ -687,6 +710,7 @@ public final class GetApplicationResult {
             o.appRoleIds = appRoleIds;
             o.appRoles = appRoles;
             o.applicationId = applicationId;
+            o.clientId = clientId;
             o.description = description;
             o.deviceOnlyAuthEnabled = deviceOnlyAuthEnabled;
             o.disabledByMicrosoft = disabledByMicrosoft;

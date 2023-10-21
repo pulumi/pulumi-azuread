@@ -607,6 +607,10 @@ export interface ConditionalAccessPolicyConditionsUsers {
 
 export interface ConditionalAccessPolicyGrantControls {
     /**
+     * ID of an Authentication Strength Policy to use in this policy.
+     */
+    authenticationStrengthPolicyId?: pulumi.Input<string>;
+    /**
      * List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      */
     builtInControls?: pulumi.Input<pulumi.Input<string>[]>;
@@ -621,14 +625,14 @@ export interface ConditionalAccessPolicyGrantControls {
     /**
      * List of terms of use IDs required by the policy.
      *
-     * > At least one of `builtInControls` or `termsOfUse` must be specified.
+     * > At least one of `authenticationStrengthPolicyId`, `builtInControls` or `termsOfUse` must be specified.
      */
     termsOfUses?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ConditionalAccessPolicySessionControls {
     /**
-     * Whether or not application enforced restrictions are enabled. Defaults to `false`.
+     * Whether application enforced restrictions are enabled. Defaults to `false`.
      *
      * > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
      */
@@ -642,7 +646,7 @@ export interface ConditionalAccessPolicySessionControls {
      */
     disableResilienceDefaults?: pulumi.Input<boolean>;
     /**
-     * Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+     * Session control to define whether to persist cookies. Possible values are: `always` or `never`.
      */
     persistentBrowserMode?: pulumi.Input<string>;
     /**

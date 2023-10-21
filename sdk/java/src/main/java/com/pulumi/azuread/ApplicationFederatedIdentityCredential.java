@@ -23,8 +23,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.azuread.Application;
- * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ApplicationRegistration;
+ * import com.pulumi.azuread.ApplicationRegistrationArgs;
  * import com.pulumi.azuread.ApplicationFederatedIdentityCredential;
  * import com.pulumi.azuread.ApplicationFederatedIdentityCredentialArgs;
  * import java.util.List;
@@ -40,12 +40,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *         var exampleApplicationRegistration = new ApplicationRegistration(&#34;exampleApplicationRegistration&#34;, ApplicationRegistrationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
  *         var exampleApplicationFederatedIdentityCredential = new ApplicationFederatedIdentityCredential(&#34;exampleApplicationFederatedIdentityCredential&#34;, ApplicationFederatedIdentityCredentialArgs.builder()        
- *             .applicationObjectId(exampleApplication.objectId())
+ *             .applicationId(exampleApplicationRegistration.id())
  *             .displayName(&#34;my-repo-deploy&#34;)
  *             .description(&#34;Deployments for my-repo&#34;)
  *             .audiences(&#34;api://AzureADTokenExchange&#34;)
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential test 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
+ *  $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential example 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
  * ```
  * 
  *  -&gt; This ID format is unique to Terraform and is composed of the application&#39;s object ID, the string &#34;federatedIdentityCredential&#34; and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
@@ -71,14 +71,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential")
 public class ApplicationFederatedIdentityCredential extends com.pulumi.resources.CustomResource {
     /**
-     * The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
+    @Export(name="applicationId", type=String.class, parameters={})
+    private Output<String> applicationId;
+
+    /**
+     * @return The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+     * 
+     */
+    public Output<String> applicationId() {
+        return this.applicationId;
+    }
+    /**
+     * The object ID of the application for which this federated identity credential should be created
+     * 
+     * @deprecated
+     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
+     */
+    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
+    @Export(name="applicationObjectId", type=String.class, parameters={})
     private Output<String> applicationObjectId;
 
     /**
-     * @return The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+     * @return The object ID of the application for which this federated identity credential should be created
      * 
      */
     public Output<String> applicationObjectId() {
@@ -88,7 +106,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      * 
      */
-    @Export(name="audiences", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="audiences", type=List.class, parameters={String.class})
     private Output<List<String>> audiences;
 
     /**
@@ -102,7 +120,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * A UUID used to uniquely identify this federated identity credential.
      * 
      */
-    @Export(name="credentialId", refs={String.class}, tree="[0]")
+    @Export(name="credentialId", type=String.class, parameters={})
     private Output<String> credentialId;
 
     /**
@@ -116,7 +134,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * A description for the federated identity credential.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -130,7 +148,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * A unique display name for the federated identity credential. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -144,7 +162,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
      * 
      */
-    @Export(name="issuer", refs={String.class}, tree="[0]")
+    @Export(name="issuer", type=String.class, parameters={})
     private Output<String> issuer;
 
     /**
@@ -158,7 +176,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
      * 
      */
-    @Export(name="subject", refs={String.class}, tree="[0]")
+    @Export(name="subject", type=String.class, parameters={})
     private Output<String> subject;
 
     /**

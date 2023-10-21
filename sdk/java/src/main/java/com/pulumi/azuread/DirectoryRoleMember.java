@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * Directory role members can be imported using the object ID of the role and the object ID of the member, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+ *  $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
  * ```
  * 
  *  -&gt; This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
@@ -87,7 +87,7 @@ public class DirectoryRoleMember extends com.pulumi.resources.CustomResource {
      * The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="memberObjectId", refs={String.class}, tree="[0]")
+    @Export(name="memberObjectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> memberObjectId;
 
     /**
@@ -101,7 +101,7 @@ public class DirectoryRoleMember extends com.pulumi.resources.CustomResource {
      * The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="roleObjectId", refs={String.class}, tree="[0]")
+    @Export(name="roleObjectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> roleObjectId;
 
     /**

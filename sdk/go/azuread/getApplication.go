@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("applicationObjectId", example.Id)
+//			ctx.Export("applicationObjectId", example.ObjectId)
 //			return nil
 //		})
 //	}
@@ -60,13 +60,15 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 
 // A collection of arguments for invoking getApplication.
 type LookupApplicationArgs struct {
-	// Specifies the Application ID (also called Client ID).
+	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId *string `pulumi:"applicationId"`
+	// Specifies the Client ID of the application.
+	ClientId *string `pulumi:"clientId"`
 	// Specifies the display name of the application.
 	DisplayName *string `pulumi:"displayName"`
 	// Specifies the Object ID of the application.
 	//
-	// > One of `objectId`, `applicationId` or `displayName` must be specified.
+	// > One of `clientId`, `displayName`, or `objectId` must be specified.
 	ObjectId *string `pulumi:"objectId"`
 }
 
@@ -77,9 +79,11 @@ type LookupApplicationResult struct {
 	// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
 	AppRoleIds map[string]string `pulumi:"appRoleIds"`
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-	AppRoles []GetApplicationAppRole `pulumi:"appRoles"`
-	// The Application ID (also called Client ID).
+	AppRoles []GetApplicationAppRoleType `pulumi:"appRoles"`
+	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId string `pulumi:"applicationId"`
+	// The Client ID for the application.
+	ClientId string `pulumi:"clientId"`
 	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 	Description string `pulumi:"description"`
 	// Specifies whether this application supports device authentication without a user.
@@ -153,13 +157,15 @@ func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputAr
 
 // A collection of arguments for invoking getApplication.
 type LookupApplicationOutputArgs struct {
-	// Specifies the Application ID (also called Client ID).
+	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
+	// Specifies the Client ID of the application.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Specifies the display name of the application.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Specifies the Object ID of the application.
 	//
-	// > One of `objectId`, `applicationId` or `displayName` must be specified.
+	// > One of `clientId`, `displayName`, or `objectId` must be specified.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 }
 
@@ -199,13 +205,18 @@ func (o LookupApplicationResultOutput) AppRoleIds() pulumi.StringMapOutput {
 }
 
 // A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-func (o LookupApplicationResultOutput) AppRoles() GetApplicationAppRoleArrayOutput {
-	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationAppRole { return v.AppRoles }).(GetApplicationAppRoleArrayOutput)
+func (o LookupApplicationResultOutput) AppRoles() GetApplicationAppRoleTypeArrayOutput {
+	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationAppRoleType { return v.AppRoles }).(GetApplicationAppRoleTypeArrayOutput)
 }
 
-// The Application ID (also called Client ID).
+// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 func (o LookupApplicationResultOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The Client ID for the application.
+func (o LookupApplicationResultOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationResult) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
 // Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.

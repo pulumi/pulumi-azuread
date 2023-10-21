@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
  *
  * ```sh
- *  $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+ *  $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
  * ```
  *
  *  -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
@@ -44,7 +44,13 @@ export class ApplicationCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+     */
+    public readonly applicationId!: pulumi.Output<string>;
+    /**
+     * The object ID of the application for which this certificate should be created
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
@@ -60,7 +66,7 @@ export class ApplicationCertificate extends pulumi.CustomResource {
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      *
-     * > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
+     * > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      */
     public readonly endDateRelative!: pulumi.Output<string | undefined>;
     /**
@@ -93,6 +99,7 @@ export class ApplicationCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationCertificateState | undefined;
+            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
             resourceInputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
             resourceInputs["encoding"] = state ? state.encoding : undefined;
             resourceInputs["endDate"] = state ? state.endDate : undefined;
@@ -103,12 +110,10 @@ export class ApplicationCertificate extends pulumi.CustomResource {
             resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApplicationCertificateArgs | undefined;
-            if ((!args || args.applicationObjectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'applicationObjectId'");
-            }
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
+            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
             resourceInputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
             resourceInputs["encoding"] = args ? args.encoding : undefined;
             resourceInputs["endDate"] = args ? args.endDate : undefined;
@@ -130,7 +135,13 @@ export class ApplicationCertificate extends pulumi.CustomResource {
  */
 export interface ApplicationCertificateState {
     /**
-     * The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+     */
+    applicationId?: pulumi.Input<string>;
+    /**
+     * The object ID of the application for which this certificate should be created
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationObjectId?: pulumi.Input<string>;
     /**
@@ -146,7 +157,7 @@ export interface ApplicationCertificateState {
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      *
-     * > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
+     * > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      */
     endDateRelative?: pulumi.Input<string>;
     /**
@@ -172,9 +183,15 @@ export interface ApplicationCertificateState {
  */
 export interface ApplicationCertificateArgs {
     /**
-     * The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
      */
-    applicationObjectId: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string>;
+    /**
+     * The object ID of the application for which this certificate should be created
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     */
+    applicationObjectId?: pulumi.Input<string>;
     /**
      * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
      *
@@ -188,7 +205,7 @@ export interface ApplicationCertificateArgs {
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      *
-     * > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
+     * > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      */
     endDateRelative?: pulumi.Input<string>;
     /**

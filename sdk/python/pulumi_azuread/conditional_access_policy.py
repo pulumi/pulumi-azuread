@@ -47,7 +47,15 @@ class ConditionalAccessPolicyArgs:
              state: pulumi.Input[str],
              grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
              session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'grantControls' in kwargs:
+            grant_controls = kwargs['grantControls']
+        if 'sessionControls' in kwargs:
+            session_controls = kwargs['sessionControls']
+
         _setter("conditions", conditions)
         _setter("display_name", display_name)
         _setter("state", state)
@@ -153,7 +161,15 @@ class _ConditionalAccessPolicyState:
              grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
              session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'grantControls' in kwargs:
+            grant_controls = kwargs['grantControls']
+        if 'sessionControls' in kwargs:
+            session_controls = kwargs['sessionControls']
+
         if conditions is not None:
             _setter("conditions", conditions)
         if display_name is not None:

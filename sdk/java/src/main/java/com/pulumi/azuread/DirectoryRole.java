@@ -101,7 +101,7 @@ public class DirectoryRole extends com.pulumi.resources.CustomResource {
      * The description of the directory role.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -115,7 +115,7 @@ public class DirectoryRole extends com.pulumi.resources.CustomResource {
      * The display name of the directory role to activate. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="displayName", refs={String.class}, tree="[0]")
+    @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
@@ -129,7 +129,7 @@ public class DirectoryRole extends com.pulumi.resources.CustomResource {
      * The object ID of the directory role.
      * 
      */
-    @Export(name="objectId", refs={String.class}, tree="[0]")
+    @Export(name="objectId", type=String.class, parameters={})
     private Output<String> objectId;
 
     /**
@@ -145,7 +145,7 @@ public class DirectoryRole extends com.pulumi.resources.CustomResource {
      * &gt; Either `display_name` or `template_id` must be specified.
      * 
      */
-    @Export(name="templateId", refs={String.class}, tree="[0]")
+    @Export(name="templateId", type=String.class, parameters={})
     private Output<String> templateId;
 
     /**

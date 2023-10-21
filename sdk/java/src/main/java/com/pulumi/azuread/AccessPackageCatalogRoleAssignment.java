@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * Catalog role assignments can be imported using the ID of the assignment, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment test 00000000-0000-0000-0000-000000000000
+ *  $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment example 00000000-0000-0000-0000-000000000000
  * ```
  * 
  */
@@ -89,7 +89,7 @@ public class AccessPackageCatalogRoleAssignment extends com.pulumi.resources.Cus
      * The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="catalogId", refs={String.class}, tree="[0]")
+    @Export(name="catalogId", type=String.class, parameters={})
     private Output<String> catalogId;
 
     /**
@@ -103,7 +103,7 @@ public class AccessPackageCatalogRoleAssignment extends com.pulumi.resources.Cus
      * The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="principalObjectId", refs={String.class}, tree="[0]")
+    @Export(name="principalObjectId", type=String.class, parameters={})
     private Output<String> principalObjectId;
 
     /**
@@ -117,7 +117,7 @@ public class AccessPackageCatalogRoleAssignment extends com.pulumi.resources.Cus
      * The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="roleId", refs={String.class}, tree="[0]")
+    @Export(name="roleId", type=String.class, parameters={})
     private Output<String> roleId;
 
     /**

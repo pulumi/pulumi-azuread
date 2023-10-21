@@ -5,22 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Manages a certificate associated with a service principal within Azure Active Directory.
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
- *
- * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
- *
  * ## Import
  *
  * Certificates can be imported using the object ID of the associated service principal and the key ID of the certificate credential, e.g.
  *
  * ```sh
- *  $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+ *  $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
  * ```
  *
  *  -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
