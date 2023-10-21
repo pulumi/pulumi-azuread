@@ -83,7 +83,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * The Client ID for the application, which is globally unique.
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
@@ -97,7 +97,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * A description of the application, as shown to end users.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -111,7 +111,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
      * 
      */
-    @Export(name="disabledByMicrosoft", type=String.class, parameters={})
+    @Export(name="disabledByMicrosoft", refs={String.class}, tree="[0]")
     private Output<String> disabledByMicrosoft;
 
     /**
@@ -125,7 +125,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * The display name for the application.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -139,7 +139,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      * 
      */
-    @Export(name="groupMembershipClaims", type=List.class, parameters={String.class})
+    @Export(name="groupMembershipClaims", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupMembershipClaims;
 
     /**
@@ -153,7 +153,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * Home page or landing page of the application.
      * 
      */
-    @Export(name="homepageUrl", type=String.class, parameters={})
+    @Export(name="homepageUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> homepageUrl;
 
     /**
@@ -167,7 +167,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * Whether this web application can request an access token using OAuth implicit flow.
      * 
      */
-    @Export(name="implicitAccessTokenIssuanceEnabled", type=Boolean.class, parameters={})
+    @Export(name="implicitAccessTokenIssuanceEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> implicitAccessTokenIssuanceEnabled;
 
     /**
@@ -181,7 +181,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * Whether this web application can request an ID token using OAuth implicit flow.
      * 
      */
-    @Export(name="implicitIdTokenIssuanceEnabled", type=Boolean.class, parameters={})
+    @Export(name="implicitIdTokenIssuanceEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> implicitIdTokenIssuanceEnabled;
 
     /**
@@ -195,7 +195,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * The URL that will be used by Microsoft&#39;s authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
      * 
      */
-    @Export(name="logoutUrl", type=String.class, parameters={})
+    @Export(name="logoutUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logoutUrl;
 
     /**
@@ -209,7 +209,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * URL of the marketing page for the application.
      * 
      */
-    @Export(name="marketingUrl", type=String.class, parameters={})
+    @Export(name="marketingUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> marketingUrl;
 
     /**
@@ -223,7 +223,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * User-specified notes relevant for the management of the application.
      * 
      */
-    @Export(name="notes", type=String.class, parameters={})
+    @Export(name="notes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notes;
 
     /**
@@ -237,7 +237,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * The object ID of the application within the tenant.
      * 
      */
-    @Export(name="objectId", type=String.class, parameters={})
+    @Export(name="objectId", refs={String.class}, tree="[0]")
     private Output<String> objectId;
 
     /**
@@ -251,7 +251,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * URL of the privacy statement for the application.
      * 
      */
-    @Export(name="privacyStatementUrl", type=String.class, parameters={})
+    @Export(name="privacyStatementUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privacyStatementUrl;
 
     /**
@@ -265,7 +265,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * The verified publisher domain for the application.
      * 
      */
-    @Export(name="publisherDomain", type=String.class, parameters={})
+    @Export(name="publisherDomain", refs={String.class}, tree="[0]")
     private Output<String> publisherDomain;
 
     /**
@@ -279,7 +279,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
      * 
      */
-    @Export(name="requestedAccessTokenVersion", type=Integer.class, parameters={})
+    @Export(name="requestedAccessTokenVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> requestedAccessTokenVersion;
 
     /**
@@ -293,7 +293,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * References application context information from a Service or Asset Management database.
      * 
      */
-    @Export(name="serviceManagementReference", type=String.class, parameters={})
+    @Export(name="serviceManagementReference", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceManagementReference;
 
     /**
@@ -307,7 +307,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      * 
      */
-    @Export(name="signInAudience", type=String.class, parameters={})
+    @Export(name="signInAudience", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> signInAudience;
 
     /**
@@ -321,7 +321,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * URL of the support page for the application.
      * 
      */
-    @Export(name="supportUrl", type=String.class, parameters={})
+    @Export(name="supportUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> supportUrl;
 
     /**
@@ -335,7 +335,7 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
      * URL of the terms of service statement for the application.
      * 
      */
-    @Export(name="termsOfServiceUrl", type=String.class, parameters={})
+    @Export(name="termsOfServiceUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> termsOfServiceUrl;
 
     /**

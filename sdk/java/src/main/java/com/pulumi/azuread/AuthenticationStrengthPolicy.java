@@ -75,7 +75,7 @@ public class AuthenticationStrengthPolicy extends com.pulumi.resources.CustomRes
      * List of allowed authentication methods for this authentication strength policy.
      * 
      */
-    @Export(name="allowedCombinations", type=List.class, parameters={String.class})
+    @Export(name="allowedCombinations", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allowedCombinations;
 
     /**
@@ -89,7 +89,7 @@ public class AuthenticationStrengthPolicy extends com.pulumi.resources.CustomRes
      * The description for this authentication strength policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -103,7 +103,7 @@ public class AuthenticationStrengthPolicy extends com.pulumi.resources.CustomRes
      * The friendly name for this authentication strength policy.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**

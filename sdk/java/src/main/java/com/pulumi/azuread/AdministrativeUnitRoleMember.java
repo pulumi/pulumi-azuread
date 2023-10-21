@@ -91,7 +91,7 @@ public class AdministrativeUnitRoleMember extends com.pulumi.resources.CustomRes
      * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="administrativeUnitObjectId", type=String.class, parameters={})
+    @Export(name="administrativeUnitObjectId", refs={String.class}, tree="[0]")
     private Output<String> administrativeUnitObjectId;
 
     /**
@@ -105,7 +105,7 @@ public class AdministrativeUnitRoleMember extends com.pulumi.resources.CustomRes
      * The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="memberObjectId", type=String.class, parameters={})
+    @Export(name="memberObjectId", refs={String.class}, tree="[0]")
     private Output<String> memberObjectId;
 
     /**
@@ -119,7 +119,7 @@ public class AdministrativeUnitRoleMember extends com.pulumi.resources.CustomRes
      * The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="roleObjectId", type=String.class, parameters={})
+    @Export(name="roleObjectId", refs={String.class}, tree="[0]")
     private Output<String> roleObjectId;
 
     /**

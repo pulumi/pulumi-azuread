@@ -104,7 +104,7 @@ public class ApplicationIdentifierUri extends com.pulumi.resources.CustomResourc
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -118,7 +118,7 @@ public class ApplicationIdentifierUri extends com.pulumi.resources.CustomResourc
      * The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="identifierUri", type=String.class, parameters={})
+    @Export(name="identifierUri", refs={String.class}, tree="[0]")
     private Output<String> identifierUri;
 
     /**

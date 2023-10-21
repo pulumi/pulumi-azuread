@@ -100,7 +100,7 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
      * The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -118,7 +118,7 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
      * 
      */
     @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Export(name="applicationObjectId", type=String.class, parameters={})
+    @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
     private Output<String> applicationObjectId;
 
     /**
@@ -136,7 +136,7 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
      * 
      */
     @Deprecated /* The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Export(name="authorizedAppId", type=String.class, parameters={})
+    @Export(name="authorizedAppId", refs={String.class}, tree="[0]")
     private Output<String> authorizedAppId;
 
     /**
@@ -150,7 +150,7 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
      * The client ID of the application being authorized. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="authorizedClientId", type=String.class, parameters={})
+    @Export(name="authorizedClientId", refs={String.class}, tree="[0]")
     private Output<String> authorizedClientId;
 
     /**
@@ -164,7 +164,7 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
      * A set of permission scope IDs required by the authorized application.
      * 
      */
-    @Export(name="permissionIds", type=List.class, parameters={String.class})
+    @Export(name="permissionIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> permissionIds;
 
     /**

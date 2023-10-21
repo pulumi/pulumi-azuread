@@ -111,7 +111,7 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
      * 
      */
-    @Export(name="adminConsentDescription", type=String.class, parameters={})
+    @Export(name="adminConsentDescription", refs={String.class}, tree="[0]")
     private Output<String> adminConsentDescription;
 
     /**
@@ -125,7 +125,7 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      * Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
      * 
      */
-    @Export(name="adminConsentDisplayName", type=String.class, parameters={})
+    @Export(name="adminConsentDisplayName", refs={String.class}, tree="[0]")
     private Output<String> adminConsentDisplayName;
 
     /**
@@ -139,7 +139,7 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -153,7 +153,7 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      * The unique identifier of the permission scope. Must be a valid UUID. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="scopeId", type=String.class, parameters={})
+    @Export(name="scopeId", refs={String.class}, tree="[0]")
     private Output<String> scopeId;
 
     /**
@@ -167,7 +167,7 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -181,7 +181,7 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
      * 
      */
-    @Export(name="userConsentDescription", type=String.class, parameters={})
+    @Export(name="userConsentDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userConsentDescription;
 
     /**
@@ -195,7 +195,7 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      * Display name for the delegated permission that appears in the end user consent experience
      * 
      */
-    @Export(name="userConsentDisplayName", type=String.class, parameters={})
+    @Export(name="userConsentDisplayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userConsentDisplayName;
 
     /**
@@ -211,7 +211,7 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      * &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

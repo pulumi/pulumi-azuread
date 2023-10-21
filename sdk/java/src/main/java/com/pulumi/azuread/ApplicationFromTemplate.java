@@ -88,7 +88,7 @@ public class ApplicationFromTemplate extends com.pulumi.resources.CustomResource
      * The resource ID for the application.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -102,7 +102,7 @@ public class ApplicationFromTemplate extends com.pulumi.resources.CustomResource
      * The object ID for the application.
      * 
      */
-    @Export(name="applicationObjectId", type=String.class, parameters={})
+    @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
     private Output<String> applicationObjectId;
 
     /**
@@ -116,7 +116,7 @@ public class ApplicationFromTemplate extends com.pulumi.resources.CustomResource
      * The display name for the application.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -130,7 +130,7 @@ public class ApplicationFromTemplate extends com.pulumi.resources.CustomResource
      * The resource ID for the service principal.
      * 
      */
-    @Export(name="servicePrincipalId", type=String.class, parameters={})
+    @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**
@@ -144,7 +144,7 @@ public class ApplicationFromTemplate extends com.pulumi.resources.CustomResource
      * The object ID for the service principal.
      * 
      */
-    @Export(name="servicePrincipalObjectId", type=String.class, parameters={})
+    @Export(name="servicePrincipalObjectId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalObjectId;
 
     /**
@@ -158,7 +158,7 @@ public class ApplicationFromTemplate extends com.pulumi.resources.CustomResource
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="templateId", type=String.class, parameters={})
+    @Export(name="templateId", refs={String.class}, tree="[0]")
     private Output<String> templateId;
 
     /**

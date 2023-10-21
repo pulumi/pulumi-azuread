@@ -68,7 +68,7 @@ public class ApplicationFallbackPublicClient extends com.pulumi.resources.Custom
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -84,7 +84,7 @@ public class ApplicationFallbackPublicClient extends com.pulumi.resources.Custom
      * &gt; Some configurations may require the Fallback Public Client setting to be `null`, for this case simply destroy this resource (or don&#39;t use it)
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**

@@ -87,7 +87,7 @@ public class AdministrativeUnitMember extends com.pulumi.resources.CustomResourc
      * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="administrativeUnitObjectId", type=String.class, parameters={})
+    @Export(name="administrativeUnitObjectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> administrativeUnitObjectId;
 
     /**
@@ -101,7 +101,7 @@ public class AdministrativeUnitMember extends com.pulumi.resources.CustomResourc
      * The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="memberObjectId", type=String.class, parameters={})
+    @Export(name="memberObjectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memberObjectId;
 
     /**

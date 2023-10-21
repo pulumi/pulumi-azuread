@@ -33,7 +33,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -51,7 +51,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * 
      */
     @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Export(name="applicationObjectId", type=String.class, parameters={})
+    @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
     private Output<String> applicationObjectId;
 
     /**
@@ -67,7 +67,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
      * 
      */
-    @Export(name="encoding", type=String.class, parameters={})
+    @Export(name="encoding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encoding;
 
     /**
@@ -83,7 +83,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="endDate", type=String.class, parameters={})
+    @Export(name="endDate", refs={String.class}, tree="[0]")
     private Output<String> endDate;
 
     /**
@@ -99,7 +99,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      * 
      */
-    @Export(name="endDateRelative", type=String.class, parameters={})
+    @Export(name="endDateRelative", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endDateRelative;
 
     /**
@@ -115,7 +115,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="keyId", type=String.class, parameters={})
+    @Export(name="keyId", refs={String.class}, tree="[0]")
     private Output<String> keyId;
 
     /**
@@ -129,7 +129,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn&#39;t specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="startDate", type=String.class, parameters={})
+    @Export(name="startDate", refs={String.class}, tree="[0]")
     private Output<String> startDate;
 
     /**
@@ -143,7 +143,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -157,7 +157,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

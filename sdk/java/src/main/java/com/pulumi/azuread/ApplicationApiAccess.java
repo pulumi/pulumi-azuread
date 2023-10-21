@@ -118,7 +118,7 @@ public class ApplicationApiAccess extends com.pulumi.resources.CustomResource {
      * The client ID of the API to which access is being granted. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="apiClientId", type=String.class, parameters={})
+    @Export(name="apiClientId", refs={String.class}, tree="[0]")
     private Output<String> apiClientId;
 
     /**
@@ -132,7 +132,7 @@ public class ApplicationApiAccess extends com.pulumi.resources.CustomResource {
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -146,7 +146,7 @@ public class ApplicationApiAccess extends com.pulumi.resources.CustomResource {
      * A set of role IDs to be granted to the application, as published by the API.
      * 
      */
-    @Export(name="roleIds", type=List.class, parameters={String.class})
+    @Export(name="roleIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> roleIds;
 
     /**
@@ -162,7 +162,7 @@ public class ApplicationApiAccess extends com.pulumi.resources.CustomResource {
      * &gt; At least one of `role_ids` or `scope_ids` must be specified.
      * 
      */
-    @Export(name="scopeIds", type=List.class, parameters={String.class})
+    @Export(name="scopeIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> scopeIds;
 
     /**

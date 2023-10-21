@@ -113,7 +113,7 @@ public class ApplicationAppRole extends com.pulumi.resources.CustomResource {
      * A set of values to specify whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications by setting to `Application`, or to both.
      * 
      */
-    @Export(name="allowedMemberTypes", type=List.class, parameters={String.class})
+    @Export(name="allowedMemberTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allowedMemberTypes;
 
     /**
@@ -127,7 +127,7 @@ public class ApplicationAppRole extends com.pulumi.resources.CustomResource {
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -141,7 +141,7 @@ public class ApplicationAppRole extends com.pulumi.resources.CustomResource {
      * Description of the app role that appears when the role is being assigned, and if the role functions as an application permissions, during the consent experiences.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -155,7 +155,7 @@ public class ApplicationAppRole extends com.pulumi.resources.CustomResource {
      * Display name for the app role that appears during app role assignment and in consent experiences.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -169,7 +169,7 @@ public class ApplicationAppRole extends com.pulumi.resources.CustomResource {
      * The unique identifier of the app role
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
@@ -185,7 +185,7 @@ public class ApplicationAppRole extends com.pulumi.resources.CustomResource {
      * &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> value;
 
     /**

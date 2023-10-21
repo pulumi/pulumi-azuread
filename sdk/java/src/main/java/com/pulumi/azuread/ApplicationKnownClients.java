@@ -71,7 +71,7 @@ public class ApplicationKnownClients extends com.pulumi.resources.CustomResource
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -85,7 +85,7 @@ public class ApplicationKnownClients extends com.pulumi.resources.CustomResource
      * A set of client IDs for the known applications.
      * 
      */
-    @Export(name="knownClientIds", type=List.class, parameters={String.class})
+    @Export(name="knownClientIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> knownClientIds;
 
     /**

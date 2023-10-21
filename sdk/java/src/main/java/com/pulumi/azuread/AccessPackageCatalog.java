@@ -72,7 +72,7 @@ public class AccessPackageCatalog extends com.pulumi.resources.CustomResource {
      * The description of the access package catalog.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -86,7 +86,7 @@ public class AccessPackageCatalog extends com.pulumi.resources.CustomResource {
      * The display name of the access package catalog.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -100,7 +100,7 @@ public class AccessPackageCatalog extends com.pulumi.resources.CustomResource {
      * Whether the access packages in this catalog can be requested by users outside the tenant.
      * 
      */
-    @Export(name="externallyVisible", type=Boolean.class, parameters={})
+    @Export(name="externallyVisible", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> externallyVisible;
 
     /**
@@ -114,7 +114,7 @@ public class AccessPackageCatalog extends com.pulumi.resources.CustomResource {
      * Whether the access packages in this catalog are available for management.
      * 
      */
-    @Export(name="published", type=Boolean.class, parameters={})
+    @Export(name="published", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> published;
 
     /**

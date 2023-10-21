@@ -123,7 +123,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -140,7 +140,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="endDate", type=String.class, parameters={})
+    @Export(name="endDate", refs={String.class}, tree="[0]")
     private Output<String> endDate;
 
     /**
@@ -154,7 +154,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * A UUID used to uniquely identify the verify certificate.
      * 
      */
-    @Export(name="keyId", type=String.class, parameters={})
+    @Export(name="keyId", refs={String.class}, tree="[0]")
     private Output<String> keyId;
 
     /**
@@ -168,7 +168,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Export(name="servicePrincipalId", type=String.class, parameters={})
+    @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**
@@ -182,7 +182,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
      * 
      */
-    @Export(name="startDate", type=String.class, parameters={})
+    @Export(name="startDate", refs={String.class}, tree="[0]")
     private Output<String> startDate;
 
     /**
@@ -196,7 +196,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
      * 
      */
-    @Export(name="thumbprint", type=String.class, parameters={})
+    @Export(name="thumbprint", refs={String.class}, tree="[0]")
     private Output<String> thumbprint;
 
     /**
@@ -211,7 +211,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

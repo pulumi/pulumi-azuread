@@ -91,7 +91,7 @@ public class ApplicationRedirectUris extends com.pulumi.resources.CustomResource
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -105,7 +105,7 @@ public class ApplicationRedirectUris extends com.pulumi.resources.CustomResource
      * A set of redirect URIs to assign to the application.
      * 
      */
-    @Export(name="redirectUris", type=List.class, parameters={String.class})
+    @Export(name="redirectUris", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> redirectUris;
 
     /**
@@ -119,7 +119,7 @@ public class ApplicationRedirectUris extends com.pulumi.resources.CustomResource
      * The type of redirect URIs to manage. Must be one of: `PublicClient`, `SPA`, or `Web`. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

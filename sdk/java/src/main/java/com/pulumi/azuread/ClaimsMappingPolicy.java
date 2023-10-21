@@ -92,7 +92,7 @@ public class ClaimsMappingPolicy extends com.pulumi.resources.CustomResource {
      * The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
      * 
      */
-    @Export(name="definitions", type=List.class, parameters={String.class})
+    @Export(name="definitions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> definitions;
 
     /**
@@ -106,7 +106,7 @@ public class ClaimsMappingPolicy extends com.pulumi.resources.CustomResource {
      * The display name for this Claims Mapping Policy.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**

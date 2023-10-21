@@ -89,7 +89,7 @@ public class AccessPackageCatalogRoleAssignment extends com.pulumi.resources.Cus
      * The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="catalogId", type=String.class, parameters={})
+    @Export(name="catalogId", refs={String.class}, tree="[0]")
     private Output<String> catalogId;
 
     /**
@@ -103,7 +103,7 @@ public class AccessPackageCatalogRoleAssignment extends com.pulumi.resources.Cus
      * The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="principalObjectId", type=String.class, parameters={})
+    @Export(name="principalObjectId", refs={String.class}, tree="[0]")
     private Output<String> principalObjectId;
 
     /**
@@ -117,7 +117,7 @@ public class AccessPackageCatalogRoleAssignment extends com.pulumi.resources.Cus
      * The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**

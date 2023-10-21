@@ -87,7 +87,7 @@ public class DirectoryRoleMember extends com.pulumi.resources.CustomResource {
      * The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="memberObjectId", type=String.class, parameters={})
+    @Export(name="memberObjectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memberObjectId;
 
     /**
@@ -101,7 +101,7 @@ public class DirectoryRoleMember extends com.pulumi.resources.CustomResource {
      * The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="roleObjectId", type=String.class, parameters={})
+    @Export(name="roleObjectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleObjectId;
 
     /**

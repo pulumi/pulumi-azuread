@@ -187,7 +187,7 @@ public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resourc
      * A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
      * 
      */
-    @Export(name="claimValues", type=List.class, parameters={String.class})
+    @Export(name="claimValues", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> claimValues;
 
     /**
@@ -201,7 +201,7 @@ public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resourc
      * The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="resourceServicePrincipalObjectId", type=String.class, parameters={})
+    @Export(name="resourceServicePrincipalObjectId", refs={String.class}, tree="[0]")
     private Output<String> resourceServicePrincipalObjectId;
 
     /**
@@ -215,7 +215,7 @@ public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resourc
      * The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="servicePrincipalObjectId", type=String.class, parameters={})
+    @Export(name="servicePrincipalObjectId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalObjectId;
 
     /**
@@ -231,7 +231,7 @@ public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resourc
      * &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
      * 
      */
-    @Export(name="userObjectId", type=String.class, parameters={})
+    @Export(name="userObjectId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userObjectId;
 
     /**
