@@ -31,7 +31,13 @@ class AdministrativeUnitMemberArgs:
              _setter: Callable[[Any, Any], None],
              administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
              member_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if administrative_unit_object_id is None and 'administrativeUnitObjectId' in kwargs:
+            administrative_unit_object_id = kwargs['administrativeUnitObjectId']
+        if member_object_id is None and 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+
         if administrative_unit_object_id is not None:
             _setter("administrative_unit_object_id", administrative_unit_object_id)
         if member_object_id is not None:
@@ -82,7 +88,13 @@ class _AdministrativeUnitMemberState:
              _setter: Callable[[Any, Any], None],
              administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
              member_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if administrative_unit_object_id is None and 'administrativeUnitObjectId' in kwargs:
+            administrative_unit_object_id = kwargs['administrativeUnitObjectId']
+        if member_object_id is None and 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+
         if administrative_unit_object_id is not None:
             _setter("administrative_unit_object_id", administrative_unit_object_id)
         if member_object_id is not None:

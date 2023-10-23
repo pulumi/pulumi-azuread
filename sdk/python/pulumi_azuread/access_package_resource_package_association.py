@@ -32,10 +32,22 @@ class AccessPackageResourcePackageAssociationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_package_id: pulumi.Input[str],
-             catalog_resource_association_id: pulumi.Input[str],
+             access_package_id: Optional[pulumi.Input[str]] = None,
+             catalog_resource_association_id: Optional[pulumi.Input[str]] = None,
              access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_package_id is None and 'accessPackageId' in kwargs:
+            access_package_id = kwargs['accessPackageId']
+        if access_package_id is None:
+            raise TypeError("Missing 'access_package_id' argument")
+        if catalog_resource_association_id is None and 'catalogResourceAssociationId' in kwargs:
+            catalog_resource_association_id = kwargs['catalogResourceAssociationId']
+        if catalog_resource_association_id is None:
+            raise TypeError("Missing 'catalog_resource_association_id' argument")
+        if access_type is None and 'accessType' in kwargs:
+            access_type = kwargs['accessType']
+
         _setter("access_package_id", access_package_id)
         _setter("catalog_resource_association_id", catalog_resource_association_id)
         if access_type is not None:
@@ -102,7 +114,15 @@ class _AccessPackageResourcePackageAssociationState:
              access_package_id: Optional[pulumi.Input[str]] = None,
              access_type: Optional[pulumi.Input[str]] = None,
              catalog_resource_association_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_package_id is None and 'accessPackageId' in kwargs:
+            access_package_id = kwargs['accessPackageId']
+        if access_type is None and 'accessType' in kwargs:
+            access_type = kwargs['accessType']
+        if catalog_resource_association_id is None and 'catalogResourceAssociationId' in kwargs:
+            catalog_resource_association_id = kwargs['catalogResourceAssociationId']
+
         if access_package_id is not None:
             _setter("access_package_id", access_package_id)
         if access_type is not None:

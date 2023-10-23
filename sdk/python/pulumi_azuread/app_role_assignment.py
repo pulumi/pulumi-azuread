@@ -32,10 +32,24 @@ class AppRoleAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_role_id: pulumi.Input[str],
-             principal_object_id: pulumi.Input[str],
-             resource_object_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             app_role_id: Optional[pulumi.Input[str]] = None,
+             principal_object_id: Optional[pulumi.Input[str]] = None,
+             resource_object_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_role_id is None and 'appRoleId' in kwargs:
+            app_role_id = kwargs['appRoleId']
+        if app_role_id is None:
+            raise TypeError("Missing 'app_role_id' argument")
+        if principal_object_id is None and 'principalObjectId' in kwargs:
+            principal_object_id = kwargs['principalObjectId']
+        if principal_object_id is None:
+            raise TypeError("Missing 'principal_object_id' argument")
+        if resource_object_id is None and 'resourceObjectId' in kwargs:
+            resource_object_id = kwargs['resourceObjectId']
+        if resource_object_id is None:
+            raise TypeError("Missing 'resource_object_id' argument")
+
         _setter("app_role_id", app_role_id)
         _setter("principal_object_id", principal_object_id)
         _setter("resource_object_id", resource_object_id)
@@ -113,7 +127,21 @@ class _AppRoleAssignmentState:
              principal_type: Optional[pulumi.Input[str]] = None,
              resource_display_name: Optional[pulumi.Input[str]] = None,
              resource_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_role_id is None and 'appRoleId' in kwargs:
+            app_role_id = kwargs['appRoleId']
+        if principal_display_name is None and 'principalDisplayName' in kwargs:
+            principal_display_name = kwargs['principalDisplayName']
+        if principal_object_id is None and 'principalObjectId' in kwargs:
+            principal_object_id = kwargs['principalObjectId']
+        if principal_type is None and 'principalType' in kwargs:
+            principal_type = kwargs['principalType']
+        if resource_display_name is None and 'resourceDisplayName' in kwargs:
+            resource_display_name = kwargs['resourceDisplayName']
+        if resource_object_id is None and 'resourceObjectId' in kwargs:
+            resource_object_id = kwargs['resourceObjectId']
+
         if app_role_id is not None:
             _setter("app_role_id", app_role_id)
         if principal_display_name is not None:

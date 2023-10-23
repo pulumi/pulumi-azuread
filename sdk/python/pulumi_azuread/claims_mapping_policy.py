@@ -29,9 +29,17 @@ class ClaimsMappingPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             definitions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             display_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             definitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if definitions is None:
+            raise TypeError("Missing 'definitions' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+
         _setter("definitions", definitions)
         _setter("display_name", display_name)
 
@@ -80,7 +88,11 @@ class _ClaimsMappingPolicyState:
              _setter: Callable[[Any, Any], None],
              definitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if definitions is not None:
             _setter("definitions", definitions)
         if display_name is not None:

@@ -33,7 +33,13 @@ class DirectoryRoleArgs:
              _setter: Callable[[Any, Any], None],
              display_name: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if template_id is not None:
@@ -96,7 +102,15 @@ class _DirectoryRoleState:
              display_name: Optional[pulumi.Input[str]] = None,
              object_id: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if object_id is None and 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

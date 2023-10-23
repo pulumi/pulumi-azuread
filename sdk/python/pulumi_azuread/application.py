@@ -114,7 +114,7 @@ class ApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              api: Optional[pulumi.Input['ApplicationApiArgs']] = None,
              app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -141,7 +141,53 @@ class ApplicationArgs:
              template_id: Optional[pulumi.Input[str]] = None,
              terms_of_service_url: Optional[pulumi.Input[str]] = None,
              web: Optional[pulumi.Input['ApplicationWebArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if app_roles is None and 'appRoles' in kwargs:
+            app_roles = kwargs['appRoles']
+        if device_only_auth_enabled is None and 'deviceOnlyAuthEnabled' in kwargs:
+            device_only_auth_enabled = kwargs['deviceOnlyAuthEnabled']
+        if fallback_public_client_enabled is None and 'fallbackPublicClientEnabled' in kwargs:
+            fallback_public_client_enabled = kwargs['fallbackPublicClientEnabled']
+        if feature_tags is None and 'featureTags' in kwargs:
+            feature_tags = kwargs['featureTags']
+        if group_membership_claims is None and 'groupMembershipClaims' in kwargs:
+            group_membership_claims = kwargs['groupMembershipClaims']
+        if identifier_uris is None and 'identifierUris' in kwargs:
+            identifier_uris = kwargs['identifierUris']
+        if logo_image is None and 'logoImage' in kwargs:
+            logo_image = kwargs['logoImage']
+        if marketing_url is None and 'marketingUrl' in kwargs:
+            marketing_url = kwargs['marketingUrl']
+        if oauth2_post_response_required is None and 'oauth2PostResponseRequired' in kwargs:
+            oauth2_post_response_required = kwargs['oauth2PostResponseRequired']
+        if optional_claims is None and 'optionalClaims' in kwargs:
+            optional_claims = kwargs['optionalClaims']
+        if prevent_duplicate_names is None and 'preventDuplicateNames' in kwargs:
+            prevent_duplicate_names = kwargs['preventDuplicateNames']
+        if privacy_statement_url is None and 'privacyStatementUrl' in kwargs:
+            privacy_statement_url = kwargs['privacyStatementUrl']
+        if public_client is None and 'publicClient' in kwargs:
+            public_client = kwargs['publicClient']
+        if required_resource_accesses is None and 'requiredResourceAccesses' in kwargs:
+            required_resource_accesses = kwargs['requiredResourceAccesses']
+        if service_management_reference is None and 'serviceManagementReference' in kwargs:
+            service_management_reference = kwargs['serviceManagementReference']
+        if sign_in_audience is None and 'signInAudience' in kwargs:
+            sign_in_audience = kwargs['signInAudience']
+        if single_page_application is None and 'singlePageApplication' in kwargs:
+            single_page_application = kwargs['singlePageApplication']
+        if support_url is None and 'supportUrl' in kwargs:
+            support_url = kwargs['supportUrl']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if terms_of_service_url is None and 'termsOfServiceUrl' in kwargs:
+            terms_of_service_url = kwargs['termsOfServiceUrl']
+
         _setter("display_name", display_name)
         if api is not None:
             _setter("api", api)
@@ -685,7 +731,65 @@ class _ApplicationState:
              template_id: Optional[pulumi.Input[str]] = None,
              terms_of_service_url: Optional[pulumi.Input[str]] = None,
              web: Optional[pulumi.Input['ApplicationWebArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if app_role_ids is None and 'appRoleIds' in kwargs:
+            app_role_ids = kwargs['appRoleIds']
+        if app_roles is None and 'appRoles' in kwargs:
+            app_roles = kwargs['appRoles']
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if device_only_auth_enabled is None and 'deviceOnlyAuthEnabled' in kwargs:
+            device_only_auth_enabled = kwargs['deviceOnlyAuthEnabled']
+        if disabled_by_microsoft is None and 'disabledByMicrosoft' in kwargs:
+            disabled_by_microsoft = kwargs['disabledByMicrosoft']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if fallback_public_client_enabled is None and 'fallbackPublicClientEnabled' in kwargs:
+            fallback_public_client_enabled = kwargs['fallbackPublicClientEnabled']
+        if feature_tags is None and 'featureTags' in kwargs:
+            feature_tags = kwargs['featureTags']
+        if group_membership_claims is None and 'groupMembershipClaims' in kwargs:
+            group_membership_claims = kwargs['groupMembershipClaims']
+        if identifier_uris is None and 'identifierUris' in kwargs:
+            identifier_uris = kwargs['identifierUris']
+        if logo_image is None and 'logoImage' in kwargs:
+            logo_image = kwargs['logoImage']
+        if logo_url is None and 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+        if marketing_url is None and 'marketingUrl' in kwargs:
+            marketing_url = kwargs['marketingUrl']
+        if oauth2_permission_scope_ids is None and 'oauth2PermissionScopeIds' in kwargs:
+            oauth2_permission_scope_ids = kwargs['oauth2PermissionScopeIds']
+        if oauth2_post_response_required is None and 'oauth2PostResponseRequired' in kwargs:
+            oauth2_post_response_required = kwargs['oauth2PostResponseRequired']
+        if object_id is None and 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if optional_claims is None and 'optionalClaims' in kwargs:
+            optional_claims = kwargs['optionalClaims']
+        if prevent_duplicate_names is None and 'preventDuplicateNames' in kwargs:
+            prevent_duplicate_names = kwargs['preventDuplicateNames']
+        if privacy_statement_url is None and 'privacyStatementUrl' in kwargs:
+            privacy_statement_url = kwargs['privacyStatementUrl']
+        if public_client is None and 'publicClient' in kwargs:
+            public_client = kwargs['publicClient']
+        if publisher_domain is None and 'publisherDomain' in kwargs:
+            publisher_domain = kwargs['publisherDomain']
+        if required_resource_accesses is None and 'requiredResourceAccesses' in kwargs:
+            required_resource_accesses = kwargs['requiredResourceAccesses']
+        if service_management_reference is None and 'serviceManagementReference' in kwargs:
+            service_management_reference = kwargs['serviceManagementReference']
+        if sign_in_audience is None and 'signInAudience' in kwargs:
+            sign_in_audience = kwargs['signInAudience']
+        if single_page_application is None and 'singlePageApplication' in kwargs:
+            single_page_application = kwargs['singlePageApplication']
+        if support_url is None and 'supportUrl' in kwargs:
+            support_url = kwargs['supportUrl']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if terms_of_service_url is None and 'termsOfServiceUrl' in kwargs:
+            terms_of_service_url = kwargs['termsOfServiceUrl']
+
         if api is not None:
             _setter("api", api)
         if app_role_ids is not None:

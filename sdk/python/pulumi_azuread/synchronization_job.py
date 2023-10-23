@@ -34,10 +34,20 @@ class SynchronizationJobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_principal_id: pulumi.Input[str],
-             template_id: pulumi.Input[str],
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if service_principal_id is None:
+            raise TypeError("Missing 'service_principal_id' argument")
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
+
         _setter("service_principal_id", service_principal_id)
         _setter("template_id", template_id)
         if enabled is not None:
@@ -108,7 +118,13 @@ class _SynchronizationJobState:
              schedules: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArgs']]]] = None,
              service_principal_id: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if schedules is not None:

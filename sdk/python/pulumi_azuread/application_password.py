@@ -41,13 +41,29 @@ class ApplicationPasswordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_object_id: pulumi.Input[str],
+             application_object_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              end_date: Optional[pulumi.Input[str]] = None,
              end_date_relative: Optional[pulumi.Input[str]] = None,
              rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_object_id is None and 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if application_object_id is None:
+            raise TypeError("Missing 'application_object_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if end_date_relative is None and 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if rotate_when_changed is None and 'rotateWhenChanged' in kwargs:
+            rotate_when_changed = kwargs['rotateWhenChanged']
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         _setter("application_object_id", application_object_id)
         if display_name is not None:
             _setter("display_name", display_name)
@@ -177,7 +193,23 @@ class _ApplicationPasswordState:
              rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_object_id is None and 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if end_date_relative is None and 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if rotate_when_changed is None and 'rotateWhenChanged' in kwargs:
+            rotate_when_changed = kwargs['rotateWhenChanged']
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         if application_object_id is not None:
             _setter("application_object_id", application_object_id)
         if display_name is not None:

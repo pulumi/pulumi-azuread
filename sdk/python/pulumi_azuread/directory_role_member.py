@@ -31,7 +31,13 @@ class DirectoryRoleMemberArgs:
              _setter: Callable[[Any, Any], None],
              member_object_id: Optional[pulumi.Input[str]] = None,
              role_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member_object_id is None and 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+        if role_object_id is None and 'roleObjectId' in kwargs:
+            role_object_id = kwargs['roleObjectId']
+
         if member_object_id is not None:
             _setter("member_object_id", member_object_id)
         if role_object_id is not None:
@@ -82,7 +88,13 @@ class _DirectoryRoleMemberState:
              _setter: Callable[[Any, Any], None],
              member_object_id: Optional[pulumi.Input[str]] = None,
              role_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member_object_id is None and 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+        if role_object_id is None and 'roleObjectId' in kwargs:
+            role_object_id = kwargs['roleObjectId']
+
         if member_object_id is not None:
             _setter("member_object_id", member_object_id)
         if role_object_id is not None:

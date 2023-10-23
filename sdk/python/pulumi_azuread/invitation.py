@@ -40,12 +40,26 @@ class InvitationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             redirect_url: pulumi.Input[str],
-             user_email_address: pulumi.Input[str],
+             redirect_url: Optional[pulumi.Input[str]] = None,
+             user_email_address: Optional[pulumi.Input[str]] = None,
              message: Optional[pulumi.Input['InvitationMessageArgs']] = None,
              user_display_name: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if redirect_url is None and 'redirectUrl' in kwargs:
+            redirect_url = kwargs['redirectUrl']
+        if redirect_url is None:
+            raise TypeError("Missing 'redirect_url' argument")
+        if user_email_address is None and 'userEmailAddress' in kwargs:
+            user_email_address = kwargs['userEmailAddress']
+        if user_email_address is None:
+            raise TypeError("Missing 'user_email_address' argument")
+        if user_display_name is None and 'userDisplayName' in kwargs:
+            user_display_name = kwargs['userDisplayName']
+        if user_type is None and 'userType' in kwargs:
+            user_type = kwargs['userType']
+
         _setter("redirect_url", redirect_url)
         _setter("user_email_address", user_email_address)
         if message is not None:
@@ -156,7 +170,21 @@ class _InvitationState:
              user_email_address: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if redeem_url is None and 'redeemUrl' in kwargs:
+            redeem_url = kwargs['redeemUrl']
+        if redirect_url is None and 'redirectUrl' in kwargs:
+            redirect_url = kwargs['redirectUrl']
+        if user_display_name is None and 'userDisplayName' in kwargs:
+            user_display_name = kwargs['userDisplayName']
+        if user_email_address is None and 'userEmailAddress' in kwargs:
+            user_email_address = kwargs['userEmailAddress']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_type is None and 'userType' in kwargs:
+            user_type = kwargs['userType']
+
         if message is not None:
             _setter("message", message)
         if redeem_url is not None:

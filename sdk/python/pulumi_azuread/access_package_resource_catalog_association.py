@@ -32,10 +32,24 @@ class AccessPackageResourceCatalogAssociationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             catalog_id: pulumi.Input[str],
-             resource_origin_id: pulumi.Input[str],
-             resource_origin_system: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             catalog_id: Optional[pulumi.Input[str]] = None,
+             resource_origin_id: Optional[pulumi.Input[str]] = None,
+             resource_origin_system: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog_id is None and 'catalogId' in kwargs:
+            catalog_id = kwargs['catalogId']
+        if catalog_id is None:
+            raise TypeError("Missing 'catalog_id' argument")
+        if resource_origin_id is None and 'resourceOriginId' in kwargs:
+            resource_origin_id = kwargs['resourceOriginId']
+        if resource_origin_id is None:
+            raise TypeError("Missing 'resource_origin_id' argument")
+        if resource_origin_system is None and 'resourceOriginSystem' in kwargs:
+            resource_origin_system = kwargs['resourceOriginSystem']
+        if resource_origin_system is None:
+            raise TypeError("Missing 'resource_origin_system' argument")
+
         _setter("catalog_id", catalog_id)
         _setter("resource_origin_id", resource_origin_id)
         _setter("resource_origin_system", resource_origin_system)
@@ -101,7 +115,15 @@ class _AccessPackageResourceCatalogAssociationState:
              catalog_id: Optional[pulumi.Input[str]] = None,
              resource_origin_id: Optional[pulumi.Input[str]] = None,
              resource_origin_system: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog_id is None and 'catalogId' in kwargs:
+            catalog_id = kwargs['catalogId']
+        if resource_origin_id is None and 'resourceOriginId' in kwargs:
+            resource_origin_id = kwargs['resourceOriginId']
+        if resource_origin_system is None and 'resourceOriginSystem' in kwargs:
+            resource_origin_system = kwargs['resourceOriginSystem']
+
         if catalog_id is not None:
             _setter("catalog_id", catalog_id)
         if resource_origin_id is not None:

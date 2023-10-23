@@ -35,11 +35,21 @@ class AccessPackageCatalogArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             display_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
              externally_visible: Optional[pulumi.Input[bool]] = None,
              published: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if externally_visible is None and 'externallyVisible' in kwargs:
+            externally_visible = kwargs['externallyVisible']
+
         _setter("description", description)
         _setter("display_name", display_name)
         if externally_visible is not None:
@@ -124,7 +134,13 @@ class _AccessPackageCatalogState:
              display_name: Optional[pulumi.Input[str]] = None,
              externally_visible: Optional[pulumi.Input[bool]] = None,
              published: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if externally_visible is None and 'externallyVisible' in kwargs:
+            externally_visible = kwargs['externallyVisible']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

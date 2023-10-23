@@ -35,10 +35,20 @@ class ServicePrincipalTokenSigningCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_principal_id: pulumi.Input[str],
+             service_principal_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              end_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if service_principal_id is None:
+            raise TypeError("Missing 'service_principal_id' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+
         _setter("service_principal_id", service_principal_id)
         if display_name is not None:
             _setter("display_name", display_name)
@@ -129,7 +139,19 @@ class _ServicePrincipalTokenSigningCertificateState:
              start_date: Optional[pulumi.Input[str]] = None,
              thumbprint: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         if display_name is not None:
             _setter("display_name", display_name)
         if end_date is not None:

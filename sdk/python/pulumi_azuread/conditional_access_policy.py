@@ -42,12 +42,26 @@ class ConditionalAccessPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             conditions: pulumi.Input['ConditionalAccessPolicyConditionsArgs'],
-             display_name: pulumi.Input[str],
-             state: pulumi.Input[str],
+             conditions: Optional[pulumi.Input['ConditionalAccessPolicyConditionsArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
              grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
              session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if conditions is None:
+            raise TypeError("Missing 'conditions' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if grant_controls is None and 'grantControls' in kwargs:
+            grant_controls = kwargs['grantControls']
+        if session_controls is None and 'sessionControls' in kwargs:
+            session_controls = kwargs['sessionControls']
+
         _setter("conditions", conditions)
         _setter("display_name", display_name)
         _setter("state", state)
@@ -153,7 +167,15 @@ class _ConditionalAccessPolicyState:
              grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
              session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if grant_controls is None and 'grantControls' in kwargs:
+            grant_controls = kwargs['grantControls']
+        if session_controls is None and 'sessionControls' in kwargs:
+            session_controls = kwargs['sessionControls']
+
         if conditions is not None:
             _setter("conditions", conditions)
         if display_name is not None:

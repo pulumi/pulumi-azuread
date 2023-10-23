@@ -41,13 +41,29 @@ class ApplicationFederatedIdentityCredentialArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_object_id: pulumi.Input[str],
-             audiences: pulumi.Input[Sequence[pulumi.Input[str]]],
-             display_name: pulumi.Input[str],
-             issuer: pulumi.Input[str],
-             subject: pulumi.Input[str],
+             application_object_id: Optional[pulumi.Input[str]] = None,
+             audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             issuer: Optional[pulumi.Input[str]] = None,
+             subject: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_object_id is None and 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if application_object_id is None:
+            raise TypeError("Missing 'application_object_id' argument")
+        if audiences is None:
+            raise TypeError("Missing 'audiences' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+        if subject is None:
+            raise TypeError("Missing 'subject' argument")
+
         _setter("application_object_id", application_object_id)
         _setter("audiences", audiences)
         _setter("display_name", display_name)
@@ -169,7 +185,15 @@ class _ApplicationFederatedIdentityCredentialState:
              display_name: Optional[pulumi.Input[str]] = None,
              issuer: Optional[pulumi.Input[str]] = None,
              subject: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_object_id is None and 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if credential_id is None and 'credentialId' in kwargs:
+            credential_id = kwargs['credentialId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if application_object_id is not None:
             _setter("application_object_id", application_object_id)
         if audiences is not None:

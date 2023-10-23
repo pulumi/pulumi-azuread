@@ -36,10 +36,16 @@ class NamedLocationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              country: Optional[pulumi.Input['NamedLocationCountryArgs']] = None,
              ip: Optional[pulumi.Input['NamedLocationIpArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+
         _setter("display_name", display_name)
         if country is not None:
             _setter("country", country)
@@ -111,7 +117,11 @@ class _NamedLocationState:
              country: Optional[pulumi.Input['NamedLocationCountryArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              ip: Optional[pulumi.Input['NamedLocationIpArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if country is not None:
             _setter("country", country)
         if display_name is not None:

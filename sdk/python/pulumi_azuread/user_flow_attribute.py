@@ -32,10 +32,22 @@ class UserFlowAttributeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_type: pulumi.Input[str],
-             description: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             data_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_type is None and 'dataType' in kwargs:
+            data_type = kwargs['dataType']
+        if data_type is None:
+            raise TypeError("Missing 'data_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+
         _setter("data_type", data_type)
         _setter("description", description)
         _setter("display_name", display_name)
@@ -105,7 +117,15 @@ class _UserFlowAttributeState:
              data_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if attribute_type is None and 'attributeType' in kwargs:
+            attribute_type = kwargs['attributeType']
+        if data_type is None and 'dataType' in kwargs:
+            data_type = kwargs['dataType']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if attribute_type is not None:
             _setter("attribute_type", attribute_type)
         if data_type is not None:

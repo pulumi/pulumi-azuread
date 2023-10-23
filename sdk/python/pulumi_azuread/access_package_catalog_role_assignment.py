@@ -32,10 +32,24 @@ class AccessPackageCatalogRoleAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             catalog_id: pulumi.Input[str],
-             principal_object_id: pulumi.Input[str],
-             role_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             catalog_id: Optional[pulumi.Input[str]] = None,
+             principal_object_id: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog_id is None and 'catalogId' in kwargs:
+            catalog_id = kwargs['catalogId']
+        if catalog_id is None:
+            raise TypeError("Missing 'catalog_id' argument")
+        if principal_object_id is None and 'principalObjectId' in kwargs:
+            principal_object_id = kwargs['principalObjectId']
+        if principal_object_id is None:
+            raise TypeError("Missing 'principal_object_id' argument")
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
+
         _setter("catalog_id", catalog_id)
         _setter("principal_object_id", principal_object_id)
         _setter("role_id", role_id)
@@ -101,7 +115,15 @@ class _AccessPackageCatalogRoleAssignmentState:
              catalog_id: Optional[pulumi.Input[str]] = None,
              principal_object_id: Optional[pulumi.Input[str]] = None,
              role_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if catalog_id is None and 'catalogId' in kwargs:
+            catalog_id = kwargs['catalogId']
+        if principal_object_id is None and 'principalObjectId' in kwargs:
+            principal_object_id = kwargs['principalObjectId']
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         if catalog_id is not None:
             _setter("catalog_id", catalog_id)
         if principal_object_id is not None:

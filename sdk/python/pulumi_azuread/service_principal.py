@@ -74,7 +74,7 @@ class ServicePrincipalArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
+             application_id: Optional[pulumi.Input[str]] = None,
              account_enabled: Optional[pulumi.Input[bool]] = None,
              alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
@@ -89,7 +89,31 @@ class ServicePrincipalArgs:
              saml_single_sign_on: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              use_existing: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if account_enabled is None and 'accountEnabled' in kwargs:
+            account_enabled = kwargs['accountEnabled']
+        if alternative_names is None and 'alternativeNames' in kwargs:
+            alternative_names = kwargs['alternativeNames']
+        if app_role_assignment_required is None and 'appRoleAssignmentRequired' in kwargs:
+            app_role_assignment_required = kwargs['appRoleAssignmentRequired']
+        if feature_tags is None and 'featureTags' in kwargs:
+            feature_tags = kwargs['featureTags']
+        if login_url is None and 'loginUrl' in kwargs:
+            login_url = kwargs['loginUrl']
+        if notification_email_addresses is None and 'notificationEmailAddresses' in kwargs:
+            notification_email_addresses = kwargs['notificationEmailAddresses']
+        if preferred_single_sign_on_mode is None and 'preferredSingleSignOnMode' in kwargs:
+            preferred_single_sign_on_mode = kwargs['preferredSingleSignOnMode']
+        if saml_single_sign_on is None and 'samlSingleSignOn' in kwargs:
+            saml_single_sign_on = kwargs['samlSingleSignOn']
+        if use_existing is None and 'useExisting' in kwargs:
+            use_existing = kwargs['useExisting']
+
         _setter("application_id", application_id)
         if account_enabled is not None:
             _setter("account_enabled", account_enabled)
@@ -443,7 +467,55 @@ class _ServicePrincipalState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              use_existing: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_enabled is None and 'accountEnabled' in kwargs:
+            account_enabled = kwargs['accountEnabled']
+        if alternative_names is None and 'alternativeNames' in kwargs:
+            alternative_names = kwargs['alternativeNames']
+        if app_role_assignment_required is None and 'appRoleAssignmentRequired' in kwargs:
+            app_role_assignment_required = kwargs['appRoleAssignmentRequired']
+        if app_role_ids is None and 'appRoleIds' in kwargs:
+            app_role_ids = kwargs['appRoleIds']
+        if app_roles is None and 'appRoles' in kwargs:
+            app_roles = kwargs['appRoles']
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_tenant_id is None and 'applicationTenantId' in kwargs:
+            application_tenant_id = kwargs['applicationTenantId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if feature_tags is None and 'featureTags' in kwargs:
+            feature_tags = kwargs['featureTags']
+        if homepage_url is None and 'homepageUrl' in kwargs:
+            homepage_url = kwargs['homepageUrl']
+        if login_url is None and 'loginUrl' in kwargs:
+            login_url = kwargs['loginUrl']
+        if logout_url is None and 'logoutUrl' in kwargs:
+            logout_url = kwargs['logoutUrl']
+        if notification_email_addresses is None and 'notificationEmailAddresses' in kwargs:
+            notification_email_addresses = kwargs['notificationEmailAddresses']
+        if oauth2_permission_scope_ids is None and 'oauth2PermissionScopeIds' in kwargs:
+            oauth2_permission_scope_ids = kwargs['oauth2PermissionScopeIds']
+        if oauth2_permission_scopes is None and 'oauth2PermissionScopes' in kwargs:
+            oauth2_permission_scopes = kwargs['oauth2PermissionScopes']
+        if object_id is None and 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if preferred_single_sign_on_mode is None and 'preferredSingleSignOnMode' in kwargs:
+            preferred_single_sign_on_mode = kwargs['preferredSingleSignOnMode']
+        if redirect_uris is None and 'redirectUris' in kwargs:
+            redirect_uris = kwargs['redirectUris']
+        if saml_metadata_url is None and 'samlMetadataUrl' in kwargs:
+            saml_metadata_url = kwargs['samlMetadataUrl']
+        if saml_single_sign_on is None and 'samlSingleSignOn' in kwargs:
+            saml_single_sign_on = kwargs['samlSingleSignOn']
+        if service_principal_names is None and 'servicePrincipalNames' in kwargs:
+            service_principal_names = kwargs['servicePrincipalNames']
+        if sign_in_audience is None and 'signInAudience' in kwargs:
+            sign_in_audience = kwargs['signInAudience']
+        if use_existing is None and 'useExisting' in kwargs:
+            use_existing = kwargs['useExisting']
+
         if account_enabled is not None:
             _setter("account_enabled", account_enabled)
         if alternative_names is not None:

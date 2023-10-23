@@ -35,11 +35,27 @@ class DirectoryRoleEligibilityScheduleRequestArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             directory_scope_id: pulumi.Input[str],
-             justification: pulumi.Input[str],
-             principal_id: pulumi.Input[str],
-             role_definition_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             directory_scope_id: Optional[pulumi.Input[str]] = None,
+             justification: Optional[pulumi.Input[str]] = None,
+             principal_id: Optional[pulumi.Input[str]] = None,
+             role_definition_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if directory_scope_id is None and 'directoryScopeId' in kwargs:
+            directory_scope_id = kwargs['directoryScopeId']
+        if directory_scope_id is None:
+            raise TypeError("Missing 'directory_scope_id' argument")
+        if justification is None:
+            raise TypeError("Missing 'justification' argument")
+        if principal_id is None and 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+        if principal_id is None:
+            raise TypeError("Missing 'principal_id' argument")
+        if role_definition_id is None and 'roleDefinitionId' in kwargs:
+            role_definition_id = kwargs['roleDefinitionId']
+        if role_definition_id is None:
+            raise TypeError("Missing 'role_definition_id' argument")
+
         _setter("directory_scope_id", directory_scope_id)
         _setter("justification", justification)
         _setter("principal_id", principal_id)
@@ -122,7 +138,15 @@ class _DirectoryRoleEligibilityScheduleRequestState:
              justification: Optional[pulumi.Input[str]] = None,
              principal_id: Optional[pulumi.Input[str]] = None,
              role_definition_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if directory_scope_id is None and 'directoryScopeId' in kwargs:
+            directory_scope_id = kwargs['directoryScopeId']
+        if principal_id is None and 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+        if role_definition_id is None and 'roleDefinitionId' in kwargs:
+            role_definition_id = kwargs['roleDefinitionId']
+
         if directory_scope_id is not None:
             _setter("directory_scope_id", directory_scope_id)
         if justification is not None:

@@ -37,11 +37,27 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             claim_values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             resource_service_principal_object_id: pulumi.Input[str],
-             service_principal_object_id: pulumi.Input[str],
+             claim_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resource_service_principal_object_id: Optional[pulumi.Input[str]] = None,
+             service_principal_object_id: Optional[pulumi.Input[str]] = None,
              user_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if claim_values is None and 'claimValues' in kwargs:
+            claim_values = kwargs['claimValues']
+        if claim_values is None:
+            raise TypeError("Missing 'claim_values' argument")
+        if resource_service_principal_object_id is None and 'resourceServicePrincipalObjectId' in kwargs:
+            resource_service_principal_object_id = kwargs['resourceServicePrincipalObjectId']
+        if resource_service_principal_object_id is None:
+            raise TypeError("Missing 'resource_service_principal_object_id' argument")
+        if service_principal_object_id is None and 'servicePrincipalObjectId' in kwargs:
+            service_principal_object_id = kwargs['servicePrincipalObjectId']
+        if service_principal_object_id is None:
+            raise TypeError("Missing 'service_principal_object_id' argument")
+        if user_object_id is None and 'userObjectId' in kwargs:
+            user_object_id = kwargs['userObjectId']
+
         _setter("claim_values", claim_values)
         _setter("resource_service_principal_object_id", resource_service_principal_object_id)
         _setter("service_principal_object_id", service_principal_object_id)
@@ -129,7 +145,17 @@ class _ServicePrincipalDelegatedPermissionGrantState:
              resource_service_principal_object_id: Optional[pulumi.Input[str]] = None,
              service_principal_object_id: Optional[pulumi.Input[str]] = None,
              user_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if claim_values is None and 'claimValues' in kwargs:
+            claim_values = kwargs['claimValues']
+        if resource_service_principal_object_id is None and 'resourceServicePrincipalObjectId' in kwargs:
+            resource_service_principal_object_id = kwargs['resourceServicePrincipalObjectId']
+        if service_principal_object_id is None and 'servicePrincipalObjectId' in kwargs:
+            service_principal_object_id = kwargs['servicePrincipalObjectId']
+        if user_object_id is None and 'userObjectId' in kwargs:
+            user_object_id = kwargs['userObjectId']
+
         if claim_values is not None:
             _setter("claim_values", claim_values)
         if resource_service_principal_object_id is not None:

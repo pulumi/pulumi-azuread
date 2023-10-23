@@ -32,10 +32,24 @@ class AdministrativeUnitRoleMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             administrative_unit_object_id: pulumi.Input[str],
-             member_object_id: pulumi.Input[str],
-             role_object_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
+             member_object_id: Optional[pulumi.Input[str]] = None,
+             role_object_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if administrative_unit_object_id is None and 'administrativeUnitObjectId' in kwargs:
+            administrative_unit_object_id = kwargs['administrativeUnitObjectId']
+        if administrative_unit_object_id is None:
+            raise TypeError("Missing 'administrative_unit_object_id' argument")
+        if member_object_id is None and 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+        if member_object_id is None:
+            raise TypeError("Missing 'member_object_id' argument")
+        if role_object_id is None and 'roleObjectId' in kwargs:
+            role_object_id = kwargs['roleObjectId']
+        if role_object_id is None:
+            raise TypeError("Missing 'role_object_id' argument")
+
         _setter("administrative_unit_object_id", administrative_unit_object_id)
         _setter("member_object_id", member_object_id)
         _setter("role_object_id", role_object_id)
@@ -101,7 +115,15 @@ class _AdministrativeUnitRoleMemberState:
              administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
              member_object_id: Optional[pulumi.Input[str]] = None,
              role_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if administrative_unit_object_id is None and 'administrativeUnitObjectId' in kwargs:
+            administrative_unit_object_id = kwargs['administrativeUnitObjectId']
+        if member_object_id is None and 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+        if role_object_id is None and 'roleObjectId' in kwargs:
+            role_object_id = kwargs['roleObjectId']
+
         if administrative_unit_object_id is not None:
             _setter("administrative_unit_object_id", administrative_unit_object_id)
         if member_object_id is not None:

@@ -32,10 +32,24 @@ class ApplicationPreAuthorizedArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_object_id: pulumi.Input[str],
-             authorized_app_id: pulumi.Input[str],
-             permission_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             application_object_id: Optional[pulumi.Input[str]] = None,
+             authorized_app_id: Optional[pulumi.Input[str]] = None,
+             permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_object_id is None and 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if application_object_id is None:
+            raise TypeError("Missing 'application_object_id' argument")
+        if authorized_app_id is None and 'authorizedAppId' in kwargs:
+            authorized_app_id = kwargs['authorizedAppId']
+        if authorized_app_id is None:
+            raise TypeError("Missing 'authorized_app_id' argument")
+        if permission_ids is None and 'permissionIds' in kwargs:
+            permission_ids = kwargs['permissionIds']
+        if permission_ids is None:
+            raise TypeError("Missing 'permission_ids' argument")
+
         _setter("application_object_id", application_object_id)
         _setter("authorized_app_id", authorized_app_id)
         _setter("permission_ids", permission_ids)
@@ -101,7 +115,15 @@ class _ApplicationPreAuthorizedState:
              application_object_id: Optional[pulumi.Input[str]] = None,
              authorized_app_id: Optional[pulumi.Input[str]] = None,
              permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_object_id is None and 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if authorized_app_id is None and 'authorizedAppId' in kwargs:
+            authorized_app_id = kwargs['authorizedAppId']
+        if permission_ids is None and 'permissionIds' in kwargs:
+            permission_ids = kwargs['permissionIds']
+
         if application_object_id is not None:
             _setter("application_object_id", application_object_id)
         if authorized_app_id is not None:

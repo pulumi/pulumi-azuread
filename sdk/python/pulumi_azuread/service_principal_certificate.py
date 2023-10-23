@@ -51,15 +51,31 @@ class ServicePrincipalCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_principal_id: pulumi.Input[str],
-             value: pulumi.Input[str],
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              encoding: Optional[pulumi.Input[str]] = None,
              end_date: Optional[pulumi.Input[str]] = None,
              end_date_relative: Optional[pulumi.Input[str]] = None,
              key_id: Optional[pulumi.Input[str]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if service_principal_id is None:
+            raise TypeError("Missing 'service_principal_id' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if end_date_relative is None and 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         _setter("service_principal_id", service_principal_id)
         _setter("value", value)
         if encoding is not None:
@@ -224,7 +240,19 @@ class _ServicePrincipalCertificateState:
              start_date: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if end_date_relative is None and 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         if encoding is not None:
             _setter("encoding", encoding)
         if end_date is not None:
