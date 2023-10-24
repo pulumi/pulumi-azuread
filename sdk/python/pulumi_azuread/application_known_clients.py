@@ -29,14 +29,18 @@ class ApplicationKnownClientsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
-             known_client_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             known_client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'knownClientIds' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if known_client_ids is None and 'knownClientIds' in kwargs:
             known_client_ids = kwargs['knownClientIds']
+        if known_client_ids is None:
+            raise TypeError("Missing 'known_client_ids' argument")
 
         _setter("application_id", application_id)
         _setter("known_client_ids", known_client_ids)
@@ -86,11 +90,11 @@ class _ApplicationKnownClientsState:
              _setter: Callable[[Any, Any], None],
              application_id: Optional[pulumi.Input[str]] = None,
              known_client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'knownClientIds' in kwargs:
+        if known_client_ids is None and 'knownClientIds' in kwargs:
             known_client_ids = kwargs['knownClientIds']
 
         if application_id is not None:
@@ -132,19 +136,6 @@ class ApplicationKnownClients(pulumi.CustomResource):
                  known_client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        client = azuread.ApplicationRegistration("client", display_name="example client")
-        example_application_known_clients = azuread.ApplicationKnownClients("exampleApplicationKnownClients",
-            application_id=example_application_registration.id,
-            known_client_ids=[client.client_id])
-        ```
-
         ## Import
 
         Application Known Clients can be imported using the object ID of the application in the following format.
@@ -165,19 +156,6 @@ class ApplicationKnownClients(pulumi.CustomResource):
                  args: ApplicationKnownClientsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        client = azuread.ApplicationRegistration("client", display_name="example client")
-        example_application_known_clients = azuread.ApplicationKnownClients("exampleApplicationKnownClients",
-            application_id=example_application_registration.id,
-            known_client_ids=[client.client_id])
-        ```
-
         ## Import
 
         Application Known Clients can be imported using the object ID of the application in the following format.

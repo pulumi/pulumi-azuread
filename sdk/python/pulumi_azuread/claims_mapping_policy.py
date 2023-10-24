@@ -29,12 +29,16 @@ class ClaimsMappingPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             definitions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             display_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             definitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if definitions is None:
+            raise TypeError("Missing 'definitions' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
 
         _setter("definitions", definitions)
         _setter("display_name", display_name)
@@ -84,9 +88,9 @@ class _ClaimsMappingPolicyState:
              _setter: Callable[[Any, Any], None],
              definitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
 
         if definitions is not None:
@@ -138,37 +142,6 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_azuread as azuread
-
-        my_policy = azuread.ClaimsMappingPolicy("myPolicy",
-            definitions=[json.dumps({
-                "ClaimsMappingPolicy": {
-                    "ClaimsSchema": [
-                        {
-                            "ID": "employeeid",
-                            "JwtClaimType": "name",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                            "Source": "user",
-                        },
-                        {
-                            "ID": "tenantcountry",
-                            "JwtClaimType": "country",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-                            "Source": "company",
-                        },
-                    ],
-                    "IncludeBasicClaimSet": "true",
-                    "Version": 1,
-                },
-            })],
-            display_name="My Policy")
-        ```
-
         ## Import
 
         Claims Mapping Policy can be imported using the `id`, e.g.
@@ -198,37 +171,6 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_azuread as azuread
-
-        my_policy = azuread.ClaimsMappingPolicy("myPolicy",
-            definitions=[json.dumps({
-                "ClaimsMappingPolicy": {
-                    "ClaimsSchema": [
-                        {
-                            "ID": "employeeid",
-                            "JwtClaimType": "name",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                            "Source": "user",
-                        },
-                        {
-                            "ID": "tenantcountry",
-                            "JwtClaimType": "country",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-                            "Source": "company",
-                        },
-                    ],
-                    "IncludeBasicClaimSet": "true",
-                    "Version": 1,
-                },
-            })],
-            display_name="My Policy")
-        ```
 
         ## Import
 

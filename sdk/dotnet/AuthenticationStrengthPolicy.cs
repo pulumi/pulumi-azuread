@@ -20,30 +20,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.AuthenticationStrengthPolicy("example", new()
-    ///     {
-    ///         AllowedCombinations = new[]
-    ///         {
-    ///             "fido2",
-    ///             "password",
-    ///         },
-    ///         Description = "Policy for demo purposes",
-    ///         DisplayName = "Example Authentication Strength Policy",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Authentication Strength Policies can be imported using the `id`, e.g.

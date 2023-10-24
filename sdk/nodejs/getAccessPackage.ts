@@ -14,31 +14,6 @@ import * as utilities from "./utilities";
  * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
  *
  * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
- *
- * ## Example Usage
- *
- * *Look up by ID*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getAccessPackage({
- *     objectId: "00000000-0000-0000-0000-000000000000",
- * });
- * ```
- *
- * *Look up by DisplayName*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getAccessPackage({
- *     catalogId: "00000000-0000-0000-0000-000000000000",
- *     displayName: "My access package Catalog",
- * });
- * ```
  */
 export function getAccessPackage(args?: GetAccessPackageArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPackageResult> {
     args = args || {};
@@ -101,31 +76,6 @@ export interface GetAccessPackageResult {
  * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
  *
  * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
- *
- * ## Example Usage
- *
- * *Look up by ID*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getAccessPackage({
- *     objectId: "00000000-0000-0000-0000-000000000000",
- * });
- * ```
- *
- * *Look up by DisplayName*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getAccessPackage({
- *     catalogId: "00000000-0000-0000-0000-000000000000",
- *     displayName: "My access package Catalog",
- * });
- * ```
  */
 export function getAccessPackageOutput(args?: GetAccessPackageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPackageResult> {
     return pulumi.output(args).apply((a: any) => getAccessPackage(a, opts))

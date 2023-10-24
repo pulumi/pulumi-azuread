@@ -16,52 +16,6 @@ import * as utilities from "./utilities";
  * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * *Look up by application display names*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getServicePrincipals({
- *     displayNames: [
- *         "example-app",
- *         "another-app",
- *     ],
- * });
- * ```
- *
- * *Look up by application IDs (client IDs*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getServicePrincipals({
- *     clientIds: [
- *         "11111111-0000-0000-0000-000000000000",
- *         "22222222-0000-0000-0000-000000000000",
- *         "33333333-0000-0000-0000-000000000000",
- *     ],
- * });
- * ```
- *
- * *Look up by service principal object IDs*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getServicePrincipals({
- *     objectIds: [
- *         "00000000-0000-0000-0000-000000000000",
- *         "00000000-0000-0000-0000-111111111111",
- *         "00000000-0000-0000-0000-222222222222",
- *     ],
- * });
- * ```
  */
 export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalsResult> {
     args = args || {};
@@ -154,52 +108,6 @@ export interface GetServicePrincipalsResult {
  * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * *Look up by application display names*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getServicePrincipals({
- *     displayNames: [
- *         "example-app",
- *         "another-app",
- *     ],
- * });
- * ```
- *
- * *Look up by application IDs (client IDs*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getServicePrincipals({
- *     clientIds: [
- *         "11111111-0000-0000-0000-000000000000",
- *         "22222222-0000-0000-0000-000000000000",
- *         "33333333-0000-0000-0000-000000000000",
- *     ],
- * });
- * ```
- *
- * *Look up by service principal object IDs*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getServicePrincipals({
- *     objectIds: [
- *         "00000000-0000-0000-0000-000000000000",
- *         "00000000-0000-0000-0000-111111111111",
- *         "00000000-0000-0000-0000-222222222222",
- *     ],
- * });
- * ```
  */
 export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalsResult> {
     return pulumi.output(args).apply((a: any) => getServicePrincipals(a, opts))

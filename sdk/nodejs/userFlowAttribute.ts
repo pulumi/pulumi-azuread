@@ -13,21 +13,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`
  *
- * ## Example Usage
- *
- * *Basic example*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = new azuread.UserFlowAttribute("example", {
- *     dataType: "string",
- *     description: "Your hobby",
- *     displayName: "Hobby",
- * });
- * ```
- *
  * ## Import
  *
  * User flow attributes can be imported using the `id`, e.g.

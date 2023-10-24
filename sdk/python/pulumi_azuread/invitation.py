@@ -40,20 +40,24 @@ class InvitationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             redirect_url: pulumi.Input[str],
-             user_email_address: pulumi.Input[str],
+             redirect_url: Optional[pulumi.Input[str]] = None,
+             user_email_address: Optional[pulumi.Input[str]] = None,
              message: Optional[pulumi.Input['InvitationMessageArgs']] = None,
              user_display_name: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'redirectUrl' in kwargs:
+        if redirect_url is None and 'redirectUrl' in kwargs:
             redirect_url = kwargs['redirectUrl']
-        if 'userEmailAddress' in kwargs:
+        if redirect_url is None:
+            raise TypeError("Missing 'redirect_url' argument")
+        if user_email_address is None and 'userEmailAddress' in kwargs:
             user_email_address = kwargs['userEmailAddress']
-        if 'userDisplayName' in kwargs:
+        if user_email_address is None:
+            raise TypeError("Missing 'user_email_address' argument")
+        if user_display_name is None and 'userDisplayName' in kwargs:
             user_display_name = kwargs['userDisplayName']
-        if 'userType' in kwargs:
+        if user_type is None and 'userType' in kwargs:
             user_type = kwargs['userType']
 
         _setter("redirect_url", redirect_url)
@@ -166,19 +170,19 @@ class _InvitationState:
              user_email_address: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'redeemUrl' in kwargs:
+        if redeem_url is None and 'redeemUrl' in kwargs:
             redeem_url = kwargs['redeemUrl']
-        if 'redirectUrl' in kwargs:
+        if redirect_url is None and 'redirectUrl' in kwargs:
             redirect_url = kwargs['redirectUrl']
-        if 'userDisplayName' in kwargs:
+        if user_display_name is None and 'userDisplayName' in kwargs:
             user_display_name = kwargs['userDisplayName']
-        if 'userEmailAddress' in kwargs:
+        if user_email_address is None and 'userEmailAddress' in kwargs:
             user_email_address = kwargs['userEmailAddress']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
-        if 'userType' in kwargs:
+        if user_type is None and 'userType' in kwargs:
             user_type = kwargs['userType']
 
         if message is not None:
@@ -303,49 +307,6 @@ class Invitation(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Invitation("example",
-            redirect_url="https://portal.azure.com",
-            user_email_address="jdoe@hashicorp.com")
-        ```
-
-        *Invitation with standard message*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Invitation("example",
-            message=azuread.InvitationMessageArgs(
-                language="en-US",
-            ),
-            redirect_url="https://portal.azure.com",
-            user_email_address="jdoe@hashicorp.com")
-        ```
-
-        *Invitation with custom message body and an additional recipient*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Invitation("example",
-            message=azuread.InvitationMessageArgs(
-                additional_recipients="aaliceberg@hashicorp.com",
-                body="Hello there! You are invited to join my Azure tenant!",
-            ),
-            redirect_url="https://portal.azure.com",
-            user_display_name="Bob Bobson",
-            user_email_address="bbobson@hashicorp.com")
-        ```
-
         ## Import
 
         This resource does not support importing.
@@ -374,49 +335,6 @@ class Invitation(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `User.Invite.All`, `User.ReadWrite.All` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Invitation("example",
-            redirect_url="https://portal.azure.com",
-            user_email_address="jdoe@hashicorp.com")
-        ```
-
-        *Invitation with standard message*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Invitation("example",
-            message=azuread.InvitationMessageArgs(
-                language="en-US",
-            ),
-            redirect_url="https://portal.azure.com",
-            user_email_address="jdoe@hashicorp.com")
-        ```
-
-        *Invitation with custom message body and an additional recipient*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Invitation("example",
-            message=azuread.InvitationMessageArgs(
-                additional_recipients="aaliceberg@hashicorp.com",
-                body="Hello there! You are invited to join my Azure tenant!",
-            ),
-            redirect_url="https://portal.azure.com",
-            user_display_name="Bob Bobson",
-            user_email_address="bbobson@hashicorp.com")
-        ```
 
         ## Import
 
@@ -455,11 +373,7 @@ class Invitation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InvitationArgs.__new__(InvitationArgs)
 
-            if message is not None and not isinstance(message, InvitationMessageArgs):
-                message = message or {}
-                def _setter(key, value):
-                    message[key] = value
-                InvitationMessageArgs._configure(_setter, **message)
+            message = _utilities.configure(message, InvitationMessageArgs, True)
             __props__.__dict__["message"] = message
             if redirect_url is None and not opts.urn:
                 raise TypeError("Missing required property 'redirect_url'")

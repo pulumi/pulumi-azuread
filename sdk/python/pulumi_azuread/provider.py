@@ -89,7 +89,7 @@ class ProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metadata_host: pulumi.Input[str],
+             metadata_host: Optional[pulumi.Input[str]] = None,
              client_certificate: Optional[pulumi.Input[str]] = None,
              client_certificate_password: Optional[pulumi.Input[str]] = None,
              client_certificate_path: Optional[pulumi.Input[str]] = None,
@@ -109,45 +109,47 @@ class ProviderArgs:
              use_cli: Optional[pulumi.Input[bool]] = None,
              use_msi: Optional[pulumi.Input[bool]] = None,
              use_oidc: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'metadataHost' in kwargs:
+        if metadata_host is None and 'metadataHost' in kwargs:
             metadata_host = kwargs['metadataHost']
-        if 'clientCertificate' in kwargs:
+        if metadata_host is None:
+            raise TypeError("Missing 'metadata_host' argument")
+        if client_certificate is None and 'clientCertificate' in kwargs:
             client_certificate = kwargs['clientCertificate']
-        if 'clientCertificatePassword' in kwargs:
+        if client_certificate_password is None and 'clientCertificatePassword' in kwargs:
             client_certificate_password = kwargs['clientCertificatePassword']
-        if 'clientCertificatePath' in kwargs:
+        if client_certificate_path is None and 'clientCertificatePath' in kwargs:
             client_certificate_path = kwargs['clientCertificatePath']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientIdFilePath' in kwargs:
+        if client_id_file_path is None and 'clientIdFilePath' in kwargs:
             client_id_file_path = kwargs['clientIdFilePath']
-        if 'clientSecret' in kwargs:
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
-        if 'clientSecretFilePath' in kwargs:
+        if client_secret_file_path is None and 'clientSecretFilePath' in kwargs:
             client_secret_file_path = kwargs['clientSecretFilePath']
-        if 'disableTerraformPartnerId' in kwargs:
+        if disable_terraform_partner_id is None and 'disableTerraformPartnerId' in kwargs:
             disable_terraform_partner_id = kwargs['disableTerraformPartnerId']
-        if 'msiEndpoint' in kwargs:
+        if msi_endpoint is None and 'msiEndpoint' in kwargs:
             msi_endpoint = kwargs['msiEndpoint']
-        if 'oidcRequestToken' in kwargs:
+        if oidc_request_token is None and 'oidcRequestToken' in kwargs:
             oidc_request_token = kwargs['oidcRequestToken']
-        if 'oidcRequestUrl' in kwargs:
+        if oidc_request_url is None and 'oidcRequestUrl' in kwargs:
             oidc_request_url = kwargs['oidcRequestUrl']
-        if 'oidcToken' in kwargs:
+        if oidc_token is None and 'oidcToken' in kwargs:
             oidc_token = kwargs['oidcToken']
-        if 'oidcTokenFilePath' in kwargs:
+        if oidc_token_file_path is None and 'oidcTokenFilePath' in kwargs:
             oidc_token_file_path = kwargs['oidcTokenFilePath']
-        if 'partnerId' in kwargs:
+        if partner_id is None and 'partnerId' in kwargs:
             partner_id = kwargs['partnerId']
-        if 'tenantId' in kwargs:
+        if tenant_id is None and 'tenantId' in kwargs:
             tenant_id = kwargs['tenantId']
-        if 'useCli' in kwargs:
+        if use_cli is None and 'useCli' in kwargs:
             use_cli = kwargs['useCli']
-        if 'useMsi' in kwargs:
+        if use_msi is None and 'useMsi' in kwargs:
             use_msi = kwargs['useMsi']
-        if 'useOidc' in kwargs:
+        if use_oidc is None and 'useOidc' in kwargs:
             use_oidc = kwargs['useOidc']
 
         _setter("metadata_host", metadata_host)

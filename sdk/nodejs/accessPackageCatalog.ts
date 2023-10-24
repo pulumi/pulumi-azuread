@@ -15,18 +15,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Catalog creator` or `Global Administrator`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = new azuread.AccessPackageCatalog("example", {
- *     description: "Example access package catalog",
- *     displayName: "example-access-package-catalog",
- * });
- * ```
- *
  * ## Import
  *
  * An Access Package Catalog can be imported using the `id`, e.g.

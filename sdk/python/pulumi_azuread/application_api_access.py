@@ -37,19 +37,23 @@ class ApplicationApiAccessArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_client_id: pulumi.Input[str],
-             application_id: pulumi.Input[str],
+             api_client_id: Optional[pulumi.Input[str]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
              role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              scope_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiClientId' in kwargs:
+        if api_client_id is None and 'apiClientId' in kwargs:
             api_client_id = kwargs['apiClientId']
-        if 'applicationId' in kwargs:
+        if api_client_id is None:
+            raise TypeError("Missing 'api_client_id' argument")
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'roleIds' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if role_ids is None and 'roleIds' in kwargs:
             role_ids = kwargs['roleIds']
-        if 'scopeIds' in kwargs:
+        if scope_ids is None and 'scopeIds' in kwargs:
             scope_ids = kwargs['scopeIds']
 
         _setter("api_client_id", api_client_id)
@@ -140,15 +144,15 @@ class _ApplicationApiAccessState:
              application_id: Optional[pulumi.Input[str]] = None,
              role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              scope_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiClientId' in kwargs:
+        if api_client_id is None and 'apiClientId' in kwargs:
             api_client_id = kwargs['apiClientId']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'roleIds' in kwargs:
+        if role_ids is None and 'roleIds' in kwargs:
             role_ids = kwargs['roleIds']
-        if 'scopeIds' in kwargs:
+        if scope_ids is None and 'scopeIds' in kwargs:
             scope_ids = kwargs['scopeIds']
 
         if api_client_id is not None:
@@ -222,38 +226,6 @@ class ApplicationApiAccess(pulumi.CustomResource):
                  scope_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        well_known = azuread.get_application_published_app_ids()
-        msgraph = azuread.get_service_principal(client_id=well_known.result["MicrosoftGraph"])
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_msgraph = azuread.ApplicationApiAccess("exampleMsgraph",
-            application_id=example.id,
-            api_client_id=well_known.result["MicrosoftGraph"],
-            role_ids=[
-                azuread_service_principal["msgraph"]["app_role_ids"]["Group.Read.All"],
-                azuread_service_principal["msgraph"]["app_role_ids"]["User.Read.All"],
-            ],
-            scope_ids=[azuread_service_principal["msgraph"]["oauth2_permission_scope_ids"]["User.ReadWrite"]])
-        ```
-
-        > **Tip** For managing permissions for an additional API, create another instance of this resource
-
-        *Usage with Application resource*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_api_access = azuread.ApplicationApiAccess("exampleApplicationApiAccess", application_id=example_application.id)
-        # ...
-        ```
-
         ## Import
 
         Application API Access can be imported using the object ID of the application and the client ID of the API, in the following format.
@@ -278,38 +250,6 @@ class ApplicationApiAccess(pulumi.CustomResource):
                  args: ApplicationApiAccessArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        well_known = azuread.get_application_published_app_ids()
-        msgraph = azuread.get_service_principal(client_id=well_known.result["MicrosoftGraph"])
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_msgraph = azuread.ApplicationApiAccess("exampleMsgraph",
-            application_id=example.id,
-            api_client_id=well_known.result["MicrosoftGraph"],
-            role_ids=[
-                azuread_service_principal["msgraph"]["app_role_ids"]["Group.Read.All"],
-                azuread_service_principal["msgraph"]["app_role_ids"]["User.Read.All"],
-            ],
-            scope_ids=[azuread_service_principal["msgraph"]["oauth2_permission_scope_ids"]["User.ReadWrite"]])
-        ```
-
-        > **Tip** For managing permissions for an additional API, create another instance of this resource
-
-        *Usage with Application resource*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_api_access = azuread.ApplicationApiAccess("exampleApplicationApiAccess", application_id=example_application.id)
-        # ...
-        ```
-
         ## Import
 
         Application API Access can be imported using the object ID of the application and the client ID of the API, in the following format.

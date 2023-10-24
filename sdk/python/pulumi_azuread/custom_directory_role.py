@@ -43,17 +43,25 @@ class CustomDirectoryRoleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             permissions: pulumi.Input[Sequence[pulumi.Input['CustomDirectoryRolePermissionArgs']]],
-             version: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDirectoryRolePermissionArgs']]]] = None,
+             version: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'templateId' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
 
         _setter("display_name", display_name)
@@ -178,13 +186,13 @@ class _CustomDirectoryRoleState:
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDirectoryRolePermissionArgs']]]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
-        if 'templateId' in kwargs:
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
 
         if description is not None:
@@ -312,37 +320,6 @@ class CustomDirectoryRole(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.CustomDirectoryRole("example",
-            description="Allows reading applications and updating groups",
-            display_name="My Custom Role",
-            enabled=True,
-            permissions=[
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
-                        "microsoft.directory/applications/basic/update",
-                        "microsoft.directory/applications/create",
-                        "microsoft.directory/applications/standard/read",
-                    ],
-                ),
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
-                        "microsoft.directory/groups/allProperties/read",
-                        "microsoft.directory/groups/allProperties/read",
-                        "microsoft.directory/groups/basic/update",
-                        "microsoft.directory/groups/create",
-                        "microsoft.directory/groups/delete",
-                    ],
-                ),
-            ],
-            version="1.0")
-        ```
-
         ## Import
 
         This resource does not support importing.
@@ -374,37 +351,6 @@ class CustomDirectoryRole(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.CustomDirectoryRole("example",
-            description="Allows reading applications and updating groups",
-            display_name="My Custom Role",
-            enabled=True,
-            permissions=[
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
-                        "microsoft.directory/applications/basic/update",
-                        "microsoft.directory/applications/create",
-                        "microsoft.directory/applications/standard/read",
-                    ],
-                ),
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
-                        "microsoft.directory/groups/allProperties/read",
-                        "microsoft.directory/groups/allProperties/read",
-                        "microsoft.directory/groups/basic/update",
-                        "microsoft.directory/groups/create",
-                        "microsoft.directory/groups/delete",
-                    ],
-                ),
-            ],
-            version="1.0")
-        ```
 
         ## Import
 

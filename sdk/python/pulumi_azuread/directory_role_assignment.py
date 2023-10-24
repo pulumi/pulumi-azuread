@@ -41,25 +41,29 @@ class DirectoryRoleAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             principal_object_id: pulumi.Input[str],
-             role_id: pulumi.Input[str],
+             principal_object_id: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
              app_scope_id: Optional[pulumi.Input[str]] = None,
              app_scope_object_id: Optional[pulumi.Input[str]] = None,
              directory_scope_id: Optional[pulumi.Input[str]] = None,
              directory_scope_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'principalObjectId' in kwargs:
+        if principal_object_id is None and 'principalObjectId' in kwargs:
             principal_object_id = kwargs['principalObjectId']
-        if 'roleId' in kwargs:
+        if principal_object_id is None:
+            raise TypeError("Missing 'principal_object_id' argument")
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
-        if 'appScopeId' in kwargs:
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
+        if app_scope_id is None and 'appScopeId' in kwargs:
             app_scope_id = kwargs['appScopeId']
-        if 'appScopeObjectId' in kwargs:
+        if app_scope_object_id is None and 'appScopeObjectId' in kwargs:
             app_scope_object_id = kwargs['appScopeObjectId']
-        if 'directoryScopeId' in kwargs:
+        if directory_scope_id is None and 'directoryScopeId' in kwargs:
             directory_scope_id = kwargs['directoryScopeId']
-        if 'directoryScopeObjectId' in kwargs:
+        if directory_scope_object_id is None and 'directoryScopeObjectId' in kwargs:
             directory_scope_object_id = kwargs['directoryScopeObjectId']
 
         _setter("principal_object_id", principal_object_id)
@@ -188,19 +192,19 @@ class _DirectoryRoleAssignmentState:
              directory_scope_object_id: Optional[pulumi.Input[str]] = None,
              principal_object_id: Optional[pulumi.Input[str]] = None,
              role_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appScopeId' in kwargs:
+        if app_scope_id is None and 'appScopeId' in kwargs:
             app_scope_id = kwargs['appScopeId']
-        if 'appScopeObjectId' in kwargs:
+        if app_scope_object_id is None and 'appScopeObjectId' in kwargs:
             app_scope_object_id = kwargs['appScopeObjectId']
-        if 'directoryScopeId' in kwargs:
+        if directory_scope_id is None and 'directoryScopeId' in kwargs:
             directory_scope_id = kwargs['directoryScopeId']
-        if 'directoryScopeObjectId' in kwargs:
+        if directory_scope_object_id is None and 'directoryScopeObjectId' in kwargs:
             directory_scope_object_id = kwargs['directoryScopeObjectId']
-        if 'principalObjectId' in kwargs:
+        if principal_object_id is None and 'principalObjectId' in kwargs:
             principal_object_id = kwargs['principalObjectId']
-        if 'roleId' in kwargs:
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
 
         if app_scope_id is not None:

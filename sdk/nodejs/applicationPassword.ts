@@ -5,35 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * *Basic example*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
- * const exampleApplicationPassword = new azuread.ApplicationPassword("exampleApplicationPassword", {applicationId: exampleApplicationRegistration.id});
- * ```
- *
- * *Time-based rotation*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- * import * as time from "@pulumiverse/time";
- *
- * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
- * const exampleRotating = new time.Rotating("exampleRotating", {rotationDays: 7});
- * const exampleApplicationPassword = new azuread.ApplicationPassword("exampleApplicationPassword", {
- *     applicationId: exampleApplicationRegistration.id,
- *     rotateWhenChanged: {
- *         rotation: exampleRotating.id,
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * This resource does not support importing.

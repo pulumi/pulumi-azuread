@@ -5,20 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
- * const client = new azuread.ApplicationRegistration("client", {displayName: "example client"});
- * const exampleApplicationKnownClients = new azuread.ApplicationKnownClients("exampleApplicationKnownClients", {
- *     applicationId: exampleApplicationRegistration.id,
- *     knownClientIds: [client.clientId],
- * });
- * ```
- *
  * ## Import
  *
  * Application Known Clients can be imported using the object ID of the application in the following format.

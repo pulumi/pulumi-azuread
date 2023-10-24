@@ -10,56 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///     });
-    /// 
-    ///     var exampleApplicationIdentifierUri = new AzureAD.ApplicationIdentifierUri("exampleApplicationIdentifierUri", new()
-    ///     {
-    ///         ApplicationId = exampleApplicationRegistration.Id,
-    ///         IdentifierUri = "https://app.hashitown.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// &gt; **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
-    /// 
-    /// *Usage with azuread.Application resource*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///     });
-    /// 
-    ///     var exampleApplicationIdentifierUri = new AzureAD.ApplicationIdentifierUri("exampleApplicationIdentifierUri", new()
-    ///     {
-    ///         ApplicationId = exampleApplication.Id,
-    ///     });
-    /// 
-    ///     // ...
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Application Identifier URIs can be imported using the object ID of the application and the base64-encoded identifier URI, in the following format.

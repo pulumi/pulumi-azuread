@@ -40,18 +40,20 @@ class AdministrativeUnitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              hidden_membership_enabled: Optional[pulumi.Input[bool]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'hiddenMembershipEnabled' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if hidden_membership_enabled is None and 'hiddenMembershipEnabled' in kwargs:
             hidden_membership_enabled = kwargs['hiddenMembershipEnabled']
-        if 'preventDuplicateNames' in kwargs:
+        if prevent_duplicate_names is None and 'preventDuplicateNames' in kwargs:
             prevent_duplicate_names = kwargs['preventDuplicateNames']
 
         _setter("display_name", display_name)
@@ -165,15 +167,15 @@ class _AdministrativeUnitState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              object_id: Optional[pulumi.Input[str]] = None,
              prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'hiddenMembershipEnabled' in kwargs:
+        if hidden_membership_enabled is None and 'hiddenMembershipEnabled' in kwargs:
             hidden_membership_enabled = kwargs['hiddenMembershipEnabled']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
-        if 'preventDuplicateNames' in kwargs:
+        if prevent_duplicate_names is None and 'preventDuplicateNames' in kwargs:
             prevent_duplicate_names = kwargs['preventDuplicateNames']
 
         if description is not None:
@@ -286,18 +288,6 @@ class AdministrativeUnit(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.AdministrativeUnit("example",
-            description="Just an example",
-            display_name="Example-AU",
-            hidden_membership_enabled=False)
-        ```
-
         ## Import
 
         Administrative units can be imported using their object ID, e.g.
@@ -332,18 +322,6 @@ class AdministrativeUnit(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.AdministrativeUnit("example",
-            description="Just an example",
-            display_name="Example-AU",
-            hidden_membership_enabled=False)
-        ```
 
         ## Import
 

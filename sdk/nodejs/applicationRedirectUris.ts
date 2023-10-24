@@ -5,44 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const examplePublic = new azuread.ApplicationRedirectUris("examplePublic", {
- *     applicationId: example.id,
- *     type: "PublicClient",
- *     redirectUris: [
- *         "myapp://auth",
- *         "sample.mobile.app.bundie.id://auth",
- *         "https://login.microsoftonline.com/common/oauth2/nativeclient",
- *         "https://login.live.com/oauth20_desktop.srf",
- *         "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222",
- *         "urn:ietf:wg:oauth:2.0:foo",
- *     ],
- * });
- * const exampleSpa = new azuread.ApplicationRedirectUris("exampleSpa", {
- *     applicationId: example.id,
- *     type: "SPA",
- *     redirectUris: [
- *         "https://mobile.hashitown.com/",
- *         "https://beta.hashitown.com/",
- *     ],
- * });
- * const exampleWeb = new azuread.ApplicationRedirectUris("exampleWeb", {
- *     applicationId: example.id,
- *     type: "Web",
- *     redirectUris: [
- *         "https://app.hashitown.com/",
- *         "https://classic.hashitown.com/",
- *         "urn:ietf:wg:oauth:2.0:oob",
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * Application API Access can be imported using the object ID of the application and the URI type, in the following format.

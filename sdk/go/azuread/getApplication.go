@@ -21,33 +21,6 @@ import (
 // When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
 //
 // When authenticated with a user principal, this data source does not require any additional roles.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.LookupApplication(ctx, &azuread.LookupApplicationArgs{
-//				DisplayName: pulumi.StringRef("My First AzureAD Application"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("applicationObjectId", example.ObjectId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationResult

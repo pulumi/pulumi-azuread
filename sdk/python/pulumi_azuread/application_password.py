@@ -51,21 +51,21 @@ class ApplicationPasswordArgs:
              end_date_relative: Optional[pulumi.Input[str]] = None,
              rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationObjectId' in kwargs:
+        if application_object_id is None and 'applicationObjectId' in kwargs:
             application_object_id = kwargs['applicationObjectId']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'endDate' in kwargs:
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'endDateRelative' in kwargs:
+        if end_date_relative is None and 'endDateRelative' in kwargs:
             end_date_relative = kwargs['endDateRelative']
-        if 'rotateWhenChanged' in kwargs:
+        if rotate_when_changed is None and 'rotateWhenChanged' in kwargs:
             rotate_when_changed = kwargs['rotateWhenChanged']
-        if 'startDate' in kwargs:
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
 
         if application_id is not None:
@@ -222,23 +222,23 @@ class _ApplicationPasswordState:
              rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationObjectId' in kwargs:
+        if application_object_id is None and 'applicationObjectId' in kwargs:
             application_object_id = kwargs['applicationObjectId']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'endDate' in kwargs:
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'endDateRelative' in kwargs:
+        if end_date_relative is None and 'endDateRelative' in kwargs:
             end_date_relative = kwargs['endDateRelative']
-        if 'keyId' in kwargs:
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
-        if 'rotateWhenChanged' in kwargs:
+        if rotate_when_changed is None and 'rotateWhenChanged' in kwargs:
             rotate_when_changed = kwargs['rotateWhenChanged']
-        if 'startDate' in kwargs:
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
 
         if application_id is not None:
@@ -389,34 +389,6 @@ class ApplicationPassword(pulumi.CustomResource):
                  start_date: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword", application_id=example_application_registration.id)
-        ```
-
-        *Time-based rotation*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumiverse_time as time
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_rotating = time.Rotating("exampleRotating", rotation_days=7)
-        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword",
-            application_id=example_application_registration.id,
-            rotate_when_changed={
-                "rotation": example_rotating.id,
-            })
-        ```
-
         ## Import
 
         This resource does not support importing.
@@ -438,34 +410,6 @@ class ApplicationPassword(pulumi.CustomResource):
                  args: Optional[ApplicationPasswordArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword", application_id=example_application_registration.id)
-        ```
-
-        *Time-based rotation*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumiverse_time as time
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_rotating = time.Rotating("exampleRotating", rotation_days=7)
-        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword",
-            application_id=example_application_registration.id,
-            rotate_when_changed={
-                "rotation": example_rotating.id,
-            })
-        ```
-
         ## Import
 
         This resource does not support importing.

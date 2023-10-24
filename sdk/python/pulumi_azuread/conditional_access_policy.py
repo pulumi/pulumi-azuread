@@ -42,18 +42,24 @@ class ConditionalAccessPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             conditions: pulumi.Input['ConditionalAccessPolicyConditionsArgs'],
-             display_name: pulumi.Input[str],
-             state: pulumi.Input[str],
+             conditions: Optional[pulumi.Input['ConditionalAccessPolicyConditionsArgs']] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
              grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
              session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if conditions is None:
+            raise TypeError("Missing 'conditions' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'grantControls' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if state is None:
+            raise TypeError("Missing 'state' argument")
+        if grant_controls is None and 'grantControls' in kwargs:
             grant_controls = kwargs['grantControls']
-        if 'sessionControls' in kwargs:
+        if session_controls is None and 'sessionControls' in kwargs:
             session_controls = kwargs['sessionControls']
 
         _setter("conditions", conditions)
@@ -161,13 +167,13 @@ class _ConditionalAccessPolicyState:
              grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
              session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'grantControls' in kwargs:
+        if grant_controls is None and 'grantControls' in kwargs:
             grant_controls = kwargs['grantControls']
-        if 'sessionControls' in kwargs:
+        if session_controls is None and 'sessionControls' in kwargs:
             session_controls = kwargs['sessionControls']
 
         if conditions is not None:
@@ -269,110 +275,6 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
         ## Example Usage
-        ### All users except guests or external users
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.ConditionalAccessPolicy("example",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    excluded_applications=[],
-                    included_applications=["All"],
-                ),
-                client_app_types=["all"],
-                devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
-                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
-                        mode="exclude",
-                        rule="device.operatingSystem eq \\"Doors\\"",
-                    ),
-                ),
-                locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
-                    excluded_locations=["AllTrusted"],
-                    included_locations=["All"],
-                ),
-                platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(
-                    excluded_platforms=["iOS"],
-                    included_platforms=["android"],
-                ),
-                sign_in_risk_levels=["medium"],
-                user_risk_levels=["medium"],
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    excluded_users=["GuestsOrExternalUsers"],
-                    included_users=["All"],
-                ),
-            ),
-            display_name="example policy",
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                built_in_controls=["mfa"],
-                operator="OR",
-            ),
-            session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
-                application_enforced_restrictions_enabled=True,
-                cloud_app_security_policy="monitorOnly",
-                disable_resilience_defaults=False,
-                sign_in_frequency=10,
-                sign_in_frequency_period="hours",
-            ),
-            state="disabled")
-        ```
-        ### Included client applications / service principals
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.ConditionalAccessPolicy("example",
-            display_name="example policy",
-            state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    included_applications=["All"],
-                ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
-                    included_service_principals=[current.object_id],
-                    excluded_service_principals=[],
-                ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    included_users=["None"],
-                ),
-            ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                operator="OR",
-                built_in_controls=["block"],
-            ))
-        ```
-        ### Excluded client applications / service principals
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.ConditionalAccessPolicy("example",
-            display_name="example policy",
-            state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    included_applications=["All"],
-                ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
-                    included_service_principals=["ServicePrincipalsInMyTenant"],
-                    excluded_service_principals=[current.object_id],
-                ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    included_users=["None"],
-                ),
-            ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                operator="OR",
-                built_in_controls=["block"],
-            ))
-        ```
 
         ## Import
 
@@ -412,110 +314,6 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
         ## Example Usage
-        ### All users except guests or external users
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.ConditionalAccessPolicy("example",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    excluded_applications=[],
-                    included_applications=["All"],
-                ),
-                client_app_types=["all"],
-                devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
-                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
-                        mode="exclude",
-                        rule="device.operatingSystem eq \\"Doors\\"",
-                    ),
-                ),
-                locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
-                    excluded_locations=["AllTrusted"],
-                    included_locations=["All"],
-                ),
-                platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(
-                    excluded_platforms=["iOS"],
-                    included_platforms=["android"],
-                ),
-                sign_in_risk_levels=["medium"],
-                user_risk_levels=["medium"],
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    excluded_users=["GuestsOrExternalUsers"],
-                    included_users=["All"],
-                ),
-            ),
-            display_name="example policy",
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                built_in_controls=["mfa"],
-                operator="OR",
-            ),
-            session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
-                application_enforced_restrictions_enabled=True,
-                cloud_app_security_policy="monitorOnly",
-                disable_resilience_defaults=False,
-                sign_in_frequency=10,
-                sign_in_frequency_period="hours",
-            ),
-            state="disabled")
-        ```
-        ### Included client applications / service principals
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.ConditionalAccessPolicy("example",
-            display_name="example policy",
-            state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    included_applications=["All"],
-                ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
-                    included_service_principals=[current.object_id],
-                    excluded_service_principals=[],
-                ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    included_users=["None"],
-                ),
-            ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                operator="OR",
-                built_in_controls=["block"],
-            ))
-        ```
-        ### Excluded client applications / service principals
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.ConditionalAccessPolicy("example",
-            display_name="example policy",
-            state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    included_applications=["All"],
-                ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
-                    included_service_principals=["ServicePrincipalsInMyTenant"],
-                    excluded_service_principals=[current.object_id],
-                ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    included_users=["None"],
-                ),
-            ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                operator="OR",
-                built_in_controls=["block"],
-            ))
-        ```
 
         ## Import
 
@@ -558,28 +356,16 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConditionalAccessPolicyArgs.__new__(ConditionalAccessPolicyArgs)
 
-            if conditions is not None and not isinstance(conditions, ConditionalAccessPolicyConditionsArgs):
-                conditions = conditions or {}
-                def _setter(key, value):
-                    conditions[key] = value
-                ConditionalAccessPolicyConditionsArgs._configure(_setter, **conditions)
+            conditions = _utilities.configure(conditions, ConditionalAccessPolicyConditionsArgs, True)
             if conditions is None and not opts.urn:
                 raise TypeError("Missing required property 'conditions'")
             __props__.__dict__["conditions"] = conditions
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if grant_controls is not None and not isinstance(grant_controls, ConditionalAccessPolicyGrantControlsArgs):
-                grant_controls = grant_controls or {}
-                def _setter(key, value):
-                    grant_controls[key] = value
-                ConditionalAccessPolicyGrantControlsArgs._configure(_setter, **grant_controls)
+            grant_controls = _utilities.configure(grant_controls, ConditionalAccessPolicyGrantControlsArgs, True)
             __props__.__dict__["grant_controls"] = grant_controls
-            if session_controls is not None and not isinstance(session_controls, ConditionalAccessPolicySessionControlsArgs):
-                session_controls = session_controls or {}
-                def _setter(key, value):
-                    session_controls[key] = value
-                ConditionalAccessPolicySessionControlsArgs._configure(_setter, **session_controls)
+            session_controls = _utilities.configure(session_controls, ConditionalAccessPolicySessionControlsArgs, True)
             __props__.__dict__["session_controls"] = session_controls
             if state is None and not opts.urn:
                 raise TypeError("Missing required property 'state'")

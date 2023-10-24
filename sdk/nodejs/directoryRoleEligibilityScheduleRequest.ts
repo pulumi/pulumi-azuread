@@ -15,26 +15,6 @@ import * as utilities from "./utilities";
  *
  * The calling principal requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleUser = azuread.getUser({
- *     userPrincipalName: "jdoe@hashicorp.com",
- * });
- * const exampleDirectoryRole = new azuread.DirectoryRole("exampleDirectoryRole", {displayName: "Application Administrator"});
- * const exampleDirectoryRoleEligibilityScheduleRequest = new azuread.DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest", {
- *     roleDefinitionId: exampleDirectoryRole.templateId,
- *     principalId: azuread_user.example.object_id,
- *     directoryScopeId: "/",
- *     justification: "Example",
- * });
- * ```
- *
- * > Note the use of the `templateId` attribute when referencing built-in roles.
- *
  * ## Import
  *
  * Directory role eligibility schedule requests can be imported using the ID of the assignment, e.g.

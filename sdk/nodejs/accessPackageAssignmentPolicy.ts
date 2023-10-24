@@ -17,58 +17,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleGroup = new azuread.Group("exampleGroup", {
- *     displayName: "group-name",
- *     securityEnabled: true,
- * });
- * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("exampleAccessPackageCatalog", {
- *     displayName: "example-catalog",
- *     description: "Example catalog",
- * });
- * const exampleAccessPackage = new azuread.AccessPackage("exampleAccessPackage", {
- *     catalogId: exampleAccessPackageCatalog.id,
- *     displayName: "access-package",
- *     description: "Access Package",
- * });
- * const exampleAccessPackageAssignmentPolicy = new azuread.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy", {
- *     accessPackageId: exampleAccessPackage.id,
- *     displayName: "assignment-policy",
- *     description: "My assignment policy",
- *     durationInDays: 90,
- *     requestorSettings: {
- *         scopeType: "AllExistingDirectoryMemberUsers",
- *     },
- *     approvalSettings: {
- *         approvalRequired: true,
- *         approvalStages: [{
- *             approvalTimeoutInDays: 14,
- *             primaryApprovers: [{
- *                 objectId: exampleGroup.objectId,
- *                 subjectType: "groupMembers",
- *             }],
- *         }],
- *     },
- *     assignmentReviewSettings: {
- *         enabled: true,
- *         reviewFrequency: "weekly",
- *         durationInDays: 3,
- *         reviewType: "Self",
- *         accessReviewTimeoutBehavior: "keepAccess",
- *     },
- *     questions: [{
- *         text: {
- *             defaultText: "hello, how are you?",
- *         },
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * An access package assignment policy can be imported using the ID, e.g.
