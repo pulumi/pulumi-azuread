@@ -14,8 +14,9 @@ __all__ = ['ApplicationCertificateArgs', 'ApplicationCertificate']
 @pulumi.input_type
 class ApplicationCertificateArgs:
     def __init__(__self__, *,
-                 application_object_id: pulumi.Input[str],
                  value: pulumi.Input[str],
+                 application_id: Optional[pulumi.Input[str]] = None,
+                 application_object_id: Optional[pulumi.Input[str]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
                  end_date_relative: Optional[pulumi.Input[str]] = None,
@@ -24,23 +25,25 @@ class ApplicationCertificateArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApplicationCertificate resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created
         :param pulumi.Input[str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
                
                > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
         :param pulumi.Input[str] end_date: The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
                
-               > One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+               > One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
         :param pulumi.Input[str] key_id: A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
         """
         ApplicationCertificateArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
-            application_object_id=application_object_id,
             value=value,
+            application_id=application_id,
+            application_object_id=application_object_id,
             encoding=encoding,
             end_date=end_date,
             end_date_relative=end_date_relative,
@@ -51,17 +54,38 @@ class ApplicationCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_object_id: pulumi.Input[str],
              value: pulumi.Input[str],
+             application_id: Optional[pulumi.Input[str]] = None,
+             application_object_id: Optional[pulumi.Input[str]] = None,
              encoding: Optional[pulumi.Input[str]] = None,
              end_date: Optional[pulumi.Input[str]] = None,
              end_date_relative: Optional[pulumi.Input[str]] = None,
              key_id: Optional[pulumi.Input[str]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("application_object_id", application_object_id)
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         _setter("value", value)
+        if application_id is not None:
+            _setter("application_id", application_id)
+        if application_object_id is not None:
+            warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+        if application_object_id is not None:
+            _setter("application_object_id", application_object_id)
         if encoding is not None:
             _setter("encoding", encoding)
         if end_date is not None:
@@ -76,18 +100,6 @@ class ApplicationCertificateArgs:
             _setter("type", type)
 
     @property
-    @pulumi.getter(name="applicationObjectId")
-    def application_object_id(self) -> pulumi.Input[str]:
-        """
-        The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
-        """
-        return pulumi.get(self, "application_object_id")
-
-    @application_object_id.setter
-    def application_object_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "application_object_id", value)
-
-    @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
@@ -98,6 +110,33 @@ class ApplicationCertificateArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_id", value)
+
+    @property
+    @pulumi.getter(name="applicationObjectId")
+    def application_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The object ID of the application for which this certificate should be created
+        """
+        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
+        return pulumi.get(self, "application_object_id")
+
+    @application_object_id.setter
+    def application_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_object_id", value)
 
     @property
     @pulumi.getter
@@ -131,7 +170,7 @@ class ApplicationCertificateArgs:
         """
         A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 
-        > One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+        > One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
         """
         return pulumi.get(self, "end_date_relative")
 
@@ -179,6 +218,7 @@ class ApplicationCertificateArgs:
 @pulumi.input_type
 class _ApplicationCertificateState:
     def __init__(__self__, *,
+                 application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
@@ -189,14 +229,15 @@ class _ApplicationCertificateState:
                  value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApplicationCertificate resources.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created
         :param pulumi.Input[str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
                
                > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
         :param pulumi.Input[str] end_date: The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
                
-               > One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+               > One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
         :param pulumi.Input[str] key_id: A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
@@ -204,6 +245,7 @@ class _ApplicationCertificateState:
         """
         _ApplicationCertificateState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
             application_object_id=application_object_id,
             encoding=encoding,
             end_date=end_date,
@@ -216,6 +258,7 @@ class _ApplicationCertificateState:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
              application_object_id: Optional[pulumi.Input[str]] = None,
              encoding: Optional[pulumi.Input[str]] = None,
              end_date: Optional[pulumi.Input[str]] = None,
@@ -224,7 +267,26 @@ class _ApplicationCertificateState:
              start_date: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
+        if application_id is not None:
+            _setter("application_id", application_id)
+        if application_object_id is not None:
+            warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
         if application_object_id is not None:
             _setter("application_object_id", application_object_id)
         if encoding is not None:
@@ -243,11 +305,26 @@ class _ApplicationCertificateState:
             _setter("value", value)
 
     @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_id", value)
+
+    @property
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        The object ID of the application for which this certificate should be created
         """
+        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_object_id")
 
     @application_object_id.setter
@@ -286,7 +363,7 @@ class _ApplicationCertificateState:
         """
         A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 
-        > One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+        > One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
         """
         return pulumi.get(self, "end_date_relative")
 
@@ -348,6 +425,7 @@ class ApplicationCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
@@ -363,21 +441,22 @@ class ApplicationCertificate(pulumi.CustomResource):
         Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
 
         ```sh
-         $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+         $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
 
          -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created
         :param pulumi.Input[str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
                
                > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
         :param pulumi.Input[str] end_date: The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
                
-               > One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+               > One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
         :param pulumi.Input[str] key_id: A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
@@ -395,7 +474,7 @@ class ApplicationCertificate(pulumi.CustomResource):
         Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
 
         ```sh
-         $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+         $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
 
          -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
@@ -419,6 +498,7 @@ class ApplicationCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  encoding: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
@@ -436,8 +516,7 @@ class ApplicationCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApplicationCertificateArgs.__new__(ApplicationCertificateArgs)
 
-            if application_object_id is None and not opts.urn:
-                raise TypeError("Missing required property 'application_object_id'")
+            __props__.__dict__["application_id"] = application_id
             __props__.__dict__["application_object_id"] = application_object_id
             __props__.__dict__["encoding"] = encoding
             __props__.__dict__["end_date"] = end_date
@@ -460,6 +539,7 @@ class ApplicationCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            application_id: Optional[pulumi.Input[str]] = None,
             application_object_id: Optional[pulumi.Input[str]] = None,
             encoding: Optional[pulumi.Input[str]] = None,
             end_date: Optional[pulumi.Input[str]] = None,
@@ -475,14 +555,15 @@ class ApplicationCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created
         :param pulumi.Input[str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
                
                > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
         :param pulumi.Input[str] end_date: The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
                
-               > One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+               > One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
         :param pulumi.Input[str] key_id: A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
@@ -492,6 +573,7 @@ class ApplicationCertificate(pulumi.CustomResource):
 
         __props__ = _ApplicationCertificateState.__new__(_ApplicationCertificateState)
 
+        __props__.__dict__["application_id"] = application_id
         __props__.__dict__["application_object_id"] = application_object_id
         __props__.__dict__["encoding"] = encoding
         __props__.__dict__["end_date"] = end_date
@@ -503,11 +585,22 @@ class ApplicationCertificate(pulumi.CustomResource):
         return ApplicationCertificate(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> pulumi.Output[str]:
+        """
+        The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_id")
+
+    @property
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        The object ID of the application for which this certificate should be created
         """
+        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_object_id")
 
     @property
@@ -534,7 +627,7 @@ class ApplicationCertificate(pulumi.CustomResource):
         """
         A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 
-        > One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+        > One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
         """
         return pulumi.get(self, "end_date_relative")
 

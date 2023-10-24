@@ -76,6 +76,8 @@ class ApplicationArgs:
                
                > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+               
+               > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
                
@@ -141,7 +143,51 @@ class ApplicationArgs:
              template_id: Optional[pulumi.Input[str]] = None,
              terms_of_service_url: Optional[pulumi.Input[str]] = None,
              web: Optional[pulumi.Input['ApplicationWebArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'appRoles' in kwargs:
+            app_roles = kwargs['appRoles']
+        if 'deviceOnlyAuthEnabled' in kwargs:
+            device_only_auth_enabled = kwargs['deviceOnlyAuthEnabled']
+        if 'fallbackPublicClientEnabled' in kwargs:
+            fallback_public_client_enabled = kwargs['fallbackPublicClientEnabled']
+        if 'featureTags' in kwargs:
+            feature_tags = kwargs['featureTags']
+        if 'groupMembershipClaims' in kwargs:
+            group_membership_claims = kwargs['groupMembershipClaims']
+        if 'identifierUris' in kwargs:
+            identifier_uris = kwargs['identifierUris']
+        if 'logoImage' in kwargs:
+            logo_image = kwargs['logoImage']
+        if 'marketingUrl' in kwargs:
+            marketing_url = kwargs['marketingUrl']
+        if 'oauth2PostResponseRequired' in kwargs:
+            oauth2_post_response_required = kwargs['oauth2PostResponseRequired']
+        if 'optionalClaims' in kwargs:
+            optional_claims = kwargs['optionalClaims']
+        if 'preventDuplicateNames' in kwargs:
+            prevent_duplicate_names = kwargs['preventDuplicateNames']
+        if 'privacyStatementUrl' in kwargs:
+            privacy_statement_url = kwargs['privacyStatementUrl']
+        if 'publicClient' in kwargs:
+            public_client = kwargs['publicClient']
+        if 'requiredResourceAccesses' in kwargs:
+            required_resource_accesses = kwargs['requiredResourceAccesses']
+        if 'serviceManagementReference' in kwargs:
+            service_management_reference = kwargs['serviceManagementReference']
+        if 'signInAudience' in kwargs:
+            sign_in_audience = kwargs['signInAudience']
+        if 'singlePageApplication' in kwargs:
+            single_page_application = kwargs['singlePageApplication']
+        if 'supportUrl' in kwargs:
+            support_url = kwargs['supportUrl']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if 'termsOfServiceUrl' in kwargs:
+            terms_of_service_url = kwargs['termsOfServiceUrl']
+
         _setter("display_name", display_name)
         if api is not None:
             _setter("api", api)
@@ -495,6 +541,8 @@ class ApplicationArgs:
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
         Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+
+        > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         """
         return pulumi.get(self, "template_id")
 
@@ -536,6 +584,7 @@ class _ApplicationState:
                  app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
@@ -571,7 +620,8 @@ class _ApplicationState:
         :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] application_id: The Application ID (also called Client ID).
+        :param pulumi.Input[str] application_id: The Application ID (also called Client ID)
+        :param pulumi.Input[str] client_id: The Client ID for the application.
         :param pulumi.Input[str] description: A description of the application, as shown to end users.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
@@ -606,6 +656,8 @@ class _ApplicationState:
                
                > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+               
+               > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
                
@@ -617,6 +669,7 @@ class _ApplicationState:
             app_role_ids=app_role_ids,
             app_roles=app_roles,
             application_id=application_id,
+            client_id=client_id,
             description=description,
             device_only_auth_enabled=device_only_auth_enabled,
             disabled_by_microsoft=disabled_by_microsoft,
@@ -655,6 +708,7 @@ class _ApplicationState:
              app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
              application_id: Optional[pulumi.Input[str]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
              disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
@@ -685,7 +739,67 @@ class _ApplicationState:
              template_id: Optional[pulumi.Input[str]] = None,
              terms_of_service_url: Optional[pulumi.Input[str]] = None,
              web: Optional[pulumi.Input['ApplicationWebArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appRoleIds' in kwargs:
+            app_role_ids = kwargs['appRoleIds']
+        if 'appRoles' in kwargs:
+            app_roles = kwargs['appRoles']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'deviceOnlyAuthEnabled' in kwargs:
+            device_only_auth_enabled = kwargs['deviceOnlyAuthEnabled']
+        if 'disabledByMicrosoft' in kwargs:
+            disabled_by_microsoft = kwargs['disabledByMicrosoft']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'fallbackPublicClientEnabled' in kwargs:
+            fallback_public_client_enabled = kwargs['fallbackPublicClientEnabled']
+        if 'featureTags' in kwargs:
+            feature_tags = kwargs['featureTags']
+        if 'groupMembershipClaims' in kwargs:
+            group_membership_claims = kwargs['groupMembershipClaims']
+        if 'identifierUris' in kwargs:
+            identifier_uris = kwargs['identifierUris']
+        if 'logoImage' in kwargs:
+            logo_image = kwargs['logoImage']
+        if 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+        if 'marketingUrl' in kwargs:
+            marketing_url = kwargs['marketingUrl']
+        if 'oauth2PermissionScopeIds' in kwargs:
+            oauth2_permission_scope_ids = kwargs['oauth2PermissionScopeIds']
+        if 'oauth2PostResponseRequired' in kwargs:
+            oauth2_post_response_required = kwargs['oauth2PostResponseRequired']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if 'optionalClaims' in kwargs:
+            optional_claims = kwargs['optionalClaims']
+        if 'preventDuplicateNames' in kwargs:
+            prevent_duplicate_names = kwargs['preventDuplicateNames']
+        if 'privacyStatementUrl' in kwargs:
+            privacy_statement_url = kwargs['privacyStatementUrl']
+        if 'publicClient' in kwargs:
+            public_client = kwargs['publicClient']
+        if 'publisherDomain' in kwargs:
+            publisher_domain = kwargs['publisherDomain']
+        if 'requiredResourceAccesses' in kwargs:
+            required_resource_accesses = kwargs['requiredResourceAccesses']
+        if 'serviceManagementReference' in kwargs:
+            service_management_reference = kwargs['serviceManagementReference']
+        if 'signInAudience' in kwargs:
+            sign_in_audience = kwargs['signInAudience']
+        if 'singlePageApplication' in kwargs:
+            single_page_application = kwargs['singlePageApplication']
+        if 'supportUrl' in kwargs:
+            support_url = kwargs['supportUrl']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if 'termsOfServiceUrl' in kwargs:
+            terms_of_service_url = kwargs['termsOfServiceUrl']
+
         if api is not None:
             _setter("api", api)
         if app_role_ids is not None:
@@ -693,7 +807,12 @@ class _ApplicationState:
         if app_roles is not None:
             _setter("app_roles", app_roles)
         if application_id is not None:
+            warnings.warn("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""application_id is deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
+        if application_id is not None:
             _setter("application_id", application_id)
+        if client_id is not None:
+            _setter("client_id", client_id)
         if description is not None:
             _setter("description", description)
         if device_only_auth_enabled is not None:
@@ -795,13 +914,28 @@ class _ApplicationState:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Application ID (also called Client ID).
+        The Application ID (also called Client ID)
         """
+        warnings.warn("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_id is deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_id")
 
     @application_id.setter
     def application_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "application_id", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Client ID for the application.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
 
     @property
     @pulumi.getter
@@ -1138,6 +1272,8 @@ class _ApplicationState:
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
         Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+
+        > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         """
         return pulumi.get(self, "template_id")
 
@@ -1347,7 +1483,7 @@ class Application(pulumi.CustomResource):
         Applications can be imported using their object ID, e.g.
 
         ```sh
-         $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
+         $ pulumi import azuread:index/application:Application example 00000000-0000-0000-0000-000000000000
         ```
 
         :param str resource_name: The name of the resource.
@@ -1383,6 +1519,8 @@ class Application(pulumi.CustomResource):
                
                > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+               
+               > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
                
@@ -1536,7 +1674,7 @@ class Application(pulumi.CustomResource):
         Applications can be imported using their object ID, e.g.
 
         ```sh
-         $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
+         $ pulumi import azuread:index/application:Application example 00000000-0000-0000-0000-000000000000
         ```
 
         :param str resource_name: The name of the resource.
@@ -1650,6 +1788,7 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["web"] = web
             __props__.__dict__["app_role_ids"] = None
             __props__.__dict__["application_id"] = None
+            __props__.__dict__["client_id"] = None
             __props__.__dict__["disabled_by_microsoft"] = None
             __props__.__dict__["logo_url"] = None
             __props__.__dict__["oauth2_permission_scope_ids"] = None
@@ -1669,6 +1808,7 @@ class Application(pulumi.CustomResource):
             app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
+            client_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
             disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
@@ -1709,7 +1849,8 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ApplicationApiArgs']] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] application_id: The Application ID (also called Client ID).
+        :param pulumi.Input[str] application_id: The Application ID (also called Client ID)
+        :param pulumi.Input[str] client_id: The Client ID for the application.
         :param pulumi.Input[str] description: A description of the application, as shown to end users.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
@@ -1744,6 +1885,8 @@ class Application(pulumi.CustomResource):
                
                > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+               
+               > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
                
@@ -1757,6 +1900,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["app_role_ids"] = app_role_ids
         __props__.__dict__["app_roles"] = app_roles
         __props__.__dict__["application_id"] = application_id
+        __props__.__dict__["client_id"] = client_id
         __props__.__dict__["description"] = description
         __props__.__dict__["device_only_auth_enabled"] = device_only_auth_enabled
         __props__.__dict__["disabled_by_microsoft"] = disabled_by_microsoft
@@ -1817,9 +1961,20 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
         """
-        The Application ID (also called Client ID).
+        The Application ID (also called Client ID)
         """
+        warnings.warn("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_id is deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Output[str]:
+        """
+        The Client ID for the application.
+        """
+        return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter
@@ -2048,6 +2203,8 @@ class Application(pulumi.CustomResource):
     def template_id(self) -> pulumi.Output[str]:
         """
         Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+
+        > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         """
         return pulumi.get(self, "template_id")
 

@@ -14,55 +14,63 @@ __all__ = ['ApplicationPreAuthorizedArgs', 'ApplicationPreAuthorized']
 @pulumi.input_type
 class ApplicationPreAuthorizedArgs:
     def __init__(__self__, *,
-                 application_object_id: pulumi.Input[str],
-                 authorized_app_id: pulumi.Input[str],
-                 permission_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
+                 permission_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 application_id: Optional[pulumi.Input[str]] = None,
+                 application_object_id: Optional[pulumi.Input[str]] = None,
+                 authorized_app_id: Optional[pulumi.Input[str]] = None,
+                 authorized_client_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApplicationPreAuthorized resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application to which this pre-authorized application should be added
+        :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
+        :param pulumi.Input[str] authorized_client_id: The client ID of the application being authorized. Changing this field forces a new resource to be created.
         """
         ApplicationPreAuthorizedArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            permission_ids=permission_ids,
+            application_id=application_id,
             application_object_id=application_object_id,
             authorized_app_id=authorized_app_id,
-            permission_ids=permission_ids,
+            authorized_client_id=authorized_client_id,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_object_id: pulumi.Input[str],
-             authorized_app_id: pulumi.Input[str],
              permission_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
-        _setter("application_object_id", application_object_id)
-        _setter("authorized_app_id", authorized_app_id)
+             application_id: Optional[pulumi.Input[str]] = None,
+             application_object_id: Optional[pulumi.Input[str]] = None,
+             authorized_app_id: Optional[pulumi.Input[str]] = None,
+             authorized_client_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'permissionIds' in kwargs:
+            permission_ids = kwargs['permissionIds']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if 'authorizedAppId' in kwargs:
+            authorized_app_id = kwargs['authorizedAppId']
+        if 'authorizedClientId' in kwargs:
+            authorized_client_id = kwargs['authorizedClientId']
+
         _setter("permission_ids", permission_ids)
-
-    @property
-    @pulumi.getter(name="applicationObjectId")
-    def application_object_id(self) -> pulumi.Input[str]:
-        """
-        The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
-        """
-        return pulumi.get(self, "application_object_id")
-
-    @application_object_id.setter
-    def application_object_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "application_object_id", value)
-
-    @property
-    @pulumi.getter(name="authorizedAppId")
-    def authorized_app_id(self) -> pulumi.Input[str]:
-        """
-        The application ID of the pre-authorized application
-        """
-        return pulumi.get(self, "authorized_app_id")
-
-    @authorized_app_id.setter
-    def authorized_app_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "authorized_app_id", value)
+        if application_id is not None:
+            _setter("application_id", application_id)
+        if application_object_id is not None:
+            warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+        if application_object_id is not None:
+            _setter("application_object_id", application_object_id)
+        if authorized_app_id is not None:
+            warnings.warn("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""authorized_app_id is deprecated: The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
+        if authorized_app_id is not None:
+            _setter("authorized_app_id", authorized_app_id)
+        if authorized_client_id is not None:
+            _setter("authorized_client_id", authorized_client_id)
 
     @property
     @pulumi.getter(name="permissionIds")
@@ -76,45 +84,27 @@ class ApplicationPreAuthorizedArgs:
     def permission_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "permission_ids", value)
 
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_id")
 
-@pulumi.input_type
-class _ApplicationPreAuthorizedState:
-    def __init__(__self__, *,
-                 application_object_id: Optional[pulumi.Input[str]] = None,
-                 authorized_app_id: Optional[pulumi.Input[str]] = None,
-                 permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        Input properties used for looking up and filtering ApplicationPreAuthorized resources.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
-        """
-        _ApplicationPreAuthorizedState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_object_id=application_object_id,
-            authorized_app_id=authorized_app_id,
-            permission_ids=permission_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_object_id: Optional[pulumi.Input[str]] = None,
-             authorized_app_id: Optional[pulumi.Input[str]] = None,
-             permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
-        if application_object_id is not None:
-            _setter("application_object_id", application_object_id)
-        if authorized_app_id is not None:
-            _setter("authorized_app_id", authorized_app_id)
-        if permission_ids is not None:
-            _setter("permission_ids", permission_ids)
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_id", value)
 
     @property
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        The object ID of the application to which this pre-authorized application should be added
         """
+        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_object_id")
 
     @application_object_id.setter
@@ -127,11 +117,143 @@ class _ApplicationPreAuthorizedState:
         """
         The application ID of the pre-authorized application
         """
+        warnings.warn("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""authorized_app_id is deprecated: The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "authorized_app_id")
 
     @authorized_app_id.setter
     def authorized_app_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "authorized_app_id", value)
+
+    @property
+    @pulumi.getter(name="authorizedClientId")
+    def authorized_client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The client ID of the application being authorized. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "authorized_client_id")
+
+    @authorized_client_id.setter
+    def authorized_client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authorized_client_id", value)
+
+
+@pulumi.input_type
+class _ApplicationPreAuthorizedState:
+    def __init__(__self__, *,
+                 application_id: Optional[pulumi.Input[str]] = None,
+                 application_object_id: Optional[pulumi.Input[str]] = None,
+                 authorized_app_id: Optional[pulumi.Input[str]] = None,
+                 authorized_client_id: Optional[pulumi.Input[str]] = None,
+                 permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering ApplicationPreAuthorized resources.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application to which this pre-authorized application should be added
+        :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
+        :param pulumi.Input[str] authorized_client_id: The client ID of the application being authorized. Changing this field forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
+        """
+        _ApplicationPreAuthorizedState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            application_object_id=application_object_id,
+            authorized_app_id=authorized_app_id,
+            authorized_client_id=authorized_client_id,
+            permission_ids=permission_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
+             application_object_id: Optional[pulumi.Input[str]] = None,
+             authorized_app_id: Optional[pulumi.Input[str]] = None,
+             authorized_client_id: Optional[pulumi.Input[str]] = None,
+             permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if 'authorizedAppId' in kwargs:
+            authorized_app_id = kwargs['authorizedAppId']
+        if 'authorizedClientId' in kwargs:
+            authorized_client_id = kwargs['authorizedClientId']
+        if 'permissionIds' in kwargs:
+            permission_ids = kwargs['permissionIds']
+
+        if application_id is not None:
+            _setter("application_id", application_id)
+        if application_object_id is not None:
+            warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+        if application_object_id is not None:
+            _setter("application_object_id", application_object_id)
+        if authorized_app_id is not None:
+            warnings.warn("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""authorized_app_id is deprecated: The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
+        if authorized_app_id is not None:
+            _setter("authorized_app_id", authorized_app_id)
+        if authorized_client_id is not None:
+            _setter("authorized_client_id", authorized_client_id)
+        if permission_ids is not None:
+            _setter("permission_ids", permission_ids)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_id", value)
+
+    @property
+    @pulumi.getter(name="applicationObjectId")
+    def application_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The object ID of the application to which this pre-authorized application should be added
+        """
+        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
+        return pulumi.get(self, "application_object_id")
+
+    @application_object_id.setter
+    def application_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_object_id", value)
+
+    @property
+    @pulumi.getter(name="authorizedAppId")
+    def authorized_app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The application ID of the pre-authorized application
+        """
+        warnings.warn("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""authorized_app_id is deprecated: The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
+        return pulumi.get(self, "authorized_app_id")
+
+    @authorized_app_id.setter
+    def authorized_app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authorized_app_id", value)
+
+    @property
+    @pulumi.getter(name="authorizedClientId")
+    def authorized_client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The client ID of the application being authorized. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "authorized_client_id")
+
+    @authorized_client_id.setter
+    def authorized_client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authorized_client_id", value)
 
     @property
     @pulumi.getter(name="permissionIds")
@@ -151,8 +273,10 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  authorized_app_id: Optional[pulumi.Input[str]] = None,
+                 authorized_client_id: Optional[pulumi.Input[str]] = None,
                  permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -162,7 +286,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        authorized = azuread.Application("authorized", display_name="example-authorized-app")
+        authorized = azuread.ApplicationRegistration("authorized", display_name="example-authorized-app")
         authorizer = azuread.Application("authorizer",
             display_name="example-authorizing-app",
             api=azuread.ApplicationApiArgs(
@@ -171,7 +295,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                         admin_consent_description="Administer the application",
                         admin_consent_display_name="Administer",
                         enabled=True,
-                        id="ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+                        id="00000000-0000-0000-0000-000000000000",
                         type="Admin",
                         value="administer",
                     ),
@@ -179,7 +303,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                         admin_consent_description="Access the application",
                         admin_consent_display_name="Access",
                         enabled=True,
-                        id="2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+                        id="11111111-1111-1111-1111-111111111111",
                         type="User",
                         user_consent_description="Access the application",
                         user_consent_display_name="Access",
@@ -188,11 +312,11 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                 ],
             ))
         example = azuread.ApplicationPreAuthorized("example",
-            application_object_id=authorizer.object_id,
-            authorized_app_id=authorized.application_id,
+            application_id=authorizer.id,
+            authorized_client_id=authorized.client_id,
             permission_ids=[
-                "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
-                "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+                "00000000-0000-0000-0000-000000000000",
+                "11111111-1111-1111-1111-111111111111",
             ])
         ```
 
@@ -208,8 +332,10 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application to which this pre-authorized application should be added
         :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
+        :param pulumi.Input[str] authorized_client_id: The client ID of the application being authorized. Changing this field forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
         """
         ...
@@ -225,7 +351,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        authorized = azuread.Application("authorized", display_name="example-authorized-app")
+        authorized = azuread.ApplicationRegistration("authorized", display_name="example-authorized-app")
         authorizer = azuread.Application("authorizer",
             display_name="example-authorizing-app",
             api=azuread.ApplicationApiArgs(
@@ -234,7 +360,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                         admin_consent_description="Administer the application",
                         admin_consent_display_name="Administer",
                         enabled=True,
-                        id="ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+                        id="00000000-0000-0000-0000-000000000000",
                         type="Admin",
                         value="administer",
                     ),
@@ -242,7 +368,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                         admin_consent_description="Access the application",
                         admin_consent_display_name="Access",
                         enabled=True,
-                        id="2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+                        id="11111111-1111-1111-1111-111111111111",
                         type="User",
                         user_consent_description="Access the application",
                         user_consent_display_name="Access",
@@ -251,11 +377,11 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                 ],
             ))
         example = azuread.ApplicationPreAuthorized("example",
-            application_object_id=authorizer.object_id,
-            authorized_app_id=authorized.application_id,
+            application_id=authorizer.id,
+            authorized_client_id=authorized.client_id,
             permission_ids=[
-                "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
-                "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+                "00000000-0000-0000-0000-000000000000",
+                "11111111-1111-1111-1111-111111111111",
             ])
         ```
 
@@ -288,8 +414,10 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  authorized_app_id: Optional[pulumi.Input[str]] = None,
+                 authorized_client_id: Optional[pulumi.Input[str]] = None,
                  permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -300,12 +428,10 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApplicationPreAuthorizedArgs.__new__(ApplicationPreAuthorizedArgs)
 
-            if application_object_id is None and not opts.urn:
-                raise TypeError("Missing required property 'application_object_id'")
+            __props__.__dict__["application_id"] = application_id
             __props__.__dict__["application_object_id"] = application_object_id
-            if authorized_app_id is None and not opts.urn:
-                raise TypeError("Missing required property 'authorized_app_id'")
             __props__.__dict__["authorized_app_id"] = authorized_app_id
+            __props__.__dict__["authorized_client_id"] = authorized_client_id
             if permission_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'permission_ids'")
             __props__.__dict__["permission_ids"] = permission_ids
@@ -319,8 +445,10 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            application_id: Optional[pulumi.Input[str]] = None,
             application_object_id: Optional[pulumi.Input[str]] = None,
             authorized_app_id: Optional[pulumi.Input[str]] = None,
+            authorized_client_id: Optional[pulumi.Input[str]] = None,
             permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ApplicationPreAuthorized':
         """
         Get an existing ApplicationPreAuthorized resource's state with the given name, id, and optional extra
@@ -329,25 +457,40 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application to which this pre-authorized application should be added
         :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
+        :param pulumi.Input[str] authorized_client_id: The client ID of the application being authorized. Changing this field forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ApplicationPreAuthorizedState.__new__(_ApplicationPreAuthorizedState)
 
+        __props__.__dict__["application_id"] = application_id
         __props__.__dict__["application_object_id"] = application_object_id
         __props__.__dict__["authorized_app_id"] = authorized_app_id
+        __props__.__dict__["authorized_client_id"] = authorized_client_id
         __props__.__dict__["permission_ids"] = permission_ids
         return ApplicationPreAuthorized(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> pulumi.Output[str]:
+        """
+        The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        The object ID of the application to which this pre-authorized application should be added
         """
+        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_object_id")
 
     @property
@@ -356,7 +499,18 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         """
         The application ID of the pre-authorized application
         """
+        warnings.warn("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""authorized_app_id is deprecated: The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "authorized_app_id")
+
+    @property
+    @pulumi.getter(name="authorizedClientId")
+    def authorized_client_id(self) -> pulumi.Output[str]:
+        """
+        The client ID of the application being authorized. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "authorized_client_id")
 
     @property
     @pulumi.getter(name="permissionIds")

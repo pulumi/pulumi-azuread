@@ -15,7 +15,7 @@ namespace Pulumi.AzureAD
     /// Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+    ///  $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
     /// ```
     /// 
     ///  -&gt; This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
@@ -24,7 +24,13 @@ namespace Pulumi.AzureAD
     public partial class ApplicationCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// </summary>
+        [Output("applicationId")]
+        public Output<string> ApplicationId { get; private set; } = null!;
+
+        /// <summary>
+        /// The object ID of the application for which this certificate should be created
         /// </summary>
         [Output("applicationObjectId")]
         public Output<string> ApplicationObjectId { get; private set; } = null!;
@@ -46,7 +52,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         /// 
-        /// &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+        /// &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
         /// </summary>
         [Output("endDateRelative")]
         public Output<string?> EndDateRelative { get; private set; } = null!;
@@ -126,10 +132,16 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         /// </summary>
-        [Input("applicationObjectId", required: true)]
-        public Input<string> ApplicationObjectId { get; set; } = null!;
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// The object ID of the application for which this certificate should be created
+        /// </summary>
+        [Input("applicationObjectId")]
+        public Input<string>? ApplicationObjectId { get; set; }
 
         /// <summary>
         /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
@@ -148,7 +160,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         /// 
-        /// &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+        /// &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
@@ -196,7 +208,13 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// </summary>
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// The object ID of the application for which this certificate should be created
         /// </summary>
         [Input("applicationObjectId")]
         public Input<string>? ApplicationObjectId { get; set; }
@@ -218,7 +236,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         /// 
-        /// &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+        /// &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }

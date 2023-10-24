@@ -49,7 +49,13 @@ class CustomDirectoryRoleArgs:
              version: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         _setter("display_name", display_name)
         _setter("enabled", enabled)
         _setter("permissions", permissions)
@@ -172,7 +178,15 @@ class _CustomDirectoryRoleState:
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDirectoryRolePermissionArgs']]]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

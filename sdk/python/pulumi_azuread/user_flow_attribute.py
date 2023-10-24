@@ -35,7 +35,13 @@ class UserFlowAttributeArgs:
              data_type: pulumi.Input[str],
              description: pulumi.Input[str],
              display_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataType' in kwargs:
+            data_type = kwargs['dataType']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("data_type", data_type)
         _setter("description", description)
         _setter("display_name", display_name)
@@ -105,7 +111,15 @@ class _UserFlowAttributeState:
              data_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attributeType' in kwargs:
+            attribute_type = kwargs['attributeType']
+        if 'dataType' in kwargs:
+            data_type = kwargs['dataType']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if attribute_type is not None:
             _setter("attribute_type", attribute_type)
         if data_type is not None:

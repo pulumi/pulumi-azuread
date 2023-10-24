@@ -18,7 +18,7 @@ import java.util.Objects;
 @CustomType
 public final class GetServicePrincipalResult {
     /**
-     * @return Whether or not the service principal account is enabled.
+     * @return Whether the service principal account is enabled.
      * 
      */
     private Boolean accountEnabled;
@@ -43,15 +43,22 @@ public final class GetServicePrincipalResult {
      */
     private List<GetServicePrincipalAppRole> appRoles;
     /**
-     * @return The application ID (client ID) of the application associated with this service principal.
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     private String applicationId;
     /**
      * @return The tenant ID where the associated application is registered.
      * 
      */
     private String applicationTenantId;
+    /**
+     * @return The client ID of the application associated with this service principal.
+     * 
+     */
+    private String clientId;
     /**
      * @return Permission help text that appears in the admin app assignment and consent experiences.
      * 
@@ -160,7 +167,7 @@ public final class GetServicePrincipalResult {
 
     private GetServicePrincipalResult() {}
     /**
-     * @return Whether or not the service principal account is enabled.
+     * @return Whether the service principal account is enabled.
      * 
      */
     public Boolean accountEnabled() {
@@ -195,9 +202,11 @@ public final class GetServicePrincipalResult {
         return this.appRoles;
     }
     /**
-     * @return The application ID (client ID) of the application associated with this service principal.
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     public String applicationId() {
         return this.applicationId;
     }
@@ -207,6 +216,13 @@ public final class GetServicePrincipalResult {
      */
     public String applicationTenantId() {
         return this.applicationTenantId;
+    }
+    /**
+     * @return The client ID of the application associated with this service principal.
+     * 
+     */
+    public String clientId() {
+        return this.clientId;
     }
     /**
      * @return Permission help text that appears in the admin app assignment and consent experiences.
@@ -372,6 +388,7 @@ public final class GetServicePrincipalResult {
         private List<GetServicePrincipalAppRole> appRoles;
         private String applicationId;
         private String applicationTenantId;
+        private String clientId;
         private String description;
         private String displayName;
         private List<GetServicePrincipalFeatureTag> featureTags;
@@ -403,6 +420,7 @@ public final class GetServicePrincipalResult {
     	      this.appRoles = defaults.appRoles;
     	      this.applicationId = defaults.applicationId;
     	      this.applicationTenantId = defaults.applicationTenantId;
+    	      this.clientId = defaults.clientId;
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
     	      this.featureTags = defaults.featureTags;
@@ -465,6 +483,11 @@ public final class GetServicePrincipalResult {
         @CustomType.Setter
         public Builder applicationTenantId(String applicationTenantId) {
             this.applicationTenantId = Objects.requireNonNull(applicationTenantId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientId(String clientId) {
+            this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
         @CustomType.Setter
@@ -605,6 +628,7 @@ public final class GetServicePrincipalResult {
             o.appRoles = appRoles;
             o.applicationId = applicationId;
             o.applicationTenantId = applicationTenantId;
+            o.clientId = clientId;
             o.description = description;
             o.displayName = displayName;
             o.featureTags = featureTags;

@@ -197,7 +197,7 @@ import javax.annotation.Nullable;
  * Service principals can be imported using their object ID, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
+ *  $ pulumi import azuread:index/servicePrincipal:ServicePrincipal example 00000000-0000-0000-0000-000000000000
  * ```
  * 
  */
@@ -274,14 +274,18 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return this.appRoles;
     }
     /**
-     * The application ID (client ID) of the application for which to create a service principal.
+     * The application ID (client ID) of the application for which to create a service principal
+     * 
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
-     * @return The application ID (client ID) of the application for which to create a service principal.
+     * @return The application ID (client ID) of the application for which to create a service principal
      * 
      */
     public Output<String> applicationId() {
@@ -300,6 +304,20 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      */
     public Output<String> applicationTenantId() {
         return this.applicationTenantId;
+    }
+    /**
+     * The client ID of the application for which to create a service principal.
+     * 
+     */
+    @Export(name="clientId", refs={String.class}, tree="[0]")
+    private Output<String> clientId;
+
+    /**
+     * @return The client ID of the application for which to create a service principal.
+     * 
+     */
+    public Output<String> clientId() {
+        return this.clientId;
     }
     /**
      * A description of the service principal provided for internal end-users.
@@ -634,7 +652,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServicePrincipal(String name, ServicePrincipalArgs args) {
+    public ServicePrincipal(String name, @Nullable ServicePrincipalArgs args) {
         this(name, args, null);
     }
     /**
@@ -643,7 +661,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServicePrincipal(String name, ServicePrincipalArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ServicePrincipal(String name, @Nullable ServicePrincipalArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/servicePrincipal:ServicePrincipal", name, args == null ? ServicePrincipalArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

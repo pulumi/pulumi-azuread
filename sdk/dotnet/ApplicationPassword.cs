@@ -22,14 +22,14 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
     ///     var exampleApplicationPassword = new AzureAD.ApplicationPassword("exampleApplicationPassword", new()
     ///     {
-    ///         ApplicationObjectId = exampleApplication.ObjectId,
+    ///         ApplicationId = exampleApplicationRegistration.Id,
     ///     });
     /// 
     /// });
@@ -46,7 +46,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
@@ -58,7 +58,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleApplicationPassword = new AzureAD.ApplicationPassword("exampleApplicationPassword", new()
     ///     {
-    ///         ApplicationObjectId = exampleApplication.ObjectId,
+    ///         ApplicationId = exampleApplicationRegistration.Id,
     ///         RotateWhenChanged = 
     ///         {
     ///             { "rotation", exampleRotating.Id },
@@ -76,7 +76,13 @@ namespace Pulumi.AzureAD
     public partial class ApplicationPassword : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        /// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        /// </summary>
+        [Output("applicationId")]
+        public Output<string> ApplicationId { get; private set; } = null!;
+
+        /// <summary>
+        /// The object ID of the application for which this password should be created
         /// </summary>
         [Output("applicationObjectId")]
         public Output<string> ApplicationObjectId { get; private set; } = null!;
@@ -131,7 +137,7 @@ namespace Pulumi.AzureAD
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ApplicationPassword(string name, ApplicationPasswordArgs args, CustomResourceOptions? options = null)
+        public ApplicationPassword(string name, ApplicationPasswordArgs? args = null, CustomResourceOptions? options = null)
             : base("azuread:index/applicationPassword:ApplicationPassword", name, args ?? new ApplicationPasswordArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -174,10 +180,16 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationPasswordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        /// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
-        [Input("applicationObjectId", required: true)]
-        public Input<string> ApplicationObjectId { get; set; } = null!;
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// The object ID of the application for which this password should be created
+        /// </summary>
+        [Input("applicationObjectId")]
+        public Input<string>? ApplicationObjectId { get; set; }
 
         /// <summary>
         /// A display name for the password. Changing this field forces a new resource to be created.
@@ -224,7 +236,13 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationPasswordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        /// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+        /// </summary>
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// The object ID of the application for which this password should be created
         /// </summary>
         [Input("applicationObjectId")]
         public Input<string>? ApplicationObjectId { get; set; }

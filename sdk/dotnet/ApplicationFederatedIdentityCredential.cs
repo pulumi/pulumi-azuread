@@ -20,14 +20,14 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
     ///     var exampleApplicationFederatedIdentityCredential = new AzureAD.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", new()
     ///     {
-    ///         ApplicationObjectId = exampleApplication.ObjectId,
+    ///         ApplicationId = exampleApplicationRegistration.Id,
     ///         DisplayName = "my-repo-deploy",
     ///         Description = "Deployments for my-repo",
     ///         Audiences = new[]
@@ -46,7 +46,7 @@ namespace Pulumi.AzureAD
     /// Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential test 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
+    ///  $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential example 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
     /// ```
     /// 
     ///  -&gt; This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
@@ -55,7 +55,13 @@ namespace Pulumi.AzureAD
     public partial class ApplicationFederatedIdentityCredential : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+        /// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+        /// </summary>
+        [Output("applicationId")]
+        public Output<string> ApplicationId { get; private set; } = null!;
+
+        /// <summary>
+        /// The object ID of the application for which this federated identity credential should be created
         /// </summary>
         [Output("applicationObjectId")]
         public Output<string> ApplicationObjectId { get; private set; } = null!;
@@ -143,10 +149,16 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationFederatedIdentityCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+        /// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
         /// </summary>
-        [Input("applicationObjectId", required: true)]
-        public Input<string> ApplicationObjectId { get; set; } = null!;
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// The object ID of the application for which this federated identity credential should be created
+        /// </summary>
+        [Input("applicationObjectId")]
+        public Input<string>? ApplicationObjectId { get; set; }
 
         [Input("audiences", required: true)]
         private InputList<string>? _audiences;
@@ -193,7 +205,13 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationFederatedIdentityCredentialState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+        /// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+        /// </summary>
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// The object ID of the application for which this federated identity credential should be created
         /// </summary>
         [Input("applicationObjectId")]
         public Input<string>? ApplicationObjectId { get; set; }

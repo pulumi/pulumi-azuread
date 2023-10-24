@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const authorized = new azuread.Application("authorized", {displayName: "example-authorized-app"});
+ * const authorized = new azuread.ApplicationRegistration("authorized", {displayName: "example-authorized-app"});
  * const authorizer = new azuread.Application("authorizer", {
  *     displayName: "example-authorizing-app",
  *     api: {
@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  *                 adminConsentDescription: "Administer the application",
  *                 adminConsentDisplayName: "Administer",
  *                 enabled: true,
- *                 id: "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+ *                 id: "00000000-0000-0000-0000-000000000000",
  *                 type: "Admin",
  *                 value: "administer",
  *             },
@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *                 adminConsentDescription: "Access the application",
  *                 adminConsentDisplayName: "Access",
  *                 enabled: true,
- *                 id: "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+ *                 id: "11111111-1111-1111-1111-111111111111",
  *                 type: "User",
  *                 userConsentDescription: "Access the application",
  *                 userConsentDisplayName: "Access",
@@ -38,11 +38,11 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const example = new azuread.ApplicationPreAuthorized("example", {
- *     applicationObjectId: authorizer.objectId,
- *     authorizedAppId: authorized.applicationId,
+ *     applicationId: authorizer.id,
+ *     authorizedClientId: authorized.clientId,
  *     permissionIds: [
- *         "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
- *         "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+ *         "00000000-0000-0000-0000-000000000000",
+ *         "11111111-1111-1111-1111-111111111111",
  *     ],
  * });
  * ```
@@ -86,13 +86,25 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
     }
 
     /**
-     * The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     */
+    public readonly applicationId!: pulumi.Output<string>;
+    /**
+     * The object ID of the application to which this pre-authorized application should be added
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
      * The application ID of the pre-authorized application
+     *
+     * @deprecated The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     public readonly authorizedAppId!: pulumi.Output<string>;
+    /**
+     * The client ID of the application being authorized. Changing this field forces a new resource to be created.
+     */
+    public readonly authorizedClientId!: pulumi.Output<string>;
     /**
      * A set of permission scope IDs required by the authorized application.
      */
@@ -111,22 +123,20 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationPreAuthorizedState | undefined;
+            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
             resourceInputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
             resourceInputs["authorizedAppId"] = state ? state.authorizedAppId : undefined;
+            resourceInputs["authorizedClientId"] = state ? state.authorizedClientId : undefined;
             resourceInputs["permissionIds"] = state ? state.permissionIds : undefined;
         } else {
             const args = argsOrState as ApplicationPreAuthorizedArgs | undefined;
-            if ((!args || args.applicationObjectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'applicationObjectId'");
-            }
-            if ((!args || args.authorizedAppId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'authorizedAppId'");
-            }
             if ((!args || args.permissionIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'permissionIds'");
             }
+            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
             resourceInputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
             resourceInputs["authorizedAppId"] = args ? args.authorizedAppId : undefined;
+            resourceInputs["authorizedClientId"] = args ? args.authorizedClientId : undefined;
             resourceInputs["permissionIds"] = args ? args.permissionIds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -139,13 +149,25 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
  */
 export interface ApplicationPreAuthorizedState {
     /**
-     * The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     */
+    applicationId?: pulumi.Input<string>;
+    /**
+     * The object ID of the application to which this pre-authorized application should be added
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationObjectId?: pulumi.Input<string>;
     /**
      * The application ID of the pre-authorized application
+     *
+     * @deprecated The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     authorizedAppId?: pulumi.Input<string>;
+    /**
+     * The client ID of the application being authorized. Changing this field forces a new resource to be created.
+     */
+    authorizedClientId?: pulumi.Input<string>;
     /**
      * A set of permission scope IDs required by the authorized application.
      */
@@ -157,13 +179,25 @@ export interface ApplicationPreAuthorizedState {
  */
 export interface ApplicationPreAuthorizedArgs {
     /**
-     * The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
      */
-    applicationObjectId: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string>;
+    /**
+     * The object ID of the application to which this pre-authorized application should be added
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     */
+    applicationObjectId?: pulumi.Input<string>;
     /**
      * The application ID of the pre-authorized application
+     *
+     * @deprecated The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
-    authorizedAppId: pulumi.Input<string>;
+    authorizedAppId?: pulumi.Input<string>;
+    /**
+     * The client ID of the application being authorized. Changing this field forces a new resource to be created.
+     */
+    authorizedClientId?: pulumi.Input<string>;
     /**
      * A set of permission scope IDs required by the authorized application.
      */

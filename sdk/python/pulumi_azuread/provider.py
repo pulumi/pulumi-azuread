@@ -109,7 +109,47 @@ class ProviderArgs:
              use_cli: Optional[pulumi.Input[bool]] = None,
              use_msi: Optional[pulumi.Input[bool]] = None,
              use_oidc: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metadataHost' in kwargs:
+            metadata_host = kwargs['metadataHost']
+        if 'clientCertificate' in kwargs:
+            client_certificate = kwargs['clientCertificate']
+        if 'clientCertificatePassword' in kwargs:
+            client_certificate_password = kwargs['clientCertificatePassword']
+        if 'clientCertificatePath' in kwargs:
+            client_certificate_path = kwargs['clientCertificatePath']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientIdFilePath' in kwargs:
+            client_id_file_path = kwargs['clientIdFilePath']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'clientSecretFilePath' in kwargs:
+            client_secret_file_path = kwargs['clientSecretFilePath']
+        if 'disableTerraformPartnerId' in kwargs:
+            disable_terraform_partner_id = kwargs['disableTerraformPartnerId']
+        if 'msiEndpoint' in kwargs:
+            msi_endpoint = kwargs['msiEndpoint']
+        if 'oidcRequestToken' in kwargs:
+            oidc_request_token = kwargs['oidcRequestToken']
+        if 'oidcRequestUrl' in kwargs:
+            oidc_request_url = kwargs['oidcRequestUrl']
+        if 'oidcToken' in kwargs:
+            oidc_token = kwargs['oidcToken']
+        if 'oidcTokenFilePath' in kwargs:
+            oidc_token_file_path = kwargs['oidcTokenFilePath']
+        if 'partnerId' in kwargs:
+            partner_id = kwargs['partnerId']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'useCli' in kwargs:
+            use_cli = kwargs['useCli']
+        if 'useMsi' in kwargs:
+            use_msi = kwargs['useMsi']
+        if 'useOidc' in kwargs:
+            use_oidc = kwargs['useOidc']
+
         _setter("metadata_host", metadata_host)
         if client_certificate is not None:
             _setter("client_certificate", client_certificate)

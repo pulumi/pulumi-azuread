@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+ *  $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
  * ```
  * 
  *  -&gt; This ID format is unique to Terraform and is composed of the application&#39;s object ID, the string &#34;certificate&#34; and the certificate&#39;s key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
@@ -30,14 +30,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/applicationCertificate:ApplicationCertificate")
 public class ApplicationCertificate extends com.pulumi.resources.CustomResource {
     /**
-     * The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
+    private Output<String> applicationId;
+
+    /**
+     * @return The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+     * 
+     */
+    public Output<String> applicationId() {
+        return this.applicationId;
+    }
+    /**
+     * The object ID of the application for which this certificate should be created
+     * 
+     * @deprecated
+     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
+     */
+    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
     @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
     private Output<String> applicationObjectId;
 
     /**
-     * @return The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+     * @return The object ID of the application for which this certificate should be created
      * 
      */
     public Output<String> applicationObjectId() {
@@ -78,7 +96,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
-     * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+     * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      * 
      */
     @Export(name="endDateRelative", refs={String.class}, tree="[0]")
@@ -87,7 +105,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
     /**
      * @return A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
-     * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+     * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      * 
      */
     public Output<Optional<String>> endDateRelative() {

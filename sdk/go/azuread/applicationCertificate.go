@@ -19,7 +19,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+//	$ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
 //
 // ```
 //
@@ -27,7 +27,11 @@ import (
 type ApplicationCertificate struct {
 	pulumi.CustomResourceState
 
-	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
+	// The object ID of the application for which this certificate should be created
+	//
+	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
@@ -37,7 +41,7 @@ type ApplicationCertificate struct {
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	//
-	// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
+	// > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
 	EndDateRelative pulumi.StringPtrOutput `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
@@ -56,9 +60,6 @@ func NewApplicationCertificate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ApplicationObjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ApplicationObjectId'")
-	}
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
@@ -92,7 +93,11 @@ func GetApplicationCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationCertificate resources.
 type applicationCertificateState struct {
-	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+	ApplicationId *string `pulumi:"applicationId"`
+	// The object ID of the application for which this certificate should be created
+	//
+	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
@@ -102,7 +107,7 @@ type applicationCertificateState struct {
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	//
-	// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
+	// > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
@@ -115,7 +120,11 @@ type applicationCertificateState struct {
 }
 
 type ApplicationCertificateState struct {
-	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+	ApplicationId pulumi.StringPtrInput
+	// The object ID of the application for which this certificate should be created
+	//
+	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId pulumi.StringPtrInput
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
@@ -125,7 +134,7 @@ type ApplicationCertificateState struct {
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	//
-	// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
+	// > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
@@ -142,8 +151,12 @@ func (ApplicationCertificateState) ElementType() reflect.Type {
 }
 
 type applicationCertificateArgs struct {
-	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
-	ApplicationObjectId string `pulumi:"applicationObjectId"`
+	// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+	ApplicationId *string `pulumi:"applicationId"`
+	// The object ID of the application for which this certificate should be created
+	//
+	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
 	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
@@ -152,7 +165,7 @@ type applicationCertificateArgs struct {
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	//
-	// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
+	// > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
@@ -166,8 +179,12 @@ type applicationCertificateArgs struct {
 
 // The set of arguments for constructing a ApplicationCertificate resource.
 type ApplicationCertificateArgs struct {
-	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
-	ApplicationObjectId pulumi.StringInput
+	// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+	ApplicationId pulumi.StringPtrInput
+	// The object ID of the application for which this certificate should be created
+	//
+	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	ApplicationObjectId pulumi.StringPtrInput
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
 	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
@@ -176,7 +193,7 @@ type ApplicationCertificateArgs struct {
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	//
-	// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
+	// > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
@@ -299,7 +316,14 @@ func (o ApplicationCertificateOutput) ToOutput(ctx context.Context) pulumix.Outp
 	}
 }
 
-// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+func (o ApplicationCertificateOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The object ID of the application for which this certificate should be created
+//
+// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
 func (o ApplicationCertificateOutput) ApplicationObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
 }
@@ -318,7 +342,7 @@ func (o ApplicationCertificateOutput) EndDate() pulumi.StringOutput {
 
 // A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 //
-// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
+// > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
 func (o ApplicationCertificateOutput) EndDateRelative() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringPtrOutput { return v.EndDateRelative }).(pulumi.StringPtrOutput)
 }

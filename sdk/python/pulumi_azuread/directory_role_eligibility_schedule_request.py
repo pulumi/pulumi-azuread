@@ -39,7 +39,15 @@ class DirectoryRoleEligibilityScheduleRequestArgs:
              justification: pulumi.Input[str],
              principal_id: pulumi.Input[str],
              role_definition_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'directoryScopeId' in kwargs:
+            directory_scope_id = kwargs['directoryScopeId']
+        if 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+        if 'roleDefinitionId' in kwargs:
+            role_definition_id = kwargs['roleDefinitionId']
+
         _setter("directory_scope_id", directory_scope_id)
         _setter("justification", justification)
         _setter("principal_id", principal_id)
@@ -122,7 +130,15 @@ class _DirectoryRoleEligibilityScheduleRequestState:
              justification: Optional[pulumi.Input[str]] = None,
              principal_id: Optional[pulumi.Input[str]] = None,
              role_definition_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'directoryScopeId' in kwargs:
+            directory_scope_id = kwargs['directoryScopeId']
+        if 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+        if 'roleDefinitionId' in kwargs:
+            role_definition_id = kwargs['roleDefinitionId']
+
         if directory_scope_id is not None:
             _setter("directory_scope_id", directory_scope_id)
         if justification is not None:

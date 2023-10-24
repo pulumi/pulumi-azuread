@@ -72,18 +72,41 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Application ID (also called Client ID).
+     * The Application ID (also called Client ID)
+     * 
+     * @deprecated
+     * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
     /**
-     * @return The Application ID (also called Client ID).
+     * @return The Application ID (also called Client ID)
+     * 
+     * @deprecated
+     * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
     public Optional<Output<String>> applicationId() {
         return Optional.ofNullable(this.applicationId);
+    }
+
+    /**
+     * The Client ID for the application.
+     * 
+     */
+    @Import(name="clientId")
+    private @Nullable Output<String> clientId;
+
+    /**
+     * @return The Client ID for the application.
+     * 
+     */
+    public Optional<Output<String>> clientId() {
+        return Optional.ofNullable(this.clientId);
     }
 
     /**
@@ -506,12 +529,16 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      * 
+     * &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
+     * 
      */
     @Import(name="templateId")
     private @Nullable Output<String> templateId;
 
     /**
      * @return Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+     * 
+     * &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
      * 
      */
     public Optional<Output<String>> templateId() {
@@ -559,6 +586,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         this.appRoleIds = $.appRoleIds;
         this.appRoles = $.appRoles;
         this.applicationId = $.applicationId;
+        this.clientId = $.clientId;
         this.description = $.description;
         this.deviceOnlyAuthEnabled = $.deviceOnlyAuthEnabled;
         this.disabledByMicrosoft = $.disabledByMicrosoft;
@@ -683,24 +711,53 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationId The Application ID (also called Client ID).
+         * @param applicationId The Application ID (also called Client ID)
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
+         * 
          */
+        @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
         public Builder applicationId(@Nullable Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
 
         /**
-         * @param applicationId The Application ID (also called Client ID).
+         * @param applicationId The Application ID (also called Client ID)
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
+         * 
+         */
+        @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
+        public Builder applicationId(String applicationId) {
+            return applicationId(Output.of(applicationId));
+        }
+
+        /**
+         * @param clientId The Client ID for the application.
          * 
          * @return builder
          * 
          */
-        public Builder applicationId(String applicationId) {
-            return applicationId(Output.of(applicationId));
+        public Builder clientId(@Nullable Output<String> clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
+        /**
+         * @param clientId The Client ID for the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
         }
 
         /**
@@ -1349,6 +1406,8 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param templateId Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
          * 
+         * &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
+         * 
          * @return builder
          * 
          */
@@ -1359,6 +1418,8 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param templateId Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+         * 
+         * &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
          * 
          * @return builder
          * 

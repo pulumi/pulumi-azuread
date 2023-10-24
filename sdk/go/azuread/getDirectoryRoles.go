@@ -4,8 +4,12 @@
 package azuread
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about activated directory roles within Azure Active Directory.
@@ -62,4 +66,60 @@ type GetDirectoryRolesResult struct {
 	Roles []GetDirectoryRolesRole `pulumi:"roles"`
 	// The template IDs of the roles.
 	TemplateIds []string `pulumi:"templateIds"`
+}
+
+func GetDirectoryRolesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDirectoryRolesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetDirectoryRolesResult, error) {
+		r, err := GetDirectoryRoles(ctx, opts...)
+		var s GetDirectoryRolesResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetDirectoryRolesResultOutput)
+}
+
+// A collection of values returned by getDirectoryRoles.
+type GetDirectoryRolesResultOutput struct{ *pulumi.OutputState }
+
+func (GetDirectoryRolesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirectoryRolesResult)(nil)).Elem()
+}
+
+func (o GetDirectoryRolesResultOutput) ToGetDirectoryRolesResultOutput() GetDirectoryRolesResultOutput {
+	return o
+}
+
+func (o GetDirectoryRolesResultOutput) ToGetDirectoryRolesResultOutputWithContext(ctx context.Context) GetDirectoryRolesResultOutput {
+	return o
+}
+
+func (o GetDirectoryRolesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDirectoryRolesResult] {
+	return pulumix.Output[GetDirectoryRolesResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDirectoryRolesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirectoryRolesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The object IDs of the roles.
+func (o GetDirectoryRolesResultOutput) ObjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDirectoryRolesResult) []string { return v.ObjectIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of users. Each `role` object provides the attributes documented below.
+func (o GetDirectoryRolesResultOutput) Roles() GetDirectoryRolesRoleArrayOutput {
+	return o.ApplyT(func(v GetDirectoryRolesResult) []GetDirectoryRolesRole { return v.Roles }).(GetDirectoryRolesRoleArrayOutput)
+}
+
+// The template IDs of the roles.
+func (o GetDirectoryRolesResultOutput) TemplateIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDirectoryRolesResult) []string { return v.TemplateIds }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDirectoryRolesResultOutput{})
 }

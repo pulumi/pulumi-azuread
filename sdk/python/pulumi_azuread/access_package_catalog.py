@@ -39,7 +39,13 @@ class AccessPackageCatalogArgs:
              display_name: pulumi.Input[str],
              externally_visible: Optional[pulumi.Input[bool]] = None,
              published: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'externallyVisible' in kwargs:
+            externally_visible = kwargs['externallyVisible']
+
         _setter("description", description)
         _setter("display_name", display_name)
         if externally_visible is not None:
@@ -124,7 +130,13 @@ class _AccessPackageCatalogState:
              display_name: Optional[pulumi.Input[str]] = None,
              externally_visible: Optional[pulumi.Input[bool]] = None,
              published: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'externallyVisible' in kwargs:
+            externally_visible = kwargs['externallyVisible']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

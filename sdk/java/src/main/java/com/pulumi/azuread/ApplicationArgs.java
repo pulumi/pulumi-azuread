@@ -400,12 +400,16 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      * 
+     * &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
+     * 
      */
     @Import(name="templateId")
     private @Nullable Output<String> templateId;
 
     /**
      * @return Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+     * 
+     * &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
      * 
      */
     public Optional<Output<String>> templateId() {
@@ -1089,6 +1093,8 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param templateId Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
          * 
+         * &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
+         * 
          * @return builder
          * 
          */
@@ -1099,6 +1105,8 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param templateId Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+         * 
+         * &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
          * 
          * @return builder
          * 

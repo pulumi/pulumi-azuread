@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ApplicationPreAuthorizedArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,33 +17,79 @@ public final class ApplicationPreAuthorizedArgs extends com.pulumi.resources.Res
     public static final ApplicationPreAuthorizedArgs Empty = new ApplicationPreAuthorizedArgs();
 
     /**
-     * The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
      * 
      */
-    @Import(name="applicationObjectId", required=true)
-    private Output<String> applicationObjectId;
+    @Import(name="applicationId")
+    private @Nullable Output<String> applicationId;
 
     /**
-     * @return The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     * @return The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
      * 
      */
-    public Output<String> applicationObjectId() {
-        return this.applicationObjectId;
+    public Optional<Output<String>> applicationId() {
+        return Optional.ofNullable(this.applicationId);
+    }
+
+    /**
+     * The object ID of the application to which this pre-authorized application should be added
+     * 
+     * @deprecated
+     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
+     */
+    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
+    @Import(name="applicationObjectId")
+    private @Nullable Output<String> applicationObjectId;
+
+    /**
+     * @return The object ID of the application to which this pre-authorized application should be added
+     * 
+     * @deprecated
+     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
+     */
+    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
+    public Optional<Output<String>> applicationObjectId() {
+        return Optional.ofNullable(this.applicationObjectId);
     }
 
     /**
      * The application ID of the pre-authorized application
      * 
+     * @deprecated
+     * The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
      */
-    @Import(name="authorizedAppId", required=true)
-    private Output<String> authorizedAppId;
+    @Deprecated /* The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider */
+    @Import(name="authorizedAppId")
+    private @Nullable Output<String> authorizedAppId;
 
     /**
      * @return The application ID of the pre-authorized application
      * 
+     * @deprecated
+     * The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
      */
-    public Output<String> authorizedAppId() {
-        return this.authorizedAppId;
+    @Deprecated /* The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider */
+    public Optional<Output<String>> authorizedAppId() {
+        return Optional.ofNullable(this.authorizedAppId);
+    }
+
+    /**
+     * The client ID of the application being authorized. Changing this field forces a new resource to be created.
+     * 
+     */
+    @Import(name="authorizedClientId")
+    private @Nullable Output<String> authorizedClientId;
+
+    /**
+     * @return The client ID of the application being authorized. Changing this field forces a new resource to be created.
+     * 
+     */
+    public Optional<Output<String>> authorizedClientId() {
+        return Optional.ofNullable(this.authorizedClientId);
     }
 
     /**
@@ -62,8 +110,10 @@ public final class ApplicationPreAuthorizedArgs extends com.pulumi.resources.Res
     private ApplicationPreAuthorizedArgs() {}
 
     private ApplicationPreAuthorizedArgs(ApplicationPreAuthorizedArgs $) {
+        this.applicationId = $.applicationId;
         this.applicationObjectId = $.applicationObjectId;
         this.authorizedAppId = $.authorizedAppId;
+        this.authorizedClientId = $.authorizedClientId;
         this.permissionIds = $.permissionIds;
     }
 
@@ -86,22 +136,51 @@ public final class ApplicationPreAuthorizedArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param applicationObjectId The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+         * @param applicationId The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 
          */
-        public Builder applicationObjectId(Output<String> applicationObjectId) {
+        public Builder applicationId(@Nullable Output<String> applicationId) {
+            $.applicationId = applicationId;
+            return this;
+        }
+
+        /**
+         * @param applicationId The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationId(String applicationId) {
+            return applicationId(Output.of(applicationId));
+        }
+
+        /**
+         * @param applicationObjectId The object ID of the application to which this pre-authorized application should be added
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
+         */
+        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
+        public Builder applicationObjectId(@Nullable Output<String> applicationObjectId) {
             $.applicationObjectId = applicationObjectId;
             return this;
         }
 
         /**
-         * @param applicationObjectId The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+         * @param applicationObjectId The object ID of the application to which this pre-authorized application should be added
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
          */
+        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
         public Builder applicationObjectId(String applicationObjectId) {
             return applicationObjectId(Output.of(applicationObjectId));
         }
@@ -111,8 +190,12 @@ public final class ApplicationPreAuthorizedArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
          */
-        public Builder authorizedAppId(Output<String> authorizedAppId) {
+        @Deprecated /* The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider */
+        public Builder authorizedAppId(@Nullable Output<String> authorizedAppId) {
             $.authorizedAppId = authorizedAppId;
             return this;
         }
@@ -122,9 +205,34 @@ public final class ApplicationPreAuthorizedArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
          */
+        @Deprecated /* The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider */
         public Builder authorizedAppId(String authorizedAppId) {
             return authorizedAppId(Output.of(authorizedAppId));
+        }
+
+        /**
+         * @param authorizedClientId The client ID of the application being authorized. Changing this field forces a new resource to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizedClientId(@Nullable Output<String> authorizedClientId) {
+            $.authorizedClientId = authorizedClientId;
+            return this;
+        }
+
+        /**
+         * @param authorizedClientId The client ID of the application being authorized. Changing this field forces a new resource to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizedClientId(String authorizedClientId) {
+            return authorizedClientId(Output.of(authorizedClientId));
         }
 
         /**
@@ -159,8 +267,6 @@ public final class ApplicationPreAuthorizedArgs extends com.pulumi.resources.Res
         }
 
         public ApplicationPreAuthorizedArgs build() {
-            $.applicationObjectId = Objects.requireNonNull($.applicationObjectId, "expected parameter 'applicationObjectId' to be non-null");
-            $.authorizedAppId = Objects.requireNonNull($.authorizedAppId, "expected parameter 'authorizedAppId' to be non-null");
             $.permissionIds = Objects.requireNonNull($.permissionIds, "expected parameter 'permissionIds' to be non-null");
             return $;
         }

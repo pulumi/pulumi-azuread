@@ -22,7 +22,7 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, account_enabled=None, alternative_names=None, app_role_assignment_required=None, app_role_ids=None, app_roles=None, application_id=None, application_tenant_id=None, description=None, display_name=None, feature_tags=None, features=None, homepage_url=None, id=None, login_url=None, logout_url=None, notes=None, notification_email_addresses=None, oauth2_permission_scope_ids=None, oauth2_permission_scopes=None, object_id=None, preferred_single_sign_on_mode=None, redirect_uris=None, saml_metadata_url=None, saml_single_sign_ons=None, service_principal_names=None, sign_in_audience=None, tags=None, type=None):
+    def __init__(__self__, account_enabled=None, alternative_names=None, app_role_assignment_required=None, app_role_ids=None, app_roles=None, application_id=None, application_tenant_id=None, client_id=None, description=None, display_name=None, feature_tags=None, features=None, homepage_url=None, id=None, login_url=None, logout_url=None, notes=None, notification_email_addresses=None, oauth2_permission_scope_ids=None, oauth2_permission_scopes=None, object_id=None, preferred_single_sign_on_mode=None, redirect_uris=None, saml_metadata_url=None, saml_single_sign_ons=None, service_principal_names=None, sign_in_audience=None, tags=None, type=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         pulumi.set(__self__, "account_enabled", account_enabled)
@@ -44,6 +44,9 @@ class GetServicePrincipalResult:
         if application_tenant_id and not isinstance(application_tenant_id, str):
             raise TypeError("Expected argument 'application_tenant_id' to be a str")
         pulumi.set(__self__, "application_tenant_id", application_tenant_id)
+        if client_id and not isinstance(client_id, str):
+            raise TypeError("Expected argument 'client_id' to be a str")
+        pulumi.set(__self__, "client_id", client_id)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -112,7 +115,7 @@ class GetServicePrincipalResult:
     @pulumi.getter(name="accountEnabled")
     def account_enabled(self) -> bool:
         """
-        Whether or not the service principal account is enabled.
+        Whether the service principal account is enabled.
         """
         return pulumi.get(self, "account_enabled")
 
@@ -151,9 +154,9 @@ class GetServicePrincipalResult:
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
-        """
-        The application ID (client ID) of the application associated with this service principal.
-        """
+        warnings.warn("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_id is deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_id")
 
     @property
@@ -163,6 +166,14 @@ class GetServicePrincipalResult:
         The tenant ID where the associated application is registered.
         """
         return pulumi.get(self, "application_tenant_id")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The client ID of the application associated with this service principal.
+        """
+        return pulumi.get(self, "client_id")
 
     @property
     @pulumi.getter
@@ -346,6 +357,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             app_roles=self.app_roles,
             application_id=self.application_id,
             application_tenant_id=self.application_tenant_id,
+            client_id=self.client_id,
             description=self.description,
             display_name=self.display_name,
             feature_tags=self.feature_tags,
@@ -370,6 +382,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
 
 
 def get_service_principal(application_id: Optional[str] = None,
+                          client_id: Optional[str] = None,
                           display_name: Optional[str] = None,
                           object_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
@@ -395,13 +408,13 @@ def get_service_principal(application_id: Optional[str] = None,
     example = azuread.get_service_principal(display_name="my-awesome-application")
     ```
 
-    *Look up by application ID (client ID)*
+    *Look up by client ID*
 
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_service_principal(application_id="00000000-0000-0000-0000-000000000000")
+    example = azuread.get_service_principal(client_id="00000000-0000-0000-0000-000000000000")
     ```
 
     *Look up by service principal object ID*
@@ -414,14 +427,15 @@ def get_service_principal(application_id: Optional[str] = None,
     ```
 
 
-    :param str application_id: The application ID (client ID) of the application associated with this service principal.
+    :param str client_id: The client ID of the application associated with this service principal.
     :param str display_name: The display name of the application associated with this service principal.
     :param str object_id: The object ID of the service principal.
            
-           > One of `application_id`, `display_name` or `object_id` must be specified.
+           > One of `client_id`, `display_name` or `object_id` must be specified.
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
+    __args__['clientId'] = client_id
     __args__['displayName'] = display_name
     __args__['objectId'] = object_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -435,6 +449,7 @@ def get_service_principal(application_id: Optional[str] = None,
         app_roles=pulumi.get(__ret__, 'app_roles'),
         application_id=pulumi.get(__ret__, 'application_id'),
         application_tenant_id=pulumi.get(__ret__, 'application_tenant_id'),
+        client_id=pulumi.get(__ret__, 'client_id'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
         feature_tags=pulumi.get(__ret__, 'feature_tags'),
@@ -460,6 +475,7 @@ def get_service_principal(application_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_service_principal)
 def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 client_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                  object_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalResult]:
@@ -485,13 +501,13 @@ def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[
     example = azuread.get_service_principal(display_name="my-awesome-application")
     ```
 
-    *Look up by application ID (client ID)*
+    *Look up by client ID*
 
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_service_principal(application_id="00000000-0000-0000-0000-000000000000")
+    example = azuread.get_service_principal(client_id="00000000-0000-0000-0000-000000000000")
     ```
 
     *Look up by service principal object ID*
@@ -504,10 +520,10 @@ def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[
     ```
 
 
-    :param str application_id: The application ID (client ID) of the application associated with this service principal.
+    :param str client_id: The client ID of the application associated with this service principal.
     :param str display_name: The display name of the application associated with this service principal.
     :param str object_id: The object ID of the service principal.
            
-           > One of `application_id`, `display_name` or `object_id` must be specified.
+           > One of `client_id`, `display_name` or `object_id` must be specified.
     """
     ...

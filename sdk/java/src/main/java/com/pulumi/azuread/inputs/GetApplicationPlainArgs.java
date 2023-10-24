@@ -15,18 +15,37 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
     public static final GetApplicationPlainArgs Empty = new GetApplicationPlainArgs();
 
     /**
-     * Specifies the Application ID (also called Client ID).
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     @Import(name="applicationId")
     private @Nullable String applicationId;
 
     /**
-     * @return Specifies the Application ID (also called Client ID).
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     public Optional<String> applicationId() {
         return Optional.ofNullable(this.applicationId);
+    }
+
+    /**
+     * Specifies the Client ID of the application.
+     * 
+     */
+    @Import(name="clientId")
+    private @Nullable String clientId;
+
+    /**
+     * @return Specifies the Client ID of the application.
+     * 
+     */
+    public Optional<String> clientId() {
+        return Optional.ofNullable(this.clientId);
     }
 
     /**
@@ -47,7 +66,7 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
     /**
      * Specifies the Object ID of the application.
      * 
-     * &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+     * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
      * 
      */
     @Import(name="objectId")
@@ -56,7 +75,7 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
     /**
      * @return Specifies the Object ID of the application.
      * 
-     * &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+     * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
      * 
      */
     public Optional<String> objectId() {
@@ -67,6 +86,7 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
 
     private GetApplicationPlainArgs(GetApplicationPlainArgs $) {
         this.applicationId = $.applicationId;
+        this.clientId = $.clientId;
         this.displayName = $.displayName;
         this.objectId = $.objectId;
     }
@@ -90,13 +110,26 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param applicationId Specifies the Application ID (also called Client ID).
+         * @return builder
+         * 
+         * @deprecated
+         * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
+         */
+        @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
+        public Builder applicationId(@Nullable String applicationId) {
+            $.applicationId = applicationId;
+            return this;
+        }
+
+        /**
+         * @param clientId Specifies the Client ID of the application.
          * 
          * @return builder
          * 
          */
-        public Builder applicationId(@Nullable String applicationId) {
-            $.applicationId = applicationId;
+        public Builder clientId(@Nullable String clientId) {
+            $.clientId = clientId;
             return this;
         }
 
@@ -114,7 +147,7 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
         /**
          * @param objectId Specifies the Object ID of the application.
          * 
-         * &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+         * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
          * 
          * @return builder
          * 

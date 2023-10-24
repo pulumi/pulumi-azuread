@@ -164,7 +164,63 @@ class UserArgs:
              street_address: Optional[pulumi.Input[str]] = None,
              surname: Optional[pulumi.Input[str]] = None,
              usage_location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'userPrincipalName' in kwargs:
+            user_principal_name = kwargs['userPrincipalName']
+        if 'accountEnabled' in kwargs:
+            account_enabled = kwargs['accountEnabled']
+        if 'ageGroup' in kwargs:
+            age_group = kwargs['ageGroup']
+        if 'businessPhones' in kwargs:
+            business_phones = kwargs['businessPhones']
+        if 'companyName' in kwargs:
+            company_name = kwargs['companyName']
+        if 'consentProvidedForMinor' in kwargs:
+            consent_provided_for_minor = kwargs['consentProvidedForMinor']
+        if 'costCenter' in kwargs:
+            cost_center = kwargs['costCenter']
+        if 'disablePasswordExpiration' in kwargs:
+            disable_password_expiration = kwargs['disablePasswordExpiration']
+        if 'disableStrongPassword' in kwargs:
+            disable_strong_password = kwargs['disableStrongPassword']
+        if 'employeeId' in kwargs:
+            employee_id = kwargs['employeeId']
+        if 'employeeType' in kwargs:
+            employee_type = kwargs['employeeType']
+        if 'faxNumber' in kwargs:
+            fax_number = kwargs['faxNumber']
+        if 'forcePasswordChange' in kwargs:
+            force_password_change = kwargs['forcePasswordChange']
+        if 'givenName' in kwargs:
+            given_name = kwargs['givenName']
+        if 'jobTitle' in kwargs:
+            job_title = kwargs['jobTitle']
+        if 'mailNickname' in kwargs:
+            mail_nickname = kwargs['mailNickname']
+        if 'managerId' in kwargs:
+            manager_id = kwargs['managerId']
+        if 'mobilePhone' in kwargs:
+            mobile_phone = kwargs['mobilePhone']
+        if 'officeLocation' in kwargs:
+            office_location = kwargs['officeLocation']
+        if 'onpremisesImmutableId' in kwargs:
+            onpremises_immutable_id = kwargs['onpremisesImmutableId']
+        if 'otherMails' in kwargs:
+            other_mails = kwargs['otherMails']
+        if 'postalCode' in kwargs:
+            postal_code = kwargs['postalCode']
+        if 'preferredLanguage' in kwargs:
+            preferred_language = kwargs['preferredLanguage']
+        if 'showInAddressList' in kwargs:
+            show_in_address_list = kwargs['showInAddressList']
+        if 'streetAddress' in kwargs:
+            street_address = kwargs['streetAddress']
+        if 'usageLocation' in kwargs:
+            usage_location = kwargs['usageLocation']
+
         _setter("display_name", display_name)
         _setter("user_principal_name", user_principal_name)
         if account_enabled is not None:
@@ -861,7 +917,89 @@ class _UserState:
              usage_location: Optional[pulumi.Input[str]] = None,
              user_principal_name: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aboutMe' in kwargs:
+            about_me = kwargs['aboutMe']
+        if 'accountEnabled' in kwargs:
+            account_enabled = kwargs['accountEnabled']
+        if 'ageGroup' in kwargs:
+            age_group = kwargs['ageGroup']
+        if 'businessPhones' in kwargs:
+            business_phones = kwargs['businessPhones']
+        if 'companyName' in kwargs:
+            company_name = kwargs['companyName']
+        if 'consentProvidedForMinor' in kwargs:
+            consent_provided_for_minor = kwargs['consentProvidedForMinor']
+        if 'costCenter' in kwargs:
+            cost_center = kwargs['costCenter']
+        if 'creationType' in kwargs:
+            creation_type = kwargs['creationType']
+        if 'disablePasswordExpiration' in kwargs:
+            disable_password_expiration = kwargs['disablePasswordExpiration']
+        if 'disableStrongPassword' in kwargs:
+            disable_strong_password = kwargs['disableStrongPassword']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'employeeId' in kwargs:
+            employee_id = kwargs['employeeId']
+        if 'employeeType' in kwargs:
+            employee_type = kwargs['employeeType']
+        if 'externalUserState' in kwargs:
+            external_user_state = kwargs['externalUserState']
+        if 'faxNumber' in kwargs:
+            fax_number = kwargs['faxNumber']
+        if 'forcePasswordChange' in kwargs:
+            force_password_change = kwargs['forcePasswordChange']
+        if 'givenName' in kwargs:
+            given_name = kwargs['givenName']
+        if 'imAddresses' in kwargs:
+            im_addresses = kwargs['imAddresses']
+        if 'jobTitle' in kwargs:
+            job_title = kwargs['jobTitle']
+        if 'mailNickname' in kwargs:
+            mail_nickname = kwargs['mailNickname']
+        if 'managerId' in kwargs:
+            manager_id = kwargs['managerId']
+        if 'mobilePhone' in kwargs:
+            mobile_phone = kwargs['mobilePhone']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if 'officeLocation' in kwargs:
+            office_location = kwargs['officeLocation']
+        if 'onpremisesDistinguishedName' in kwargs:
+            onpremises_distinguished_name = kwargs['onpremisesDistinguishedName']
+        if 'onpremisesDomainName' in kwargs:
+            onpremises_domain_name = kwargs['onpremisesDomainName']
+        if 'onpremisesImmutableId' in kwargs:
+            onpremises_immutable_id = kwargs['onpremisesImmutableId']
+        if 'onpremisesSamAccountName' in kwargs:
+            onpremises_sam_account_name = kwargs['onpremisesSamAccountName']
+        if 'onpremisesSecurityIdentifier' in kwargs:
+            onpremises_security_identifier = kwargs['onpremisesSecurityIdentifier']
+        if 'onpremisesSyncEnabled' in kwargs:
+            onpremises_sync_enabled = kwargs['onpremisesSyncEnabled']
+        if 'onpremisesUserPrincipalName' in kwargs:
+            onpremises_user_principal_name = kwargs['onpremisesUserPrincipalName']
+        if 'otherMails' in kwargs:
+            other_mails = kwargs['otherMails']
+        if 'postalCode' in kwargs:
+            postal_code = kwargs['postalCode']
+        if 'preferredLanguage' in kwargs:
+            preferred_language = kwargs['preferredLanguage']
+        if 'proxyAddresses' in kwargs:
+            proxy_addresses = kwargs['proxyAddresses']
+        if 'showInAddressList' in kwargs:
+            show_in_address_list = kwargs['showInAddressList']
+        if 'streetAddress' in kwargs:
+            street_address = kwargs['streetAddress']
+        if 'usageLocation' in kwargs:
+            usage_location = kwargs['usageLocation']
+        if 'userPrincipalName' in kwargs:
+            user_principal_name = kwargs['userPrincipalName']
+        if 'userType' in kwargs:
+            user_type = kwargs['userType']
+
         if about_me is not None:
             _setter("about_me", about_me)
         if account_enabled is not None:

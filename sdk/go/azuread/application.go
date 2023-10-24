@@ -82,8 +82,8 @@ import (
 //						},
 //					},
 //				},
-//				AppRoles: azuread.ApplicationAppRoleArray{
-//					&azuread.ApplicationAppRoleArgs{
+//				AppRoles: azuread.ApplicationAppRoleTypeArray{
+//					&azuread.ApplicationAppRoleTypeArgs{
 //						AllowedMemberTypes: pulumi.StringArray{
 //							pulumi.String("User"),
 //							pulumi.String("Application"),
@@ -94,7 +94,7 @@ import (
 //						Id:          pulumi.String("1b19509b-32b1-4e9f-b71d-4992aa991967"),
 //						Value:       pulumi.String("admin"),
 //					},
-//					&azuread.ApplicationAppRoleArgs{
+//					&azuread.ApplicationAppRoleTypeArgs{
 //						AllowedMemberTypes: pulumi.StringArray{
 //							pulumi.String("User"),
 //						},
@@ -227,7 +227,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
+//	$ pulumi import azuread:index/application:Application example 00000000-0000-0000-0000-000000000000
 //
 // ```
 type Application struct {
@@ -238,9 +238,13 @@ type Application struct {
 	// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
 	AppRoleIds pulumi.StringMapOutput `pulumi:"appRoleIds"`
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-	AppRoles ApplicationAppRoleArrayOutput `pulumi:"appRoles"`
-	// The Application ID (also called Client ID).
+	AppRoles ApplicationAppRoleTypeArrayOutput `pulumi:"appRoles"`
+	// The Application ID (also called Client ID)
+	//
+	// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
+	// The Client ID for the application.
+	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// A description of the application, as shown to end users.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
@@ -302,6 +306,8 @@ type Application struct {
 	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+	//
+	// > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl pulumi.StringPtrOutput `pulumi:"termsOfServiceUrl"`
@@ -349,9 +355,13 @@ type applicationState struct {
 	// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
 	AppRoleIds map[string]string `pulumi:"appRoleIds"`
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-	AppRoles []ApplicationAppRole `pulumi:"appRoles"`
-	// The Application ID (also called Client ID).
+	AppRoles []ApplicationAppRoleType `pulumi:"appRoles"`
+	// The Application ID (also called Client ID)
+	//
+	// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId *string `pulumi:"applicationId"`
+	// The Client ID for the application.
+	ClientId *string `pulumi:"clientId"`
 	// A description of the application, as shown to end users.
 	Description *string `pulumi:"description"`
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
@@ -413,6 +423,8 @@ type applicationState struct {
 	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
 	Tags []string `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+	//
+	// > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
 	TemplateId *string `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl *string `pulumi:"termsOfServiceUrl"`
@@ -428,9 +440,13 @@ type ApplicationState struct {
 	// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
 	AppRoleIds pulumi.StringMapInput
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-	AppRoles ApplicationAppRoleArrayInput
-	// The Application ID (also called Client ID).
+	AppRoles ApplicationAppRoleTypeArrayInput
+	// The Application ID (also called Client ID)
+	//
+	// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringPtrInput
+	// The Client ID for the application.
+	ClientId pulumi.StringPtrInput
 	// A description of the application, as shown to end users.
 	Description pulumi.StringPtrInput
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
@@ -492,6 +508,8 @@ type ApplicationState struct {
 	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
 	Tags pulumi.StringArrayInput
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+	//
+	// > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
 	TemplateId pulumi.StringPtrInput
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl pulumi.StringPtrInput
@@ -509,7 +527,7 @@ type applicationArgs struct {
 	// An `api` block as documented below, which configures API related settings for this application.
 	Api *ApplicationApi `pulumi:"api"`
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-	AppRoles []ApplicationAppRole `pulumi:"appRoles"`
+	AppRoles []ApplicationAppRoleType `pulumi:"appRoles"`
 	// A description of the application, as shown to end users.
 	Description *string `pulumi:"description"`
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
@@ -561,6 +579,8 @@ type applicationArgs struct {
 	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
 	Tags []string `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+	//
+	// > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
 	TemplateId *string `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl *string `pulumi:"termsOfServiceUrl"`
@@ -575,7 +595,7 @@ type ApplicationArgs struct {
 	// An `api` block as documented below, which configures API related settings for this application.
 	Api ApplicationApiPtrInput
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-	AppRoles ApplicationAppRoleArrayInput
+	AppRoles ApplicationAppRoleTypeArrayInput
 	// A description of the application, as shown to end users.
 	Description pulumi.StringPtrInput
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
@@ -627,6 +647,8 @@ type ApplicationArgs struct {
 	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
 	Tags pulumi.StringArrayInput
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+	//
+	// > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
 	TemplateId pulumi.StringPtrInput
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl pulumi.StringPtrInput
@@ -758,13 +780,20 @@ func (o ApplicationOutput) AppRoleIds() pulumi.StringMapOutput {
 }
 
 // A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-func (o ApplicationOutput) AppRoles() ApplicationAppRoleArrayOutput {
-	return o.ApplyT(func(v *Application) ApplicationAppRoleArrayOutput { return v.AppRoles }).(ApplicationAppRoleArrayOutput)
+func (o ApplicationOutput) AppRoles() ApplicationAppRoleTypeArrayOutput {
+	return o.ApplyT(func(v *Application) ApplicationAppRoleTypeArrayOutput { return v.AppRoles }).(ApplicationAppRoleTypeArrayOutput)
 }
 
-// The Application ID (also called Client ID).
+// The Application ID (also called Client ID)
+//
+// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
 func (o ApplicationOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The Client ID for the application.
+func (o ApplicationOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
 // A description of the application, as shown to end users.
@@ -909,6 +938,8 @@ func (o ApplicationOutput) Tags() pulumi.StringArrayOutput {
 }
 
 // Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+//
+// > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
 func (o ApplicationOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }

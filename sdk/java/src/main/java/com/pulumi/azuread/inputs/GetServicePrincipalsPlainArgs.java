@@ -17,18 +17,41 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     public static final GetServicePrincipalsPlainArgs Empty = new GetServicePrincipalsPlainArgs();
 
     /**
-     * A list of application IDs (client IDs) of the applications associated with the service principals.
+     * A list of client IDs of the applications associated with the service principals.
+     * 
+     * @deprecated
+     * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
     @Import(name="applicationIds")
     private @Nullable List<String> applicationIds;
 
     /**
-     * @return A list of application IDs (client IDs) of the applications associated with the service principals.
+     * @return A list of client IDs of the applications associated with the service principals.
+     * 
+     * @deprecated
+     * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
     public Optional<List<String>> applicationIds() {
         return Optional.ofNullable(this.applicationIds);
+    }
+
+    /**
+     * A list of client IDs of the applications associated with the service principals.
+     * 
+     */
+    @Import(name="clientIds")
+    private @Nullable List<String> clientIds;
+
+    /**
+     * @return A list of client IDs of the applications associated with the service principals.
+     * 
+     */
+    public Optional<List<String>> clientIds() {
+        return Optional.ofNullable(this.clientIds);
     }
 
     /**
@@ -79,7 +102,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     /**
      * When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
      * 
-     * &gt; Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     @Import(name="returnAll")
@@ -88,7 +111,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     /**
      * @return When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
      * 
-     * &gt; Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     public Optional<Boolean> returnAll() {
@@ -99,6 +122,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
 
     private GetServicePrincipalsPlainArgs(GetServicePrincipalsPlainArgs $) {
         this.applicationIds = $.applicationIds;
+        this.clientIds = $.clientIds;
         this.displayNames = $.displayNames;
         this.ignoreMissing = $.ignoreMissing;
         this.objectIds = $.objectIds;
@@ -124,24 +148,53 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param applicationIds A list of application IDs (client IDs) of the applications associated with the service principals.
+         * @param applicationIds A list of client IDs of the applications associated with the service principals.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
+         * 
          */
+        @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
         public Builder applicationIds(@Nullable List<String> applicationIds) {
             $.applicationIds = applicationIds;
             return this;
         }
 
         /**
-         * @param applicationIds A list of application IDs (client IDs) of the applications associated with the service principals.
+         * @param applicationIds A list of client IDs of the applications associated with the service principals.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
+         * 
+         */
+        @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
+        public Builder applicationIds(String... applicationIds) {
+            return applicationIds(List.of(applicationIds));
+        }
+
+        /**
+         * @param clientIds A list of client IDs of the applications associated with the service principals.
          * 
          * @return builder
          * 
          */
-        public Builder applicationIds(String... applicationIds) {
-            return applicationIds(List.of(applicationIds));
+        public Builder clientIds(@Nullable List<String> clientIds) {
+            $.clientIds = clientIds;
+            return this;
+        }
+
+        /**
+         * @param clientIds A list of client IDs of the applications associated with the service principals.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientIds(String... clientIds) {
+            return clientIds(List.of(clientIds));
         }
 
         /**
@@ -200,7 +253,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
         /**
          * @param returnAll When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
          * 
-         * &gt; Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 

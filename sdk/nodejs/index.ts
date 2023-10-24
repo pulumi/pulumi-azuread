@@ -60,25 +60,80 @@ export type Application = import("./application").Application;
 export const Application: typeof import("./application").Application = null as any;
 utilities.lazyLoad(exports, ["Application"], () => require("./application"));
 
+export { ApplicationApiAccessArgs, ApplicationApiAccessState } from "./applicationApiAccess";
+export type ApplicationApiAccess = import("./applicationApiAccess").ApplicationApiAccess;
+export const ApplicationApiAccess: typeof import("./applicationApiAccess").ApplicationApiAccess = null as any;
+utilities.lazyLoad(exports, ["ApplicationApiAccess"], () => require("./applicationApiAccess"));
+
+export { ApplicationAppRoleArgs, ApplicationAppRoleState } from "./applicationAppRole";
+export type ApplicationAppRole = import("./applicationAppRole").ApplicationAppRole;
+export const ApplicationAppRole: typeof import("./applicationAppRole").ApplicationAppRole = null as any;
+utilities.lazyLoad(exports, ["ApplicationAppRole"], () => require("./applicationAppRole"));
+
 export { ApplicationCertificateArgs, ApplicationCertificateState } from "./applicationCertificate";
 export type ApplicationCertificate = import("./applicationCertificate").ApplicationCertificate;
 export const ApplicationCertificate: typeof import("./applicationCertificate").ApplicationCertificate = null as any;
 utilities.lazyLoad(exports, ["ApplicationCertificate"], () => require("./applicationCertificate"));
+
+export { ApplicationFallbackPublicClientArgs, ApplicationFallbackPublicClientState } from "./applicationFallbackPublicClient";
+export type ApplicationFallbackPublicClient = import("./applicationFallbackPublicClient").ApplicationFallbackPublicClient;
+export const ApplicationFallbackPublicClient: typeof import("./applicationFallbackPublicClient").ApplicationFallbackPublicClient = null as any;
+utilities.lazyLoad(exports, ["ApplicationFallbackPublicClient"], () => require("./applicationFallbackPublicClient"));
 
 export { ApplicationFederatedIdentityCredentialArgs, ApplicationFederatedIdentityCredentialState } from "./applicationFederatedIdentityCredential";
 export type ApplicationFederatedIdentityCredential = import("./applicationFederatedIdentityCredential").ApplicationFederatedIdentityCredential;
 export const ApplicationFederatedIdentityCredential: typeof import("./applicationFederatedIdentityCredential").ApplicationFederatedIdentityCredential = null as any;
 utilities.lazyLoad(exports, ["ApplicationFederatedIdentityCredential"], () => require("./applicationFederatedIdentityCredential"));
 
+export { ApplicationFromTemplateArgs, ApplicationFromTemplateState } from "./applicationFromTemplate";
+export type ApplicationFromTemplate = import("./applicationFromTemplate").ApplicationFromTemplate;
+export const ApplicationFromTemplate: typeof import("./applicationFromTemplate").ApplicationFromTemplate = null as any;
+utilities.lazyLoad(exports, ["ApplicationFromTemplate"], () => require("./applicationFromTemplate"));
+
+export { ApplicationIdentifierUriArgs, ApplicationIdentifierUriState } from "./applicationIdentifierUri";
+export type ApplicationIdentifierUri = import("./applicationIdentifierUri").ApplicationIdentifierUri;
+export const ApplicationIdentifierUri: typeof import("./applicationIdentifierUri").ApplicationIdentifierUri = null as any;
+utilities.lazyLoad(exports, ["ApplicationIdentifierUri"], () => require("./applicationIdentifierUri"));
+
+export { ApplicationKnownClientsArgs, ApplicationKnownClientsState } from "./applicationKnownClients";
+export type ApplicationKnownClients = import("./applicationKnownClients").ApplicationKnownClients;
+export const ApplicationKnownClients: typeof import("./applicationKnownClients").ApplicationKnownClients = null as any;
+utilities.lazyLoad(exports, ["ApplicationKnownClients"], () => require("./applicationKnownClients"));
+
+export { ApplicationOwnerArgs, ApplicationOwnerState } from "./applicationOwner";
+export type ApplicationOwner = import("./applicationOwner").ApplicationOwner;
+export const ApplicationOwner: typeof import("./applicationOwner").ApplicationOwner = null as any;
+utilities.lazyLoad(exports, ["ApplicationOwner"], () => require("./applicationOwner"));
+
 export { ApplicationPasswordArgs, ApplicationPasswordState } from "./applicationPassword";
 export type ApplicationPassword = import("./applicationPassword").ApplicationPassword;
 export const ApplicationPassword: typeof import("./applicationPassword").ApplicationPassword = null as any;
 utilities.lazyLoad(exports, ["ApplicationPassword"], () => require("./applicationPassword"));
 
+export { ApplicationPermissionScopeArgs, ApplicationPermissionScopeState } from "./applicationPermissionScope";
+export type ApplicationPermissionScope = import("./applicationPermissionScope").ApplicationPermissionScope;
+export const ApplicationPermissionScope: typeof import("./applicationPermissionScope").ApplicationPermissionScope = null as any;
+utilities.lazyLoad(exports, ["ApplicationPermissionScope"], () => require("./applicationPermissionScope"));
+
 export { ApplicationPreAuthorizedArgs, ApplicationPreAuthorizedState } from "./applicationPreAuthorized";
 export type ApplicationPreAuthorized = import("./applicationPreAuthorized").ApplicationPreAuthorized;
 export const ApplicationPreAuthorized: typeof import("./applicationPreAuthorized").ApplicationPreAuthorized = null as any;
 utilities.lazyLoad(exports, ["ApplicationPreAuthorized"], () => require("./applicationPreAuthorized"));
+
+export { ApplicationRedirectUrisArgs, ApplicationRedirectUrisState } from "./applicationRedirectUris";
+export type ApplicationRedirectUris = import("./applicationRedirectUris").ApplicationRedirectUris;
+export const ApplicationRedirectUris: typeof import("./applicationRedirectUris").ApplicationRedirectUris = null as any;
+utilities.lazyLoad(exports, ["ApplicationRedirectUris"], () => require("./applicationRedirectUris"));
+
+export { ApplicationRegistrationArgs, ApplicationRegistrationState } from "./applicationRegistration";
+export type ApplicationRegistration = import("./applicationRegistration").ApplicationRegistration;
+export const ApplicationRegistration: typeof import("./applicationRegistration").ApplicationRegistration = null as any;
+utilities.lazyLoad(exports, ["ApplicationRegistration"], () => require("./applicationRegistration"));
+
+export { AuthenticationStrengthPolicyArgs, AuthenticationStrengthPolicyState } from "./authenticationStrengthPolicy";
+export type AuthenticationStrengthPolicy = import("./authenticationStrengthPolicy").AuthenticationStrengthPolicy;
+export const AuthenticationStrengthPolicy: typeof import("./authenticationStrengthPolicy").AuthenticationStrengthPolicy = null as any;
+utilities.lazyLoad(exports, ["AuthenticationStrengthPolicy"], () => require("./authenticationStrengthPolicy"));
 
 export { ClaimsMappingPolicyArgs, ClaimsMappingPolicyState } from "./claimsMappingPolicy";
 export type ClaimsMappingPolicy = import("./claimsMappingPolicy").ClaimsMappingPolicy;
@@ -321,14 +376,36 @@ const _module = {
                 return new AppRoleAssignment(name, <any>undefined, { urn })
             case "azuread:index/application:Application":
                 return new Application(name, <any>undefined, { urn })
+            case "azuread:index/applicationApiAccess:ApplicationApiAccess":
+                return new ApplicationApiAccess(name, <any>undefined, { urn })
+            case "azuread:index/applicationAppRole:ApplicationAppRole":
+                return new ApplicationAppRole(name, <any>undefined, { urn })
             case "azuread:index/applicationCertificate:ApplicationCertificate":
                 return new ApplicationCertificate(name, <any>undefined, { urn })
+            case "azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient":
+                return new ApplicationFallbackPublicClient(name, <any>undefined, { urn })
             case "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential":
                 return new ApplicationFederatedIdentityCredential(name, <any>undefined, { urn })
+            case "azuread:index/applicationFromTemplate:ApplicationFromTemplate":
+                return new ApplicationFromTemplate(name, <any>undefined, { urn })
+            case "azuread:index/applicationIdentifierUri:ApplicationIdentifierUri":
+                return new ApplicationIdentifierUri(name, <any>undefined, { urn })
+            case "azuread:index/applicationKnownClients:ApplicationKnownClients":
+                return new ApplicationKnownClients(name, <any>undefined, { urn })
+            case "azuread:index/applicationOwner:ApplicationOwner":
+                return new ApplicationOwner(name, <any>undefined, { urn })
             case "azuread:index/applicationPassword:ApplicationPassword":
                 return new ApplicationPassword(name, <any>undefined, { urn })
+            case "azuread:index/applicationPermissionScope:ApplicationPermissionScope":
+                return new ApplicationPermissionScope(name, <any>undefined, { urn })
             case "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized":
                 return new ApplicationPreAuthorized(name, <any>undefined, { urn })
+            case "azuread:index/applicationRedirectUris:ApplicationRedirectUris":
+                return new ApplicationRedirectUris(name, <any>undefined, { urn })
+            case "azuread:index/applicationRegistration:ApplicationRegistration":
+                return new ApplicationRegistration(name, <any>undefined, { urn })
+            case "azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy":
+                return new AuthenticationStrengthPolicy(name, <any>undefined, { urn })
             case "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy":
                 return new ClaimsMappingPolicy(name, <any>undefined, { urn })
             case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
@@ -387,10 +464,21 @@ pulumi.runtime.registerResourceModule("azuread", "index/administrativeUnitMember
 pulumi.runtime.registerResourceModule("azuread", "index/administrativeUnitRoleMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/appRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/application", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationApiAccess", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationAppRole", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationCertificate", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationFallbackPublicClient", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationFederatedIdentityCredential", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationFromTemplate", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationIdentifierUri", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationKnownClients", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationOwner", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPassword", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationPermissionScope", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPreAuthorized", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationRedirectUris", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationRegistration", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/authenticationStrengthPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/claimsMappingPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/conditionalAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/customDirectoryRole", _module)

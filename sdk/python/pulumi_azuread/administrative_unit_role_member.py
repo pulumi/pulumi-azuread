@@ -35,7 +35,15 @@ class AdministrativeUnitRoleMemberArgs:
              administrative_unit_object_id: pulumi.Input[str],
              member_object_id: pulumi.Input[str],
              role_object_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'administrativeUnitObjectId' in kwargs:
+            administrative_unit_object_id = kwargs['administrativeUnitObjectId']
+        if 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+        if 'roleObjectId' in kwargs:
+            role_object_id = kwargs['roleObjectId']
+
         _setter("administrative_unit_object_id", administrative_unit_object_id)
         _setter("member_object_id", member_object_id)
         _setter("role_object_id", role_object_id)
@@ -101,7 +109,15 @@ class _AdministrativeUnitRoleMemberState:
              administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
              member_object_id: Optional[pulumi.Input[str]] = None,
              role_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'administrativeUnitObjectId' in kwargs:
+            administrative_unit_object_id = kwargs['administrativeUnitObjectId']
+        if 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+        if 'roleObjectId' in kwargs:
+            role_object_id = kwargs['roleObjectId']
+
         if administrative_unit_object_id is not None:
             _setter("administrative_unit_object_id", administrative_unit_object_id)
         if member_object_id is not None:
@@ -186,7 +202,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
 
         ```sh
-         $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember test 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
+         $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
         ```
 
          -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.
@@ -234,7 +250,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
 
         ```sh
-         $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember test 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
+         $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
         ```
 
          -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.

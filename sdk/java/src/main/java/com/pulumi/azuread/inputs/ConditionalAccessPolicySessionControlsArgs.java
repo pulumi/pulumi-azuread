@@ -18,7 +18,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
     public static final ConditionalAccessPolicySessionControlsArgs Empty = new ConditionalAccessPolicySessionControlsArgs();
 
     /**
-     * Whether or not application enforced restrictions are enabled. Defaults to `false`.
+     * Whether application enforced restrictions are enabled. Defaults to `false`.
      * 
      * &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
      * 
@@ -27,7 +27,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
     private @Nullable Output<Boolean> applicationEnforcedRestrictionsEnabled;
 
     /**
-     * @return Whether or not application enforced restrictions are enabled. Defaults to `false`.
+     * @return Whether application enforced restrictions are enabled. Defaults to `false`.
      * 
      * &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
      * 
@@ -67,14 +67,14 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
     }
 
     /**
-     * Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+     * Session control to define whether to persist cookies. Possible values are: `always` or `never`.
      * 
      */
     @Import(name="persistentBrowserMode")
     private @Nullable Output<String> persistentBrowserMode;
 
     /**
-     * @return Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+     * @return Session control to define whether to persist cookies. Possible values are: `always` or `never`.
      * 
      */
     public Optional<Output<String>> persistentBrowserMode() {
@@ -141,7 +141,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param applicationEnforcedRestrictionsEnabled Whether or not application enforced restrictions are enabled. Defaults to `false`.
+         * @param applicationEnforcedRestrictionsEnabled Whether application enforced restrictions are enabled. Defaults to `false`.
          * 
          * &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
          * 
@@ -154,7 +154,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param applicationEnforcedRestrictionsEnabled Whether or not application enforced restrictions are enabled. Defaults to `false`.
+         * @param applicationEnforcedRestrictionsEnabled Whether application enforced restrictions are enabled. Defaults to `false`.
          * 
          * &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
          * 
@@ -208,7 +208,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param persistentBrowserMode Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+         * @param persistentBrowserMode Session control to define whether to persist cookies. Possible values are: `always` or `never`.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param persistentBrowserMode Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+         * @param persistentBrowserMode Session control to define whether to persist cookies. Possible values are: `always` or `never`.
          * 
          * @return builder
          * 

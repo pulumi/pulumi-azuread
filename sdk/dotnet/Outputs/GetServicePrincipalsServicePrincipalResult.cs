@@ -14,21 +14,19 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetServicePrincipalsServicePrincipalResult
     {
         /// <summary>
-        /// Whether or not the service principal account is enabled.
+        /// Whether the service principal account is enabled.
         /// </summary>
         public readonly bool AccountEnabled;
         /// <summary>
         /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
         /// </summary>
         public readonly bool AppRoleAssignmentRequired;
-        /// <summary>
-        /// The application ID (client ID) of the application associated with this service principal.
-        /// </summary>
         public readonly string ApplicationId;
         /// <summary>
         /// The tenant ID where the associated application is registered.
         /// </summary>
         public readonly string ApplicationTenantId;
+        public readonly string ClientId;
         /// <summary>
         /// The display name of the application associated with this service principal.
         /// </summary>
@@ -72,6 +70,8 @@ namespace Pulumi.AzureAD.Outputs
 
             string applicationTenantId,
 
+            string clientId,
+
             string displayName,
 
             string objectId,
@@ -92,6 +92,7 @@ namespace Pulumi.AzureAD.Outputs
             AppRoleAssignmentRequired = appRoleAssignmentRequired;
             ApplicationId = applicationId;
             ApplicationTenantId = applicationTenantId;
+            ClientId = clientId;
             DisplayName = displayName;
             ObjectId = objectId;
             PreferredSingleSignOnMode = preferredSingleSignOnMode;

@@ -33,7 +33,11 @@ class SynchronizationSecretArgs:
              _setter: Callable[[Any, Any], None],
              service_principal_id: pulumi.Input[str],
              credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+
         _setter("service_principal_id", service_principal_id)
         if credentials is not None:
             _setter("credentials", credentials)
@@ -83,7 +87,11 @@ class _SynchronizationSecretState:
              _setter: Callable[[Any, Any], None],
              credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None,
              service_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+
         if credentials is not None:
             _setter("credentials", credentials)
         if service_principal_id is not None:

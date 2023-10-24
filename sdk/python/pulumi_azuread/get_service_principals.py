@@ -22,10 +22,13 @@ class GetServicePrincipalsResult:
     """
     A collection of values returned by getServicePrincipals.
     """
-    def __init__(__self__, application_ids=None, display_names=None, id=None, ignore_missing=None, object_ids=None, return_all=None, service_principals=None):
+    def __init__(__self__, application_ids=None, client_ids=None, display_names=None, id=None, ignore_missing=None, object_ids=None, return_all=None, service_principals=None):
         if application_ids and not isinstance(application_ids, list):
             raise TypeError("Expected argument 'application_ids' to be a list")
         pulumi.set(__self__, "application_ids", application_ids)
+        if client_ids and not isinstance(client_ids, list):
+            raise TypeError("Expected argument 'client_ids' to be a list")
+        pulumi.set(__self__, "client_ids", client_ids)
         if display_names and not isinstance(display_names, list):
             raise TypeError("Expected argument 'display_names' to be a list")
         pulumi.set(__self__, "display_names", display_names)
@@ -49,9 +52,20 @@ class GetServicePrincipalsResult:
     @pulumi.getter(name="applicationIds")
     def application_ids(self) -> Sequence[str]:
         """
-        A list of application IDs (client IDs) of the applications associated with the service principals.
+        A list of client IDs of the applications associated with the service principals.
         """
+        warnings.warn("""The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
+        pulumi.log.warn("""application_ids is deprecated: The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider""")
+
         return pulumi.get(self, "application_ids")
+
+    @property
+    @pulumi.getter(name="clientIds")
+    def client_ids(self) -> Sequence[str]:
+        """
+        The client ID of the application associated with this service principal.
+        """
+        return pulumi.get(self, "client_ids")
 
     @property
     @pulumi.getter(name="displayNames")
@@ -103,6 +117,7 @@ class AwaitableGetServicePrincipalsResult(GetServicePrincipalsResult):
             yield self
         return GetServicePrincipalsResult(
             application_ids=self.application_ids,
+            client_ids=self.client_ids,
             display_names=self.display_names,
             id=self.id,
             ignore_missing=self.ignore_missing,
@@ -112,6 +127,7 @@ class AwaitableGetServicePrincipalsResult(GetServicePrincipalsResult):
 
 
 def get_service_principals(application_ids: Optional[Sequence[str]] = None,
+                           client_ids: Optional[Sequence[str]] = None,
                            display_names: Optional[Sequence[str]] = None,
                            ignore_missing: Optional[bool] = None,
                            object_ids: Optional[Sequence[str]] = None,
@@ -148,7 +164,7 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_service_principals(application_ids=[
+    example = azuread.get_service_principals(client_ids=[
         "11111111-0000-0000-0000-000000000000",
         "22222222-0000-0000-0000-000000000000",
         "33333333-0000-0000-0000-000000000000",
@@ -169,16 +185,18 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
     ```
 
 
-    :param Sequence[str] application_ids: A list of application IDs (client IDs) of the applications associated with the service principals.
+    :param Sequence[str] application_ids: A list of client IDs of the applications associated with the service principals.
+    :param Sequence[str] client_ids: A list of client IDs of the applications associated with the service principals.
     :param Sequence[str] display_names: A list of display names of the applications associated with the service principals.
     :param bool ignore_missing: Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
     :param Sequence[str] object_ids: The object IDs of the service principals.
     :param bool return_all: When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
            
-           > Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+           > Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
     """
     __args__ = dict()
     __args__['applicationIds'] = application_ids
+    __args__['clientIds'] = client_ids
     __args__['displayNames'] = display_names
     __args__['ignoreMissing'] = ignore_missing
     __args__['objectIds'] = object_ids
@@ -188,6 +206,7 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
 
     return AwaitableGetServicePrincipalsResult(
         application_ids=pulumi.get(__ret__, 'application_ids'),
+        client_ids=pulumi.get(__ret__, 'client_ids'),
         display_names=pulumi.get(__ret__, 'display_names'),
         id=pulumi.get(__ret__, 'id'),
         ignore_missing=pulumi.get(__ret__, 'ignore_missing'),
@@ -198,6 +217,7 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
 
 @_utilities.lift_output_func(get_service_principals)
 def get_service_principals_output(application_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                  client_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   display_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   ignore_missing: Optional[pulumi.Input[Optional[bool]]] = None,
                                   object_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -234,7 +254,7 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_service_principals(application_ids=[
+    example = azuread.get_service_principals(client_ids=[
         "11111111-0000-0000-0000-000000000000",
         "22222222-0000-0000-0000-000000000000",
         "33333333-0000-0000-0000-000000000000",
@@ -255,12 +275,13 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     ```
 
 
-    :param Sequence[str] application_ids: A list of application IDs (client IDs) of the applications associated with the service principals.
+    :param Sequence[str] application_ids: A list of client IDs of the applications associated with the service principals.
+    :param Sequence[str] client_ids: A list of client IDs of the applications associated with the service principals.
     :param Sequence[str] display_names: A list of display names of the applications associated with the service principals.
     :param bool ignore_missing: Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
     :param Sequence[str] object_ids: The object IDs of the service principals.
     :param bool return_all: When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
            
-           > Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+           > Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
     """
     ...

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConditionalAccessPolicySessionControls {
     /**
-     * @return Whether or not application enforced restrictions are enabled. Defaults to `false`.
+     * @return Whether application enforced restrictions are enabled. Defaults to `false`.
      * 
      * &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
      * 
@@ -31,7 +31,7 @@ public final class ConditionalAccessPolicySessionControls {
      */
     private @Nullable Boolean disableResilienceDefaults;
     /**
-     * @return Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+     * @return Session control to define whether to persist cookies. Possible values are: `always` or `never`.
      * 
      */
     private @Nullable String persistentBrowserMode;
@@ -48,7 +48,7 @@ public final class ConditionalAccessPolicySessionControls {
 
     private ConditionalAccessPolicySessionControls() {}
     /**
-     * @return Whether or not application enforced restrictions are enabled. Defaults to `false`.
+     * @return Whether application enforced restrictions are enabled. Defaults to `false`.
      * 
      * &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
      * 
@@ -71,7 +71,7 @@ public final class ConditionalAccessPolicySessionControls {
         return Optional.ofNullable(this.disableResilienceDefaults);
     }
     /**
-     * @return Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+     * @return Session control to define whether to persist cookies. Possible values are: `always` or `never`.
      * 
      */
     public Optional<String> persistentBrowserMode() {

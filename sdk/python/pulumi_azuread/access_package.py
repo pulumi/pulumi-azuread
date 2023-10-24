@@ -39,7 +39,13 @@ class AccessPackageArgs:
              description: pulumi.Input[str],
              display_name: pulumi.Input[str],
              hidden: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogId' in kwargs:
+            catalog_id = kwargs['catalogId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("catalog_id", catalog_id)
         _setter("description", description)
         _setter("display_name", display_name)
@@ -123,7 +129,13 @@ class _AccessPackageState:
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              hidden: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogId' in kwargs:
+            catalog_id = kwargs['catalogId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if catalog_id is not None:
             _setter("catalog_id", catalog_id)
         if description is not None:

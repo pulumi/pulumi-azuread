@@ -31,7 +31,11 @@ class ClaimsMappingPolicyArgs:
              _setter: Callable[[Any, Any], None],
              definitions: pulumi.Input[Sequence[pulumi.Input[str]]],
              display_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         _setter("definitions", definitions)
         _setter("display_name", display_name)
 
@@ -80,7 +84,11 @@ class _ClaimsMappingPolicyState:
              _setter: Callable[[Any, Any], None],
              definitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if definitions is not None:
             _setter("definitions", definitions)
         if display_name is not None:

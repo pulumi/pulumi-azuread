@@ -41,7 +41,7 @@ namespace Pulumi.AzureAD
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["applicationObjectId"] = example.Apply(getApplicationResult =&gt; getApplicationResult.Id),
+        ///         ["applicationObjectId"] = example.Apply(getApplicationResult =&gt; getApplicationResult.ObjectId),
         ///     };
         /// });
         /// ```
@@ -81,7 +81,7 @@ namespace Pulumi.AzureAD
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["applicationObjectId"] = example.Apply(getApplicationResult =&gt; getApplicationResult.Id),
+        ///         ["applicationObjectId"] = example.Apply(getApplicationResult =&gt; getApplicationResult.ObjectId),
         ///     };
         /// });
         /// ```
@@ -95,11 +95,14 @@ namespace Pulumi.AzureAD
 
     public sealed class GetApplicationArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Specifies the Application ID (also called Client ID).
-        /// </summary>
         [Input("applicationId")]
         public string? ApplicationId { get; set; }
+
+        /// <summary>
+        /// Specifies the Client ID of the application.
+        /// </summary>
+        [Input("clientId")]
+        public string? ClientId { get; set; }
 
         /// <summary>
         /// Specifies the display name of the application.
@@ -110,7 +113,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Specifies the Object ID of the application.
         /// 
-        /// &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+        /// &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -123,11 +126,14 @@ namespace Pulumi.AzureAD
 
     public sealed class GetApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Specifies the Application ID (also called Client ID).
-        /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// Specifies the Client ID of the application.
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
 
         /// <summary>
         /// Specifies the display name of the application.
@@ -138,7 +144,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Specifies the Object ID of the application.
         /// 
-        /// &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+        /// &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
@@ -165,10 +171,11 @@ namespace Pulumi.AzureAD
         /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationAppRoleResult> AppRoles;
-        /// <summary>
-        /// The Application ID (also called Client ID).
-        /// </summary>
         public readonly string ApplicationId;
+        /// <summary>
+        /// The Client ID for the application.
+        /// </summary>
+        public readonly string ClientId;
         /// <summary>
         /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         /// </summary>
@@ -292,6 +299,8 @@ namespace Pulumi.AzureAD
 
             string applicationId,
 
+            string clientId,
+
             string description,
 
             bool deviceOnlyAuthEnabled,
@@ -352,6 +361,7 @@ namespace Pulumi.AzureAD
             AppRoleIds = appRoleIds;
             AppRoles = appRoles;
             ApplicationId = applicationId;
+            ClientId = clientId;
             Description = description;
             DeviceOnlyAuthEnabled = deviceOnlyAuthEnabled;
             DisabledByMicrosoft = disabledByMicrosoft;

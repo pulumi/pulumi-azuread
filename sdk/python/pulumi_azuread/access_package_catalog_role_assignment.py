@@ -35,7 +35,15 @@ class AccessPackageCatalogRoleAssignmentArgs:
              catalog_id: pulumi.Input[str],
              principal_object_id: pulumi.Input[str],
              role_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogId' in kwargs:
+            catalog_id = kwargs['catalogId']
+        if 'principalObjectId' in kwargs:
+            principal_object_id = kwargs['principalObjectId']
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         _setter("catalog_id", catalog_id)
         _setter("principal_object_id", principal_object_id)
         _setter("role_id", role_id)
@@ -101,7 +109,15 @@ class _AccessPackageCatalogRoleAssignmentState:
              catalog_id: Optional[pulumi.Input[str]] = None,
              principal_object_id: Optional[pulumi.Input[str]] = None,
              role_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogId' in kwargs:
+            catalog_id = kwargs['catalogId']
+        if 'principalObjectId' in kwargs:
+            principal_object_id = kwargs['principalObjectId']
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+
         if catalog_id is not None:
             _setter("catalog_id", catalog_id)
         if principal_object_id is not None:
@@ -188,7 +204,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         Catalog role assignments can be imported using the ID of the assignment, e.g.
 
         ```sh
-         $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment test 00000000-0000-0000-0000-000000000000
+         $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment example 00000000-0000-0000-0000-000000000000
         ```
 
         :param str resource_name: The name of the resource.
@@ -236,7 +252,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         Catalog role assignments can be imported using the ID of the assignment, e.g.
 
         ```sh
-         $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment test 00000000-0000-0000-0000-000000000000
+         $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment example 00000000-0000-0000-0000-000000000000
         ```
 
         :param str resource_name: The name of the resource.

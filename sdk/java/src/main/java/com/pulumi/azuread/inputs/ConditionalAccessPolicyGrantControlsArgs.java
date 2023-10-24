@@ -17,6 +17,21 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
     public static final ConditionalAccessPolicyGrantControlsArgs Empty = new ConditionalAccessPolicyGrantControlsArgs();
 
     /**
+     * ID of an Authentication Strength Policy to use in this policy.
+     * 
+     */
+    @Import(name="authenticationStrengthPolicyId")
+    private @Nullable Output<String> authenticationStrengthPolicyId;
+
+    /**
+     * @return ID of an Authentication Strength Policy to use in this policy.
+     * 
+     */
+    public Optional<Output<String>> authenticationStrengthPolicyId() {
+        return Optional.ofNullable(this.authenticationStrengthPolicyId);
+    }
+
+    /**
      * List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      * 
      */
@@ -64,7 +79,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
     /**
      * List of terms of use IDs required by the policy.
      * 
-     * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+     * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
      * 
      */
     @Import(name="termsOfUses")
@@ -73,7 +88,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
     /**
      * @return List of terms of use IDs required by the policy.
      * 
-     * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+     * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
      * 
      */
     public Optional<Output<List<String>>> termsOfUses() {
@@ -83,6 +98,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
     private ConditionalAccessPolicyGrantControlsArgs() {}
 
     private ConditionalAccessPolicyGrantControlsArgs(ConditionalAccessPolicyGrantControlsArgs $) {
+        this.authenticationStrengthPolicyId = $.authenticationStrengthPolicyId;
         this.builtInControls = $.builtInControls;
         this.customAuthenticationFactors = $.customAuthenticationFactors;
         this.operator = $.operator;
@@ -105,6 +121,27 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
 
         public Builder(ConditionalAccessPolicyGrantControlsArgs defaults) {
             $ = new ConditionalAccessPolicyGrantControlsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param authenticationStrengthPolicyId ID of an Authentication Strength Policy to use in this policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationStrengthPolicyId(@Nullable Output<String> authenticationStrengthPolicyId) {
+            $.authenticationStrengthPolicyId = authenticationStrengthPolicyId;
+            return this;
+        }
+
+        /**
+         * @param authenticationStrengthPolicyId ID of an Authentication Strength Policy to use in this policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationStrengthPolicyId(String authenticationStrengthPolicyId) {
+            return authenticationStrengthPolicyId(Output.of(authenticationStrengthPolicyId));
         }
 
         /**
@@ -193,7 +230,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         /**
          * @param termsOfUses List of terms of use IDs required by the policy.
          * 
-         * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+         * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
          * 
          * @return builder
          * 
@@ -206,7 +243,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         /**
          * @param termsOfUses List of terms of use IDs required by the policy.
          * 
-         * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+         * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
          * 
          * @return builder
          * 
@@ -218,7 +255,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         /**
          * @param termsOfUses List of terms of use IDs required by the policy.
          * 
-         * &gt; At least one of `built_in_controls` or `terms_of_use` must be specified.
+         * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
          * 
          * @return builder
          * 

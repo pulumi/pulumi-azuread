@@ -35,7 +35,15 @@ class AppRoleAssignmentArgs:
              app_role_id: pulumi.Input[str],
              principal_object_id: pulumi.Input[str],
              resource_object_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appRoleId' in kwargs:
+            app_role_id = kwargs['appRoleId']
+        if 'principalObjectId' in kwargs:
+            principal_object_id = kwargs['principalObjectId']
+        if 'resourceObjectId' in kwargs:
+            resource_object_id = kwargs['resourceObjectId']
+
         _setter("app_role_id", app_role_id)
         _setter("principal_object_id", principal_object_id)
         _setter("resource_object_id", resource_object_id)
@@ -113,7 +121,21 @@ class _AppRoleAssignmentState:
              principal_type: Optional[pulumi.Input[str]] = None,
              resource_display_name: Optional[pulumi.Input[str]] = None,
              resource_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appRoleId' in kwargs:
+            app_role_id = kwargs['appRoleId']
+        if 'principalDisplayName' in kwargs:
+            principal_display_name = kwargs['principalDisplayName']
+        if 'principalObjectId' in kwargs:
+            principal_object_id = kwargs['principalObjectId']
+        if 'principalType' in kwargs:
+            principal_type = kwargs['principalType']
+        if 'resourceDisplayName' in kwargs:
+            resource_display_name = kwargs['resourceDisplayName']
+        if 'resourceObjectId' in kwargs:
+            resource_object_id = kwargs['resourceObjectId']
+
         if app_role_id is not None:
             _setter("app_role_id", app_role_id)
         if principal_display_name is not None:

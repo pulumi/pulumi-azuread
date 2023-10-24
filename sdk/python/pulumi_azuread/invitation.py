@@ -45,7 +45,17 @@ class InvitationArgs:
              message: Optional[pulumi.Input['InvitationMessageArgs']] = None,
              user_display_name: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'redirectUrl' in kwargs:
+            redirect_url = kwargs['redirectUrl']
+        if 'userEmailAddress' in kwargs:
+            user_email_address = kwargs['userEmailAddress']
+        if 'userDisplayName' in kwargs:
+            user_display_name = kwargs['userDisplayName']
+        if 'userType' in kwargs:
+            user_type = kwargs['userType']
+
         _setter("redirect_url", redirect_url)
         _setter("user_email_address", user_email_address)
         if message is not None:
@@ -156,7 +166,21 @@ class _InvitationState:
              user_email_address: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'redeemUrl' in kwargs:
+            redeem_url = kwargs['redeemUrl']
+        if 'redirectUrl' in kwargs:
+            redirect_url = kwargs['redirectUrl']
+        if 'userDisplayName' in kwargs:
+            user_display_name = kwargs['userDisplayName']
+        if 'userEmailAddress' in kwargs:
+            user_email_address = kwargs['userEmailAddress']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userType' in kwargs:
+            user_type = kwargs['userType']
+
         if message is not None:
             _setter("message", message)
         if redeem_url is not None:

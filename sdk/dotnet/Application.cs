@@ -232,7 +232,7 @@ namespace Pulumi.AzureAD
     /// Applications can be imported using their object ID, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
+    ///  $ pulumi import azuread:index/application:Application example 00000000-0000-0000-0000-000000000000
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/application:Application")]
@@ -257,10 +257,16 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<Outputs.ApplicationAppRole>> AppRoles { get; private set; } = null!;
 
         /// <summary>
-        /// The Application ID (also called Client ID).
+        /// The Application ID (also called Client ID)
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
+
+        /// <summary>
+        /// The Client ID for the application.
+        /// </summary>
+        [Output("clientId")]
+        public Output<string> ClientId { get; private set; } = null!;
 
         /// <summary>
         /// A description of the application, as shown to end users.
@@ -432,6 +438,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        /// 
+        /// &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
         /// </summary>
         [Output("templateId")]
         public Output<string> TemplateId { get; private set; } = null!;
@@ -690,6 +698,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        /// 
+        /// &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
@@ -747,10 +757,16 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The Application ID (also called Client ID).
+        /// The Application ID (also called Client ID)
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// The Client ID for the application.
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
 
         /// <summary>
         /// A description of the application, as shown to end users.
@@ -964,6 +980,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        /// 
+        /// &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }

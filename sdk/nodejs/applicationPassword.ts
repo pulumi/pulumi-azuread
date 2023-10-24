@@ -13,8 +13,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
- * const exampleApplicationPassword = new azuread.ApplicationPassword("exampleApplicationPassword", {applicationObjectId: exampleApplication.objectId});
+ * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
+ * const exampleApplicationPassword = new azuread.ApplicationPassword("exampleApplicationPassword", {applicationId: exampleApplicationRegistration.id});
  * ```
  *
  * *Time-based rotation*
@@ -24,10 +24,10 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  * import * as time from "@pulumiverse/time";
  *
- * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
+ * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
  * const exampleRotating = new time.Rotating("exampleRotating", {rotationDays: 7});
  * const exampleApplicationPassword = new azuread.ApplicationPassword("exampleApplicationPassword", {
- *     applicationObjectId: exampleApplication.objectId,
+ *     applicationId: exampleApplicationRegistration.id,
  *     rotateWhenChanged: {
  *         rotation: exampleRotating.id,
  *     },
@@ -67,7 +67,13 @@ export class ApplicationPassword extends pulumi.CustomResource {
     }
 
     /**
-     * The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+     */
+    public readonly applicationId!: pulumi.Output<string>;
+    /**
+     * The object ID of the application for which this password should be created
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
@@ -106,12 +112,13 @@ export class ApplicationPassword extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ApplicationPasswordArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ApplicationPasswordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationPasswordArgs | ApplicationPasswordState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationPasswordState | undefined;
+            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
             resourceInputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["endDate"] = state ? state.endDate : undefined;
@@ -122,9 +129,7 @@ export class ApplicationPassword extends pulumi.CustomResource {
             resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApplicationPasswordArgs | undefined;
-            if ((!args || args.applicationObjectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'applicationObjectId'");
-            }
+            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
             resourceInputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["endDate"] = args ? args.endDate : undefined;
@@ -146,7 +151,13 @@ export class ApplicationPassword extends pulumi.CustomResource {
  */
 export interface ApplicationPasswordState {
     /**
-     * The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+     */
+    applicationId?: pulumi.Input<string>;
+    /**
+     * The object ID of the application for which this password should be created
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationObjectId?: pulumi.Input<string>;
     /**
@@ -184,9 +195,15 @@ export interface ApplicationPasswordState {
  */
 export interface ApplicationPasswordArgs {
     /**
-     * The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
      */
-    applicationObjectId: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string>;
+    /**
+     * The object ID of the application for which this password should be created
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     */
+    applicationObjectId?: pulumi.Input<string>;
     /**
      * A display name for the password. Changing this field forces a new resource to be created.
      */

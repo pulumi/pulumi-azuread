@@ -31,7 +31,13 @@ class GroupMemberArgs:
              _setter: Callable[[Any, Any], None],
              group_object_id: pulumi.Input[str],
              member_object_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupObjectId' in kwargs:
+            group_object_id = kwargs['groupObjectId']
+        if 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+
         _setter("group_object_id", group_object_id)
         _setter("member_object_id", member_object_id)
 
@@ -80,7 +86,13 @@ class _GroupMemberState:
              _setter: Callable[[Any, Any], None],
              group_object_id: Optional[pulumi.Input[str]] = None,
              member_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupObjectId' in kwargs:
+            group_object_id = kwargs['groupObjectId']
+        if 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+
         if group_object_id is not None:
             _setter("group_object_id", group_object_id)
         if member_object_id is not None:
@@ -154,7 +166,7 @@ class GroupMember(pulumi.CustomResource):
         Group members can be imported using the object ID of the group and the object ID of the member, e.g.
 
         ```sh
-         $ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+         $ pulumi import azuread:index/groupMember:GroupMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
         ```
 
          -> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
@@ -205,7 +217,7 @@ class GroupMember(pulumi.CustomResource):
         Group members can be imported using the object ID of the group and the object ID of the member, e.g.
 
         ```sh
-         $ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+         $ pulumi import azuread:index/groupMember:GroupMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
         ```
 
          -> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.

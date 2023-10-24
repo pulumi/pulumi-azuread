@@ -16,18 +16,41 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
     public static final ApplicationCertificateArgs Empty = new ApplicationCertificateArgs();
 
     /**
-     * The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Import(name="applicationObjectId", required=true)
-    private Output<String> applicationObjectId;
+    @Import(name="applicationId")
+    private @Nullable Output<String> applicationId;
 
     /**
-     * @return The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+     * @return The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
-    public Output<String> applicationObjectId() {
-        return this.applicationObjectId;
+    public Optional<Output<String>> applicationId() {
+        return Optional.ofNullable(this.applicationId);
+    }
+
+    /**
+     * The object ID of the application for which this certificate should be created
+     * 
+     * @deprecated
+     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
+     */
+    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
+    @Import(name="applicationObjectId")
+    private @Nullable Output<String> applicationObjectId;
+
+    /**
+     * @return The object ID of the application for which this certificate should be created
+     * 
+     * @deprecated
+     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
+     */
+    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
+    public Optional<Output<String>> applicationObjectId() {
+        return Optional.ofNullable(this.applicationObjectId);
     }
 
     /**
@@ -67,7 +90,7 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
-     * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+     * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      * 
      */
     @Import(name="endDateRelative")
@@ -76,7 +99,7 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
     /**
      * @return A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
-     * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+     * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      * 
      */
     public Optional<Output<String>> endDateRelative() {
@@ -146,6 +169,7 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
     private ApplicationCertificateArgs() {}
 
     private ApplicationCertificateArgs(ApplicationCertificateArgs $) {
+        this.applicationId = $.applicationId;
         this.applicationObjectId = $.applicationObjectId;
         this.encoding = $.encoding;
         this.endDate = $.endDate;
@@ -175,22 +199,51 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param applicationObjectId The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+         * @param applicationId The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 
          */
-        public Builder applicationObjectId(Output<String> applicationObjectId) {
+        public Builder applicationId(@Nullable Output<String> applicationId) {
+            $.applicationId = applicationId;
+            return this;
+        }
+
+        /**
+         * @param applicationId The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationId(String applicationId) {
+            return applicationId(Output.of(applicationId));
+        }
+
+        /**
+         * @param applicationObjectId The object ID of the application for which this certificate should be created
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
+         */
+        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
+        public Builder applicationObjectId(@Nullable Output<String> applicationObjectId) {
             $.applicationObjectId = applicationObjectId;
             return this;
         }
 
         /**
-         * @param applicationObjectId The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+         * @param applicationObjectId The object ID of the application for which this certificate should be created
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
          */
+        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
         public Builder applicationObjectId(String applicationObjectId) {
             return applicationObjectId(Output.of(applicationObjectId));
         }
@@ -244,7 +297,7 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
         /**
          * @param endDateRelative A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
          * 
-         * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+         * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
          * 
          * @return builder
          * 
@@ -257,7 +310,7 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
         /**
          * @param endDateRelative A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
          * 
-         * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+         * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
          * 
          * @return builder
          * 
@@ -351,7 +404,6 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
         }
 
         public ApplicationCertificateArgs build() {
-            $.applicationObjectId = Objects.requireNonNull($.applicationObjectId, "expected parameter 'applicationObjectId' to be non-null");
             $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
             return $;
         }

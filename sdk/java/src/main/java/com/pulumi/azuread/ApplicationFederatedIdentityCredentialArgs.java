@@ -17,18 +17,41 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
     public static final ApplicationFederatedIdentityCredentialArgs Empty = new ApplicationFederatedIdentityCredentialArgs();
 
     /**
-     * The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Import(name="applicationObjectId", required=true)
-    private Output<String> applicationObjectId;
+    @Import(name="applicationId")
+    private @Nullable Output<String> applicationId;
 
     /**
-     * @return The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+     * @return The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      * 
      */
-    public Output<String> applicationObjectId() {
-        return this.applicationObjectId;
+    public Optional<Output<String>> applicationId() {
+        return Optional.ofNullable(this.applicationId);
+    }
+
+    /**
+     * The object ID of the application for which this federated identity credential should be created
+     * 
+     * @deprecated
+     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
+     */
+    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
+    @Import(name="applicationObjectId")
+    private @Nullable Output<String> applicationObjectId;
+
+    /**
+     * @return The object ID of the application for which this federated identity credential should be created
+     * 
+     * @deprecated
+     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
+     */
+    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
+    public Optional<Output<String>> applicationObjectId() {
+        return Optional.ofNullable(this.applicationObjectId);
     }
 
     /**
@@ -109,6 +132,7 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
     private ApplicationFederatedIdentityCredentialArgs() {}
 
     private ApplicationFederatedIdentityCredentialArgs(ApplicationFederatedIdentityCredentialArgs $) {
+        this.applicationId = $.applicationId;
         this.applicationObjectId = $.applicationObjectId;
         this.audiences = $.audiences;
         this.description = $.description;
@@ -136,22 +160,51 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
         }
 
         /**
-         * @param applicationObjectId The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+         * @param applicationId The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 
          */
-        public Builder applicationObjectId(Output<String> applicationObjectId) {
+        public Builder applicationId(@Nullable Output<String> applicationId) {
+            $.applicationId = applicationId;
+            return this;
+        }
+
+        /**
+         * @param applicationId The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationId(String applicationId) {
+            return applicationId(Output.of(applicationId));
+        }
+
+        /**
+         * @param applicationObjectId The object ID of the application for which this federated identity credential should be created
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
+         */
+        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
+        public Builder applicationObjectId(@Nullable Output<String> applicationObjectId) {
             $.applicationObjectId = applicationObjectId;
             return this;
         }
 
         /**
-         * @param applicationObjectId The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+         * @param applicationObjectId The object ID of the application for which this federated identity credential should be created
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
          */
+        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
         public Builder applicationObjectId(String applicationObjectId) {
             return applicationObjectId(Output.of(applicationObjectId));
         }
@@ -272,7 +325,6 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
         }
 
         public ApplicationFederatedIdentityCredentialArgs build() {
-            $.applicationObjectId = Objects.requireNonNull($.applicationObjectId, "expected parameter 'applicationObjectId' to be non-null");
             $.audiences = Objects.requireNonNull($.audiences, "expected parameter 'audiences' to be non-null");
             $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
             $.issuer = Objects.requireNonNull($.issuer, "expected parameter 'issuer' to be non-null");

@@ -99,16 +99,24 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The application ID (client ID) of the application for which to create a service principal.
+     * The application ID (client ID) of the application for which to create a service principal
+     * 
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
     /**
-     * @return The application ID (client ID) of the application for which to create a service principal.
+     * @return The application ID (client ID) of the application for which to create a service principal
+     * 
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     public Optional<Output<String>> applicationId() {
         return Optional.ofNullable(this.applicationId);
     }
@@ -126,6 +134,21 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> applicationTenantId() {
         return Optional.ofNullable(this.applicationTenantId);
+    }
+
+    /**
+     * The client ID of the application for which to create a service principal.
+     * 
+     */
+    @Import(name="clientId")
+    private @Nullable Output<String> clientId;
+
+    /**
+     * @return The client ID of the application for which to create a service principal.
+     * 
+     */
+    public Optional<Output<String>> clientId() {
+        return Optional.ofNullable(this.clientId);
     }
 
     /**
@@ -484,6 +507,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         this.appRoles = $.appRoles;
         this.applicationId = $.applicationId;
         this.applicationTenantId = $.applicationTenantId;
+        this.clientId = $.clientId;
         this.description = $.description;
         this.displayName = $.displayName;
         this.featureTags = $.featureTags;
@@ -652,22 +676,30 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param applicationId The application ID (client ID) of the application for which to create a service principal.
+         * @param applicationId The application ID (client ID) of the application for which to create a service principal
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
          */
+        @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
         public Builder applicationId(@Nullable Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
 
         /**
-         * @param applicationId The application ID (client ID) of the application for which to create a service principal.
+         * @param applicationId The application ID (client ID) of the application for which to create a service principal
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
          */
+        @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
         }
@@ -691,6 +723,27 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
          */
         public Builder applicationTenantId(String applicationTenantId) {
             return applicationTenantId(Output.of(applicationTenantId));
+        }
+
+        /**
+         * @param clientId The client ID of the application for which to create a service principal.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(@Nullable Output<String> clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
+        /**
+         * @param clientId The client ID of the application for which to create a service principal.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
         }
 
         /**

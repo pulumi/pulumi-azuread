@@ -35,7 +35,15 @@ class AccessPackageResourceCatalogAssociationArgs:
              catalog_id: pulumi.Input[str],
              resource_origin_id: pulumi.Input[str],
              resource_origin_system: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogId' in kwargs:
+            catalog_id = kwargs['catalogId']
+        if 'resourceOriginId' in kwargs:
+            resource_origin_id = kwargs['resourceOriginId']
+        if 'resourceOriginSystem' in kwargs:
+            resource_origin_system = kwargs['resourceOriginSystem']
+
         _setter("catalog_id", catalog_id)
         _setter("resource_origin_id", resource_origin_id)
         _setter("resource_origin_system", resource_origin_system)
@@ -101,7 +109,15 @@ class _AccessPackageResourceCatalogAssociationState:
              catalog_id: Optional[pulumi.Input[str]] = None,
              resource_origin_id: Optional[pulumi.Input[str]] = None,
              resource_origin_system: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'catalogId' in kwargs:
+            catalog_id = kwargs['catalogId']
+        if 'resourceOriginId' in kwargs:
+            resource_origin_id = kwargs['resourceOriginId']
+        if 'resourceOriginSystem' in kwargs:
+            resource_origin_system = kwargs['resourceOriginSystem']
+
         if catalog_id is not None:
             _setter("catalog_id", catalog_id)
         if resource_origin_id is not None:

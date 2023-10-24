@@ -26,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.azuread.Application;
- * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ApplicationRegistration;
+ * import com.pulumi.azuread.ApplicationRegistrationArgs;
  * import com.pulumi.azuread.ApplicationPassword;
  * import com.pulumi.azuread.ApplicationPasswordArgs;
  * import java.util.List;
@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *         var exampleApplicationRegistration = new ApplicationRegistration(&#34;exampleApplicationRegistration&#34;, ApplicationRegistrationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
  *         var exampleApplicationPassword = new ApplicationPassword(&#34;exampleApplicationPassword&#34;, ApplicationPasswordArgs.builder()        
- *             .applicationObjectId(exampleApplication.objectId())
+ *             .applicationId(exampleApplicationRegistration.id())
  *             .build());
  * 
  *     }
@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.azuread.Application;
- * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ApplicationRegistration;
+ * import com.pulumi.azuread.ApplicationRegistrationArgs;
  * import com.pulumi.time.Rotating;
  * import com.pulumi.time.RotatingArgs;
  * import com.pulumi.azuread.ApplicationPassword;
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *         var exampleApplicationRegistration = new ApplicationRegistration(&#34;exampleApplicationRegistration&#34;, ApplicationRegistrationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleApplicationPassword = new ApplicationPassword(&#34;exampleApplicationPassword&#34;, ApplicationPasswordArgs.builder()        
- *             .applicationObjectId(exampleApplication.objectId())
+ *             .applicationId(exampleApplicationRegistration.id())
  *             .rotateWhenChanged(Map.of(&#34;rotation&#34;, exampleRotating.id()))
  *             .build());
  * 
@@ -106,14 +106,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/applicationPassword:ApplicationPassword")
 public class ApplicationPassword extends com.pulumi.resources.CustomResource {
     /**
-     * The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
      * 
      */
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
+    private Output<String> applicationId;
+
+    /**
+     * @return The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+     * 
+     */
+    public Output<String> applicationId() {
+        return this.applicationId;
+    }
+    /**
+     * The object ID of the application for which this password should be created
+     * 
+     * @deprecated
+     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * 
+     */
+    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
     @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
     private Output<String> applicationObjectId;
 
     /**
-     * @return The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+     * @return The object ID of the application for which this password should be created
      * 
      */
     public Output<String> applicationObjectId() {
@@ -230,7 +248,7 @@ public class ApplicationPassword extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationPassword(String name, ApplicationPasswordArgs args) {
+    public ApplicationPassword(String name, @Nullable ApplicationPasswordArgs args) {
         this(name, args, null);
     }
     /**
@@ -239,7 +257,7 @@ public class ApplicationPassword extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationPassword(String name, ApplicationPasswordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ApplicationPassword(String name, @Nullable ApplicationPasswordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/applicationPassword:ApplicationPassword", name, args == null ? ApplicationPasswordArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

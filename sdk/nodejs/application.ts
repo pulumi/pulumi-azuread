@@ -153,7 +153,7 @@ import * as utilities from "./utilities";
  * Applications can be imported using their object ID, e.g.
  *
  * ```sh
- *  $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
+ *  $ pulumi import azuread:index/application:Application example 00000000-0000-0000-0000-000000000000
  * ```
  */
 export class Application extends pulumi.CustomResource {
@@ -197,9 +197,15 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly appRoles!: pulumi.Output<outputs.ApplicationAppRole[] | undefined>;
     /**
-     * The Application ID (also called Client ID).
+     * The Application ID (also called Client ID)
+     *
+     * @deprecated The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
      */
     public /*out*/ readonly applicationId!: pulumi.Output<string>;
+    /**
+     * The Client ID for the application.
+     */
+    public /*out*/ readonly clientId!: pulumi.Output<string>;
     /**
      * A description of the application, as shown to end users.
      */
@@ -316,6 +322,8 @@ export class Application extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<string[]>;
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+     *
+     * > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
      */
     public readonly templateId!: pulumi.Output<string>;
     /**
@@ -346,6 +354,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["appRoleIds"] = state ? state.appRoleIds : undefined;
             resourceInputs["appRoles"] = state ? state.appRoles : undefined;
             resourceInputs["applicationId"] = state ? state.applicationId : undefined;
+            resourceInputs["clientId"] = state ? state.clientId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["deviceOnlyAuthEnabled"] = state ? state.deviceOnlyAuthEnabled : undefined;
             resourceInputs["disabledByMicrosoft"] = state ? state.disabledByMicrosoft : undefined;
@@ -410,6 +419,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["web"] = args ? args.web : undefined;
             resourceInputs["appRoleIds"] = undefined /*out*/;
             resourceInputs["applicationId"] = undefined /*out*/;
+            resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["disabledByMicrosoft"] = undefined /*out*/;
             resourceInputs["logoUrl"] = undefined /*out*/;
             resourceInputs["oauth2PermissionScopeIds"] = undefined /*out*/;
@@ -438,9 +448,15 @@ export interface ApplicationState {
      */
     appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[]>;
     /**
-     * The Application ID (also called Client ID).
+     * The Application ID (also called Client ID)
+     *
+     * @deprecated The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: pulumi.Input<string>;
+    /**
+     * The Client ID for the application.
+     */
+    clientId?: pulumi.Input<string>;
     /**
      * A description of the application, as shown to end users.
      */
@@ -557,6 +573,8 @@ export interface ApplicationState {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+     *
+     * > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
      */
     templateId?: pulumi.Input<string>;
     /**
@@ -679,6 +697,8 @@ export interface ApplicationArgs {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+     *
+     * > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
      */
     templateId?: pulumi.Input<string>;
     /**

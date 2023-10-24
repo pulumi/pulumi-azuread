@@ -45,7 +45,15 @@ class AdministrativeUnitArgs:
              hidden_membership_enabled: Optional[pulumi.Input[bool]] = None,
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'hiddenMembershipEnabled' in kwargs:
+            hidden_membership_enabled = kwargs['hiddenMembershipEnabled']
+        if 'preventDuplicateNames' in kwargs:
+            prevent_duplicate_names = kwargs['preventDuplicateNames']
+
         _setter("display_name", display_name)
         if description is not None:
             _setter("description", description)
@@ -157,7 +165,17 @@ class _AdministrativeUnitState:
              members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              object_id: Optional[pulumi.Input[str]] = None,
              prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'hiddenMembershipEnabled' in kwargs:
+            hidden_membership_enabled = kwargs['hiddenMembershipEnabled']
+        if 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if 'preventDuplicateNames' in kwargs:
+            prevent_duplicate_names = kwargs['preventDuplicateNames']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

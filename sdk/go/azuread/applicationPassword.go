@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
@@ -29,14 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			exampleApplicationRegistration, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = azuread.NewApplicationPassword(ctx, "exampleApplicationPassword", &azuread.ApplicationPasswordArgs{
-//				ApplicationObjectId: exampleApplication.ObjectId,
+//				ApplicationId: exampleApplicationRegistration.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -62,7 +61,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			exampleApplicationRegistration, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
@@ -75,7 +74,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationPassword(ctx, "exampleApplicationPassword", &azuread.ApplicationPasswordArgs{
-//				ApplicationObjectId: exampleApplication.ObjectId,
+//				ApplicationId: exampleApplicationRegistration.ID(),
 //				RotateWhenChanged: pulumi.StringMap{
 //					"rotation": exampleRotating.ID(),
 //				},
@@ -95,7 +94,11 @@ import (
 type ApplicationPassword struct {
 	pulumi.CustomResourceState
 
-	// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+	// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
+	// The object ID of the application for which this password should be created
+	//
+	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -117,12 +120,9 @@ type ApplicationPassword struct {
 func NewApplicationPassword(ctx *pulumi.Context,
 	name string, args *ApplicationPasswordArgs, opts ...pulumi.ResourceOption) (*ApplicationPassword, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ApplicationPasswordArgs{}
 	}
 
-	if args.ApplicationObjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ApplicationObjectId'")
-	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"value",
 	})
@@ -150,7 +150,11 @@ func GetApplicationPassword(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationPassword resources.
 type applicationPasswordState struct {
-	// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+	// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+	ApplicationId *string `pulumi:"applicationId"`
+	// The object ID of the application for which this password should be created
+	//
+	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
@@ -169,7 +173,11 @@ type applicationPasswordState struct {
 }
 
 type ApplicationPasswordState struct {
-	// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+	// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+	ApplicationId pulumi.StringPtrInput
+	// The object ID of the application for which this password should be created
+	//
+	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId pulumi.StringPtrInput
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
@@ -192,8 +200,12 @@ func (ApplicationPasswordState) ElementType() reflect.Type {
 }
 
 type applicationPasswordArgs struct {
-	// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
-	ApplicationObjectId string `pulumi:"applicationObjectId"`
+	// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+	ApplicationId *string `pulumi:"applicationId"`
+	// The object ID of the application for which this password should be created
+	//
+	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -208,8 +220,12 @@ type applicationPasswordArgs struct {
 
 // The set of arguments for constructing a ApplicationPassword resource.
 type ApplicationPasswordArgs struct {
-	// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
-	ApplicationObjectId pulumi.StringInput
+	// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+	ApplicationId pulumi.StringPtrInput
+	// The object ID of the application for which this password should be created
+	//
+	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	ApplicationObjectId pulumi.StringPtrInput
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -333,7 +349,14 @@ func (o ApplicationPasswordOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
+func (o ApplicationPasswordOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationPassword) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The object ID of the application for which this password should be created
+//
+// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
 func (o ApplicationPasswordOutput) ApplicationObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPassword) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
 }

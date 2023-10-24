@@ -60,7 +60,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
-        ///         ApplicationIds = new[]
+        ///         ClientIds = new[]
         ///         {
         ///             "11111111-0000-0000-0000-000000000000",
         ///             "22222222-0000-0000-0000-000000000000",
@@ -148,7 +148,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
-        ///         ApplicationIds = new[]
+        ///         ClientIds = new[]
         ///         {
         ///             "11111111-0000-0000-0000-000000000000",
         ///             "22222222-0000-0000-0000-000000000000",
@@ -195,12 +195,25 @@ namespace Pulumi.AzureAD
         private List<string>? _applicationIds;
 
         /// <summary>
-        /// A list of application IDs (client IDs) of the applications associated with the service principals.
+        /// A list of client IDs of the applications associated with the service principals.
         /// </summary>
+        [Obsolete(@"The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider")]
         public List<string> ApplicationIds
         {
             get => _applicationIds ?? (_applicationIds = new List<string>());
             set => _applicationIds = value;
+        }
+
+        [Input("clientIds")]
+        private List<string>? _clientIds;
+
+        /// <summary>
+        /// A list of client IDs of the applications associated with the service principals.
+        /// </summary>
+        public List<string> ClientIds
+        {
+            get => _clientIds ?? (_clientIds = new List<string>());
+            set => _clientIds = value;
         }
 
         [Input("displayNames")]
@@ -236,7 +249,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
         /// 
-        /// &gt; Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         [Input("returnAll")]
         public bool? ReturnAll { get; set; }
@@ -253,12 +266,25 @@ namespace Pulumi.AzureAD
         private InputList<string>? _applicationIds;
 
         /// <summary>
-        /// A list of application IDs (client IDs) of the applications associated with the service principals.
+        /// A list of client IDs of the applications associated with the service principals.
         /// </summary>
+        [Obsolete(@"The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider")]
         public InputList<string> ApplicationIds
         {
             get => _applicationIds ?? (_applicationIds = new InputList<string>());
             set => _applicationIds = value;
+        }
+
+        [Input("clientIds")]
+        private InputList<string>? _clientIds;
+
+        /// <summary>
+        /// A list of client IDs of the applications associated with the service principals.
+        /// </summary>
+        public InputList<string> ClientIds
+        {
+            get => _clientIds ?? (_clientIds = new InputList<string>());
+            set => _clientIds = value;
         }
 
         [Input("displayNames")]
@@ -294,7 +320,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
         /// 
-        /// &gt; Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         [Input("returnAll")]
         public Input<bool>? ReturnAll { get; set; }
@@ -310,9 +336,13 @@ namespace Pulumi.AzureAD
     public sealed class GetServicePrincipalsResult
     {
         /// <summary>
-        /// A list of application IDs (client IDs) of the applications associated with the service principals.
+        /// A list of client IDs of the applications associated with the service principals.
         /// </summary>
         public readonly ImmutableArray<string> ApplicationIds;
+        /// <summary>
+        /// The client ID of the application associated with this service principal.
+        /// </summary>
+        public readonly ImmutableArray<string> ClientIds;
         /// <summary>
         /// A list of display names of the applications associated with the service principals.
         /// </summary>
@@ -336,6 +366,8 @@ namespace Pulumi.AzureAD
         private GetServicePrincipalsResult(
             ImmutableArray<string> applicationIds,
 
+            ImmutableArray<string> clientIds,
+
             ImmutableArray<string> displayNames,
 
             string id,
@@ -349,6 +381,7 @@ namespace Pulumi.AzureAD
             ImmutableArray<Outputs.GetServicePrincipalsServicePrincipalResult> servicePrincipals)
         {
             ApplicationIds = applicationIds;
+            ClientIds = clientIds;
             DisplayNames = displayNames;
             Id = id;
             IgnoreMissing = ignoreMissing;

@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = azuread.getServicePrincipals({
- *     applicationIds: [
+ *     clientIds: [
  *         "11111111-0000-0000-0000-000000000000",
  *         "22222222-0000-0000-0000-000000000000",
  *         "33333333-0000-0000-0000-000000000000",
@@ -69,6 +69,7 @@ export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getServicePrincipals:getServicePrincipals", {
         "applicationIds": args.applicationIds,
+        "clientIds": args.clientIds,
         "displayNames": args.displayNames,
         "ignoreMissing": args.ignoreMissing,
         "objectIds": args.objectIds,
@@ -81,9 +82,15 @@ export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pul
  */
 export interface GetServicePrincipalsArgs {
     /**
-     * A list of application IDs (client IDs) of the applications associated with the service principals.
+     * A list of client IDs of the applications associated with the service principals.
+     *
+     * @deprecated The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationIds?: string[];
+    /**
+     * A list of client IDs of the applications associated with the service principals.
+     */
+    clientIds?: string[];
     /**
      * A list of display names of the applications associated with the service principals.
      */
@@ -99,7 +106,7 @@ export interface GetServicePrincipalsArgs {
     /**
      * When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
      *
-     * > Either `returnAll`, or one of `applicationIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      */
     returnAll?: boolean;
 }
@@ -109,9 +116,15 @@ export interface GetServicePrincipalsArgs {
  */
 export interface GetServicePrincipalsResult {
     /**
-     * A list of application IDs (client IDs) of the applications associated with the service principals.
+     * A list of client IDs of the applications associated with the service principals.
+     *
+     * @deprecated The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
      */
     readonly applicationIds: string[];
+    /**
+     * The client ID of the application associated with this service principal.
+     */
+    readonly clientIds: string[];
     /**
      * A list of display names of the applications associated with the service principals.
      */
@@ -165,7 +178,7 @@ export interface GetServicePrincipalsResult {
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = azuread.getServicePrincipals({
- *     applicationIds: [
+ *     clientIds: [
  *         "11111111-0000-0000-0000-000000000000",
  *         "22222222-0000-0000-0000-000000000000",
  *         "33333333-0000-0000-0000-000000000000",
@@ -197,9 +210,15 @@ export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs
  */
 export interface GetServicePrincipalsOutputArgs {
     /**
-     * A list of application IDs (client IDs) of the applications associated with the service principals.
+     * A list of client IDs of the applications associated with the service principals.
+     *
+     * @deprecated The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of client IDs of the applications associated with the service principals.
+     */
+    clientIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of display names of the applications associated with the service principals.
      */
@@ -215,7 +234,7 @@ export interface GetServicePrincipalsOutputArgs {
     /**
      * When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
      *
-     * > Either `returnAll`, or one of `applicationIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      */
     returnAll?: pulumi.Input<boolean>;
 }

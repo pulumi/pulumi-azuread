@@ -217,7 +217,7 @@ import javax.annotation.Nullable;
  * Applications can be imported using their object ID, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
+ *  $ pulumi import azuread:index/application:Application example 00000000-0000-0000-0000-000000000000
  * ```
  * 
  */
@@ -266,18 +266,36 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.appRoles);
     }
     /**
-     * The Application ID (also called Client ID).
+     * The Application ID (also called Client ID)
+     * 
+     * @deprecated
+     * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
     @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
-     * @return The Application ID (also called Client ID).
+     * @return The Application ID (also called Client ID)
      * 
      */
     public Output<String> applicationId() {
         return this.applicationId;
+    }
+    /**
+     * The Client ID for the application.
+     * 
+     */
+    @Export(name="clientId", refs={String.class}, tree="[0]")
+    private Output<String> clientId;
+
+    /**
+     * @return The Client ID for the application.
+     * 
+     */
+    public Output<String> clientId() {
+        return this.clientId;
     }
     /**
      * A description of the application, as shown to end users.
@@ -672,12 +690,16 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      * 
+     * &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
+     * 
      */
     @Export(name="templateId", refs={String.class}, tree="[0]")
     private Output<String> templateId;
 
     /**
      * @return Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+     * 
+     * &gt; **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
      * 
      */
     public Output<String> templateId() {

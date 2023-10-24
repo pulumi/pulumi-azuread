@@ -11,9 +11,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
+ * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
  * const exampleApplicationFederatedIdentityCredential = new azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", {
- *     applicationObjectId: exampleApplication.objectId,
+ *     applicationId: exampleApplicationRegistration.id,
  *     displayName: "my-repo-deploy",
  *     description: "Deployments for my-repo",
  *     audiences: ["api://AzureADTokenExchange"],
@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
  *
  * ```sh
- *  $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential test 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
+ *  $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential example 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
  * ```
  *
  *  -> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
@@ -61,7 +61,13 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
     }
 
     /**
-     * The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+     */
+    public readonly applicationId!: pulumi.Output<string>;
+    /**
+     * The object ID of the application for which this federated identity credential should be created
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
@@ -102,6 +108,7 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationFederatedIdentityCredentialState | undefined;
+            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
             resourceInputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
             resourceInputs["audiences"] = state ? state.audiences : undefined;
             resourceInputs["credentialId"] = state ? state.credentialId : undefined;
@@ -111,9 +118,6 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
             resourceInputs["subject"] = state ? state.subject : undefined;
         } else {
             const args = argsOrState as ApplicationFederatedIdentityCredentialArgs | undefined;
-            if ((!args || args.applicationObjectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'applicationObjectId'");
-            }
             if ((!args || args.audiences === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'audiences'");
             }
@@ -126,6 +130,7 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
             if ((!args || args.subject === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subject'");
             }
+            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
             resourceInputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
             resourceInputs["audiences"] = args ? args.audiences : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -144,7 +149,13 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
  */
 export interface ApplicationFederatedIdentityCredentialState {
     /**
-     * The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+     */
+    applicationId?: pulumi.Input<string>;
+    /**
+     * The object ID of the application for which this federated identity credential should be created
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationObjectId?: pulumi.Input<string>;
     /**
@@ -178,9 +189,15 @@ export interface ApplicationFederatedIdentityCredentialState {
  */
 export interface ApplicationFederatedIdentityCredentialArgs {
     /**
-     * The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+     * The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      */
-    applicationObjectId: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string>;
+    /**
+     * The object ID of the application for which this federated identity credential should be created
+     *
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     */
+    applicationObjectId?: pulumi.Input<string>;
     /**
      * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      */

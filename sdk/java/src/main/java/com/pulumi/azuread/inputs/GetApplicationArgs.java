@@ -16,18 +16,37 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetApplicationArgs Empty = new GetApplicationArgs();
 
     /**
-     * Specifies the Application ID (also called Client ID).
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
     /**
-     * @return Specifies the Application ID (also called Client ID).
+     * @deprecated
+     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      * 
      */
+    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
     public Optional<Output<String>> applicationId() {
         return Optional.ofNullable(this.applicationId);
+    }
+
+    /**
+     * Specifies the Client ID of the application.
+     * 
+     */
+    @Import(name="clientId")
+    private @Nullable Output<String> clientId;
+
+    /**
+     * @return Specifies the Client ID of the application.
+     * 
+     */
+    public Optional<Output<String>> clientId() {
+        return Optional.ofNullable(this.clientId);
     }
 
     /**
@@ -48,7 +67,7 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Specifies the Object ID of the application.
      * 
-     * &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+     * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
      * 
      */
     @Import(name="objectId")
@@ -57,7 +76,7 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return Specifies the Object ID of the application.
      * 
-     * &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+     * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
      * 
      */
     public Optional<Output<String>> objectId() {
@@ -68,6 +87,7 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetApplicationArgs(GetApplicationArgs $) {
         this.applicationId = $.applicationId;
+        this.clientId = $.clientId;
         this.displayName = $.displayName;
         this.objectId = $.objectId;
     }
@@ -91,24 +111,49 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param applicationId Specifies the Application ID (also called Client ID).
-         * 
          * @return builder
          * 
+         * @deprecated
+         * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
          */
+        @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
         public Builder applicationId(@Nullable Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
 
         /**
-         * @param applicationId Specifies the Application ID (also called Client ID).
+         * @return builder
+         * 
+         * @deprecated
+         * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+         * 
+         */
+        @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
+        public Builder applicationId(String applicationId) {
+            return applicationId(Output.of(applicationId));
+        }
+
+        /**
+         * @param clientId Specifies the Client ID of the application.
          * 
          * @return builder
          * 
          */
-        public Builder applicationId(String applicationId) {
-            return applicationId(Output.of(applicationId));
+        public Builder clientId(@Nullable Output<String> clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
+        /**
+         * @param clientId Specifies the Client ID of the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
         }
 
         /**
@@ -135,7 +180,7 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param objectId Specifies the Object ID of the application.
          * 
-         * &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+         * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
          * 
          * @return builder
          * 
@@ -148,7 +193,7 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param objectId Specifies the Object ID of the application.
          * 
-         * &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+         * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
          * 
          * @return builder
          * 

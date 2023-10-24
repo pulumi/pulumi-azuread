@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * Directory role assignments can be imported using the ID of the assignment, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment test ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
+ *  $ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment example ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
  * ```
  * 
  */

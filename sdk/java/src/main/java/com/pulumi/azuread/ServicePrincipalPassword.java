@@ -17,16 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages a password credential associated with a service principal within Azure Active Directory. See also the azuread.ApplicationPassword resource.
- * 
- * ## API Permissions
- * 
- * The following API permissions are required in order to use this resource.
- * 
- * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
- * 
- * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
- * 
  * ## Example Usage
  * 
  * *Basic example*
