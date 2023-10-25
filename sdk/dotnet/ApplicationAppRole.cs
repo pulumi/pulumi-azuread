@@ -10,66 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///     });
-    /// 
-    ///     var exampleAdministrator = new Random.RandomUuid("exampleAdministrator");
-    /// 
-    ///     var exampleAdminister = new AzureAD.ApplicationAppRole("exampleAdminister", new()
-    ///     {
-    ///         ApplicationId = example.Id,
-    ///         RoleId = exampleAdministrator.Id,
-    ///         AllowedMemberTypes = new[]
-    ///         {
-    ///             "User",
-    ///         },
-    ///         Description = "My role description",
-    ///         DisplayName = "Administer",
-    ///         Value = "admin",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// &gt; **Tip** For managing more app roles, create additional instances of this resource
-    /// 
-    /// *Usage with azuread.Application resource*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.Application("example", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///     });
-    /// 
-    ///     var exampleAdminister = new AzureAD.ApplicationAppRole("exampleAdminister", new()
-    ///     {
-    ///         ApplicationId = example.Id,
-    ///     });
-    /// 
-    ///     // ...
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Application App Roles can be imported using the object ID of the application and the ID of the app role, in the following format.

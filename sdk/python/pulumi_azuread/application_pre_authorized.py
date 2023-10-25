@@ -38,22 +38,24 @@ class ApplicationPreAuthorizedArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permission_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              application_id: Optional[pulumi.Input[str]] = None,
              application_object_id: Optional[pulumi.Input[str]] = None,
              authorized_app_id: Optional[pulumi.Input[str]] = None,
              authorized_client_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'permissionIds' in kwargs:
+        if permission_ids is None and 'permissionIds' in kwargs:
             permission_ids = kwargs['permissionIds']
-        if 'applicationId' in kwargs:
+        if permission_ids is None:
+            raise TypeError("Missing 'permission_ids' argument")
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationObjectId' in kwargs:
+        if application_object_id is None and 'applicationObjectId' in kwargs:
             application_object_id = kwargs['applicationObjectId']
-        if 'authorizedAppId' in kwargs:
+        if authorized_app_id is None and 'authorizedAppId' in kwargs:
             authorized_app_id = kwargs['authorizedAppId']
-        if 'authorizedClientId' in kwargs:
+        if authorized_client_id is None and 'authorizedClientId' in kwargs:
             authorized_client_id = kwargs['authorizedClientId']
 
         _setter("permission_ids", permission_ids)
@@ -171,17 +173,17 @@ class _ApplicationPreAuthorizedState:
              authorized_app_id: Optional[pulumi.Input[str]] = None,
              authorized_client_id: Optional[pulumi.Input[str]] = None,
              permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationObjectId' in kwargs:
+        if application_object_id is None and 'applicationObjectId' in kwargs:
             application_object_id = kwargs['applicationObjectId']
-        if 'authorizedAppId' in kwargs:
+        if authorized_app_id is None and 'authorizedAppId' in kwargs:
             authorized_app_id = kwargs['authorizedAppId']
-        if 'authorizedClientId' in kwargs:
+        if authorized_client_id is None and 'authorizedClientId' in kwargs:
             authorized_client_id = kwargs['authorizedClientId']
-        if 'permissionIds' in kwargs:
+        if permission_ids is None and 'permissionIds' in kwargs:
             permission_ids = kwargs['permissionIds']
 
         if application_id is not None:
@@ -280,46 +282,6 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                  permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        authorized = azuread.ApplicationRegistration("authorized", display_name="example-authorized-app")
-        authorizer = azuread.Application("authorizer",
-            display_name="example-authorizing-app",
-            api=azuread.ApplicationApiArgs(
-                oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Administer the application",
-                        admin_consent_display_name="Administer",
-                        enabled=True,
-                        id="00000000-0000-0000-0000-000000000000",
-                        type="Admin",
-                        value="administer",
-                    ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Access the application",
-                        admin_consent_display_name="Access",
-                        enabled=True,
-                        id="11111111-1111-1111-1111-111111111111",
-                        type="User",
-                        user_consent_description="Access the application",
-                        user_consent_display_name="Access",
-                        value="user_impersonation",
-                    ),
-                ],
-            ))
-        example = azuread.ApplicationPreAuthorized("example",
-            application_id=authorizer.id,
-            authorized_client_id=authorized.client_id,
-            permission_ids=[
-                "00000000-0000-0000-0000-000000000000",
-                "11111111-1111-1111-1111-111111111111",
-            ])
-        ```
-
         ## Import
 
         Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.
@@ -345,46 +307,6 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                  args: ApplicationPreAuthorizedArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        authorized = azuread.ApplicationRegistration("authorized", display_name="example-authorized-app")
-        authorizer = azuread.Application("authorizer",
-            display_name="example-authorizing-app",
-            api=azuread.ApplicationApiArgs(
-                oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Administer the application",
-                        admin_consent_display_name="Administer",
-                        enabled=True,
-                        id="00000000-0000-0000-0000-000000000000",
-                        type="Admin",
-                        value="administer",
-                    ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Access the application",
-                        admin_consent_display_name="Access",
-                        enabled=True,
-                        id="11111111-1111-1111-1111-111111111111",
-                        type="User",
-                        user_consent_description="Access the application",
-                        user_consent_display_name="Access",
-                        value="user_impersonation",
-                    ),
-                ],
-            ))
-        example = azuread.ApplicationPreAuthorized("example",
-            application_id=authorizer.id,
-            authorized_client_id=authorized.client_id,
-            permission_ids=[
-                "00000000-0000-0000-0000-000000000000",
-                "11111111-1111-1111-1111-111111111111",
-            ])
-        ```
-
         ## Import
 
         Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.

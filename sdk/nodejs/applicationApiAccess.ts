@@ -5,41 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const wellKnown = azuread.getApplicationPublishedAppIds({});
- * const msgraph = wellKnown.then(wellKnown => azuread.getServicePrincipal({
- *     clientId: wellKnown.result?.MicrosoftGraph,
- * }));
- * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const exampleMsgraph = new azuread.ApplicationApiAccess("exampleMsgraph", {
- *     applicationId: example.id,
- *     apiClientId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
- *     roleIds: [
- *         azuread_service_principal.msgraph.app_role_ids["Group.Read.All"],
- *         azuread_service_principal.msgraph.app_role_ids["User.Read.All"],
- *     ],
- *     scopeIds: [azuread_service_principal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]],
- * });
- * ```
- *
- * > **Tip** For managing permissions for an additional API, create another instance of this resource
- *
- * *Usage with azuread.Application resource*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
- * const exampleApplicationApiAccess = new azuread.ApplicationApiAccess("exampleApplicationApiAccess", {applicationId: exampleApplication.id});
- * // ...
- * ```
- *
  * ## Import
  *
  * Application API Access can be imported using the object ID of the application and the client ID of the API, in the following format.

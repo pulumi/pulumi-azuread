@@ -107,7 +107,7 @@ class GroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              assignable_to_role: Optional[pulumi.Input[bool]] = None,
              auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
@@ -129,37 +129,39 @@ class GroupArgs:
              types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              visibility: Optional[pulumi.Input[str]] = None,
              writeback_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'administrativeUnitIds' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if administrative_unit_ids is None and 'administrativeUnitIds' in kwargs:
             administrative_unit_ids = kwargs['administrativeUnitIds']
-        if 'assignableToRole' in kwargs:
+        if assignable_to_role is None and 'assignableToRole' in kwargs:
             assignable_to_role = kwargs['assignableToRole']
-        if 'autoSubscribeNewMembers' in kwargs:
+        if auto_subscribe_new_members is None and 'autoSubscribeNewMembers' in kwargs:
             auto_subscribe_new_members = kwargs['autoSubscribeNewMembers']
-        if 'dynamicMembership' in kwargs:
+        if dynamic_membership is None and 'dynamicMembership' in kwargs:
             dynamic_membership = kwargs['dynamicMembership']
-        if 'externalSendersAllowed' in kwargs:
+        if external_senders_allowed is None and 'externalSendersAllowed' in kwargs:
             external_senders_allowed = kwargs['externalSendersAllowed']
-        if 'hideFromAddressLists' in kwargs:
+        if hide_from_address_lists is None and 'hideFromAddressLists' in kwargs:
             hide_from_address_lists = kwargs['hideFromAddressLists']
-        if 'hideFromOutlookClients' in kwargs:
+        if hide_from_outlook_clients is None and 'hideFromOutlookClients' in kwargs:
             hide_from_outlook_clients = kwargs['hideFromOutlookClients']
-        if 'mailEnabled' in kwargs:
+        if mail_enabled is None and 'mailEnabled' in kwargs:
             mail_enabled = kwargs['mailEnabled']
-        if 'mailNickname' in kwargs:
+        if mail_nickname is None and 'mailNickname' in kwargs:
             mail_nickname = kwargs['mailNickname']
-        if 'onpremisesGroupType' in kwargs:
+        if onpremises_group_type is None and 'onpremisesGroupType' in kwargs:
             onpremises_group_type = kwargs['onpremisesGroupType']
-        if 'preventDuplicateNames' in kwargs:
+        if prevent_duplicate_names is None and 'preventDuplicateNames' in kwargs:
             prevent_duplicate_names = kwargs['preventDuplicateNames']
-        if 'provisioningOptions' in kwargs:
+        if provisioning_options is None and 'provisioningOptions' in kwargs:
             provisioning_options = kwargs['provisioningOptions']
-        if 'securityEnabled' in kwargs:
+        if security_enabled is None and 'securityEnabled' in kwargs:
             security_enabled = kwargs['securityEnabled']
-        if 'writebackEnabled' in kwargs:
+        if writeback_enabled is None and 'writebackEnabled' in kwargs:
             writeback_enabled = kwargs['writebackEnabled']
 
         _setter("display_name", display_name)
@@ -639,53 +641,53 @@ class _GroupState:
              types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              visibility: Optional[pulumi.Input[str]] = None,
              writeback_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'administrativeUnitIds' in kwargs:
+        if administrative_unit_ids is None and 'administrativeUnitIds' in kwargs:
             administrative_unit_ids = kwargs['administrativeUnitIds']
-        if 'assignableToRole' in kwargs:
+        if assignable_to_role is None and 'assignableToRole' in kwargs:
             assignable_to_role = kwargs['assignableToRole']
-        if 'autoSubscribeNewMembers' in kwargs:
+        if auto_subscribe_new_members is None and 'autoSubscribeNewMembers' in kwargs:
             auto_subscribe_new_members = kwargs['autoSubscribeNewMembers']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'dynamicMembership' in kwargs:
+        if dynamic_membership is None and 'dynamicMembership' in kwargs:
             dynamic_membership = kwargs['dynamicMembership']
-        if 'externalSendersAllowed' in kwargs:
+        if external_senders_allowed is None and 'externalSendersAllowed' in kwargs:
             external_senders_allowed = kwargs['externalSendersAllowed']
-        if 'hideFromAddressLists' in kwargs:
+        if hide_from_address_lists is None and 'hideFromAddressLists' in kwargs:
             hide_from_address_lists = kwargs['hideFromAddressLists']
-        if 'hideFromOutlookClients' in kwargs:
+        if hide_from_outlook_clients is None and 'hideFromOutlookClients' in kwargs:
             hide_from_outlook_clients = kwargs['hideFromOutlookClients']
-        if 'mailEnabled' in kwargs:
+        if mail_enabled is None and 'mailEnabled' in kwargs:
             mail_enabled = kwargs['mailEnabled']
-        if 'mailNickname' in kwargs:
+        if mail_nickname is None and 'mailNickname' in kwargs:
             mail_nickname = kwargs['mailNickname']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
-        if 'onpremisesDomainName' in kwargs:
+        if onpremises_domain_name is None and 'onpremisesDomainName' in kwargs:
             onpremises_domain_name = kwargs['onpremisesDomainName']
-        if 'onpremisesGroupType' in kwargs:
+        if onpremises_group_type is None and 'onpremisesGroupType' in kwargs:
             onpremises_group_type = kwargs['onpremisesGroupType']
-        if 'onpremisesNetbiosName' in kwargs:
+        if onpremises_netbios_name is None and 'onpremisesNetbiosName' in kwargs:
             onpremises_netbios_name = kwargs['onpremisesNetbiosName']
-        if 'onpremisesSamAccountName' in kwargs:
+        if onpremises_sam_account_name is None and 'onpremisesSamAccountName' in kwargs:
             onpremises_sam_account_name = kwargs['onpremisesSamAccountName']
-        if 'onpremisesSecurityIdentifier' in kwargs:
+        if onpremises_security_identifier is None and 'onpremisesSecurityIdentifier' in kwargs:
             onpremises_security_identifier = kwargs['onpremisesSecurityIdentifier']
-        if 'onpremisesSyncEnabled' in kwargs:
+        if onpremises_sync_enabled is None and 'onpremisesSyncEnabled' in kwargs:
             onpremises_sync_enabled = kwargs['onpremisesSyncEnabled']
-        if 'preferredLanguage' in kwargs:
+        if preferred_language is None and 'preferredLanguage' in kwargs:
             preferred_language = kwargs['preferredLanguage']
-        if 'preventDuplicateNames' in kwargs:
+        if prevent_duplicate_names is None and 'preventDuplicateNames' in kwargs:
             prevent_duplicate_names = kwargs['preventDuplicateNames']
-        if 'provisioningOptions' in kwargs:
+        if provisioning_options is None and 'provisioningOptions' in kwargs:
             provisioning_options = kwargs['provisioningOptions']
-        if 'proxyAddresses' in kwargs:
+        if proxy_addresses is None and 'proxyAddresses' in kwargs:
             proxy_addresses = kwargs['proxyAddresses']
-        if 'securityEnabled' in kwargs:
+        if security_enabled is None and 'securityEnabled' in kwargs:
             security_enabled = kwargs['securityEnabled']
-        if 'writebackEnabled' in kwargs:
+        if writeback_enabled is None and 'writebackEnabled' in kwargs:
             writeback_enabled = kwargs['writebackEnabled']
 
         if administrative_unit_ids is not None:
@@ -1331,11 +1333,7 @@ class Group(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if dynamic_membership is not None and not isinstance(dynamic_membership, GroupDynamicMembershipArgs):
-                dynamic_membership = dynamic_membership or {}
-                def _setter(key, value):
-                    dynamic_membership[key] = value
-                GroupDynamicMembershipArgs._configure(_setter, **dynamic_membership)
+            dynamic_membership = _utilities.configure(dynamic_membership, GroupDynamicMembershipArgs, True)
             __props__.__dict__["dynamic_membership"] = dynamic_membership
             __props__.__dict__["external_senders_allowed"] = external_senders_allowed
             __props__.__dict__["hide_from_address_lists"] = hide_from_address_lists

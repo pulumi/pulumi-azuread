@@ -43,22 +43,32 @@ class ApplicationAppRoleInitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_member_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             application_id: pulumi.Input[str],
-             description: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             role_id: pulumi.Input[str],
+             allowed_member_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedMemberTypes' in kwargs:
+        if allowed_member_types is None and 'allowedMemberTypes' in kwargs:
             allowed_member_types = kwargs['allowedMemberTypes']
-        if 'applicationId' in kwargs:
+        if allowed_member_types is None:
+            raise TypeError("Missing 'allowed_member_types' argument")
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'displayName' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'roleId' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
 
         _setter("allowed_member_types", allowed_member_types)
         _setter("application_id", application_id)
@@ -181,15 +191,15 @@ class _ApplicationAppRoleState:
              display_name: Optional[pulumi.Input[str]] = None,
              role_id: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedMemberTypes' in kwargs:
+        if allowed_member_types is None and 'allowedMemberTypes' in kwargs:
             allowed_member_types = kwargs['allowedMemberTypes']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'roleId' in kwargs:
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
 
         if allowed_member_types is not None:
@@ -293,37 +303,6 @@ class ApplicationAppRole(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumi_random as random
-
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_administrator = random.RandomUuid("exampleAdministrator")
-        example_administer = azuread.ApplicationAppRole("exampleAdminister",
-            application_id=example.id,
-            role_id=example_administrator.id,
-            allowed_member_types=["User"],
-            description="My role description",
-            display_name="Administer",
-            value="admin")
-        ```
-
-        > **Tip** For managing more app roles, create additional instances of this resource
-
-        *Usage with Application resource*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Application("example", display_name="example")
-        example_administer = azuread.ApplicationAppRole("exampleAdminister", application_id=example.id)
-        # ...
-        ```
-
         ## Import
 
         Application App Roles can be imported using the object ID of the application and the ID of the app role, in the following format.
@@ -350,37 +329,6 @@ class ApplicationAppRole(pulumi.CustomResource):
                  args: ApplicationAppRoleInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumi_random as random
-
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_administrator = random.RandomUuid("exampleAdministrator")
-        example_administer = azuread.ApplicationAppRole("exampleAdminister",
-            application_id=example.id,
-            role_id=example_administrator.id,
-            allowed_member_types=["User"],
-            description="My role description",
-            display_name="Administer",
-            value="admin")
-        ```
-
-        > **Tip** For managing more app roles, create additional instances of this resource
-
-        *Usage with Application resource*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Application("example", display_name="example")
-        example_administer = azuread.ApplicationAppRole("exampleAdminister", application_id=example.id)
-        # ...
-        ```
-
         ## Import
 
         Application App Roles can be imported using the object ID of the application and the ID of the app role, in the following format.

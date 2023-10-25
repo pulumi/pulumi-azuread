@@ -20,39 +20,6 @@ namespace Pulumi.AzureAD
     /// 
     /// The calling principal requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
-    ///     {
-    ///         UserPrincipalName = "jdoe@hashicorp.com",
-    ///     });
-    /// 
-    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("exampleDirectoryRole", new()
-    ///     {
-    ///         DisplayName = "Application Administrator",
-    ///     });
-    /// 
-    ///     var exampleDirectoryRoleEligibilityScheduleRequest = new AzureAD.DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest", new()
-    ///     {
-    ///         RoleDefinitionId = exampleDirectoryRole.TemplateId,
-    ///         PrincipalId = azuread_user.Example.Object_id,
-    ///         DirectoryScopeId = "/",
-    ///         Justification = "Example",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
-    /// 
     /// ## Import
     /// 
     /// Directory role eligibility schedule requests can be imported using the ID of the assignment, e.g.

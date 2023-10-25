@@ -27,46 +27,6 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
-//				UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
-//				DisplayName:     pulumi.String("my_group"),
-//				SecurityEnabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewGroupMember(ctx, "exampleGroupMember", &azuread.GroupMemberArgs{
-//				GroupObjectId:  exampleGroup.ID(),
-//				MemberObjectId: *pulumi.String(exampleUser.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Group members can be imported using the object ID of the group and the object ID of the member, e.g.

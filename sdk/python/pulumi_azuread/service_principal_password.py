@@ -41,25 +41,27 @@ class ServicePrincipalPasswordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_principal_id: pulumi.Input[str],
+             service_principal_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              end_date: Optional[pulumi.Input[str]] = None,
              end_date_relative: Optional[pulumi.Input[str]] = None,
              rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'servicePrincipalId' in kwargs:
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
             service_principal_id = kwargs['servicePrincipalId']
-        if 'displayName' in kwargs:
+        if service_principal_id is None:
+            raise TypeError("Missing 'service_principal_id' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'endDate' in kwargs:
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'endDateRelative' in kwargs:
+        if end_date_relative is None and 'endDateRelative' in kwargs:
             end_date_relative = kwargs['endDateRelative']
-        if 'rotateWhenChanged' in kwargs:
+        if rotate_when_changed is None and 'rotateWhenChanged' in kwargs:
             rotate_when_changed = kwargs['rotateWhenChanged']
-        if 'startDate' in kwargs:
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
 
         _setter("service_principal_id", service_principal_id)
@@ -191,21 +193,21 @@ class _ServicePrincipalPasswordState:
              service_principal_id: Optional[pulumi.Input[str]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'endDate' in kwargs:
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'endDateRelative' in kwargs:
+        if end_date_relative is None and 'endDateRelative' in kwargs:
             end_date_relative = kwargs['endDateRelative']
-        if 'keyId' in kwargs:
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
-        if 'rotateWhenChanged' in kwargs:
+        if rotate_when_changed is None and 'rotateWhenChanged' in kwargs:
             rotate_when_changed = kwargs['rotateWhenChanged']
-        if 'servicePrincipalId' in kwargs:
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
             service_principal_id = kwargs['servicePrincipalId']
-        if 'startDate' in kwargs:
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
 
         if display_name is not None:
@@ -335,36 +337,6 @@ class ServicePrincipalPassword(pulumi.CustomResource):
                  start_date: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_password = azuread.ServicePrincipalPassword("exampleServicePrincipalPassword", service_principal_id=example_service_principal.object_id)
-        ```
-
-        *Time-based rotation*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumiverse_time as time
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_rotating = time.Rotating("exampleRotating", rotation_days=7)
-        example_service_principal_password = azuread.ServicePrincipalPassword("exampleServicePrincipalPassword",
-            service_principal_id=example_service_principal.object_id,
-            rotate_when_changed={
-                "rotation": example_rotating.id,
-            })
-        ```
-
         ## Import
 
         This resource does not support importing.
@@ -385,36 +357,6 @@ class ServicePrincipalPassword(pulumi.CustomResource):
                  args: ServicePrincipalPasswordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_password = azuread.ServicePrincipalPassword("exampleServicePrincipalPassword", service_principal_id=example_service_principal.object_id)
-        ```
-
-        *Time-based rotation*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumiverse_time as time
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_rotating = time.Rotating("exampleRotating", rotation_days=7)
-        example_service_principal_password = azuread.ServicePrincipalPassword("exampleServicePrincipalPassword",
-            service_principal_id=example_service_principal.object_id,
-            rotate_when_changed={
-                "rotation": example_rotating.id,
-            })
-        ```
-
         ## Import
 
         This resource does not support importing.

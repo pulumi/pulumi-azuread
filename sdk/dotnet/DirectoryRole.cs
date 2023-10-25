@@ -24,44 +24,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
     /// 
-    /// ## Example Usage
-    /// 
-    /// *Activate a directory role by its template ID*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.DirectoryRole("example", new()
-    ///     {
-    ///         TemplateId = "00000000-0000-0000-0000-000000000000",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// *Activate a directory role by display name*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.DirectoryRole("example", new()
-    ///     {
-    ///         DisplayName = "Printer administrator",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource does not support importing.

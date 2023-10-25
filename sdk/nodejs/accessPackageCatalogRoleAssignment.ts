@@ -15,29 +15,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleUser = azuread.getUser({
- *     userPrincipalName: "jdoe@hashicorp.com",
- * });
- * const exampleAccessPackageCatalogRole = azuread.getAccessPackageCatalogRole({
- *     displayName: "Catalog owner",
- * });
- * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("exampleAccessPackageCatalog", {
- *     displayName: "example-access-package-catalog",
- *     description: "Example access package catalog",
- * });
- * const exampleAccessPackageCatalogRoleAssignment = new azuread.AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment", {
- *     roleId: exampleAccessPackageCatalogRole.then(exampleAccessPackageCatalogRole => exampleAccessPackageCatalogRole.objectId),
- *     principalObjectId: exampleUser.then(exampleUser => exampleUser.objectId),
- *     catalogId: exampleAccessPackageCatalog.id,
- * });
- * ```
- *
  * ## Import
  *
  * Catalog role assignments can be imported using the ID of the assignment, e.g.

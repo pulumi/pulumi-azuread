@@ -17,32 +17,6 @@ namespace Pulumi.AzureAD
         /// ## API Permissions
         /// 
         /// This data source does not require any additional roles.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
-        ///     {
-        ///         DisplayName = "Marketo",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["applicationTemplateId"] = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationTemplateResult> InvokeAsync(GetApplicationTemplateArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationTemplateResult>("azuread:index/getApplicationTemplate:getApplicationTemplate", args ?? new GetApplicationTemplateArgs(), options.WithDefaults());
@@ -53,32 +27,6 @@ namespace Pulumi.AzureAD
         /// ## API Permissions
         /// 
         /// This data source does not require any additional roles.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
-        ///     {
-        ///         DisplayName = "Marketo",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["applicationTemplateId"] = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetApplicationTemplateResult> Invoke(GetApplicationTemplateInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationTemplateResult>("azuread:index/getApplicationTemplate:getApplicationTemplate", args ?? new GetApplicationTemplateInvokeArgs(), options.WithDefaults());

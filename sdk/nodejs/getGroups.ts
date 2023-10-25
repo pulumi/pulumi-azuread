@@ -14,64 +14,6 @@ import * as utilities from "./utilities";
  * When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * *Look up by group name*
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getGroups({
- *     displayNames: [
- *         "group-a",
- *         "group-b",
- *     ],
- * });
- * ```
- *
- * *Look up by display name prefix*
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const sales = azuread.getGroups({
- *     displayNamePrefix: "sales-",
- * });
- * ```
- *
- * *Look up all groups*
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const all = azuread.getGroups({
- *     returnAll: true,
- * });
- * ```
- *
- * *Look up all mail-enabled groups*
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const mailEnabled = azuread.getGroups({
- *     mailEnabled: true,
- *     returnAll: true,
- * });
- * ```
- *
- * *Look up all security-enabled groups that are not mail-enabled*
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const securityOnly = azuread.getGroups({
- *     mailEnabled: false,
- *     returnAll: true,
- *     securityEnabled: true,
- * });
- * ```
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
@@ -156,64 +98,6 @@ export interface GetGroupsResult {
  * When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * *Look up by group name*
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getGroups({
- *     displayNames: [
- *         "group-a",
- *         "group-b",
- *     ],
- * });
- * ```
- *
- * *Look up by display name prefix*
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const sales = azuread.getGroups({
- *     displayNamePrefix: "sales-",
- * });
- * ```
- *
- * *Look up all groups*
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const all = azuread.getGroups({
- *     returnAll: true,
- * });
- * ```
- *
- * *Look up all mail-enabled groups*
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const mailEnabled = azuread.getGroups({
- *     mailEnabled: true,
- *     returnAll: true,
- * });
- * ```
- *
- * *Look up all security-enabled groups that are not mail-enabled*
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const securityOnly = azuread.getGroups({
- *     mailEnabled: false,
- *     returnAll: true,
- *     securityEnabled: true,
- * });
- * ```
  */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
     return pulumi.output(args).apply((a: any) => getGroups(a, opts))

@@ -87,16 +87,6 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     ## API Permissions
 
     No additional roles are required to use this data source.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    current = azuread.get_client_config()
-    pulumi.export("objectId", current.object_id)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -117,15 +107,5 @@ def get_client_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pul
     ## API Permissions
 
     No additional roles are required to use this data source.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    current = azuread.get_client_config()
-    pulumi.export("objectId", current.object_id)
-    ```
     """
     ...

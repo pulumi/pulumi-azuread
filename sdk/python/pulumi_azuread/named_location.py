@@ -36,13 +36,15 @@ class NamedLocationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              country: Optional[pulumi.Input['NamedLocationCountryArgs']] = None,
              ip: Optional[pulumi.Input['NamedLocationIpArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
 
         _setter("display_name", display_name)
         if country is not None:
@@ -115,9 +117,9 @@ class _NamedLocationState:
              country: Optional[pulumi.Input['NamedLocationCountryArgs']] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              ip: Optional[pulumi.Input['NamedLocationIpArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
 
         if country is not None:
@@ -186,32 +188,6 @@ class NamedLocation(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_ip = azuread.NamedLocation("example-ip",
-            display_name="IP Named Location",
-            ip=azuread.NamedLocationIpArgs(
-                ip_ranges=[
-                    "1.1.1.1/32",
-                    "2.2.2.2/32",
-                ],
-                trusted=True,
-            ))
-        example_country = azuread.NamedLocation("example-country",
-            country=azuread.NamedLocationCountryArgs(
-                countries_and_regions=[
-                    "GB",
-                    "US",
-                ],
-                include_unknown_countries_and_regions=False,
-            ),
-            display_name="Country Named Location")
-        ```
-
         ## Import
 
         Named Locations can be imported using the `id`, e.g.
@@ -244,32 +220,6 @@ class NamedLocation(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_ip = azuread.NamedLocation("example-ip",
-            display_name="IP Named Location",
-            ip=azuread.NamedLocationIpArgs(
-                ip_ranges=[
-                    "1.1.1.1/32",
-                    "2.2.2.2/32",
-                ],
-                trusted=True,
-            ))
-        example_country = azuread.NamedLocation("example-country",
-            country=azuread.NamedLocationCountryArgs(
-                countries_and_regions=[
-                    "GB",
-                    "US",
-                ],
-                include_unknown_countries_and_regions=False,
-            ),
-            display_name="Country Named Location")
-        ```
 
         ## Import
 
@@ -310,20 +260,12 @@ class NamedLocation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NamedLocationArgs.__new__(NamedLocationArgs)
 
-            if country is not None and not isinstance(country, NamedLocationCountryArgs):
-                country = country or {}
-                def _setter(key, value):
-                    country[key] = value
-                NamedLocationCountryArgs._configure(_setter, **country)
+            country = _utilities.configure(country, NamedLocationCountryArgs, True)
             __props__.__dict__["country"] = country
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            if ip is not None and not isinstance(ip, NamedLocationIpArgs):
-                ip = ip or {}
-                def _setter(key, value):
-                    ip[key] = value
-                NamedLocationIpArgs._configure(_setter, **ip)
+            ip = _utilities.configure(ip, NamedLocationIpArgs, True)
             __props__.__dict__["ip"] = ip
         super(NamedLocation, __self__).__init__(
             'azuread:index/namedLocation:NamedLocation',

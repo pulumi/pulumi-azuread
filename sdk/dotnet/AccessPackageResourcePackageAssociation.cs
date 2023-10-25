@@ -20,51 +20,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleGroup = new AzureAD.Group("exampleGroup", new()
-    ///     {
-    ///         DisplayName = "example-group",
-    ///         SecurityEnabled = true,
-    ///     });
-    /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
-    ///     {
-    ///         DisplayName = "example-catalog",
-    ///         Description = "Example catalog",
-    ///     });
-    /// 
-    ///     var exampleAccessPackageResourceCatalogAssociation = new AzureAD.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", new()
-    ///     {
-    ///         CatalogId = azuread_access_package_catalog.Example_catalog.Id,
-    ///         ResourceOriginId = azuread_group.Example_group.Object_id,
-    ///         ResourceOriginSystem = "AadGroup",
-    ///     });
-    /// 
-    ///     var exampleAccessPackage = new AzureAD.AccessPackage("exampleAccessPackage", new()
-    ///     {
-    ///         DisplayName = "example-package",
-    ///         Description = "Example Package",
-    ///         CatalogId = azuread_access_package_catalog.Example_catalog.Id,
-    ///     });
-    /// 
-    ///     var exampleAccessPackageResourcePackageAssociation = new AzureAD.AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation", new()
-    ///     {
-    ///         AccessPackageId = exampleAccessPackage.Id,
-    ///         CatalogResourceAssociationId = exampleAccessPackageResourceCatalogAssociation.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// The resource and catalog association can be imported using the access package ID, the resource association ID, the resource origin ID, and the access type, e.g.

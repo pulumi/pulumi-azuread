@@ -20,38 +20,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner` or `Global Administrator`
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleGroup = new AzureAD.Group("exampleGroup", new()
-    ///     {
-    ///         DisplayName = "example-group",
-    ///         SecurityEnabled = true,
-    ///     });
-    /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
-    ///     {
-    ///         DisplayName = "example-catalog",
-    ///         Description = "Example catalog",
-    ///     });
-    /// 
-    ///     var exampleAccessPackageResourceCatalogAssociation = new AzureAD.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", new()
-    ///     {
-    ///         CatalogId = azuread_access_package_catalog.Example_catalog.Id,
-    ///         ResourceOriginId = azuread_group.Example_group.Object_id,
-    ///         ResourceOriginSystem = "AadGroup",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// The resource and catalog association can be imported using the catalog ID and the resource origin ID, e.g.

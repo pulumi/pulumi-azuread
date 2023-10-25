@@ -32,17 +32,23 @@ class AccessPackageCatalogRoleAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             catalog_id: pulumi.Input[str],
-             principal_object_id: pulumi.Input[str],
-             role_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             catalog_id: Optional[pulumi.Input[str]] = None,
+             principal_object_id: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogId' in kwargs:
+        if catalog_id is None and 'catalogId' in kwargs:
             catalog_id = kwargs['catalogId']
-        if 'principalObjectId' in kwargs:
+        if catalog_id is None:
+            raise TypeError("Missing 'catalog_id' argument")
+        if principal_object_id is None and 'principalObjectId' in kwargs:
             principal_object_id = kwargs['principalObjectId']
-        if 'roleId' in kwargs:
+        if principal_object_id is None:
+            raise TypeError("Missing 'principal_object_id' argument")
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
 
         _setter("catalog_id", catalog_id)
         _setter("principal_object_id", principal_object_id)
@@ -109,13 +115,13 @@ class _AccessPackageCatalogRoleAssignmentState:
              catalog_id: Optional[pulumi.Input[str]] = None,
              principal_object_id: Optional[pulumi.Input[str]] = None,
              role_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogId' in kwargs:
+        if catalog_id is None and 'catalogId' in kwargs:
             catalog_id = kwargs['catalogId']
-        if 'principalObjectId' in kwargs:
+        if principal_object_id is None and 'principalObjectId' in kwargs:
             principal_object_id = kwargs['principalObjectId']
-        if 'roleId' in kwargs:
+        if role_id is None and 'roleId' in kwargs:
             role_id = kwargs['roleId']
 
         if catalog_id is not None:
@@ -182,23 +188,6 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
-            display_name="example-access-package-catalog",
-            description="Example access package catalog")
-        example_access_package_catalog_role_assignment = azuread.AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment",
-            role_id=example_access_package_catalog_role.object_id,
-            principal_object_id=example_user.object_id,
-            catalog_id=example_access_package_catalog.id)
-        ```
-
         ## Import
 
         Catalog role assignments can be imported using the ID of the assignment, e.g.
@@ -229,23 +218,6 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `EntitlementManagement.ReadWrite.All` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
-            display_name="example-access-package-catalog",
-            description="Example access package catalog")
-        example_access_package_catalog_role_assignment = azuread.AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment",
-            role_id=example_access_package_catalog_role.object_id,
-            principal_object_id=example_user.object_id,
-            catalog_id=example_access_package_catalog.id)
-        ```
 
         ## Import
 

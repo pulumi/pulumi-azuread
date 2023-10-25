@@ -35,15 +35,19 @@ class AccessPackageCatalogArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             display_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
              externally_visible: Optional[pulumi.Input[bool]] = None,
              published: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'externallyVisible' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if externally_visible is None and 'externallyVisible' in kwargs:
             externally_visible = kwargs['externallyVisible']
 
         _setter("description", description)
@@ -130,11 +134,11 @@ class _AccessPackageCatalogState:
              display_name: Optional[pulumi.Input[str]] = None,
              externally_visible: Optional[pulumi.Input[bool]] = None,
              published: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'externallyVisible' in kwargs:
+        if externally_visible is None and 'externallyVisible' in kwargs:
             externally_visible = kwargs['externallyVisible']
 
         if description is not None:
@@ -216,17 +220,6 @@ class AccessPackageCatalog(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Catalog creator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.AccessPackageCatalog("example",
-            description="Example access package catalog",
-            display_name="example-access-package-catalog")
-        ```
-
         ## Import
 
         An Access Package Catalog can be imported using the `id`, e.g.
@@ -258,17 +251,6 @@ class AccessPackageCatalog(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Catalog creator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.AccessPackageCatalog("example",
-            description="Example access package catalog",
-            display_name="example-access-package-catalog")
-        ```
 
         ## Import
 

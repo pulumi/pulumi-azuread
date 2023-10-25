@@ -20,32 +20,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
-    ///     {
-    ///         DisplayName = "example-catalog",
-    ///         Description = "Example catalog",
-    ///     });
-    /// 
-    ///     var exampleAccessPackage = new AzureAD.AccessPackage("exampleAccessPackage", new()
-    ///     {
-    ///         CatalogId = exampleAccessPackageCatalog.Id,
-    ///         DisplayName = "access-package",
-    ///         Description = "Access Package",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Access Packages can be imported using the `id`, e.g.

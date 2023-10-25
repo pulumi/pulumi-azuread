@@ -32,17 +32,23 @@ class AdministrativeUnitRoleMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             administrative_unit_object_id: pulumi.Input[str],
-             member_object_id: pulumi.Input[str],
-             role_object_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
+             member_object_id: Optional[pulumi.Input[str]] = None,
+             role_object_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'administrativeUnitObjectId' in kwargs:
+        if administrative_unit_object_id is None and 'administrativeUnitObjectId' in kwargs:
             administrative_unit_object_id = kwargs['administrativeUnitObjectId']
-        if 'memberObjectId' in kwargs:
+        if administrative_unit_object_id is None:
+            raise TypeError("Missing 'administrative_unit_object_id' argument")
+        if member_object_id is None and 'memberObjectId' in kwargs:
             member_object_id = kwargs['memberObjectId']
-        if 'roleObjectId' in kwargs:
+        if member_object_id is None:
+            raise TypeError("Missing 'member_object_id' argument")
+        if role_object_id is None and 'roleObjectId' in kwargs:
             role_object_id = kwargs['roleObjectId']
+        if role_object_id is None:
+            raise TypeError("Missing 'role_object_id' argument")
 
         _setter("administrative_unit_object_id", administrative_unit_object_id)
         _setter("member_object_id", member_object_id)
@@ -109,13 +115,13 @@ class _AdministrativeUnitRoleMemberState:
              administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
              member_object_id: Optional[pulumi.Input[str]] = None,
              role_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'administrativeUnitObjectId' in kwargs:
+        if administrative_unit_object_id is None and 'administrativeUnitObjectId' in kwargs:
             administrative_unit_object_id = kwargs['administrativeUnitObjectId']
-        if 'memberObjectId' in kwargs:
+        if member_object_id is None and 'memberObjectId' in kwargs:
             member_object_id = kwargs['memberObjectId']
-        if 'roleObjectId' in kwargs:
+        if role_object_id is None and 'roleObjectId' in kwargs:
             role_object_id = kwargs['roleObjectId']
 
         if administrative_unit_object_id is not None:
@@ -182,21 +188,6 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_administrative_unit = azuread.AdministrativeUnit("exampleAdministrativeUnit", display_name="Example-AU")
-        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Security administrator")
-        example_administrative_unit_role_member = azuread.AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember",
-            role_object_id=example_directory_role.object_id,
-            administrative_unit_object_id=example_administrative_unit.id,
-            member_object_id=example_user.id)
-        ```
-
         ## Import
 
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
@@ -229,21 +220,6 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` and `RoleManagement.ReadWrite.Directory`, or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_administrative_unit = azuread.AdministrativeUnit("exampleAdministrativeUnit", display_name="Example-AU")
-        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Security administrator")
-        example_administrative_unit_role_member = azuread.AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember",
-            role_object_id=example_directory_role.object_id,
-            administrative_unit_object_id=example_administrative_unit.id,
-            member_object_id=example_user.id)
-        ```
 
         ## Import
 

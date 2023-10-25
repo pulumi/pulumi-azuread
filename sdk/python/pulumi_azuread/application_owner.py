@@ -29,14 +29,18 @@ class ApplicationOwnerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
-             owner_object_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             owner_object_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'ownerObjectId' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if owner_object_id is None and 'ownerObjectId' in kwargs:
             owner_object_id = kwargs['ownerObjectId']
+        if owner_object_id is None:
+            raise TypeError("Missing 'owner_object_id' argument")
 
         _setter("application_id", application_id)
         _setter("owner_object_id", owner_object_id)
@@ -86,11 +90,11 @@ class _ApplicationOwnerState:
              _setter: Callable[[Any, Any], None],
              application_id: Optional[pulumi.Input[str]] = None,
              owner_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'ownerObjectId' in kwargs:
+        if owner_object_id is None and 'ownerObjectId' in kwargs:
             owner_object_id = kwargs['ownerObjectId']
 
         if application_id is not None:
@@ -132,24 +136,6 @@ class ApplicationOwner(pulumi.CustomResource):
                  owner_object_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        jane = azuread.User("jane",
-            user_principal_name="jane.fischer@hashitown.com",
-            display_name="Jane Fischer",
-            password="Ch@ngeMe")
-        example_jane = azuread.ApplicationOwner("exampleJane",
-            application_id=example.id,
-            owner_object_id=jane.object_id)
-        ```
-
-        > **Tip** For managing more application owners, create additional instances of this resource
-
         ## Import
 
         Application Owners can be imported using the object ID of the application and the object ID of the owner, in the following format.
@@ -170,24 +156,6 @@ class ApplicationOwner(pulumi.CustomResource):
                  args: ApplicationOwnerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        jane = azuread.User("jane",
-            user_principal_name="jane.fischer@hashitown.com",
-            display_name="Jane Fischer",
-            password="Ch@ngeMe")
-        example_jane = azuread.ApplicationOwner("exampleJane",
-            application_id=example.id,
-            owner_object_id=jane.object_id)
-        ```
-
-        > **Tip** For managing more application owners, create additional instances of this resource
-
         ## Import
 
         Application Owners can be imported using the object ID of the application and the object ID of the owner, in the following format.

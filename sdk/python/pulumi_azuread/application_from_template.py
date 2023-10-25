@@ -29,14 +29,18 @@ class ApplicationFromTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             template_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'templateId' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
 
         _setter("display_name", display_name)
         _setter("template_id", template_id)
@@ -102,19 +106,19 @@ class _ApplicationFromTemplateState:
              service_principal_id: Optional[pulumi.Input[str]] = None,
              service_principal_object_id: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationObjectId' in kwargs:
+        if application_object_id is None and 'applicationObjectId' in kwargs:
             application_object_id = kwargs['applicationObjectId']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'servicePrincipalId' in kwargs:
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
             service_principal_id = kwargs['servicePrincipalId']
-        if 'servicePrincipalObjectId' in kwargs:
+        if service_principal_object_id is None and 'servicePrincipalObjectId' in kwargs:
             service_principal_object_id = kwargs['servicePrincipalObjectId']
-        if 'templateId' in kwargs:
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
 
         if application_id is not None:
@@ -224,20 +228,6 @@ class ApplicationFromTemplate(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application_from_template = azuread.ApplicationFromTemplate("exampleApplicationFromTemplate",
-            display_name="Example Application",
-            template_id=example_application_template.template_id)
-        example_application = azuread.get_application_output(object_id=example_application_from_template.application_object_id)
-        example_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
-        ```
-
         ## Import
 
         Templated Applications can be imported using the template ID, the object ID of the application, and the object ID of the service principal, in the following format.
@@ -269,20 +259,6 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 
         When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application_from_template = azuread.ApplicationFromTemplate("exampleApplicationFromTemplate",
-            display_name="Example Application",
-            template_id=example_application_template.template_id)
-        example_application = azuread.get_application_output(object_id=example_application_from_template.application_object_id)
-        example_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
-        ```
 
         ## Import
 

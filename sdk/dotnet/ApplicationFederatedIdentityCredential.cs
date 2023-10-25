@@ -10,37 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///     });
-    /// 
-    ///     var exampleApplicationFederatedIdentityCredential = new AzureAD.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", new()
-    ///     {
-    ///         ApplicationId = exampleApplicationRegistration.Id,
-    ///         DisplayName = "my-repo-deploy",
-    ///         Description = "Deployments for my-repo",
-    ///         Audiences = new[]
-    ///         {
-    ///             "api://AzureADTokenExchange",
-    ///         },
-    ///         Issuer = "https://token.actions.githubusercontent.com",
-    ///         Subject = "repo:my-organization/my-repo:environment:prod",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.

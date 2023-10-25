@@ -29,14 +29,18 @@ class GroupMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_object_id: pulumi.Input[str],
-             member_object_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_object_id: Optional[pulumi.Input[str]] = None,
+             member_object_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupObjectId' in kwargs:
+        if group_object_id is None and 'groupObjectId' in kwargs:
             group_object_id = kwargs['groupObjectId']
-        if 'memberObjectId' in kwargs:
+        if group_object_id is None:
+            raise TypeError("Missing 'group_object_id' argument")
+        if member_object_id is None and 'memberObjectId' in kwargs:
             member_object_id = kwargs['memberObjectId']
+        if member_object_id is None:
+            raise TypeError("Missing 'member_object_id' argument")
 
         _setter("group_object_id", group_object_id)
         _setter("member_object_id", member_object_id)
@@ -86,11 +90,11 @@ class _GroupMemberState:
              _setter: Callable[[Any, Any], None],
              group_object_id: Optional[pulumi.Input[str]] = None,
              member_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupObjectId' in kwargs:
+        if group_object_id is None and 'groupObjectId' in kwargs:
             group_object_id = kwargs['groupObjectId']
-        if 'memberObjectId' in kwargs:
+        if member_object_id is None and 'memberObjectId' in kwargs:
             member_object_id = kwargs['memberObjectId']
 
         if group_object_id is not None:
@@ -146,21 +150,6 @@ class GroupMember(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_group = azuread.Group("exampleGroup",
-            display_name="my_group",
-            security_enabled=True)
-        example_group_member = azuread.GroupMember("exampleGroupMember",
-            group_object_id=example_group.id,
-            member_object_id=example_user.id)
-        ```
-
         ## Import
 
         Group members can be imported using the object ID of the group and the object ID of the member, e.g.
@@ -196,21 +185,6 @@ class GroupMember(pulumi.CustomResource):
         However, if the authenticated service principal is an owner of the group being managed, an application role is not required.
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_group = azuread.Group("exampleGroup",
-            display_name="my_group",
-            security_enabled=True)
-        example_group_member = azuread.GroupMember("exampleGroupMember",
-            group_object_id=example_group.id,
-            member_object_id=example_user.id)
-        ```
 
         ## Import
 

@@ -129,8 +129,8 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
-             user_principal_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
+             user_principal_name: Optional[pulumi.Input[str]] = None,
              account_enabled: Optional[pulumi.Input[bool]] = None,
              age_group: Optional[pulumi.Input[str]] = None,
              business_phones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -164,61 +164,65 @@ class UserArgs:
              street_address: Optional[pulumi.Input[str]] = None,
              surname: Optional[pulumi.Input[str]] = None,
              usage_location: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'userPrincipalName' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if user_principal_name is None and 'userPrincipalName' in kwargs:
             user_principal_name = kwargs['userPrincipalName']
-        if 'accountEnabled' in kwargs:
+        if user_principal_name is None:
+            raise TypeError("Missing 'user_principal_name' argument")
+        if account_enabled is None and 'accountEnabled' in kwargs:
             account_enabled = kwargs['accountEnabled']
-        if 'ageGroup' in kwargs:
+        if age_group is None and 'ageGroup' in kwargs:
             age_group = kwargs['ageGroup']
-        if 'businessPhones' in kwargs:
+        if business_phones is None and 'businessPhones' in kwargs:
             business_phones = kwargs['businessPhones']
-        if 'companyName' in kwargs:
+        if company_name is None and 'companyName' in kwargs:
             company_name = kwargs['companyName']
-        if 'consentProvidedForMinor' in kwargs:
+        if consent_provided_for_minor is None and 'consentProvidedForMinor' in kwargs:
             consent_provided_for_minor = kwargs['consentProvidedForMinor']
-        if 'costCenter' in kwargs:
+        if cost_center is None and 'costCenter' in kwargs:
             cost_center = kwargs['costCenter']
-        if 'disablePasswordExpiration' in kwargs:
+        if disable_password_expiration is None and 'disablePasswordExpiration' in kwargs:
             disable_password_expiration = kwargs['disablePasswordExpiration']
-        if 'disableStrongPassword' in kwargs:
+        if disable_strong_password is None and 'disableStrongPassword' in kwargs:
             disable_strong_password = kwargs['disableStrongPassword']
-        if 'employeeId' in kwargs:
+        if employee_id is None and 'employeeId' in kwargs:
             employee_id = kwargs['employeeId']
-        if 'employeeType' in kwargs:
+        if employee_type is None and 'employeeType' in kwargs:
             employee_type = kwargs['employeeType']
-        if 'faxNumber' in kwargs:
+        if fax_number is None and 'faxNumber' in kwargs:
             fax_number = kwargs['faxNumber']
-        if 'forcePasswordChange' in kwargs:
+        if force_password_change is None and 'forcePasswordChange' in kwargs:
             force_password_change = kwargs['forcePasswordChange']
-        if 'givenName' in kwargs:
+        if given_name is None and 'givenName' in kwargs:
             given_name = kwargs['givenName']
-        if 'jobTitle' in kwargs:
+        if job_title is None and 'jobTitle' in kwargs:
             job_title = kwargs['jobTitle']
-        if 'mailNickname' in kwargs:
+        if mail_nickname is None and 'mailNickname' in kwargs:
             mail_nickname = kwargs['mailNickname']
-        if 'managerId' in kwargs:
+        if manager_id is None and 'managerId' in kwargs:
             manager_id = kwargs['managerId']
-        if 'mobilePhone' in kwargs:
+        if mobile_phone is None and 'mobilePhone' in kwargs:
             mobile_phone = kwargs['mobilePhone']
-        if 'officeLocation' in kwargs:
+        if office_location is None and 'officeLocation' in kwargs:
             office_location = kwargs['officeLocation']
-        if 'onpremisesImmutableId' in kwargs:
+        if onpremises_immutable_id is None and 'onpremisesImmutableId' in kwargs:
             onpremises_immutable_id = kwargs['onpremisesImmutableId']
-        if 'otherMails' in kwargs:
+        if other_mails is None and 'otherMails' in kwargs:
             other_mails = kwargs['otherMails']
-        if 'postalCode' in kwargs:
+        if postal_code is None and 'postalCode' in kwargs:
             postal_code = kwargs['postalCode']
-        if 'preferredLanguage' in kwargs:
+        if preferred_language is None and 'preferredLanguage' in kwargs:
             preferred_language = kwargs['preferredLanguage']
-        if 'showInAddressList' in kwargs:
+        if show_in_address_list is None and 'showInAddressList' in kwargs:
             show_in_address_list = kwargs['showInAddressList']
-        if 'streetAddress' in kwargs:
+        if street_address is None and 'streetAddress' in kwargs:
             street_address = kwargs['streetAddress']
-        if 'usageLocation' in kwargs:
+        if usage_location is None and 'usageLocation' in kwargs:
             usage_location = kwargs['usageLocation']
 
         _setter("display_name", display_name)
@@ -917,87 +921,87 @@ class _UserState:
              usage_location: Optional[pulumi.Input[str]] = None,
              user_principal_name: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'aboutMe' in kwargs:
+        if about_me is None and 'aboutMe' in kwargs:
             about_me = kwargs['aboutMe']
-        if 'accountEnabled' in kwargs:
+        if account_enabled is None and 'accountEnabled' in kwargs:
             account_enabled = kwargs['accountEnabled']
-        if 'ageGroup' in kwargs:
+        if age_group is None and 'ageGroup' in kwargs:
             age_group = kwargs['ageGroup']
-        if 'businessPhones' in kwargs:
+        if business_phones is None and 'businessPhones' in kwargs:
             business_phones = kwargs['businessPhones']
-        if 'companyName' in kwargs:
+        if company_name is None and 'companyName' in kwargs:
             company_name = kwargs['companyName']
-        if 'consentProvidedForMinor' in kwargs:
+        if consent_provided_for_minor is None and 'consentProvidedForMinor' in kwargs:
             consent_provided_for_minor = kwargs['consentProvidedForMinor']
-        if 'costCenter' in kwargs:
+        if cost_center is None and 'costCenter' in kwargs:
             cost_center = kwargs['costCenter']
-        if 'creationType' in kwargs:
+        if creation_type is None and 'creationType' in kwargs:
             creation_type = kwargs['creationType']
-        if 'disablePasswordExpiration' in kwargs:
+        if disable_password_expiration is None and 'disablePasswordExpiration' in kwargs:
             disable_password_expiration = kwargs['disablePasswordExpiration']
-        if 'disableStrongPassword' in kwargs:
+        if disable_strong_password is None and 'disableStrongPassword' in kwargs:
             disable_strong_password = kwargs['disableStrongPassword']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'employeeId' in kwargs:
+        if employee_id is None and 'employeeId' in kwargs:
             employee_id = kwargs['employeeId']
-        if 'employeeType' in kwargs:
+        if employee_type is None and 'employeeType' in kwargs:
             employee_type = kwargs['employeeType']
-        if 'externalUserState' in kwargs:
+        if external_user_state is None and 'externalUserState' in kwargs:
             external_user_state = kwargs['externalUserState']
-        if 'faxNumber' in kwargs:
+        if fax_number is None and 'faxNumber' in kwargs:
             fax_number = kwargs['faxNumber']
-        if 'forcePasswordChange' in kwargs:
+        if force_password_change is None and 'forcePasswordChange' in kwargs:
             force_password_change = kwargs['forcePasswordChange']
-        if 'givenName' in kwargs:
+        if given_name is None and 'givenName' in kwargs:
             given_name = kwargs['givenName']
-        if 'imAddresses' in kwargs:
+        if im_addresses is None and 'imAddresses' in kwargs:
             im_addresses = kwargs['imAddresses']
-        if 'jobTitle' in kwargs:
+        if job_title is None and 'jobTitle' in kwargs:
             job_title = kwargs['jobTitle']
-        if 'mailNickname' in kwargs:
+        if mail_nickname is None and 'mailNickname' in kwargs:
             mail_nickname = kwargs['mailNickname']
-        if 'managerId' in kwargs:
+        if manager_id is None and 'managerId' in kwargs:
             manager_id = kwargs['managerId']
-        if 'mobilePhone' in kwargs:
+        if mobile_phone is None and 'mobilePhone' in kwargs:
             mobile_phone = kwargs['mobilePhone']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
-        if 'officeLocation' in kwargs:
+        if office_location is None and 'officeLocation' in kwargs:
             office_location = kwargs['officeLocation']
-        if 'onpremisesDistinguishedName' in kwargs:
+        if onpremises_distinguished_name is None and 'onpremisesDistinguishedName' in kwargs:
             onpremises_distinguished_name = kwargs['onpremisesDistinguishedName']
-        if 'onpremisesDomainName' in kwargs:
+        if onpremises_domain_name is None and 'onpremisesDomainName' in kwargs:
             onpremises_domain_name = kwargs['onpremisesDomainName']
-        if 'onpremisesImmutableId' in kwargs:
+        if onpremises_immutable_id is None and 'onpremisesImmutableId' in kwargs:
             onpremises_immutable_id = kwargs['onpremisesImmutableId']
-        if 'onpremisesSamAccountName' in kwargs:
+        if onpremises_sam_account_name is None and 'onpremisesSamAccountName' in kwargs:
             onpremises_sam_account_name = kwargs['onpremisesSamAccountName']
-        if 'onpremisesSecurityIdentifier' in kwargs:
+        if onpremises_security_identifier is None and 'onpremisesSecurityIdentifier' in kwargs:
             onpremises_security_identifier = kwargs['onpremisesSecurityIdentifier']
-        if 'onpremisesSyncEnabled' in kwargs:
+        if onpremises_sync_enabled is None and 'onpremisesSyncEnabled' in kwargs:
             onpremises_sync_enabled = kwargs['onpremisesSyncEnabled']
-        if 'onpremisesUserPrincipalName' in kwargs:
+        if onpremises_user_principal_name is None and 'onpremisesUserPrincipalName' in kwargs:
             onpremises_user_principal_name = kwargs['onpremisesUserPrincipalName']
-        if 'otherMails' in kwargs:
+        if other_mails is None and 'otherMails' in kwargs:
             other_mails = kwargs['otherMails']
-        if 'postalCode' in kwargs:
+        if postal_code is None and 'postalCode' in kwargs:
             postal_code = kwargs['postalCode']
-        if 'preferredLanguage' in kwargs:
+        if preferred_language is None and 'preferredLanguage' in kwargs:
             preferred_language = kwargs['preferredLanguage']
-        if 'proxyAddresses' in kwargs:
+        if proxy_addresses is None and 'proxyAddresses' in kwargs:
             proxy_addresses = kwargs['proxyAddresses']
-        if 'showInAddressList' in kwargs:
+        if show_in_address_list is None and 'showInAddressList' in kwargs:
             show_in_address_list = kwargs['showInAddressList']
-        if 'streetAddress' in kwargs:
+        if street_address is None and 'streetAddress' in kwargs:
             street_address = kwargs['streetAddress']
-        if 'usageLocation' in kwargs:
+        if usage_location is None and 'usageLocation' in kwargs:
             usage_location = kwargs['usageLocation']
-        if 'userPrincipalName' in kwargs:
+        if user_principal_name is None and 'userPrincipalName' in kwargs:
             user_principal_name = kwargs['userPrincipalName']
-        if 'userType' in kwargs:
+        if user_type is None and 'userType' in kwargs:
             user_type = kwargs['userType']
 
         if about_me is not None:
@@ -1727,19 +1731,6 @@ class User(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `User Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.User("example",
-            display_name="J. Doe",
-            mail_nickname="jdoe",
-            password="SecretP@sswd99!",
-            user_principal_name="jdoe@hashicorp.com")
-        ```
-
         ## Import
 
         Users can be imported using their object ID, e.g.
@@ -1803,19 +1794,6 @@ class User(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `User.ReadWrite.All` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `User Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.User("example",
-            display_name="J. Doe",
-            mail_nickname="jdoe",
-            password="SecretP@sswd99!",
-            user_principal_name="jdoe@hashicorp.com")
-        ```
 
         ## Import
 

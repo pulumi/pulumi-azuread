@@ -85,14 +85,6 @@ def get_named_location(display_name: Optional[str] = None,
 
     When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_named_location(display_name="My Named Location")
-    ```
     ## Attributes Reference
 
     The following attributes are exported:
@@ -144,14 +136,6 @@ def get_named_location_output(display_name: Optional[pulumi.Input[str]] = None,
 
     When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_named_location(display_name="My Named Location")
-    ```
     ## Attributes Reference
 
     The following attributes are exported:

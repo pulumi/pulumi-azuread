@@ -93,29 +93,29 @@ class ServicePrincipalArgs:
              saml_single_sign_on: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              use_existing: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountEnabled' in kwargs:
+        if account_enabled is None and 'accountEnabled' in kwargs:
             account_enabled = kwargs['accountEnabled']
-        if 'alternativeNames' in kwargs:
+        if alternative_names is None and 'alternativeNames' in kwargs:
             alternative_names = kwargs['alternativeNames']
-        if 'appRoleAssignmentRequired' in kwargs:
+        if app_role_assignment_required is None and 'appRoleAssignmentRequired' in kwargs:
             app_role_assignment_required = kwargs['appRoleAssignmentRequired']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'featureTags' in kwargs:
+        if feature_tags is None and 'featureTags' in kwargs:
             feature_tags = kwargs['featureTags']
-        if 'loginUrl' in kwargs:
+        if login_url is None and 'loginUrl' in kwargs:
             login_url = kwargs['loginUrl']
-        if 'notificationEmailAddresses' in kwargs:
+        if notification_email_addresses is None and 'notificationEmailAddresses' in kwargs:
             notification_email_addresses = kwargs['notificationEmailAddresses']
-        if 'preferredSingleSignOnMode' in kwargs:
+        if preferred_single_sign_on_mode is None and 'preferredSingleSignOnMode' in kwargs:
             preferred_single_sign_on_mode = kwargs['preferredSingleSignOnMode']
-        if 'samlSingleSignOn' in kwargs:
+        if saml_single_sign_on is None and 'samlSingleSignOn' in kwargs:
             saml_single_sign_on = kwargs['samlSingleSignOn']
-        if 'useExisting' in kwargs:
+        if use_existing is None and 'useExisting' in kwargs:
             use_existing = kwargs['useExisting']
 
         if account_enabled is not None:
@@ -496,55 +496,55 @@ class _ServicePrincipalState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              use_existing: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountEnabled' in kwargs:
+        if account_enabled is None and 'accountEnabled' in kwargs:
             account_enabled = kwargs['accountEnabled']
-        if 'alternativeNames' in kwargs:
+        if alternative_names is None and 'alternativeNames' in kwargs:
             alternative_names = kwargs['alternativeNames']
-        if 'appRoleAssignmentRequired' in kwargs:
+        if app_role_assignment_required is None and 'appRoleAssignmentRequired' in kwargs:
             app_role_assignment_required = kwargs['appRoleAssignmentRequired']
-        if 'appRoleIds' in kwargs:
+        if app_role_ids is None and 'appRoleIds' in kwargs:
             app_role_ids = kwargs['appRoleIds']
-        if 'appRoles' in kwargs:
+        if app_roles is None and 'appRoles' in kwargs:
             app_roles = kwargs['appRoles']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationTenantId' in kwargs:
+        if application_tenant_id is None and 'applicationTenantId' in kwargs:
             application_tenant_id = kwargs['applicationTenantId']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'featureTags' in kwargs:
+        if feature_tags is None and 'featureTags' in kwargs:
             feature_tags = kwargs['featureTags']
-        if 'homepageUrl' in kwargs:
+        if homepage_url is None and 'homepageUrl' in kwargs:
             homepage_url = kwargs['homepageUrl']
-        if 'loginUrl' in kwargs:
+        if login_url is None and 'loginUrl' in kwargs:
             login_url = kwargs['loginUrl']
-        if 'logoutUrl' in kwargs:
+        if logout_url is None and 'logoutUrl' in kwargs:
             logout_url = kwargs['logoutUrl']
-        if 'notificationEmailAddresses' in kwargs:
+        if notification_email_addresses is None and 'notificationEmailAddresses' in kwargs:
             notification_email_addresses = kwargs['notificationEmailAddresses']
-        if 'oauth2PermissionScopeIds' in kwargs:
+        if oauth2_permission_scope_ids is None and 'oauth2PermissionScopeIds' in kwargs:
             oauth2_permission_scope_ids = kwargs['oauth2PermissionScopeIds']
-        if 'oauth2PermissionScopes' in kwargs:
+        if oauth2_permission_scopes is None and 'oauth2PermissionScopes' in kwargs:
             oauth2_permission_scopes = kwargs['oauth2PermissionScopes']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
-        if 'preferredSingleSignOnMode' in kwargs:
+        if preferred_single_sign_on_mode is None and 'preferredSingleSignOnMode' in kwargs:
             preferred_single_sign_on_mode = kwargs['preferredSingleSignOnMode']
-        if 'redirectUris' in kwargs:
+        if redirect_uris is None and 'redirectUris' in kwargs:
             redirect_uris = kwargs['redirectUris']
-        if 'samlMetadataUrl' in kwargs:
+        if saml_metadata_url is None and 'samlMetadataUrl' in kwargs:
             saml_metadata_url = kwargs['samlMetadataUrl']
-        if 'samlSingleSignOn' in kwargs:
+        if saml_single_sign_on is None and 'samlSingleSignOn' in kwargs:
             saml_single_sign_on = kwargs['samlSingleSignOn']
-        if 'servicePrincipalNames' in kwargs:
+        if service_principal_names is None and 'servicePrincipalNames' in kwargs:
             service_principal_names = kwargs['servicePrincipalNames']
-        if 'signInAudience' in kwargs:
+        if sign_in_audience is None and 'signInAudience' in kwargs:
             sign_in_audience = kwargs['signInAudience']
-        if 'useExisting' in kwargs:
+        if use_existing is None and 'useExisting' in kwargs:
             use_existing = kwargs['useExisting']
 
         if account_enabled is not None:
@@ -1008,71 +1008,6 @@ class ServicePrincipal(pulumi.CustomResource):
                  use_existing: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        *Create a service principal for an application*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example_application = azuread.Application("exampleApplication",
-            display_name="example",
-            owners=[current.object_id])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            application_id=example_application.application_id,
-            app_role_assignment_required=False,
-            owners=[current.object_id])
-        ```
-
-        *Create a service principal for an enterprise application*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example_application = azuread.Application("exampleApplication",
-            display_name="example",
-            owners=[current.object_id])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            application_id=example_application.application_id,
-            app_role_assignment_required=False,
-            owners=[current.object_id],
-            feature_tags=[azuread.ServicePrincipalFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )])
-        ```
-
-        *Manage a service principal for a first-party Microsoft application*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        well_known = azuread.get_application_published_app_ids()
-        msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["MicrosoftGraph"],
-            use_existing=True)
-        ```
-
-        *Create a service principal for an application created from a gallery template*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application = azuread.Application("exampleApplication",
-            display_name="example",
-            template_id=example_application_template.template_id)
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            application_id=example_application.application_id,
-            use_existing=True)
-        ```
-
         ## Import
 
         Service principals can be imported using their object ID, e.g.
@@ -1111,71 +1046,6 @@ class ServicePrincipal(pulumi.CustomResource):
                  args: Optional[ServicePrincipalArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        *Create a service principal for an application*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example_application = azuread.Application("exampleApplication",
-            display_name="example",
-            owners=[current.object_id])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            application_id=example_application.application_id,
-            app_role_assignment_required=False,
-            owners=[current.object_id])
-        ```
-
-        *Create a service principal for an enterprise application*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example_application = azuread.Application("exampleApplication",
-            display_name="example",
-            owners=[current.object_id])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            application_id=example_application.application_id,
-            app_role_assignment_required=False,
-            owners=[current.object_id],
-            feature_tags=[azuread.ServicePrincipalFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )])
-        ```
-
-        *Manage a service principal for a first-party Microsoft application*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        well_known = azuread.get_application_published_app_ids()
-        msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["MicrosoftGraph"],
-            use_existing=True)
-        ```
-
-        *Create a service principal for an application created from a gallery template*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application = azuread.Application("exampleApplication",
-            display_name="example",
-            template_id=example_application_template.template_id)
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            application_id=example_application.application_id,
-            use_existing=True)
-        ```
-
         ## Import
 
         Service principals can be imported using their object ID, e.g.
@@ -1241,11 +1111,7 @@ class ServicePrincipal(pulumi.CustomResource):
             __props__.__dict__["notification_email_addresses"] = notification_email_addresses
             __props__.__dict__["owners"] = owners
             __props__.__dict__["preferred_single_sign_on_mode"] = preferred_single_sign_on_mode
-            if saml_single_sign_on is not None and not isinstance(saml_single_sign_on, ServicePrincipalSamlSingleSignOnArgs):
-                saml_single_sign_on = saml_single_sign_on or {}
-                def _setter(key, value):
-                    saml_single_sign_on[key] = value
-                ServicePrincipalSamlSingleSignOnArgs._configure(_setter, **saml_single_sign_on)
+            saml_single_sign_on = _utilities.configure(saml_single_sign_on, ServicePrincipalSamlSingleSignOnArgs, True)
             __props__.__dict__["saml_single_sign_on"] = saml_single_sign_on
             __props__.__dict__["tags"] = tags
             __props__.__dict__["use_existing"] = use_existing

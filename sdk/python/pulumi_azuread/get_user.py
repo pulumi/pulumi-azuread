@@ -577,15 +577,6 @@ def get_user(employee_id: Optional[str] = None,
 
     When authenticated with a user principal, this data source does not require any additional roles.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_user(user_principal_name="user@hashicorp.com")
-    ```
-
 
     :param str employee_id: The employee identifier assigned to the user by the organisation.
     :param str mail: The SMTP address for the user.
@@ -668,15 +659,6 @@ def get_user_output(employee_id: Optional[pulumi.Input[Optional[str]]] = None,
     When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
 
     When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_user(user_principal_name="user@hashicorp.com")
-    ```
 
 
     :param str employee_id: The employee identifier assigned to the user by the organisation.

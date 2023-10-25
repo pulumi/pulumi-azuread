@@ -44,20 +44,28 @@ class ApplicationFederatedIdentityCredentialArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             audiences: pulumi.Input[Sequence[pulumi.Input[str]]],
-             display_name: pulumi.Input[str],
-             issuer: pulumi.Input[str],
-             subject: pulumi.Input[str],
+             audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             issuer: Optional[pulumi.Input[str]] = None,
+             subject: Optional[pulumi.Input[str]] = None,
              application_id: Optional[pulumi.Input[str]] = None,
              application_object_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if audiences is None:
+            raise TypeError("Missing 'audiences' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'applicationId' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+        if subject is None:
+            raise TypeError("Missing 'subject' argument")
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationObjectId' in kwargs:
+        if application_object_id is None and 'applicationObjectId' in kwargs:
             application_object_id = kwargs['applicationObjectId']
 
         _setter("audiences", audiences)
@@ -206,15 +214,15 @@ class _ApplicationFederatedIdentityCredentialState:
              display_name: Optional[pulumi.Input[str]] = None,
              issuer: Optional[pulumi.Input[str]] = None,
              subject: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationObjectId' in kwargs:
+        if application_object_id is None and 'applicationObjectId' in kwargs:
             application_object_id = kwargs['applicationObjectId']
-        if 'credentialId' in kwargs:
+        if credential_id is None and 'credentialId' in kwargs:
             credential_id = kwargs['credentialId']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
 
         if application_id is not None:
@@ -351,22 +359,6 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
                  subject: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential",
-            application_id=example_application_registration.id,
-            display_name="my-repo-deploy",
-            description="Deployments for my-repo",
-            audiences=["api://AzureADTokenExchange"],
-            issuer="https://token.actions.githubusercontent.com",
-            subject="repo:my-organization/my-repo:environment:prod")
-        ```
-
         ## Import
 
         Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
@@ -394,22 +386,6 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
                  args: ApplicationFederatedIdentityCredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential",
-            application_id=example_application_registration.id,
-            display_name="my-repo-deploy",
-            description="Deployments for my-repo",
-            audiences=["api://AzureADTokenExchange"],
-            issuer="https://token.actions.githubusercontent.com",
-            subject="repo:my-organization/my-repo:environment:prod")
-        ```
-
         ## Import
 
         Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.

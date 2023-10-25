@@ -19,38 +19,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = new azuread.CustomDirectoryRole("example", {
- *     description: "Allows reading applications and updating groups",
- *     displayName: "My Custom Role",
- *     enabled: true,
- *     permissions: [
- *         {
- *             allowedResourceActions: [
- *                 "microsoft.directory/applications/basic/update",
- *                 "microsoft.directory/applications/create",
- *                 "microsoft.directory/applications/standard/read",
- *             ],
- *         },
- *         {
- *             allowedResourceActions: [
- *                 "microsoft.directory/groups/allProperties/read",
- *                 "microsoft.directory/groups/allProperties/read",
- *                 "microsoft.directory/groups/basic/update",
- *                 "microsoft.directory/groups/create",
- *                 "microsoft.directory/groups/delete",
- *             ],
- *         },
- *     ],
- *     version: "1.0",
- * });
- * ```
- *
  * ## Import
  *
  * This resource does not support importing.

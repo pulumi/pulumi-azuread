@@ -20,42 +20,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
-    ///     {
-    ///         UserPrincipalName = "jdoe@hashicorp.com",
-    ///     });
-    /// 
-    ///     var exampleAccessPackageCatalogRole = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
-    ///     {
-    ///         DisplayName = "Catalog owner",
-    ///     });
-    /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
-    ///     {
-    ///         DisplayName = "example-access-package-catalog",
-    ///         Description = "Example access package catalog",
-    ///     });
-    /// 
-    ///     var exampleAccessPackageCatalogRoleAssignment = new AzureAD.AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment", new()
-    ///     {
-    ///         RoleId = exampleAccessPackageCatalogRole.Apply(getAccessPackageCatalogRoleResult =&gt; getAccessPackageCatalogRoleResult.ObjectId),
-    ///         PrincipalObjectId = exampleUser.Apply(getUserResult =&gt; getUserResult.ObjectId),
-    ///         CatalogId = exampleAccessPackageCatalog.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Catalog role assignments can be imported using the ID of the assignment, e.g.

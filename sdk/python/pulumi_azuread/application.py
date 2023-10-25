@@ -116,7 +116,7 @@ class ApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              api: Optional[pulumi.Input['ApplicationApiArgs']] = None,
              app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -143,49 +143,51 @@ class ApplicationArgs:
              template_id: Optional[pulumi.Input[str]] = None,
              terms_of_service_url: Optional[pulumi.Input[str]] = None,
              web: Optional[pulumi.Input['ApplicationWebArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'appRoles' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if app_roles is None and 'appRoles' in kwargs:
             app_roles = kwargs['appRoles']
-        if 'deviceOnlyAuthEnabled' in kwargs:
+        if device_only_auth_enabled is None and 'deviceOnlyAuthEnabled' in kwargs:
             device_only_auth_enabled = kwargs['deviceOnlyAuthEnabled']
-        if 'fallbackPublicClientEnabled' in kwargs:
+        if fallback_public_client_enabled is None and 'fallbackPublicClientEnabled' in kwargs:
             fallback_public_client_enabled = kwargs['fallbackPublicClientEnabled']
-        if 'featureTags' in kwargs:
+        if feature_tags is None and 'featureTags' in kwargs:
             feature_tags = kwargs['featureTags']
-        if 'groupMembershipClaims' in kwargs:
+        if group_membership_claims is None and 'groupMembershipClaims' in kwargs:
             group_membership_claims = kwargs['groupMembershipClaims']
-        if 'identifierUris' in kwargs:
+        if identifier_uris is None and 'identifierUris' in kwargs:
             identifier_uris = kwargs['identifierUris']
-        if 'logoImage' in kwargs:
+        if logo_image is None and 'logoImage' in kwargs:
             logo_image = kwargs['logoImage']
-        if 'marketingUrl' in kwargs:
+        if marketing_url is None and 'marketingUrl' in kwargs:
             marketing_url = kwargs['marketingUrl']
-        if 'oauth2PostResponseRequired' in kwargs:
+        if oauth2_post_response_required is None and 'oauth2PostResponseRequired' in kwargs:
             oauth2_post_response_required = kwargs['oauth2PostResponseRequired']
-        if 'optionalClaims' in kwargs:
+        if optional_claims is None and 'optionalClaims' in kwargs:
             optional_claims = kwargs['optionalClaims']
-        if 'preventDuplicateNames' in kwargs:
+        if prevent_duplicate_names is None and 'preventDuplicateNames' in kwargs:
             prevent_duplicate_names = kwargs['preventDuplicateNames']
-        if 'privacyStatementUrl' in kwargs:
+        if privacy_statement_url is None and 'privacyStatementUrl' in kwargs:
             privacy_statement_url = kwargs['privacyStatementUrl']
-        if 'publicClient' in kwargs:
+        if public_client is None and 'publicClient' in kwargs:
             public_client = kwargs['publicClient']
-        if 'requiredResourceAccesses' in kwargs:
+        if required_resource_accesses is None and 'requiredResourceAccesses' in kwargs:
             required_resource_accesses = kwargs['requiredResourceAccesses']
-        if 'serviceManagementReference' in kwargs:
+        if service_management_reference is None and 'serviceManagementReference' in kwargs:
             service_management_reference = kwargs['serviceManagementReference']
-        if 'signInAudience' in kwargs:
+        if sign_in_audience is None and 'signInAudience' in kwargs:
             sign_in_audience = kwargs['signInAudience']
-        if 'singlePageApplication' in kwargs:
+        if single_page_application is None and 'singlePageApplication' in kwargs:
             single_page_application = kwargs['singlePageApplication']
-        if 'supportUrl' in kwargs:
+        if support_url is None and 'supportUrl' in kwargs:
             support_url = kwargs['supportUrl']
-        if 'templateId' in kwargs:
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
-        if 'termsOfServiceUrl' in kwargs:
+        if terms_of_service_url is None and 'termsOfServiceUrl' in kwargs:
             terms_of_service_url = kwargs['termsOfServiceUrl']
 
         _setter("display_name", display_name)
@@ -739,65 +741,65 @@ class _ApplicationState:
              template_id: Optional[pulumi.Input[str]] = None,
              terms_of_service_url: Optional[pulumi.Input[str]] = None,
              web: Optional[pulumi.Input['ApplicationWebArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'appRoleIds' in kwargs:
+        if app_role_ids is None and 'appRoleIds' in kwargs:
             app_role_ids = kwargs['appRoleIds']
-        if 'appRoles' in kwargs:
+        if app_roles is None and 'appRoles' in kwargs:
             app_roles = kwargs['appRoles']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'deviceOnlyAuthEnabled' in kwargs:
+        if device_only_auth_enabled is None and 'deviceOnlyAuthEnabled' in kwargs:
             device_only_auth_enabled = kwargs['deviceOnlyAuthEnabled']
-        if 'disabledByMicrosoft' in kwargs:
+        if disabled_by_microsoft is None and 'disabledByMicrosoft' in kwargs:
             disabled_by_microsoft = kwargs['disabledByMicrosoft']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'fallbackPublicClientEnabled' in kwargs:
+        if fallback_public_client_enabled is None and 'fallbackPublicClientEnabled' in kwargs:
             fallback_public_client_enabled = kwargs['fallbackPublicClientEnabled']
-        if 'featureTags' in kwargs:
+        if feature_tags is None and 'featureTags' in kwargs:
             feature_tags = kwargs['featureTags']
-        if 'groupMembershipClaims' in kwargs:
+        if group_membership_claims is None and 'groupMembershipClaims' in kwargs:
             group_membership_claims = kwargs['groupMembershipClaims']
-        if 'identifierUris' in kwargs:
+        if identifier_uris is None and 'identifierUris' in kwargs:
             identifier_uris = kwargs['identifierUris']
-        if 'logoImage' in kwargs:
+        if logo_image is None and 'logoImage' in kwargs:
             logo_image = kwargs['logoImage']
-        if 'logoUrl' in kwargs:
+        if logo_url is None and 'logoUrl' in kwargs:
             logo_url = kwargs['logoUrl']
-        if 'marketingUrl' in kwargs:
+        if marketing_url is None and 'marketingUrl' in kwargs:
             marketing_url = kwargs['marketingUrl']
-        if 'oauth2PermissionScopeIds' in kwargs:
+        if oauth2_permission_scope_ids is None and 'oauth2PermissionScopeIds' in kwargs:
             oauth2_permission_scope_ids = kwargs['oauth2PermissionScopeIds']
-        if 'oauth2PostResponseRequired' in kwargs:
+        if oauth2_post_response_required is None and 'oauth2PostResponseRequired' in kwargs:
             oauth2_post_response_required = kwargs['oauth2PostResponseRequired']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
-        if 'optionalClaims' in kwargs:
+        if optional_claims is None and 'optionalClaims' in kwargs:
             optional_claims = kwargs['optionalClaims']
-        if 'preventDuplicateNames' in kwargs:
+        if prevent_duplicate_names is None and 'preventDuplicateNames' in kwargs:
             prevent_duplicate_names = kwargs['preventDuplicateNames']
-        if 'privacyStatementUrl' in kwargs:
+        if privacy_statement_url is None and 'privacyStatementUrl' in kwargs:
             privacy_statement_url = kwargs['privacyStatementUrl']
-        if 'publicClient' in kwargs:
+        if public_client is None and 'publicClient' in kwargs:
             public_client = kwargs['publicClient']
-        if 'publisherDomain' in kwargs:
+        if publisher_domain is None and 'publisherDomain' in kwargs:
             publisher_domain = kwargs['publisherDomain']
-        if 'requiredResourceAccesses' in kwargs:
+        if required_resource_accesses is None and 'requiredResourceAccesses' in kwargs:
             required_resource_accesses = kwargs['requiredResourceAccesses']
-        if 'serviceManagementReference' in kwargs:
+        if service_management_reference is None and 'serviceManagementReference' in kwargs:
             service_management_reference = kwargs['serviceManagementReference']
-        if 'signInAudience' in kwargs:
+        if sign_in_audience is None and 'signInAudience' in kwargs:
             sign_in_audience = kwargs['signInAudience']
-        if 'singlePageApplication' in kwargs:
+        if single_page_application is None and 'singlePageApplication' in kwargs:
             single_page_application = kwargs['singlePageApplication']
-        if 'supportUrl' in kwargs:
+        if support_url is None and 'supportUrl' in kwargs:
             support_url = kwargs['supportUrl']
-        if 'templateId' in kwargs:
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
-        if 'termsOfServiceUrl' in kwargs:
+        if terms_of_service_url is None and 'termsOfServiceUrl' in kwargs:
             terms_of_service_url = kwargs['termsOfServiceUrl']
 
         if api is not None:
@@ -1342,142 +1344,6 @@ class Application(pulumi.CustomResource):
                  web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        *Create an application*
-
-        ```python
-        import pulumi
-        import base64
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.Application("example",
-            display_name="example",
-            identifier_uris=["api://example-app"],
-            logo_image=(lambda path: base64.b64encode(open(path).read().encode()).decode())("/path/to/logo.png"),
-            owners=[current.object_id],
-            sign_in_audience="AzureADMultipleOrgs",
-            api=azuread.ApplicationApiArgs(
-                mapped_claims_enabled=True,
-                requested_access_token_version=2,
-                known_client_applications=[
-                    azuread_application["known1"]["application_id"],
-                    azuread_application["known2"]["application_id"],
-                ],
-                oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Allow the application to access example on behalf of the signed-in user.",
-                        admin_consent_display_name="Access example",
-                        enabled=True,
-                        id="96183846-204b-4b43-82e1-5d2222eb4b9b",
-                        type="User",
-                        user_consent_description="Allow the application to access example on your behalf.",
-                        user_consent_display_name="Access example",
-                        value="user_impersonation",
-                    ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Administer the example application",
-                        admin_consent_display_name="Administer",
-                        enabled=True,
-                        id="be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
-                        type="Admin",
-                        value="administer",
-                    ),
-                ],
-            ),
-            app_roles=[
-                azuread.ApplicationAppRoleArgs(
-                    allowed_member_types=[
-                        "User",
-                        "Application",
-                    ],
-                    description="Admins can manage roles and perform all task actions",
-                    display_name="Admin",
-                    enabled=True,
-                    id="1b19509b-32b1-4e9f-b71d-4992aa991967",
-                    value="admin",
-                ),
-                azuread.ApplicationAppRoleArgs(
-                    allowed_member_types=["User"],
-                    description="ReadOnly roles have limited query access",
-                    display_name="ReadOnly",
-                    enabled=True,
-                    id="497406e4-012a-4267-bf18-45a1cb148a01",
-                    value="User",
-                ),
-            ],
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )],
-            optional_claims=azuread.ApplicationOptionalClaimsArgs(
-                access_tokens=[
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="myclaim",
-                    ),
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="otherclaim",
-                    ),
-                ],
-                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
-                    name="userclaim",
-                    source="user",
-                    essential=True,
-                    additional_properties=["emit_as_roles"],
-                )],
-                saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
-                    name="samlexample",
-                )],
-            ),
-            required_resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="00000003-0000-0000-c000-000000000000",
-                    resource_accesses=[
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="df021288-bdef-4463-88db-98f22de89214",
-                            type="Role",
-                        ),
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="b4e74841-8e56-480b-be8b-910348b18b4c",
-                            type="Scope",
-                        ),
-                    ],
-                ),
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="c5393580-f805-4401-95e8-94b7a6ef2fc2",
-                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id="594c1fb6-4f81-4475-ae41-0c394909246c",
-                        type="Role",
-                    )],
-                ),
-            ],
-            web=azuread.ApplicationWebArgs(
-                homepage_url="https://app.example.net",
-                logout_url="https://app.example.net/logout",
-                redirect_uris=["https://app.example.net/account"],
-                implicit_grant=azuread.ApplicationWebImplicitGrantArgs(
-                    access_token_issuance_enabled=True,
-                    id_token_issuance_enabled=True,
-                ),
-            ))
-        ```
-
-        *Create application from a gallery template*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application = azuread.Application("exampleApplication",
-            display_name="example",
-            template_id=example_application_template.template_id)
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            application_id=example_application.application_id,
-            use_existing=True)
-        ```
-
         ## Import
 
         Applications can be imported using their object ID, e.g.
@@ -1533,142 +1399,6 @@ class Application(pulumi.CustomResource):
                  args: ApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        *Create an application*
-
-        ```python
-        import pulumi
-        import base64
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.Application("example",
-            display_name="example",
-            identifier_uris=["api://example-app"],
-            logo_image=(lambda path: base64.b64encode(open(path).read().encode()).decode())("/path/to/logo.png"),
-            owners=[current.object_id],
-            sign_in_audience="AzureADMultipleOrgs",
-            api=azuread.ApplicationApiArgs(
-                mapped_claims_enabled=True,
-                requested_access_token_version=2,
-                known_client_applications=[
-                    azuread_application["known1"]["application_id"],
-                    azuread_application["known2"]["application_id"],
-                ],
-                oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Allow the application to access example on behalf of the signed-in user.",
-                        admin_consent_display_name="Access example",
-                        enabled=True,
-                        id="96183846-204b-4b43-82e1-5d2222eb4b9b",
-                        type="User",
-                        user_consent_description="Allow the application to access example on your behalf.",
-                        user_consent_display_name="Access example",
-                        value="user_impersonation",
-                    ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Administer the example application",
-                        admin_consent_display_name="Administer",
-                        enabled=True,
-                        id="be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
-                        type="Admin",
-                        value="administer",
-                    ),
-                ],
-            ),
-            app_roles=[
-                azuread.ApplicationAppRoleArgs(
-                    allowed_member_types=[
-                        "User",
-                        "Application",
-                    ],
-                    description="Admins can manage roles and perform all task actions",
-                    display_name="Admin",
-                    enabled=True,
-                    id="1b19509b-32b1-4e9f-b71d-4992aa991967",
-                    value="admin",
-                ),
-                azuread.ApplicationAppRoleArgs(
-                    allowed_member_types=["User"],
-                    description="ReadOnly roles have limited query access",
-                    display_name="ReadOnly",
-                    enabled=True,
-                    id="497406e4-012a-4267-bf18-45a1cb148a01",
-                    value="User",
-                ),
-            ],
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )],
-            optional_claims=azuread.ApplicationOptionalClaimsArgs(
-                access_tokens=[
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="myclaim",
-                    ),
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="otherclaim",
-                    ),
-                ],
-                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
-                    name="userclaim",
-                    source="user",
-                    essential=True,
-                    additional_properties=["emit_as_roles"],
-                )],
-                saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
-                    name="samlexample",
-                )],
-            ),
-            required_resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="00000003-0000-0000-c000-000000000000",
-                    resource_accesses=[
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="df021288-bdef-4463-88db-98f22de89214",
-                            type="Role",
-                        ),
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="b4e74841-8e56-480b-be8b-910348b18b4c",
-                            type="Scope",
-                        ),
-                    ],
-                ),
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="c5393580-f805-4401-95e8-94b7a6ef2fc2",
-                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id="594c1fb6-4f81-4475-ae41-0c394909246c",
-                        type="Role",
-                    )],
-                ),
-            ],
-            web=azuread.ApplicationWebArgs(
-                homepage_url="https://app.example.net",
-                logout_url="https://app.example.net/logout",
-                redirect_uris=["https://app.example.net/account"],
-                implicit_grant=azuread.ApplicationWebImplicitGrantArgs(
-                    access_token_issuance_enabled=True,
-                    id_token_issuance_enabled=True,
-                ),
-            ))
-        ```
-
-        *Create application from a gallery template*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application = azuread.Application("exampleApplication",
-            display_name="example",
-            template_id=example_application_template.template_id)
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            application_id=example_application.application_id,
-            use_existing=True)
-        ```
-
         ## Import
 
         Applications can be imported using their object ID, e.g.
@@ -1732,11 +1462,7 @@ class Application(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApplicationArgs.__new__(ApplicationArgs)
 
-            if api is not None and not isinstance(api, ApplicationApiArgs):
-                api = api or {}
-                def _setter(key, value):
-                    api[key] = value
-                ApplicationApiArgs._configure(_setter, **api)
+            api = _utilities.configure(api, ApplicationApiArgs, True)
             __props__.__dict__["api"] = api
             __props__.__dict__["app_roles"] = app_roles
             __props__.__dict__["description"] = description
@@ -1752,39 +1478,23 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["marketing_url"] = marketing_url
             __props__.__dict__["notes"] = notes
             __props__.__dict__["oauth2_post_response_required"] = oauth2_post_response_required
-            if optional_claims is not None and not isinstance(optional_claims, ApplicationOptionalClaimsArgs):
-                optional_claims = optional_claims or {}
-                def _setter(key, value):
-                    optional_claims[key] = value
-                ApplicationOptionalClaimsArgs._configure(_setter, **optional_claims)
+            optional_claims = _utilities.configure(optional_claims, ApplicationOptionalClaimsArgs, True)
             __props__.__dict__["optional_claims"] = optional_claims
             __props__.__dict__["owners"] = owners
             __props__.__dict__["prevent_duplicate_names"] = prevent_duplicate_names
             __props__.__dict__["privacy_statement_url"] = privacy_statement_url
-            if public_client is not None and not isinstance(public_client, ApplicationPublicClientArgs):
-                public_client = public_client or {}
-                def _setter(key, value):
-                    public_client[key] = value
-                ApplicationPublicClientArgs._configure(_setter, **public_client)
+            public_client = _utilities.configure(public_client, ApplicationPublicClientArgs, True)
             __props__.__dict__["public_client"] = public_client
             __props__.__dict__["required_resource_accesses"] = required_resource_accesses
             __props__.__dict__["service_management_reference"] = service_management_reference
             __props__.__dict__["sign_in_audience"] = sign_in_audience
-            if single_page_application is not None and not isinstance(single_page_application, ApplicationSinglePageApplicationArgs):
-                single_page_application = single_page_application or {}
-                def _setter(key, value):
-                    single_page_application[key] = value
-                ApplicationSinglePageApplicationArgs._configure(_setter, **single_page_application)
+            single_page_application = _utilities.configure(single_page_application, ApplicationSinglePageApplicationArgs, True)
             __props__.__dict__["single_page_application"] = single_page_application
             __props__.__dict__["support_url"] = support_url
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template_id"] = template_id
             __props__.__dict__["terms_of_service_url"] = terms_of_service_url
-            if web is not None and not isinstance(web, ApplicationWebArgs):
-                web = web or {}
-                def _setter(key, value):
-                    web[key] = value
-                ApplicationWebArgs._configure(_setter, **web)
+            web = _utilities.configure(web, ApplicationWebArgs, True)
             __props__.__dict__["web"] = web
             __props__.__dict__["app_role_ids"] = None
             __props__.__dict__["application_id"] = None

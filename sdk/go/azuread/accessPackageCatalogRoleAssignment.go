@@ -23,53 +23,6 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
-//				UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleAccessPackageCatalogRole, err := azuread.GetAccessPackageCatalogRole(ctx, &azuread.GetAccessPackageCatalogRoleArgs{
-//				DisplayName: pulumi.StringRef("Catalog owner"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
-//				DisplayName: pulumi.String("example-access-package-catalog"),
-//				Description: pulumi.String("Example access package catalog"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAccessPackageCatalogRoleAssignment(ctx, "exampleAccessPackageCatalogRoleAssignment", &azuread.AccessPackageCatalogRoleAssignmentArgs{
-//				RoleId:            *pulumi.String(exampleAccessPackageCatalogRole.ObjectId),
-//				PrincipalObjectId: *pulumi.String(exampleUser.ObjectId),
-//				CatalogId:         exampleAccessPackageCatalog.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Catalog role assignments can be imported using the ID of the assignment, e.g.
