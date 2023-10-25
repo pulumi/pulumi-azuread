@@ -389,6 +389,34 @@ class ApplicationPassword(pulumi.CustomResource):
                  start_date: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword", application_id=example_application_registration.id)
+        ```
+
+        *Time-based rotation*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumiverse_time as time
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_rotating = time.Rotating("exampleRotating", rotation_days=7)
+        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword",
+            application_id=example_application_registration.id,
+            rotate_when_changed={
+                "rotation": example_rotating.id,
+            })
+        ```
+
         ## Import
 
         This resource does not support importing.
@@ -410,6 +438,34 @@ class ApplicationPassword(pulumi.CustomResource):
                  args: Optional[ApplicationPasswordArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword", application_id=example_application_registration.id)
+        ```
+
+        *Time-based rotation*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumiverse_time as time
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_rotating = time.Rotating("exampleRotating", rotation_days=7)
+        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword",
+            application_id=example_application_registration.id,
+            rotate_when_changed={
+                "rotation": example_rotating.id,
+            })
+        ```
+
         ## Import
 
         This resource does not support importing.

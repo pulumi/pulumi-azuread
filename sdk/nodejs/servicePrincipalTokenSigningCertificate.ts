@@ -5,6 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * *Using default settings*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
+ * const exampleServicePrincipalTokenSigningCertificate = new azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", {servicePrincipalId: exampleServicePrincipal.id});
+ * ```
+ *
+ * *Using custom settings*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
+ * const exampleServicePrincipalTokenSigningCertificate = new azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", {
+ *     servicePrincipalId: exampleServicePrincipal.id,
+ *     displayName: "CN=example.com",
+ *     endDate: "2023-05-01T01:02:03Z",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Token signing certificates can be imported using the object ID of the associated service principal and the key ID of the verify certificate credential, e.g.

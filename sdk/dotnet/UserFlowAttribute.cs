@@ -18,6 +18,28 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`
     /// 
+    /// ## Example Usage
+    /// 
+    /// *Basic example*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.UserFlowAttribute("example", new()
+    ///     {
+    ///         DataType = "string",
+    ///         Description = "Your hobby",
+    ///         DisplayName = "Hobby",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// User flow attributes can be imported using the `id`, e.g.

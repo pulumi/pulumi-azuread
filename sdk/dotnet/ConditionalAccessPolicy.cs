@@ -23,6 +23,221 @@ namespace Pulumi.AzureAD
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
     /// 
     /// ## Example Usage
+    /// ### All users except guests or external users
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.ConditionalAccessPolicy("example", new()
+    ///     {
+    ///         Conditions = new AzureAD.Inputs.ConditionalAccessPolicyConditionsArgs
+    ///         {
+    ///             Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs
+    ///             {
+    ///                 ExcludedApplications = new() { },
+    ///                 IncludedApplications = new[]
+    ///                 {
+    ///                     "All",
+    ///                 },
+    ///             },
+    ///             ClientAppTypes = new[]
+    ///             {
+    ///                 "all",
+    ///             },
+    ///             Devices = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesArgs
+    ///             {
+    ///                 Filter = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesFilterArgs
+    ///                 {
+    ///                     Mode = "exclude",
+    ///                     Rule = "device.operatingSystem eq \"Doors\"",
+    ///                 },
+    ///             },
+    ///             Locations = new AzureAD.Inputs.ConditionalAccessPolicyConditionsLocationsArgs
+    ///             {
+    ///                 ExcludedLocations = new[]
+    ///                 {
+    ///                     "AllTrusted",
+    ///                 },
+    ///                 IncludedLocations = new[]
+    ///                 {
+    ///                     "All",
+    ///                 },
+    ///             },
+    ///             Platforms = new AzureAD.Inputs.ConditionalAccessPolicyConditionsPlatformsArgs
+    ///             {
+    ///                 ExcludedPlatforms = new[]
+    ///                 {
+    ///                     "iOS",
+    ///                 },
+    ///                 IncludedPlatforms = new[]
+    ///                 {
+    ///                     "android",
+    ///                 },
+    ///             },
+    ///             SignInRiskLevels = new[]
+    ///             {
+    ///                 "medium",
+    ///             },
+    ///             UserRiskLevels = new[]
+    ///             {
+    ///                 "medium",
+    ///             },
+    ///             Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs
+    ///             {
+    ///                 ExcludedUsers = new[]
+    ///                 {
+    ///                     "GuestsOrExternalUsers",
+    ///                 },
+    ///                 IncludedUsers = new[]
+    ///                 {
+    ///                     "All",
+    ///                 },
+    ///             },
+    ///         },
+    ///         DisplayName = "example policy",
+    ///         GrantControls = new AzureAD.Inputs.ConditionalAccessPolicyGrantControlsArgs
+    ///         {
+    ///             BuiltInControls = new[]
+    ///             {
+    ///                 "mfa",
+    ///             },
+    ///             Operator = "OR",
+    ///         },
+    ///         SessionControls = new AzureAD.Inputs.ConditionalAccessPolicySessionControlsArgs
+    ///         {
+    ///             ApplicationEnforcedRestrictionsEnabled = true,
+    ///             CloudAppSecurityPolicy = "monitorOnly",
+    ///             DisableResilienceDefaults = false,
+    ///             SignInFrequency = 10,
+    ///             SignInFrequencyPeriod = "hours",
+    ///         },
+    ///         State = "disabled",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Included client applications / service principals
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = AzureAD.GetClientConfig.Invoke();
+    /// 
+    ///     var example = new AzureAD.ConditionalAccessPolicy("example", new()
+    ///     {
+    ///         DisplayName = "example policy",
+    ///         State = "disabled",
+    ///         Conditions = new AzureAD.Inputs.ConditionalAccessPolicyConditionsArgs
+    ///         {
+    ///             ClientAppTypes = new[]
+    ///             {
+    ///                 "all",
+    ///             },
+    ///             Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs
+    ///             {
+    ///                 IncludedApplications = new[]
+    ///                 {
+    ///                     "All",
+    ///                 },
+    ///             },
+    ///             ClientApplications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsClientApplicationsArgs
+    ///             {
+    ///                 IncludedServicePrincipals = new[]
+    ///                 {
+    ///                     current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///                 },
+    ///                 ExcludedServicePrincipals = new() { },
+    ///             },
+    ///             Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs
+    ///             {
+    ///                 IncludedUsers = new[]
+    ///                 {
+    ///                     "None",
+    ///                 },
+    ///             },
+    ///         },
+    ///         GrantControls = new AzureAD.Inputs.ConditionalAccessPolicyGrantControlsArgs
+    ///         {
+    ///             Operator = "OR",
+    ///             BuiltInControls = new[]
+    ///             {
+    ///                 "block",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Excluded client applications / service principals
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = AzureAD.GetClientConfig.Invoke();
+    /// 
+    ///     var example = new AzureAD.ConditionalAccessPolicy("example", new()
+    ///     {
+    ///         DisplayName = "example policy",
+    ///         State = "disabled",
+    ///         Conditions = new AzureAD.Inputs.ConditionalAccessPolicyConditionsArgs
+    ///         {
+    ///             ClientAppTypes = new[]
+    ///             {
+    ///                 "all",
+    ///             },
+    ///             Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs
+    ///             {
+    ///                 IncludedApplications = new[]
+    ///                 {
+    ///                     "All",
+    ///                 },
+    ///             },
+    ///             ClientApplications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsClientApplicationsArgs
+    ///             {
+    ///                 IncludedServicePrincipals = new[]
+    ///                 {
+    ///                     "ServicePrincipalsInMyTenant",
+    ///                 },
+    ///                 ExcludedServicePrincipals = new[]
+    ///                 {
+    ///                     current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///                 },
+    ///             },
+    ///             Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs
+    ///             {
+    ///                 IncludedUsers = new[]
+    ///                 {
+    ///                     "None",
+    ///                 },
+    ///             },
+    ///         },
+    ///         GrantControls = new AzureAD.Inputs.ConditionalAccessPolicyGrantControlsArgs
+    ///         {
+    ///             Operator = "OR",
+    ///             BuiltInControls = new[]
+    ///             {
+    ///                 "block",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

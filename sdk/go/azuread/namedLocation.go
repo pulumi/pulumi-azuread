@@ -23,6 +23,52 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewNamedLocation(ctx, "example-ip", &azuread.NamedLocationArgs{
+//				DisplayName: pulumi.String("IP Named Location"),
+//				Ip: &azuread.NamedLocationIpArgs{
+//					IpRanges: pulumi.StringArray{
+//						pulumi.String("1.1.1.1/32"),
+//						pulumi.String("2.2.2.2/32"),
+//					},
+//					Trusted: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewNamedLocation(ctx, "example-country", &azuread.NamedLocationArgs{
+//				Country: &azuread.NamedLocationCountryArgs{
+//					CountriesAndRegions: pulumi.StringArray{
+//						pulumi.String("GB"),
+//						pulumi.String("US"),
+//					},
+//					IncludeUnknownCountriesAndRegions: pulumi.Bool(false),
+//				},
+//				DisplayName: pulumi.String("Country Named Location"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Named Locations can be imported using the `id`, e.g.

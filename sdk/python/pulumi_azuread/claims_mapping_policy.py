@@ -142,6 +142,37 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_azuread as azuread
+
+        my_policy = azuread.ClaimsMappingPolicy("myPolicy",
+            definitions=[json.dumps({
+                "ClaimsMappingPolicy": {
+                    "ClaimsSchema": [
+                        {
+                            "ID": "employeeid",
+                            "JwtClaimType": "name",
+                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+                            "Source": "user",
+                        },
+                        {
+                            "ID": "tenantcountry",
+                            "JwtClaimType": "country",
+                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+                            "Source": "company",
+                        },
+                    ],
+                    "IncludeBasicClaimSet": "true",
+                    "Version": 1,
+                },
+            })],
+            display_name="My Policy")
+        ```
+
         ## Import
 
         Claims Mapping Policy can be imported using the `id`, e.g.
@@ -171,6 +202,37 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_azuread as azuread
+
+        my_policy = azuread.ClaimsMappingPolicy("myPolicy",
+            definitions=[json.dumps({
+                "ClaimsMappingPolicy": {
+                    "ClaimsSchema": [
+                        {
+                            "ID": "employeeid",
+                            "JwtClaimType": "name",
+                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+                            "Source": "user",
+                        },
+                        {
+                            "ID": "tenantcountry",
+                            "JwtClaimType": "country",
+                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+                            "Source": "company",
+                        },
+                    ],
+                    "IncludeBasicClaimSet": "true",
+                    "Version": 1,
+                },
+            })],
+            display_name="My Policy")
+        ```
 
         ## Import
 

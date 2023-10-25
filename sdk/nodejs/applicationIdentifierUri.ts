@@ -5,6 +5,32 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
+ * const exampleApplicationIdentifierUri = new azuread.ApplicationIdentifierUri("exampleApplicationIdentifierUri", {
+ *     applicationId: exampleApplicationRegistration.id,
+ *     identifierUri: "https://app.hashitown.com",
+ * });
+ * ```
+ *
+ * > **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
+ *
+ * *Usage with azuread.Application resource*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
+ * const exampleApplicationIdentifierUri = new azuread.ApplicationIdentifierUri("exampleApplicationIdentifierUri", {applicationId: exampleApplication.id});
+ * // ...
+ * ```
+ *
  * ## Import
  *
  * Application Identifier URIs can be imported using the object ID of the application and the base64-encoded identifier URI, in the following format.

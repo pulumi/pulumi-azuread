@@ -16,6 +16,27 @@ import * as utilities from "./utilities";
  * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
+ * ### By Group Display Name)
+ *
+ * *Look up by display name*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAdministrativeUnit({
+ *     displayName: "Example-AU",
+ * });
+ * ```
+ *
+ * *Look up by object ID*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAdministrativeUnit({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
  */
 export function getAdministrativeUnit(args?: GetAdministrativeUnitArgs, opts?: pulumi.InvokeOptions): Promise<GetAdministrativeUnitResult> {
     args = args || {};
@@ -84,6 +105,27 @@ export interface GetAdministrativeUnitResult {
  * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
+ * ### By Group Display Name)
+ *
+ * *Look up by display name*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAdministrativeUnit({
+ *     displayName: "Example-AU",
+ * });
+ * ```
+ *
+ * *Look up by object ID*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAdministrativeUnit({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
  */
 export function getAdministrativeUnitOutput(args?: GetAdministrativeUnitOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdministrativeUnitResult> {
     return pulumi.output(args).apply((a: any) => getAdministrativeUnit(a, opts))

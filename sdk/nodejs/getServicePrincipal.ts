@@ -16,6 +16,41 @@ import * as utilities from "./utilities";
  * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
+ *
+ * ## Example Usage
+ *
+ * *Look up by application display name*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getServicePrincipal({
+ *     displayName: "my-awesome-application",
+ * });
+ * ```
+ *
+ * *Look up by client ID*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getServicePrincipal({
+ *     clientId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
+ *
+ * *Look up by service principal object ID*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getServicePrincipal({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
  */
 export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> {
     args = args || {};
@@ -183,6 +218,41 @@ export interface GetServicePrincipalResult {
  * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
+ *
+ * ## Example Usage
+ *
+ * *Look up by application display name*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getServicePrincipal({
+ *     displayName: "my-awesome-application",
+ * });
+ * ```
+ *
+ * *Look up by client ID*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getServicePrincipal({
+ *     clientId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
+ *
+ * *Look up by service principal object ID*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getServicePrincipal({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
  */
 export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalResult> {
     return pulumi.output(args).apply((a: any) => getServicePrincipal(a, opts))

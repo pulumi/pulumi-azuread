@@ -10,6 +10,39 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var jane = new AzureAD.User("jane", new()
+    ///     {
+    ///         UserPrincipalName = "jane.fischer@hashitown.com",
+    ///         DisplayName = "Jane Fischer",
+    ///         Password = "Ch@ngeMe",
+    ///     });
+    /// 
+    ///     var exampleJane = new AzureAD.ApplicationOwner("exampleJane", new()
+    ///     {
+    ///         ApplicationId = example.Id,
+    ///         OwnerObjectId = jane.ObjectId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **Tip** For managing more application owners, create additional instances of this resource
+    /// 
     /// ## Import
     /// 
     /// Application Owners can be imported using the object ID of the application and the object ID of the owner, in the following format.

@@ -469,6 +469,54 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_group = azuread.Group("exampleGroup",
+            display_name="group-name",
+            security_enabled=True)
+        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+            display_name="example-catalog",
+            description="Example catalog")
+        example_access_package = azuread.AccessPackage("exampleAccessPackage",
+            catalog_id=example_access_package_catalog.id,
+            display_name="access-package",
+            description="Access Package")
+        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy",
+            access_package_id=example_access_package.id,
+            display_name="assignment-policy",
+            description="My assignment policy",
+            duration_in_days=90,
+            requestor_settings=azuread.AccessPackageAssignmentPolicyRequestorSettingsArgs(
+                scope_type="AllExistingDirectoryMemberUsers",
+            ),
+            approval_settings=azuread.AccessPackageAssignmentPolicyApprovalSettingsArgs(
+                approval_required=True,
+                approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
+                    approval_timeout_in_days=14,
+                    primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
+                        object_id=example_group.object_id,
+                        subject_type="groupMembers",
+                    )],
+                )],
+            ),
+            assignment_review_settings=azuread.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs(
+                enabled=True,
+                review_frequency="weekly",
+                duration_in_days=3,
+                review_type="Self",
+                access_review_timeout_behavior="keepAccess",
+            ),
+            questions=[azuread.AccessPackageAssignmentPolicyQuestionArgs(
+                text=azuread.AccessPackageAssignmentPolicyQuestionTextArgs(
+                    default_text="hello, how are you?",
+                ),
+            )])
+        ```
+
         ## Import
 
         An access package assignment policy can be imported using the ID, e.g.
@@ -506,6 +554,54 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
 
         When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_group = azuread.Group("exampleGroup",
+            display_name="group-name",
+            security_enabled=True)
+        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+            display_name="example-catalog",
+            description="Example catalog")
+        example_access_package = azuread.AccessPackage("exampleAccessPackage",
+            catalog_id=example_access_package_catalog.id,
+            display_name="access-package",
+            description="Access Package")
+        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy",
+            access_package_id=example_access_package.id,
+            display_name="assignment-policy",
+            description="My assignment policy",
+            duration_in_days=90,
+            requestor_settings=azuread.AccessPackageAssignmentPolicyRequestorSettingsArgs(
+                scope_type="AllExistingDirectoryMemberUsers",
+            ),
+            approval_settings=azuread.AccessPackageAssignmentPolicyApprovalSettingsArgs(
+                approval_required=True,
+                approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
+                    approval_timeout_in_days=14,
+                    primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
+                        object_id=example_group.object_id,
+                        subject_type="groupMembers",
+                    )],
+                )],
+            ),
+            assignment_review_settings=azuread.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs(
+                enabled=True,
+                review_frequency="weekly",
+                duration_in_days=3,
+                review_type="Self",
+                access_review_timeout_behavior="keepAccess",
+            ),
+            questions=[azuread.AccessPackageAssignmentPolicyQuestionArgs(
+                text=azuread.AccessPackageAssignmentPolicyQuestionTextArgs(
+                    default_text="hello, how are you?",
+                ),
+            )])
+        ```
 
         ## Import
 

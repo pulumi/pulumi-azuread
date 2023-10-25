@@ -23,6 +23,97 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`
 //
+// ## Example Usage
+//
+// *Basic example*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
+//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
+//				UserEmailAddress: pulumi.String("jdoe@hashicorp.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// *Invitation with standard message*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
+//				Message: &azuread.InvitationMessageArgs{
+//					Language: pulumi.String("en-US"),
+//				},
+//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
+//				UserEmailAddress: pulumi.String("jdoe@hashicorp.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// *Invitation with custom message body and an additional recipient*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
+//				Message: &azuread.InvitationMessageArgs{
+//					AdditionalRecipients: pulumi.String("aaliceberg@hashicorp.com"),
+//					Body:                 pulumi.String("Hello there! You are invited to join my Azure tenant!"),
+//				},
+//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
+//				UserDisplayName:  pulumi.String("Bob Bobson"),
+//				UserEmailAddress: pulumi.String("bbobson@hashicorp.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource does not support importing.

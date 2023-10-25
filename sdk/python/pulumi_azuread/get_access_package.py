@@ -110,6 +110,27 @@ def get_access_package(catalog_id: Optional[str] = None,
 
     When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
 
+    ## Example Usage
+
+    *Look up by ID*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package(object_id="00000000-0000-0000-0000-000000000000")
+    ```
+
+    *Look up by DisplayName*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package(catalog_id="00000000-0000-0000-0000-000000000000",
+        display_name="My access package Catalog")
+    ```
+
 
     :param str catalog_id: The ID of the Catalog this access package is in.
     :param str display_name: The display name of the access package.
@@ -148,6 +169,27 @@ def get_access_package_output(catalog_id: Optional[pulumi.Input[Optional[str]]] 
     When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
 
     When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
+
+    ## Example Usage
+
+    *Look up by ID*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package(object_id="00000000-0000-0000-0000-000000000000")
+    ```
+
+    *Look up by DisplayName*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package(catalog_id="00000000-0000-0000-0000-000000000000",
+        display_name="My access package Catalog")
+    ```
 
 
     :param str catalog_id: The ID of the Catalog this access package is in.

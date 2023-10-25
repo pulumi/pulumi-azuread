@@ -22,6 +22,50 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.CustomDirectoryRole("example", new()
+    ///     {
+    ///         Description = "Allows reading applications and updating groups",
+    ///         DisplayName = "My Custom Role",
+    ///         Enabled = true,
+    ///         Permissions = new[]
+    ///         {
+    ///             new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
+    ///             {
+    ///                 AllowedResourceActions = new[]
+    ///                 {
+    ///                     "microsoft.directory/applications/basic/update",
+    ///                     "microsoft.directory/applications/create",
+    ///                     "microsoft.directory/applications/standard/read",
+    ///                 },
+    ///             },
+    ///             new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
+    ///             {
+    ///                 AllowedResourceActions = new[]
+    ///                 {
+    ///                     "microsoft.directory/groups/allProperties/read",
+    ///                     "microsoft.directory/groups/allProperties/read",
+    ///                     "microsoft.directory/groups/basic/update",
+    ///                     "microsoft.directory/groups/create",
+    ///                     "microsoft.directory/groups/delete",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Version = "1.0",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource does not support importing.

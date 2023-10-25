@@ -228,6 +228,20 @@ class ApplicationFromTemplate(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Marketo")
+        example_application_from_template = azuread.ApplicationFromTemplate("exampleApplicationFromTemplate",
+            display_name="Example Application",
+            template_id=example_application_template.template_id)
+        example_application = azuread.get_application_output(object_id=example_application_from_template.application_object_id)
+        example_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
+        ```
+
         ## Import
 
         Templated Applications can be imported using the template ID, the object ID of the application, and the object ID of the service principal, in the following format.
@@ -259,6 +273,20 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 
         When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Marketo")
+        example_application_from_template = azuread.ApplicationFromTemplate("exampleApplicationFromTemplate",
+            display_name="Example Application",
+            template_id=example_application_template.template_id)
+        example_application = azuread.get_application_output(object_id=example_application_from_template.application_object_id)
+        example_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
+        ```
 
         ## Import
 

@@ -19,6 +19,26 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
  *
+ * ## Example Usage
+ *
+ * *Activate a directory role by its template ID*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.DirectoryRole("example", {templateId: "00000000-0000-0000-0000-000000000000"});
+ * ```
+ *
+ * *Activate a directory role by display name*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.DirectoryRole("example", {displayName: "Printer administrator"});
+ * ```
+ *
  * ## Import
  *
  * This resource does not support importing.

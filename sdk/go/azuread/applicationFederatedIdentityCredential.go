@@ -13,6 +13,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleApplicationRegistration, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
+//				DisplayName: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewApplicationFederatedIdentityCredential(ctx, "exampleApplicationFederatedIdentityCredential", &azuread.ApplicationFederatedIdentityCredentialArgs{
+//				ApplicationId: exampleApplicationRegistration.ID(),
+//				DisplayName:   pulumi.String("my-repo-deploy"),
+//				Description:   pulumi.String("Deployments for my-repo"),
+//				Audiences: pulumi.StringArray{
+//					pulumi.String("api://AzureADTokenExchange"),
+//				},
+//				Issuer:  pulumi.String("https://token.actions.githubusercontent.com"),
+//				Subject: pulumi.String("repo:my-organization/my-repo:environment:prod"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.

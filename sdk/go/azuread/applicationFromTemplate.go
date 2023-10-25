@@ -25,6 +25,45 @@ import (
 //
 // When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
+//				DisplayName: pulumi.StringRef("Marketo"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplicationFromTemplate, err := azuread.NewApplicationFromTemplate(ctx, "exampleApplicationFromTemplate", &azuread.ApplicationFromTemplateArgs{
+//				DisplayName: pulumi.String("Example Application"),
+//				TemplateId:  *pulumi.String(exampleApplicationTemplate.TemplateId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = azuread.LookupApplicationOutput(ctx, azuread.GetApplicationOutputArgs{
+//				ObjectId: exampleApplicationFromTemplate.ApplicationObjectId,
+//			}, nil)
+//			_ = azuread.LookupServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
+//				ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Templated Applications can be imported using the template ID, the object ID of the application, and the object ID of the service principal, in the following format.

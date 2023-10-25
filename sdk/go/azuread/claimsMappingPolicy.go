@@ -23,6 +23,61 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"ClaimsMappingPolicy": map[string]interface{}{
+//					"ClaimsSchema": []map[string]interface{}{
+//						map[string]interface{}{
+//							"ID":            "employeeid",
+//							"JwtClaimType":  "name",
+//							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+//							"Source":        "user",
+//						},
+//						map[string]interface{}{
+//							"ID":            "tenantcountry",
+//							"JwtClaimType":  "country",
+//							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+//							"Source":        "company",
+//						},
+//					},
+//					"IncludeBasicClaimSet": "true",
+//					"Version":              1,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = azuread.NewClaimsMappingPolicy(ctx, "myPolicy", &azuread.ClaimsMappingPolicyArgs{
+//				Definitions: pulumi.StringArray{
+//					pulumi.String(json0),
+//				},
+//				DisplayName: pulumi.String("My Policy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Claims Mapping Policy can be imported using the `id`, e.g.

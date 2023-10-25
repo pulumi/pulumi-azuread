@@ -397,6 +397,35 @@ def get_service_principal(application_id: Optional[str] = None,
 
     When authenticated with a user principal, this data source does not require any additional roles.
 
+    ## Example Usage
+
+    *Look up by application display name*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principal(display_name="my-awesome-application")
+    ```
+
+    *Look up by client ID*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principal(client_id="00000000-0000-0000-0000-000000000000")
+    ```
+
+    *Look up by service principal object ID*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principal(object_id="00000000-0000-0000-0000-000000000000")
+    ```
+
 
     :param str client_id: The client ID of the application associated with this service principal.
     :param str display_name: The display name of the application associated with this service principal.
@@ -460,6 +489,35 @@ def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[
     When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
 
     When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    *Look up by application display name*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principal(display_name="my-awesome-application")
+    ```
+
+    *Look up by client ID*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principal(client_id="00000000-0000-0000-0000-000000000000")
+    ```
+
+    *Look up by service principal object ID*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principal(object_id="00000000-0000-0000-0000-000000000000")
+    ```
 
 
     :param str client_id: The client ID of the application associated with this service principal.

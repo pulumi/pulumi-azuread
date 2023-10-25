@@ -188,6 +188,21 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_administrative_unit = azuread.AdministrativeUnit("exampleAdministrativeUnit", display_name="Example-AU")
+        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Security administrator")
+        example_administrative_unit_role_member = azuread.AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember",
+            role_object_id=example_directory_role.object_id,
+            administrative_unit_object_id=example_administrative_unit.id,
+            member_object_id=example_user.id)
+        ```
+
         ## Import
 
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
@@ -220,6 +235,21 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` and `RoleManagement.ReadWrite.Directory`, or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_administrative_unit = azuread.AdministrativeUnit("exampleAdministrativeUnit", display_name="Example-AU")
+        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Security administrator")
+        example_administrative_unit_role_member = azuread.AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember",
+            role_object_id=example_directory_role.object_id,
+            administrative_unit_object_id=example_administrative_unit.id,
+            member_object_id=example_user.id)
+        ```
 
         ## Import
 

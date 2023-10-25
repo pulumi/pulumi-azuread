@@ -1731,6 +1731,19 @@ class User(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `User Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.User("example",
+            display_name="J. Doe",
+            mail_nickname="jdoe",
+            password="SecretP@sswd99!",
+            user_principal_name="jdoe@hashicorp.com")
+        ```
+
         ## Import
 
         Users can be imported using their object ID, e.g.
@@ -1794,6 +1807,19 @@ class User(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `User.ReadWrite.All` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `User Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.User("example",
+            display_name="J. Doe",
+            mail_nickname="jdoe",
+            password="SecretP@sswd99!",
+            user_principal_name="jdoe@hashicorp.com")
+        ```
 
         ## Import
 

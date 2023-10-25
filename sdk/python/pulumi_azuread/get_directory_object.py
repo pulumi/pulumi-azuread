@@ -75,6 +75,16 @@ def get_directory_object(object_id: Optional[str] = None,
 
     When authenticated with a user principal, this data source does not require any additional roles.
 
+    ## Example Usage
+
+    *Look up and output type of object by ID*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_directory_object(object_id="00000000-0000-0000-0000-000000000000")
+    pulumi.export("objectType", example.type)
+    ```
     ## Attributes Reference
 
     The following attributes are exported:
@@ -110,6 +120,16 @@ def get_directory_object_output(object_id: Optional[pulumi.Input[str]] = None,
 
     When authenticated with a user principal, this data source does not require any additional roles.
 
+    ## Example Usage
+
+    *Look up and output type of object by ID*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_directory_object(object_id="00000000-0000-0000-0000-000000000000")
+    pulumi.export("objectType", example.type)
+    ```
     ## Attributes Reference
 
     The following attributes are exported:

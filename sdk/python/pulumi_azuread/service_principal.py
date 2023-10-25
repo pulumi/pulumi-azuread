@@ -1008,6 +1008,71 @@ class ServicePrincipal(pulumi.CustomResource):
                  use_existing: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        *Create a service principal for an application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            owners=[current.object_id])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            app_role_assignment_required=False,
+            owners=[current.object_id])
+        ```
+
+        *Create a service principal for an enterprise application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            owners=[current.object_id])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            app_role_assignment_required=False,
+            owners=[current.object_id],
+            feature_tags=[azuread.ServicePrincipalFeatureTagArgs(
+                enterprise=True,
+                gallery=True,
+            )])
+        ```
+
+        *Manage a service principal for a first-party Microsoft application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        ```
+
+        *Create a service principal for an application created from a gallery template*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            template_id=example_application_template.template_id)
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            use_existing=True)
+        ```
+
         ## Import
 
         Service principals can be imported using their object ID, e.g.
@@ -1046,6 +1111,71 @@ class ServicePrincipal(pulumi.CustomResource):
                  args: Optional[ServicePrincipalArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        *Create a service principal for an application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            owners=[current.object_id])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            app_role_assignment_required=False,
+            owners=[current.object_id])
+        ```
+
+        *Create a service principal for an enterprise application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            owners=[current.object_id])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            app_role_assignment_required=False,
+            owners=[current.object_id],
+            feature_tags=[azuread.ServicePrincipalFeatureTagArgs(
+                enterprise=True,
+                gallery=True,
+            )])
+        ```
+
+        *Manage a service principal for a first-party Microsoft application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        ```
+
+        *Create a service principal for an application created from a gallery template*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            template_id=example_application_template.template_id)
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            use_existing=True)
+        ```
+
         ## Import
 
         Service principals can be imported using their object ID, e.g.

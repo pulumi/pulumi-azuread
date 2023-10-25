@@ -188,6 +188,32 @@ class NamedLocation(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_ip = azuread.NamedLocation("example-ip",
+            display_name="IP Named Location",
+            ip=azuread.NamedLocationIpArgs(
+                ip_ranges=[
+                    "1.1.1.1/32",
+                    "2.2.2.2/32",
+                ],
+                trusted=True,
+            ))
+        example_country = azuread.NamedLocation("example-country",
+            country=azuread.NamedLocationCountryArgs(
+                countries_and_regions=[
+                    "GB",
+                    "US",
+                ],
+                include_unknown_countries_and_regions=False,
+            ),
+            display_name="Country Named Location")
+        ```
+
         ## Import
 
         Named Locations can be imported using the `id`, e.g.
@@ -220,6 +246,32 @@ class NamedLocation(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_ip = azuread.NamedLocation("example-ip",
+            display_name="IP Named Location",
+            ip=azuread.NamedLocationIpArgs(
+                ip_ranges=[
+                    "1.1.1.1/32",
+                    "2.2.2.2/32",
+                ],
+                trusted=True,
+            ))
+        example_country = azuread.NamedLocation("example-country",
+            country=azuread.NamedLocationCountryArgs(
+                countries_and_regions=[
+                    "GB",
+                    "US",
+                ],
+                include_unknown_countries_and_regions=False,
+            ),
+            display_name="Country Named Location")
+        ```
 
         ## Import
 

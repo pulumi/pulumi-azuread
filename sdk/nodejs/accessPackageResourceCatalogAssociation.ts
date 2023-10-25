@@ -15,6 +15,27 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner` or `Global Administrator`
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleGroup = new azuread.Group("exampleGroup", {
+ *     displayName: "example-group",
+ *     securityEnabled: true,
+ * });
+ * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("exampleAccessPackageCatalog", {
+ *     displayName: "example-catalog",
+ *     description: "Example catalog",
+ * });
+ * const exampleAccessPackageResourceCatalogAssociation = new azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", {
+ *     catalogId: azuread_access_package_catalog.example_catalog.id,
+ *     resourceOriginId: azuread_group.example_group.object_id,
+ *     resourceOriginSystem: "AadGroup",
+ * });
+ * ```
+ *
  * ## Import
  *
  * The resource and catalog association can be imported using the catalog ID and the resource origin ID, e.g.

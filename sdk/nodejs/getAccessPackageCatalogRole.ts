@@ -16,6 +16,27 @@ import * as utilities from "./utilities";
  * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
+ * ### By Group Display Name)
+ *
+ * *Look up by display name*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAccessPackageCatalogRole({
+ *     displayName: "Catalog owner",
+ * });
+ * ```
+ *
+ * *Look up by object ID*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAccessPackageCatalogRole({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
  */
 export function getAccessPackageCatalogRole(args?: GetAccessPackageCatalogRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPackageCatalogRoleResult> {
     args = args || {};
@@ -80,6 +101,27 @@ export interface GetAccessPackageCatalogRoleResult {
  * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
+ * ### By Group Display Name)
+ *
+ * *Look up by display name*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAccessPackageCatalogRole({
+ *     displayName: "Catalog owner",
+ * });
+ * ```
+ *
+ * *Look up by object ID*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAccessPackageCatalogRole({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
  */
 export function getAccessPackageCatalogRoleOutput(args?: GetAccessPackageCatalogRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPackageCatalogRoleResult> {
     return pulumi.output(args).apply((a: any) => getAccessPackageCatalogRole(a, opts))

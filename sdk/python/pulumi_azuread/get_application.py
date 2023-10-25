@@ -445,6 +445,16 @@ def get_application(application_id: Optional[str] = None,
 
     When authenticated with a user principal, this data source does not require any additional roles.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_application(display_name="My First AzureAD Application")
+    pulumi.export("applicationObjectId", example.object_id)
+    ```
+
 
     :param str client_id: Specifies the Client ID of the application.
     :param str display_name: Specifies the display name of the application.
@@ -512,6 +522,16 @@ def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]]
     When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
 
     When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_application(display_name="My First AzureAD Application")
+    pulumi.export("applicationObjectId", example.object_id)
+    ```
 
 
     :param str client_id: Specifies the Client ID of the application.

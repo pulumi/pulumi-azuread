@@ -266,6 +266,33 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        *Using default settings*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", service_principal_id=example_service_principal.id)
+        ```
+
+        *Using custom settings*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate",
+            service_principal_id=example_service_principal.id,
+            display_name="CN=example.com",
+            end_date="2023-05-01T01:02:03Z")
+        ```
+
         ## Import
 
         Token signing certificates can be imported using the object ID of the associated service principal and the key ID of the verify certificate credential, e.g.
@@ -292,6 +319,33 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
                  args: ServicePrincipalTokenSigningCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        *Using default settings*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", service_principal_id=example_service_principal.id)
+        ```
+
+        *Using custom settings*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate",
+            service_principal_id=example_service_principal.id,
+            display_name="CN=example.com",
+            end_date="2023-05-01T01:02:03Z")
+        ```
+
         ## Import
 
         Token signing certificates can be imported using the object ID of the associated service principal and the key ID of the verify certificate credential, e.g.

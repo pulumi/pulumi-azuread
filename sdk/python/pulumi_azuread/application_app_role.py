@@ -303,6 +303,37 @@ class ApplicationAppRole(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_random as random
+
+        example = azuread.ApplicationRegistration("example", display_name="example")
+        example_administrator = random.RandomUuid("exampleAdministrator")
+        example_administer = azuread.ApplicationAppRole("exampleAdminister",
+            application_id=example.id,
+            role_id=example_administrator.id,
+            allowed_member_types=["User"],
+            description="My role description",
+            display_name="Administer",
+            value="admin")
+        ```
+
+        > **Tip** For managing more app roles, create additional instances of this resource
+
+        *Usage with Application resource*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Application("example", display_name="example")
+        example_administer = azuread.ApplicationAppRole("exampleAdminister", application_id=example.id)
+        # ...
+        ```
+
         ## Import
 
         Application App Roles can be imported using the object ID of the application and the ID of the app role, in the following format.
@@ -329,6 +360,37 @@ class ApplicationAppRole(pulumi.CustomResource):
                  args: ApplicationAppRoleInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_random as random
+
+        example = azuread.ApplicationRegistration("example", display_name="example")
+        example_administrator = random.RandomUuid("exampleAdministrator")
+        example_administer = azuread.ApplicationAppRole("exampleAdminister",
+            application_id=example.id,
+            role_id=example_administrator.id,
+            allowed_member_types=["User"],
+            description="My role description",
+            display_name="Administer",
+            value="admin")
+        ```
+
+        > **Tip** For managing more app roles, create additional instances of this resource
+
+        *Usage with Application resource*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Application("example", display_name="example")
+        example_administer = azuread.ApplicationAppRole("exampleAdminister", application_id=example.id)
+        # ...
+        ```
+
         ## Import
 
         Application App Roles can be imported using the object ID of the application and the ID of the app role, in the following format.

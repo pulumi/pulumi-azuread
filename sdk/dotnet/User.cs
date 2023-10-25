@@ -20,6 +20,27 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `User Administrator` or `Global Administrator`
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.User("example", new()
+    ///     {
+    ///         DisplayName = "J. Doe",
+    ///         MailNickname = "jdoe",
+    ///         Password = "SecretP@sswd99!",
+    ///         UserPrincipalName = "jdoe@hashicorp.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Users can be imported using their object ID, e.g.

@@ -226,6 +226,23 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
 
         The calling principal requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Application Administrator")
+        example_directory_role_eligibility_schedule_request = azuread.DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest",
+            role_definition_id=example_directory_role.template_id,
+            principal_id=azuread_user["example"]["object_id"],
+            directory_scope_id="/",
+            justification="Example")
+        ```
+
+        > Note the use of the `template_id` attribute when referencing built-in roles.
+
         ## Import
 
         Directory role eligibility schedule requests can be imported using the ID of the assignment, e.g.
@@ -257,6 +274,23 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
         The calling principal requires one of the following application roles: `RoleEligibilitySchedule.ReadWrite.Directory` or `RoleManagement.ReadWrite.Directory`.
 
         The calling principal requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Application Administrator")
+        example_directory_role_eligibility_schedule_request = azuread.DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest",
+            role_definition_id=example_directory_role.template_id,
+            principal_id=azuread_user["example"]["object_id"],
+            directory_scope_id="/",
+            justification="Example")
+        ```
+
+        > Note the use of the `template_id` attribute when referencing built-in roles.
 
         ## Import
 

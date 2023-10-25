@@ -21,6 +21,31 @@ import (
 // When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
 //
 // When authenticated with a user principal, this data source does not require any additional roles.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := azuread.GetDirectoryRoleTemplates(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("roles", current.ObjectIds)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDirectoryRoleTemplates(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetDirectoryRoleTemplatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDirectoryRoleTemplatesResult

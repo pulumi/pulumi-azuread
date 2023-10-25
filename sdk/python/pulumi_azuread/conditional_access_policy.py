@@ -275,6 +275,110 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
         ## Example Usage
+        ### All users except guests or external users
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.ConditionalAccessPolicy("example",
+            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    excluded_applications=[],
+                    included_applications=["All"],
+                ),
+                client_app_types=["all"],
+                devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
+                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
+                        mode="exclude",
+                        rule="device.operatingSystem eq \\"Doors\\"",
+                    ),
+                ),
+                locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
+                    excluded_locations=["AllTrusted"],
+                    included_locations=["All"],
+                ),
+                platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(
+                    excluded_platforms=["iOS"],
+                    included_platforms=["android"],
+                ),
+                sign_in_risk_levels=["medium"],
+                user_risk_levels=["medium"],
+                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                    excluded_users=["GuestsOrExternalUsers"],
+                    included_users=["All"],
+                ),
+            ),
+            display_name="example policy",
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+                built_in_controls=["mfa"],
+                operator="OR",
+            ),
+            session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
+                application_enforced_restrictions_enabled=True,
+                cloud_app_security_policy="monitorOnly",
+                disable_resilience_defaults=False,
+                sign_in_frequency=10,
+                sign_in_frequency_period="hours",
+            ),
+            state="disabled")
+        ```
+        ### Included client applications / service principals
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.ConditionalAccessPolicy("example",
+            display_name="example policy",
+            state="disabled",
+            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+                client_app_types=["all"],
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    included_applications=["All"],
+                ),
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                    included_service_principals=[current.object_id],
+                    excluded_service_principals=[],
+                ),
+                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                    included_users=["None"],
+                ),
+            ),
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+                operator="OR",
+                built_in_controls=["block"],
+            ))
+        ```
+        ### Excluded client applications / service principals
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.ConditionalAccessPolicy("example",
+            display_name="example policy",
+            state="disabled",
+            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+                client_app_types=["all"],
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    included_applications=["All"],
+                ),
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                    included_service_principals=["ServicePrincipalsInMyTenant"],
+                    excluded_service_principals=[current.object_id],
+                ),
+                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                    included_users=["None"],
+                ),
+            ),
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+                operator="OR",
+                built_in_controls=["block"],
+            ))
+        ```
 
         ## Import
 
@@ -314,6 +418,110 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
         ## Example Usage
+        ### All users except guests or external users
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.ConditionalAccessPolicy("example",
+            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    excluded_applications=[],
+                    included_applications=["All"],
+                ),
+                client_app_types=["all"],
+                devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
+                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
+                        mode="exclude",
+                        rule="device.operatingSystem eq \\"Doors\\"",
+                    ),
+                ),
+                locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
+                    excluded_locations=["AllTrusted"],
+                    included_locations=["All"],
+                ),
+                platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(
+                    excluded_platforms=["iOS"],
+                    included_platforms=["android"],
+                ),
+                sign_in_risk_levels=["medium"],
+                user_risk_levels=["medium"],
+                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                    excluded_users=["GuestsOrExternalUsers"],
+                    included_users=["All"],
+                ),
+            ),
+            display_name="example policy",
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+                built_in_controls=["mfa"],
+                operator="OR",
+            ),
+            session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
+                application_enforced_restrictions_enabled=True,
+                cloud_app_security_policy="monitorOnly",
+                disable_resilience_defaults=False,
+                sign_in_frequency=10,
+                sign_in_frequency_period="hours",
+            ),
+            state="disabled")
+        ```
+        ### Included client applications / service principals
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.ConditionalAccessPolicy("example",
+            display_name="example policy",
+            state="disabled",
+            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+                client_app_types=["all"],
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    included_applications=["All"],
+                ),
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                    included_service_principals=[current.object_id],
+                    excluded_service_principals=[],
+                ),
+                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                    included_users=["None"],
+                ),
+            ),
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+                operator="OR",
+                built_in_controls=["block"],
+            ))
+        ```
+        ### Excluded client applications / service principals
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.ConditionalAccessPolicy("example",
+            display_name="example policy",
+            state="disabled",
+            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+                client_app_types=["all"],
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    included_applications=["All"],
+                ),
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                    included_service_principals=["ServicePrincipalsInMyTenant"],
+                    excluded_service_principals=[current.object_id],
+                ),
+                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                    included_users=["None"],
+                ),
+            ),
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+                operator="OR",
+                built_in_controls=["block"],
+            ))
+        ```
 
         ## Import
 

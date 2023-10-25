@@ -187,6 +187,31 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_group = azuread.Group("exampleGroup",
+            display_name="example-group",
+            security_enabled=True)
+        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+            display_name="example-catalog",
+            description="Example catalog")
+        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation",
+            catalog_id=azuread_access_package_catalog["example_catalog"]["id"],
+            resource_origin_id=azuread_group["example_group"]["object_id"],
+            resource_origin_system="AadGroup")
+        example_access_package = azuread.AccessPackage("exampleAccessPackage",
+            display_name="example-package",
+            description="Example Package",
+            catalog_id=azuread_access_package_catalog["example_catalog"]["id"])
+        example_access_package_resource_package_association = azuread.AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation",
+            access_package_id=example_access_package.id,
+            catalog_resource_association_id=example_access_package_resource_catalog_association.id)
+        ```
+
         ## Import
 
         The resource and catalog association can be imported using the access package ID, the resource association ID, the resource origin ID, and the access type, e.g.
@@ -219,6 +244,31 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_group = azuread.Group("exampleGroup",
+            display_name="example-group",
+            security_enabled=True)
+        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+            display_name="example-catalog",
+            description="Example catalog")
+        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation",
+            catalog_id=azuread_access_package_catalog["example_catalog"]["id"],
+            resource_origin_id=azuread_group["example_group"]["object_id"],
+            resource_origin_system="AadGroup")
+        example_access_package = azuread.AccessPackage("exampleAccessPackage",
+            display_name="example-package",
+            description="Example Package",
+            catalog_id=azuread_access_package_catalog["example_catalog"]["id"])
+        example_access_package_resource_package_association = azuread.AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation",
+            access_package_id=example_access_package.id,
+            catalog_resource_association_id=example_access_package_resource_catalog_association.id)
+        ```
 
         ## Import
 

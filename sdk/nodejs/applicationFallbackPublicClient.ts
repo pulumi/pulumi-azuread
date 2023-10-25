@@ -5,6 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
+ * const exampleApplicationFallbackPublicClient = new azuread.ApplicationFallbackPublicClient("exampleApplicationFallbackPublicClient", {
+ *     applicationId: exampleApplicationRegistration.id,
+ *     enabled: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * The Application Fallback Public Client setting can be imported using the object ID of the application, in the following format.

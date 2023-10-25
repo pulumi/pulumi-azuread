@@ -194,6 +194,26 @@ class DirectoryRole(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        *Activate a directory role by its template ID*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.DirectoryRole("example", template_id="00000000-0000-0000-0000-000000000000")
+        ```
+
+        *Activate a directory role by display name*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.DirectoryRole("example", display_name="Printer administrator")
+        ```
+
         ## Import
 
         This resource does not support importing.
@@ -225,6 +245,26 @@ class DirectoryRole(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        *Activate a directory role by its template ID*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.DirectoryRole("example", template_id="00000000-0000-0000-0000-000000000000")
+        ```
+
+        *Activate a directory role by display name*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.DirectoryRole("example", display_name="Printer administrator")
+        ```
 
         ## Import
 

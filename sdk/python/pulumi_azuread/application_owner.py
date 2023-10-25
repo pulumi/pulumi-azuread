@@ -136,6 +136,24 @@ class ApplicationOwner(pulumi.CustomResource):
                  owner_object_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.ApplicationRegistration("example", display_name="example")
+        jane = azuread.User("jane",
+            user_principal_name="jane.fischer@hashitown.com",
+            display_name="Jane Fischer",
+            password="Ch@ngeMe")
+        example_jane = azuread.ApplicationOwner("exampleJane",
+            application_id=example.id,
+            owner_object_id=jane.object_id)
+        ```
+
+        > **Tip** For managing more application owners, create additional instances of this resource
+
         ## Import
 
         Application Owners can be imported using the object ID of the application and the object ID of the owner, in the following format.
@@ -156,6 +174,24 @@ class ApplicationOwner(pulumi.CustomResource):
                  args: ApplicationOwnerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.ApplicationRegistration("example", display_name="example")
+        jane = azuread.User("jane",
+            user_principal_name="jane.fischer@hashitown.com",
+            display_name="Jane Fischer",
+            password="Ch@ngeMe")
+        example_jane = azuread.ApplicationOwner("exampleJane",
+            application_id=example.id,
+            owner_object_id=jane.object_id)
+        ```
+
+        > **Tip** For managing more application owners, create additional instances of this resource
+
         ## Import
 
         Application Owners can be imported using the object ID of the application and the object ID of the owner, in the following format.

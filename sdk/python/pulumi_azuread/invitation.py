@@ -307,6 +307,49 @@ class Invitation(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            redirect_url="https://portal.azure.com",
+            user_email_address="jdoe@hashicorp.com")
+        ```
+
+        *Invitation with standard message*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            message=azuread.InvitationMessageArgs(
+                language="en-US",
+            ),
+            redirect_url="https://portal.azure.com",
+            user_email_address="jdoe@hashicorp.com")
+        ```
+
+        *Invitation with custom message body and an additional recipient*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            message=azuread.InvitationMessageArgs(
+                additional_recipients="aaliceberg@hashicorp.com",
+                body="Hello there! You are invited to join my Azure tenant!",
+            ),
+            redirect_url="https://portal.azure.com",
+            user_display_name="Bob Bobson",
+            user_email_address="bbobson@hashicorp.com")
+        ```
+
         ## Import
 
         This resource does not support importing.
@@ -335,6 +378,49 @@ class Invitation(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `User.Invite.All`, `User.ReadWrite.All` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            redirect_url="https://portal.azure.com",
+            user_email_address="jdoe@hashicorp.com")
+        ```
+
+        *Invitation with standard message*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            message=azuread.InvitationMessageArgs(
+                language="en-US",
+            ),
+            redirect_url="https://portal.azure.com",
+            user_email_address="jdoe@hashicorp.com")
+        ```
+
+        *Invitation with custom message body and an additional recipient*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            message=azuread.InvitationMessageArgs(
+                additional_recipients="aaliceberg@hashicorp.com",
+                body="Hello there! You are invited to join my Azure tenant!",
+            ),
+            redirect_url="https://portal.azure.com",
+            user_display_name="Bob Bobson",
+            user_email_address="bbobson@hashicorp.com")
+        ```
 
         ## Import
 

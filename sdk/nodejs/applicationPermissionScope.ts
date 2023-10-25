@@ -5,6 +5,37 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * import * as random from "@pulumi/random";
+ *
+ * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
+ * const exampleAdminister = new random.RandomUuid("exampleAdminister", {});
+ * const exampleApplicationPermissionScope = new azuread.ApplicationPermissionScope("exampleApplicationPermissionScope", {
+ *     applicationId: azuread_application_registration.test.id,
+ *     scopeId: exampleAdminister.id,
+ *     value: "administer",
+ *     adminConsentDescription: "Administer the application",
+ *     adminConsentDisplayName: "Administer",
+ * });
+ * ```
+ *
+ * > **Tip** For managing more permissions scopes, create additional instances of this resource
+ *
+ * *Usage with azuread.Application resource*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
+ * const exampleApplicationPermissionScope = new azuread.ApplicationPermissionScope("exampleApplicationPermissionScope", {applicationId: exampleApplication.id});
+ * // ...
+ * ```
+ *
  * ## Import
  *
  * Application App Roles can be imported using the object ID of the application and the ID of the permission scope, in the following format.

@@ -136,6 +136,19 @@ class ApplicationKnownClients(pulumi.CustomResource):
                  known_client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        client = azuread.ApplicationRegistration("client", display_name="example client")
+        example_application_known_clients = azuread.ApplicationKnownClients("exampleApplicationKnownClients",
+            application_id=example_application_registration.id,
+            known_client_ids=[client.client_id])
+        ```
+
         ## Import
 
         Application Known Clients can be imported using the object ID of the application in the following format.
@@ -156,6 +169,19 @@ class ApplicationKnownClients(pulumi.CustomResource):
                  args: ApplicationKnownClientsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        client = azuread.ApplicationRegistration("client", display_name="example client")
+        example_application_known_clients = azuread.ApplicationKnownClients("exampleApplicationKnownClients",
+            application_id=example_application_registration.id,
+            known_client_ids=[client.client_id])
+        ```
+
         ## Import
 
         Application Known Clients can be imported using the object ID of the application in the following format.

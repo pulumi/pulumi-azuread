@@ -220,6 +220,17 @@ class AccessPackageCatalog(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Catalog creator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AccessPackageCatalog("example",
+            description="Example access package catalog",
+            display_name="example-access-package-catalog")
+        ```
+
         ## Import
 
         An Access Package Catalog can be imported using the `id`, e.g.
@@ -251,6 +262,17 @@ class AccessPackageCatalog(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Catalog creator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AccessPackageCatalog("example",
+            description="Example access package catalog",
+            display_name="example-access-package-catalog")
+        ```
 
         ## Import
 

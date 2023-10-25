@@ -136,6 +136,31 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
                  identifier_uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_application_identifier_uri = azuread.ApplicationIdentifierUri("exampleApplicationIdentifierUri",
+            application_id=example_application_registration.id,
+            identifier_uri="https://app.hashitown.com")
+        ```
+
+        > **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
+
+        *Usage with Application resource*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_application_identifier_uri = azuread.ApplicationIdentifierUri("exampleApplicationIdentifierUri", application_id=example_application.id)
+        # ...
+        ```
+
         ## Import
 
         Application Identifier URIs can be imported using the object ID of the application and the base64-encoded identifier URI, in the following format.
@@ -156,6 +181,31 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
                  args: ApplicationIdentifierUriArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_application_identifier_uri = azuread.ApplicationIdentifierUri("exampleApplicationIdentifierUri",
+            application_id=example_application_registration.id,
+            identifier_uri="https://app.hashitown.com")
+        ```
+
+        > **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
+
+        *Usage with Application resource*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_application_identifier_uri = azuread.ApplicationIdentifierUri("exampleApplicationIdentifierUri", application_id=example_application.id)
+        # ...
+        ```
+
         ## Import
 
         Application Identifier URIs can be imported using the object ID of the application and the base64-encoded identifier URI, in the following format.
