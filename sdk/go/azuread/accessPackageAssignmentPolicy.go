@@ -23,6 +23,88 @@ import (
 //
 // When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+//				DisplayName:     pulumi.String("group-name"),
+//				SecurityEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
+//				DisplayName: pulumi.String("example-catalog"),
+//				Description: pulumi.String("Example catalog"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccessPackage, err := azuread.NewAccessPackage(ctx, "exampleAccessPackage", &azuread.AccessPackageArgs{
+//				CatalogId:   exampleAccessPackageCatalog.ID(),
+//				DisplayName: pulumi.String("access-package"),
+//				Description: pulumi.String("Access Package"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAccessPackageAssignmentPolicy(ctx, "exampleAccessPackageAssignmentPolicy", &azuread.AccessPackageAssignmentPolicyArgs{
+//				AccessPackageId: exampleAccessPackage.ID(),
+//				DisplayName:     pulumi.String("assignment-policy"),
+//				Description:     pulumi.String("My assignment policy"),
+//				DurationInDays:  pulumi.Int(90),
+//				RequestorSettings: &azuread.AccessPackageAssignmentPolicyRequestorSettingsArgs{
+//					ScopeType: pulumi.String("AllExistingDirectoryMemberUsers"),
+//				},
+//				ApprovalSettings: &azuread.AccessPackageAssignmentPolicyApprovalSettingsArgs{
+//					ApprovalRequired: pulumi.Bool(true),
+//					ApprovalStages: azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArray{
+//						&azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs{
+//							ApprovalTimeoutInDays: pulumi.Int(14),
+//							PrimaryApprovers: azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray{
+//								&azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs{
+//									ObjectId:    exampleGroup.ObjectId,
+//									SubjectType: pulumi.String("groupMembers"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				AssignmentReviewSettings: &azuread.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs{
+//					Enabled:                     pulumi.Bool(true),
+//					ReviewFrequency:             pulumi.String("weekly"),
+//					DurationInDays:              pulumi.Int(3),
+//					ReviewType:                  pulumi.String("Self"),
+//					AccessReviewTimeoutBehavior: pulumi.String("keepAccess"),
+//				},
+//				Questions: azuread.AccessPackageAssignmentPolicyQuestionArray{
+//					&azuread.AccessPackageAssignmentPolicyQuestionArgs{
+//						Text: &azuread.AccessPackageAssignmentPolicyQuestionTextArgs{
+//							DefaultText: pulumi.String("hello, how are you?"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // An access package assignment policy can be imported using the ID, e.g.

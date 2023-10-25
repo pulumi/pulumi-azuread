@@ -15,6 +15,18 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const app = new azuread.ServicePrincipalClaimsMappingPolicyAssignment("app", {
+ *     claimsMappingPolicyId: azuread_claims_mapping_policy.my_policy.id,
+ *     servicePrincipalId: azuread_service_principal.my_principal.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Claims Mapping Policy can be imported using the `id`, in the form `service-principal-uuid/claimsMappingPolicy/claims-mapping-policy-uuid`, e.g

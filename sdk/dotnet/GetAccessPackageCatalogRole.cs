@@ -24,6 +24,43 @@ namespace Pulumi.AzureAD
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### By Group Display Name)
+        /// 
+        /// *Look up by display name*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     {
+        ///         DisplayName = "Catalog owner",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// *Look up by object ID*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     {
+        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessPackageCatalogRoleResult> InvokeAsync(GetAccessPackageCatalogRoleArgs? args = null, InvokeOptions? options = null)
@@ -42,6 +79,43 @@ namespace Pulumi.AzureAD
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### By Group Display Name)
+        /// 
+        /// *Look up by display name*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     {
+        ///         DisplayName = "Catalog owner",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// *Look up by object ID*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     {
+        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessPackageCatalogRoleResult> Invoke(GetAccessPackageCatalogRoleInvokeArgs? args = null, InvokeOptions? options = null)

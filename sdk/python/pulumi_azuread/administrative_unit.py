@@ -288,6 +288,18 @@ class AdministrativeUnit(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AdministrativeUnit("example",
+            description="Just an example",
+            display_name="Example-AU",
+            hidden_membership_enabled=False)
+        ```
+
         ## Import
 
         Administrative units can be imported using their object ID, e.g.
@@ -322,6 +334,18 @@ class AdministrativeUnit(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AdministrativeUnit("example",
+            description="Just an example",
+            display_name="Example-AU",
+            hidden_membership_enabled=False)
+        ```
 
         ## Import
 

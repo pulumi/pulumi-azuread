@@ -202,6 +202,20 @@ class UserFlowAttribute(pulumi.CustomResource):
 
         When authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`
 
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.UserFlowAttribute("example",
+            data_type="string",
+            description="Your hobby",
+            display_name="Hobby")
+        ```
+
         ## Import
 
         User flow attributes can be imported using the `id`, e.g.
@@ -232,6 +246,20 @@ class UserFlowAttribute(pulumi.CustomResource):
         The following API permissions are required in order to use this resource.
 
         When authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`
+
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.UserFlowAttribute("example",
+            data_type="string",
+            description="Your hobby",
+            display_name="Hobby")
+        ```
 
         ## Import
 

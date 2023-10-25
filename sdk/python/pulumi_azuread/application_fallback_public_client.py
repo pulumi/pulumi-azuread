@@ -139,6 +139,18 @@ class ApplicationFallbackPublicClient(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_application_fallback_public_client = azuread.ApplicationFallbackPublicClient("exampleApplicationFallbackPublicClient",
+            application_id=example_application_registration.id,
+            enabled=True)
+        ```
+
         ## Import
 
         The Application Fallback Public Client setting can be imported using the object ID of the application, in the following format.
@@ -161,6 +173,18 @@ class ApplicationFallbackPublicClient(pulumi.CustomResource):
                  args: ApplicationFallbackPublicClientArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_application_fallback_public_client = azuread.ApplicationFallbackPublicClient("exampleApplicationFallbackPublicClient",
+            application_id=example_application_registration.id,
+            enabled=True)
+        ```
+
         ## Import
 
         The Application Fallback Public Client setting can be imported using the object ID of the application, in the following format.

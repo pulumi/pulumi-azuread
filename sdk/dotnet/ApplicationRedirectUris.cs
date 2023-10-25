@@ -10,6 +10,62 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var examplePublic = new AzureAD.ApplicationRedirectUris("examplePublic", new()
+    ///     {
+    ///         ApplicationId = example.Id,
+    ///         Type = "PublicClient",
+    ///         RedirectUris = new[]
+    ///         {
+    ///             "myapp://auth",
+    ///             "sample.mobile.app.bundie.id://auth",
+    ///             "https://login.microsoftonline.com/common/oauth2/nativeclient",
+    ///             "https://login.live.com/oauth20_desktop.srf",
+    ///             "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222",
+    ///             "urn:ietf:wg:oauth:2.0:foo",
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleSpa = new AzureAD.ApplicationRedirectUris("exampleSpa", new()
+    ///     {
+    ///         ApplicationId = example.Id,
+    ///         Type = "SPA",
+    ///         RedirectUris = new[]
+    ///         {
+    ///             "https://mobile.hashitown.com/",
+    ///             "https://beta.hashitown.com/",
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleWeb = new AzureAD.ApplicationRedirectUris("exampleWeb", new()
+    ///     {
+    ///         ApplicationId = example.Id,
+    ///         Type = "Web",
+    ///         RedirectUris = new[]
+    ///         {
+    ///             "https://app.hashitown.com/",
+    ///             "https://classic.hashitown.com/",
+    ///             "urn:ietf:wg:oauth:2.0:oob",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Application API Access can be imported using the object ID of the application and the URI type, in the following format.

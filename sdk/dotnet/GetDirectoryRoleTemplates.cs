@@ -21,6 +21,29 @@ namespace Pulumi.AzureAD
         /// When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = AzureAD.GetDirectoryRoleTemplates.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["roles"] = current.Apply(getDirectoryRoleTemplatesResult =&gt; getDirectoryRoleTemplatesResult.ObjectIds),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDirectoryRoleTemplatesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDirectoryRoleTemplatesResult>("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", InvokeArgs.Empty, options.WithDefaults());
@@ -35,6 +58,29 @@ namespace Pulumi.AzureAD
         /// When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = AzureAD.GetDirectoryRoleTemplates.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["roles"] = current.Apply(getDirectoryRoleTemplatesResult =&gt; getDirectoryRoleTemplatesResult.ObjectIds),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDirectoryRoleTemplatesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDirectoryRoleTemplatesResult>("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", InvokeArgs.Empty, options.WithDefaults());

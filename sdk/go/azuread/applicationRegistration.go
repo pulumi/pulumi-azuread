@@ -25,6 +25,40 @@ import (
 //
 // When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+//				Description:         pulumi.String("My example application"),
+//				DisplayName:         pulumi.String("Example Application"),
+//				HomepageUrl:         pulumi.String("https://app.hashitown.com/"),
+//				LogoutUrl:           pulumi.String("https://app.hashitown.com/logout"),
+//				MarketingUrl:        pulumi.String("https://hashitown.com/"),
+//				PrivacyStatementUrl: pulumi.String("https://hashitown.com/privacy"),
+//				SignInAudience:      pulumi.String("AzureADMyOrg"),
+//				SupportUrl:          pulumi.String("https://support.hashitown.com/"),
+//				TermsOfServiceUrl:   pulumi.String("https://hashitown.com/terms"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Application Registrations can be imported using the object ID of the application, in the following format.

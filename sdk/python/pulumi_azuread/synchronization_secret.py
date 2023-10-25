@@ -141,6 +141,39 @@ class SynchronizationSecret(pulumi.CustomResource):
 
         When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
 
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            template_id=example_application_template.template_id,
+            feature_tags=[azuread.ApplicationFeatureTagArgs(
+                enterprise=True,
+                gallery=True,
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            use_existing=True)
+        example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
+            service_principal_id=example_service_principal.id,
+            credentials=[
+                azuread.SynchronizationSecretCredentialArgs(
+                    key="BaseAddress",
+                    value="abc",
+                ),
+                azuread.SynchronizationSecretCredentialArgs(
+                    key="SecretToken",
+                    value="some-token",
+                ),
+            ])
+        ```
+
         ## Import
 
         This resource does not support importing.
@@ -164,6 +197,39 @@ class SynchronizationSecret(pulumi.CustomResource):
         The following API permissions are required in order to use this resource.
 
         When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            template_id=example_application_template.template_id,
+            feature_tags=[azuread.ApplicationFeatureTagArgs(
+                enterprise=True,
+                gallery=True,
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            use_existing=True)
+        example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
+            service_principal_id=example_service_principal.id,
+            credentials=[
+                azuread.SynchronizationSecretCredentialArgs(
+                    key="BaseAddress",
+                    value="abc",
+                ),
+                azuread.SynchronizationSecretCredentialArgs(
+                    key="SecretToken",
+                    value="some-token",
+                ),
+            ])
+        ```
 
         ## Import
 

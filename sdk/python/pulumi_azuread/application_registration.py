@@ -752,6 +752,24 @@ class ApplicationRegistration(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.ApplicationRegistration("example",
+            description="My example application",
+            display_name="Example Application",
+            homepage_url="https://app.hashitown.com/",
+            logout_url="https://app.hashitown.com/logout",
+            marketing_url="https://hashitown.com/",
+            privacy_statement_url="https://hashitown.com/privacy",
+            sign_in_audience="AzureADMyOrg",
+            support_url="https://support.hashitown.com/",
+            terms_of_service_url="https://hashitown.com/terms")
+        ```
+
         ## Import
 
         Application Registrations can be imported using the object ID of the application, in the following format.
@@ -796,6 +814,24 @@ class ApplicationRegistration(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 
         When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.ApplicationRegistration("example",
+            description="My example application",
+            display_name="Example Application",
+            homepage_url="https://app.hashitown.com/",
+            logout_url="https://app.hashitown.com/logout",
+            marketing_url="https://hashitown.com/",
+            privacy_statement_url="https://hashitown.com/privacy",
+            sign_in_audience="AzureADMyOrg",
+            support_url="https://support.hashitown.com/",
+            terms_of_service_url="https://hashitown.com/terms")
+        ```
 
         ## Import
 

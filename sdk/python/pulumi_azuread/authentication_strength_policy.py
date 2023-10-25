@@ -183,6 +183,21 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AuthenticationStrengthPolicy("example",
+            allowed_combinations=[
+                "fido2",
+                "password",
+            ],
+            description="Policy for demo purposes",
+            display_name="Example Authentication Strength Policy")
+        ```
+
         ## Import
 
         Authentication Strength Policies can be imported using the `id`, e.g.
@@ -213,6 +228,21 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AuthenticationStrengthPolicy("example",
+            allowed_combinations=[
+                "fido2",
+                "password",
+            ],
+            description="Policy for demo purposes",
+            display_name="Example Authentication Strength Policy")
+        ```
 
         ## Import
 

@@ -13,6 +13,81 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
+//				DisplayName: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAdminister, err := random.NewRandomUuid(ctx, "exampleAdminister", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewApplicationPermissionScope(ctx, "exampleApplicationPermissionScope", &azuread.ApplicationPermissionScopeArgs{
+//				ApplicationId:           pulumi.Any(azuread_application_registration.Test.Id),
+//				ScopeId:                 exampleAdminister.ID(),
+//				Value:                   pulumi.String("administer"),
+//				AdminConsentDescription: pulumi.String("Administer the application"),
+//				AdminConsentDisplayName: pulumi.String("Administer"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **Tip** For managing more permissions scopes, create additional instances of this resource
+//
+// *Usage with Application resource*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewApplicationPermissionScope(ctx, "exampleApplicationPermissionScope", &azuread.ApplicationPermissionScopeArgs{
+//				ApplicationId: exampleApplication.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Application App Roles can be imported using the object ID of the application and the ID of the permission scope, in the following format.

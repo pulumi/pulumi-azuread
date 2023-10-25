@@ -92,6 +92,16 @@ def get_directory_roles(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
 
     When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    current = azuread.get_directory_roles()
+    pulumi.export("roles", current.object_ids)
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -116,5 +126,15 @@ def get_directory_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
     When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
 
     When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    current = azuread.get_directory_roles()
+    pulumi.export("roles", current.object_ids)
+    ```
     """
     ...

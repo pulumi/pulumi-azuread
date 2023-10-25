@@ -144,6 +144,46 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
 
     When authenticated with a user principal, this data source does not require any additional roles.
 
+    ## Example Usage
+
+    *Look up by application display names*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principals(display_names=[
+        "example-app",
+        "another-app",
+    ])
+    ```
+
+    *Look up by application IDs (client IDs*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principals(client_ids=[
+        "11111111-0000-0000-0000-000000000000",
+        "22222222-0000-0000-0000-000000000000",
+        "33333333-0000-0000-0000-000000000000",
+    ])
+    ```
+
+    *Look up by service principal object IDs*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principals(object_ids=[
+        "00000000-0000-0000-0000-000000000000",
+        "00000000-0000-0000-0000-111111111111",
+        "00000000-0000-0000-0000-222222222222",
+    ])
+    ```
+
 
     :param Sequence[str] application_ids: A list of client IDs of the applications associated with the service principals.
     :param Sequence[str] client_ids: A list of client IDs of the applications associated with the service principals.
@@ -193,6 +233,46 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
 
     When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    *Look up by application display names*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principals(display_names=[
+        "example-app",
+        "another-app",
+    ])
+    ```
+
+    *Look up by application IDs (client IDs*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principals(client_ids=[
+        "11111111-0000-0000-0000-000000000000",
+        "22222222-0000-0000-0000-000000000000",
+        "33333333-0000-0000-0000-000000000000",
+    ])
+    ```
+
+    *Look up by service principal object IDs*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principals(object_ids=[
+        "00000000-0000-0000-0000-000000000000",
+        "00000000-0000-0000-0000-111111111111",
+        "00000000-0000-0000-0000-222222222222",
+    ])
+    ```
 
 
     :param Sequence[str] application_ids: A list of client IDs of the applications associated with the service principals.

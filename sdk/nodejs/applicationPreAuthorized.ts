@@ -5,6 +5,48 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const authorized = new azuread.ApplicationRegistration("authorized", {displayName: "example-authorized-app"});
+ * const authorizer = new azuread.Application("authorizer", {
+ *     displayName: "example-authorizing-app",
+ *     api: {
+ *         oauth2PermissionScopes: [
+ *             {
+ *                 adminConsentDescription: "Administer the application",
+ *                 adminConsentDisplayName: "Administer",
+ *                 enabled: true,
+ *                 id: "00000000-0000-0000-0000-000000000000",
+ *                 type: "Admin",
+ *                 value: "administer",
+ *             },
+ *             {
+ *                 adminConsentDescription: "Access the application",
+ *                 adminConsentDisplayName: "Access",
+ *                 enabled: true,
+ *                 id: "11111111-1111-1111-1111-111111111111",
+ *                 type: "User",
+ *                 userConsentDescription: "Access the application",
+ *                 userConsentDisplayName: "Access",
+ *                 value: "user_impersonation",
+ *             },
+ *         ],
+ *     },
+ * });
+ * const example = new azuread.ApplicationPreAuthorized("example", {
+ *     applicationId: authorizer.id,
+ *     authorizedClientId: authorized.clientId,
+ *     permissionIds: [
+ *         "00000000-0000-0000-0000-000000000000",
+ *         "11111111-1111-1111-1111-111111111111",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.

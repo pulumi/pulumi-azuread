@@ -320,6 +320,37 @@ class CustomDirectoryRole(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.CustomDirectoryRole("example",
+            description="Allows reading applications and updating groups",
+            display_name="My Custom Role",
+            enabled=True,
+            permissions=[
+                azuread.CustomDirectoryRolePermissionArgs(
+                    allowed_resource_actions=[
+                        "microsoft.directory/applications/basic/update",
+                        "microsoft.directory/applications/create",
+                        "microsoft.directory/applications/standard/read",
+                    ],
+                ),
+                azuread.CustomDirectoryRolePermissionArgs(
+                    allowed_resource_actions=[
+                        "microsoft.directory/groups/allProperties/read",
+                        "microsoft.directory/groups/allProperties/read",
+                        "microsoft.directory/groups/basic/update",
+                        "microsoft.directory/groups/create",
+                        "microsoft.directory/groups/delete",
+                    ],
+                ),
+            ],
+            version="1.0")
+        ```
+
         ## Import
 
         This resource does not support importing.
@@ -351,6 +382,37 @@ class CustomDirectoryRole(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.CustomDirectoryRole("example",
+            description="Allows reading applications and updating groups",
+            display_name="My Custom Role",
+            enabled=True,
+            permissions=[
+                azuread.CustomDirectoryRolePermissionArgs(
+                    allowed_resource_actions=[
+                        "microsoft.directory/applications/basic/update",
+                        "microsoft.directory/applications/create",
+                        "microsoft.directory/applications/standard/read",
+                    ],
+                ),
+                azuread.CustomDirectoryRolePermissionArgs(
+                    allowed_resource_actions=[
+                        "microsoft.directory/groups/allProperties/read",
+                        "microsoft.directory/groups/allProperties/read",
+                        "microsoft.directory/groups/basic/update",
+                        "microsoft.directory/groups/create",
+                        "microsoft.directory/groups/delete",
+                    ],
+                ),
+            ],
+            version="1.0")
+        ```
 
         ## Import
 

@@ -17,6 +17,52 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`
  *
+ * ## Example Usage
+ *
+ * *Basic example*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.Invitation("example", {
+ *     redirectUrl: "https://portal.azure.com",
+ *     userEmailAddress: "jdoe@hashicorp.com",
+ * });
+ * ```
+ *
+ * *Invitation with standard message*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.Invitation("example", {
+ *     message: {
+ *         language: "en-US",
+ *     },
+ *     redirectUrl: "https://portal.azure.com",
+ *     userEmailAddress: "jdoe@hashicorp.com",
+ * });
+ * ```
+ *
+ * *Invitation with custom message body and an additional recipient*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.Invitation("example", {
+ *     message: {
+ *         additionalRecipients: "aaliceberg@hashicorp.com",
+ *         body: "Hello there! You are invited to join my Azure tenant!",
+ *     },
+ *     redirectUrl: "https://portal.azure.com",
+ *     userDisplayName: "Bob Bobson",
+ *     userEmailAddress: "bbobson@hashicorp.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource does not support importing.

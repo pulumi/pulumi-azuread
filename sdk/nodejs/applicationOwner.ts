@@ -5,6 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
+ * const jane = new azuread.User("jane", {
+ *     userPrincipalName: "jane.fischer@hashitown.com",
+ *     displayName: "Jane Fischer",
+ *     password: "Ch@ngeMe",
+ * });
+ * const exampleJane = new azuread.ApplicationOwner("exampleJane", {
+ *     applicationId: example.id,
+ *     ownerObjectId: jane.objectId,
+ * });
+ * ```
+ *
+ * > **Tip** For managing more application owners, create additional instances of this resource
+ *
  * ## Import
  *
  * Application Owners can be imported using the object ID of the application and the object ID of the owner, in the following format.

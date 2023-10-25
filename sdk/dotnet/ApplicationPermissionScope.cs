@@ -10,6 +10,62 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var exampleAdminister = new Random.RandomUuid("exampleAdminister");
+    /// 
+    ///     var exampleApplicationPermissionScope = new AzureAD.ApplicationPermissionScope("exampleApplicationPermissionScope", new()
+    ///     {
+    ///         ApplicationId = azuread_application_registration.Test.Id,
+    ///         ScopeId = exampleAdminister.Id,
+    ///         Value = "administer",
+    ///         AdminConsentDescription = "Administer the application",
+    ///         AdminConsentDisplayName = "Administer",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **Tip** For managing more permissions scopes, create additional instances of this resource
+    /// 
+    /// *Usage with azuread.Application resource*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var exampleApplicationPermissionScope = new AzureAD.ApplicationPermissionScope("exampleApplicationPermissionScope", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.Id,
+    ///     });
+    /// 
+    ///     // ...
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Application App Roles can be imported using the object ID of the application and the ID of the permission scope, in the following format.

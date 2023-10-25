@@ -17,6 +17,25 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.ApplicationRegistration("example", {
+ *     description: "My example application",
+ *     displayName: "Example Application",
+ *     homepageUrl: "https://app.hashitown.com/",
+ *     logoutUrl: "https://app.hashitown.com/logout",
+ *     marketingUrl: "https://hashitown.com/",
+ *     privacyStatementUrl: "https://hashitown.com/privacy",
+ *     signInAudience: "AzureADMyOrg",
+ *     supportUrl: "https://support.hashitown.com/",
+ *     termsOfServiceUrl: "https://hashitown.com/terms",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Application Registrations can be imported using the object ID of the application, in the following format.

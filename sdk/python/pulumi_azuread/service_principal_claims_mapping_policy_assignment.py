@@ -146,6 +146,17 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        app = azuread.ServicePrincipalClaimsMappingPolicyAssignment("app",
+            claims_mapping_policy_id=azuread_claims_mapping_policy["my_policy"]["id"],
+            service_principal_id=azuread_service_principal["my_principal"]["id"])
+        ```
+
         ## Import
 
         Claims Mapping Policy can be imported using the `id`, in the form `service-principal-uuid/claimsMappingPolicy/claims-mapping-policy-uuid`, e.g
@@ -175,6 +186,17 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        app = azuread.ServicePrincipalClaimsMappingPolicyAssignment("app",
+            claims_mapping_policy_id=azuread_claims_mapping_policy["my_policy"]["id"],
+            service_principal_id=azuread_service_principal["my_principal"]["id"])
+        ```
 
         ## Import
 

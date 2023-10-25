@@ -15,6 +15,18 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
  *
+ * ## Example Usage
+ *
+ * *Look up and output type of object by ID*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getDirectoryObject({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * export const objectType = example.then(example => example.type);
+ * ```
  * ## Attributes Reference
  *
  * The following attributes are exported:
@@ -62,6 +74,18 @@ export interface GetDirectoryObjectResult {
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
  *
+ * ## Example Usage
+ *
+ * *Look up and output type of object by ID*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getDirectoryObject({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * export const objectType = example.then(example => example.type);
+ * ```
  * ## Attributes Reference
  *
  * The following attributes are exported:

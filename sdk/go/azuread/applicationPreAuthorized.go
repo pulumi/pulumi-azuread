@@ -13,6 +13,71 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			authorized, err := azuread.NewApplicationRegistration(ctx, "authorized", &azuread.ApplicationRegistrationArgs{
+//				DisplayName: pulumi.String("example-authorized-app"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			authorizer, err := azuread.NewApplication(ctx, "authorizer", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example-authorizing-app"),
+//				Api: &azuread.ApplicationApiArgs{
+//					Oauth2PermissionScopes: azuread.ApplicationApiOauth2PermissionScopeArray{
+//						&azuread.ApplicationApiOauth2PermissionScopeArgs{
+//							AdminConsentDescription: pulumi.String("Administer the application"),
+//							AdminConsentDisplayName: pulumi.String("Administer"),
+//							Enabled:                 pulumi.Bool(true),
+//							Id:                      pulumi.String("00000000-0000-0000-0000-000000000000"),
+//							Type:                    pulumi.String("Admin"),
+//							Value:                   pulumi.String("administer"),
+//						},
+//						&azuread.ApplicationApiOauth2PermissionScopeArgs{
+//							AdminConsentDescription: pulumi.String("Access the application"),
+//							AdminConsentDisplayName: pulumi.String("Access"),
+//							Enabled:                 pulumi.Bool(true),
+//							Id:                      pulumi.String("11111111-1111-1111-1111-111111111111"),
+//							Type:                    pulumi.String("User"),
+//							UserConsentDescription:  pulumi.String("Access the application"),
+//							UserConsentDisplayName:  pulumi.String("Access"),
+//							Value:                   pulumi.String("user_impersonation"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewApplicationPreAuthorized(ctx, "example", &azuread.ApplicationPreAuthorizedArgs{
+//				ApplicationId:      authorizer.ID(),
+//				AuthorizedClientId: authorized.ClientId,
+//				PermissionIds: pulumi.StringArray{
+//					pulumi.String("00000000-0000-0000-0000-000000000000"),
+//					pulumi.String("11111111-1111-1111-1111-111111111111"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.

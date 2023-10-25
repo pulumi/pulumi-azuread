@@ -15,6 +15,37 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const myPolicy = new azuread.ClaimsMappingPolicy("myPolicy", {
+ *     definitions: [JSON.stringify({
+ *         ClaimsMappingPolicy: {
+ *             ClaimsSchema: [
+ *                 {
+ *                     ID: "employeeid",
+ *                     JwtClaimType: "name",
+ *                     SamlClaimType: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+ *                     Source: "user",
+ *                 },
+ *                 {
+ *                     ID: "tenantcountry",
+ *                     JwtClaimType: "country",
+ *                     SamlClaimType: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+ *                     Source: "company",
+ *                 },
+ *             ],
+ *             IncludeBasicClaimSet: "true",
+ *             Version: 1,
+ *         },
+ *     })],
+ *     displayName: "My Policy",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Claims Mapping Policy can be imported using the `id`, e.g.

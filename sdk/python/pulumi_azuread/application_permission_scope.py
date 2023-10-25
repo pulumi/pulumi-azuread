@@ -385,6 +385,36 @@ class ApplicationPermissionScope(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_random as random
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_administer = random.RandomUuid("exampleAdminister")
+        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope",
+            application_id=azuread_application_registration["test"]["id"],
+            scope_id=example_administer.id,
+            value="administer",
+            admin_consent_description="Administer the application",
+            admin_consent_display_name="Administer")
+        ```
+
+        > **Tip** For managing more permissions scopes, create additional instances of this resource
+
+        *Usage with Application resource*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope", application_id=example_application.id)
+        # ...
+        ```
+
         ## Import
 
         Application App Roles can be imported using the object ID of the application and the ID of the permission scope, in the following format.
@@ -413,6 +443,36 @@ class ApplicationPermissionScope(pulumi.CustomResource):
                  args: ApplicationPermissionScopeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_random as random
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_administer = random.RandomUuid("exampleAdminister")
+        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope",
+            application_id=azuread_application_registration["test"]["id"],
+            scope_id=example_administer.id,
+            value="administer",
+            admin_consent_description="Administer the application",
+            admin_consent_display_name="Administer")
+        ```
+
+        > **Tip** For managing more permissions scopes, create additional instances of this resource
+
+        *Usage with Application resource*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope", application_id=example_application.id)
+        # ...
+        ```
+
         ## Import
 
         Application App Roles can be imported using the object ID of the application and the ID of the permission scope, in the following format.

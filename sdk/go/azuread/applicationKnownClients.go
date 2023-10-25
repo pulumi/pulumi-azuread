@@ -13,6 +13,47 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleApplicationRegistration, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
+//				DisplayName: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			client, err := azuread.NewApplicationRegistration(ctx, "client", &azuread.ApplicationRegistrationArgs{
+//				DisplayName: pulumi.String("example client"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewApplicationKnownClients(ctx, "exampleApplicationKnownClients", &azuread.ApplicationKnownClientsArgs{
+//				ApplicationId: exampleApplicationRegistration.ID(),
+//				KnownClientIds: pulumi.StringArray{
+//					client.ClientId,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Application Known Clients can be imported using the object ID of the application in the following format.

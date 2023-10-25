@@ -10,6 +10,38 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var client = new AzureAD.ApplicationRegistration("client", new()
+    ///     {
+    ///         DisplayName = "example client",
+    ///     });
+    /// 
+    ///     var exampleApplicationKnownClients = new AzureAD.ApplicationKnownClients("exampleApplicationKnownClients", new()
+    ///     {
+    ///         ApplicationId = exampleApplicationRegistration.Id,
+    ///         KnownClientIds = new[]
+    ///         {
+    ///             client.ClientId,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Application Known Clients can be imported using the object ID of the application in the following format.

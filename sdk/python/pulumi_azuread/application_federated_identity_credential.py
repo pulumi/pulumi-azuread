@@ -359,6 +359,22 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
                  subject: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential",
+            application_id=example_application_registration.id,
+            display_name="my-repo-deploy",
+            description="Deployments for my-repo",
+            audiences=["api://AzureADTokenExchange"],
+            issuer="https://token.actions.githubusercontent.com",
+            subject="repo:my-organization/my-repo:environment:prod")
+        ```
+
         ## Import
 
         Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
@@ -386,6 +402,22 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
                  args: ApplicationFederatedIdentityCredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential",
+            application_id=example_application_registration.id,
+            display_name="my-repo-deploy",
+            description="Deployments for my-repo",
+            audiences=["api://AzureADTokenExchange"],
+            issuer="https://token.actions.githubusercontent.com",
+            subject="repo:my-organization/my-repo:environment:prod")
+        ```
+
         ## Import
 
         Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.

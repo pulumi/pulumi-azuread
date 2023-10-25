@@ -150,6 +150,21 @@ class GroupMember(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_group = azuread.Group("exampleGroup",
+            display_name="my_group",
+            security_enabled=True)
+        example_group_member = azuread.GroupMember("exampleGroupMember",
+            group_object_id=example_group.id,
+            member_object_id=example_user.id)
+        ```
+
         ## Import
 
         Group members can be imported using the object ID of the group and the object ID of the member, e.g.
@@ -185,6 +200,21 @@ class GroupMember(pulumi.CustomResource):
         However, if the authenticated service principal is an owner of the group being managed, an application role is not required.
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_group = azuread.Group("exampleGroup",
+            display_name="my_group",
+            security_enabled=True)
+        example_group_member = azuread.GroupMember("exampleGroupMember",
+            group_object_id=example_group.id,
+            member_object_id=example_user.id)
+        ```
 
         ## Import
 
