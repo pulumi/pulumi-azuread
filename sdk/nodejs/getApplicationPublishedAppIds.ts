@@ -10,47 +10,6 @@ import * as utilities from "./utilities";
  * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
  *
  * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
- *
- * ## Example Usage
- *
- * *Listing well-known application IDs*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const wellKnown = azuread.getApplicationPublishedAppIds({});
- * export const publishedAppIds = wellKnown.then(wellKnown => wellKnown.result);
- * ```
- *
- * *Granting access to an application*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const wellKnown = azuread.getApplicationPublishedAppIds({});
- * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
- *     useExisting: true,
- * });
- * const example = new azuread.Application("example", {
- *     displayName: "example",
- *     requiredResourceAccesses: [{
- *         resourceAppId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
- *         resourceAccesses: [
- *             {
- *                 id: msgraph.appRoleIds["User.Read.All"],
- *                 type: "Role",
- *             },
- *             {
- *                 id: msgraph.oauth2PermissionScopeIds["User.ReadWrite"],
- *                 type: "Scope",
- *             },
- *         ],
- *     }],
- * });
- * ```
  */
 export function getApplicationPublishedAppIds(opts?: pulumi.InvokeOptions): Promise<GetApplicationPublishedAppIdsResult> {
 
@@ -78,47 +37,6 @@ export interface GetApplicationPublishedAppIdsResult {
  * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
  *
  * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
- *
- * ## Example Usage
- *
- * *Listing well-known application IDs*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const wellKnown = azuread.getApplicationPublishedAppIds({});
- * export const publishedAppIds = wellKnown.then(wellKnown => wellKnown.result);
- * ```
- *
- * *Granting access to an application*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const wellKnown = azuread.getApplicationPublishedAppIds({});
- * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
- *     useExisting: true,
- * });
- * const example = new azuread.Application("example", {
- *     displayName: "example",
- *     requiredResourceAccesses: [{
- *         resourceAppId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
- *         resourceAccesses: [
- *             {
- *                 id: msgraph.appRoleIds["User.Read.All"],
- *                 type: "Role",
- *             },
- *             {
- *                 id: msgraph.oauth2PermissionScopeIds["User.ReadWrite"],
- *                 type: "Scope",
- *             },
- *         ],
- *     }],
- * });
- * ```
  */
 export function getApplicationPublishedAppIdsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationPublishedAppIdsResult> {
     return pulumi.output(getApplicationPublishedAppIds(opts))

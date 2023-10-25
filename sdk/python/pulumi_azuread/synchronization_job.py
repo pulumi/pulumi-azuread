@@ -34,15 +34,19 @@ class SynchronizationJobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_principal_id: pulumi.Input[str],
-             template_id: pulumi.Input[str],
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'servicePrincipalId' in kwargs:
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
             service_principal_id = kwargs['servicePrincipalId']
-        if 'templateId' in kwargs:
+        if service_principal_id is None:
+            raise TypeError("Missing 'service_principal_id' argument")
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
 
         _setter("service_principal_id", service_principal_id)
         _setter("template_id", template_id)
@@ -114,11 +118,11 @@ class _SynchronizationJobState:
              schedules: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArgs']]]] = None,
              service_principal_id: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'servicePrincipalId' in kwargs:
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
             service_principal_id = kwargs['servicePrincipalId']
-        if 'templateId' in kwargs:
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
 
         if enabled is not None:
@@ -197,43 +201,6 @@ class SynchronizationJob(pulumi.CustomResource):
 
         When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
 
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_template = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
-        example_application = azuread.Application("exampleApplication",
-            display_name="example",
-            template_id=example_application_template.template_id,
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            application_id=example_application.application_id,
-            use_existing=True)
-        example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
-            service_principal_id=example_service_principal.id,
-            credentials=[
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="BaseAddress",
-                    value="https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
-                ),
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="SecretToken",
-                    value="some-token",
-                ),
-            ])
-        example_synchronization_job = azuread.SynchronizationJob("exampleSynchronizationJob",
-            service_principal_id=example_service_principal.id,
-            template_id="dataBricks",
-            enabled=True)
-        ```
-
         ## Import
 
         Synchronization jobs can be imported using the `id`, e.g.
@@ -264,43 +231,6 @@ class SynchronizationJob(pulumi.CustomResource):
         The following API permissions are required in order to use this resource.
 
         When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_template = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
-        example_application = azuread.Application("exampleApplication",
-            display_name="example",
-            template_id=example_application_template.template_id,
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            application_id=example_application.application_id,
-            use_existing=True)
-        example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
-            service_principal_id=example_service_principal.id,
-            credentials=[
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="BaseAddress",
-                    value="https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
-                ),
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="SecretToken",
-                    value="some-token",
-                ),
-            ])
-        example_synchronization_job = azuread.SynchronizationJob("exampleSynchronizationJob",
-            service_principal_id=example_service_principal.id,
-            template_id="dataBricks",
-            enabled=True)
-        ```
 
         ## Import
 

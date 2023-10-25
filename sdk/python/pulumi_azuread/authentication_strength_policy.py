@@ -32,15 +32,19 @@ class AuthenticationStrengthPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             allowed_combinations: pulumi.Input[Sequence[pulumi.Input[str]]],
-             display_name: pulumi.Input[str],
+             allowed_combinations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedCombinations' in kwargs:
+        if allowed_combinations is None and 'allowedCombinations' in kwargs:
             allowed_combinations = kwargs['allowedCombinations']
-        if 'displayName' in kwargs:
+        if allowed_combinations is None:
+            raise TypeError("Missing 'allowed_combinations' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
 
         _setter("allowed_combinations", allowed_combinations)
         _setter("display_name", display_name)
@@ -108,11 +112,11 @@ class _AuthenticationStrengthPolicyState:
              allowed_combinations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowedCombinations' in kwargs:
+        if allowed_combinations is None and 'allowedCombinations' in kwargs:
             allowed_combinations = kwargs['allowedCombinations']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
 
         if allowed_combinations is not None:
@@ -179,21 +183,6 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.AuthenticationStrengthPolicy("example",
-            allowed_combinations=[
-                "fido2",
-                "password",
-            ],
-            description="Policy for demo purposes",
-            display_name="Example Authentication Strength Policy")
-        ```
-
         ## Import
 
         Authentication Strength Policies can be imported using the `id`, e.g.
@@ -224,21 +213,6 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.AuthenticationStrengthPolicy("example",
-            allowed_combinations=[
-                "fido2",
-                "password",
-            ],
-            description="Policy for demo purposes",
-            display_name="Example Authentication Strength Policy")
-        ```
 
         ## Import
 

@@ -35,16 +35,18 @@ class ServicePrincipalTokenSigningCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_principal_id: pulumi.Input[str],
+             service_principal_id: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
              end_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'servicePrincipalId' in kwargs:
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
             service_principal_id = kwargs['servicePrincipalId']
-        if 'displayName' in kwargs:
+        if service_principal_id is None:
+            raise TypeError("Missing 'service_principal_id' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'endDate' in kwargs:
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
 
         _setter("service_principal_id", service_principal_id)
@@ -137,17 +139,17 @@ class _ServicePrincipalTokenSigningCertificateState:
              start_date: Optional[pulumi.Input[str]] = None,
              thumbprint: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'endDate' in kwargs:
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'keyId' in kwargs:
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
-        if 'servicePrincipalId' in kwargs:
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
             service_principal_id = kwargs['servicePrincipalId']
-        if 'startDate' in kwargs:
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
 
         if display_name is not None:
@@ -264,33 +266,6 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        *Using default settings*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", service_principal_id=example_service_principal.id)
-        ```
-
-        *Using custom settings*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate",
-            service_principal_id=example_service_principal.id,
-            display_name="CN=example.com",
-            end_date="2023-05-01T01:02:03Z")
-        ```
-
         ## Import
 
         Token signing certificates can be imported using the object ID of the associated service principal and the key ID of the verify certificate credential, e.g.
@@ -317,33 +292,6 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
                  args: ServicePrincipalTokenSigningCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        *Using default settings*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", service_principal_id=example_service_principal.id)
-        ```
-
-        *Using custom settings*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate",
-            service_principal_id=example_service_principal.id,
-            display_name="CN=example.com",
-            end_date="2023-05-01T01:02:03Z")
-        ```
-
         ## Import
 
         Token signing certificates can be imported using the object ID of the associated service principal and the key ID of the verify certificate credential, e.g.

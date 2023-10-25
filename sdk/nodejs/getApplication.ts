@@ -16,18 +16,6 @@ import * as utilities from "./utilities";
  * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getApplication({
- *     displayName: "My First AzureAD Application",
- * });
- * export const applicationObjectId = example.then(example => example.objectId);
- * ```
  */
 export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
     args = args || {};
@@ -212,18 +200,6 @@ export interface GetApplicationResult {
  * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getApplication({
- *     displayName: "My First AzureAD Application",
- * });
- * export const applicationObjectId = example.then(example => example.objectId);
- * ```
  */
 export function getApplicationOutput(args?: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
     return pulumi.output(args).apply((a: any) => getApplication(a, opts))

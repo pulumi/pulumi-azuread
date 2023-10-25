@@ -29,14 +29,18 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             claims_mapping_policy_id: pulumi.Input[str],
-             service_principal_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             claims_mapping_policy_id: Optional[pulumi.Input[str]] = None,
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'claimsMappingPolicyId' in kwargs:
+        if claims_mapping_policy_id is None and 'claimsMappingPolicyId' in kwargs:
             claims_mapping_policy_id = kwargs['claimsMappingPolicyId']
-        if 'servicePrincipalId' in kwargs:
+        if claims_mapping_policy_id is None:
+            raise TypeError("Missing 'claims_mapping_policy_id' argument")
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
             service_principal_id = kwargs['servicePrincipalId']
+        if service_principal_id is None:
+            raise TypeError("Missing 'service_principal_id' argument")
 
         _setter("claims_mapping_policy_id", claims_mapping_policy_id)
         _setter("service_principal_id", service_principal_id)
@@ -86,11 +90,11 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
              _setter: Callable[[Any, Any], None],
              claims_mapping_policy_id: Optional[pulumi.Input[str]] = None,
              service_principal_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'claimsMappingPolicyId' in kwargs:
+        if claims_mapping_policy_id is None and 'claimsMappingPolicyId' in kwargs:
             claims_mapping_policy_id = kwargs['claimsMappingPolicyId']
-        if 'servicePrincipalId' in kwargs:
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
             service_principal_id = kwargs['servicePrincipalId']
 
         if claims_mapping_policy_id is not None:
@@ -142,17 +146,6 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        app = azuread.ServicePrincipalClaimsMappingPolicyAssignment("app",
-            claims_mapping_policy_id=azuread_claims_mapping_policy["my_policy"]["id"],
-            service_principal_id=azuread_service_principal["my_principal"]["id"])
-        ```
-
         ## Import
 
         Claims Mapping Policy can be imported using the `id`, in the form `service-principal-uuid/claimsMappingPolicy/claims-mapping-policy-uuid`, e.g
@@ -182,17 +175,6 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        app = azuread.ServicePrincipalClaimsMappingPolicyAssignment("app",
-            claims_mapping_policy_id=azuread_claims_mapping_policy["my_policy"]["id"],
-            service_principal_id=azuread_service_principal["my_principal"]["id"])
-        ```
 
         ## Import
 

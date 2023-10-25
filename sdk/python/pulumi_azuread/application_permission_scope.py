@@ -49,27 +49,37 @@ class ApplicationPermissionScopeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             admin_consent_description: pulumi.Input[str],
-             admin_consent_display_name: pulumi.Input[str],
-             application_id: pulumi.Input[str],
-             scope_id: pulumi.Input[str],
-             value: pulumi.Input[str],
+             admin_consent_description: Optional[pulumi.Input[str]] = None,
+             admin_consent_display_name: Optional[pulumi.Input[str]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             scope_id: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              user_consent_description: Optional[pulumi.Input[str]] = None,
              user_consent_display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'adminConsentDescription' in kwargs:
+        if admin_consent_description is None and 'adminConsentDescription' in kwargs:
             admin_consent_description = kwargs['adminConsentDescription']
-        if 'adminConsentDisplayName' in kwargs:
+        if admin_consent_description is None:
+            raise TypeError("Missing 'admin_consent_description' argument")
+        if admin_consent_display_name is None and 'adminConsentDisplayName' in kwargs:
             admin_consent_display_name = kwargs['adminConsentDisplayName']
-        if 'applicationId' in kwargs:
+        if admin_consent_display_name is None:
+            raise TypeError("Missing 'admin_consent_display_name' argument")
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'scopeId' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if scope_id is None and 'scopeId' in kwargs:
             scope_id = kwargs['scopeId']
-        if 'userConsentDescription' in kwargs:
+        if scope_id is None:
+            raise TypeError("Missing 'scope_id' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if user_consent_description is None and 'userConsentDescription' in kwargs:
             user_consent_description = kwargs['userConsentDescription']
-        if 'userConsentDisplayName' in kwargs:
+        if user_consent_display_name is None and 'userConsentDisplayName' in kwargs:
             user_consent_display_name = kwargs['userConsentDisplayName']
 
         _setter("admin_consent_description", admin_consent_description)
@@ -229,19 +239,19 @@ class _ApplicationPermissionScopeState:
              user_consent_description: Optional[pulumi.Input[str]] = None,
              user_consent_display_name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'adminConsentDescription' in kwargs:
+        if admin_consent_description is None and 'adminConsentDescription' in kwargs:
             admin_consent_description = kwargs['adminConsentDescription']
-        if 'adminConsentDisplayName' in kwargs:
+        if admin_consent_display_name is None and 'adminConsentDisplayName' in kwargs:
             admin_consent_display_name = kwargs['adminConsentDisplayName']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'scopeId' in kwargs:
+        if scope_id is None and 'scopeId' in kwargs:
             scope_id = kwargs['scopeId']
-        if 'userConsentDescription' in kwargs:
+        if user_consent_description is None and 'userConsentDescription' in kwargs:
             user_consent_description = kwargs['userConsentDescription']
-        if 'userConsentDisplayName' in kwargs:
+        if user_consent_display_name is None and 'userConsentDisplayName' in kwargs:
             user_consent_display_name = kwargs['userConsentDisplayName']
 
         if admin_consent_description is not None:
@@ -375,36 +385,6 @@ class ApplicationPermissionScope(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumi_random as random
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_administer = random.RandomUuid("exampleAdminister")
-        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope",
-            application_id=azuread_application_registration["test"]["id"],
-            scope_id=example_administer.id,
-            value="administer",
-            admin_consent_description="Administer the application",
-            admin_consent_display_name="Administer")
-        ```
-
-        > **Tip** For managing more permissions scopes, create additional instances of this resource
-
-        *Usage with Application resource*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope", application_id=example_application.id)
-        # ...
-        ```
-
         ## Import
 
         Application App Roles can be imported using the object ID of the application and the ID of the permission scope, in the following format.
@@ -433,36 +413,6 @@ class ApplicationPermissionScope(pulumi.CustomResource):
                  args: ApplicationPermissionScopeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumi_random as random
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_administer = random.RandomUuid("exampleAdminister")
-        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope",
-            application_id=azuread_application_registration["test"]["id"],
-            scope_id=example_administer.id,
-            value="administer",
-            admin_consent_description="Administer the application",
-            admin_consent_display_name="Administer")
-        ```
-
-        > **Tip** For managing more permissions scopes, create additional instances of this resource
-
-        *Usage with Application resource*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope", application_id=example_application.id)
-        # ...
-        ```
-
         ## Import
 
         Application App Roles can be imported using the object ID of the application and the ID of the permission scope, in the following format.

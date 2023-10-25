@@ -16,16 +16,6 @@ import * as utilities from "./utilities";
  * When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const aadDomains = azuread.getDomains({});
- * export const domainNames = aadDomains.then(aadDomains => aadDomains.domains.map(__item => __item.domainName));
- * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
@@ -105,16 +95,6 @@ export interface GetDomainsResult {
  * When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const aadDomains = azuread.getDomains({});
- * export const domainNames = aadDomains.then(aadDomains => aadDomains.domains.map(__item => __item.domainName));
- * ```
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
     return pulumi.output(args).apply((a: any) => getDomains(a, opts))

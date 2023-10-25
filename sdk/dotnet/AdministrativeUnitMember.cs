@@ -22,35 +22,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
-    ///     {
-    ///         UserPrincipalName = "jdoe@hashicorp.com",
-    ///     });
-    /// 
-    ///     var exampleAdministrativeUnit = new AzureAD.AdministrativeUnit("exampleAdministrativeUnit", new()
-    ///     {
-    ///         DisplayName = "Example-AU",
-    ///     });
-    /// 
-    ///     var exampleAdministrativeUnitMember = new AzureAD.AdministrativeUnitMember("exampleAdministrativeUnitMember", new()
-    ///     {
-    ///         AdministrativeUnitObjectId = exampleAdministrativeUnit.Id,
-    ///         MemberObjectId = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Administrative unit members can be imported using the object ID of the administrative unit and the object ID of the member, e.g.

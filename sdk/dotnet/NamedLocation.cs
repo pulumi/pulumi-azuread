@@ -20,47 +20,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example_ip = new AzureAD.NamedLocation("example-ip", new()
-    ///     {
-    ///         DisplayName = "IP Named Location",
-    ///         Ip = new AzureAD.Inputs.NamedLocationIpArgs
-    ///         {
-    ///             IpRanges = new[]
-    ///             {
-    ///                 "1.1.1.1/32",
-    ///                 "2.2.2.2/32",
-    ///             },
-    ///             Trusted = true,
-    ///         },
-    ///     });
-    /// 
-    ///     var example_country = new AzureAD.NamedLocation("example-country", new()
-    ///     {
-    ///         Country = new AzureAD.Inputs.NamedLocationCountryArgs
-    ///         {
-    ///             CountriesAndRegions = new[]
-    ///             {
-    ///                 "GB",
-    ///                 "US",
-    ///             },
-    ///             IncludeUnknownCountriesAndRegions = false,
-    ///         },
-    ///         DisplayName = "Country Named Location",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Named Locations can be imported using the `id`, e.g.

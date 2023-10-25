@@ -15,44 +15,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
  *
- * ## Example Usage
- *
- * *Basic example*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleApplicationTemplate = azuread.getApplicationTemplate({
- *     displayName: "Azure Databricks SCIM Provisioning Connector",
- * });
- * const exampleApplication = new azuread.Application("exampleApplication", {
- *     displayName: "example",
- *     templateId: exampleApplicationTemplate.then(exampleApplicationTemplate => exampleApplicationTemplate.templateId),
- *     featureTags: [{
- *         enterprise: true,
- *         gallery: true,
- *     }],
- * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
- *     applicationId: exampleApplication.applicationId,
- *     useExisting: true,
- * });
- * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("exampleSynchronizationSecret", {
- *     servicePrincipalId: exampleServicePrincipal.id,
- *     credentials: [
- *         {
- *             key: "BaseAddress",
- *             value: "abc",
- *         },
- *         {
- *             key: "SecretToken",
- *             value: "some-token",
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * This resource does not support importing.

@@ -33,11 +33,11 @@ class DirectoryRoleArgs:
              _setter: Callable[[Any, Any], None],
              display_name: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'templateId' in kwargs:
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
 
         if display_name is not None:
@@ -102,13 +102,13 @@ class _DirectoryRoleState:
              display_name: Optional[pulumi.Input[str]] = None,
              object_id: Optional[pulumi.Input[str]] = None,
              template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
-        if 'templateId' in kwargs:
+        if template_id is None and 'templateId' in kwargs:
             template_id = kwargs['templateId']
 
         if description is not None:
@@ -194,26 +194,6 @@ class DirectoryRole(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        *Activate a directory role by its template ID*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.DirectoryRole("example", template_id="00000000-0000-0000-0000-000000000000")
-        ```
-
-        *Activate a directory role by display name*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.DirectoryRole("example", display_name="Printer administrator")
-        ```
-
         ## Import
 
         This resource does not support importing.
@@ -245,26 +225,6 @@ class DirectoryRole(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        *Activate a directory role by its template ID*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.DirectoryRole("example", template_id="00000000-0000-0000-0000-000000000000")
-        ```
-
-        *Activate a directory role by display name*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.DirectoryRole("example", display_name="Printer administrator")
-        ```
 
         ## Import
 

@@ -13,49 +13,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			jane, err := azuread.NewUser(ctx, "jane", &azuread.UserArgs{
-//				UserPrincipalName: pulumi.String("jane.fischer@hashitown.com"),
-//				DisplayName:       pulumi.String("Jane Fischer"),
-//				Password:          pulumi.String("Ch@ngeMe"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationOwner(ctx, "exampleJane", &azuread.ApplicationOwnerArgs{
-//				ApplicationId: example.ID(),
-//				OwnerObjectId: jane.ObjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// > **Tip** For managing more application owners, create additional instances of this resource
-//
 // ## Import
 //
 // Application Owners can be imported using the object ID of the application and the object ID of the owner, in the following format.

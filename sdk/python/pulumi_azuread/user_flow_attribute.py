@@ -32,15 +32,21 @@ class UserFlowAttributeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_type: pulumi.Input[str],
-             description: pulumi.Input[str],
-             display_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             data_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'dataType' in kwargs:
+        if data_type is None and 'dataType' in kwargs:
             data_type = kwargs['dataType']
-        if 'displayName' in kwargs:
+        if data_type is None:
+            raise TypeError("Missing 'data_type' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
 
         _setter("data_type", data_type)
         _setter("description", description)
@@ -111,13 +117,13 @@ class _UserFlowAttributeState:
              data_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'attributeType' in kwargs:
+        if attribute_type is None and 'attributeType' in kwargs:
             attribute_type = kwargs['attributeType']
-        if 'dataType' in kwargs:
+        if data_type is None and 'dataType' in kwargs:
             data_type = kwargs['dataType']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
 
         if attribute_type is not None:
@@ -196,20 +202,6 @@ class UserFlowAttribute(pulumi.CustomResource):
 
         When authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`
 
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.UserFlowAttribute("example",
-            data_type="string",
-            description="Your hobby",
-            display_name="Hobby")
-        ```
-
         ## Import
 
         User flow attributes can be imported using the `id`, e.g.
@@ -240,20 +232,6 @@ class UserFlowAttribute(pulumi.CustomResource):
         The following API permissions are required in order to use this resource.
 
         When authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`
-
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.UserFlowAttribute("example",
-            data_type="string",
-            description="Your hobby",
-            display_name="Hobby")
-        ```
 
         ## Import
 

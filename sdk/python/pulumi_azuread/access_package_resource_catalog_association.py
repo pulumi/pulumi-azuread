@@ -32,17 +32,23 @@ class AccessPackageResourceCatalogAssociationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             catalog_id: pulumi.Input[str],
-             resource_origin_id: pulumi.Input[str],
-             resource_origin_system: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             catalog_id: Optional[pulumi.Input[str]] = None,
+             resource_origin_id: Optional[pulumi.Input[str]] = None,
+             resource_origin_system: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogId' in kwargs:
+        if catalog_id is None and 'catalogId' in kwargs:
             catalog_id = kwargs['catalogId']
-        if 'resourceOriginId' in kwargs:
+        if catalog_id is None:
+            raise TypeError("Missing 'catalog_id' argument")
+        if resource_origin_id is None and 'resourceOriginId' in kwargs:
             resource_origin_id = kwargs['resourceOriginId']
-        if 'resourceOriginSystem' in kwargs:
+        if resource_origin_id is None:
+            raise TypeError("Missing 'resource_origin_id' argument")
+        if resource_origin_system is None and 'resourceOriginSystem' in kwargs:
             resource_origin_system = kwargs['resourceOriginSystem']
+        if resource_origin_system is None:
+            raise TypeError("Missing 'resource_origin_system' argument")
 
         _setter("catalog_id", catalog_id)
         _setter("resource_origin_id", resource_origin_id)
@@ -109,13 +115,13 @@ class _AccessPackageResourceCatalogAssociationState:
              catalog_id: Optional[pulumi.Input[str]] = None,
              resource_origin_id: Optional[pulumi.Input[str]] = None,
              resource_origin_system: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'catalogId' in kwargs:
+        if catalog_id is None and 'catalogId' in kwargs:
             catalog_id = kwargs['catalogId']
-        if 'resourceOriginId' in kwargs:
+        if resource_origin_id is None and 'resourceOriginId' in kwargs:
             resource_origin_id = kwargs['resourceOriginId']
-        if 'resourceOriginSystem' in kwargs:
+        if resource_origin_system is None and 'resourceOriginSystem' in kwargs:
             resource_origin_system = kwargs['resourceOriginSystem']
 
         if catalog_id is not None:
@@ -182,24 +188,6 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_group = azuread.Group("exampleGroup",
-            display_name="example-group",
-            security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
-            display_name="example-catalog",
-            description="Example catalog")
-        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation",
-            catalog_id=azuread_access_package_catalog["example_catalog"]["id"],
-            resource_origin_id=azuread_group["example_group"]["object_id"],
-            resource_origin_system="AadGroup")
-        ```
-
         ## Import
 
         The resource and catalog association can be imported using the catalog ID and the resource origin ID, e.g.
@@ -232,24 +220,6 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_group = azuread.Group("exampleGroup",
-            display_name="example-group",
-            security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
-            display_name="example-catalog",
-            description="Example catalog")
-        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation",
-            catalog_id=azuread_access_package_catalog["example_catalog"]["id"],
-            resource_origin_id=azuread_group["example_group"]["object_id"],
-            resource_origin_system="AadGroup")
-        ```
 
         ## Import
 

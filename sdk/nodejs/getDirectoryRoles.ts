@@ -16,16 +16,6 @@ import * as utilities from "./utilities";
  * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const current = azuread.getDirectoryRoles({});
- * export const roles = current.then(current => current.objectIds);
- * ```
  */
 export function getDirectoryRoles(opts?: pulumi.InvokeOptions): Promise<GetDirectoryRolesResult> {
 
@@ -65,16 +55,6 @@ export interface GetDirectoryRolesResult {
  * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const current = azuread.getDirectoryRoles({});
- * export const roles = current.then(current => current.objectIds);
- * ```
  */
 export function getDirectoryRolesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryRolesResult> {
     return pulumi.output(getDirectoryRoles(opts))

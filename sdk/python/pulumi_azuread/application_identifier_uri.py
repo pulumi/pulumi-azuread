@@ -29,14 +29,18 @@ class ApplicationIdentifierUriArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
-             identifier_uri: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             identifier_uri: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'identifierUri' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if identifier_uri is None and 'identifierUri' in kwargs:
             identifier_uri = kwargs['identifierUri']
+        if identifier_uri is None:
+            raise TypeError("Missing 'identifier_uri' argument")
 
         _setter("application_id", application_id)
         _setter("identifier_uri", identifier_uri)
@@ -86,11 +90,11 @@ class _ApplicationIdentifierUriState:
              _setter: Callable[[Any, Any], None],
              application_id: Optional[pulumi.Input[str]] = None,
              identifier_uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'identifierUri' in kwargs:
+        if identifier_uri is None and 'identifierUri' in kwargs:
             identifier_uri = kwargs['identifierUri']
 
         if application_id is not None:
@@ -132,31 +136,6 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
                  identifier_uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_application_identifier_uri = azuread.ApplicationIdentifierUri("exampleApplicationIdentifierUri",
-            application_id=example_application_registration.id,
-            identifier_uri="https://app.hashitown.com")
-        ```
-
-        > **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
-
-        *Usage with Application resource*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_identifier_uri = azuread.ApplicationIdentifierUri("exampleApplicationIdentifierUri", application_id=example_application.id)
-        # ...
-        ```
-
         ## Import
 
         Application Identifier URIs can be imported using the object ID of the application and the base64-encoded identifier URI, in the following format.
@@ -177,31 +156,6 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
                  args: ApplicationIdentifierUriArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_application_identifier_uri = azuread.ApplicationIdentifierUri("exampleApplicationIdentifierUri",
-            application_id=example_application_registration.id,
-            identifier_uri="https://app.hashitown.com")
-        ```
-
-        > **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
-
-        *Usage with Application resource*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_identifier_uri = azuread.ApplicationIdentifierUri("exampleApplicationIdentifierUri", application_id=example_application.id)
-        # ...
-        ```
-
         ## Import
 
         Application Identifier URIs can be imported using the object ID of the application and the base64-encoded identifier URI, in the following format.

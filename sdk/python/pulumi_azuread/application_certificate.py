@@ -54,7 +54,7 @@ class ApplicationCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             value: pulumi.Input[str],
+             value: Optional[pulumi.Input[str]] = None,
              application_id: Optional[pulumi.Input[str]] = None,
              application_object_id: Optional[pulumi.Input[str]] = None,
              encoding: Optional[pulumi.Input[str]] = None,
@@ -63,19 +63,21 @@ class ApplicationCertificateArgs:
              key_id: Optional[pulumi.Input[str]] = None,
              start_date: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationObjectId' in kwargs:
+        if application_object_id is None and 'applicationObjectId' in kwargs:
             application_object_id = kwargs['applicationObjectId']
-        if 'endDate' in kwargs:
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'endDateRelative' in kwargs:
+        if end_date_relative is None and 'endDateRelative' in kwargs:
             end_date_relative = kwargs['endDateRelative']
-        if 'keyId' in kwargs:
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
-        if 'startDate' in kwargs:
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
 
         _setter("value", value)
@@ -267,19 +269,19 @@ class _ApplicationCertificateState:
              start_date: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'applicationObjectId' in kwargs:
+        if application_object_id is None and 'applicationObjectId' in kwargs:
             application_object_id = kwargs['applicationObjectId']
-        if 'endDate' in kwargs:
+        if end_date is None and 'endDate' in kwargs:
             end_date = kwargs['endDate']
-        if 'endDateRelative' in kwargs:
+        if end_date_relative is None and 'endDateRelative' in kwargs:
             end_date_relative = kwargs['endDateRelative']
-        if 'keyId' in kwargs:
+        if key_id is None and 'keyId' in kwargs:
             key_id = kwargs['keyId']
-        if 'startDate' in kwargs:
+        if start_date is None and 'startDate' in kwargs:
             start_date = kwargs['startDate']
 
         if application_id is not None:

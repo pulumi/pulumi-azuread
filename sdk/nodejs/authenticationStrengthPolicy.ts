@@ -15,22 +15,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = new azuread.AuthenticationStrengthPolicy("example", {
- *     allowedCombinations: [
- *         "fido2",
- *         "password",
- *     ],
- *     description: "Policy for demo purposes",
- *     displayName: "Example Authentication Strength Policy",
- * });
- * ```
- *
  * ## Import
  *
  * Authentication Strength Policies can be imported using the `id`, e.g.

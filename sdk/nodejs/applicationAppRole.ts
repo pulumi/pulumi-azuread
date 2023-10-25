@@ -5,38 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- * import * as random from "@pulumi/random";
- *
- * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const exampleAdministrator = new random.RandomUuid("exampleAdministrator", {});
- * const exampleAdminister = new azuread.ApplicationAppRole("exampleAdminister", {
- *     applicationId: example.id,
- *     roleId: exampleAdministrator.id,
- *     allowedMemberTypes: ["User"],
- *     description: "My role description",
- *     displayName: "Administer",
- *     value: "admin",
- * });
- * ```
- *
- * > **Tip** For managing more app roles, create additional instances of this resource
- *
- * *Usage with azuread.Application resource*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleAdminister = new azuread.ApplicationAppRole("exampleAdminister", {applicationId: example.id});
- * // ...
- * ```
- *
  * ## Import
  *
  * Application App Roles can be imported using the object ID of the application and the ID of the app role, in the following format.

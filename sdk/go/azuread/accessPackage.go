@@ -23,41 +23,6 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
-//				DisplayName: pulumi.String("example-catalog"),
-//				Description: pulumi.String("Example catalog"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAccessPackage(ctx, "exampleAccessPackage", &azuread.AccessPackageArgs{
-//				CatalogId:   exampleAccessPackageCatalog.ID(),
-//				DisplayName: pulumi.String("access-package"),
-//				Description: pulumi.String("Access Package"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Access Packages can be imported using the `id`, e.g.

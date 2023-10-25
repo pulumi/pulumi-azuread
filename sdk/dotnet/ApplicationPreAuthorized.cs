@@ -10,66 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var authorized = new AzureAD.ApplicationRegistration("authorized", new()
-    ///     {
-    ///         DisplayName = "example-authorized-app",
-    ///     });
-    /// 
-    ///     var authorizer = new AzureAD.Application("authorizer", new()
-    ///     {
-    ///         DisplayName = "example-authorizing-app",
-    ///         Api = new AzureAD.Inputs.ApplicationApiArgs
-    ///         {
-    ///             Oauth2PermissionScopes = new[]
-    ///             {
-    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
-    ///                 {
-    ///                     AdminConsentDescription = "Administer the application",
-    ///                     AdminConsentDisplayName = "Administer",
-    ///                     Enabled = true,
-    ///                     Id = "00000000-0000-0000-0000-000000000000",
-    ///                     Type = "Admin",
-    ///                     Value = "administer",
-    ///                 },
-    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
-    ///                 {
-    ///                     AdminConsentDescription = "Access the application",
-    ///                     AdminConsentDisplayName = "Access",
-    ///                     Enabled = true,
-    ///                     Id = "11111111-1111-1111-1111-111111111111",
-    ///                     Type = "User",
-    ///                     UserConsentDescription = "Access the application",
-    ///                     UserConsentDisplayName = "Access",
-    ///                     Value = "user_impersonation",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var example = new AzureAD.ApplicationPreAuthorized("example", new()
-    ///     {
-    ///         ApplicationId = authorizer.Id,
-    ///         AuthorizedClientId = authorized.ClientId,
-    ///         PermissionIds = new[]
-    ///         {
-    ///             "00000000-0000-0000-0000-000000000000",
-    ///             "11111111-1111-1111-1111-111111111111",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.

@@ -32,15 +32,21 @@ class ApplicationRedirectUrisArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
-             redirect_uris: pulumi.Input[Sequence[pulumi.Input[str]]],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'redirectUris' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if redirect_uris is None and 'redirectUris' in kwargs:
             redirect_uris = kwargs['redirectUris']
+        if redirect_uris is None:
+            raise TypeError("Missing 'redirect_uris' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("application_id", application_id)
         _setter("redirect_uris", redirect_uris)
@@ -107,11 +113,11 @@ class _ApplicationRedirectUrisState:
              application_id: Optional[pulumi.Input[str]] = None,
              redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'redirectUris' in kwargs:
+        if redirect_uris is None and 'redirectUris' in kwargs:
             redirect_uris = kwargs['redirectUris']
 
         if application_id is not None:
@@ -168,41 +174,6 @@ class ApplicationRedirectUris(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_public = azuread.ApplicationRedirectUris("examplePublic",
-            application_id=example.id,
-            type="PublicClient",
-            redirect_uris=[
-                "myapp://auth",
-                "sample.mobile.app.bundie.id://auth",
-                "https://login.microsoftonline.com/common/oauth2/nativeclient",
-                "https://login.live.com/oauth20_desktop.srf",
-                "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222",
-                "urn:ietf:wg:oauth:2.0:foo",
-            ])
-        example_spa = azuread.ApplicationRedirectUris("exampleSpa",
-            application_id=example.id,
-            type="SPA",
-            redirect_uris=[
-                "https://mobile.hashitown.com/",
-                "https://beta.hashitown.com/",
-            ])
-        example_web = azuread.ApplicationRedirectUris("exampleWeb",
-            application_id=example.id,
-            type="Web",
-            redirect_uris=[
-                "https://app.hashitown.com/",
-                "https://classic.hashitown.com/",
-                "urn:ietf:wg:oauth:2.0:oob",
-            ])
-        ```
-
         ## Import
 
         Application API Access can be imported using the object ID of the application and the URI type, in the following format.
@@ -224,41 +195,6 @@ class ApplicationRedirectUris(pulumi.CustomResource):
                  args: ApplicationRedirectUrisArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_public = azuread.ApplicationRedirectUris("examplePublic",
-            application_id=example.id,
-            type="PublicClient",
-            redirect_uris=[
-                "myapp://auth",
-                "sample.mobile.app.bundie.id://auth",
-                "https://login.microsoftonline.com/common/oauth2/nativeclient",
-                "https://login.live.com/oauth20_desktop.srf",
-                "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222",
-                "urn:ietf:wg:oauth:2.0:foo",
-            ])
-        example_spa = azuread.ApplicationRedirectUris("exampleSpa",
-            application_id=example.id,
-            type="SPA",
-            redirect_uris=[
-                "https://mobile.hashitown.com/",
-                "https://beta.hashitown.com/",
-            ])
-        example_web = azuread.ApplicationRedirectUris("exampleWeb",
-            application_id=example.id,
-            type="Web",
-            redirect_uris=[
-                "https://app.hashitown.com/",
-                "https://classic.hashitown.com/",
-                "urn:ietf:wg:oauth:2.0:oob",
-            ])
-        ```
-
         ## Import
 
         Application API Access can be imported using the object ID of the application and the URI type, in the following format.

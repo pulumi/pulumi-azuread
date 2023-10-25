@@ -35,18 +35,26 @@ class DirectoryRoleEligibilityScheduleRequestArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             directory_scope_id: pulumi.Input[str],
-             justification: pulumi.Input[str],
-             principal_id: pulumi.Input[str],
-             role_definition_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             directory_scope_id: Optional[pulumi.Input[str]] = None,
+             justification: Optional[pulumi.Input[str]] = None,
+             principal_id: Optional[pulumi.Input[str]] = None,
+             role_definition_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'directoryScopeId' in kwargs:
+        if directory_scope_id is None and 'directoryScopeId' in kwargs:
             directory_scope_id = kwargs['directoryScopeId']
-        if 'principalId' in kwargs:
+        if directory_scope_id is None:
+            raise TypeError("Missing 'directory_scope_id' argument")
+        if justification is None:
+            raise TypeError("Missing 'justification' argument")
+        if principal_id is None and 'principalId' in kwargs:
             principal_id = kwargs['principalId']
-        if 'roleDefinitionId' in kwargs:
+        if principal_id is None:
+            raise TypeError("Missing 'principal_id' argument")
+        if role_definition_id is None and 'roleDefinitionId' in kwargs:
             role_definition_id = kwargs['roleDefinitionId']
+        if role_definition_id is None:
+            raise TypeError("Missing 'role_definition_id' argument")
 
         _setter("directory_scope_id", directory_scope_id)
         _setter("justification", justification)
@@ -130,13 +138,13 @@ class _DirectoryRoleEligibilityScheduleRequestState:
              justification: Optional[pulumi.Input[str]] = None,
              principal_id: Optional[pulumi.Input[str]] = None,
              role_definition_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'directoryScopeId' in kwargs:
+        if directory_scope_id is None and 'directoryScopeId' in kwargs:
             directory_scope_id = kwargs['directoryScopeId']
-        if 'principalId' in kwargs:
+        if principal_id is None and 'principalId' in kwargs:
             principal_id = kwargs['principalId']
-        if 'roleDefinitionId' in kwargs:
+        if role_definition_id is None and 'roleDefinitionId' in kwargs:
             role_definition_id = kwargs['roleDefinitionId']
 
         if directory_scope_id is not None:
@@ -218,23 +226,6 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
 
         The calling principal requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Application Administrator")
-        example_directory_role_eligibility_schedule_request = azuread.DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest",
-            role_definition_id=example_directory_role.template_id,
-            principal_id=azuread_user["example"]["object_id"],
-            directory_scope_id="/",
-            justification="Example")
-        ```
-
-        > Note the use of the `template_id` attribute when referencing built-in roles.
-
         ## Import
 
         Directory role eligibility schedule requests can be imported using the ID of the assignment, e.g.
@@ -266,23 +257,6 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
         The calling principal requires one of the following application roles: `RoleEligibilitySchedule.ReadWrite.Directory` or `RoleManagement.ReadWrite.Directory`.
 
         The calling principal requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Application Administrator")
-        example_directory_role_eligibility_schedule_request = azuread.DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest",
-            role_definition_id=example_directory_role.template_id,
-            principal_id=azuread_user["example"]["object_id"],
-            directory_scope_id="/",
-            justification="Example")
-        ```
-
-        > Note the use of the `template_id` attribute when referencing built-in roles.
 
         ## Import
 

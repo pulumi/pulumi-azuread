@@ -17,34 +17,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example_ip = new azuread.NamedLocation("example-ip", {
- *     displayName: "IP Named Location",
- *     ip: {
- *         ipRanges: [
- *             "1.1.1.1/32",
- *             "2.2.2.2/32",
- *         ],
- *         trusted: true,
- *     },
- * });
- * const example_country = new azuread.NamedLocation("example-country", {
- *     country: {
- *         countriesAndRegions: [
- *             "GB",
- *             "US",
- *         ],
- *         includeUnknownCountriesAndRegions: false,
- *     },
- *     displayName: "Country Named Location",
- * });
- * ```
- *
  * ## Import
  *
  * Named Locations can be imported using the `id`, e.g.

@@ -68,7 +68,7 @@ class ApplicationRegistrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             display_name: pulumi.Input[str],
+             display_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              homepage_url: Optional[pulumi.Input[str]] = None,
@@ -83,33 +83,35 @@ class ApplicationRegistrationArgs:
              sign_in_audience: Optional[pulumi.Input[str]] = None,
              support_url: Optional[pulumi.Input[str]] = None,
              terms_of_service_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'groupMembershipClaims' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if group_membership_claims is None and 'groupMembershipClaims' in kwargs:
             group_membership_claims = kwargs['groupMembershipClaims']
-        if 'homepageUrl' in kwargs:
+        if homepage_url is None and 'homepageUrl' in kwargs:
             homepage_url = kwargs['homepageUrl']
-        if 'implicitAccessTokenIssuanceEnabled' in kwargs:
+        if implicit_access_token_issuance_enabled is None and 'implicitAccessTokenIssuanceEnabled' in kwargs:
             implicit_access_token_issuance_enabled = kwargs['implicitAccessTokenIssuanceEnabled']
-        if 'implicitIdTokenIssuanceEnabled' in kwargs:
+        if implicit_id_token_issuance_enabled is None and 'implicitIdTokenIssuanceEnabled' in kwargs:
             implicit_id_token_issuance_enabled = kwargs['implicitIdTokenIssuanceEnabled']
-        if 'logoutUrl' in kwargs:
+        if logout_url is None and 'logoutUrl' in kwargs:
             logout_url = kwargs['logoutUrl']
-        if 'marketingUrl' in kwargs:
+        if marketing_url is None and 'marketingUrl' in kwargs:
             marketing_url = kwargs['marketingUrl']
-        if 'privacyStatementUrl' in kwargs:
+        if privacy_statement_url is None and 'privacyStatementUrl' in kwargs:
             privacy_statement_url = kwargs['privacyStatementUrl']
-        if 'requestedAccessTokenVersion' in kwargs:
+        if requested_access_token_version is None and 'requestedAccessTokenVersion' in kwargs:
             requested_access_token_version = kwargs['requestedAccessTokenVersion']
-        if 'serviceManagementReference' in kwargs:
+        if service_management_reference is None and 'serviceManagementReference' in kwargs:
             service_management_reference = kwargs['serviceManagementReference']
-        if 'signInAudience' in kwargs:
+        if sign_in_audience is None and 'signInAudience' in kwargs:
             sign_in_audience = kwargs['signInAudience']
-        if 'supportUrl' in kwargs:
+        if support_url is None and 'supportUrl' in kwargs:
             support_url = kwargs['supportUrl']
-        if 'termsOfServiceUrl' in kwargs:
+        if terms_of_service_url is None and 'termsOfServiceUrl' in kwargs:
             terms_of_service_url = kwargs['termsOfServiceUrl']
 
         _setter("display_name", display_name)
@@ -411,41 +413,41 @@ class _ApplicationRegistrationState:
              sign_in_audience: Optional[pulumi.Input[str]] = None,
              support_url: Optional[pulumi.Input[str]] = None,
              terms_of_service_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'disabledByMicrosoft' in kwargs:
+        if disabled_by_microsoft is None and 'disabledByMicrosoft' in kwargs:
             disabled_by_microsoft = kwargs['disabledByMicrosoft']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'groupMembershipClaims' in kwargs:
+        if group_membership_claims is None and 'groupMembershipClaims' in kwargs:
             group_membership_claims = kwargs['groupMembershipClaims']
-        if 'homepageUrl' in kwargs:
+        if homepage_url is None and 'homepageUrl' in kwargs:
             homepage_url = kwargs['homepageUrl']
-        if 'implicitAccessTokenIssuanceEnabled' in kwargs:
+        if implicit_access_token_issuance_enabled is None and 'implicitAccessTokenIssuanceEnabled' in kwargs:
             implicit_access_token_issuance_enabled = kwargs['implicitAccessTokenIssuanceEnabled']
-        if 'implicitIdTokenIssuanceEnabled' in kwargs:
+        if implicit_id_token_issuance_enabled is None and 'implicitIdTokenIssuanceEnabled' in kwargs:
             implicit_id_token_issuance_enabled = kwargs['implicitIdTokenIssuanceEnabled']
-        if 'logoutUrl' in kwargs:
+        if logout_url is None and 'logoutUrl' in kwargs:
             logout_url = kwargs['logoutUrl']
-        if 'marketingUrl' in kwargs:
+        if marketing_url is None and 'marketingUrl' in kwargs:
             marketing_url = kwargs['marketingUrl']
-        if 'objectId' in kwargs:
+        if object_id is None and 'objectId' in kwargs:
             object_id = kwargs['objectId']
-        if 'privacyStatementUrl' in kwargs:
+        if privacy_statement_url is None and 'privacyStatementUrl' in kwargs:
             privacy_statement_url = kwargs['privacyStatementUrl']
-        if 'publisherDomain' in kwargs:
+        if publisher_domain is None and 'publisherDomain' in kwargs:
             publisher_domain = kwargs['publisherDomain']
-        if 'requestedAccessTokenVersion' in kwargs:
+        if requested_access_token_version is None and 'requestedAccessTokenVersion' in kwargs:
             requested_access_token_version = kwargs['requestedAccessTokenVersion']
-        if 'serviceManagementReference' in kwargs:
+        if service_management_reference is None and 'serviceManagementReference' in kwargs:
             service_management_reference = kwargs['serviceManagementReference']
-        if 'signInAudience' in kwargs:
+        if sign_in_audience is None and 'signInAudience' in kwargs:
             sign_in_audience = kwargs['signInAudience']
-        if 'supportUrl' in kwargs:
+        if support_url is None and 'supportUrl' in kwargs:
             support_url = kwargs['supportUrl']
-        if 'termsOfServiceUrl' in kwargs:
+        if terms_of_service_url is None and 'termsOfServiceUrl' in kwargs:
             terms_of_service_url = kwargs['termsOfServiceUrl']
 
         if client_id is not None:
@@ -750,24 +752,6 @@ class ApplicationRegistration(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.ApplicationRegistration("example",
-            description="My example application",
-            display_name="Example Application",
-            homepage_url="https://app.hashitown.com/",
-            logout_url="https://app.hashitown.com/logout",
-            marketing_url="https://hashitown.com/",
-            privacy_statement_url="https://hashitown.com/privacy",
-            sign_in_audience="AzureADMyOrg",
-            support_url="https://support.hashitown.com/",
-            terms_of_service_url="https://hashitown.com/terms")
-        ```
-
         ## Import
 
         Application Registrations can be imported using the object ID of the application, in the following format.
@@ -812,24 +796,6 @@ class ApplicationRegistration(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
 
         When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.ApplicationRegistration("example",
-            description="My example application",
-            display_name="Example Application",
-            homepage_url="https://app.hashitown.com/",
-            logout_url="https://app.hashitown.com/logout",
-            marketing_url="https://hashitown.com/",
-            privacy_statement_url="https://hashitown.com/privacy",
-            sign_in_audience="AzureADMyOrg",
-            support_url="https://support.hashitown.com/",
-            terms_of_service_url="https://hashitown.com/terms")
-        ```
 
         ## Import
 

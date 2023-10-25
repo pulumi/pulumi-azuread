@@ -55,9 +55,9 @@ class AccessPackageAssignmentPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_package_id: pulumi.Input[str],
-             description: pulumi.Input[str],
-             display_name: pulumi.Input[str],
+             access_package_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
              approval_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsArgs']] = None,
              assignment_review_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs']] = None,
              duration_in_days: Optional[pulumi.Input[int]] = None,
@@ -65,23 +65,29 @@ class AccessPackageAssignmentPolicyArgs:
              extension_enabled: Optional[pulumi.Input[bool]] = None,
              questions: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionArgs']]]] = None,
              requestor_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessPackageId' in kwargs:
+        if access_package_id is None and 'accessPackageId' in kwargs:
             access_package_id = kwargs['accessPackageId']
-        if 'displayName' in kwargs:
+        if access_package_id is None:
+            raise TypeError("Missing 'access_package_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'approvalSettings' in kwargs:
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if approval_settings is None and 'approvalSettings' in kwargs:
             approval_settings = kwargs['approvalSettings']
-        if 'assignmentReviewSettings' in kwargs:
+        if assignment_review_settings is None and 'assignmentReviewSettings' in kwargs:
             assignment_review_settings = kwargs['assignmentReviewSettings']
-        if 'durationInDays' in kwargs:
+        if duration_in_days is None and 'durationInDays' in kwargs:
             duration_in_days = kwargs['durationInDays']
-        if 'expirationDate' in kwargs:
+        if expiration_date is None and 'expirationDate' in kwargs:
             expiration_date = kwargs['expirationDate']
-        if 'extensionEnabled' in kwargs:
+        if extension_enabled is None and 'extensionEnabled' in kwargs:
             extension_enabled = kwargs['extensionEnabled']
-        if 'requestorSettings' in kwargs:
+        if requestor_settings is None and 'requestorSettings' in kwargs:
             requestor_settings = kwargs['requestorSettings']
 
         _setter("access_package_id", access_package_id)
@@ -275,23 +281,23 @@ class _AccessPackageAssignmentPolicyState:
              extension_enabled: Optional[pulumi.Input[bool]] = None,
              questions: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionArgs']]]] = None,
              requestor_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessPackageId' in kwargs:
+        if access_package_id is None and 'accessPackageId' in kwargs:
             access_package_id = kwargs['accessPackageId']
-        if 'approvalSettings' in kwargs:
+        if approval_settings is None and 'approvalSettings' in kwargs:
             approval_settings = kwargs['approvalSettings']
-        if 'assignmentReviewSettings' in kwargs:
+        if assignment_review_settings is None and 'assignmentReviewSettings' in kwargs:
             assignment_review_settings = kwargs['assignmentReviewSettings']
-        if 'displayName' in kwargs:
+        if display_name is None and 'displayName' in kwargs:
             display_name = kwargs['displayName']
-        if 'durationInDays' in kwargs:
+        if duration_in_days is None and 'durationInDays' in kwargs:
             duration_in_days = kwargs['durationInDays']
-        if 'expirationDate' in kwargs:
+        if expiration_date is None and 'expirationDate' in kwargs:
             expiration_date = kwargs['expirationDate']
-        if 'extensionEnabled' in kwargs:
+        if extension_enabled is None and 'extensionEnabled' in kwargs:
             extension_enabled = kwargs['extensionEnabled']
-        if 'requestorSettings' in kwargs:
+        if requestor_settings is None and 'requestorSettings' in kwargs:
             requestor_settings = kwargs['requestorSettings']
 
         if access_package_id is not None:
@@ -463,54 +469,6 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_group = azuread.Group("exampleGroup",
-            display_name="group-name",
-            security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
-            display_name="example-catalog",
-            description="Example catalog")
-        example_access_package = azuread.AccessPackage("exampleAccessPackage",
-            catalog_id=example_access_package_catalog.id,
-            display_name="access-package",
-            description="Access Package")
-        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy",
-            access_package_id=example_access_package.id,
-            display_name="assignment-policy",
-            description="My assignment policy",
-            duration_in_days=90,
-            requestor_settings=azuread.AccessPackageAssignmentPolicyRequestorSettingsArgs(
-                scope_type="AllExistingDirectoryMemberUsers",
-            ),
-            approval_settings=azuread.AccessPackageAssignmentPolicyApprovalSettingsArgs(
-                approval_required=True,
-                approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
-                    approval_timeout_in_days=14,
-                    primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
-                        object_id=example_group.object_id,
-                        subject_type="groupMembers",
-                    )],
-                )],
-            ),
-            assignment_review_settings=azuread.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs(
-                enabled=True,
-                review_frequency="weekly",
-                duration_in_days=3,
-                review_type="Self",
-                access_review_timeout_behavior="keepAccess",
-            ),
-            questions=[azuread.AccessPackageAssignmentPolicyQuestionArgs(
-                text=azuread.AccessPackageAssignmentPolicyQuestionTextArgs(
-                    default_text="hello, how are you?",
-                ),
-            )])
-        ```
-
         ## Import
 
         An access package assignment policy can be imported using the ID, e.g.
@@ -548,54 +506,6 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
 
         When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Identity Governance.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_group = azuread.Group("exampleGroup",
-            display_name="group-name",
-            security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
-            display_name="example-catalog",
-            description="Example catalog")
-        example_access_package = azuread.AccessPackage("exampleAccessPackage",
-            catalog_id=example_access_package_catalog.id,
-            display_name="access-package",
-            description="Access Package")
-        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy",
-            access_package_id=example_access_package.id,
-            display_name="assignment-policy",
-            description="My assignment policy",
-            duration_in_days=90,
-            requestor_settings=azuread.AccessPackageAssignmentPolicyRequestorSettingsArgs(
-                scope_type="AllExistingDirectoryMemberUsers",
-            ),
-            approval_settings=azuread.AccessPackageAssignmentPolicyApprovalSettingsArgs(
-                approval_required=True,
-                approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
-                    approval_timeout_in_days=14,
-                    primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
-                        object_id=example_group.object_id,
-                        subject_type="groupMembers",
-                    )],
-                )],
-            ),
-            assignment_review_settings=azuread.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs(
-                enabled=True,
-                review_frequency="weekly",
-                duration_in_days=3,
-                review_type="Self",
-                access_review_timeout_behavior="keepAccess",
-            ),
-            questions=[azuread.AccessPackageAssignmentPolicyQuestionArgs(
-                text=azuread.AccessPackageAssignmentPolicyQuestionTextArgs(
-                    default_text="hello, how are you?",
-                ),
-            )])
-        ```
 
         ## Import
 
@@ -646,17 +556,9 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
             if access_package_id is None and not opts.urn:
                 raise TypeError("Missing required property 'access_package_id'")
             __props__.__dict__["access_package_id"] = access_package_id
-            if approval_settings is not None and not isinstance(approval_settings, AccessPackageAssignmentPolicyApprovalSettingsArgs):
-                approval_settings = approval_settings or {}
-                def _setter(key, value):
-                    approval_settings[key] = value
-                AccessPackageAssignmentPolicyApprovalSettingsArgs._configure(_setter, **approval_settings)
+            approval_settings = _utilities.configure(approval_settings, AccessPackageAssignmentPolicyApprovalSettingsArgs, True)
             __props__.__dict__["approval_settings"] = approval_settings
-            if assignment_review_settings is not None and not isinstance(assignment_review_settings, AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs):
-                assignment_review_settings = assignment_review_settings or {}
-                def _setter(key, value):
-                    assignment_review_settings[key] = value
-                AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs._configure(_setter, **assignment_review_settings)
+            assignment_review_settings = _utilities.configure(assignment_review_settings, AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs, True)
             __props__.__dict__["assignment_review_settings"] = assignment_review_settings
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
@@ -668,11 +570,7 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
             __props__.__dict__["expiration_date"] = expiration_date
             __props__.__dict__["extension_enabled"] = extension_enabled
             __props__.__dict__["questions"] = questions
-            if requestor_settings is not None and not isinstance(requestor_settings, AccessPackageAssignmentPolicyRequestorSettingsArgs):
-                requestor_settings = requestor_settings or {}
-                def _setter(key, value):
-                    requestor_settings[key] = value
-                AccessPackageAssignmentPolicyRequestorSettingsArgs._configure(_setter, **requestor_settings)
+            requestor_settings = _utilities.configure(requestor_settings, AccessPackageAssignmentPolicyRequestorSettingsArgs, True)
             __props__.__dict__["requestor_settings"] = requestor_settings
         super(AccessPackageAssignmentPolicy, __self__).__init__(
             'azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy',

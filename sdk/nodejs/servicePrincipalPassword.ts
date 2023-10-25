@@ -5,37 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * *Basic example*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
- * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("exampleServicePrincipalPassword", {servicePrincipalId: exampleServicePrincipal.objectId});
- * ```
- *
- * *Time-based rotation*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- * import * as time from "@pulumiverse/time";
- *
- * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
- * const exampleRotating = new time.Rotating("exampleRotating", {rotationDays: 7});
- * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("exampleServicePrincipalPassword", {
- *     servicePrincipalId: exampleServicePrincipal.objectId,
- *     rotateWhenChanged: {
- *         rotation: exampleRotating.id,
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * This resource does not support importing.

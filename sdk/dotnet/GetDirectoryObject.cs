@@ -22,32 +22,6 @@ namespace Pulumi.AzureAD
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// *Look up and output type of object by ID*
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetDirectoryObject.Invoke(new()
-        ///     {
-        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["objectType"] = example.Apply(getDirectoryObjectResult =&gt; getDirectoryObjectResult.Type),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Attributes Reference 
         /// 
         /// The following attributes are exported:
@@ -69,32 +43,6 @@ namespace Pulumi.AzureAD
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// *Look up and output type of object by ID*
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetDirectoryObject.Invoke(new()
-        ///     {
-        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["objectType"] = example.Apply(getDirectoryObjectResult =&gt; getDirectoryObjectResult.Type),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// ## Attributes Reference 
         /// 
         /// The following attributes are exported:
