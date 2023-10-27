@@ -344,7 +344,7 @@ export interface ApplicationOptionalClaims {
 
 export interface ApplicationOptionalClaimsAccessToken {
     /**
-     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
      */
     additionalProperties?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -363,7 +363,7 @@ export interface ApplicationOptionalClaimsAccessToken {
 
 export interface ApplicationOptionalClaimsIdToken {
     /**
-     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
      */
     additionalProperties?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -382,7 +382,7 @@ export interface ApplicationOptionalClaimsIdToken {
 
 export interface ApplicationOptionalClaimsSaml2Token {
     /**
-     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
      */
     additionalProperties?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -538,7 +538,7 @@ export interface ConditionalAccessPolicyConditionsClientApplications {
 
 export interface ConditionalAccessPolicyConditionsDevices {
     /**
-     * A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+     * A `filter` block as described below.
      */
     filter?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsDevicesFilter>;
 }
@@ -582,6 +582,10 @@ export interface ConditionalAccessPolicyConditionsUsers {
      */
     excludedGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+     */
+    excludedGuestsOrExternalUsers?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser>[]>;
+    /**
      * A list of role IDs excluded from scope of policy.
      */
     excludedRoles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -594,15 +598,63 @@ export interface ConditionalAccessPolicyConditionsUsers {
      */
     includedGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
+     */
+    includedGuestsOrExternalUsers?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser>[]>;
+    /**
      * A list of role IDs in scope of policy unless explicitly excluded.
      */
     includedRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
      *
-     * > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
+     * > At least one of `includedGroups`, `includedGuestsOrExternalUsers`, `includedRoles` or `includedUsers` must be specified.
      */
     includedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser {
+    /**
+     * An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+     */
+    externalTenants?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant>[]>;
+    /**
+     * A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+     */
+    guestOrExternalUserTypes: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant {
+    /**
+     * A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
+     */
+    members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+     */
+    membershipKind: pulumi.Input<string>;
+}
+
+export interface ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser {
+    /**
+     * An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+     */
+    externalTenants?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant>[]>;
+    /**
+     * A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+     */
+    guestOrExternalUserTypes: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant {
+    /**
+     * A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
+     */
+    members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+     */
+    membershipKind: pulumi.Input<string>;
 }
 
 export interface ConditionalAccessPolicyGrantControls {
@@ -650,11 +702,19 @@ export interface ConditionalAccessPolicySessionControls {
      */
     persistentBrowserMode?: pulumi.Input<string>;
     /**
-     * Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+     * Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
      */
     signInFrequency?: pulumi.Input<number>;
     /**
-     * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+     * Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+     */
+    signInFrequencyAuthenticationType?: pulumi.Input<string>;
+    /**
+     * The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+     */
+    signInFrequencyInterval?: pulumi.Input<string>;
+    /**
+     * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
      */
     signInFrequencyPeriod?: pulumi.Input<string>;
 }

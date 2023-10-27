@@ -84,7 +84,7 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
 
     well_known = azuread.get_application_published_app_ids()
     msgraph = azuread.ServicePrincipal("msgraph",
-        application_id=well_known.result["MicrosoftGraph"],
+        client_id=well_known.result["MicrosoftGraph"],
         use_existing=True)
     example = azuread.Application("example",
         display_name="example",
@@ -141,7 +141,7 @@ def get_application_published_app_ids_output(opts: Optional[pulumi.InvokeOptions
 
     well_known = azuread.get_application_published_app_ids()
     msgraph = azuread.ServicePrincipal("msgraph",
-        application_id=well_known.result["MicrosoftGraph"],
+        client_id=well_known.result["MicrosoftGraph"],
         use_existing=True)
     example = azuread.Application("example",
         display_name="example",

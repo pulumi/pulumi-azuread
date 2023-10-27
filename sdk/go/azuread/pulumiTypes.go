@@ -2898,7 +2898,7 @@ func (o ApplicationFeatureTagArrayOutput) Index(i pulumi.IntInput) ApplicationFe
 	}).(ApplicationFeatureTagOutput)
 }
 
-type ApplicationOptionalClaims struct {
+type ApplicationOptionalClaimsType struct {
 	// One or more `accessToken` blocks as documented below.
 	AccessTokens []ApplicationOptionalClaimsAccessToken `pulumi:"accessTokens"`
 	// One or more `idToken` blocks as documented below.
@@ -2907,18 +2907,18 @@ type ApplicationOptionalClaims struct {
 	Saml2Tokens []ApplicationOptionalClaimsSaml2Token `pulumi:"saml2Tokens"`
 }
 
-// ApplicationOptionalClaimsInput is an input type that accepts ApplicationOptionalClaimsArgs and ApplicationOptionalClaimsOutput values.
-// You can construct a concrete instance of `ApplicationOptionalClaimsInput` via:
+// ApplicationOptionalClaimsTypeInput is an input type that accepts ApplicationOptionalClaimsTypeArgs and ApplicationOptionalClaimsTypeOutput values.
+// You can construct a concrete instance of `ApplicationOptionalClaimsTypeInput` via:
 //
-//	ApplicationOptionalClaimsArgs{...}
-type ApplicationOptionalClaimsInput interface {
+//	ApplicationOptionalClaimsTypeArgs{...}
+type ApplicationOptionalClaimsTypeInput interface {
 	pulumi.Input
 
-	ToApplicationOptionalClaimsOutput() ApplicationOptionalClaimsOutput
-	ToApplicationOptionalClaimsOutputWithContext(context.Context) ApplicationOptionalClaimsOutput
+	ToApplicationOptionalClaimsTypeOutput() ApplicationOptionalClaimsTypeOutput
+	ToApplicationOptionalClaimsTypeOutputWithContext(context.Context) ApplicationOptionalClaimsTypeOutput
 }
 
-type ApplicationOptionalClaimsArgs struct {
+type ApplicationOptionalClaimsTypeArgs struct {
 	// One or more `accessToken` blocks as documented below.
 	AccessTokens ApplicationOptionalClaimsAccessTokenArrayInput `pulumi:"accessTokens"`
 	// One or more `idToken` blocks as documented below.
@@ -2927,149 +2927,149 @@ type ApplicationOptionalClaimsArgs struct {
 	Saml2Tokens ApplicationOptionalClaimsSaml2TokenArrayInput `pulumi:"saml2Tokens"`
 }
 
-func (ApplicationOptionalClaimsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationOptionalClaims)(nil)).Elem()
+func (ApplicationOptionalClaimsTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOptionalClaimsType)(nil)).Elem()
 }
 
-func (i ApplicationOptionalClaimsArgs) ToApplicationOptionalClaimsOutput() ApplicationOptionalClaimsOutput {
-	return i.ToApplicationOptionalClaimsOutputWithContext(context.Background())
+func (i ApplicationOptionalClaimsTypeArgs) ToApplicationOptionalClaimsTypeOutput() ApplicationOptionalClaimsTypeOutput {
+	return i.ToApplicationOptionalClaimsTypeOutputWithContext(context.Background())
 }
 
-func (i ApplicationOptionalClaimsArgs) ToApplicationOptionalClaimsOutputWithContext(ctx context.Context) ApplicationOptionalClaimsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsOutput)
+func (i ApplicationOptionalClaimsTypeArgs) ToApplicationOptionalClaimsTypeOutputWithContext(ctx context.Context) ApplicationOptionalClaimsTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsTypeOutput)
 }
 
-func (i ApplicationOptionalClaimsArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationOptionalClaims] {
-	return pulumix.Output[ApplicationOptionalClaims]{
-		OutputState: i.ToApplicationOptionalClaimsOutputWithContext(ctx).OutputState,
+func (i ApplicationOptionalClaimsTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationOptionalClaimsType] {
+	return pulumix.Output[ApplicationOptionalClaimsType]{
+		OutputState: i.ToApplicationOptionalClaimsTypeOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i ApplicationOptionalClaimsArgs) ToApplicationOptionalClaimsPtrOutput() ApplicationOptionalClaimsPtrOutput {
-	return i.ToApplicationOptionalClaimsPtrOutputWithContext(context.Background())
+func (i ApplicationOptionalClaimsTypeArgs) ToApplicationOptionalClaimsTypePtrOutput() ApplicationOptionalClaimsTypePtrOutput {
+	return i.ToApplicationOptionalClaimsTypePtrOutputWithContext(context.Background())
 }
 
-func (i ApplicationOptionalClaimsArgs) ToApplicationOptionalClaimsPtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsOutput).ToApplicationOptionalClaimsPtrOutputWithContext(ctx)
+func (i ApplicationOptionalClaimsTypeArgs) ToApplicationOptionalClaimsTypePtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsTypeOutput).ToApplicationOptionalClaimsTypePtrOutputWithContext(ctx)
 }
 
-// ApplicationOptionalClaimsPtrInput is an input type that accepts ApplicationOptionalClaimsArgs, ApplicationOptionalClaimsPtr and ApplicationOptionalClaimsPtrOutput values.
-// You can construct a concrete instance of `ApplicationOptionalClaimsPtrInput` via:
+// ApplicationOptionalClaimsTypePtrInput is an input type that accepts ApplicationOptionalClaimsTypeArgs, ApplicationOptionalClaimsTypePtr and ApplicationOptionalClaimsTypePtrOutput values.
+// You can construct a concrete instance of `ApplicationOptionalClaimsTypePtrInput` via:
 //
-//	        ApplicationOptionalClaimsArgs{...}
+//	        ApplicationOptionalClaimsTypeArgs{...}
 //
 //	or:
 //
 //	        nil
-type ApplicationOptionalClaimsPtrInput interface {
+type ApplicationOptionalClaimsTypePtrInput interface {
 	pulumi.Input
 
-	ToApplicationOptionalClaimsPtrOutput() ApplicationOptionalClaimsPtrOutput
-	ToApplicationOptionalClaimsPtrOutputWithContext(context.Context) ApplicationOptionalClaimsPtrOutput
+	ToApplicationOptionalClaimsTypePtrOutput() ApplicationOptionalClaimsTypePtrOutput
+	ToApplicationOptionalClaimsTypePtrOutputWithContext(context.Context) ApplicationOptionalClaimsTypePtrOutput
 }
 
-type applicationOptionalClaimsPtrType ApplicationOptionalClaimsArgs
+type applicationOptionalClaimsTypePtrType ApplicationOptionalClaimsTypeArgs
 
-func ApplicationOptionalClaimsPtr(v *ApplicationOptionalClaimsArgs) ApplicationOptionalClaimsPtrInput {
-	return (*applicationOptionalClaimsPtrType)(v)
+func ApplicationOptionalClaimsTypePtr(v *ApplicationOptionalClaimsTypeArgs) ApplicationOptionalClaimsTypePtrInput {
+	return (*applicationOptionalClaimsTypePtrType)(v)
 }
 
-func (*applicationOptionalClaimsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationOptionalClaims)(nil)).Elem()
+func (*applicationOptionalClaimsTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationOptionalClaimsType)(nil)).Elem()
 }
 
-func (i *applicationOptionalClaimsPtrType) ToApplicationOptionalClaimsPtrOutput() ApplicationOptionalClaimsPtrOutput {
-	return i.ToApplicationOptionalClaimsPtrOutputWithContext(context.Background())
+func (i *applicationOptionalClaimsTypePtrType) ToApplicationOptionalClaimsTypePtrOutput() ApplicationOptionalClaimsTypePtrOutput {
+	return i.ToApplicationOptionalClaimsTypePtrOutputWithContext(context.Background())
 }
 
-func (i *applicationOptionalClaimsPtrType) ToApplicationOptionalClaimsPtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsPtrOutput)
+func (i *applicationOptionalClaimsTypePtrType) ToApplicationOptionalClaimsTypePtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsTypePtrOutput)
 }
 
-func (i *applicationOptionalClaimsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationOptionalClaims] {
-	return pulumix.Output[*ApplicationOptionalClaims]{
-		OutputState: i.ToApplicationOptionalClaimsPtrOutputWithContext(ctx).OutputState,
+func (i *applicationOptionalClaimsTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationOptionalClaimsType] {
+	return pulumix.Output[*ApplicationOptionalClaimsType]{
+		OutputState: i.ToApplicationOptionalClaimsTypePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type ApplicationOptionalClaimsOutput struct{ *pulumi.OutputState }
+type ApplicationOptionalClaimsTypeOutput struct{ *pulumi.OutputState }
 
-func (ApplicationOptionalClaimsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationOptionalClaims)(nil)).Elem()
+func (ApplicationOptionalClaimsTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOptionalClaimsType)(nil)).Elem()
 }
 
-func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsOutput() ApplicationOptionalClaimsOutput {
+func (o ApplicationOptionalClaimsTypeOutput) ToApplicationOptionalClaimsTypeOutput() ApplicationOptionalClaimsTypeOutput {
 	return o
 }
 
-func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsOutputWithContext(ctx context.Context) ApplicationOptionalClaimsOutput {
+func (o ApplicationOptionalClaimsTypeOutput) ToApplicationOptionalClaimsTypeOutputWithContext(ctx context.Context) ApplicationOptionalClaimsTypeOutput {
 	return o
 }
 
-func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsPtrOutput() ApplicationOptionalClaimsPtrOutput {
-	return o.ToApplicationOptionalClaimsPtrOutputWithContext(context.Background())
+func (o ApplicationOptionalClaimsTypeOutput) ToApplicationOptionalClaimsTypePtrOutput() ApplicationOptionalClaimsTypePtrOutput {
+	return o.ToApplicationOptionalClaimsTypePtrOutputWithContext(context.Background())
 }
 
-func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsPtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationOptionalClaims) *ApplicationOptionalClaims {
+func (o ApplicationOptionalClaimsTypeOutput) ToApplicationOptionalClaimsTypePtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationOptionalClaimsType) *ApplicationOptionalClaimsType {
 		return &v
-	}).(ApplicationOptionalClaimsPtrOutput)
+	}).(ApplicationOptionalClaimsTypePtrOutput)
 }
 
-func (o ApplicationOptionalClaimsOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationOptionalClaims] {
-	return pulumix.Output[ApplicationOptionalClaims]{
+func (o ApplicationOptionalClaimsTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationOptionalClaimsType] {
+	return pulumix.Output[ApplicationOptionalClaimsType]{
 		OutputState: o.OutputState,
 	}
 }
 
 // One or more `accessToken` blocks as documented below.
-func (o ApplicationOptionalClaimsOutput) AccessTokens() ApplicationOptionalClaimsAccessTokenArrayOutput {
-	return o.ApplyT(func(v ApplicationOptionalClaims) []ApplicationOptionalClaimsAccessToken { return v.AccessTokens }).(ApplicationOptionalClaimsAccessTokenArrayOutput)
+func (o ApplicationOptionalClaimsTypeOutput) AccessTokens() ApplicationOptionalClaimsAccessTokenArrayOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsType) []ApplicationOptionalClaimsAccessToken { return v.AccessTokens }).(ApplicationOptionalClaimsAccessTokenArrayOutput)
 }
 
 // One or more `idToken` blocks as documented below.
-func (o ApplicationOptionalClaimsOutput) IdTokens() ApplicationOptionalClaimsIdTokenArrayOutput {
-	return o.ApplyT(func(v ApplicationOptionalClaims) []ApplicationOptionalClaimsIdToken { return v.IdTokens }).(ApplicationOptionalClaimsIdTokenArrayOutput)
+func (o ApplicationOptionalClaimsTypeOutput) IdTokens() ApplicationOptionalClaimsIdTokenArrayOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsType) []ApplicationOptionalClaimsIdToken { return v.IdTokens }).(ApplicationOptionalClaimsIdTokenArrayOutput)
 }
 
 // One or more `saml2Token` blocks as documented below.
-func (o ApplicationOptionalClaimsOutput) Saml2Tokens() ApplicationOptionalClaimsSaml2TokenArrayOutput {
-	return o.ApplyT(func(v ApplicationOptionalClaims) []ApplicationOptionalClaimsSaml2Token { return v.Saml2Tokens }).(ApplicationOptionalClaimsSaml2TokenArrayOutput)
+func (o ApplicationOptionalClaimsTypeOutput) Saml2Tokens() ApplicationOptionalClaimsSaml2TokenArrayOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsType) []ApplicationOptionalClaimsSaml2Token { return v.Saml2Tokens }).(ApplicationOptionalClaimsSaml2TokenArrayOutput)
 }
 
-type ApplicationOptionalClaimsPtrOutput struct{ *pulumi.OutputState }
+type ApplicationOptionalClaimsTypePtrOutput struct{ *pulumi.OutputState }
 
-func (ApplicationOptionalClaimsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationOptionalClaims)(nil)).Elem()
+func (ApplicationOptionalClaimsTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationOptionalClaimsType)(nil)).Elem()
 }
 
-func (o ApplicationOptionalClaimsPtrOutput) ToApplicationOptionalClaimsPtrOutput() ApplicationOptionalClaimsPtrOutput {
+func (o ApplicationOptionalClaimsTypePtrOutput) ToApplicationOptionalClaimsTypePtrOutput() ApplicationOptionalClaimsTypePtrOutput {
 	return o
 }
 
-func (o ApplicationOptionalClaimsPtrOutput) ToApplicationOptionalClaimsPtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsPtrOutput {
+func (o ApplicationOptionalClaimsTypePtrOutput) ToApplicationOptionalClaimsTypePtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsTypePtrOutput {
 	return o
 }
 
-func (o ApplicationOptionalClaimsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationOptionalClaims] {
-	return pulumix.Output[*ApplicationOptionalClaims]{
+func (o ApplicationOptionalClaimsTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationOptionalClaimsType] {
+	return pulumix.Output[*ApplicationOptionalClaimsType]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o ApplicationOptionalClaimsPtrOutput) Elem() ApplicationOptionalClaimsOutput {
-	return o.ApplyT(func(v *ApplicationOptionalClaims) ApplicationOptionalClaims {
+func (o ApplicationOptionalClaimsTypePtrOutput) Elem() ApplicationOptionalClaimsTypeOutput {
+	return o.ApplyT(func(v *ApplicationOptionalClaimsType) ApplicationOptionalClaimsType {
 		if v != nil {
 			return *v
 		}
-		var ret ApplicationOptionalClaims
+		var ret ApplicationOptionalClaimsType
 		return ret
-	}).(ApplicationOptionalClaimsOutput)
+	}).(ApplicationOptionalClaimsTypeOutput)
 }
 
 // One or more `accessToken` blocks as documented below.
-func (o ApplicationOptionalClaimsPtrOutput) AccessTokens() ApplicationOptionalClaimsAccessTokenArrayOutput {
-	return o.ApplyT(func(v *ApplicationOptionalClaims) []ApplicationOptionalClaimsAccessToken {
+func (o ApplicationOptionalClaimsTypePtrOutput) AccessTokens() ApplicationOptionalClaimsAccessTokenArrayOutput {
+	return o.ApplyT(func(v *ApplicationOptionalClaimsType) []ApplicationOptionalClaimsAccessToken {
 		if v == nil {
 			return nil
 		}
@@ -3078,8 +3078,8 @@ func (o ApplicationOptionalClaimsPtrOutput) AccessTokens() ApplicationOptionalCl
 }
 
 // One or more `idToken` blocks as documented below.
-func (o ApplicationOptionalClaimsPtrOutput) IdTokens() ApplicationOptionalClaimsIdTokenArrayOutput {
-	return o.ApplyT(func(v *ApplicationOptionalClaims) []ApplicationOptionalClaimsIdToken {
+func (o ApplicationOptionalClaimsTypePtrOutput) IdTokens() ApplicationOptionalClaimsIdTokenArrayOutput {
+	return o.ApplyT(func(v *ApplicationOptionalClaimsType) []ApplicationOptionalClaimsIdToken {
 		if v == nil {
 			return nil
 		}
@@ -3088,8 +3088,8 @@ func (o ApplicationOptionalClaimsPtrOutput) IdTokens() ApplicationOptionalClaims
 }
 
 // One or more `saml2Token` blocks as documented below.
-func (o ApplicationOptionalClaimsPtrOutput) Saml2Tokens() ApplicationOptionalClaimsSaml2TokenArrayOutput {
-	return o.ApplyT(func(v *ApplicationOptionalClaims) []ApplicationOptionalClaimsSaml2Token {
+func (o ApplicationOptionalClaimsTypePtrOutput) Saml2Tokens() ApplicationOptionalClaimsSaml2TokenArrayOutput {
+	return o.ApplyT(func(v *ApplicationOptionalClaimsType) []ApplicationOptionalClaimsSaml2Token {
 		if v == nil {
 			return nil
 		}
@@ -3098,7 +3098,7 @@ func (o ApplicationOptionalClaimsPtrOutput) Saml2Tokens() ApplicationOptionalCla
 }
 
 type ApplicationOptionalClaimsAccessToken struct {
-	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential *bool `pulumi:"essential"`
@@ -3120,7 +3120,7 @@ type ApplicationOptionalClaimsAccessTokenInput interface {
 }
 
 type ApplicationOptionalClaimsAccessTokenArgs struct {
-	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential pulumi.BoolPtrInput `pulumi:"essential"`
@@ -3199,7 +3199,7 @@ func (o ApplicationOptionalClaimsAccessTokenOutput) ToOutput(ctx context.Context
 	}
 }
 
-// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
 func (o ApplicationOptionalClaimsAccessTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsAccessToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
@@ -3246,7 +3246,7 @@ func (o ApplicationOptionalClaimsAccessTokenArrayOutput) Index(i pulumi.IntInput
 }
 
 type ApplicationOptionalClaimsIdToken struct {
-	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential *bool `pulumi:"essential"`
@@ -3268,7 +3268,7 @@ type ApplicationOptionalClaimsIdTokenInput interface {
 }
 
 type ApplicationOptionalClaimsIdTokenArgs struct {
-	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential pulumi.BoolPtrInput `pulumi:"essential"`
@@ -3347,7 +3347,7 @@ func (o ApplicationOptionalClaimsIdTokenOutput) ToOutput(ctx context.Context) pu
 	}
 }
 
-// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
 func (o ApplicationOptionalClaimsIdTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
@@ -3394,7 +3394,7 @@ func (o ApplicationOptionalClaimsIdTokenArrayOutput) Index(i pulumi.IntInput) Ap
 }
 
 type ApplicationOptionalClaimsSaml2Token struct {
-	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential *bool `pulumi:"essential"`
@@ -3416,7 +3416,7 @@ type ApplicationOptionalClaimsSaml2TokenInput interface {
 }
 
 type ApplicationOptionalClaimsSaml2TokenArgs struct {
-	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential pulumi.BoolPtrInput `pulumi:"essential"`
@@ -3495,7 +3495,7 @@ func (o ApplicationOptionalClaimsSaml2TokenOutput) ToOutput(ctx context.Context)
 	}
 }
 
-// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
 func (o ApplicationOptionalClaimsSaml2TokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsSaml2Token) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
@@ -5253,7 +5253,7 @@ func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) IncludedSe
 }
 
 type ConditionalAccessPolicyConditionsDevices struct {
-	// A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+	// A `filter` block as described below.
 	Filter *ConditionalAccessPolicyConditionsDevicesFilter `pulumi:"filter"`
 }
 
@@ -5269,7 +5269,7 @@ type ConditionalAccessPolicyConditionsDevicesInput interface {
 }
 
 type ConditionalAccessPolicyConditionsDevicesArgs struct {
-	// A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+	// A `filter` block as described below.
 	Filter ConditionalAccessPolicyConditionsDevicesFilterPtrInput `pulumi:"filter"`
 }
 
@@ -5368,7 +5368,7 @@ func (o ConditionalAccessPolicyConditionsDevicesOutput) ToOutput(ctx context.Con
 	}
 }
 
-// A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+// A `filter` block as described below.
 func (o ConditionalAccessPolicyConditionsDevicesOutput) Filter() ConditionalAccessPolicyConditionsDevicesFilterPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsDevices) *ConditionalAccessPolicyConditionsDevicesFilter {
 		return v.Filter
@@ -5405,7 +5405,7 @@ func (o ConditionalAccessPolicyConditionsDevicesPtrOutput) Elem() ConditionalAcc
 	}).(ConditionalAccessPolicyConditionsDevicesOutput)
 }
 
-// A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+// A `filter` block as described below.
 func (o ConditionalAccessPolicyConditionsDevicesPtrOutput) Filter() ConditionalAccessPolicyConditionsDevicesFilterPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsDevices) *ConditionalAccessPolicyConditionsDevicesFilter {
 		if v == nil {
@@ -5958,17 +5958,21 @@ func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) IncludedPlatforms()
 type ConditionalAccessPolicyConditionsUsers struct {
 	// A list of group IDs excluded from scope of policy.
 	ExcludedGroups []string `pulumi:"excludedGroups"`
+	// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+	ExcludedGuestsOrExternalUsers []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser `pulumi:"excludedGuestsOrExternalUsers"`
 	// A list of role IDs excluded from scope of policy.
 	ExcludedRoles []string `pulumi:"excludedRoles"`
 	// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
 	ExcludedUsers []string `pulumi:"excludedUsers"`
 	// A list of group IDs in scope of policy unless explicitly excluded.
 	IncludedGroups []string `pulumi:"includedGroups"`
+	// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
+	IncludedGuestsOrExternalUsers []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser `pulumi:"includedGuestsOrExternalUsers"`
 	// A list of role IDs in scope of policy unless explicitly excluded.
 	IncludedRoles []string `pulumi:"includedRoles"`
 	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
 	//
-	// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
+	// > At least one of `includedGroups`, `includedGuestsOrExternalUsers`, `includedRoles` or `includedUsers` must be specified.
 	IncludedUsers []string `pulumi:"includedUsers"`
 }
 
@@ -5986,17 +5990,21 @@ type ConditionalAccessPolicyConditionsUsersInput interface {
 type ConditionalAccessPolicyConditionsUsersArgs struct {
 	// A list of group IDs excluded from scope of policy.
 	ExcludedGroups pulumi.StringArrayInput `pulumi:"excludedGroups"`
+	// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+	ExcludedGuestsOrExternalUsers ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayInput `pulumi:"excludedGuestsOrExternalUsers"`
 	// A list of role IDs excluded from scope of policy.
 	ExcludedRoles pulumi.StringArrayInput `pulumi:"excludedRoles"`
 	// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
 	ExcludedUsers pulumi.StringArrayInput `pulumi:"excludedUsers"`
 	// A list of group IDs in scope of policy unless explicitly excluded.
 	IncludedGroups pulumi.StringArrayInput `pulumi:"includedGroups"`
+	// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
+	IncludedGuestsOrExternalUsers ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayInput `pulumi:"includedGuestsOrExternalUsers"`
 	// A list of role IDs in scope of policy unless explicitly excluded.
 	IncludedRoles pulumi.StringArrayInput `pulumi:"includedRoles"`
 	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
 	//
-	// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
+	// > At least one of `includedGroups`, `includedGuestsOrExternalUsers`, `includedRoles` or `includedUsers` must be specified.
 	IncludedUsers pulumi.StringArrayInput `pulumi:"includedUsers"`
 }
 
@@ -6100,6 +6108,13 @@ func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedGroups() pulumi.St
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.ExcludedGroups }).(pulumi.StringArrayOutput)
 }
 
+// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedGuestsOrExternalUsers() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser {
+		return v.ExcludedGuestsOrExternalUsers
+	}).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput)
+}
+
 // A list of role IDs excluded from scope of policy.
 func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.ExcludedRoles }).(pulumi.StringArrayOutput)
@@ -6115,6 +6130,13 @@ func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedGroups() pulumi.St
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedGroups }).(pulumi.StringArrayOutput)
 }
 
+// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
+func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedGuestsOrExternalUsers() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser {
+		return v.IncludedGuestsOrExternalUsers
+	}).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput)
+}
+
 // A list of role IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedRoles }).(pulumi.StringArrayOutput)
@@ -6122,7 +6144,7 @@ func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedRoles() pulumi.Str
 
 // A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
 //
-// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
+// > At least one of `includedGroups`, `includedGuestsOrExternalUsers`, `includedRoles` or `includedUsers` must be specified.
 func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedUsers }).(pulumi.StringArrayOutput)
 }
@@ -6167,6 +6189,16 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedGroups() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
+// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedGuestsOrExternalUsers() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedGuestsOrExternalUsers
+	}).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput)
+}
+
 // A list of role IDs excluded from scope of policy.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
@@ -6197,6 +6229,16 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedGroups() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
+// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
+func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedGuestsOrExternalUsers() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedGuestsOrExternalUsers
+	}).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput)
+}
+
 // A list of role IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
@@ -6209,7 +6251,7 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedRoles() pulumi.
 
 // A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
 //
-// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
+// > At least one of `includedGroups`, `includedGuestsOrExternalUsers`, `includedRoles` or `includedUsers` must be specified.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -6217,6 +6259,542 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedUsers() pulumi.
 		}
 		return v.IncludedUsers
 	}).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser struct {
+	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+	ExternalTenants []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant `pulumi:"externalTenants"`
+	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+	GuestOrExternalUserTypes []string `pulumi:"guestOrExternalUserTypes"`
+}
+
+// ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserInput is an input type that accepts ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs and ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserInput` via:
+//
+//	ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs{...}
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput
+	ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutputWithContext(context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput
+}
+
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs struct {
+	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+	ExternalTenants ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayInput `pulumi:"externalTenants"`
+	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+	GuestOrExternalUserTypes pulumi.StringArrayInput `pulumi:"guestOrExternalUserTypes"`
+}
+
+func (ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput {
+	return i.ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs) ToOutput(ctx context.Context) pulumix.Output[ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser] {
+	return pulumix.Output[ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser]{
+		OutputState: i.ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayInput is an input type that accepts ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArray and ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayInput` via:
+//
+//	ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArray{ ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs{...} }
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput
+	ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutputWithContext(context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput
+}
+
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArray []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserInput
+
+func (ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArray) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput {
+	return i.ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArray) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArray) ToOutput(ctx context.Context) pulumix.Output[[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser] {
+	return pulumix.Output[[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser]{
+		OutputState: i.ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser] {
+	return pulumix.Output[ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput) ExternalTenants() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser) []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant {
+		return v.ExternalTenants
+	}).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput)
+}
+
+// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput) GuestOrExternalUserTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser) []string {
+		return v.GuestOrExternalUserTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser] {
+	return pulumix.Output[[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput) Index(i pulumi.IntInput) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser {
+		return vs[0].([]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser)[vs[1].(int)]
+	}).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput)
+}
+
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant struct {
+	// A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
+	Members []string `pulumi:"members"`
+	// The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+	MembershipKind string `pulumi:"membershipKind"`
+}
+
+// ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantInput is an input type that accepts ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs and ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantInput` via:
+//
+//	ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs{...}
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput
+	ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutputWithContext(context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput
+}
+
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs struct {
+	// A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+	MembershipKind pulumi.StringInput `pulumi:"membershipKind"`
+}
+
+func (ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput {
+	return i.ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs) ToOutput(ctx context.Context) pulumix.Output[ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant] {
+	return pulumix.Output[ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant]{
+		OutputState: i.ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayInput is an input type that accepts ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArray and ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayInput` via:
+//
+//	ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArray{ ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs{...} }
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput
+	ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutputWithContext(context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput
+}
+
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArray []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantInput
+
+func (ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArray) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput {
+	return i.ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArray) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArray) ToOutput(ctx context.Context) pulumix.Output[[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant] {
+	return pulumix.Output[[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant]{
+		OutputState: i.ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant] {
+	return pulumix.Output[ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant) []string {
+		return v.Members
+	}).(pulumi.StringArrayOutput)
+}
+
+// The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput) MembershipKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant) string {
+		return v.MembershipKind
+	}).(pulumi.StringOutput)
+}
+
+type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput) ToConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant] {
+	return pulumix.Output[[]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput) Index(i pulumi.IntInput) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant {
+		return vs[0].([]ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant)[vs[1].(int)]
+	}).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput)
+}
+
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser struct {
+	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+	ExternalTenants []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant `pulumi:"externalTenants"`
+	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+	GuestOrExternalUserTypes []string `pulumi:"guestOrExternalUserTypes"`
+}
+
+// ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserInput is an input type that accepts ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs and ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserInput` via:
+//
+//	ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs{...}
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput
+	ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutputWithContext(context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput
+}
+
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs struct {
+	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+	ExternalTenants ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayInput `pulumi:"externalTenants"`
+	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+	GuestOrExternalUserTypes pulumi.StringArrayInput `pulumi:"guestOrExternalUserTypes"`
+}
+
+func (ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput {
+	return i.ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs) ToOutput(ctx context.Context) pulumix.Output[ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser] {
+	return pulumix.Output[ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser]{
+		OutputState: i.ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayInput is an input type that accepts ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArray and ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayInput` via:
+//
+//	ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArray{ ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs{...} }
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput
+	ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutputWithContext(context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput
+}
+
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArray []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserInput
+
+func (ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArray) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput {
+	return i.ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArray) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArray) ToOutput(ctx context.Context) pulumix.Output[[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser] {
+	return pulumix.Output[[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser]{
+		OutputState: i.ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser] {
+	return pulumix.Output[ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser]{
+		OutputState: o.OutputState,
+	}
+}
+
+// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput) ExternalTenants() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser) []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant {
+		return v.ExternalTenants
+	}).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput)
+}
+
+// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput) GuestOrExternalUserTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser) []string {
+		return v.GuestOrExternalUserTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser] {
+	return pulumix.Output[[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput) Index(i pulumi.IntInput) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser {
+		return vs[0].([]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser)[vs[1].(int)]
+	}).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput)
+}
+
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant struct {
+	// A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
+	Members []string `pulumi:"members"`
+	// The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+	MembershipKind string `pulumi:"membershipKind"`
+}
+
+// ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantInput is an input type that accepts ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs and ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantInput` via:
+//
+//	ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs{...}
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput
+	ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutputWithContext(context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput
+}
+
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs struct {
+	// A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
+	Members pulumi.StringArrayInput `pulumi:"members"`
+	// The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+	MembershipKind pulumi.StringInput `pulumi:"membershipKind"`
+}
+
+func (ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput {
+	return i.ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs) ToOutput(ctx context.Context) pulumix.Output[ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant] {
+	return pulumix.Output[ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant]{
+		OutputState: i.ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayInput is an input type that accepts ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArray and ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayInput` via:
+//
+//	ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArray{ ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs{...} }
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput
+	ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutputWithContext(context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput
+}
+
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArray []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantInput
+
+func (ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArray) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput {
+	return i.ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArray) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArray) ToOutput(ctx context.Context) pulumix.Output[[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant] {
+	return pulumix.Output[[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant]{
+		OutputState: i.ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant] {
+	return pulumix.Output[ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant]{
+		OutputState: o.OutputState,
+	}
+}
+
+// A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant) []string {
+		return v.Members
+	}).(pulumi.StringArrayOutput)
+}
+
+// The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput) MembershipKind() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant) string {
+		return v.MembershipKind
+	}).(pulumi.StringOutput)
+}
+
+type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput) ToConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant] {
+	return pulumix.Output[[]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput) Index(i pulumi.IntInput) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant {
+		return vs[0].([]ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant)[vs[1].(int)]
+	}).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput)
 }
 
 type ConditionalAccessPolicyGrantControls struct {
@@ -6475,9 +7053,13 @@ type ConditionalAccessPolicySessionControls struct {
 	DisableResilienceDefaults *bool `pulumi:"disableResilienceDefaults"`
 	// Session control to define whether to persist cookies. Possible values are: `always` or `never`.
 	PersistentBrowserMode *string `pulumi:"persistentBrowserMode"`
-	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
 	SignInFrequency *int `pulumi:"signInFrequency"`
-	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+	// Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+	SignInFrequencyAuthenticationType *string `pulumi:"signInFrequencyAuthenticationType"`
+	// The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+	SignInFrequencyInterval *string `pulumi:"signInFrequencyInterval"`
+	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
 	SignInFrequencyPeriod *string `pulumi:"signInFrequencyPeriod"`
 }
 
@@ -6503,9 +7085,13 @@ type ConditionalAccessPolicySessionControlsArgs struct {
 	DisableResilienceDefaults pulumi.BoolPtrInput `pulumi:"disableResilienceDefaults"`
 	// Session control to define whether to persist cookies. Possible values are: `always` or `never`.
 	PersistentBrowserMode pulumi.StringPtrInput `pulumi:"persistentBrowserMode"`
-	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
 	SignInFrequency pulumi.IntPtrInput `pulumi:"signInFrequency"`
-	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+	// Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+	SignInFrequencyAuthenticationType pulumi.StringPtrInput `pulumi:"signInFrequencyAuthenticationType"`
+	// The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+	SignInFrequencyInterval pulumi.StringPtrInput `pulumi:"signInFrequencyInterval"`
+	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
 	SignInFrequencyPeriod pulumi.StringPtrInput `pulumi:"signInFrequencyPeriod"`
 }
 
@@ -6626,12 +7212,22 @@ func (o ConditionalAccessPolicySessionControlsOutput) PersistentBrowserMode() pu
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.PersistentBrowserMode }).(pulumi.StringPtrOutput)
 }
 
-// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
 func (o ConditionalAccessPolicySessionControlsOutput) SignInFrequency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *int { return v.SignInFrequency }).(pulumi.IntPtrOutput)
 }
 
-// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+// Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+func (o ConditionalAccessPolicySessionControlsOutput) SignInFrequencyAuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.SignInFrequencyAuthenticationType }).(pulumi.StringPtrOutput)
+}
+
+// The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+func (o ConditionalAccessPolicySessionControlsOutput) SignInFrequencyInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.SignInFrequencyInterval }).(pulumi.StringPtrOutput)
+}
+
+// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
 func (o ConditionalAccessPolicySessionControlsOutput) SignInFrequencyPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.SignInFrequencyPeriod }).(pulumi.StringPtrOutput)
 }
@@ -6708,7 +7304,7 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) PersistentBrowserMode()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *int {
 		if v == nil {
@@ -6718,7 +7314,27 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequency() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
-// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+// Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequencyAuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignInFrequencyAuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequencyInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignInFrequencyInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequencyPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *string {
 		if v == nil {
@@ -12747,8 +13363,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationAppRoleTypeArrayInput)(nil)).Elem(), ApplicationAppRoleTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationFeatureTagInput)(nil)).Elem(), ApplicationFeatureTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationFeatureTagArrayInput)(nil)).Elem(), ApplicationFeatureTagArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOptionalClaimsInput)(nil)).Elem(), ApplicationOptionalClaimsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOptionalClaimsPtrInput)(nil)).Elem(), ApplicationOptionalClaimsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOptionalClaimsTypeInput)(nil)).Elem(), ApplicationOptionalClaimsTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOptionalClaimsTypePtrInput)(nil)).Elem(), ApplicationOptionalClaimsTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOptionalClaimsAccessTokenInput)(nil)).Elem(), ApplicationOptionalClaimsAccessTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOptionalClaimsAccessTokenArrayInput)(nil)).Elem(), ApplicationOptionalClaimsAccessTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOptionalClaimsIdTokenInput)(nil)).Elem(), ApplicationOptionalClaimsIdTokenArgs{})
@@ -12783,6 +13399,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsPlatformsPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsPlatformsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyGrantControlsInput)(nil)).Elem(), ConditionalAccessPolicyGrantControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyGrantControlsPtrInput)(nil)).Elem(), ConditionalAccessPolicyGrantControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicySessionControlsInput)(nil)).Elem(), ConditionalAccessPolicySessionControlsArgs{})
@@ -12899,8 +13523,8 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationAppRoleTypeArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationFeatureTagOutput{})
 	pulumi.RegisterOutputType(ApplicationFeatureTagArrayOutput{})
-	pulumi.RegisterOutputType(ApplicationOptionalClaimsOutput{})
-	pulumi.RegisterOutputType(ApplicationOptionalClaimsPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationOptionalClaimsTypeOutput{})
+	pulumi.RegisterOutputType(ApplicationOptionalClaimsTypePtrOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsAccessTokenOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsAccessTokenArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsIdTokenOutput{})
@@ -12935,6 +13559,14 @@ func init() {
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsPlatformsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyGrantControlsOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyGrantControlsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicySessionControlsOutput{})

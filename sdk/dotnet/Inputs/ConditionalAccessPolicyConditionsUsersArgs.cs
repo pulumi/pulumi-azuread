@@ -24,6 +24,18 @@ namespace Pulumi.AzureAD.Inputs
             set => _excludedGroups = value;
         }
 
+        [Input("excludedGuestsOrExternalUsers")]
+        private InputList<Inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs>? _excludedGuestsOrExternalUsers;
+
+        /// <summary>
+        /// A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+        /// </summary>
+        public InputList<Inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs> ExcludedGuestsOrExternalUsers
+        {
+            get => _excludedGuestsOrExternalUsers ?? (_excludedGuestsOrExternalUsers = new InputList<Inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs>());
+            set => _excludedGuestsOrExternalUsers = value;
+        }
+
         [Input("excludedRoles")]
         private InputList<string>? _excludedRoles;
 
@@ -60,6 +72,18 @@ namespace Pulumi.AzureAD.Inputs
             set => _includedGroups = value;
         }
 
+        [Input("includedGuestsOrExternalUsers")]
+        private InputList<Inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs>? _includedGuestsOrExternalUsers;
+
+        /// <summary>
+        /// A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+        /// </summary>
+        public InputList<Inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs> IncludedGuestsOrExternalUsers
+        {
+            get => _includedGuestsOrExternalUsers ?? (_includedGuestsOrExternalUsers = new InputList<Inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs>());
+            set => _includedGuestsOrExternalUsers = value;
+        }
+
         [Input("includedRoles")]
         private InputList<string>? _includedRoles;
 
@@ -78,7 +102,7 @@ namespace Pulumi.AzureAD.Inputs
         /// <summary>
         /// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
         /// 
-        /// &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+        /// &gt; At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
         /// </summary>
         public InputList<string> IncludedUsers
         {

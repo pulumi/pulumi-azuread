@@ -36,12 +36,22 @@ public final class ConditionalAccessPolicySessionControls {
      */
     private @Nullable String persistentBrowserMode;
     /**
-     * @return Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+     * @return Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
      * 
      */
     private @Nullable Integer signInFrequency;
     /**
-     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+     * @return Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+     * 
+     */
+    private @Nullable String signInFrequencyAuthenticationType;
+    /**
+     * @return The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+     * 
+     */
+    private @Nullable String signInFrequencyInterval;
+    /**
+     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
      * 
      */
     private @Nullable String signInFrequencyPeriod;
@@ -78,14 +88,28 @@ public final class ConditionalAccessPolicySessionControls {
         return Optional.ofNullable(this.persistentBrowserMode);
     }
     /**
-     * @return Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+     * @return Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
      * 
      */
     public Optional<Integer> signInFrequency() {
         return Optional.ofNullable(this.signInFrequency);
     }
     /**
-     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+     * @return Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+     * 
+     */
+    public Optional<String> signInFrequencyAuthenticationType() {
+        return Optional.ofNullable(this.signInFrequencyAuthenticationType);
+    }
+    /**
+     * @return The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+     * 
+     */
+    public Optional<String> signInFrequencyInterval() {
+        return Optional.ofNullable(this.signInFrequencyInterval);
+    }
+    /**
+     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
      * 
      */
     public Optional<String> signInFrequencyPeriod() {
@@ -106,6 +130,8 @@ public final class ConditionalAccessPolicySessionControls {
         private @Nullable Boolean disableResilienceDefaults;
         private @Nullable String persistentBrowserMode;
         private @Nullable Integer signInFrequency;
+        private @Nullable String signInFrequencyAuthenticationType;
+        private @Nullable String signInFrequencyInterval;
         private @Nullable String signInFrequencyPeriod;
         public Builder() {}
         public Builder(ConditionalAccessPolicySessionControls defaults) {
@@ -115,6 +141,8 @@ public final class ConditionalAccessPolicySessionControls {
     	      this.disableResilienceDefaults = defaults.disableResilienceDefaults;
     	      this.persistentBrowserMode = defaults.persistentBrowserMode;
     	      this.signInFrequency = defaults.signInFrequency;
+    	      this.signInFrequencyAuthenticationType = defaults.signInFrequencyAuthenticationType;
+    	      this.signInFrequencyInterval = defaults.signInFrequencyInterval;
     	      this.signInFrequencyPeriod = defaults.signInFrequencyPeriod;
         }
 
@@ -144,6 +172,16 @@ public final class ConditionalAccessPolicySessionControls {
             return this;
         }
         @CustomType.Setter
+        public Builder signInFrequencyAuthenticationType(@Nullable String signInFrequencyAuthenticationType) {
+            this.signInFrequencyAuthenticationType = signInFrequencyAuthenticationType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder signInFrequencyInterval(@Nullable String signInFrequencyInterval) {
+            this.signInFrequencyInterval = signInFrequencyInterval;
+            return this;
+        }
+        @CustomType.Setter
         public Builder signInFrequencyPeriod(@Nullable String signInFrequencyPeriod) {
             this.signInFrequencyPeriod = signInFrequencyPeriod;
             return this;
@@ -155,6 +193,8 @@ public final class ConditionalAccessPolicySessionControls {
             o.disableResilienceDefaults = disableResilienceDefaults;
             o.persistentBrowserMode = persistentBrowserMode;
             o.signInFrequency = signInFrequency;
+            o.signInFrequencyAuthenticationType = signInFrequencyAuthenticationType;
+            o.signInFrequencyInterval = signInFrequencyInterval;
             o.signInFrequencyPeriod = signInFrequencyPeriod;
             return o;
         }

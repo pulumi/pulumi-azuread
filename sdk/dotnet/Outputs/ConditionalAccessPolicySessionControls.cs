@@ -32,11 +32,19 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? PersistentBrowserMode;
         /// <summary>
-        /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+        /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
         /// </summary>
         public readonly int? SignInFrequency;
         /// <summary>
-        /// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+        /// Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+        /// </summary>
+        public readonly string? SignInFrequencyAuthenticationType;
+        /// <summary>
+        /// The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+        /// </summary>
+        public readonly string? SignInFrequencyInterval;
+        /// <summary>
+        /// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
         /// </summary>
         public readonly string? SignInFrequencyPeriod;
 
@@ -52,6 +60,10 @@ namespace Pulumi.AzureAD.Outputs
 
             int? signInFrequency,
 
+            string? signInFrequencyAuthenticationType,
+
+            string? signInFrequencyInterval,
+
             string? signInFrequencyPeriod)
         {
             ApplicationEnforcedRestrictionsEnabled = applicationEnforcedRestrictionsEnabled;
@@ -59,6 +71,8 @@ namespace Pulumi.AzureAD.Outputs
             DisableResilienceDefaults = disableResilienceDefaults;
             PersistentBrowserMode = persistentBrowserMode;
             SignInFrequency = signInFrequency;
+            SignInFrequencyAuthenticationType = signInFrequencyAuthenticationType;
+            SignInFrequencyInterval = signInFrequencyInterval;
             SignInFrequencyPeriod = signInFrequencyPeriod;
         }
     }

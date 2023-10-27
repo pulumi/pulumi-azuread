@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     owners: [current.then(current => current.objectId)],
  * });
  * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
- *     applicationId: exampleApplication.applicationId,
+ *     clientId: exampleApplication.clientId,
  *     appRoleAssignmentRequired: false,
  *     owners: [current.then(current => current.objectId)],
  * });
@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  *     owners: [current.then(current => current.objectId)],
  * });
  * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
- *     applicationId: exampleApplication.applicationId,
+ *     clientId: exampleApplication.clientId,
  *     appRoleAssignmentRequired: false,
  *     owners: [current.then(current => current.objectId)],
  *     featureTags: [{
@@ -57,7 +57,7 @@ import * as utilities from "./utilities";
  *
  * const wellKnown = azuread.getApplicationPublishedAppIds({});
  * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
+ *     clientId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
  *     useExisting: true,
  * });
  * ```
@@ -76,7 +76,7 @@ import * as utilities from "./utilities";
  *     templateId: exampleApplicationTemplate.then(exampleApplicationTemplate => exampleApplicationTemplate.templateId),
  * });
  * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
- *     applicationId: exampleApplication.applicationId,
+ *     clientId: exampleApplication.clientId,
  *     useExisting: true,
  * });
  * ```

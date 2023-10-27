@@ -24,6 +24,7 @@ from .application_federated_identity_credential import *
 from .application_from_template import *
 from .application_identifier_uri import *
 from .application_known_clients import *
+from .application_optional_claims import *
 from .application_owner import *
 from .application_password import *
 from .application_permission_scope import *
@@ -235,6 +236,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/applicationKnownClients:ApplicationKnownClients": "ApplicationKnownClients"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/applicationOptionalClaims",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationOptionalClaims:ApplicationOptionalClaims": "ApplicationOptionalClaims"
   }
  },
  {

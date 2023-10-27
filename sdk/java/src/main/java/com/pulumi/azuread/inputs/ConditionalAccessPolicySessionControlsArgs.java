@@ -82,14 +82,14 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
     }
 
     /**
-     * Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+     * Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
      * 
      */
     @Import(name="signInFrequency")
     private @Nullable Output<Integer> signInFrequency;
 
     /**
-     * @return Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+     * @return Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
      * 
      */
     public Optional<Output<Integer>> signInFrequency() {
@@ -97,14 +97,44 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
     }
 
     /**
-     * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+     * Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+     * 
+     */
+    @Import(name="signInFrequencyAuthenticationType")
+    private @Nullable Output<String> signInFrequencyAuthenticationType;
+
+    /**
+     * @return Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+     * 
+     */
+    public Optional<Output<String>> signInFrequencyAuthenticationType() {
+        return Optional.ofNullable(this.signInFrequencyAuthenticationType);
+    }
+
+    /**
+     * The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+     * 
+     */
+    @Import(name="signInFrequencyInterval")
+    private @Nullable Output<String> signInFrequencyInterval;
+
+    /**
+     * @return The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+     * 
+     */
+    public Optional<Output<String>> signInFrequencyInterval() {
+        return Optional.ofNullable(this.signInFrequencyInterval);
+    }
+
+    /**
+     * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
      * 
      */
     @Import(name="signInFrequencyPeriod")
     private @Nullable Output<String> signInFrequencyPeriod;
 
     /**
-     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
      * 
      */
     public Optional<Output<String>> signInFrequencyPeriod() {
@@ -119,6 +149,8 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         this.disableResilienceDefaults = $.disableResilienceDefaults;
         this.persistentBrowserMode = $.persistentBrowserMode;
         this.signInFrequency = $.signInFrequency;
+        this.signInFrequencyAuthenticationType = $.signInFrequencyAuthenticationType;
+        this.signInFrequencyInterval = $.signInFrequencyInterval;
         this.signInFrequencyPeriod = $.signInFrequencyPeriod;
     }
 
@@ -229,7 +261,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param signInFrequency Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+         * @param signInFrequency Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
          * 
          * @return builder
          * 
@@ -240,7 +272,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param signInFrequency Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+         * @param signInFrequency Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
          * 
          * @return builder
          * 
@@ -250,7 +282,49 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param signInFrequencyPeriod The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+         * @param signInFrequencyAuthenticationType Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signInFrequencyAuthenticationType(@Nullable Output<String> signInFrequencyAuthenticationType) {
+            $.signInFrequencyAuthenticationType = signInFrequencyAuthenticationType;
+            return this;
+        }
+
+        /**
+         * @param signInFrequencyAuthenticationType Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signInFrequencyAuthenticationType(String signInFrequencyAuthenticationType) {
+            return signInFrequencyAuthenticationType(Output.of(signInFrequencyAuthenticationType));
+        }
+
+        /**
+         * @param signInFrequencyInterval The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signInFrequencyInterval(@Nullable Output<String> signInFrequencyInterval) {
+            $.signInFrequencyInterval = signInFrequencyInterval;
+            return this;
+        }
+
+        /**
+         * @param signInFrequencyInterval The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signInFrequencyInterval(String signInFrequencyInterval) {
+            return signInFrequencyInterval(Output.of(signInFrequencyInterval));
+        }
+
+        /**
+         * @param signInFrequencyPeriod The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
          * 
          * @return builder
          * 
@@ -261,7 +335,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param signInFrequencyPeriod The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+         * @param signInFrequencyPeriod The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
          * 
          * @return builder
          * 

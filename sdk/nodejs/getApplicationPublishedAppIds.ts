@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *
  * const wellKnown = azuread.getApplicationPublishedAppIds({});
  * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
+ *     clientId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
  *     useExisting: true,
  * });
  * const example = new azuread.Application("example", {
@@ -99,7 +99,7 @@ export interface GetApplicationPublishedAppIdsResult {
  *
  * const wellKnown = azuread.getApplicationPublishedAppIds({});
  * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
+ *     clientId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
  *     useExisting: true,
  * });
  * const example = new azuread.Application("example", {
