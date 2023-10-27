@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,44 +31,13 @@ class ConditionalAccessPolicyArgs:
                
                > Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
         """
-        ConditionalAccessPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conditions=conditions,
-            display_name=display_name,
-            state=state,
-            grant_controls=grant_controls,
-            session_controls=session_controls,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conditions: Optional[pulumi.Input['ConditionalAccessPolicyConditionsArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
-             session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if conditions is None:
-            raise TypeError("Missing 'conditions' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if state is None:
-            raise TypeError("Missing 'state' argument")
-        if grant_controls is None and 'grantControls' in kwargs:
-            grant_controls = kwargs['grantControls']
-        if session_controls is None and 'sessionControls' in kwargs:
-            session_controls = kwargs['sessionControls']
-
-        _setter("conditions", conditions)
-        _setter("display_name", display_name)
-        _setter("state", state)
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "state", state)
         if grant_controls is not None:
-            _setter("grant_controls", grant_controls)
+            pulumi.set(__self__, "grant_controls", grant_controls)
         if session_controls is not None:
-            _setter("session_controls", session_controls)
+            pulumi.set(__self__, "session_controls", session_controls)
 
     @property
     @pulumi.getter
@@ -151,41 +120,16 @@ class _ConditionalAccessPolicyState:
                > Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
         :param pulumi.Input[str] state: Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
         """
-        _ConditionalAccessPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            conditions=conditions,
-            display_name=display_name,
-            grant_controls=grant_controls,
-            session_controls=session_controls,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             conditions: Optional[pulumi.Input['ConditionalAccessPolicyConditionsArgs']] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
-             session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if grant_controls is None and 'grantControls' in kwargs:
-            grant_controls = kwargs['grantControls']
-        if session_controls is None and 'sessionControls' in kwargs:
-            session_controls = kwargs['sessionControls']
-
         if conditions is not None:
-            _setter("conditions", conditions)
+            pulumi.set(__self__, "conditions", conditions)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if grant_controls is not None:
-            _setter("grant_controls", grant_controls)
+            pulumi.set(__self__, "grant_controls", grant_controls)
         if session_controls is not None:
-            _setter("session_controls", session_controls)
+            pulumi.set(__self__, "session_controls", session_controls)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -541,10 +485,6 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConditionalAccessPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -564,16 +504,13 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConditionalAccessPolicyArgs.__new__(ConditionalAccessPolicyArgs)
 
-            conditions = _utilities.configure(conditions, ConditionalAccessPolicyConditionsArgs, True)
             if conditions is None and not opts.urn:
                 raise TypeError("Missing required property 'conditions'")
             __props__.__dict__["conditions"] = conditions
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
-            grant_controls = _utilities.configure(grant_controls, ConditionalAccessPolicyGrantControlsArgs, True)
             __props__.__dict__["grant_controls"] = grant_controls
-            session_controls = _utilities.configure(session_controls, ConditionalAccessPolicySessionControlsArgs, True)
             __props__.__dict__["session_controls"] = session_controls
             if state is None and not opts.urn:
                 raise TypeError("Missing required property 'state'")

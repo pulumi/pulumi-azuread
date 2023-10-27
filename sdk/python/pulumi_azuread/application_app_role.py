@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationAppRoleInitArgs', 'ApplicationAppRole']
@@ -31,52 +31,13 @@ class ApplicationAppRoleInitArgs:
                
                > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
         """
-        ApplicationAppRoleInitArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_member_types=allowed_member_types,
-            application_id=application_id,
-            description=description,
-            display_name=display_name,
-            role_id=role_id,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_member_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             application_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_member_types is None and 'allowedMemberTypes' in kwargs:
-            allowed_member_types = kwargs['allowedMemberTypes']
-        if allowed_member_types is None:
-            raise TypeError("Missing 'allowed_member_types' argument")
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_id is None:
-            raise TypeError("Missing 'application_id' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-
-        _setter("allowed_member_types", allowed_member_types)
-        _setter("application_id", application_id)
-        _setter("description", description)
-        _setter("display_name", display_name)
-        _setter("role_id", role_id)
+        pulumi.set(__self__, "allowed_member_types", allowed_member_types)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "role_id", role_id)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="allowedMemberTypes")
@@ -173,47 +134,18 @@ class _ApplicationAppRoleState:
                
                > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
         """
-        _ApplicationAppRoleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_member_types=allowed_member_types,
-            application_id=application_id,
-            description=description,
-            display_name=display_name,
-            role_id=role_id,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_member_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             application_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_member_types is None and 'allowedMemberTypes' in kwargs:
-            allowed_member_types = kwargs['allowedMemberTypes']
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-
         if allowed_member_types is not None:
-            _setter("allowed_member_types", allowed_member_types)
+            pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         if application_id is not None:
-            _setter("application_id", application_id)
+            pulumi.set(__self__, "application_id", application_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if role_id is not None:
-            _setter("role_id", role_id)
+            pulumi.set(__self__, "role_id", role_id)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="allowedMemberTypes")
@@ -409,10 +341,6 @@ class ApplicationAppRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationAppRoleInitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

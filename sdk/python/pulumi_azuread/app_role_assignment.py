@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AppRoleAssignmentArgs', 'AppRoleAssignment']
@@ -23,36 +23,9 @@ class AppRoleAssignmentArgs:
         :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
-        AppRoleAssignmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_role_id=app_role_id,
-            principal_object_id=principal_object_id,
-            resource_object_id=resource_object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_role_id: Optional[pulumi.Input[str]] = None,
-             principal_object_id: Optional[pulumi.Input[str]] = None,
-             resource_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_role_id is None and 'appRoleId' in kwargs:
-            app_role_id = kwargs['appRoleId']
-        if app_role_id is None:
-            raise TypeError("Missing 'app_role_id' argument")
-        if principal_object_id is None and 'principalObjectId' in kwargs:
-            principal_object_id = kwargs['principalObjectId']
-        if principal_object_id is None:
-            raise TypeError("Missing 'principal_object_id' argument")
-        if resource_object_id is None and 'resourceObjectId' in kwargs:
-            resource_object_id = kwargs['resourceObjectId']
-        if resource_object_id is None:
-            raise TypeError("Missing 'resource_object_id' argument")
-
-        _setter("app_role_id", app_role_id)
-        _setter("principal_object_id", principal_object_id)
-        _setter("resource_object_id", resource_object_id)
+        pulumi.set(__self__, "app_role_id", app_role_id)
+        pulumi.set(__self__, "principal_object_id", principal_object_id)
+        pulumi.set(__self__, "resource_object_id", resource_object_id)
 
     @property
     @pulumi.getter(name="appRoleId")
@@ -109,51 +82,18 @@ class _AppRoleAssignmentState:
         :param pulumi.Input[str] resource_display_name: The display name of the application representing the resource.
         :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
-        _AppRoleAssignmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_role_id=app_role_id,
-            principal_display_name=principal_display_name,
-            principal_object_id=principal_object_id,
-            principal_type=principal_type,
-            resource_display_name=resource_display_name,
-            resource_object_id=resource_object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_role_id: Optional[pulumi.Input[str]] = None,
-             principal_display_name: Optional[pulumi.Input[str]] = None,
-             principal_object_id: Optional[pulumi.Input[str]] = None,
-             principal_type: Optional[pulumi.Input[str]] = None,
-             resource_display_name: Optional[pulumi.Input[str]] = None,
-             resource_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_role_id is None and 'appRoleId' in kwargs:
-            app_role_id = kwargs['appRoleId']
-        if principal_display_name is None and 'principalDisplayName' in kwargs:
-            principal_display_name = kwargs['principalDisplayName']
-        if principal_object_id is None and 'principalObjectId' in kwargs:
-            principal_object_id = kwargs['principalObjectId']
-        if principal_type is None and 'principalType' in kwargs:
-            principal_type = kwargs['principalType']
-        if resource_display_name is None and 'resourceDisplayName' in kwargs:
-            resource_display_name = kwargs['resourceDisplayName']
-        if resource_object_id is None and 'resourceObjectId' in kwargs:
-            resource_object_id = kwargs['resourceObjectId']
-
         if app_role_id is not None:
-            _setter("app_role_id", app_role_id)
+            pulumi.set(__self__, "app_role_id", app_role_id)
         if principal_display_name is not None:
-            _setter("principal_display_name", principal_display_name)
+            pulumi.set(__self__, "principal_display_name", principal_display_name)
         if principal_object_id is not None:
-            _setter("principal_object_id", principal_object_id)
+            pulumi.set(__self__, "principal_object_id", principal_object_id)
         if principal_type is not None:
-            _setter("principal_type", principal_type)
+            pulumi.set(__self__, "principal_type", principal_type)
         if resource_display_name is not None:
-            _setter("resource_display_name", resource_display_name)
+            pulumi.set(__self__, "resource_display_name", resource_display_name)
         if resource_object_id is not None:
-            _setter("resource_object_id", resource_object_id)
+            pulumi.set(__self__, "resource_object_id", resource_object_id)
 
     @property
     @pulumi.getter(name="appRoleId")
@@ -545,10 +485,6 @@ class AppRoleAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AppRoleAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DirectoryRoleArgs', 'DirectoryRole']
@@ -23,27 +23,10 @@ class DirectoryRoleArgs:
                
                > Either `display_name` or `template_id` must be specified.
         """
-        DirectoryRoleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            template_id=template_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if template_id is None and 'templateId' in kwargs:
-            template_id = kwargs['templateId']
-
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if template_id is not None:
-            _setter("template_id", template_id)
+            pulumi.set(__self__, "template_id", template_id)
 
     @property
     @pulumi.getter(name="displayName")
@@ -88,37 +71,14 @@ class _DirectoryRoleState:
                
                > Either `display_name` or `template_id` must be specified.
         """
-        _DirectoryRoleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            display_name=display_name,
-            object_id=object_id,
-            template_id=template_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             object_id: Optional[pulumi.Input[str]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if template_id is None and 'templateId' in kwargs:
-            template_id = kwargs['templateId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
         if template_id is not None:
-            _setter("template_id", template_id)
+            pulumi.set(__self__, "template_id", template_id)
 
     @property
     @pulumi.getter
@@ -280,10 +240,6 @@ class DirectoryRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DirectoryRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

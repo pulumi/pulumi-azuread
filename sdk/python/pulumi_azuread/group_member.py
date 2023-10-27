@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupMemberArgs', 'GroupMember']
@@ -21,29 +21,8 @@ class GroupMemberArgs:
         :param pulumi.Input[str] group_object_id: The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
-        GroupMemberArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_object_id=group_object_id,
-            member_object_id=member_object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_object_id: Optional[pulumi.Input[str]] = None,
-             member_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_object_id is None and 'groupObjectId' in kwargs:
-            group_object_id = kwargs['groupObjectId']
-        if group_object_id is None:
-            raise TypeError("Missing 'group_object_id' argument")
-        if member_object_id is None and 'memberObjectId' in kwargs:
-            member_object_id = kwargs['memberObjectId']
-        if member_object_id is None:
-            raise TypeError("Missing 'member_object_id' argument")
-
-        _setter("group_object_id", group_object_id)
-        _setter("member_object_id", member_object_id)
+        pulumi.set(__self__, "group_object_id", group_object_id)
+        pulumi.set(__self__, "member_object_id", member_object_id)
 
     @property
     @pulumi.getter(name="groupObjectId")
@@ -80,27 +59,10 @@ class _GroupMemberState:
         :param pulumi.Input[str] group_object_id: The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
-        _GroupMemberState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_object_id=group_object_id,
-            member_object_id=member_object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_object_id: Optional[pulumi.Input[str]] = None,
-             member_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if group_object_id is None and 'groupObjectId' in kwargs:
-            group_object_id = kwargs['groupObjectId']
-        if member_object_id is None and 'memberObjectId' in kwargs:
-            member_object_id = kwargs['memberObjectId']
-
         if group_object_id is not None:
-            _setter("group_object_id", group_object_id)
+            pulumi.set(__self__, "group_object_id", group_object_id)
         if member_object_id is not None:
-            _setter("member_object_id", member_object_id)
+            pulumi.set(__self__, "member_object_id", member_object_id)
 
     @property
     @pulumi.getter(name="groupObjectId")
@@ -236,10 +198,6 @@ class GroupMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GroupMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

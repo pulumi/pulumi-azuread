@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ClaimsMappingPolicyArgs', 'ClaimsMappingPolicy']
@@ -21,27 +21,8 @@ class ClaimsMappingPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         :param pulumi.Input[str] display_name: The display name for this Claims Mapping Policy.
         """
-        ClaimsMappingPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            definitions=definitions,
-            display_name=display_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             definitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if definitions is None:
-            raise TypeError("Missing 'definitions' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-
-        _setter("definitions", definitions)
-        _setter("display_name", display_name)
+        pulumi.set(__self__, "definitions", definitions)
+        pulumi.set(__self__, "display_name", display_name)
 
     @property
     @pulumi.getter
@@ -78,25 +59,10 @@ class _ClaimsMappingPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         :param pulumi.Input[str] display_name: The display name for this Claims Mapping Policy.
         """
-        _ClaimsMappingPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            definitions=definitions,
-            display_name=display_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             definitions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
         if definitions is not None:
-            _setter("definitions", definitions)
+            pulumi.set(__self__, "definitions", definitions)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
 
     @property
     @pulumi.getter
@@ -252,10 +218,6 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ClaimsMappingPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
