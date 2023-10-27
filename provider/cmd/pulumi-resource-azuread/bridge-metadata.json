@@ -506,6 +506,41 @@
                     }
                 }
             },
+            "azuread_application_optional_claims": {
+                "current": "azuread:index/applicationOptionalClaims:ApplicationOptionalClaims",
+                "fields": {
+                    "access_token": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "additional_properties": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "id_token": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "additional_properties": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "saml2_token": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "additional_properties": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "azuread_application_owner": {
                 "current": "azuread:index/applicationOwner:ApplicationOwner"
             },
@@ -680,6 +715,26 @@
                                                 "maxItemsOne": false,
                                                 "elem": {}
                                             },
+                                            "excluded_guests_or_external_users": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "external_tenants": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "members": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "guest_or_external_user_types": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "excluded_roles": {
                                                 "maxItemsOne": false,
                                                 "elem": {}
@@ -691,6 +746,26 @@
                                             "included_groups": {
                                                 "maxItemsOne": false,
                                                 "elem": {}
+                                            },
+                                            "included_guests_or_external_users": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "external_tenants": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "members": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "guest_or_external_user_types": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "included_roles": {
                                                 "maxItemsOne": false,
@@ -1600,6 +1675,7 @@
             "azuread:index/applicationFromTemplate:ApplicationFromTemplate": "azuread_application_from_template",
             "azuread:index/applicationIdentifierUri:ApplicationIdentifierUri": "azuread_application_identifier_uri",
             "azuread:index/applicationKnownClients:ApplicationKnownClients": "azuread_application_known_clients",
+            "azuread:index/applicationOptionalClaims:ApplicationOptionalClaims": "azuread_application_optional_claims",
             "azuread:index/applicationOwner:ApplicationOwner": "azuread_application_owner",
             "azuread:index/applicationPassword:ApplicationPassword": "azuread_application_password",
             "azuread:index/applicationPermissionScope:ApplicationPermissionScope": "azuread_application_permission_scope",
@@ -1796,11 +1872,27 @@
             },
             "azuread:index/ConditionalAccessPolicyConditionsUsers:ConditionalAccessPolicyConditionsUsers": {
                 "excludedGroups": "excluded_groups",
+                "excludedGuestsOrExternalUsers": "excluded_guests_or_external_users",
                 "excludedRoles": "excluded_roles",
                 "excludedUsers": "excluded_users",
                 "includedGroups": "included_groups",
+                "includedGuestsOrExternalUsers": "included_guests_or_external_users",
                 "includedRoles": "included_roles",
                 "includedUsers": "included_users"
+            },
+            "azuread:index/ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser:ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser": {
+                "externalTenants": "external_tenants",
+                "guestOrExternalUserTypes": "guest_or_external_user_types"
+            },
+            "azuread:index/ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant:ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant": {
+                "membershipKind": "membership_kind"
+            },
+            "azuread:index/ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser:ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser": {
+                "externalTenants": "external_tenants",
+                "guestOrExternalUserTypes": "guest_or_external_user_types"
+            },
+            "azuread:index/ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant:ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant": {
+                "membershipKind": "membership_kind"
             },
             "azuread:index/ConditionalAccessPolicyGrantControls:ConditionalAccessPolicyGrantControls": {
                 "authenticationStrengthPolicyId": "authentication_strength_policy_id",
@@ -1814,6 +1906,8 @@
                 "disableResilienceDefaults": "disable_resilience_defaults",
                 "persistentBrowserMode": "persistent_browser_mode",
                 "signInFrequency": "sign_in_frequency",
+                "signInFrequencyAuthenticationType": "sign_in_frequency_authentication_type",
+                "signInFrequencyInterval": "sign_in_frequency_interval",
                 "signInFrequencyPeriod": "sign_in_frequency_period"
             },
             "azuread:index/CustomDirectoryRolePermission:CustomDirectoryRolePermission": {
@@ -1983,6 +2077,12 @@
             "azuread:index/applicationKnownClients:ApplicationKnownClients": {
                 "applicationId": "application_id",
                 "knownClientIds": "known_client_ids"
+            },
+            "azuread:index/applicationOptionalClaims:ApplicationOptionalClaims": {
+                "accessTokens": "access_token",
+                "applicationId": "application_id",
+                "idTokens": "id_token",
+                "saml2Tokens": "saml2_token"
             },
             "azuread:index/applicationOwner:ApplicationOwner": {
                 "applicationId": "application_id",
