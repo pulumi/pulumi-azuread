@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationOwnerArgs', 'ApplicationOwner']
@@ -21,29 +21,8 @@ class ApplicationOwnerArgs:
         :param pulumi.Input[str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[str] owner_object_id: The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
         """
-        ApplicationOwnerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            owner_object_id=owner_object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[pulumi.Input[str]] = None,
-             owner_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_id is None:
-            raise TypeError("Missing 'application_id' argument")
-        if owner_object_id is None and 'ownerObjectId' in kwargs:
-            owner_object_id = kwargs['ownerObjectId']
-        if owner_object_id is None:
-            raise TypeError("Missing 'owner_object_id' argument")
-
-        _setter("application_id", application_id)
-        _setter("owner_object_id", owner_object_id)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "owner_object_id", owner_object_id)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -80,27 +59,10 @@ class _ApplicationOwnerState:
         :param pulumi.Input[str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[str] owner_object_id: The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
         """
-        _ApplicationOwnerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            owner_object_id=owner_object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[pulumi.Input[str]] = None,
-             owner_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if owner_object_id is None and 'ownerObjectId' in kwargs:
-            owner_object_id = kwargs['ownerObjectId']
-
         if application_id is not None:
-            _setter("application_id", application_id)
+            pulumi.set(__self__, "application_id", application_id)
         if owner_object_id is not None:
-            _setter("owner_object_id", owner_object_id)
+            pulumi.set(__self__, "owner_object_id", owner_object_id)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -210,10 +172,6 @@ class ApplicationOwner(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationOwnerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

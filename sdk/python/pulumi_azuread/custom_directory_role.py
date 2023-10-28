@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,47 +31,14 @@ class CustomDirectoryRoleArgs:
         :param pulumi.Input[str] description: The description of the custom directory role.
         :param pulumi.Input[str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
         """
-        CustomDirectoryRoleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            enabled=enabled,
-            permissions=permissions,
-            version=version,
-            description=description,
-            template_id=template_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDirectoryRolePermissionArgs']]]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if permissions is None:
-            raise TypeError("Missing 'permissions' argument")
-        if version is None:
-            raise TypeError("Missing 'version' argument")
-        if template_id is None and 'templateId' in kwargs:
-            template_id = kwargs['templateId']
-
-        _setter("display_name", display_name)
-        _setter("enabled", enabled)
-        _setter("permissions", permissions)
-        _setter("version", version)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "permissions", permissions)
+        pulumi.set(__self__, "version", version)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if template_id is not None:
-            _setter("template_id", template_id)
+            pulumi.set(__self__, "template_id", template_id)
 
     @property
     @pulumi.getter(name="displayName")
@@ -166,49 +133,20 @@ class _CustomDirectoryRoleState:
         :param pulumi.Input[str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
         :param pulumi.Input[str] version: The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """
-        _CustomDirectoryRoleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            display_name=display_name,
-            enabled=enabled,
-            object_id=object_id,
-            permissions=permissions,
-            template_id=template_id,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             object_id: Optional[pulumi.Input[str]] = None,
-             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['CustomDirectoryRolePermissionArgs']]]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if template_id is None and 'templateId' in kwargs:
-            template_id = kwargs['templateId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
         if permissions is not None:
-            _setter("permissions", permissions)
+            pulumi.set(__self__, "permissions", permissions)
         if template_id is not None:
-            _setter("template_id", template_id)
+            pulumi.set(__self__, "template_id", template_id)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -428,10 +366,6 @@ class CustomDirectoryRole(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CustomDirectoryRoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

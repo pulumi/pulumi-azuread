@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServicePrincipalDelegatedPermissionGrantArgs', 'ServicePrincipalDelegatedPermissionGrant']
@@ -27,42 +27,11 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
                
                > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
-        ServicePrincipalDelegatedPermissionGrantArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            claim_values=claim_values,
-            resource_service_principal_object_id=resource_service_principal_object_id,
-            service_principal_object_id=service_principal_object_id,
-            user_object_id=user_object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             claim_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             resource_service_principal_object_id: Optional[pulumi.Input[str]] = None,
-             service_principal_object_id: Optional[pulumi.Input[str]] = None,
-             user_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if claim_values is None and 'claimValues' in kwargs:
-            claim_values = kwargs['claimValues']
-        if claim_values is None:
-            raise TypeError("Missing 'claim_values' argument")
-        if resource_service_principal_object_id is None and 'resourceServicePrincipalObjectId' in kwargs:
-            resource_service_principal_object_id = kwargs['resourceServicePrincipalObjectId']
-        if resource_service_principal_object_id is None:
-            raise TypeError("Missing 'resource_service_principal_object_id' argument")
-        if service_principal_object_id is None and 'servicePrincipalObjectId' in kwargs:
-            service_principal_object_id = kwargs['servicePrincipalObjectId']
-        if service_principal_object_id is None:
-            raise TypeError("Missing 'service_principal_object_id' argument")
-        if user_object_id is None and 'userObjectId' in kwargs:
-            user_object_id = kwargs['userObjectId']
-
-        _setter("claim_values", claim_values)
-        _setter("resource_service_principal_object_id", resource_service_principal_object_id)
-        _setter("service_principal_object_id", service_principal_object_id)
+        pulumi.set(__self__, "claim_values", claim_values)
+        pulumi.set(__self__, "resource_service_principal_object_id", resource_service_principal_object_id)
+        pulumi.set(__self__, "service_principal_object_id", service_principal_object_id)
         if user_object_id is not None:
-            _setter("user_object_id", user_object_id)
+            pulumi.set(__self__, "user_object_id", user_object_id)
 
     @property
     @pulumi.getter(name="claimValues")
@@ -131,39 +100,14 @@ class _ServicePrincipalDelegatedPermissionGrantState:
                
                > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
-        _ServicePrincipalDelegatedPermissionGrantState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            claim_values=claim_values,
-            resource_service_principal_object_id=resource_service_principal_object_id,
-            service_principal_object_id=service_principal_object_id,
-            user_object_id=user_object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             claim_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             resource_service_principal_object_id: Optional[pulumi.Input[str]] = None,
-             service_principal_object_id: Optional[pulumi.Input[str]] = None,
-             user_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if claim_values is None and 'claimValues' in kwargs:
-            claim_values = kwargs['claimValues']
-        if resource_service_principal_object_id is None and 'resourceServicePrincipalObjectId' in kwargs:
-            resource_service_principal_object_id = kwargs['resourceServicePrincipalObjectId']
-        if service_principal_object_id is None and 'servicePrincipalObjectId' in kwargs:
-            service_principal_object_id = kwargs['servicePrincipalObjectId']
-        if user_object_id is None and 'userObjectId' in kwargs:
-            user_object_id = kwargs['userObjectId']
-
         if claim_values is not None:
-            _setter("claim_values", claim_values)
+            pulumi.set(__self__, "claim_values", claim_values)
         if resource_service_principal_object_id is not None:
-            _setter("resource_service_principal_object_id", resource_service_principal_object_id)
+            pulumi.set(__self__, "resource_service_principal_object_id", resource_service_principal_object_id)
         if service_principal_object_id is not None:
-            _setter("service_principal_object_id", service_principal_object_id)
+            pulumi.set(__self__, "service_principal_object_id", service_principal_object_id)
         if user_object_id is not None:
-            _setter("user_object_id", user_object_id)
+            pulumi.set(__self__, "user_object_id", user_object_id)
 
     @property
     @pulumi.getter(name="claimValues")
@@ -445,10 +389,6 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServicePrincipalDelegatedPermissionGrantArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

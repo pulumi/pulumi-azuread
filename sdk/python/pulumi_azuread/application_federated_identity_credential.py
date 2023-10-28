@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationFederatedIdentityCredentialArgs', 'ApplicationFederatedIdentityCredential']
@@ -31,56 +31,19 @@ class ApplicationFederatedIdentityCredentialArgs:
         :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created
         :param pulumi.Input[str] description: A description for the federated identity credential.
         """
-        ApplicationFederatedIdentityCredentialArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            audiences=audiences,
-            display_name=display_name,
-            issuer=issuer,
-            subject=subject,
-            application_id=application_id,
-            application_object_id=application_object_id,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             issuer: Optional[pulumi.Input[str]] = None,
-             subject: Optional[pulumi.Input[str]] = None,
-             application_id: Optional[pulumi.Input[str]] = None,
-             application_object_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if audiences is None:
-            raise TypeError("Missing 'audiences' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if issuer is None:
-            raise TypeError("Missing 'issuer' argument")
-        if subject is None:
-            raise TypeError("Missing 'subject' argument")
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_object_id is None and 'applicationObjectId' in kwargs:
-            application_object_id = kwargs['applicationObjectId']
-
-        _setter("audiences", audiences)
-        _setter("display_name", display_name)
-        _setter("issuer", issuer)
-        _setter("subject", subject)
+        pulumi.set(__self__, "audiences", audiences)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "issuer", issuer)
+        pulumi.set(__self__, "subject", subject)
         if application_id is not None:
-            _setter("application_id", application_id)
+            pulumi.set(__self__, "application_id", application_id)
         if application_object_id is not None:
             warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
             pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
         if application_object_id is not None:
-            _setter("application_object_id", application_object_id)
+            pulumi.set(__self__, "application_object_id", application_object_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
@@ -192,58 +155,25 @@ class _ApplicationFederatedIdentityCredentialState:
         :param pulumi.Input[str] issuer: The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
         :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
         """
-        _ApplicationFederatedIdentityCredentialState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            application_object_id=application_object_id,
-            audiences=audiences,
-            credential_id=credential_id,
-            description=description,
-            display_name=display_name,
-            issuer=issuer,
-            subject=subject,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[pulumi.Input[str]] = None,
-             application_object_id: Optional[pulumi.Input[str]] = None,
-             audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             credential_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             issuer: Optional[pulumi.Input[str]] = None,
-             subject: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_object_id is None and 'applicationObjectId' in kwargs:
-            application_object_id = kwargs['applicationObjectId']
-        if credential_id is None and 'credentialId' in kwargs:
-            credential_id = kwargs['credentialId']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
         if application_id is not None:
-            _setter("application_id", application_id)
+            pulumi.set(__self__, "application_id", application_id)
         if application_object_id is not None:
             warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
             pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
         if application_object_id is not None:
-            _setter("application_object_id", application_object_id)
+            pulumi.set(__self__, "application_object_id", application_object_id)
         if audiences is not None:
-            _setter("audiences", audiences)
+            pulumi.set(__self__, "audiences", audiences)
         if credential_id is not None:
-            _setter("credential_id", credential_id)
+            pulumi.set(__self__, "credential_id", credential_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if issuer is not None:
-            _setter("issuer", issuer)
+            pulumi.set(__self__, "issuer", issuer)
         if subject is not None:
-            _setter("subject", subject)
+            pulumi.set(__self__, "subject", subject)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -438,10 +368,6 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationFederatedIdentityCredentialArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

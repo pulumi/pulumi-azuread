@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationRegistrationArgs', 'ApplicationRegistration']
@@ -47,102 +47,35 @@ class ApplicationRegistrationArgs:
         :param pulumi.Input[str] support_url: URL of the support page for the application.
         :param pulumi.Input[str] terms_of_service_url: URL of the terms of service statement for the application.
         """
-        ApplicationRegistrationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            display_name=display_name,
-            description=description,
-            group_membership_claims=group_membership_claims,
-            homepage_url=homepage_url,
-            implicit_access_token_issuance_enabled=implicit_access_token_issuance_enabled,
-            implicit_id_token_issuance_enabled=implicit_id_token_issuance_enabled,
-            logout_url=logout_url,
-            marketing_url=marketing_url,
-            notes=notes,
-            privacy_statement_url=privacy_statement_url,
-            requested_access_token_version=requested_access_token_version,
-            service_management_reference=service_management_reference,
-            sign_in_audience=sign_in_audience,
-            support_url=support_url,
-            terms_of_service_url=terms_of_service_url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             display_name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             homepage_url: Optional[pulumi.Input[str]] = None,
-             implicit_access_token_issuance_enabled: Optional[pulumi.Input[bool]] = None,
-             implicit_id_token_issuance_enabled: Optional[pulumi.Input[bool]] = None,
-             logout_url: Optional[pulumi.Input[str]] = None,
-             marketing_url: Optional[pulumi.Input[str]] = None,
-             notes: Optional[pulumi.Input[str]] = None,
-             privacy_statement_url: Optional[pulumi.Input[str]] = None,
-             requested_access_token_version: Optional[pulumi.Input[int]] = None,
-             service_management_reference: Optional[pulumi.Input[str]] = None,
-             sign_in_audience: Optional[pulumi.Input[str]] = None,
-             support_url: Optional[pulumi.Input[str]] = None,
-             terms_of_service_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if group_membership_claims is None and 'groupMembershipClaims' in kwargs:
-            group_membership_claims = kwargs['groupMembershipClaims']
-        if homepage_url is None and 'homepageUrl' in kwargs:
-            homepage_url = kwargs['homepageUrl']
-        if implicit_access_token_issuance_enabled is None and 'implicitAccessTokenIssuanceEnabled' in kwargs:
-            implicit_access_token_issuance_enabled = kwargs['implicitAccessTokenIssuanceEnabled']
-        if implicit_id_token_issuance_enabled is None and 'implicitIdTokenIssuanceEnabled' in kwargs:
-            implicit_id_token_issuance_enabled = kwargs['implicitIdTokenIssuanceEnabled']
-        if logout_url is None and 'logoutUrl' in kwargs:
-            logout_url = kwargs['logoutUrl']
-        if marketing_url is None and 'marketingUrl' in kwargs:
-            marketing_url = kwargs['marketingUrl']
-        if privacy_statement_url is None and 'privacyStatementUrl' in kwargs:
-            privacy_statement_url = kwargs['privacyStatementUrl']
-        if requested_access_token_version is None and 'requestedAccessTokenVersion' in kwargs:
-            requested_access_token_version = kwargs['requestedAccessTokenVersion']
-        if service_management_reference is None and 'serviceManagementReference' in kwargs:
-            service_management_reference = kwargs['serviceManagementReference']
-        if sign_in_audience is None and 'signInAudience' in kwargs:
-            sign_in_audience = kwargs['signInAudience']
-        if support_url is None and 'supportUrl' in kwargs:
-            support_url = kwargs['supportUrl']
-        if terms_of_service_url is None and 'termsOfServiceUrl' in kwargs:
-            terms_of_service_url = kwargs['termsOfServiceUrl']
-
-        _setter("display_name", display_name)
+        pulumi.set(__self__, "display_name", display_name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if group_membership_claims is not None:
-            _setter("group_membership_claims", group_membership_claims)
+            pulumi.set(__self__, "group_membership_claims", group_membership_claims)
         if homepage_url is not None:
-            _setter("homepage_url", homepage_url)
+            pulumi.set(__self__, "homepage_url", homepage_url)
         if implicit_access_token_issuance_enabled is not None:
-            _setter("implicit_access_token_issuance_enabled", implicit_access_token_issuance_enabled)
+            pulumi.set(__self__, "implicit_access_token_issuance_enabled", implicit_access_token_issuance_enabled)
         if implicit_id_token_issuance_enabled is not None:
-            _setter("implicit_id_token_issuance_enabled", implicit_id_token_issuance_enabled)
+            pulumi.set(__self__, "implicit_id_token_issuance_enabled", implicit_id_token_issuance_enabled)
         if logout_url is not None:
-            _setter("logout_url", logout_url)
+            pulumi.set(__self__, "logout_url", logout_url)
         if marketing_url is not None:
-            _setter("marketing_url", marketing_url)
+            pulumi.set(__self__, "marketing_url", marketing_url)
         if notes is not None:
-            _setter("notes", notes)
+            pulumi.set(__self__, "notes", notes)
         if privacy_statement_url is not None:
-            _setter("privacy_statement_url", privacy_statement_url)
+            pulumi.set(__self__, "privacy_statement_url", privacy_statement_url)
         if requested_access_token_version is not None:
-            _setter("requested_access_token_version", requested_access_token_version)
+            pulumi.set(__self__, "requested_access_token_version", requested_access_token_version)
         if service_management_reference is not None:
-            _setter("service_management_reference", service_management_reference)
+            pulumi.set(__self__, "service_management_reference", service_management_reference)
         if sign_in_audience is not None:
-            _setter("sign_in_audience", sign_in_audience)
+            pulumi.set(__self__, "sign_in_audience", sign_in_audience)
         if support_url is not None:
-            _setter("support_url", support_url)
+            pulumi.set(__self__, "support_url", support_url)
         if terms_of_service_url is not None:
-            _setter("terms_of_service_url", terms_of_service_url)
+            pulumi.set(__self__, "terms_of_service_url", terms_of_service_url)
 
     @property
     @pulumi.getter(name="displayName")
@@ -369,125 +302,44 @@ class _ApplicationRegistrationState:
         :param pulumi.Input[str] support_url: URL of the support page for the application.
         :param pulumi.Input[str] terms_of_service_url: URL of the terms of service statement for the application.
         """
-        _ApplicationRegistrationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            client_id=client_id,
-            description=description,
-            disabled_by_microsoft=disabled_by_microsoft,
-            display_name=display_name,
-            group_membership_claims=group_membership_claims,
-            homepage_url=homepage_url,
-            implicit_access_token_issuance_enabled=implicit_access_token_issuance_enabled,
-            implicit_id_token_issuance_enabled=implicit_id_token_issuance_enabled,
-            logout_url=logout_url,
-            marketing_url=marketing_url,
-            notes=notes,
-            object_id=object_id,
-            privacy_statement_url=privacy_statement_url,
-            publisher_domain=publisher_domain,
-            requested_access_token_version=requested_access_token_version,
-            service_management_reference=service_management_reference,
-            sign_in_audience=sign_in_audience,
-            support_url=support_url,
-            terms_of_service_url=terms_of_service_url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             client_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             homepage_url: Optional[pulumi.Input[str]] = None,
-             implicit_access_token_issuance_enabled: Optional[pulumi.Input[bool]] = None,
-             implicit_id_token_issuance_enabled: Optional[pulumi.Input[bool]] = None,
-             logout_url: Optional[pulumi.Input[str]] = None,
-             marketing_url: Optional[pulumi.Input[str]] = None,
-             notes: Optional[pulumi.Input[str]] = None,
-             object_id: Optional[pulumi.Input[str]] = None,
-             privacy_statement_url: Optional[pulumi.Input[str]] = None,
-             publisher_domain: Optional[pulumi.Input[str]] = None,
-             requested_access_token_version: Optional[pulumi.Input[int]] = None,
-             service_management_reference: Optional[pulumi.Input[str]] = None,
-             sign_in_audience: Optional[pulumi.Input[str]] = None,
-             support_url: Optional[pulumi.Input[str]] = None,
-             terms_of_service_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if disabled_by_microsoft is None and 'disabledByMicrosoft' in kwargs:
-            disabled_by_microsoft = kwargs['disabledByMicrosoft']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if group_membership_claims is None and 'groupMembershipClaims' in kwargs:
-            group_membership_claims = kwargs['groupMembershipClaims']
-        if homepage_url is None and 'homepageUrl' in kwargs:
-            homepage_url = kwargs['homepageUrl']
-        if implicit_access_token_issuance_enabled is None and 'implicitAccessTokenIssuanceEnabled' in kwargs:
-            implicit_access_token_issuance_enabled = kwargs['implicitAccessTokenIssuanceEnabled']
-        if implicit_id_token_issuance_enabled is None and 'implicitIdTokenIssuanceEnabled' in kwargs:
-            implicit_id_token_issuance_enabled = kwargs['implicitIdTokenIssuanceEnabled']
-        if logout_url is None and 'logoutUrl' in kwargs:
-            logout_url = kwargs['logoutUrl']
-        if marketing_url is None and 'marketingUrl' in kwargs:
-            marketing_url = kwargs['marketingUrl']
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if privacy_statement_url is None and 'privacyStatementUrl' in kwargs:
-            privacy_statement_url = kwargs['privacyStatementUrl']
-        if publisher_domain is None and 'publisherDomain' in kwargs:
-            publisher_domain = kwargs['publisherDomain']
-        if requested_access_token_version is None and 'requestedAccessTokenVersion' in kwargs:
-            requested_access_token_version = kwargs['requestedAccessTokenVersion']
-        if service_management_reference is None and 'serviceManagementReference' in kwargs:
-            service_management_reference = kwargs['serviceManagementReference']
-        if sign_in_audience is None and 'signInAudience' in kwargs:
-            sign_in_audience = kwargs['signInAudience']
-        if support_url is None and 'supportUrl' in kwargs:
-            support_url = kwargs['supportUrl']
-        if terms_of_service_url is None and 'termsOfServiceUrl' in kwargs:
-            terms_of_service_url = kwargs['termsOfServiceUrl']
-
         if client_id is not None:
-            _setter("client_id", client_id)
+            pulumi.set(__self__, "client_id", client_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disabled_by_microsoft is not None:
-            _setter("disabled_by_microsoft", disabled_by_microsoft)
+            pulumi.set(__self__, "disabled_by_microsoft", disabled_by_microsoft)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if group_membership_claims is not None:
-            _setter("group_membership_claims", group_membership_claims)
+            pulumi.set(__self__, "group_membership_claims", group_membership_claims)
         if homepage_url is not None:
-            _setter("homepage_url", homepage_url)
+            pulumi.set(__self__, "homepage_url", homepage_url)
         if implicit_access_token_issuance_enabled is not None:
-            _setter("implicit_access_token_issuance_enabled", implicit_access_token_issuance_enabled)
+            pulumi.set(__self__, "implicit_access_token_issuance_enabled", implicit_access_token_issuance_enabled)
         if implicit_id_token_issuance_enabled is not None:
-            _setter("implicit_id_token_issuance_enabled", implicit_id_token_issuance_enabled)
+            pulumi.set(__self__, "implicit_id_token_issuance_enabled", implicit_id_token_issuance_enabled)
         if logout_url is not None:
-            _setter("logout_url", logout_url)
+            pulumi.set(__self__, "logout_url", logout_url)
         if marketing_url is not None:
-            _setter("marketing_url", marketing_url)
+            pulumi.set(__self__, "marketing_url", marketing_url)
         if notes is not None:
-            _setter("notes", notes)
+            pulumi.set(__self__, "notes", notes)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
         if privacy_statement_url is not None:
-            _setter("privacy_statement_url", privacy_statement_url)
+            pulumi.set(__self__, "privacy_statement_url", privacy_statement_url)
         if publisher_domain is not None:
-            _setter("publisher_domain", publisher_domain)
+            pulumi.set(__self__, "publisher_domain", publisher_domain)
         if requested_access_token_version is not None:
-            _setter("requested_access_token_version", requested_access_token_version)
+            pulumi.set(__self__, "requested_access_token_version", requested_access_token_version)
         if service_management_reference is not None:
-            _setter("service_management_reference", service_management_reference)
+            pulumi.set(__self__, "service_management_reference", service_management_reference)
         if sign_in_audience is not None:
-            _setter("sign_in_audience", sign_in_audience)
+            pulumi.set(__self__, "sign_in_audience", sign_in_audience)
         if support_url is not None:
-            _setter("support_url", support_url)
+            pulumi.set(__self__, "support_url", support_url)
         if terms_of_service_url is not None:
-            _setter("terms_of_service_url", terms_of_service_url)
+            pulumi.set(__self__, "terms_of_service_url", terms_of_service_url)
 
     @property
     @pulumi.getter(name="clientId")
@@ -851,10 +703,6 @@ class ApplicationRegistration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationRegistrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

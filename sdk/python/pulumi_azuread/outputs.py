@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -126,39 +126,14 @@ class AccessPackageAssignmentPolicyApprovalSettings(dict):
         :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs'] approval_stages: An `approval_stage` block specifying the process to obtain an approval, as documented below.
         :param bool requestor_justification_required: Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
         """
-        AccessPackageAssignmentPolicyApprovalSettings._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            approval_required=approval_required,
-            approval_required_for_extension=approval_required_for_extension,
-            approval_stages=approval_stages,
-            requestor_justification_required=requestor_justification_required,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             approval_required: Optional[bool] = None,
-             approval_required_for_extension: Optional[bool] = None,
-             approval_stages: Optional[Sequence['outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStage']] = None,
-             requestor_justification_required: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if approval_required is None and 'approvalRequired' in kwargs:
-            approval_required = kwargs['approvalRequired']
-        if approval_required_for_extension is None and 'approvalRequiredForExtension' in kwargs:
-            approval_required_for_extension = kwargs['approvalRequiredForExtension']
-        if approval_stages is None and 'approvalStages' in kwargs:
-            approval_stages = kwargs['approvalStages']
-        if requestor_justification_required is None and 'requestorJustificationRequired' in kwargs:
-            requestor_justification_required = kwargs['requestorJustificationRequired']
-
         if approval_required is not None:
-            _setter("approval_required", approval_required)
+            pulumi.set(__self__, "approval_required", approval_required)
         if approval_required_for_extension is not None:
-            _setter("approval_required_for_extension", approval_required_for_extension)
+            pulumi.set(__self__, "approval_required_for_extension", approval_required_for_extension)
         if approval_stages is not None:
-            _setter("approval_stages", approval_stages)
+            pulumi.set(__self__, "approval_stages", approval_stages)
         if requestor_justification_required is not None:
-            _setter("requestor_justification_required", requestor_justification_required)
+            pulumi.set(__self__, "requestor_justification_required", requestor_justification_required)
 
     @property
     @pulumi.getter(name="approvalRequired")
@@ -237,52 +212,17 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
         :param int enable_alternative_approval_in_days: Number of days before the request is forwarded to alternative approvers.
         :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs'] primary_approvers: A block specifying the users who will be asked to approve requests, as documented below.
         """
-        AccessPackageAssignmentPolicyApprovalSettingsApprovalStage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            approval_timeout_in_days=approval_timeout_in_days,
-            alternative_approval_enabled=alternative_approval_enabled,
-            alternative_approvers=alternative_approvers,
-            approver_justification_required=approver_justification_required,
-            enable_alternative_approval_in_days=enable_alternative_approval_in_days,
-            primary_approvers=primary_approvers,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             approval_timeout_in_days: Optional[int] = None,
-             alternative_approval_enabled: Optional[bool] = None,
-             alternative_approvers: Optional[Sequence['outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover']] = None,
-             approver_justification_required: Optional[bool] = None,
-             enable_alternative_approval_in_days: Optional[int] = None,
-             primary_approvers: Optional[Sequence['outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if approval_timeout_in_days is None and 'approvalTimeoutInDays' in kwargs:
-            approval_timeout_in_days = kwargs['approvalTimeoutInDays']
-        if approval_timeout_in_days is None:
-            raise TypeError("Missing 'approval_timeout_in_days' argument")
-        if alternative_approval_enabled is None and 'alternativeApprovalEnabled' in kwargs:
-            alternative_approval_enabled = kwargs['alternativeApprovalEnabled']
-        if alternative_approvers is None and 'alternativeApprovers' in kwargs:
-            alternative_approvers = kwargs['alternativeApprovers']
-        if approver_justification_required is None and 'approverJustificationRequired' in kwargs:
-            approver_justification_required = kwargs['approverJustificationRequired']
-        if enable_alternative_approval_in_days is None and 'enableAlternativeApprovalInDays' in kwargs:
-            enable_alternative_approval_in_days = kwargs['enableAlternativeApprovalInDays']
-        if primary_approvers is None and 'primaryApprovers' in kwargs:
-            primary_approvers = kwargs['primaryApprovers']
-
-        _setter("approval_timeout_in_days", approval_timeout_in_days)
+        pulumi.set(__self__, "approval_timeout_in_days", approval_timeout_in_days)
         if alternative_approval_enabled is not None:
-            _setter("alternative_approval_enabled", alternative_approval_enabled)
+            pulumi.set(__self__, "alternative_approval_enabled", alternative_approval_enabled)
         if alternative_approvers is not None:
-            _setter("alternative_approvers", alternative_approvers)
+            pulumi.set(__self__, "alternative_approvers", alternative_approvers)
         if approver_justification_required is not None:
-            _setter("approver_justification_required", approver_justification_required)
+            pulumi.set(__self__, "approver_justification_required", approver_justification_required)
         if enable_alternative_approval_in_days is not None:
-            _setter("enable_alternative_approval_in_days", enable_alternative_approval_in_days)
+            pulumi.set(__self__, "enable_alternative_approval_in_days", enable_alternative_approval_in_days)
         if primary_approvers is not None:
-            _setter("primary_approvers", primary_approvers)
+            pulumi.set(__self__, "primary_approvers", primary_approvers)
 
     @property
     @pulumi.getter(name="approvalTimeoutInDays")
@@ -363,32 +303,11 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
         :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
         :param str object_id: The ID of the subject.
         """
-        AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subject_type=subject_type,
-            backup=backup,
-            object_id=object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subject_type: Optional[str] = None,
-             backup: Optional[bool] = None,
-             object_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subject_type is None and 'subjectType' in kwargs:
-            subject_type = kwargs['subjectType']
-        if subject_type is None:
-            raise TypeError("Missing 'subject_type' argument")
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-
-        _setter("subject_type", subject_type)
+        pulumi.set(__self__, "subject_type", subject_type)
         if backup is not None:
-            _setter("backup", backup)
+            pulumi.set(__self__, "backup", backup)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
 
     @property
     @pulumi.getter(name="subjectType")
@@ -445,32 +364,11 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover(
         :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
         :param str object_id: The ID of the subject.
         """
-        AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subject_type=subject_type,
-            backup=backup,
-            object_id=object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subject_type: Optional[str] = None,
-             backup: Optional[bool] = None,
-             object_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subject_type is None and 'subjectType' in kwargs:
-            subject_type = kwargs['subjectType']
-        if subject_type is None:
-            raise TypeError("Missing 'subject_type' argument")
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-
-        _setter("subject_type", subject_type)
+        pulumi.set(__self__, "subject_type", subject_type)
         if backup is not None:
-            _setter("backup", backup)
+            pulumi.set(__self__, "backup", backup)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
 
     @property
     @pulumi.getter(name="subjectType")
@@ -549,65 +447,24 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings(dict):
         :param Sequence['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs'] reviewers: One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
         :param str starting_on: This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
         """
-        AccessPackageAssignmentPolicyAssignmentReviewSettings._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_recommendation_enabled=access_recommendation_enabled,
-            access_review_timeout_behavior=access_review_timeout_behavior,
-            approver_justification_required=approver_justification_required,
-            duration_in_days=duration_in_days,
-            enabled=enabled,
-            review_frequency=review_frequency,
-            review_type=review_type,
-            reviewers=reviewers,
-            starting_on=starting_on,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_recommendation_enabled: Optional[bool] = None,
-             access_review_timeout_behavior: Optional[str] = None,
-             approver_justification_required: Optional[bool] = None,
-             duration_in_days: Optional[int] = None,
-             enabled: Optional[bool] = None,
-             review_frequency: Optional[str] = None,
-             review_type: Optional[str] = None,
-             reviewers: Optional[Sequence['outputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer']] = None,
-             starting_on: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_recommendation_enabled is None and 'accessRecommendationEnabled' in kwargs:
-            access_recommendation_enabled = kwargs['accessRecommendationEnabled']
-        if access_review_timeout_behavior is None and 'accessReviewTimeoutBehavior' in kwargs:
-            access_review_timeout_behavior = kwargs['accessReviewTimeoutBehavior']
-        if approver_justification_required is None and 'approverJustificationRequired' in kwargs:
-            approver_justification_required = kwargs['approverJustificationRequired']
-        if duration_in_days is None and 'durationInDays' in kwargs:
-            duration_in_days = kwargs['durationInDays']
-        if review_frequency is None and 'reviewFrequency' in kwargs:
-            review_frequency = kwargs['reviewFrequency']
-        if review_type is None and 'reviewType' in kwargs:
-            review_type = kwargs['reviewType']
-        if starting_on is None and 'startingOn' in kwargs:
-            starting_on = kwargs['startingOn']
-
         if access_recommendation_enabled is not None:
-            _setter("access_recommendation_enabled", access_recommendation_enabled)
+            pulumi.set(__self__, "access_recommendation_enabled", access_recommendation_enabled)
         if access_review_timeout_behavior is not None:
-            _setter("access_review_timeout_behavior", access_review_timeout_behavior)
+            pulumi.set(__self__, "access_review_timeout_behavior", access_review_timeout_behavior)
         if approver_justification_required is not None:
-            _setter("approver_justification_required", approver_justification_required)
+            pulumi.set(__self__, "approver_justification_required", approver_justification_required)
         if duration_in_days is not None:
-            _setter("duration_in_days", duration_in_days)
+            pulumi.set(__self__, "duration_in_days", duration_in_days)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if review_frequency is not None:
-            _setter("review_frequency", review_frequency)
+            pulumi.set(__self__, "review_frequency", review_frequency)
         if review_type is not None:
-            _setter("review_type", review_type)
+            pulumi.set(__self__, "review_type", review_type)
         if reviewers is not None:
-            _setter("reviewers", reviewers)
+            pulumi.set(__self__, "reviewers", reviewers)
         if starting_on is not None:
-            _setter("starting_on", starting_on)
+            pulumi.set(__self__, "starting_on", starting_on)
 
     @property
     @pulumi.getter(name="accessRecommendationEnabled")
@@ -712,32 +569,11 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(dict):
         :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
         :param str object_id: The ID of the subject.
         """
-        AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subject_type=subject_type,
-            backup=backup,
-            object_id=object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subject_type: Optional[str] = None,
-             backup: Optional[bool] = None,
-             object_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subject_type is None and 'subjectType' in kwargs:
-            subject_type = kwargs['subjectType']
-        if subject_type is None:
-            raise TypeError("Missing 'subject_type' argument")
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-
-        _setter("subject_type", subject_type)
+        pulumi.set(__self__, "subject_type", subject_type)
         if backup is not None:
-            _setter("backup", backup)
+            pulumi.set(__self__, "backup", backup)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
 
     @property
     @pulumi.getter(name="subjectType")
@@ -777,32 +613,13 @@ class AccessPackageAssignmentPolicyQuestion(dict):
         :param bool required: Whether this question is required.
         :param int sequence: The sequence number of this question.
         """
-        AccessPackageAssignmentPolicyQuestion._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            text=text,
-            choices=choices,
-            required=required,
-            sequence=sequence,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             text: Optional['outputs.AccessPackageAssignmentPolicyQuestionText'] = None,
-             choices: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionChoice']] = None,
-             required: Optional[bool] = None,
-             sequence: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if text is None:
-            raise TypeError("Missing 'text' argument")
-
-        _setter("text", text)
+        pulumi.set(__self__, "text", text)
         if choices is not None:
-            _setter("choices", choices)
+            pulumi.set(__self__, "choices", choices)
         if required is not None:
-            _setter("required", required)
+            pulumi.set(__self__, "required", required)
         if sequence is not None:
-            _setter("sequence", sequence)
+            pulumi.set(__self__, "sequence", sequence)
 
     @property
     @pulumi.getter
@@ -865,29 +682,8 @@ class AccessPackageAssignmentPolicyQuestionChoice(dict):
         :param str actual_value: The actual value of this choice.
         :param 'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs' display_value: A block describing the display text of this choice, as documented below.
         """
-        AccessPackageAssignmentPolicyQuestionChoice._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actual_value=actual_value,
-            display_value=display_value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actual_value: Optional[str] = None,
-             display_value: Optional['outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actual_value is None and 'actualValue' in kwargs:
-            actual_value = kwargs['actualValue']
-        if actual_value is None:
-            raise TypeError("Missing 'actual_value' argument")
-        if display_value is None and 'displayValue' in kwargs:
-            display_value = kwargs['displayValue']
-        if display_value is None:
-            raise TypeError("Missing 'display_value' argument")
-
-        _setter("actual_value", actual_value)
-        _setter("display_value", display_value)
+        pulumi.set(__self__, "actual_value", actual_value)
+        pulumi.set(__self__, "display_value", display_value)
 
     @property
     @pulumi.getter(name="actualValue")
@@ -934,28 +730,9 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
         :param str default_text: The default text of this question choice.
         :param Sequence['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs'] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
         """
-        AccessPackageAssignmentPolicyQuestionChoiceDisplayValue._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            default_text=default_text,
-            localized_texts=localized_texts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             default_text: Optional[str] = None,
-             localized_texts: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_text is None and 'defaultText' in kwargs:
-            default_text = kwargs['defaultText']
-        if default_text is None:
-            raise TypeError("Missing 'default_text' argument")
-        if localized_texts is None and 'localizedTexts' in kwargs:
-            localized_texts = kwargs['localizedTexts']
-
-        _setter("default_text", default_text)
+        pulumi.set(__self__, "default_text", default_text)
         if localized_texts is not None:
-            _setter("localized_texts", localized_texts)
+            pulumi.set(__self__, "localized_texts", localized_texts)
 
     @property
     @pulumi.getter(name="defaultText")
@@ -1000,27 +777,8 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText(dict)
         :param str content: The localized content of this question choice.
         :param str language_code: The ISO 639 language code for this question choice content.
         """
-        AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            language_code=language_code,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[str] = None,
-             language_code: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-        if language_code is None and 'languageCode' in kwargs:
-            language_code = kwargs['languageCode']
-        if language_code is None:
-            raise TypeError("Missing 'language_code' argument")
-
-        _setter("content", content)
-        _setter("language_code", language_code)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "language_code", language_code)
 
     @property
     @pulumi.getter
@@ -1067,28 +825,9 @@ class AccessPackageAssignmentPolicyQuestionText(dict):
         :param str default_text: The default text of this question choice.
         :param Sequence['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs'] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
         """
-        AccessPackageAssignmentPolicyQuestionText._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            default_text=default_text,
-            localized_texts=localized_texts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             default_text: Optional[str] = None,
-             localized_texts: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_text is None and 'defaultText' in kwargs:
-            default_text = kwargs['defaultText']
-        if default_text is None:
-            raise TypeError("Missing 'default_text' argument")
-        if localized_texts is None and 'localizedTexts' in kwargs:
-            localized_texts = kwargs['localizedTexts']
-
-        _setter("default_text", default_text)
+        pulumi.set(__self__, "default_text", default_text)
         if localized_texts is not None:
-            _setter("localized_texts", localized_texts)
+            pulumi.set(__self__, "localized_texts", localized_texts)
 
     @property
     @pulumi.getter(name="defaultText")
@@ -1133,27 +872,8 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText(dict):
         :param str content: The localized content of this question choice.
         :param str language_code: The ISO 639 language code for this question choice content.
         """
-        AccessPackageAssignmentPolicyQuestionTextLocalizedText._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content=content,
-            language_code=language_code,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content: Optional[str] = None,
-             language_code: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content is None:
-            raise TypeError("Missing 'content' argument")
-        if language_code is None and 'languageCode' in kwargs:
-            language_code = kwargs['languageCode']
-        if language_code is None:
-            raise TypeError("Missing 'language_code' argument")
-
-        _setter("content", content)
-        _setter("language_code", language_code)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "language_code", language_code)
 
     @property
     @pulumi.getter
@@ -1202,31 +922,12 @@ class AccessPackageAssignmentPolicyRequestorSettings(dict):
         :param bool requests_accepted: Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
         :param str scope_type: Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
         """
-        AccessPackageAssignmentPolicyRequestorSettings._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            requestors=requestors,
-            requests_accepted=requests_accepted,
-            scope_type=scope_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             requestors: Optional[Sequence['outputs.AccessPackageAssignmentPolicyRequestorSettingsRequestor']] = None,
-             requests_accepted: Optional[bool] = None,
-             scope_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if requests_accepted is None and 'requestsAccepted' in kwargs:
-            requests_accepted = kwargs['requestsAccepted']
-        if scope_type is None and 'scopeType' in kwargs:
-            scope_type = kwargs['scopeType']
-
         if requestors is not None:
-            _setter("requestors", requestors)
+            pulumi.set(__self__, "requestors", requestors)
         if requests_accepted is not None:
-            _setter("requests_accepted", requests_accepted)
+            pulumi.set(__self__, "requests_accepted", requests_accepted)
         if scope_type is not None:
-            _setter("scope_type", scope_type)
+            pulumi.set(__self__, "scope_type", scope_type)
 
     @property
     @pulumi.getter
@@ -1283,32 +984,11 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestor(dict):
         :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
         :param str object_id: The ID of the subject.
         """
-        AccessPackageAssignmentPolicyRequestorSettingsRequestor._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subject_type=subject_type,
-            backup=backup,
-            object_id=object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subject_type: Optional[str] = None,
-             backup: Optional[bool] = None,
-             object_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subject_type is None and 'subjectType' in kwargs:
-            subject_type = kwargs['subjectType']
-        if subject_type is None:
-            raise TypeError("Missing 'subject_type' argument")
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-
-        _setter("subject_type", subject_type)
+        pulumi.set(__self__, "subject_type", subject_type)
         if backup is not None:
-            _setter("backup", backup)
+            pulumi.set(__self__, "backup", backup)
         if object_id is not None:
-            _setter("object_id", object_id)
+            pulumi.set(__self__, "object_id", object_id)
 
     @property
     @pulumi.getter(name="subjectType")
@@ -1371,39 +1051,14 @@ class ApplicationApi(dict):
         :param Sequence['ApplicationApiOauth2PermissionScopeArgs'] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
         :param int requested_access_token_version: The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
         """
-        ApplicationApi._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            known_client_applications=known_client_applications,
-            mapped_claims_enabled=mapped_claims_enabled,
-            oauth2_permission_scopes=oauth2_permission_scopes,
-            requested_access_token_version=requested_access_token_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             known_client_applications: Optional[Sequence[str]] = None,
-             mapped_claims_enabled: Optional[bool] = None,
-             oauth2_permission_scopes: Optional[Sequence['outputs.ApplicationApiOauth2PermissionScope']] = None,
-             requested_access_token_version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if known_client_applications is None and 'knownClientApplications' in kwargs:
-            known_client_applications = kwargs['knownClientApplications']
-        if mapped_claims_enabled is None and 'mappedClaimsEnabled' in kwargs:
-            mapped_claims_enabled = kwargs['mappedClaimsEnabled']
-        if oauth2_permission_scopes is None and 'oauth2PermissionScopes' in kwargs:
-            oauth2_permission_scopes = kwargs['oauth2PermissionScopes']
-        if requested_access_token_version is None and 'requestedAccessTokenVersion' in kwargs:
-            requested_access_token_version = kwargs['requestedAccessTokenVersion']
-
         if known_client_applications is not None:
-            _setter("known_client_applications", known_client_applications)
+            pulumi.set(__self__, "known_client_applications", known_client_applications)
         if mapped_claims_enabled is not None:
-            _setter("mapped_claims_enabled", mapped_claims_enabled)
+            pulumi.set(__self__, "mapped_claims_enabled", mapped_claims_enabled)
         if oauth2_permission_scopes is not None:
-            _setter("oauth2_permission_scopes", oauth2_permission_scopes)
+            pulumi.set(__self__, "oauth2_permission_scopes", oauth2_permission_scopes)
         if requested_access_token_version is not None:
-            _setter("requested_access_token_version", requested_access_token_version)
+            pulumi.set(__self__, "requested_access_token_version", requested_access_token_version)
 
     @property
     @pulumi.getter(name="knownClientApplications")
@@ -1480,56 +1135,21 @@ class ApplicationApiOauth2PermissionScope(dict):
         :param str user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         :param str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
         """
-        ApplicationApiOauth2PermissionScope._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            admin_consent_description=admin_consent_description,
-            admin_consent_display_name=admin_consent_display_name,
-            enabled=enabled,
-            type=type,
-            user_consent_description=user_consent_description,
-            user_consent_display_name=user_consent_display_name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             admin_consent_description: Optional[str] = None,
-             admin_consent_display_name: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             type: Optional[str] = None,
-             user_consent_description: Optional[str] = None,
-             user_consent_display_name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if admin_consent_description is None and 'adminConsentDescription' in kwargs:
-            admin_consent_description = kwargs['adminConsentDescription']
-        if admin_consent_display_name is None and 'adminConsentDisplayName' in kwargs:
-            admin_consent_display_name = kwargs['adminConsentDisplayName']
-        if user_consent_description is None and 'userConsentDescription' in kwargs:
-            user_consent_description = kwargs['userConsentDescription']
-        if user_consent_display_name is None and 'userConsentDisplayName' in kwargs:
-            user_consent_display_name = kwargs['userConsentDisplayName']
-
-        _setter("id", id)
+        pulumi.set(__self__, "id", id)
         if admin_consent_description is not None:
-            _setter("admin_consent_description", admin_consent_description)
+            pulumi.set(__self__, "admin_consent_description", admin_consent_description)
         if admin_consent_display_name is not None:
-            _setter("admin_consent_display_name", admin_consent_display_name)
+            pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if user_consent_description is not None:
-            _setter("user_consent_description", user_consent_description)
+            pulumi.set(__self__, "user_consent_description", user_consent_description)
         if user_consent_display_name is not None:
-            _setter("user_consent_display_name", user_consent_display_name)
+            pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -1624,47 +1244,14 @@ class ApplicationAppRole(dict):
         :param str display_name: Display name for the app role that appears during app role assignment and in consent experiences.
         :param bool enabled: Determines if the app role is enabled. Defaults to `true`.
         """
-        ApplicationAppRole._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_member_types=allowed_member_types,
-            description=description,
-            display_name=display_name,
-            id=id,
-            enabled=enabled,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_member_types: Optional[Sequence[str]] = None,
-             description: Optional[str] = None,
-             display_name: Optional[str] = None,
-             id: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_member_types is None and 'allowedMemberTypes' in kwargs:
-            allowed_member_types = kwargs['allowedMemberTypes']
-        if allowed_member_types is None:
-            raise TypeError("Missing 'allowed_member_types' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-
-        _setter("allowed_member_types", allowed_member_types)
-        _setter("description", description)
-        _setter("display_name", display_name)
-        _setter("id", id)
+        pulumi.set(__self__, "allowed_member_types", allowed_member_types)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="allowedMemberTypes")
@@ -1739,33 +1326,14 @@ class ApplicationFeatureTag(dict):
         :param bool gallery: Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
         :param bool hide: Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
         """
-        ApplicationFeatureTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_single_sign_on=custom_single_sign_on,
-            enterprise=enterprise,
-            gallery=gallery,
-            hide=hide,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_single_sign_on: Optional[bool] = None,
-             enterprise: Optional[bool] = None,
-             gallery: Optional[bool] = None,
-             hide: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_single_sign_on is None and 'customSingleSignOn' in kwargs:
-            custom_single_sign_on = kwargs['customSingleSignOn']
-
         if custom_single_sign_on is not None:
-            _setter("custom_single_sign_on", custom_single_sign_on)
+            pulumi.set(__self__, "custom_single_sign_on", custom_single_sign_on)
         if enterprise is not None:
-            _setter("enterprise", enterprise)
+            pulumi.set(__self__, "enterprise", enterprise)
         if gallery is not None:
-            _setter("gallery", gallery)
+            pulumi.set(__self__, "gallery", gallery)
         if hide is not None:
-            _setter("hide", hide)
+            pulumi.set(__self__, "hide", hide)
 
     @property
     @pulumi.getter(name="customSingleSignOn")
@@ -1832,33 +1400,12 @@ class ApplicationOptionalClaims(dict):
         :param Sequence['ApplicationOptionalClaimsIdTokenArgs'] id_tokens: One or more `id_token` blocks as documented below.
         :param Sequence['ApplicationOptionalClaimsSaml2TokenArgs'] saml2_tokens: One or more `saml2_token` blocks as documented below.
         """
-        ApplicationOptionalClaims._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_tokens=access_tokens,
-            id_tokens=id_tokens,
-            saml2_tokens=saml2_tokens,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsAccessToken']] = None,
-             id_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsIdToken']] = None,
-             saml2_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsSaml2Token']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_tokens is None and 'accessTokens' in kwargs:
-            access_tokens = kwargs['accessTokens']
-        if id_tokens is None and 'idTokens' in kwargs:
-            id_tokens = kwargs['idTokens']
-        if saml2_tokens is None and 'saml2Tokens' in kwargs:
-            saml2_tokens = kwargs['saml2Tokens']
-
         if access_tokens is not None:
-            _setter("access_tokens", access_tokens)
+            pulumi.set(__self__, "access_tokens", access_tokens)
         if id_tokens is not None:
-            _setter("id_tokens", id_tokens)
+            pulumi.set(__self__, "id_tokens", id_tokens)
         if saml2_tokens is not None:
-            _setter("saml2_tokens", saml2_tokens)
+            pulumi.set(__self__, "saml2_tokens", saml2_tokens)
 
     @property
     @pulumi.getter(name="accessTokens")
@@ -1915,34 +1462,13 @@ class ApplicationOptionalClaimsAccessToken(dict):
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
-        ApplicationOptionalClaimsAccessToken._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            additional_properties=additional_properties,
-            essential=essential,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             additional_properties: Optional[Sequence[str]] = None,
-             essential: Optional[bool] = None,
-             source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if additional_properties is None and 'additionalProperties' in kwargs:
-            additional_properties = kwargs['additionalProperties']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if additional_properties is not None:
-            _setter("additional_properties", additional_properties)
+            pulumi.set(__self__, "additional_properties", additional_properties)
         if essential is not None:
-            _setter("essential", essential)
+            pulumi.set(__self__, "essential", essential)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -2007,34 +1533,13 @@ class ApplicationOptionalClaimsIdToken(dict):
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
-        ApplicationOptionalClaimsIdToken._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            additional_properties=additional_properties,
-            essential=essential,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             additional_properties: Optional[Sequence[str]] = None,
-             essential: Optional[bool] = None,
-             source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if additional_properties is None and 'additionalProperties' in kwargs:
-            additional_properties = kwargs['additionalProperties']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if additional_properties is not None:
-            _setter("additional_properties", additional_properties)
+            pulumi.set(__self__, "additional_properties", additional_properties)
         if essential is not None:
-            _setter("essential", essential)
+            pulumi.set(__self__, "essential", essential)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -2099,34 +1604,13 @@ class ApplicationOptionalClaimsSaml2Token(dict):
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
-        ApplicationOptionalClaimsSaml2Token._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            additional_properties=additional_properties,
-            essential=essential,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             additional_properties: Optional[Sequence[str]] = None,
-             essential: Optional[bool] = None,
-             source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if additional_properties is None and 'additionalProperties' in kwargs:
-            additional_properties = kwargs['additionalProperties']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if additional_properties is not None:
-            _setter("additional_properties", additional_properties)
+            pulumi.set(__self__, "additional_properties", additional_properties)
         if essential is not None:
-            _setter("essential", essential)
+            pulumi.set(__self__, "essential", essential)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -2185,21 +1669,8 @@ class ApplicationPublicClient(dict):
         """
         :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
         """
-        ApplicationPublicClient._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            redirect_uris=redirect_uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             redirect_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if redirect_uris is None and 'redirectUris' in kwargs:
-            redirect_uris = kwargs['redirectUris']
-
         if redirect_uris is not None:
-            _setter("redirect_uris", redirect_uris)
+            pulumi.set(__self__, "redirect_uris", redirect_uris)
 
     @property
     @pulumi.getter(name="redirectUris")
@@ -2240,29 +1711,8 @@ class ApplicationRequiredResourceAccess(dict):
                
                > **Note:** Documentation on `resource_app_id` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
         """
-        ApplicationRequiredResourceAccess._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            resource_accesses=resource_accesses,
-            resource_app_id=resource_app_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             resource_accesses: Optional[Sequence['outputs.ApplicationRequiredResourceAccessResourceAccess']] = None,
-             resource_app_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if resource_accesses is None and 'resourceAccesses' in kwargs:
-            resource_accesses = kwargs['resourceAccesses']
-        if resource_accesses is None:
-            raise TypeError("Missing 'resource_accesses' argument")
-        if resource_app_id is None and 'resourceAppId' in kwargs:
-            resource_app_id = kwargs['resourceAppId']
-        if resource_app_id is None:
-            raise TypeError("Missing 'resource_app_id' argument")
-
-        _setter("resource_accesses", resource_accesses)
-        _setter("resource_app_id", resource_app_id)
+        pulumi.set(__self__, "resource_accesses", resource_accesses)
+        pulumi.set(__self__, "resource_app_id", resource_app_id)
 
     @property
     @pulumi.getter(name="resourceAccesses")
@@ -2292,25 +1742,8 @@ class ApplicationRequiredResourceAccessResourceAccess(dict):
         :param str id: The unique identifier for an app role or OAuth2 permission scope published by the resource application.
         :param str type: Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
         """
-        ApplicationRequiredResourceAccessResourceAccess._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("id", id)
-        _setter("type", type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -2353,21 +1786,8 @@ class ApplicationSinglePageApplication(dict):
         """
         :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
         """
-        ApplicationSinglePageApplication._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            redirect_uris=redirect_uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             redirect_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if redirect_uris is None and 'redirectUris' in kwargs:
-            redirect_uris = kwargs['redirectUris']
-
         if redirect_uris is not None:
-            _setter("redirect_uris", redirect_uris)
+            pulumi.set(__self__, "redirect_uris", redirect_uris)
 
     @property
     @pulumi.getter(name="redirectUris")
@@ -2414,39 +1834,14 @@ class ApplicationWeb(dict):
         :param str logout_url: The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
         :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
         """
-        ApplicationWeb._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            homepage_url=homepage_url,
-            implicit_grant=implicit_grant,
-            logout_url=logout_url,
-            redirect_uris=redirect_uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             homepage_url: Optional[str] = None,
-             implicit_grant: Optional['outputs.ApplicationWebImplicitGrant'] = None,
-             logout_url: Optional[str] = None,
-             redirect_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if homepage_url is None and 'homepageUrl' in kwargs:
-            homepage_url = kwargs['homepageUrl']
-        if implicit_grant is None and 'implicitGrant' in kwargs:
-            implicit_grant = kwargs['implicitGrant']
-        if logout_url is None and 'logoutUrl' in kwargs:
-            logout_url = kwargs['logoutUrl']
-        if redirect_uris is None and 'redirectUris' in kwargs:
-            redirect_uris = kwargs['redirectUris']
-
         if homepage_url is not None:
-            _setter("homepage_url", homepage_url)
+            pulumi.set(__self__, "homepage_url", homepage_url)
         if implicit_grant is not None:
-            _setter("implicit_grant", implicit_grant)
+            pulumi.set(__self__, "implicit_grant", implicit_grant)
         if logout_url is not None:
-            _setter("logout_url", logout_url)
+            pulumi.set(__self__, "logout_url", logout_url)
         if redirect_uris is not None:
-            _setter("redirect_uris", redirect_uris)
+            pulumi.set(__self__, "redirect_uris", redirect_uris)
 
     @property
     @pulumi.getter(name="homepageUrl")
@@ -2509,27 +1904,10 @@ class ApplicationWebImplicitGrant(dict):
         :param bool access_token_issuance_enabled: Whether this web application can request an access token using OAuth 2.0 implicit flow.
         :param bool id_token_issuance_enabled: Whether this web application can request an ID token using OAuth 2.0 implicit flow.
         """
-        ApplicationWebImplicitGrant._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_token_issuance_enabled=access_token_issuance_enabled,
-            id_token_issuance_enabled=id_token_issuance_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_token_issuance_enabled: Optional[bool] = None,
-             id_token_issuance_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_token_issuance_enabled is None and 'accessTokenIssuanceEnabled' in kwargs:
-            access_token_issuance_enabled = kwargs['accessTokenIssuanceEnabled']
-        if id_token_issuance_enabled is None and 'idTokenIssuanceEnabled' in kwargs:
-            id_token_issuance_enabled = kwargs['idTokenIssuanceEnabled']
-
         if access_token_issuance_enabled is not None:
-            _setter("access_token_issuance_enabled", access_token_issuance_enabled)
+            pulumi.set(__self__, "access_token_issuance_enabled", access_token_issuance_enabled)
         if id_token_issuance_enabled is not None:
-            _setter("id_token_issuance_enabled", id_token_issuance_enabled)
+            pulumi.set(__self__, "id_token_issuance_enabled", id_token_issuance_enabled)
 
     @property
     @pulumi.getter(name="accessTokenIssuanceEnabled")
@@ -2598,68 +1976,23 @@ class ConditionalAccessPolicyConditions(dict):
         :param Sequence[str] sign_in_risk_levels: A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         :param Sequence[str] user_risk_levels: A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         """
-        ConditionalAccessPolicyConditions._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            applications=applications,
-            client_app_types=client_app_types,
-            users=users,
-            client_applications=client_applications,
-            devices=devices,
-            locations=locations,
-            platforms=platforms,
-            service_principal_risk_levels=service_principal_risk_levels,
-            sign_in_risk_levels=sign_in_risk_levels,
-            user_risk_levels=user_risk_levels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             applications: Optional['outputs.ConditionalAccessPolicyConditionsApplications'] = None,
-             client_app_types: Optional[Sequence[str]] = None,
-             users: Optional['outputs.ConditionalAccessPolicyConditionsUsers'] = None,
-             client_applications: Optional['outputs.ConditionalAccessPolicyConditionsClientApplications'] = None,
-             devices: Optional['outputs.ConditionalAccessPolicyConditionsDevices'] = None,
-             locations: Optional['outputs.ConditionalAccessPolicyConditionsLocations'] = None,
-             platforms: Optional['outputs.ConditionalAccessPolicyConditionsPlatforms'] = None,
-             service_principal_risk_levels: Optional[Sequence[str]] = None,
-             sign_in_risk_levels: Optional[Sequence[str]] = None,
-             user_risk_levels: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if applications is None:
-            raise TypeError("Missing 'applications' argument")
-        if client_app_types is None and 'clientAppTypes' in kwargs:
-            client_app_types = kwargs['clientAppTypes']
-        if client_app_types is None:
-            raise TypeError("Missing 'client_app_types' argument")
-        if users is None:
-            raise TypeError("Missing 'users' argument")
-        if client_applications is None and 'clientApplications' in kwargs:
-            client_applications = kwargs['clientApplications']
-        if service_principal_risk_levels is None and 'servicePrincipalRiskLevels' in kwargs:
-            service_principal_risk_levels = kwargs['servicePrincipalRiskLevels']
-        if sign_in_risk_levels is None and 'signInRiskLevels' in kwargs:
-            sign_in_risk_levels = kwargs['signInRiskLevels']
-        if user_risk_levels is None and 'userRiskLevels' in kwargs:
-            user_risk_levels = kwargs['userRiskLevels']
-
-        _setter("applications", applications)
-        _setter("client_app_types", client_app_types)
-        _setter("users", users)
+        pulumi.set(__self__, "applications", applications)
+        pulumi.set(__self__, "client_app_types", client_app_types)
+        pulumi.set(__self__, "users", users)
         if client_applications is not None:
-            _setter("client_applications", client_applications)
+            pulumi.set(__self__, "client_applications", client_applications)
         if devices is not None:
-            _setter("devices", devices)
+            pulumi.set(__self__, "devices", devices)
         if locations is not None:
-            _setter("locations", locations)
+            pulumi.set(__self__, "locations", locations)
         if platforms is not None:
-            _setter("platforms", platforms)
+            pulumi.set(__self__, "platforms", platforms)
         if service_principal_risk_levels is not None:
-            _setter("service_principal_risk_levels", service_principal_risk_levels)
+            pulumi.set(__self__, "service_principal_risk_levels", service_principal_risk_levels)
         if sign_in_risk_levels is not None:
-            _setter("sign_in_risk_levels", sign_in_risk_levels)
+            pulumi.set(__self__, "sign_in_risk_levels", sign_in_risk_levels)
         if user_risk_levels is not None:
-            _setter("user_risk_levels", user_risk_levels)
+            pulumi.set(__self__, "user_risk_levels", user_risk_levels)
 
     @property
     @pulumi.getter
@@ -2774,33 +2107,12 @@ class ConditionalAccessPolicyConditionsApplications(dict):
         :param Sequence[str] included_applications: A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
         :param Sequence[str] included_user_actions: A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
         """
-        ConditionalAccessPolicyConditionsApplications._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            excluded_applications=excluded_applications,
-            included_applications=included_applications,
-            included_user_actions=included_user_actions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             excluded_applications: Optional[Sequence[str]] = None,
-             included_applications: Optional[Sequence[str]] = None,
-             included_user_actions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if excluded_applications is None and 'excludedApplications' in kwargs:
-            excluded_applications = kwargs['excludedApplications']
-        if included_applications is None and 'includedApplications' in kwargs:
-            included_applications = kwargs['includedApplications']
-        if included_user_actions is None and 'includedUserActions' in kwargs:
-            included_user_actions = kwargs['includedUserActions']
-
         if excluded_applications is not None:
-            _setter("excluded_applications", excluded_applications)
+            pulumi.set(__self__, "excluded_applications", excluded_applications)
         if included_applications is not None:
-            _setter("included_applications", included_applications)
+            pulumi.set(__self__, "included_applications", included_applications)
         if included_user_actions is not None:
-            _setter("included_user_actions", included_user_actions)
+            pulumi.set(__self__, "included_user_actions", included_user_actions)
 
     @property
     @pulumi.getter(name="excludedApplications")
@@ -2855,27 +2167,10 @@ class ConditionalAccessPolicyConditionsClientApplications(dict):
         :param Sequence[str] excluded_service_principals: A list of service principal IDs explicitly excluded in the policy.
         :param Sequence[str] included_service_principals: A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
         """
-        ConditionalAccessPolicyConditionsClientApplications._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            excluded_service_principals=excluded_service_principals,
-            included_service_principals=included_service_principals,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             excluded_service_principals: Optional[Sequence[str]] = None,
-             included_service_principals: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if excluded_service_principals is None and 'excludedServicePrincipals' in kwargs:
-            excluded_service_principals = kwargs['excludedServicePrincipals']
-        if included_service_principals is None and 'includedServicePrincipals' in kwargs:
-            included_service_principals = kwargs['includedServicePrincipals']
-
         if excluded_service_principals is not None:
-            _setter("excluded_service_principals", excluded_service_principals)
+            pulumi.set(__self__, "excluded_service_principals", excluded_service_principals)
         if included_service_principals is not None:
-            _setter("included_service_principals", included_service_principals)
+            pulumi.set(__self__, "included_service_principals", included_service_principals)
 
     @property
     @pulumi.getter(name="excludedServicePrincipals")
@@ -2901,19 +2196,8 @@ class ConditionalAccessPolicyConditionsDevices(dict):
         """
         :param 'ConditionalAccessPolicyConditionsDevicesFilterArgs' filter: A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
         """
-        ConditionalAccessPolicyConditionsDevices._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            filter=filter,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             filter: Optional['outputs.ConditionalAccessPolicyConditionsDevicesFilter'] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
 
     @property
     @pulumi.getter
@@ -2933,25 +2217,8 @@ class ConditionalAccessPolicyConditionsDevicesFilter(dict):
         :param str mode: Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
         :param str rule: Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
         """
-        ConditionalAccessPolicyConditionsDevicesFilter._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            mode=mode,
-            rule=rule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             mode: Optional[str] = None,
-             rule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if mode is None:
-            raise TypeError("Missing 'mode' argument")
-        if rule is None:
-            raise TypeError("Missing 'rule' argument")
-
-        _setter("mode", mode)
-        _setter("rule", rule)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "rule", rule)
 
     @property
     @pulumi.getter
@@ -2998,28 +2265,9 @@ class ConditionalAccessPolicyConditionsLocations(dict):
         :param Sequence[str] included_locations: A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
         :param Sequence[str] excluded_locations: A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
         """
-        ConditionalAccessPolicyConditionsLocations._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            included_locations=included_locations,
-            excluded_locations=excluded_locations,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             included_locations: Optional[Sequence[str]] = None,
-             excluded_locations: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if included_locations is None and 'includedLocations' in kwargs:
-            included_locations = kwargs['includedLocations']
-        if included_locations is None:
-            raise TypeError("Missing 'included_locations' argument")
-        if excluded_locations is None and 'excludedLocations' in kwargs:
-            excluded_locations = kwargs['excludedLocations']
-
-        _setter("included_locations", included_locations)
+        pulumi.set(__self__, "included_locations", included_locations)
         if excluded_locations is not None:
-            _setter("excluded_locations", excluded_locations)
+            pulumi.set(__self__, "excluded_locations", excluded_locations)
 
     @property
     @pulumi.getter(name="includedLocations")
@@ -3066,28 +2314,9 @@ class ConditionalAccessPolicyConditionsPlatforms(dict):
         :param Sequence[str] included_platforms: A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
         :param Sequence[str] excluded_platforms: A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
         """
-        ConditionalAccessPolicyConditionsPlatforms._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            included_platforms=included_platforms,
-            excluded_platforms=excluded_platforms,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             included_platforms: Optional[Sequence[str]] = None,
-             excluded_platforms: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if included_platforms is None and 'includedPlatforms' in kwargs:
-            included_platforms = kwargs['includedPlatforms']
-        if included_platforms is None:
-            raise TypeError("Missing 'included_platforms' argument")
-        if excluded_platforms is None and 'excludedPlatforms' in kwargs:
-            excluded_platforms = kwargs['excludedPlatforms']
-
-        _setter("included_platforms", included_platforms)
+        pulumi.set(__self__, "included_platforms", included_platforms)
         if excluded_platforms is not None:
-            _setter("excluded_platforms", excluded_platforms)
+            pulumi.set(__self__, "excluded_platforms", excluded_platforms)
 
     @property
     @pulumi.getter(name="includedPlatforms")
@@ -3152,51 +2381,18 @@ class ConditionalAccessPolicyConditionsUsers(dict):
                
                > At least one of `included_groups`, `included_roles` or `included_users` must be specified.
         """
-        ConditionalAccessPolicyConditionsUsers._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            excluded_groups=excluded_groups,
-            excluded_roles=excluded_roles,
-            excluded_users=excluded_users,
-            included_groups=included_groups,
-            included_roles=included_roles,
-            included_users=included_users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             excluded_groups: Optional[Sequence[str]] = None,
-             excluded_roles: Optional[Sequence[str]] = None,
-             excluded_users: Optional[Sequence[str]] = None,
-             included_groups: Optional[Sequence[str]] = None,
-             included_roles: Optional[Sequence[str]] = None,
-             included_users: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if excluded_groups is None and 'excludedGroups' in kwargs:
-            excluded_groups = kwargs['excludedGroups']
-        if excluded_roles is None and 'excludedRoles' in kwargs:
-            excluded_roles = kwargs['excludedRoles']
-        if excluded_users is None and 'excludedUsers' in kwargs:
-            excluded_users = kwargs['excludedUsers']
-        if included_groups is None and 'includedGroups' in kwargs:
-            included_groups = kwargs['includedGroups']
-        if included_roles is None and 'includedRoles' in kwargs:
-            included_roles = kwargs['includedRoles']
-        if included_users is None and 'includedUsers' in kwargs:
-            included_users = kwargs['includedUsers']
-
         if excluded_groups is not None:
-            _setter("excluded_groups", excluded_groups)
+            pulumi.set(__self__, "excluded_groups", excluded_groups)
         if excluded_roles is not None:
-            _setter("excluded_roles", excluded_roles)
+            pulumi.set(__self__, "excluded_roles", excluded_roles)
         if excluded_users is not None:
-            _setter("excluded_users", excluded_users)
+            pulumi.set(__self__, "excluded_users", excluded_users)
         if included_groups is not None:
-            _setter("included_groups", included_groups)
+            pulumi.set(__self__, "included_groups", included_groups)
         if included_roles is not None:
-            _setter("included_roles", included_roles)
+            pulumi.set(__self__, "included_roles", included_roles)
         if included_users is not None:
-            _setter("included_users", included_users)
+            pulumi.set(__self__, "included_users", included_users)
 
     @property
     @pulumi.getter(name="excludedGroups")
@@ -3289,44 +2485,15 @@ class ConditionalAccessPolicyGrantControls(dict):
                
                > At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
         """
-        ConditionalAccessPolicyGrantControls._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            operator=operator,
-            authentication_strength_policy_id=authentication_strength_policy_id,
-            built_in_controls=built_in_controls,
-            custom_authentication_factors=custom_authentication_factors,
-            terms_of_uses=terms_of_uses,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             operator: Optional[str] = None,
-             authentication_strength_policy_id: Optional[str] = None,
-             built_in_controls: Optional[Sequence[str]] = None,
-             custom_authentication_factors: Optional[Sequence[str]] = None,
-             terms_of_uses: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if operator is None:
-            raise TypeError("Missing 'operator' argument")
-        if authentication_strength_policy_id is None and 'authenticationStrengthPolicyId' in kwargs:
-            authentication_strength_policy_id = kwargs['authenticationStrengthPolicyId']
-        if built_in_controls is None and 'builtInControls' in kwargs:
-            built_in_controls = kwargs['builtInControls']
-        if custom_authentication_factors is None and 'customAuthenticationFactors' in kwargs:
-            custom_authentication_factors = kwargs['customAuthenticationFactors']
-        if terms_of_uses is None and 'termsOfUses' in kwargs:
-            terms_of_uses = kwargs['termsOfUses']
-
-        _setter("operator", operator)
+        pulumi.set(__self__, "operator", operator)
         if authentication_strength_policy_id is not None:
-            _setter("authentication_strength_policy_id", authentication_strength_policy_id)
+            pulumi.set(__self__, "authentication_strength_policy_id", authentication_strength_policy_id)
         if built_in_controls is not None:
-            _setter("built_in_controls", built_in_controls)
+            pulumi.set(__self__, "built_in_controls", built_in_controls)
         if custom_authentication_factors is not None:
-            _setter("custom_authentication_factors", custom_authentication_factors)
+            pulumi.set(__self__, "custom_authentication_factors", custom_authentication_factors)
         if terms_of_uses is not None:
-            _setter("terms_of_uses", terms_of_uses)
+            pulumi.set(__self__, "terms_of_uses", terms_of_uses)
 
     @property
     @pulumi.getter
@@ -3417,51 +2584,18 @@ class ConditionalAccessPolicySessionControls(dict):
         :param int sign_in_frequency: Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         :param str sign_in_frequency_period: The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         """
-        ConditionalAccessPolicySessionControls._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_enforced_restrictions_enabled=application_enforced_restrictions_enabled,
-            cloud_app_security_policy=cloud_app_security_policy,
-            disable_resilience_defaults=disable_resilience_defaults,
-            persistent_browser_mode=persistent_browser_mode,
-            sign_in_frequency=sign_in_frequency,
-            sign_in_frequency_period=sign_in_frequency_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_enforced_restrictions_enabled: Optional[bool] = None,
-             cloud_app_security_policy: Optional[str] = None,
-             disable_resilience_defaults: Optional[bool] = None,
-             persistent_browser_mode: Optional[str] = None,
-             sign_in_frequency: Optional[int] = None,
-             sign_in_frequency_period: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_enforced_restrictions_enabled is None and 'applicationEnforcedRestrictionsEnabled' in kwargs:
-            application_enforced_restrictions_enabled = kwargs['applicationEnforcedRestrictionsEnabled']
-        if cloud_app_security_policy is None and 'cloudAppSecurityPolicy' in kwargs:
-            cloud_app_security_policy = kwargs['cloudAppSecurityPolicy']
-        if disable_resilience_defaults is None and 'disableResilienceDefaults' in kwargs:
-            disable_resilience_defaults = kwargs['disableResilienceDefaults']
-        if persistent_browser_mode is None and 'persistentBrowserMode' in kwargs:
-            persistent_browser_mode = kwargs['persistentBrowserMode']
-        if sign_in_frequency is None and 'signInFrequency' in kwargs:
-            sign_in_frequency = kwargs['signInFrequency']
-        if sign_in_frequency_period is None and 'signInFrequencyPeriod' in kwargs:
-            sign_in_frequency_period = kwargs['signInFrequencyPeriod']
-
         if application_enforced_restrictions_enabled is not None:
-            _setter("application_enforced_restrictions_enabled", application_enforced_restrictions_enabled)
+            pulumi.set(__self__, "application_enforced_restrictions_enabled", application_enforced_restrictions_enabled)
         if cloud_app_security_policy is not None:
-            _setter("cloud_app_security_policy", cloud_app_security_policy)
+            pulumi.set(__self__, "cloud_app_security_policy", cloud_app_security_policy)
         if disable_resilience_defaults is not None:
-            _setter("disable_resilience_defaults", disable_resilience_defaults)
+            pulumi.set(__self__, "disable_resilience_defaults", disable_resilience_defaults)
         if persistent_browser_mode is not None:
-            _setter("persistent_browser_mode", persistent_browser_mode)
+            pulumi.set(__self__, "persistent_browser_mode", persistent_browser_mode)
         if sign_in_frequency is not None:
-            _setter("sign_in_frequency", sign_in_frequency)
+            pulumi.set(__self__, "sign_in_frequency", sign_in_frequency)
         if sign_in_frequency_period is not None:
-            _setter("sign_in_frequency_period", sign_in_frequency_period)
+            pulumi.set(__self__, "sign_in_frequency_period", sign_in_frequency_period)
 
     @property
     @pulumi.getter(name="applicationEnforcedRestrictionsEnabled")
@@ -3538,22 +2672,7 @@ class CustomDirectoryRolePermission(dict):
         """
         :param Sequence[str] allowed_resource_actions: A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
         """
-        CustomDirectoryRolePermission._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_resource_actions=allowed_resource_actions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_resource_actions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_resource_actions is None and 'allowedResourceActions' in kwargs:
-            allowed_resource_actions = kwargs['allowedResourceActions']
-        if allowed_resource_actions is None:
-            raise TypeError("Missing 'allowed_resource_actions' argument")
-
-        _setter("allowed_resource_actions", allowed_resource_actions)
+        pulumi.set(__self__, "allowed_resource_actions", allowed_resource_actions)
 
     @property
     @pulumi.getter(name="allowedResourceActions")
@@ -3575,25 +2694,8 @@ class GroupDynamicMembership(dict):
                
                > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
         """
-        GroupDynamicMembership._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            rule=rule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             rule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if rule is None:
-            raise TypeError("Missing 'rule' argument")
-
-        _setter("enabled", enabled)
-        _setter("rule", rule)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "rule", rule)
 
     @property
     @pulumi.getter
@@ -3642,29 +2744,12 @@ class InvitationMessage(dict):
         :param str body: Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
         :param str language: The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
         """
-        InvitationMessage._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            additional_recipients=additional_recipients,
-            body=body,
-            language=language,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             additional_recipients: Optional[str] = None,
-             body: Optional[str] = None,
-             language: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if additional_recipients is None and 'additionalRecipients' in kwargs:
-            additional_recipients = kwargs['additionalRecipients']
-
         if additional_recipients is not None:
-            _setter("additional_recipients", additional_recipients)
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
         if body is not None:
-            _setter("body", body)
+            pulumi.set(__self__, "body", body)
         if language is not None:
-            _setter("language", language)
+            pulumi.set(__self__, "language", language)
 
     @property
     @pulumi.getter(name="additionalRecipients")
@@ -3719,28 +2804,9 @@ class NamedLocationCountry(dict):
         :param Sequence[str] countries_and_regions: List of countries and/or regions in two-letter format specified by ISO 3166-2.
         :param bool include_unknown_countries_and_regions: Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
         """
-        NamedLocationCountry._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            countries_and_regions=countries_and_regions,
-            include_unknown_countries_and_regions=include_unknown_countries_and_regions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             countries_and_regions: Optional[Sequence[str]] = None,
-             include_unknown_countries_and_regions: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if countries_and_regions is None and 'countriesAndRegions' in kwargs:
-            countries_and_regions = kwargs['countriesAndRegions']
-        if countries_and_regions is None:
-            raise TypeError("Missing 'countries_and_regions' argument")
-        if include_unknown_countries_and_regions is None and 'includeUnknownCountriesAndRegions' in kwargs:
-            include_unknown_countries_and_regions = kwargs['includeUnknownCountriesAndRegions']
-
-        _setter("countries_and_regions", countries_and_regions)
+        pulumi.set(__self__, "countries_and_regions", countries_and_regions)
         if include_unknown_countries_and_regions is not None:
-            _setter("include_unknown_countries_and_regions", include_unknown_countries_and_regions)
+            pulumi.set(__self__, "include_unknown_countries_and_regions", include_unknown_countries_and_regions)
 
     @property
     @pulumi.getter(name="countriesAndRegions")
@@ -3785,26 +2851,9 @@ class NamedLocationIp(dict):
         :param Sequence[str] ip_ranges: List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
         :param bool trusted: Whether the named location is trusted. Defaults to `false`.
         """
-        NamedLocationIp._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_ranges=ip_ranges,
-            trusted=trusted,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_ranges: Optional[Sequence[str]] = None,
-             trusted: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_ranges is None and 'ipRanges' in kwargs:
-            ip_ranges = kwargs['ipRanges']
-        if ip_ranges is None:
-            raise TypeError("Missing 'ip_ranges' argument")
-
-        _setter("ip_ranges", ip_ranges)
+        pulumi.set(__self__, "ip_ranges", ip_ranges)
         if trusted is not None:
-            _setter("trusted", trusted)
+            pulumi.set(__self__, "trusted", trusted)
 
     @property
     @pulumi.getter(name="ipRanges")
@@ -3859,43 +2908,18 @@ class ServicePrincipalAppRole(dict):
         :param str id: The unique identifier of the delegated permission.
         :param str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
-        ServicePrincipalAppRole._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_member_types=allowed_member_types,
-            description=description,
-            display_name=display_name,
-            enabled=enabled,
-            id=id,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_member_types: Optional[Sequence[str]] = None,
-             description: Optional[str] = None,
-             display_name: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             id: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_member_types is None and 'allowedMemberTypes' in kwargs:
-            allowed_member_types = kwargs['allowedMemberTypes']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-
         if allowed_member_types is not None:
-            _setter("allowed_member_types", allowed_member_types)
+            pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="allowedMemberTypes")
@@ -3976,39 +3000,14 @@ class ServicePrincipalFeature(dict):
                  enterprise_application: Optional[bool] = None,
                  gallery_application: Optional[bool] = None,
                  visible_to_users: Optional[bool] = None):
-        ServicePrincipalFeature._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_single_sign_on_app=custom_single_sign_on_app,
-            enterprise_application=enterprise_application,
-            gallery_application=gallery_application,
-            visible_to_users=visible_to_users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_single_sign_on_app: Optional[bool] = None,
-             enterprise_application: Optional[bool] = None,
-             gallery_application: Optional[bool] = None,
-             visible_to_users: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_single_sign_on_app is None and 'customSingleSignOnApp' in kwargs:
-            custom_single_sign_on_app = kwargs['customSingleSignOnApp']
-        if enterprise_application is None and 'enterpriseApplication' in kwargs:
-            enterprise_application = kwargs['enterpriseApplication']
-        if gallery_application is None and 'galleryApplication' in kwargs:
-            gallery_application = kwargs['galleryApplication']
-        if visible_to_users is None and 'visibleToUsers' in kwargs:
-            visible_to_users = kwargs['visibleToUsers']
-
         if custom_single_sign_on_app is not None:
-            _setter("custom_single_sign_on_app", custom_single_sign_on_app)
+            pulumi.set(__self__, "custom_single_sign_on_app", custom_single_sign_on_app)
         if enterprise_application is not None:
-            _setter("enterprise_application", enterprise_application)
+            pulumi.set(__self__, "enterprise_application", enterprise_application)
         if gallery_application is not None:
-            _setter("gallery_application", gallery_application)
+            pulumi.set(__self__, "gallery_application", gallery_application)
         if visible_to_users is not None:
-            _setter("visible_to_users", visible_to_users)
+            pulumi.set(__self__, "visible_to_users", visible_to_users)
 
     @property
     @pulumi.getter(name="customSingleSignOnApp")
@@ -4061,33 +3060,14 @@ class ServicePrincipalFeatureTag(dict):
         :param bool gallery: Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
         :param bool hide: Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
         """
-        ServicePrincipalFeatureTag._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_single_sign_on=custom_single_sign_on,
-            enterprise=enterprise,
-            gallery=gallery,
-            hide=hide,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_single_sign_on: Optional[bool] = None,
-             enterprise: Optional[bool] = None,
-             gallery: Optional[bool] = None,
-             hide: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_single_sign_on is None and 'customSingleSignOn' in kwargs:
-            custom_single_sign_on = kwargs['customSingleSignOn']
-
         if custom_single_sign_on is not None:
-            _setter("custom_single_sign_on", custom_single_sign_on)
+            pulumi.set(__self__, "custom_single_sign_on", custom_single_sign_on)
         if enterprise is not None:
-            _setter("enterprise", enterprise)
+            pulumi.set(__self__, "enterprise", enterprise)
         if gallery is not None:
-            _setter("gallery", gallery)
+            pulumi.set(__self__, "gallery", gallery)
         if hide is not None:
-            _setter("hide", hide)
+            pulumi.set(__self__, "hide", hide)
 
     @property
     @pulumi.getter(name="customSingleSignOn")
@@ -4166,55 +3146,22 @@ class ServicePrincipalOauth2PermissionScope(dict):
         :param str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
         :param str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
-        ServicePrincipalOauth2PermissionScope._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admin_consent_description=admin_consent_description,
-            admin_consent_display_name=admin_consent_display_name,
-            enabled=enabled,
-            id=id,
-            type=type,
-            user_consent_description=user_consent_description,
-            user_consent_display_name=user_consent_display_name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admin_consent_description: Optional[str] = None,
-             admin_consent_display_name: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             id: Optional[str] = None,
-             type: Optional[str] = None,
-             user_consent_description: Optional[str] = None,
-             user_consent_display_name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if admin_consent_description is None and 'adminConsentDescription' in kwargs:
-            admin_consent_description = kwargs['adminConsentDescription']
-        if admin_consent_display_name is None and 'adminConsentDisplayName' in kwargs:
-            admin_consent_display_name = kwargs['adminConsentDisplayName']
-        if user_consent_description is None and 'userConsentDescription' in kwargs:
-            user_consent_description = kwargs['userConsentDescription']
-        if user_consent_display_name is None and 'userConsentDisplayName' in kwargs:
-            user_consent_display_name = kwargs['userConsentDisplayName']
-
         if admin_consent_description is not None:
-            _setter("admin_consent_description", admin_consent_description)
+            pulumi.set(__self__, "admin_consent_description", admin_consent_description)
         if admin_consent_display_name is not None:
-            _setter("admin_consent_display_name", admin_consent_display_name)
+            pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if user_consent_description is not None:
-            _setter("user_consent_description", user_consent_description)
+            pulumi.set(__self__, "user_consent_description", user_consent_description)
         if user_consent_display_name is not None:
-            _setter("user_consent_display_name", user_consent_display_name)
+            pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="adminConsentDescription")
@@ -4305,21 +3252,8 @@ class ServicePrincipalSamlSingleSignOn(dict):
         """
         :param str relay_state: The relative URI the service provider would redirect to after completion of the single sign-on flow.
         """
-        ServicePrincipalSamlSingleSignOn._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            relay_state=relay_state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             relay_state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if relay_state is None and 'relayState' in kwargs:
-            relay_state = kwargs['relayState']
-
         if relay_state is not None:
-            _setter("relay_state", relay_state)
+            pulumi.set(__self__, "relay_state", relay_state)
 
     @property
     @pulumi.getter(name="relayState")
@@ -4341,27 +3275,12 @@ class SynchronizationJobSchedule(dict):
         :param str interval: The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
         :param str state: State of the job.
         """
-        SynchronizationJobSchedule._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            expiration=expiration,
-            interval=interval,
-            state=state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             expiration: Optional[str] = None,
-             interval: Optional[str] = None,
-             state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if expiration is not None:
-            _setter("expiration", expiration)
+            pulumi.set(__self__, "expiration", expiration)
         if interval is not None:
-            _setter("interval", interval)
+            pulumi.set(__self__, "interval", interval)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -4397,25 +3316,8 @@ class SynchronizationSecretCredential(dict):
         :param str key: The key of the secret.
         :param str value: The value of the secret.
         """
-        SynchronizationSecretCredential._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("key", key)
-        _setter("value", value)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -4447,43 +3349,10 @@ class GetApplicationApiResult(dict):
         :param Sequence['GetApplicationApiOauth2PermissionScopeArgs'] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
         :param int requested_access_token_version: The access token version expected by this resource. Possible values are `1` or `2`.
         """
-        GetApplicationApiResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            known_client_applications=known_client_applications,
-            mapped_claims_enabled=mapped_claims_enabled,
-            oauth2_permission_scopes=oauth2_permission_scopes,
-            requested_access_token_version=requested_access_token_version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             known_client_applications: Optional[Sequence[str]] = None,
-             mapped_claims_enabled: Optional[bool] = None,
-             oauth2_permission_scopes: Optional[Sequence['outputs.GetApplicationApiOauth2PermissionScopeResult']] = None,
-             requested_access_token_version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if known_client_applications is None and 'knownClientApplications' in kwargs:
-            known_client_applications = kwargs['knownClientApplications']
-        if known_client_applications is None:
-            raise TypeError("Missing 'known_client_applications' argument")
-        if mapped_claims_enabled is None and 'mappedClaimsEnabled' in kwargs:
-            mapped_claims_enabled = kwargs['mappedClaimsEnabled']
-        if mapped_claims_enabled is None:
-            raise TypeError("Missing 'mapped_claims_enabled' argument")
-        if oauth2_permission_scopes is None and 'oauth2PermissionScopes' in kwargs:
-            oauth2_permission_scopes = kwargs['oauth2PermissionScopes']
-        if oauth2_permission_scopes is None:
-            raise TypeError("Missing 'oauth2_permission_scopes' argument")
-        if requested_access_token_version is None and 'requestedAccessTokenVersion' in kwargs:
-            requested_access_token_version = kwargs['requestedAccessTokenVersion']
-        if requested_access_token_version is None:
-            raise TypeError("Missing 'requested_access_token_version' argument")
-
-        _setter("known_client_applications", known_client_applications)
-        _setter("mapped_claims_enabled", mapped_claims_enabled)
-        _setter("oauth2_permission_scopes", oauth2_permission_scopes)
-        _setter("requested_access_token_version", requested_access_token_version)
+        pulumi.set(__self__, "known_client_applications", known_client_applications)
+        pulumi.set(__self__, "mapped_claims_enabled", mapped_claims_enabled)
+        pulumi.set(__self__, "oauth2_permission_scopes", oauth2_permission_scopes)
+        pulumi.set(__self__, "requested_access_token_version", requested_access_token_version)
 
     @property
     @pulumi.getter(name="knownClientApplications")
@@ -4539,63 +3408,14 @@ class GetApplicationApiOauth2PermissionScopeResult(dict):
         :param str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
         :param str value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
-        GetApplicationApiOauth2PermissionScopeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admin_consent_description=admin_consent_description,
-            admin_consent_display_name=admin_consent_display_name,
-            enabled=enabled,
-            id=id,
-            type=type,
-            user_consent_description=user_consent_description,
-            user_consent_display_name=user_consent_display_name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admin_consent_description: Optional[str] = None,
-             admin_consent_display_name: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             id: Optional[str] = None,
-             type: Optional[str] = None,
-             user_consent_description: Optional[str] = None,
-             user_consent_display_name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if admin_consent_description is None and 'adminConsentDescription' in kwargs:
-            admin_consent_description = kwargs['adminConsentDescription']
-        if admin_consent_description is None:
-            raise TypeError("Missing 'admin_consent_description' argument")
-        if admin_consent_display_name is None and 'adminConsentDisplayName' in kwargs:
-            admin_consent_display_name = kwargs['adminConsentDisplayName']
-        if admin_consent_display_name is None:
-            raise TypeError("Missing 'admin_consent_display_name' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if user_consent_description is None and 'userConsentDescription' in kwargs:
-            user_consent_description = kwargs['userConsentDescription']
-        if user_consent_description is None:
-            raise TypeError("Missing 'user_consent_description' argument")
-        if user_consent_display_name is None and 'userConsentDisplayName' in kwargs:
-            user_consent_display_name = kwargs['userConsentDisplayName']
-        if user_consent_display_name is None:
-            raise TypeError("Missing 'user_consent_display_name' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("admin_consent_description", admin_consent_description)
-        _setter("admin_consent_display_name", admin_consent_display_name)
-        _setter("enabled", enabled)
-        _setter("id", id)
-        _setter("type", type)
-        _setter("user_consent_description", user_consent_description)
-        _setter("user_consent_display_name", user_consent_display_name)
-        _setter("value", value)
+        pulumi.set(__self__, "admin_consent_description", admin_consent_description)
+        pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "user_consent_description", user_consent_description)
+        pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="adminConsentDescription")
@@ -4679,49 +3499,12 @@ class GetApplicationAppRoleResult(dict):
         :param str id: The unique identifier for an app role or OAuth2 permission scope published by the resource application.
         :param str value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
-        GetApplicationAppRoleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_member_types=allowed_member_types,
-            description=description,
-            display_name=display_name,
-            enabled=enabled,
-            id=id,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_member_types: Optional[Sequence[str]] = None,
-             description: Optional[str] = None,
-             display_name: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             id: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_member_types is None and 'allowedMemberTypes' in kwargs:
-            allowed_member_types = kwargs['allowedMemberTypes']
-        if allowed_member_types is None:
-            raise TypeError("Missing 'allowed_member_types' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("allowed_member_types", allowed_member_types)
-        _setter("description", description)
-        _setter("display_name", display_name)
-        _setter("enabled", enabled)
-        _setter("id", id)
-        _setter("value", value)
+        pulumi.set(__self__, "allowed_member_types", allowed_member_types)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="allowedMemberTypes")
@@ -4785,33 +3568,14 @@ class GetApplicationFeatureTagResult(dict):
         :param bool gallery: Whether this application represents a gallery application for linked service principals.
         :param bool hide: Whether this app is visible to users in My Apps and Office 365 Launcher.
         """
-        GetApplicationFeatureTagResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_single_sign_on=custom_single_sign_on,
-            enterprise=enterprise,
-            gallery=gallery,
-            hide=hide,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_single_sign_on: Optional[bool] = None,
-             enterprise: Optional[bool] = None,
-             gallery: Optional[bool] = None,
-             hide: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_single_sign_on is None and 'customSingleSignOn' in kwargs:
-            custom_single_sign_on = kwargs['customSingleSignOn']
-
         if custom_single_sign_on is not None:
-            _setter("custom_single_sign_on", custom_single_sign_on)
+            pulumi.set(__self__, "custom_single_sign_on", custom_single_sign_on)
         if enterprise is not None:
-            _setter("enterprise", enterprise)
+            pulumi.set(__self__, "enterprise", enterprise)
         if gallery is not None:
-            _setter("gallery", gallery)
+            pulumi.set(__self__, "gallery", gallery)
         if hide is not None:
-            _setter("hide", hide)
+            pulumi.set(__self__, "hide", hide)
 
     @property
     @pulumi.getter(name="customSingleSignOn")
@@ -4857,33 +3621,12 @@ class GetApplicationOptionalClaimResult(dict):
         :param Sequence['GetApplicationOptionalClaimIdTokenArgs'] id_tokens: One or more `id_token` blocks as documented below.
         :param Sequence['GetApplicationOptionalClaimSaml2TokenArgs'] saml2_tokens: One or more `saml2_token` blocks as documented below.
         """
-        GetApplicationOptionalClaimResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_tokens=access_tokens,
-            id_tokens=id_tokens,
-            saml2_tokens=saml2_tokens,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimAccessTokenResult']] = None,
-             id_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimIdTokenResult']] = None,
-             saml2_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimSaml2TokenResult']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_tokens is None and 'accessTokens' in kwargs:
-            access_tokens = kwargs['accessTokens']
-        if id_tokens is None and 'idTokens' in kwargs:
-            id_tokens = kwargs['idTokens']
-        if saml2_tokens is None and 'saml2Tokens' in kwargs:
-            saml2_tokens = kwargs['saml2Tokens']
-
         if access_tokens is not None:
-            _setter("access_tokens", access_tokens)
+            pulumi.set(__self__, "access_tokens", access_tokens)
         if id_tokens is not None:
-            _setter("id_tokens", id_tokens)
+            pulumi.set(__self__, "id_tokens", id_tokens)
         if saml2_tokens is not None:
-            _setter("saml2_tokens", saml2_tokens)
+            pulumi.set(__self__, "saml2_tokens", saml2_tokens)
 
     @property
     @pulumi.getter(name="accessTokens")
@@ -4923,34 +3666,13 @@ class GetApplicationOptionalClaimAccessTokenResult(dict):
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
-        GetApplicationOptionalClaimAccessTokenResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            additional_properties=additional_properties,
-            essential=essential,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             additional_properties: Optional[Sequence[str]] = None,
-             essential: Optional[bool] = None,
-             source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if additional_properties is None and 'additionalProperties' in kwargs:
-            additional_properties = kwargs['additionalProperties']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if additional_properties is not None:
-            _setter("additional_properties", additional_properties)
+            pulumi.set(__self__, "additional_properties", additional_properties)
         if essential is not None:
-            _setter("essential", essential)
+            pulumi.set(__self__, "essential", essential)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -4998,34 +3720,13 @@ class GetApplicationOptionalClaimIdTokenResult(dict):
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
-        GetApplicationOptionalClaimIdTokenResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            additional_properties=additional_properties,
-            essential=essential,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             additional_properties: Optional[Sequence[str]] = None,
-             essential: Optional[bool] = None,
-             source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if additional_properties is None and 'additionalProperties' in kwargs:
-            additional_properties = kwargs['additionalProperties']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if additional_properties is not None:
-            _setter("additional_properties", additional_properties)
+            pulumi.set(__self__, "additional_properties", additional_properties)
         if essential is not None:
-            _setter("essential", essential)
+            pulumi.set(__self__, "essential", essential)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -5073,34 +3774,13 @@ class GetApplicationOptionalClaimSaml2TokenResult(dict):
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
-        GetApplicationOptionalClaimSaml2TokenResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            additional_properties=additional_properties,
-            essential=essential,
-            source=source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[str] = None,
-             additional_properties: Optional[Sequence[str]] = None,
-             essential: Optional[bool] = None,
-             source: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if additional_properties is None and 'additionalProperties' in kwargs:
-            additional_properties = kwargs['additionalProperties']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if additional_properties is not None:
-            _setter("additional_properties", additional_properties)
+            pulumi.set(__self__, "additional_properties", additional_properties)
         if essential is not None:
-            _setter("essential", essential)
+            pulumi.set(__self__, "essential", essential)
         if source is not None:
-            _setter("source", source)
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -5142,22 +3822,7 @@ class GetApplicationPublicClientResult(dict):
         """
         :param Sequence[str] redirect_uris: A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
         """
-        GetApplicationPublicClientResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            redirect_uris=redirect_uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             redirect_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if redirect_uris is None and 'redirectUris' in kwargs:
-            redirect_uris = kwargs['redirectUris']
-        if redirect_uris is None:
-            raise TypeError("Missing 'redirect_uris' argument")
-
-        _setter("redirect_uris", redirect_uris)
+        pulumi.set(__self__, "redirect_uris", redirect_uris)
 
     @property
     @pulumi.getter(name="redirectUris")
@@ -5177,29 +3842,8 @@ class GetApplicationRequiredResourceAccessResult(dict):
         :param Sequence['GetApplicationRequiredResourceAccessResourceAccessArgs'] resource_accesses: A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         :param str resource_app_id: The unique identifier for the resource that the application requires access to. This is the Application ID of the target application.
         """
-        GetApplicationRequiredResourceAccessResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            resource_accesses=resource_accesses,
-            resource_app_id=resource_app_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             resource_accesses: Optional[Sequence['outputs.GetApplicationRequiredResourceAccessResourceAccessResult']] = None,
-             resource_app_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if resource_accesses is None and 'resourceAccesses' in kwargs:
-            resource_accesses = kwargs['resourceAccesses']
-        if resource_accesses is None:
-            raise TypeError("Missing 'resource_accesses' argument")
-        if resource_app_id is None and 'resourceAppId' in kwargs:
-            resource_app_id = kwargs['resourceAppId']
-        if resource_app_id is None:
-            raise TypeError("Missing 'resource_app_id' argument")
-
-        _setter("resource_accesses", resource_accesses)
-        _setter("resource_app_id", resource_app_id)
+        pulumi.set(__self__, "resource_accesses", resource_accesses)
+        pulumi.set(__self__, "resource_app_id", resource_app_id)
 
     @property
     @pulumi.getter(name="resourceAccesses")
@@ -5227,25 +3871,8 @@ class GetApplicationRequiredResourceAccessResourceAccessResult(dict):
         :param str id: The unique identifier for an app role or OAuth2 permission scope published by the resource application.
         :param str type: Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
         """
-        GetApplicationRequiredResourceAccessResourceAccessResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            id=id,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             id: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("id", id)
-        _setter("type", type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -5271,22 +3898,7 @@ class GetApplicationSinglePageApplicationResult(dict):
         """
         :param Sequence[str] redirect_uris: A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
         """
-        GetApplicationSinglePageApplicationResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            redirect_uris=redirect_uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             redirect_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if redirect_uris is None and 'redirectUris' in kwargs:
-            redirect_uris = kwargs['redirectUris']
-        if redirect_uris is None:
-            raise TypeError("Missing 'redirect_uris' argument")
-
-        _setter("redirect_uris", redirect_uris)
+        pulumi.set(__self__, "redirect_uris", redirect_uris)
 
     @property
     @pulumi.getter(name="redirectUris")
@@ -5310,43 +3922,10 @@ class GetApplicationWebResult(dict):
         :param str logout_url: The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
         :param Sequence[str] redirect_uris: A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
         """
-        GetApplicationWebResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            homepage_url=homepage_url,
-            implicit_grants=implicit_grants,
-            logout_url=logout_url,
-            redirect_uris=redirect_uris,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             homepage_url: Optional[str] = None,
-             implicit_grants: Optional[Sequence['outputs.GetApplicationWebImplicitGrantResult']] = None,
-             logout_url: Optional[str] = None,
-             redirect_uris: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if homepage_url is None and 'homepageUrl' in kwargs:
-            homepage_url = kwargs['homepageUrl']
-        if homepage_url is None:
-            raise TypeError("Missing 'homepage_url' argument")
-        if implicit_grants is None and 'implicitGrants' in kwargs:
-            implicit_grants = kwargs['implicitGrants']
-        if implicit_grants is None:
-            raise TypeError("Missing 'implicit_grants' argument")
-        if logout_url is None and 'logoutUrl' in kwargs:
-            logout_url = kwargs['logoutUrl']
-        if logout_url is None:
-            raise TypeError("Missing 'logout_url' argument")
-        if redirect_uris is None and 'redirectUris' in kwargs:
-            redirect_uris = kwargs['redirectUris']
-        if redirect_uris is None:
-            raise TypeError("Missing 'redirect_uris' argument")
-
-        _setter("homepage_url", homepage_url)
-        _setter("implicit_grants", implicit_grants)
-        _setter("logout_url", logout_url)
-        _setter("redirect_uris", redirect_uris)
+        pulumi.set(__self__, "homepage_url", homepage_url)
+        pulumi.set(__self__, "implicit_grants", implicit_grants)
+        pulumi.set(__self__, "logout_url", logout_url)
+        pulumi.set(__self__, "redirect_uris", redirect_uris)
 
     @property
     @pulumi.getter(name="homepageUrl")
@@ -5390,29 +3969,8 @@ class GetApplicationWebImplicitGrantResult(dict):
         :param bool access_token_issuance_enabled: Whether this web application can request an access token using OAuth 2.0 implicit flow.
         :param bool id_token_issuance_enabled: Whether this web application can request an ID token using OAuth 2.0 implicit flow.
         """
-        GetApplicationWebImplicitGrantResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_token_issuance_enabled=access_token_issuance_enabled,
-            id_token_issuance_enabled=id_token_issuance_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_token_issuance_enabled: Optional[bool] = None,
-             id_token_issuance_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_token_issuance_enabled is None and 'accessTokenIssuanceEnabled' in kwargs:
-            access_token_issuance_enabled = kwargs['accessTokenIssuanceEnabled']
-        if access_token_issuance_enabled is None:
-            raise TypeError("Missing 'access_token_issuance_enabled' argument")
-        if id_token_issuance_enabled is None and 'idTokenIssuanceEnabled' in kwargs:
-            id_token_issuance_enabled = kwargs['idTokenIssuanceEnabled']
-        if id_token_issuance_enabled is None:
-            raise TypeError("Missing 'id_token_issuance_enabled' argument")
-
-        _setter("access_token_issuance_enabled", access_token_issuance_enabled)
-        _setter("id_token_issuance_enabled", id_token_issuance_enabled)
+        pulumi.set(__self__, "access_token_issuance_enabled", access_token_issuance_enabled)
+        pulumi.set(__self__, "id_token_issuance_enabled", id_token_issuance_enabled)
 
     @property
     @pulumi.getter(name="accessTokenIssuanceEnabled")
@@ -5442,34 +4000,9 @@ class GetDirectoryRoleTemplatesRoleTemplateResult(dict):
         :param str display_name: The display name of the directory role template.
         :param str object_id: The object ID of the directory role template.
         """
-        GetDirectoryRoleTemplatesRoleTemplateResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            display_name=display_name,
-            object_id=object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             display_name: Optional[str] = None,
-             object_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if object_id is None:
-            raise TypeError("Missing 'object_id' argument")
-
-        _setter("description", description)
-        _setter("display_name", display_name)
-        _setter("object_id", object_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "object_id", object_id)
 
     @property
     @pulumi.getter
@@ -5509,41 +4042,10 @@ class GetDirectoryRolesRoleResult(dict):
         :param str object_id: The object ID of the directory role.
         :param str template_id: The template ID of the directory role.
         """
-        GetDirectoryRolesRoleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            display_name=display_name,
-            object_id=object_id,
-            template_id=template_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[str] = None,
-             display_name: Optional[str] = None,
-             object_id: Optional[str] = None,
-             template_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if object_id is None:
-            raise TypeError("Missing 'object_id' argument")
-        if template_id is None and 'templateId' in kwargs:
-            template_id = kwargs['templateId']
-        if template_id is None:
-            raise TypeError("Missing 'template_id' argument")
-
-        _setter("description", description)
-        _setter("display_name", display_name)
-        _setter("object_id", object_id)
-        _setter("template_id", template_id)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "template_id", template_id)
 
     @property
     @pulumi.getter
@@ -5599,63 +4101,14 @@ class GetDomainsDomainResult(dict):
         :param Sequence[str] supported_services: A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
         :param bool verified: Whether the domain has completed domain ownership verification.
         """
-        GetDomainsDomainResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admin_managed=admin_managed,
-            authentication_type=authentication_type,
-            default=default,
-            domain_name=domain_name,
-            initial=initial,
-            root=root,
-            supported_services=supported_services,
-            verified=verified,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admin_managed: Optional[bool] = None,
-             authentication_type: Optional[str] = None,
-             default: Optional[bool] = None,
-             domain_name: Optional[str] = None,
-             initial: Optional[bool] = None,
-             root: Optional[bool] = None,
-             supported_services: Optional[Sequence[str]] = None,
-             verified: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if admin_managed is None and 'adminManaged' in kwargs:
-            admin_managed = kwargs['adminManaged']
-        if admin_managed is None:
-            raise TypeError("Missing 'admin_managed' argument")
-        if authentication_type is None and 'authenticationType' in kwargs:
-            authentication_type = kwargs['authenticationType']
-        if authentication_type is None:
-            raise TypeError("Missing 'authentication_type' argument")
-        if default is None:
-            raise TypeError("Missing 'default' argument")
-        if domain_name is None and 'domainName' in kwargs:
-            domain_name = kwargs['domainName']
-        if domain_name is None:
-            raise TypeError("Missing 'domain_name' argument")
-        if initial is None:
-            raise TypeError("Missing 'initial' argument")
-        if root is None:
-            raise TypeError("Missing 'root' argument")
-        if supported_services is None and 'supportedServices' in kwargs:
-            supported_services = kwargs['supportedServices']
-        if supported_services is None:
-            raise TypeError("Missing 'supported_services' argument")
-        if verified is None:
-            raise TypeError("Missing 'verified' argument")
-
-        _setter("admin_managed", admin_managed)
-        _setter("authentication_type", authentication_type)
-        _setter("default", default)
-        _setter("domain_name", domain_name)
-        _setter("initial", initial)
-        _setter("root", root)
-        _setter("supported_services", supported_services)
-        _setter("verified", verified)
+        pulumi.set(__self__, "admin_managed", admin_managed)
+        pulumi.set(__self__, "authentication_type", authentication_type)
+        pulumi.set(__self__, "default", default)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "initial", initial)
+        pulumi.set(__self__, "root", root)
+        pulumi.set(__self__, "supported_services", supported_services)
+        pulumi.set(__self__, "verified", verified)
 
     @property
     @pulumi.getter(name="adminManaged")
@@ -5731,25 +4184,8 @@ class GetGroupDynamicMembershipResult(dict):
         :param bool enabled: Whether rule processing is "On" (true) or "Paused" (false).
         :param str rule: The rule that determines membership of this group.
         """
-        GetGroupDynamicMembershipResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            rule=rule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[bool] = None,
-             rule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if rule is None:
-            raise TypeError("Missing 'rule' argument")
-
-        _setter("enabled", enabled)
-        _setter("rule", rule)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "rule", rule)
 
     @property
     @pulumi.getter
@@ -5773,29 +4209,8 @@ class GetNamedLocationCountryResult(dict):
     def __init__(__self__, *,
                  countries_and_regions: Sequence[str],
                  include_unknown_countries_and_regions: bool):
-        GetNamedLocationCountryResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            countries_and_regions=countries_and_regions,
-            include_unknown_countries_and_regions=include_unknown_countries_and_regions,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             countries_and_regions: Optional[Sequence[str]] = None,
-             include_unknown_countries_and_regions: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if countries_and_regions is None and 'countriesAndRegions' in kwargs:
-            countries_and_regions = kwargs['countriesAndRegions']
-        if countries_and_regions is None:
-            raise TypeError("Missing 'countries_and_regions' argument")
-        if include_unknown_countries_and_regions is None and 'includeUnknownCountriesAndRegions' in kwargs:
-            include_unknown_countries_and_regions = kwargs['includeUnknownCountriesAndRegions']
-        if include_unknown_countries_and_regions is None:
-            raise TypeError("Missing 'include_unknown_countries_and_regions' argument")
-
-        _setter("countries_and_regions", countries_and_regions)
-        _setter("include_unknown_countries_and_regions", include_unknown_countries_and_regions)
+        pulumi.set(__self__, "countries_and_regions", countries_and_regions)
+        pulumi.set(__self__, "include_unknown_countries_and_regions", include_unknown_countries_and_regions)
 
     @property
     @pulumi.getter(name="countriesAndRegions")
@@ -5813,27 +4228,8 @@ class GetNamedLocationIpResult(dict):
     def __init__(__self__, *,
                  ip_ranges: Sequence[str],
                  trusted: bool):
-        GetNamedLocationIpResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ip_ranges=ip_ranges,
-            trusted=trusted,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ip_ranges: Optional[Sequence[str]] = None,
-             trusted: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ip_ranges is None and 'ipRanges' in kwargs:
-            ip_ranges = kwargs['ipRanges']
-        if ip_ranges is None:
-            raise TypeError("Missing 'ip_ranges' argument")
-        if trusted is None:
-            raise TypeError("Missing 'trusted' argument")
-
-        _setter("ip_ranges", ip_ranges)
-        _setter("trusted", trusted)
+        pulumi.set(__self__, "ip_ranges", ip_ranges)
+        pulumi.set(__self__, "trusted", trusted)
 
     @property
     @pulumi.getter(name="ipRanges")
@@ -5863,49 +4259,12 @@ class GetServicePrincipalAppRoleResult(dict):
         :param str id: The unique identifier of the delegated permission. Must be a valid UUID.
         :param str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
-        GetServicePrincipalAppRoleResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allowed_member_types=allowed_member_types,
-            description=description,
-            display_name=display_name,
-            enabled=enabled,
-            id=id,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allowed_member_types: Optional[Sequence[str]] = None,
-             description: Optional[str] = None,
-             display_name: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             id: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allowed_member_types is None and 'allowedMemberTypes' in kwargs:
-            allowed_member_types = kwargs['allowedMemberTypes']
-        if allowed_member_types is None:
-            raise TypeError("Missing 'allowed_member_types' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("allowed_member_types", allowed_member_types)
-        _setter("description", description)
-        _setter("display_name", display_name)
-        _setter("enabled", enabled)
-        _setter("id", id)
-        _setter("value", value)
+        pulumi.set(__self__, "allowed_member_types", allowed_member_types)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="allowedMemberTypes")
@@ -5969,43 +4328,10 @@ class GetServicePrincipalFeatureResult(dict):
         :param bool gallery_application: Whether this service principal represents a gallery application.
         :param bool visible_to_users: Whether this app is visible to users in My Apps and Office 365 Launcher.
         """
-        GetServicePrincipalFeatureResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_single_sign_on_app=custom_single_sign_on_app,
-            enterprise_application=enterprise_application,
-            gallery_application=gallery_application,
-            visible_to_users=visible_to_users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_single_sign_on_app: Optional[bool] = None,
-             enterprise_application: Optional[bool] = None,
-             gallery_application: Optional[bool] = None,
-             visible_to_users: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_single_sign_on_app is None and 'customSingleSignOnApp' in kwargs:
-            custom_single_sign_on_app = kwargs['customSingleSignOnApp']
-        if custom_single_sign_on_app is None:
-            raise TypeError("Missing 'custom_single_sign_on_app' argument")
-        if enterprise_application is None and 'enterpriseApplication' in kwargs:
-            enterprise_application = kwargs['enterpriseApplication']
-        if enterprise_application is None:
-            raise TypeError("Missing 'enterprise_application' argument")
-        if gallery_application is None and 'galleryApplication' in kwargs:
-            gallery_application = kwargs['galleryApplication']
-        if gallery_application is None:
-            raise TypeError("Missing 'gallery_application' argument")
-        if visible_to_users is None and 'visibleToUsers' in kwargs:
-            visible_to_users = kwargs['visibleToUsers']
-        if visible_to_users is None:
-            raise TypeError("Missing 'visible_to_users' argument")
-
-        _setter("custom_single_sign_on_app", custom_single_sign_on_app)
-        _setter("enterprise_application", enterprise_application)
-        _setter("gallery_application", gallery_application)
-        _setter("visible_to_users", visible_to_users)
+        pulumi.set(__self__, "custom_single_sign_on_app", custom_single_sign_on_app)
+        pulumi.set(__self__, "enterprise_application", enterprise_application)
+        pulumi.set(__self__, "gallery_application", gallery_application)
+        pulumi.set(__self__, "visible_to_users", visible_to_users)
 
     @property
     @pulumi.getter(name="customSingleSignOnApp")
@@ -6047,37 +4373,10 @@ class GetServicePrincipalFeatureTagResult(dict):
                  enterprise: bool,
                  gallery: bool,
                  hide: bool):
-        GetServicePrincipalFeatureTagResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_single_sign_on=custom_single_sign_on,
-            enterprise=enterprise,
-            gallery=gallery,
-            hide=hide,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_single_sign_on: Optional[bool] = None,
-             enterprise: Optional[bool] = None,
-             gallery: Optional[bool] = None,
-             hide: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_single_sign_on is None and 'customSingleSignOn' in kwargs:
-            custom_single_sign_on = kwargs['customSingleSignOn']
-        if custom_single_sign_on is None:
-            raise TypeError("Missing 'custom_single_sign_on' argument")
-        if enterprise is None:
-            raise TypeError("Missing 'enterprise' argument")
-        if gallery is None:
-            raise TypeError("Missing 'gallery' argument")
-        if hide is None:
-            raise TypeError("Missing 'hide' argument")
-
-        _setter("custom_single_sign_on", custom_single_sign_on)
-        _setter("enterprise", enterprise)
-        _setter("gallery", gallery)
-        _setter("hide", hide)
+        pulumi.set(__self__, "custom_single_sign_on", custom_single_sign_on)
+        pulumi.set(__self__, "enterprise", enterprise)
+        pulumi.set(__self__, "gallery", gallery)
+        pulumi.set(__self__, "hide", hide)
 
     @property
     @pulumi.getter(name="customSingleSignOn")
@@ -6121,63 +4420,14 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
         :param str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
         :param str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
-        GetServicePrincipalOauth2PermissionScopeResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admin_consent_description=admin_consent_description,
-            admin_consent_display_name=admin_consent_display_name,
-            enabled=enabled,
-            id=id,
-            type=type,
-            user_consent_description=user_consent_description,
-            user_consent_display_name=user_consent_display_name,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admin_consent_description: Optional[str] = None,
-             admin_consent_display_name: Optional[str] = None,
-             enabled: Optional[bool] = None,
-             id: Optional[str] = None,
-             type: Optional[str] = None,
-             user_consent_description: Optional[str] = None,
-             user_consent_display_name: Optional[str] = None,
-             value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if admin_consent_description is None and 'adminConsentDescription' in kwargs:
-            admin_consent_description = kwargs['adminConsentDescription']
-        if admin_consent_description is None:
-            raise TypeError("Missing 'admin_consent_description' argument")
-        if admin_consent_display_name is None and 'adminConsentDisplayName' in kwargs:
-            admin_consent_display_name = kwargs['adminConsentDisplayName']
-        if admin_consent_display_name is None:
-            raise TypeError("Missing 'admin_consent_display_name' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if id is None:
-            raise TypeError("Missing 'id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if user_consent_description is None and 'userConsentDescription' in kwargs:
-            user_consent_description = kwargs['userConsentDescription']
-        if user_consent_description is None:
-            raise TypeError("Missing 'user_consent_description' argument")
-        if user_consent_display_name is None and 'userConsentDisplayName' in kwargs:
-            user_consent_display_name = kwargs['userConsentDisplayName']
-        if user_consent_display_name is None:
-            raise TypeError("Missing 'user_consent_display_name' argument")
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-
-        _setter("admin_consent_description", admin_consent_description)
-        _setter("admin_consent_display_name", admin_consent_display_name)
-        _setter("enabled", enabled)
-        _setter("id", id)
-        _setter("type", type)
-        _setter("user_consent_description", user_consent_description)
-        _setter("user_consent_display_name", user_consent_display_name)
-        _setter("value", value)
+        pulumi.set(__self__, "admin_consent_description", admin_consent_description)
+        pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "user_consent_description", user_consent_description)
+        pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="adminConsentDescription")
@@ -6251,22 +4501,7 @@ class GetServicePrincipalSamlSingleSignOnResult(dict):
         """
         :param str relay_state: The relative URI the service provider would redirect to after completion of the single sign-on flow.
         """
-        GetServicePrincipalSamlSingleSignOnResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            relay_state=relay_state,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             relay_state: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if relay_state is None and 'relayState' in kwargs:
-            relay_state = kwargs['relayState']
-        if relay_state is None:
-            raise TypeError("Missing 'relay_state' argument")
-
-        _setter("relay_state", relay_state)
+        pulumi.set(__self__, "relay_state", relay_state)
 
     @property
     @pulumi.getter(name="relayState")
@@ -6306,102 +4541,19 @@ class GetServicePrincipalsServicePrincipalResult(dict):
         :param Sequence[str] tags: A list of tags applied to the service principal.
         :param str type: Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
         """
-        GetServicePrincipalsServicePrincipalResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_enabled=account_enabled,
-            app_role_assignment_required=app_role_assignment_required,
-            application_id=application_id,
-            application_tenant_id=application_tenant_id,
-            client_id=client_id,
-            display_name=display_name,
-            object_id=object_id,
-            preferred_single_sign_on_mode=preferred_single_sign_on_mode,
-            saml_metadata_url=saml_metadata_url,
-            service_principal_names=service_principal_names,
-            sign_in_audience=sign_in_audience,
-            tags=tags,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_enabled: Optional[bool] = None,
-             app_role_assignment_required: Optional[bool] = None,
-             application_id: Optional[str] = None,
-             application_tenant_id: Optional[str] = None,
-             client_id: Optional[str] = None,
-             display_name: Optional[str] = None,
-             object_id: Optional[str] = None,
-             preferred_single_sign_on_mode: Optional[str] = None,
-             saml_metadata_url: Optional[str] = None,
-             service_principal_names: Optional[Sequence[str]] = None,
-             sign_in_audience: Optional[str] = None,
-             tags: Optional[Sequence[str]] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_enabled is None and 'accountEnabled' in kwargs:
-            account_enabled = kwargs['accountEnabled']
-        if account_enabled is None:
-            raise TypeError("Missing 'account_enabled' argument")
-        if app_role_assignment_required is None and 'appRoleAssignmentRequired' in kwargs:
-            app_role_assignment_required = kwargs['appRoleAssignmentRequired']
-        if app_role_assignment_required is None:
-            raise TypeError("Missing 'app_role_assignment_required' argument")
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_id is None:
-            raise TypeError("Missing 'application_id' argument")
-        if application_tenant_id is None and 'applicationTenantId' in kwargs:
-            application_tenant_id = kwargs['applicationTenantId']
-        if application_tenant_id is None:
-            raise TypeError("Missing 'application_tenant_id' argument")
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_id is None:
-            raise TypeError("Missing 'client_id' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if object_id is None:
-            raise TypeError("Missing 'object_id' argument")
-        if preferred_single_sign_on_mode is None and 'preferredSingleSignOnMode' in kwargs:
-            preferred_single_sign_on_mode = kwargs['preferredSingleSignOnMode']
-        if preferred_single_sign_on_mode is None:
-            raise TypeError("Missing 'preferred_single_sign_on_mode' argument")
-        if saml_metadata_url is None and 'samlMetadataUrl' in kwargs:
-            saml_metadata_url = kwargs['samlMetadataUrl']
-        if saml_metadata_url is None:
-            raise TypeError("Missing 'saml_metadata_url' argument")
-        if service_principal_names is None and 'servicePrincipalNames' in kwargs:
-            service_principal_names = kwargs['servicePrincipalNames']
-        if service_principal_names is None:
-            raise TypeError("Missing 'service_principal_names' argument")
-        if sign_in_audience is None and 'signInAudience' in kwargs:
-            sign_in_audience = kwargs['signInAudience']
-        if sign_in_audience is None:
-            raise TypeError("Missing 'sign_in_audience' argument")
-        if tags is None:
-            raise TypeError("Missing 'tags' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("account_enabled", account_enabled)
-        _setter("app_role_assignment_required", app_role_assignment_required)
-        _setter("application_id", application_id)
-        _setter("application_tenant_id", application_tenant_id)
-        _setter("client_id", client_id)
-        _setter("display_name", display_name)
-        _setter("object_id", object_id)
-        _setter("preferred_single_sign_on_mode", preferred_single_sign_on_mode)
-        _setter("saml_metadata_url", saml_metadata_url)
-        _setter("service_principal_names", service_principal_names)
-        _setter("sign_in_audience", sign_in_audience)
-        _setter("tags", tags)
-        _setter("type", type)
+        pulumi.set(__self__, "account_enabled", account_enabled)
+        pulumi.set(__self__, "app_role_assignment_required", app_role_assignment_required)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "application_tenant_id", application_tenant_id)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "preferred_single_sign_on_mode", preferred_single_sign_on_mode)
+        pulumi.set(__self__, "saml_metadata_url", saml_metadata_url)
+        pulumi.set(__self__, "service_principal_names", service_principal_names)
+        pulumi.set(__self__, "sign_in_audience", sign_in_audience)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accountEnabled")
@@ -6532,90 +4684,17 @@ class GetUsersUserResult(dict):
         :param str usage_location: The usage location of the user.
         :param str user_principal_name: The user principal name (UPN) of the user.
         """
-        GetUsersUserResult._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_enabled=account_enabled,
-            display_name=display_name,
-            employee_id=employee_id,
-            mail=mail,
-            mail_nickname=mail_nickname,
-            object_id=object_id,
-            onpremises_immutable_id=onpremises_immutable_id,
-            onpremises_sam_account_name=onpremises_sam_account_name,
-            onpremises_user_principal_name=onpremises_user_principal_name,
-            usage_location=usage_location,
-            user_principal_name=user_principal_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_enabled: Optional[bool] = None,
-             display_name: Optional[str] = None,
-             employee_id: Optional[str] = None,
-             mail: Optional[str] = None,
-             mail_nickname: Optional[str] = None,
-             object_id: Optional[str] = None,
-             onpremises_immutable_id: Optional[str] = None,
-             onpremises_sam_account_name: Optional[str] = None,
-             onpremises_user_principal_name: Optional[str] = None,
-             usage_location: Optional[str] = None,
-             user_principal_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_enabled is None and 'accountEnabled' in kwargs:
-            account_enabled = kwargs['accountEnabled']
-        if account_enabled is None:
-            raise TypeError("Missing 'account_enabled' argument")
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if display_name is None:
-            raise TypeError("Missing 'display_name' argument")
-        if employee_id is None and 'employeeId' in kwargs:
-            employee_id = kwargs['employeeId']
-        if employee_id is None:
-            raise TypeError("Missing 'employee_id' argument")
-        if mail is None:
-            raise TypeError("Missing 'mail' argument")
-        if mail_nickname is None and 'mailNickname' in kwargs:
-            mail_nickname = kwargs['mailNickname']
-        if mail_nickname is None:
-            raise TypeError("Missing 'mail_nickname' argument")
-        if object_id is None and 'objectId' in kwargs:
-            object_id = kwargs['objectId']
-        if object_id is None:
-            raise TypeError("Missing 'object_id' argument")
-        if onpremises_immutable_id is None and 'onpremisesImmutableId' in kwargs:
-            onpremises_immutable_id = kwargs['onpremisesImmutableId']
-        if onpremises_immutable_id is None:
-            raise TypeError("Missing 'onpremises_immutable_id' argument")
-        if onpremises_sam_account_name is None and 'onpremisesSamAccountName' in kwargs:
-            onpremises_sam_account_name = kwargs['onpremisesSamAccountName']
-        if onpremises_sam_account_name is None:
-            raise TypeError("Missing 'onpremises_sam_account_name' argument")
-        if onpremises_user_principal_name is None and 'onpremisesUserPrincipalName' in kwargs:
-            onpremises_user_principal_name = kwargs['onpremisesUserPrincipalName']
-        if onpremises_user_principal_name is None:
-            raise TypeError("Missing 'onpremises_user_principal_name' argument")
-        if usage_location is None and 'usageLocation' in kwargs:
-            usage_location = kwargs['usageLocation']
-        if usage_location is None:
-            raise TypeError("Missing 'usage_location' argument")
-        if user_principal_name is None and 'userPrincipalName' in kwargs:
-            user_principal_name = kwargs['userPrincipalName']
-        if user_principal_name is None:
-            raise TypeError("Missing 'user_principal_name' argument")
-
-        _setter("account_enabled", account_enabled)
-        _setter("display_name", display_name)
-        _setter("employee_id", employee_id)
-        _setter("mail", mail)
-        _setter("mail_nickname", mail_nickname)
-        _setter("object_id", object_id)
-        _setter("onpremises_immutable_id", onpremises_immutable_id)
-        _setter("onpremises_sam_account_name", onpremises_sam_account_name)
-        _setter("onpremises_user_principal_name", onpremises_user_principal_name)
-        _setter("usage_location", usage_location)
-        _setter("user_principal_name", user_principal_name)
+        pulumi.set(__self__, "account_enabled", account_enabled)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "employee_id", employee_id)
+        pulumi.set(__self__, "mail", mail)
+        pulumi.set(__self__, "mail_nickname", mail_nickname)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "onpremises_immutable_id", onpremises_immutable_id)
+        pulumi.set(__self__, "onpremises_sam_account_name", onpremises_sam_account_name)
+        pulumi.set(__self__, "onpremises_user_principal_name", onpremises_user_principal_name)
+        pulumi.set(__self__, "usage_location", usage_location)
+        pulumi.set(__self__, "user_principal_name", user_principal_name)
 
     @property
     @pulumi.getter(name="accountEnabled")
