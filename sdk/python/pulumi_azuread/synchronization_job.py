@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,33 +25,10 @@ class SynchronizationJobArgs:
         :param pulumi.Input[str] template_id: Identifier of the synchronization template this job is based on.
         :param pulumi.Input[bool] enabled: Whether or not the provisioning job is enabled. Default state is `true`.
         """
-        SynchronizationJobArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            service_principal_id=service_principal_id,
-            template_id=template_id,
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             service_principal_id: Optional[pulumi.Input[str]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_principal_id is None and 'servicePrincipalId' in kwargs:
-            service_principal_id = kwargs['servicePrincipalId']
-        if service_principal_id is None:
-            raise TypeError("Missing 'service_principal_id' argument")
-        if template_id is None and 'templateId' in kwargs:
-            template_id = kwargs['templateId']
-        if template_id is None:
-            raise TypeError("Missing 'template_id' argument")
-
-        _setter("service_principal_id", service_principal_id)
-        _setter("template_id", template_id)
+        pulumi.set(__self__, "service_principal_id", service_principal_id)
+        pulumi.set(__self__, "template_id", template_id)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter(name="servicePrincipalId")
@@ -104,35 +81,14 @@ class _SynchronizationJobState:
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] template_id: Identifier of the synchronization template this job is based on.
         """
-        _SynchronizationJobState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            schedules=schedules,
-            service_principal_id=service_principal_id,
-            template_id=template_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             schedules: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArgs']]]] = None,
-             service_principal_id: Optional[pulumi.Input[str]] = None,
-             template_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if service_principal_id is None and 'servicePrincipalId' in kwargs:
-            service_principal_id = kwargs['servicePrincipalId']
-        if template_id is None and 'templateId' in kwargs:
-            template_id = kwargs['templateId']
-
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if schedules is not None:
-            _setter("schedules", schedules)
+            pulumi.set(__self__, "schedules", schedules)
         if service_principal_id is not None:
-            _setter("service_principal_id", service_principal_id)
+            pulumi.set(__self__, "service_principal_id", service_principal_id)
         if template_id is not None:
-            _setter("template_id", template_id)
+            pulumi.set(__self__, "template_id", template_id)
 
     @property
     @pulumi.getter
@@ -326,10 +282,6 @@ class SynchronizationJob(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SynchronizationJobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

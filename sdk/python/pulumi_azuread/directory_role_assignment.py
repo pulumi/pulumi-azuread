@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DirectoryRoleAssignmentArgs', 'DirectoryRoleAssignment']
@@ -29,56 +29,19 @@ class DirectoryRoleAssignmentArgs:
         :param pulumi.Input[str] directory_scope_id: Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
         :param pulumi.Input[str] directory_scope_object_id: Identifier of the directory object representing the scope of the assignment
         """
-        DirectoryRoleAssignmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            principal_object_id=principal_object_id,
-            role_id=role_id,
-            app_scope_id=app_scope_id,
-            app_scope_object_id=app_scope_object_id,
-            directory_scope_id=directory_scope_id,
-            directory_scope_object_id=directory_scope_object_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             principal_object_id: Optional[pulumi.Input[str]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             app_scope_id: Optional[pulumi.Input[str]] = None,
-             app_scope_object_id: Optional[pulumi.Input[str]] = None,
-             directory_scope_id: Optional[pulumi.Input[str]] = None,
-             directory_scope_object_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if principal_object_id is None and 'principalObjectId' in kwargs:
-            principal_object_id = kwargs['principalObjectId']
-        if principal_object_id is None:
-            raise TypeError("Missing 'principal_object_id' argument")
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-        if app_scope_id is None and 'appScopeId' in kwargs:
-            app_scope_id = kwargs['appScopeId']
-        if app_scope_object_id is None and 'appScopeObjectId' in kwargs:
-            app_scope_object_id = kwargs['appScopeObjectId']
-        if directory_scope_id is None and 'directoryScopeId' in kwargs:
-            directory_scope_id = kwargs['directoryScopeId']
-        if directory_scope_object_id is None and 'directoryScopeObjectId' in kwargs:
-            directory_scope_object_id = kwargs['directoryScopeObjectId']
-
-        _setter("principal_object_id", principal_object_id)
-        _setter("role_id", role_id)
+        pulumi.set(__self__, "principal_object_id", principal_object_id)
+        pulumi.set(__self__, "role_id", role_id)
         if app_scope_id is not None:
-            _setter("app_scope_id", app_scope_id)
+            pulumi.set(__self__, "app_scope_id", app_scope_id)
         if app_scope_object_id is not None:
             warnings.warn("""`app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""", DeprecationWarning)
             pulumi.log.warn("""app_scope_object_id is deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""")
         if app_scope_object_id is not None:
-            _setter("app_scope_object_id", app_scope_object_id)
+            pulumi.set(__self__, "app_scope_object_id", app_scope_object_id)
         if directory_scope_id is not None:
-            _setter("directory_scope_id", directory_scope_id)
+            pulumi.set(__self__, "directory_scope_id", directory_scope_id)
         if directory_scope_object_id is not None:
-            _setter("directory_scope_object_id", directory_scope_object_id)
+            pulumi.set(__self__, "directory_scope_object_id", directory_scope_object_id)
 
     @property
     @pulumi.getter(name="principalObjectId")
@@ -174,54 +137,21 @@ class _DirectoryRoleAssignmentState:
         :param pulumi.Input[str] principal_object_id: The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[str] role_id: The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
         """
-        _DirectoryRoleAssignmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            app_scope_id=app_scope_id,
-            app_scope_object_id=app_scope_object_id,
-            directory_scope_id=directory_scope_id,
-            directory_scope_object_id=directory_scope_object_id,
-            principal_object_id=principal_object_id,
-            role_id=role_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             app_scope_id: Optional[pulumi.Input[str]] = None,
-             app_scope_object_id: Optional[pulumi.Input[str]] = None,
-             directory_scope_id: Optional[pulumi.Input[str]] = None,
-             directory_scope_object_id: Optional[pulumi.Input[str]] = None,
-             principal_object_id: Optional[pulumi.Input[str]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if app_scope_id is None and 'appScopeId' in kwargs:
-            app_scope_id = kwargs['appScopeId']
-        if app_scope_object_id is None and 'appScopeObjectId' in kwargs:
-            app_scope_object_id = kwargs['appScopeObjectId']
-        if directory_scope_id is None and 'directoryScopeId' in kwargs:
-            directory_scope_id = kwargs['directoryScopeId']
-        if directory_scope_object_id is None and 'directoryScopeObjectId' in kwargs:
-            directory_scope_object_id = kwargs['directoryScopeObjectId']
-        if principal_object_id is None and 'principalObjectId' in kwargs:
-            principal_object_id = kwargs['principalObjectId']
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-
         if app_scope_id is not None:
-            _setter("app_scope_id", app_scope_id)
+            pulumi.set(__self__, "app_scope_id", app_scope_id)
         if app_scope_object_id is not None:
             warnings.warn("""`app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""", DeprecationWarning)
             pulumi.log.warn("""app_scope_object_id is deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""")
         if app_scope_object_id is not None:
-            _setter("app_scope_object_id", app_scope_object_id)
+            pulumi.set(__self__, "app_scope_object_id", app_scope_object_id)
         if directory_scope_id is not None:
-            _setter("directory_scope_id", directory_scope_id)
+            pulumi.set(__self__, "directory_scope_id", directory_scope_id)
         if directory_scope_object_id is not None:
-            _setter("directory_scope_object_id", directory_scope_object_id)
+            pulumi.set(__self__, "directory_scope_object_id", directory_scope_object_id)
         if principal_object_id is not None:
-            _setter("principal_object_id", principal_object_id)
+            pulumi.set(__self__, "principal_object_id", principal_object_id)
         if role_id is not None:
-            _setter("role_id", role_id)
+            pulumi.set(__self__, "role_id", role_id)
 
     @property
     @pulumi.getter(name="appScopeId")
@@ -374,10 +304,6 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DirectoryRoleAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

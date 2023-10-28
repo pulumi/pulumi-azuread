@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -63,140 +63,51 @@ class ProviderArgs:
         :param pulumi.Input[bool] use_msi: Allow Managed Identity to be used for Authentication
         :param pulumi.Input[bool] use_oidc: Allow OpenID Connect to be used for authentication
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            metadata_host=metadata_host,
-            client_certificate=client_certificate,
-            client_certificate_password=client_certificate_password,
-            client_certificate_path=client_certificate_path,
-            client_id=client_id,
-            client_id_file_path=client_id_file_path,
-            client_secret=client_secret,
-            client_secret_file_path=client_secret_file_path,
-            disable_terraform_partner_id=disable_terraform_partner_id,
-            environment=environment,
-            msi_endpoint=msi_endpoint,
-            oidc_request_token=oidc_request_token,
-            oidc_request_url=oidc_request_url,
-            oidc_token=oidc_token,
-            oidc_token_file_path=oidc_token_file_path,
-            partner_id=partner_id,
-            tenant_id=tenant_id,
-            use_cli=use_cli,
-            use_msi=use_msi,
-            use_oidc=use_oidc,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             metadata_host: Optional[pulumi.Input[str]] = None,
-             client_certificate: Optional[pulumi.Input[str]] = None,
-             client_certificate_password: Optional[pulumi.Input[str]] = None,
-             client_certificate_path: Optional[pulumi.Input[str]] = None,
-             client_id: Optional[pulumi.Input[str]] = None,
-             client_id_file_path: Optional[pulumi.Input[str]] = None,
-             client_secret: Optional[pulumi.Input[str]] = None,
-             client_secret_file_path: Optional[pulumi.Input[str]] = None,
-             disable_terraform_partner_id: Optional[pulumi.Input[bool]] = None,
-             environment: Optional[pulumi.Input[str]] = None,
-             msi_endpoint: Optional[pulumi.Input[str]] = None,
-             oidc_request_token: Optional[pulumi.Input[str]] = None,
-             oidc_request_url: Optional[pulumi.Input[str]] = None,
-             oidc_token: Optional[pulumi.Input[str]] = None,
-             oidc_token_file_path: Optional[pulumi.Input[str]] = None,
-             partner_id: Optional[pulumi.Input[str]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             use_cli: Optional[pulumi.Input[bool]] = None,
-             use_msi: Optional[pulumi.Input[bool]] = None,
-             use_oidc: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if metadata_host is None and 'metadataHost' in kwargs:
-            metadata_host = kwargs['metadataHost']
-        if metadata_host is None:
-            raise TypeError("Missing 'metadata_host' argument")
-        if client_certificate is None and 'clientCertificate' in kwargs:
-            client_certificate = kwargs['clientCertificate']
-        if client_certificate_password is None and 'clientCertificatePassword' in kwargs:
-            client_certificate_password = kwargs['clientCertificatePassword']
-        if client_certificate_path is None and 'clientCertificatePath' in kwargs:
-            client_certificate_path = kwargs['clientCertificatePath']
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_id_file_path is None and 'clientIdFilePath' in kwargs:
-            client_id_file_path = kwargs['clientIdFilePath']
-        if client_secret is None and 'clientSecret' in kwargs:
-            client_secret = kwargs['clientSecret']
-        if client_secret_file_path is None and 'clientSecretFilePath' in kwargs:
-            client_secret_file_path = kwargs['clientSecretFilePath']
-        if disable_terraform_partner_id is None and 'disableTerraformPartnerId' in kwargs:
-            disable_terraform_partner_id = kwargs['disableTerraformPartnerId']
-        if msi_endpoint is None and 'msiEndpoint' in kwargs:
-            msi_endpoint = kwargs['msiEndpoint']
-        if oidc_request_token is None and 'oidcRequestToken' in kwargs:
-            oidc_request_token = kwargs['oidcRequestToken']
-        if oidc_request_url is None and 'oidcRequestUrl' in kwargs:
-            oidc_request_url = kwargs['oidcRequestUrl']
-        if oidc_token is None and 'oidcToken' in kwargs:
-            oidc_token = kwargs['oidcToken']
-        if oidc_token_file_path is None and 'oidcTokenFilePath' in kwargs:
-            oidc_token_file_path = kwargs['oidcTokenFilePath']
-        if partner_id is None and 'partnerId' in kwargs:
-            partner_id = kwargs['partnerId']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if use_cli is None and 'useCli' in kwargs:
-            use_cli = kwargs['useCli']
-        if use_msi is None and 'useMsi' in kwargs:
-            use_msi = kwargs['useMsi']
-        if use_oidc is None and 'useOidc' in kwargs:
-            use_oidc = kwargs['useOidc']
-
-        _setter("metadata_host", metadata_host)
+        pulumi.set(__self__, "metadata_host", metadata_host)
         if client_certificate is not None:
-            _setter("client_certificate", client_certificate)
+            pulumi.set(__self__, "client_certificate", client_certificate)
         if client_certificate_password is not None:
-            _setter("client_certificate_password", client_certificate_password)
+            pulumi.set(__self__, "client_certificate_password", client_certificate_password)
         if client_certificate_path is not None:
-            _setter("client_certificate_path", client_certificate_path)
+            pulumi.set(__self__, "client_certificate_path", client_certificate_path)
         if client_id is not None:
-            _setter("client_id", client_id)
+            pulumi.set(__self__, "client_id", client_id)
         if client_id_file_path is not None:
-            _setter("client_id_file_path", client_id_file_path)
+            pulumi.set(__self__, "client_id_file_path", client_id_file_path)
         if client_secret is not None:
-            _setter("client_secret", client_secret)
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_secret_file_path is not None:
-            _setter("client_secret_file_path", client_secret_file_path)
+            pulumi.set(__self__, "client_secret_file_path", client_secret_file_path)
         if disable_terraform_partner_id is not None:
-            _setter("disable_terraform_partner_id", disable_terraform_partner_id)
+            pulumi.set(__self__, "disable_terraform_partner_id", disable_terraform_partner_id)
         if environment is None:
             environment = (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
         if environment is not None:
-            _setter("environment", environment)
+            pulumi.set(__self__, "environment", environment)
         if msi_endpoint is None:
             msi_endpoint = _utilities.get_env('ARM_MSI_ENDPOINT')
         if msi_endpoint is not None:
-            _setter("msi_endpoint", msi_endpoint)
+            pulumi.set(__self__, "msi_endpoint", msi_endpoint)
         if oidc_request_token is not None:
-            _setter("oidc_request_token", oidc_request_token)
+            pulumi.set(__self__, "oidc_request_token", oidc_request_token)
         if oidc_request_url is not None:
-            _setter("oidc_request_url", oidc_request_url)
+            pulumi.set(__self__, "oidc_request_url", oidc_request_url)
         if oidc_token is not None:
-            _setter("oidc_token", oidc_token)
+            pulumi.set(__self__, "oidc_token", oidc_token)
         if oidc_token_file_path is not None:
-            _setter("oidc_token_file_path", oidc_token_file_path)
+            pulumi.set(__self__, "oidc_token_file_path", oidc_token_file_path)
         if partner_id is not None:
-            _setter("partner_id", partner_id)
+            pulumi.set(__self__, "partner_id", partner_id)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if use_cli is not None:
-            _setter("use_cli", use_cli)
+            pulumi.set(__self__, "use_cli", use_cli)
         if use_msi is None:
             use_msi = (_utilities.get_env_bool('ARM_USE_MSI') or False)
         if use_msi is not None:
-            _setter("use_msi", use_msi)
+            pulumi.set(__self__, "use_msi", use_msi)
         if use_oidc is not None:
-            _setter("use_oidc", use_oidc)
+            pulumi.set(__self__, "use_oidc", use_oidc)
 
     @property
     @pulumi.getter(name="metadataHost")
@@ -528,10 +439,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

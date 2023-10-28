@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationPasswordArgs', 'ApplicationPassword']
@@ -31,60 +31,23 @@ class ApplicationPasswordArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         """
-        ApplicationPasswordArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            application_object_id=application_object_id,
-            display_name=display_name,
-            end_date=end_date,
-            end_date_relative=end_date_relative,
-            rotate_when_changed=rotate_when_changed,
-            start_date=start_date,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[pulumi.Input[str]] = None,
-             application_object_id: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             end_date: Optional[pulumi.Input[str]] = None,
-             end_date_relative: Optional[pulumi.Input[str]] = None,
-             rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             start_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_object_id is None and 'applicationObjectId' in kwargs:
-            application_object_id = kwargs['applicationObjectId']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if end_date is None and 'endDate' in kwargs:
-            end_date = kwargs['endDate']
-        if end_date_relative is None and 'endDateRelative' in kwargs:
-            end_date_relative = kwargs['endDateRelative']
-        if rotate_when_changed is None and 'rotateWhenChanged' in kwargs:
-            rotate_when_changed = kwargs['rotateWhenChanged']
-        if start_date is None and 'startDate' in kwargs:
-            start_date = kwargs['startDate']
-
         if application_id is not None:
-            _setter("application_id", application_id)
+            pulumi.set(__self__, "application_id", application_id)
         if application_object_id is not None:
             warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
             pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
         if application_object_id is not None:
-            _setter("application_object_id", application_object_id)
+            pulumi.set(__self__, "application_object_id", application_object_id)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if end_date is not None:
-            _setter("end_date", end_date)
+            pulumi.set(__self__, "end_date", end_date)
         if end_date_relative is not None:
-            _setter("end_date_relative", end_date_relative)
+            pulumi.set(__self__, "end_date_relative", end_date_relative)
         if rotate_when_changed is not None:
-            _setter("rotate_when_changed", rotate_when_changed)
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
         if start_date is not None:
-            _setter("start_date", start_date)
+            pulumi.set(__self__, "start_date", start_date)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -198,70 +161,27 @@ class _ApplicationPasswordState:
         :param pulumi.Input[str] start_date: The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The password for this application, which is generated by Azure Active Directory.
         """
-        _ApplicationPasswordState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            application_object_id=application_object_id,
-            display_name=display_name,
-            end_date=end_date,
-            end_date_relative=end_date_relative,
-            key_id=key_id,
-            rotate_when_changed=rotate_when_changed,
-            start_date=start_date,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[pulumi.Input[str]] = None,
-             application_object_id: Optional[pulumi.Input[str]] = None,
-             display_name: Optional[pulumi.Input[str]] = None,
-             end_date: Optional[pulumi.Input[str]] = None,
-             end_date_relative: Optional[pulumi.Input[str]] = None,
-             key_id: Optional[pulumi.Input[str]] = None,
-             rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             start_date: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_object_id is None and 'applicationObjectId' in kwargs:
-            application_object_id = kwargs['applicationObjectId']
-        if display_name is None and 'displayName' in kwargs:
-            display_name = kwargs['displayName']
-        if end_date is None and 'endDate' in kwargs:
-            end_date = kwargs['endDate']
-        if end_date_relative is None and 'endDateRelative' in kwargs:
-            end_date_relative = kwargs['endDateRelative']
-        if key_id is None and 'keyId' in kwargs:
-            key_id = kwargs['keyId']
-        if rotate_when_changed is None and 'rotateWhenChanged' in kwargs:
-            rotate_when_changed = kwargs['rotateWhenChanged']
-        if start_date is None and 'startDate' in kwargs:
-            start_date = kwargs['startDate']
-
         if application_id is not None:
-            _setter("application_id", application_id)
+            pulumi.set(__self__, "application_id", application_id)
         if application_object_id is not None:
             warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
             pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
         if application_object_id is not None:
-            _setter("application_object_id", application_object_id)
+            pulumi.set(__self__, "application_object_id", application_object_id)
         if display_name is not None:
-            _setter("display_name", display_name)
+            pulumi.set(__self__, "display_name", display_name)
         if end_date is not None:
-            _setter("end_date", end_date)
+            pulumi.set(__self__, "end_date", end_date)
         if end_date_relative is not None:
-            _setter("end_date_relative", end_date_relative)
+            pulumi.set(__self__, "end_date_relative", end_date_relative)
         if key_id is not None:
-            _setter("key_id", key_id)
+            pulumi.set(__self__, "key_id", key_id)
         if rotate_when_changed is not None:
-            _setter("rotate_when_changed", rotate_when_changed)
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
         if start_date is not None:
-            _setter("start_date", start_date)
+            pulumi.set(__self__, "start_date", start_date)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -480,10 +400,6 @@ class ApplicationPassword(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationPasswordArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccessPackageResourcePackageAssociationArgs', 'AccessPackageResourcePackageAssociation']
@@ -23,35 +23,10 @@ class AccessPackageResourcePackageAssociationArgs:
         :param pulumi.Input[str] catalog_resource_association_id: The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
         :param pulumi.Input[str] access_type: The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
         """
-        AccessPackageResourcePackageAssociationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_package_id=access_package_id,
-            catalog_resource_association_id=catalog_resource_association_id,
-            access_type=access_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_package_id: Optional[pulumi.Input[str]] = None,
-             catalog_resource_association_id: Optional[pulumi.Input[str]] = None,
-             access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_package_id is None and 'accessPackageId' in kwargs:
-            access_package_id = kwargs['accessPackageId']
-        if access_package_id is None:
-            raise TypeError("Missing 'access_package_id' argument")
-        if catalog_resource_association_id is None and 'catalogResourceAssociationId' in kwargs:
-            catalog_resource_association_id = kwargs['catalogResourceAssociationId']
-        if catalog_resource_association_id is None:
-            raise TypeError("Missing 'catalog_resource_association_id' argument")
-        if access_type is None and 'accessType' in kwargs:
-            access_type = kwargs['accessType']
-
-        _setter("access_package_id", access_package_id)
-        _setter("catalog_resource_association_id", catalog_resource_association_id)
+        pulumi.set(__self__, "access_package_id", access_package_id)
+        pulumi.set(__self__, "catalog_resource_association_id", catalog_resource_association_id)
         if access_type is not None:
-            _setter("access_type", access_type)
+            pulumi.set(__self__, "access_type", access_type)
 
     @property
     @pulumi.getter(name="accessPackageId")
@@ -102,33 +77,12 @@ class _AccessPackageResourcePackageAssociationState:
         :param pulumi.Input[str] access_type: The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] catalog_resource_association_id: The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
         """
-        _AccessPackageResourcePackageAssociationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_package_id=access_package_id,
-            access_type=access_type,
-            catalog_resource_association_id=catalog_resource_association_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_package_id: Optional[pulumi.Input[str]] = None,
-             access_type: Optional[pulumi.Input[str]] = None,
-             catalog_resource_association_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_package_id is None and 'accessPackageId' in kwargs:
-            access_package_id = kwargs['accessPackageId']
-        if access_type is None and 'accessType' in kwargs:
-            access_type = kwargs['accessType']
-        if catalog_resource_association_id is None and 'catalogResourceAssociationId' in kwargs:
-            catalog_resource_association_id = kwargs['catalogResourceAssociationId']
-
         if access_package_id is not None:
-            _setter("access_package_id", access_package_id)
+            pulumi.set(__self__, "access_package_id", access_package_id)
         if access_type is not None:
-            _setter("access_type", access_type)
+            pulumi.set(__self__, "access_type", access_type)
         if catalog_resource_association_id is not None:
-            _setter("catalog_resource_association_id", catalog_resource_association_id)
+            pulumi.set(__self__, "catalog_resource_association_id", catalog_resource_association_id)
 
     @property
     @pulumi.getter(name="accessPackageId")
@@ -290,10 +244,6 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessPackageResourcePackageAssociationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

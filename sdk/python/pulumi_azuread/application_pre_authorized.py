@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationPreAuthorizedArgs', 'ApplicationPreAuthorized']
@@ -27,52 +27,21 @@ class ApplicationPreAuthorizedArgs:
         :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
         :param pulumi.Input[str] authorized_client_id: The client ID of the application being authorized. Changing this field forces a new resource to be created.
         """
-        ApplicationPreAuthorizedArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            permission_ids=permission_ids,
-            application_id=application_id,
-            application_object_id=application_object_id,
-            authorized_app_id=authorized_app_id,
-            authorized_client_id=authorized_client_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             application_id: Optional[pulumi.Input[str]] = None,
-             application_object_id: Optional[pulumi.Input[str]] = None,
-             authorized_app_id: Optional[pulumi.Input[str]] = None,
-             authorized_client_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if permission_ids is None and 'permissionIds' in kwargs:
-            permission_ids = kwargs['permissionIds']
-        if permission_ids is None:
-            raise TypeError("Missing 'permission_ids' argument")
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_object_id is None and 'applicationObjectId' in kwargs:
-            application_object_id = kwargs['applicationObjectId']
-        if authorized_app_id is None and 'authorizedAppId' in kwargs:
-            authorized_app_id = kwargs['authorizedAppId']
-        if authorized_client_id is None and 'authorizedClientId' in kwargs:
-            authorized_client_id = kwargs['authorizedClientId']
-
-        _setter("permission_ids", permission_ids)
+        pulumi.set(__self__, "permission_ids", permission_ids)
         if application_id is not None:
-            _setter("application_id", application_id)
+            pulumi.set(__self__, "application_id", application_id)
         if application_object_id is not None:
             warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
             pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
         if application_object_id is not None:
-            _setter("application_object_id", application_object_id)
+            pulumi.set(__self__, "application_object_id", application_object_id)
         if authorized_app_id is not None:
             warnings.warn("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
             pulumi.log.warn("""authorized_app_id is deprecated: The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
         if authorized_app_id is not None:
-            _setter("authorized_app_id", authorized_app_id)
+            pulumi.set(__self__, "authorized_app_id", authorized_app_id)
         if authorized_client_id is not None:
-            _setter("authorized_client_id", authorized_client_id)
+            pulumi.set(__self__, "authorized_client_id", authorized_client_id)
 
     @property
     @pulumi.getter(name="permissionIds")
@@ -157,51 +126,22 @@ class _ApplicationPreAuthorizedState:
         :param pulumi.Input[str] authorized_client_id: The client ID of the application being authorized. Changing this field forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
         """
-        _ApplicationPreAuthorizedState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            application_object_id=application_object_id,
-            authorized_app_id=authorized_app_id,
-            authorized_client_id=authorized_client_id,
-            permission_ids=permission_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[pulumi.Input[str]] = None,
-             application_object_id: Optional[pulumi.Input[str]] = None,
-             authorized_app_id: Optional[pulumi.Input[str]] = None,
-             authorized_client_id: Optional[pulumi.Input[str]] = None,
-             permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_object_id is None and 'applicationObjectId' in kwargs:
-            application_object_id = kwargs['applicationObjectId']
-        if authorized_app_id is None and 'authorizedAppId' in kwargs:
-            authorized_app_id = kwargs['authorizedAppId']
-        if authorized_client_id is None and 'authorizedClientId' in kwargs:
-            authorized_client_id = kwargs['authorizedClientId']
-        if permission_ids is None and 'permissionIds' in kwargs:
-            permission_ids = kwargs['permissionIds']
-
         if application_id is not None:
-            _setter("application_id", application_id)
+            pulumi.set(__self__, "application_id", application_id)
         if application_object_id is not None:
             warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
             pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
         if application_object_id is not None:
-            _setter("application_object_id", application_object_id)
+            pulumi.set(__self__, "application_object_id", application_object_id)
         if authorized_app_id is not None:
             warnings.warn("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
             pulumi.log.warn("""authorized_app_id is deprecated: The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
         if authorized_app_id is not None:
-            _setter("authorized_app_id", authorized_app_id)
+            pulumi.set(__self__, "authorized_app_id", authorized_app_id)
         if authorized_client_id is not None:
-            _setter("authorized_client_id", authorized_client_id)
+            pulumi.set(__self__, "authorized_client_id", authorized_client_id)
         if permission_ids is not None:
-            _setter("permission_ids", permission_ids)
+            pulumi.set(__self__, "permission_ids", permission_ids)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -407,10 +347,6 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationPreAuthorizedArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationIdentifierUriArgs', 'ApplicationIdentifierUri']
@@ -21,29 +21,8 @@ class ApplicationIdentifierUriArgs:
         :param pulumi.Input[str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[str] identifier_uri: The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
         """
-        ApplicationIdentifierUriArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            identifier_uri=identifier_uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[pulumi.Input[str]] = None,
-             identifier_uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_id is None:
-            raise TypeError("Missing 'application_id' argument")
-        if identifier_uri is None and 'identifierUri' in kwargs:
-            identifier_uri = kwargs['identifierUri']
-        if identifier_uri is None:
-            raise TypeError("Missing 'identifier_uri' argument")
-
-        _setter("application_id", application_id)
-        _setter("identifier_uri", identifier_uri)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "identifier_uri", identifier_uri)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -80,27 +59,10 @@ class _ApplicationIdentifierUriState:
         :param pulumi.Input[str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[str] identifier_uri: The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
         """
-        _ApplicationIdentifierUriState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            identifier_uri=identifier_uri,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[pulumi.Input[str]] = None,
-             identifier_uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if identifier_uri is None and 'identifierUri' in kwargs:
-            identifier_uri = kwargs['identifierUri']
-
         if application_id is not None:
-            _setter("application_id", application_id)
+            pulumi.set(__self__, "application_id", application_id)
         if identifier_uri is not None:
-            _setter("identifier_uri", identifier_uri)
+            pulumi.set(__self__, "identifier_uri", identifier_uri)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -224,10 +186,6 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationIdentifierUriArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

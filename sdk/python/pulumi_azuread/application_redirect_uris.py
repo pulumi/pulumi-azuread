@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationRedirectUrisArgs', 'ApplicationRedirectUris']
@@ -23,34 +23,9 @@ class ApplicationRedirectUrisArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: A set of redirect URIs to assign to the application.
         :param pulumi.Input[str] type: The type of redirect URIs to manage. Must be one of: `PublicClient`, `SPA`, or `Web`. Changing this forces a new resource to be created.
         """
-        ApplicationRedirectUrisArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            redirect_uris=redirect_uris,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[pulumi.Input[str]] = None,
-             redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_id is None:
-            raise TypeError("Missing 'application_id' argument")
-        if redirect_uris is None and 'redirectUris' in kwargs:
-            redirect_uris = kwargs['redirectUris']
-        if redirect_uris is None:
-            raise TypeError("Missing 'redirect_uris' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("application_id", application_id)
-        _setter("redirect_uris", redirect_uris)
-        _setter("type", type)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "redirect_uris", redirect_uris)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -101,31 +76,12 @@ class _ApplicationRedirectUrisState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: A set of redirect URIs to assign to the application.
         :param pulumi.Input[str] type: The type of redirect URIs to manage. Must be one of: `PublicClient`, `SPA`, or `Web`. Changing this forces a new resource to be created.
         """
-        _ApplicationRedirectUrisState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            redirect_uris=redirect_uris,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[pulumi.Input[str]] = None,
-             redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if redirect_uris is None and 'redirectUris' in kwargs:
-            redirect_uris = kwargs['redirectUris']
-
         if application_id is not None:
-            _setter("application_id", application_id)
+            pulumi.set(__self__, "application_id", application_id)
         if redirect_uris is not None:
-            _setter("redirect_uris", redirect_uris)
+            pulumi.set(__self__, "redirect_uris", redirect_uris)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -283,10 +239,6 @@ class ApplicationRedirectUris(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ApplicationRedirectUrisArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
