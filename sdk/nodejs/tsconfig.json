@@ -32,6 +32,7 @@
         "applicationFromTemplate.ts",
         "applicationIdentifierUri.ts",
         "applicationKnownClients.ts",
+        "applicationOptionalClaims.ts",
         "applicationOwner.ts",
         "applicationPassword.ts",
         "applicationPermissionScope.ts",

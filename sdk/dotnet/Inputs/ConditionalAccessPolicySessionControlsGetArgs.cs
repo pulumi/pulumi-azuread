@@ -39,13 +39,25 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? PersistentBrowserMode { get; set; }
 
         /// <summary>
-        /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+        /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
         /// </summary>
         [Input("signInFrequency")]
         public Input<int>? SignInFrequency { get; set; }
 
         /// <summary>
-        /// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+        /// Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+        /// </summary>
+        [Input("signInFrequencyAuthenticationType")]
+        public Input<string>? SignInFrequencyAuthenticationType { get; set; }
+
+        /// <summary>
+        /// The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+        /// </summary>
+        [Input("signInFrequencyInterval")]
+        public Input<string>? SignInFrequencyInterval { get; set; }
+
+        /// <summary>
+        /// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
         /// </summary>
         [Input("signInFrequencyPeriod")]
         public Input<string>? SignInFrequencyPeriod { get; set; }

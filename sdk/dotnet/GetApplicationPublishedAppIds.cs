@@ -55,7 +55,7 @@ namespace Pulumi.AzureAD
         /// 
         ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
         ///     {
-        ///         ApplicationId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+        ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
         ///         UseExisting = true,
         ///     });
         /// 
@@ -136,7 +136,7 @@ namespace Pulumi.AzureAD
         /// 
         ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
         ///     {
-        ///         ApplicationId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+        ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
         ///         UseExisting = true,
         ///     });
         /// 

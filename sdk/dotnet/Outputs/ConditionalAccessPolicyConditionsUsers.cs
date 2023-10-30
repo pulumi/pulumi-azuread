@@ -18,6 +18,10 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExcludedGroups;
         /// <summary>
+        /// A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser> ExcludedGuestsOrExternalUsers;
+        /// <summary>
         /// A list of role IDs excluded from scope of policy.
         /// </summary>
         public readonly ImmutableArray<string> ExcludedRoles;
@@ -30,13 +34,17 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IncludedGroups;
         /// <summary>
+        /// A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser> IncludedGuestsOrExternalUsers;
+        /// <summary>
         /// A list of role IDs in scope of policy unless explicitly excluded.
         /// </summary>
         public readonly ImmutableArray<string> IncludedRoles;
         /// <summary>
         /// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
         /// 
-        /// &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+        /// &gt; At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
         /// </summary>
         public readonly ImmutableArray<string> IncludedUsers;
 
@@ -44,20 +52,26 @@ namespace Pulumi.AzureAD.Outputs
         private ConditionalAccessPolicyConditionsUsers(
             ImmutableArray<string> excludedGroups,
 
+            ImmutableArray<Outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser> excludedGuestsOrExternalUsers,
+
             ImmutableArray<string> excludedRoles,
 
             ImmutableArray<string> excludedUsers,
 
             ImmutableArray<string> includedGroups,
 
+            ImmutableArray<Outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser> includedGuestsOrExternalUsers,
+
             ImmutableArray<string> includedRoles,
 
             ImmutableArray<string> includedUsers)
         {
             ExcludedGroups = excludedGroups;
+            ExcludedGuestsOrExternalUsers = excludedGuestsOrExternalUsers;
             ExcludedRoles = excludedRoles;
             ExcludedUsers = excludedUsers;
             IncludedGroups = includedGroups;
+            IncludedGuestsOrExternalUsers = includedGuestsOrExternalUsers;
             IncludedRoles = includedRoles;
             IncludedUsers = includedUsers;
         }

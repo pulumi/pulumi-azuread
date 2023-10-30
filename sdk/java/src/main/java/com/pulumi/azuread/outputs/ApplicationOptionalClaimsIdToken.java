@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApplicationOptionalClaimsIdToken {
     /**
-     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
      * 
      */
     private @Nullable List<String> additionalProperties;
@@ -36,7 +36,7 @@ public final class ApplicationOptionalClaimsIdToken {
 
     private ApplicationOptionalClaimsIdToken() {}
     /**
-     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
      * 
      */
     public List<String> additionalProperties() {

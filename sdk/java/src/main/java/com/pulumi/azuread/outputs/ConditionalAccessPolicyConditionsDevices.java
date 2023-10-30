@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConditionalAccessPolicyConditionsDevices {
     /**
-     * @return A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+     * @return A `filter` block as described below.
      * 
      */
     private @Nullable ConditionalAccessPolicyConditionsDevicesFilter filter;
 
     private ConditionalAccessPolicyConditionsDevices() {}
     /**
-     * @return A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+     * @return A `filter` block as described below.
      * 
      */
     public Optional<ConditionalAccessPolicyConditionsDevicesFilter> filter() {

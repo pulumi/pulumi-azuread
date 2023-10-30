@@ -3,6 +3,8 @@
 
 package com.pulumi.azuread.inputs;
 
+import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs;
+import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -29,6 +31,21 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
      */
     public Optional<Output<List<String>>> excludedGroups() {
         return Optional.ofNullable(this.excludedGroups);
+    }
+
+    /**
+     * A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+     * 
+     */
+    @Import(name="excludedGuestsOrExternalUsers")
+    private @Nullable Output<List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs>> excludedGuestsOrExternalUsers;
+
+    /**
+     * @return A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+     * 
+     */
+    public Optional<Output<List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs>>> excludedGuestsOrExternalUsers() {
+        return Optional.ofNullable(this.excludedGuestsOrExternalUsers);
     }
 
     /**
@@ -77,6 +94,21 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
     }
 
     /**
+     * A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+     * 
+     */
+    @Import(name="includedGuestsOrExternalUsers")
+    private @Nullable Output<List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs>> includedGuestsOrExternalUsers;
+
+    /**
+     * @return A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+     * 
+     */
+    public Optional<Output<List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs>>> includedGuestsOrExternalUsers() {
+        return Optional.ofNullable(this.includedGuestsOrExternalUsers);
+    }
+
+    /**
      * A list of role IDs in scope of policy unless explicitly excluded.
      * 
      */
@@ -94,7 +126,7 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
     /**
      * A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
      * 
-     * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+     * &gt; At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
      * 
      */
     @Import(name="includedUsers")
@@ -103,7 +135,7 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
     /**
      * @return A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
      * 
-     * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+     * &gt; At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
      * 
      */
     public Optional<Output<List<String>>> includedUsers() {
@@ -114,9 +146,11 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
 
     private ConditionalAccessPolicyConditionsUsersArgs(ConditionalAccessPolicyConditionsUsersArgs $) {
         this.excludedGroups = $.excludedGroups;
+        this.excludedGuestsOrExternalUsers = $.excludedGuestsOrExternalUsers;
         this.excludedRoles = $.excludedRoles;
         this.excludedUsers = $.excludedUsers;
         this.includedGroups = $.includedGroups;
+        this.includedGuestsOrExternalUsers = $.includedGuestsOrExternalUsers;
         this.includedRoles = $.includedRoles;
         this.includedUsers = $.includedUsers;
     }
@@ -168,6 +202,37 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
          */
         public Builder excludedGroups(String... excludedGroups) {
             return excludedGroups(List.of(excludedGroups));
+        }
+
+        /**
+         * @param excludedGuestsOrExternalUsers A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedGuestsOrExternalUsers(@Nullable Output<List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs>> excludedGuestsOrExternalUsers) {
+            $.excludedGuestsOrExternalUsers = excludedGuestsOrExternalUsers;
+            return this;
+        }
+
+        /**
+         * @param excludedGuestsOrExternalUsers A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedGuestsOrExternalUsers(List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs> excludedGuestsOrExternalUsers) {
+            return excludedGuestsOrExternalUsers(Output.of(excludedGuestsOrExternalUsers));
+        }
+
+        /**
+         * @param excludedGuestsOrExternalUsers A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedGuestsOrExternalUsers(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs... excludedGuestsOrExternalUsers) {
+            return excludedGuestsOrExternalUsers(List.of(excludedGuestsOrExternalUsers));
         }
 
         /**
@@ -264,6 +329,37 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         }
 
         /**
+         * @param includedGuestsOrExternalUsers A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includedGuestsOrExternalUsers(@Nullable Output<List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs>> includedGuestsOrExternalUsers) {
+            $.includedGuestsOrExternalUsers = includedGuestsOrExternalUsers;
+            return this;
+        }
+
+        /**
+         * @param includedGuestsOrExternalUsers A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includedGuestsOrExternalUsers(List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs> includedGuestsOrExternalUsers) {
+            return includedGuestsOrExternalUsers(Output.of(includedGuestsOrExternalUsers));
+        }
+
+        /**
+         * @param includedGuestsOrExternalUsers A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includedGuestsOrExternalUsers(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs... includedGuestsOrExternalUsers) {
+            return includedGuestsOrExternalUsers(List.of(includedGuestsOrExternalUsers));
+        }
+
+        /**
          * @param includedRoles A list of role IDs in scope of policy unless explicitly excluded.
          * 
          * @return builder
@@ -297,7 +393,7 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         /**
          * @param includedUsers A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
          * 
-         * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+         * &gt; At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
          * 
          * @return builder
          * 
@@ -310,7 +406,7 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         /**
          * @param includedUsers A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
          * 
-         * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+         * &gt; At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
          * 
          * @return builder
          * 
@@ -322,7 +418,7 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         /**
          * @param includedUsers A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
          * 
-         * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+         * &gt; At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
          * 
          * @return builder
          * 

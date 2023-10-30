@@ -59,6 +59,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApplicationIdentifierUri{}
 	case "azuread:index/applicationKnownClients:ApplicationKnownClients":
 		r = &ApplicationKnownClients{}
+	case "azuread:index/applicationOptionalClaims:ApplicationOptionalClaims":
+		r = &ApplicationOptionalClaims{}
 	case "azuread:index/applicationOwner:ApplicationOwner":
 		r = &ApplicationOwner{}
 	case "azuread:index/applicationPassword:ApplicationPassword":
@@ -239,6 +241,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/applicationKnownClients",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/applicationOptionalClaims",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

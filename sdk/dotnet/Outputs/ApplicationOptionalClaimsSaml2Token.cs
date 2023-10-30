@@ -14,7 +14,7 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ApplicationOptionalClaimsSaml2Token
     {
         /// <summary>
-        /// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        /// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
         /// </summary>
         public readonly ImmutableArray<string> AdditionalProperties;
         /// <summary>

@@ -100,6 +100,11 @@ export type ApplicationKnownClients = import("./applicationKnownClients").Applic
 export const ApplicationKnownClients: typeof import("./applicationKnownClients").ApplicationKnownClients = null as any;
 utilities.lazyLoad(exports, ["ApplicationKnownClients"], () => require("./applicationKnownClients"));
 
+export { ApplicationOptionalClaimsArgs, ApplicationOptionalClaimsState } from "./applicationOptionalClaims";
+export type ApplicationOptionalClaims = import("./applicationOptionalClaims").ApplicationOptionalClaims;
+export const ApplicationOptionalClaims: typeof import("./applicationOptionalClaims").ApplicationOptionalClaims = null as any;
+utilities.lazyLoad(exports, ["ApplicationOptionalClaims"], () => require("./applicationOptionalClaims"));
+
 export { ApplicationOwnerArgs, ApplicationOwnerState } from "./applicationOwner";
 export type ApplicationOwner = import("./applicationOwner").ApplicationOwner;
 export const ApplicationOwner: typeof import("./applicationOwner").ApplicationOwner = null as any;
@@ -392,6 +397,8 @@ const _module = {
                 return new ApplicationIdentifierUri(name, <any>undefined, { urn })
             case "azuread:index/applicationKnownClients:ApplicationKnownClients":
                 return new ApplicationKnownClients(name, <any>undefined, { urn })
+            case "azuread:index/applicationOptionalClaims:ApplicationOptionalClaims":
+                return new ApplicationOptionalClaims(name, <any>undefined, { urn })
             case "azuread:index/applicationOwner:ApplicationOwner":
                 return new ApplicationOwner(name, <any>undefined, { urn })
             case "azuread:index/applicationPassword:ApplicationPassword":
@@ -472,6 +479,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/applicationFederatedIden
 pulumi.runtime.registerResourceModule("azuread", "index/applicationFromTemplate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationIdentifierUri", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationKnownClients", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationOptionalClaims", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationOwner", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPassword", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPermissionScope", _module)
