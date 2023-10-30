@@ -16,14 +16,14 @@ public final class ConditionalAccessPolicyConditionsDevicesArgs extends com.pulu
     public static final ConditionalAccessPolicyConditionsDevicesArgs Empty = new ConditionalAccessPolicyConditionsDevicesArgs();
 
     /**
-     * A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+     * A `filter` block as described below.
      * 
      */
     @Import(name="filter")
     private @Nullable Output<ConditionalAccessPolicyConditionsDevicesFilterArgs> filter;
 
     /**
-     * @return A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+     * @return A `filter` block as described below.
      * 
      */
     public Optional<Output<ConditionalAccessPolicyConditionsDevicesFilterArgs>> filter() {
@@ -55,7 +55,7 @@ public final class ConditionalAccessPolicyConditionsDevicesArgs extends com.pulu
         }
 
         /**
-         * @param filter A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+         * @param filter A `filter` block as described below.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ConditionalAccessPolicyConditionsDevicesArgs extends com.pulu
         }
 
         /**
-         * @param filter A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+         * @param filter A `filter` block as described below.
          * 
          * @return builder
          * 

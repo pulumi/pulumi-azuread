@@ -2275,7 +2275,7 @@ public final class AzureadFunctions {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
@@ -2369,7 +2369,7 @@ public final class AzureadFunctions {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
@@ -2463,7 +2463,7 @@ public final class AzureadFunctions {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
@@ -2557,7 +2557,7 @@ public final class AzureadFunctions {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
@@ -2651,7 +2651,7 @@ public final class AzureadFunctions {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
@@ -2745,7 +2745,7 @@ public final class AzureadFunctions {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 

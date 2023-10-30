@@ -3,6 +3,8 @@
 
 package com.pulumi.azuread.outputs;
 
+import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser;
+import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +18,11 @@ public final class ConditionalAccessPolicyConditionsUsers {
      * 
      */
     private @Nullable List<String> excludedGroups;
+    /**
+     * @return A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+     * 
+     */
+    private @Nullable List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser> excludedGuestsOrExternalUsers;
     /**
      * @return A list of role IDs excluded from scope of policy.
      * 
@@ -32,6 +39,11 @@ public final class ConditionalAccessPolicyConditionsUsers {
      */
     private @Nullable List<String> includedGroups;
     /**
+     * @return A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+     * 
+     */
+    private @Nullable List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser> includedGuestsOrExternalUsers;
+    /**
      * @return A list of role IDs in scope of policy unless explicitly excluded.
      * 
      */
@@ -39,7 +51,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
     /**
      * @return A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
      * 
-     * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+     * &gt; At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
      * 
      */
     private @Nullable List<String> includedUsers;
@@ -51,6 +63,13 @@ public final class ConditionalAccessPolicyConditionsUsers {
      */
     public List<String> excludedGroups() {
         return this.excludedGroups == null ? List.of() : this.excludedGroups;
+    }
+    /**
+     * @return A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+     * 
+     */
+    public List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser> excludedGuestsOrExternalUsers() {
+        return this.excludedGuestsOrExternalUsers == null ? List.of() : this.excludedGuestsOrExternalUsers;
     }
     /**
      * @return A list of role IDs excluded from scope of policy.
@@ -74,6 +93,13 @@ public final class ConditionalAccessPolicyConditionsUsers {
         return this.includedGroups == null ? List.of() : this.includedGroups;
     }
     /**
+     * @return A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+     * 
+     */
+    public List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser> includedGuestsOrExternalUsers() {
+        return this.includedGuestsOrExternalUsers == null ? List.of() : this.includedGuestsOrExternalUsers;
+    }
+    /**
      * @return A list of role IDs in scope of policy unless explicitly excluded.
      * 
      */
@@ -83,7 +109,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
     /**
      * @return A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
      * 
-     * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+     * &gt; At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
      * 
      */
     public List<String> includedUsers() {
@@ -100,18 +126,22 @@ public final class ConditionalAccessPolicyConditionsUsers {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludedGroups;
+        private @Nullable List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser> excludedGuestsOrExternalUsers;
         private @Nullable List<String> excludedRoles;
         private @Nullable List<String> excludedUsers;
         private @Nullable List<String> includedGroups;
+        private @Nullable List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser> includedGuestsOrExternalUsers;
         private @Nullable List<String> includedRoles;
         private @Nullable List<String> includedUsers;
         public Builder() {}
         public Builder(ConditionalAccessPolicyConditionsUsers defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedGroups = defaults.excludedGroups;
+    	      this.excludedGuestsOrExternalUsers = defaults.excludedGuestsOrExternalUsers;
     	      this.excludedRoles = defaults.excludedRoles;
     	      this.excludedUsers = defaults.excludedUsers;
     	      this.includedGroups = defaults.includedGroups;
+    	      this.includedGuestsOrExternalUsers = defaults.includedGuestsOrExternalUsers;
     	      this.includedRoles = defaults.includedRoles;
     	      this.includedUsers = defaults.includedUsers;
         }
@@ -123,6 +153,14 @@ public final class ConditionalAccessPolicyConditionsUsers {
         }
         public Builder excludedGroups(String... excludedGroups) {
             return excludedGroups(List.of(excludedGroups));
+        }
+        @CustomType.Setter
+        public Builder excludedGuestsOrExternalUsers(@Nullable List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser> excludedGuestsOrExternalUsers) {
+            this.excludedGuestsOrExternalUsers = excludedGuestsOrExternalUsers;
+            return this;
+        }
+        public Builder excludedGuestsOrExternalUsers(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser... excludedGuestsOrExternalUsers) {
+            return excludedGuestsOrExternalUsers(List.of(excludedGuestsOrExternalUsers));
         }
         @CustomType.Setter
         public Builder excludedRoles(@Nullable List<String> excludedRoles) {
@@ -149,6 +187,14 @@ public final class ConditionalAccessPolicyConditionsUsers {
             return includedGroups(List.of(includedGroups));
         }
         @CustomType.Setter
+        public Builder includedGuestsOrExternalUsers(@Nullable List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser> includedGuestsOrExternalUsers) {
+            this.includedGuestsOrExternalUsers = includedGuestsOrExternalUsers;
+            return this;
+        }
+        public Builder includedGuestsOrExternalUsers(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser... includedGuestsOrExternalUsers) {
+            return includedGuestsOrExternalUsers(List.of(includedGuestsOrExternalUsers));
+        }
+        @CustomType.Setter
         public Builder includedRoles(@Nullable List<String> includedRoles) {
             this.includedRoles = includedRoles;
             return this;
@@ -167,9 +213,11 @@ public final class ConditionalAccessPolicyConditionsUsers {
         public ConditionalAccessPolicyConditionsUsers build() {
             final var o = new ConditionalAccessPolicyConditionsUsers();
             o.excludedGroups = excludedGroups;
+            o.excludedGuestsOrExternalUsers = excludedGuestsOrExternalUsers;
             o.excludedRoles = excludedRoles;
             o.excludedUsers = excludedUsers;
             o.includedGroups = includedGroups;
+            o.includedGuestsOrExternalUsers = includedGuestsOrExternalUsers;
             o.includedRoles = includedRoles;
             o.includedUsers = includedUsers;
             return o;

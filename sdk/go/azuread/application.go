@@ -111,7 +111,7 @@ import (
 //						Gallery:    pulumi.Bool(true),
 //					},
 //				},
-//				OptionalClaims: &azuread.ApplicationOptionalClaimsArgs{
+//				OptionalClaims: &azuread.ApplicationOptionalClaimsTypeArgs{
 //					AccessTokens: azuread.ApplicationOptionalClaimsAccessTokenArray{
 //						&azuread.ApplicationOptionalClaimsAccessTokenArgs{
 //							Name: pulumi.String("myclaim"),
@@ -278,7 +278,7 @@ type Application struct {
 	// The application's object ID.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// An `optionalClaims` block as documented below.
-	OptionalClaims ApplicationOptionalClaimsPtrOutput `pulumi:"optionalClaims"`
+	OptionalClaims ApplicationOptionalClaimsTypePtrOutput `pulumi:"optionalClaims"`
 	// A list of object IDs of principals that will be granted ownership of the application
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
@@ -395,7 +395,7 @@ type applicationState struct {
 	// The application's object ID.
 	ObjectId *string `pulumi:"objectId"`
 	// An `optionalClaims` block as documented below.
-	OptionalClaims *ApplicationOptionalClaims `pulumi:"optionalClaims"`
+	OptionalClaims *ApplicationOptionalClaimsType `pulumi:"optionalClaims"`
 	// A list of object IDs of principals that will be granted ownership of the application
 	Owners []string `pulumi:"owners"`
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
@@ -480,7 +480,7 @@ type ApplicationState struct {
 	// The application's object ID.
 	ObjectId pulumi.StringPtrInput
 	// An `optionalClaims` block as documented below.
-	OptionalClaims ApplicationOptionalClaimsPtrInput
+	OptionalClaims ApplicationOptionalClaimsTypePtrInput
 	// A list of object IDs of principals that will be granted ownership of the application
 	Owners pulumi.StringArrayInput
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
@@ -553,7 +553,7 @@ type applicationArgs struct {
 	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
 	Oauth2PostResponseRequired *bool `pulumi:"oauth2PostResponseRequired"`
 	// An `optionalClaims` block as documented below.
-	OptionalClaims *ApplicationOptionalClaims `pulumi:"optionalClaims"`
+	OptionalClaims *ApplicationOptionalClaimsType `pulumi:"optionalClaims"`
 	// A list of object IDs of principals that will be granted ownership of the application
 	Owners []string `pulumi:"owners"`
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
@@ -621,7 +621,7 @@ type ApplicationArgs struct {
 	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
 	Oauth2PostResponseRequired pulumi.BoolPtrInput
 	// An `optionalClaims` block as documented below.
-	OptionalClaims ApplicationOptionalClaimsPtrInput
+	OptionalClaims ApplicationOptionalClaimsTypePtrInput
 	// A list of object IDs of principals that will be granted ownership of the application
 	Owners pulumi.StringArrayInput
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
@@ -874,8 +874,8 @@ func (o ApplicationOutput) ObjectId() pulumi.StringOutput {
 }
 
 // An `optionalClaims` block as documented below.
-func (o ApplicationOutput) OptionalClaims() ApplicationOptionalClaimsPtrOutput {
-	return o.ApplyT(func(v *Application) ApplicationOptionalClaimsPtrOutput { return v.OptionalClaims }).(ApplicationOptionalClaimsPtrOutput)
+func (o ApplicationOutput) OptionalClaims() ApplicationOptionalClaimsTypePtrOutput {
+	return o.ApplyT(func(v *Application) ApplicationOptionalClaimsTypePtrOutput { return v.OptionalClaims }).(ApplicationOptionalClaimsTypePtrOutput)
 }
 
 // A list of object IDs of principals that will be granted ownership of the application

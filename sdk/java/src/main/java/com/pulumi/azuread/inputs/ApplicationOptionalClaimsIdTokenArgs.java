@@ -18,14 +18,14 @@ public final class ApplicationOptionalClaimsIdTokenArgs extends com.pulumi.resou
     public static final ApplicationOptionalClaimsIdTokenArgs Empty = new ApplicationOptionalClaimsIdTokenArgs();
 
     /**
-     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
      * 
      */
     @Import(name="additionalProperties")
     private @Nullable Output<List<String>> additionalProperties;
 
     /**
-     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
      * 
      */
     public Optional<Output<List<String>>> additionalProperties() {
@@ -105,7 +105,7 @@ public final class ApplicationOptionalClaimsIdTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ApplicationOptionalClaimsIdTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ApplicationOptionalClaimsIdTokenArgs extends com.pulumi.resou
         }
 
         /**
-         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
          * 
          * @return builder
          * 

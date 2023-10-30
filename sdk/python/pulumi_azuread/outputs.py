@@ -47,6 +47,10 @@ __all__ = [
     'ConditionalAccessPolicyConditionsLocations',
     'ConditionalAccessPolicyConditionsPlatforms',
     'ConditionalAccessPolicyConditionsUsers',
+    'ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser',
+    'ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant',
+    'ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser',
+    'ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant',
     'ConditionalAccessPolicyGrantControls',
     'ConditionalAccessPolicySessionControls',
     'CustomDirectoryRolePermission',
@@ -1458,7 +1462,7 @@ class ApplicationOptionalClaimsAccessToken(dict):
                  source: Optional[str] = None):
         """
         :param str name: The name of the optional claim.
-        :param Sequence[str] additional_properties: List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param Sequence[str] additional_properties: List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -1482,7 +1486,7 @@ class ApplicationOptionalClaimsAccessToken(dict):
     @pulumi.getter(name="additionalProperties")
     def additional_properties(self) -> Optional[Sequence[str]]:
         """
-        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
         """
         return pulumi.get(self, "additional_properties")
 
@@ -1529,7 +1533,7 @@ class ApplicationOptionalClaimsIdToken(dict):
                  source: Optional[str] = None):
         """
         :param str name: The name of the optional claim.
-        :param Sequence[str] additional_properties: List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param Sequence[str] additional_properties: List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -1553,7 +1557,7 @@ class ApplicationOptionalClaimsIdToken(dict):
     @pulumi.getter(name="additionalProperties")
     def additional_properties(self) -> Optional[Sequence[str]]:
         """
-        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
         """
         return pulumi.get(self, "additional_properties")
 
@@ -1600,7 +1604,7 @@ class ApplicationOptionalClaimsSaml2Token(dict):
                  source: Optional[str] = None):
         """
         :param str name: The name of the optional claim.
-        :param Sequence[str] additional_properties: List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param Sequence[str] additional_properties: List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -1624,7 +1628,7 @@ class ApplicationOptionalClaimsSaml2Token(dict):
     @pulumi.getter(name="additionalProperties")
     def additional_properties(self) -> Optional[Sequence[str]]:
         """
-        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
         """
         return pulumi.get(self, "additional_properties")
 
@@ -2194,7 +2198,7 @@ class ConditionalAccessPolicyConditionsDevices(dict):
     def __init__(__self__, *,
                  filter: Optional['outputs.ConditionalAccessPolicyConditionsDevicesFilter'] = None):
         """
-        :param 'ConditionalAccessPolicyConditionsDevicesFilterArgs' filter: A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+        :param 'ConditionalAccessPolicyConditionsDevicesFilterArgs' filter: A `filter` block as described below.
         """
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
@@ -2203,7 +2207,7 @@ class ConditionalAccessPolicyConditionsDevices(dict):
     @pulumi.getter
     def filter(self) -> Optional['outputs.ConditionalAccessPolicyConditionsDevicesFilter']:
         """
-        A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+        A `filter` block as described below.
         """
         return pulumi.get(self, "filter")
 
@@ -2342,12 +2346,16 @@ class ConditionalAccessPolicyConditionsUsers(dict):
         suggest = None
         if key == "excludedGroups":
             suggest = "excluded_groups"
+        elif key == "excludedGuestsOrExternalUsers":
+            suggest = "excluded_guests_or_external_users"
         elif key == "excludedRoles":
             suggest = "excluded_roles"
         elif key == "excludedUsers":
             suggest = "excluded_users"
         elif key == "includedGroups":
             suggest = "included_groups"
+        elif key == "includedGuestsOrExternalUsers":
+            suggest = "included_guests_or_external_users"
         elif key == "includedRoles":
             suggest = "included_roles"
         elif key == "includedUsers":
@@ -2366,29 +2374,37 @@ class ConditionalAccessPolicyConditionsUsers(dict):
 
     def __init__(__self__, *,
                  excluded_groups: Optional[Sequence[str]] = None,
+                 excluded_guests_or_external_users: Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser']] = None,
                  excluded_roles: Optional[Sequence[str]] = None,
                  excluded_users: Optional[Sequence[str]] = None,
                  included_groups: Optional[Sequence[str]] = None,
+                 included_guests_or_external_users: Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser']] = None,
                  included_roles: Optional[Sequence[str]] = None,
                  included_users: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] excluded_groups: A list of group IDs excluded from scope of policy.
+        :param Sequence['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs'] excluded_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
         :param Sequence[str] excluded_roles: A list of role IDs excluded from scope of policy.
         :param Sequence[str] excluded_users: A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
         :param Sequence[str] included_groups: A list of group IDs in scope of policy unless explicitly excluded.
+        :param Sequence['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs'] included_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
         :param Sequence[str] included_roles: A list of role IDs in scope of policy unless explicitly excluded.
         :param Sequence[str] included_users: A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
                
-               > At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+               > At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
         """
         if excluded_groups is not None:
             pulumi.set(__self__, "excluded_groups", excluded_groups)
+        if excluded_guests_or_external_users is not None:
+            pulumi.set(__self__, "excluded_guests_or_external_users", excluded_guests_or_external_users)
         if excluded_roles is not None:
             pulumi.set(__self__, "excluded_roles", excluded_roles)
         if excluded_users is not None:
             pulumi.set(__self__, "excluded_users", excluded_users)
         if included_groups is not None:
             pulumi.set(__self__, "included_groups", included_groups)
+        if included_guests_or_external_users is not None:
+            pulumi.set(__self__, "included_guests_or_external_users", included_guests_or_external_users)
         if included_roles is not None:
             pulumi.set(__self__, "included_roles", included_roles)
         if included_users is not None:
@@ -2401,6 +2417,14 @@ class ConditionalAccessPolicyConditionsUsers(dict):
         A list of group IDs excluded from scope of policy.
         """
         return pulumi.get(self, "excluded_groups")
+
+    @property
+    @pulumi.getter(name="excludedGuestsOrExternalUsers")
+    def excluded_guests_or_external_users(self) -> Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser']]:
+        """
+        A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+        """
+        return pulumi.get(self, "excluded_guests_or_external_users")
 
     @property
     @pulumi.getter(name="excludedRoles")
@@ -2427,6 +2451,14 @@ class ConditionalAccessPolicyConditionsUsers(dict):
         return pulumi.get(self, "included_groups")
 
     @property
+    @pulumi.getter(name="includedGuestsOrExternalUsers")
+    def included_guests_or_external_users(self) -> Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser']]:
+        """
+        A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+        """
+        return pulumi.get(self, "included_guests_or_external_users")
+
+    @property
     @pulumi.getter(name="includedRoles")
     def included_roles(self) -> Optional[Sequence[str]]:
         """
@@ -2440,9 +2472,201 @@ class ConditionalAccessPolicyConditionsUsers(dict):
         """
         A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
 
-        > At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+        > At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
         """
         return pulumi.get(self, "included_users")
+
+
+@pulumi.output_type
+class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "guestOrExternalUserTypes":
+            suggest = "guest_or_external_user_types"
+        elif key == "externalTenants":
+            suggest = "external_tenants"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 guest_or_external_user_types: Sequence[str],
+                 external_tenants: Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant']] = None):
+        """
+        :param Sequence[str] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        :param Sequence['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs'] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
+        pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
+        if external_tenants is not None:
+            pulumi.set(__self__, "external_tenants", external_tenants)
+
+    @property
+    @pulumi.getter(name="guestOrExternalUserTypes")
+    def guest_or_external_user_types(self) -> Sequence[str]:
+        """
+        A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "guest_or_external_user_types")
+
+    @property
+    @pulumi.getter(name="externalTenants")
+    def external_tenants(self) -> Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant']]:
+        """
+        An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
+        return pulumi.get(self, "external_tenants")
+
+
+@pulumi.output_type
+class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "membershipKind":
+            suggest = "membership_kind"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 membership_kind: str,
+                 members: Optional[Sequence[str]] = None):
+        """
+        :param str membership_kind: The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+        :param Sequence[str] members: A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+        """
+        pulumi.set(__self__, "membership_kind", membership_kind)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+
+    @property
+    @pulumi.getter(name="membershipKind")
+    def membership_kind(self) -> str:
+        """
+        The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "membership_kind")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[Sequence[str]]:
+        """
+        A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+        """
+        return pulumi.get(self, "members")
+
+
+@pulumi.output_type
+class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "guestOrExternalUserTypes":
+            suggest = "guest_or_external_user_types"
+        elif key == "externalTenants":
+            suggest = "external_tenants"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 guest_or_external_user_types: Sequence[str],
+                 external_tenants: Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant']] = None):
+        """
+        :param Sequence[str] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        :param Sequence['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs'] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
+        pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
+        if external_tenants is not None:
+            pulumi.set(__self__, "external_tenants", external_tenants)
+
+    @property
+    @pulumi.getter(name="guestOrExternalUserTypes")
+    def guest_or_external_user_types(self) -> Sequence[str]:
+        """
+        A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "guest_or_external_user_types")
+
+    @property
+    @pulumi.getter(name="externalTenants")
+    def external_tenants(self) -> Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant']]:
+        """
+        An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
+        return pulumi.get(self, "external_tenants")
+
+
+@pulumi.output_type
+class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "membershipKind":
+            suggest = "membership_kind"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 membership_kind: str,
+                 members: Optional[Sequence[str]] = None):
+        """
+        :param str membership_kind: The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+        :param Sequence[str] members: A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+        """
+        pulumi.set(__self__, "membership_kind", membership_kind)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+
+    @property
+    @pulumi.getter(name="membershipKind")
+    def membership_kind(self) -> str:
+        """
+        The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "membership_kind")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[Sequence[str]]:
+        """
+        A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+        """
+        return pulumi.get(self, "members")
 
 
 @pulumi.output_type
@@ -2553,6 +2777,10 @@ class ConditionalAccessPolicySessionControls(dict):
             suggest = "persistent_browser_mode"
         elif key == "signInFrequency":
             suggest = "sign_in_frequency"
+        elif key == "signInFrequencyAuthenticationType":
+            suggest = "sign_in_frequency_authentication_type"
+        elif key == "signInFrequencyInterval":
+            suggest = "sign_in_frequency_interval"
         elif key == "signInFrequencyPeriod":
             suggest = "sign_in_frequency_period"
 
@@ -2573,6 +2801,8 @@ class ConditionalAccessPolicySessionControls(dict):
                  disable_resilience_defaults: Optional[bool] = None,
                  persistent_browser_mode: Optional[str] = None,
                  sign_in_frequency: Optional[int] = None,
+                 sign_in_frequency_authentication_type: Optional[str] = None,
+                 sign_in_frequency_interval: Optional[str] = None,
                  sign_in_frequency_period: Optional[str] = None):
         """
         :param bool application_enforced_restrictions_enabled: Whether application enforced restrictions are enabled. Defaults to `false`.
@@ -2581,8 +2811,10 @@ class ConditionalAccessPolicySessionControls(dict):
         :param str cloud_app_security_policy: Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
         :param bool disable_resilience_defaults: Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
         :param str persistent_browser_mode: Session control to define whether to persist cookies. Possible values are: `always` or `never`.
-        :param int sign_in_frequency: Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
-        :param str sign_in_frequency_period: The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+        :param int sign_in_frequency: Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+        :param str sign_in_frequency_authentication_type: Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+        :param str sign_in_frequency_interval: The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+        :param str sign_in_frequency_period: The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
         """
         if application_enforced_restrictions_enabled is not None:
             pulumi.set(__self__, "application_enforced_restrictions_enabled", application_enforced_restrictions_enabled)
@@ -2594,6 +2826,10 @@ class ConditionalAccessPolicySessionControls(dict):
             pulumi.set(__self__, "persistent_browser_mode", persistent_browser_mode)
         if sign_in_frequency is not None:
             pulumi.set(__self__, "sign_in_frequency", sign_in_frequency)
+        if sign_in_frequency_authentication_type is not None:
+            pulumi.set(__self__, "sign_in_frequency_authentication_type", sign_in_frequency_authentication_type)
+        if sign_in_frequency_interval is not None:
+            pulumi.set(__self__, "sign_in_frequency_interval", sign_in_frequency_interval)
         if sign_in_frequency_period is not None:
             pulumi.set(__self__, "sign_in_frequency_period", sign_in_frequency_period)
 
@@ -2635,15 +2871,31 @@ class ConditionalAccessPolicySessionControls(dict):
     @pulumi.getter(name="signInFrequency")
     def sign_in_frequency(self) -> Optional[int]:
         """
-        Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+        Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
         """
         return pulumi.get(self, "sign_in_frequency")
+
+    @property
+    @pulumi.getter(name="signInFrequencyAuthenticationType")
+    def sign_in_frequency_authentication_type(self) -> Optional[str]:
+        """
+        Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+        """
+        return pulumi.get(self, "sign_in_frequency_authentication_type")
+
+    @property
+    @pulumi.getter(name="signInFrequencyInterval")
+    def sign_in_frequency_interval(self) -> Optional[str]:
+        """
+        The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+        """
+        return pulumi.get(self, "sign_in_frequency_interval")
 
     @property
     @pulumi.getter(name="signInFrequencyPeriod")
     def sign_in_frequency_period(self) -> Optional[str]:
         """
-        The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+        The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
         """
         return pulumi.get(self, "sign_in_frequency_period")
 
