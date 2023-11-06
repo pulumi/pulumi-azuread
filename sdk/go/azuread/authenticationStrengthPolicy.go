@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Authentication Strength Policy within Azure Active Directory.
@@ -173,12 +172,6 @@ func (i *AuthenticationStrengthPolicy) ToAuthenticationStrengthPolicyOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationStrengthPolicyOutput)
 }
 
-func (i *AuthenticationStrengthPolicy) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationStrengthPolicy] {
-	return pulumix.Output[*AuthenticationStrengthPolicy]{
-		OutputState: i.ToAuthenticationStrengthPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthenticationStrengthPolicyArrayInput is an input type that accepts AuthenticationStrengthPolicyArray and AuthenticationStrengthPolicyArrayOutput values.
 // You can construct a concrete instance of `AuthenticationStrengthPolicyArrayInput` via:
 //
@@ -202,12 +195,6 @@ func (i AuthenticationStrengthPolicyArray) ToAuthenticationStrengthPolicyArrayOu
 
 func (i AuthenticationStrengthPolicyArray) ToAuthenticationStrengthPolicyArrayOutputWithContext(ctx context.Context) AuthenticationStrengthPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationStrengthPolicyArrayOutput)
-}
-
-func (i AuthenticationStrengthPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthenticationStrengthPolicy] {
-	return pulumix.Output[[]*AuthenticationStrengthPolicy]{
-		OutputState: i.ToAuthenticationStrengthPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AuthenticationStrengthPolicyMapInput is an input type that accepts AuthenticationStrengthPolicyMap and AuthenticationStrengthPolicyMapOutput values.
@@ -235,12 +222,6 @@ func (i AuthenticationStrengthPolicyMap) ToAuthenticationStrengthPolicyMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationStrengthPolicyMapOutput)
 }
 
-func (i AuthenticationStrengthPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthenticationStrengthPolicy] {
-	return pulumix.Output[map[string]*AuthenticationStrengthPolicy]{
-		OutputState: i.ToAuthenticationStrengthPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthenticationStrengthPolicyOutput struct{ *pulumi.OutputState }
 
 func (AuthenticationStrengthPolicyOutput) ElementType() reflect.Type {
@@ -253,12 +234,6 @@ func (o AuthenticationStrengthPolicyOutput) ToAuthenticationStrengthPolicyOutput
 
 func (o AuthenticationStrengthPolicyOutput) ToAuthenticationStrengthPolicyOutputWithContext(ctx context.Context) AuthenticationStrengthPolicyOutput {
 	return o
-}
-
-func (o AuthenticationStrengthPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthenticationStrengthPolicy] {
-	return pulumix.Output[*AuthenticationStrengthPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of allowed authentication methods for this authentication strength policy.
@@ -290,12 +265,6 @@ func (o AuthenticationStrengthPolicyArrayOutput) ToAuthenticationStrengthPolicyA
 	return o
 }
 
-func (o AuthenticationStrengthPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthenticationStrengthPolicy] {
-	return pulumix.Output[[]*AuthenticationStrengthPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuthenticationStrengthPolicyArrayOutput) Index(i pulumi.IntInput) AuthenticationStrengthPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthenticationStrengthPolicy {
 		return vs[0].([]*AuthenticationStrengthPolicy)[vs[1].(int)]
@@ -314,12 +283,6 @@ func (o AuthenticationStrengthPolicyMapOutput) ToAuthenticationStrengthPolicyMap
 
 func (o AuthenticationStrengthPolicyMapOutput) ToAuthenticationStrengthPolicyMapOutputWithContext(ctx context.Context) AuthenticationStrengthPolicyMapOutput {
 	return o
-}
-
-func (o AuthenticationStrengthPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthenticationStrengthPolicy] {
-	return pulumix.Output[map[string]*AuthenticationStrengthPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthenticationStrengthPolicyMapOutput) MapIndex(k pulumi.StringInput) AuthenticationStrengthPolicyOutput {
