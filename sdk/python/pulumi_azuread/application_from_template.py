@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationFromTemplateArgs', 'ApplicationFromTemplate']
@@ -21,8 +21,29 @@ class ApplicationFromTemplateArgs:
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "template_id", template_id)
+        ApplicationFromTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            template_id=template_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if template_id is None:
+            raise TypeError("Missing 'template_id' argument")
+
+        _setter("display_name", display_name)
+        _setter("template_id", template_id)
 
     @property
     @pulumi.getter(name="displayName")
@@ -67,18 +88,51 @@ class _ApplicationFromTemplateState:
         :param pulumi.Input[str] service_principal_object_id: The object ID for the service principal.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         """
+        _ApplicationFromTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            application_object_id=application_object_id,
+            display_name=display_name,
+            service_principal_id=service_principal_id,
+            service_principal_object_id=service_principal_object_id,
+            template_id=template_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
+             application_object_id: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             service_principal_object_id: Optional[pulumi.Input[str]] = None,
+             template_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_object_id is None and 'applicationObjectId' in kwargs:
+            application_object_id = kwargs['applicationObjectId']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if service_principal_object_id is None and 'servicePrincipalObjectId' in kwargs:
+            service_principal_object_id = kwargs['servicePrincipalObjectId']
+        if template_id is None and 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if application_object_id is not None:
-            pulumi.set(__self__, "application_object_id", application_object_id)
+            _setter("application_object_id", application_object_id)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if service_principal_id is not None:
-            pulumi.set(__self__, "service_principal_id", service_principal_id)
+            _setter("service_principal_id", service_principal_id)
         if service_principal_object_id is not None:
-            pulumi.set(__self__, "service_principal_object_id", service_principal_object_id)
+            _setter("service_principal_object_id", service_principal_object_id)
         if template_id is not None:
-            pulumi.set(__self__, "template_id", template_id)
+            _setter("template_id", template_id)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -252,6 +306,10 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationFromTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

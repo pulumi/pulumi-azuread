@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationKnownClientsArgs', 'ApplicationKnownClients']
@@ -21,8 +21,29 @@ class ApplicationKnownClientsArgs:
         :param pulumi.Input[str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] known_client_ids: A set of client IDs for the known applications.
         """
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "known_client_ids", known_client_ids)
+        ApplicationKnownClientsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            known_client_ids=known_client_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
+             known_client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if known_client_ids is None and 'knownClientIds' in kwargs:
+            known_client_ids = kwargs['knownClientIds']
+        if known_client_ids is None:
+            raise TypeError("Missing 'known_client_ids' argument")
+
+        _setter("application_id", application_id)
+        _setter("known_client_ids", known_client_ids)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -59,10 +80,27 @@ class _ApplicationKnownClientsState:
         :param pulumi.Input[str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] known_client_ids: A set of client IDs for the known applications.
         """
+        _ApplicationKnownClientsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            known_client_ids=known_client_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
+             known_client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if known_client_ids is None and 'knownClientIds' in kwargs:
+            known_client_ids = kwargs['knownClientIds']
+
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if known_client_ids is not None:
-            pulumi.set(__self__, "known_client_ids", known_client_ids)
+            _setter("known_client_ids", known_client_ids)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -162,6 +200,10 @@ class ApplicationKnownClients(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationKnownClientsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

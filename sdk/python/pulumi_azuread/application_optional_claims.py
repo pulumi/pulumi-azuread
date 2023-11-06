@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,13 +29,40 @@ class ApplicationOptionalClaimsInitArgs:
                
                > At least one of `access_token`, `id_token` or `saml2_token` must be specified
         """
-        pulumi.set(__self__, "application_id", application_id)
+        ApplicationOptionalClaimsInitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            access_tokens=access_tokens,
+            id_tokens=id_tokens,
+            saml2_tokens=saml2_tokens,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: Optional[pulumi.Input[str]] = None,
+             access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]] = None,
+             id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]] = None,
+             saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if access_tokens is None and 'accessTokens' in kwargs:
+            access_tokens = kwargs['accessTokens']
+        if id_tokens is None and 'idTokens' in kwargs:
+            id_tokens = kwargs['idTokens']
+        if saml2_tokens is None and 'saml2Tokens' in kwargs:
+            saml2_tokens = kwargs['saml2Tokens']
+
+        _setter("application_id", application_id)
         if access_tokens is not None:
-            pulumi.set(__self__, "access_tokens", access_tokens)
+            _setter("access_tokens", access_tokens)
         if id_tokens is not None:
-            pulumi.set(__self__, "id_tokens", id_tokens)
+            _setter("id_tokens", id_tokens)
         if saml2_tokens is not None:
-            pulumi.set(__self__, "saml2_tokens", saml2_tokens)
+            _setter("saml2_tokens", saml2_tokens)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -104,14 +131,39 @@ class _ApplicationOptionalClaimsState:
                
                > At least one of `access_token`, `id_token` or `saml2_token` must be specified
         """
+        _ApplicationOptionalClaimsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_tokens=access_tokens,
+            application_id=application_id,
+            id_tokens=id_tokens,
+            saml2_tokens=saml2_tokens,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]] = None,
+             saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_tokens is None and 'accessTokens' in kwargs:
+            access_tokens = kwargs['accessTokens']
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if id_tokens is None and 'idTokens' in kwargs:
+            id_tokens = kwargs['idTokens']
+        if saml2_tokens is None and 'saml2Tokens' in kwargs:
+            saml2_tokens = kwargs['saml2Tokens']
+
         if access_tokens is not None:
-            pulumi.set(__self__, "access_tokens", access_tokens)
+            _setter("access_tokens", access_tokens)
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if id_tokens is not None:
-            pulumi.set(__self__, "id_tokens", id_tokens)
+            _setter("id_tokens", id_tokens)
         if saml2_tokens is not None:
-            pulumi.set(__self__, "saml2_tokens", saml2_tokens)
+            _setter("saml2_tokens", saml2_tokens)
 
     @property
     @pulumi.getter(name="accessTokens")
@@ -273,6 +325,10 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationOptionalClaimsInitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationPermissionScopeArgs', 'ApplicationPermissionScope']
@@ -35,17 +35,64 @@ class ApplicationPermissionScopeArgs:
         :param pulumi.Input[str] user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         :param pulumi.Input[str] user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience
         """
-        pulumi.set(__self__, "admin_consent_description", admin_consent_description)
-        pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "scope_id", scope_id)
-        pulumi.set(__self__, "value", value)
+        ApplicationPermissionScopeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_consent_description=admin_consent_description,
+            admin_consent_display_name=admin_consent_display_name,
+            application_id=application_id,
+            scope_id=scope_id,
+            value=value,
+            type=type,
+            user_consent_description=user_consent_description,
+            user_consent_display_name=user_consent_display_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_consent_description: Optional[pulumi.Input[str]] = None,
+             admin_consent_display_name: Optional[pulumi.Input[str]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             scope_id: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user_consent_description: Optional[pulumi.Input[str]] = None,
+             user_consent_display_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_consent_description is None and 'adminConsentDescription' in kwargs:
+            admin_consent_description = kwargs['adminConsentDescription']
+        if admin_consent_description is None:
+            raise TypeError("Missing 'admin_consent_description' argument")
+        if admin_consent_display_name is None and 'adminConsentDisplayName' in kwargs:
+            admin_consent_display_name = kwargs['adminConsentDisplayName']
+        if admin_consent_display_name is None:
+            raise TypeError("Missing 'admin_consent_display_name' argument")
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if scope_id is None:
+            raise TypeError("Missing 'scope_id' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if user_consent_description is None and 'userConsentDescription' in kwargs:
+            user_consent_description = kwargs['userConsentDescription']
+        if user_consent_display_name is None and 'userConsentDisplayName' in kwargs:
+            user_consent_display_name = kwargs['userConsentDisplayName']
+
+        _setter("admin_consent_description", admin_consent_description)
+        _setter("admin_consent_display_name", admin_consent_display_name)
+        _setter("application_id", application_id)
+        _setter("scope_id", scope_id)
+        _setter("value", value)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if user_consent_description is not None:
-            pulumi.set(__self__, "user_consent_description", user_consent_description)
+            _setter("user_consent_description", user_consent_description)
         if user_consent_display_name is not None:
-            pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
+            _setter("user_consent_display_name", user_consent_display_name)
 
     @property
     @pulumi.getter(name="adminConsentDescription")
@@ -170,22 +217,59 @@ class _ApplicationPermissionScopeState:
                
                > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
         """
+        _ApplicationPermissionScopeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_consent_description=admin_consent_description,
+            admin_consent_display_name=admin_consent_display_name,
+            application_id=application_id,
+            scope_id=scope_id,
+            type=type,
+            user_consent_description=user_consent_description,
+            user_consent_display_name=user_consent_display_name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_consent_description: Optional[pulumi.Input[str]] = None,
+             admin_consent_display_name: Optional[pulumi.Input[str]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             scope_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user_consent_description: Optional[pulumi.Input[str]] = None,
+             user_consent_display_name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_consent_description is None and 'adminConsentDescription' in kwargs:
+            admin_consent_description = kwargs['adminConsentDescription']
+        if admin_consent_display_name is None and 'adminConsentDisplayName' in kwargs:
+            admin_consent_display_name = kwargs['adminConsentDisplayName']
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if scope_id is None and 'scopeId' in kwargs:
+            scope_id = kwargs['scopeId']
+        if user_consent_description is None and 'userConsentDescription' in kwargs:
+            user_consent_description = kwargs['userConsentDescription']
+        if user_consent_display_name is None and 'userConsentDisplayName' in kwargs:
+            user_consent_display_name = kwargs['userConsentDisplayName']
+
         if admin_consent_description is not None:
-            pulumi.set(__self__, "admin_consent_description", admin_consent_description)
+            _setter("admin_consent_description", admin_consent_description)
         if admin_consent_display_name is not None:
-            pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
+            _setter("admin_consent_display_name", admin_consent_display_name)
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if scope_id is not None:
-            pulumi.set(__self__, "scope_id", scope_id)
+            _setter("scope_id", scope_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if user_consent_description is not None:
-            pulumi.set(__self__, "user_consent_description", user_consent_description)
+            _setter("user_consent_description", user_consent_description)
         if user_consent_display_name is not None:
-            pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
+            _setter("user_consent_display_name", user_consent_display_name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter(name="adminConsentDescription")
@@ -407,6 +491,10 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationPermissionScopeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

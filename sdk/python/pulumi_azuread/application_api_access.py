@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApplicationApiAccessArgs', 'ApplicationApiAccess']
@@ -27,12 +27,41 @@ class ApplicationApiAccessArgs:
                
                > At least one of `role_ids` or `scope_ids` must be specified.
         """
-        pulumi.set(__self__, "api_client_id", api_client_id)
-        pulumi.set(__self__, "application_id", application_id)
+        ApplicationApiAccessArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_client_id=api_client_id,
+            application_id=application_id,
+            role_ids=role_ids,
+            scope_ids=scope_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_client_id: Optional[pulumi.Input[str]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             scope_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_client_id is None and 'apiClientId' in kwargs:
+            api_client_id = kwargs['apiClientId']
+        if api_client_id is None:
+            raise TypeError("Missing 'api_client_id' argument")
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if role_ids is None and 'roleIds' in kwargs:
+            role_ids = kwargs['roleIds']
+        if scope_ids is None and 'scopeIds' in kwargs:
+            scope_ids = kwargs['scopeIds']
+
+        _setter("api_client_id", api_client_id)
+        _setter("application_id", application_id)
         if role_ids is not None:
-            pulumi.set(__self__, "role_ids", role_ids)
+            _setter("role_ids", role_ids)
         if scope_ids is not None:
-            pulumi.set(__self__, "scope_ids", scope_ids)
+            _setter("scope_ids", scope_ids)
 
     @property
     @pulumi.getter(name="apiClientId")
@@ -101,14 +130,39 @@ class _ApplicationApiAccessState:
                
                > At least one of `role_ids` or `scope_ids` must be specified.
         """
+        _ApplicationApiAccessState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_client_id=api_client_id,
+            application_id=application_id,
+            role_ids=role_ids,
+            scope_ids=scope_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_client_id: Optional[pulumi.Input[str]] = None,
+             application_id: Optional[pulumi.Input[str]] = None,
+             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             scope_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_client_id is None and 'apiClientId' in kwargs:
+            api_client_id = kwargs['apiClientId']
+        if application_id is None and 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if role_ids is None and 'roleIds' in kwargs:
+            role_ids = kwargs['roleIds']
+        if scope_ids is None and 'scopeIds' in kwargs:
+            scope_ids = kwargs['scopeIds']
+
         if api_client_id is not None:
-            pulumi.set(__self__, "api_client_id", api_client_id)
+            _setter("api_client_id", api_client_id)
         if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+            _setter("application_id", application_id)
         if role_ids is not None:
-            pulumi.set(__self__, "role_ids", role_ids)
+            _setter("role_ids", role_ids)
         if scope_ids is not None:
-            pulumi.set(__self__, "scope_ids", scope_ids)
+            _setter("scope_ids", scope_ids)
 
     @property
     @pulumi.getter(name="apiClientId")
@@ -278,6 +332,10 @@ class ApplicationApiAccess(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationApiAccessArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

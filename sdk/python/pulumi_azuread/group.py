@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -79,49 +79,134 @@ class GroupArgs:
                > **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing groups if you want to avoid name collisions.
         :param pulumi.Input[bool] writeback_enabled: Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
         """
-        pulumi.set(__self__, "display_name", display_name)
+        GroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            administrative_unit_ids=administrative_unit_ids,
+            assignable_to_role=assignable_to_role,
+            auto_subscribe_new_members=auto_subscribe_new_members,
+            behaviors=behaviors,
+            description=description,
+            dynamic_membership=dynamic_membership,
+            external_senders_allowed=external_senders_allowed,
+            hide_from_address_lists=hide_from_address_lists,
+            hide_from_outlook_clients=hide_from_outlook_clients,
+            mail_enabled=mail_enabled,
+            mail_nickname=mail_nickname,
+            members=members,
+            onpremises_group_type=onpremises_group_type,
+            owners=owners,
+            prevent_duplicate_names=prevent_duplicate_names,
+            provisioning_options=provisioning_options,
+            security_enabled=security_enabled,
+            theme=theme,
+            types=types,
+            visibility=visibility,
+            writeback_enabled=writeback_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: Optional[pulumi.Input[str]] = None,
+             administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             assignable_to_role: Optional[pulumi.Input[bool]] = None,
+             auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
+             behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dynamic_membership: Optional[pulumi.Input['GroupDynamicMembershipArgs']] = None,
+             external_senders_allowed: Optional[pulumi.Input[bool]] = None,
+             hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
+             hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
+             mail_enabled: Optional[pulumi.Input[bool]] = None,
+             mail_nickname: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             onpremises_group_type: Optional[pulumi.Input[str]] = None,
+             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+             provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_enabled: Optional[pulumi.Input[bool]] = None,
+             theme: Optional[pulumi.Input[str]] = None,
+             types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             visibility: Optional[pulumi.Input[str]] = None,
+             writeback_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+        if administrative_unit_ids is None and 'administrativeUnitIds' in kwargs:
+            administrative_unit_ids = kwargs['administrativeUnitIds']
+        if assignable_to_role is None and 'assignableToRole' in kwargs:
+            assignable_to_role = kwargs['assignableToRole']
+        if auto_subscribe_new_members is None and 'autoSubscribeNewMembers' in kwargs:
+            auto_subscribe_new_members = kwargs['autoSubscribeNewMembers']
+        if dynamic_membership is None and 'dynamicMembership' in kwargs:
+            dynamic_membership = kwargs['dynamicMembership']
+        if external_senders_allowed is None and 'externalSendersAllowed' in kwargs:
+            external_senders_allowed = kwargs['externalSendersAllowed']
+        if hide_from_address_lists is None and 'hideFromAddressLists' in kwargs:
+            hide_from_address_lists = kwargs['hideFromAddressLists']
+        if hide_from_outlook_clients is None and 'hideFromOutlookClients' in kwargs:
+            hide_from_outlook_clients = kwargs['hideFromOutlookClients']
+        if mail_enabled is None and 'mailEnabled' in kwargs:
+            mail_enabled = kwargs['mailEnabled']
+        if mail_nickname is None and 'mailNickname' in kwargs:
+            mail_nickname = kwargs['mailNickname']
+        if onpremises_group_type is None and 'onpremisesGroupType' in kwargs:
+            onpremises_group_type = kwargs['onpremisesGroupType']
+        if prevent_duplicate_names is None and 'preventDuplicateNames' in kwargs:
+            prevent_duplicate_names = kwargs['preventDuplicateNames']
+        if provisioning_options is None and 'provisioningOptions' in kwargs:
+            provisioning_options = kwargs['provisioningOptions']
+        if security_enabled is None and 'securityEnabled' in kwargs:
+            security_enabled = kwargs['securityEnabled']
+        if writeback_enabled is None and 'writebackEnabled' in kwargs:
+            writeback_enabled = kwargs['writebackEnabled']
+
+        _setter("display_name", display_name)
         if administrative_unit_ids is not None:
-            pulumi.set(__self__, "administrative_unit_ids", administrative_unit_ids)
+            _setter("administrative_unit_ids", administrative_unit_ids)
         if assignable_to_role is not None:
-            pulumi.set(__self__, "assignable_to_role", assignable_to_role)
+            _setter("assignable_to_role", assignable_to_role)
         if auto_subscribe_new_members is not None:
-            pulumi.set(__self__, "auto_subscribe_new_members", auto_subscribe_new_members)
+            _setter("auto_subscribe_new_members", auto_subscribe_new_members)
         if behaviors is not None:
-            pulumi.set(__self__, "behaviors", behaviors)
+            _setter("behaviors", behaviors)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dynamic_membership is not None:
-            pulumi.set(__self__, "dynamic_membership", dynamic_membership)
+            _setter("dynamic_membership", dynamic_membership)
         if external_senders_allowed is not None:
-            pulumi.set(__self__, "external_senders_allowed", external_senders_allowed)
+            _setter("external_senders_allowed", external_senders_allowed)
         if hide_from_address_lists is not None:
-            pulumi.set(__self__, "hide_from_address_lists", hide_from_address_lists)
+            _setter("hide_from_address_lists", hide_from_address_lists)
         if hide_from_outlook_clients is not None:
-            pulumi.set(__self__, "hide_from_outlook_clients", hide_from_outlook_clients)
+            _setter("hide_from_outlook_clients", hide_from_outlook_clients)
         if mail_enabled is not None:
-            pulumi.set(__self__, "mail_enabled", mail_enabled)
+            _setter("mail_enabled", mail_enabled)
         if mail_nickname is not None:
-            pulumi.set(__self__, "mail_nickname", mail_nickname)
+            _setter("mail_nickname", mail_nickname)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if onpremises_group_type is not None:
-            pulumi.set(__self__, "onpremises_group_type", onpremises_group_type)
+            _setter("onpremises_group_type", onpremises_group_type)
         if owners is not None:
-            pulumi.set(__self__, "owners", owners)
+            _setter("owners", owners)
         if prevent_duplicate_names is not None:
-            pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
+            _setter("prevent_duplicate_names", prevent_duplicate_names)
         if provisioning_options is not None:
-            pulumi.set(__self__, "provisioning_options", provisioning_options)
+            _setter("provisioning_options", provisioning_options)
         if security_enabled is not None:
-            pulumi.set(__self__, "security_enabled", security_enabled)
+            _setter("security_enabled", security_enabled)
         if theme is not None:
-            pulumi.set(__self__, "theme", theme)
+            _setter("theme", theme)
         if types is not None:
-            pulumi.set(__self__, "types", types)
+            _setter("types", types)
         if visibility is not None:
-            pulumi.set(__self__, "visibility", visibility)
+            _setter("visibility", visibility)
         if writeback_enabled is not None:
-            pulumi.set(__self__, "writeback_enabled", writeback_enabled)
+            _setter("writeback_enabled", writeback_enabled)
 
     @property
     @pulumi.getter(name="displayName")
@@ -488,68 +573,185 @@ class _GroupState:
                > **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing groups if you want to avoid name collisions.
         :param pulumi.Input[bool] writeback_enabled: Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
         """
+        _GroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            administrative_unit_ids=administrative_unit_ids,
+            assignable_to_role=assignable_to_role,
+            auto_subscribe_new_members=auto_subscribe_new_members,
+            behaviors=behaviors,
+            description=description,
+            display_name=display_name,
+            dynamic_membership=dynamic_membership,
+            external_senders_allowed=external_senders_allowed,
+            hide_from_address_lists=hide_from_address_lists,
+            hide_from_outlook_clients=hide_from_outlook_clients,
+            mail=mail,
+            mail_enabled=mail_enabled,
+            mail_nickname=mail_nickname,
+            members=members,
+            object_id=object_id,
+            onpremises_domain_name=onpremises_domain_name,
+            onpremises_group_type=onpremises_group_type,
+            onpremises_netbios_name=onpremises_netbios_name,
+            onpremises_sam_account_name=onpremises_sam_account_name,
+            onpremises_security_identifier=onpremises_security_identifier,
+            onpremises_sync_enabled=onpremises_sync_enabled,
+            owners=owners,
+            preferred_language=preferred_language,
+            prevent_duplicate_names=prevent_duplicate_names,
+            provisioning_options=provisioning_options,
+            proxy_addresses=proxy_addresses,
+            security_enabled=security_enabled,
+            theme=theme,
+            types=types,
+            visibility=visibility,
+            writeback_enabled=writeback_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             assignable_to_role: Optional[pulumi.Input[bool]] = None,
+             auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
+             behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             dynamic_membership: Optional[pulumi.Input['GroupDynamicMembershipArgs']] = None,
+             external_senders_allowed: Optional[pulumi.Input[bool]] = None,
+             hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
+             hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
+             mail: Optional[pulumi.Input[str]] = None,
+             mail_enabled: Optional[pulumi.Input[bool]] = None,
+             mail_nickname: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             object_id: Optional[pulumi.Input[str]] = None,
+             onpremises_domain_name: Optional[pulumi.Input[str]] = None,
+             onpremises_group_type: Optional[pulumi.Input[str]] = None,
+             onpremises_netbios_name: Optional[pulumi.Input[str]] = None,
+             onpremises_sam_account_name: Optional[pulumi.Input[str]] = None,
+             onpremises_security_identifier: Optional[pulumi.Input[str]] = None,
+             onpremises_sync_enabled: Optional[pulumi.Input[bool]] = None,
+             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_language: Optional[pulumi.Input[str]] = None,
+             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+             provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             proxy_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_enabled: Optional[pulumi.Input[bool]] = None,
+             theme: Optional[pulumi.Input[str]] = None,
+             types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             visibility: Optional[pulumi.Input[str]] = None,
+             writeback_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if administrative_unit_ids is None and 'administrativeUnitIds' in kwargs:
+            administrative_unit_ids = kwargs['administrativeUnitIds']
+        if assignable_to_role is None and 'assignableToRole' in kwargs:
+            assignable_to_role = kwargs['assignableToRole']
+        if auto_subscribe_new_members is None and 'autoSubscribeNewMembers' in kwargs:
+            auto_subscribe_new_members = kwargs['autoSubscribeNewMembers']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if dynamic_membership is None and 'dynamicMembership' in kwargs:
+            dynamic_membership = kwargs['dynamicMembership']
+        if external_senders_allowed is None and 'externalSendersAllowed' in kwargs:
+            external_senders_allowed = kwargs['externalSendersAllowed']
+        if hide_from_address_lists is None and 'hideFromAddressLists' in kwargs:
+            hide_from_address_lists = kwargs['hideFromAddressLists']
+        if hide_from_outlook_clients is None and 'hideFromOutlookClients' in kwargs:
+            hide_from_outlook_clients = kwargs['hideFromOutlookClients']
+        if mail_enabled is None and 'mailEnabled' in kwargs:
+            mail_enabled = kwargs['mailEnabled']
+        if mail_nickname is None and 'mailNickname' in kwargs:
+            mail_nickname = kwargs['mailNickname']
+        if object_id is None and 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if onpremises_domain_name is None and 'onpremisesDomainName' in kwargs:
+            onpremises_domain_name = kwargs['onpremisesDomainName']
+        if onpremises_group_type is None and 'onpremisesGroupType' in kwargs:
+            onpremises_group_type = kwargs['onpremisesGroupType']
+        if onpremises_netbios_name is None and 'onpremisesNetbiosName' in kwargs:
+            onpremises_netbios_name = kwargs['onpremisesNetbiosName']
+        if onpremises_sam_account_name is None and 'onpremisesSamAccountName' in kwargs:
+            onpremises_sam_account_name = kwargs['onpremisesSamAccountName']
+        if onpremises_security_identifier is None and 'onpremisesSecurityIdentifier' in kwargs:
+            onpremises_security_identifier = kwargs['onpremisesSecurityIdentifier']
+        if onpremises_sync_enabled is None and 'onpremisesSyncEnabled' in kwargs:
+            onpremises_sync_enabled = kwargs['onpremisesSyncEnabled']
+        if preferred_language is None and 'preferredLanguage' in kwargs:
+            preferred_language = kwargs['preferredLanguage']
+        if prevent_duplicate_names is None and 'preventDuplicateNames' in kwargs:
+            prevent_duplicate_names = kwargs['preventDuplicateNames']
+        if provisioning_options is None and 'provisioningOptions' in kwargs:
+            provisioning_options = kwargs['provisioningOptions']
+        if proxy_addresses is None and 'proxyAddresses' in kwargs:
+            proxy_addresses = kwargs['proxyAddresses']
+        if security_enabled is None and 'securityEnabled' in kwargs:
+            security_enabled = kwargs['securityEnabled']
+        if writeback_enabled is None and 'writebackEnabled' in kwargs:
+            writeback_enabled = kwargs['writebackEnabled']
+
         if administrative_unit_ids is not None:
-            pulumi.set(__self__, "administrative_unit_ids", administrative_unit_ids)
+            _setter("administrative_unit_ids", administrative_unit_ids)
         if assignable_to_role is not None:
-            pulumi.set(__self__, "assignable_to_role", assignable_to_role)
+            _setter("assignable_to_role", assignable_to_role)
         if auto_subscribe_new_members is not None:
-            pulumi.set(__self__, "auto_subscribe_new_members", auto_subscribe_new_members)
+            _setter("auto_subscribe_new_members", auto_subscribe_new_members)
         if behaviors is not None:
-            pulumi.set(__self__, "behaviors", behaviors)
+            _setter("behaviors", behaviors)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if dynamic_membership is not None:
-            pulumi.set(__self__, "dynamic_membership", dynamic_membership)
+            _setter("dynamic_membership", dynamic_membership)
         if external_senders_allowed is not None:
-            pulumi.set(__self__, "external_senders_allowed", external_senders_allowed)
+            _setter("external_senders_allowed", external_senders_allowed)
         if hide_from_address_lists is not None:
-            pulumi.set(__self__, "hide_from_address_lists", hide_from_address_lists)
+            _setter("hide_from_address_lists", hide_from_address_lists)
         if hide_from_outlook_clients is not None:
-            pulumi.set(__self__, "hide_from_outlook_clients", hide_from_outlook_clients)
+            _setter("hide_from_outlook_clients", hide_from_outlook_clients)
         if mail is not None:
-            pulumi.set(__self__, "mail", mail)
+            _setter("mail", mail)
         if mail_enabled is not None:
-            pulumi.set(__self__, "mail_enabled", mail_enabled)
+            _setter("mail_enabled", mail_enabled)
         if mail_nickname is not None:
-            pulumi.set(__self__, "mail_nickname", mail_nickname)
+            _setter("mail_nickname", mail_nickname)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if object_id is not None:
-            pulumi.set(__self__, "object_id", object_id)
+            _setter("object_id", object_id)
         if onpremises_domain_name is not None:
-            pulumi.set(__self__, "onpremises_domain_name", onpremises_domain_name)
+            _setter("onpremises_domain_name", onpremises_domain_name)
         if onpremises_group_type is not None:
-            pulumi.set(__self__, "onpremises_group_type", onpremises_group_type)
+            _setter("onpremises_group_type", onpremises_group_type)
         if onpremises_netbios_name is not None:
-            pulumi.set(__self__, "onpremises_netbios_name", onpremises_netbios_name)
+            _setter("onpremises_netbios_name", onpremises_netbios_name)
         if onpremises_sam_account_name is not None:
-            pulumi.set(__self__, "onpremises_sam_account_name", onpremises_sam_account_name)
+            _setter("onpremises_sam_account_name", onpremises_sam_account_name)
         if onpremises_security_identifier is not None:
-            pulumi.set(__self__, "onpremises_security_identifier", onpremises_security_identifier)
+            _setter("onpremises_security_identifier", onpremises_security_identifier)
         if onpremises_sync_enabled is not None:
-            pulumi.set(__self__, "onpremises_sync_enabled", onpremises_sync_enabled)
+            _setter("onpremises_sync_enabled", onpremises_sync_enabled)
         if owners is not None:
-            pulumi.set(__self__, "owners", owners)
+            _setter("owners", owners)
         if preferred_language is not None:
-            pulumi.set(__self__, "preferred_language", preferred_language)
+            _setter("preferred_language", preferred_language)
         if prevent_duplicate_names is not None:
-            pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
+            _setter("prevent_duplicate_names", prevent_duplicate_names)
         if provisioning_options is not None:
-            pulumi.set(__self__, "provisioning_options", provisioning_options)
+            _setter("provisioning_options", provisioning_options)
         if proxy_addresses is not None:
-            pulumi.set(__self__, "proxy_addresses", proxy_addresses)
+            _setter("proxy_addresses", proxy_addresses)
         if security_enabled is not None:
-            pulumi.set(__self__, "security_enabled", security_enabled)
+            _setter("security_enabled", security_enabled)
         if theme is not None:
-            pulumi.set(__self__, "theme", theme)
+            _setter("theme", theme)
         if types is not None:
-            pulumi.set(__self__, "types", types)
+            _setter("types", types)
         if visibility is not None:
-            pulumi.set(__self__, "visibility", visibility)
+            _setter("visibility", visibility)
         if writeback_enabled is not None:
-            pulumi.set(__self__, "writeback_enabled", writeback_enabled)
+            _setter("writeback_enabled", writeback_enabled)
 
     @property
     @pulumi.getter(name="administrativeUnitIds")
@@ -1083,6 +1285,10 @@ class Group(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1127,6 +1333,11 @@ class Group(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if dynamic_membership is not None and not isinstance(dynamic_membership, GroupDynamicMembershipArgs):
+                dynamic_membership = dynamic_membership or {}
+                def _setter(key, value):
+                    dynamic_membership[key] = value
+                GroupDynamicMembershipArgs._configure(_setter, **dynamic_membership)
             __props__.__dict__["dynamic_membership"] = dynamic_membership
             __props__.__dict__["external_senders_allowed"] = external_senders_allowed
             __props__.__dict__["hide_from_address_lists"] = hide_from_address_lists

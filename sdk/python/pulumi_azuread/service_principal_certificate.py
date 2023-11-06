@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ServicePrincipalCertificateArgs', 'ServicePrincipalCertificate']
@@ -37,20 +37,59 @@ class ServicePrincipalCertificateArgs:
         :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
         """
-        pulumi.set(__self__, "service_principal_id", service_principal_id)
-        pulumi.set(__self__, "value", value)
+        ServicePrincipalCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_principal_id=service_principal_id,
+            value=value,
+            encoding=encoding,
+            end_date=end_date,
+            end_date_relative=end_date_relative,
+            key_id=key_id,
+            start_date=start_date,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             encoding: Optional[pulumi.Input[str]] = None,
+             end_date: Optional[pulumi.Input[str]] = None,
+             end_date_relative: Optional[pulumi.Input[str]] = None,
+             key_id: Optional[pulumi.Input[str]] = None,
+             start_date: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if service_principal_id is None:
+            raise TypeError("Missing 'service_principal_id' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if end_date_relative is None and 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
+        _setter("service_principal_id", service_principal_id)
+        _setter("value", value)
         if encoding is not None:
-            pulumi.set(__self__, "encoding", encoding)
+            _setter("encoding", encoding)
         if end_date is not None:
-            pulumi.set(__self__, "end_date", end_date)
+            _setter("end_date", end_date)
         if end_date_relative is not None:
-            pulumi.set(__self__, "end_date_relative", end_date_relative)
+            _setter("end_date_relative", end_date_relative)
         if key_id is not None:
-            pulumi.set(__self__, "key_id", key_id)
+            _setter("key_id", key_id)
         if start_date is not None:
-            pulumi.set(__self__, "start_date", start_date)
+            _setter("start_date", start_date)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="servicePrincipalId")
@@ -179,22 +218,57 @@ class _ServicePrincipalCertificateState:
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
         :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         """
+        _ServicePrincipalCertificateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encoding=encoding,
+            end_date=end_date,
+            end_date_relative=end_date_relative,
+            key_id=key_id,
+            service_principal_id=service_principal_id,
+            start_date=start_date,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encoding: Optional[pulumi.Input[str]] = None,
+             end_date: Optional[pulumi.Input[str]] = None,
+             end_date_relative: Optional[pulumi.Input[str]] = None,
+             key_id: Optional[pulumi.Input[str]] = None,
+             service_principal_id: Optional[pulumi.Input[str]] = None,
+             start_date: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if end_date is None and 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if end_date_relative is None and 'endDateRelative' in kwargs:
+            end_date_relative = kwargs['endDateRelative']
+        if key_id is None and 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if service_principal_id is None and 'servicePrincipalId' in kwargs:
+            service_principal_id = kwargs['servicePrincipalId']
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         if encoding is not None:
-            pulumi.set(__self__, "encoding", encoding)
+            _setter("encoding", encoding)
         if end_date is not None:
-            pulumi.set(__self__, "end_date", end_date)
+            _setter("end_date", end_date)
         if end_date_relative is not None:
-            pulumi.set(__self__, "end_date_relative", end_date_relative)
+            _setter("end_date_relative", end_date_relative)
         if key_id is not None:
-            pulumi.set(__self__, "key_id", key_id)
+            _setter("key_id", key_id)
         if service_principal_id is not None:
-            pulumi.set(__self__, "service_principal_id", service_principal_id)
+            _setter("service_principal_id", service_principal_id)
         if start_date is not None:
-            pulumi.set(__self__, "start_date", start_date)
+            _setter("start_date", start_date)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -364,6 +438,10 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServicePrincipalCertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

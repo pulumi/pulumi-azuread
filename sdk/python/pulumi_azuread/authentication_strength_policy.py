@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AuthenticationStrengthPolicyArgs', 'AuthenticationStrengthPolicy']
@@ -23,10 +23,33 @@ class AuthenticationStrengthPolicyArgs:
         :param pulumi.Input[str] display_name: The friendly name for this authentication strength policy.
         :param pulumi.Input[str] description: The description for this authentication strength policy.
         """
-        pulumi.set(__self__, "allowed_combinations", allowed_combinations)
-        pulumi.set(__self__, "display_name", display_name)
+        AuthenticationStrengthPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_combinations=allowed_combinations,
+            display_name=display_name,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_combinations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_combinations is None and 'allowedCombinations' in kwargs:
+            allowed_combinations = kwargs['allowedCombinations']
+        if allowed_combinations is None:
+            raise TypeError("Missing 'allowed_combinations' argument")
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if display_name is None:
+            raise TypeError("Missing 'display_name' argument")
+
+        _setter("allowed_combinations", allowed_combinations)
+        _setter("display_name", display_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="allowedCombinations")
@@ -77,12 +100,31 @@ class _AuthenticationStrengthPolicyState:
         :param pulumi.Input[str] description: The description for this authentication strength policy.
         :param pulumi.Input[str] display_name: The friendly name for this authentication strength policy.
         """
+        _AuthenticationStrengthPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_combinations=allowed_combinations,
+            description=description,
+            display_name=display_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_combinations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allowed_combinations is None and 'allowedCombinations' in kwargs:
+            allowed_combinations = kwargs['allowedCombinations']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+
         if allowed_combinations is not None:
-            pulumi.set(__self__, "allowed_combinations", allowed_combinations)
+            _setter("allowed_combinations", allowed_combinations)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
 
     @property
     @pulumi.getter(name="allowedCombinations")
@@ -220,6 +262,10 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AuthenticationStrengthPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

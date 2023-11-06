@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DirectoryRoleMemberArgs', 'DirectoryRoleMember']
@@ -21,10 +21,27 @@ class DirectoryRoleMemberArgs:
         :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[str] role_object_id: The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
+        DirectoryRoleMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            member_object_id=member_object_id,
+            role_object_id=role_object_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             member_object_id: Optional[pulumi.Input[str]] = None,
+             role_object_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member_object_id is None and 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+        if role_object_id is None and 'roleObjectId' in kwargs:
+            role_object_id = kwargs['roleObjectId']
+
         if member_object_id is not None:
-            pulumi.set(__self__, "member_object_id", member_object_id)
+            _setter("member_object_id", member_object_id)
         if role_object_id is not None:
-            pulumi.set(__self__, "role_object_id", role_object_id)
+            _setter("role_object_id", role_object_id)
 
     @property
     @pulumi.getter(name="memberObjectId")
@@ -61,10 +78,27 @@ class _DirectoryRoleMemberState:
         :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[str] role_object_id: The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
+        _DirectoryRoleMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            member_object_id=member_object_id,
+            role_object_id=role_object_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             member_object_id: Optional[pulumi.Input[str]] = None,
+             role_object_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if member_object_id is None and 'memberObjectId' in kwargs:
+            member_object_id = kwargs['memberObjectId']
+        if role_object_id is None and 'roleObjectId' in kwargs:
+            role_object_id = kwargs['roleObjectId']
+
         if member_object_id is not None:
-            pulumi.set(__self__, "member_object_id", member_object_id)
+            _setter("member_object_id", member_object_id)
         if role_object_id is not None:
-            pulumi.set(__self__, "role_object_id", role_object_id)
+            _setter("role_object_id", role_object_id)
 
     @property
     @pulumi.getter(name="memberObjectId")
@@ -192,6 +226,10 @@ class DirectoryRoleMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DirectoryRoleMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
