@@ -5,7 +5,7 @@ go 1.21.3
 require (
 	github.com/hashicorp/go-azure-sdk v0.20231018.1171511
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.2
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.3-0.20231107155650-cd5f02b099d0
 	github.com/pulumi/pulumi/sdk/v3 v3.91.1
 )
 
