@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -257,12 +256,6 @@ func (i *ServicePrincipalPassword) ToServicePrincipalPasswordOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPasswordOutput)
 }
 
-func (i *ServicePrincipalPassword) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalPassword] {
-	return pulumix.Output[*ServicePrincipalPassword]{
-		OutputState: i.ToServicePrincipalPasswordOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePrincipalPasswordArrayInput is an input type that accepts ServicePrincipalPasswordArray and ServicePrincipalPasswordArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalPasswordArrayInput` via:
 //
@@ -286,12 +279,6 @@ func (i ServicePrincipalPasswordArray) ToServicePrincipalPasswordArrayOutput() S
 
 func (i ServicePrincipalPasswordArray) ToServicePrincipalPasswordArrayOutputWithContext(ctx context.Context) ServicePrincipalPasswordArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPasswordArrayOutput)
-}
-
-func (i ServicePrincipalPasswordArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalPassword] {
-	return pulumix.Output[[]*ServicePrincipalPassword]{
-		OutputState: i.ToServicePrincipalPasswordArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePrincipalPasswordMapInput is an input type that accepts ServicePrincipalPasswordMap and ServicePrincipalPasswordMapOutput values.
@@ -319,12 +306,6 @@ func (i ServicePrincipalPasswordMap) ToServicePrincipalPasswordMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPasswordMapOutput)
 }
 
-func (i ServicePrincipalPasswordMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalPassword] {
-	return pulumix.Output[map[string]*ServicePrincipalPassword]{
-		OutputState: i.ToServicePrincipalPasswordMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePrincipalPasswordOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalPasswordOutput) ElementType() reflect.Type {
@@ -337,12 +318,6 @@ func (o ServicePrincipalPasswordOutput) ToServicePrincipalPasswordOutput() Servi
 
 func (o ServicePrincipalPasswordOutput) ToServicePrincipalPasswordOutputWithContext(ctx context.Context) ServicePrincipalPasswordOutput {
 	return o
-}
-
-func (o ServicePrincipalPasswordOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalPassword] {
-	return pulumix.Output[*ServicePrincipalPassword]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A display name for the password.
@@ -399,12 +374,6 @@ func (o ServicePrincipalPasswordArrayOutput) ToServicePrincipalPasswordArrayOutp
 	return o
 }
 
-func (o ServicePrincipalPasswordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalPassword] {
-	return pulumix.Output[[]*ServicePrincipalPassword]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePrincipalPasswordArrayOutput) Index(i pulumi.IntInput) ServicePrincipalPasswordOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePrincipalPassword {
 		return vs[0].([]*ServicePrincipalPassword)[vs[1].(int)]
@@ -423,12 +392,6 @@ func (o ServicePrincipalPasswordMapOutput) ToServicePrincipalPasswordMapOutput()
 
 func (o ServicePrincipalPasswordMapOutput) ToServicePrincipalPasswordMapOutputWithContext(ctx context.Context) ServicePrincipalPasswordMapOutput {
 	return o
-}
-
-func (o ServicePrincipalPasswordMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalPassword] {
-	return pulumix.Output[map[string]*ServicePrincipalPassword]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePrincipalPasswordMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalPasswordOutput {
