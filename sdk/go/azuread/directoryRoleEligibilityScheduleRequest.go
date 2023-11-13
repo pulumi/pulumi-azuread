@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a single directory role eligibility schedule request within Azure Active Directory.
@@ -201,12 +200,6 @@ func (i *DirectoryRoleEligibilityScheduleRequest) ToDirectoryRoleEligibilitySche
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleEligibilityScheduleRequestOutput)
 }
 
-func (i *DirectoryRoleEligibilityScheduleRequest) ToOutput(ctx context.Context) pulumix.Output[*DirectoryRoleEligibilityScheduleRequest] {
-	return pulumix.Output[*DirectoryRoleEligibilityScheduleRequest]{
-		OutputState: i.ToDirectoryRoleEligibilityScheduleRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DirectoryRoleEligibilityScheduleRequestArrayInput is an input type that accepts DirectoryRoleEligibilityScheduleRequestArray and DirectoryRoleEligibilityScheduleRequestArrayOutput values.
 // You can construct a concrete instance of `DirectoryRoleEligibilityScheduleRequestArrayInput` via:
 //
@@ -230,12 +223,6 @@ func (i DirectoryRoleEligibilityScheduleRequestArray) ToDirectoryRoleEligibility
 
 func (i DirectoryRoleEligibilityScheduleRequestArray) ToDirectoryRoleEligibilityScheduleRequestArrayOutputWithContext(ctx context.Context) DirectoryRoleEligibilityScheduleRequestArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleEligibilityScheduleRequestArrayOutput)
-}
-
-func (i DirectoryRoleEligibilityScheduleRequestArray) ToOutput(ctx context.Context) pulumix.Output[[]*DirectoryRoleEligibilityScheduleRequest] {
-	return pulumix.Output[[]*DirectoryRoleEligibilityScheduleRequest]{
-		OutputState: i.ToDirectoryRoleEligibilityScheduleRequestArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DirectoryRoleEligibilityScheduleRequestMapInput is an input type that accepts DirectoryRoleEligibilityScheduleRequestMap and DirectoryRoleEligibilityScheduleRequestMapOutput values.
@@ -263,12 +250,6 @@ func (i DirectoryRoleEligibilityScheduleRequestMap) ToDirectoryRoleEligibilitySc
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleEligibilityScheduleRequestMapOutput)
 }
 
-func (i DirectoryRoleEligibilityScheduleRequestMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DirectoryRoleEligibilityScheduleRequest] {
-	return pulumix.Output[map[string]*DirectoryRoleEligibilityScheduleRequest]{
-		OutputState: i.ToDirectoryRoleEligibilityScheduleRequestMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DirectoryRoleEligibilityScheduleRequestOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleEligibilityScheduleRequestOutput) ElementType() reflect.Type {
@@ -281,12 +262,6 @@ func (o DirectoryRoleEligibilityScheduleRequestOutput) ToDirectoryRoleEligibilit
 
 func (o DirectoryRoleEligibilityScheduleRequestOutput) ToDirectoryRoleEligibilityScheduleRequestOutputWithContext(ctx context.Context) DirectoryRoleEligibilityScheduleRequestOutput {
 	return o
-}
-
-func (o DirectoryRoleEligibilityScheduleRequestOutput) ToOutput(ctx context.Context) pulumix.Output[*DirectoryRoleEligibilityScheduleRequest] {
-	return pulumix.Output[*DirectoryRoleEligibilityScheduleRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.
@@ -323,12 +298,6 @@ func (o DirectoryRoleEligibilityScheduleRequestArrayOutput) ToDirectoryRoleEligi
 	return o
 }
 
-func (o DirectoryRoleEligibilityScheduleRequestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DirectoryRoleEligibilityScheduleRequest] {
-	return pulumix.Output[[]*DirectoryRoleEligibilityScheduleRequest]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DirectoryRoleEligibilityScheduleRequestArrayOutput) Index(i pulumi.IntInput) DirectoryRoleEligibilityScheduleRequestOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DirectoryRoleEligibilityScheduleRequest {
 		return vs[0].([]*DirectoryRoleEligibilityScheduleRequest)[vs[1].(int)]
@@ -347,12 +316,6 @@ func (o DirectoryRoleEligibilityScheduleRequestMapOutput) ToDirectoryRoleEligibi
 
 func (o DirectoryRoleEligibilityScheduleRequestMapOutput) ToDirectoryRoleEligibilityScheduleRequestMapOutputWithContext(ctx context.Context) DirectoryRoleEligibilityScheduleRequestMapOutput {
 	return o
-}
-
-func (o DirectoryRoleEligibilityScheduleRequestMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DirectoryRoleEligibilityScheduleRequest] {
-	return pulumix.Output[map[string]*DirectoryRoleEligibilityScheduleRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DirectoryRoleEligibilityScheduleRequestMapOutput) MapIndex(k pulumi.StringInput) DirectoryRoleEligibilityScheduleRequestOutput {
