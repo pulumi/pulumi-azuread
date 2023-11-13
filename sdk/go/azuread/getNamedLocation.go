@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a Named Location within Azure Active Directory.
@@ -129,12 +128,6 @@ func (o LookupNamedLocationResultOutput) ToLookupNamedLocationResultOutput() Loo
 
 func (o LookupNamedLocationResultOutput) ToLookupNamedLocationResultOutputWithContext(ctx context.Context) LookupNamedLocationResultOutput {
 	return o
-}
-
-func (o LookupNamedLocationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNamedLocationResult] {
-	return pulumix.Output[LookupNamedLocationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupNamedLocationResultOutput) Countries() GetNamedLocationCountryArrayOutput {

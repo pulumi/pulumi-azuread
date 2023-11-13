@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates an application registration and associated service principal from a gallery template.
@@ -197,12 +196,6 @@ func (i *ApplicationFromTemplate) ToApplicationFromTemplateOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFromTemplateOutput)
 }
 
-func (i *ApplicationFromTemplate) ToOutput(ctx context.Context) pulumix.Output[*ApplicationFromTemplate] {
-	return pulumix.Output[*ApplicationFromTemplate]{
-		OutputState: i.ToApplicationFromTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationFromTemplateArrayInput is an input type that accepts ApplicationFromTemplateArray and ApplicationFromTemplateArrayOutput values.
 // You can construct a concrete instance of `ApplicationFromTemplateArrayInput` via:
 //
@@ -226,12 +219,6 @@ func (i ApplicationFromTemplateArray) ToApplicationFromTemplateArrayOutput() App
 
 func (i ApplicationFromTemplateArray) ToApplicationFromTemplateArrayOutputWithContext(ctx context.Context) ApplicationFromTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFromTemplateArrayOutput)
-}
-
-func (i ApplicationFromTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationFromTemplate] {
-	return pulumix.Output[[]*ApplicationFromTemplate]{
-		OutputState: i.ToApplicationFromTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationFromTemplateMapInput is an input type that accepts ApplicationFromTemplateMap and ApplicationFromTemplateMapOutput values.
@@ -259,12 +246,6 @@ func (i ApplicationFromTemplateMap) ToApplicationFromTemplateMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFromTemplateMapOutput)
 }
 
-func (i ApplicationFromTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationFromTemplate] {
-	return pulumix.Output[map[string]*ApplicationFromTemplate]{
-		OutputState: i.ToApplicationFromTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationFromTemplateOutput struct{ *pulumi.OutputState }
 
 func (ApplicationFromTemplateOutput) ElementType() reflect.Type {
@@ -277,12 +258,6 @@ func (o ApplicationFromTemplateOutput) ToApplicationFromTemplateOutput() Applica
 
 func (o ApplicationFromTemplateOutput) ToApplicationFromTemplateOutputWithContext(ctx context.Context) ApplicationFromTemplateOutput {
 	return o
-}
-
-func (o ApplicationFromTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationFromTemplate] {
-	return pulumix.Output[*ApplicationFromTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID for the application.
@@ -329,12 +304,6 @@ func (o ApplicationFromTemplateArrayOutput) ToApplicationFromTemplateArrayOutput
 	return o
 }
 
-func (o ApplicationFromTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationFromTemplate] {
-	return pulumix.Output[[]*ApplicationFromTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationFromTemplateArrayOutput) Index(i pulumi.IntInput) ApplicationFromTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationFromTemplate {
 		return vs[0].([]*ApplicationFromTemplate)[vs[1].(int)]
@@ -353,12 +322,6 @@ func (o ApplicationFromTemplateMapOutput) ToApplicationFromTemplateMapOutput() A
 
 func (o ApplicationFromTemplateMapOutput) ToApplicationFromTemplateMapOutputWithContext(ctx context.Context) ApplicationFromTemplateMapOutput {
 	return o
-}
-
-func (o ApplicationFromTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationFromTemplate] {
-	return pulumix.Output[map[string]*ApplicationFromTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationFromTemplateMapOutput) MapIndex(k pulumi.StringInput) ApplicationFromTemplateOutput {

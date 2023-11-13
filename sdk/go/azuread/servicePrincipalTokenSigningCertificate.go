@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -257,12 +256,6 @@ func (i *ServicePrincipalTokenSigningCertificate) ToServicePrincipalTokenSigning
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalTokenSigningCertificateOutput)
 }
 
-func (i *ServicePrincipalTokenSigningCertificate) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalTokenSigningCertificate] {
-	return pulumix.Output[*ServicePrincipalTokenSigningCertificate]{
-		OutputState: i.ToServicePrincipalTokenSigningCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePrincipalTokenSigningCertificateArrayInput is an input type that accepts ServicePrincipalTokenSigningCertificateArray and ServicePrincipalTokenSigningCertificateArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalTokenSigningCertificateArrayInput` via:
 //
@@ -286,12 +279,6 @@ func (i ServicePrincipalTokenSigningCertificateArray) ToServicePrincipalTokenSig
 
 func (i ServicePrincipalTokenSigningCertificateArray) ToServicePrincipalTokenSigningCertificateArrayOutputWithContext(ctx context.Context) ServicePrincipalTokenSigningCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalTokenSigningCertificateArrayOutput)
-}
-
-func (i ServicePrincipalTokenSigningCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalTokenSigningCertificate] {
-	return pulumix.Output[[]*ServicePrincipalTokenSigningCertificate]{
-		OutputState: i.ToServicePrincipalTokenSigningCertificateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePrincipalTokenSigningCertificateMapInput is an input type that accepts ServicePrincipalTokenSigningCertificateMap and ServicePrincipalTokenSigningCertificateMapOutput values.
@@ -319,12 +306,6 @@ func (i ServicePrincipalTokenSigningCertificateMap) ToServicePrincipalTokenSigni
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalTokenSigningCertificateMapOutput)
 }
 
-func (i ServicePrincipalTokenSigningCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalTokenSigningCertificate] {
-	return pulumix.Output[map[string]*ServicePrincipalTokenSigningCertificate]{
-		OutputState: i.ToServicePrincipalTokenSigningCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePrincipalTokenSigningCertificateOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalTokenSigningCertificateOutput) ElementType() reflect.Type {
@@ -337,12 +318,6 @@ func (o ServicePrincipalTokenSigningCertificateOutput) ToServicePrincipalTokenSi
 
 func (o ServicePrincipalTokenSigningCertificateOutput) ToServicePrincipalTokenSigningCertificateOutputWithContext(ctx context.Context) ServicePrincipalTokenSigningCertificateOutput {
 	return o
-}
-
-func (o ServicePrincipalTokenSigningCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalTokenSigningCertificate] {
-	return pulumix.Output[*ServicePrincipalTokenSigningCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies a friendly name for the certificate.
@@ -398,12 +373,6 @@ func (o ServicePrincipalTokenSigningCertificateArrayOutput) ToServicePrincipalTo
 	return o
 }
 
-func (o ServicePrincipalTokenSigningCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalTokenSigningCertificate] {
-	return pulumix.Output[[]*ServicePrincipalTokenSigningCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePrincipalTokenSigningCertificateArrayOutput) Index(i pulumi.IntInput) ServicePrincipalTokenSigningCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePrincipalTokenSigningCertificate {
 		return vs[0].([]*ServicePrincipalTokenSigningCertificate)[vs[1].(int)]
@@ -422,12 +391,6 @@ func (o ServicePrincipalTokenSigningCertificateMapOutput) ToServicePrincipalToke
 
 func (o ServicePrincipalTokenSigningCertificateMapOutput) ToServicePrincipalTokenSigningCertificateMapOutputWithContext(ctx context.Context) ServicePrincipalTokenSigningCertificateMapOutput {
 	return o
-}
-
-func (o ServicePrincipalTokenSigningCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalTokenSigningCertificate] {
-	return pulumix.Output[map[string]*ServicePrincipalTokenSigningCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePrincipalTokenSigningCertificateMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalTokenSigningCertificateOutput {
