@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about activated directory roles within Azure Active Directory.
@@ -92,12 +91,6 @@ func (o GetDirectoryRolesResultOutput) ToGetDirectoryRolesResultOutput() GetDire
 
 func (o GetDirectoryRolesResultOutput) ToGetDirectoryRolesResultOutputWithContext(ctx context.Context) GetDirectoryRolesResultOutput {
 	return o
-}
-
-func (o GetDirectoryRolesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDirectoryRolesResult] {
-	return pulumix.Output[GetDirectoryRolesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.
