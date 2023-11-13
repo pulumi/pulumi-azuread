@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -204,12 +203,6 @@ func (i *ApplicationOptionalClaims) ToApplicationOptionalClaimsOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsOutput)
 }
 
-func (i *ApplicationOptionalClaims) ToOutput(ctx context.Context) pulumix.Output[*ApplicationOptionalClaims] {
-	return pulumix.Output[*ApplicationOptionalClaims]{
-		OutputState: i.ToApplicationOptionalClaimsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationOptionalClaimsArrayInput is an input type that accepts ApplicationOptionalClaimsArray and ApplicationOptionalClaimsArrayOutput values.
 // You can construct a concrete instance of `ApplicationOptionalClaimsArrayInput` via:
 //
@@ -233,12 +226,6 @@ func (i ApplicationOptionalClaimsArray) ToApplicationOptionalClaimsArrayOutput()
 
 func (i ApplicationOptionalClaimsArray) ToApplicationOptionalClaimsArrayOutputWithContext(ctx context.Context) ApplicationOptionalClaimsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsArrayOutput)
-}
-
-func (i ApplicationOptionalClaimsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationOptionalClaims] {
-	return pulumix.Output[[]*ApplicationOptionalClaims]{
-		OutputState: i.ToApplicationOptionalClaimsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationOptionalClaimsMapInput is an input type that accepts ApplicationOptionalClaimsMap and ApplicationOptionalClaimsMapOutput values.
@@ -266,12 +253,6 @@ func (i ApplicationOptionalClaimsMap) ToApplicationOptionalClaimsMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsMapOutput)
 }
 
-func (i ApplicationOptionalClaimsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationOptionalClaims] {
-	return pulumix.Output[map[string]*ApplicationOptionalClaims]{
-		OutputState: i.ToApplicationOptionalClaimsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationOptionalClaimsOutput struct{ *pulumi.OutputState }
 
 func (ApplicationOptionalClaimsOutput) ElementType() reflect.Type {
@@ -284,12 +265,6 @@ func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsOutput() App
 
 func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsOutputWithContext(ctx context.Context) ApplicationOptionalClaimsOutput {
 	return o
-}
-
-func (o ApplicationOptionalClaimsOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationOptionalClaims] {
-	return pulumix.Output[*ApplicationOptionalClaims]{
-		OutputState: o.OutputState,
-	}
 }
 
 // One or more `accessToken` blocks as documented below.
@@ -332,12 +307,6 @@ func (o ApplicationOptionalClaimsArrayOutput) ToApplicationOptionalClaimsArrayOu
 	return o
 }
 
-func (o ApplicationOptionalClaimsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationOptionalClaims] {
-	return pulumix.Output[[]*ApplicationOptionalClaims]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationOptionalClaimsArrayOutput) Index(i pulumi.IntInput) ApplicationOptionalClaimsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationOptionalClaims {
 		return vs[0].([]*ApplicationOptionalClaims)[vs[1].(int)]
@@ -356,12 +325,6 @@ func (o ApplicationOptionalClaimsMapOutput) ToApplicationOptionalClaimsMapOutput
 
 func (o ApplicationOptionalClaimsMapOutput) ToApplicationOptionalClaimsMapOutputWithContext(ctx context.Context) ApplicationOptionalClaimsMapOutput {
 	return o
-}
-
-func (o ApplicationOptionalClaimsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationOptionalClaims] {
-	return pulumix.Output[map[string]*ApplicationOptionalClaims]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationOptionalClaimsMapOutput) MapIndex(k pulumi.StringInput) ApplicationOptionalClaimsOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // i
@@ -150,12 +149,6 @@ func (o LookupAccessPackageCatalogResultOutput) ToLookupAccessPackageCatalogResu
 
 func (o LookupAccessPackageCatalogResultOutput) ToLookupAccessPackageCatalogResultOutputWithContext(ctx context.Context) LookupAccessPackageCatalogResultOutput {
 	return o
-}
-
-func (o LookupAccessPackageCatalogResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessPackageCatalogResult] {
-	return pulumix.Output[LookupAccessPackageCatalogResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the access package catalog.
