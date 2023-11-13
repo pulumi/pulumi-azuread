@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -276,12 +275,6 @@ func (i *ApplicationPermissionScope) ToApplicationPermissionScopeOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPermissionScopeOutput)
 }
 
-func (i *ApplicationPermissionScope) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPermissionScope] {
-	return pulumix.Output[*ApplicationPermissionScope]{
-		OutputState: i.ToApplicationPermissionScopeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationPermissionScopeArrayInput is an input type that accepts ApplicationPermissionScopeArray and ApplicationPermissionScopeArrayOutput values.
 // You can construct a concrete instance of `ApplicationPermissionScopeArrayInput` via:
 //
@@ -305,12 +298,6 @@ func (i ApplicationPermissionScopeArray) ToApplicationPermissionScopeArrayOutput
 
 func (i ApplicationPermissionScopeArray) ToApplicationPermissionScopeArrayOutputWithContext(ctx context.Context) ApplicationPermissionScopeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPermissionScopeArrayOutput)
-}
-
-func (i ApplicationPermissionScopeArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationPermissionScope] {
-	return pulumix.Output[[]*ApplicationPermissionScope]{
-		OutputState: i.ToApplicationPermissionScopeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationPermissionScopeMapInput is an input type that accepts ApplicationPermissionScopeMap and ApplicationPermissionScopeMapOutput values.
@@ -338,12 +325,6 @@ func (i ApplicationPermissionScopeMap) ToApplicationPermissionScopeMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPermissionScopeMapOutput)
 }
 
-func (i ApplicationPermissionScopeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationPermissionScope] {
-	return pulumix.Output[map[string]*ApplicationPermissionScope]{
-		OutputState: i.ToApplicationPermissionScopeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationPermissionScopeOutput struct{ *pulumi.OutputState }
 
 func (ApplicationPermissionScopeOutput) ElementType() reflect.Type {
@@ -356,12 +337,6 @@ func (o ApplicationPermissionScopeOutput) ToApplicationPermissionScopeOutput() A
 
 func (o ApplicationPermissionScopeOutput) ToApplicationPermissionScopeOutputWithContext(ctx context.Context) ApplicationPermissionScopeOutput {
 	return o
-}
-
-func (o ApplicationPermissionScopeOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPermissionScope] {
-	return pulumix.Output[*ApplicationPermissionScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
@@ -420,12 +395,6 @@ func (o ApplicationPermissionScopeArrayOutput) ToApplicationPermissionScopeArray
 	return o
 }
 
-func (o ApplicationPermissionScopeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationPermissionScope] {
-	return pulumix.Output[[]*ApplicationPermissionScope]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationPermissionScopeArrayOutput) Index(i pulumi.IntInput) ApplicationPermissionScopeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationPermissionScope {
 		return vs[0].([]*ApplicationPermissionScope)[vs[1].(int)]
@@ -444,12 +413,6 @@ func (o ApplicationPermissionScopeMapOutput) ToApplicationPermissionScopeMapOutp
 
 func (o ApplicationPermissionScopeMapOutput) ToApplicationPermissionScopeMapOutputWithContext(ctx context.Context) ApplicationPermissionScopeMapOutput {
 	return o
-}
-
-func (o ApplicationPermissionScopeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationPermissionScope] {
-	return pulumix.Output[map[string]*ApplicationPermissionScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationPermissionScopeMapOutput) MapIndex(k pulumi.StringInput) ApplicationPermissionScopeOutput {
