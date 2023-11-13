@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -259,12 +258,6 @@ func (i *ApplicationAppRole) ToApplicationAppRoleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleOutput)
 }
 
-func (i *ApplicationAppRole) ToOutput(ctx context.Context) pulumix.Output[*ApplicationAppRole] {
-	return pulumix.Output[*ApplicationAppRole]{
-		OutputState: i.ToApplicationAppRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationAppRoleArrayInput is an input type that accepts ApplicationAppRoleArray and ApplicationAppRoleArrayOutput values.
 // You can construct a concrete instance of `ApplicationAppRoleArrayInput` via:
 //
@@ -288,12 +281,6 @@ func (i ApplicationAppRoleArray) ToApplicationAppRoleArrayOutput() ApplicationAp
 
 func (i ApplicationAppRoleArray) ToApplicationAppRoleArrayOutputWithContext(ctx context.Context) ApplicationAppRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleArrayOutput)
-}
-
-func (i ApplicationAppRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationAppRole] {
-	return pulumix.Output[[]*ApplicationAppRole]{
-		OutputState: i.ToApplicationAppRoleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationAppRoleMapInput is an input type that accepts ApplicationAppRoleMap and ApplicationAppRoleMapOutput values.
@@ -321,12 +308,6 @@ func (i ApplicationAppRoleMap) ToApplicationAppRoleMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleMapOutput)
 }
 
-func (i ApplicationAppRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationAppRole] {
-	return pulumix.Output[map[string]*ApplicationAppRole]{
-		OutputState: i.ToApplicationAppRoleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationAppRoleOutput struct{ *pulumi.OutputState }
 
 func (ApplicationAppRoleOutput) ElementType() reflect.Type {
@@ -339,12 +320,6 @@ func (o ApplicationAppRoleOutput) ToApplicationAppRoleOutput() ApplicationAppRol
 
 func (o ApplicationAppRoleOutput) ToApplicationAppRoleOutputWithContext(ctx context.Context) ApplicationAppRoleOutput {
 	return o
-}
-
-func (o ApplicationAppRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationAppRole] {
-	return pulumix.Output[*ApplicationAppRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A set of values to specify whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications by setting to `Application`, or to both.
@@ -393,12 +368,6 @@ func (o ApplicationAppRoleArrayOutput) ToApplicationAppRoleArrayOutputWithContex
 	return o
 }
 
-func (o ApplicationAppRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationAppRole] {
-	return pulumix.Output[[]*ApplicationAppRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationAppRoleArrayOutput) Index(i pulumi.IntInput) ApplicationAppRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationAppRole {
 		return vs[0].([]*ApplicationAppRole)[vs[1].(int)]
@@ -417,12 +386,6 @@ func (o ApplicationAppRoleMapOutput) ToApplicationAppRoleMapOutput() Application
 
 func (o ApplicationAppRoleMapOutput) ToApplicationAppRoleMapOutputWithContext(ctx context.Context) ApplicationAppRoleMapOutput {
 	return o
-}
-
-func (o ApplicationAppRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationAppRole] {
-	return pulumix.Output[map[string]*ApplicationAppRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationAppRoleMapOutput) MapIndex(k pulumi.StringInput) ApplicationAppRoleOutput {

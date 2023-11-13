@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about an Azure Active Directory group.
@@ -185,12 +184,6 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOu
 
 func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
 	return o
-}
-
-func (o LookupGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupResult] {
-	return pulumix.Output[LookupGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether this group can be assigned to an Azure Active Directory role.
