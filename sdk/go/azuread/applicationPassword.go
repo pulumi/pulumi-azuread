@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -261,12 +260,6 @@ func (i *ApplicationPassword) ToApplicationPasswordOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPasswordOutput)
 }
 
-func (i *ApplicationPassword) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPassword] {
-	return pulumix.Output[*ApplicationPassword]{
-		OutputState: i.ToApplicationPasswordOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationPasswordArrayInput is an input type that accepts ApplicationPasswordArray and ApplicationPasswordArrayOutput values.
 // You can construct a concrete instance of `ApplicationPasswordArrayInput` via:
 //
@@ -290,12 +283,6 @@ func (i ApplicationPasswordArray) ToApplicationPasswordArrayOutput() Application
 
 func (i ApplicationPasswordArray) ToApplicationPasswordArrayOutputWithContext(ctx context.Context) ApplicationPasswordArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPasswordArrayOutput)
-}
-
-func (i ApplicationPasswordArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationPassword] {
-	return pulumix.Output[[]*ApplicationPassword]{
-		OutputState: i.ToApplicationPasswordArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationPasswordMapInput is an input type that accepts ApplicationPasswordMap and ApplicationPasswordMapOutput values.
@@ -323,12 +310,6 @@ func (i ApplicationPasswordMap) ToApplicationPasswordMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPasswordMapOutput)
 }
 
-func (i ApplicationPasswordMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationPassword] {
-	return pulumix.Output[map[string]*ApplicationPassword]{
-		OutputState: i.ToApplicationPasswordMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationPasswordOutput struct{ *pulumi.OutputState }
 
 func (ApplicationPasswordOutput) ElementType() reflect.Type {
@@ -341,12 +322,6 @@ func (o ApplicationPasswordOutput) ToApplicationPasswordOutput() ApplicationPass
 
 func (o ApplicationPasswordOutput) ToApplicationPasswordOutputWithContext(ctx context.Context) ApplicationPasswordOutput {
 	return o
-}
-
-func (o ApplicationPasswordOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPassword] {
-	return pulumix.Output[*ApplicationPassword]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
@@ -410,12 +385,6 @@ func (o ApplicationPasswordArrayOutput) ToApplicationPasswordArrayOutputWithCont
 	return o
 }
 
-func (o ApplicationPasswordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationPassword] {
-	return pulumix.Output[[]*ApplicationPassword]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationPasswordArrayOutput) Index(i pulumi.IntInput) ApplicationPasswordOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationPassword {
 		return vs[0].([]*ApplicationPassword)[vs[1].(int)]
@@ -434,12 +403,6 @@ func (o ApplicationPasswordMapOutput) ToApplicationPasswordMapOutput() Applicati
 
 func (o ApplicationPasswordMapOutput) ToApplicationPasswordMapOutputWithContext(ctx context.Context) ApplicationPasswordMapOutput {
 	return o
-}
-
-func (o ApplicationPasswordMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationPassword] {
-	return pulumix.Output[map[string]*ApplicationPassword]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationPasswordMapOutput) MapIndex(k pulumi.StringInput) ApplicationPasswordOutput {
