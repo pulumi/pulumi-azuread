@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -165,12 +164,6 @@ func (i *ApplicationOwner) ToApplicationOwnerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOwnerOutput)
 }
 
-func (i *ApplicationOwner) ToOutput(ctx context.Context) pulumix.Output[*ApplicationOwner] {
-	return pulumix.Output[*ApplicationOwner]{
-		OutputState: i.ToApplicationOwnerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationOwnerArrayInput is an input type that accepts ApplicationOwnerArray and ApplicationOwnerArrayOutput values.
 // You can construct a concrete instance of `ApplicationOwnerArrayInput` via:
 //
@@ -194,12 +187,6 @@ func (i ApplicationOwnerArray) ToApplicationOwnerArrayOutput() ApplicationOwnerA
 
 func (i ApplicationOwnerArray) ToApplicationOwnerArrayOutputWithContext(ctx context.Context) ApplicationOwnerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOwnerArrayOutput)
-}
-
-func (i ApplicationOwnerArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationOwner] {
-	return pulumix.Output[[]*ApplicationOwner]{
-		OutputState: i.ToApplicationOwnerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationOwnerMapInput is an input type that accepts ApplicationOwnerMap and ApplicationOwnerMapOutput values.
@@ -227,12 +214,6 @@ func (i ApplicationOwnerMap) ToApplicationOwnerMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOwnerMapOutput)
 }
 
-func (i ApplicationOwnerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationOwner] {
-	return pulumix.Output[map[string]*ApplicationOwner]{
-		OutputState: i.ToApplicationOwnerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationOwnerOutput struct{ *pulumi.OutputState }
 
 func (ApplicationOwnerOutput) ElementType() reflect.Type {
@@ -245,12 +226,6 @@ func (o ApplicationOwnerOutput) ToApplicationOwnerOutput() ApplicationOwnerOutpu
 
 func (o ApplicationOwnerOutput) ToApplicationOwnerOutputWithContext(ctx context.Context) ApplicationOwnerOutput {
 	return o
-}
-
-func (o ApplicationOwnerOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationOwner] {
-	return pulumix.Output[*ApplicationOwner]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the application registration. Changing this forces a new resource to be created.
@@ -277,12 +252,6 @@ func (o ApplicationOwnerArrayOutput) ToApplicationOwnerArrayOutputWithContext(ct
 	return o
 }
 
-func (o ApplicationOwnerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationOwner] {
-	return pulumix.Output[[]*ApplicationOwner]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationOwnerArrayOutput) Index(i pulumi.IntInput) ApplicationOwnerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationOwner {
 		return vs[0].([]*ApplicationOwner)[vs[1].(int)]
@@ -301,12 +270,6 @@ func (o ApplicationOwnerMapOutput) ToApplicationOwnerMapOutput() ApplicationOwne
 
 func (o ApplicationOwnerMapOutput) ToApplicationOwnerMapOutputWithContext(ctx context.Context) ApplicationOwnerMapOutput {
 	return o
-}
-
-func (o ApplicationOwnerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationOwner] {
-	return pulumix.Output[map[string]*ApplicationOwner]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationOwnerMapOutput) MapIndex(k pulumi.StringInput) ApplicationOwnerOutput {

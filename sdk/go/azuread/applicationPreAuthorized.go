@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -236,12 +235,6 @@ func (i *ApplicationPreAuthorized) ToApplicationPreAuthorizedOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPreAuthorizedOutput)
 }
 
-func (i *ApplicationPreAuthorized) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPreAuthorized] {
-	return pulumix.Output[*ApplicationPreAuthorized]{
-		OutputState: i.ToApplicationPreAuthorizedOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationPreAuthorizedArrayInput is an input type that accepts ApplicationPreAuthorizedArray and ApplicationPreAuthorizedArrayOutput values.
 // You can construct a concrete instance of `ApplicationPreAuthorizedArrayInput` via:
 //
@@ -265,12 +258,6 @@ func (i ApplicationPreAuthorizedArray) ToApplicationPreAuthorizedArrayOutput() A
 
 func (i ApplicationPreAuthorizedArray) ToApplicationPreAuthorizedArrayOutputWithContext(ctx context.Context) ApplicationPreAuthorizedArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPreAuthorizedArrayOutput)
-}
-
-func (i ApplicationPreAuthorizedArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationPreAuthorized] {
-	return pulumix.Output[[]*ApplicationPreAuthorized]{
-		OutputState: i.ToApplicationPreAuthorizedArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationPreAuthorizedMapInput is an input type that accepts ApplicationPreAuthorizedMap and ApplicationPreAuthorizedMapOutput values.
@@ -298,12 +285,6 @@ func (i ApplicationPreAuthorizedMap) ToApplicationPreAuthorizedMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPreAuthorizedMapOutput)
 }
 
-func (i ApplicationPreAuthorizedMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationPreAuthorized] {
-	return pulumix.Output[map[string]*ApplicationPreAuthorized]{
-		OutputState: i.ToApplicationPreAuthorizedMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationPreAuthorizedOutput struct{ *pulumi.OutputState }
 
 func (ApplicationPreAuthorizedOutput) ElementType() reflect.Type {
@@ -316,12 +297,6 @@ func (o ApplicationPreAuthorizedOutput) ToApplicationPreAuthorizedOutput() Appli
 
 func (o ApplicationPreAuthorizedOutput) ToApplicationPreAuthorizedOutputWithContext(ctx context.Context) ApplicationPreAuthorizedOutput {
 	return o
-}
-
-func (o ApplicationPreAuthorizedOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationPreAuthorized] {
-	return pulumix.Output[*ApplicationPreAuthorized]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
@@ -367,12 +342,6 @@ func (o ApplicationPreAuthorizedArrayOutput) ToApplicationPreAuthorizedArrayOutp
 	return o
 }
 
-func (o ApplicationPreAuthorizedArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationPreAuthorized] {
-	return pulumix.Output[[]*ApplicationPreAuthorized]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationPreAuthorizedArrayOutput) Index(i pulumi.IntInput) ApplicationPreAuthorizedOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationPreAuthorized {
 		return vs[0].([]*ApplicationPreAuthorized)[vs[1].(int)]
@@ -391,12 +360,6 @@ func (o ApplicationPreAuthorizedMapOutput) ToApplicationPreAuthorizedMapOutput()
 
 func (o ApplicationPreAuthorizedMapOutput) ToApplicationPreAuthorizedMapOutputWithContext(ctx context.Context) ApplicationPreAuthorizedMapOutput {
 	return o
-}
-
-func (o ApplicationPreAuthorizedMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationPreAuthorized] {
-	return pulumix.Output[map[string]*ApplicationPreAuthorized]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationPreAuthorizedMapOutput) MapIndex(k pulumi.StringInput) ApplicationPreAuthorizedOutput {
