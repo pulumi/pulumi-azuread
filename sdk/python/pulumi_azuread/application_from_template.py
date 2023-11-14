@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ApplicationFromTemplateArgs', 'ApplicationFromTemplate']
+__all__ = ['ApplicationFromTemplateArrgs', 'ApplicationFromTemplate']
 
 @pulumi.input_type
-class ApplicationFromTemplateArgs:
+calass ApplicationFromTemplateArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  template_id: pulumi.Input[str]):
@@ -50,7 +50,7 @@ class ApplicationFromTemplateArgs:
 
 
 @pulumi.input_type
-class _ApplicationFromTemplateState:
+calass _ApplicationFromTemplateState:
     def __init__(__self__, *,
                  application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
@@ -153,7 +153,7 @@ class _ApplicationFromTemplateState:
         pulumi.set(self, "template_id", value)
 
 
-class ApplicationFromTemplate(pulumi.CustomResource):
+calass ApplicationFromTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -205,7 +205,7 @@ class ApplicationFromTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApplicationFromTemplateArgs,
+                 args: ApplicationFromTemplateArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an application registration and associated service principal from a gallery template.
@@ -243,12 +243,12 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ApplicationFromTemplateArgs args: The arguments to use to populate this resource's properties.
+        :param ApplicationFromTemplateArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApplicationFromTemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationFromTemplateArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -266,7 +266,7 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApplicationFromTemplateArgs.__new__(ApplicationFromTemplateArgs)
+            __props__ = ApplicationFromTemplateArrgs.__new__(ApplicationFromTemplateArrgs)
 
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")

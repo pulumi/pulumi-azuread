@@ -10,73 +10,73 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
-    'AccessPackageAssignmentPolicyApprovalSettingsArgs',
-    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs',
-    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs',
-    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs',
-    'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs',
-    'AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs',
-    'AccessPackageAssignmentPolicyQuestionArgs',
-    'AccessPackageAssignmentPolicyQuestionChoiceArgs',
-    'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs',
-    'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs',
-    'AccessPackageAssignmentPolicyQuestionTextArgs',
-    'AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs',
-    'AccessPackageAssignmentPolicyRequestorSettingsArgs',
-    'AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs',
-    'ApplicationApiArgs',
-    'ApplicationApiOauth2PermissionScopeArgs',
-    'ApplicationAppRoleArgs',
-    'ApplicationFeatureTagArgs',
-    'ApplicationOptionalClaimsArgs',
-    'ApplicationOptionalClaimsAccessTokenArgs',
-    'ApplicationOptionalClaimsIdTokenArgs',
-    'ApplicationOptionalClaimsSaml2TokenArgs',
-    'ApplicationPublicClientArgs',
-    'ApplicationRequiredResourceAccessArgs',
-    'ApplicationRequiredResourceAccessResourceAccessArgs',
-    'ApplicationSinglePageApplicationArgs',
-    'ApplicationWebArgs',
-    'ApplicationWebImplicitGrantArgs',
-    'ConditionalAccessPolicyConditionsArgs',
-    'ConditionalAccessPolicyConditionsApplicationsArgs',
-    'ConditionalAccessPolicyConditionsClientApplicationsArgs',
-    'ConditionalAccessPolicyConditionsDevicesArgs',
-    'ConditionalAccessPolicyConditionsDevicesFilterArgs',
-    'ConditionalAccessPolicyConditionsLocationsArgs',
-    'ConditionalAccessPolicyConditionsPlatformsArgs',
-    'ConditionalAccessPolicyConditionsUsersArgs',
-    'ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs',
-    'ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs',
-    'ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs',
-    'ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs',
-    'ConditionalAccessPolicyGrantControlsArgs',
-    'ConditionalAccessPolicySessionControlsArgs',
-    'CustomDirectoryRolePermissionArgs',
-    'GroupDynamicMembershipArgs',
-    'InvitationMessageArgs',
-    'NamedLocationCountryArgs',
-    'NamedLocationIpArgs',
-    'ServicePrincipalAppRoleArgs',
-    'ServicePrincipalFeatureArgs',
-    'ServicePrincipalFeatureTagArgs',
-    'ServicePrincipalOauth2PermissionScopeArgs',
-    'ServicePrincipalSamlSingleSignOnArgs',
-    'SynchronizationJobScheduleArgs',
-    'SynchronizationSecretCredentialArgs',
+    'AccessPackageAssignmentPolicyApprovalSettingsArrgs',
+    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrgs',
+    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrgs',
+    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrgs',
+    'AccessPackageAssignmentPolicyAssignmentReviewSettingsArrgs',
+    'AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrgs',
+    'AccessPackageAssignmentPolicyQuestionArrgs',
+    'AccessPackageAssignmentPolicyQuestionChoiceArrgs',
+    'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArrgs',
+    'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrgs',
+    'AccessPackageAssignmentPolicyQuestionTextArrgs',
+    'AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrgs',
+    'AccessPackageAssignmentPolicyRequestorSettingsArrgs',
+    'AccessPackageAssignmentPolicyRequestorSettingsRequestorArrgs',
+    'ApplicationApiArrgs',
+    'ApplicationApiOauth2PermissionScopeArrgs',
+    'ApplicationAppRoleArrgs',
+    'ApplicationFeatureTagArrgs',
+    'ApplicationOptionalClaimsArrgs',
+    'ApplicationOptionalClaimsAccessTokenArrgs',
+    'ApplicationOptionalClaimsIdTokenArrgs',
+    'ApplicationOptionalClaimsSaml2TokenArrgs',
+    'ApplicationPublicClientArrgs',
+    'ApplicationRequiredResourceAccessArrgs',
+    'ApplicationRequiredResourceAccessResourceAccessArrgs',
+    'ApplicationSinglePageApplicationArrgs',
+    'ApplicationWebArrgs',
+    'ApplicationWebImplicitGrantArrgs',
+    'ConditionalAccessPolicyConditionsArrgs',
+    'ConditionalAccessPolicyConditionsApplicationsArrgs',
+    'ConditionalAccessPolicyConditionsClientApplicationsArrgs',
+    'ConditionalAccessPolicyConditionsDevicesArrgs',
+    'ConditionalAccessPolicyConditionsDevicesFilterArrgs',
+    'ConditionalAccessPolicyConditionsLocationsArrgs',
+    'ConditionalAccessPolicyConditionsPlatformsArrgs',
+    'ConditionalAccessPolicyConditionsUsersArrgs',
+    'ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrgs',
+    'ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrgs',
+    'ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrgs',
+    'ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrgs',
+    'ConditionalAccessPolicyGrantControlsArrgs',
+    'ConditionalAccessPolicySessionControlsArrgs',
+    'CustomDirectoryRolePermissionArrgs',
+    'GroupDynamicMembershipArrgs',
+    'InvitationMessageArrgs',
+    'NamedLocationCountryArrgs',
+    'NamedLocationIpArrgs',
+    'ServicePrincipalAppRoleArrgs',
+    'ServicePrincipalFeatureArrgs',
+    'ServicePrincipalFeatureTagArrgs',
+    'ServicePrincipalOauth2PermissionScopeArrgs',
+    'ServicePrincipalSamlSingleSignOnArrgs',
+    'SynchronizationJobScheduleArrgs',
+    'SynchronizationSecretCredentialArrgs',
 ]
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyApprovalSettingsArgs:
+calass AccessPackageAssignmentPolicyApprovalSettingsArrgs:
     def __init__(__self__, *,
                  approval_required: Optional[pulumi.Input[bool]] = None,
                  approval_required_for_extension: Optional[pulumi.Input[bool]] = None,
-                 approval_stages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs']]]] = None,
+                 approval_stages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrgs']]]] = None,
                  requestor_justification_required: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] approval_required: Whether an approval is required.
         :param pulumi.Input[bool] approval_required_for_extension: Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs']]] approval_stages: An `approval_stage` block specifying the process to obtain an approval, as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrgs']]] approval_stages: An `approval_stage` block specifying the process to obtain an approval, as documented below.
         :param pulumi.Input[bool] requestor_justification_required: Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
         """
         if approval_required is not None:
@@ -114,14 +114,14 @@ class AccessPackageAssignmentPolicyApprovalSettingsArgs:
 
     @property
     @pulumi.getter(name="approvalStages")
-    def approval_stages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs']]]]:
+    def approval_stages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrgs']]]]:
         """
         An `approval_stage` block specifying the process to obtain an approval, as documented below.
         """
         return pulumi.get(self, "approval_stages")
 
     @approval_stages.setter
-    def approval_stages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs']]]]):
+    def approval_stages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrgs']]]]):
         pulumi.set(self, "approval_stages", value)
 
     @property
@@ -138,21 +138,21 @@ class AccessPackageAssignmentPolicyApprovalSettingsArgs:
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs:
+calass AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrgs:
     def __init__(__self__, *,
                  approval_timeout_in_days: pulumi.Input[int],
                  alternative_approval_enabled: Optional[pulumi.Input[bool]] = None,
-                 alternative_approvers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs']]]] = None,
+                 alternative_approvers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrgs']]]] = None,
                  approver_justification_required: Optional[pulumi.Input[bool]] = None,
                  enable_alternative_approval_in_days: Optional[pulumi.Input[int]] = None,
-                 primary_approvers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs']]]] = None):
+                 primary_approvers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrgs']]]] = None):
         """
         :param pulumi.Input[int] approval_timeout_in_days: Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
         :param pulumi.Input[bool] alternative_approval_enabled: Whether alternative approvers are enabled.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs']]] alternative_approvers: A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrgs']]] alternative_approvers: A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
         :param pulumi.Input[bool] approver_justification_required: Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
         :param pulumi.Input[int] enable_alternative_approval_in_days: Number of days before the request is forwarded to alternative approvers.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs']]] primary_approvers: A block specifying the users who will be asked to approve requests, as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrgs']]] primary_approvers: A block specifying the users who will be asked to approve requests, as documented below.
         """
         pulumi.set(__self__, "approval_timeout_in_days", approval_timeout_in_days)
         if alternative_approval_enabled is not None:
@@ -192,14 +192,14 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs:
 
     @property
     @pulumi.getter(name="alternativeApprovers")
-    def alternative_approvers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs']]]]:
+    def alternative_approvers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrgs']]]]:
         """
         A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
         """
         return pulumi.get(self, "alternative_approvers")
 
     @alternative_approvers.setter
-    def alternative_approvers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs']]]]):
+    def alternative_approvers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrgs']]]]):
         pulumi.set(self, "alternative_approvers", value)
 
     @property
@@ -228,19 +228,19 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs:
 
     @property
     @pulumi.getter(name="primaryApprovers")
-    def primary_approvers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs']]]]:
+    def primary_approvers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrgs']]]]:
         """
         A block specifying the users who will be asked to approve requests, as documented below.
         """
         return pulumi.get(self, "primary_approvers")
 
     @primary_approvers.setter
-    def primary_approvers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs']]]]):
+    def primary_approvers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrgs']]]]):
         pulumi.set(self, "primary_approvers", value)
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs:
+calass AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrgs:
     def __init__(__self__, *,
                  subject_type: pulumi.Input[str],
                  backup: Optional[pulumi.Input[bool]] = None,
@@ -294,7 +294,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs:
+calass AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrgs:
     def __init__(__self__, *,
                  subject_type: pulumi.Input[str],
                  backup: Optional[pulumi.Input[bool]] = None,
@@ -348,7 +348,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverA
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs:
+calass AccessPackageAssignmentPolicyAssignmentReviewSettingsArrgs:
     def __init__(__self__, *,
                  access_recommendation_enabled: Optional[pulumi.Input[bool]] = None,
                  access_review_timeout_behavior: Optional[pulumi.Input[str]] = None,
@@ -357,7 +357,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  review_frequency: Optional[pulumi.Input[str]] = None,
                  review_type: Optional[pulumi.Input[str]] = None,
-                 reviewers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs']]]] = None,
+                 reviewers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrgs']]]] = None,
                  starting_on: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] access_recommendation_enabled: Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
@@ -367,7 +367,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs:
         :param pulumi.Input[bool] enabled: Whether to enable assignment review.
         :param pulumi.Input[str] review_frequency: This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
         :param pulumi.Input[str] review_type: Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs']]] reviewers: One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrgs']]] reviewers: One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
         :param pulumi.Input[str] starting_on: This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
         """
         if access_recommendation_enabled is not None:
@@ -475,14 +475,14 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs:
 
     @property
     @pulumi.getter
-    def reviewers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs']]]]:
+    def reviewers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrgs']]]]:
         """
         One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
         """
         return pulumi.get(self, "reviewers")
 
     @reviewers.setter
-    def reviewers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs']]]]):
+    def reviewers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrgs']]]]):
         pulumi.set(self, "reviewers", value)
 
     @property
@@ -499,7 +499,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs:
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs:
+calass AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrgs:
     def __init__(__self__, *,
                  subject_type: pulumi.Input[str],
                  backup: Optional[pulumi.Input[bool]] = None,
@@ -553,15 +553,15 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs:
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyQuestionArgs:
+calass AccessPackageAssignmentPolicyQuestionArrgs:
     def __init__(__self__, *,
-                 text: pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArgs'],
-                 choices: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArgs']]]] = None,
+                 text: pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArrgs'],
+                 choices: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArrgs']]]] = None,
                  required: Optional[pulumi.Input[bool]] = None,
                  sequence: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArgs'] text: A block describing the content of this question, as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArgs']]] choices: One or more blocks configuring a choice to the question, as documented below.
+        :param pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArrgs'] text: A block describing the content of this question, as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArrgs']]] choices: One or more blocks configuring a choice to the question, as documented below.
         :param pulumi.Input[bool] required: Whether this question is required.
         :param pulumi.Input[int] sequence: The sequence number of this question.
         """
@@ -575,26 +575,26 @@ class AccessPackageAssignmentPolicyQuestionArgs:
 
     @property
     @pulumi.getter
-    def text(self) -> pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArgs']:
+    def text(self) -> pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArrgs']:
         """
         A block describing the content of this question, as documented below.
         """
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArgs']):
+    def text(self, value: pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArrgs']):
         pulumi.set(self, "text", value)
 
     @property
     @pulumi.getter
-    def choices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArgs']]]]:
+    def choices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArrgs']]]]:
         """
         One or more blocks configuring a choice to the question, as documented below.
         """
         return pulumi.get(self, "choices")
 
     @choices.setter
-    def choices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArgs']]]]):
+    def choices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArrgs']]]]):
         pulumi.set(self, "choices", value)
 
     @property
@@ -623,13 +623,13 @@ class AccessPackageAssignmentPolicyQuestionArgs:
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyQuestionChoiceArgs:
+calass AccessPackageAssignmentPolicyQuestionChoiceArrgs:
     def __init__(__self__, *,
                  actual_value: pulumi.Input[str],
-                 display_value: pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs']):
+                 display_value: pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArrgs']):
         """
         :param pulumi.Input[str] actual_value: The actual value of this choice.
-        :param pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs'] display_value: A block describing the display text of this choice, as documented below.
+        :param pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArrgs'] display_value: A block describing the display text of this choice, as documented below.
         """
         pulumi.set(__self__, "actual_value", actual_value)
         pulumi.set(__self__, "display_value", display_value)
@@ -648,25 +648,25 @@ class AccessPackageAssignmentPolicyQuestionChoiceArgs:
 
     @property
     @pulumi.getter(name="displayValue")
-    def display_value(self) -> pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs']:
+    def display_value(self) -> pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArrgs']:
         """
         A block describing the display text of this choice, as documented below.
         """
         return pulumi.get(self, "display_value")
 
     @display_value.setter
-    def display_value(self, value: pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs']):
+    def display_value(self, value: pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArrgs']):
         pulumi.set(self, "display_value", value)
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs:
+calass AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArrgs:
     def __init__(__self__, *,
                  default_text: pulumi.Input[str],
-                 localized_texts: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs']]]] = None):
+                 localized_texts: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrgs']]]] = None):
         """
         :param pulumi.Input[str] default_text: The default text of this question choice.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs']]] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrgs']]] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
         """
         pulumi.set(__self__, "default_text", default_text)
         if localized_texts is not None:
@@ -686,19 +686,19 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs:
 
     @property
     @pulumi.getter(name="localizedTexts")
-    def localized_texts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs']]]]:
+    def localized_texts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrgs']]]]:
         """
         One or more blocks describing localized text of this question choice, as documented below.
         """
         return pulumi.get(self, "localized_texts")
 
     @localized_texts.setter
-    def localized_texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs']]]]):
+    def localized_texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrgs']]]]):
         pulumi.set(self, "localized_texts", value)
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs:
+calass AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrgs:
     def __init__(__self__, *,
                  content: pulumi.Input[str],
                  language_code: pulumi.Input[str]):
@@ -735,13 +735,13 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs:
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyQuestionTextArgs:
+calass AccessPackageAssignmentPolicyQuestionTextArrgs:
     def __init__(__self__, *,
                  default_text: pulumi.Input[str],
-                 localized_texts: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs']]]] = None):
+                 localized_texts: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrgs']]]] = None):
         """
         :param pulumi.Input[str] default_text: The default text of this question choice.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs']]] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrgs']]] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
         """
         pulumi.set(__self__, "default_text", default_text)
         if localized_texts is not None:
@@ -761,19 +761,19 @@ class AccessPackageAssignmentPolicyQuestionTextArgs:
 
     @property
     @pulumi.getter(name="localizedTexts")
-    def localized_texts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs']]]]:
+    def localized_texts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrgs']]]]:
         """
         One or more blocks describing localized text of this question choice, as documented below.
         """
         return pulumi.get(self, "localized_texts")
 
     @localized_texts.setter
-    def localized_texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs']]]]):
+    def localized_texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrgs']]]]):
         pulumi.set(self, "localized_texts", value)
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs:
+calass AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrgs:
     def __init__(__self__, *,
                  content: pulumi.Input[str],
                  language_code: pulumi.Input[str]):
@@ -810,13 +810,13 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs:
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyRequestorSettingsArgs:
+calass AccessPackageAssignmentPolicyRequestorSettingsArrgs:
     def __init__(__self__, *,
-                 requestors: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs']]]] = None,
+                 requestors: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArrgs']]]] = None,
                  requests_accepted: Optional[pulumi.Input[bool]] = None,
                  scope_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs']]] requestors: A block specifying the users who are allowed to request on this policy, as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArrgs']]] requestors: A block specifying the users who are allowed to request on this policy, as documented below.
         :param pulumi.Input[bool] requests_accepted: Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
         :param pulumi.Input[str] scope_type: Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
         """
@@ -829,14 +829,14 @@ class AccessPackageAssignmentPolicyRequestorSettingsArgs:
 
     @property
     @pulumi.getter
-    def requestors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs']]]]:
+    def requestors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArrgs']]]]:
         """
         A block specifying the users who are allowed to request on this policy, as documented below.
         """
         return pulumi.get(self, "requestors")
 
     @requestors.setter
-    def requestors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs']]]]):
+    def requestors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArrgs']]]]):
         pulumi.set(self, "requestors", value)
 
     @property
@@ -865,7 +865,7 @@ class AccessPackageAssignmentPolicyRequestorSettingsArgs:
 
 
 @pulumi.input_type
-class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs:
+calass AccessPackageAssignmentPolicyRequestorSettingsRequestorArrgs:
     def __init__(__self__, *,
                  subject_type: pulumi.Input[str],
                  backup: Optional[pulumi.Input[bool]] = None,
@@ -919,16 +919,16 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs:
 
 
 @pulumi.input_type
-class ApplicationApiArgs:
+calass ApplicationApiArrgs:
     def __init__(__self__, *,
                  known_client_applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mapped_claims_enabled: Optional[pulumi.Input[bool]] = None,
-                 oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationApiOauth2PermissionScopeArgs']]]] = None,
+                 oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationApiOauth2PermissionScopeArrgs']]]] = None,
                  requested_access_token_version: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] known_client_applications: A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
         :param pulumi.Input[bool] mapped_claims_enabled: Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationApiOauth2PermissionScopeArgs']]] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationApiOauth2PermissionScopeArrgs']]] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
         :param pulumi.Input[int] requested_access_token_version: The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
         """
         if known_client_applications is not None:
@@ -966,14 +966,14 @@ class ApplicationApiArgs:
 
     @property
     @pulumi.getter(name="oauth2PermissionScopes")
-    def oauth2_permission_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationApiOauth2PermissionScopeArgs']]]]:
+    def oauth2_permission_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationApiOauth2PermissionScopeArrgs']]]]:
         """
         One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
         """
         return pulumi.get(self, "oauth2_permission_scopes")
 
     @oauth2_permission_scopes.setter
-    def oauth2_permission_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationApiOauth2PermissionScopeArgs']]]]):
+    def oauth2_permission_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationApiOauth2PermissionScopeArrgs']]]]):
         pulumi.set(self, "oauth2_permission_scopes", value)
 
     @property
@@ -990,7 +990,7 @@ class ApplicationApiArgs:
 
 
 @pulumi.input_type
-class ApplicationApiOauth2PermissionScopeArgs:
+calass ApplicationApiOauth2PermissionScopeArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  admin_consent_description: Optional[pulumi.Input[str]] = None,
@@ -1116,7 +1116,7 @@ class ApplicationApiOauth2PermissionScopeArgs:
 
 
 @pulumi.input_type
-class ApplicationAppRoleArgs:
+calass ApplicationAppRoleArrgs:
     def __init__(__self__, *,
                  allowed_member_types: pulumi.Input[Sequence[pulumi.Input[str]]],
                  description: pulumi.Input[str],
@@ -1207,7 +1207,7 @@ class ApplicationAppRoleArgs:
 
 
 @pulumi.input_type
-class ApplicationFeatureTagArgs:
+calass ApplicationFeatureTagArrgs:
     def __init__(__self__, *,
                  custom_single_sign_on: Optional[pulumi.Input[bool]] = None,
                  enterprise: Optional[pulumi.Input[bool]] = None,
@@ -1278,15 +1278,15 @@ class ApplicationFeatureTagArgs:
 
 
 @pulumi.input_type
-class ApplicationOptionalClaimsArgs:
+calass ApplicationOptionalClaimsArrgs:
     def __init__(__self__, *,
-                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]] = None,
-                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]] = None,
-                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]] = None):
+                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]]] = None,
+                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]]] = None,
+                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]] access_tokens: One or more `access_token` blocks as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]] id_tokens: One or more `id_token` blocks as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]] saml2_tokens: One or more `saml2_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]] access_tokens: One or more `access_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]] id_tokens: One or more `id_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]] saml2_tokens: One or more `saml2_token` blocks as documented below.
         """
         if access_tokens is not None:
             pulumi.set(__self__, "access_tokens", access_tokens)
@@ -1297,43 +1297,43 @@ class ApplicationOptionalClaimsArgs:
 
     @property
     @pulumi.getter(name="accessTokens")
-    def access_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]:
+    def access_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]]]:
         """
         One or more `access_token` blocks as documented below.
         """
         return pulumi.get(self, "access_tokens")
 
     @access_tokens.setter
-    def access_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]):
+    def access_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]]]):
         pulumi.set(self, "access_tokens", value)
 
     @property
     @pulumi.getter(name="idTokens")
-    def id_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]:
+    def id_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]]]:
         """
         One or more `id_token` blocks as documented below.
         """
         return pulumi.get(self, "id_tokens")
 
     @id_tokens.setter
-    def id_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]):
+    def id_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]]]):
         pulumi.set(self, "id_tokens", value)
 
     @property
     @pulumi.getter(name="saml2Tokens")
-    def saml2_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]:
+    def saml2_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]]]:
         """
         One or more `saml2_token` blocks as documented below.
         """
         return pulumi.get(self, "saml2_tokens")
 
     @saml2_tokens.setter
-    def saml2_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]):
+    def saml2_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]]]):
         pulumi.set(self, "saml2_tokens", value)
 
 
 @pulumi.input_type
-class ApplicationOptionalClaimsAccessTokenArgs:
+calass ApplicationOptionalClaimsAccessTokenArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  additional_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1403,7 +1403,7 @@ class ApplicationOptionalClaimsAccessTokenArgs:
 
 
 @pulumi.input_type
-class ApplicationOptionalClaimsIdTokenArgs:
+calass ApplicationOptionalClaimsIdTokenArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  additional_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1473,7 +1473,7 @@ class ApplicationOptionalClaimsIdTokenArgs:
 
 
 @pulumi.input_type
-class ApplicationOptionalClaimsSaml2TokenArgs:
+calass ApplicationOptionalClaimsSaml2TokenArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  additional_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1543,7 +1543,7 @@ class ApplicationOptionalClaimsSaml2TokenArgs:
 
 
 @pulumi.input_type
-class ApplicationPublicClientArgs:
+calass ApplicationPublicClientArrgs:
     def __init__(__self__, *,
                  redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -1566,12 +1566,12 @@ class ApplicationPublicClientArgs:
 
 
 @pulumi.input_type
-class ApplicationRequiredResourceAccessArgs:
+calass ApplicationRequiredResourceAccessArrgs:
     def __init__(__self__, *,
-                 resource_accesses: pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]],
+                 resource_accesses: pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArrgs']]],
                  resource_app_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]] resource_accesses: A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArrgs']]] resource_accesses: A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         :param pulumi.Input[str] resource_app_id: The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
                
                > **Note:** Documentation on `resource_app_id` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
@@ -1581,14 +1581,14 @@ class ApplicationRequiredResourceAccessArgs:
 
     @property
     @pulumi.getter(name="resourceAccesses")
-    def resource_accesses(self) -> pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]]:
+    def resource_accesses(self) -> pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArrgs']]]:
         """
         A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         """
         return pulumi.get(self, "resource_accesses")
 
     @resource_accesses.setter
-    def resource_accesses(self, value: pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]]):
+    def resource_accesses(self, value: pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArrgs']]]):
         pulumi.set(self, "resource_accesses", value)
 
     @property
@@ -1607,7 +1607,7 @@ class ApplicationRequiredResourceAccessArgs:
 
 
 @pulumi.input_type
-class ApplicationRequiredResourceAccessResourceAccessArgs:
+calass ApplicationRequiredResourceAccessResourceAccessArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  type: pulumi.Input[str]):
@@ -1644,7 +1644,7 @@ class ApplicationRequiredResourceAccessResourceAccessArgs:
 
 
 @pulumi.input_type
-class ApplicationSinglePageApplicationArgs:
+calass ApplicationSinglePageApplicationArrgs:
     def __init__(__self__, *,
                  redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -1667,15 +1667,15 @@ class ApplicationSinglePageApplicationArgs:
 
 
 @pulumi.input_type
-class ApplicationWebArgs:
+calass ApplicationWebArrgs:
     def __init__(__self__, *,
                  homepage_url: Optional[pulumi.Input[str]] = None,
-                 implicit_grant: Optional[pulumi.Input['ApplicationWebImplicitGrantArgs']] = None,
+                 implicit_grant: Optional[pulumi.Input['ApplicationWebImplicitGrantArrgs']] = None,
                  logout_url: Optional[pulumi.Input[str]] = None,
                  redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] homepage_url: Home page or landing page of the application.
-        :param pulumi.Input['ApplicationWebImplicitGrantArgs'] implicit_grant: An `implicit_grant` block as documented above.
+        :param pulumi.Input['ApplicationWebImplicitGrantArrgs'] implicit_grant: An `implicit_grant` block as documented above.
         :param pulumi.Input[str] logout_url: The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
         """
@@ -1702,14 +1702,14 @@ class ApplicationWebArgs:
 
     @property
     @pulumi.getter(name="implicitGrant")
-    def implicit_grant(self) -> Optional[pulumi.Input['ApplicationWebImplicitGrantArgs']]:
+    def implicit_grant(self) -> Optional[pulumi.Input['ApplicationWebImplicitGrantArrgs']]:
         """
         An `implicit_grant` block as documented above.
         """
         return pulumi.get(self, "implicit_grant")
 
     @implicit_grant.setter
-    def implicit_grant(self, value: Optional[pulumi.Input['ApplicationWebImplicitGrantArgs']]):
+    def implicit_grant(self, value: Optional[pulumi.Input['ApplicationWebImplicitGrantArrgs']]):
         pulumi.set(self, "implicit_grant", value)
 
     @property
@@ -1738,7 +1738,7 @@ class ApplicationWebArgs:
 
 
 @pulumi.input_type
-class ApplicationWebImplicitGrantArgs:
+calass ApplicationWebImplicitGrantArrgs:
     def __init__(__self__, *,
                  access_token_issuance_enabled: Optional[pulumi.Input[bool]] = None,
                  id_token_issuance_enabled: Optional[pulumi.Input[bool]] = None):
@@ -1777,26 +1777,26 @@ class ApplicationWebImplicitGrantArgs:
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsArgs:
+calass ConditionalAccessPolicyConditionsArrgs:
     def __init__(__self__, *,
-                 applications: pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs'],
+                 applications: pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArrgs'],
                  client_app_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 users: pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs'],
-                 client_applications: Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs']] = None,
-                 devices: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs']] = None,
-                 locations: Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs']] = None,
-                 platforms: Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs']] = None,
+                 users: pulumi.Input['ConditionalAccessPolicyConditionsUsersArrgs'],
+                 client_applications: Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArrgs']] = None,
+                 devices: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArrgs']] = None,
+                 locations: Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArrgs']] = None,
+                 platforms: Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArrgs']] = None,
                  service_principal_risk_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sign_in_risk_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_risk_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs'] applications: An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArrgs'] applications: An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_app_types: A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
-        :param pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs'] users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
-        :param pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs'] client_applications: An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
-        :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs'] devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
-        :param pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs'] locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
-        :param pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs'] platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsUsersArrgs'] users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArrgs'] client_applications: An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesArrgs'] devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsLocationsArrgs'] locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArrgs'] platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_principal_risk_levels: A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sign_in_risk_levels: A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_risk_levels: A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
@@ -1821,14 +1821,14 @@ class ConditionalAccessPolicyConditionsArgs:
 
     @property
     @pulumi.getter
-    def applications(self) -> pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs']:
+    def applications(self) -> pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArrgs']:
         """
         An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         """
         return pulumi.get(self, "applications")
 
     @applications.setter
-    def applications(self, value: pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs']):
+    def applications(self, value: pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArrgs']):
         pulumi.set(self, "applications", value)
 
     @property
@@ -1845,62 +1845,62 @@ class ConditionalAccessPolicyConditionsArgs:
 
     @property
     @pulumi.getter
-    def users(self) -> pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs']:
+    def users(self) -> pulumi.Input['ConditionalAccessPolicyConditionsUsersArrgs']:
         """
         A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
         """
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs']):
+    def users(self, value: pulumi.Input['ConditionalAccessPolicyConditionsUsersArrgs']):
         pulumi.set(self, "users", value)
 
     @property
     @pulumi.getter(name="clientApplications")
-    def client_applications(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs']]:
+    def client_applications(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArrgs']]:
         """
         An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
         """
         return pulumi.get(self, "client_applications")
 
     @client_applications.setter
-    def client_applications(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs']]):
+    def client_applications(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArrgs']]):
         pulumi.set(self, "client_applications", value)
 
     @property
     @pulumi.getter
-    def devices(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs']]:
+    def devices(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArrgs']]:
         """
         A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         """
         return pulumi.get(self, "devices")
 
     @devices.setter
-    def devices(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs']]):
+    def devices(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArrgs']]):
         pulumi.set(self, "devices", value)
 
     @property
     @pulumi.getter
-    def locations(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs']]:
+    def locations(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArrgs']]:
         """
         A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         """
         return pulumi.get(self, "locations")
 
     @locations.setter
-    def locations(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs']]):
+    def locations(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArrgs']]):
         pulumi.set(self, "locations", value)
 
     @property
     @pulumi.getter
-    def platforms(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs']]:
+    def platforms(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArrgs']]:
         """
         A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         """
         return pulumi.get(self, "platforms")
 
     @platforms.setter
-    def platforms(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs']]):
+    def platforms(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArrgs']]):
         pulumi.set(self, "platforms", value)
 
     @property
@@ -1941,7 +1941,7 @@ class ConditionalAccessPolicyConditionsArgs:
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsApplicationsArgs:
+calass ConditionalAccessPolicyConditionsApplicationsArrgs:
     def __init__(__self__, *,
                  excluded_applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1996,7 +1996,7 @@ class ConditionalAccessPolicyConditionsApplicationsArgs:
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsClientApplicationsArgs:
+calass ConditionalAccessPolicyConditionsClientApplicationsArrgs:
     def __init__(__self__, *,
                  excluded_service_principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_service_principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2035,30 +2035,30 @@ class ConditionalAccessPolicyConditionsClientApplicationsArgs:
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsDevicesArgs:
+calass ConditionalAccessPolicyConditionsDevicesArrgs:
     def __init__(__self__, *,
-                 filter: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs']] = None):
+                 filter: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArrgs']] = None):
         """
-        :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs'] filter: A `filter` block as described below.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArrgs'] filter: A `filter` block as described below.
         """
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
 
     @property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs']]:
+    def filter(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArrgs']]:
         """
         A `filter` block as described below.
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs']]):
+    def filter(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArrgs']]):
         pulumi.set(self, "filter", value)
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsDevicesFilterArgs:
+calass ConditionalAccessPolicyConditionsDevicesFilterArrgs:
     def __init__(__self__, *,
                  mode: pulumi.Input[str],
                  rule: pulumi.Input[str]):
@@ -2095,7 +2095,7 @@ class ConditionalAccessPolicyConditionsDevicesFilterArgs:
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsLocationsArgs:
+calass ConditionalAccessPolicyConditionsLocationsArrgs:
     def __init__(__self__, *,
                  included_locations: pulumi.Input[Sequence[pulumi.Input[str]]],
                  excluded_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2133,7 +2133,7 @@ class ConditionalAccessPolicyConditionsLocationsArgs:
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsPlatformsArgs:
+calass ConditionalAccessPolicyConditionsPlatformsArrgs:
     def __init__(__self__, *,
                  included_platforms: pulumi.Input[Sequence[pulumi.Input[str]]],
                  excluded_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2171,23 +2171,23 @@ class ConditionalAccessPolicyConditionsPlatformsArgs:
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsUsersArgs:
+calass ConditionalAccessPolicyConditionsUsersArrgs:
     def __init__(__self__, *,
                  excluded_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 excluded_guests_or_external_users: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs']]]] = None,
+                 excluded_guests_or_external_users: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrgs']]]] = None,
                  excluded_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  excluded_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 included_guests_or_external_users: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs']]]] = None,
+                 included_guests_or_external_users: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrgs']]]] = None,
                  included_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_groups: A list of group IDs excluded from scope of policy.
-        :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs']]] excluded_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+        :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrgs']]] excluded_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_roles: A list of role IDs excluded from scope of policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_users: A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_groups: A list of group IDs in scope of policy unless explicitly excluded.
-        :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs']]] included_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+        :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrgs']]] included_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_roles: A list of role IDs in scope of policy unless explicitly excluded.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_users: A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
                
@@ -2224,14 +2224,14 @@ class ConditionalAccessPolicyConditionsUsersArgs:
 
     @property
     @pulumi.getter(name="excludedGuestsOrExternalUsers")
-    def excluded_guests_or_external_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs']]]]:
+    def excluded_guests_or_external_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrgs']]]]:
         """
         A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
         """
         return pulumi.get(self, "excluded_guests_or_external_users")
 
     @excluded_guests_or_external_users.setter
-    def excluded_guests_or_external_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs']]]]):
+    def excluded_guests_or_external_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrgs']]]]):
         pulumi.set(self, "excluded_guests_or_external_users", value)
 
     @property
@@ -2272,14 +2272,14 @@ class ConditionalAccessPolicyConditionsUsersArgs:
 
     @property
     @pulumi.getter(name="includedGuestsOrExternalUsers")
-    def included_guests_or_external_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs']]]]:
+    def included_guests_or_external_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrgs']]]]:
         """
         A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
         """
         return pulumi.get(self, "included_guests_or_external_users")
 
     @included_guests_or_external_users.setter
-    def included_guests_or_external_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs']]]]):
+    def included_guests_or_external_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrgs']]]]):
         pulumi.set(self, "included_guests_or_external_users", value)
 
     @property
@@ -2310,13 +2310,13 @@ class ConditionalAccessPolicyConditionsUsersArgs:
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs:
+calass ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrgs:
     def __init__(__self__, *,
                  guest_or_external_user_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 external_tenants: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs']]]] = None):
+                 external_tenants: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-        :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs']]] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrgs']]] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
         """
         pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
         if external_tenants is not None:
@@ -2336,19 +2336,19 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs:
 
     @property
     @pulumi.getter(name="externalTenants")
-    def external_tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs']]]]:
+    def external_tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrgs']]]]:
         """
         An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
         """
         return pulumi.get(self, "external_tenants")
 
     @external_tenants.setter
-    def external_tenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs']]]]):
+    def external_tenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrgs']]]]):
         pulumi.set(self, "external_tenants", value)
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs:
+calass ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrgs:
     def __init__(__self__, *,
                  membership_kind: pulumi.Input[str],
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2386,13 +2386,13 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternal
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs:
+calass ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrgs:
     def __init__(__self__, *,
                  guest_or_external_user_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 external_tenants: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs']]]] = None):
+                 external_tenants: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-        :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs']]] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrgs']]] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
         """
         pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
         if external_tenants is not None:
@@ -2412,19 +2412,19 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs:
 
     @property
     @pulumi.getter(name="externalTenants")
-    def external_tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs']]]]:
+    def external_tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrgs']]]]:
         """
         An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
         """
         return pulumi.get(self, "external_tenants")
 
     @external_tenants.setter
-    def external_tenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs']]]]):
+    def external_tenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrgs']]]]):
         pulumi.set(self, "external_tenants", value)
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs:
+calass ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrgs:
     def __init__(__self__, *,
                  membership_kind: pulumi.Input[str],
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2462,7 +2462,7 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternal
 
 
 @pulumi.input_type
-class ConditionalAccessPolicyGrantControlsArgs:
+calass ConditionalAccessPolicyGrantControlsArrgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[str],
                  authentication_strength_policy_id: Optional[pulumi.Input[str]] = None,
@@ -2552,7 +2552,7 @@ class ConditionalAccessPolicyGrantControlsArgs:
 
 
 @pulumi.input_type
-class ConditionalAccessPolicySessionControlsArgs:
+calass ConditionalAccessPolicySessionControlsArrgs:
     def __init__(__self__, *,
                  application_enforced_restrictions_enabled: Optional[pulumi.Input[bool]] = None,
                  cloud_app_security_policy: Optional[pulumi.Input[str]] = None,
@@ -2691,7 +2691,7 @@ class ConditionalAccessPolicySessionControlsArgs:
 
 
 @pulumi.input_type
-class CustomDirectoryRolePermissionArgs:
+calass CustomDirectoryRolePermissionArrgs:
     def __init__(__self__, *,
                  allowed_resource_actions: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -2713,7 +2713,7 @@ class CustomDirectoryRolePermissionArgs:
 
 
 @pulumi.input_type
-class GroupDynamicMembershipArgs:
+calass GroupDynamicMembershipArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  rule: pulumi.Input[str]):
@@ -2754,7 +2754,7 @@ class GroupDynamicMembershipArgs:
 
 
 @pulumi.input_type
-class InvitationMessageArgs:
+calass InvitationMessageArrgs:
     def __init__(__self__, *,
                  additional_recipients: Optional[pulumi.Input[str]] = None,
                  body: Optional[pulumi.Input[str]] = None,
@@ -2809,7 +2809,7 @@ class InvitationMessageArgs:
 
 
 @pulumi.input_type
-class NamedLocationCountryArgs:
+calass NamedLocationCountryArrgs:
     def __init__(__self__, *,
                  countries_and_regions: pulumi.Input[Sequence[pulumi.Input[str]]],
                  include_unknown_countries_and_regions: Optional[pulumi.Input[bool]] = None):
@@ -2847,7 +2847,7 @@ class NamedLocationCountryArgs:
 
 
 @pulumi.input_type
-class NamedLocationIpArgs:
+calass NamedLocationIpArrgs:
     def __init__(__self__, *,
                  ip_ranges: pulumi.Input[Sequence[pulumi.Input[str]]],
                  trusted: Optional[pulumi.Input[bool]] = None):
@@ -2885,7 +2885,7 @@ class NamedLocationIpArgs:
 
 
 @pulumi.input_type
-class ServicePrincipalAppRoleArgs:
+calass ServicePrincipalAppRoleArrgs:
     def __init__(__self__, *,
                  allowed_member_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -2988,7 +2988,7 @@ class ServicePrincipalAppRoleArgs:
 
 
 @pulumi.input_type
-class ServicePrincipalFeatureArgs:
+calass ServicePrincipalFeatureArrgs:
     def __init__(__self__, *,
                  custom_single_sign_on_app: Optional[pulumi.Input[bool]] = None,
                  enterprise_application: Optional[pulumi.Input[bool]] = None,
@@ -3041,7 +3041,7 @@ class ServicePrincipalFeatureArgs:
 
 
 @pulumi.input_type
-class ServicePrincipalFeatureTagArgs:
+calass ServicePrincipalFeatureTagArrgs:
     def __init__(__self__, *,
                  custom_single_sign_on: Optional[pulumi.Input[bool]] = None,
                  enterprise: Optional[pulumi.Input[bool]] = None,
@@ -3112,7 +3112,7 @@ class ServicePrincipalFeatureTagArgs:
 
 
 @pulumi.input_type
-class ServicePrincipalOauth2PermissionScopeArgs:
+calass ServicePrincipalOauth2PermissionScopeArrgs:
     def __init__(__self__, *,
                  admin_consent_description: Optional[pulumi.Input[str]] = None,
                  admin_consent_display_name: Optional[pulumi.Input[str]] = None,
@@ -3247,7 +3247,7 @@ class ServicePrincipalOauth2PermissionScopeArgs:
 
 
 @pulumi.input_type
-class ServicePrincipalSamlSingleSignOnArgs:
+calass ServicePrincipalSamlSingleSignOnArrgs:
     def __init__(__self__, *,
                  relay_state: Optional[pulumi.Input[str]] = None):
         """
@@ -3270,7 +3270,7 @@ class ServicePrincipalSamlSingleSignOnArgs:
 
 
 @pulumi.input_type
-class SynchronizationJobScheduleArgs:
+calass SynchronizationJobScheduleArrgs:
     def __init__(__self__, *,
                  expiration: Optional[pulumi.Input[str]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
@@ -3325,7 +3325,7 @@ class SynchronizationJobScheduleArgs:
 
 
 @pulumi.input_type
-class SynchronizationSecretCredentialArgs:
+calass SynchronizationSecretCredentialArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):

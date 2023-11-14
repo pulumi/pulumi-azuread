@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ServicePrincipalTokenSigningCertificateArgs', 'ServicePrincipalTokenSigningCertificate']
+__all__ = ['ServicePrincipalTokenSigningCertificateArrgs', 'ServicePrincipalTokenSigningCertificate']
 
 @pulumi.input_type
-class ServicePrincipalTokenSigningCertificateArgs:
+calass ServicePrincipalTokenSigningCertificateArrgs:
     def __init__(__self__, *,
                  service_principal_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -73,7 +73,7 @@ class ServicePrincipalTokenSigningCertificateArgs:
 
 
 @pulumi.input_type
-class _ServicePrincipalTokenSigningCertificateState:
+calass _ServicePrincipalTokenSigningCertificateState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
@@ -200,7 +200,7 @@ class _ServicePrincipalTokenSigningCertificateState:
         pulumi.set(self, "value", value)
 
 
-class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
+calass ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -260,7 +260,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServicePrincipalTokenSigningCertificateArgs,
+                 args: ServicePrincipalTokenSigningCertificateArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -301,12 +301,12 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
          -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
-        :param ServicePrincipalTokenSigningCertificateArgs args: The arguments to use to populate this resource's properties.
+        :param ServicePrincipalTokenSigningCertificateArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServicePrincipalTokenSigningCertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServicePrincipalTokenSigningCertificateArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -325,7 +325,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServicePrincipalTokenSigningCertificateArgs.__new__(ServicePrincipalTokenSigningCertificateArgs)
+            __props__ = ServicePrincipalTokenSigningCertificateArrgs.__new__(ServicePrincipalTokenSigningCertificateArrgs)
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["end_date"] = end_date

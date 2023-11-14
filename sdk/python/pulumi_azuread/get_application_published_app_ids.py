@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetApplicationPublishedAppIdsResult:
+calass GetApplicationPublishedAppIdsResult:
     """
     A collection of values returned by getApplicationPublishedAppIds.
     """
@@ -46,7 +46,7 @@ class GetApplicationPublishedAppIdsResult:
         return pulumi.get(self, "result")
 
 
-class AwaitableGetApplicationPublishedAppIdsResult(GetApplicationPublishedAppIdsResult):
+calass AwaitableGetApplicationPublishedAppIdsResult(GetApplicationPublishedAppIdsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -88,14 +88,14 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
         use_existing=True)
     example = azuread.Application("example",
         display_name="example",
-        required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+        required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArrgs(
             resource_app_id=well_known.result["MicrosoftGraph"],
             resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                     id=msgraph.app_role_ids["User.Read.All"],
                     type="Role",
                 ),
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                     id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
                     type="Scope",
                 ),
@@ -145,14 +145,14 @@ def get_application_published_app_ids_output(opts: Optional[pulumi.InvokeOptions
         use_existing=True)
     example = azuread.Application("example",
         display_name="example",
-        required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+        required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArrgs(
             resource_app_id=well_known.result["MicrosoftGraph"],
             resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                     id=msgraph.app_role_ids["User.Read.All"],
                     type="Role",
                 ),
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                     id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
                     type="Scope",
                 ),

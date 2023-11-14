@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['DirectoryRoleAssignmentArgs', 'DirectoryRoleAssignment']
+__all__ = ['DirectoryRoleAssignmentArrgs', 'DirectoryRoleAssignment']
 
 @pulumi.input_type
-class DirectoryRoleAssignmentArgs:
+calass DirectoryRoleAssignmentArrgs:
     def __init__(__self__, *,
                  principal_object_id: pulumi.Input[str],
                  role_id: pulumi.Input[str],
@@ -120,7 +120,7 @@ class DirectoryRoleAssignmentArgs:
 
 
 @pulumi.input_type
-class _DirectoryRoleAssignmentState:
+calass _DirectoryRoleAssignmentState:
     def __init__(__self__, *,
                  app_scope_id: Optional[pulumi.Input[str]] = None,
                  app_scope_object_id: Optional[pulumi.Input[str]] = None,
@@ -229,7 +229,7 @@ class _DirectoryRoleAssignmentState:
         pulumi.set(self, "role_id", value)
 
 
-class DirectoryRoleAssignment(pulumi.CustomResource):
+calass DirectoryRoleAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -273,7 +273,7 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DirectoryRoleAssignmentArgs,
+                 args: DirectoryRoleAssignmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a single directory role assignment within Azure Active Directory.
@@ -295,12 +295,12 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DirectoryRoleAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param DirectoryRoleAssignmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DirectoryRoleAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DirectoryRoleAssignmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -322,7 +322,7 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DirectoryRoleAssignmentArgs.__new__(DirectoryRoleAssignmentArgs)
+            __props__ = DirectoryRoleAssignmentArrgs.__new__(DirectoryRoleAssignmentArrgs)
 
             __props__.__dict__["app_scope_id"] = app_scope_id
             __props__.__dict__["app_scope_object_id"] = app_scope_object_id

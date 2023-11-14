@@ -11,19 +11,19 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NamedLocationArgs', 'NamedLocation']
+__all__ = ['NamedLocationArrgs', 'NamedLocation']
 
 @pulumi.input_type
-class NamedLocationArgs:
+calass NamedLocationArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 country: Optional[pulumi.Input['NamedLocationCountryArgs']] = None,
-                 ip: Optional[pulumi.Input['NamedLocationIpArgs']] = None):
+                 country: Optional[pulumi.Input['NamedLocationCountryArrgs']] = None,
+                 ip: Optional[pulumi.Input['NamedLocationIpArrgs']] = None):
         """
         The set of arguments for constructing a NamedLocation resource.
         :param pulumi.Input[str] display_name: The friendly name for this named location.
-        :param pulumi.Input['NamedLocationCountryArgs'] country: A `country` block as documented below, which configures a country-based named location.
-        :param pulumi.Input['NamedLocationIpArgs'] ip: An `ip` block as documented below, which configures an IP-based named location.
+        :param pulumi.Input['NamedLocationCountryArrgs'] country: A `country` block as documented below, which configures a country-based named location.
+        :param pulumi.Input['NamedLocationIpArrgs'] ip: An `ip` block as documented below, which configures an IP-based named location.
                
                > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
@@ -47,19 +47,19 @@ class NamedLocationArgs:
 
     @property
     @pulumi.getter
-    def country(self) -> Optional[pulumi.Input['NamedLocationCountryArgs']]:
+    def country(self) -> Optional[pulumi.Input['NamedLocationCountryArrgs']]:
         """
         A `country` block as documented below, which configures a country-based named location.
         """
         return pulumi.get(self, "country")
 
     @country.setter
-    def country(self, value: Optional[pulumi.Input['NamedLocationCountryArgs']]):
+    def country(self, value: Optional[pulumi.Input['NamedLocationCountryArrgs']]):
         pulumi.set(self, "country", value)
 
     @property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input['NamedLocationIpArgs']]:
+    def ip(self) -> Optional[pulumi.Input['NamedLocationIpArrgs']]:
         """
         An `ip` block as documented below, which configures an IP-based named location.
 
@@ -68,21 +68,21 @@ class NamedLocationArgs:
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input['NamedLocationIpArgs']]):
+    def ip(self, value: Optional[pulumi.Input['NamedLocationIpArrgs']]):
         pulumi.set(self, "ip", value)
 
 
 @pulumi.input_type
-class _NamedLocationState:
+calass _NamedLocationState:
     def __init__(__self__, *,
-                 country: Optional[pulumi.Input['NamedLocationCountryArgs']] = None,
+                 country: Optional[pulumi.Input['NamedLocationCountryArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 ip: Optional[pulumi.Input['NamedLocationIpArgs']] = None):
+                 ip: Optional[pulumi.Input['NamedLocationIpArrgs']] = None):
         """
         Input properties used for looking up and filtering NamedLocation resources.
-        :param pulumi.Input['NamedLocationCountryArgs'] country: A `country` block as documented below, which configures a country-based named location.
+        :param pulumi.Input['NamedLocationCountryArrgs'] country: A `country` block as documented below, which configures a country-based named location.
         :param pulumi.Input[str] display_name: The friendly name for this named location.
-        :param pulumi.Input['NamedLocationIpArgs'] ip: An `ip` block as documented below, which configures an IP-based named location.
+        :param pulumi.Input['NamedLocationIpArrgs'] ip: An `ip` block as documented below, which configures an IP-based named location.
                
                > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
@@ -95,14 +95,14 @@ class _NamedLocationState:
 
     @property
     @pulumi.getter
-    def country(self) -> Optional[pulumi.Input['NamedLocationCountryArgs']]:
+    def country(self) -> Optional[pulumi.Input['NamedLocationCountryArrgs']]:
         """
         A `country` block as documented below, which configures a country-based named location.
         """
         return pulumi.get(self, "country")
 
     @country.setter
-    def country(self, value: Optional[pulumi.Input['NamedLocationCountryArgs']]):
+    def country(self, value: Optional[pulumi.Input['NamedLocationCountryArrgs']]):
         pulumi.set(self, "country", value)
 
     @property
@@ -119,7 +119,7 @@ class _NamedLocationState:
 
     @property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input['NamedLocationIpArgs']]:
+    def ip(self) -> Optional[pulumi.Input['NamedLocationIpArrgs']]:
         """
         An `ip` block as documented below, which configures an IP-based named location.
 
@@ -128,18 +128,18 @@ class _NamedLocationState:
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input['NamedLocationIpArgs']]):
+    def ip(self, value: Optional[pulumi.Input['NamedLocationIpArrgs']]):
         pulumi.set(self, "ip", value)
 
 
-class NamedLocation(pulumi.CustomResource):
+calass NamedLocation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 country: Optional[pulumi.Input[pulumi.InputType['NamedLocationCountryArgs']]] = None,
+                 country: Optional[pulumi.Input[pulumi.InputType['NamedLocationCountryArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 ip: Optional[pulumi.Input[pulumi.InputType['NamedLocationIpArgs']]] = None,
+                 ip: Optional[pulumi.Input[pulumi.InputType['NamedLocationIpArrgs']]] = None,
                  __props__=None):
         """
         Manages a Named Location within Azure Active Directory.
@@ -160,7 +160,7 @@ class NamedLocation(pulumi.CustomResource):
 
         example_ip = azuread.NamedLocation("example-ip",
             display_name="IP Named Location",
-            ip=azuread.NamedLocationIpArgs(
+            ip=azuread.NamedLocationIpArrgs(
                 ip_ranges=[
                     "1.1.1.1/32",
                     "2.2.2.2/32",
@@ -168,7 +168,7 @@ class NamedLocation(pulumi.CustomResource):
                 trusted=True,
             ))
         example_country = azuread.NamedLocation("example-country",
-            country=azuread.NamedLocationCountryArgs(
+            country=azuread.NamedLocationCountryArrgs(
                 countries_and_regions=[
                     "GB",
                     "US",
@@ -188,9 +188,9 @@ class NamedLocation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NamedLocationCountryArgs']] country: A `country` block as documented below, which configures a country-based named location.
+        :param pulumi.Input[pulumi.InputType['NamedLocationCountryArrgs']] country: A `country` block as documented below, which configures a country-based named location.
         :param pulumi.Input[str] display_name: The friendly name for this named location.
-        :param pulumi.Input[pulumi.InputType['NamedLocationIpArgs']] ip: An `ip` block as documented below, which configures an IP-based named location.
+        :param pulumi.Input[pulumi.InputType['NamedLocationIpArrgs']] ip: An `ip` block as documented below, which configures an IP-based named location.
                
                > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
@@ -198,7 +198,7 @@ class NamedLocation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NamedLocationArgs,
+                 args: NamedLocationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Named Location within Azure Active Directory.
@@ -219,7 +219,7 @@ class NamedLocation(pulumi.CustomResource):
 
         example_ip = azuread.NamedLocation("example-ip",
             display_name="IP Named Location",
-            ip=azuread.NamedLocationIpArgs(
+            ip=azuread.NamedLocationIpArrgs(
                 ip_ranges=[
                     "1.1.1.1/32",
                     "2.2.2.2/32",
@@ -227,7 +227,7 @@ class NamedLocation(pulumi.CustomResource):
                 trusted=True,
             ))
         example_country = azuread.NamedLocation("example-country",
-            country=azuread.NamedLocationCountryArgs(
+            country=azuread.NamedLocationCountryArrgs(
                 countries_and_regions=[
                     "GB",
                     "US",
@@ -246,12 +246,12 @@ class NamedLocation(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NamedLocationArgs args: The arguments to use to populate this resource's properties.
+        :param NamedLocationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NamedLocationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NamedLocationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -260,9 +260,9 @@ class NamedLocation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 country: Optional[pulumi.Input[pulumi.InputType['NamedLocationCountryArgs']]] = None,
+                 country: Optional[pulumi.Input[pulumi.InputType['NamedLocationCountryArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 ip: Optional[pulumi.Input[pulumi.InputType['NamedLocationIpArgs']]] = None,
+                 ip: Optional[pulumi.Input[pulumi.InputType['NamedLocationIpArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -270,7 +270,7 @@ class NamedLocation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NamedLocationArgs.__new__(NamedLocationArgs)
+            __props__ = NamedLocationArrgs.__new__(NamedLocationArrgs)
 
             __props__.__dict__["country"] = country
             if display_name is None and not opts.urn:
@@ -287,9 +287,9 @@ class NamedLocation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            country: Optional[pulumi.Input[pulumi.InputType['NamedLocationCountryArgs']]] = None,
+            country: Optional[pulumi.Input[pulumi.InputType['NamedLocationCountryArrgs']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            ip: Optional[pulumi.Input[pulumi.InputType['NamedLocationIpArgs']]] = None) -> 'NamedLocation':
+            ip: Optional[pulumi.Input[pulumi.InputType['NamedLocationIpArrgs']]] = None) -> 'NamedLocation':
         """
         Get an existing NamedLocation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -297,9 +297,9 @@ class NamedLocation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NamedLocationCountryArgs']] country: A `country` block as documented below, which configures a country-based named location.
+        :param pulumi.Input[pulumi.InputType['NamedLocationCountryArrgs']] country: A `country` block as documented below, which configures a country-based named location.
         :param pulumi.Input[str] display_name: The friendly name for this named location.
-        :param pulumi.Input[pulumi.InputType['NamedLocationIpArgs']] ip: An `ip` block as documented below, which configures an IP-based named location.
+        :param pulumi.Input[pulumi.InputType['NamedLocationIpArrgs']] ip: An `ip` block as documented below, which configures an IP-based named location.
                
                > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """

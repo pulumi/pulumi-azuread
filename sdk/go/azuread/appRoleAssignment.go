@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages an app role assignment for a group, user or service principal. Can be used to grant admin consent for application permissions.
@@ -453,12 +452,6 @@ func (i *AppRoleAssignment) ToAppRoleAssignmentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AppRoleAssignmentOutput)
 }
 
-func (i *AppRoleAssignment) ToOutput(ctx context.Context) pulumix.Output[*AppRoleAssignment] {
-	return pulumix.Output[*AppRoleAssignment]{
-		OutputState: i.ToAppRoleAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppRoleAssignmentArrayInput is an input type that accepts AppRoleAssignmentArray and AppRoleAssignmentArrayOutput values.
 // You can construct a concrete instance of `AppRoleAssignmentArrayInput` via:
 //
@@ -482,12 +475,6 @@ func (i AppRoleAssignmentArray) ToAppRoleAssignmentArrayOutput() AppRoleAssignme
 
 func (i AppRoleAssignmentArray) ToAppRoleAssignmentArrayOutputWithContext(ctx context.Context) AppRoleAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppRoleAssignmentArrayOutput)
-}
-
-func (i AppRoleAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AppRoleAssignment] {
-	return pulumix.Output[[]*AppRoleAssignment]{
-		OutputState: i.ToAppRoleAssignmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AppRoleAssignmentMapInput is an input type that accepts AppRoleAssignmentMap and AppRoleAssignmentMapOutput values.
@@ -515,12 +502,6 @@ func (i AppRoleAssignmentMap) ToAppRoleAssignmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AppRoleAssignmentMapOutput)
 }
 
-func (i AppRoleAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppRoleAssignment] {
-	return pulumix.Output[map[string]*AppRoleAssignment]{
-		OutputState: i.ToAppRoleAssignmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppRoleAssignmentOutput struct{ *pulumi.OutputState }
 
 func (AppRoleAssignmentOutput) ElementType() reflect.Type {
@@ -533,12 +514,6 @@ func (o AppRoleAssignmentOutput) ToAppRoleAssignmentOutput() AppRoleAssignmentOu
 
 func (o AppRoleAssignmentOutput) ToAppRoleAssignmentOutputWithContext(ctx context.Context) AppRoleAssignmentOutput {
 	return o
-}
-
-func (o AppRoleAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AppRoleAssignment] {
-	return pulumix.Output[*AppRoleAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
@@ -585,12 +560,6 @@ func (o AppRoleAssignmentArrayOutput) ToAppRoleAssignmentArrayOutputWithContext(
 	return o
 }
 
-func (o AppRoleAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppRoleAssignment] {
-	return pulumix.Output[[]*AppRoleAssignment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppRoleAssignmentArrayOutput) Index(i pulumi.IntInput) AppRoleAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppRoleAssignment {
 		return vs[0].([]*AppRoleAssignment)[vs[1].(int)]
@@ -609,12 +578,6 @@ func (o AppRoleAssignmentMapOutput) ToAppRoleAssignmentMapOutput() AppRoleAssign
 
 func (o AppRoleAssignmentMapOutput) ToAppRoleAssignmentMapOutputWithContext(ctx context.Context) AppRoleAssignmentMapOutput {
 	return o
-}
-
-func (o AppRoleAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppRoleAssignment] {
-	return pulumix.Output[map[string]*AppRoleAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppRoleAssignmentMapOutput) MapIndex(k pulumi.StringInput) AppRoleAssignmentOutput {

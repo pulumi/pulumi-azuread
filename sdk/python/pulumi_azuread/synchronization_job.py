@@ -11,10 +11,10 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SynchronizationJobArgs', 'SynchronizationJob']
+__all__ = ['SynchronizationJobArrgs', 'SynchronizationJob']
 
 @pulumi.input_type
-class SynchronizationJobArgs:
+calass SynchronizationJobArrgs:
     def __init__(__self__, *,
                  service_principal_id: pulumi.Input[str],
                  template_id: pulumi.Input[str],
@@ -68,16 +68,16 @@ class SynchronizationJobArgs:
 
 
 @pulumi.input_type
-class _SynchronizationJobState:
+calass _SynchronizationJobState:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 schedules: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArgs']]]] = None,
+                 schedules: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArrgs']]]] = None,
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SynchronizationJob resources.
         :param pulumi.Input[bool] enabled: Whether or not the provisioning job is enabled. Default state is `true`.
-        :param pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArgs']]] schedules: A `schedule` list as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArrgs']]] schedules: A `schedule` list as documented below.
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] template_id: Identifier of the synchronization template this job is based on.
         """
@@ -104,14 +104,14 @@ class _SynchronizationJobState:
 
     @property
     @pulumi.getter
-    def schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArgs']]]]:
+    def schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArrgs']]]]:
         """
         A `schedule` list as documented below.
         """
         return pulumi.get(self, "schedules")
 
     @schedules.setter
-    def schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArgs']]]]):
+    def schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArrgs']]]]):
         pulumi.set(self, "schedules", value)
 
     @property
@@ -139,7 +139,7 @@ class _SynchronizationJobState:
         pulumi.set(self, "template_id", value)
 
 
-class SynchronizationJob(pulumi.CustomResource):
+calass SynchronizationJob(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -169,7 +169,7 @@ class SynchronizationJob(pulumi.CustomResource):
         example_application = azuread.Application("exampleApplication",
             display_name="example",
             template_id=example_application_template.template_id,
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
+            feature_tags=[azuread.ApplicationFeatureTagArrgs(
                 enterprise=True,
                 gallery=True,
             )])
@@ -179,11 +179,11 @@ class SynchronizationJob(pulumi.CustomResource):
         example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
             service_principal_id=example_service_principal.id,
             credentials=[
-                azuread.SynchronizationSecretCredentialArgs(
+                azuread.SynchronizationSecretCredentialArrgs(
                     key="BaseAddress",
                     value="https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
                 ),
-                azuread.SynchronizationSecretCredentialArgs(
+                azuread.SynchronizationSecretCredentialArrgs(
                     key="SecretToken",
                     value="some-token",
                 ),
@@ -214,7 +214,7 @@ class SynchronizationJob(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SynchronizationJobArgs,
+                 args: SynchronizationJobArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a synchronization job associated with a service principal (enterprise application) within Azure Active Directory.
@@ -237,7 +237,7 @@ class SynchronizationJob(pulumi.CustomResource):
         example_application = azuread.Application("exampleApplication",
             display_name="example",
             template_id=example_application_template.template_id,
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
+            feature_tags=[azuread.ApplicationFeatureTagArrgs(
                 enterprise=True,
                 gallery=True,
             )])
@@ -247,11 +247,11 @@ class SynchronizationJob(pulumi.CustomResource):
         example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
             service_principal_id=example_service_principal.id,
             credentials=[
-                azuread.SynchronizationSecretCredentialArgs(
+                azuread.SynchronizationSecretCredentialArrgs(
                     key="BaseAddress",
                     value="https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
                 ),
-                azuread.SynchronizationSecretCredentialArgs(
+                azuread.SynchronizationSecretCredentialArrgs(
                     key="SecretToken",
                     value="some-token",
                 ),
@@ -273,12 +273,12 @@ class SynchronizationJob(pulumi.CustomResource):
          -> This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `{servicePrincipalId}/job/{jobId}`.
 
         :param str resource_name: The name of the resource.
-        :param SynchronizationJobArgs args: The arguments to use to populate this resource's properties.
+        :param SynchronizationJobArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SynchronizationJobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SynchronizationJobArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -297,7 +297,7 @@ class SynchronizationJob(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SynchronizationJobArgs.__new__(SynchronizationJobArgs)
+            __props__ = SynchronizationJobArrgs.__new__(SynchronizationJobArrgs)
 
             __props__.__dict__["enabled"] = enabled
             if service_principal_id is None and not opts.urn:
@@ -318,7 +318,7 @@ class SynchronizationJob(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationJobScheduleArgs']]]]] = None,
+            schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationJobScheduleArrgs']]]]] = None,
             service_principal_id: Optional[pulumi.Input[str]] = None,
             template_id: Optional[pulumi.Input[str]] = None) -> 'SynchronizationJob':
         """
@@ -329,7 +329,7 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether or not the provisioning job is enabled. Default state is `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationJobScheduleArgs']]]] schedules: A `schedule` list as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationJobScheduleArrgs']]]] schedules: A `schedule` list as documented below.
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] template_id: Identifier of the synchronization template this job is based on.
         """

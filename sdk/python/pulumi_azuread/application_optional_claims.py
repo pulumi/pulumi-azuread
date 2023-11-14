@@ -11,21 +11,21 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ApplicationOptionalClaimsInitArgs', 'ApplicationOptionalClaims']
+__all__ = ['ApplicationOptionalClaimsInitArrgs', 'ApplicationOptionalClaims']
 
 @pulumi.input_type
-class ApplicationOptionalClaimsInitArgs:
+calass ApplicationOptionalClaimsInitArrgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[str],
-                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]] = None,
-                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]] = None,
-                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]] = None):
+                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]]] = None,
+                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]]] = None,
+                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]]] = None):
         """
         The set of arguments for constructing a ApplicationOptionalClaims resource.
         :param pulumi.Input[str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]] access_tokens: One or more `access_token` blocks as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]] id_tokens: One or more `id_token` blocks as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]] saml2_tokens: One or more `saml2_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]] access_tokens: One or more `access_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]] id_tokens: One or more `id_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]] saml2_tokens: One or more `saml2_token` blocks as documented below.
                
                > At least one of `access_token`, `id_token` or `saml2_token` must be specified
         """
@@ -51,31 +51,31 @@ class ApplicationOptionalClaimsInitArgs:
 
     @property
     @pulumi.getter(name="accessTokens")
-    def access_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]:
+    def access_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]]]:
         """
         One or more `access_token` blocks as documented below.
         """
         return pulumi.get(self, "access_tokens")
 
     @access_tokens.setter
-    def access_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]):
+    def access_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]]]):
         pulumi.set(self, "access_tokens", value)
 
     @property
     @pulumi.getter(name="idTokens")
-    def id_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]:
+    def id_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]]]:
         """
         One or more `id_token` blocks as documented below.
         """
         return pulumi.get(self, "id_tokens")
 
     @id_tokens.setter
-    def id_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]):
+    def id_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]]]):
         pulumi.set(self, "id_tokens", value)
 
     @property
     @pulumi.getter(name="saml2Tokens")
-    def saml2_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]:
+    def saml2_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]]]:
         """
         One or more `saml2_token` blocks as documented below.
 
@@ -84,23 +84,23 @@ class ApplicationOptionalClaimsInitArgs:
         return pulumi.get(self, "saml2_tokens")
 
     @saml2_tokens.setter
-    def saml2_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]):
+    def saml2_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]]]):
         pulumi.set(self, "saml2_tokens", value)
 
 
 @pulumi.input_type
-class _ApplicationOptionalClaimsState:
+calass _ApplicationOptionalClaimsState:
     def __init__(__self__, *,
-                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]] = None,
+                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]] = None,
-                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]] = None):
+                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]]] = None,
+                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]]] = None):
         """
         Input properties used for looking up and filtering ApplicationOptionalClaims resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]] access_tokens: One or more `access_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]] access_tokens: One or more `access_token` blocks as documented below.
         :param pulumi.Input[str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]] id_tokens: One or more `id_token` blocks as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]] saml2_tokens: One or more `saml2_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]] id_tokens: One or more `id_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]] saml2_tokens: One or more `saml2_token` blocks as documented below.
                
                > At least one of `access_token`, `id_token` or `saml2_token` must be specified
         """
@@ -115,14 +115,14 @@ class _ApplicationOptionalClaimsState:
 
     @property
     @pulumi.getter(name="accessTokens")
-    def access_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]:
+    def access_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]]]:
         """
         One or more `access_token` blocks as documented below.
         """
         return pulumi.get(self, "access_tokens")
 
     @access_tokens.setter
-    def access_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]):
+    def access_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArrgs']]]]):
         pulumi.set(self, "access_tokens", value)
 
     @property
@@ -139,19 +139,19 @@ class _ApplicationOptionalClaimsState:
 
     @property
     @pulumi.getter(name="idTokens")
-    def id_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]:
+    def id_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]]]:
         """
         One or more `id_token` blocks as documented below.
         """
         return pulumi.get(self, "id_tokens")
 
     @id_tokens.setter
-    def id_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]):
+    def id_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArrgs']]]]):
         pulumi.set(self, "id_tokens", value)
 
     @property
     @pulumi.getter(name="saml2Tokens")
-    def saml2_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]:
+    def saml2_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]]]:
         """
         One or more `saml2_token` blocks as documented below.
 
@@ -160,19 +160,19 @@ class _ApplicationOptionalClaimsState:
         return pulumi.get(self, "saml2_tokens")
 
     @saml2_tokens.setter
-    def saml2_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]):
+    def saml2_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArrgs']]]]):
         pulumi.set(self, "saml2_tokens", value)
 
 
-class ApplicationOptionalClaims(pulumi.CustomResource):
+calass ApplicationOptionalClaims(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsAccessTokenArgs']]]]] = None,
+                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsAccessTokenArrgs']]]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsIdTokenArgs']]]]] = None,
-                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsSaml2TokenArgs']]]]] = None,
+                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsIdTokenArrgs']]]]] = None,
+                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsSaml2TokenArrgs']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -185,20 +185,20 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         example_application_optional_claims = azuread.ApplicationOptionalClaims("exampleApplicationOptionalClaims",
             application_id=example_application_registration.id,
             access_tokens=[
-                azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                azuread.ApplicationOptionalClaimsAccessTokenArrgs(
                     name="myclaim",
                 ),
-                azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                azuread.ApplicationOptionalClaimsAccessTokenArrgs(
                     name="otherclaim",
                 ),
             ],
-            id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
+            id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArrgs(
                 name="userclaim",
                 source="user",
                 essential=True,
                 additional_properties=["emit_as_roles"],
             )],
-            saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
+            saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArrgs(
                 name="samlexample",
             )])
         ```
@@ -213,10 +213,10 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsAccessTokenArgs']]]] access_tokens: One or more `access_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsAccessTokenArrgs']]]] access_tokens: One or more `access_token` blocks as documented below.
         :param pulumi.Input[str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsIdTokenArgs']]]] id_tokens: One or more `id_token` blocks as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsSaml2TokenArgs']]]] saml2_tokens: One or more `saml2_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsIdTokenArrgs']]]] id_tokens: One or more `id_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsSaml2TokenArrgs']]]] saml2_tokens: One or more `saml2_token` blocks as documented below.
                
                > At least one of `access_token`, `id_token` or `saml2_token` must be specified
         """
@@ -224,7 +224,7 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApplicationOptionalClaimsInitArgs,
+                 args: ApplicationOptionalClaimsInitArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -237,20 +237,20 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         example_application_optional_claims = azuread.ApplicationOptionalClaims("exampleApplicationOptionalClaims",
             application_id=example_application_registration.id,
             access_tokens=[
-                azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                azuread.ApplicationOptionalClaimsAccessTokenArrgs(
                     name="myclaim",
                 ),
-                azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                azuread.ApplicationOptionalClaimsAccessTokenArrgs(
                     name="otherclaim",
                 ),
             ],
-            id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
+            id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArrgs(
                 name="userclaim",
                 source="user",
                 essential=True,
                 additional_properties=["emit_as_roles"],
             )],
-            saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
+            saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArrgs(
                 name="samlexample",
             )])
         ```
@@ -264,12 +264,12 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ApplicationOptionalClaimsInitArgs args: The arguments to use to populate this resource's properties.
+        :param ApplicationOptionalClaimsInitArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApplicationOptionalClaimsInitArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationOptionalClaimsInitArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -278,10 +278,10 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsAccessTokenArgs']]]]] = None,
+                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsAccessTokenArrgs']]]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsIdTokenArgs']]]]] = None,
-                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsSaml2TokenArgs']]]]] = None,
+                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsIdTokenArrgs']]]]] = None,
+                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsSaml2TokenArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -289,7 +289,7 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApplicationOptionalClaimsInitArgs.__new__(ApplicationOptionalClaimsInitArgs)
+            __props__ = ApplicationOptionalClaimsInitArrgs.__new__(ApplicationOptionalClaimsInitArrgs)
 
             __props__.__dict__["access_tokens"] = access_tokens
             if application_id is None and not opts.urn:
@@ -307,10 +307,10 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsAccessTokenArgs']]]]] = None,
+            access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsAccessTokenArrgs']]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
-            id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsIdTokenArgs']]]]] = None,
-            saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsSaml2TokenArgs']]]]] = None) -> 'ApplicationOptionalClaims':
+            id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsIdTokenArrgs']]]]] = None,
+            saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsSaml2TokenArrgs']]]]] = None) -> 'ApplicationOptionalClaims':
         """
         Get an existing ApplicationOptionalClaims resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -318,10 +318,10 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsAccessTokenArgs']]]] access_tokens: One or more `access_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsAccessTokenArrgs']]]] access_tokens: One or more `access_token` blocks as documented below.
         :param pulumi.Input[str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsIdTokenArgs']]]] id_tokens: One or more `id_token` blocks as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsSaml2TokenArgs']]]] saml2_tokens: One or more `saml2_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsIdTokenArrgs']]]] id_tokens: One or more `id_token` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsSaml2TokenArrgs']]]] saml2_tokens: One or more `saml2_token` blocks as documented below.
                
                > At least one of `access_token`, `id_token` or `saml2_token` must be specified
         """
