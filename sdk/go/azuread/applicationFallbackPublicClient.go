@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -162,12 +161,6 @@ func (i *ApplicationFallbackPublicClient) ToApplicationFallbackPublicClientOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFallbackPublicClientOutput)
 }
 
-func (i *ApplicationFallbackPublicClient) ToOutput(ctx context.Context) pulumix.Output[*ApplicationFallbackPublicClient] {
-	return pulumix.Output[*ApplicationFallbackPublicClient]{
-		OutputState: i.ToApplicationFallbackPublicClientOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationFallbackPublicClientArrayInput is an input type that accepts ApplicationFallbackPublicClientArray and ApplicationFallbackPublicClientArrayOutput values.
 // You can construct a concrete instance of `ApplicationFallbackPublicClientArrayInput` via:
 //
@@ -191,12 +184,6 @@ func (i ApplicationFallbackPublicClientArray) ToApplicationFallbackPublicClientA
 
 func (i ApplicationFallbackPublicClientArray) ToApplicationFallbackPublicClientArrayOutputWithContext(ctx context.Context) ApplicationFallbackPublicClientArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFallbackPublicClientArrayOutput)
-}
-
-func (i ApplicationFallbackPublicClientArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationFallbackPublicClient] {
-	return pulumix.Output[[]*ApplicationFallbackPublicClient]{
-		OutputState: i.ToApplicationFallbackPublicClientArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationFallbackPublicClientMapInput is an input type that accepts ApplicationFallbackPublicClientMap and ApplicationFallbackPublicClientMapOutput values.
@@ -224,12 +211,6 @@ func (i ApplicationFallbackPublicClientMap) ToApplicationFallbackPublicClientMap
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFallbackPublicClientMapOutput)
 }
 
-func (i ApplicationFallbackPublicClientMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationFallbackPublicClient] {
-	return pulumix.Output[map[string]*ApplicationFallbackPublicClient]{
-		OutputState: i.ToApplicationFallbackPublicClientMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationFallbackPublicClientOutput struct{ *pulumi.OutputState }
 
 func (ApplicationFallbackPublicClientOutput) ElementType() reflect.Type {
@@ -242,12 +223,6 @@ func (o ApplicationFallbackPublicClientOutput) ToApplicationFallbackPublicClient
 
 func (o ApplicationFallbackPublicClientOutput) ToApplicationFallbackPublicClientOutputWithContext(ctx context.Context) ApplicationFallbackPublicClientOutput {
 	return o
-}
-
-func (o ApplicationFallbackPublicClientOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationFallbackPublicClient] {
-	return pulumix.Output[*ApplicationFallbackPublicClient]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the application registration. Changing this forces a new resource to be created.
@@ -276,12 +251,6 @@ func (o ApplicationFallbackPublicClientArrayOutput) ToApplicationFallbackPublicC
 	return o
 }
 
-func (o ApplicationFallbackPublicClientArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationFallbackPublicClient] {
-	return pulumix.Output[[]*ApplicationFallbackPublicClient]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationFallbackPublicClientArrayOutput) Index(i pulumi.IntInput) ApplicationFallbackPublicClientOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationFallbackPublicClient {
 		return vs[0].([]*ApplicationFallbackPublicClient)[vs[1].(int)]
@@ -300,12 +269,6 @@ func (o ApplicationFallbackPublicClientMapOutput) ToApplicationFallbackPublicCli
 
 func (o ApplicationFallbackPublicClientMapOutput) ToApplicationFallbackPublicClientMapOutputWithContext(ctx context.Context) ApplicationFallbackPublicClientMapOutput {
 	return o
-}
-
-func (o ApplicationFallbackPublicClientMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationFallbackPublicClient] {
-	return pulumix.Output[map[string]*ApplicationFallbackPublicClient]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationFallbackPublicClientMapOutput) MapIndex(k pulumi.StringInput) ApplicationFallbackPublicClientOutput {

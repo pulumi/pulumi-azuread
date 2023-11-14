@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access the configuration of the AzureAD provider.
@@ -88,12 +87,6 @@ func (o GetClientConfigResultOutput) ToGetClientConfigResultOutput() GetClientCo
 
 func (o GetClientConfigResultOutput) ToGetClientConfigResultOutputWithContext(ctx context.Context) GetClientConfigResultOutput {
 	return o
-}
-
-func (o GetClientConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientConfigResult] {
-	return pulumix.Output[GetClientConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The client ID (application ID) linked to the authenticated principal, or the application used for delegated authentication.
