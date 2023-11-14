@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -228,12 +227,6 @@ func (i *ApplicationCertificate) ToApplicationCertificateOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCertificateOutput)
 }
 
-func (i *ApplicationCertificate) ToOutput(ctx context.Context) pulumix.Output[*ApplicationCertificate] {
-	return pulumix.Output[*ApplicationCertificate]{
-		OutputState: i.ToApplicationCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationCertificateArrayInput is an input type that accepts ApplicationCertificateArray and ApplicationCertificateArrayOutput values.
 // You can construct a concrete instance of `ApplicationCertificateArrayInput` via:
 //
@@ -257,12 +250,6 @@ func (i ApplicationCertificateArray) ToApplicationCertificateArrayOutput() Appli
 
 func (i ApplicationCertificateArray) ToApplicationCertificateArrayOutputWithContext(ctx context.Context) ApplicationCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCertificateArrayOutput)
-}
-
-func (i ApplicationCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationCertificate] {
-	return pulumix.Output[[]*ApplicationCertificate]{
-		OutputState: i.ToApplicationCertificateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationCertificateMapInput is an input type that accepts ApplicationCertificateMap and ApplicationCertificateMapOutput values.
@@ -290,12 +277,6 @@ func (i ApplicationCertificateMap) ToApplicationCertificateMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCertificateMapOutput)
 }
 
-func (i ApplicationCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationCertificate] {
-	return pulumix.Output[map[string]*ApplicationCertificate]{
-		OutputState: i.ToApplicationCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationCertificateOutput struct{ *pulumi.OutputState }
 
 func (ApplicationCertificateOutput) ElementType() reflect.Type {
@@ -308,12 +289,6 @@ func (o ApplicationCertificateOutput) ToApplicationCertificateOutput() Applicati
 
 func (o ApplicationCertificateOutput) ToApplicationCertificateOutputWithContext(ctx context.Context) ApplicationCertificateOutput {
 	return o
-}
-
-func (o ApplicationCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationCertificate] {
-	return pulumix.Output[*ApplicationCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
@@ -381,12 +356,6 @@ func (o ApplicationCertificateArrayOutput) ToApplicationCertificateArrayOutputWi
 	return o
 }
 
-func (o ApplicationCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationCertificate] {
-	return pulumix.Output[[]*ApplicationCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationCertificateArrayOutput) Index(i pulumi.IntInput) ApplicationCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationCertificate {
 		return vs[0].([]*ApplicationCertificate)[vs[1].(int)]
@@ -405,12 +374,6 @@ func (o ApplicationCertificateMapOutput) ToApplicationCertificateMapOutput() App
 
 func (o ApplicationCertificateMapOutput) ToApplicationCertificateMapOutputWithContext(ctx context.Context) ApplicationCertificateMapOutput {
 	return o
-}
-
-func (o ApplicationCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationCertificate] {
-	return pulumix.Output[map[string]*ApplicationCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationCertificateMapOutput) MapIndex(k pulumi.StringInput) ApplicationCertificateOutput {
