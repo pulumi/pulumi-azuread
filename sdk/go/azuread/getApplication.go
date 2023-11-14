@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about an existing Application within Azure Active Directory.
@@ -186,12 +185,6 @@ func (o LookupApplicationResultOutput) ToLookupApplicationResultOutput() LookupA
 
 func (o LookupApplicationResultOutput) ToLookupApplicationResultOutputWithContext(ctx context.Context) LookupApplicationResultOutput {
 	return o
-}
-
-func (o LookupApplicationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApplicationResult] {
-	return pulumix.Output[LookupApplicationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An `api` block as documented below.

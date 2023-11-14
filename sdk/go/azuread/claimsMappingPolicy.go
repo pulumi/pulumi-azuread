@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Claims Mapping Policy within Azure Active Directory.
@@ -187,12 +186,6 @@ func (i *ClaimsMappingPolicy) ToClaimsMappingPolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ClaimsMappingPolicyOutput)
 }
 
-func (i *ClaimsMappingPolicy) ToOutput(ctx context.Context) pulumix.Output[*ClaimsMappingPolicy] {
-	return pulumix.Output[*ClaimsMappingPolicy]{
-		OutputState: i.ToClaimsMappingPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClaimsMappingPolicyArrayInput is an input type that accepts ClaimsMappingPolicyArray and ClaimsMappingPolicyArrayOutput values.
 // You can construct a concrete instance of `ClaimsMappingPolicyArrayInput` via:
 //
@@ -216,12 +209,6 @@ func (i ClaimsMappingPolicyArray) ToClaimsMappingPolicyArrayOutput() ClaimsMappi
 
 func (i ClaimsMappingPolicyArray) ToClaimsMappingPolicyArrayOutputWithContext(ctx context.Context) ClaimsMappingPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClaimsMappingPolicyArrayOutput)
-}
-
-func (i ClaimsMappingPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClaimsMappingPolicy] {
-	return pulumix.Output[[]*ClaimsMappingPolicy]{
-		OutputState: i.ToClaimsMappingPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClaimsMappingPolicyMapInput is an input type that accepts ClaimsMappingPolicyMap and ClaimsMappingPolicyMapOutput values.
@@ -249,12 +236,6 @@ func (i ClaimsMappingPolicyMap) ToClaimsMappingPolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ClaimsMappingPolicyMapOutput)
 }
 
-func (i ClaimsMappingPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClaimsMappingPolicy] {
-	return pulumix.Output[map[string]*ClaimsMappingPolicy]{
-		OutputState: i.ToClaimsMappingPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClaimsMappingPolicyOutput struct{ *pulumi.OutputState }
 
 func (ClaimsMappingPolicyOutput) ElementType() reflect.Type {
@@ -267,12 +248,6 @@ func (o ClaimsMappingPolicyOutput) ToClaimsMappingPolicyOutput() ClaimsMappingPo
 
 func (o ClaimsMappingPolicyOutput) ToClaimsMappingPolicyOutputWithContext(ctx context.Context) ClaimsMappingPolicyOutput {
 	return o
-}
-
-func (o ClaimsMappingPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ClaimsMappingPolicy] {
-	return pulumix.Output[*ClaimsMappingPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
@@ -299,12 +274,6 @@ func (o ClaimsMappingPolicyArrayOutput) ToClaimsMappingPolicyArrayOutputWithCont
 	return o
 }
 
-func (o ClaimsMappingPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClaimsMappingPolicy] {
-	return pulumix.Output[[]*ClaimsMappingPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClaimsMappingPolicyArrayOutput) Index(i pulumi.IntInput) ClaimsMappingPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClaimsMappingPolicy {
 		return vs[0].([]*ClaimsMappingPolicy)[vs[1].(int)]
@@ -323,12 +292,6 @@ func (o ClaimsMappingPolicyMapOutput) ToClaimsMappingPolicyMapOutput() ClaimsMap
 
 func (o ClaimsMappingPolicyMapOutput) ToClaimsMappingPolicyMapOutputWithContext(ctx context.Context) ClaimsMappingPolicyMapOutput {
 	return o
-}
-
-func (o ClaimsMappingPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClaimsMappingPolicy] {
-	return pulumix.Output[map[string]*ClaimsMappingPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClaimsMappingPolicyMapOutput) MapIndex(k pulumi.StringInput) ClaimsMappingPolicyOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages an application registration within Azure Active Directory.
@@ -319,12 +318,6 @@ func (i *ApplicationRegistration) ToApplicationRegistrationOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationRegistrationOutput)
 }
 
-func (i *ApplicationRegistration) ToOutput(ctx context.Context) pulumix.Output[*ApplicationRegistration] {
-	return pulumix.Output[*ApplicationRegistration]{
-		OutputState: i.ToApplicationRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationRegistrationArrayInput is an input type that accepts ApplicationRegistrationArray and ApplicationRegistrationArrayOutput values.
 // You can construct a concrete instance of `ApplicationRegistrationArrayInput` via:
 //
@@ -348,12 +341,6 @@ func (i ApplicationRegistrationArray) ToApplicationRegistrationArrayOutput() App
 
 func (i ApplicationRegistrationArray) ToApplicationRegistrationArrayOutputWithContext(ctx context.Context) ApplicationRegistrationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationRegistrationArrayOutput)
-}
-
-func (i ApplicationRegistrationArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationRegistration] {
-	return pulumix.Output[[]*ApplicationRegistration]{
-		OutputState: i.ToApplicationRegistrationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationRegistrationMapInput is an input type that accepts ApplicationRegistrationMap and ApplicationRegistrationMapOutput values.
@@ -381,12 +368,6 @@ func (i ApplicationRegistrationMap) ToApplicationRegistrationMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationRegistrationMapOutput)
 }
 
-func (i ApplicationRegistrationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationRegistration] {
-	return pulumix.Output[map[string]*ApplicationRegistration]{
-		OutputState: i.ToApplicationRegistrationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationRegistrationOutput struct{ *pulumi.OutputState }
 
 func (ApplicationRegistrationOutput) ElementType() reflect.Type {
@@ -399,12 +380,6 @@ func (o ApplicationRegistrationOutput) ToApplicationRegistrationOutput() Applica
 
 func (o ApplicationRegistrationOutput) ToApplicationRegistrationOutputWithContext(ctx context.Context) ApplicationRegistrationOutput {
 	return o
-}
-
-func (o ApplicationRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationRegistration] {
-	return pulumix.Output[*ApplicationRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Client ID for the application, which is globally unique.
@@ -516,12 +491,6 @@ func (o ApplicationRegistrationArrayOutput) ToApplicationRegistrationArrayOutput
 	return o
 }
 
-func (o ApplicationRegistrationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationRegistration] {
-	return pulumix.Output[[]*ApplicationRegistration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationRegistrationArrayOutput) Index(i pulumi.IntInput) ApplicationRegistrationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationRegistration {
 		return vs[0].([]*ApplicationRegistration)[vs[1].(int)]
@@ -540,12 +509,6 @@ func (o ApplicationRegistrationMapOutput) ToApplicationRegistrationMapOutput() A
 
 func (o ApplicationRegistrationMapOutput) ToApplicationRegistrationMapOutputWithContext(ctx context.Context) ApplicationRegistrationMapOutput {
 	return o
-}
-
-func (o ApplicationRegistrationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationRegistration] {
-	return pulumix.Output[map[string]*ApplicationRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationRegistrationMapOutput) MapIndex(k pulumi.StringInput) ApplicationRegistrationOutput {

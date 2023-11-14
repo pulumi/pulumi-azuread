@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -163,12 +162,6 @@ func (i *ApplicationKnownClients) ToApplicationKnownClientsOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationKnownClientsOutput)
 }
 
-func (i *ApplicationKnownClients) ToOutput(ctx context.Context) pulumix.Output[*ApplicationKnownClients] {
-	return pulumix.Output[*ApplicationKnownClients]{
-		OutputState: i.ToApplicationKnownClientsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationKnownClientsArrayInput is an input type that accepts ApplicationKnownClientsArray and ApplicationKnownClientsArrayOutput values.
 // You can construct a concrete instance of `ApplicationKnownClientsArrayInput` via:
 //
@@ -192,12 +185,6 @@ func (i ApplicationKnownClientsArray) ToApplicationKnownClientsArrayOutput() App
 
 func (i ApplicationKnownClientsArray) ToApplicationKnownClientsArrayOutputWithContext(ctx context.Context) ApplicationKnownClientsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationKnownClientsArrayOutput)
-}
-
-func (i ApplicationKnownClientsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationKnownClients] {
-	return pulumix.Output[[]*ApplicationKnownClients]{
-		OutputState: i.ToApplicationKnownClientsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationKnownClientsMapInput is an input type that accepts ApplicationKnownClientsMap and ApplicationKnownClientsMapOutput values.
@@ -225,12 +212,6 @@ func (i ApplicationKnownClientsMap) ToApplicationKnownClientsMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationKnownClientsMapOutput)
 }
 
-func (i ApplicationKnownClientsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationKnownClients] {
-	return pulumix.Output[map[string]*ApplicationKnownClients]{
-		OutputState: i.ToApplicationKnownClientsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationKnownClientsOutput struct{ *pulumi.OutputState }
 
 func (ApplicationKnownClientsOutput) ElementType() reflect.Type {
@@ -243,12 +224,6 @@ func (o ApplicationKnownClientsOutput) ToApplicationKnownClientsOutput() Applica
 
 func (o ApplicationKnownClientsOutput) ToApplicationKnownClientsOutputWithContext(ctx context.Context) ApplicationKnownClientsOutput {
 	return o
-}
-
-func (o ApplicationKnownClientsOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationKnownClients] {
-	return pulumix.Output[*ApplicationKnownClients]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the application registration. Changing this forces a new resource to be created.
@@ -275,12 +250,6 @@ func (o ApplicationKnownClientsArrayOutput) ToApplicationKnownClientsArrayOutput
 	return o
 }
 
-func (o ApplicationKnownClientsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationKnownClients] {
-	return pulumix.Output[[]*ApplicationKnownClients]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationKnownClientsArrayOutput) Index(i pulumi.IntInput) ApplicationKnownClientsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationKnownClients {
 		return vs[0].([]*ApplicationKnownClients)[vs[1].(int)]
@@ -299,12 +268,6 @@ func (o ApplicationKnownClientsMapOutput) ToApplicationKnownClientsMapOutput() A
 
 func (o ApplicationKnownClientsMapOutput) ToApplicationKnownClientsMapOutputWithContext(ctx context.Context) ApplicationKnownClientsMapOutput {
 	return o
-}
-
-func (o ApplicationKnownClientsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationKnownClients] {
-	return pulumix.Output[map[string]*ApplicationKnownClients]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationKnownClientsMapOutput) MapIndex(k pulumi.StringInput) ApplicationKnownClientsOutput {
