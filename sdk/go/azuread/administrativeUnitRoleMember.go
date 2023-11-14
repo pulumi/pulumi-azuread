@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a single directory role assignment scoped to an administrative unit within Azure Active Directory.
@@ -193,12 +192,6 @@ func (i *AdministrativeUnitRoleMember) ToAdministrativeUnitRoleMemberOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitRoleMemberOutput)
 }
 
-func (i *AdministrativeUnitRoleMember) ToOutput(ctx context.Context) pulumix.Output[*AdministrativeUnitRoleMember] {
-	return pulumix.Output[*AdministrativeUnitRoleMember]{
-		OutputState: i.ToAdministrativeUnitRoleMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AdministrativeUnitRoleMemberArrayInput is an input type that accepts AdministrativeUnitRoleMemberArray and AdministrativeUnitRoleMemberArrayOutput values.
 // You can construct a concrete instance of `AdministrativeUnitRoleMemberArrayInput` via:
 //
@@ -222,12 +215,6 @@ func (i AdministrativeUnitRoleMemberArray) ToAdministrativeUnitRoleMemberArrayOu
 
 func (i AdministrativeUnitRoleMemberArray) ToAdministrativeUnitRoleMemberArrayOutputWithContext(ctx context.Context) AdministrativeUnitRoleMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitRoleMemberArrayOutput)
-}
-
-func (i AdministrativeUnitRoleMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*AdministrativeUnitRoleMember] {
-	return pulumix.Output[[]*AdministrativeUnitRoleMember]{
-		OutputState: i.ToAdministrativeUnitRoleMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AdministrativeUnitRoleMemberMapInput is an input type that accepts AdministrativeUnitRoleMemberMap and AdministrativeUnitRoleMemberMapOutput values.
@@ -255,12 +242,6 @@ func (i AdministrativeUnitRoleMemberMap) ToAdministrativeUnitRoleMemberMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitRoleMemberMapOutput)
 }
 
-func (i AdministrativeUnitRoleMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdministrativeUnitRoleMember] {
-	return pulumix.Output[map[string]*AdministrativeUnitRoleMember]{
-		OutputState: i.ToAdministrativeUnitRoleMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AdministrativeUnitRoleMemberOutput struct{ *pulumi.OutputState }
 
 func (AdministrativeUnitRoleMemberOutput) ElementType() reflect.Type {
@@ -273,12 +254,6 @@ func (o AdministrativeUnitRoleMemberOutput) ToAdministrativeUnitRoleMemberOutput
 
 func (o AdministrativeUnitRoleMemberOutput) ToAdministrativeUnitRoleMemberOutputWithContext(ctx context.Context) AdministrativeUnitRoleMemberOutput {
 	return o
-}
-
-func (o AdministrativeUnitRoleMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*AdministrativeUnitRoleMember] {
-	return pulumix.Output[*AdministrativeUnitRoleMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
@@ -310,12 +285,6 @@ func (o AdministrativeUnitRoleMemberArrayOutput) ToAdministrativeUnitRoleMemberA
 	return o
 }
 
-func (o AdministrativeUnitRoleMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AdministrativeUnitRoleMember] {
-	return pulumix.Output[[]*AdministrativeUnitRoleMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AdministrativeUnitRoleMemberArrayOutput) Index(i pulumi.IntInput) AdministrativeUnitRoleMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AdministrativeUnitRoleMember {
 		return vs[0].([]*AdministrativeUnitRoleMember)[vs[1].(int)]
@@ -334,12 +303,6 @@ func (o AdministrativeUnitRoleMemberMapOutput) ToAdministrativeUnitRoleMemberMap
 
 func (o AdministrativeUnitRoleMemberMapOutput) ToAdministrativeUnitRoleMemberMapOutputWithContext(ctx context.Context) AdministrativeUnitRoleMemberMapOutput {
 	return o
-}
-
-func (o AdministrativeUnitRoleMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdministrativeUnitRoleMember] {
-	return pulumix.Output[map[string]*AdministrativeUnitRoleMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdministrativeUnitRoleMemberMapOutput) MapIndex(k pulumi.StringInput) AdministrativeUnitRoleMemberOutput {
