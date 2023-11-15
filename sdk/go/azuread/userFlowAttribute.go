@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages user flow attributes in an Azure Active Directory (Azure AD) tenant.
@@ -181,12 +180,6 @@ func (i *UserFlowAttribute) ToUserFlowAttributeOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UserFlowAttributeOutput)
 }
 
-func (i *UserFlowAttribute) ToOutput(ctx context.Context) pulumix.Output[*UserFlowAttribute] {
-	return pulumix.Output[*UserFlowAttribute]{
-		OutputState: i.ToUserFlowAttributeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserFlowAttributeArrayInput is an input type that accepts UserFlowAttributeArray and UserFlowAttributeArrayOutput values.
 // You can construct a concrete instance of `UserFlowAttributeArrayInput` via:
 //
@@ -210,12 +203,6 @@ func (i UserFlowAttributeArray) ToUserFlowAttributeArrayOutput() UserFlowAttribu
 
 func (i UserFlowAttributeArray) ToUserFlowAttributeArrayOutputWithContext(ctx context.Context) UserFlowAttributeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserFlowAttributeArrayOutput)
-}
-
-func (i UserFlowAttributeArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserFlowAttribute] {
-	return pulumix.Output[[]*UserFlowAttribute]{
-		OutputState: i.ToUserFlowAttributeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UserFlowAttributeMapInput is an input type that accepts UserFlowAttributeMap and UserFlowAttributeMapOutput values.
@@ -243,12 +230,6 @@ func (i UserFlowAttributeMap) ToUserFlowAttributeMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(UserFlowAttributeMapOutput)
 }
 
-func (i UserFlowAttributeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserFlowAttribute] {
-	return pulumix.Output[map[string]*UserFlowAttribute]{
-		OutputState: i.ToUserFlowAttributeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserFlowAttributeOutput struct{ *pulumi.OutputState }
 
 func (UserFlowAttributeOutput) ElementType() reflect.Type {
@@ -261,12 +242,6 @@ func (o UserFlowAttributeOutput) ToUserFlowAttributeOutput() UserFlowAttributeOu
 
 func (o UserFlowAttributeOutput) ToUserFlowAttributeOutputWithContext(ctx context.Context) UserFlowAttributeOutput {
 	return o
-}
-
-func (o UserFlowAttributeOutput) ToOutput(ctx context.Context) pulumix.Output[*UserFlowAttribute] {
-	return pulumix.Output[*UserFlowAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
@@ -303,12 +278,6 @@ func (o UserFlowAttributeArrayOutput) ToUserFlowAttributeArrayOutputWithContext(
 	return o
 }
 
-func (o UserFlowAttributeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserFlowAttribute] {
-	return pulumix.Output[[]*UserFlowAttribute]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserFlowAttributeArrayOutput) Index(i pulumi.IntInput) UserFlowAttributeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserFlowAttribute {
 		return vs[0].([]*UserFlowAttribute)[vs[1].(int)]
@@ -327,12 +296,6 @@ func (o UserFlowAttributeMapOutput) ToUserFlowAttributeMapOutput() UserFlowAttri
 
 func (o UserFlowAttributeMapOutput) ToUserFlowAttributeMapOutputWithContext(ctx context.Context) UserFlowAttributeMapOutput {
 	return o
-}
-
-func (o UserFlowAttributeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserFlowAttribute] {
-	return pulumix.Output[map[string]*UserFlowAttribute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserFlowAttributeMapOutput) MapIndex(k pulumi.StringInput) UserFlowAttributeOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Claims Mapping Policy Assignment within Azure Active Directory.
@@ -159,12 +158,6 @@ func (i *ServicePrincipalClaimsMappingPolicyAssignment) ToServicePrincipalClaims
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalClaimsMappingPolicyAssignmentOutput)
 }
 
-func (i *ServicePrincipalClaimsMappingPolicyAssignment) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalClaimsMappingPolicyAssignment] {
-	return pulumix.Output[*ServicePrincipalClaimsMappingPolicyAssignment]{
-		OutputState: i.ToServicePrincipalClaimsMappingPolicyAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePrincipalClaimsMappingPolicyAssignmentArrayInput is an input type that accepts ServicePrincipalClaimsMappingPolicyAssignmentArray and ServicePrincipalClaimsMappingPolicyAssignmentArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalClaimsMappingPolicyAssignmentArrayInput` via:
 //
@@ -188,12 +181,6 @@ func (i ServicePrincipalClaimsMappingPolicyAssignmentArray) ToServicePrincipalCl
 
 func (i ServicePrincipalClaimsMappingPolicyAssignmentArray) ToServicePrincipalClaimsMappingPolicyAssignmentArrayOutputWithContext(ctx context.Context) ServicePrincipalClaimsMappingPolicyAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalClaimsMappingPolicyAssignmentArrayOutput)
-}
-
-func (i ServicePrincipalClaimsMappingPolicyAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalClaimsMappingPolicyAssignment] {
-	return pulumix.Output[[]*ServicePrincipalClaimsMappingPolicyAssignment]{
-		OutputState: i.ToServicePrincipalClaimsMappingPolicyAssignmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServicePrincipalClaimsMappingPolicyAssignmentMapInput is an input type that accepts ServicePrincipalClaimsMappingPolicyAssignmentMap and ServicePrincipalClaimsMappingPolicyAssignmentMapOutput values.
@@ -221,12 +208,6 @@ func (i ServicePrincipalClaimsMappingPolicyAssignmentMap) ToServicePrincipalClai
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalClaimsMappingPolicyAssignmentMapOutput)
 }
 
-func (i ServicePrincipalClaimsMappingPolicyAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalClaimsMappingPolicyAssignment] {
-	return pulumix.Output[map[string]*ServicePrincipalClaimsMappingPolicyAssignment]{
-		OutputState: i.ToServicePrincipalClaimsMappingPolicyAssignmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServicePrincipalClaimsMappingPolicyAssignmentOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalClaimsMappingPolicyAssignmentOutput) ElementType() reflect.Type {
@@ -239,12 +220,6 @@ func (o ServicePrincipalClaimsMappingPolicyAssignmentOutput) ToServicePrincipalC
 
 func (o ServicePrincipalClaimsMappingPolicyAssignmentOutput) ToServicePrincipalClaimsMappingPolicyAssignmentOutputWithContext(ctx context.Context) ServicePrincipalClaimsMappingPolicyAssignmentOutput {
 	return o
-}
-
-func (o ServicePrincipalClaimsMappingPolicyAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalClaimsMappingPolicyAssignment] {
-	return pulumix.Output[*ServicePrincipalClaimsMappingPolicyAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the claims mapping policy to assign.
@@ -275,12 +250,6 @@ func (o ServicePrincipalClaimsMappingPolicyAssignmentArrayOutput) ToServicePrinc
 	return o
 }
 
-func (o ServicePrincipalClaimsMappingPolicyAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalClaimsMappingPolicyAssignment] {
-	return pulumix.Output[[]*ServicePrincipalClaimsMappingPolicyAssignment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServicePrincipalClaimsMappingPolicyAssignmentArrayOutput) Index(i pulumi.IntInput) ServicePrincipalClaimsMappingPolicyAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePrincipalClaimsMappingPolicyAssignment {
 		return vs[0].([]*ServicePrincipalClaimsMappingPolicyAssignment)[vs[1].(int)]
@@ -299,12 +268,6 @@ func (o ServicePrincipalClaimsMappingPolicyAssignmentMapOutput) ToServicePrincip
 
 func (o ServicePrincipalClaimsMappingPolicyAssignmentMapOutput) ToServicePrincipalClaimsMappingPolicyAssignmentMapOutputWithContext(ctx context.Context) ServicePrincipalClaimsMappingPolicyAssignmentMapOutput {
 	return o
-}
-
-func (o ServicePrincipalClaimsMappingPolicyAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalClaimsMappingPolicyAssignment] {
-	return pulumix.Output[map[string]*ServicePrincipalClaimsMappingPolicyAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePrincipalClaimsMappingPolicyAssignmentMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalClaimsMappingPolicyAssignmentOutput {
