@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['AuthenticationStrengthPolicyArgs', 'AuthenticationStrengthPolicy']
+__all__ = ['AuthenticationStrengthPolicyArrgs', 'AuthenticationStrengthPolicy']
 
 @pulumi.input_type
-class AuthenticationStrengthPolicyArgs:
+calass AuthenticationStrengthPolicyArrgs:
     def __init__(__self__, *,
                  allowed_combinations: pulumi.Input[Sequence[pulumi.Input[str]]],
                  display_name: pulumi.Input[str],
@@ -66,7 +66,7 @@ class AuthenticationStrengthPolicyArgs:
 
 
 @pulumi.input_type
-class _AuthenticationStrengthPolicyState:
+calass _AuthenticationStrengthPolicyState:
     def __init__(__self__, *,
                  allowed_combinations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class _AuthenticationStrengthPolicyState:
         pulumi.set(self, "display_name", value)
 
 
-class AuthenticationStrengthPolicy(pulumi.CustomResource):
+calass AuthenticationStrengthPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -174,7 +174,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AuthenticationStrengthPolicyArgs,
+                 args: AuthenticationStrengthPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Authentication Strength Policy within Azure Active Directory.
@@ -211,12 +211,12 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AuthenticationStrengthPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param AuthenticationStrengthPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AuthenticationStrengthPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AuthenticationStrengthPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -235,7 +235,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AuthenticationStrengthPolicyArgs.__new__(AuthenticationStrengthPolicyArgs)
+            __props__ = AuthenticationStrengthPolicyArrgs.__new__(AuthenticationStrengthPolicyArrgs)
 
             if allowed_combinations is None and not opts.urn:
                 raise TypeError("Missing required property 'allowed_combinations'")

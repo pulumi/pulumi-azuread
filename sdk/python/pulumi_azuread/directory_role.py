@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['DirectoryRoleArgs', 'DirectoryRole']
+__all__ = ['DirectoryRoleArrgs', 'DirectoryRole']
 
 @pulumi.input_type
-class DirectoryRoleArgs:
+calass DirectoryRoleArrgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None):
@@ -56,7 +56,7 @@ class DirectoryRoleArgs:
 
 
 @pulumi.input_type
-class _DirectoryRoleState:
+calass _DirectoryRoleState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -131,7 +131,7 @@ class _DirectoryRoleState:
         pulumi.set(self, "template_id", value)
 
 
-class DirectoryRole(pulumi.CustomResource):
+calass DirectoryRole(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -189,7 +189,7 @@ class DirectoryRole(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[DirectoryRoleArgs] = None,
+                 args: Optional[DirectoryRoleArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Directory Role within Azure Active Directory. Directory Roles are also known as Administrator Roles.
@@ -231,12 +231,12 @@ class DirectoryRole(pulumi.CustomResource):
         This resource does not support importing.
 
         :param str resource_name: The name of the resource.
-        :param DirectoryRoleArgs args: The arguments to use to populate this resource's properties.
+        :param DirectoryRoleArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DirectoryRoleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DirectoryRoleArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -254,7 +254,7 @@ class DirectoryRole(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DirectoryRoleArgs.__new__(DirectoryRoleArgs)
+            __props__ = DirectoryRoleArrgs.__new__(DirectoryRoleArrgs)
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["template_id"] = template_id

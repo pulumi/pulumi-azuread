@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['AccessPackageResourcePackageAssociationArgs', 'AccessPackageResourcePackageAssociation']
+__all__ = ['AccessPackageResourcePackageAssociationArrgs', 'AccessPackageResourcePackageAssociation']
 
 @pulumi.input_type
-class AccessPackageResourcePackageAssociationArgs:
+calass AccessPackageResourcePackageAssociationArrgs:
     def __init__(__self__, *,
                  access_package_id: pulumi.Input[str],
                  catalog_resource_association_id: pulumi.Input[str],
@@ -66,7 +66,7 @@ class AccessPackageResourcePackageAssociationArgs:
 
 
 @pulumi.input_type
-class _AccessPackageResourcePackageAssociationState:
+calass _AccessPackageResourcePackageAssociationState:
     def __init__(__self__, *,
                  access_package_id: Optional[pulumi.Input[str]] = None,
                  access_type: Optional[pulumi.Input[str]] = None,
@@ -121,7 +121,7 @@ class _AccessPackageResourcePackageAssociationState:
         pulumi.set(self, "catalog_resource_association_id", value)
 
 
-class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
+calass AccessPackageResourcePackageAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -186,7 +186,7 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccessPackageResourcePackageAssociationArgs,
+                 args: AccessPackageResourcePackageAssociationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages the resources added to access packages within Identity Governance in Azure Active Directory.
@@ -235,12 +235,12 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
          -> This ID format is unique to Terraform and is composed of the Access Package ID, the Resource Association ID, the Resource Origin ID, and the Access Type, in the format `{AccessPackageID}/{ResourceAssociationID}/{ResourceOriginID}/{AccessType}`.
 
         :param str resource_name: The name of the resource.
-        :param AccessPackageResourcePackageAssociationArgs args: The arguments to use to populate this resource's properties.
+        :param AccessPackageResourcePackageAssociationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccessPackageResourcePackageAssociationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccessPackageResourcePackageAssociationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -259,7 +259,7 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccessPackageResourcePackageAssociationArgs.__new__(AccessPackageResourcePackageAssociationArgs)
+            __props__ = AccessPackageResourcePackageAssociationArrgs.__new__(AccessPackageResourcePackageAssociationArrgs)
 
             if access_package_id is None and not opts.urn:
                 raise TypeError("Missing required property 'access_package_id'")

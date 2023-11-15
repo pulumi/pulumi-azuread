@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetServicePrincipalsResult:
+calass GetServicePrincipalsResult:
     """
     A collection of values returned by getServicePrincipals.
     """
@@ -110,7 +110,7 @@ class GetServicePrincipalsResult:
         return pulumi.get(self, "service_principals")
 
 
-class AwaitableGetServicePrincipalsResult(GetServicePrincipalsResult):
+calass AwaitableGetServicePrincipalsResult(GetServicePrincipalsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

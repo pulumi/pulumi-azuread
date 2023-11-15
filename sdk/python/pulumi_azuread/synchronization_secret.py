@@ -11,17 +11,17 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SynchronizationSecretArgs', 'SynchronizationSecret']
+__all__ = ['SynchronizationSecretArrgs', 'SynchronizationSecret']
 
 @pulumi.input_type
-class SynchronizationSecretArgs:
+calass SynchronizationSecretArrgs:
     def __init__(__self__, *,
                  service_principal_id: pulumi.Input[str],
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None):
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArrgs']]]] = None):
         """
         The set of arguments for constructing a SynchronizationSecret resource.
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]] credentials: One or more `credential` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArrgs']]] credentials: One or more `credential` blocks as documented below.
         """
         pulumi.set(__self__, "service_principal_id", service_principal_id)
         if credentials is not None:
@@ -41,25 +41,25 @@ class SynchronizationSecretArgs:
 
     @property
     @pulumi.getter
-    def credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]:
+    def credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArrgs']]]]:
         """
         One or more `credential` blocks as documented below.
         """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
-    def credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]):
+    def credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArrgs']]]]):
         pulumi.set(self, "credentials", value)
 
 
 @pulumi.input_type
-class _SynchronizationSecretState:
+calass _SynchronizationSecretState:
     def __init__(__self__, *,
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArrgs']]]] = None,
                  service_principal_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SynchronizationSecret resources.
-        :param pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]] credentials: One or more `credential` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArrgs']]] credentials: One or more `credential` blocks as documented below.
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
         if credentials is not None:
@@ -69,14 +69,14 @@ class _SynchronizationSecretState:
 
     @property
     @pulumi.getter
-    def credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]:
+    def credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArrgs']]]]:
         """
         One or more `credential` blocks as documented below.
         """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
-    def credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]):
+    def credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArrgs']]]]):
         pulumi.set(self, "credentials", value)
 
     @property
@@ -92,12 +92,12 @@ class _SynchronizationSecretState:
         pulumi.set(self, "service_principal_id", value)
 
 
-class SynchronizationSecret(pulumi.CustomResource):
+calass SynchronizationSecret(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArgs']]]]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArrgs']]]]] = None,
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -121,7 +121,7 @@ class SynchronizationSecret(pulumi.CustomResource):
         example_application = azuread.Application("exampleApplication",
             display_name="example",
             template_id=example_application_template.template_id,
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
+            feature_tags=[azuread.ApplicationFeatureTagArrgs(
                 enterprise=True,
                 gallery=True,
             )])
@@ -131,11 +131,11 @@ class SynchronizationSecret(pulumi.CustomResource):
         example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
             service_principal_id=example_service_principal.id,
             credentials=[
-                azuread.SynchronizationSecretCredentialArgs(
+                azuread.SynchronizationSecretCredentialArrgs(
                     key="BaseAddress",
                     value="abc",
                 ),
-                azuread.SynchronizationSecretCredentialArgs(
+                azuread.SynchronizationSecretCredentialArrgs(
                     key="SecretToken",
                     value="some-token",
                 ),
@@ -148,14 +148,14 @@ class SynchronizationSecret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArgs']]]] credentials: One or more `credential` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArrgs']]]] credentials: One or more `credential` blocks as documented below.
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SynchronizationSecretArgs,
+                 args: SynchronizationSecretArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages synchronization secrets associated with a service principal (enterprise application) within Azure Active Directory.
@@ -178,7 +178,7 @@ class SynchronizationSecret(pulumi.CustomResource):
         example_application = azuread.Application("exampleApplication",
             display_name="example",
             template_id=example_application_template.template_id,
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
+            feature_tags=[azuread.ApplicationFeatureTagArrgs(
                 enterprise=True,
                 gallery=True,
             )])
@@ -188,11 +188,11 @@ class SynchronizationSecret(pulumi.CustomResource):
         example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
             service_principal_id=example_service_principal.id,
             credentials=[
-                azuread.SynchronizationSecretCredentialArgs(
+                azuread.SynchronizationSecretCredentialArrgs(
                     key="BaseAddress",
                     value="abc",
                 ),
-                azuread.SynchronizationSecretCredentialArgs(
+                azuread.SynchronizationSecretCredentialArrgs(
                     key="SecretToken",
                     value="some-token",
                 ),
@@ -204,12 +204,12 @@ class SynchronizationSecret(pulumi.CustomResource):
         This resource does not support importing.
 
         :param str resource_name: The name of the resource.
-        :param SynchronizationSecretArgs args: The arguments to use to populate this resource's properties.
+        :param SynchronizationSecretArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SynchronizationSecretArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SynchronizationSecretArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -218,7 +218,7 @@ class SynchronizationSecret(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArgs']]]]] = None,
+                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArrgs']]]]] = None,
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -227,7 +227,7 @@ class SynchronizationSecret(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SynchronizationSecretArgs.__new__(SynchronizationSecretArgs)
+            __props__ = SynchronizationSecretArrgs.__new__(SynchronizationSecretArrgs)
 
             __props__.__dict__["credentials"] = credentials
             if service_principal_id is None and not opts.urn:
@@ -243,7 +243,7 @@ class SynchronizationSecret(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArgs']]]]] = None,
+            credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArrgs']]]]] = None,
             service_principal_id: Optional[pulumi.Input[str]] = None) -> 'SynchronizationSecret':
         """
         Get an existing SynchronizationSecret resource's state with the given name, id, and optional extra
@@ -252,7 +252,7 @@ class SynchronizationSecret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArgs']]]] credentials: One or more `credential` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArrgs']]]] credentials: One or more `credential` blocks as documented below.
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

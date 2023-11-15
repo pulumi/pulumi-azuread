@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetNamedLocationResult:
+calass GetNamedLocationResult:
     """
     A collection of values returned by getNamedLocation.
     """
@@ -60,7 +60,7 @@ class GetNamedLocationResult:
         return pulumi.get(self, "ips")
 
 
-class AwaitableGetNamedLocationResult(GetNamedLocationResult):
+calass AwaitableGetNamedLocationResult(GetNamedLocationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

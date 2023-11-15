@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAdministrativeUnitResult:
+calass GetAdministrativeUnitResult:
     """
     A collection of values returned by getAdministrativeUnit.
     """
@@ -90,7 +90,7 @@ class GetAdministrativeUnitResult:
         return pulumi.get(self, "visibility")
 
 
-class AwaitableGetAdministrativeUnitResult(GetAdministrativeUnitResult):
+calass AwaitableGetAdministrativeUnitResult(GetAdministrativeUnitResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

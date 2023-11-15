@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ServicePrincipalCertificateArgs', 'ServicePrincipalCertificate']
+__all__ = ['ServicePrincipalCertificateArrgs', 'ServicePrincipalCertificate']
 
 @pulumi.input_type
-class ServicePrincipalCertificateArgs:
+calass ServicePrincipalCertificateArrgs:
     def __init__(__self__, *,
                  service_principal_id: pulumi.Input[str],
                  value: pulumi.Input[str],
@@ -154,7 +154,7 @@ class ServicePrincipalCertificateArgs:
 
 
 @pulumi.input_type
-class _ServicePrincipalCertificateState:
+calass _ServicePrincipalCertificateState:
     def __init__(__self__, *,
                  encoding: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
@@ -297,7 +297,7 @@ class _ServicePrincipalCertificateState:
         pulumi.set(self, "value", value)
 
 
-class ServicePrincipalCertificate(pulumi.CustomResource):
+calass ServicePrincipalCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -341,7 +341,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServicePrincipalCertificateArgs,
+                 args: ServicePrincipalCertificateArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -355,12 +355,12 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
          -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
-        :param ServicePrincipalCertificateArgs args: The arguments to use to populate this resource's properties.
+        :param ServicePrincipalCertificateArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServicePrincipalCertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServicePrincipalCertificateArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -384,7 +384,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServicePrincipalCertificateArgs.__new__(ServicePrincipalCertificateArgs)
+            __props__ = ServicePrincipalCertificateArrgs.__new__(ServicePrincipalCertificateArrgs)
 
             __props__.__dict__["encoding"] = encoding
             __props__.__dict__["end_date"] = end_date

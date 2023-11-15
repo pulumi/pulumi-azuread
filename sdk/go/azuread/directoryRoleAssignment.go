@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a single directory role assignment within Azure Active Directory.
@@ -182,12 +181,6 @@ func (i *DirectoryRoleAssignment) ToDirectoryRoleAssignmentOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleAssignmentOutput)
 }
 
-func (i *DirectoryRoleAssignment) ToOutput(ctx context.Context) pulumix.Output[*DirectoryRoleAssignment] {
-	return pulumix.Output[*DirectoryRoleAssignment]{
-		OutputState: i.ToDirectoryRoleAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DirectoryRoleAssignmentArrayInput is an input type that accepts DirectoryRoleAssignmentArray and DirectoryRoleAssignmentArrayOutput values.
 // You can construct a concrete instance of `DirectoryRoleAssignmentArrayInput` via:
 //
@@ -211,12 +204,6 @@ func (i DirectoryRoleAssignmentArray) ToDirectoryRoleAssignmentArrayOutput() Dir
 
 func (i DirectoryRoleAssignmentArray) ToDirectoryRoleAssignmentArrayOutputWithContext(ctx context.Context) DirectoryRoleAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleAssignmentArrayOutput)
-}
-
-func (i DirectoryRoleAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*DirectoryRoleAssignment] {
-	return pulumix.Output[[]*DirectoryRoleAssignment]{
-		OutputState: i.ToDirectoryRoleAssignmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DirectoryRoleAssignmentMapInput is an input type that accepts DirectoryRoleAssignmentMap and DirectoryRoleAssignmentMapOutput values.
@@ -244,12 +231,6 @@ func (i DirectoryRoleAssignmentMap) ToDirectoryRoleAssignmentMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleAssignmentMapOutput)
 }
 
-func (i DirectoryRoleAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DirectoryRoleAssignment] {
-	return pulumix.Output[map[string]*DirectoryRoleAssignment]{
-		OutputState: i.ToDirectoryRoleAssignmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DirectoryRoleAssignmentOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleAssignmentOutput) ElementType() reflect.Type {
@@ -262,12 +243,6 @@ func (o DirectoryRoleAssignmentOutput) ToDirectoryRoleAssignmentOutput() Directo
 
 func (o DirectoryRoleAssignmentOutput) ToDirectoryRoleAssignmentOutputWithContext(ctx context.Context) DirectoryRoleAssignmentOutput {
 	return o
-}
-
-func (o DirectoryRoleAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*DirectoryRoleAssignment] {
-	return pulumix.Output[*DirectoryRoleAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
@@ -316,12 +291,6 @@ func (o DirectoryRoleAssignmentArrayOutput) ToDirectoryRoleAssignmentArrayOutput
 	return o
 }
 
-func (o DirectoryRoleAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DirectoryRoleAssignment] {
-	return pulumix.Output[[]*DirectoryRoleAssignment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DirectoryRoleAssignmentArrayOutput) Index(i pulumi.IntInput) DirectoryRoleAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DirectoryRoleAssignment {
 		return vs[0].([]*DirectoryRoleAssignment)[vs[1].(int)]
@@ -340,12 +309,6 @@ func (o DirectoryRoleAssignmentMapOutput) ToDirectoryRoleAssignmentMapOutput() D
 
 func (o DirectoryRoleAssignmentMapOutput) ToDirectoryRoleAssignmentMapOutputWithContext(ctx context.Context) DirectoryRoleAssignmentMapOutput {
 	return o
-}
-
-func (o DirectoryRoleAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DirectoryRoleAssignment] {
-	return pulumix.Output[map[string]*DirectoryRoleAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DirectoryRoleAssignmentMapOutput) MapIndex(k pulumi.StringInput) DirectoryRoleAssignmentOutput {

@@ -11,23 +11,23 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConditionalAccessPolicyArgs', 'ConditionalAccessPolicy']
+__all__ = ['ConditionalAccessPolicyArrgs', 'ConditionalAccessPolicy']
 
 @pulumi.input_type
-class ConditionalAccessPolicyArgs:
+calass ConditionalAccessPolicyArrgs:
     def __init__(__self__, *,
-                 conditions: pulumi.Input['ConditionalAccessPolicyConditionsArgs'],
+                 conditions: pulumi.Input['ConditionalAccessPolicyConditionsArrgs'],
                  display_name: pulumi.Input[str],
                  state: pulumi.Input[str],
-                 grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
-                 session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None):
+                 grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArrgs']] = None,
+                 session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArrgs']] = None):
         """
         The set of arguments for constructing a ConditionalAccessPolicy resource.
-        :param pulumi.Input['ConditionalAccessPolicyConditionsArgs'] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsArrgs'] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         :param pulumi.Input[str] display_name: The friendly name for this Conditional Access Policy.
         :param pulumi.Input[str] state: Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
-        :param pulumi.Input['ConditionalAccessPolicyGrantControlsArgs'] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-        :param pulumi.Input['ConditionalAccessPolicySessionControlsArgs'] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        :param pulumi.Input['ConditionalAccessPolicyGrantControlsArrgs'] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+        :param pulumi.Input['ConditionalAccessPolicySessionControlsArrgs'] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
                
                > Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
         """
@@ -41,14 +41,14 @@ class ConditionalAccessPolicyArgs:
 
     @property
     @pulumi.getter
-    def conditions(self) -> pulumi.Input['ConditionalAccessPolicyConditionsArgs']:
+    def conditions(self) -> pulumi.Input['ConditionalAccessPolicyConditionsArrgs']:
         """
         A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: pulumi.Input['ConditionalAccessPolicyConditionsArgs']):
+    def conditions(self, value: pulumi.Input['ConditionalAccessPolicyConditionsArrgs']):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -77,19 +77,19 @@ class ConditionalAccessPolicyArgs:
 
     @property
     @pulumi.getter(name="grantControls")
-    def grant_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']]:
+    def grant_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArrgs']]:
         """
         A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
         """
         return pulumi.get(self, "grant_controls")
 
     @grant_controls.setter
-    def grant_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']]):
+    def grant_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArrgs']]):
         pulumi.set(self, "grant_controls", value)
 
     @property
     @pulumi.getter(name="sessionControls")
-    def session_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']]:
+    def session_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArrgs']]:
         """
         A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
 
@@ -98,24 +98,24 @@ class ConditionalAccessPolicyArgs:
         return pulumi.get(self, "session_controls")
 
     @session_controls.setter
-    def session_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']]):
+    def session_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArrgs']]):
         pulumi.set(self, "session_controls", value)
 
 
 @pulumi.input_type
-class _ConditionalAccessPolicyState:
+calass _ConditionalAccessPolicyState:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input['ConditionalAccessPolicyConditionsArgs']] = None,
+                 conditions: Optional[pulumi.Input['ConditionalAccessPolicyConditionsArrgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
-                 session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None,
+                 grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArrgs']] = None,
+                 session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArrgs']] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConditionalAccessPolicy resources.
-        :param pulumi.Input['ConditionalAccessPolicyConditionsArgs'] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsArrgs'] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         :param pulumi.Input[str] display_name: The friendly name for this Conditional Access Policy.
-        :param pulumi.Input['ConditionalAccessPolicyGrantControlsArgs'] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-        :param pulumi.Input['ConditionalAccessPolicySessionControlsArgs'] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        :param pulumi.Input['ConditionalAccessPolicyGrantControlsArrgs'] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+        :param pulumi.Input['ConditionalAccessPolicySessionControlsArrgs'] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
                
                > Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
         :param pulumi.Input[str] state: Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
@@ -133,14 +133,14 @@ class _ConditionalAccessPolicyState:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsArgs']]:
+    def conditions(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsArrgs']]:
         """
         A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsArgs']]):
+    def conditions(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsArrgs']]):
         pulumi.set(self, "conditions", value)
 
     @property
@@ -157,19 +157,19 @@ class _ConditionalAccessPolicyState:
 
     @property
     @pulumi.getter(name="grantControls")
-    def grant_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']]:
+    def grant_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArrgs']]:
         """
         A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
         """
         return pulumi.get(self, "grant_controls")
 
     @grant_controls.setter
-    def grant_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']]):
+    def grant_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArrgs']]):
         pulumi.set(self, "grant_controls", value)
 
     @property
     @pulumi.getter(name="sessionControls")
-    def session_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']]:
+    def session_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArrgs']]:
         """
         A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
 
@@ -178,7 +178,7 @@ class _ConditionalAccessPolicyState:
         return pulumi.get(self, "session_controls")
 
     @session_controls.setter
-    def session_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']]):
+    def session_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArrgs']]):
         pulumi.set(self, "session_controls", value)
 
     @property
@@ -194,15 +194,15 @@ class _ConditionalAccessPolicyState:
         pulumi.set(self, "state", value)
 
 
-class ConditionalAccessPolicy(pulumi.CustomResource):
+calass ConditionalAccessPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyConditionsArgs']]] = None,
+                 conditions: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyConditionsArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 grant_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyGrantControlsArgs']]] = None,
-                 session_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicySessionControlsArgs']]] = None,
+                 grant_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyGrantControlsArrgs']]] = None,
+                 session_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicySessionControlsArrgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -226,39 +226,39 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.ConditionalAccessPolicy("example",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+            conditions=azuread.ConditionalAccessPolicyConditionsArrgs(
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArrgs(
                     excluded_applications=[],
                     included_applications=["All"],
                 ),
                 client_app_types=["all"],
-                devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
-                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
+                devices=azuread.ConditionalAccessPolicyConditionsDevicesArrgs(
+                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArrgs(
                         mode="exclude",
                         rule="device.operatingSystem eq \\"Doors\\"",
                     ),
                 ),
-                locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
+                locations=azuread.ConditionalAccessPolicyConditionsLocationsArrgs(
                     excluded_locations=["AllTrusted"],
                     included_locations=["All"],
                 ),
-                platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(
+                platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArrgs(
                     excluded_platforms=["iOS"],
                     included_platforms=["android"],
                 ),
                 sign_in_risk_levels=["medium"],
                 user_risk_levels=["medium"],
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                users=azuread.ConditionalAccessPolicyConditionsUsersArrgs(
                     excluded_users=["GuestsOrExternalUsers"],
                     included_users=["All"],
                 ),
             ),
             display_name="example policy",
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArrgs(
                 built_in_controls=["mfa"],
                 operator="OR",
             ),
-            session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
+            session_controls=azuread.ConditionalAccessPolicySessionControlsArrgs(
                 application_enforced_restrictions_enabled=True,
                 cloud_app_security_policy="monitorOnly",
                 disable_resilience_defaults=False,
@@ -277,20 +277,20 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         example = azuread.ConditionalAccessPolicy("example",
             display_name="example policy",
             state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+            conditions=azuread.ConditionalAccessPolicyConditionsArrgs(
                 client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArrgs(
                     included_applications=["All"],
                 ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArrgs(
                     included_service_principals=[current.object_id],
                     excluded_service_principals=[],
                 ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                users=azuread.ConditionalAccessPolicyConditionsUsersArrgs(
                     included_users=["None"],
                 ),
             ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArrgs(
                 operator="OR",
                 built_in_controls=["block"],
             ))
@@ -305,20 +305,20 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         example = azuread.ConditionalAccessPolicy("example",
             display_name="example policy",
             state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+            conditions=azuread.ConditionalAccessPolicyConditionsArrgs(
                 client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArrgs(
                     included_applications=["All"],
                 ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArrgs(
                     included_service_principals=["ServicePrincipalsInMyTenant"],
                     excluded_service_principals=[current.object_id],
                 ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                users=azuread.ConditionalAccessPolicyConditionsUsersArrgs(
                     included_users=["None"],
                 ),
             ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArrgs(
                 operator="OR",
                 built_in_controls=["block"],
             ))
@@ -334,10 +334,10 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicyConditionsArgs']] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
+        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicyConditionsArrgs']] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         :param pulumi.Input[str] display_name: The friendly name for this Conditional Access Policy.
-        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicyGrantControlsArgs']] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicySessionControlsArgs']] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicyGrantControlsArrgs']] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicySessionControlsArrgs']] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
                
                > Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
         :param pulumi.Input[str] state: Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
@@ -346,7 +346,7 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConditionalAccessPolicyArgs,
+                 args: ConditionalAccessPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Conditional Access Policy within Azure Active Directory.
@@ -369,39 +369,39 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.ConditionalAccessPolicy("example",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+            conditions=azuread.ConditionalAccessPolicyConditionsArrgs(
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArrgs(
                     excluded_applications=[],
                     included_applications=["All"],
                 ),
                 client_app_types=["all"],
-                devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
-                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
+                devices=azuread.ConditionalAccessPolicyConditionsDevicesArrgs(
+                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArrgs(
                         mode="exclude",
                         rule="device.operatingSystem eq \\"Doors\\"",
                     ),
                 ),
-                locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
+                locations=azuread.ConditionalAccessPolicyConditionsLocationsArrgs(
                     excluded_locations=["AllTrusted"],
                     included_locations=["All"],
                 ),
-                platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(
+                platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArrgs(
                     excluded_platforms=["iOS"],
                     included_platforms=["android"],
                 ),
                 sign_in_risk_levels=["medium"],
                 user_risk_levels=["medium"],
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                users=azuread.ConditionalAccessPolicyConditionsUsersArrgs(
                     excluded_users=["GuestsOrExternalUsers"],
                     included_users=["All"],
                 ),
             ),
             display_name="example policy",
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArrgs(
                 built_in_controls=["mfa"],
                 operator="OR",
             ),
-            session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
+            session_controls=azuread.ConditionalAccessPolicySessionControlsArrgs(
                 application_enforced_restrictions_enabled=True,
                 cloud_app_security_policy="monitorOnly",
                 disable_resilience_defaults=False,
@@ -420,20 +420,20 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         example = azuread.ConditionalAccessPolicy("example",
             display_name="example policy",
             state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+            conditions=azuread.ConditionalAccessPolicyConditionsArrgs(
                 client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArrgs(
                     included_applications=["All"],
                 ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArrgs(
                     included_service_principals=[current.object_id],
                     excluded_service_principals=[],
                 ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                users=azuread.ConditionalAccessPolicyConditionsUsersArrgs(
                     included_users=["None"],
                 ),
             ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArrgs(
                 operator="OR",
                 built_in_controls=["block"],
             ))
@@ -448,20 +448,20 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         example = azuread.ConditionalAccessPolicy("example",
             display_name="example policy",
             state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+            conditions=azuread.ConditionalAccessPolicyConditionsArrgs(
                 client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArrgs(
                     included_applications=["All"],
                 ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArrgs(
                     included_service_principals=["ServicePrincipalsInMyTenant"],
                     excluded_service_principals=[current.object_id],
                 ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                users=azuread.ConditionalAccessPolicyConditionsUsersArrgs(
                     included_users=["None"],
                 ),
             ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArrgs(
                 operator="OR",
                 built_in_controls=["block"],
             ))
@@ -476,12 +476,12 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ConditionalAccessPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param ConditionalAccessPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConditionalAccessPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConditionalAccessPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -490,10 +490,10 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyConditionsArgs']]] = None,
+                 conditions: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyConditionsArrgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 grant_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyGrantControlsArgs']]] = None,
-                 session_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicySessionControlsArgs']]] = None,
+                 grant_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyGrantControlsArrgs']]] = None,
+                 session_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicySessionControlsArrgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -502,7 +502,7 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConditionalAccessPolicyArgs.__new__(ConditionalAccessPolicyArgs)
+            __props__ = ConditionalAccessPolicyArrgs.__new__(ConditionalAccessPolicyArrgs)
 
             if conditions is None and not opts.urn:
                 raise TypeError("Missing required property 'conditions'")
@@ -525,10 +525,10 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            conditions: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyConditionsArgs']]] = None,
+            conditions: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyConditionsArrgs']]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            grant_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyGrantControlsArgs']]] = None,
-            session_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicySessionControlsArgs']]] = None,
+            grant_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicyGrantControlsArrgs']]] = None,
+            session_controls: Optional[pulumi.Input[pulumi.InputType['ConditionalAccessPolicySessionControlsArrgs']]] = None,
             state: Optional[pulumi.Input[str]] = None) -> 'ConditionalAccessPolicy':
         """
         Get an existing ConditionalAccessPolicy resource's state with the given name, id, and optional extra
@@ -537,10 +537,10 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicyConditionsArgs']] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
+        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicyConditionsArrgs']] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         :param pulumi.Input[str] display_name: The friendly name for this Conditional Access Policy.
-        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicyGrantControlsArgs']] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicySessionControlsArgs']] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicyGrantControlsArrgs']] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+        :param pulumi.Input[pulumi.InputType['ConditionalAccessPolicySessionControlsArrgs']] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
                
                > Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
         :param pulumi.Input[str] state: Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
