@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAccessPackageCatalogRoleResult:
+calass GetAccessPackageCatalogRoleResult:
     """
     A collection of values returned by getAccessPackageCatalogRole.
     """
@@ -79,7 +79,7 @@ class GetAccessPackageCatalogRoleResult:
         return pulumi.get(self, "template_id")
 
 
-class AwaitableGetAccessPackageCatalogRoleResult(GetAccessPackageCatalogRoleResult):
+calass AwaitableGetAccessPackageCatalogRoleResult(GetAccessPackageCatalogRoleResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

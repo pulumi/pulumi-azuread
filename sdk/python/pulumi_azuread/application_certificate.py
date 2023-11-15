@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ApplicationCertificateArgs', 'ApplicationCertificate']
+__all__ = ['ApplicationCertificateArrgs', 'ApplicationCertificate']
 
 @pulumi.input_type
-class ApplicationCertificateArgs:
+calass ApplicationCertificateArrgs:
     def __init__(__self__, *,
                  value: pulumi.Input[str],
                  application_id: Optional[pulumi.Input[str]] = None,
@@ -177,7 +177,7 @@ class ApplicationCertificateArgs:
 
 
 @pulumi.input_type
-class _ApplicationCertificateState:
+calass _ApplicationCertificateState:
     def __init__(__self__, *,
                  application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
@@ -342,7 +342,7 @@ class _ApplicationCertificateState:
         pulumi.set(self, "value", value)
 
 
-class ApplicationCertificate(pulumi.CustomResource):
+calass ApplicationCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -388,7 +388,7 @@ class ApplicationCertificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApplicationCertificateArgs,
+                 args: ApplicationCertificateArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -402,12 +402,12 @@ class ApplicationCertificate(pulumi.CustomResource):
          -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
-        :param ApplicationCertificateArgs args: The arguments to use to populate this resource's properties.
+        :param ApplicationCertificateArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApplicationCertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationCertificateArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -432,7 +432,7 @@ class ApplicationCertificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApplicationCertificateArgs.__new__(ApplicationCertificateArgs)
+            __props__ = ApplicationCertificateArrgs.__new__(ApplicationCertificateArrgs)
 
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["application_object_id"] = application_object_id

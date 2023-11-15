@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['AccessPackageCatalogRoleAssignmentArgs', 'AccessPackageCatalogRoleAssignment']
+__all__ = ['AccessPackageCatalogRoleAssignmentArrgs', 'AccessPackageCatalogRoleAssignment']
 
 @pulumi.input_type
-class AccessPackageCatalogRoleAssignmentArgs:
+calass AccessPackageCatalogRoleAssignmentArrgs:
     def __init__(__self__, *,
                  catalog_id: pulumi.Input[str],
                  principal_object_id: pulumi.Input[str],
@@ -65,7 +65,7 @@ class AccessPackageCatalogRoleAssignmentArgs:
 
 
 @pulumi.input_type
-class _AccessPackageCatalogRoleAssignmentState:
+calass _AccessPackageCatalogRoleAssignmentState:
     def __init__(__self__, *,
                  catalog_id: Optional[pulumi.Input[str]] = None,
                  principal_object_id: Optional[pulumi.Input[str]] = None,
@@ -120,7 +120,7 @@ class _AccessPackageCatalogRoleAssignmentState:
         pulumi.set(self, "role_id", value)
 
 
-class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
+calass AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -175,7 +175,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccessPackageCatalogRoleAssignmentArgs,
+                 args: AccessPackageCatalogRoleAssignmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a single catalog role assignment within Azure Active Directory.
@@ -214,12 +214,12 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AccessPackageCatalogRoleAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param AccessPackageCatalogRoleAssignmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccessPackageCatalogRoleAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccessPackageCatalogRoleAssignmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -238,7 +238,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccessPackageCatalogRoleAssignmentArgs.__new__(AccessPackageCatalogRoleAssignmentArgs)
+            __props__ = AccessPackageCatalogRoleAssignmentArrgs.__new__(AccessPackageCatalogRoleAssignmentArrgs)
 
             if catalog_id is None and not opts.urn:
                 raise TypeError("Missing required property 'catalog_id'")

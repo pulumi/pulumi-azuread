@@ -95,7 +95,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyApprovalSettings(dict):
+calass AccessPackageAssignmentPolicyApprovalSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -127,7 +127,7 @@ class AccessPackageAssignmentPolicyApprovalSettings(dict):
         """
         :param bool approval_required: Whether an approval is required.
         :param bool approval_required_for_extension: Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
-        :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs'] approval_stages: An `approval_stage` block specifying the process to obtain an approval, as documented below.
+        :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrgs'] approval_stages: An `approval_stage` block specifying the process to obtain an approval, as documented below.
         :param bool requestor_justification_required: Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
         """
         if approval_required is not None:
@@ -173,7 +173,7 @@ class AccessPackageAssignmentPolicyApprovalSettings(dict):
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
+calass AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -211,10 +211,10 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
         """
         :param int approval_timeout_in_days: Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
         :param bool alternative_approval_enabled: Whether alternative approvers are enabled.
-        :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs'] alternative_approvers: A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+        :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrgs'] alternative_approvers: A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
         :param bool approver_justification_required: Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
         :param int enable_alternative_approval_in_days: Number of days before the request is forwarded to alternative approvers.
-        :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs'] primary_approvers: A block specifying the users who will be asked to approve requests, as documented below.
+        :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrgs'] primary_approvers: A block specifying the users who will be asked to approve requests, as documented below.
         """
         pulumi.set(__self__, "approval_timeout_in_days", approval_timeout_in_days)
         if alternative_approval_enabled is not None:
@@ -278,7 +278,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover(dict):
+calass AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -339,7 +339,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover(dict):
+calass AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -400,7 +400,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover(
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyAssignmentReviewSettings(dict):
+calass AccessPackageAssignmentPolicyAssignmentReviewSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -448,7 +448,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings(dict):
         :param bool enabled: Whether to enable assignment review.
         :param str review_frequency: This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
         :param str review_type: Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
-        :param Sequence['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs'] reviewers: One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+        :param Sequence['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrgs'] reviewers: One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
         :param str starting_on: This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
         """
         if access_recommendation_enabled is not None:
@@ -544,7 +544,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings(dict):
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(dict):
+calass AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -605,15 +605,15 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(dict):
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyQuestion(dict):
+calass AccessPackageAssignmentPolicyQuestion(dict):
     def __init__(__self__, *,
                  text: 'outputs.AccessPackageAssignmentPolicyQuestionText',
                  choices: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionChoice']] = None,
                  required: Optional[bool] = None,
                  sequence: Optional[int] = None):
         """
-        :param 'AccessPackageAssignmentPolicyQuestionTextArgs' text: A block describing the content of this question, as documented below.
-        :param Sequence['AccessPackageAssignmentPolicyQuestionChoiceArgs'] choices: One or more blocks configuring a choice to the question, as documented below.
+        :param 'AccessPackageAssignmentPolicyQuestionTextArrgs' text: A block describing the content of this question, as documented below.
+        :param Sequence['AccessPackageAssignmentPolicyQuestionChoiceArrgs'] choices: One or more blocks configuring a choice to the question, as documented below.
         :param bool required: Whether this question is required.
         :param int sequence: The sequence number of this question.
         """
@@ -659,7 +659,7 @@ class AccessPackageAssignmentPolicyQuestion(dict):
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyQuestionChoice(dict):
+calass AccessPackageAssignmentPolicyQuestionChoice(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -684,7 +684,7 @@ class AccessPackageAssignmentPolicyQuestionChoice(dict):
                  display_value: 'outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue'):
         """
         :param str actual_value: The actual value of this choice.
-        :param 'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs' display_value: A block describing the display text of this choice, as documented below.
+        :param 'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArrgs' display_value: A block describing the display text of this choice, as documented below.
         """
         pulumi.set(__self__, "actual_value", actual_value)
         pulumi.set(__self__, "display_value", display_value)
@@ -707,7 +707,7 @@ class AccessPackageAssignmentPolicyQuestionChoice(dict):
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
+calass AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -732,7 +732,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
                  localized_texts: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText']] = None):
         """
         :param str default_text: The default text of this question choice.
-        :param Sequence['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs'] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
+        :param Sequence['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrgs'] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
         """
         pulumi.set(__self__, "default_text", default_text)
         if localized_texts is not None:
@@ -756,7 +756,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText(dict):
+calass AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -802,7 +802,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText(dict)
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyQuestionText(dict):
+calass AccessPackageAssignmentPolicyQuestionText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -827,7 +827,7 @@ class AccessPackageAssignmentPolicyQuestionText(dict):
                  localized_texts: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText']] = None):
         """
         :param str default_text: The default text of this question choice.
-        :param Sequence['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs'] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
+        :param Sequence['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrgs'] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
         """
         pulumi.set(__self__, "default_text", default_text)
         if localized_texts is not None:
@@ -851,7 +851,7 @@ class AccessPackageAssignmentPolicyQuestionText(dict):
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyQuestionTextLocalizedText(dict):
+calass AccessPackageAssignmentPolicyQuestionTextLocalizedText(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -897,7 +897,7 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText(dict):
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyRequestorSettings(dict):
+calass AccessPackageAssignmentPolicyRequestorSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -922,7 +922,7 @@ class AccessPackageAssignmentPolicyRequestorSettings(dict):
                  requests_accepted: Optional[bool] = None,
                  scope_type: Optional[str] = None):
         """
-        :param Sequence['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs'] requestors: A block specifying the users who are allowed to request on this policy, as documented below.
+        :param Sequence['AccessPackageAssignmentPolicyRequestorSettingsRequestorArrgs'] requestors: A block specifying the users who are allowed to request on this policy, as documented below.
         :param bool requests_accepted: Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
         :param str scope_type: Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
         """
@@ -959,7 +959,7 @@ class AccessPackageAssignmentPolicyRequestorSettings(dict):
 
 
 @pulumi.output_type
-class AccessPackageAssignmentPolicyRequestorSettingsRequestor(dict):
+calass AccessPackageAssignmentPolicyRequestorSettingsRequestor(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1020,7 +1020,7 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestor(dict):
 
 
 @pulumi.output_type
-class ApplicationApi(dict):
+calass ApplicationApi(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1052,7 +1052,7 @@ class ApplicationApi(dict):
         """
         :param Sequence[str] known_client_applications: A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
         :param bool mapped_claims_enabled: Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
-        :param Sequence['ApplicationApiOauth2PermissionScopeArgs'] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+        :param Sequence['ApplicationApiOauth2PermissionScopeArrgs'] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
         :param int requested_access_token_version: The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
         """
         if known_client_applications is not None:
@@ -1098,7 +1098,7 @@ class ApplicationApi(dict):
 
 
 @pulumi.output_type
-class ApplicationApiOauth2PermissionScope(dict):
+calass ApplicationApiOauth2PermissionScope(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1215,7 +1215,7 @@ class ApplicationApiOauth2PermissionScope(dict):
 
 
 @pulumi.output_type
-class ApplicationAppRole(dict):
+calass ApplicationAppRole(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1301,7 +1301,7 @@ class ApplicationAppRole(dict):
 
 
 @pulumi.output_type
-class ApplicationFeatureTag(dict):
+calass ApplicationFeatureTag(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1373,7 +1373,7 @@ class ApplicationFeatureTag(dict):
 
 
 @pulumi.output_type
-class ApplicationOptionalClaims(dict):
+calass ApplicationOptionalClaims(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1400,9 +1400,9 @@ class ApplicationOptionalClaims(dict):
                  id_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsIdToken']] = None,
                  saml2_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsSaml2Token']] = None):
         """
-        :param Sequence['ApplicationOptionalClaimsAccessTokenArgs'] access_tokens: One or more `access_token` blocks as documented below.
-        :param Sequence['ApplicationOptionalClaimsIdTokenArgs'] id_tokens: One or more `id_token` blocks as documented below.
-        :param Sequence['ApplicationOptionalClaimsSaml2TokenArgs'] saml2_tokens: One or more `saml2_token` blocks as documented below.
+        :param Sequence['ApplicationOptionalClaimsAccessTokenArrgs'] access_tokens: One or more `access_token` blocks as documented below.
+        :param Sequence['ApplicationOptionalClaimsIdTokenArrgs'] id_tokens: One or more `id_token` blocks as documented below.
+        :param Sequence['ApplicationOptionalClaimsSaml2TokenArrgs'] saml2_tokens: One or more `saml2_token` blocks as documented below.
         """
         if access_tokens is not None:
             pulumi.set(__self__, "access_tokens", access_tokens)
@@ -1437,7 +1437,7 @@ class ApplicationOptionalClaims(dict):
 
 
 @pulumi.output_type
-class ApplicationOptionalClaimsAccessToken(dict):
+calass ApplicationOptionalClaimsAccessToken(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1508,7 +1508,7 @@ class ApplicationOptionalClaimsAccessToken(dict):
 
 
 @pulumi.output_type
-class ApplicationOptionalClaimsIdToken(dict):
+calass ApplicationOptionalClaimsIdToken(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1579,7 +1579,7 @@ class ApplicationOptionalClaimsIdToken(dict):
 
 
 @pulumi.output_type
-class ApplicationOptionalClaimsSaml2Token(dict):
+calass ApplicationOptionalClaimsSaml2Token(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1650,7 +1650,7 @@ class ApplicationOptionalClaimsSaml2Token(dict):
 
 
 @pulumi.output_type
-class ApplicationPublicClient(dict):
+calass ApplicationPublicClient(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1686,7 +1686,7 @@ class ApplicationPublicClient(dict):
 
 
 @pulumi.output_type
-class ApplicationRequiredResourceAccess(dict):
+calass ApplicationRequiredResourceAccess(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1710,7 +1710,7 @@ class ApplicationRequiredResourceAccess(dict):
                  resource_accesses: Sequence['outputs.ApplicationRequiredResourceAccessResourceAccess'],
                  resource_app_id: str):
         """
-        :param Sequence['ApplicationRequiredResourceAccessResourceAccessArgs'] resource_accesses: A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
+        :param Sequence['ApplicationRequiredResourceAccessResourceAccessArrgs'] resource_accesses: A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         :param str resource_app_id: The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
                
                > **Note:** Documentation on `resource_app_id` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
@@ -1738,7 +1738,7 @@ class ApplicationRequiredResourceAccess(dict):
 
 
 @pulumi.output_type
-class ApplicationRequiredResourceAccessResourceAccess(dict):
+calass ApplicationRequiredResourceAccessResourceAccess(dict):
     def __init__(__self__, *,
                  id: str,
                  type: str):
@@ -1767,7 +1767,7 @@ class ApplicationRequiredResourceAccessResourceAccess(dict):
 
 
 @pulumi.output_type
-class ApplicationSinglePageApplication(dict):
+calass ApplicationSinglePageApplication(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1803,7 +1803,7 @@ class ApplicationSinglePageApplication(dict):
 
 
 @pulumi.output_type
-class ApplicationWeb(dict):
+calass ApplicationWeb(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1834,7 +1834,7 @@ class ApplicationWeb(dict):
                  redirect_uris: Optional[Sequence[str]] = None):
         """
         :param str homepage_url: Home page or landing page of the application.
-        :param 'ApplicationWebImplicitGrantArgs' implicit_grant: An `implicit_grant` block as documented above.
+        :param 'ApplicationWebImplicitGrantArrgs' implicit_grant: An `implicit_grant` block as documented above.
         :param str logout_url: The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
         :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
         """
@@ -1881,7 +1881,7 @@ class ApplicationWeb(dict):
 
 
 @pulumi.output_type
-class ApplicationWebImplicitGrant(dict):
+calass ApplicationWebImplicitGrant(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1931,7 +1931,7 @@ class ApplicationWebImplicitGrant(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditions(dict):
+calass ConditionalAccessPolicyConditions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1969,13 +1969,13 @@ class ConditionalAccessPolicyConditions(dict):
                  sign_in_risk_levels: Optional[Sequence[str]] = None,
                  user_risk_levels: Optional[Sequence[str]] = None):
         """
-        :param 'ConditionalAccessPolicyConditionsApplicationsArgs' applications: An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+        :param 'ConditionalAccessPolicyConditionsApplicationsArrgs' applications: An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         :param Sequence[str] client_app_types: A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
-        :param 'ConditionalAccessPolicyConditionsUsersArgs' users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
-        :param 'ConditionalAccessPolicyConditionsClientApplicationsArgs' client_applications: An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
-        :param 'ConditionalAccessPolicyConditionsDevicesArgs' devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
-        :param 'ConditionalAccessPolicyConditionsLocationsArgs' locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
-        :param 'ConditionalAccessPolicyConditionsPlatformsArgs' platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+        :param 'ConditionalAccessPolicyConditionsUsersArrgs' users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        :param 'ConditionalAccessPolicyConditionsClientApplicationsArrgs' client_applications: An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+        :param 'ConditionalAccessPolicyConditionsDevicesArrgs' devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+        :param 'ConditionalAccessPolicyConditionsLocationsArrgs' locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+        :param 'ConditionalAccessPolicyConditionsPlatformsArrgs' platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         :param Sequence[str] service_principal_risk_levels: A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
         :param Sequence[str] sign_in_risk_levels: A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         :param Sequence[str] user_risk_levels: A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
@@ -2080,7 +2080,7 @@ class ConditionalAccessPolicyConditions(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditionsApplications(dict):
+calass ConditionalAccessPolicyConditionsApplications(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2144,7 +2144,7 @@ class ConditionalAccessPolicyConditionsApplications(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditionsClientApplications(dict):
+calass ConditionalAccessPolicyConditionsClientApplications(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2194,11 +2194,11 @@ class ConditionalAccessPolicyConditionsClientApplications(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditionsDevices(dict):
+calass ConditionalAccessPolicyConditionsDevices(dict):
     def __init__(__self__, *,
                  filter: Optional['outputs.ConditionalAccessPolicyConditionsDevicesFilter'] = None):
         """
-        :param 'ConditionalAccessPolicyConditionsDevicesFilterArgs' filter: A `filter` block as described below.
+        :param 'ConditionalAccessPolicyConditionsDevicesFilterArrgs' filter: A `filter` block as described below.
         """
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
@@ -2213,7 +2213,7 @@ class ConditionalAccessPolicyConditionsDevices(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditionsDevicesFilter(dict):
+calass ConditionalAccessPolicyConditionsDevicesFilter(dict):
     def __init__(__self__, *,
                  mode: str,
                  rule: str):
@@ -2242,7 +2242,7 @@ class ConditionalAccessPolicyConditionsDevicesFilter(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditionsLocations(dict):
+calass ConditionalAccessPolicyConditionsLocations(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2291,7 +2291,7 @@ class ConditionalAccessPolicyConditionsLocations(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditionsPlatforms(dict):
+calass ConditionalAccessPolicyConditionsPlatforms(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2340,7 +2340,7 @@ class ConditionalAccessPolicyConditionsPlatforms(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditionsUsers(dict):
+calass ConditionalAccessPolicyConditionsUsers(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2383,11 +2383,11 @@ class ConditionalAccessPolicyConditionsUsers(dict):
                  included_users: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] excluded_groups: A list of group IDs excluded from scope of policy.
-        :param Sequence['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs'] excluded_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+        :param Sequence['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrgs'] excluded_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
         :param Sequence[str] excluded_roles: A list of role IDs excluded from scope of policy.
         :param Sequence[str] excluded_users: A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
         :param Sequence[str] included_groups: A list of group IDs in scope of policy unless explicitly excluded.
-        :param Sequence['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs'] included_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+        :param Sequence['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrgs'] included_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
         :param Sequence[str] included_roles: A list of role IDs in scope of policy unless explicitly excluded.
         :param Sequence[str] included_users: A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
                
@@ -2478,7 +2478,7 @@ class ConditionalAccessPolicyConditionsUsers(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser(dict):
+calass ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2503,7 +2503,7 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser(dict):
                  external_tenants: Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant']] = None):
         """
         :param Sequence[str] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-        :param Sequence['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs'] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        :param Sequence['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrgs'] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
         """
         pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
         if external_tenants is not None:
@@ -2527,7 +2527,7 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant(dict):
+calass ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2574,7 +2574,7 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternal
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser(dict):
+calass ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2599,7 +2599,7 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser(dict):
                  external_tenants: Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant']] = None):
         """
         :param Sequence[str] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-        :param Sequence['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs'] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        :param Sequence['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrgs'] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
         """
         pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
         if external_tenants is not None:
@@ -2623,7 +2623,7 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant(dict):
+calass ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2670,7 +2670,7 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternal
 
 
 @pulumi.output_type
-class ConditionalAccessPolicyGrantControls(dict):
+calass ConditionalAccessPolicyGrantControls(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2763,7 +2763,7 @@ class ConditionalAccessPolicyGrantControls(dict):
 
 
 @pulumi.output_type
-class ConditionalAccessPolicySessionControls(dict):
+calass ConditionalAccessPolicySessionControls(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2901,7 +2901,7 @@ class ConditionalAccessPolicySessionControls(dict):
 
 
 @pulumi.output_type
-class CustomDirectoryRolePermission(dict):
+calass CustomDirectoryRolePermission(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2936,7 +2936,7 @@ class CustomDirectoryRolePermission(dict):
 
 
 @pulumi.output_type
-class GroupDynamicMembership(dict):
+calass GroupDynamicMembership(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  rule: str):
@@ -2969,7 +2969,7 @@ class GroupDynamicMembership(dict):
 
 
 @pulumi.output_type
-class InvitationMessage(dict):
+calass InvitationMessage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3029,7 +3029,7 @@ class InvitationMessage(dict):
 
 
 @pulumi.output_type
-class NamedLocationCountry(dict):
+calass NamedLocationCountry(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3078,7 +3078,7 @@ class NamedLocationCountry(dict):
 
 
 @pulumi.output_type
-class NamedLocationIp(dict):
+calass NamedLocationIp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3125,7 +3125,7 @@ class NamedLocationIp(dict):
 
 
 @pulumi.output_type
-class ServicePrincipalAppRole(dict):
+calass ServicePrincipalAppRole(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3223,7 +3223,7 @@ class ServicePrincipalAppRole(dict):
 
 
 @pulumi.output_type
-class ServicePrincipalFeature(dict):
+calass ServicePrincipalFeature(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3283,7 +3283,7 @@ class ServicePrincipalFeature(dict):
 
 
 @pulumi.output_type
-class ServicePrincipalFeatureTag(dict):
+calass ServicePrincipalFeatureTag(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3355,7 +3355,7 @@ class ServicePrincipalFeatureTag(dict):
 
 
 @pulumi.output_type
-class ServicePrincipalOauth2PermissionScope(dict):
+calass ServicePrincipalOauth2PermissionScope(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3481,7 +3481,7 @@ class ServicePrincipalOauth2PermissionScope(dict):
 
 
 @pulumi.output_type
-class ServicePrincipalSamlSingleSignOn(dict):
+calass ServicePrincipalSamlSingleSignOn(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3517,7 +3517,7 @@ class ServicePrincipalSamlSingleSignOn(dict):
 
 
 @pulumi.output_type
-class SynchronizationJobSchedule(dict):
+calass SynchronizationJobSchedule(dict):
     def __init__(__self__, *,
                  expiration: Optional[str] = None,
                  interval: Optional[str] = None,
@@ -3560,7 +3560,7 @@ class SynchronizationJobSchedule(dict):
 
 
 @pulumi.output_type
-class SynchronizationSecretCredential(dict):
+calass SynchronizationSecretCredential(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
@@ -3589,7 +3589,7 @@ class SynchronizationSecretCredential(dict):
 
 
 @pulumi.output_type
-class GetApplicationApiResult(dict):
+calass GetApplicationApiResult(dict):
     def __init__(__self__, *,
                  known_client_applications: Sequence[str],
                  mapped_claims_enabled: bool,
@@ -3598,7 +3598,7 @@ class GetApplicationApiResult(dict):
         """
         :param Sequence[str] known_client_applications: A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
         :param bool mapped_claims_enabled: Allows an application to use claims mapping without specifying a custom signing key.
-        :param Sequence['GetApplicationApiOauth2PermissionScopeArgs'] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+        :param Sequence['GetApplicationApiOauth2PermissionScopeArrgs'] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
         :param int requested_access_token_version: The access token version expected by this resource. Possible values are `1` or `2`.
         """
         pulumi.set(__self__, "known_client_applications", known_client_applications)
@@ -3640,7 +3640,7 @@ class GetApplicationApiResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationApiOauth2PermissionScopeResult(dict):
+calass GetApplicationApiOauth2PermissionScopeResult(dict):
     def __init__(__self__, *,
                  admin_consent_description: str,
                  admin_consent_display_name: str,
@@ -3735,7 +3735,7 @@ class GetApplicationApiOauth2PermissionScopeResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationAppRoleResult(dict):
+calass GetApplicationAppRoleResult(dict):
     def __init__(__self__, *,
                  allowed_member_types: Sequence[str],
                  description: str,
@@ -3808,7 +3808,7 @@ class GetApplicationAppRoleResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationFeatureTagResult(dict):
+calass GetApplicationFeatureTagResult(dict):
     def __init__(__self__, *,
                  custom_single_sign_on: Optional[bool] = None,
                  enterprise: Optional[bool] = None,
@@ -3863,15 +3863,15 @@ class GetApplicationFeatureTagResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationOptionalClaimResult(dict):
+calass GetApplicationOptionalClaimResult(dict):
     def __init__(__self__, *,
                  access_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimAccessTokenResult']] = None,
                  id_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimIdTokenResult']] = None,
                  saml2_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimSaml2TokenResult']] = None):
         """
-        :param Sequence['GetApplicationOptionalClaimAccessTokenArgs'] access_tokens: One or more `access_token` blocks as documented below.
-        :param Sequence['GetApplicationOptionalClaimIdTokenArgs'] id_tokens: One or more `id_token` blocks as documented below.
-        :param Sequence['GetApplicationOptionalClaimSaml2TokenArgs'] saml2_tokens: One or more `saml2_token` blocks as documented below.
+        :param Sequence['GetApplicationOptionalClaimAccessTokenArrgs'] access_tokens: One or more `access_token` blocks as documented below.
+        :param Sequence['GetApplicationOptionalClaimIdTokenArrgs'] id_tokens: One or more `id_token` blocks as documented below.
+        :param Sequence['GetApplicationOptionalClaimSaml2TokenArrgs'] saml2_tokens: One or more `saml2_token` blocks as documented below.
         """
         if access_tokens is not None:
             pulumi.set(__self__, "access_tokens", access_tokens)
@@ -3906,7 +3906,7 @@ class GetApplicationOptionalClaimResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationOptionalClaimAccessTokenResult(dict):
+calass GetApplicationOptionalClaimAccessTokenResult(dict):
     def __init__(__self__, *,
                  name: str,
                  additional_properties: Optional[Sequence[str]] = None,
@@ -3960,7 +3960,7 @@ class GetApplicationOptionalClaimAccessTokenResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationOptionalClaimIdTokenResult(dict):
+calass GetApplicationOptionalClaimIdTokenResult(dict):
     def __init__(__self__, *,
                  name: str,
                  additional_properties: Optional[Sequence[str]] = None,
@@ -4014,7 +4014,7 @@ class GetApplicationOptionalClaimIdTokenResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationOptionalClaimSaml2TokenResult(dict):
+calass GetApplicationOptionalClaimSaml2TokenResult(dict):
     def __init__(__self__, *,
                  name: str,
                  additional_properties: Optional[Sequence[str]] = None,
@@ -4068,7 +4068,7 @@ class GetApplicationOptionalClaimSaml2TokenResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationPublicClientResult(dict):
+calass GetApplicationPublicClientResult(dict):
     def __init__(__self__, *,
                  redirect_uris: Sequence[str]):
         """
@@ -4086,12 +4086,12 @@ class GetApplicationPublicClientResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationRequiredResourceAccessResult(dict):
+calass GetApplicationRequiredResourceAccessResult(dict):
     def __init__(__self__, *,
                  resource_accesses: Sequence['outputs.GetApplicationRequiredResourceAccessResourceAccessResult'],
                  resource_app_id: str):
         """
-        :param Sequence['GetApplicationRequiredResourceAccessResourceAccessArgs'] resource_accesses: A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
+        :param Sequence['GetApplicationRequiredResourceAccessResourceAccessArrgs'] resource_accesses: A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         :param str resource_app_id: The unique identifier for the resource that the application requires access to. This is the Application ID of the target application.
         """
         pulumi.set(__self__, "resource_accesses", resource_accesses)
@@ -4115,7 +4115,7 @@ class GetApplicationRequiredResourceAccessResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationRequiredResourceAccessResourceAccessResult(dict):
+calass GetApplicationRequiredResourceAccessResourceAccessResult(dict):
     def __init__(__self__, *,
                  id: str,
                  type: str):
@@ -4144,7 +4144,7 @@ class GetApplicationRequiredResourceAccessResourceAccessResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationSinglePageApplicationResult(dict):
+calass GetApplicationSinglePageApplicationResult(dict):
     def __init__(__self__, *,
                  redirect_uris: Sequence[str]):
         """
@@ -4162,7 +4162,7 @@ class GetApplicationSinglePageApplicationResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationWebResult(dict):
+calass GetApplicationWebResult(dict):
     def __init__(__self__, *,
                  homepage_url: str,
                  implicit_grants: Sequence['outputs.GetApplicationWebImplicitGrantResult'],
@@ -4170,7 +4170,7 @@ class GetApplicationWebResult(dict):
                  redirect_uris: Sequence[str]):
         """
         :param str homepage_url: Home page or landing page of the application.
-        :param Sequence['GetApplicationWebImplicitGrantArgs'] implicit_grants: An `implicit_grant` block as documented above.
+        :param Sequence['GetApplicationWebImplicitGrantArrgs'] implicit_grants: An `implicit_grant` block as documented above.
         :param str logout_url: The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
         :param Sequence[str] redirect_uris: A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
         """
@@ -4213,7 +4213,7 @@ class GetApplicationWebResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationWebImplicitGrantResult(dict):
+calass GetApplicationWebImplicitGrantResult(dict):
     def __init__(__self__, *,
                  access_token_issuance_enabled: bool,
                  id_token_issuance_enabled: bool):
@@ -4242,7 +4242,7 @@ class GetApplicationWebImplicitGrantResult(dict):
 
 
 @pulumi.output_type
-class GetDirectoryRoleTemplatesRoleTemplateResult(dict):
+calass GetDirectoryRoleTemplatesRoleTemplateResult(dict):
     def __init__(__self__, *,
                  description: str,
                  display_name: str,
@@ -4282,7 +4282,7 @@ class GetDirectoryRoleTemplatesRoleTemplateResult(dict):
 
 
 @pulumi.output_type
-class GetDirectoryRolesRoleResult(dict):
+calass GetDirectoryRolesRoleResult(dict):
     def __init__(__self__, *,
                  description: str,
                  display_name: str,
@@ -4333,7 +4333,7 @@ class GetDirectoryRolesRoleResult(dict):
 
 
 @pulumi.output_type
-class GetDomainsDomainResult(dict):
+calass GetDomainsDomainResult(dict):
     def __init__(__self__, *,
                  admin_managed: bool,
                  authentication_type: str,
@@ -4428,7 +4428,7 @@ class GetDomainsDomainResult(dict):
 
 
 @pulumi.output_type
-class GetGroupDynamicMembershipResult(dict):
+calass GetGroupDynamicMembershipResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  rule: str):
@@ -4457,7 +4457,7 @@ class GetGroupDynamicMembershipResult(dict):
 
 
 @pulumi.output_type
-class GetNamedLocationCountryResult(dict):
+calass GetNamedLocationCountryResult(dict):
     def __init__(__self__, *,
                  countries_and_regions: Sequence[str],
                  include_unknown_countries_and_regions: bool):
@@ -4476,7 +4476,7 @@ class GetNamedLocationCountryResult(dict):
 
 
 @pulumi.output_type
-class GetNamedLocationIpResult(dict):
+calass GetNamedLocationIpResult(dict):
     def __init__(__self__, *,
                  ip_ranges: Sequence[str],
                  trusted: bool):
@@ -4495,7 +4495,7 @@ class GetNamedLocationIpResult(dict):
 
 
 @pulumi.output_type
-class GetServicePrincipalAppRoleResult(dict):
+calass GetServicePrincipalAppRoleResult(dict):
     def __init__(__self__, *,
                  allowed_member_types: Sequence[str],
                  description: str,
@@ -4568,7 +4568,7 @@ class GetServicePrincipalAppRoleResult(dict):
 
 
 @pulumi.output_type
-class GetServicePrincipalFeatureResult(dict):
+calass GetServicePrincipalFeatureResult(dict):
     def __init__(__self__, *,
                  custom_single_sign_on_app: bool,
                  enterprise_application: bool,
@@ -4619,7 +4619,7 @@ class GetServicePrincipalFeatureResult(dict):
 
 
 @pulumi.output_type
-class GetServicePrincipalFeatureTagResult(dict):
+calass GetServicePrincipalFeatureTagResult(dict):
     def __init__(__self__, *,
                  custom_single_sign_on: bool,
                  enterprise: bool,
@@ -4652,7 +4652,7 @@ class GetServicePrincipalFeatureTagResult(dict):
 
 
 @pulumi.output_type
-class GetServicePrincipalOauth2PermissionScopeResult(dict):
+calass GetServicePrincipalOauth2PermissionScopeResult(dict):
     def __init__(__self__, *,
                  admin_consent_description: str,
                  admin_consent_display_name: str,
@@ -4747,7 +4747,7 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
 
 
 @pulumi.output_type
-class GetServicePrincipalSamlSingleSignOnResult(dict):
+calass GetServicePrincipalSamlSingleSignOnResult(dict):
     def __init__(__self__, *,
                  relay_state: str):
         """
@@ -4765,7 +4765,7 @@ class GetServicePrincipalSamlSingleSignOnResult(dict):
 
 
 @pulumi.output_type
-class GetServicePrincipalsServicePrincipalResult(dict):
+calass GetServicePrincipalsServicePrincipalResult(dict):
     def __init__(__self__, *,
                  account_enabled: bool,
                  app_role_assignment_required: bool,
@@ -4910,7 +4910,7 @@ class GetServicePrincipalsServicePrincipalResult(dict):
 
 
 @pulumi.output_type
-class GetUsersUserResult(dict):
+calass GetUsersUserResult(dict):
     def __init__(__self__, *,
                  account_enabled: bool,
                  display_name: str,

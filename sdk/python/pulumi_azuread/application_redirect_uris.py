@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ApplicationRedirectUrisArgs', 'ApplicationRedirectUris']
+__all__ = ['ApplicationRedirectUrisArrgs', 'ApplicationRedirectUris']
 
 @pulumi.input_type
-class ApplicationRedirectUrisArgs:
+calass ApplicationRedirectUrisArrgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[str],
                  redirect_uris: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -65,7 +65,7 @@ class ApplicationRedirectUrisArgs:
 
 
 @pulumi.input_type
-class _ApplicationRedirectUrisState:
+calass _ApplicationRedirectUrisState:
     def __init__(__self__, *,
                  application_id: Optional[pulumi.Input[str]] = None,
                  redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -120,7 +120,7 @@ class _ApplicationRedirectUrisState:
         pulumi.set(self, "type", value)
 
 
-class ApplicationRedirectUris(pulumi.CustomResource):
+calass ApplicationRedirectUris(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -183,7 +183,7 @@ class ApplicationRedirectUris(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApplicationRedirectUrisArgs,
+                 args: ApplicationRedirectUrisArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -230,12 +230,12 @@ class ApplicationRedirectUris(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ApplicationRedirectUrisArgs args: The arguments to use to populate this resource's properties.
+        :param ApplicationRedirectUrisArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApplicationRedirectUrisArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationRedirectUrisArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -254,7 +254,7 @@ class ApplicationRedirectUris(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApplicationRedirectUrisArgs.__new__(ApplicationRedirectUrisArgs)
+            __props__ = ApplicationRedirectUrisArrgs.__new__(ApplicationRedirectUrisArrgs)
 
             if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")

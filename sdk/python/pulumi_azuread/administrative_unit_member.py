@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['AdministrativeUnitMemberArgs', 'AdministrativeUnitMember']
+__all__ = ['AdministrativeUnitMemberArrgs', 'AdministrativeUnitMember']
 
 @pulumi.input_type
-class AdministrativeUnitMemberArgs:
+calass AdministrativeUnitMemberArrgs:
     def __init__(__self__, *,
                  administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
                  member_object_id: Optional[pulumi.Input[str]] = None):
@@ -52,7 +52,7 @@ class AdministrativeUnitMemberArgs:
 
 
 @pulumi.input_type
-class _AdministrativeUnitMemberState:
+calass _AdministrativeUnitMemberState:
     def __init__(__self__, *,
                  administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
                  member_object_id: Optional[pulumi.Input[str]] = None):
@@ -91,7 +91,7 @@ class _AdministrativeUnitMemberState:
         pulumi.set(self, "member_object_id", value)
 
 
-class AdministrativeUnitMember(pulumi.CustomResource):
+calass AdministrativeUnitMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -144,7 +144,7 @@ class AdministrativeUnitMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[AdministrativeUnitMemberArgs] = None,
+                 args: Optional[AdministrativeUnitMemberArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a single administrative unit membership within Azure Active Directory.
@@ -183,12 +183,12 @@ class AdministrativeUnitMember(pulumi.CustomResource):
          -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
 
         :param str resource_name: The name of the resource.
-        :param AdministrativeUnitMemberArgs args: The arguments to use to populate this resource's properties.
+        :param AdministrativeUnitMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AdministrativeUnitMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AdministrativeUnitMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -206,7 +206,7 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AdministrativeUnitMemberArgs.__new__(AdministrativeUnitMemberArgs)
+            __props__ = AdministrativeUnitMemberArrgs.__new__(AdministrativeUnitMemberArrgs)
 
             __props__.__dict__["administrative_unit_object_id"] = administrative_unit_object_id
             __props__.__dict__["member_object_id"] = member_object_id

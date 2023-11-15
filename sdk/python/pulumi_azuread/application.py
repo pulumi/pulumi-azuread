@@ -11,47 +11,47 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ApplicationArgs', 'Application']
+__all__ = ['ApplicationArrgs', 'Application']
 
 @pulumi.input_type
-class ApplicationArgs:
+calass ApplicationArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 api: Optional[pulumi.Input['ApplicationApiArgs']] = None,
-                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
+                 api: Optional[pulumi.Input['ApplicationApiArrgs']] = None,
+                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArrgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArrgs']]]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
-                 optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']] = None,
+                 optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArrgs']] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
-                 public_client: Optional[pulumi.Input['ApplicationPublicClientArgs']] = None,
-                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]] = None,
+                 public_client: Optional[pulumi.Input['ApplicationPublicClientArrgs']] = None,
+                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArrgs']]]] = None,
                  service_management_reference: Optional[pulumi.Input[str]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
-                 single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
+                 single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArrgs']] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
-                 web: Optional[pulumi.Input['ApplicationWebArgs']] = None):
+                 web: Optional[pulumi.Input['ApplicationWebArrgs']] = None):
         """
         The set of arguments for constructing a Application resource.
         :param pulumi.Input[str] display_name: The display name for the application.
-        :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this application.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input['ApplicationApiArrgs'] api: An `api` block as documented below, which configures API related settings for this application.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArrgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] description: A description of the application, as shown to end users.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArrgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
@@ -60,17 +60,17 @@ class ApplicationArgs:
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
         :param pulumi.Input[str] notes: User-specified notes relevant for the management of the application.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
-        :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
+        :param pulumi.Input['ApplicationOptionalClaimsArrgs'] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
-        :param pulumi.Input['ApplicationPublicClientArgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
+        :param pulumi.Input['ApplicationPublicClientArrgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArrgs']]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
                
                > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
-        :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        :param pulumi.Input['ApplicationSinglePageApplicationArrgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
                
@@ -79,7 +79,7 @@ class ApplicationArgs:
                
                > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
-        :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
+        :param pulumi.Input['ApplicationWebArrgs'] web: A `web` block as documented below, which configures web related settings for this application.
                
                > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
@@ -151,26 +151,26 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input['ApplicationApiArgs']]:
+    def api(self) -> Optional[pulumi.Input['ApplicationApiArrgs']]:
         """
         An `api` block as documented below, which configures API related settings for this application.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input['ApplicationApiArgs']]):
+    def api(self, value: Optional[pulumi.Input['ApplicationApiArrgs']]):
         pulumi.set(self, "api", value)
 
     @property
     @pulumi.getter(name="appRoles")
-    def app_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]]:
+    def app_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArrgs']]]]:
         """
         A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         """
         return pulumi.get(self, "app_roles")
 
     @app_roles.setter
-    def app_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]]):
+    def app_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArrgs']]]]):
         pulumi.set(self, "app_roles", value)
 
     @property
@@ -211,7 +211,7 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="featureTags")
-    def feature_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]]:
+    def feature_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArrgs']]]]:
         """
         A `feature_tags` block as described below. Cannot be used together with the `tags` property.
 
@@ -220,7 +220,7 @@ class ApplicationArgs:
         return pulumi.get(self, "feature_tags")
 
     @feature_tags.setter
-    def feature_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]]):
+    def feature_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArrgs']]]]):
         pulumi.set(self, "feature_tags", value)
 
     @property
@@ -297,14 +297,14 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="optionalClaims")
-    def optional_claims(self) -> Optional[pulumi.Input['ApplicationOptionalClaimsArgs']]:
+    def optional_claims(self) -> Optional[pulumi.Input['ApplicationOptionalClaimsArrgs']]:
         """
         An `optional_claims` block as documented below.
         """
         return pulumi.get(self, "optional_claims")
 
     @optional_claims.setter
-    def optional_claims(self, value: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']]):
+    def optional_claims(self, value: Optional[pulumi.Input['ApplicationOptionalClaimsArrgs']]):
         pulumi.set(self, "optional_claims", value)
 
     @property
@@ -345,26 +345,26 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="publicClient")
-    def public_client(self) -> Optional[pulumi.Input['ApplicationPublicClientArgs']]:
+    def public_client(self) -> Optional[pulumi.Input['ApplicationPublicClientArrgs']]:
         """
         A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         """
         return pulumi.get(self, "public_client")
 
     @public_client.setter
-    def public_client(self, value: Optional[pulumi.Input['ApplicationPublicClientArgs']]):
+    def public_client(self, value: Optional[pulumi.Input['ApplicationPublicClientArrgs']]):
         pulumi.set(self, "public_client", value)
 
     @property
     @pulumi.getter(name="requiredResourceAccesses")
-    def required_resource_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]]:
+    def required_resource_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArrgs']]]]:
         """
         A collection of `required_resource_access` blocks as documented below.
         """
         return pulumi.get(self, "required_resource_accesses")
 
     @required_resource_accesses.setter
-    def required_resource_accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]]):
+    def required_resource_accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArrgs']]]]):
         pulumi.set(self, "required_resource_accesses", value)
 
     @property
@@ -395,14 +395,14 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="singlePageApplication")
-    def single_page_application(self) -> Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']]:
+    def single_page_application(self) -> Optional[pulumi.Input['ApplicationSinglePageApplicationArrgs']]:
         """
         A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         """
         return pulumi.get(self, "single_page_application")
 
     @single_page_application.setter
-    def single_page_application(self, value: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']]):
+    def single_page_application(self, value: Optional[pulumi.Input['ApplicationSinglePageApplicationArrgs']]):
         pulumi.set(self, "single_page_application", value)
 
     @property
@@ -459,7 +459,7 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter
-    def web(self) -> Optional[pulumi.Input['ApplicationWebArgs']]:
+    def web(self) -> Optional[pulumi.Input['ApplicationWebArrgs']]:
         """
         A `web` block as documented below, which configures web related settings for this application.
 
@@ -468,16 +468,16 @@ class ApplicationArgs:
         return pulumi.get(self, "web")
 
     @web.setter
-    def web(self, value: Optional[pulumi.Input['ApplicationWebArgs']]):
+    def web(self, value: Optional[pulumi.Input['ApplicationWebArrgs']]):
         pulumi.set(self, "web", value)
 
 
 @pulumi.input_type
-class _ApplicationState:
+calass _ApplicationState:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input['ApplicationApiArgs']] = None,
+                 api: Optional[pulumi.Input['ApplicationApiArrgs']] = None,
                  app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
+                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArrgs']]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -485,7 +485,7 @@ class _ApplicationState:
                  disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArrgs']]]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
@@ -495,26 +495,26 @@ class _ApplicationState:
                  oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  object_id: Optional[pulumi.Input[str]] = None,
-                 optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']] = None,
+                 optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArrgs']] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
-                 public_client: Optional[pulumi.Input['ApplicationPublicClientArgs']] = None,
+                 public_client: Optional[pulumi.Input['ApplicationPublicClientArrgs']] = None,
                  publisher_domain: Optional[pulumi.Input[str]] = None,
-                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]] = None,
+                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArrgs']]]] = None,
                  service_management_reference: Optional[pulumi.Input[str]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
-                 single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
+                 single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArrgs']] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
-                 web: Optional[pulumi.Input['ApplicationWebArgs']] = None):
+                 web: Optional[pulumi.Input['ApplicationWebArrgs']] = None):
         """
         Input properties used for looking up and filtering Application resources.
-        :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this application.
+        :param pulumi.Input['ApplicationApiArrgs'] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArrgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] application_id: The Application ID (also called Client ID)
         :param pulumi.Input[str] client_id: The Client ID for the application.
         :param pulumi.Input[str] description: A description of the application, as shown to end users.
@@ -522,7 +522,7 @@ class _ApplicationState:
         :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArrgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
@@ -534,18 +534,18 @@ class _ApplicationState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[str] object_id: The application's object ID.
-        :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
+        :param pulumi.Input['ApplicationOptionalClaimsArrgs'] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
-        :param pulumi.Input['ApplicationPublicClientArgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+        :param pulumi.Input['ApplicationPublicClientArrgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         :param pulumi.Input[str] publisher_domain: The verified publisher domain for the application.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArrgs']]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
                
                > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
-        :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        :param pulumi.Input['ApplicationSinglePageApplicationArrgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
                
@@ -554,7 +554,7 @@ class _ApplicationState:
                
                > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
-        :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
+        :param pulumi.Input['ApplicationWebArrgs'] web: A `web` block as documented below, which configures web related settings for this application.
                
                > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
@@ -634,14 +634,14 @@ class _ApplicationState:
 
     @property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input['ApplicationApiArgs']]:
+    def api(self) -> Optional[pulumi.Input['ApplicationApiArrgs']]:
         """
         An `api` block as documented below, which configures API related settings for this application.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input['ApplicationApiArgs']]):
+    def api(self, value: Optional[pulumi.Input['ApplicationApiArrgs']]):
         pulumi.set(self, "api", value)
 
     @property
@@ -658,14 +658,14 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="appRoles")
-    def app_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]]:
+    def app_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArrgs']]]]:
         """
         A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         """
         return pulumi.get(self, "app_roles")
 
     @app_roles.setter
-    def app_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]]):
+    def app_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArrgs']]]]):
         pulumi.set(self, "app_roles", value)
 
     @property
@@ -757,7 +757,7 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="featureTags")
-    def feature_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]]:
+    def feature_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArrgs']]]]:
         """
         A `feature_tags` block as described below. Cannot be used together with the `tags` property.
 
@@ -766,7 +766,7 @@ class _ApplicationState:
         return pulumi.get(self, "feature_tags")
 
     @feature_tags.setter
-    def feature_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]]):
+    def feature_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArrgs']]]]):
         pulumi.set(self, "feature_tags", value)
 
     @property
@@ -879,14 +879,14 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="optionalClaims")
-    def optional_claims(self) -> Optional[pulumi.Input['ApplicationOptionalClaimsArgs']]:
+    def optional_claims(self) -> Optional[pulumi.Input['ApplicationOptionalClaimsArrgs']]:
         """
         An `optional_claims` block as documented below.
         """
         return pulumi.get(self, "optional_claims")
 
     @optional_claims.setter
-    def optional_claims(self, value: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']]):
+    def optional_claims(self, value: Optional[pulumi.Input['ApplicationOptionalClaimsArrgs']]):
         pulumi.set(self, "optional_claims", value)
 
     @property
@@ -927,14 +927,14 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="publicClient")
-    def public_client(self) -> Optional[pulumi.Input['ApplicationPublicClientArgs']]:
+    def public_client(self) -> Optional[pulumi.Input['ApplicationPublicClientArrgs']]:
         """
         A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         """
         return pulumi.get(self, "public_client")
 
     @public_client.setter
-    def public_client(self, value: Optional[pulumi.Input['ApplicationPublicClientArgs']]):
+    def public_client(self, value: Optional[pulumi.Input['ApplicationPublicClientArrgs']]):
         pulumi.set(self, "public_client", value)
 
     @property
@@ -951,14 +951,14 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="requiredResourceAccesses")
-    def required_resource_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]]:
+    def required_resource_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArrgs']]]]:
         """
         A collection of `required_resource_access` blocks as documented below.
         """
         return pulumi.get(self, "required_resource_accesses")
 
     @required_resource_accesses.setter
-    def required_resource_accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]]):
+    def required_resource_accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArrgs']]]]):
         pulumi.set(self, "required_resource_accesses", value)
 
     @property
@@ -989,14 +989,14 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="singlePageApplication")
-    def single_page_application(self) -> Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']]:
+    def single_page_application(self) -> Optional[pulumi.Input['ApplicationSinglePageApplicationArrgs']]:
         """
         A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         """
         return pulumi.get(self, "single_page_application")
 
     @single_page_application.setter
-    def single_page_application(self, value: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']]):
+    def single_page_application(self, value: Optional[pulumi.Input['ApplicationSinglePageApplicationArrgs']]):
         pulumi.set(self, "single_page_application", value)
 
     @property
@@ -1053,7 +1053,7 @@ class _ApplicationState:
 
     @property
     @pulumi.getter
-    def web(self) -> Optional[pulumi.Input['ApplicationWebArgs']]:
+    def web(self) -> Optional[pulumi.Input['ApplicationWebArrgs']]:
         """
         A `web` block as documented below, which configures web related settings for this application.
 
@@ -1062,42 +1062,42 @@ class _ApplicationState:
         return pulumi.get(self, "web")
 
     @web.setter
-    def web(self, value: Optional[pulumi.Input['ApplicationWebArgs']]):
+    def web(self, value: Optional[pulumi.Input['ApplicationWebArrgs']]):
         pulumi.set(self, "web", value)
 
 
-class Application(pulumi.CustomResource):
+calass Application(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArgs']]] = None,
-                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
+                 api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArrgs']]] = None,
+                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArrgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArrgs']]]]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
-                 optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
+                 optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArrgs']]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
-                 public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
-                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
+                 public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArrgs']]] = None,
+                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArrgs']]]]] = None,
                  service_management_reference: Optional[pulumi.Input[str]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
-                 single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
+                 single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArrgs']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
-                 web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
+                 web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArrgs']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -1116,7 +1116,7 @@ class Application(pulumi.CustomResource):
             logo_image=(lambda path: base64.b64encode(open(path).read().encode()).decode())("/path/to/logo.png"),
             owners=[current.object_id],
             sign_in_audience="AzureADMultipleOrgs",
-            api=azuread.ApplicationApiArgs(
+            api=azuread.ApplicationApiArrgs(
                 mapped_claims_enabled=True,
                 requested_access_token_version=2,
                 known_client_applications=[
@@ -1124,7 +1124,7 @@ class Application(pulumi.CustomResource):
                     azuread_application["known2"]["application_id"],
                 ],
                 oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                    azuread.ApplicationApiOauth2PermissionScopeArrgs(
                         admin_consent_description="Allow the application to access example on behalf of the signed-in user.",
                         admin_consent_display_name="Access example",
                         enabled=True,
@@ -1134,7 +1134,7 @@ class Application(pulumi.CustomResource):
                         user_consent_display_name="Access example",
                         value="user_impersonation",
                     ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                    azuread.ApplicationApiOauth2PermissionScopeArrgs(
                         admin_consent_description="Administer the example application",
                         admin_consent_display_name="Administer",
                         enabled=True,
@@ -1145,7 +1145,7 @@ class Application(pulumi.CustomResource):
                 ],
             ),
             app_roles=[
-                azuread.ApplicationAppRoleArgs(
+                azuread.ApplicationAppRoleArrgs(
                     allowed_member_types=[
                         "User",
                         "Application",
@@ -1156,7 +1156,7 @@ class Application(pulumi.CustomResource):
                     id="1b19509b-32b1-4e9f-b71d-4992aa991967",
                     value="admin",
                 ),
-                azuread.ApplicationAppRoleArgs(
+                azuread.ApplicationAppRoleArrgs(
                     allowed_member_types=["User"],
                     description="ReadOnly roles have limited query access",
                     display_name="ReadOnly",
@@ -1165,56 +1165,56 @@ class Application(pulumi.CustomResource):
                     value="User",
                 ),
             ],
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
+            feature_tags=[azuread.ApplicationFeatureTagArrgs(
                 enterprise=True,
                 gallery=True,
             )],
-            optional_claims=azuread.ApplicationOptionalClaimsArgs(
+            optional_claims=azuread.ApplicationOptionalClaimsArrgs(
                 access_tokens=[
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                    azuread.ApplicationOptionalClaimsAccessTokenArrgs(
                         name="myclaim",
                     ),
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                    azuread.ApplicationOptionalClaimsAccessTokenArrgs(
                         name="otherclaim",
                     ),
                 ],
-                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
+                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArrgs(
                     name="userclaim",
                     source="user",
                     essential=True,
                     additional_properties=["emit_as_roles"],
                 )],
-                saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
+                saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArrgs(
                     name="samlexample",
                 )],
             ),
             required_resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessArgs(
+                azuread.ApplicationRequiredResourceAccessArrgs(
                     resource_app_id="00000003-0000-0000-c000-000000000000",
                     resource_accesses=[
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                             id="df021288-bdef-4463-88db-98f22de89214",
                             type="Role",
                         ),
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                             id="b4e74841-8e56-480b-be8b-910348b18b4c",
                             type="Scope",
                         ),
                     ],
                 ),
-                azuread.ApplicationRequiredResourceAccessArgs(
+                azuread.ApplicationRequiredResourceAccessArrgs(
                     resource_app_id="c5393580-f805-4401-95e8-94b7a6ef2fc2",
-                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                         id="594c1fb6-4f81-4475-ae41-0c394909246c",
                         type="Role",
                     )],
                 ),
             ],
-            web=azuread.ApplicationWebArgs(
+            web=azuread.ApplicationWebArrgs(
                 homepage_url="https://app.example.net",
                 logout_url="https://app.example.net/logout",
                 redirect_uris=["https://app.example.net/account"],
-                implicit_grant=azuread.ApplicationWebImplicitGrantArgs(
+                implicit_grant=azuread.ApplicationWebImplicitGrantArrgs(
                     access_token_issuance_enabled=True,
                     id_token_issuance_enabled=True,
                 ),
@@ -1246,13 +1246,13 @@ class Application(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApplicationApiArgs']] api: An `api` block as documented below, which configures API related settings for this application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input[pulumi.InputType['ApplicationApiArrgs']] api: An `api` block as documented below, which configures API related settings for this application.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArrgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] description: A description of the application, as shown to end users.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArrgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
@@ -1261,17 +1261,17 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
         :param pulumi.Input[str] notes: User-specified notes relevant for the management of the application.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
-        :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
+        :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArrgs']] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
-        :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
+        :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArrgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArrgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
                
                > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
-        :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArrgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
                
@@ -1280,7 +1280,7 @@ class Application(pulumi.CustomResource):
                
                > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
-        :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
+        :param pulumi.Input[pulumi.InputType['ApplicationWebArrgs']] web: A `web` block as documented below, which configures web related settings for this application.
                
                > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
@@ -1288,7 +1288,7 @@ class Application(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApplicationArgs,
+                 args: ApplicationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -1307,7 +1307,7 @@ class Application(pulumi.CustomResource):
             logo_image=(lambda path: base64.b64encode(open(path).read().encode()).decode())("/path/to/logo.png"),
             owners=[current.object_id],
             sign_in_audience="AzureADMultipleOrgs",
-            api=azuread.ApplicationApiArgs(
+            api=azuread.ApplicationApiArrgs(
                 mapped_claims_enabled=True,
                 requested_access_token_version=2,
                 known_client_applications=[
@@ -1315,7 +1315,7 @@ class Application(pulumi.CustomResource):
                     azuread_application["known2"]["application_id"],
                 ],
                 oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                    azuread.ApplicationApiOauth2PermissionScopeArrgs(
                         admin_consent_description="Allow the application to access example on behalf of the signed-in user.",
                         admin_consent_display_name="Access example",
                         enabled=True,
@@ -1325,7 +1325,7 @@ class Application(pulumi.CustomResource):
                         user_consent_display_name="Access example",
                         value="user_impersonation",
                     ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                    azuread.ApplicationApiOauth2PermissionScopeArrgs(
                         admin_consent_description="Administer the example application",
                         admin_consent_display_name="Administer",
                         enabled=True,
@@ -1336,7 +1336,7 @@ class Application(pulumi.CustomResource):
                 ],
             ),
             app_roles=[
-                azuread.ApplicationAppRoleArgs(
+                azuread.ApplicationAppRoleArrgs(
                     allowed_member_types=[
                         "User",
                         "Application",
@@ -1347,7 +1347,7 @@ class Application(pulumi.CustomResource):
                     id="1b19509b-32b1-4e9f-b71d-4992aa991967",
                     value="admin",
                 ),
-                azuread.ApplicationAppRoleArgs(
+                azuread.ApplicationAppRoleArrgs(
                     allowed_member_types=["User"],
                     description="ReadOnly roles have limited query access",
                     display_name="ReadOnly",
@@ -1356,56 +1356,56 @@ class Application(pulumi.CustomResource):
                     value="User",
                 ),
             ],
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
+            feature_tags=[azuread.ApplicationFeatureTagArrgs(
                 enterprise=True,
                 gallery=True,
             )],
-            optional_claims=azuread.ApplicationOptionalClaimsArgs(
+            optional_claims=azuread.ApplicationOptionalClaimsArrgs(
                 access_tokens=[
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                    azuread.ApplicationOptionalClaimsAccessTokenArrgs(
                         name="myclaim",
                     ),
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                    azuread.ApplicationOptionalClaimsAccessTokenArrgs(
                         name="otherclaim",
                     ),
                 ],
-                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
+                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArrgs(
                     name="userclaim",
                     source="user",
                     essential=True,
                     additional_properties=["emit_as_roles"],
                 )],
-                saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
+                saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArrgs(
                     name="samlexample",
                 )],
             ),
             required_resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessArgs(
+                azuread.ApplicationRequiredResourceAccessArrgs(
                     resource_app_id="00000003-0000-0000-c000-000000000000",
                     resource_accesses=[
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                             id="df021288-bdef-4463-88db-98f22de89214",
                             type="Role",
                         ),
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                             id="b4e74841-8e56-480b-be8b-910348b18b4c",
                             type="Scope",
                         ),
                     ],
                 ),
-                azuread.ApplicationRequiredResourceAccessArgs(
+                azuread.ApplicationRequiredResourceAccessArrgs(
                     resource_app_id="c5393580-f805-4401-95e8-94b7a6ef2fc2",
-                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                         id="594c1fb6-4f81-4475-ae41-0c394909246c",
                         type="Role",
                     )],
                 ),
             ],
-            web=azuread.ApplicationWebArgs(
+            web=azuread.ApplicationWebArrgs(
                 homepage_url="https://app.example.net",
                 logout_url="https://app.example.net/logout",
                 redirect_uris=["https://app.example.net/account"],
-                implicit_grant=azuread.ApplicationWebImplicitGrantArgs(
+                implicit_grant=azuread.ApplicationWebImplicitGrantArrgs(
                     access_token_issuance_enabled=True,
                     id_token_issuance_enabled=True,
                 ),
@@ -1436,12 +1436,12 @@ class Application(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ApplicationArgs args: The arguments to use to populate this resource's properties.
+        :param ApplicationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApplicationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1450,33 +1450,33 @@ class Application(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArgs']]] = None,
-                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
+                 api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArrgs']]] = None,
+                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArrgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArrgs']]]]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
-                 optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
+                 optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArrgs']]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
-                 public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
-                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
+                 public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArrgs']]] = None,
+                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArrgs']]]]] = None,
                  service_management_reference: Optional[pulumi.Input[str]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
-                 single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
+                 single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArrgs']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
-                 web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
+                 web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1484,7 +1484,7 @@ class Application(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApplicationArgs.__new__(ApplicationArgs)
+            __props__ = ApplicationArrgs.__new__(ApplicationArrgs)
 
             __props__.__dict__["api"] = api
             __props__.__dict__["app_roles"] = app_roles
@@ -1533,9 +1533,9 @@ class Application(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArgs']]] = None,
+            api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArrgs']]] = None,
             app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
+            app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArrgs']]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1543,7 +1543,7 @@ class Application(pulumi.CustomResource):
             disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-            feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]]] = None,
+            feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArrgs']]]]] = None,
             group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             logo_image: Optional[pulumi.Input[str]] = None,
@@ -1553,21 +1553,21 @@ class Application(pulumi.CustomResource):
             oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
-            optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
+            optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArrgs']]] = None,
             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
             privacy_statement_url: Optional[pulumi.Input[str]] = None,
-            public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
+            public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArrgs']]] = None,
             publisher_domain: Optional[pulumi.Input[str]] = None,
-            required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
+            required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArrgs']]]]] = None,
             service_management_reference: Optional[pulumi.Input[str]] = None,
             sign_in_audience: Optional[pulumi.Input[str]] = None,
-            single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
+            single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArrgs']]] = None,
             support_url: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template_id: Optional[pulumi.Input[str]] = None,
             terms_of_service_url: Optional[pulumi.Input[str]] = None,
-            web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None) -> 'Application':
+            web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArrgs']]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1575,9 +1575,9 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApplicationApiArgs']] api: An `api` block as documented below, which configures API related settings for this application.
+        :param pulumi.Input[pulumi.InputType['ApplicationApiArrgs']] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArrgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] application_id: The Application ID (also called Client ID)
         :param pulumi.Input[str] client_id: The Client ID for the application.
         :param pulumi.Input[str] description: A description of the application, as shown to end users.
@@ -1585,7 +1585,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArrgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
@@ -1597,18 +1597,18 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[str] object_id: The application's object ID.
-        :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
+        :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArrgs']] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
-        :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+        :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArrgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         :param pulumi.Input[str] publisher_domain: The verified publisher domain for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArrgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
                
                > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
-        :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArrgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
                
@@ -1617,7 +1617,7 @@ class Application(pulumi.CustomResource):
                
                > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
-        :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
+        :param pulumi.Input[pulumi.InputType['ApplicationWebArrgs']] web: A `web` block as documented below, which configures web related settings for this application.
                
                > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """

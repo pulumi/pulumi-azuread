@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a single administrative unit membership within Azure Active Directory.
@@ -168,12 +167,6 @@ func (i *AdministrativeUnitMember) ToAdministrativeUnitMemberOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitMemberOutput)
 }
 
-func (i *AdministrativeUnitMember) ToOutput(ctx context.Context) pulumix.Output[*AdministrativeUnitMember] {
-	return pulumix.Output[*AdministrativeUnitMember]{
-		OutputState: i.ToAdministrativeUnitMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AdministrativeUnitMemberArrayInput is an input type that accepts AdministrativeUnitMemberArray and AdministrativeUnitMemberArrayOutput values.
 // You can construct a concrete instance of `AdministrativeUnitMemberArrayInput` via:
 //
@@ -197,12 +190,6 @@ func (i AdministrativeUnitMemberArray) ToAdministrativeUnitMemberArrayOutput() A
 
 func (i AdministrativeUnitMemberArray) ToAdministrativeUnitMemberArrayOutputWithContext(ctx context.Context) AdministrativeUnitMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitMemberArrayOutput)
-}
-
-func (i AdministrativeUnitMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*AdministrativeUnitMember] {
-	return pulumix.Output[[]*AdministrativeUnitMember]{
-		OutputState: i.ToAdministrativeUnitMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AdministrativeUnitMemberMapInput is an input type that accepts AdministrativeUnitMemberMap and AdministrativeUnitMemberMapOutput values.
@@ -230,12 +217,6 @@ func (i AdministrativeUnitMemberMap) ToAdministrativeUnitMemberMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitMemberMapOutput)
 }
 
-func (i AdministrativeUnitMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdministrativeUnitMember] {
-	return pulumix.Output[map[string]*AdministrativeUnitMember]{
-		OutputState: i.ToAdministrativeUnitMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AdministrativeUnitMemberOutput struct{ *pulumi.OutputState }
 
 func (AdministrativeUnitMemberOutput) ElementType() reflect.Type {
@@ -248,12 +229,6 @@ func (o AdministrativeUnitMemberOutput) ToAdministrativeUnitMemberOutput() Admin
 
 func (o AdministrativeUnitMemberOutput) ToAdministrativeUnitMemberOutputWithContext(ctx context.Context) AdministrativeUnitMemberOutput {
 	return o
-}
-
-func (o AdministrativeUnitMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*AdministrativeUnitMember] {
-	return pulumix.Output[*AdministrativeUnitMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
@@ -280,12 +255,6 @@ func (o AdministrativeUnitMemberArrayOutput) ToAdministrativeUnitMemberArrayOutp
 	return o
 }
 
-func (o AdministrativeUnitMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AdministrativeUnitMember] {
-	return pulumix.Output[[]*AdministrativeUnitMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AdministrativeUnitMemberArrayOutput) Index(i pulumi.IntInput) AdministrativeUnitMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AdministrativeUnitMember {
 		return vs[0].([]*AdministrativeUnitMember)[vs[1].(int)]
@@ -304,12 +273,6 @@ func (o AdministrativeUnitMemberMapOutput) ToAdministrativeUnitMemberMapOutput()
 
 func (o AdministrativeUnitMemberMapOutput) ToAdministrativeUnitMemberMapOutputWithContext(ctx context.Context) AdministrativeUnitMemberMapOutput {
 	return o
-}
-
-func (o AdministrativeUnitMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdministrativeUnitMember] {
-	return pulumix.Output[map[string]*AdministrativeUnitMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdministrativeUnitMemberMapOutput) MapIndex(k pulumi.StringInput) AdministrativeUnitMemberOutput {

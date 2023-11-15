@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['AccessPackageCatalogArgs', 'AccessPackageCatalog']
+__all__ = ['AccessPackageCatalogArrgs', 'AccessPackageCatalog']
 
 @pulumi.input_type
-class AccessPackageCatalogArgs:
+calass AccessPackageCatalogArrgs:
     def __init__(__self__, *,
                  description: pulumi.Input[str],
                  display_name: pulumi.Input[str],
@@ -82,7 +82,7 @@ class AccessPackageCatalogArgs:
 
 
 @pulumi.input_type
-class _AccessPackageCatalogState:
+calass _AccessPackageCatalogState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -153,7 +153,7 @@ class _AccessPackageCatalogState:
         pulumi.set(self, "published", value)
 
 
-class AccessPackageCatalog(pulumi.CustomResource):
+calass AccessPackageCatalog(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -204,7 +204,7 @@ class AccessPackageCatalog(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccessPackageCatalogArgs,
+                 args: AccessPackageCatalogArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an access package catalog within Identity Governance in Azure Active Directory.
@@ -237,12 +237,12 @@ class AccessPackageCatalog(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AccessPackageCatalogArgs args: The arguments to use to populate this resource's properties.
+        :param AccessPackageCatalogArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccessPackageCatalogArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccessPackageCatalogArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -262,7 +262,7 @@ class AccessPackageCatalog(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccessPackageCatalogArgs.__new__(AccessPackageCatalogArgs)
+            __props__ = AccessPackageCatalogArrgs.__new__(AccessPackageCatalogArrgs)
 
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")

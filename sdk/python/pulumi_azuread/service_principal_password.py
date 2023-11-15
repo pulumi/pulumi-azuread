@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ServicePrincipalPasswordArgs', 'ServicePrincipalPassword']
+__all__ = ['ServicePrincipalPasswordArrgs', 'ServicePrincipalPassword']
 
 @pulumi.input_type
-class ServicePrincipalPasswordArgs:
+calass ServicePrincipalPasswordArrgs:
     def __init__(__self__, *,
                  service_principal_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class ServicePrincipalPasswordArgs:
 
 
 @pulumi.input_type
-class _ServicePrincipalPasswordState:
+calass _ServicePrincipalPasswordState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
@@ -250,7 +250,7 @@ class _ServicePrincipalPasswordState:
         pulumi.set(self, "value", value)
 
 
-class ServicePrincipalPassword(pulumi.CustomResource):
+calass ServicePrincipalPassword(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -310,7 +310,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServicePrincipalPasswordArgs,
+                 args: ServicePrincipalPasswordArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -348,12 +348,12 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         This resource does not support importing.
 
         :param str resource_name: The name of the resource.
-        :param ServicePrincipalPasswordArgs args: The arguments to use to populate this resource's properties.
+        :param ServicePrincipalPasswordArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServicePrincipalPasswordArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServicePrincipalPasswordArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -375,7 +375,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServicePrincipalPasswordArgs.__new__(ServicePrincipalPasswordArgs)
+            __props__ = ServicePrincipalPasswordArrgs.__new__(ServicePrincipalPasswordArrgs)
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["end_date"] = end_date

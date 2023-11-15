@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ServicePrincipalClaimsMappingPolicyAssignmentArgs', 'ServicePrincipalClaimsMappingPolicyAssignment']
+__all__ = ['ServicePrincipalClaimsMappingPolicyAssignmentArrgs', 'ServicePrincipalClaimsMappingPolicyAssignment']
 
 @pulumi.input_type
-class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
+calass ServicePrincipalClaimsMappingPolicyAssignmentArrgs:
     def __init__(__self__, *,
                  claims_mapping_policy_id: pulumi.Input[str],
                  service_principal_id: pulumi.Input[str]):
@@ -50,7 +50,7 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
 
 
 @pulumi.input_type
-class _ServicePrincipalClaimsMappingPolicyAssignmentState:
+calass _ServicePrincipalClaimsMappingPolicyAssignmentState:
     def __init__(__self__, *,
                  claims_mapping_policy_id: Optional[pulumi.Input[str]] = None,
                  service_principal_id: Optional[pulumi.Input[str]] = None):
@@ -89,7 +89,7 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
         pulumi.set(self, "service_principal_id", value)
 
 
-class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
+calass ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -136,7 +136,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServicePrincipalClaimsMappingPolicyAssignmentArgs,
+                 args: ServicePrincipalClaimsMappingPolicyAssignmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Claims Mapping Policy Assignment within Azure Active Directory.
@@ -169,12 +169,12 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ServicePrincipalClaimsMappingPolicyAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param ServicePrincipalClaimsMappingPolicyAssignmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServicePrincipalClaimsMappingPolicyAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServicePrincipalClaimsMappingPolicyAssignmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -192,7 +192,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServicePrincipalClaimsMappingPolicyAssignmentArgs.__new__(ServicePrincipalClaimsMappingPolicyAssignmentArgs)
+            __props__ = ServicePrincipalClaimsMappingPolicyAssignmentArrgs.__new__(ServicePrincipalClaimsMappingPolicyAssignmentArrgs)
 
             if claims_mapping_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'claims_mapping_policy_id'")

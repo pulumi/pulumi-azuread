@@ -11,10 +11,10 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GroupArgs', 'Group']
+__all__ = ['GroupArrgs', 'Group']
 
 @pulumi.input_type
-class GroupArgs:
+calass GroupArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -22,7 +22,7 @@ class GroupArgs:
                  auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 dynamic_membership: Optional[pulumi.Input['GroupDynamicMembershipArgs']] = None,
+                 dynamic_membership: Optional[pulumi.Input['GroupDynamicMembershipArrgs']] = None,
                  external_senders_allowed: Optional[pulumi.Input[bool]] = None,
                  hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
                  hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
@@ -50,7 +50,7 @@ class GroupArgs:
                > **Known Permissions Issue** The `auto_subscribe_new_members` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
-        :param pulumi.Input['GroupDynamicMembershipArgs'] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        :param pulumi.Input['GroupDynamicMembershipArrgs'] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         :param pulumi.Input[bool] external_senders_allowed: Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
                
                > **Known Permissions Issue** The `external_senders_allowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
@@ -201,14 +201,14 @@ class GroupArgs:
 
     @property
     @pulumi.getter(name="dynamicMembership")
-    def dynamic_membership(self) -> Optional[pulumi.Input['GroupDynamicMembershipArgs']]:
+    def dynamic_membership(self) -> Optional[pulumi.Input['GroupDynamicMembershipArrgs']]:
         """
         A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         """
         return pulumi.get(self, "dynamic_membership")
 
     @dynamic_membership.setter
-    def dynamic_membership(self, value: Optional[pulumi.Input['GroupDynamicMembershipArgs']]):
+    def dynamic_membership(self, value: Optional[pulumi.Input['GroupDynamicMembershipArrgs']]):
         pulumi.set(self, "dynamic_membership", value)
 
     @property
@@ -405,7 +405,7 @@ class GroupArgs:
 
 
 @pulumi.input_type
-class _GroupState:
+calass _GroupState:
     def __init__(__self__, *,
                  administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  assignable_to_role: Optional[pulumi.Input[bool]] = None,
@@ -413,7 +413,7 @@ class _GroupState:
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 dynamic_membership: Optional[pulumi.Input['GroupDynamicMembershipArgs']] = None,
+                 dynamic_membership: Optional[pulumi.Input['GroupDynamicMembershipArrgs']] = None,
                  external_senders_allowed: Optional[pulumi.Input[bool]] = None,
                  hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
                  hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
@@ -450,7 +450,7 @@ class _GroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
-        :param pulumi.Input['GroupDynamicMembershipArgs'] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        :param pulumi.Input['GroupDynamicMembershipArrgs'] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         :param pulumi.Input[bool] external_senders_allowed: Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
                
                > **Known Permissions Issue** The `external_senders_allowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
@@ -629,14 +629,14 @@ class _GroupState:
 
     @property
     @pulumi.getter(name="dynamicMembership")
-    def dynamic_membership(self) -> Optional[pulumi.Input['GroupDynamicMembershipArgs']]:
+    def dynamic_membership(self) -> Optional[pulumi.Input['GroupDynamicMembershipArrgs']]:
         """
         A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         """
         return pulumi.get(self, "dynamic_membership")
 
     @dynamic_membership.setter
-    def dynamic_membership(self, value: Optional[pulumi.Input['GroupDynamicMembershipArgs']]):
+    def dynamic_membership(self, value: Optional[pulumi.Input['GroupDynamicMembershipArrgs']]):
         pulumi.set(self, "dynamic_membership", value)
 
     @property
@@ -940,7 +940,7 @@ class _GroupState:
         pulumi.set(self, "writeback_enabled", value)
 
 
-class Group(pulumi.CustomResource):
+calass Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -951,7 +951,7 @@ class Group(pulumi.CustomResource):
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']]] = None,
+                 dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArrgs']]] = None,
                  external_senders_allowed: Optional[pulumi.Input[bool]] = None,
                  hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
                  hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
@@ -1009,7 +1009,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
-        :param pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        :param pulumi.Input[pulumi.InputType['GroupDynamicMembershipArrgs']] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         :param pulumi.Input[bool] external_senders_allowed: Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
                
                > **Known Permissions Issue** The `external_senders_allowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
@@ -1042,7 +1042,7 @@ class Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GroupArgs,
+                 args: GroupArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a group within Azure Active Directory.
@@ -1074,12 +1074,12 @@ class Group(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param GroupArgs args: The arguments to use to populate this resource's properties.
+        :param GroupArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GroupArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1094,7 +1094,7 @@ class Group(pulumi.CustomResource):
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']]] = None,
+                 dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArrgs']]] = None,
                  external_senders_allowed: Optional[pulumi.Input[bool]] = None,
                  hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
                  hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
@@ -1117,7 +1117,7 @@ class Group(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GroupArgs.__new__(GroupArgs)
+            __props__ = GroupArrgs.__new__(GroupArrgs)
 
             __props__.__dict__["administrative_unit_ids"] = administrative_unit_ids
             __props__.__dict__["assignable_to_role"] = assignable_to_role
@@ -1168,7 +1168,7 @@ class Group(pulumi.CustomResource):
             behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']]] = None,
+            dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArrgs']]] = None,
             external_senders_allowed: Optional[pulumi.Input[bool]] = None,
             hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
             hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
@@ -1210,7 +1210,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
-        :param pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        :param pulumi.Input[pulumi.InputType['GroupDynamicMembershipArrgs']] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         :param pulumi.Input[bool] external_senders_allowed: Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
                
                > **Known Permissions Issue** The `external_senders_allowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.

@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetDomainsResult:
+calass GetDomainsResult:
     """
     A collection of values returned by getDomains.
     """
@@ -98,7 +98,7 @@ class GetDomainsResult:
         return pulumi.get(self, "supports_services")
 
 
-class AwaitableGetDomainsResult(GetDomainsResult):
+calass AwaitableGetDomainsResult(GetDomainsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

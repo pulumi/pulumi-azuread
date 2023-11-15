@@ -11,21 +11,21 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InvitationArgs', 'Invitation']
+__all__ = ['InvitationArrgs', 'Invitation']
 
 @pulumi.input_type
-class InvitationArgs:
+calass InvitationArrgs:
     def __init__(__self__, *,
                  redirect_url: pulumi.Input[str],
                  user_email_address: pulumi.Input[str],
-                 message: Optional[pulumi.Input['InvitationMessageArgs']] = None,
+                 message: Optional[pulumi.Input['InvitationMessageArrgs']] = None,
                  user_display_name: Optional[pulumi.Input[str]] = None,
                  user_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Invitation resource.
         :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
         :param pulumi.Input[str] user_email_address: The email address of the user being invited.
-        :param pulumi.Input['InvitationMessageArgs'] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        :param pulumi.Input['InvitationMessageArrgs'] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         :param pulumi.Input[str] user_display_name: The display name of the user being invited.
         :param pulumi.Input[str] user_type: The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
@@ -64,14 +64,14 @@ class InvitationArgs:
 
     @property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input['InvitationMessageArgs']]:
+    def message(self) -> Optional[pulumi.Input['InvitationMessageArrgs']]:
         """
         A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input['InvitationMessageArgs']]):
+    def message(self, value: Optional[pulumi.Input['InvitationMessageArrgs']]):
         pulumi.set(self, "message", value)
 
     @property
@@ -100,9 +100,9 @@ class InvitationArgs:
 
 
 @pulumi.input_type
-class _InvitationState:
+calass _InvitationState:
     def __init__(__self__, *,
-                 message: Optional[pulumi.Input['InvitationMessageArgs']] = None,
+                 message: Optional[pulumi.Input['InvitationMessageArrgs']] = None,
                  redeem_url: Optional[pulumi.Input[str]] = None,
                  redirect_url: Optional[pulumi.Input[str]] = None,
                  user_display_name: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class _InvitationState:
                  user_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Invitation resources.
-        :param pulumi.Input['InvitationMessageArgs'] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        :param pulumi.Input['InvitationMessageArrgs'] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         :param pulumi.Input[str] redeem_url: The URL the user can use to redeem their invitation.
         :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
         :param pulumi.Input[str] user_display_name: The display name of the user being invited.
@@ -136,14 +136,14 @@ class _InvitationState:
 
     @property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input['InvitationMessageArgs']]:
+    def message(self) -> Optional[pulumi.Input['InvitationMessageArrgs']]:
         """
         A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input['InvitationMessageArgs']]):
+    def message(self, value: Optional[pulumi.Input['InvitationMessageArrgs']]):
         pulumi.set(self, "message", value)
 
     @property
@@ -219,12 +219,12 @@ class _InvitationState:
         pulumi.set(self, "user_type", value)
 
 
-class Invitation(pulumi.CustomResource):
+calass Invitation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 message: Optional[pulumi.Input[pulumi.InputType['InvitationMessageArgs']]] = None,
+                 message: Optional[pulumi.Input[pulumi.InputType['InvitationMessageArrgs']]] = None,
                  redirect_url: Optional[pulumi.Input[str]] = None,
                  user_display_name: Optional[pulumi.Input[str]] = None,
                  user_email_address: Optional[pulumi.Input[str]] = None,
@@ -261,7 +261,7 @@ class Invitation(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Invitation("example",
-            message=azuread.InvitationMessageArgs(
+            message=azuread.InvitationMessageArrgs(
                 language="en-US",
             ),
             redirect_url="https://portal.azure.com",
@@ -275,7 +275,7 @@ class Invitation(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Invitation("example",
-            message=azuread.InvitationMessageArgs(
+            message=azuread.InvitationMessageArrgs(
                 additional_recipients="aaliceberg@hashicorp.com",
                 body="Hello there! You are invited to join my Azure tenant!",
             ),
@@ -290,7 +290,7 @@ class Invitation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InvitationMessageArgs']] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        :param pulumi.Input[pulumi.InputType['InvitationMessageArrgs']] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
         :param pulumi.Input[str] user_display_name: The display name of the user being invited.
         :param pulumi.Input[str] user_email_address: The email address of the user being invited.
@@ -300,7 +300,7 @@ class Invitation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InvitationArgs,
+                 args: InvitationArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an invitation of a guest user within Azure Active Directory.
@@ -333,7 +333,7 @@ class Invitation(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Invitation("example",
-            message=azuread.InvitationMessageArgs(
+            message=azuread.InvitationMessageArrgs(
                 language="en-US",
             ),
             redirect_url="https://portal.azure.com",
@@ -347,7 +347,7 @@ class Invitation(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Invitation("example",
-            message=azuread.InvitationMessageArgs(
+            message=azuread.InvitationMessageArrgs(
                 additional_recipients="aaliceberg@hashicorp.com",
                 body="Hello there! You are invited to join my Azure tenant!",
             ),
@@ -361,12 +361,12 @@ class Invitation(pulumi.CustomResource):
         This resource does not support importing.
 
         :param str resource_name: The name of the resource.
-        :param InvitationArgs args: The arguments to use to populate this resource's properties.
+        :param InvitationArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InvitationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InvitationArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -375,7 +375,7 @@ class Invitation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 message: Optional[pulumi.Input[pulumi.InputType['InvitationMessageArgs']]] = None,
+                 message: Optional[pulumi.Input[pulumi.InputType['InvitationMessageArrgs']]] = None,
                  redirect_url: Optional[pulumi.Input[str]] = None,
                  user_display_name: Optional[pulumi.Input[str]] = None,
                  user_email_address: Optional[pulumi.Input[str]] = None,
@@ -387,7 +387,7 @@ class Invitation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InvitationArgs.__new__(InvitationArgs)
+            __props__ = InvitationArrgs.__new__(InvitationArrgs)
 
             __props__.__dict__["message"] = message
             if redirect_url is None and not opts.urn:
@@ -410,7 +410,7 @@ class Invitation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            message: Optional[pulumi.Input[pulumi.InputType['InvitationMessageArgs']]] = None,
+            message: Optional[pulumi.Input[pulumi.InputType['InvitationMessageArrgs']]] = None,
             redeem_url: Optional[pulumi.Input[str]] = None,
             redirect_url: Optional[pulumi.Input[str]] = None,
             user_display_name: Optional[pulumi.Input[str]] = None,
@@ -424,7 +424,7 @@ class Invitation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InvitationMessageArgs']] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        :param pulumi.Input[pulumi.InputType['InvitationMessageArrgs']] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         :param pulumi.Input[str] redeem_url: The URL the user can use to redeem their invitation.
         :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
         :param pulumi.Input[str] user_display_name: The display name of the user being invited.
