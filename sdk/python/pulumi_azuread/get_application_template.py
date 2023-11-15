@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetApplicationTemplateResult:
+calass GetApplicationTemplateResult:
     """
     A collection of values returned by getApplicationTemplate.
     """
@@ -123,7 +123,7 @@ class GetApplicationTemplateResult:
         return pulumi.get(self, "template_id")
 
 
-class AwaitableGetApplicationTemplateResult(GetApplicationTemplateResult):
+calass AwaitableGetApplicationTemplateResult(GetApplicationTemplateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

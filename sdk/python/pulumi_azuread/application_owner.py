@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ApplicationOwnerArgs', 'ApplicationOwner']
+__all__ = ['ApplicationOwnerArrgs', 'ApplicationOwner']
 
 @pulumi.input_type
-class ApplicationOwnerArgs:
+calass ApplicationOwnerArrgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[str],
                  owner_object_id: pulumi.Input[str]):
@@ -50,7 +50,7 @@ class ApplicationOwnerArgs:
 
 
 @pulumi.input_type
-class _ApplicationOwnerState:
+calass _ApplicationOwnerState:
     def __init__(__self__, *,
                  application_id: Optional[pulumi.Input[str]] = None,
                  owner_object_id: Optional[pulumi.Input[str]] = None):
@@ -89,7 +89,7 @@ class _ApplicationOwnerState:
         pulumi.set(self, "owner_object_id", value)
 
 
-class ApplicationOwner(pulumi.CustomResource):
+calass ApplicationOwner(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -133,7 +133,7 @@ class ApplicationOwner(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApplicationOwnerArgs,
+                 args: ApplicationOwnerArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -163,12 +163,12 @@ class ApplicationOwner(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ApplicationOwnerArgs args: The arguments to use to populate this resource's properties.
+        :param ApplicationOwnerArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApplicationOwnerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationOwnerArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -186,7 +186,7 @@ class ApplicationOwner(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApplicationOwnerArgs.__new__(ApplicationOwnerArgs)
+            __props__ = ApplicationOwnerArrgs.__new__(ApplicationOwnerArrgs)
 
             if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")

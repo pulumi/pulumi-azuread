@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['AdministrativeUnitRoleMemberArgs', 'AdministrativeUnitRoleMember']
+__all__ = ['AdministrativeUnitRoleMemberArrgs', 'AdministrativeUnitRoleMember']
 
 @pulumi.input_type
-class AdministrativeUnitRoleMemberArgs:
+calass AdministrativeUnitRoleMemberArrgs:
     def __init__(__self__, *,
                  administrative_unit_object_id: pulumi.Input[str],
                  member_object_id: pulumi.Input[str],
@@ -65,7 +65,7 @@ class AdministrativeUnitRoleMemberArgs:
 
 
 @pulumi.input_type
-class _AdministrativeUnitRoleMemberState:
+calass _AdministrativeUnitRoleMemberState:
     def __init__(__self__, *,
                  administrative_unit_object_id: Optional[pulumi.Input[str]] = None,
                  member_object_id: Optional[pulumi.Input[str]] = None,
@@ -120,7 +120,7 @@ class _AdministrativeUnitRoleMemberState:
         pulumi.set(self, "role_object_id", value)
 
 
-class AdministrativeUnitRoleMember(pulumi.CustomResource):
+calass AdministrativeUnitRoleMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -175,7 +175,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AdministrativeUnitRoleMemberArgs,
+                 args: AdministrativeUnitRoleMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a single directory role assignment scoped to an administrative unit within Azure Active Directory.
@@ -214,12 +214,12 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
          -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.
 
         :param str resource_name: The name of the resource.
-        :param AdministrativeUnitRoleMemberArgs args: The arguments to use to populate this resource's properties.
+        :param AdministrativeUnitRoleMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AdministrativeUnitRoleMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AdministrativeUnitRoleMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -238,7 +238,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AdministrativeUnitRoleMemberArgs.__new__(AdministrativeUnitRoleMemberArgs)
+            __props__ = AdministrativeUnitRoleMemberArrgs.__new__(AdministrativeUnitRoleMemberArrgs)
 
             if administrative_unit_object_id is None and not opts.urn:
                 raise TypeError("Missing required property 'administrative_unit_object_id'")

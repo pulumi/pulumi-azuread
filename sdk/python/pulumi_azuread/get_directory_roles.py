@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetDirectoryRolesResult:
+calass GetDirectoryRolesResult:
     """
     A collection of values returned by getDirectoryRoles.
     """
@@ -69,7 +69,7 @@ class GetDirectoryRolesResult:
         return pulumi.get(self, "template_ids")
 
 
-class AwaitableGetDirectoryRolesResult(GetDirectoryRolesResult):
+calass AwaitableGetDirectoryRolesResult(GetDirectoryRolesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

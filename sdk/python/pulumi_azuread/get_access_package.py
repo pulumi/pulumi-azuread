@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAccessPackageResult:
+calass GetAccessPackageResult:
     """
     A collection of values returned by getAccessPackage.
     """
@@ -81,7 +81,7 @@ class GetAccessPackageResult:
         return pulumi.get(self, "object_id")
 
 
-class AwaitableGetAccessPackageResult(GetAccessPackageResult):
+calass AwaitableGetAccessPackageResult(GetAccessPackageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

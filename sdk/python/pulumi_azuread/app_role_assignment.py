@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['AppRoleAssignmentArgs', 'AppRoleAssignment']
+__all__ = ['AppRoleAssignmentArrgs', 'AppRoleAssignment']
 
 @pulumi.input_type
-class AppRoleAssignmentArgs:
+calass AppRoleAssignmentArrgs:
     def __init__(__self__, *,
                  app_role_id: pulumi.Input[str],
                  principal_object_id: pulumi.Input[str],
@@ -65,7 +65,7 @@ class AppRoleAssignmentArgs:
 
 
 @pulumi.input_type
-class _AppRoleAssignmentState:
+calass _AppRoleAssignmentState:
     def __init__(__self__, *,
                  app_role_id: Optional[pulumi.Input[str]] = None,
                  principal_display_name: Optional[pulumi.Input[str]] = None,
@@ -168,7 +168,7 @@ class _AppRoleAssignmentState:
         pulumi.set(self, "resource_object_id", value)
 
 
-class AppRoleAssignment(pulumi.CustomResource):
+calass AppRoleAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -202,14 +202,14 @@ class AppRoleAssignment(pulumi.CustomResource):
             use_existing=True)
         example_application = azuread.Application("exampleApplication",
             display_name="example",
-            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArrgs(
                 resource_app_id=well_known.result["MicrosoftGraph"],
                 resource_accesses=[
-                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                         id=msgraph.app_role_ids["User.Read.All"],
                         type="Role",
                     ),
-                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                         id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
                         type="Scope",
                     ),
@@ -230,7 +230,7 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         internal_application = azuread.Application("internalApplication",
             display_name="internal",
-            app_roles=[azuread.ApplicationAppRoleArgs(
+            app_roles=[azuread.ApplicationAppRoleArrgs(
                 allowed_member_types=["Application"],
                 description="Apps can query the database",
                 display_name="Query",
@@ -241,9 +241,9 @@ class AppRoleAssignment(pulumi.CustomResource):
         internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
         example_application = azuread.Application("exampleApplication",
             display_name="example",
-            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArrgs(
                 resource_app_id=internal_application.application_id,
-                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                     id=internal_service_principal.app_role_ids["Query.All"],
                     type="Role",
                 )],
@@ -264,7 +264,7 @@ class AppRoleAssignment(pulumi.CustomResource):
         example_domains = azuread.get_domains(only_initial=True)
         internal_application = azuread.Application("internalApplication",
             display_name="internal",
-            app_roles=[azuread.ApplicationAppRoleArgs(
+            app_roles=[azuread.ApplicationAppRoleArrgs(
                 allowed_member_types=[
                     "Application",
                     "User",
@@ -330,7 +330,7 @@ class AppRoleAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AppRoleAssignmentArgs,
+                 args: AppRoleAssignmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an app role assignment for a group, user or service principal. Can be used to grant admin consent for application permissions.
@@ -357,14 +357,14 @@ class AppRoleAssignment(pulumi.CustomResource):
             use_existing=True)
         example_application = azuread.Application("exampleApplication",
             display_name="example",
-            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArrgs(
                 resource_app_id=well_known.result["MicrosoftGraph"],
                 resource_accesses=[
-                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                         id=msgraph.app_role_ids["User.Read.All"],
                         type="Role",
                     ),
-                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                         id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
                         type="Scope",
                     ),
@@ -385,7 +385,7 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         internal_application = azuread.Application("internalApplication",
             display_name="internal",
-            app_roles=[azuread.ApplicationAppRoleArgs(
+            app_roles=[azuread.ApplicationAppRoleArrgs(
                 allowed_member_types=["Application"],
                 description="Apps can query the database",
                 display_name="Query",
@@ -396,9 +396,9 @@ class AppRoleAssignment(pulumi.CustomResource):
         internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
         example_application = azuread.Application("exampleApplication",
             display_name="example",
-            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArrgs(
                 resource_app_id=internal_application.application_id,
-                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArrgs(
                     id=internal_service_principal.app_role_ids["Query.All"],
                     type="Role",
                 )],
@@ -419,7 +419,7 @@ class AppRoleAssignment(pulumi.CustomResource):
         example_domains = azuread.get_domains(only_initial=True)
         internal_application = azuread.Application("internalApplication",
             display_name="internal",
-            app_roles=[azuread.ApplicationAppRoleArgs(
+            app_roles=[azuread.ApplicationAppRoleArrgs(
                 allowed_member_types=[
                     "Application",
                     "User",
@@ -476,12 +476,12 @@ class AppRoleAssignment(pulumi.CustomResource):
          -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
 
         :param str resource_name: The name of the resource.
-        :param AppRoleAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param AppRoleAssignmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AppRoleAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AppRoleAssignmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -500,7 +500,7 @@ class AppRoleAssignment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AppRoleAssignmentArgs.__new__(AppRoleAssignmentArgs)
+            __props__ = AppRoleAssignmentArrgs.__new__(AppRoleAssignmentArrgs)
 
             if app_role_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_role_id'")

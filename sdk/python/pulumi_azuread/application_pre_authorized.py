@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ApplicationPreAuthorizedArgs', 'ApplicationPreAuthorized']
+__all__ = ['ApplicationPreAuthorizedArrgs', 'ApplicationPreAuthorized']
 
 @pulumi.input_type
-class ApplicationPreAuthorizedArgs:
+calass ApplicationPreAuthorizedArrgs:
     def __init__(__self__, *,
                  permission_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  application_id: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class ApplicationPreAuthorizedArgs:
 
 
 @pulumi.input_type
-class _ApplicationPreAuthorizedState:
+calass _ApplicationPreAuthorizedState:
     def __init__(__self__, *,
                  application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
@@ -210,7 +210,7 @@ class _ApplicationPreAuthorizedState:
         pulumi.set(self, "permission_ids", value)
 
 
-class ApplicationPreAuthorized(pulumi.CustomResource):
+calass ApplicationPreAuthorized(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -231,9 +231,9 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         authorized = azuread.ApplicationRegistration("authorized", display_name="example-authorized-app")
         authorizer = azuread.Application("authorizer",
             display_name="example-authorizing-app",
-            api=azuread.ApplicationApiArgs(
+            api=azuread.ApplicationApiArrgs(
                 oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                    azuread.ApplicationApiOauth2PermissionScopeArrgs(
                         admin_consent_description="Administer the application",
                         admin_consent_display_name="Administer",
                         enabled=True,
@@ -241,7 +241,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                         type="Admin",
                         value="administer",
                     ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                    azuread.ApplicationApiOauth2PermissionScopeArrgs(
                         admin_consent_description="Access the application",
                         admin_consent_display_name="Access",
                         enabled=True,
@@ -284,7 +284,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApplicationPreAuthorizedArgs,
+                 args: ApplicationPreAuthorizedArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -296,9 +296,9 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         authorized = azuread.ApplicationRegistration("authorized", display_name="example-authorized-app")
         authorizer = azuread.Application("authorizer",
             display_name="example-authorizing-app",
-            api=azuread.ApplicationApiArgs(
+            api=azuread.ApplicationApiArrgs(
                 oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                    azuread.ApplicationApiOauth2PermissionScopeArrgs(
                         admin_consent_description="Administer the application",
                         admin_consent_display_name="Administer",
                         enabled=True,
@@ -306,7 +306,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                         type="Admin",
                         value="administer",
                     ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                    azuread.ApplicationApiOauth2PermissionScopeArrgs(
                         admin_consent_description="Access the application",
                         admin_consent_display_name="Access",
                         enabled=True,
@@ -338,12 +338,12 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
          -> This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
 
         :param str resource_name: The name of the resource.
-        :param ApplicationPreAuthorizedArgs args: The arguments to use to populate this resource's properties.
+        :param ApplicationPreAuthorizedArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApplicationPreAuthorizedArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationPreAuthorizedArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -364,7 +364,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApplicationPreAuthorizedArgs.__new__(ApplicationPreAuthorizedArgs)
+            __props__ = ApplicationPreAuthorizedArrgs.__new__(ApplicationPreAuthorizedArrgs)
 
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["application_object_id"] = application_object_id

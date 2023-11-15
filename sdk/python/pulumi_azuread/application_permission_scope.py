@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ApplicationPermissionScopeArgs', 'ApplicationPermissionScope']
+__all__ = ['ApplicationPermissionScopeArrgs', 'ApplicationPermissionScope']
 
 @pulumi.input_type
-class ApplicationPermissionScopeArgs:
+calass ApplicationPermissionScopeArrgs:
     def __init__(__self__, *,
                  admin_consent_description: pulumi.Input[str],
                  admin_consent_display_name: pulumi.Input[str],
@@ -147,7 +147,7 @@ class ApplicationPermissionScopeArgs:
 
 
 @pulumi.input_type
-class _ApplicationPermissionScopeState:
+calass _ApplicationPermissionScopeState:
     def __init__(__self__, *,
                  admin_consent_description: Optional[pulumi.Input[str]] = None,
                  admin_consent_display_name: Optional[pulumi.Input[str]] = None,
@@ -286,7 +286,7 @@ class _ApplicationPermissionScopeState:
         pulumi.set(self, "value", value)
 
 
-class ApplicationPermissionScope(pulumi.CustomResource):
+calass ApplicationPermissionScope(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -356,7 +356,7 @@ class ApplicationPermissionScope(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApplicationPermissionScopeArgs,
+                 args: ApplicationPermissionScopeArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -398,12 +398,12 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ApplicationPermissionScopeArgs args: The arguments to use to populate this resource's properties.
+        :param ApplicationPermissionScopeArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApplicationPermissionScopeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationPermissionScopeArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -427,7 +427,7 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApplicationPermissionScopeArgs.__new__(ApplicationPermissionScopeArgs)
+            __props__ = ApplicationPermissionScopeArrgs.__new__(ApplicationPermissionScopeArrgs)
 
             if admin_consent_description is None and not opts.urn:
                 raise TypeError("Missing required property 'admin_consent_description'")

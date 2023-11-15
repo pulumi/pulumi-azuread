@@ -14,7 +14,7 @@ import types
 __config__ = pulumi.Config('azuread')
 
 
-class _ExportableConfig(types.ModuleType):
+calass _ExportableConfig(types.ModuleType):
     @property
     def client_certificate(self) -> Optional[str]:
         """

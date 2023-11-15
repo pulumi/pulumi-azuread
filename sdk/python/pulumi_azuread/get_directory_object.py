@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetDirectoryObjectResult:
+calass GetDirectoryObjectResult:
     """
     A collection of values returned by getDirectoryObject.
     """
@@ -51,7 +51,7 @@ class GetDirectoryObjectResult:
         return pulumi.get(self, "type")
 
 
-class AwaitableGetDirectoryObjectResult(GetDirectoryObjectResult):
+calass AwaitableGetDirectoryObjectResult(GetDirectoryObjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

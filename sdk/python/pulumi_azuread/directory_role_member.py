@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['DirectoryRoleMemberArgs', 'DirectoryRoleMember']
+__all__ = ['DirectoryRoleMemberArrgs', 'DirectoryRoleMember']
 
 @pulumi.input_type
-class DirectoryRoleMemberArgs:
+calass DirectoryRoleMemberArrgs:
     def __init__(__self__, *,
                  member_object_id: Optional[pulumi.Input[str]] = None,
                  role_object_id: Optional[pulumi.Input[str]] = None):
@@ -52,7 +52,7 @@ class DirectoryRoleMemberArgs:
 
 
 @pulumi.input_type
-class _DirectoryRoleMemberState:
+calass _DirectoryRoleMemberState:
     def __init__(__self__, *,
                  member_object_id: Optional[pulumi.Input[str]] = None,
                  role_object_id: Optional[pulumi.Input[str]] = None):
@@ -91,7 +91,7 @@ class _DirectoryRoleMemberState:
         pulumi.set(self, "role_object_id", value)
 
 
-class DirectoryRoleMember(pulumi.CustomResource):
+calass DirectoryRoleMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -144,7 +144,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[DirectoryRoleMemberArgs] = None,
+                 args: Optional[DirectoryRoleMemberArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a single directory role membership (assignment) within Azure Active Directory.
@@ -183,12 +183,12 @@ class DirectoryRoleMember(pulumi.CustomResource):
          -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
 
         :param str resource_name: The name of the resource.
-        :param DirectoryRoleMemberArgs args: The arguments to use to populate this resource's properties.
+        :param DirectoryRoleMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DirectoryRoleMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DirectoryRoleMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -206,7 +206,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DirectoryRoleMemberArgs.__new__(DirectoryRoleMemberArgs)
+            __props__ = DirectoryRoleMemberArrgs.__new__(DirectoryRoleMemberArrgs)
 
             __props__.__dict__["member_object_id"] = member_object_id
             __props__.__dict__["role_object_id"] = role_object_id
