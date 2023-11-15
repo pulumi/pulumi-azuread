@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to discover application IDs for APIs published by Microsoft.
@@ -142,12 +141,6 @@ func (o GetApplicationPublishedAppIdsResultOutput) ToGetApplicationPublishedAppI
 
 func (o GetApplicationPublishedAppIdsResultOutput) ToGetApplicationPublishedAppIdsResultOutputWithContext(ctx context.Context) GetApplicationPublishedAppIdsResultOutput {
 	return o
-}
-
-func (o GetApplicationPublishedAppIdsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationPublishedAppIdsResult] {
-	return pulumix.Output[GetApplicationPublishedAppIdsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.
