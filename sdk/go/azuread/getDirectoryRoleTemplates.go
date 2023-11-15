@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about directory role templates within Azure Active Directory.
@@ -90,12 +89,6 @@ func (o GetDirectoryRoleTemplatesResultOutput) ToGetDirectoryRoleTemplatesResult
 
 func (o GetDirectoryRoleTemplatesResultOutput) ToGetDirectoryRoleTemplatesResultOutputWithContext(ctx context.Context) GetDirectoryRoleTemplatesResultOutput {
 	return o
-}
-
-func (o GetDirectoryRoleTemplatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDirectoryRoleTemplatesResult] {
-	return pulumix.Output[GetDirectoryRoleTemplatesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.
