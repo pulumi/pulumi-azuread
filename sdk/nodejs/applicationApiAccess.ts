@@ -20,10 +20,10 @@ import * as utilities from "./utilities";
  *     applicationId: example.id,
  *     apiClientId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
  *     roleIds: [
- *         azuread_service_principal.msgraph.app_role_ids["Group.Read.All"],
- *         azuread_service_principal.msgraph.app_role_ids["User.Read.All"],
+ *         msgraph.then(msgraph => msgraph.appRoleIds?.["Group.Read.All"]),
+ *         msgraph.then(msgraph => msgraph.appRoleIds?.["User.Read.All"]),
  *     ],
- *     scopeIds: [azuread_service_principal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]],
+ *     scopeIds: [msgraph.then(msgraph => msgraph.oauth2PermissionScopeIds?.["User.ReadWrite"])],
  * });
  * ```
  *

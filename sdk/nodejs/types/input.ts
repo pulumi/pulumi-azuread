@@ -767,7 +767,7 @@ export interface NamedLocationCountry {
 
 export interface NamedLocationIp {
     /**
-     * List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596. Each CIDR prefix must be `/8` or larger.
      */
     ipRanges: pulumi.Input<pulumi.Input<string>[]>;
     /**

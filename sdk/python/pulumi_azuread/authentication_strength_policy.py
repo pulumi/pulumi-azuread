@@ -154,6 +154,32 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
             ],
             description="Policy for demo purposes",
             display_name="Example Authentication Strength Policy")
+        example2 = azuread.AuthenticationStrengthPolicy("example2",
+            allowed_combinations=[
+                "fido2",
+                "password",
+                "deviceBasedPush",
+                "temporaryAccessPassOneTime",
+                "federatedMultiFactor",
+                "federatedSingleFactor",
+                "hardwareOath,federatedSingleFactor",
+                "microsoftAuthenticatorPush,federatedSingleFactor",
+                "password,hardwareOath",
+                "password,microsoftAuthenticatorPush",
+                "password,sms",
+                "password,softwareOath",
+                "password,voice",
+                "sms",
+                "sms,federatedSingleFactor",
+                "softwareOath,federatedSingleFactor",
+                "temporaryAccessPassMultiUse",
+                "voice,federatedSingleFactor",
+                "windowsHelloForBusiness",
+                "x509CertificateMultiFactor",
+                "x509CertificateSingleFactor",
+            ],
+            description="Policy for demo purposes with all possible combinations",
+            display_name="Example Authentication Strength Policy")
         ```
 
         ## Import
@@ -199,6 +225,32 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
                 "password",
             ],
             description="Policy for demo purposes",
+            display_name="Example Authentication Strength Policy")
+        example2 = azuread.AuthenticationStrengthPolicy("example2",
+            allowed_combinations=[
+                "fido2",
+                "password",
+                "deviceBasedPush",
+                "temporaryAccessPassOneTime",
+                "federatedMultiFactor",
+                "federatedSingleFactor",
+                "hardwareOath,federatedSingleFactor",
+                "microsoftAuthenticatorPush,federatedSingleFactor",
+                "password,hardwareOath",
+                "password,microsoftAuthenticatorPush",
+                "password,sms",
+                "password,softwareOath",
+                "password,voice",
+                "sms",
+                "sms,federatedSingleFactor",
+                "softwareOath,federatedSingleFactor",
+                "temporaryAccessPassMultiUse",
+                "voice,federatedSingleFactor",
+                "windowsHelloForBusiness",
+                "x509CertificateMultiFactor",
+                "x509CertificateSingleFactor",
+            ],
+            description="Policy for demo purposes with all possible combinations",
             display_name="Example Authentication Strength Policy")
         ```
 

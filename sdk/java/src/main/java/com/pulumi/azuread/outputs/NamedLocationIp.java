@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NamedLocationIp {
     /**
-     * @return List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * @return List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596. Each CIDR prefix must be `/8` or larger.
      * 
      */
     private List<String> ipRanges;
@@ -26,7 +26,7 @@ public final class NamedLocationIp {
 
     private NamedLocationIp() {}
     /**
-     * @return List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * @return List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596. Each CIDR prefix must be `/8` or larger.
      * 
      */
     public List<String> ipRanges() {

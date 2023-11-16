@@ -3100,7 +3100,7 @@ class NamedLocationIp(dict):
                  ip_ranges: Sequence[str],
                  trusted: Optional[bool] = None):
         """
-        :param Sequence[str] ip_ranges: List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+        :param Sequence[str] ip_ranges: List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596. Each CIDR prefix must be `/8` or larger.
         :param bool trusted: Whether the named location is trusted. Defaults to `false`.
         """
         pulumi.set(__self__, "ip_ranges", ip_ranges)
@@ -3111,7 +3111,7 @@ class NamedLocationIp(dict):
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Sequence[str]:
         """
-        List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+        List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596. Each CIDR prefix must be `/8` or larger.
         """
         return pulumi.get(self, "ip_ranges")
 

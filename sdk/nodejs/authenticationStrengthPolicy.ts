@@ -29,6 +29,33 @@ import * as utilities from "./utilities";
  *     description: "Policy for demo purposes",
  *     displayName: "Example Authentication Strength Policy",
  * });
+ * const example2 = new azuread.AuthenticationStrengthPolicy("example2", {
+ *     allowedCombinations: [
+ *         "fido2",
+ *         "password",
+ *         "deviceBasedPush",
+ *         "temporaryAccessPassOneTime",
+ *         "federatedMultiFactor",
+ *         "federatedSingleFactor",
+ *         "hardwareOath,federatedSingleFactor",
+ *         "microsoftAuthenticatorPush,federatedSingleFactor",
+ *         "password,hardwareOath",
+ *         "password,microsoftAuthenticatorPush",
+ *         "password,sms",
+ *         "password,softwareOath",
+ *         "password,voice",
+ *         "sms",
+ *         "sms,federatedSingleFactor",
+ *         "softwareOath,federatedSingleFactor",
+ *         "temporaryAccessPassMultiUse",
+ *         "voice,federatedSingleFactor",
+ *         "windowsHelloForBusiness",
+ *         "x509CertificateMultiFactor",
+ *         "x509CertificateSingleFactor",
+ *     ],
+ *     description: "Policy for demo purposes with all possible combinations",
+ *     displayName: "Example Authentication Strength Policy",
+ * });
  * ```
  *
  * ## Import

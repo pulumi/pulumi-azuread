@@ -185,10 +185,10 @@ class ApplicationApiAccess(pulumi.CustomResource):
             application_id=example.id,
             api_client_id=well_known.result["MicrosoftGraph"],
             role_ids=[
-                azuread_service_principal["msgraph"]["app_role_ids"]["Group.Read.All"],
-                azuread_service_principal["msgraph"]["app_role_ids"]["User.Read.All"],
+                msgraph.app_role_ids["Group.Read.All"],
+                msgraph.app_role_ids["User.Read.All"],
             ],
-            scope_ids=[azuread_service_principal["msgraph"]["oauth2_permission_scope_ids"]["User.ReadWrite"]])
+            scope_ids=[msgraph.oauth2_permission_scope_ids["User.ReadWrite"]])
         ```
 
         > **Tip** For managing permissions for an additional API, create another instance of this resource
@@ -241,10 +241,10 @@ class ApplicationApiAccess(pulumi.CustomResource):
             application_id=example.id,
             api_client_id=well_known.result["MicrosoftGraph"],
             role_ids=[
-                azuread_service_principal["msgraph"]["app_role_ids"]["Group.Read.All"],
-                azuread_service_principal["msgraph"]["app_role_ids"]["User.Read.All"],
+                msgraph.app_role_ids["Group.Read.All"],
+                msgraph.app_role_ids["User.Read.All"],
             ],
-            scope_ids=[azuread_service_principal["msgraph"]["oauth2_permission_scope_ids"]["User.ReadWrite"]])
+            scope_ids=[msgraph.oauth2_permission_scope_ids["User.ReadWrite"]])
         ```
 
         > **Tip** For managing permissions for an additional API, create another instance of this resource

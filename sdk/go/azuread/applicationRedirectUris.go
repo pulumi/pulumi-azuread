@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -83,7 +82,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import azuread:index/applicationRedirectUris:ApplicationRedirectUris example /applications/00000000-0000-0000-0000-000000000000/uriType/Web
+//	$ pulumi import azuread:index/applicationRedirectUris:ApplicationRedirectUris example /applications/00000000-0000-0000-0000-000000000000/redirectUris/Web
 //
 // ```
 type ApplicationRedirectUris struct {
@@ -199,12 +198,6 @@ func (i *ApplicationRedirectUris) ToApplicationRedirectUrisOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationRedirectUrisOutput)
 }
 
-func (i *ApplicationRedirectUris) ToOutput(ctx context.Context) pulumix.Output[*ApplicationRedirectUris] {
-	return pulumix.Output[*ApplicationRedirectUris]{
-		OutputState: i.ToApplicationRedirectUrisOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationRedirectUrisArrayInput is an input type that accepts ApplicationRedirectUrisArray and ApplicationRedirectUrisArrayOutput values.
 // You can construct a concrete instance of `ApplicationRedirectUrisArrayInput` via:
 //
@@ -228,12 +221,6 @@ func (i ApplicationRedirectUrisArray) ToApplicationRedirectUrisArrayOutput() App
 
 func (i ApplicationRedirectUrisArray) ToApplicationRedirectUrisArrayOutputWithContext(ctx context.Context) ApplicationRedirectUrisArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationRedirectUrisArrayOutput)
-}
-
-func (i ApplicationRedirectUrisArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationRedirectUris] {
-	return pulumix.Output[[]*ApplicationRedirectUris]{
-		OutputState: i.ToApplicationRedirectUrisArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationRedirectUrisMapInput is an input type that accepts ApplicationRedirectUrisMap and ApplicationRedirectUrisMapOutput values.
@@ -261,12 +248,6 @@ func (i ApplicationRedirectUrisMap) ToApplicationRedirectUrisMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationRedirectUrisMapOutput)
 }
 
-func (i ApplicationRedirectUrisMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationRedirectUris] {
-	return pulumix.Output[map[string]*ApplicationRedirectUris]{
-		OutputState: i.ToApplicationRedirectUrisMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationRedirectUrisOutput struct{ *pulumi.OutputState }
 
 func (ApplicationRedirectUrisOutput) ElementType() reflect.Type {
@@ -279,12 +260,6 @@ func (o ApplicationRedirectUrisOutput) ToApplicationRedirectUrisOutput() Applica
 
 func (o ApplicationRedirectUrisOutput) ToApplicationRedirectUrisOutputWithContext(ctx context.Context) ApplicationRedirectUrisOutput {
 	return o
-}
-
-func (o ApplicationRedirectUrisOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationRedirectUris] {
-	return pulumix.Output[*ApplicationRedirectUris]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the application registration. Changing this forces a new resource to be created.
@@ -316,12 +291,6 @@ func (o ApplicationRedirectUrisArrayOutput) ToApplicationRedirectUrisArrayOutput
 	return o
 }
 
-func (o ApplicationRedirectUrisArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationRedirectUris] {
-	return pulumix.Output[[]*ApplicationRedirectUris]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationRedirectUrisArrayOutput) Index(i pulumi.IntInput) ApplicationRedirectUrisOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationRedirectUris {
 		return vs[0].([]*ApplicationRedirectUris)[vs[1].(int)]
@@ -340,12 +309,6 @@ func (o ApplicationRedirectUrisMapOutput) ToApplicationRedirectUrisMapOutput() A
 
 func (o ApplicationRedirectUrisMapOutput) ToApplicationRedirectUrisMapOutputWithContext(ctx context.Context) ApplicationRedirectUrisMapOutput {
 	return o
-}
-
-func (o ApplicationRedirectUrisMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationRedirectUris] {
-	return pulumix.Output[map[string]*ApplicationRedirectUris]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationRedirectUrisMapOutput) MapIndex(k pulumi.StringInput) ApplicationRedirectUrisOutput {

@@ -56,6 +56,33 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;Example Authentication Strength Policy&#34;)
  *             .build());
  * 
+ *         var example2 = new AuthenticationStrengthPolicy(&#34;example2&#34;, AuthenticationStrengthPolicyArgs.builder()        
+ *             .allowedCombinations(            
+ *                 &#34;fido2&#34;,
+ *                 &#34;password&#34;,
+ *                 &#34;deviceBasedPush&#34;,
+ *                 &#34;temporaryAccessPassOneTime&#34;,
+ *                 &#34;federatedMultiFactor&#34;,
+ *                 &#34;federatedSingleFactor&#34;,
+ *                 &#34;hardwareOath,federatedSingleFactor&#34;,
+ *                 &#34;microsoftAuthenticatorPush,federatedSingleFactor&#34;,
+ *                 &#34;password,hardwareOath&#34;,
+ *                 &#34;password,microsoftAuthenticatorPush&#34;,
+ *                 &#34;password,sms&#34;,
+ *                 &#34;password,softwareOath&#34;,
+ *                 &#34;password,voice&#34;,
+ *                 &#34;sms&#34;,
+ *                 &#34;sms,federatedSingleFactor&#34;,
+ *                 &#34;softwareOath,federatedSingleFactor&#34;,
+ *                 &#34;temporaryAccessPassMultiUse&#34;,
+ *                 &#34;voice,federatedSingleFactor&#34;,
+ *                 &#34;windowsHelloForBusiness&#34;,
+ *                 &#34;x509CertificateMultiFactor&#34;,
+ *                 &#34;x509CertificateSingleFactor&#34;)
+ *             .description(&#34;Policy for demo purposes with all possible combinations&#34;)
+ *             .displayName(&#34;Example Authentication Strength Policy&#34;)
+ *             .build());
+ * 
  *     }
  * }
  * ```

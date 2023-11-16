@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -31,7 +30,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.LookupServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
+//			msgraph, err := azuread.LookupServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
 //				ClientId: pulumi.StringRef(wellKnown.Result.MicrosoftGraph),
 //			}, nil)
 //			if err != nil {
@@ -47,11 +46,11 @@ import (
 //				ApplicationId: example.ID(),
 //				ApiClientId:   *pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				RoleIds: pulumi.StringArray{
-//					azuread_service_principal.Msgraph.App_role_ids.Group.Read.All,
-//					azuread_service_principal.Msgraph.App_role_ids.User.Read.All,
+//					*pulumi.String(msgraph.AppRoleIds.Group.Read.All),
+//					*pulumi.String(msgraph.AppRoleIds.User.Read.All),
 //				},
 //				ScopeIds: pulumi.StringArray{
-//					azuread_service_principal.Msgraph.Oauth2_permission_scope_ids.User.ReadWrite,
+//					*pulumi.String(msgraph.Oauth2PermissionScopeIds.User.ReadWrite),
 //				},
 //			})
 //			if err != nil {
@@ -236,12 +235,6 @@ func (i *ApplicationApiAccess) ToApplicationApiAccessOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationApiAccessOutput)
 }
 
-func (i *ApplicationApiAccess) ToOutput(ctx context.Context) pulumix.Output[*ApplicationApiAccess] {
-	return pulumix.Output[*ApplicationApiAccess]{
-		OutputState: i.ToApplicationApiAccessOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationApiAccessArrayInput is an input type that accepts ApplicationApiAccessArray and ApplicationApiAccessArrayOutput values.
 // You can construct a concrete instance of `ApplicationApiAccessArrayInput` via:
 //
@@ -265,12 +258,6 @@ func (i ApplicationApiAccessArray) ToApplicationApiAccessArrayOutput() Applicati
 
 func (i ApplicationApiAccessArray) ToApplicationApiAccessArrayOutputWithContext(ctx context.Context) ApplicationApiAccessArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationApiAccessArrayOutput)
-}
-
-func (i ApplicationApiAccessArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationApiAccess] {
-	return pulumix.Output[[]*ApplicationApiAccess]{
-		OutputState: i.ToApplicationApiAccessArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationApiAccessMapInput is an input type that accepts ApplicationApiAccessMap and ApplicationApiAccessMapOutput values.
@@ -298,12 +285,6 @@ func (i ApplicationApiAccessMap) ToApplicationApiAccessMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationApiAccessMapOutput)
 }
 
-func (i ApplicationApiAccessMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationApiAccess] {
-	return pulumix.Output[map[string]*ApplicationApiAccess]{
-		OutputState: i.ToApplicationApiAccessMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationApiAccessOutput struct{ *pulumi.OutputState }
 
 func (ApplicationApiAccessOutput) ElementType() reflect.Type {
@@ -316,12 +297,6 @@ func (o ApplicationApiAccessOutput) ToApplicationApiAccessOutput() ApplicationAp
 
 func (o ApplicationApiAccessOutput) ToApplicationApiAccessOutputWithContext(ctx context.Context) ApplicationApiAccessOutput {
 	return o
-}
-
-func (o ApplicationApiAccessOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationApiAccess] {
-	return pulumix.Output[*ApplicationApiAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The client ID of the API to which access is being granted. Changing this forces a new resource to be created.
@@ -360,12 +335,6 @@ func (o ApplicationApiAccessArrayOutput) ToApplicationApiAccessArrayOutputWithCo
 	return o
 }
 
-func (o ApplicationApiAccessArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationApiAccess] {
-	return pulumix.Output[[]*ApplicationApiAccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationApiAccessArrayOutput) Index(i pulumi.IntInput) ApplicationApiAccessOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationApiAccess {
 		return vs[0].([]*ApplicationApiAccess)[vs[1].(int)]
@@ -384,12 +353,6 @@ func (o ApplicationApiAccessMapOutput) ToApplicationApiAccessMapOutput() Applica
 
 func (o ApplicationApiAccessMapOutput) ToApplicationApiAccessMapOutputWithContext(ctx context.Context) ApplicationApiAccessMapOutput {
 	return o
-}
-
-func (o ApplicationApiAccessMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationApiAccess] {
-	return pulumix.Output[map[string]*ApplicationApiAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationApiAccessMapOutput) MapIndex(k pulumi.StringInput) ApplicationApiAccessOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -189,12 +188,6 @@ func (i *ApplicationIdentifierUri) ToApplicationIdentifierUriOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIdentifierUriOutput)
 }
 
-func (i *ApplicationIdentifierUri) ToOutput(ctx context.Context) pulumix.Output[*ApplicationIdentifierUri] {
-	return pulumix.Output[*ApplicationIdentifierUri]{
-		OutputState: i.ToApplicationIdentifierUriOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationIdentifierUriArrayInput is an input type that accepts ApplicationIdentifierUriArray and ApplicationIdentifierUriArrayOutput values.
 // You can construct a concrete instance of `ApplicationIdentifierUriArrayInput` via:
 //
@@ -218,12 +211,6 @@ func (i ApplicationIdentifierUriArray) ToApplicationIdentifierUriArrayOutput() A
 
 func (i ApplicationIdentifierUriArray) ToApplicationIdentifierUriArrayOutputWithContext(ctx context.Context) ApplicationIdentifierUriArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIdentifierUriArrayOutput)
-}
-
-func (i ApplicationIdentifierUriArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationIdentifierUri] {
-	return pulumix.Output[[]*ApplicationIdentifierUri]{
-		OutputState: i.ToApplicationIdentifierUriArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationIdentifierUriMapInput is an input type that accepts ApplicationIdentifierUriMap and ApplicationIdentifierUriMapOutput values.
@@ -251,12 +238,6 @@ func (i ApplicationIdentifierUriMap) ToApplicationIdentifierUriMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationIdentifierUriMapOutput)
 }
 
-func (i ApplicationIdentifierUriMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationIdentifierUri] {
-	return pulumix.Output[map[string]*ApplicationIdentifierUri]{
-		OutputState: i.ToApplicationIdentifierUriMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationIdentifierUriOutput struct{ *pulumi.OutputState }
 
 func (ApplicationIdentifierUriOutput) ElementType() reflect.Type {
@@ -269,12 +250,6 @@ func (o ApplicationIdentifierUriOutput) ToApplicationIdentifierUriOutput() Appli
 
 func (o ApplicationIdentifierUriOutput) ToApplicationIdentifierUriOutputWithContext(ctx context.Context) ApplicationIdentifierUriOutput {
 	return o
-}
-
-func (o ApplicationIdentifierUriOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationIdentifierUri] {
-	return pulumix.Output[*ApplicationIdentifierUri]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the application registration. Changing this forces a new resource to be created.
@@ -301,12 +276,6 @@ func (o ApplicationIdentifierUriArrayOutput) ToApplicationIdentifierUriArrayOutp
 	return o
 }
 
-func (o ApplicationIdentifierUriArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationIdentifierUri] {
-	return pulumix.Output[[]*ApplicationIdentifierUri]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationIdentifierUriArrayOutput) Index(i pulumi.IntInput) ApplicationIdentifierUriOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationIdentifierUri {
 		return vs[0].([]*ApplicationIdentifierUri)[vs[1].(int)]
@@ -325,12 +294,6 @@ func (o ApplicationIdentifierUriMapOutput) ToApplicationIdentifierUriMapOutput()
 
 func (o ApplicationIdentifierUriMapOutput) ToApplicationIdentifierUriMapOutputWithContext(ctx context.Context) ApplicationIdentifierUriMapOutput {
 	return o
-}
-
-func (o ApplicationIdentifierUriMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationIdentifierUri] {
-	return pulumix.Output[map[string]*ApplicationIdentifierUri]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationIdentifierUriMapOutput) MapIndex(k pulumi.StringInput) ApplicationIdentifierUriOutput {
