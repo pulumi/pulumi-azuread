@@ -177,7 +177,7 @@
                 },
                 "requestorJustificationRequired": {
                     "type": "boolean",
-                    "description": "Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.\n"
+                    "description": "Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.\n\n\n\n\n`approval_settings.approval_stage` block supports the following\n"
                 }
             },
             "type": "object"
@@ -224,7 +224,7 @@
             "properties": {
                 "backup": {
                     "type": "boolean",
-                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver.\n"
+                    "description": "For a user in an approval stage, this property indicates whether the user is a backup approver.\n"
                 },
                 "objectId": {
                     "type": "string",
@@ -276,7 +276,7 @@
                 },
                 "durationInDays": {
                     "type": "integer",
-                    "description": "How many days each occurrence of the access review series will run.\n"
+                    "description": "(Number) How many days each occurrence of the access review series will run.\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -308,7 +308,7 @@
             "properties": {
                 "backup": {
                     "type": "boolean",
-                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver.\n"
+                    "description": "For a user in an approval stage, this property indicates whether the user is a backup approver.\n"
                 },
                 "objectId": {
                     "type": "string",
@@ -372,14 +372,14 @@
             "properties": {
                 "defaultText": {
                     "type": "string",
-                    "description": "The default text of this question choice.\n"
+                    "description": "The default text of this question.`default_text` (Required) The default text of this question choice.\n"
                 },
                 "localizedTexts": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText:AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText"
                     },
-                    "description": "One or more blocks describing localized text of this question choice, as documented below.\n"
+                    "description": "One or more blocks describing localized text of this question, as documented below.\n\n\n`localized_text` (Optional) One or more blocks describing localized text of this question choice, as documented below.\n"
                 }
             },
             "type": "object",
@@ -391,11 +391,11 @@
             "properties": {
                 "content": {
                     "type": "string",
-                    "description": "The localized content of this question choice.\n"
+                    "description": "The localized content of this question.`content` (Required) The localized content of this question choice.\n"
                 },
                 "languageCode": {
                     "type": "string",
-                    "description": "The ISO 639 language code for this question choice content.\n"
+                    "description": "The ISO 639 language code for this question content.\n\n\n`language_code` (Required) The ISO 639 language code for this question choice content.\n"
                 }
             },
             "type": "object",
@@ -408,14 +408,14 @@
             "properties": {
                 "defaultText": {
                     "type": "string",
-                    "description": "The default text of this question choice.\n"
+                    "description": "The default text of this question.`default_text` (Required) The default text of this question choice.\n"
                 },
                 "localizedTexts": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionTextLocalizedText:AccessPackageAssignmentPolicyQuestionTextLocalizedText"
                     },
-                    "description": "One or more blocks describing localized text of this question choice, as documented below.\n"
+                    "description": "One or more blocks describing localized text of this question, as documented below.\n\n\n`localized_text` (Optional) One or more blocks describing localized text of this question choice, as documented below.\n"
                 }
             },
             "type": "object",
@@ -427,11 +427,11 @@
             "properties": {
                 "content": {
                     "type": "string",
-                    "description": "The localized content of this question choice.\n"
+                    "description": "The localized content of this question.`content` (Required) The localized content of this question choice.\n"
                 },
                 "languageCode": {
                     "type": "string",
-                    "description": "The ISO 639 language code for this question choice content.\n"
+                    "description": "The ISO 639 language code for this question content.\n\n\n`language_code` (Required) The ISO 639 language code for this question choice content.\n"
                 }
             },
             "type": "object",
@@ -464,7 +464,7 @@
             "properties": {
                 "backup": {
                     "type": "boolean",
-                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver.\n"
+                    "description": "For a user in an approval stage, this property indicates whether the user is a backup approver.\n"
                 },
                 "objectId": {
                     "type": "string",
