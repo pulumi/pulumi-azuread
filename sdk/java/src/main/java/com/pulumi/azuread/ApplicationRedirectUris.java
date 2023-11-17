@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * Application API Access can be imported using the object ID of the application and the URI type, in the following format.
  * 
  * ```sh
- *  $ pulumi import azuread:index/applicationRedirectUris:ApplicationRedirectUris example /applications/00000000-0000-0000-0000-000000000000/uriType/Web
+ *  $ pulumi import azuread:index/applicationRedirectUris:ApplicationRedirectUris example /applications/00000000-0000-0000-0000-000000000000/redirectUris/Web
  * ```
  * 
  */

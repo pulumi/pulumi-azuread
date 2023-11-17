@@ -56,9 +56,9 @@ import javax.annotation.Nullable;
  *             .applicationId(example.id())
  *             .apiClientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
  *             .roleIds(            
- *                 azuread_service_principal.msgraph().app_role_ids().Group.Read.All(),
- *                 azuread_service_principal.msgraph().app_role_ids().User.Read.All())
- *             .scopeIds(azuread_service_principal.msgraph().oauth2_permission_scope_ids().User.ReadWrite())
+ *                 msgraph.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.appRoleIds().Group.Read.All()),
+ *                 msgraph.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.appRoleIds().User.Read.All()))
+ *             .scopeIds(msgraph.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.oauth2PermissionScopeIds().User.ReadWrite()))
  *             .build());
  * 
  *     }

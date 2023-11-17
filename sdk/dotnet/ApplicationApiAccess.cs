@@ -38,12 +38,12 @@ namespace Pulumi.AzureAD
     ///         ApiClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
     ///         RoleIds = new[]
     ///         {
-    ///             azuread_service_principal.Msgraph.App_role_ids.Group_Read_All,
-    ///             azuread_service_principal.Msgraph.App_role_ids.User_Read_All,
+    ///             msgraph.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.AppRoleIds?.Group_Read_All),
+    ///             msgraph.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.AppRoleIds?.User_Read_All),
     ///         },
     ///         ScopeIds = new[]
     ///         {
-    ///             azuread_service_principal.Msgraph.Oauth2_permission_scope_ids.User_ReadWrite,
+    ///             msgraph.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Oauth2PermissionScopeIds?.User_ReadWrite),
     ///         },
     ///     });
     /// 
