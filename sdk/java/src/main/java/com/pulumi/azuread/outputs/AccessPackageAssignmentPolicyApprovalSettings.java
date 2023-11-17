@@ -31,6 +31,8 @@ public final class AccessPackageAssignmentPolicyApprovalSettings {
     /**
      * @return Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
      * 
+     * `approval_settings.approval_stage` block supports the following
+     * 
      */
     private @Nullable Boolean requestorJustificationRequired;
 
@@ -58,6 +60,8 @@ public final class AccessPackageAssignmentPolicyApprovalSettings {
     }
     /**
      * @return Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+     * 
+     * `approval_settings.approval_stage` block supports the following
      * 
      */
     public Optional<Boolean> requestorJustificationRequired() {

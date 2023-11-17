@@ -17,14 +17,14 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlt
     public static final AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs Empty = new AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs();
 
     /**
-     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * For a user in an approval stage, this property indicates whether the user is a backup approver.
      * 
      */
     @Import(name="backup")
     private @Nullable Output<Boolean> backup;
 
     /**
-     * @return For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * @return For a user in an approval stage, this property indicates whether the user is a backup approver.
      * 
      */
     public Optional<Output<Boolean>> backup() {
@@ -88,7 +88,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlt
         }
 
         /**
-         * @param backup For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+         * @param backup For a user in an approval stage, this property indicates whether the user is a backup approver.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlt
         }
 
         /**
-         * @param backup For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+         * @param backup For a user in an approval stage, this property indicates whether the user is a backup approver.
          * 
          * @return builder
          * 

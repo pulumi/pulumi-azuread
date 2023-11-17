@@ -31,7 +31,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<bool>? ApproverJustificationRequired { get; set; }
 
         /// <summary>
-        /// How many days each occurrence of the access review series will run.
+        /// (Number) How many days each occurrence of the access review series will run.
         /// </summary>
         [Input("durationInDays")]
         public Input<int>? DurationInDays { get; set; }

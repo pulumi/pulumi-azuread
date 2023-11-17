@@ -26,7 +26,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly bool? ApproverJustificationRequired;
         /// <summary>
-        /// How many days each occurrence of the access review series will run.
+        /// (Number) How many days each occurrence of the access review series will run.
         /// </summary>
         public readonly int? DurationInDays;
         /// <summary>

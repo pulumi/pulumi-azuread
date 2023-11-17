@@ -14,7 +14,7 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer
     {
         /// <summary>
-        /// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        /// For a user in an approval stage, this property indicates whether the user is a backup approver.
         /// </summary>
         public readonly bool? Backup;
         /// <summary>

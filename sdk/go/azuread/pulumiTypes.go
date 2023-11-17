@@ -21,6 +21,8 @@ type AccessPackageAssignmentPolicyApprovalSettings struct {
 	// An `approvalStage` block specifying the process to obtain an approval, as documented below.
 	ApprovalStages []AccessPackageAssignmentPolicyApprovalSettingsApprovalStage `pulumi:"approvalStages"`
 	// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+	//
+	// `approval_settings.approval_stage` block supports the following
 	RequestorJustificationRequired *bool `pulumi:"requestorJustificationRequired"`
 }
 
@@ -43,6 +45,8 @@ type AccessPackageAssignmentPolicyApprovalSettingsArgs struct {
 	// An `approvalStage` block specifying the process to obtain an approval, as documented below.
 	ApprovalStages AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayInput `pulumi:"approvalStages"`
 	// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+	//
+	// `approval_settings.approval_stage` block supports the following
 	RequestorJustificationRequired pulumi.BoolPtrInput `pulumi:"requestorJustificationRequired"`
 }
 
@@ -141,6 +145,8 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ApprovalStages() Ac
 }
 
 // Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+//
+// `approval_settings.approval_stage` block supports the following
 func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) RequestorJustificationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettings) *bool { return v.RequestorJustificationRequired }).(pulumi.BoolPtrOutput)
 }
@@ -200,6 +206,8 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ApprovalStages()
 }
 
 // Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+//
+// `approval_settings.approval_stage` block supports the following
 func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) RequestorJustificationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyApprovalSettings) *bool {
 		if v == nil {
@@ -362,7 +370,7 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput) I
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup approver.
 	Backup *bool `pulumi:"backup"`
 	// The ID of the subject.
 	ObjectId *string `pulumi:"objectId"`
@@ -382,7 +390,7 @@ type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprov
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup approver.
 	Backup pulumi.BoolPtrInput `pulumi:"backup"`
 	// The ID of the subject.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
@@ -441,7 +449,7 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApp
 	return o
 }
 
-// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+// For a user in an approval stage, this property indicates whether the user is a backup approver.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover) *bool {
 		return v.Backup
@@ -610,7 +618,7 @@ type AccessPackageAssignmentPolicyAssignmentReviewSettings struct {
 	AccessReviewTimeoutBehavior *string `pulumi:"accessReviewTimeoutBehavior"`
 	// Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
 	ApproverJustificationRequired *bool `pulumi:"approverJustificationRequired"`
-	// How many days each occurrence of the access review series will run.
+	// (Number) How many days each occurrence of the access review series will run.
 	DurationInDays *int `pulumi:"durationInDays"`
 	// Whether to enable assignment review.
 	Enabled *bool `pulumi:"enabled"`
@@ -642,7 +650,7 @@ type AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs struct {
 	AccessReviewTimeoutBehavior pulumi.StringPtrInput `pulumi:"accessReviewTimeoutBehavior"`
 	// Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
 	ApproverJustificationRequired pulumi.BoolPtrInput `pulumi:"approverJustificationRequired"`
-	// How many days each occurrence of the access review series will run.
+	// (Number) How many days each occurrence of the access review series will run.
 	DurationInDays pulumi.IntPtrInput `pulumi:"durationInDays"`
 	// Whether to enable assignment review.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -754,7 +762,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ApproverJus
 	}).(pulumi.BoolPtrOutput)
 }
 
-// How many days each occurrence of the access review series will run.
+// (Number) How many days each occurrence of the access review series will run.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) DurationInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *int { return v.DurationInDays }).(pulumi.IntPtrOutput)
 }
@@ -840,7 +848,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Approver
 	}).(pulumi.BoolPtrOutput)
 }
 
-// How many days each occurrence of the access review series will run.
+// (Number) How many days each occurrence of the access review series will run.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) DurationInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *int {
 		if v == nil {
@@ -901,7 +909,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Starting
 }
 
 type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup approver.
 	Backup *bool `pulumi:"backup"`
 	// The ID of the subject.
 	ObjectId *string `pulumi:"objectId"`
@@ -921,7 +929,7 @@ type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerInput interfac
 }
 
 type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup approver.
 	Backup pulumi.BoolPtrInput `pulumi:"backup"`
 	// The ID of the subject.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
@@ -980,7 +988,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) ToA
 	return o
 }
 
-// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+// For a user in an approval stage, this property indicates whether the user is a backup approver.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
 }
@@ -1250,9 +1258,11 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceArrayOutput) Index(i pulumi.I
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValue struct {
-	// The default text of this question choice.
+	// The default text of this question.`defaultText` (Required) The default text of this question choice.
 	DefaultText string `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question choice, as documented below.
+	// One or more blocks describing localized text of this question, as documented below.
+	//
+	// `localizedText` (Optional) One or more blocks describing localized text of this question choice, as documented below.
 	LocalizedTexts []AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText `pulumi:"localizedTexts"`
 }
 
@@ -1268,9 +1278,11 @@ type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs struct {
-	// The default text of this question choice.
+	// The default text of this question.`defaultText` (Required) The default text of this question choice.
 	DefaultText pulumi.StringInput `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question choice, as documented below.
+	// One or more blocks describing localized text of this question, as documented below.
+	//
+	// `localizedText` (Optional) One or more blocks describing localized text of this question choice, as documented below.
 	LocalizedTexts AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayInput `pulumi:"localizedTexts"`
 }
 
@@ -1300,12 +1312,14 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) ToAccessP
 	return o
 }
 
-// The default text of this question choice.
+// The default text of this question.`defaultText` (Required) The default text of this question choice.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) DefaultText() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValue) string { return v.DefaultText }).(pulumi.StringOutput)
 }
 
-// One or more blocks describing localized text of this question choice, as documented below.
+// One or more blocks describing localized text of this question, as documented below.
+//
+// `localizedText` (Optional) One or more blocks describing localized text of this question choice, as documented below.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) LocalizedTexts() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValue) []AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
 		return v.LocalizedTexts
@@ -1313,9 +1327,11 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) Localized
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText struct {
-	// The localized content of this question choice.
+	// The localized content of this question.`content` (Required) The localized content of this question choice.
 	Content string `pulumi:"content"`
-	// The ISO 639 language code for this question choice content.
+	// The ISO 639 language code for this question content.
+	//
+	// `languageCode` (Required) The ISO 639 language code for this question choice content.
 	LanguageCode string `pulumi:"languageCode"`
 }
 
@@ -1331,9 +1347,11 @@ type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextInput i
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs struct {
-	// The localized content of this question choice.
+	// The localized content of this question.`content` (Required) The localized content of this question choice.
 	Content pulumi.StringInput `pulumi:"content"`
-	// The ISO 639 language code for this question choice content.
+	// The ISO 639 language code for this question content.
+	//
+	// `languageCode` (Required) The ISO 639 language code for this question choice content.
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 }
 
@@ -1388,12 +1406,14 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutp
 	return o
 }
 
-// The localized content of this question choice.
+// The localized content of this question.`content` (Required) The localized content of this question choice.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// The ISO 639 language code for this question choice content.
+// The ISO 639 language code for this question content.
+//
+// `languageCode` (Required) The ISO 639 language code for this question choice content.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText) string {
 		return v.LanguageCode
@@ -1421,9 +1441,11 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArra
 }
 
 type AccessPackageAssignmentPolicyQuestionText struct {
-	// The default text of this question choice.
+	// The default text of this question.`defaultText` (Required) The default text of this question choice.
 	DefaultText string `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question choice, as documented below.
+	// One or more blocks describing localized text of this question, as documented below.
+	//
+	// `localizedText` (Optional) One or more blocks describing localized text of this question choice, as documented below.
 	LocalizedTexts []AccessPackageAssignmentPolicyQuestionTextLocalizedText `pulumi:"localizedTexts"`
 }
 
@@ -1439,9 +1461,11 @@ type AccessPackageAssignmentPolicyQuestionTextInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionTextArgs struct {
-	// The default text of this question choice.
+	// The default text of this question.`defaultText` (Required) The default text of this question choice.
 	DefaultText pulumi.StringInput `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question choice, as documented below.
+	// One or more blocks describing localized text of this question, as documented below.
+	//
+	// `localizedText` (Optional) One or more blocks describing localized text of this question choice, as documented below.
 	LocalizedTexts AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayInput `pulumi:"localizedTexts"`
 }
 
@@ -1471,12 +1495,14 @@ func (o AccessPackageAssignmentPolicyQuestionTextOutput) ToAccessPackageAssignme
 	return o
 }
 
-// The default text of this question choice.
+// The default text of this question.`defaultText` (Required) The default text of this question choice.
 func (o AccessPackageAssignmentPolicyQuestionTextOutput) DefaultText() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionText) string { return v.DefaultText }).(pulumi.StringOutput)
 }
 
-// One or more blocks describing localized text of this question choice, as documented below.
+// One or more blocks describing localized text of this question, as documented below.
+//
+// `localizedText` (Optional) One or more blocks describing localized text of this question choice, as documented below.
 func (o AccessPackageAssignmentPolicyQuestionTextOutput) LocalizedTexts() AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionText) []AccessPackageAssignmentPolicyQuestionTextLocalizedText {
 		return v.LocalizedTexts
@@ -1484,9 +1510,11 @@ func (o AccessPackageAssignmentPolicyQuestionTextOutput) LocalizedTexts() Access
 }
 
 type AccessPackageAssignmentPolicyQuestionTextLocalizedText struct {
-	// The localized content of this question choice.
+	// The localized content of this question.`content` (Required) The localized content of this question choice.
 	Content string `pulumi:"content"`
-	// The ISO 639 language code for this question choice content.
+	// The ISO 639 language code for this question content.
+	//
+	// `languageCode` (Required) The ISO 639 language code for this question choice content.
 	LanguageCode string `pulumi:"languageCode"`
 }
 
@@ -1502,9 +1530,11 @@ type AccessPackageAssignmentPolicyQuestionTextLocalizedTextInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs struct {
-	// The localized content of this question choice.
+	// The localized content of this question.`content` (Required) The localized content of this question choice.
 	Content pulumi.StringInput `pulumi:"content"`
-	// The ISO 639 language code for this question choice content.
+	// The ISO 639 language code for this question content.
+	//
+	// `languageCode` (Required) The ISO 639 language code for this question choice content.
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 }
 
@@ -1559,12 +1589,14 @@ func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) ToAccessPa
 	return o
 }
 
-// The localized content of this question choice.
+// The localized content of this question.`content` (Required) The localized content of this question choice.
 func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionTextLocalizedText) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// The ISO 639 language code for this question choice content.
+// The ISO 639 language code for this question content.
+//
+// `languageCode` (Required) The ISO 639 language code for this question choice content.
 func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionTextLocalizedText) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
@@ -1767,7 +1799,7 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) ScopeType() pul
 }
 
 type AccessPackageAssignmentPolicyRequestorSettingsRequestor struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup approver.
 	Backup *bool `pulumi:"backup"`
 	// The ID of the subject.
 	ObjectId *string `pulumi:"objectId"`
@@ -1787,7 +1819,7 @@ type AccessPackageAssignmentPolicyRequestorSettingsRequestorInput interface {
 }
 
 type AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup approver.
 	Backup pulumi.BoolPtrInput `pulumi:"backup"`
 	// The ID of the subject.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
@@ -1846,7 +1878,7 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) ToAccessP
 	return o
 }
 
-// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+// For a user in an approval stage, this property indicates whether the user is a backup approver.
 func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettingsRequestor) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
 }

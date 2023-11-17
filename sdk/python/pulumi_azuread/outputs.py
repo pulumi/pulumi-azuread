@@ -129,6 +129,11 @@ class AccessPackageAssignmentPolicyApprovalSettings(dict):
         :param bool approval_required_for_extension: Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
         :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs'] approval_stages: An `approval_stage` block specifying the process to obtain an approval, as documented below.
         :param bool requestor_justification_required: Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+               
+               
+               
+               
+               `approval_settings.approval_stage` block supports the following
         """
         if approval_required is not None:
             pulumi.set(__self__, "approval_required", approval_required)
@@ -168,6 +173,11 @@ class AccessPackageAssignmentPolicyApprovalSettings(dict):
     def requestor_justification_required(self) -> Optional[bool]:
         """
         Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+
+
+
+
+        `approval_settings.approval_stage` block supports the following
         """
         return pulumi.get(self, "requestor_justification_required")
 
@@ -304,7 +314,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
                  object_id: Optional[str] = None):
         """
         :param str subject_type: Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
-        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup approver.
         :param str object_id: The ID of the subject.
         """
         pulumi.set(__self__, "subject_type", subject_type)
@@ -325,7 +335,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
     @pulumi.getter
     def backup(self) -> Optional[bool]:
         """
-        For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        For a user in an approval stage, this property indicates whether the user is a backup approver.
         """
         return pulumi.get(self, "backup")
 
@@ -444,7 +454,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings(dict):
         :param bool access_recommendation_enabled: Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
         :param str access_review_timeout_behavior: Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
         :param bool approver_justification_required: Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
-        :param int duration_in_days: How many days each occurrence of the access review series will run.
+        :param int duration_in_days: (Number) How many days each occurrence of the access review series will run.
         :param bool enabled: Whether to enable assignment review.
         :param str review_frequency: This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
         :param str review_type: Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
@@ -498,7 +508,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings(dict):
     @pulumi.getter(name="durationInDays")
     def duration_in_days(self) -> Optional[int]:
         """
-        How many days each occurrence of the access review series will run.
+        (Number) How many days each occurrence of the access review series will run.
         """
         return pulumi.get(self, "duration_in_days")
 
@@ -570,7 +580,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(dict):
                  object_id: Optional[str] = None):
         """
         :param str subject_type: Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
-        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup approver.
         :param str object_id: The ID of the subject.
         """
         pulumi.set(__self__, "subject_type", subject_type)
@@ -591,7 +601,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(dict):
     @pulumi.getter
     def backup(self) -> Optional[bool]:
         """
-        For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        For a user in an approval stage, this property indicates whether the user is a backup approver.
         """
         return pulumi.get(self, "backup")
 
@@ -731,8 +741,11 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
                  default_text: str,
                  localized_texts: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText']] = None):
         """
-        :param str default_text: The default text of this question choice.
-        :param Sequence['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs'] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
+        :param str default_text: The default text of this question.`default_text` (Required) The default text of this question choice.
+        :param Sequence['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs'] localized_texts: One or more blocks describing localized text of this question, as documented below.
+               
+               
+               `localized_text` (Optional) One or more blocks describing localized text of this question choice, as documented below.
         """
         pulumi.set(__self__, "default_text", default_text)
         if localized_texts is not None:
@@ -742,7 +755,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
     @pulumi.getter(name="defaultText")
     def default_text(self) -> str:
         """
-        The default text of this question choice.
+        The default text of this question.`default_text` (Required) The default text of this question choice.
         """
         return pulumi.get(self, "default_text")
 
@@ -750,7 +763,10 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
     @pulumi.getter(name="localizedTexts")
     def localized_texts(self) -> Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText']]:
         """
-        One or more blocks describing localized text of this question choice, as documented below.
+        One or more blocks describing localized text of this question, as documented below.
+
+
+        `localized_text` (Optional) One or more blocks describing localized text of this question choice, as documented below.
         """
         return pulumi.get(self, "localized_texts")
 
@@ -778,8 +794,11 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText(dict)
                  content: str,
                  language_code: str):
         """
-        :param str content: The localized content of this question choice.
-        :param str language_code: The ISO 639 language code for this question choice content.
+        :param str content: The localized content of this question.`content` (Required) The localized content of this question choice.
+        :param str language_code: The ISO 639 language code for this question content.
+               
+               
+               `language_code` (Required) The ISO 639 language code for this question choice content.
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "language_code", language_code)
@@ -788,7 +807,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText(dict)
     @pulumi.getter
     def content(self) -> str:
         """
-        The localized content of this question choice.
+        The localized content of this question.`content` (Required) The localized content of this question choice.
         """
         return pulumi.get(self, "content")
 
@@ -796,7 +815,10 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText(dict)
     @pulumi.getter(name="languageCode")
     def language_code(self) -> str:
         """
-        The ISO 639 language code for this question choice content.
+        The ISO 639 language code for this question content.
+
+
+        `language_code` (Required) The ISO 639 language code for this question choice content.
         """
         return pulumi.get(self, "language_code")
 
@@ -826,8 +848,11 @@ class AccessPackageAssignmentPolicyQuestionText(dict):
                  default_text: str,
                  localized_texts: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText']] = None):
         """
-        :param str default_text: The default text of this question choice.
-        :param Sequence['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs'] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
+        :param str default_text: The default text of this question.`default_text` (Required) The default text of this question choice.
+        :param Sequence['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs'] localized_texts: One or more blocks describing localized text of this question, as documented below.
+               
+               
+               `localized_text` (Optional) One or more blocks describing localized text of this question choice, as documented below.
         """
         pulumi.set(__self__, "default_text", default_text)
         if localized_texts is not None:
@@ -837,7 +862,7 @@ class AccessPackageAssignmentPolicyQuestionText(dict):
     @pulumi.getter(name="defaultText")
     def default_text(self) -> str:
         """
-        The default text of this question choice.
+        The default text of this question.`default_text` (Required) The default text of this question choice.
         """
         return pulumi.get(self, "default_text")
 
@@ -845,7 +870,10 @@ class AccessPackageAssignmentPolicyQuestionText(dict):
     @pulumi.getter(name="localizedTexts")
     def localized_texts(self) -> Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText']]:
         """
-        One or more blocks describing localized text of this question choice, as documented below.
+        One or more blocks describing localized text of this question, as documented below.
+
+
+        `localized_text` (Optional) One or more blocks describing localized text of this question choice, as documented below.
         """
         return pulumi.get(self, "localized_texts")
 
@@ -873,8 +901,11 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText(dict):
                  content: str,
                  language_code: str):
         """
-        :param str content: The localized content of this question choice.
-        :param str language_code: The ISO 639 language code for this question choice content.
+        :param str content: The localized content of this question.`content` (Required) The localized content of this question choice.
+        :param str language_code: The ISO 639 language code for this question content.
+               
+               
+               `language_code` (Required) The ISO 639 language code for this question choice content.
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "language_code", language_code)
@@ -883,7 +914,7 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText(dict):
     @pulumi.getter
     def content(self) -> str:
         """
-        The localized content of this question choice.
+        The localized content of this question.`content` (Required) The localized content of this question choice.
         """
         return pulumi.get(self, "content")
 
@@ -891,7 +922,10 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText(dict):
     @pulumi.getter(name="languageCode")
     def language_code(self) -> str:
         """
-        The ISO 639 language code for this question choice content.
+        The ISO 639 language code for this question content.
+
+
+        `language_code` (Required) The ISO 639 language code for this question choice content.
         """
         return pulumi.get(self, "language_code")
 
@@ -985,7 +1019,7 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestor(dict):
                  object_id: Optional[str] = None):
         """
         :param str subject_type: Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
-        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup approver.
         :param str object_id: The ID of the subject.
         """
         pulumi.set(__self__, "subject_type", subject_type)
@@ -1006,7 +1040,7 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestor(dict):
     @pulumi.getter
     def backup(self) -> Optional[bool]:
         """
-        For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        For a user in an approval stage, this property indicates whether the user is a backup approver.
         """
         return pulumi.get(self, "backup")
 

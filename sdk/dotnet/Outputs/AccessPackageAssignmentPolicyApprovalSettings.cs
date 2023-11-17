@@ -27,6 +27,11 @@ namespace Pulumi.AzureAD.Outputs
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStage> ApprovalStages;
         /// <summary>
         /// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+        /// 
+        /// 
+        /// 
+        /// 
+        /// `approval_settings.approval_stage` block supports the following
         /// </summary>
         public readonly bool? RequestorJustificationRequired;
 

@@ -14,14 +14,14 @@ public final class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs ex
     public static final AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs Empty = new AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs();
 
     /**
-     * The localized content of this question choice.
+     * The localized content of this question.`content` (Required) The localized content of this question choice.
      * 
      */
     @Import(name="content", required=true)
     private Output<String> content;
 
     /**
-     * @return The localized content of this question choice.
+     * @return The localized content of this question.`content` (Required) The localized content of this question choice.
      * 
      */
     public Output<String> content() {
@@ -29,14 +29,18 @@ public final class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs ex
     }
 
     /**
-     * The ISO 639 language code for this question choice content.
+     * The ISO 639 language code for this question content.
+     * 
+     * `language_code` (Required) The ISO 639 language code for this question choice content.
      * 
      */
     @Import(name="languageCode", required=true)
     private Output<String> languageCode;
 
     /**
-     * @return The ISO 639 language code for this question choice content.
+     * @return The ISO 639 language code for this question content.
+     * 
+     * `language_code` (Required) The ISO 639 language code for this question choice content.
      * 
      */
     public Output<String> languageCode() {
@@ -69,7 +73,7 @@ public final class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs ex
         }
 
         /**
-         * @param content The localized content of this question choice.
+         * @param content The localized content of this question.`content` (Required) The localized content of this question choice.
          * 
          * @return builder
          * 
@@ -80,7 +84,7 @@ public final class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs ex
         }
 
         /**
-         * @param content The localized content of this question choice.
+         * @param content The localized content of this question.`content` (Required) The localized content of this question choice.
          * 
          * @return builder
          * 
@@ -90,7 +94,9 @@ public final class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs ex
         }
 
         /**
-         * @param languageCode The ISO 639 language code for this question choice content.
+         * @param languageCode The ISO 639 language code for this question content.
+         * 
+         * `language_code` (Required) The ISO 639 language code for this question choice content.
          * 
          * @return builder
          * 
@@ -101,7 +107,9 @@ public final class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs ex
         }
 
         /**
-         * @param languageCode The ISO 639 language code for this question choice content.
+         * @param languageCode The ISO 639 language code for this question content.
+         * 
+         * `language_code` (Required) The ISO 639 language code for this question choice content.
          * 
          * @return builder
          * 

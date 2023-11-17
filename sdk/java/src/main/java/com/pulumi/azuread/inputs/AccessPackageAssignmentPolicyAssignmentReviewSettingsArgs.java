@@ -65,14 +65,14 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs ext
     }
 
     /**
-     * How many days each occurrence of the access review series will run.
+     * (Number) How many days each occurrence of the access review series will run.
      * 
      */
     @Import(name="durationInDays")
     private @Nullable Output<Integer> durationInDays;
 
     /**
-     * @return How many days each occurrence of the access review series will run.
+     * @return (Number) How many days each occurrence of the access review series will run.
      * 
      */
     public Optional<Output<Integer>> durationInDays() {
@@ -250,7 +250,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs ext
         }
 
         /**
-         * @param durationInDays How many days each occurrence of the access review series will run.
+         * @param durationInDays (Number) How many days each occurrence of the access review series will run.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs ext
         }
 
         /**
-         * @param durationInDays How many days each occurrence of the access review series will run.
+         * @param durationInDays (Number) How many days each occurrence of the access review series will run.
          * 
          * @return builder
          * 

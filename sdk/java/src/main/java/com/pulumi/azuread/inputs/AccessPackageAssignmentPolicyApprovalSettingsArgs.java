@@ -65,12 +65,16 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsArgs extends com
     /**
      * Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
      * 
+     * `approval_settings.approval_stage` block supports the following
+     * 
      */
     @Import(name="requestorJustificationRequired")
     private @Nullable Output<Boolean> requestorJustificationRequired;
 
     /**
      * @return Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+     * 
+     * `approval_settings.approval_stage` block supports the following
      * 
      */
     public Optional<Output<Boolean>> requestorJustificationRequired() {
@@ -180,6 +184,8 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsArgs extends com
         /**
          * @param requestorJustificationRequired Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
          * 
+         * `approval_settings.approval_stage` block supports the following
+         * 
          * @return builder
          * 
          */
@@ -190,6 +196,8 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsArgs extends com
 
         /**
          * @param requestorJustificationRequired Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+         * 
+         * `approval_settings.approval_stage` block supports the following
          * 
          * @return builder
          * 

@@ -31,7 +31,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettings {
      */
     private @Nullable Boolean approverJustificationRequired;
     /**
-     * @return How many days each occurrence of the access review series will run.
+     * @return (Number) How many days each occurrence of the access review series will run.
      * 
      */
     private @Nullable Integer durationInDays;
@@ -84,7 +84,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettings {
         return Optional.ofNullable(this.approverJustificationRequired);
     }
     /**
-     * @return How many days each occurrence of the access review series will run.
+     * @return (Number) How many days each occurrence of the access review series will run.
      * 
      */
     public Optional<Integer> durationInDays() {

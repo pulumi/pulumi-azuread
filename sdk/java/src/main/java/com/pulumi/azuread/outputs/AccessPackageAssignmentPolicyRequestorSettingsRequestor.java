@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessPackageAssignmentPolicyRequestorSettingsRequestor {
     /**
-     * @return For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * @return For a user in an approval stage, this property indicates whether the user is a backup approver.
      * 
      */
     private @Nullable Boolean backup;
@@ -30,7 +30,7 @@ public final class AccessPackageAssignmentPolicyRequestorSettingsRequestor {
 
     private AccessPackageAssignmentPolicyRequestorSettingsRequestor() {}
     /**
-     * @return For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * @return For a user in an approval stage, this property indicates whether the user is a backup approver.
      * 
      */
     public Optional<Boolean> backup() {

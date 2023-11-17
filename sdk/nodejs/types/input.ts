@@ -20,6 +20,11 @@ export interface AccessPackageAssignmentPolicyApprovalSettings {
     approvalStages?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStage>[]>;
     /**
      * Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+     *
+     *
+     *
+     *
+     * `approval_settings.approval_stage` block supports the following
      */
     requestorJustificationRequired?: pulumi.Input<boolean>;
 }
@@ -53,7 +58,7 @@ export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
 
 export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover {
     /**
-     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * For a user in an approval stage, this property indicates whether the user is a backup approver.
      */
     backup?: pulumi.Input<boolean>;
     /**
@@ -95,7 +100,7 @@ export interface AccessPackageAssignmentPolicyAssignmentReviewSettings {
      */
     approverJustificationRequired?: pulumi.Input<boolean>;
     /**
-     * How many days each occurrence of the access review series will run.
+     * (Number) How many days each occurrence of the access review series will run.
      */
     durationInDays?: pulumi.Input<number>;
     /**
@@ -122,7 +127,7 @@ export interface AccessPackageAssignmentPolicyAssignmentReviewSettings {
 
 export interface AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer {
     /**
-     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * For a user in an approval stage, this property indicates whether the user is a backup approver.
      */
     backup?: pulumi.Input<boolean>;
     /**
@@ -167,44 +172,56 @@ export interface AccessPackageAssignmentPolicyQuestionChoice {
 
 export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
     /**
-     * The default text of this question choice.
+     * The default text of this question.`defaultText` (Required) The default text of this question choice.
      */
     defaultText: pulumi.Input<string>;
     /**
-     * One or more blocks describing localized text of this question choice, as documented below.
+     * One or more blocks describing localized text of this question, as documented below.
+     *
+     *
+     * `localizedText` (Optional) One or more blocks describing localized text of this question choice, as documented below.
      */
     localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>[]>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
     /**
-     * The localized content of this question choice.
+     * The localized content of this question.`content` (Required) The localized content of this question choice.
      */
     content: pulumi.Input<string>;
     /**
-     * The ISO 639 language code for this question choice content.
+     * The ISO 639 language code for this question content.
+     *
+     *
+     * `languageCode` (Required) The ISO 639 language code for this question choice content.
      */
     languageCode: pulumi.Input<string>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionText {
     /**
-     * The default text of this question choice.
+     * The default text of this question.`defaultText` (Required) The default text of this question choice.
      */
     defaultText: pulumi.Input<string>;
     /**
-     * One or more blocks describing localized text of this question choice, as documented below.
+     * One or more blocks describing localized text of this question, as documented below.
+     *
+     *
+     * `localizedText` (Optional) One or more blocks describing localized text of this question choice, as documented below.
      */
     localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText>[]>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionTextLocalizedText {
     /**
-     * The localized content of this question choice.
+     * The localized content of this question.`content` (Required) The localized content of this question choice.
      */
     content: pulumi.Input<string>;
     /**
-     * The ISO 639 language code for this question choice content.
+     * The ISO 639 language code for this question content.
+     *
+     *
+     * `languageCode` (Required) The ISO 639 language code for this question choice content.
      */
     languageCode: pulumi.Input<string>;
 }
@@ -226,7 +243,7 @@ export interface AccessPackageAssignmentPolicyRequestorSettings {
 
 export interface AccessPackageAssignmentPolicyRequestorSettingsRequestor {
     /**
-     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * For a user in an approval stage, this property indicates whether the user is a backup approver.
      */
     backup?: pulumi.Input<boolean>;
     /**

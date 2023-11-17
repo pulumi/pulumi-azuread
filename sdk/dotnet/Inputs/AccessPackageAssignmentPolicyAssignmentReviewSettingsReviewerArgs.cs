@@ -13,7 +13,7 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        /// For a user in an approval stage, this property indicates whether the user is a backup approver.
         /// </summary>
         [Input("backup")]
         public Input<bool>? Backup { get; set; }

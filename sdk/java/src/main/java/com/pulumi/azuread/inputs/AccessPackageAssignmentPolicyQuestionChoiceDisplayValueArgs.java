@@ -18,14 +18,14 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs e
     public static final AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs Empty = new AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs();
 
     /**
-     * The default text of this question choice.
+     * The default text of this question.`default_text` (Required) The default text of this question choice.
      * 
      */
     @Import(name="defaultText", required=true)
     private Output<String> defaultText;
 
     /**
-     * @return The default text of this question choice.
+     * @return The default text of this question.`default_text` (Required) The default text of this question choice.
      * 
      */
     public Output<String> defaultText() {
@@ -33,14 +33,18 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs e
     }
 
     /**
-     * One or more blocks describing localized text of this question choice, as documented below.
+     * One or more blocks describing localized text of this question, as documented below.
+     * 
+     * `localized_text` (Optional) One or more blocks describing localized text of this question choice, as documented below.
      * 
      */
     @Import(name="localizedTexts")
     private @Nullable Output<List<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs>> localizedTexts;
 
     /**
-     * @return One or more blocks describing localized text of this question choice, as documented below.
+     * @return One or more blocks describing localized text of this question, as documented below.
+     * 
+     * `localized_text` (Optional) One or more blocks describing localized text of this question choice, as documented below.
      * 
      */
     public Optional<Output<List<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs>>> localizedTexts() {
@@ -73,7 +77,7 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs e
         }
 
         /**
-         * @param defaultText The default text of this question choice.
+         * @param defaultText The default text of this question.`default_text` (Required) The default text of this question choice.
          * 
          * @return builder
          * 
@@ -84,7 +88,7 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs e
         }
 
         /**
-         * @param defaultText The default text of this question choice.
+         * @param defaultText The default text of this question.`default_text` (Required) The default text of this question choice.
          * 
          * @return builder
          * 
@@ -94,7 +98,9 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs e
         }
 
         /**
-         * @param localizedTexts One or more blocks describing localized text of this question choice, as documented below.
+         * @param localizedTexts One or more blocks describing localized text of this question, as documented below.
+         * 
+         * `localized_text` (Optional) One or more blocks describing localized text of this question choice, as documented below.
          * 
          * @return builder
          * 
@@ -105,7 +111,9 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs e
         }
 
         /**
-         * @param localizedTexts One or more blocks describing localized text of this question choice, as documented below.
+         * @param localizedTexts One or more blocks describing localized text of this question, as documented below.
+         * 
+         * `localized_text` (Optional) One or more blocks describing localized text of this question choice, as documented below.
          * 
          * @return builder
          * 
@@ -115,7 +123,9 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs e
         }
 
         /**
-         * @param localizedTexts One or more blocks describing localized text of this question choice, as documented below.
+         * @param localizedTexts One or more blocks describing localized text of this question, as documented below.
+         * 
+         * `localized_text` (Optional) One or more blocks describing localized text of this question choice, as documented below.
          * 
          * @return builder
          * 
