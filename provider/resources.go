@@ -120,28 +120,32 @@ func preConfigureCallback(vars resource.PropertyMap, c tfshim.ResourceConfig) er
 		return fmt.Errorf("failed to read Azure environment \"%s\": %v", envName, err)
 	}
 
+	useOIDC := boolValue(vars, "useOidc", []string{"ARM_USE_OIDC"})
 	authConfig := auth.Credentials{
-		Environment:                           *env,
-		EnableAuthenticatingUsingClientSecret: true,
-		EnableAuthenticatingUsingAzureCLI:     true,
-		TenantID:                              stringValue(vars, "tenantId", []string{"ARM_TENANT_ID"}),
-		ClientID:                              stringValue(vars, "clientId", []string{"ARM_CLIENT_ID"}),
-		ClientSecret:                          stringValue(vars, "clientSecret", []string{"ARM_CLIENT_SECRET"}),
+		Environment:        *env,
+		ClientID:           stringValue(vars, "clientId", []string{"ARM_CLIENT_ID"}),
+		ClientSecret:       stringValue(vars, "clientSecret", []string{"ARM_CLIENT_SECRET"}),
+		TenantID:           stringValue(vars, "tenantId", []string{"ARM_TENANT_ID"}),
+		AuxiliaryTenantIDs: tfbridge.ConfigArrayValue(vars, "auxiliaryTenantIDs", []string{"ARM_AUXILIARY_TENANT_IDS"}),
 
-		EnableAuthenticatingUsingClientCertificate: true,
 		// We don't handle ClientCertData yet, which is the actual base-64 encoded cert in config
-		ClientCertificatePassword: stringValue(vars, "clientCertificatePassword", []string{"ARM_CLIENT_CERTIFICATE_PASSWORD"}),
 		ClientCertificatePath:     stringValue(vars, "clientCertificatePath", []string{"ARM_CLIENT_CERTIFICATE_PATH"}),
+		ClientCertificatePassword: stringValue(vars, "clientCertificatePassword", []string{"ARM_CLIENT_CERTIFICATE_PASSWORD"}),
 
-		EnableAuthenticatingUsingManagedIdentity: boolValue(vars, "useMsi", []string{"ARM_USE_MSI"}),
-		CustomManagedIdentityEndpoint:            stringValue(vars, "msiEndpoint", []string{"ARM_MSI_ENDPOINT"}),
+		CustomManagedIdentityEndpoint: stringValue(vars, "msiEndpoint", []string{"ARM_MSI_ENDPOINT"}),
 
-		// The configuration below would enable OIDC auth which we haven't tested and documented yet.
-		//FederatedAssertion:        idToken,
-		//IDTokenRequestURL:         d.Get("oidc_request_url").(string),
-		//IDTokenRequestToken:       d.Get("oidc_request_token").(string),
-		//EnableClientFederatedAuth: d.Get("use_oidc").(bool),
-		//EnableGitHubOIDCAuth:      d.Get("use_oidc").(bool),
+		// OIDC section. The ACTIONS_ variables are set by GitHub.
+		GitHubOIDCTokenRequestToken: stringValue(vars, "oidcRequestToken", []string{"ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"}),
+		GitHubOIDCTokenRequestURL:   stringValue(vars, "oidcRequestUrl", []string{"ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL"}),
+		OIDCAssertionToken:          stringValue(vars, "oidcToken", []string{"ARM_OIDC_TOKEN"}),
+
+		// Feature Toggles
+		EnableAuthenticatingUsingClientCertificate: true,
+		EnableAuthenticatingUsingClientSecret:      true,
+		EnableAuthenticatingUsingManagedIdentity:   boolValue(vars, "useMsi", []string{"ARM_USE_MSI"}),
+		EnableAuthenticatingUsingAzureCLI:          true,
+		EnableAuthenticationUsingOIDC:              useOIDC,
+		EnableAuthenticationUsingGitHubOIDC:        useOIDC,
 	}
 
 	_, err = auth.NewAuthorizerFromCredentials(context.Background(), authConfig, env.MicrosoftGraph)
