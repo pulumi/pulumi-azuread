@@ -19,7 +19,6 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 	"fmt"
-	"os"
 	"path/filepath"
 	"unicode"
 
@@ -74,43 +73,12 @@ func makeResource(mod string, res string) tokens.Type {
 // managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
 // var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
-// stringValue gets a string value from a property map, then from environment vars;
-// if neither are present, returns empty string ""
-func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) string {
-	val, ok := vars[prop]
-	if ok && val.IsString() {
-		return val.StringValue()
-	}
-	for _, env := range envs {
-		val, ok := os.LookupEnv(env)
-		if ok {
-			return val
-		}
-	}
-	return ""
-}
-
-// boolValue takes a bool value from a property map, then from environment vars; defaults to false
-func boolValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) bool {
-	val, ok := vars[prop]
-	if ok && val.IsBool() {
-		return val.BoolValue()
-	}
-	for _, env := range envs {
-		val, ok := os.LookupEnv(env)
-		if ok && val == "true" {
-			return true
-		}
-	}
-	return false
-}
-
 // preConfigureCallback returns an error when cloud provider setup is misconfigured
 //
 // nolint: lll
 func preConfigureCallback(vars resource.PropertyMap, c tfshim.ResourceConfig) error {
 
-	envName := stringValue(vars, "environment", []string{"ARM_ENVIRONMENT"})
+	envName := tfbridge.ConfigStringValue(vars, "environment", []string{"ARM_ENVIRONMENT"})
 	if envName == "" {
 		envName = "public"
 	}
@@ -120,29 +88,29 @@ func preConfigureCallback(vars resource.PropertyMap, c tfshim.ResourceConfig) er
 		return fmt.Errorf("failed to read Azure environment \"%s\": %v", envName, err)
 	}
 
-	useOIDC := boolValue(vars, "useOidc", []string{"ARM_USE_OIDC"})
+	useOIDC := tfbridge.ConfigBoolValue(vars, "useOidc", []string{"ARM_USE_OIDC"})
 	authConfig := auth.Credentials{
 		Environment:        *env,
-		ClientID:           stringValue(vars, "clientId", []string{"ARM_CLIENT_ID"}),
-		ClientSecret:       stringValue(vars, "clientSecret", []string{"ARM_CLIENT_SECRET"}),
-		TenantID:           stringValue(vars, "tenantId", []string{"ARM_TENANT_ID"}),
+		ClientID:           tfbridge.ConfigStringValue(vars, "clientId", []string{"ARM_CLIENT_ID"}),
+		ClientSecret:       tfbridge.ConfigStringValue(vars, "clientSecret", []string{"ARM_CLIENT_SECRET"}),
+		TenantID:           tfbridge.ConfigStringValue(vars, "tenantId", []string{"ARM_TENANT_ID"}),
 		AuxiliaryTenantIDs: tfbridge.ConfigArrayValue(vars, "auxiliaryTenantIDs", []string{"ARM_AUXILIARY_TENANT_IDS"}),
 
 		// We don't handle ClientCertData yet, which is the actual base-64 encoded cert in config
-		ClientCertificatePath:     stringValue(vars, "clientCertificatePath", []string{"ARM_CLIENT_CERTIFICATE_PATH"}),
-		ClientCertificatePassword: stringValue(vars, "clientCertificatePassword", []string{"ARM_CLIENT_CERTIFICATE_PASSWORD"}),
+		ClientCertificatePath:     tfbridge.ConfigStringValue(vars, "clientCertificatePath", []string{"ARM_CLIENT_CERTIFICATE_PATH"}),
+		ClientCertificatePassword: tfbridge.ConfigStringValue(vars, "clientCertificatePassword", []string{"ARM_CLIENT_CERTIFICATE_PASSWORD"}),
 
-		CustomManagedIdentityEndpoint: stringValue(vars, "msiEndpoint", []string{"ARM_MSI_ENDPOINT"}),
+		CustomManagedIdentityEndpoint: tfbridge.ConfigStringValue(vars, "msiEndpoint", []string{"ARM_MSI_ENDPOINT"}),
 
 		// OIDC section. The ACTIONS_ variables are set by GitHub.
-		GitHubOIDCTokenRequestToken: stringValue(vars, "oidcRequestToken", []string{"ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"}),
-		GitHubOIDCTokenRequestURL:   stringValue(vars, "oidcRequestUrl", []string{"ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL"}),
-		OIDCAssertionToken:          stringValue(vars, "oidcToken", []string{"ARM_OIDC_TOKEN"}),
+		GitHubOIDCTokenRequestToken: tfbridge.ConfigStringValue(vars, "oidcRequestToken", []string{"ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"}),
+		GitHubOIDCTokenRequestURL:   tfbridge.ConfigStringValue(vars, "oidcRequestUrl", []string{"ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL"}),
+		OIDCAssertionToken:          tfbridge.ConfigStringValue(vars, "oidcToken", []string{"ARM_OIDC_TOKEN"}),
 
 		// Feature Toggles
 		EnableAuthenticatingUsingClientCertificate: true,
 		EnableAuthenticatingUsingClientSecret:      true,
-		EnableAuthenticatingUsingManagedIdentity:   boolValue(vars, "useMsi", []string{"ARM_USE_MSI"}),
+		EnableAuthenticatingUsingManagedIdentity:   tfbridge.ConfigBoolValue(vars, "useMsi", []string{"ARM_USE_MSI"}),
 		EnableAuthenticatingUsingAzureCLI:          true,
 		EnableAuthenticationUsingOIDC:              useOIDC,
 		EnableAuthenticationUsingGitHubOIDC:        useOIDC,
