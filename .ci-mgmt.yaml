@@ -7,6 +7,12 @@ env:
   ARM_SUBSCRIPTION_ID: "0282681f-7a9e-424b-80b2-96babd57a8a1"
   ARM_TENANT_ID: "706143bc-e1d4-4593-aee2-c9dc60ab9be7"
   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+
+  # This GUID is AD app 'oidc-test'. Setting this variable will cause the OIDC test(s) to run against this app.
+  # We limit running the OIDC tests to PRs because the AD configuration requires an "Entity type" of Environment,
+  # Branch, Pull request, or Tag. See
+  # https://learn.microsoft.com/en-us/azure/active-directory/workload-identities/workload-identity-federation-create-trust?pivots=identity-wif-apps-methods-azp#github-actions
+  OIDC_ARM_CLIENT_ID: ${{ github.event_name == 'pull_request' && '89380e12-5be6-486a-89ef-eea107af2f47' || '' }}
 makeTemplate: bridged
 team: ecosystem
 plugins:
