@@ -52,7 +52,7 @@ func TestSimple_OIDC(t *testing.T) {
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "simple"),
 			Env: []string{
-				"ARM_USE_OIDC=true",
+				// "ARM_USE_OIDC=true",
 				"ARM_CLIENT_ID=" + oidcClientId,
 				// not strictly necessary but making sure we test the OIDC path
 				"ARM_CLIENT_SECRET=",
