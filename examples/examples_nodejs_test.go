@@ -43,8 +43,7 @@ func TestSimple(t *testing.T) {
 
 // The same test than the above, but authenticating via OIDC.
 func TestSimple_OIDC(t *testing.T) {
-	oidcClientId := os.Getenv("OIDC_ARM_CLIENT_ID")
-	if oidcClientId == "" {
+	if os.Getenv("RUN_OIDC_TESTS") != "true" {
 		t.Skip("Skipping OIDC test without OIDC_ARM_CLIENT_ID")
 	}
 
@@ -53,7 +52,6 @@ func TestSimple_OIDC(t *testing.T) {
 			Dir: path.Join(getCwd(t), "simple"),
 			Env: []string{
 				"ARM_USE_OIDC=true",
-				"ARM_CLIENT_ID=" + oidcClientId,
 				// not strictly necessary but making sure we test the OIDC path
 				"ARM_CLIENT_SECRET=",
 			},
