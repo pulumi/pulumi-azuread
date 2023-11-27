@@ -4,7 +4,7 @@ env:
   PROVIDER: azuread
   PR_COMMIT_SHA: ${{ github.event.client_payload.pull_request.head.sha }}
   ARM_CLIENT_ID: d3b6ec3a-36fe-46c9-b3d9-5856a2e0e73c
-  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET_CI }}
   ARM_ENVIRONMENT: public
   ARM_SUBSCRIPTION_ID: 0282681f-7a9e-424b-80b2-96babd57a8a1
   ARM_TENANT_ID: 9605c22c-e585-4ea3-9b83-e90339719f8a  # Pulumi CI Tenant
