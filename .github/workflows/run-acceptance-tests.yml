@@ -3,7 +3,7 @@
 env:
   PROVIDER: azuread
   PR_COMMIT_SHA: ${{ github.event.client_payload.pull_request.head.sha }}
-  ARM_CLIENT_ID: 30e520fa-12b4-4e21-b473-9426c5ac2e1e
+  ARM_CLIENT_ID: d3b6ec3a-36fe-46c9-b3d9-5856a2e0e73c
   ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
   ARM_ENVIRONMENT: public
   ARM_SUBSCRIPTION_ID: 0282681f-7a9e-424b-80b2-96babd57a8a1
@@ -20,7 +20,7 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   # TODO,tkappler comment
-  OIDC_ARM_CLIENT_ID: ${{ github.event_name == 'pull_request' && 'd3b6ec3a-36fe-46c9-b3d9-5856a2e0e73c' || '' }}
+  OIDC_ARM_CLIENT_ID: ${{ github.event_name == 'workflow_dispatch' && 'd3b6ec3a-36fe-46c9-b3d9-5856a2e0e73c' || '' }}
   PUBLISH_REPO_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
   PUBLISH_REPO_USERNAME: ${{ secrets.OSSRH_USERNAME }}
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
