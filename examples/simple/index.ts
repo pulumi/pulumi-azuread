@@ -18,7 +18,7 @@ const user = new azuread.User("me", {
     displayName: serverRandomPet.id,
     mailNickname: randomString.result,
     password: password,
-    userPrincipalName: pulumi.interpolate`${randomString.result}@pulumi.onmicrosoft.com`,
+    userPrincipalName: pulumi.interpolate`${randomString.result}@pulumici.onmicrosoft.com`,
 });
 
 export const userid: pulumi.Output<string> = user.id;
