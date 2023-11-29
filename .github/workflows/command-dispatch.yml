@@ -2,11 +2,11 @@
 
 env:
   PROVIDER: azuread
-  ARM_CLIENT_ID: 30e520fa-12b4-4e21-b473-9426c5ac2e1e
-  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+  ARM_CLIENT_ID: d3b6ec3a-36fe-46c9-b3d9-5856a2e0e73c
+  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET_CI }}
   ARM_ENVIRONMENT: public
   ARM_SUBSCRIPTION_ID: 0282681f-7a9e-424b-80b2-96babd57a8a1
-  ARM_TENANT_ID: 706143bc-e1d4-4593-aee2-c9dc60ab9be7
+  ARM_TENANT_ID: 9605c22c-e585-4ea3-9b83-e90339719f8a
   DOTNETVERSION: |
       6.0.x
       3.1.301
@@ -26,6 +26,7 @@ env:
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
   PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
   PYTHONVERSION: "3.9"
+  RUN_OIDC_TESTS: ${{ github.event_name == 'pull_request' && 'true' || '' }}
   SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
   SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
   SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
