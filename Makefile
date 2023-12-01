@@ -98,6 +98,7 @@ install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource std 1.4.0
 	.pulumi/bin/pulumi plugin install resource azure 5.52.0
 	.pulumi/bin/pulumi plugin install resource random 4.14.0
+	.pulumi/bin/pulumi plugin install converter terraform 1.0.11
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
