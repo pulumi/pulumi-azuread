@@ -11,7 +11,7 @@ VERSION := $(shell pulumictl get version)
 JAVA_GEN := pulumi-java-gen
 TESTPARALLELISM := 10
 WORKING_DIR := $(shell pwd)
-PULUMI_CONVERT := 0
+PULUMI_CONVERT := 1
 
 development: install_plugins provider build_sdks install_sdks
 
