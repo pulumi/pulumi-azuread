@@ -30,7 +30,7 @@ namespace Pulumi.AzureAD
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
+        /// using AzureAD = Pulumi.%[1]s;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -70,7 +70,7 @@ namespace Pulumi.AzureAD
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
+        /// using AzureAD = Pulumi.%[1]s;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
