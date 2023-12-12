@@ -278,21 +278,21 @@ public final class GetServicePrincipalsServicePrincipal {
             return this;
         }
         public GetServicePrincipalsServicePrincipal build() {
-            final var o = new GetServicePrincipalsServicePrincipal();
-            o.accountEnabled = accountEnabled;
-            o.appRoleAssignmentRequired = appRoleAssignmentRequired;
-            o.applicationId = applicationId;
-            o.applicationTenantId = applicationTenantId;
-            o.clientId = clientId;
-            o.displayName = displayName;
-            o.objectId = objectId;
-            o.preferredSingleSignOnMode = preferredSingleSignOnMode;
-            o.samlMetadataUrl = samlMetadataUrl;
-            o.servicePrincipalNames = servicePrincipalNames;
-            o.signInAudience = signInAudience;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetServicePrincipalsServicePrincipal();
+            _resultValue.accountEnabled = accountEnabled;
+            _resultValue.appRoleAssignmentRequired = appRoleAssignmentRequired;
+            _resultValue.applicationId = applicationId;
+            _resultValue.applicationTenantId = applicationTenantId;
+            _resultValue.clientId = clientId;
+            _resultValue.displayName = displayName;
+            _resultValue.objectId = objectId;
+            _resultValue.preferredSingleSignOnMode = preferredSingleSignOnMode;
+            _resultValue.samlMetadataUrl = samlMetadataUrl;
+            _resultValue.servicePrincipalNames = servicePrincipalNames;
+            _resultValue.signInAudience = signInAudience;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

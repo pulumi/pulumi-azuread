@@ -71,10 +71,10 @@ public final class AccessPackageAssignmentPolicyQuestionText {
             return localizedTexts(List.of(localizedTexts));
         }
         public AccessPackageAssignmentPolicyQuestionText build() {
-            final var o = new AccessPackageAssignmentPolicyQuestionText();
-            o.defaultText = defaultText;
-            o.localizedTexts = localizedTexts;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyQuestionText();
+            _resultValue.defaultText = defaultText;
+            _resultValue.localizedTexts = localizedTexts;
+            return _resultValue;
         }
     }
 }

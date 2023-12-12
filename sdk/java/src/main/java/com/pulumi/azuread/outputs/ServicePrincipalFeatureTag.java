@@ -105,12 +105,12 @@ public final class ServicePrincipalFeatureTag {
             return this;
         }
         public ServicePrincipalFeatureTag build() {
-            final var o = new ServicePrincipalFeatureTag();
-            o.customSingleSignOn = customSingleSignOn;
-            o.enterprise = enterprise;
-            o.gallery = gallery;
-            o.hide = hide;
-            return o;
+            final var _resultValue = new ServicePrincipalFeatureTag();
+            _resultValue.customSingleSignOn = customSingleSignOn;
+            _resultValue.enterprise = enterprise;
+            _resultValue.gallery = gallery;
+            _resultValue.hide = hide;
+            return _resultValue;
         }
     }
 }

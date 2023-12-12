@@ -148,14 +148,14 @@ public final class ServicePrincipalAppRole {
             return this;
         }
         public ServicePrincipalAppRole build() {
-            final var o = new ServicePrincipalAppRole();
-            o.allowedMemberTypes = allowedMemberTypes;
-            o.description = description;
-            o.displayName = displayName;
-            o.enabled = enabled;
-            o.id = id;
-            o.value = value;
-            return o;
+            final var _resultValue = new ServicePrincipalAppRole();
+            _resultValue.allowedMemberTypes = allowedMemberTypes;
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

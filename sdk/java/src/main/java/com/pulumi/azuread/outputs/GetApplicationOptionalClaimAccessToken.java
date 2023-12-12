@@ -110,12 +110,12 @@ public final class GetApplicationOptionalClaimAccessToken {
             return this;
         }
         public GetApplicationOptionalClaimAccessToken build() {
-            final var o = new GetApplicationOptionalClaimAccessToken();
-            o.additionalProperties = additionalProperties;
-            o.essential = essential;
-            o.name = name;
-            o.source = source;
-            return o;
+            final var _resultValue = new GetApplicationOptionalClaimAccessToken();
+            _resultValue.additionalProperties = additionalProperties;
+            _resultValue.essential = essential;
+            _resultValue.name = name;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

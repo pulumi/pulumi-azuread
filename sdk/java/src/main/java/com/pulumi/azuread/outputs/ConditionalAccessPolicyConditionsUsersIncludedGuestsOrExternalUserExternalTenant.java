@@ -70,10 +70,10 @@ public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExterna
             return this;
         }
         public ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant build() {
-            final var o = new ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant();
-            o.members = members;
-            o.membershipKind = membershipKind;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant();
+            _resultValue.members = members;
+            _resultValue.membershipKind = membershipKind;
+            return _resultValue;
         }
     }
 }

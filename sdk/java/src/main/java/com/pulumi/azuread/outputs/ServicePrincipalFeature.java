@@ -73,12 +73,12 @@ public final class ServicePrincipalFeature {
             return this;
         }
         public ServicePrincipalFeature build() {
-            final var o = new ServicePrincipalFeature();
-            o.customSingleSignOnApp = customSingleSignOnApp;
-            o.enterpriseApplication = enterpriseApplication;
-            o.galleryApplication = galleryApplication;
-            o.visibleToUsers = visibleToUsers;
-            return o;
+            final var _resultValue = new ServicePrincipalFeature();
+            _resultValue.customSingleSignOnApp = customSingleSignOnApp;
+            _resultValue.enterpriseApplication = enterpriseApplication;
+            _resultValue.galleryApplication = galleryApplication;
+            _resultValue.visibleToUsers = visibleToUsers;
+            return _resultValue;
         }
     }
 }

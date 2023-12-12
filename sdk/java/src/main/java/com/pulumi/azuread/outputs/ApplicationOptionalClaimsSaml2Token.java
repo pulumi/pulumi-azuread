@@ -110,12 +110,12 @@ public final class ApplicationOptionalClaimsSaml2Token {
             return this;
         }
         public ApplicationOptionalClaimsSaml2Token build() {
-            final var o = new ApplicationOptionalClaimsSaml2Token();
-            o.additionalProperties = additionalProperties;
-            o.essential = essential;
-            o.name = name;
-            o.source = source;
-            return o;
+            final var _resultValue = new ApplicationOptionalClaimsSaml2Token();
+            _resultValue.additionalProperties = additionalProperties;
+            _resultValue.essential = essential;
+            _resultValue.name = name;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

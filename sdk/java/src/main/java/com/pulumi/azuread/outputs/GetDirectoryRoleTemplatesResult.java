@@ -92,11 +92,11 @@ public final class GetDirectoryRoleTemplatesResult {
             return roleTemplates(List.of(roleTemplates));
         }
         public GetDirectoryRoleTemplatesResult build() {
-            final var o = new GetDirectoryRoleTemplatesResult();
-            o.id = id;
-            o.objectIds = objectIds;
-            o.roleTemplates = roleTemplates;
-            return o;
+            final var _resultValue = new GetDirectoryRoleTemplatesResult();
+            _resultValue.id = id;
+            _resultValue.objectIds = objectIds;
+            _resultValue.roleTemplates = roleTemplates;
+            return _resultValue;
         }
     }
 }

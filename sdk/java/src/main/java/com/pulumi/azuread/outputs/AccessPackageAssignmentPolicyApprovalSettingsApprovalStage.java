@@ -153,14 +153,14 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
             return primaryApprovers(List.of(primaryApprovers));
         }
         public AccessPackageAssignmentPolicyApprovalSettingsApprovalStage build() {
-            final var o = new AccessPackageAssignmentPolicyApprovalSettingsApprovalStage();
-            o.alternativeApprovalEnabled = alternativeApprovalEnabled;
-            o.alternativeApprovers = alternativeApprovers;
-            o.approvalTimeoutInDays = approvalTimeoutInDays;
-            o.approverJustificationRequired = approverJustificationRequired;
-            o.enableAlternativeApprovalInDays = enableAlternativeApprovalInDays;
-            o.primaryApprovers = primaryApprovers;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyApprovalSettingsApprovalStage();
+            _resultValue.alternativeApprovalEnabled = alternativeApprovalEnabled;
+            _resultValue.alternativeApprovers = alternativeApprovers;
+            _resultValue.approvalTimeoutInDays = approvalTimeoutInDays;
+            _resultValue.approverJustificationRequired = approverJustificationRequired;
+            _resultValue.enableAlternativeApprovalInDays = enableAlternativeApprovalInDays;
+            _resultValue.primaryApprovers = primaryApprovers;
+            return _resultValue;
         }
     }
 }

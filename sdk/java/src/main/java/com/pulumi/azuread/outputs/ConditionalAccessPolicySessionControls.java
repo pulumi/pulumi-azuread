@@ -187,16 +187,16 @@ public final class ConditionalAccessPolicySessionControls {
             return this;
         }
         public ConditionalAccessPolicySessionControls build() {
-            final var o = new ConditionalAccessPolicySessionControls();
-            o.applicationEnforcedRestrictionsEnabled = applicationEnforcedRestrictionsEnabled;
-            o.cloudAppSecurityPolicy = cloudAppSecurityPolicy;
-            o.disableResilienceDefaults = disableResilienceDefaults;
-            o.persistentBrowserMode = persistentBrowserMode;
-            o.signInFrequency = signInFrequency;
-            o.signInFrequencyAuthenticationType = signInFrequencyAuthenticationType;
-            o.signInFrequencyInterval = signInFrequencyInterval;
-            o.signInFrequencyPeriod = signInFrequencyPeriod;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicySessionControls();
+            _resultValue.applicationEnforcedRestrictionsEnabled = applicationEnforcedRestrictionsEnabled;
+            _resultValue.cloudAppSecurityPolicy = cloudAppSecurityPolicy;
+            _resultValue.disableResilienceDefaults = disableResilienceDefaults;
+            _resultValue.persistentBrowserMode = persistentBrowserMode;
+            _resultValue.signInFrequency = signInFrequency;
+            _resultValue.signInFrequencyAuthenticationType = signInFrequencyAuthenticationType;
+            _resultValue.signInFrequencyInterval = signInFrequencyInterval;
+            _resultValue.signInFrequencyPeriod = signInFrequencyPeriod;
+            return _resultValue;
         }
     }
 }

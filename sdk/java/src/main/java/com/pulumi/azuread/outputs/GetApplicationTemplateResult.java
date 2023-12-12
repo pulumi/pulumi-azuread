@@ -208,17 +208,17 @@ public final class GetApplicationTemplateResult {
             return this;
         }
         public GetApplicationTemplateResult build() {
-            final var o = new GetApplicationTemplateResult();
-            o.categories = categories;
-            o.displayName = displayName;
-            o.homepageUrl = homepageUrl;
-            o.id = id;
-            o.logoUrl = logoUrl;
-            o.publisher = publisher;
-            o.supportedProvisioningTypes = supportedProvisioningTypes;
-            o.supportedSingleSignOnModes = supportedSingleSignOnModes;
-            o.templateId = templateId;
-            return o;
+            final var _resultValue = new GetApplicationTemplateResult();
+            _resultValue.categories = categories;
+            _resultValue.displayName = displayName;
+            _resultValue.homepageUrl = homepageUrl;
+            _resultValue.id = id;
+            _resultValue.logoUrl = logoUrl;
+            _resultValue.publisher = publisher;
+            _resultValue.supportedProvisioningTypes = supportedProvisioningTypes;
+            _resultValue.supportedSingleSignOnModes = supportedSingleSignOnModes;
+            _resultValue.templateId = templateId;
+            return _resultValue;
         }
     }
 }

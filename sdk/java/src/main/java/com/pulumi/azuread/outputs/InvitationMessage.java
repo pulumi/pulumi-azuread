@@ -86,11 +86,11 @@ public final class InvitationMessage {
             return this;
         }
         public InvitationMessage build() {
-            final var o = new InvitationMessage();
-            o.additionalRecipients = additionalRecipients;
-            o.body = body;
-            o.language = language;
-            return o;
+            final var _resultValue = new InvitationMessage();
+            _resultValue.additionalRecipients = additionalRecipients;
+            _resultValue.body = body;
+            _resultValue.language = language;
+            return _resultValue;
         }
     }
 }

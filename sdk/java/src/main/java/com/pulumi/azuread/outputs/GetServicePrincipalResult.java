@@ -620,37 +620,37 @@ public final class GetServicePrincipalResult {
             return this;
         }
         public GetServicePrincipalResult build() {
-            final var o = new GetServicePrincipalResult();
-            o.accountEnabled = accountEnabled;
-            o.alternativeNames = alternativeNames;
-            o.appRoleAssignmentRequired = appRoleAssignmentRequired;
-            o.appRoleIds = appRoleIds;
-            o.appRoles = appRoles;
-            o.applicationId = applicationId;
-            o.applicationTenantId = applicationTenantId;
-            o.clientId = clientId;
-            o.description = description;
-            o.displayName = displayName;
-            o.featureTags = featureTags;
-            o.features = features;
-            o.homepageUrl = homepageUrl;
-            o.id = id;
-            o.loginUrl = loginUrl;
-            o.logoutUrl = logoutUrl;
-            o.notes = notes;
-            o.notificationEmailAddresses = notificationEmailAddresses;
-            o.oauth2PermissionScopeIds = oauth2PermissionScopeIds;
-            o.oauth2PermissionScopes = oauth2PermissionScopes;
-            o.objectId = objectId;
-            o.preferredSingleSignOnMode = preferredSingleSignOnMode;
-            o.redirectUris = redirectUris;
-            o.samlMetadataUrl = samlMetadataUrl;
-            o.samlSingleSignOns = samlSingleSignOns;
-            o.servicePrincipalNames = servicePrincipalNames;
-            o.signInAudience = signInAudience;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetServicePrincipalResult();
+            _resultValue.accountEnabled = accountEnabled;
+            _resultValue.alternativeNames = alternativeNames;
+            _resultValue.appRoleAssignmentRequired = appRoleAssignmentRequired;
+            _resultValue.appRoleIds = appRoleIds;
+            _resultValue.appRoles = appRoles;
+            _resultValue.applicationId = applicationId;
+            _resultValue.applicationTenantId = applicationTenantId;
+            _resultValue.clientId = clientId;
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.featureTags = featureTags;
+            _resultValue.features = features;
+            _resultValue.homepageUrl = homepageUrl;
+            _resultValue.id = id;
+            _resultValue.loginUrl = loginUrl;
+            _resultValue.logoutUrl = logoutUrl;
+            _resultValue.notes = notes;
+            _resultValue.notificationEmailAddresses = notificationEmailAddresses;
+            _resultValue.oauth2PermissionScopeIds = oauth2PermissionScopeIds;
+            _resultValue.oauth2PermissionScopes = oauth2PermissionScopes;
+            _resultValue.objectId = objectId;
+            _resultValue.preferredSingleSignOnMode = preferredSingleSignOnMode;
+            _resultValue.redirectUris = redirectUris;
+            _resultValue.samlMetadataUrl = samlMetadataUrl;
+            _resultValue.samlSingleSignOns = samlSingleSignOns;
+            _resultValue.servicePrincipalNames = servicePrincipalNames;
+            _resultValue.signInAudience = signInAudience;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

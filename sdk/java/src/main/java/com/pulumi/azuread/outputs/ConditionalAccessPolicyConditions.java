@@ -238,18 +238,18 @@ public final class ConditionalAccessPolicyConditions {
             return this;
         }
         public ConditionalAccessPolicyConditions build() {
-            final var o = new ConditionalAccessPolicyConditions();
-            o.applications = applications;
-            o.clientAppTypes = clientAppTypes;
-            o.clientApplications = clientApplications;
-            o.devices = devices;
-            o.locations = locations;
-            o.platforms = platforms;
-            o.servicePrincipalRiskLevels = servicePrincipalRiskLevels;
-            o.signInRiskLevels = signInRiskLevels;
-            o.userRiskLevels = userRiskLevels;
-            o.users = users;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicyConditions();
+            _resultValue.applications = applications;
+            _resultValue.clientAppTypes = clientAppTypes;
+            _resultValue.clientApplications = clientApplications;
+            _resultValue.devices = devices;
+            _resultValue.locations = locations;
+            _resultValue.platforms = platforms;
+            _resultValue.servicePrincipalRiskLevels = servicePrincipalRiskLevels;
+            _resultValue.signInRiskLevels = signInRiskLevels;
+            _resultValue.userRiskLevels = userRiskLevels;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

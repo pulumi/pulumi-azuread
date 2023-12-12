@@ -180,16 +180,16 @@ public final class GetServicePrincipalOauth2PermissionScope {
             return this;
         }
         public GetServicePrincipalOauth2PermissionScope build() {
-            final var o = new GetServicePrincipalOauth2PermissionScope();
-            o.adminConsentDescription = adminConsentDescription;
-            o.adminConsentDisplayName = adminConsentDisplayName;
-            o.enabled = enabled;
-            o.id = id;
-            o.type = type;
-            o.userConsentDescription = userConsentDescription;
-            o.userConsentDisplayName = userConsentDisplayName;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetServicePrincipalOauth2PermissionScope();
+            _resultValue.adminConsentDescription = adminConsentDescription;
+            _resultValue.adminConsentDisplayName = adminConsentDisplayName;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.type = type;
+            _resultValue.userConsentDescription = userConsentDescription;
+            _resultValue.userConsentDisplayName = userConsentDisplayName;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

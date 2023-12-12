@@ -95,11 +95,11 @@ public final class ConditionalAccessPolicyConditionsApplications {
             return includedUserActions(List.of(includedUserActions));
         }
         public ConditionalAccessPolicyConditionsApplications build() {
-            final var o = new ConditionalAccessPolicyConditionsApplications();
-            o.excludedApplications = excludedApplications;
-            o.includedApplications = includedApplications;
-            o.includedUserActions = includedUserActions;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicyConditionsApplications();
+            _resultValue.excludedApplications = excludedApplications;
+            _resultValue.includedApplications = includedApplications;
+            _resultValue.includedUserActions = includedUserActions;
+            return _resultValue;
         }
     }
 }

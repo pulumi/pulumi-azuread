@@ -115,12 +115,12 @@ public final class ApplicationApi {
             return this;
         }
         public ApplicationApi build() {
-            final var o = new ApplicationApi();
-            o.knownClientApplications = knownClientApplications;
-            o.mappedClaimsEnabled = mappedClaimsEnabled;
-            o.oauth2PermissionScopes = oauth2PermissionScopes;
-            o.requestedAccessTokenVersion = requestedAccessTokenVersion;
-            return o;
+            final var _resultValue = new ApplicationApi();
+            _resultValue.knownClientApplications = knownClientApplications;
+            _resultValue.mappedClaimsEnabled = mappedClaimsEnabled;
+            _resultValue.oauth2PermissionScopes = oauth2PermissionScopes;
+            _resultValue.requestedAccessTokenVersion = requestedAccessTokenVersion;
+            return _resultValue;
         }
     }
 }

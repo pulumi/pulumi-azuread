@@ -183,16 +183,16 @@ public final class GetUsersResult {
             return users(List.of(users));
         }
         public GetUsersResult build() {
-            final var o = new GetUsersResult();
-            o.employeeIds = employeeIds;
-            o.id = id;
-            o.ignoreMissing = ignoreMissing;
-            o.mailNicknames = mailNicknames;
-            o.objectIds = objectIds;
-            o.returnAll = returnAll;
-            o.userPrincipalNames = userPrincipalNames;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetUsersResult();
+            _resultValue.employeeIds = employeeIds;
+            _resultValue.id = id;
+            _resultValue.ignoreMissing = ignoreMissing;
+            _resultValue.mailNicknames = mailNicknames;
+            _resultValue.objectIds = objectIds;
+            _resultValue.returnAll = returnAll;
+            _resultValue.userPrincipalNames = userPrincipalNames;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

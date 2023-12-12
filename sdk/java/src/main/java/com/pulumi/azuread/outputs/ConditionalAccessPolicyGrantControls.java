@@ -138,13 +138,13 @@ public final class ConditionalAccessPolicyGrantControls {
             return termsOfUses(List.of(termsOfUses));
         }
         public ConditionalAccessPolicyGrantControls build() {
-            final var o = new ConditionalAccessPolicyGrantControls();
-            o.authenticationStrengthPolicyId = authenticationStrengthPolicyId;
-            o.builtInControls = builtInControls;
-            o.customAuthenticationFactors = customAuthenticationFactors;
-            o.operator = operator;
-            o.termsOfUses = termsOfUses;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicyGrantControls();
+            _resultValue.authenticationStrengthPolicyId = authenticationStrengthPolicyId;
+            _resultValue.builtInControls = builtInControls;
+            _resultValue.customAuthenticationFactors = customAuthenticationFactors;
+            _resultValue.operator = operator;
+            _resultValue.termsOfUses = termsOfUses;
+            return _resultValue;
         }
     }
 }

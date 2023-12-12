@@ -66,10 +66,10 @@ public final class GetGroupDynamicMembership {
             return this;
         }
         public GetGroupDynamicMembership build() {
-            final var o = new GetGroupDynamicMembership();
-            o.enabled = enabled;
-            o.rule = rule;
-            return o;
+            final var _resultValue = new GetGroupDynamicMembership();
+            _resultValue.enabled = enabled;
+            _resultValue.rule = rule;
+            return _resultValue;
         }
     }
 }

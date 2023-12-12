@@ -211,16 +211,16 @@ public final class ConditionalAccessPolicyConditionsUsers {
             return includedUsers(List.of(includedUsers));
         }
         public ConditionalAccessPolicyConditionsUsers build() {
-            final var o = new ConditionalAccessPolicyConditionsUsers();
-            o.excludedGroups = excludedGroups;
-            o.excludedGuestsOrExternalUsers = excludedGuestsOrExternalUsers;
-            o.excludedRoles = excludedRoles;
-            o.excludedUsers = excludedUsers;
-            o.includedGroups = includedGroups;
-            o.includedGuestsOrExternalUsers = includedGuestsOrExternalUsers;
-            o.includedRoles = includedRoles;
-            o.includedUsers = includedUsers;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicyConditionsUsers();
+            _resultValue.excludedGroups = excludedGroups;
+            _resultValue.excludedGuestsOrExternalUsers = excludedGuestsOrExternalUsers;
+            _resultValue.excludedRoles = excludedRoles;
+            _resultValue.excludedUsers = excludedUsers;
+            _resultValue.includedGroups = includedGroups;
+            _resultValue.includedGuestsOrExternalUsers = includedGuestsOrExternalUsers;
+            _resultValue.includedRoles = includedRoles;
+            _resultValue.includedUsers = includedUsers;
+            return _resultValue;
         }
     }
 }

@@ -66,10 +66,10 @@ public final class AccessPackageAssignmentPolicyQuestionChoice {
             return this;
         }
         public AccessPackageAssignmentPolicyQuestionChoice build() {
-            final var o = new AccessPackageAssignmentPolicyQuestionChoice();
-            o.actualValue = actualValue;
-            o.displayValue = displayValue;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyQuestionChoice();
+            _resultValue.actualValue = actualValue;
+            _resultValue.displayValue = displayValue;
+            return _resultValue;
         }
     }
 }

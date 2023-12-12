@@ -50,9 +50,9 @@ public final class GetApplicationSinglePageApplication {
             return redirectUris(List.of(redirectUris));
         }
         public GetApplicationSinglePageApplication build() {
-            final var o = new GetApplicationSinglePageApplication();
-            o.redirectUris = redirectUris;
-            return o;
+            final var _resultValue = new GetApplicationSinglePageApplication();
+            _resultValue.redirectUris = redirectUris;
+            return _resultValue;
         }
     }
 }

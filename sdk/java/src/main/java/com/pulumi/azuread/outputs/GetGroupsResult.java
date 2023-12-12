@@ -149,16 +149,16 @@ public final class GetGroupsResult {
             return this;
         }
         public GetGroupsResult build() {
-            final var o = new GetGroupsResult();
-            o.displayNamePrefix = displayNamePrefix;
-            o.displayNames = displayNames;
-            o.id = id;
-            o.ignoreMissing = ignoreMissing;
-            o.mailEnabled = mailEnabled;
-            o.objectIds = objectIds;
-            o.returnAll = returnAll;
-            o.securityEnabled = securityEnabled;
-            return o;
+            final var _resultValue = new GetGroupsResult();
+            _resultValue.displayNamePrefix = displayNamePrefix;
+            _resultValue.displayNames = displayNames;
+            _resultValue.id = id;
+            _resultValue.ignoreMissing = ignoreMissing;
+            _resultValue.mailEnabled = mailEnabled;
+            _resultValue.objectIds = objectIds;
+            _resultValue.returnAll = returnAll;
+            _resultValue.securityEnabled = securityEnabled;
+            return _resultValue;
         }
     }
 }

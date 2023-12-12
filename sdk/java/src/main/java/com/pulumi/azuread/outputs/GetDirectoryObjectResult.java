@@ -68,11 +68,11 @@ public final class GetDirectoryObjectResult {
             return this;
         }
         public GetDirectoryObjectResult build() {
-            final var o = new GetDirectoryObjectResult();
-            o.id = id;
-            o.objectId = objectId;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDirectoryObjectResult();
+            _resultValue.id = id;
+            _resultValue.objectId = objectId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class ServicePrincipalSamlSingleSignOn {
             return this;
         }
         public ServicePrincipalSamlSingleSignOn build() {
-            final var o = new ServicePrincipalSamlSingleSignOn();
-            o.relayState = relayState;
-            return o;
+            final var _resultValue = new ServicePrincipalSamlSingleSignOn();
+            _resultValue.relayState = relayState;
+            return _resultValue;
         }
     }
 }

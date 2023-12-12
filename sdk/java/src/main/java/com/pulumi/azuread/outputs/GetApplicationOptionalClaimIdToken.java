@@ -110,12 +110,12 @@ public final class GetApplicationOptionalClaimIdToken {
             return this;
         }
         public GetApplicationOptionalClaimIdToken build() {
-            final var o = new GetApplicationOptionalClaimIdToken();
-            o.additionalProperties = additionalProperties;
-            o.essential = essential;
-            o.name = name;
-            o.source = source;
-            return o;
+            final var _resultValue = new GetApplicationOptionalClaimIdToken();
+            _resultValue.additionalProperties = additionalProperties;
+            _resultValue.essential = essential;
+            _resultValue.name = name;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

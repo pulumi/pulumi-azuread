@@ -73,10 +73,10 @@ public final class ConditionalAccessPolicyConditionsPlatforms {
             return includedPlatforms(List.of(includedPlatforms));
         }
         public ConditionalAccessPolicyConditionsPlatforms build() {
-            final var o = new ConditionalAccessPolicyConditionsPlatforms();
-            o.excludedPlatforms = excludedPlatforms;
-            o.includedPlatforms = includedPlatforms;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicyConditionsPlatforms();
+            _resultValue.excludedPlatforms = excludedPlatforms;
+            _resultValue.includedPlatforms = includedPlatforms;
+            return _resultValue;
         }
     }
 }

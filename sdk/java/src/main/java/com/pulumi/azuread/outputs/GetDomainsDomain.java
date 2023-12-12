@@ -184,16 +184,16 @@ public final class GetDomainsDomain {
             return this;
         }
         public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.adminManaged = adminManaged;
-            o.authenticationType = authenticationType;
-            o.default_ = default_;
-            o.domainName = domainName;
-            o.initial = initial;
-            o.root = root;
-            o.supportedServices = supportedServices;
-            o.verified = verified;
-            return o;
+            final var _resultValue = new GetDomainsDomain();
+            _resultValue.adminManaged = adminManaged;
+            _resultValue.authenticationType = authenticationType;
+            _resultValue.default_ = default_;
+            _resultValue.domainName = domainName;
+            _resultValue.initial = initial;
+            _resultValue.root = root;
+            _resultValue.supportedServices = supportedServices;
+            _resultValue.verified = verified;
+            return _resultValue;
         }
     }
 }

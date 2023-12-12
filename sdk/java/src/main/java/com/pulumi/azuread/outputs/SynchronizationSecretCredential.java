@@ -65,10 +65,10 @@ public final class SynchronizationSecretCredential {
             return this;
         }
         public SynchronizationSecretCredential build() {
-            final var o = new SynchronizationSecretCredential();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new SynchronizationSecretCredential();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

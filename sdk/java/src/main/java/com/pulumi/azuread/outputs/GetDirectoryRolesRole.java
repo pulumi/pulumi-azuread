@@ -103,12 +103,12 @@ public final class GetDirectoryRolesRole {
             return this;
         }
         public GetDirectoryRolesRole build() {
-            final var o = new GetDirectoryRolesRole();
-            o.description = description;
-            o.displayName = displayName;
-            o.objectId = objectId;
-            o.templateId = templateId;
-            return o;
+            final var _resultValue = new GetDirectoryRolesRole();
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.objectId = objectId;
+            _resultValue.templateId = templateId;
+            return _resultValue;
         }
     }
 }

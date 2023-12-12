@@ -73,10 +73,10 @@ public final class ConditionalAccessPolicyConditionsLocations {
             return includedLocations(List.of(includedLocations));
         }
         public ConditionalAccessPolicyConditionsLocations build() {
-            final var o = new ConditionalAccessPolicyConditionsLocations();
-            o.excludedLocations = excludedLocations;
-            o.includedLocations = includedLocations;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicyConditionsLocations();
+            _resultValue.excludedLocations = excludedLocations;
+            _resultValue.includedLocations = includedLocations;
+            return _resultValue;
         }
     }
 }

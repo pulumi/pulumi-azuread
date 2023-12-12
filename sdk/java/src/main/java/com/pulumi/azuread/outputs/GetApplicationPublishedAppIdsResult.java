@@ -66,10 +66,10 @@ public final class GetApplicationPublishedAppIdsResult {
             return this;
         }
         public GetApplicationPublishedAppIdsResult build() {
-            final var o = new GetApplicationPublishedAppIdsResult();
-            o.id = id;
-            o.result = result;
-            return o;
+            final var _resultValue = new GetApplicationPublishedAppIdsResult();
+            _resultValue.id = id;
+            _resultValue.result = result;
+            return _resultValue;
         }
     }
 }

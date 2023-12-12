@@ -105,12 +105,12 @@ public final class ApplicationFeatureTag {
             return this;
         }
         public ApplicationFeatureTag build() {
-            final var o = new ApplicationFeatureTag();
-            o.customSingleSignOn = customSingleSignOn;
-            o.enterprise = enterprise;
-            o.gallery = gallery;
-            o.hide = hide;
-            return o;
+            final var _resultValue = new ApplicationFeatureTag();
+            _resultValue.customSingleSignOn = customSingleSignOn;
+            _resultValue.enterprise = enterprise;
+            _resultValue.gallery = gallery;
+            _resultValue.hide = hide;
+            return _resultValue;
         }
     }
 }

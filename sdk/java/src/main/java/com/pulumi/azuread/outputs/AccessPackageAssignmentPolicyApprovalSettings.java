@@ -110,12 +110,12 @@ public final class AccessPackageAssignmentPolicyApprovalSettings {
             return this;
         }
         public AccessPackageAssignmentPolicyApprovalSettings build() {
-            final var o = new AccessPackageAssignmentPolicyApprovalSettings();
-            o.approvalRequired = approvalRequired;
-            o.approvalRequiredForExtension = approvalRequiredForExtension;
-            o.approvalStages = approvalStages;
-            o.requestorJustificationRequired = requestorJustificationRequired;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyApprovalSettings();
+            _resultValue.approvalRequired = approvalRequired;
+            _resultValue.approvalRequiredForExtension = approvalRequiredForExtension;
+            _resultValue.approvalStages = approvalStages;
+            _resultValue.requestorJustificationRequired = requestorJustificationRequired;
+            return _resultValue;
         }
     }
 }

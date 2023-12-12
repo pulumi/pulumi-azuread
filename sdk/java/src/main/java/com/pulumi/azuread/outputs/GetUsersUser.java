@@ -237,19 +237,19 @@ public final class GetUsersUser {
             return this;
         }
         public GetUsersUser build() {
-            final var o = new GetUsersUser();
-            o.accountEnabled = accountEnabled;
-            o.displayName = displayName;
-            o.employeeId = employeeId;
-            o.mail = mail;
-            o.mailNickname = mailNickname;
-            o.objectId = objectId;
-            o.onpremisesImmutableId = onpremisesImmutableId;
-            o.onpremisesSamAccountName = onpremisesSamAccountName;
-            o.onpremisesUserPrincipalName = onpremisesUserPrincipalName;
-            o.usageLocation = usageLocation;
-            o.userPrincipalName = userPrincipalName;
-            return o;
+            final var _resultValue = new GetUsersUser();
+            _resultValue.accountEnabled = accountEnabled;
+            _resultValue.displayName = displayName;
+            _resultValue.employeeId = employeeId;
+            _resultValue.mail = mail;
+            _resultValue.mailNickname = mailNickname;
+            _resultValue.objectId = objectId;
+            _resultValue.onpremisesImmutableId = onpremisesImmutableId;
+            _resultValue.onpremisesSamAccountName = onpremisesSamAccountName;
+            _resultValue.onpremisesUserPrincipalName = onpremisesUserPrincipalName;
+            _resultValue.usageLocation = usageLocation;
+            _resultValue.userPrincipalName = userPrincipalName;
+            return _resultValue;
         }
     }
 }

@@ -54,10 +54,10 @@ public final class GetNamedLocationIp {
             return this;
         }
         public GetNamedLocationIp build() {
-            final var o = new GetNamedLocationIp();
-            o.ipRanges = ipRanges;
-            o.trusted = trusted;
-            return o;
+            final var _resultValue = new GetNamedLocationIp();
+            _resultValue.ipRanges = ipRanges;
+            _resultValue.trusted = trusted;
+            return _resultValue;
         }
     }
 }

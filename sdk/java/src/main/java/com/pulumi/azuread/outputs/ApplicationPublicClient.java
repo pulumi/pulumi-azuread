@@ -51,9 +51,9 @@ public final class ApplicationPublicClient {
             return redirectUris(List.of(redirectUris));
         }
         public ApplicationPublicClient build() {
-            final var o = new ApplicationPublicClient();
-            o.redirectUris = redirectUris;
-            return o;
+            final var _resultValue = new ApplicationPublicClient();
+            _resultValue.redirectUris = redirectUris;
+            return _resultValue;
         }
     }
 }

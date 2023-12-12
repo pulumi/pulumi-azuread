@@ -65,10 +65,10 @@ public final class ConditionalAccessPolicyConditionsDevicesFilter {
             return this;
         }
         public ConditionalAccessPolicyConditionsDevicesFilter build() {
-            final var o = new ConditionalAccessPolicyConditionsDevicesFilter();
-            o.mode = mode;
-            o.rule = rule;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicyConditionsDevicesFilter();
+            _resultValue.mode = mode;
+            _resultValue.rule = rule;
+            return _resultValue;
         }
     }
 }

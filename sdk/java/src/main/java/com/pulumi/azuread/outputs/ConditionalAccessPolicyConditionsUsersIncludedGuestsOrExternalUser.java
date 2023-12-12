@@ -74,10 +74,10 @@ public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExterna
             return guestOrExternalUserTypes(List.of(guestOrExternalUserTypes));
         }
         public ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser build() {
-            final var o = new ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser();
-            o.externalTenants = externalTenants;
-            o.guestOrExternalUserTypes = guestOrExternalUserTypes;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser();
+            _resultValue.externalTenants = externalTenants;
+            _resultValue.guestOrExternalUserTypes = guestOrExternalUserTypes;
+            return _resultValue;
         }
     }
 }

@@ -111,12 +111,12 @@ public final class GetApplicationWeb {
             return redirectUris(List.of(redirectUris));
         }
         public GetApplicationWeb build() {
-            final var o = new GetApplicationWeb();
-            o.homepageUrl = homepageUrl;
-            o.implicitGrants = implicitGrants;
-            o.logoutUrl = logoutUrl;
-            o.redirectUris = redirectUris;
-            return o;
+            final var _resultValue = new GetApplicationWeb();
+            _resultValue.homepageUrl = homepageUrl;
+            _resultValue.implicitGrants = implicitGrants;
+            _resultValue.logoutUrl = logoutUrl;
+            _resultValue.redirectUris = redirectUris;
+            return _resultValue;
         }
     }
 }

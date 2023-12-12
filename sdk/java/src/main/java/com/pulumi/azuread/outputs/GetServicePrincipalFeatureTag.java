@@ -71,12 +71,12 @@ public final class GetServicePrincipalFeatureTag {
             return this;
         }
         public GetServicePrincipalFeatureTag build() {
-            final var o = new GetServicePrincipalFeatureTag();
-            o.customSingleSignOn = customSingleSignOn;
-            o.enterprise = enterprise;
-            o.gallery = gallery;
-            o.hide = hide;
-            return o;
+            final var _resultValue = new GetServicePrincipalFeatureTag();
+            _resultValue.customSingleSignOn = customSingleSignOn;
+            _resultValue.enterprise = enterprise;
+            _resultValue.gallery = gallery;
+            _resultValue.hide = hide;
+            return _resultValue;
         }
     }
 }

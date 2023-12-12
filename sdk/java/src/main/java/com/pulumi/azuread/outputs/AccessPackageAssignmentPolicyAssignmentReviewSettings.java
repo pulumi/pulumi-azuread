@@ -207,17 +207,17 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettings {
             return this;
         }
         public AccessPackageAssignmentPolicyAssignmentReviewSettings build() {
-            final var o = new AccessPackageAssignmentPolicyAssignmentReviewSettings();
-            o.accessRecommendationEnabled = accessRecommendationEnabled;
-            o.accessReviewTimeoutBehavior = accessReviewTimeoutBehavior;
-            o.approverJustificationRequired = approverJustificationRequired;
-            o.durationInDays = durationInDays;
-            o.enabled = enabled;
-            o.reviewFrequency = reviewFrequency;
-            o.reviewType = reviewType;
-            o.reviewers = reviewers;
-            o.startingOn = startingOn;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyAssignmentReviewSettings();
+            _resultValue.accessRecommendationEnabled = accessRecommendationEnabled;
+            _resultValue.accessReviewTimeoutBehavior = accessReviewTimeoutBehavior;
+            _resultValue.approverJustificationRequired = approverJustificationRequired;
+            _resultValue.durationInDays = durationInDays;
+            _resultValue.enabled = enabled;
+            _resultValue.reviewFrequency = reviewFrequency;
+            _resultValue.reviewType = reviewType;
+            _resultValue.reviewers = reviewers;
+            _resultValue.startingOn = startingOn;
+            return _resultValue;
         }
     }
 }

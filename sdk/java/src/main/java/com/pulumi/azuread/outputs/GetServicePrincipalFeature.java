@@ -103,12 +103,12 @@ public final class GetServicePrincipalFeature {
             return this;
         }
         public GetServicePrincipalFeature build() {
-            final var o = new GetServicePrincipalFeature();
-            o.customSingleSignOnApp = customSingleSignOnApp;
-            o.enterpriseApplication = enterpriseApplication;
-            o.galleryApplication = galleryApplication;
-            o.visibleToUsers = visibleToUsers;
-            return o;
+            final var _resultValue = new GetServicePrincipalFeature();
+            _resultValue.customSingleSignOnApp = customSingleSignOnApp;
+            _resultValue.enterpriseApplication = enterpriseApplication;
+            _resultValue.galleryApplication = galleryApplication;
+            _resultValue.visibleToUsers = visibleToUsers;
+            return _resultValue;
         }
     }
 }
