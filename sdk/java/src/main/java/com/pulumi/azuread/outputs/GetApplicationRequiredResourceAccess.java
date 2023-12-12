@@ -70,10 +70,10 @@ public final class GetApplicationRequiredResourceAccess {
             return this;
         }
         public GetApplicationRequiredResourceAccess build() {
-            final var o = new GetApplicationRequiredResourceAccess();
-            o.resourceAccesses = resourceAccesses;
-            o.resourceAppId = resourceAppId;
-            return o;
+            final var _resultValue = new GetApplicationRequiredResourceAccess();
+            _resultValue.resourceAccesses = resourceAccesses;
+            _resultValue.resourceAppId = resourceAppId;
+            return _resultValue;
         }
     }
 }

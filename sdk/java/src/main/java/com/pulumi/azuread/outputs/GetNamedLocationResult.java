@@ -88,12 +88,12 @@ public final class GetNamedLocationResult {
             return ips(List.of(ips));
         }
         public GetNamedLocationResult build() {
-            final var o = new GetNamedLocationResult();
-            o.countries = countries;
-            o.displayName = displayName;
-            o.id = id;
-            o.ips = ips;
-            return o;
+            final var _resultValue = new GetNamedLocationResult();
+            _resultValue.countries = countries;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.ips = ips;
+            return _resultValue;
         }
     }
 }

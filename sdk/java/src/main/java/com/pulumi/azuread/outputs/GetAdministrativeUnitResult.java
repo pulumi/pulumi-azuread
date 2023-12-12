@@ -145,14 +145,14 @@ public final class GetAdministrativeUnitResult {
             return this;
         }
         public GetAdministrativeUnitResult build() {
-            final var o = new GetAdministrativeUnitResult();
-            o.description = description;
-            o.displayName = displayName;
-            o.id = id;
-            o.members = members;
-            o.objectId = objectId;
-            o.visibility = visibility;
-            return o;
+            final var _resultValue = new GetAdministrativeUnitResult();
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.members = members;
+            _resultValue.objectId = objectId;
+            _resultValue.visibility = visibility;
+            return _resultValue;
         }
     }
 }

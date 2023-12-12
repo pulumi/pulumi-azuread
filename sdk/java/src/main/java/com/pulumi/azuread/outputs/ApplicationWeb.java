@@ -110,12 +110,12 @@ public final class ApplicationWeb {
             return redirectUris(List.of(redirectUris));
         }
         public ApplicationWeb build() {
-            final var o = new ApplicationWeb();
-            o.homepageUrl = homepageUrl;
-            o.implicitGrant = implicitGrant;
-            o.logoutUrl = logoutUrl;
-            o.redirectUris = redirectUris;
-            return o;
+            final var _resultValue = new ApplicationWeb();
+            _resultValue.homepageUrl = homepageUrl;
+            _resultValue.implicitGrant = implicitGrant;
+            _resultValue.logoutUrl = logoutUrl;
+            _resultValue.redirectUris = redirectUris;
+            return _resultValue;
         }
     }
 }

@@ -114,12 +114,12 @@ public final class GetDirectoryRolesResult {
             return templateIds(List.of(templateIds));
         }
         public GetDirectoryRolesResult build() {
-            final var o = new GetDirectoryRolesResult();
-            o.id = id;
-            o.objectIds = objectIds;
-            o.roles = roles;
-            o.templateIds = templateIds;
-            return o;
+            final var _resultValue = new GetDirectoryRolesResult();
+            _resultValue.id = id;
+            _resultValue.objectIds = objectIds;
+            _resultValue.roles = roles;
+            _resultValue.templateIds = templateIds;
+            return _resultValue;
         }
     }
 }

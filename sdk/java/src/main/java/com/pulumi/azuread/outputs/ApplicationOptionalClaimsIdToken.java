@@ -110,12 +110,12 @@ public final class ApplicationOptionalClaimsIdToken {
             return this;
         }
         public ApplicationOptionalClaimsIdToken build() {
-            final var o = new ApplicationOptionalClaimsIdToken();
-            o.additionalProperties = additionalProperties;
-            o.essential = essential;
-            o.name = name;
-            o.source = source;
-            return o;
+            final var _resultValue = new ApplicationOptionalClaimsIdToken();
+            _resultValue.additionalProperties = additionalProperties;
+            _resultValue.essential = essential;
+            _resultValue.name = name;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

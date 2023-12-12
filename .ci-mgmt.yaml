@@ -24,7 +24,6 @@ plugins:
     version: "5.52.0"
   - name: random
     version: "4.14.0"
-javaGenVersion: "v0.9.7"
 license:
   ignore:
     - github.com/hashicorp/terraform-provider-azuread/shim

@@ -122,13 +122,13 @@ public final class GetAccessPackageCatalogRoleResult {
             return this;
         }
         public GetAccessPackageCatalogRoleResult build() {
-            final var o = new GetAccessPackageCatalogRoleResult();
-            o.description = description;
-            o.displayName = displayName;
-            o.id = id;
-            o.objectId = objectId;
-            o.templateId = templateId;
-            return o;
+            final var _resultValue = new GetAccessPackageCatalogRoleResult();
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.objectId = objectId;
+            _resultValue.templateId = templateId;
+            return _resultValue;
         }
     }
 }

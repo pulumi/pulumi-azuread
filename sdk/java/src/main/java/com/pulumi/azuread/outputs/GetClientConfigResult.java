@@ -103,12 +103,12 @@ public final class GetClientConfigResult {
             return this;
         }
         public GetClientConfigResult build() {
-            final var o = new GetClientConfigResult();
-            o.clientId = clientId;
-            o.id = id;
-            o.objectId = objectId;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new GetClientConfigResult();
+            _resultValue.clientId = clientId;
+            _resultValue.id = id;
+            _resultValue.objectId = objectId;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

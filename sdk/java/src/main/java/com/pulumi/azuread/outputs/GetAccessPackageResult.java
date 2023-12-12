@@ -120,14 +120,14 @@ public final class GetAccessPackageResult {
             return this;
         }
         public GetAccessPackageResult build() {
-            final var o = new GetAccessPackageResult();
-            o.catalogId = catalogId;
-            o.description = description;
-            o.displayName = displayName;
-            o.hidden = hidden;
-            o.id = id;
-            o.objectId = objectId;
-            return o;
+            final var _resultValue = new GetAccessPackageResult();
+            _resultValue.catalogId = catalogId;
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.hidden = hidden;
+            _resultValue.id = id;
+            _resultValue.objectId = objectId;
+            return _resultValue;
         }
     }
 }

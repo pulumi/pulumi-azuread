@@ -48,9 +48,9 @@ public final class ConditionalAccessPolicyConditionsDevices {
             return this;
         }
         public ConditionalAccessPolicyConditionsDevices build() {
-            final var o = new ConditionalAccessPolicyConditionsDevices();
-            o.filter = filter;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicyConditionsDevices();
+            _resultValue.filter = filter;
+            return _resultValue;
         }
     }
 }

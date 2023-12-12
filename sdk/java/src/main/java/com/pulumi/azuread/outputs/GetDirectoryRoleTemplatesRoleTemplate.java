@@ -84,11 +84,11 @@ public final class GetDirectoryRoleTemplatesRoleTemplate {
             return this;
         }
         public GetDirectoryRoleTemplatesRoleTemplate build() {
-            final var o = new GetDirectoryRoleTemplatesRoleTemplate();
-            o.description = description;
-            o.displayName = displayName;
-            o.objectId = objectId;
-            return o;
+            final var _resultValue = new GetDirectoryRoleTemplatesRoleTemplate();
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.objectId = objectId;
+            return _resultValue;
         }
     }
 }

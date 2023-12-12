@@ -67,10 +67,10 @@ public final class ApplicationWebImplicitGrant {
             return this;
         }
         public ApplicationWebImplicitGrant build() {
-            final var o = new ApplicationWebImplicitGrant();
-            o.accessTokenIssuanceEnabled = accessTokenIssuanceEnabled;
-            o.idTokenIssuanceEnabled = idTokenIssuanceEnabled;
-            return o;
+            final var _resultValue = new ApplicationWebImplicitGrant();
+            _resultValue.accessTokenIssuanceEnabled = accessTokenIssuanceEnabled;
+            _resultValue.idTokenIssuanceEnabled = idTokenIssuanceEnabled;
+            return _resultValue;
         }
     }
 }

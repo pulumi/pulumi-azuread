@@ -50,9 +50,9 @@ public final class CustomDirectoryRolePermission {
             return allowedResourceActions(List.of(allowedResourceActions));
         }
         public CustomDirectoryRolePermission build() {
-            final var o = new CustomDirectoryRolePermission();
-            o.allowedResourceActions = allowedResourceActions;
-            return o;
+            final var _resultValue = new CustomDirectoryRolePermission();
+            _resultValue.allowedResourceActions = allowedResourceActions;
+            return _resultValue;
         }
     }
 }

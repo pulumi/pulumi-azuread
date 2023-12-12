@@ -73,10 +73,10 @@ public final class ConditionalAccessPolicyConditionsClientApplications {
             return includedServicePrincipals(List.of(includedServicePrincipals));
         }
         public ConditionalAccessPolicyConditionsClientApplications build() {
-            final var o = new ConditionalAccessPolicyConditionsClientApplications();
-            o.excludedServicePrincipals = excludedServicePrincipals;
-            o.includedServicePrincipals = includedServicePrincipals;
-            return o;
+            final var _resultValue = new ConditionalAccessPolicyConditionsClientApplications();
+            _resultValue.excludedServicePrincipals = excludedServicePrincipals;
+            _resultValue.includedServicePrincipals = includedServicePrincipals;
+            return _resultValue;
         }
     }
 }

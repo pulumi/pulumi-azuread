@@ -126,14 +126,14 @@ public final class GetAccessPackageCatalogResult {
             return this;
         }
         public GetAccessPackageCatalogResult build() {
-            final var o = new GetAccessPackageCatalogResult();
-            o.description = description;
-            o.displayName = displayName;
-            o.externallyVisible = externallyVisible;
-            o.id = id;
-            o.objectId = objectId;
-            o.published = published;
-            return o;
+            final var _resultValue = new GetAccessPackageCatalogResult();
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.externallyVisible = externallyVisible;
+            _resultValue.id = id;
+            _resultValue.objectId = objectId;
+            _resultValue.published = published;
+            return _resultValue;
         }
     }
 }

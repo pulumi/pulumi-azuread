@@ -72,10 +72,10 @@ public final class NamedLocationCountry {
             return this;
         }
         public NamedLocationCountry build() {
-            final var o = new NamedLocationCountry();
-            o.countriesAndRegions = countriesAndRegions;
-            o.includeUnknownCountriesAndRegions = includeUnknownCountriesAndRegions;
-            return o;
+            final var _resultValue = new NamedLocationCountry();
+            _resultValue.countriesAndRegions = countriesAndRegions;
+            _resultValue.includeUnknownCountriesAndRegions = includeUnknownCountriesAndRegions;
+            return _resultValue;
         }
     }
 }

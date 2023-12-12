@@ -65,10 +65,10 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocali
             return this;
         }
         public AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText build() {
-            final var o = new AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText();
-            o.content = content;
-            o.languageCode = languageCode;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText();
+            _resultValue.content = content;
+            _resultValue.languageCode = languageCode;
+            return _resultValue;
         }
     }
 }

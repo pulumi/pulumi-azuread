@@ -87,11 +87,11 @@ public final class AccessPackageAssignmentPolicyRequestorSettingsRequestor {
             return this;
         }
         public AccessPackageAssignmentPolicyRequestorSettingsRequestor build() {
-            final var o = new AccessPackageAssignmentPolicyRequestorSettingsRequestor();
-            o.backup = backup;
-            o.objectId = objectId;
-            o.subjectType = subjectType;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyRequestorSettingsRequestor();
+            _resultValue.backup = backup;
+            _resultValue.objectId = objectId;
+            _resultValue.subjectType = subjectType;
+            return _resultValue;
         }
     }
 }

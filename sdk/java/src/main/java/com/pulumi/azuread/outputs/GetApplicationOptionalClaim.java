@@ -97,11 +97,11 @@ public final class GetApplicationOptionalClaim {
             return saml2Tokens(List.of(saml2Tokens));
         }
         public GetApplicationOptionalClaim build() {
-            final var o = new GetApplicationOptionalClaim();
-            o.accessTokens = accessTokens;
-            o.idTokens = idTokens;
-            o.saml2Tokens = saml2Tokens;
-            return o;
+            final var _resultValue = new GetApplicationOptionalClaim();
+            _resultValue.accessTokens = accessTokens;
+            _resultValue.idTokens = idTokens;
+            _resultValue.saml2Tokens = saml2Tokens;
+            return _resultValue;
         }
     }
 }

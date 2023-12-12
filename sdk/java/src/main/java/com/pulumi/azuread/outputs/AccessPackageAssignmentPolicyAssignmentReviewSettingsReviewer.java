@@ -87,11 +87,11 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer
             return this;
         }
         public AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer build() {
-            final var o = new AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer();
-            o.backup = backup;
-            o.objectId = objectId;
-            o.subjectType = subjectType;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer();
+            _resultValue.backup = backup;
+            _resultValue.objectId = objectId;
+            _resultValue.subjectType = subjectType;
+            return _resultValue;
         }
     }
 }

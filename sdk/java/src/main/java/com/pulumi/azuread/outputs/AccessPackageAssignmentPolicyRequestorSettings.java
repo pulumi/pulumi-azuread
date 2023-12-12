@@ -92,11 +92,11 @@ public final class AccessPackageAssignmentPolicyRequestorSettings {
             return this;
         }
         public AccessPackageAssignmentPolicyRequestorSettings build() {
-            final var o = new AccessPackageAssignmentPolicyRequestorSettings();
-            o.requestors = requestors;
-            o.requestsAccepted = requestsAccepted;
-            o.scopeType = scopeType;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyRequestorSettings();
+            _resultValue.requestors = requestors;
+            _resultValue.requestsAccepted = requestsAccepted;
+            _resultValue.scopeType = scopeType;
+            return _resultValue;
         }
     }
 }

@@ -112,12 +112,12 @@ public final class AccessPackageAssignmentPolicyQuestion {
             return this;
         }
         public AccessPackageAssignmentPolicyQuestion build() {
-            final var o = new AccessPackageAssignmentPolicyQuestion();
-            o.choices = choices;
-            o.required = required;
-            o.sequence = sequence;
-            o.text = text;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyQuestion();
+            _resultValue.choices = choices;
+            _resultValue.required = required;
+            _resultValue.sequence = sequence;
+            _resultValue.text = text;
+            return _resultValue;
         }
     }
 }

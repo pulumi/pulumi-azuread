@@ -86,11 +86,11 @@ public final class SynchronizationJobSchedule {
             return this;
         }
         public SynchronizationJobSchedule build() {
-            final var o = new SynchronizationJobSchedule();
-            o.expiration = expiration;
-            o.interval = interval;
-            o.state = state;
-            return o;
+            final var _resultValue = new SynchronizationJobSchedule();
+            _resultValue.expiration = expiration;
+            _resultValue.interval = interval;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

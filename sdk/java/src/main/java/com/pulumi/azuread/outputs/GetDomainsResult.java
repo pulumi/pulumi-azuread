@@ -150,16 +150,16 @@ public final class GetDomainsResult {
             return supportsServices(List.of(supportsServices));
         }
         public GetDomainsResult build() {
-            final var o = new GetDomainsResult();
-            o.adminManaged = adminManaged;
-            o.domains = domains;
-            o.id = id;
-            o.includeUnverified = includeUnverified;
-            o.onlyDefault = onlyDefault;
-            o.onlyInitial = onlyInitial;
-            o.onlyRoot = onlyRoot;
-            o.supportsServices = supportsServices;
-            return o;
+            final var _resultValue = new GetDomainsResult();
+            _resultValue.adminManaged = adminManaged;
+            _resultValue.domains = domains;
+            _resultValue.id = id;
+            _resultValue.includeUnverified = includeUnverified;
+            _resultValue.onlyDefault = onlyDefault;
+            _resultValue.onlyInitial = onlyInitial;
+            _resultValue.onlyRoot = onlyRoot;
+            _resultValue.supportsServices = supportsServices;
+            return _resultValue;
         }
     }
 }

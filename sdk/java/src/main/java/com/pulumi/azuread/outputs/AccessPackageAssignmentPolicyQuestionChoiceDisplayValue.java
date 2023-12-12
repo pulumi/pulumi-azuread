@@ -71,10 +71,10 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
             return localizedTexts(List.of(localizedTexts));
         }
         public AccessPackageAssignmentPolicyQuestionChoiceDisplayValue build() {
-            final var o = new AccessPackageAssignmentPolicyQuestionChoiceDisplayValue();
-            o.defaultText = defaultText;
-            o.localizedTexts = localizedTexts;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyQuestionChoiceDisplayValue();
+            _resultValue.defaultText = defaultText;
+            _resultValue.localizedTexts = localizedTexts;
+            return _resultValue;
         }
     }
 }

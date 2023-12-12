@@ -87,11 +87,11 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePri
             return this;
         }
         public AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover build() {
-            final var o = new AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover();
-            o.backup = backup;
-            o.objectId = objectId;
-            o.subjectType = subjectType;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover();
+            _resultValue.backup = backup;
+            _resultValue.objectId = objectId;
+            _resultValue.subjectType = subjectType;
+            return _resultValue;
         }
     }
 }

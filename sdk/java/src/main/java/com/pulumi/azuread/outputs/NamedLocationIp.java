@@ -72,10 +72,10 @@ public final class NamedLocationIp {
             return this;
         }
         public NamedLocationIp build() {
-            final var o = new NamedLocationIp();
-            o.ipRanges = ipRanges;
-            o.trusted = trusted;
-            return o;
+            final var _resultValue = new NamedLocationIp();
+            _resultValue.ipRanges = ipRanges;
+            _resultValue.trusted = trusted;
+            return _resultValue;
         }
     }
 }

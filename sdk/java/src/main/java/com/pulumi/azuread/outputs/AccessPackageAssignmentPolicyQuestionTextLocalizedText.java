@@ -65,10 +65,10 @@ public final class AccessPackageAssignmentPolicyQuestionTextLocalizedText {
             return this;
         }
         public AccessPackageAssignmentPolicyQuestionTextLocalizedText build() {
-            final var o = new AccessPackageAssignmentPolicyQuestionTextLocalizedText();
-            o.content = content;
-            o.languageCode = languageCode;
-            return o;
+            final var _resultValue = new AccessPackageAssignmentPolicyQuestionTextLocalizedText();
+            _resultValue.content = content;
+            _resultValue.languageCode = languageCode;
+            return _resultValue;
         }
     }
 }

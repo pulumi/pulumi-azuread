@@ -191,16 +191,16 @@ public final class GetServicePrincipalsResult {
             return servicePrincipals(List.of(servicePrincipals));
         }
         public GetServicePrincipalsResult build() {
-            final var o = new GetServicePrincipalsResult();
-            o.applicationIds = applicationIds;
-            o.clientIds = clientIds;
-            o.displayNames = displayNames;
-            o.id = id;
-            o.ignoreMissing = ignoreMissing;
-            o.objectIds = objectIds;
-            o.returnAll = returnAll;
-            o.servicePrincipals = servicePrincipals;
-            return o;
+            final var _resultValue = new GetServicePrincipalsResult();
+            _resultValue.applicationIds = applicationIds;
+            _resultValue.clientIds = clientIds;
+            _resultValue.displayNames = displayNames;
+            _resultValue.id = id;
+            _resultValue.ignoreMissing = ignoreMissing;
+            _resultValue.objectIds = objectIds;
+            _resultValue.returnAll = returnAll;
+            _resultValue.servicePrincipals = servicePrincipals;
+            return _resultValue;
         }
     }
 }

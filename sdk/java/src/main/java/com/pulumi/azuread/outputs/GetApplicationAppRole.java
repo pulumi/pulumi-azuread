@@ -146,14 +146,14 @@ public final class GetApplicationAppRole {
             return this;
         }
         public GetApplicationAppRole build() {
-            final var o = new GetApplicationAppRole();
-            o.allowedMemberTypes = allowedMemberTypes;
-            o.description = description;
-            o.displayName = displayName;
-            o.enabled = enabled;
-            o.id = id;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetApplicationAppRole();
+            _resultValue.allowedMemberTypes = allowedMemberTypes;
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }
