@@ -6,7 +6,7 @@ require (
 	github.com/hashicorp/go-azure-sdk v0.20231117.1130141
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.68.0
-	github.com/pulumi/pulumi/sdk/v3 v3.96.2
+	github.com/pulumi/pulumi/sdk/v3 v3.97.0
 )
 
 replace (
@@ -250,3 +250,7 @@ require (
 	lukechampine.com/frand v1.4.2 // indirect
 	software.sslmate.com/src/go-pkcs12 v0.2.0 // indirect
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.78.2-0.20231217235114-6e10a5d9fc66
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.97.1-0.20231217235114-6e10a5d9fc66
