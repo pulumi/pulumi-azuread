@@ -2,56 +2,28 @@
     "auto-aliasing": {
         "resources": {
             "azuread_access_package": {
-                "current": "azuread:index/accessPackage:AccessPackage",
-                "fields": {
-                    "catalog_id": {},
-                    "description": {},
-                    "display_name": {},
-                    "hidden": {}
-                }
+                "current": "azuread:index/accessPackage:AccessPackage"
             },
             "azuread_access_package_assignment_policy": {
                 "current": "azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy",
                 "fields": {
-                    "access_package_id": {},
                     "approval_settings": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
-                                "approval_required": {},
-                                "approval_required_for_extension": {},
                                 "approval_stage": {
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
-                                            "alternative_approval_enabled": {},
                                             "alternative_approver": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "backup": {},
-                                                        "object_id": {},
-                                                        "subject_type": {}
-                                                    }
-                                                }
+                                                "maxItemsOne": false
                                             },
-                                            "approval_timeout_in_days": {},
-                                            "approver_justification_required": {},
-                                            "enable_alternative_approval_in_days": {},
                                             "primary_approver": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "backup": {},
-                                                        "object_id": {},
-                                                        "subject_type": {}
-                                                    }
-                                                }
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
-                                },
-                                "requestor_justification_required": {}
+                                }
                             }
                         }
                     },
@@ -59,32 +31,12 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
-                                "access_recommendation_enabled": {},
-                                "access_review_timeout_behavior": {},
-                                "approver_justification_required": {},
-                                "duration_in_days": {},
-                                "enabled": {},
-                                "review_frequency": {},
-                                "review_type": {},
                                 "reviewer": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "backup": {},
-                                            "object_id": {},
-                                            "subject_type": {}
-                                        }
-                                    }
-                                },
-                                "starting_on": {}
+                                    "maxItemsOne": false
+                                }
                             }
                         }
                     },
-                    "description": {},
-                    "display_name": {},
-                    "duration_in_days": {},
-                    "expiration_date": {},
-                    "extension_enabled": {},
                     "question": {
                         "maxItemsOne": false,
                         "elem": {
@@ -93,20 +45,12 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
-                                            "actual_value": {},
                                             "display_value": {
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
-                                                        "default_text": {},
                                                         "localized_text": {
-                                                            "maxItemsOne": false,
-                                                            "elem": {
-                                                                "fields": {
-                                                                    "content": {},
-                                                                    "language_code": {}
-                                                                }
-                                                            }
+                                                            "maxItemsOne": false
                                                         }
                                                     }
                                                 }
@@ -114,21 +58,12 @@
                                         }
                                     }
                                 },
-                                "required": {},
-                                "sequence": {},
                                 "text": {
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
-                                            "default_text": {},
                                             "localized_text": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "content": {},
-                                                        "language_code": {}
-                                                    }
-                                                }
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -141,94 +76,41 @@
                         "elem": {
                             "fields": {
                                 "requestor": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "backup": {},
-                                            "object_id": {},
-                                            "subject_type": {}
-                                        }
-                                    }
-                                },
-                                "requests_accepted": {},
-                                "scope_type": {}
+                                    "maxItemsOne": false
+                                }
                             }
                         }
                     }
                 }
             },
             "azuread_access_package_catalog": {
-                "current": "azuread:index/accessPackageCatalog:AccessPackageCatalog",
-                "fields": {
-                    "description": {},
-                    "display_name": {},
-                    "externally_visible": {},
-                    "published": {}
-                }
+                "current": "azuread:index/accessPackageCatalog:AccessPackageCatalog"
             },
             "azuread_access_package_catalog_role_assignment": {
-                "current": "azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment",
-                "fields": {
-                    "catalog_id": {},
-                    "principal_object_id": {},
-                    "role_id": {}
-                }
+                "current": "azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment"
             },
             "azuread_access_package_resource_catalog_association": {
-                "current": "azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation",
-                "fields": {
-                    "catalog_id": {},
-                    "resource_origin_id": {},
-                    "resource_origin_system": {}
-                }
+                "current": "azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation"
             },
             "azuread_access_package_resource_package_association": {
-                "current": "azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation",
-                "fields": {
-                    "access_package_id": {},
-                    "access_type": {},
-                    "catalog_resource_association_id": {}
-                }
+                "current": "azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation"
             },
             "azuread_administrative_unit": {
                 "current": "azuread:index/administrativeUnit:AdministrativeUnit",
                 "fields": {
-                    "description": {},
-                    "display_name": {},
-                    "hidden_membership_enabled": {},
                     "members": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "object_id": {},
-                    "prevent_duplicate_names": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "azuread_administrative_unit_member": {
-                "current": "azuread:index/administrativeUnitMember:AdministrativeUnitMember",
-                "fields": {
-                    "administrative_unit_object_id": {},
-                    "member_object_id": {}
-                }
+                "current": "azuread:index/administrativeUnitMember:AdministrativeUnitMember"
             },
             "azuread_administrative_unit_role_member": {
-                "current": "azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember",
-                "fields": {
-                    "administrative_unit_object_id": {},
-                    "member_object_id": {},
-                    "role_object_id": {}
-                }
+                "current": "azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember"
             },
             "azuread_app_role_assignment": {
-                "current": "azuread:index/appRoleAssignment:AppRoleAssignment",
-                "fields": {
-                    "app_role_id": {},
-                    "principal_display_name": {},
-                    "principal_object_id": {},
-                    "principal_type": {},
-                    "resource_display_name": {},
-                    "resource_object_id": {}
-                }
+                "current": "azuread:index/appRoleAssignment:AppRoleAssignment"
             },
             "azuread_application": {
                 "current": "azuread:index/application:Application",
@@ -238,26 +120,11 @@
                         "elem": {
                             "fields": {
                                 "known_client_applications": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
-                                "mapped_claims_enabled": {},
                                 "oauth2_permission_scope": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "admin_consent_description": {},
-                                            "admin_consent_display_name": {},
-                                            "enabled": {},
-                                            "id": {},
-                                            "type": {},
-                                            "user_consent_description": {},
-                                            "user_consent_display_name": {},
-                                            "value": {}
-                                        }
-                                    }
-                                },
-                                "requested_access_token_version": {}
+                                    "maxItemsOne": false
+                                }
                             }
                         }
                     },
@@ -266,54 +133,20 @@
                         "elem": {
                             "fields": {
                                 "allowed_member_types": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
-                                },
-                                "description": {},
-                                "display_name": {},
-                                "enabled": {},
-                                "id": {},
-                                "value": {}
+                                    "maxItemsOne": false
+                                }
                             }
                         }
                     },
-                    "app_role_ids": {
-                        "elem": {}
-                    },
-                    "application_id": {},
-                    "description": {},
-                    "device_only_auth_enabled": {},
-                    "disabled_by_microsoft": {},
-                    "display_name": {},
-                    "fallback_public_client_enabled": {},
                     "feature_tags": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "custom_single_sign_on": {},
-                                "enterprise": {},
-                                "gallery": {},
-                                "hide": {}
-                            }
-                        }
+                        "maxItemsOne": false
                     },
                     "group_membership_claims": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "identifier_uris": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "logo_image": {},
-                    "logo_url": {},
-                    "marketing_url": {},
-                    "notes": {},
-                    "oauth2_permission_scope_ids": {
-                        "elem": {}
-                    },
-                    "oauth2_post_response_required": {},
-                    "object_id": {},
                     "optional_claims": {
                         "maxItemsOne": true,
                         "elem": {
@@ -323,12 +156,8 @@
                                     "elem": {
                                         "fields": {
                                             "additional_properties": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
-                                            },
-                                            "essential": {},
-                                            "name": {},
-                                            "source": {}
+                                                "maxItemsOne": false
+                                            }
                                         }
                                     }
                                 },
@@ -337,12 +166,8 @@
                                     "elem": {
                                         "fields": {
                                             "additional_properties": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
-                                            },
-                                            "essential": {},
-                                            "name": {},
-                                            "source": {}
+                                                "maxItemsOne": false
+                                            }
                                         }
                                     }
                                 },
@@ -351,12 +176,8 @@
                                     "elem": {
                                         "fields": {
                                             "additional_properties": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
-                                            },
-                                            "essential": {},
-                                            "name": {},
-                                            "source": {}
+                                                "maxItemsOne": false
+                                            }
                                         }
                                     }
                                 }
@@ -364,78 +185,50 @@
                         }
                     },
                     "owners": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "prevent_duplicate_names": {},
-                    "privacy_statement_url": {},
                     "public_client": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "redirect_uris": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 }
                             }
                         }
                     },
-                    "publisher_domain": {},
                     "required_resource_access": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
                                 "resource_access": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "id": {},
-                                            "type": {}
-                                        }
-                                    }
-                                },
-                                "resource_app_id": {}
+                                    "maxItemsOne": false
+                                }
                             }
                         }
                     },
-                    "service_management_reference": {},
-                    "sign_in_audience": {},
                     "single_page_application": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "redirect_uris": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 }
                             }
                         }
                     },
-                    "support_url": {},
                     "tags": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "template_id": {},
-                    "terms_of_service_url": {},
                     "web": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
-                                "homepage_url": {},
                                 "implicit_grant": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "access_token_issuance_enabled": {},
-                                            "id_token_issuance_enabled": {}
-                                        }
-                                    }
+                                    "maxItemsOne": true
                                 },
-                                "logout_url": {},
                                 "redirect_uris": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -462,17 +255,7 @@
                 }
             },
             "azuread_application_certificate": {
-                "current": "azuread:index/applicationCertificate:ApplicationCertificate",
-                "fields": {
-                    "application_object_id": {},
-                    "encoding": {},
-                    "end_date": {},
-                    "end_date_relative": {},
-                    "key_id": {},
-                    "start_date": {},
-                    "type": {},
-                    "value": {}
-                }
+                "current": "azuread:index/applicationCertificate:ApplicationCertificate"
             },
             "azuread_application_fallback_public_client": {
                 "current": "azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient"
@@ -480,16 +263,9 @@
             "azuread_application_federated_identity_credential": {
                 "current": "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential",
                 "fields": {
-                    "application_object_id": {},
                     "audiences": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "credential_id": {},
-                    "description": {},
-                    "display_name": {},
-                    "issuer": {},
-                    "subject": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "azuread_application_from_template": {
@@ -545,19 +321,7 @@
                 "current": "azuread:index/applicationOwner:ApplicationOwner"
             },
             "azuread_application_password": {
-                "current": "azuread:index/applicationPassword:ApplicationPassword",
-                "fields": {
-                    "application_object_id": {},
-                    "display_name": {},
-                    "end_date": {},
-                    "end_date_relative": {},
-                    "key_id": {},
-                    "rotate_when_changed": {
-                        "elem": {}
-                    },
-                    "start_date": {},
-                    "value": {}
-                }
+                "current": "azuread:index/applicationPassword:ApplicationPassword"
             },
             "azuread_application_permission_scope": {
                 "current": "azuread:index/applicationPermissionScope:ApplicationPermissionScope"
@@ -565,11 +329,8 @@
             "azuread_application_pre_authorized": {
                 "current": "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized",
                 "fields": {
-                    "application_object_id": {},
-                    "authorized_app_id": {},
                     "permission_ids": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -601,10 +362,8 @@
                 "current": "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy",
                 "fields": {
                     "definition": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "display_name": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "azuread_conditional_access_policy": {
@@ -619,23 +378,19 @@
                                     "elem": {
                                         "fields": {
                                             "excluded_applications": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             },
                                             "included_applications": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             },
                                             "included_user_actions": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
                                 },
                                 "client_app_types": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
                                 "client_applications": {
                                     "maxItemsOne": true,
@@ -655,13 +410,7 @@
                                     "elem": {
                                         "fields": {
                                             "filter": {
-                                                "maxItemsOne": true,
-                                                "elem": {
-                                                    "fields": {
-                                                        "mode": {},
-                                                        "rule": {}
-                                                    }
-                                                }
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -671,12 +420,10 @@
                                     "elem": {
                                         "fields": {
                                             "excluded_locations": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             },
                                             "included_locations": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -686,12 +433,10 @@
                                     "elem": {
                                         "fields": {
                                             "excluded_platforms": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             },
                                             "included_platforms": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -700,20 +445,17 @@
                                     "maxItemsOne": false
                                 },
                                 "sign_in_risk_levels": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
                                 "user_risk_levels": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
                                 "users": {
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
                                             "excluded_groups": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             },
                                             "excluded_guests_or_external_users": {
                                                 "maxItemsOne": false,
@@ -736,16 +478,13 @@
                                                 }
                                             },
                                             "excluded_roles": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             },
                                             "excluded_users": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             },
                                             "included_groups": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             },
                                             "included_guests_or_external_users": {
                                                 "maxItemsOne": false,
@@ -768,12 +507,10 @@
                                                 }
                                             },
                                             "included_roles": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             },
                                             "included_users": {
-                                                "maxItemsOne": false,
-                                                "elem": {}
+                                                "maxItemsOne": false
                                             }
                                         }
                                     }
@@ -781,165 +518,85 @@
                             }
                         }
                     },
-                    "display_name": {},
                     "grant_controls": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "built_in_controls": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
                                 "custom_authentication_factors": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 },
-                                "operator": {},
                                 "terms_of_use": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 }
                             }
                         }
                     },
                     "session_controls": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "application_enforced_restrictions_enabled": {},
-                                "cloud_app_security_policy": {},
-                                "persistent_browser_mode": {},
-                                "sign_in_frequency": {},
-                                "sign_in_frequency_period": {}
-                            }
-                        }
-                    },
-                    "state": {}
+                        "maxItemsOne": true
+                    }
                 }
             },
             "azuread_custom_directory_role": {
                 "current": "azuread:index/customDirectoryRole:CustomDirectoryRole",
                 "fields": {
-                    "description": {},
-                    "display_name": {},
-                    "enabled": {},
-                    "object_id": {},
                     "permissions": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
                                 "allowed_resource_actions": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
+                                    "maxItemsOne": false
                                 }
                             }
                         }
-                    },
-                    "template_id": {},
-                    "version": {}
+                    }
                 }
             },
             "azuread_directory_role": {
-                "current": "azuread:index/directoryRole:DirectoryRole",
-                "fields": {
-                    "description": {},
-                    "display_name": {},
-                    "object_id": {},
-                    "template_id": {}
-                }
+                "current": "azuread:index/directoryRole:DirectoryRole"
             },
             "azuread_directory_role_assignment": {
-                "current": "azuread:index/directoryRoleAssignment:DirectoryRoleAssignment",
-                "fields": {
-                    "app_scope_id": {},
-                    "app_scope_object_id": {},
-                    "directory_scope_id": {},
-                    "directory_scope_object_id": {},
-                    "principal_object_id": {},
-                    "role_id": {}
-                }
+                "current": "azuread:index/directoryRoleAssignment:DirectoryRoleAssignment"
             },
             "azuread_directory_role_eligibility_schedule_request": {
                 "current": "azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest"
             },
             "azuread_directory_role_member": {
-                "current": "azuread:index/directoryRoleMember:DirectoryRoleMember",
-                "fields": {
-                    "member_object_id": {},
-                    "role_object_id": {}
-                }
+                "current": "azuread:index/directoryRoleMember:DirectoryRoleMember"
             },
             "azuread_group": {
                 "current": "azuread:index/group:Group",
                 "fields": {
                     "administrative_unit_ids": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "assignable_to_role": {},
-                    "auto_subscribe_new_members": {},
                     "behaviors": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "description": {},
-                    "display_name": {},
                     "dynamic_membership": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "enabled": {},
-                                "rule": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
-                    "external_senders_allowed": {},
-                    "hide_from_address_lists": {},
-                    "hide_from_outlook_clients": {},
-                    "mail": {},
-                    "mail_enabled": {},
-                    "mail_nickname": {},
                     "members": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "object_id": {},
-                    "onpremises_domain_name": {},
-                    "onpremises_group_type": {},
-                    "onpremises_netbios_name": {},
-                    "onpremises_sam_account_name": {},
-                    "onpremises_security_identifier": {},
-                    "onpremises_sync_enabled": {},
                     "owners": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "preferred_language": {},
-                    "prevent_duplicate_names": {},
                     "provisioning_options": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "proxy_addresses": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "security_enabled": {},
-                    "theme": {},
                     "types": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "visibility": {},
-                    "writeback_enabled": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "azuread_group_member": {
-                "current": "azuread:index/groupMember:GroupMember",
-                "fields": {
-                    "group_object_id": {},
-                    "member_object_id": {}
-                }
+                "current": "azuread:index/groupMember:GroupMember"
             },
             "azuread_invitation": {
                 "current": "azuread:index/invitation:Invitation",
@@ -949,20 +606,11 @@
                         "elem": {
                             "fields": {
                                 "additional_recipients": {
-                                    "maxItemsOne": true,
-                                    "elem": {}
-                                },
-                                "body": {},
-                                "language": {}
+                                    "maxItemsOne": true
+                                }
                             }
                         }
-                    },
-                    "redeem_url": {},
-                    "redirect_url": {},
-                    "user_display_name": {},
-                    "user_email_address": {},
-                    "user_id": {},
-                    "user_type": {}
+                    }
                 }
             },
             "azuread_named_location": {
@@ -973,23 +621,18 @@
                         "elem": {
                             "fields": {
                                 "countries_and_regions": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
-                                },
-                                "include_unknown_countries_and_regions": {}
+                                    "maxItemsOne": false
+                                }
                             }
                         }
                     },
-                    "display_name": {},
                     "ip": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "ip_ranges": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
-                                },
-                                "trusted": {}
+                                    "maxItemsOne": false
+                                }
                             }
                         }
                     }
@@ -998,280 +641,103 @@
             "azuread_service_principal": {
                 "current": "azuread:index/servicePrincipal:ServicePrincipal",
                 "fields": {
-                    "account_enabled": {},
                     "alternative_names": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "app_role_assignment_required": {},
-                    "app_role_ids": {
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "app_roles": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
                                 "allowed_member_types": {
-                                    "maxItemsOne": false,
-                                    "elem": {}
-                                },
-                                "description": {},
-                                "display_name": {},
-                                "enabled": {},
-                                "id": {},
-                                "value": {}
+                                    "maxItemsOne": false
+                                }
                             }
                         }
                     },
-                    "application_id": {},
-                    "application_tenant_id": {},
-                    "description": {},
-                    "display_name": {},
                     "feature_tags": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "custom_single_sign_on": {},
-                                "enterprise": {},
-                                "gallery": {},
-                                "hide": {}
-                            }
-                        }
+                        "maxItemsOne": false
                     },
                     "features": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "custom_single_sign_on_app": {},
-                                "enterprise_application": {},
-                                "gallery_application": {},
-                                "visible_to_users": {}
-                            }
-                        }
+                        "maxItemsOne": false
                     },
-                    "homepage_url": {},
-                    "login_url": {},
-                    "logout_url": {},
-                    "notes": {},
                     "notification_email_addresses": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "oauth2_permission_scope_ids": {
-                        "elem": {}
+                        "maxItemsOne": false
                     },
                     "oauth2_permission_scopes": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "admin_consent_description": {},
-                                "admin_consent_display_name": {},
-                                "enabled": {},
-                                "id": {},
-                                "type": {},
-                                "user_consent_description": {},
-                                "user_consent_display_name": {},
-                                "value": {}
-                            }
-                        }
+                        "maxItemsOne": false
                     },
-                    "object_id": {},
                     "owners": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "preferred_single_sign_on_mode": {},
                     "redirect_uris": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "saml_metadata_url": {},
                     "saml_single_sign_on": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "relay_state": {}
-                            }
-                        }
+                        "maxItemsOne": true
                     },
                     "service_principal_names": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "sign_in_audience": {},
                     "tags": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "type": {},
-                    "use_existing": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "azuread_service_principal_certificate": {
-                "current": "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate",
-                "fields": {
-                    "encoding": {},
-                    "end_date": {},
-                    "end_date_relative": {},
-                    "key_id": {},
-                    "service_principal_id": {},
-                    "start_date": {},
-                    "type": {},
-                    "value": {}
-                }
+                "current": "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate"
             },
             "azuread_service_principal_claims_mapping_policy_assignment": {
-                "current": "azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment",
-                "fields": {
-                    "claims_mapping_policy_id": {},
-                    "service_principal_id": {}
-                }
+                "current": "azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment"
             },
             "azuread_service_principal_delegated_permission_grant": {
                 "current": "azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant",
                 "fields": {
                     "claim_values": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "resource_service_principal_object_id": {},
-                    "service_principal_object_id": {},
-                    "user_object_id": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "azuread_service_principal_password": {
-                "current": "azuread:index/servicePrincipalPassword:ServicePrincipalPassword",
-                "fields": {
-                    "display_name": {},
-                    "end_date": {},
-                    "end_date_relative": {},
-                    "key_id": {},
-                    "rotate_when_changed": {
-                        "elem": {}
-                    },
-                    "service_principal_id": {},
-                    "start_date": {},
-                    "value": {}
-                }
+                "current": "azuread:index/servicePrincipalPassword:ServicePrincipalPassword"
             },
             "azuread_service_principal_token_signing_certificate": {
-                "current": "azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate",
-                "fields": {
-                    "display_name": {},
-                    "end_date": {},
-                    "key_id": {},
-                    "service_principal_id": {},
-                    "start_date": {},
-                    "thumbprint": {},
-                    "value": {}
-                }
+                "current": "azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate"
             },
             "azuread_synchronization_job": {
                 "current": "azuread:index/synchronizationJob:SynchronizationJob",
                 "fields": {
-                    "enabled": {},
                     "schedule": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "expiration": {},
-                                "interval": {},
-                                "state": {}
-                            }
-                        }
-                    },
-                    "service_principal_id": {},
-                    "template_id": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "azuread_synchronization_secret": {
                 "current": "azuread:index/synchronizationSecret:SynchronizationSecret",
                 "fields": {
                     "credential": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "key": {},
-                                "value": {}
-                            }
-                        }
-                    },
-                    "service_principal_id": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "azuread_user": {
                 "current": "azuread:index/user:User",
                 "fields": {
-                    "about_me": {},
-                    "account_enabled": {},
-                    "age_group": {},
                     "business_phones": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "city": {},
-                    "company_name": {},
-                    "consent_provided_for_minor": {},
-                    "cost_center": {},
-                    "country": {},
-                    "creation_type": {},
-                    "department": {},
-                    "disable_password_expiration": {},
-                    "disable_strong_password": {},
-                    "display_name": {},
-                    "division": {},
-                    "employee_id": {},
-                    "employee_type": {},
-                    "external_user_state": {},
-                    "fax_number": {},
-                    "force_password_change": {},
-                    "given_name": {},
                     "im_addresses": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "job_title": {},
-                    "mail": {},
-                    "mail_nickname": {},
-                    "manager_id": {},
-                    "mobile_phone": {},
-                    "object_id": {},
-                    "office_location": {},
-                    "onpremises_distinguished_name": {},
-                    "onpremises_domain_name": {},
-                    "onpremises_immutable_id": {},
-                    "onpremises_sam_account_name": {},
-                    "onpremises_security_identifier": {},
-                    "onpremises_sync_enabled": {},
-                    "onpremises_user_principal_name": {},
                     "other_mails": {
-                        "maxItemsOne": false,
-                        "elem": {}
+                        "maxItemsOne": false
                     },
-                    "password": {},
-                    "postal_code": {},
-                    "preferred_language": {},
                     "proxy_addresses": {
-                        "maxItemsOne": false,
-                        "elem": {}
-                    },
-                    "show_in_address_list": {},
-                    "state": {},
-                    "street_address": {},
-                    "surname": {},
-                    "usage_location": {},
-                    "user_principal_name": {},
-                    "user_type": {}
+                        "maxItemsOne": false
+                    }
                 }
             },
             "azuread_user_flow_attribute": {
-                "current": "azuread:index/userFlowAttribute:UserFlowAttribute",
-                "fields": {
-                    "attribute_type": {},
-                    "data_type": {},
-                    "description": {},
-                    "display_name": {}
-                }
+                "current": "azuread:index/userFlowAttribute:UserFlowAttribute"
             }
         },
         "datasources": {
@@ -1650,6 +1116,15 @@
                     "users": {
                         "maxItemsOne": false
                     }
+                }
+            }
+        }
+    },
+    "auto-settings": {
+        "resources": {
+            "azuread_application_federated_identity_credential": {
+                "maxItemsOneOverrides": {
+                    "audiences": false
                 }
             }
         }
