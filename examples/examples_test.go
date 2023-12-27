@@ -28,7 +28,5 @@ func getCwd(t *testing.T) string {
 }
 
 func getBaseOptions() integration.ProgramTestOptions {
-	return integration.ProgramTestOptions{
-		ExpectRefreshChanges: true,
-	}
+	return integration.ProgramTestOptions{}
 }
