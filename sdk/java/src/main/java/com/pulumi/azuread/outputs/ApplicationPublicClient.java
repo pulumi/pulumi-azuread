@@ -44,6 +44,7 @@ public final class ApplicationPublicClient {
 
         @CustomType.Setter
         public Builder redirectUris(@Nullable List<String> redirectUris) {
+
             this.redirectUris = redirectUris;
             return this;
         }

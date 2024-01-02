@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocali
 
         @CustomType.Setter
         public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+            if (content == null) {
+              throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText", "content");
+            }
+            this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder languageCode(String languageCode) {
-            this.languageCode = Objects.requireNonNull(languageCode);
+            if (languageCode == null) {
+              throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText", "languageCode");
+            }
+            this.languageCode = languageCode;
             return this;
         }
         public AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText build() {

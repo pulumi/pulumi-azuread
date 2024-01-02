@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetServicePrincipalSamlSingleSignOn {
 
         @CustomType.Setter
         public Builder relayState(String relayState) {
-            this.relayState = Objects.requireNonNull(relayState);
+            if (relayState == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalSamlSingleSignOn", "relayState");
+            }
+            this.relayState = relayState;
             return this;
         }
         public GetServicePrincipalSamlSingleSignOn build() {

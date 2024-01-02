@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -206,9 +207,15 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
         }
 
         public ServicePrincipalDelegatedPermissionGrantArgs build() {
-            $.claimValues = Objects.requireNonNull($.claimValues, "expected parameter 'claimValues' to be non-null");
-            $.resourceServicePrincipalObjectId = Objects.requireNonNull($.resourceServicePrincipalObjectId, "expected parameter 'resourceServicePrincipalObjectId' to be non-null");
-            $.servicePrincipalObjectId = Objects.requireNonNull($.servicePrincipalObjectId, "expected parameter 'servicePrincipalObjectId' to be non-null");
+            if ($.claimValues == null) {
+                throw new MissingRequiredPropertyException("ServicePrincipalDelegatedPermissionGrantArgs", "claimValues");
+            }
+            if ($.resourceServicePrincipalObjectId == null) {
+                throw new MissingRequiredPropertyException("ServicePrincipalDelegatedPermissionGrantArgs", "resourceServicePrincipalObjectId");
+            }
+            if ($.servicePrincipalObjectId == null) {
+                throw new MissingRequiredPropertyException("ServicePrincipalDelegatedPermissionGrantArgs", "servicePrincipalObjectId");
+            }
             return $;
         }
     }

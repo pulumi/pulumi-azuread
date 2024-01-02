@@ -7,6 +7,7 @@ import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyApprovalSettingsAp
 import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
@@ -285,7 +286,9 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         public AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs build() {
-            $.approvalTimeoutInDays = Objects.requireNonNull($.approvalTimeoutInDays, "expected parameter 'approvalTimeoutInDays' to be non-null");
+            if ($.approvalTimeoutInDays == null) {
+                throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs", "approvalTimeoutInDays");
+            }
             return $;
         }
     }

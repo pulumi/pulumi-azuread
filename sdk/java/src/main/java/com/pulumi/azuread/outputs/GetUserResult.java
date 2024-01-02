@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -646,17 +647,26 @@ public final class GetUserResult {
 
         @CustomType.Setter
         public Builder accountEnabled(Boolean accountEnabled) {
-            this.accountEnabled = Objects.requireNonNull(accountEnabled);
+            if (accountEnabled == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "accountEnabled");
+            }
+            this.accountEnabled = accountEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder ageGroup(String ageGroup) {
-            this.ageGroup = Objects.requireNonNull(ageGroup);
+            if (ageGroup == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "ageGroup");
+            }
+            this.ageGroup = ageGroup;
             return this;
         }
         @CustomType.Setter
         public Builder businessPhones(List<String> businessPhones) {
-            this.businessPhones = Objects.requireNonNull(businessPhones);
+            if (businessPhones == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "businessPhones");
+            }
+            this.businessPhones = businessPhones;
             return this;
         }
         public Builder businessPhones(String... businessPhones) {
@@ -664,82 +674,130 @@ public final class GetUserResult {
         }
         @CustomType.Setter
         public Builder city(String city) {
-            this.city = Objects.requireNonNull(city);
+            if (city == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "city");
+            }
+            this.city = city;
             return this;
         }
         @CustomType.Setter
         public Builder companyName(String companyName) {
-            this.companyName = Objects.requireNonNull(companyName);
+            if (companyName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "companyName");
+            }
+            this.companyName = companyName;
             return this;
         }
         @CustomType.Setter
         public Builder consentProvidedForMinor(String consentProvidedForMinor) {
-            this.consentProvidedForMinor = Objects.requireNonNull(consentProvidedForMinor);
+            if (consentProvidedForMinor == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "consentProvidedForMinor");
+            }
+            this.consentProvidedForMinor = consentProvidedForMinor;
             return this;
         }
         @CustomType.Setter
         public Builder costCenter(String costCenter) {
-            this.costCenter = Objects.requireNonNull(costCenter);
+            if (costCenter == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "costCenter");
+            }
+            this.costCenter = costCenter;
             return this;
         }
         @CustomType.Setter
         public Builder country(String country) {
-            this.country = Objects.requireNonNull(country);
+            if (country == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "country");
+            }
+            this.country = country;
             return this;
         }
         @CustomType.Setter
         public Builder creationType(String creationType) {
-            this.creationType = Objects.requireNonNull(creationType);
+            if (creationType == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "creationType");
+            }
+            this.creationType = creationType;
             return this;
         }
         @CustomType.Setter
         public Builder department(String department) {
-            this.department = Objects.requireNonNull(department);
+            if (department == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "department");
+            }
+            this.department = department;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder division(String division) {
-            this.division = Objects.requireNonNull(division);
+            if (division == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "division");
+            }
+            this.division = division;
             return this;
         }
         @CustomType.Setter
         public Builder employeeId(String employeeId) {
-            this.employeeId = Objects.requireNonNull(employeeId);
+            if (employeeId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "employeeId");
+            }
+            this.employeeId = employeeId;
             return this;
         }
         @CustomType.Setter
         public Builder employeeType(String employeeType) {
-            this.employeeType = Objects.requireNonNull(employeeType);
+            if (employeeType == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "employeeType");
+            }
+            this.employeeType = employeeType;
             return this;
         }
         @CustomType.Setter
         public Builder externalUserState(String externalUserState) {
-            this.externalUserState = Objects.requireNonNull(externalUserState);
+            if (externalUserState == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "externalUserState");
+            }
+            this.externalUserState = externalUserState;
             return this;
         }
         @CustomType.Setter
         public Builder faxNumber(String faxNumber) {
-            this.faxNumber = Objects.requireNonNull(faxNumber);
+            if (faxNumber == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "faxNumber");
+            }
+            this.faxNumber = faxNumber;
             return this;
         }
         @CustomType.Setter
         public Builder givenName(String givenName) {
-            this.givenName = Objects.requireNonNull(givenName);
+            if (givenName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "givenName");
+            }
+            this.givenName = givenName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imAddresses(List<String> imAddresses) {
-            this.imAddresses = Objects.requireNonNull(imAddresses);
+            if (imAddresses == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "imAddresses");
+            }
+            this.imAddresses = imAddresses;
             return this;
         }
         public Builder imAddresses(String... imAddresses) {
@@ -747,77 +805,122 @@ public final class GetUserResult {
         }
         @CustomType.Setter
         public Builder jobTitle(String jobTitle) {
-            this.jobTitle = Objects.requireNonNull(jobTitle);
+            if (jobTitle == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "jobTitle");
+            }
+            this.jobTitle = jobTitle;
             return this;
         }
         @CustomType.Setter
         public Builder mail(String mail) {
-            this.mail = Objects.requireNonNull(mail);
+            if (mail == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "mail");
+            }
+            this.mail = mail;
             return this;
         }
         @CustomType.Setter
         public Builder mailNickname(String mailNickname) {
-            this.mailNickname = Objects.requireNonNull(mailNickname);
+            if (mailNickname == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "mailNickname");
+            }
+            this.mailNickname = mailNickname;
             return this;
         }
         @CustomType.Setter
         public Builder managerId(String managerId) {
-            this.managerId = Objects.requireNonNull(managerId);
+            if (managerId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "managerId");
+            }
+            this.managerId = managerId;
             return this;
         }
         @CustomType.Setter
         public Builder mobilePhone(String mobilePhone) {
-            this.mobilePhone = Objects.requireNonNull(mobilePhone);
+            if (mobilePhone == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "mobilePhone");
+            }
+            this.mobilePhone = mobilePhone;
             return this;
         }
         @CustomType.Setter
         public Builder objectId(String objectId) {
-            this.objectId = Objects.requireNonNull(objectId);
+            if (objectId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "objectId");
+            }
+            this.objectId = objectId;
             return this;
         }
         @CustomType.Setter
         public Builder officeLocation(String officeLocation) {
-            this.officeLocation = Objects.requireNonNull(officeLocation);
+            if (officeLocation == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "officeLocation");
+            }
+            this.officeLocation = officeLocation;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesDistinguishedName(String onpremisesDistinguishedName) {
-            this.onpremisesDistinguishedName = Objects.requireNonNull(onpremisesDistinguishedName);
+            if (onpremisesDistinguishedName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "onpremisesDistinguishedName");
+            }
+            this.onpremisesDistinguishedName = onpremisesDistinguishedName;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesDomainName(String onpremisesDomainName) {
-            this.onpremisesDomainName = Objects.requireNonNull(onpremisesDomainName);
+            if (onpremisesDomainName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "onpremisesDomainName");
+            }
+            this.onpremisesDomainName = onpremisesDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesImmutableId(String onpremisesImmutableId) {
-            this.onpremisesImmutableId = Objects.requireNonNull(onpremisesImmutableId);
+            if (onpremisesImmutableId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "onpremisesImmutableId");
+            }
+            this.onpremisesImmutableId = onpremisesImmutableId;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesSamAccountName(String onpremisesSamAccountName) {
-            this.onpremisesSamAccountName = Objects.requireNonNull(onpremisesSamAccountName);
+            if (onpremisesSamAccountName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "onpremisesSamAccountName");
+            }
+            this.onpremisesSamAccountName = onpremisesSamAccountName;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesSecurityIdentifier(String onpremisesSecurityIdentifier) {
-            this.onpremisesSecurityIdentifier = Objects.requireNonNull(onpremisesSecurityIdentifier);
+            if (onpremisesSecurityIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "onpremisesSecurityIdentifier");
+            }
+            this.onpremisesSecurityIdentifier = onpremisesSecurityIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesSyncEnabled(Boolean onpremisesSyncEnabled) {
-            this.onpremisesSyncEnabled = Objects.requireNonNull(onpremisesSyncEnabled);
+            if (onpremisesSyncEnabled == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "onpremisesSyncEnabled");
+            }
+            this.onpremisesSyncEnabled = onpremisesSyncEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesUserPrincipalName(String onpremisesUserPrincipalName) {
-            this.onpremisesUserPrincipalName = Objects.requireNonNull(onpremisesUserPrincipalName);
+            if (onpremisesUserPrincipalName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "onpremisesUserPrincipalName");
+            }
+            this.onpremisesUserPrincipalName = onpremisesUserPrincipalName;
             return this;
         }
         @CustomType.Setter
         public Builder otherMails(List<String> otherMails) {
-            this.otherMails = Objects.requireNonNull(otherMails);
+            if (otherMails == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "otherMails");
+            }
+            this.otherMails = otherMails;
             return this;
         }
         public Builder otherMails(String... otherMails) {
@@ -825,17 +928,26 @@ public final class GetUserResult {
         }
         @CustomType.Setter
         public Builder postalCode(String postalCode) {
-            this.postalCode = Objects.requireNonNull(postalCode);
+            if (postalCode == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "postalCode");
+            }
+            this.postalCode = postalCode;
             return this;
         }
         @CustomType.Setter
         public Builder preferredLanguage(String preferredLanguage) {
-            this.preferredLanguage = Objects.requireNonNull(preferredLanguage);
+            if (preferredLanguage == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "preferredLanguage");
+            }
+            this.preferredLanguage = preferredLanguage;
             return this;
         }
         @CustomType.Setter
         public Builder proxyAddresses(List<String> proxyAddresses) {
-            this.proxyAddresses = Objects.requireNonNull(proxyAddresses);
+            if (proxyAddresses == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "proxyAddresses");
+            }
+            this.proxyAddresses = proxyAddresses;
             return this;
         }
         public Builder proxyAddresses(String... proxyAddresses) {
@@ -843,37 +955,58 @@ public final class GetUserResult {
         }
         @CustomType.Setter
         public Builder showInAddressList(Boolean showInAddressList) {
-            this.showInAddressList = Objects.requireNonNull(showInAddressList);
+            if (showInAddressList == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "showInAddressList");
+            }
+            this.showInAddressList = showInAddressList;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder streetAddress(String streetAddress) {
-            this.streetAddress = Objects.requireNonNull(streetAddress);
+            if (streetAddress == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "streetAddress");
+            }
+            this.streetAddress = streetAddress;
             return this;
         }
         @CustomType.Setter
         public Builder surname(String surname) {
-            this.surname = Objects.requireNonNull(surname);
+            if (surname == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "surname");
+            }
+            this.surname = surname;
             return this;
         }
         @CustomType.Setter
         public Builder usageLocation(String usageLocation) {
-            this.usageLocation = Objects.requireNonNull(usageLocation);
+            if (usageLocation == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "usageLocation");
+            }
+            this.usageLocation = usageLocation;
             return this;
         }
         @CustomType.Setter
         public Builder userPrincipalName(String userPrincipalName) {
-            this.userPrincipalName = Objects.requireNonNull(userPrincipalName);
+            if (userPrincipalName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "userPrincipalName");
+            }
+            this.userPrincipalName = userPrincipalName;
             return this;
         }
         @CustomType.Setter
         public Builder userType(String userType) {
-            this.userType = Objects.requireNonNull(userType);
+            if (userType == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "userType");
+            }
+            this.userType = userType;
             return this;
         }
         public GetUserResult build() {

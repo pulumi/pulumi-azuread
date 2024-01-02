@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -343,11 +344,21 @@ public final class ApplicationPermissionScopeArgs extends com.pulumi.resources.R
         }
 
         public ApplicationPermissionScopeArgs build() {
-            $.adminConsentDescription = Objects.requireNonNull($.adminConsentDescription, "expected parameter 'adminConsentDescription' to be non-null");
-            $.adminConsentDisplayName = Objects.requireNonNull($.adminConsentDisplayName, "expected parameter 'adminConsentDisplayName' to be non-null");
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
-            $.scopeId = Objects.requireNonNull($.scopeId, "expected parameter 'scopeId' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.adminConsentDescription == null) {
+                throw new MissingRequiredPropertyException("ApplicationPermissionScopeArgs", "adminConsentDescription");
+            }
+            if ($.adminConsentDisplayName == null) {
+                throw new MissingRequiredPropertyException("ApplicationPermissionScopeArgs", "adminConsentDisplayName");
+            }
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("ApplicationPermissionScopeArgs", "applicationId");
+            }
+            if ($.scopeId == null) {
+                throw new MissingRequiredPropertyException("ApplicationPermissionScopeArgs", "scopeId");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("ApplicationPermissionScopeArgs", "value");
+            }
             return $;
         }
     }

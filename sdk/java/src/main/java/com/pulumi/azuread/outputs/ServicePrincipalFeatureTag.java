@@ -86,21 +86,25 @@ public final class ServicePrincipalFeatureTag {
 
         @CustomType.Setter
         public Builder customSingleSignOn(@Nullable Boolean customSingleSignOn) {
+
             this.customSingleSignOn = customSingleSignOn;
             return this;
         }
         @CustomType.Setter
         public Builder enterprise(@Nullable Boolean enterprise) {
+
             this.enterprise = enterprise;
             return this;
         }
         @CustomType.Setter
         public Builder gallery(@Nullable Boolean gallery) {
+
             this.gallery = gallery;
             return this;
         }
         @CustomType.Setter
         public Builder hide(@Nullable Boolean hide) {
+
             this.hide = hide;
             return this;
         }

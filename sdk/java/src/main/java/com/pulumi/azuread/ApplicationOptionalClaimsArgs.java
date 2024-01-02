@@ -8,6 +8,7 @@ import com.pulumi.azuread.inputs.ApplicationOptionalClaimsIdTokenArgs;
 import com.pulumi.azuread.inputs.ApplicationOptionalClaimsSaml2TokenArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -231,7 +232,9 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
         }
 
         public ApplicationOptionalClaimsArgs build() {
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("ApplicationOptionalClaimsArgs", "applicationId");
+            }
             return $;
         }
     }

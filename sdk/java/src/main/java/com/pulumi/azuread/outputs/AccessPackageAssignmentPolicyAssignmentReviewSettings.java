@@ -160,41 +160,49 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettings {
 
         @CustomType.Setter
         public Builder accessRecommendationEnabled(@Nullable Boolean accessRecommendationEnabled) {
+
             this.accessRecommendationEnabled = accessRecommendationEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder accessReviewTimeoutBehavior(@Nullable String accessReviewTimeoutBehavior) {
+
             this.accessReviewTimeoutBehavior = accessReviewTimeoutBehavior;
             return this;
         }
         @CustomType.Setter
         public Builder approverJustificationRequired(@Nullable Boolean approverJustificationRequired) {
+
             this.approverJustificationRequired = approverJustificationRequired;
             return this;
         }
         @CustomType.Setter
         public Builder durationInDays(@Nullable Integer durationInDays) {
+
             this.durationInDays = durationInDays;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder reviewFrequency(@Nullable String reviewFrequency) {
+
             this.reviewFrequency = reviewFrequency;
             return this;
         }
         @CustomType.Setter
         public Builder reviewType(@Nullable String reviewType) {
+
             this.reviewType = reviewType;
             return this;
         }
         @CustomType.Setter
         public Builder reviewers(@Nullable List<AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer> reviewers) {
+
             this.reviewers = reviewers;
             return this;
         }
@@ -203,6 +211,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettings {
         }
         @CustomType.Setter
         public Builder startingOn(@Nullable String startingOn) {
+
             this.startingOn = startingOn;
             return this;
         }

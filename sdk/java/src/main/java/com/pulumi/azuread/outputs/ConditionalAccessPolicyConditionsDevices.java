@@ -44,6 +44,7 @@ public final class ConditionalAccessPolicyConditionsDevices {
 
         @CustomType.Setter
         public Builder filter(@Nullable ConditionalAccessPolicyConditionsDevicesFilter filter) {
+
             this.filter = filter;
             return this;
         }

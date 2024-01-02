@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -183,57 +184,90 @@ public final class GetUsersUser {
 
         @CustomType.Setter
         public Builder accountEnabled(Boolean accountEnabled) {
-            this.accountEnabled = Objects.requireNonNull(accountEnabled);
+            if (accountEnabled == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "accountEnabled");
+            }
+            this.accountEnabled = accountEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder employeeId(String employeeId) {
-            this.employeeId = Objects.requireNonNull(employeeId);
+            if (employeeId == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "employeeId");
+            }
+            this.employeeId = employeeId;
             return this;
         }
         @CustomType.Setter
         public Builder mail(String mail) {
-            this.mail = Objects.requireNonNull(mail);
+            if (mail == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "mail");
+            }
+            this.mail = mail;
             return this;
         }
         @CustomType.Setter
         public Builder mailNickname(String mailNickname) {
-            this.mailNickname = Objects.requireNonNull(mailNickname);
+            if (mailNickname == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "mailNickname");
+            }
+            this.mailNickname = mailNickname;
             return this;
         }
         @CustomType.Setter
         public Builder objectId(String objectId) {
-            this.objectId = Objects.requireNonNull(objectId);
+            if (objectId == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "objectId");
+            }
+            this.objectId = objectId;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesImmutableId(String onpremisesImmutableId) {
-            this.onpremisesImmutableId = Objects.requireNonNull(onpremisesImmutableId);
+            if (onpremisesImmutableId == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "onpremisesImmutableId");
+            }
+            this.onpremisesImmutableId = onpremisesImmutableId;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesSamAccountName(String onpremisesSamAccountName) {
-            this.onpremisesSamAccountName = Objects.requireNonNull(onpremisesSamAccountName);
+            if (onpremisesSamAccountName == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "onpremisesSamAccountName");
+            }
+            this.onpremisesSamAccountName = onpremisesSamAccountName;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesUserPrincipalName(String onpremisesUserPrincipalName) {
-            this.onpremisesUserPrincipalName = Objects.requireNonNull(onpremisesUserPrincipalName);
+            if (onpremisesUserPrincipalName == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "onpremisesUserPrincipalName");
+            }
+            this.onpremisesUserPrincipalName = onpremisesUserPrincipalName;
             return this;
         }
         @CustomType.Setter
         public Builder usageLocation(String usageLocation) {
-            this.usageLocation = Objects.requireNonNull(usageLocation);
+            if (usageLocation == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "usageLocation");
+            }
+            this.usageLocation = usageLocation;
             return this;
         }
         @CustomType.Setter
         public Builder userPrincipalName(String userPrincipalName) {
-            this.userPrincipalName = Objects.requireNonNull(userPrincipalName);
+            if (userPrincipalName == null) {
+              throw new MissingRequiredPropertyException("GetUsersUser", "userPrincipalName");
+            }
+            this.userPrincipalName = userPrincipalName;
             return this;
         }
         public GetUsersUser build() {

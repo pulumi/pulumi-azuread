@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.GetApplicationApiOauth2PermissionScope;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -88,7 +89,10 @@ public final class GetApplicationApi {
 
         @CustomType.Setter
         public Builder knownClientApplications(List<String> knownClientApplications) {
-            this.knownClientApplications = Objects.requireNonNull(knownClientApplications);
+            if (knownClientApplications == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApi", "knownClientApplications");
+            }
+            this.knownClientApplications = knownClientApplications;
             return this;
         }
         public Builder knownClientApplications(String... knownClientApplications) {
@@ -96,12 +100,18 @@ public final class GetApplicationApi {
         }
         @CustomType.Setter
         public Builder mappedClaimsEnabled(Boolean mappedClaimsEnabled) {
-            this.mappedClaimsEnabled = Objects.requireNonNull(mappedClaimsEnabled);
+            if (mappedClaimsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApi", "mappedClaimsEnabled");
+            }
+            this.mappedClaimsEnabled = mappedClaimsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder oauth2PermissionScopes(List<GetApplicationApiOauth2PermissionScope> oauth2PermissionScopes) {
-            this.oauth2PermissionScopes = Objects.requireNonNull(oauth2PermissionScopes);
+            if (oauth2PermissionScopes == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApi", "oauth2PermissionScopes");
+            }
+            this.oauth2PermissionScopes = oauth2PermissionScopes;
             return this;
         }
         public Builder oauth2PermissionScopes(GetApplicationApiOauth2PermissionScope... oauth2PermissionScopes) {
@@ -109,7 +119,10 @@ public final class GetApplicationApi {
         }
         @CustomType.Setter
         public Builder requestedAccessTokenVersion(Integer requestedAccessTokenVersion) {
-            this.requestedAccessTokenVersion = Objects.requireNonNull(requestedAccessTokenVersion);
+            if (requestedAccessTokenVersion == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApi", "requestedAccessTokenVersion");
+            }
+            this.requestedAccessTokenVersion = requestedAccessTokenVersion;
             return this;
         }
         public GetApplicationApi build() {

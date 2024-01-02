@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class AdministrativeUnitRoleMemberArgs extends com.pulumi.resources
         }
 
         public AdministrativeUnitRoleMemberArgs build() {
-            $.administrativeUnitObjectId = Objects.requireNonNull($.administrativeUnitObjectId, "expected parameter 'administrativeUnitObjectId' to be non-null");
-            $.memberObjectId = Objects.requireNonNull($.memberObjectId, "expected parameter 'memberObjectId' to be non-null");
-            $.roleObjectId = Objects.requireNonNull($.roleObjectId, "expected parameter 'roleObjectId' to be non-null");
+            if ($.administrativeUnitObjectId == null) {
+                throw new MissingRequiredPropertyException("AdministrativeUnitRoleMemberArgs", "administrativeUnitObjectId");
+            }
+            if ($.memberObjectId == null) {
+                throw new MissingRequiredPropertyException("AdministrativeUnitRoleMemberArgs", "memberObjectId");
+            }
+            if ($.roleObjectId == null) {
+                throw new MissingRequiredPropertyException("AdministrativeUnitRoleMemberArgs", "roleObjectId");
+            }
             return $;
         }
     }

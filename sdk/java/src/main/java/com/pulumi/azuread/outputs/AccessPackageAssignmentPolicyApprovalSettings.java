@@ -88,16 +88,19 @@ public final class AccessPackageAssignmentPolicyApprovalSettings {
 
         @CustomType.Setter
         public Builder approvalRequired(@Nullable Boolean approvalRequired) {
+
             this.approvalRequired = approvalRequired;
             return this;
         }
         @CustomType.Setter
         public Builder approvalRequiredForExtension(@Nullable Boolean approvalRequiredForExtension) {
+
             this.approvalRequiredForExtension = approvalRequiredForExtension;
             return this;
         }
         @CustomType.Setter
         public Builder approvalStages(@Nullable List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStage> approvalStages) {
+
             this.approvalStages = approvalStages;
             return this;
         }
@@ -106,6 +109,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettings {
         }
         @CustomType.Setter
         public Builder requestorJustificationRequired(@Nullable Boolean requestorJustificationRequired) {
+
             this.requestorJustificationRequired = requestorJustificationRequired;
             return this;
         }

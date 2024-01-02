@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class AccessPackageResourcePackageAssociationArgs extends com.pulum
         }
 
         public AccessPackageResourcePackageAssociationArgs build() {
-            $.accessPackageId = Objects.requireNonNull($.accessPackageId, "expected parameter 'accessPackageId' to be non-null");
-            $.catalogResourceAssociationId = Objects.requireNonNull($.catalogResourceAssociationId, "expected parameter 'catalogResourceAssociationId' to be non-null");
+            if ($.accessPackageId == null) {
+                throw new MissingRequiredPropertyException("AccessPackageResourcePackageAssociationArgs", "accessPackageId");
+            }
+            if ($.catalogResourceAssociationId == null) {
+                throw new MissingRequiredPropertyException("AccessPackageResourcePackageAssociationArgs", "catalogResourceAssociationId");
+            }
             return $;
         }
     }

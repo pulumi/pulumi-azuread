@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -105,11 +106,13 @@ public final class ConditionalAccessPolicyGrantControls {
 
         @CustomType.Setter
         public Builder authenticationStrengthPolicyId(@Nullable String authenticationStrengthPolicyId) {
+
             this.authenticationStrengthPolicyId = authenticationStrengthPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder builtInControls(@Nullable List<String> builtInControls) {
+
             this.builtInControls = builtInControls;
             return this;
         }
@@ -118,6 +121,7 @@ public final class ConditionalAccessPolicyGrantControls {
         }
         @CustomType.Setter
         public Builder customAuthenticationFactors(@Nullable List<String> customAuthenticationFactors) {
+
             this.customAuthenticationFactors = customAuthenticationFactors;
             return this;
         }
@@ -126,11 +130,15 @@ public final class ConditionalAccessPolicyGrantControls {
         }
         @CustomType.Setter
         public Builder operator(String operator) {
-            this.operator = Objects.requireNonNull(operator);
+            if (operator == null) {
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyGrantControls", "operator");
+            }
+            this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder termsOfUses(@Nullable List<String> termsOfUses) {
+
             this.termsOfUses = termsOfUses;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -142,37 +143,58 @@ public final class GetDomainsDomain {
 
         @CustomType.Setter
         public Builder adminManaged(Boolean adminManaged) {
-            this.adminManaged = Objects.requireNonNull(adminManaged);
+            if (adminManaged == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "adminManaged");
+            }
+            this.adminManaged = adminManaged;
             return this;
         }
         @CustomType.Setter
         public Builder authenticationType(String authenticationType) {
-            this.authenticationType = Objects.requireNonNull(authenticationType);
+            if (authenticationType == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "authenticationType");
+            }
+            this.authenticationType = authenticationType;
             return this;
         }
         @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
-            this.default_ = Objects.requireNonNull(default_);
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "default_");
+            }
+            this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder initial(Boolean initial) {
-            this.initial = Objects.requireNonNull(initial);
+            if (initial == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "initial");
+            }
+            this.initial = initial;
             return this;
         }
         @CustomType.Setter
         public Builder root(Boolean root) {
-            this.root = Objects.requireNonNull(root);
+            if (root == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "root");
+            }
+            this.root = root;
             return this;
         }
         @CustomType.Setter
         public Builder supportedServices(List<String> supportedServices) {
-            this.supportedServices = Objects.requireNonNull(supportedServices);
+            if (supportedServices == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "supportedServices");
+            }
+            this.supportedServices = supportedServices;
             return this;
         }
         public Builder supportedServices(String... supportedServices) {
@@ -180,7 +202,10 @@ public final class GetDomainsDomain {
         }
         @CustomType.Setter
         public Builder verified(Boolean verified) {
-            this.verified = Objects.requireNonNull(verified);
+            if (verified == null) {
+              throw new MissingRequiredPropertyException("GetDomainsDomain", "verified");
+            }
+            this.verified = verified;
             return this;
         }
         public GetDomainsDomain build() {

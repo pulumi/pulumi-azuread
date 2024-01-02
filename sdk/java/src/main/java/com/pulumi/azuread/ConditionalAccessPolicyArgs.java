@@ -8,6 +8,7 @@ import com.pulumi.azuread.inputs.ConditionalAccessPolicyGrantControlsArgs;
 import com.pulumi.azuread.inputs.ConditionalAccessPolicySessionControlsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -235,9 +236,15 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
         }
 
         public ConditionalAccessPolicyArgs build() {
-            $.conditions = Objects.requireNonNull($.conditions, "expected parameter 'conditions' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.state = Objects.requireNonNull($.state, "expected parameter 'state' to be non-null");
+            if ($.conditions == null) {
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyArgs", "conditions");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyArgs", "displayName");
+            }
+            if ($.state == null) {
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyArgs", "state");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetNamedLocationIp {
 
         @CustomType.Setter
         public Builder ipRanges(List<String> ipRanges) {
-            this.ipRanges = Objects.requireNonNull(ipRanges);
+            if (ipRanges == null) {
+              throw new MissingRequiredPropertyException("GetNamedLocationIp", "ipRanges");
+            }
+            this.ipRanges = ipRanges;
             return this;
         }
         public Builder ipRanges(String... ipRanges) {
@@ -50,7 +54,10 @@ public final class GetNamedLocationIp {
         }
         @CustomType.Setter
         public Builder trusted(Boolean trusted) {
-            this.trusted = Objects.requireNonNull(trusted);
+            if (trusted == null) {
+              throw new MissingRequiredPropertyException("GetNamedLocationIp", "trusted");
+            }
+            this.trusted = trusted;
             return this;
         }
         public GetNamedLocationIp build() {

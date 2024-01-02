@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetApplicationApiOauth2PermissionScope {
 
         @CustomType.Setter
         public Builder adminConsentDescription(String adminConsentDescription) {
-            this.adminConsentDescription = Objects.requireNonNull(adminConsentDescription);
+            if (adminConsentDescription == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApiOauth2PermissionScope", "adminConsentDescription");
+            }
+            this.adminConsentDescription = adminConsentDescription;
             return this;
         }
         @CustomType.Setter
         public Builder adminConsentDisplayName(String adminConsentDisplayName) {
-            this.adminConsentDisplayName = Objects.requireNonNull(adminConsentDisplayName);
+            if (adminConsentDisplayName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApiOauth2PermissionScope", "adminConsentDisplayName");
+            }
+            this.adminConsentDisplayName = adminConsentDisplayName;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApiOauth2PermissionScope", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApiOauth2PermissionScope", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApiOauth2PermissionScope", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder userConsentDescription(String userConsentDescription) {
-            this.userConsentDescription = Objects.requireNonNull(userConsentDescription);
+            if (userConsentDescription == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApiOauth2PermissionScope", "userConsentDescription");
+            }
+            this.userConsentDescription = userConsentDescription;
             return this;
         }
         @CustomType.Setter
         public Builder userConsentDisplayName(String userConsentDisplayName) {
-            this.userConsentDisplayName = Objects.requireNonNull(userConsentDisplayName);
+            if (userConsentDisplayName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApiOauth2PermissionScope", "userConsentDisplayName");
+            }
+            this.userConsentDisplayName = userConsentDisplayName;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetApplicationApiOauth2PermissionScope", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetApplicationApiOauth2PermissionScope build() {

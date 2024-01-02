@@ -148,41 +148,49 @@ public final class ConditionalAccessPolicySessionControls {
 
         @CustomType.Setter
         public Builder applicationEnforcedRestrictionsEnabled(@Nullable Boolean applicationEnforcedRestrictionsEnabled) {
+
             this.applicationEnforcedRestrictionsEnabled = applicationEnforcedRestrictionsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder cloudAppSecurityPolicy(@Nullable String cloudAppSecurityPolicy) {
+
             this.cloudAppSecurityPolicy = cloudAppSecurityPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder disableResilienceDefaults(@Nullable Boolean disableResilienceDefaults) {
+
             this.disableResilienceDefaults = disableResilienceDefaults;
             return this;
         }
         @CustomType.Setter
         public Builder persistentBrowserMode(@Nullable String persistentBrowserMode) {
+
             this.persistentBrowserMode = persistentBrowserMode;
             return this;
         }
         @CustomType.Setter
         public Builder signInFrequency(@Nullable Integer signInFrequency) {
+
             this.signInFrequency = signInFrequency;
             return this;
         }
         @CustomType.Setter
         public Builder signInFrequencyAuthenticationType(@Nullable String signInFrequencyAuthenticationType) {
+
             this.signInFrequencyAuthenticationType = signInFrequencyAuthenticationType;
             return this;
         }
         @CustomType.Setter
         public Builder signInFrequencyInterval(@Nullable String signInFrequencyInterval) {
+
             this.signInFrequencyInterval = signInFrequencyInterval;
             return this;
         }
         @CustomType.Setter
         public Builder signInFrequencyPeriod(@Nullable String signInFrequencyPeriod) {
+
             this.signInFrequencyPeriod = signInFrequencyPeriod;
             return this;
         }

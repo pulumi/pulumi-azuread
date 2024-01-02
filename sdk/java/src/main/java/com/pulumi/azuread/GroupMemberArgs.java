@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class GroupMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GroupMemberArgs build() {
-            $.groupObjectId = Objects.requireNonNull($.groupObjectId, "expected parameter 'groupObjectId' to be non-null");
-            $.memberObjectId = Objects.requireNonNull($.memberObjectId, "expected parameter 'memberObjectId' to be non-null");
+            if ($.groupObjectId == null) {
+                throw new MissingRequiredPropertyException("GroupMemberArgs", "groupObjectId");
+            }
+            if ($.memberObjectId == null) {
+                throw new MissingRequiredPropertyException("GroupMemberArgs", "memberObjectId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,6 +59,7 @@ public final class ConditionalAccessPolicyConditionsPlatforms {
 
         @CustomType.Setter
         public Builder excludedPlatforms(@Nullable List<String> excludedPlatforms) {
+
             this.excludedPlatforms = excludedPlatforms;
             return this;
         }
@@ -66,7 +68,10 @@ public final class ConditionalAccessPolicyConditionsPlatforms {
         }
         @CustomType.Setter
         public Builder includedPlatforms(List<String> includedPlatforms) {
-            this.includedPlatforms = Objects.requireNonNull(includedPlatforms);
+            if (includedPlatforms == null) {
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsPlatforms", "includedPlatforms");
+            }
+            this.includedPlatforms = includedPlatforms;
             return this;
         }
         public Builder includedPlatforms(String... includedPlatforms) {

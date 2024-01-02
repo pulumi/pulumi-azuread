@@ -6,6 +6,7 @@ package com.pulumi.azuread.inputs;
 import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -131,8 +132,12 @@ public final class ApplicationRequiredResourceAccessArgs extends com.pulumi.reso
         }
 
         public ApplicationRequiredResourceAccessArgs build() {
-            $.resourceAccesses = Objects.requireNonNull($.resourceAccesses, "expected parameter 'resourceAccesses' to be non-null");
-            $.resourceAppId = Objects.requireNonNull($.resourceAppId, "expected parameter 'resourceAppId' to be non-null");
+            if ($.resourceAccesses == null) {
+                throw new MissingRequiredPropertyException("ApplicationRequiredResourceAccessArgs", "resourceAccesses");
+            }
+            if ($.resourceAppId == null) {
+                throw new MissingRequiredPropertyException("ApplicationRequiredResourceAccessArgs", "resourceAppId");
+            }
             return $;
         }
     }

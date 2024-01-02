@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -59,6 +60,7 @@ public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExterna
 
         @CustomType.Setter
         public Builder externalTenants(@Nullable List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant> externalTenants) {
+
             this.externalTenants = externalTenants;
             return this;
         }
@@ -67,7 +69,10 @@ public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExterna
         }
         @CustomType.Setter
         public Builder guestOrExternalUserTypes(List<String> guestOrExternalUserTypes) {
-            this.guestOrExternalUserTypes = Objects.requireNonNull(guestOrExternalUserTypes);
+            if (guestOrExternalUserTypes == null) {
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser", "guestOrExternalUserTypes");
+            }
+            this.guestOrExternalUserTypes = guestOrExternalUserTypes;
             return this;
         }
         public Builder guestOrExternalUserTypes(String... guestOrExternalUserTypes) {

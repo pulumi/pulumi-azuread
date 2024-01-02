@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ApplicationFromTemplateArgs extends com.pulumi.resources.Reso
         }
 
         public ApplicationFromTemplateArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.templateId = Objects.requireNonNull($.templateId, "expected parameter 'templateId' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("ApplicationFromTemplateArgs", "displayName");
+            }
+            if ($.templateId == null) {
+                throw new MissingRequiredPropertyException("ApplicationFromTemplateArgs", "templateId");
+            }
             return $;
         }
     }

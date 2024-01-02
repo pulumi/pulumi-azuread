@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,6 +59,7 @@ public final class ConditionalAccessPolicyConditionsLocations {
 
         @CustomType.Setter
         public Builder excludedLocations(@Nullable List<String> excludedLocations) {
+
             this.excludedLocations = excludedLocations;
             return this;
         }
@@ -66,7 +68,10 @@ public final class ConditionalAccessPolicyConditionsLocations {
         }
         @CustomType.Setter
         public Builder includedLocations(List<String> includedLocations) {
-            this.includedLocations = Objects.requireNonNull(includedLocations);
+            if (includedLocations == null) {
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsLocations", "includedLocations");
+            }
+            this.includedLocations = includedLocations;
             return this;
         }
         public Builder includedLocations(String... includedLocations) {

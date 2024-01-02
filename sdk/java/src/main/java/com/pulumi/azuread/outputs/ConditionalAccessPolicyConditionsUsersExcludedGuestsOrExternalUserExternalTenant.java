@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,6 +59,7 @@ public final class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExterna
 
         @CustomType.Setter
         public Builder members(@Nullable List<String> members) {
+
             this.members = members;
             return this;
         }
@@ -66,7 +68,10 @@ public final class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExterna
         }
         @CustomType.Setter
         public Builder membershipKind(String membershipKind) {
-            this.membershipKind = Objects.requireNonNull(membershipKind);
+            if (membershipKind == null) {
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant", "membershipKind");
+            }
+            this.membershipKind = membershipKind;
             return this;
         }
         public ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant build() {

@@ -88,21 +88,25 @@ public final class ApplicationWeb {
 
         @CustomType.Setter
         public Builder homepageUrl(@Nullable String homepageUrl) {
+
             this.homepageUrl = homepageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder implicitGrant(@Nullable ApplicationWebImplicitGrant implicitGrant) {
+
             this.implicitGrant = implicitGrant;
             return this;
         }
         @CustomType.Setter
         public Builder logoutUrl(@Nullable String logoutUrl) {
+
             this.logoutUrl = logoutUrl;
             return this;
         }
         @CustomType.Setter
         public Builder redirectUris(@Nullable List<String> redirectUris) {
+
             this.redirectUris = redirectUris;
             return this;
         }

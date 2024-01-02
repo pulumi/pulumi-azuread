@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -155,7 +156,10 @@ public final class GetApplicationTemplateResult {
 
         @CustomType.Setter
         public Builder categories(List<String> categories) {
-            this.categories = Objects.requireNonNull(categories);
+            if (categories == null) {
+              throw new MissingRequiredPropertyException("GetApplicationTemplateResult", "categories");
+            }
+            this.categories = categories;
             return this;
         }
         public Builder categories(String... categories) {
@@ -163,32 +167,50 @@ public final class GetApplicationTemplateResult {
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetApplicationTemplateResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder homepageUrl(String homepageUrl) {
-            this.homepageUrl = Objects.requireNonNull(homepageUrl);
+            if (homepageUrl == null) {
+              throw new MissingRequiredPropertyException("GetApplicationTemplateResult", "homepageUrl");
+            }
+            this.homepageUrl = homepageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApplicationTemplateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logoUrl(String logoUrl) {
-            this.logoUrl = Objects.requireNonNull(logoUrl);
+            if (logoUrl == null) {
+              throw new MissingRequiredPropertyException("GetApplicationTemplateResult", "logoUrl");
+            }
+            this.logoUrl = logoUrl;
             return this;
         }
         @CustomType.Setter
         public Builder publisher(String publisher) {
-            this.publisher = Objects.requireNonNull(publisher);
+            if (publisher == null) {
+              throw new MissingRequiredPropertyException("GetApplicationTemplateResult", "publisher");
+            }
+            this.publisher = publisher;
             return this;
         }
         @CustomType.Setter
         public Builder supportedProvisioningTypes(List<String> supportedProvisioningTypes) {
-            this.supportedProvisioningTypes = Objects.requireNonNull(supportedProvisioningTypes);
+            if (supportedProvisioningTypes == null) {
+              throw new MissingRequiredPropertyException("GetApplicationTemplateResult", "supportedProvisioningTypes");
+            }
+            this.supportedProvisioningTypes = supportedProvisioningTypes;
             return this;
         }
         public Builder supportedProvisioningTypes(String... supportedProvisioningTypes) {
@@ -196,7 +218,10 @@ public final class GetApplicationTemplateResult {
         }
         @CustomType.Setter
         public Builder supportedSingleSignOnModes(List<String> supportedSingleSignOnModes) {
-            this.supportedSingleSignOnModes = Objects.requireNonNull(supportedSingleSignOnModes);
+            if (supportedSingleSignOnModes == null) {
+              throw new MissingRequiredPropertyException("GetApplicationTemplateResult", "supportedSingleSignOnModes");
+            }
+            this.supportedSingleSignOnModes = supportedSingleSignOnModes;
             return this;
         }
         public Builder supportedSingleSignOnModes(String... supportedSingleSignOnModes) {
@@ -204,7 +229,10 @@ public final class GetApplicationTemplateResult {
         }
         @CustomType.Setter
         public Builder templateId(String templateId) {
-            this.templateId = Objects.requireNonNull(templateId);
+            if (templateId == null) {
+              throw new MissingRequiredPropertyException("GetApplicationTemplateResult", "templateId");
+            }
+            this.templateId = templateId;
             return this;
         }
         public GetApplicationTemplateResult build() {

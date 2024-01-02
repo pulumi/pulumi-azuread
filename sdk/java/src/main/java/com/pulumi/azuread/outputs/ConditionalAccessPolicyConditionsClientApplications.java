@@ -58,6 +58,7 @@ public final class ConditionalAccessPolicyConditionsClientApplications {
 
         @CustomType.Setter
         public Builder excludedServicePrincipals(@Nullable List<String> excludedServicePrincipals) {
+
             this.excludedServicePrincipals = excludedServicePrincipals;
             return this;
         }
@@ -66,6 +67,7 @@ public final class ConditionalAccessPolicyConditionsClientApplications {
         }
         @CustomType.Setter
         public Builder includedServicePrincipals(@Nullable List<String> includedServicePrincipals) {
+
             this.includedServicePrincipals = includedServicePrincipals;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.GetUsersUser;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -129,7 +130,10 @@ public final class GetUsersResult {
 
         @CustomType.Setter
         public Builder employeeIds(List<String> employeeIds) {
-            this.employeeIds = Objects.requireNonNull(employeeIds);
+            if (employeeIds == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "employeeIds");
+            }
+            this.employeeIds = employeeIds;
             return this;
         }
         public Builder employeeIds(String... employeeIds) {
@@ -137,17 +141,24 @@ public final class GetUsersResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreMissing(@Nullable Boolean ignoreMissing) {
+
             this.ignoreMissing = ignoreMissing;
             return this;
         }
         @CustomType.Setter
         public Builder mailNicknames(List<String> mailNicknames) {
-            this.mailNicknames = Objects.requireNonNull(mailNicknames);
+            if (mailNicknames == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "mailNicknames");
+            }
+            this.mailNicknames = mailNicknames;
             return this;
         }
         public Builder mailNicknames(String... mailNicknames) {
@@ -155,7 +166,10 @@ public final class GetUsersResult {
         }
         @CustomType.Setter
         public Builder objectIds(List<String> objectIds) {
-            this.objectIds = Objects.requireNonNull(objectIds);
+            if (objectIds == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "objectIds");
+            }
+            this.objectIds = objectIds;
             return this;
         }
         public Builder objectIds(String... objectIds) {
@@ -163,12 +177,16 @@ public final class GetUsersResult {
         }
         @CustomType.Setter
         public Builder returnAll(@Nullable Boolean returnAll) {
+
             this.returnAll = returnAll;
             return this;
         }
         @CustomType.Setter
         public Builder userPrincipalNames(List<String> userPrincipalNames) {
-            this.userPrincipalNames = Objects.requireNonNull(userPrincipalNames);
+            if (userPrincipalNames == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "userPrincipalNames");
+            }
+            this.userPrincipalNames = userPrincipalNames;
             return this;
         }
         public Builder userPrincipalNames(String... userPrincipalNames) {
@@ -176,7 +194,10 @@ public final class GetUsersResult {
         }
         @CustomType.Setter
         public Builder users(List<GetUsersUser> users) {
-            this.users = Objects.requireNonNull(users);
+            if (users == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "users");
+            }
+            this.users = users;
             return this;
         }
         public Builder users(GetUsersUser... users) {

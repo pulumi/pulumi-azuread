@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,8 +162,12 @@ public final class AuthenticationStrengthPolicyArgs extends com.pulumi.resources
         }
 
         public AuthenticationStrengthPolicyArgs build() {
-            $.allowedCombinations = Objects.requireNonNull($.allowedCombinations, "expected parameter 'allowedCombinations' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.allowedCombinations == null) {
+                throw new MissingRequiredPropertyException("AuthenticationStrengthPolicyArgs", "allowedCombinations");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("AuthenticationStrengthPolicyArgs", "displayName");
+            }
             return $;
         }
     }

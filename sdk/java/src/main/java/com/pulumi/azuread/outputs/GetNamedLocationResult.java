@@ -6,6 +6,7 @@ package com.pulumi.azuread.outputs;
 import com.pulumi.azuread.outputs.GetNamedLocationCountry;
 import com.pulumi.azuread.outputs.GetNamedLocationIp;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -63,7 +64,10 @@ public final class GetNamedLocationResult {
 
         @CustomType.Setter
         public Builder countries(List<GetNamedLocationCountry> countries) {
-            this.countries = Objects.requireNonNull(countries);
+            if (countries == null) {
+              throw new MissingRequiredPropertyException("GetNamedLocationResult", "countries");
+            }
+            this.countries = countries;
             return this;
         }
         public Builder countries(GetNamedLocationCountry... countries) {
@@ -71,17 +75,26 @@ public final class GetNamedLocationResult {
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetNamedLocationResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNamedLocationResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ips(List<GetNamedLocationIp> ips) {
-            this.ips = Objects.requireNonNull(ips);
+            if (ips == null) {
+              throw new MissingRequiredPropertyException("GetNamedLocationResult", "ips");
+            }
+            this.ips = ips;
             return this;
         }
         public Builder ips(GetNamedLocationIp... ips) {

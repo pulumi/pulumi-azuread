@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class AccessPackageCatalogRoleAssignmentArgs extends com.pulumi.res
         }
 
         public AccessPackageCatalogRoleAssignmentArgs build() {
-            $.catalogId = Objects.requireNonNull($.catalogId, "expected parameter 'catalogId' to be non-null");
-            $.principalObjectId = Objects.requireNonNull($.principalObjectId, "expected parameter 'principalObjectId' to be non-null");
-            $.roleId = Objects.requireNonNull($.roleId, "expected parameter 'roleId' to be non-null");
+            if ($.catalogId == null) {
+                throw new MissingRequiredPropertyException("AccessPackageCatalogRoleAssignmentArgs", "catalogId");
+            }
+            if ($.principalObjectId == null) {
+                throw new MissingRequiredPropertyException("AccessPackageCatalogRoleAssignmentArgs", "principalObjectId");
+            }
+            if ($.roleId == null) {
+                throw new MissingRequiredPropertyException("AccessPackageCatalogRoleAssignmentArgs", "roleId");
+            }
             return $;
         }
     }
