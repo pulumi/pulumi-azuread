@@ -9,6 +9,7 @@ import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionArgs;
 import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyRequestorSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -426,9 +427,15 @@ public final class AccessPackageAssignmentPolicyArgs extends com.pulumi.resource
         }
 
         public AccessPackageAssignmentPolicyArgs build() {
-            $.accessPackageId = Objects.requireNonNull($.accessPackageId, "expected parameter 'accessPackageId' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.accessPackageId == null) {
+                throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyArgs", "accessPackageId");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyArgs", "description");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyArgs", "displayName");
+            }
             return $;
         }
     }

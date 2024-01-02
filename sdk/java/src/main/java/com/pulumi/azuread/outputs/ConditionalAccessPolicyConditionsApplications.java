@@ -72,6 +72,7 @@ public final class ConditionalAccessPolicyConditionsApplications {
 
         @CustomType.Setter
         public Builder excludedApplications(@Nullable List<String> excludedApplications) {
+
             this.excludedApplications = excludedApplications;
             return this;
         }
@@ -80,6 +81,7 @@ public final class ConditionalAccessPolicyConditionsApplications {
         }
         @CustomType.Setter
         public Builder includedApplications(@Nullable List<String> includedApplications) {
+
             this.includedApplications = includedApplications;
             return this;
         }
@@ -88,6 +90,7 @@ public final class ConditionalAccessPolicyConditionsApplications {
         }
         @CustomType.Setter
         public Builder includedUserActions(@Nullable List<String> includedUserActions) {
+
             this.includedUserActions = includedUserActions;
             return this;
         }

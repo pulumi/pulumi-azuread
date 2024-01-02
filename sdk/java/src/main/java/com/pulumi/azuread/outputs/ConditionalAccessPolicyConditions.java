@@ -10,6 +10,7 @@ import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsLocations;
 import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsPlatforms;
 import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsUsers;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -177,12 +178,18 @@ public final class ConditionalAccessPolicyConditions {
 
         @CustomType.Setter
         public Builder applications(ConditionalAccessPolicyConditionsApplications applications) {
-            this.applications = Objects.requireNonNull(applications);
+            if (applications == null) {
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditions", "applications");
+            }
+            this.applications = applications;
             return this;
         }
         @CustomType.Setter
         public Builder clientAppTypes(List<String> clientAppTypes) {
-            this.clientAppTypes = Objects.requireNonNull(clientAppTypes);
+            if (clientAppTypes == null) {
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditions", "clientAppTypes");
+            }
+            this.clientAppTypes = clientAppTypes;
             return this;
         }
         public Builder clientAppTypes(String... clientAppTypes) {
@@ -190,26 +197,31 @@ public final class ConditionalAccessPolicyConditions {
         }
         @CustomType.Setter
         public Builder clientApplications(@Nullable ConditionalAccessPolicyConditionsClientApplications clientApplications) {
+
             this.clientApplications = clientApplications;
             return this;
         }
         @CustomType.Setter
         public Builder devices(@Nullable ConditionalAccessPolicyConditionsDevices devices) {
+
             this.devices = devices;
             return this;
         }
         @CustomType.Setter
         public Builder locations(@Nullable ConditionalAccessPolicyConditionsLocations locations) {
+
             this.locations = locations;
             return this;
         }
         @CustomType.Setter
         public Builder platforms(@Nullable ConditionalAccessPolicyConditionsPlatforms platforms) {
+
             this.platforms = platforms;
             return this;
         }
         @CustomType.Setter
         public Builder servicePrincipalRiskLevels(@Nullable List<String> servicePrincipalRiskLevels) {
+
             this.servicePrincipalRiskLevels = servicePrincipalRiskLevels;
             return this;
         }
@@ -218,6 +230,7 @@ public final class ConditionalAccessPolicyConditions {
         }
         @CustomType.Setter
         public Builder signInRiskLevels(@Nullable List<String> signInRiskLevels) {
+
             this.signInRiskLevels = signInRiskLevels;
             return this;
         }
@@ -226,6 +239,7 @@ public final class ConditionalAccessPolicyConditions {
         }
         @CustomType.Setter
         public Builder userRiskLevels(@Nullable List<String> userRiskLevels) {
+
             this.userRiskLevels = userRiskLevels;
             return this;
         }
@@ -234,7 +248,10 @@ public final class ConditionalAccessPolicyConditions {
         }
         @CustomType.Setter
         public Builder users(ConditionalAccessPolicyConditionsUsers users) {
-            this.users = Objects.requireNonNull(users);
+            if (users == null) {
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditions", "users");
+            }
+            this.users = users;
             return this;
         }
         public ConditionalAccessPolicyConditions build() {

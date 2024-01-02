@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -59,11 +60,15 @@ public final class AccessPackageAssignmentPolicyQuestionText {
 
         @CustomType.Setter
         public Builder defaultText(String defaultText) {
-            this.defaultText = Objects.requireNonNull(defaultText);
+            if (defaultText == null) {
+              throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyQuestionText", "defaultText");
+            }
+            this.defaultText = defaultText;
             return this;
         }
         @CustomType.Setter
         public Builder localizedTexts(@Nullable List<AccessPackageAssignmentPolicyQuestionTextLocalizedText> localizedTexts) {
+
             this.localizedTexts = localizedTexts;
             return this;
         }

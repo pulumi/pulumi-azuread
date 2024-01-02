@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -73,17 +74,22 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlt
 
         @CustomType.Setter
         public Builder backup(@Nullable Boolean backup) {
+
             this.backup = backup;
             return this;
         }
         @CustomType.Setter
         public Builder objectId(@Nullable String objectId) {
+
             this.objectId = objectId;
             return this;
         }
         @CustomType.Setter
         public Builder subjectType(String subjectType) {
-            this.subjectType = Objects.requireNonNull(subjectType);
+            if (subjectType == null) {
+              throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover", "subjectType");
+            }
+            this.subjectType = subjectType;
             return this;
         }
         public AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover build() {

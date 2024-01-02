@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -91,32 +92,48 @@ public final class GetAccessPackageResult {
 
         @CustomType.Setter
         public Builder catalogId(@Nullable String catalogId) {
+
             this.catalogId = catalogId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder hidden(Boolean hidden) {
-            this.hidden = Objects.requireNonNull(hidden);
+            if (hidden == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageResult", "hidden");
+            }
+            this.hidden = hidden;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder objectId(String objectId) {
-            this.objectId = Objects.requireNonNull(objectId);
+            if (objectId == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageResult", "objectId");
+            }
+            this.objectId = objectId;
             return this;
         }
         public GetAccessPackageResult build() {

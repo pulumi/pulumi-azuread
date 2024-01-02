@@ -6,6 +6,7 @@ package com.pulumi.azuread;
 import com.pulumi.azuread.inputs.SynchronizationSecretCredentialArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -125,7 +126,9 @@ public final class SynchronizationSecretArgs extends com.pulumi.resources.Resour
         }
 
         public SynchronizationSecretArgs build() {
-            $.servicePrincipalId = Objects.requireNonNull($.servicePrincipalId, "expected parameter 'servicePrincipalId' to be non-null");
+            if ($.servicePrincipalId == null) {
+                throw new MissingRequiredPropertyException("SynchronizationSecretArgs", "servicePrincipalId");
+            }
             return $;
         }
     }

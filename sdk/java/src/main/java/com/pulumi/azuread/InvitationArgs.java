@@ -6,6 +6,7 @@ package com.pulumi.azuread;
 import com.pulumi.azuread.inputs.InvitationMessageArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -225,8 +226,12 @@ public final class InvitationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InvitationArgs build() {
-            $.redirectUrl = Objects.requireNonNull($.redirectUrl, "expected parameter 'redirectUrl' to be non-null");
-            $.userEmailAddress = Objects.requireNonNull($.userEmailAddress, "expected parameter 'userEmailAddress' to be non-null");
+            if ($.redirectUrl == null) {
+                throw new MissingRequiredPropertyException("InvitationArgs", "redirectUrl");
+            }
+            if ($.userEmailAddress == null) {
+                throw new MissingRequiredPropertyException("InvitationArgs", "userEmailAddress");
+            }
             return $;
         }
     }

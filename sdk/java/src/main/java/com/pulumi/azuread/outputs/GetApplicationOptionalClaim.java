@@ -74,6 +74,7 @@ public final class GetApplicationOptionalClaim {
 
         @CustomType.Setter
         public Builder accessTokens(@Nullable List<GetApplicationOptionalClaimAccessToken> accessTokens) {
+
             this.accessTokens = accessTokens;
             return this;
         }
@@ -82,6 +83,7 @@ public final class GetApplicationOptionalClaim {
         }
         @CustomType.Setter
         public Builder idTokens(@Nullable List<GetApplicationOptionalClaimIdToken> idTokens) {
+
             this.idTokens = idTokens;
             return this;
         }
@@ -90,6 +92,7 @@ public final class GetApplicationOptionalClaim {
         }
         @CustomType.Setter
         public Builder saml2Tokens(@Nullable List<GetApplicationOptionalClaimSaml2Token> saml2Tokens) {
+
             this.saml2Tokens = saml2Tokens;
             return this;
         }

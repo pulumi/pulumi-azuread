@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class ConditionalAccessPolicyConditionsDevicesFilter {
 
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsDevicesFilter", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder rule(String rule) {
-            this.rule = Objects.requireNonNull(rule);
+            if (rule == null) {
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsDevicesFilter", "rule");
+            }
+            this.rule = rule;
             return this;
         }
         public ConditionalAccessPolicyConditionsDevicesFilter build() {

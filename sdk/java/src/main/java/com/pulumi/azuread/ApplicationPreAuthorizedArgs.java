@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -267,7 +268,9 @@ public final class ApplicationPreAuthorizedArgs extends com.pulumi.resources.Res
         }
 
         public ApplicationPreAuthorizedArgs build() {
-            $.permissionIds = Objects.requireNonNull($.permissionIds, "expected parameter 'permissionIds' to be non-null");
+            if ($.permissionIds == null) {
+                throw new MissingRequiredPropertyException("ApplicationPreAuthorizedArgs", "permissionIds");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -277,8 +278,12 @@ public final class DirectoryRoleAssignmentArgs extends com.pulumi.resources.Reso
         }
 
         public DirectoryRoleAssignmentArgs build() {
-            $.principalObjectId = Objects.requireNonNull($.principalObjectId, "expected parameter 'principalObjectId' to be non-null");
-            $.roleId = Objects.requireNonNull($.roleId, "expected parameter 'roleId' to be non-null");
+            if ($.principalObjectId == null) {
+                throw new MissingRequiredPropertyException("DirectoryRoleAssignmentArgs", "principalObjectId");
+            }
+            if ($.roleId == null) {
+                throw new MissingRequiredPropertyException("DirectoryRoleAssignmentArgs", "roleId");
+            }
             return $;
         }
     }

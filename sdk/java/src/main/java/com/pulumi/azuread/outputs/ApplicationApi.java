@@ -90,6 +90,7 @@ public final class ApplicationApi {
 
         @CustomType.Setter
         public Builder knownClientApplications(@Nullable List<String> knownClientApplications) {
+
             this.knownClientApplications = knownClientApplications;
             return this;
         }
@@ -98,11 +99,13 @@ public final class ApplicationApi {
         }
         @CustomType.Setter
         public Builder mappedClaimsEnabled(@Nullable Boolean mappedClaimsEnabled) {
+
             this.mappedClaimsEnabled = mappedClaimsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder oauth2PermissionScopes(@Nullable List<ApplicationApiOauth2PermissionScope> oauth2PermissionScopes) {
+
             this.oauth2PermissionScopes = oauth2PermissionScopes;
             return this;
         }
@@ -111,6 +114,7 @@ public final class ApplicationApi {
         }
         @CustomType.Setter
         public Builder requestedAccessTokenVersion(@Nullable Integer requestedAccessTokenVersion) {
+
             this.requestedAccessTokenVersion = requestedAccessTokenVersion;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -208,52 +209,82 @@ public final class GetServicePrincipalsServicePrincipal {
 
         @CustomType.Setter
         public Builder accountEnabled(Boolean accountEnabled) {
-            this.accountEnabled = Objects.requireNonNull(accountEnabled);
+            if (accountEnabled == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "accountEnabled");
+            }
+            this.accountEnabled = accountEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder appRoleAssignmentRequired(Boolean appRoleAssignmentRequired) {
-            this.appRoleAssignmentRequired = Objects.requireNonNull(appRoleAssignmentRequired);
+            if (appRoleAssignmentRequired == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "appRoleAssignmentRequired");
+            }
+            this.appRoleAssignmentRequired = appRoleAssignmentRequired;
             return this;
         }
         @CustomType.Setter
         public Builder applicationId(String applicationId) {
-            this.applicationId = Objects.requireNonNull(applicationId);
+            if (applicationId == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "applicationId");
+            }
+            this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
         public Builder applicationTenantId(String applicationTenantId) {
-            this.applicationTenantId = Objects.requireNonNull(applicationTenantId);
+            if (applicationTenantId == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "applicationTenantId");
+            }
+            this.applicationTenantId = applicationTenantId;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder objectId(String objectId) {
-            this.objectId = Objects.requireNonNull(objectId);
+            if (objectId == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "objectId");
+            }
+            this.objectId = objectId;
             return this;
         }
         @CustomType.Setter
         public Builder preferredSingleSignOnMode(String preferredSingleSignOnMode) {
-            this.preferredSingleSignOnMode = Objects.requireNonNull(preferredSingleSignOnMode);
+            if (preferredSingleSignOnMode == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "preferredSingleSignOnMode");
+            }
+            this.preferredSingleSignOnMode = preferredSingleSignOnMode;
             return this;
         }
         @CustomType.Setter
         public Builder samlMetadataUrl(String samlMetadataUrl) {
-            this.samlMetadataUrl = Objects.requireNonNull(samlMetadataUrl);
+            if (samlMetadataUrl == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "samlMetadataUrl");
+            }
+            this.samlMetadataUrl = samlMetadataUrl;
             return this;
         }
         @CustomType.Setter
         public Builder servicePrincipalNames(List<String> servicePrincipalNames) {
-            this.servicePrincipalNames = Objects.requireNonNull(servicePrincipalNames);
+            if (servicePrincipalNames == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "servicePrincipalNames");
+            }
+            this.servicePrincipalNames = servicePrincipalNames;
             return this;
         }
         public Builder servicePrincipalNames(String... servicePrincipalNames) {
@@ -261,12 +292,18 @@ public final class GetServicePrincipalsServicePrincipal {
         }
         @CustomType.Setter
         public Builder signInAudience(String signInAudience) {
-            this.signInAudience = Objects.requireNonNull(signInAudience);
+            if (signInAudience == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "signInAudience");
+            }
+            this.signInAudience = signInAudience;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -274,7 +311,10 @@ public final class GetServicePrincipalsServicePrincipal {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetServicePrincipalsServicePrincipal build() {

@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class UserFlowAttributeArgs extends com.pulumi.resources.ResourceAr
         }
 
         public UserFlowAttributeArgs build() {
-            $.dataType = Objects.requireNonNull($.dataType, "expected parameter 'dataType' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.dataType == null) {
+                throw new MissingRequiredPropertyException("UserFlowAttributeArgs", "dataType");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("UserFlowAttributeArgs", "description");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("UserFlowAttributeArgs", "displayName");
+            }
             return $;
         }
     }

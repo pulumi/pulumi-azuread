@@ -4,6 +4,7 @@
 package com.pulumi.azuread.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetNamedLocationPlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetNamedLocationPlainArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("GetNamedLocationPlainArgs", "displayName");
+            }
             return $;
         }
     }

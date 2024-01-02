@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetAccessPackageCatalogRoleResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageCatalogRoleResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageCatalogRoleResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageCatalogRoleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder objectId(String objectId) {
-            this.objectId = Objects.requireNonNull(objectId);
+            if (objectId == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageCatalogRoleResult", "objectId");
+            }
+            this.objectId = objectId;
             return this;
         }
         @CustomType.Setter
         public Builder templateId(String templateId) {
-            this.templateId = Objects.requireNonNull(templateId);
+            if (templateId == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageCatalogRoleResult", "templateId");
+            }
+            this.templateId = templateId;
             return this;
         }
         public GetAccessPackageCatalogRoleResult build() {

@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetServicePrincipalFeature {
 
         @CustomType.Setter
         public Builder customSingleSignOnApp(Boolean customSingleSignOnApp) {
-            this.customSingleSignOnApp = Objects.requireNonNull(customSingleSignOnApp);
+            if (customSingleSignOnApp == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalFeature", "customSingleSignOnApp");
+            }
+            this.customSingleSignOnApp = customSingleSignOnApp;
             return this;
         }
         @CustomType.Setter
         public Builder enterpriseApplication(Boolean enterpriseApplication) {
-            this.enterpriseApplication = Objects.requireNonNull(enterpriseApplication);
+            if (enterpriseApplication == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalFeature", "enterpriseApplication");
+            }
+            this.enterpriseApplication = enterpriseApplication;
             return this;
         }
         @CustomType.Setter
         public Builder galleryApplication(Boolean galleryApplication) {
-            this.galleryApplication = Objects.requireNonNull(galleryApplication);
+            if (galleryApplication == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalFeature", "galleryApplication");
+            }
+            this.galleryApplication = galleryApplication;
             return this;
         }
         @CustomType.Setter
         public Builder visibleToUsers(Boolean visibleToUsers) {
-            this.visibleToUsers = Objects.requireNonNull(visibleToUsers);
+            if (visibleToUsers == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalFeature", "visibleToUsers");
+            }
+            this.visibleToUsers = visibleToUsers;
             return this;
         }
         public GetServicePrincipalFeature build() {

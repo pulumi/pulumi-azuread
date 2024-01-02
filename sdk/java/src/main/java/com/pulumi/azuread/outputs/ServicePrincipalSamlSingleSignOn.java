@@ -44,6 +44,7 @@ public final class ServicePrincipalSamlSingleSignOn {
 
         @CustomType.Setter
         public Builder relayState(@Nullable String relayState) {
+
             this.relayState = relayState;
             return this;
         }

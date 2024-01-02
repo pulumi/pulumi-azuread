@@ -5,6 +5,7 @@ package com.pulumi.azuread.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -199,7 +200,9 @@ public final class ApplicationOptionalClaimsIdTokenArgs extends com.pulumi.resou
         }
 
         public ApplicationOptionalClaimsIdTokenArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ApplicationOptionalClaimsIdTokenArgs", "name");
+            }
             return $;
         }
     }

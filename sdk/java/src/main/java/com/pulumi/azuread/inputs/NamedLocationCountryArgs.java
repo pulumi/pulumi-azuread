@@ -5,6 +5,7 @@ package com.pulumi.azuread.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -125,7 +126,9 @@ public final class NamedLocationCountryArgs extends com.pulumi.resources.Resourc
         }
 
         public NamedLocationCountryArgs build() {
-            $.countriesAndRegions = Objects.requireNonNull($.countriesAndRegions, "expected parameter 'countriesAndRegions' to be non-null");
+            if ($.countriesAndRegions == null) {
+                throw new MissingRequiredPropertyException("NamedLocationCountryArgs", "countriesAndRegions");
+            }
             return $;
         }
     }

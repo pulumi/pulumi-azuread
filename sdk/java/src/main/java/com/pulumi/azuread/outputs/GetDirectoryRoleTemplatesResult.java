@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.GetDirectoryRoleTemplatesRoleTemplate;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,12 +73,18 @@ public final class GetDirectoryRoleTemplatesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDirectoryRoleTemplatesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder objectIds(List<String> objectIds) {
-            this.objectIds = Objects.requireNonNull(objectIds);
+            if (objectIds == null) {
+              throw new MissingRequiredPropertyException("GetDirectoryRoleTemplatesResult", "objectIds");
+            }
+            this.objectIds = objectIds;
             return this;
         }
         public Builder objectIds(String... objectIds) {
@@ -85,7 +92,10 @@ public final class GetDirectoryRoleTemplatesResult {
         }
         @CustomType.Setter
         public Builder roleTemplates(List<GetDirectoryRoleTemplatesRoleTemplate> roleTemplates) {
-            this.roleTemplates = Objects.requireNonNull(roleTemplates);
+            if (roleTemplates == null) {
+              throw new MissingRequiredPropertyException("GetDirectoryRoleTemplatesResult", "roleTemplates");
+            }
+            this.roleTemplates = roleTemplates;
             return this;
         }
         public Builder roleTemplates(GetDirectoryRoleTemplatesRoleTemplate... roleTemplates) {

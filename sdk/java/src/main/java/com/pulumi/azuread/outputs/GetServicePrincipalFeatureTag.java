@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetServicePrincipalFeatureTag {
 
         @CustomType.Setter
         public Builder customSingleSignOn(Boolean customSingleSignOn) {
-            this.customSingleSignOn = Objects.requireNonNull(customSingleSignOn);
+            if (customSingleSignOn == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalFeatureTag", "customSingleSignOn");
+            }
+            this.customSingleSignOn = customSingleSignOn;
             return this;
         }
         @CustomType.Setter
         public Builder enterprise(Boolean enterprise) {
-            this.enterprise = Objects.requireNonNull(enterprise);
+            if (enterprise == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalFeatureTag", "enterprise");
+            }
+            this.enterprise = enterprise;
             return this;
         }
         @CustomType.Setter
         public Builder gallery(Boolean gallery) {
-            this.gallery = Objects.requireNonNull(gallery);
+            if (gallery == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalFeatureTag", "gallery");
+            }
+            this.gallery = gallery;
             return this;
         }
         @CustomType.Setter
         public Builder hide(Boolean hide) {
-            this.hide = Objects.requireNonNull(hide);
+            if (hide == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalFeatureTag", "hide");
+            }
+            this.hide = hide;
             return this;
         }
         public GetServicePrincipalFeatureTag build() {

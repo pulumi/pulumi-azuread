@@ -4,6 +4,7 @@
 package com.pulumi.azuread.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetDirectoryObjectPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetDirectoryObjectPlainArgs build() {
-            $.objectId = Objects.requireNonNull($.objectId, "expected parameter 'objectId' to be non-null");
+            if ($.objectId == null) {
+                throw new MissingRequiredPropertyException("GetDirectoryObjectPlainArgs", "objectId");
+            }
             return $;
         }
     }

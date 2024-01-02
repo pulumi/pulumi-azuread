@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ApplicationOwnerArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ApplicationOwnerArgs build() {
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
-            $.ownerObjectId = Objects.requireNonNull($.ownerObjectId, "expected parameter 'ownerObjectId' to be non-null");
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("ApplicationOwnerArgs", "applicationId");
+            }
+            if ($.ownerObjectId == null) {
+                throw new MissingRequiredPropertyException("ApplicationOwnerArgs", "ownerObjectId");
+            }
             return $;
         }
     }

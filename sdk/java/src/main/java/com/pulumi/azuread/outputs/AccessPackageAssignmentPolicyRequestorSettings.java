@@ -75,6 +75,7 @@ public final class AccessPackageAssignmentPolicyRequestorSettings {
 
         @CustomType.Setter
         public Builder requestors(@Nullable List<AccessPackageAssignmentPolicyRequestorSettingsRequestor> requestors) {
+
             this.requestors = requestors;
             return this;
         }
@@ -83,11 +84,13 @@ public final class AccessPackageAssignmentPolicyRequestorSettings {
         }
         @CustomType.Setter
         public Builder requestsAccepted(@Nullable Boolean requestsAccepted) {
+
             this.requestsAccepted = requestsAccepted;
             return this;
         }
         @CustomType.Setter
         public Builder scopeType(@Nullable String scopeType) {
+
             this.scopeType = scopeType;
             return this;
         }

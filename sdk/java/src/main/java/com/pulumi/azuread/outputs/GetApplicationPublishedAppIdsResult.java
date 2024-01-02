@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetApplicationPublishedAppIdsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApplicationPublishedAppIdsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder result(Map<String,String> result) {
-            this.result = Objects.requireNonNull(result);
+            if (result == null) {
+              throw new MissingRequiredPropertyException("GetApplicationPublishedAppIdsResult", "result");
+            }
+            this.result = result;
             return this;
         }
         public GetApplicationPublishedAppIdsResult build() {

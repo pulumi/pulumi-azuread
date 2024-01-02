@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -97,32 +98,50 @@ public final class GetAccessPackageCatalogResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageCatalogResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageCatalogResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder externallyVisible(Boolean externallyVisible) {
-            this.externallyVisible = Objects.requireNonNull(externallyVisible);
+            if (externallyVisible == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageCatalogResult", "externallyVisible");
+            }
+            this.externallyVisible = externallyVisible;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageCatalogResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder objectId(String objectId) {
-            this.objectId = Objects.requireNonNull(objectId);
+            if (objectId == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageCatalogResult", "objectId");
+            }
+            this.objectId = objectId;
             return this;
         }
         @CustomType.Setter
         public Builder published(Boolean published) {
-            this.published = Objects.requireNonNull(published);
+            if (published == null) {
+              throw new MissingRequiredPropertyException("GetAccessPackageCatalogResult", "published");
+            }
+            this.published = published;
             return this;
         }
         public GetAccessPackageCatalogResult build() {

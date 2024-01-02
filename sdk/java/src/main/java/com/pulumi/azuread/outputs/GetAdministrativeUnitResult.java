@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -113,22 +114,34 @@ public final class GetAdministrativeUnitResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAdministrativeUnitResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetAdministrativeUnitResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAdministrativeUnitResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder members(List<String> members) {
-            this.members = Objects.requireNonNull(members);
+            if (members == null) {
+              throw new MissingRequiredPropertyException("GetAdministrativeUnitResult", "members");
+            }
+            this.members = members;
             return this;
         }
         public Builder members(String... members) {
@@ -136,12 +149,18 @@ public final class GetAdministrativeUnitResult {
         }
         @CustomType.Setter
         public Builder objectId(String objectId) {
-            this.objectId = Objects.requireNonNull(objectId);
+            if (objectId == null) {
+              throw new MissingRequiredPropertyException("GetAdministrativeUnitResult", "objectId");
+            }
+            this.objectId = objectId;
             return this;
         }
         @CustomType.Setter
         public Builder visibility(String visibility) {
-            this.visibility = Objects.requireNonNull(visibility);
+            if (visibility == null) {
+              throw new MissingRequiredPropertyException("GetAdministrativeUnitResult", "visibility");
+            }
+            this.visibility = visibility;
             return this;
         }
         public GetAdministrativeUnitResult build() {

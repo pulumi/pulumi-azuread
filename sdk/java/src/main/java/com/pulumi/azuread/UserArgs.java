@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -1360,8 +1361,12 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.userPrincipalName = Objects.requireNonNull($.userPrincipalName, "expected parameter 'userPrincipalName' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "displayName");
+            }
+            if ($.userPrincipalName == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "userPrincipalName");
+            }
             return $;
         }
     }

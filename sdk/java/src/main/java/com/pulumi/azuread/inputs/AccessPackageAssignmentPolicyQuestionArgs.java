@@ -7,6 +7,7 @@ import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionChoiceArgs
 import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionTextArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
@@ -201,7 +202,9 @@ public final class AccessPackageAssignmentPolicyQuestionArgs extends com.pulumi.
         }
 
         public AccessPackageAssignmentPolicyQuestionArgs build() {
-            $.text = Objects.requireNonNull($.text, "expected parameter 'text' to be non-null");
+            if ($.text == null) {
+                throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyQuestionArgs", "text");
+            }
             return $;
         }
     }

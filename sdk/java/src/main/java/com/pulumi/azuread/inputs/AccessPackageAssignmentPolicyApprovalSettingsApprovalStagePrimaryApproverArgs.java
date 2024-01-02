@@ -5,6 +5,7 @@ package com.pulumi.azuread.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -151,7 +152,9 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePri
         }
 
         public AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs build() {
-            $.subjectType = Objects.requireNonNull($.subjectType, "expected parameter 'subjectType' to be non-null");
+            if ($.subjectType == null) {
+                throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs", "subjectType");
+            }
             return $;
         }
     }

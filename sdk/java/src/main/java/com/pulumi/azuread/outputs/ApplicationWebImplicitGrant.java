@@ -58,11 +58,13 @@ public final class ApplicationWebImplicitGrant {
 
         @CustomType.Setter
         public Builder accessTokenIssuanceEnabled(@Nullable Boolean accessTokenIssuanceEnabled) {
+
             this.accessTokenIssuanceEnabled = accessTokenIssuanceEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder idTokenIssuanceEnabled(@Nullable Boolean idTokenIssuanceEnabled) {
+
             this.idTokenIssuanceEnabled = idTokenIssuanceEnabled;
             return this;
         }

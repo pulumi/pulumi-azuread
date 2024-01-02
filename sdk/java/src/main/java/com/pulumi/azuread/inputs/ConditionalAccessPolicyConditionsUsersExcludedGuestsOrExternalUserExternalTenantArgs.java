@@ -5,6 +5,7 @@ package com.pulumi.azuread.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -124,7 +125,9 @@ public final class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExterna
         }
 
         public ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs build() {
-            $.membershipKind = Objects.requireNonNull($.membershipKind, "expected parameter 'membershipKind' to be non-null");
+            if ($.membershipKind == null) {
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs", "membershipKind");
+            }
             return $;
         }
     }

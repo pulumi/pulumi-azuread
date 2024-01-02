@@ -5,6 +5,7 @@ package com.pulumi.azuread.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class CustomDirectoryRolePermissionArgs extends com.pulumi.resource
         }
 
         public CustomDirectoryRolePermissionArgs build() {
-            $.allowedResourceActions = Objects.requireNonNull($.allowedResourceActions, "expected parameter 'allowedResourceActions' to be non-null");
+            if ($.allowedResourceActions == null) {
+                throw new MissingRequiredPropertyException("CustomDirectoryRolePermissionArgs", "allowedResourceActions");
+            }
             return $;
         }
     }

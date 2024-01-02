@@ -72,16 +72,19 @@ public final class SynchronizationJobSchedule {
 
         @CustomType.Setter
         public Builder expiration(@Nullable String expiration) {
+
             this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder interval(@Nullable String interval) {
+
             this.interval = interval;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

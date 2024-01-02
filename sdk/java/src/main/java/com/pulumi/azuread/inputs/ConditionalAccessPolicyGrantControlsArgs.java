@@ -5,6 +5,7 @@ package com.pulumi.azuread.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -265,7 +266,9 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         }
 
         public ConditionalAccessPolicyGrantControlsArgs build() {
-            $.operator = Objects.requireNonNull($.operator, "expected parameter 'operator' to be non-null");
+            if ($.operator == null) {
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyGrantControlsArgs", "operator");
+            }
             return $;
         }
     }

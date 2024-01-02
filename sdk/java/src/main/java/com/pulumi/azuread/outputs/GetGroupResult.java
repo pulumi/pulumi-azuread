@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.GetGroupDynamicMembership;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -451,17 +452,26 @@ public final class GetGroupResult {
 
         @CustomType.Setter
         public Builder assignableToRole(Boolean assignableToRole) {
-            this.assignableToRole = Objects.requireNonNull(assignableToRole);
+            if (assignableToRole == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "assignableToRole");
+            }
+            this.assignableToRole = assignableToRole;
             return this;
         }
         @CustomType.Setter
         public Builder autoSubscribeNewMembers(Boolean autoSubscribeNewMembers) {
-            this.autoSubscribeNewMembers = Objects.requireNonNull(autoSubscribeNewMembers);
+            if (autoSubscribeNewMembers == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "autoSubscribeNewMembers");
+            }
+            this.autoSubscribeNewMembers = autoSubscribeNewMembers;
             return this;
         }
         @CustomType.Setter
         public Builder behaviors(List<String> behaviors) {
-            this.behaviors = Objects.requireNonNull(behaviors);
+            if (behaviors == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "behaviors");
+            }
+            this.behaviors = behaviors;
             return this;
         }
         public Builder behaviors(String... behaviors) {
@@ -469,17 +479,26 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder dynamicMemberships(List<GetGroupDynamicMembership> dynamicMemberships) {
-            this.dynamicMemberships = Objects.requireNonNull(dynamicMemberships);
+            if (dynamicMemberships == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "dynamicMemberships");
+            }
+            this.dynamicMemberships = dynamicMemberships;
             return this;
         }
         public Builder dynamicMemberships(GetGroupDynamicMembership... dynamicMemberships) {
@@ -487,42 +506,66 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder externalSendersAllowed(Boolean externalSendersAllowed) {
-            this.externalSendersAllowed = Objects.requireNonNull(externalSendersAllowed);
+            if (externalSendersAllowed == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "externalSendersAllowed");
+            }
+            this.externalSendersAllowed = externalSendersAllowed;
             return this;
         }
         @CustomType.Setter
         public Builder hideFromAddressLists(Boolean hideFromAddressLists) {
-            this.hideFromAddressLists = Objects.requireNonNull(hideFromAddressLists);
+            if (hideFromAddressLists == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "hideFromAddressLists");
+            }
+            this.hideFromAddressLists = hideFromAddressLists;
             return this;
         }
         @CustomType.Setter
         public Builder hideFromOutlookClients(Boolean hideFromOutlookClients) {
-            this.hideFromOutlookClients = Objects.requireNonNull(hideFromOutlookClients);
+            if (hideFromOutlookClients == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "hideFromOutlookClients");
+            }
+            this.hideFromOutlookClients = hideFromOutlookClients;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mail(String mail) {
-            this.mail = Objects.requireNonNull(mail);
+            if (mail == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "mail");
+            }
+            this.mail = mail;
             return this;
         }
         @CustomType.Setter
         public Builder mailEnabled(Boolean mailEnabled) {
-            this.mailEnabled = Objects.requireNonNull(mailEnabled);
+            if (mailEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "mailEnabled");
+            }
+            this.mailEnabled = mailEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder mailNickname(String mailNickname) {
-            this.mailNickname = Objects.requireNonNull(mailNickname);
+            if (mailNickname == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "mailNickname");
+            }
+            this.mailNickname = mailNickname;
             return this;
         }
         @CustomType.Setter
         public Builder members(List<String> members) {
-            this.members = Objects.requireNonNull(members);
+            if (members == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "members");
+            }
+            this.members = members;
             return this;
         }
         public Builder members(String... members) {
@@ -530,42 +573,66 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder objectId(String objectId) {
-            this.objectId = Objects.requireNonNull(objectId);
+            if (objectId == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "objectId");
+            }
+            this.objectId = objectId;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesDomainName(String onpremisesDomainName) {
-            this.onpremisesDomainName = Objects.requireNonNull(onpremisesDomainName);
+            if (onpremisesDomainName == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "onpremisesDomainName");
+            }
+            this.onpremisesDomainName = onpremisesDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesGroupType(String onpremisesGroupType) {
-            this.onpremisesGroupType = Objects.requireNonNull(onpremisesGroupType);
+            if (onpremisesGroupType == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "onpremisesGroupType");
+            }
+            this.onpremisesGroupType = onpremisesGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesNetbiosName(String onpremisesNetbiosName) {
-            this.onpremisesNetbiosName = Objects.requireNonNull(onpremisesNetbiosName);
+            if (onpremisesNetbiosName == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "onpremisesNetbiosName");
+            }
+            this.onpremisesNetbiosName = onpremisesNetbiosName;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesSamAccountName(String onpremisesSamAccountName) {
-            this.onpremisesSamAccountName = Objects.requireNonNull(onpremisesSamAccountName);
+            if (onpremisesSamAccountName == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "onpremisesSamAccountName");
+            }
+            this.onpremisesSamAccountName = onpremisesSamAccountName;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesSecurityIdentifier(String onpremisesSecurityIdentifier) {
-            this.onpremisesSecurityIdentifier = Objects.requireNonNull(onpremisesSecurityIdentifier);
+            if (onpremisesSecurityIdentifier == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "onpremisesSecurityIdentifier");
+            }
+            this.onpremisesSecurityIdentifier = onpremisesSecurityIdentifier;
             return this;
         }
         @CustomType.Setter
         public Builder onpremisesSyncEnabled(Boolean onpremisesSyncEnabled) {
-            this.onpremisesSyncEnabled = Objects.requireNonNull(onpremisesSyncEnabled);
+            if (onpremisesSyncEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "onpremisesSyncEnabled");
+            }
+            this.onpremisesSyncEnabled = onpremisesSyncEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder owners(List<String> owners) {
-            this.owners = Objects.requireNonNull(owners);
+            if (owners == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "owners");
+            }
+            this.owners = owners;
             return this;
         }
         public Builder owners(String... owners) {
@@ -573,12 +640,18 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder preferredLanguage(String preferredLanguage) {
-            this.preferredLanguage = Objects.requireNonNull(preferredLanguage);
+            if (preferredLanguage == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "preferredLanguage");
+            }
+            this.preferredLanguage = preferredLanguage;
             return this;
         }
         @CustomType.Setter
         public Builder provisioningOptions(List<String> provisioningOptions) {
-            this.provisioningOptions = Objects.requireNonNull(provisioningOptions);
+            if (provisioningOptions == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "provisioningOptions");
+            }
+            this.provisioningOptions = provisioningOptions;
             return this;
         }
         public Builder provisioningOptions(String... provisioningOptions) {
@@ -586,7 +659,10 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder proxyAddresses(List<String> proxyAddresses) {
-            this.proxyAddresses = Objects.requireNonNull(proxyAddresses);
+            if (proxyAddresses == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "proxyAddresses");
+            }
+            this.proxyAddresses = proxyAddresses;
             return this;
         }
         public Builder proxyAddresses(String... proxyAddresses) {
@@ -594,17 +670,26 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder securityEnabled(Boolean securityEnabled) {
-            this.securityEnabled = Objects.requireNonNull(securityEnabled);
+            if (securityEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "securityEnabled");
+            }
+            this.securityEnabled = securityEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder theme(String theme) {
-            this.theme = Objects.requireNonNull(theme);
+            if (theme == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "theme");
+            }
+            this.theme = theme;
             return this;
         }
         @CustomType.Setter
         public Builder types(List<String> types) {
-            this.types = Objects.requireNonNull(types);
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "types");
+            }
+            this.types = types;
             return this;
         }
         public Builder types(String... types) {
@@ -612,12 +697,18 @@ public final class GetGroupResult {
         }
         @CustomType.Setter
         public Builder visibility(String visibility) {
-            this.visibility = Objects.requireNonNull(visibility);
+            if (visibility == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "visibility");
+            }
+            this.visibility = visibility;
             return this;
         }
         @CustomType.Setter
         public Builder writebackEnabled(Boolean writebackEnabled) {
-            this.writebackEnabled = Objects.requireNonNull(writebackEnabled);
+            if (writebackEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "writebackEnabled");
+            }
+            this.writebackEnabled = writebackEnabled;
             return this;
         }
         public GetGroupResult build() {

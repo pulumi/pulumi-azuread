@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.GetDomainsDomain;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -105,12 +106,16 @@ public final class GetDomainsResult {
 
         @CustomType.Setter
         public Builder adminManaged(@Nullable Boolean adminManaged) {
+
             this.adminManaged = adminManaged;
             return this;
         }
         @CustomType.Setter
         public Builder domains(List<GetDomainsDomain> domains) {
-            this.domains = Objects.requireNonNull(domains);
+            if (domains == null) {
+              throw new MissingRequiredPropertyException("GetDomainsResult", "domains");
+            }
+            this.domains = domains;
             return this;
         }
         public Builder domains(GetDomainsDomain... domains) {
@@ -118,31 +123,39 @@ public final class GetDomainsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDomainsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder includeUnverified(@Nullable Boolean includeUnverified) {
+
             this.includeUnverified = includeUnverified;
             return this;
         }
         @CustomType.Setter
         public Builder onlyDefault(@Nullable Boolean onlyDefault) {
+
             this.onlyDefault = onlyDefault;
             return this;
         }
         @CustomType.Setter
         public Builder onlyInitial(@Nullable Boolean onlyInitial) {
+
             this.onlyInitial = onlyInitial;
             return this;
         }
         @CustomType.Setter
         public Builder onlyRoot(@Nullable Boolean onlyRoot) {
+
             this.onlyRoot = onlyRoot;
             return this;
         }
         @CustomType.Setter
         public Builder supportsServices(@Nullable List<String> supportsServices) {
+
             this.supportsServices = supportsServices;
             return this;
         }

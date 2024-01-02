@@ -6,6 +6,7 @@ package com.pulumi.azuread.inputs;
 import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,8 +113,12 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceArgs extends com.p
         }
 
         public AccessPackageAssignmentPolicyQuestionChoiceArgs build() {
-            $.actualValue = Objects.requireNonNull($.actualValue, "expected parameter 'actualValue' to be non-null");
-            $.displayValue = Objects.requireNonNull($.displayValue, "expected parameter 'displayValue' to be non-null");
+            if ($.actualValue == null) {
+                throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyQuestionChoiceArgs", "actualValue");
+            }
+            if ($.displayValue == null) {
+                throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyQuestionChoiceArgs", "displayValue");
+            }
             return $;
         }
     }

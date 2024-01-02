@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class AccessPackageCatalogArgs extends com.pulumi.resources.Resourc
         }
 
         public AccessPackageCatalogArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("AccessPackageCatalogArgs", "description");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("AccessPackageCatalogArgs", "displayName");
+            }
             return $;
         }
     }

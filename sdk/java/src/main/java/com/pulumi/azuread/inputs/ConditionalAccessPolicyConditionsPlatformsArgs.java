@@ -5,6 +5,7 @@ package com.pulumi.azuread.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -134,7 +135,9 @@ public final class ConditionalAccessPolicyConditionsPlatformsArgs extends com.pu
         }
 
         public ConditionalAccessPolicyConditionsPlatformsArgs build() {
-            $.includedPlatforms = Objects.requireNonNull($.includedPlatforms, "expected parameter 'includedPlatforms' to be non-null");
+            if ($.includedPlatforms == null) {
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsPlatformsArgs", "includedPlatforms");
+            }
             return $;
         }
     }
