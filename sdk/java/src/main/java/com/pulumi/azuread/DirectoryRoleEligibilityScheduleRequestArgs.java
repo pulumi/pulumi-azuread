@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class DirectoryRoleEligibilityScheduleRequestArgs extends com.pulum
         }
 
         public DirectoryRoleEligibilityScheduleRequestArgs build() {
-            $.directoryScopeId = Objects.requireNonNull($.directoryScopeId, "expected parameter 'directoryScopeId' to be non-null");
-            $.justification = Objects.requireNonNull($.justification, "expected parameter 'justification' to be non-null");
-            $.principalId = Objects.requireNonNull($.principalId, "expected parameter 'principalId' to be non-null");
-            $.roleDefinitionId = Objects.requireNonNull($.roleDefinitionId, "expected parameter 'roleDefinitionId' to be non-null");
+            if ($.directoryScopeId == null) {
+                throw new MissingRequiredPropertyException("DirectoryRoleEligibilityScheduleRequestArgs", "directoryScopeId");
+            }
+            if ($.justification == null) {
+                throw new MissingRequiredPropertyException("DirectoryRoleEligibilityScheduleRequestArgs", "justification");
+            }
+            if ($.principalId == null) {
+                throw new MissingRequiredPropertyException("DirectoryRoleEligibilityScheduleRequestArgs", "principalId");
+            }
+            if ($.roleDefinitionId == null) {
+                throw new MissingRequiredPropertyException("DirectoryRoleEligibilityScheduleRequestArgs", "roleDefinitionId");
+            }
             return $;
         }
     }

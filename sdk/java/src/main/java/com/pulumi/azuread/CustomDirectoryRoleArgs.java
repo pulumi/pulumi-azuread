@@ -6,6 +6,7 @@ package com.pulumi.azuread;
 import com.pulumi.azuread.inputs.CustomDirectoryRolePermissionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -274,10 +275,18 @@ public final class CustomDirectoryRoleArgs extends com.pulumi.resources.Resource
         }
 
         public CustomDirectoryRoleArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("CustomDirectoryRoleArgs", "displayName");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("CustomDirectoryRoleArgs", "enabled");
+            }
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("CustomDirectoryRoleArgs", "permissions");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("CustomDirectoryRoleArgs", "version");
+            }
             return $;
         }
     }

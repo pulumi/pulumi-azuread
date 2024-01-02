@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class AppRoleAssignmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AppRoleAssignmentArgs build() {
-            $.appRoleId = Objects.requireNonNull($.appRoleId, "expected parameter 'appRoleId' to be non-null");
-            $.principalObjectId = Objects.requireNonNull($.principalObjectId, "expected parameter 'principalObjectId' to be non-null");
-            $.resourceObjectId = Objects.requireNonNull($.resourceObjectId, "expected parameter 'resourceObjectId' to be non-null");
+            if ($.appRoleId == null) {
+                throw new MissingRequiredPropertyException("AppRoleAssignmentArgs", "appRoleId");
+            }
+            if ($.principalObjectId == null) {
+                throw new MissingRequiredPropertyException("AppRoleAssignmentArgs", "principalObjectId");
+            }
+            if ($.resourceObjectId == null) {
+                throw new MissingRequiredPropertyException("AppRoleAssignmentArgs", "resourceObjectId");
+            }
             return $;
         }
     }

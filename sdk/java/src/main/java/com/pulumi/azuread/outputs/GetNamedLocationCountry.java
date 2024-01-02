@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetNamedLocationCountry {
 
         @CustomType.Setter
         public Builder countriesAndRegions(List<String> countriesAndRegions) {
-            this.countriesAndRegions = Objects.requireNonNull(countriesAndRegions);
+            if (countriesAndRegions == null) {
+              throw new MissingRequiredPropertyException("GetNamedLocationCountry", "countriesAndRegions");
+            }
+            this.countriesAndRegions = countriesAndRegions;
             return this;
         }
         public Builder countriesAndRegions(String... countriesAndRegions) {
@@ -50,7 +54,10 @@ public final class GetNamedLocationCountry {
         }
         @CustomType.Setter
         public Builder includeUnknownCountriesAndRegions(Boolean includeUnknownCountriesAndRegions) {
-            this.includeUnknownCountriesAndRegions = Objects.requireNonNull(includeUnknownCountriesAndRegions);
+            if (includeUnknownCountriesAndRegions == null) {
+              throw new MissingRequiredPropertyException("GetNamedLocationCountry", "includeUnknownCountriesAndRegions");
+            }
+            this.includeUnknownCountriesAndRegions = includeUnknownCountriesAndRegions;
             return this;
         }
         public GetNamedLocationCountry build() {

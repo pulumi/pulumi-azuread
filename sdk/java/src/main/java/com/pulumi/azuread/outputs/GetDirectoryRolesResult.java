@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.GetDirectoryRolesRole;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,12 +87,18 @@ public final class GetDirectoryRolesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDirectoryRolesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder objectIds(List<String> objectIds) {
-            this.objectIds = Objects.requireNonNull(objectIds);
+            if (objectIds == null) {
+              throw new MissingRequiredPropertyException("GetDirectoryRolesResult", "objectIds");
+            }
+            this.objectIds = objectIds;
             return this;
         }
         public Builder objectIds(String... objectIds) {
@@ -99,7 +106,10 @@ public final class GetDirectoryRolesResult {
         }
         @CustomType.Setter
         public Builder roles(List<GetDirectoryRolesRole> roles) {
-            this.roles = Objects.requireNonNull(roles);
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("GetDirectoryRolesResult", "roles");
+            }
+            this.roles = roles;
             return this;
         }
         public Builder roles(GetDirectoryRolesRole... roles) {
@@ -107,7 +117,10 @@ public final class GetDirectoryRolesResult {
         }
         @CustomType.Setter
         public Builder templateIds(List<String> templateIds) {
-            this.templateIds = Objects.requireNonNull(templateIds);
+            if (templateIds == null) {
+              throw new MissingRequiredPropertyException("GetDirectoryRolesResult", "templateIds");
+            }
+            this.templateIds = templateIds;
             return this;
         }
         public Builder templateIds(String... templateIds) {

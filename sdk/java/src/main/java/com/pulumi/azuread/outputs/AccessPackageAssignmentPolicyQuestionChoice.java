@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -57,12 +58,18 @@ public final class AccessPackageAssignmentPolicyQuestionChoice {
 
         @CustomType.Setter
         public Builder actualValue(String actualValue) {
-            this.actualValue = Objects.requireNonNull(actualValue);
+            if (actualValue == null) {
+              throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyQuestionChoice", "actualValue");
+            }
+            this.actualValue = actualValue;
             return this;
         }
         @CustomType.Setter
         public Builder displayValue(AccessPackageAssignmentPolicyQuestionChoiceDisplayValue displayValue) {
-            this.displayValue = Objects.requireNonNull(displayValue);
+            if (displayValue == null) {
+              throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyQuestionChoice", "displayValue");
+            }
+            this.displayValue = displayValue;
             return this;
         }
         public AccessPackageAssignmentPolicyQuestionChoice build() {

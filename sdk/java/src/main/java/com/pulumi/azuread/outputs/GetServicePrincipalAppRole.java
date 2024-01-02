@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -114,7 +115,10 @@ public final class GetServicePrincipalAppRole {
 
         @CustomType.Setter
         public Builder allowedMemberTypes(List<String> allowedMemberTypes) {
-            this.allowedMemberTypes = Objects.requireNonNull(allowedMemberTypes);
+            if (allowedMemberTypes == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalAppRole", "allowedMemberTypes");
+            }
+            this.allowedMemberTypes = allowedMemberTypes;
             return this;
         }
         public Builder allowedMemberTypes(String... allowedMemberTypes) {
@@ -122,27 +126,42 @@ public final class GetServicePrincipalAppRole {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalAppRole", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalAppRole", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalAppRole", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalAppRole", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalAppRole", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetServicePrincipalAppRole build() {

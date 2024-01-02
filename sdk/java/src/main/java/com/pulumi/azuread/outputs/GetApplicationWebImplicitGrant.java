@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetApplicationWebImplicitGrant {
 
         @CustomType.Setter
         public Builder accessTokenIssuanceEnabled(Boolean accessTokenIssuanceEnabled) {
-            this.accessTokenIssuanceEnabled = Objects.requireNonNull(accessTokenIssuanceEnabled);
+            if (accessTokenIssuanceEnabled == null) {
+              throw new MissingRequiredPropertyException("GetApplicationWebImplicitGrant", "accessTokenIssuanceEnabled");
+            }
+            this.accessTokenIssuanceEnabled = accessTokenIssuanceEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder idTokenIssuanceEnabled(Boolean idTokenIssuanceEnabled) {
-            this.idTokenIssuanceEnabled = Objects.requireNonNull(idTokenIssuanceEnabled);
+            if (idTokenIssuanceEnabled == null) {
+              throw new MissingRequiredPropertyException("GetApplicationWebImplicitGrant", "idTokenIssuanceEnabled");
+            }
+            this.idTokenIssuanceEnabled = idTokenIssuanceEnabled;
             return this;
         }
         public GetApplicationWebImplicitGrant build() {

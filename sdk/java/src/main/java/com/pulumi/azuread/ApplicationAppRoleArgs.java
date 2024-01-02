@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -280,11 +281,21 @@ public final class ApplicationAppRoleArgs extends com.pulumi.resources.ResourceA
         }
 
         public ApplicationAppRoleArgs build() {
-            $.allowedMemberTypes = Objects.requireNonNull($.allowedMemberTypes, "expected parameter 'allowedMemberTypes' to be non-null");
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.roleId = Objects.requireNonNull($.roleId, "expected parameter 'roleId' to be non-null");
+            if ($.allowedMemberTypes == null) {
+                throw new MissingRequiredPropertyException("ApplicationAppRoleArgs", "allowedMemberTypes");
+            }
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("ApplicationAppRoleArgs", "applicationId");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("ApplicationAppRoleArgs", "description");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("ApplicationAppRoleArgs", "displayName");
+            }
+            if ($.roleId == null) {
+                throw new MissingRequiredPropertyException("ApplicationAppRoleArgs", "roleId");
+            }
             return $;
         }
     }

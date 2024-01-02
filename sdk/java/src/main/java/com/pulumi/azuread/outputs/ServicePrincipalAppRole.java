@@ -116,6 +116,7 @@ public final class ServicePrincipalAppRole {
 
         @CustomType.Setter
         public Builder allowedMemberTypes(@Nullable List<String> allowedMemberTypes) {
+
             this.allowedMemberTypes = allowedMemberTypes;
             return this;
         }
@@ -124,26 +125,31 @@ public final class ServicePrincipalAppRole {
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

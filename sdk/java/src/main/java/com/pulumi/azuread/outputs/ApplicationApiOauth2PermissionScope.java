@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -127,41 +128,51 @@ public final class ApplicationApiOauth2PermissionScope {
 
         @CustomType.Setter
         public Builder adminConsentDescription(@Nullable String adminConsentDescription) {
+
             this.adminConsentDescription = adminConsentDescription;
             return this;
         }
         @CustomType.Setter
         public Builder adminConsentDisplayName(@Nullable String adminConsentDisplayName) {
+
             this.adminConsentDisplayName = adminConsentDisplayName;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("ApplicationApiOauth2PermissionScope", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder userConsentDescription(@Nullable String userConsentDescription) {
+
             this.userConsentDescription = userConsentDescription;
             return this;
         }
         @CustomType.Setter
         public Builder userConsentDisplayName(@Nullable String userConsentDisplayName) {
+
             this.userConsentDisplayName = userConsentDisplayName;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

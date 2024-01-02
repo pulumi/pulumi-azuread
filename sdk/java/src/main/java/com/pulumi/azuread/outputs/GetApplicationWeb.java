@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.GetApplicationWebImplicitGrant;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,12 +87,18 @@ public final class GetApplicationWeb {
 
         @CustomType.Setter
         public Builder homepageUrl(String homepageUrl) {
-            this.homepageUrl = Objects.requireNonNull(homepageUrl);
+            if (homepageUrl == null) {
+              throw new MissingRequiredPropertyException("GetApplicationWeb", "homepageUrl");
+            }
+            this.homepageUrl = homepageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder implicitGrants(List<GetApplicationWebImplicitGrant> implicitGrants) {
-            this.implicitGrants = Objects.requireNonNull(implicitGrants);
+            if (implicitGrants == null) {
+              throw new MissingRequiredPropertyException("GetApplicationWeb", "implicitGrants");
+            }
+            this.implicitGrants = implicitGrants;
             return this;
         }
         public Builder implicitGrants(GetApplicationWebImplicitGrant... implicitGrants) {
@@ -99,12 +106,18 @@ public final class GetApplicationWeb {
         }
         @CustomType.Setter
         public Builder logoutUrl(String logoutUrl) {
-            this.logoutUrl = Objects.requireNonNull(logoutUrl);
+            if (logoutUrl == null) {
+              throw new MissingRequiredPropertyException("GetApplicationWeb", "logoutUrl");
+            }
+            this.logoutUrl = logoutUrl;
             return this;
         }
         @CustomType.Setter
         public Builder redirectUris(List<String> redirectUris) {
-            this.redirectUris = Objects.requireNonNull(redirectUris);
+            if (redirectUris == null) {
+              throw new MissingRequiredPropertyException("GetApplicationWeb", "redirectUris");
+            }
+            this.redirectUris = redirectUris;
             return this;
         }
         public Builder redirectUris(String... redirectUris) {

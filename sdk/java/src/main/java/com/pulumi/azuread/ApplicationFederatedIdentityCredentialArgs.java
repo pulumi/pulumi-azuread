@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -325,10 +326,18 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
         }
 
         public ApplicationFederatedIdentityCredentialArgs build() {
-            $.audiences = Objects.requireNonNull($.audiences, "expected parameter 'audiences' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.issuer = Objects.requireNonNull($.issuer, "expected parameter 'issuer' to be non-null");
-            $.subject = Objects.requireNonNull($.subject, "expected parameter 'subject' to be non-null");
+            if ($.audiences == null) {
+                throw new MissingRequiredPropertyException("ApplicationFederatedIdentityCredentialArgs", "audiences");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("ApplicationFederatedIdentityCredentialArgs", "displayName");
+            }
+            if ($.issuer == null) {
+                throw new MissingRequiredPropertyException("ApplicationFederatedIdentityCredentialArgs", "issuer");
+            }
+            if ($.subject == null) {
+                throw new MissingRequiredPropertyException("ApplicationFederatedIdentityCredentialArgs", "subject");
+            }
             return $;
         }
     }

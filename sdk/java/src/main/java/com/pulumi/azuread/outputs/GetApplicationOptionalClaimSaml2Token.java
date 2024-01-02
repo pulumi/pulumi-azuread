@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -88,6 +89,7 @@ public final class GetApplicationOptionalClaimSaml2Token {
 
         @CustomType.Setter
         public Builder additionalProperties(@Nullable List<String> additionalProperties) {
+
             this.additionalProperties = additionalProperties;
             return this;
         }
@@ -96,16 +98,21 @@ public final class GetApplicationOptionalClaimSaml2Token {
         }
         @CustomType.Setter
         public Builder essential(@Nullable Boolean essential) {
+
             this.essential = essential;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetApplicationOptionalClaimSaml2Token", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }

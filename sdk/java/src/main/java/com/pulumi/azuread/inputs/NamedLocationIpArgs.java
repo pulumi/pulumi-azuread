@@ -5,6 +5,7 @@ package com.pulumi.azuread.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -125,7 +126,9 @@ public final class NamedLocationIpArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public NamedLocationIpArgs build() {
-            $.ipRanges = Objects.requireNonNull($.ipRanges, "expected parameter 'ipRanges' to be non-null");
+            if ($.ipRanges == null) {
+                throw new MissingRequiredPropertyException("NamedLocationIpArgs", "ipRanges");
+            }
             return $;
         }
     }

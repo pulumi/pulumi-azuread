@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.GetServicePrincipalsServicePrincipal;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -137,7 +138,10 @@ public final class GetServicePrincipalsResult {
 
         @CustomType.Setter
         public Builder applicationIds(List<String> applicationIds) {
-            this.applicationIds = Objects.requireNonNull(applicationIds);
+            if (applicationIds == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "applicationIds");
+            }
+            this.applicationIds = applicationIds;
             return this;
         }
         public Builder applicationIds(String... applicationIds) {
@@ -145,7 +149,10 @@ public final class GetServicePrincipalsResult {
         }
         @CustomType.Setter
         public Builder clientIds(List<String> clientIds) {
-            this.clientIds = Objects.requireNonNull(clientIds);
+            if (clientIds == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "clientIds");
+            }
+            this.clientIds = clientIds;
             return this;
         }
         public Builder clientIds(String... clientIds) {
@@ -153,7 +160,10 @@ public final class GetServicePrincipalsResult {
         }
         @CustomType.Setter
         public Builder displayNames(List<String> displayNames) {
-            this.displayNames = Objects.requireNonNull(displayNames);
+            if (displayNames == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "displayNames");
+            }
+            this.displayNames = displayNames;
             return this;
         }
         public Builder displayNames(String... displayNames) {
@@ -161,17 +171,24 @@ public final class GetServicePrincipalsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreMissing(@Nullable Boolean ignoreMissing) {
+
             this.ignoreMissing = ignoreMissing;
             return this;
         }
         @CustomType.Setter
         public Builder objectIds(List<String> objectIds) {
-            this.objectIds = Objects.requireNonNull(objectIds);
+            if (objectIds == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "objectIds");
+            }
+            this.objectIds = objectIds;
             return this;
         }
         public Builder objectIds(String... objectIds) {
@@ -179,12 +196,16 @@ public final class GetServicePrincipalsResult {
         }
         @CustomType.Setter
         public Builder returnAll(@Nullable Boolean returnAll) {
+
             this.returnAll = returnAll;
             return this;
         }
         @CustomType.Setter
         public Builder servicePrincipals(List<GetServicePrincipalsServicePrincipal> servicePrincipals) {
-            this.servicePrincipals = Objects.requireNonNull(servicePrincipals);
+            if (servicePrincipals == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "servicePrincipals");
+            }
+            this.servicePrincipals = servicePrincipals;
             return this;
         }
         public Builder servicePrincipals(GetServicePrincipalsServicePrincipal... servicePrincipals) {

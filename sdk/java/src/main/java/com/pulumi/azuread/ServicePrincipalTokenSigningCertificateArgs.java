@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -162,7 +163,9 @@ public final class ServicePrincipalTokenSigningCertificateArgs extends com.pulum
         }
 
         public ServicePrincipalTokenSigningCertificateArgs build() {
-            $.servicePrincipalId = Objects.requireNonNull($.servicePrincipalId, "expected parameter 'servicePrincipalId' to be non-null");
+            if ($.servicePrincipalId == null) {
+                throw new MissingRequiredPropertyException("ServicePrincipalTokenSigningCertificateArgs", "servicePrincipalId");
+            }
             return $;
         }
     }

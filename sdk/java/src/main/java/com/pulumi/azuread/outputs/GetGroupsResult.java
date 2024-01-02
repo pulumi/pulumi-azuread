@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -104,12 +105,18 @@ public final class GetGroupsResult {
 
         @CustomType.Setter
         public Builder displayNamePrefix(String displayNamePrefix) {
-            this.displayNamePrefix = Objects.requireNonNull(displayNamePrefix);
+            if (displayNamePrefix == null) {
+              throw new MissingRequiredPropertyException("GetGroupsResult", "displayNamePrefix");
+            }
+            this.displayNamePrefix = displayNamePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder displayNames(List<String> displayNames) {
-            this.displayNames = Objects.requireNonNull(displayNames);
+            if (displayNames == null) {
+              throw new MissingRequiredPropertyException("GetGroupsResult", "displayNames");
+            }
+            this.displayNames = displayNames;
             return this;
         }
         public Builder displayNames(String... displayNames) {
@@ -117,22 +124,32 @@ public final class GetGroupsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreMissing(@Nullable Boolean ignoreMissing) {
+
             this.ignoreMissing = ignoreMissing;
             return this;
         }
         @CustomType.Setter
         public Builder mailEnabled(Boolean mailEnabled) {
-            this.mailEnabled = Objects.requireNonNull(mailEnabled);
+            if (mailEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupsResult", "mailEnabled");
+            }
+            this.mailEnabled = mailEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder objectIds(List<String> objectIds) {
-            this.objectIds = Objects.requireNonNull(objectIds);
+            if (objectIds == null) {
+              throw new MissingRequiredPropertyException("GetGroupsResult", "objectIds");
+            }
+            this.objectIds = objectIds;
             return this;
         }
         public Builder objectIds(String... objectIds) {
@@ -140,12 +157,16 @@ public final class GetGroupsResult {
         }
         @CustomType.Setter
         public Builder returnAll(@Nullable Boolean returnAll) {
+
             this.returnAll = returnAll;
             return this;
         }
         @CustomType.Setter
         public Builder securityEnabled(Boolean securityEnabled) {
-            this.securityEnabled = Objects.requireNonNull(securityEnabled);
+            if (securityEnabled == null) {
+              throw new MissingRequiredPropertyException("GetGroupsResult", "securityEnabled");
+            }
+            this.securityEnabled = securityEnabled;
             return this;
         }
         public GetGroupsResult build() {

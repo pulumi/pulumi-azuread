@@ -6,6 +6,7 @@ package com.pulumi.azuread.inputs;
 import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -135,7 +136,9 @@ public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExterna
         }
 
         public ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs build() {
-            $.guestOrExternalUserTypes = Objects.requireNonNull($.guestOrExternalUserTypes, "expected parameter 'guestOrExternalUserTypes' to be non-null");
+            if ($.guestOrExternalUserTypes == null) {
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs", "guestOrExternalUserTypes");
+            }
             return $;
         }
     }

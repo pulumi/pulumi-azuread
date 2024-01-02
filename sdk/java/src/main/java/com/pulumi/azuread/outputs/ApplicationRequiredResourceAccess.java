@@ -5,6 +5,7 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.ApplicationRequiredResourceAccessResourceAccess;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -62,7 +63,10 @@ public final class ApplicationRequiredResourceAccess {
 
         @CustomType.Setter
         public Builder resourceAccesses(List<ApplicationRequiredResourceAccessResourceAccess> resourceAccesses) {
-            this.resourceAccesses = Objects.requireNonNull(resourceAccesses);
+            if (resourceAccesses == null) {
+              throw new MissingRequiredPropertyException("ApplicationRequiredResourceAccess", "resourceAccesses");
+            }
+            this.resourceAccesses = resourceAccesses;
             return this;
         }
         public Builder resourceAccesses(ApplicationRequiredResourceAccessResourceAccess... resourceAccesses) {
@@ -70,7 +74,10 @@ public final class ApplicationRequiredResourceAccess {
         }
         @CustomType.Setter
         public Builder resourceAppId(String resourceAppId) {
-            this.resourceAppId = Objects.requireNonNull(resourceAppId);
+            if (resourceAppId == null) {
+              throw new MissingRequiredPropertyException("ApplicationRequiredResourceAccess", "resourceAppId");
+            }
+            this.resourceAppId = resourceAppId;
             return this;
         }
         public ApplicationRequiredResourceAccess build() {

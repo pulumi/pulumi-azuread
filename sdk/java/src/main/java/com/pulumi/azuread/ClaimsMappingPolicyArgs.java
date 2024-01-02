@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class ClaimsMappingPolicyArgs extends com.pulumi.resources.Resource
         }
 
         public ClaimsMappingPolicyArgs build() {
-            $.definitions = Objects.requireNonNull($.definitions, "expected parameter 'definitions' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.definitions == null) {
+                throw new MissingRequiredPropertyException("ClaimsMappingPolicyArgs", "definitions");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("ClaimsMappingPolicyArgs", "displayName");
+            }
             return $;
         }
     }

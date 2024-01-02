@@ -6,6 +6,7 @@ package com.pulumi.azuread.inputs;
 import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -125,7 +126,9 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs e
         }
 
         public AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs build() {
-            $.defaultText = Objects.requireNonNull($.defaultText, "expected parameter 'defaultText' to be non-null");
+            if ($.defaultText == null) {
+                throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs", "defaultText");
+            }
             return $;
         }
     }

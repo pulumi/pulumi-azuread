@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class ApplicationKnownClientsArgs extends com.pulumi.resources.Reso
         }
 
         public ApplicationKnownClientsArgs build() {
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
-            $.knownClientIds = Objects.requireNonNull($.knownClientIds, "expected parameter 'knownClientIds' to be non-null");
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("ApplicationKnownClientsArgs", "applicationId");
+            }
+            if ($.knownClientIds == null) {
+                throw new MissingRequiredPropertyException("ApplicationKnownClientsArgs", "knownClientIds");
+            }
             return $;
         }
     }

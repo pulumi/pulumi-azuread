@@ -44,6 +44,7 @@ public final class ApplicationSinglePageApplication {
 
         @CustomType.Setter
         public Builder redirectUris(@Nullable List<String> redirectUris) {
+
             this.redirectUris = redirectUris;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class SynchronizationJobArgs extends com.pulumi.resources.ResourceA
         }
 
         public SynchronizationJobArgs build() {
-            $.servicePrincipalId = Objects.requireNonNull($.servicePrincipalId, "expected parameter 'servicePrincipalId' to be non-null");
-            $.templateId = Objects.requireNonNull($.templateId, "expected parameter 'templateId' to be non-null");
+            if ($.servicePrincipalId == null) {
+                throw new MissingRequiredPropertyException("SynchronizationJobArgs", "servicePrincipalId");
+            }
+            if ($.templateId == null) {
+                throw new MissingRequiredPropertyException("SynchronizationJobArgs", "templateId");
+            }
             return $;
         }
     }

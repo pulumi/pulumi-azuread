@@ -11,6 +11,7 @@ import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsPlatformsArgs;
 import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -456,9 +457,15 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
         }
 
         public ConditionalAccessPolicyConditionsArgs build() {
-            $.applications = Objects.requireNonNull($.applications, "expected parameter 'applications' to be non-null");
-            $.clientAppTypes = Objects.requireNonNull($.clientAppTypes, "expected parameter 'clientAppTypes' to be non-null");
-            $.users = Objects.requireNonNull($.users, "expected parameter 'users' to be non-null");
+            if ($.applications == null) {
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsArgs", "applications");
+            }
+            if ($.clientAppTypes == null) {
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsArgs", "clientAppTypes");
+            }
+            if ($.users == null) {
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsArgs", "users");
+            }
             return $;
         }
     }

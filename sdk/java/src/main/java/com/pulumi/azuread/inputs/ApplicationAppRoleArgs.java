@@ -5,6 +5,7 @@ package com.pulumi.azuread.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -233,10 +234,18 @@ public final class ApplicationAppRoleArgs extends com.pulumi.resources.ResourceA
         }
 
         public ApplicationAppRoleArgs build() {
-            $.allowedMemberTypes = Objects.requireNonNull($.allowedMemberTypes, "expected parameter 'allowedMemberTypes' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.allowedMemberTypes == null) {
+                throw new MissingRequiredPropertyException("ApplicationAppRoleArgs", "allowedMemberTypes");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("ApplicationAppRoleArgs", "description");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("ApplicationAppRoleArgs", "displayName");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("ApplicationAppRoleArgs", "id");
+            }
             return $;
         }
     }

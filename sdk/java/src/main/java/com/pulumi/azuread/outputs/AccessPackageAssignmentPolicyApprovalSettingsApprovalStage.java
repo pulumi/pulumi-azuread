@@ -6,6 +6,7 @@ package com.pulumi.azuread.outputs;
 import com.pulumi.azuread.outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover;
 import com.pulumi.azuread.outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
@@ -118,11 +119,13 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
 
         @CustomType.Setter
         public Builder alternativeApprovalEnabled(@Nullable Boolean alternativeApprovalEnabled) {
+
             this.alternativeApprovalEnabled = alternativeApprovalEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder alternativeApprovers(@Nullable List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover> alternativeApprovers) {
+
             this.alternativeApprovers = alternativeApprovers;
             return this;
         }
@@ -131,21 +134,27 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
         }
         @CustomType.Setter
         public Builder approvalTimeoutInDays(Integer approvalTimeoutInDays) {
-            this.approvalTimeoutInDays = Objects.requireNonNull(approvalTimeoutInDays);
+            if (approvalTimeoutInDays == null) {
+              throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyApprovalSettingsApprovalStage", "approvalTimeoutInDays");
+            }
+            this.approvalTimeoutInDays = approvalTimeoutInDays;
             return this;
         }
         @CustomType.Setter
         public Builder approverJustificationRequired(@Nullable Boolean approverJustificationRequired) {
+
             this.approverJustificationRequired = approverJustificationRequired;
             return this;
         }
         @CustomType.Setter
         public Builder enableAlternativeApprovalInDays(@Nullable Integer enableAlternativeApprovalInDays) {
+
             this.enableAlternativeApprovalInDays = enableAlternativeApprovalInDays;
             return this;
         }
         @CustomType.Setter
         public Builder primaryApprovers(@Nullable List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover> primaryApprovers) {
+
             this.primaryApprovers = primaryApprovers;
             return this;
         }

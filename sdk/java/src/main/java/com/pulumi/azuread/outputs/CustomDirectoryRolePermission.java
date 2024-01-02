@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class CustomDirectoryRolePermission {
 
         @CustomType.Setter
         public Builder allowedResourceActions(List<String> allowedResourceActions) {
-            this.allowedResourceActions = Objects.requireNonNull(allowedResourceActions);
+            if (allowedResourceActions == null) {
+              throw new MissingRequiredPropertyException("CustomDirectoryRolePermission", "allowedResourceActions");
+            }
+            this.allowedResourceActions = allowedResourceActions;
             return this;
         }
         public Builder allowedResourceActions(String... allowedResourceActions) {

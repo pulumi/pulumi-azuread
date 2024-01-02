@@ -54,21 +54,25 @@ public final class ServicePrincipalFeature {
 
         @CustomType.Setter
         public Builder customSingleSignOnApp(@Nullable Boolean customSingleSignOnApp) {
+
             this.customSingleSignOnApp = customSingleSignOnApp;
             return this;
         }
         @CustomType.Setter
         public Builder enterpriseApplication(@Nullable Boolean enterpriseApplication) {
+
             this.enterpriseApplication = enterpriseApplication;
             return this;
         }
         @CustomType.Setter
         public Builder galleryApplication(@Nullable Boolean galleryApplication) {
+
             this.galleryApplication = galleryApplication;
             return this;
         }
         @CustomType.Setter
         public Builder visibleToUsers(@Nullable Boolean visibleToUsers) {
+
             this.visibleToUsers = visibleToUsers;
             return this;
         }

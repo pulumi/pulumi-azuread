@@ -6,6 +6,7 @@ package com.pulumi.azuread.outputs;
 import com.pulumi.azuread.outputs.AccessPackageAssignmentPolicyQuestionChoice;
 import com.pulumi.azuread.outputs.AccessPackageAssignmentPolicyQuestionText;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
@@ -90,6 +91,7 @@ public final class AccessPackageAssignmentPolicyQuestion {
 
         @CustomType.Setter
         public Builder choices(@Nullable List<AccessPackageAssignmentPolicyQuestionChoice> choices) {
+
             this.choices = choices;
             return this;
         }
@@ -98,17 +100,22 @@ public final class AccessPackageAssignmentPolicyQuestion {
         }
         @CustomType.Setter
         public Builder required(@Nullable Boolean required) {
+
             this.required = required;
             return this;
         }
         @CustomType.Setter
         public Builder sequence(@Nullable Integer sequence) {
+
             this.sequence = sequence;
             return this;
         }
         @CustomType.Setter
         public Builder text(AccessPackageAssignmentPolicyQuestionText text) {
-            this.text = Objects.requireNonNull(text);
+            if (text == null) {
+              throw new MissingRequiredPropertyException("AccessPackageAssignmentPolicyQuestion", "text");
+            }
+            this.text = text;
             return this;
         }
         public AccessPackageAssignmentPolicyQuestion build() {

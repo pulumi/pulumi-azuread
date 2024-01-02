@@ -148,6 +148,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
 
         @CustomType.Setter
         public Builder excludedGroups(@Nullable List<String> excludedGroups) {
+
             this.excludedGroups = excludedGroups;
             return this;
         }
@@ -156,6 +157,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         }
         @CustomType.Setter
         public Builder excludedGuestsOrExternalUsers(@Nullable List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser> excludedGuestsOrExternalUsers) {
+
             this.excludedGuestsOrExternalUsers = excludedGuestsOrExternalUsers;
             return this;
         }
@@ -164,6 +166,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         }
         @CustomType.Setter
         public Builder excludedRoles(@Nullable List<String> excludedRoles) {
+
             this.excludedRoles = excludedRoles;
             return this;
         }
@@ -172,6 +175,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         }
         @CustomType.Setter
         public Builder excludedUsers(@Nullable List<String> excludedUsers) {
+
             this.excludedUsers = excludedUsers;
             return this;
         }
@@ -180,6 +184,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         }
         @CustomType.Setter
         public Builder includedGroups(@Nullable List<String> includedGroups) {
+
             this.includedGroups = includedGroups;
             return this;
         }
@@ -188,6 +193,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         }
         @CustomType.Setter
         public Builder includedGuestsOrExternalUsers(@Nullable List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser> includedGuestsOrExternalUsers) {
+
             this.includedGuestsOrExternalUsers = includedGuestsOrExternalUsers;
             return this;
         }
@@ -196,6 +202,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         }
         @CustomType.Setter
         public Builder includedRoles(@Nullable List<String> includedRoles) {
+
             this.includedRoles = includedRoles;
             return this;
         }
@@ -204,6 +211,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         }
         @CustomType.Setter
         public Builder includedUsers(@Nullable List<String> includedUsers) {
+
             this.includedUsers = includedUsers;
             return this;
         }

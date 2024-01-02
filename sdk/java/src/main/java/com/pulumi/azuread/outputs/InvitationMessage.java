@@ -72,16 +72,19 @@ public final class InvitationMessage {
 
         @CustomType.Setter
         public Builder additionalRecipients(@Nullable String additionalRecipients) {
+
             this.additionalRecipients = additionalRecipients;
             return this;
         }
         @CustomType.Setter
         public Builder body(@Nullable String body) {
+
             this.body = body;
             return this;
         }
         @CustomType.Setter
         public Builder language(@Nullable String language) {
+
             this.language = language;
             return this;
         }
