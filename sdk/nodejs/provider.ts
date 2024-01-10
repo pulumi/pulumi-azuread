@@ -117,7 +117,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientIdFilePath"] = args ? args.clientIdFilePath : undefined;
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
             resourceInputs["clientSecretFilePath"] = args ? args.clientSecretFilePath : undefined;
-            resourceInputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined).apply(JSON.stringify);
+            resourceInputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined);
             resourceInputs["environment"] = (args ? args.environment : undefined) ?? (utilities.getEnv("ARM_ENVIRONMENT") || "public");
             resourceInputs["metadataHost"] = args ? args.metadataHost : undefined;
             resourceInputs["msiEndpoint"] = (args ? args.msiEndpoint : undefined) ?? utilities.getEnv("ARM_MSI_ENDPOINT");
@@ -127,9 +127,9 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["oidcTokenFilePath"] = args ? args.oidcTokenFilePath : undefined;
             resourceInputs["partnerId"] = args ? args.partnerId : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["useCli"] = pulumi.output(args ? args.useCli : undefined).apply(JSON.stringify);
-            resourceInputs["useMsi"] = pulumi.output((args ? args.useMsi : undefined) ?? (utilities.getEnvBoolean("ARM_USE_MSI") || false)).apply(JSON.stringify);
-            resourceInputs["useOidc"] = pulumi.output(args ? args.useOidc : undefined).apply(JSON.stringify);
+            resourceInputs["useCli"] = pulumi.output(args ? args.useCli : undefined);
+            resourceInputs["useMsi"] = pulumi.output((args ? args.useMsi : undefined) ?? (utilities.getEnvBoolean("ARM_USE_MSI") || false));
+            resourceInputs["useOidc"] = pulumi.output(args ? args.useOidc : undefined);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
