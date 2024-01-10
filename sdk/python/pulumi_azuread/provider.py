@@ -480,7 +480,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_id_file_path"] = client_id_file_path
             __props__.__dict__["client_secret"] = client_secret
             __props__.__dict__["client_secret_file_path"] = client_secret_file_path
-            __props__.__dict__["disable_terraform_partner_id"] = pulumi.Output.from_input(disable_terraform_partner_id).apply(pulumi.runtime.to_json) if disable_terraform_partner_id is not None else None
+            __props__.__dict__["disable_terraform_partner_id"] = pulumi.Output.from_input(disable_terraform_partner_id) if disable_terraform_partner_id is not None else None
             if environment is None:
                 environment = (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
             __props__.__dict__["environment"] = environment
@@ -496,11 +496,11 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["oidc_token_file_path"] = oidc_token_file_path
             __props__.__dict__["partner_id"] = partner_id
             __props__.__dict__["tenant_id"] = tenant_id
-            __props__.__dict__["use_cli"] = pulumi.Output.from_input(use_cli).apply(pulumi.runtime.to_json) if use_cli is not None else None
+            __props__.__dict__["use_cli"] = pulumi.Output.from_input(use_cli) if use_cli is not None else None
             if use_msi is None:
                 use_msi = (_utilities.get_env_bool('ARM_USE_MSI') or False)
-            __props__.__dict__["use_msi"] = pulumi.Output.from_input(use_msi).apply(pulumi.runtime.to_json) if use_msi is not None else None
-            __props__.__dict__["use_oidc"] = pulumi.Output.from_input(use_oidc).apply(pulumi.runtime.to_json) if use_oidc is not None else None
+            __props__.__dict__["use_msi"] = pulumi.Output.from_input(use_msi) if use_msi is not None else None
+            __props__.__dict__["use_oidc"] = pulumi.Output.from_input(use_oidc) if use_oidc is not None else None
         super(Provider, __self__).__init__(
             'azuread',
             resource_name,

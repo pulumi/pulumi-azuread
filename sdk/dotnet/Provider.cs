@@ -196,7 +196,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
         /// </summary>
-        [Input("disableTerraformPartnerId", json: true)]
+        [Input("disableTerraformPartnerId")]
         public Input<bool>? DisableTerraformPartnerId { get; set; }
 
         /// <summary>
@@ -259,19 +259,19 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Allow Azure CLI to be used for Authentication
         /// </summary>
-        [Input("useCli", json: true)]
+        [Input("useCli")]
         public Input<bool>? UseCli { get; set; }
 
         /// <summary>
         /// Allow Managed Identity to be used for Authentication
         /// </summary>
-        [Input("useMsi", json: true)]
+        [Input("useMsi")]
         public Input<bool>? UseMsi { get; set; }
 
         /// <summary>
         /// Allow OpenID Connect to be used for authentication
         /// </summary>
-        [Input("useOidc", json: true)]
+        [Input("useOidc")]
         public Input<bool>? UseOidc { get; set; }
 
         public ProviderArgs()
