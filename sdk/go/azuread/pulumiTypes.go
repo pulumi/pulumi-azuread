@@ -2081,8 +2081,11 @@ type ApplicationApiOauth2PermissionScope struct {
 	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
 	// Determines if the permission scope is enabled. Defaults to `true`.
-	Enabled *bool  `pulumi:"enabled"`
-	Id      string `pulumi:"id"`
+	Enabled *bool `pulumi:"enabled"`
+	// The unique identifier of the delegated permission. Must be a valid UUID.
+	//
+	// > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
+	Id string `pulumi:"id"`
 	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
 	Type *string `pulumi:"type"`
 	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
@@ -2110,7 +2113,10 @@ type ApplicationApiOauth2PermissionScopeArgs struct {
 	AdminConsentDisplayName pulumi.StringPtrInput `pulumi:"adminConsentDisplayName"`
 	// Determines if the permission scope is enabled. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	Id      pulumi.StringInput  `pulumi:"id"`
+	// The unique identifier of the delegated permission. Must be a valid UUID.
+	//
+	// > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
@@ -2186,6 +2192,9 @@ func (o ApplicationApiOauth2PermissionScopeOutput) Enabled() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The unique identifier of the delegated permission. Must be a valid UUID.
+//
+// > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
 func (o ApplicationApiOauth2PermissionScopeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2237,9 +2246,12 @@ type ApplicationAppRoleType struct {
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName string `pulumi:"displayName"`
 	// Determines if the app role is enabled. Defaults to `true`.
-	Enabled *bool   `pulumi:"enabled"`
-	Id      string  `pulumi:"id"`
-	Value   *string `pulumi:"value"`
+	Enabled *bool `pulumi:"enabled"`
+	// The unique identifier of the app role. Must be a valid UUID.
+	//
+	// > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
+	Id    string  `pulumi:"id"`
+	Value *string `pulumi:"value"`
 }
 
 // ApplicationAppRoleTypeInput is an input type that accepts ApplicationAppRoleTypeArgs and ApplicationAppRoleTypeOutput values.
@@ -2261,9 +2273,12 @@ type ApplicationAppRoleTypeArgs struct {
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// Determines if the app role is enabled. Defaults to `true`.
-	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Id      pulumi.StringInput    `pulumi:"id"`
-	Value   pulumi.StringPtrInput `pulumi:"value"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The unique identifier of the app role. Must be a valid UUID.
+	//
+	// > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
+	Id    pulumi.StringInput    `pulumi:"id"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ApplicationAppRoleTypeArgs) ElementType() reflect.Type {
@@ -2337,6 +2352,9 @@ func (o ApplicationAppRoleTypeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationAppRoleType) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The unique identifier of the app role. Must be a valid UUID.
+//
+// > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
 func (o ApplicationAppRoleTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationAppRoleType) string { return v.Id }).(pulumi.StringOutput)
 }

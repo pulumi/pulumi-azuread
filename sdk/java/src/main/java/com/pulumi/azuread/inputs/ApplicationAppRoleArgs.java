@@ -78,9 +78,21 @@ public final class ApplicationAppRoleArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * The unique identifier of the app role. Must be a valid UUID.
+     * 
+     * &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return The unique identifier of the app role. Must be a valid UUID.
+     * 
+     * &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
@@ -215,11 +227,27 @@ public final class ApplicationAppRoleArgs extends com.pulumi.resources.ResourceA
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param id The unique identifier of the app role. Must be a valid UUID.
+         * 
+         * &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The unique identifier of the app role. Must be a valid UUID.
+         * 
+         * &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }

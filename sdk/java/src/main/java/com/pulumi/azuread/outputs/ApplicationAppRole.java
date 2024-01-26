@@ -34,6 +34,12 @@ public final class ApplicationAppRole {
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return The unique identifier of the app role. Must be a valid UUID.
+     * 
+     * &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+     * 
+     */
     private String id;
     private @Nullable String value;
 
@@ -66,6 +72,12 @@ public final class ApplicationAppRole {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return The unique identifier of the app role. Must be a valid UUID.
+     * 
+     * &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+     * 
+     */
     public String id() {
         return this.id;
     }
