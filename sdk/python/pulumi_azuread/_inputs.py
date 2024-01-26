@@ -1001,6 +1001,9 @@ class ApplicationApiOauth2PermissionScopeArgs:
                  user_consent_display_name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] id: The unique identifier of the delegated permission. Must be a valid UUID.
+               
+               > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
         :param pulumi.Input[str] admin_consent_description: Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         :param pulumi.Input[str] admin_consent_display_name: Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         :param pulumi.Input[bool] enabled: Determines if the permission scope is enabled. Defaults to `true`.
@@ -1027,6 +1030,11 @@ class ApplicationApiOauth2PermissionScopeArgs:
     @property
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
+        """
+        The unique identifier of the delegated permission. Must be a valid UUID.
+
+        > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -1128,6 +1136,9 @@ class ApplicationAppRoleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         :param pulumi.Input[str] display_name: Display name for the app role that appears during app role assignment and in consent experiences.
+        :param pulumi.Input[str] id: The unique identifier of the app role. Must be a valid UUID.
+               
+               > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
         :param pulumi.Input[bool] enabled: Determines if the app role is enabled. Defaults to `true`.
         """
         pulumi.set(__self__, "allowed_member_types", allowed_member_types)
@@ -1178,6 +1189,11 @@ class ApplicationAppRoleArgs:
     @property
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
+        """
+        The unique identifier of the app role. Must be a valid UUID.
+
+        > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+        """
         return pulumi.get(self, "id")
 
     @id.setter

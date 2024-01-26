@@ -522,7 +522,8 @@
                     "description": "Determines if the permission scope is enabled. Defaults to `true`.\n"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique identifier of the delegated permission. Must be a valid UUID.\n\n\u003e **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.\n"
                 },
                 "type": {
                     "type": "string",
@@ -567,7 +568,8 @@
                     "description": "Determines if the app role is enabled. Defaults to `true`.\n"
                 },
                 "id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The unique identifier of the app role. Must be a valid UUID.\n\n\u003e **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.\n"
                 },
                 "value": {
                     "type": "string"

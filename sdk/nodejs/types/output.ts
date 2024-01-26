@@ -271,6 +271,11 @@ export interface ApplicationApiOauth2PermissionScope {
      * Determines if the permission scope is enabled. Defaults to `true`.
      */
     enabled?: boolean;
+    /**
+     * The unique identifier of the delegated permission. Must be a valid UUID.
+     *
+     * > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
+     */
     id: string;
     /**
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
@@ -304,6 +309,11 @@ export interface ApplicationAppRole {
      * Determines if the app role is enabled. Defaults to `true`.
      */
     enabled?: boolean;
+    /**
+     * The unique identifier of the app role. Must be a valid UUID.
+     *
+     * > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
+     */
     id: string;
     value?: string;
 }
