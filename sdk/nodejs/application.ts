@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * const example = new azuread.Application("example", {
  *     displayName: "example",
  *     identifierUris: ["api://example-app"],
- *     logoImage: Buffer.from(fs.readFileSync("/path/to/logo.png", 'binary')).toString('base64'),
+ *     logoImage: fs.readFileSync("/path/to/logo.png", { encoding: "base64" }),
  *     owners: [current.then(current => current.objectId)],
  *     signInAudience: "AzureADMultipleOrgs",
  *     api: {
