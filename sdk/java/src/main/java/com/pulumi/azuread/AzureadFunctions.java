@@ -2210,12 +2210,6 @@ public final class AzureadFunctions {
         return Deployment.getInstance().invokeAsync("azuread:index/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to discover application IDs for APIs published by Microsoft.
-     * 
-     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
-     * 
-     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
-     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -2304,12 +2298,6 @@ public final class AzureadFunctions {
         return getApplicationPublishedAppIds(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to discover application IDs for APIs published by Microsoft.
-     * 
-     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
-     * 
-     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
-     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -2398,12 +2386,6 @@ public final class AzureadFunctions {
         return getApplicationPublishedAppIdsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to discover application IDs for APIs published by Microsoft.
-     * 
-     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
-     * 
-     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
-     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -2492,12 +2474,6 @@ public final class AzureadFunctions {
         return getApplicationPublishedAppIds(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to discover application IDs for APIs published by Microsoft.
-     * 
-     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
-     * 
-     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
-     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -2586,12 +2562,6 @@ public final class AzureadFunctions {
         return getApplicationPublishedAppIdsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to discover application IDs for APIs published by Microsoft.
-     * 
-     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
-     * 
-     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
-     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -2680,12 +2650,6 @@ public final class AzureadFunctions {
         return Deployment.getInstance().invoke("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", TypeShape.of(GetApplicationPublishedAppIdsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to discover application IDs for APIs published by Microsoft.
-     * 
-     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
-     * 
-     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
-     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -7199,7 +7163,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
+     *             .userPrincipalName(&#34;user@example.com&#34;)
      *             .build());
      * 
      *     }
@@ -7244,7 +7208,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
+     *             .userPrincipalName(&#34;user@example.com&#34;)
      *             .build());
      * 
      *     }
@@ -7289,7 +7253,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
+     *             .userPrincipalName(&#34;user@example.com&#34;)
      *             .build());
      * 
      *     }
@@ -7334,7 +7298,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
+     *             .userPrincipalName(&#34;user@example.com&#34;)
      *             .build());
      * 
      *     }
@@ -7379,7 +7343,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
+     *             .userPrincipalName(&#34;user@example.com&#34;)
      *             .build());
      * 
      *     }
@@ -7424,7 +7388,7 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
+     *             .userPrincipalName(&#34;user@example.com&#34;)
      *             .build());
      * 
      *     }
@@ -7470,8 +7434,8 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@hashicorp.com&#34;,
-     *                 &#34;byte@hashicorp.com&#34;)
+     *                 &#34;kat@example.com&#34;,
+     *                 &#34;byte@example.com&#34;)
      *             .build());
      * 
      *     }
@@ -7517,8 +7481,8 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@hashicorp.com&#34;,
-     *                 &#34;byte@hashicorp.com&#34;)
+     *                 &#34;kat@example.com&#34;,
+     *                 &#34;byte@example.com&#34;)
      *             .build());
      * 
      *     }
@@ -7564,8 +7528,8 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@hashicorp.com&#34;,
-     *                 &#34;byte@hashicorp.com&#34;)
+     *                 &#34;kat@example.com&#34;,
+     *                 &#34;byte@example.com&#34;)
      *             .build());
      * 
      *     }
@@ -7611,8 +7575,8 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@hashicorp.com&#34;,
-     *                 &#34;byte@hashicorp.com&#34;)
+     *                 &#34;kat@example.com&#34;,
+     *                 &#34;byte@example.com&#34;)
      *             .build());
      * 
      *     }
@@ -7658,8 +7622,8 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@hashicorp.com&#34;,
-     *                 &#34;byte@hashicorp.com&#34;)
+     *                 &#34;kat@example.com&#34;,
+     *                 &#34;byte@example.com&#34;)
      *             .build());
      * 
      *     }
@@ -7705,8 +7669,8 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@hashicorp.com&#34;,
-     *                 &#34;byte@hashicorp.com&#34;)
+     *                 &#34;kat@example.com&#34;,
+     *                 &#34;byte@example.com&#34;)
      *             .build());
      * 
      *     }

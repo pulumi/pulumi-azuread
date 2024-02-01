@@ -583,7 +583,7 @@ def get_user(employee_id: Optional[str] = None,
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_user(user_principal_name="user@hashicorp.com")
+    example = azuread.get_user(user_principal_name="user@example.com")
     ```
 
 
@@ -675,7 +675,7 @@ def get_user_output(employee_id: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_user(user_principal_name="user@hashicorp.com")
+    example = azuread.get_user(user_principal_name="user@example.com")
     ```
 
 

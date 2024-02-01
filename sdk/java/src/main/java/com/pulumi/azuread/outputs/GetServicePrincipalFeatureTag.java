@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServicePrincipalFeatureTag {
+    /**
+     * @return Whether this service principal represents a custom SAML application
+     * 
+     */
     private Boolean customSingleSignOn;
+    /**
+     * @return Whether this service principal represents an Enterprise Application
+     * 
+     */
     private Boolean enterprise;
+    /**
+     * @return Whether this service principal represents a gallery application
+     * 
+     */
     private Boolean gallery;
+    /**
+     * @return Whether this app is invisible to users in My Apps and Office 365 Launcher
+     * 
+     */
     private Boolean hide;
 
     private GetServicePrincipalFeatureTag() {}
+    /**
+     * @return Whether this service principal represents a custom SAML application
+     * 
+     */
     public Boolean customSingleSignOn() {
         return this.customSingleSignOn;
     }
+    /**
+     * @return Whether this service principal represents an Enterprise Application
+     * 
+     */
     public Boolean enterprise() {
         return this.enterprise;
     }
+    /**
+     * @return Whether this service principal represents a gallery application
+     * 
+     */
     public Boolean gallery() {
         return this.gallery;
     }
+    /**
+     * @return Whether this app is invisible to users in My Apps and Office 365 Launcher
+     * 
+     */
     public Boolean hide() {
         return this.hide;
     }

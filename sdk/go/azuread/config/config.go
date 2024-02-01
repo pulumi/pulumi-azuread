@@ -48,8 +48,6 @@ func GetClientSecret(ctx *pulumi.Context) string {
 func GetClientSecretFilePath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:clientSecretFilePath")
 }
-
-// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
 func GetDisableTerraformPartnerId(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "azuread:disableTerraformPartnerId")
 }

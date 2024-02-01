@@ -43,6 +43,9 @@ namespace Pulumi.AzureAD.Outputs
         /// Display name for the delegated permission that appears in the end user consent experience.
         /// </summary>
         public readonly string? UserConsentDisplayName;
+        /// <summary>
+        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

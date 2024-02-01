@@ -40,7 +40,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
 //				RedirectUrl:      pulumi.String("https://portal.azure.com"),
-//				UserEmailAddress: pulumi.String("jdoe@hashicorp.com"),
+//				UserEmailAddress: pulumi.String("jdoe@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -70,7 +70,7 @@ import (
 //					Language: pulumi.String("en-US"),
 //				},
 //				RedirectUrl:      pulumi.String("https://portal.azure.com"),
-//				UserEmailAddress: pulumi.String("jdoe@hashicorp.com"),
+//				UserEmailAddress: pulumi.String("jdoe@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -97,12 +97,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
 //				Message: &azuread.InvitationMessageArgs{
-//					AdditionalRecipients: pulumi.String("aaliceberg@hashicorp.com"),
+//					AdditionalRecipients: pulumi.String("aaliceberg@example.com"),
 //					Body:                 pulumi.String("Hello there! You are invited to join my Azure tenant!"),
 //				},
 //				RedirectUrl:      pulumi.String("https://portal.azure.com"),
 //				UserDisplayName:  pulumi.String("Bob Bobson"),
-//				UserEmailAddress: pulumi.String("bbobson@hashicorp.com"),
+//				UserEmailAddress: pulumi.String("bbobson@example.com"),
 //			})
 //			if err != nil {
 //				return err

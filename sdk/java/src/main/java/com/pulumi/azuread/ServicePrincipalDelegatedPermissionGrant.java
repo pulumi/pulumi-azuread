@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleUser = new User(&#34;exampleUser&#34;, UserArgs.builder()        
  *             .displayName(&#34;J. Doe&#34;)
- *             .userPrincipalName(&#34;jdoe@hashicorp.com&#34;)
+ *             .userPrincipalName(&#34;jdoe@example.com&#34;)
  *             .mailNickname(&#34;jdoe&#34;)
  *             .password(&#34;SecretP@sswd99!&#34;)
  *             .build());

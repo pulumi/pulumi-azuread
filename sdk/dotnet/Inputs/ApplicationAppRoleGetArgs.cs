@@ -50,6 +50,9 @@ namespace Pulumi.AzureAD.Inputs
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

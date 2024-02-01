@@ -50,6 +50,10 @@ public final class ApplicationApiOauth2PermissionScope {
      * 
      */
     private @Nullable String userConsentDisplayName;
+    /**
+     * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens
+     * 
+     */
     private @Nullable String value;
 
     private ApplicationApiOauth2PermissionScope() {}
@@ -104,6 +108,10 @@ public final class ApplicationApiOauth2PermissionScope {
     public Optional<String> userConsentDisplayName() {
         return Optional.ofNullable(this.userConsentDisplayName);
     }
+    /**
+     * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

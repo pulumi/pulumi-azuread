@@ -36,7 +36,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     var example = AzureAD.GetUser.Invoke(new()
         ///     {
-        ///         UserPrincipalName = "user@hashicorp.com",
+        ///         UserPrincipalName = "user@example.com",
         ///     });
         /// 
         /// });
@@ -72,7 +72,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     var example = AzureAD.GetUser.Invoke(new()
         ///     {
-        ///         UserPrincipalName = "user@hashicorp.com",
+        ///         UserPrincipalName = "user@example.com",
         ///     });
         /// 
         /// });

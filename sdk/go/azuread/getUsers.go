@@ -37,8 +37,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.GetUsers(ctx, &azuread.GetUsersArgs{
 //				UserPrincipalNames: []string{
-//					"kat@hashicorp.com",
-//					"byte@hashicorp.com",
+//					"kat@example.com",
+//					"byte@example.com",
 //				},
 //			}, nil)
 //			if err != nil {
