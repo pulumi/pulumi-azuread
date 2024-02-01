@@ -32,7 +32,7 @@ namespace Pulumi.AzureAD
     /// {
     ///     var exampleUser = AzureAD.GetUser.Invoke(new()
     ///     {
-    ///         UserPrincipalName = "jdoe@hashicorp.com",
+    ///         UserPrincipalName = "jdoe@example.com",
     ///     });
     /// 
     ///     var exampleAccessPackageCatalogRole = AzureAD.GetAccessPackageCatalogRole.Invoke(new()

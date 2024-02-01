@@ -1141,6 +1141,7 @@ class ApplicationApiOauth2PermissionScope(dict):
         :param str type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
         :param str user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         :param str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
+        :param str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens
         """
         pulumi.set(__self__, "id", id)
         if admin_consent_description is not None:
@@ -1219,6 +1220,9 @@ class ApplicationApiOauth2PermissionScope(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The value that is used for the `scp` claim in OAuth 2.0 access tokens
+        """
         return pulumi.get(self, "value")
 
 
@@ -1258,6 +1262,7 @@ class ApplicationAppRole(dict):
                
                > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
         :param bool enabled: Determines if the app role is enabled. Defaults to `true`.
+        :param str value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
         """
         pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         pulumi.set(__self__, "description", description)
@@ -1313,6 +1318,9 @@ class ApplicationAppRole(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+        """
         return pulumi.get(self, "value")
 
 
@@ -3268,6 +3276,12 @@ class ServicePrincipalFeature(dict):
                  enterprise_application: Optional[bool] = None,
                  gallery_application: Optional[bool] = None,
                  visible_to_users: Optional[bool] = None):
+        """
+        :param bool custom_single_sign_on_app: Whether this service principal represents a custom SAML application
+        :param bool enterprise_application: Whether this service principal represents an Enterprise Application
+        :param bool gallery_application: Whether this service principal represents a gallery application
+        :param bool visible_to_users: Whether this app is visible to users in My Apps and Office 365 Launcher
+        """
         if custom_single_sign_on_app is not None:
             pulumi.set(__self__, "custom_single_sign_on_app", custom_single_sign_on_app)
         if enterprise_application is not None:
@@ -3280,21 +3294,33 @@ class ServicePrincipalFeature(dict):
     @property
     @pulumi.getter(name="customSingleSignOnApp")
     def custom_single_sign_on_app(self) -> Optional[bool]:
+        """
+        Whether this service principal represents a custom SAML application
+        """
         return pulumi.get(self, "custom_single_sign_on_app")
 
     @property
     @pulumi.getter(name="enterpriseApplication")
     def enterprise_application(self) -> Optional[bool]:
+        """
+        Whether this service principal represents an Enterprise Application
+        """
         return pulumi.get(self, "enterprise_application")
 
     @property
     @pulumi.getter(name="galleryApplication")
     def gallery_application(self) -> Optional[bool]:
+        """
+        Whether this service principal represents a gallery application
+        """
         return pulumi.get(self, "gallery_application")
 
     @property
     @pulumi.getter(name="visibleToUsers")
     def visible_to_users(self) -> Optional[bool]:
+        """
+        Whether this app is visible to users in My Apps and Office 365 Launcher
+        """
         return pulumi.get(self, "visible_to_users")
 
 
@@ -4641,6 +4667,12 @@ class GetServicePrincipalFeatureTagResult(dict):
                  enterprise: bool,
                  gallery: bool,
                  hide: bool):
+        """
+        :param bool custom_single_sign_on: Whether this service principal represents a custom SAML application
+        :param bool enterprise: Whether this service principal represents an Enterprise Application
+        :param bool gallery: Whether this service principal represents a gallery application
+        :param bool hide: Whether this app is invisible to users in My Apps and Office 365 Launcher
+        """
         pulumi.set(__self__, "custom_single_sign_on", custom_single_sign_on)
         pulumi.set(__self__, "enterprise", enterprise)
         pulumi.set(__self__, "gallery", gallery)
@@ -4649,21 +4681,33 @@ class GetServicePrincipalFeatureTagResult(dict):
     @property
     @pulumi.getter(name="customSingleSignOn")
     def custom_single_sign_on(self) -> bool:
+        """
+        Whether this service principal represents a custom SAML application
+        """
         return pulumi.get(self, "custom_single_sign_on")
 
     @property
     @pulumi.getter
     def enterprise(self) -> bool:
+        """
+        Whether this service principal represents an Enterprise Application
+        """
         return pulumi.get(self, "enterprise")
 
     @property
     @pulumi.getter
     def gallery(self) -> bool:
+        """
+        Whether this service principal represents a gallery application
+        """
         return pulumi.get(self, "gallery")
 
     @property
     @pulumi.getter
     def hide(self) -> bool:
+        """
+        Whether this app is invisible to users in My Apps and Office 365 Launcher
+        """
         return pulumi.get(self, "hide")
 
 
@@ -4799,7 +4843,9 @@ class GetServicePrincipalsServicePrincipalResult(dict):
         """
         :param bool account_enabled: Whether the service principal account is enabled.
         :param bool app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
+        :param str application_id: The application ID (client ID) for the associated application
         :param str application_tenant_id: The tenant ID where the associated application is registered.
+        :param str client_id: The application ID (client ID) for the associated application
         :param str display_name: The display name of the application associated with this service principal.
         :param str object_id: The object ID of the service principal.
         :param str preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
@@ -4842,6 +4888,9 @@ class GetServicePrincipalsServicePrincipalResult(dict):
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
+        """
+        The application ID (client ID) for the associated application
+        """
         warnings.warn("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
         pulumi.log.warn("""application_id is deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
 
@@ -4858,6 +4907,9 @@ class GetServicePrincipalsServicePrincipalResult(dict):
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
+        """
+        The application ID (client ID) for the associated application
+        """
         return pulumi.get(self, "client_id")
 
     @property

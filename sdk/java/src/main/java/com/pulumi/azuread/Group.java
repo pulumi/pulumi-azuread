@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *         final var current = AzureadFunctions.getClientConfig();
  * 
  *         var groupOwner = new User(&#34;groupOwner&#34;, UserArgs.builder()        
- *             .userPrincipalName(&#34;example-group-owner@hashicorp.com&#34;)
+ *             .userPrincipalName(&#34;example-group-owner@example.com&#34;)
  *             .displayName(&#34;Group Owner&#34;)
  *             .mailNickname(&#34;example-group-owner&#34;)
  *             .password(&#34;SecretP@sswd99!&#34;)
@@ -156,7 +156,7 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;J Doe&#34;)
  *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .password(&#34;notSecure123&#34;)
- *             .userPrincipalName(&#34;jdoe@hashicorp.com&#34;)
+ *             .userPrincipalName(&#34;jdoe@example.com&#34;)
  *             .build());
  * 
  *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        

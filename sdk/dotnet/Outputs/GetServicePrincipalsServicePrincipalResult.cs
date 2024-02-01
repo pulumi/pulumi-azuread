@@ -21,11 +21,17 @@ namespace Pulumi.AzureAD.Outputs
         /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
         /// </summary>
         public readonly bool AppRoleAssignmentRequired;
+        /// <summary>
+        /// The application ID (client ID) for the associated application
+        /// </summary>
         public readonly string ApplicationId;
         /// <summary>
         /// The tenant ID where the associated application is registered.
         /// </summary>
         public readonly string ApplicationTenantId;
+        /// <summary>
+        /// The application ID (client ID) for the associated application
+        /// </summary>
         public readonly string ClientId;
         /// <summary>
         /// The display name of the application associated with this service principal.

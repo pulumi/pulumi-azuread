@@ -41,6 +41,10 @@ public final class ApplicationAppRole {
      * 
      */
     private String id;
+    /**
+     * @return The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+     * 
+     */
     private @Nullable String value;
 
     private ApplicationAppRole() {}
@@ -81,6 +85,10 @@ public final class ApplicationAppRole {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

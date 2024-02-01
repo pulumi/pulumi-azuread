@@ -38,8 +38,8 @@ namespace Pulumi.AzureAD
         ///     {
         ///         UserPrincipalNames = new[]
         ///         {
-        ///             "kat@hashicorp.com",
-        ///             "byte@hashicorp.com",
+        ///             "kat@example.com",
+        ///             "byte@example.com",
         ///         },
         ///     });
         /// 
@@ -78,8 +78,8 @@ namespace Pulumi.AzureAD
         ///     {
         ///         UserPrincipalNames = new[]
         ///         {
-        ///             "kat@hashicorp.com",
-        ///             "byte@hashicorp.com",
+        ///             "kat@example.com",
+        ///             "byte@example.com",
         ///         },
         ///     });
         /// 

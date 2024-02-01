@@ -118,7 +118,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
         example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Security administrator")
         example_directory_role_member = azuread.DirectoryRoleMember("exampleDirectoryRoleMember",
             role_object_id=example_directory_role.object_id,
@@ -165,7 +165,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
         example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Security administrator")
         example_directory_role_member = azuread.DirectoryRoleMember("exampleDirectoryRoleMember",
             role_object_id=example_directory_role.object_id,

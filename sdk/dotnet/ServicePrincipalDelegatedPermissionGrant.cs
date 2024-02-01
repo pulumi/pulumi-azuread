@@ -135,7 +135,7 @@ namespace Pulumi.AzureAD
     ///     var exampleUser = new AzureAD.User("exampleUser", new()
     ///     {
     ///         DisplayName = "J. Doe",
-    ///         UserPrincipalName = "jdoe@hashicorp.com",
+    ///         UserPrincipalName = "jdoe@example.com",
     ///         MailNickname = "jdoe",
     ///         Password = "SecretP@sswd99!",
     ///     });

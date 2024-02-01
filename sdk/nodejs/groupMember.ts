@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const exampleUser = azuread.getUser({
- *     userPrincipalName: "jdoe@hashicorp.com",
+ *     userPrincipalName: "jdoe@example.com",
  * });
  * const exampleGroup = new azuread.Group("exampleGroup", {
  *     displayName: "my_group",

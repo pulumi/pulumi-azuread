@@ -289,6 +289,9 @@ export interface ApplicationApiOauth2PermissionScope {
      * Display name for the delegated permission that appears in the end user consent experience.
      */
     userConsentDisplayName?: string;
+    /**
+     * The value that is used for the `scp` claim in OAuth 2.0 access tokens
+     */
     value?: string;
 }
 
@@ -315,6 +318,9 @@ export interface ApplicationAppRole {
      * > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
      */
     id: string;
+    /**
+     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+     */
     value?: string;
 }
 
@@ -1111,9 +1117,21 @@ export interface GetServicePrincipalFeature {
 }
 
 export interface GetServicePrincipalFeatureTag {
+    /**
+     * Whether this service principal represents a custom SAML application
+     */
     customSingleSignOn: boolean;
+    /**
+     * Whether this service principal represents an Enterprise Application
+     */
     enterprise: boolean;
+    /**
+     * Whether this service principal represents a gallery application
+     */
     gallery: boolean;
+    /**
+     * Whether this app is invisible to users in My Apps and Office 365 Launcher
+     */
     hide: boolean;
 }
 
@@ -1169,6 +1187,8 @@ export interface GetServicePrincipalsServicePrincipal {
      */
     appRoleAssignmentRequired: boolean;
     /**
+     * The application ID (client ID) for the associated application
+     *
      * @deprecated The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId: string;
@@ -1176,6 +1196,9 @@ export interface GetServicePrincipalsServicePrincipal {
      * The tenant ID where the associated application is registered.
      */
     applicationTenantId: string;
+    /**
+     * The application ID (client ID) for the associated application
+     */
     clientId: string;
     /**
      * The display name of the application associated with this service principal.
@@ -1336,9 +1359,21 @@ export interface ServicePrincipalAppRole {
 }
 
 export interface ServicePrincipalFeature {
+    /**
+     * Whether this service principal represents a custom SAML application
+     */
     customSingleSignOnApp?: boolean;
+    /**
+     * Whether this service principal represents an Enterprise Application
+     */
     enterpriseApplication?: boolean;
+    /**
+     * Whether this service principal represents a gallery application
+     */
     galleryApplication?: boolean;
+    /**
+     * Whether this app is visible to users in My Apps and Office 365 Launcher
+     */
     visibleToUsers?: boolean;
 }
 

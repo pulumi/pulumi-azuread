@@ -85,7 +85,7 @@ import * as utilities from "./utilities";
  * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
  * const exampleUser = new azuread.User("exampleUser", {
  *     displayName: "J. Doe",
- *     userPrincipalName: "jdoe@hashicorp.com",
+ *     userPrincipalName: "jdoe@example.com",
  *     mailNickname: "jdoe",
  *     password: "SecretP@sswd99!",
  * });
