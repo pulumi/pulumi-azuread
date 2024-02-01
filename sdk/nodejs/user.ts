@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     displayName: "J. Doe",
  *     mailNickname: "jdoe",
  *     password: "SecretP@sswd99!",
- *     userPrincipalName: "jdoe@hashicorp.com",
+ *     userPrincipalName: "jdoe@example.com",
  * });
  * ```
  *

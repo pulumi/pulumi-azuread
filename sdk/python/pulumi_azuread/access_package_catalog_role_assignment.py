@@ -146,7 +146,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
         example_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
         example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
             display_name="example-access-package-catalog",
@@ -194,7 +194,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
         example_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
         example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
             display_name="example-access-package-catalog",

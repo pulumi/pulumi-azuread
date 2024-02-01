@@ -126,9 +126,17 @@ public final class ApplicationApiOauth2PermissionScopeArgs extends com.pulumi.re
         return Optional.ofNullable(this.userConsentDisplayName);
     }
 
+    /**
+     * The value that is used for the `scp` claim in OAuth 2.0 access tokens
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -315,11 +323,23 @@ public final class ApplicationApiOauth2PermissionScopeArgs extends com.pulumi.re
             return userConsentDisplayName(Output.of(userConsentDisplayName));
         }
 
+        /**
+         * @param value The value that is used for the `scp` claim in OAuth 2.0 access tokens
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The value that is used for the `scp` claim in OAuth 2.0 access tokens
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

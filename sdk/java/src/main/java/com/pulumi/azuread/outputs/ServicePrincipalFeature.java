@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServicePrincipalFeature {
+    /**
+     * @return Whether this service principal represents a custom SAML application
+     * 
+     */
     private @Nullable Boolean customSingleSignOnApp;
+    /**
+     * @return Whether this service principal represents an Enterprise Application
+     * 
+     */
     private @Nullable Boolean enterpriseApplication;
+    /**
+     * @return Whether this service principal represents a gallery application
+     * 
+     */
     private @Nullable Boolean galleryApplication;
+    /**
+     * @return Whether this app is visible to users in My Apps and Office 365 Launcher
+     * 
+     */
     private @Nullable Boolean visibleToUsers;
 
     private ServicePrincipalFeature() {}
+    /**
+     * @return Whether this service principal represents a custom SAML application
+     * 
+     */
     public Optional<Boolean> customSingleSignOnApp() {
         return Optional.ofNullable(this.customSingleSignOnApp);
     }
+    /**
+     * @return Whether this service principal represents an Enterprise Application
+     * 
+     */
     public Optional<Boolean> enterpriseApplication() {
         return Optional.ofNullable(this.enterpriseApplication);
     }
+    /**
+     * @return Whether this service principal represents a gallery application
+     * 
+     */
     public Optional<Boolean> galleryApplication() {
         return Optional.ofNullable(this.galleryApplication);
     }
+    /**
+     * @return Whether this app is visible to users in My Apps and Office 365 Launcher
+     * 
+     */
     public Optional<Boolean> visibleToUsers() {
         return Optional.ofNullable(this.visibleToUsers);
     }

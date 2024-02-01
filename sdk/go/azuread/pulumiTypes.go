@@ -2092,7 +2092,8 @@ type ApplicationApiOauth2PermissionScope struct {
 	UserConsentDescription *string `pulumi:"userConsentDescription"`
 	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
-	Value                  *string `pulumi:"value"`
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens
+	Value *string `pulumi:"value"`
 }
 
 // ApplicationApiOauth2PermissionScopeInput is an input type that accepts ApplicationApiOauth2PermissionScopeArgs and ApplicationApiOauth2PermissionScopeOutput values.
@@ -2123,7 +2124,8 @@ type ApplicationApiOauth2PermissionScopeArgs struct {
 	UserConsentDescription pulumi.StringPtrInput `pulumi:"userConsentDescription"`
 	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
-	Value                  pulumi.StringPtrInput `pulumi:"value"`
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ApplicationApiOauth2PermissionScopeArgs) ElementType() reflect.Type {
@@ -2214,6 +2216,7 @@ func (o ApplicationApiOauth2PermissionScopeOutput) UserConsentDisplayName() pulu
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.UserConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The value that is used for the `scp` claim in OAuth 2.0 access tokens
 func (o ApplicationApiOauth2PermissionScopeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2250,7 +2253,8 @@ type ApplicationAppRoleType struct {
 	// The unique identifier of the app role. Must be a valid UUID.
 	//
 	// > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
-	Id    string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
 	Value *string `pulumi:"value"`
 }
 
@@ -2277,7 +2281,8 @@ type ApplicationAppRoleTypeArgs struct {
 	// The unique identifier of the app role. Must be a valid UUID.
 	//
 	// > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
-	Id    pulumi.StringInput    `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2359,6 +2364,7 @@ func (o ApplicationAppRoleTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationAppRoleType) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
 func (o ApplicationAppRoleTypeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationAppRoleType) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -7268,10 +7274,14 @@ func (o ServicePrincipalAppRoleArrayOutput) Index(i pulumi.IntInput) ServicePrin
 }
 
 type ServicePrincipalFeature struct {
+	// Whether this service principal represents a custom SAML application
 	CustomSingleSignOnApp *bool `pulumi:"customSingleSignOnApp"`
+	// Whether this service principal represents an Enterprise Application
 	EnterpriseApplication *bool `pulumi:"enterpriseApplication"`
-	GalleryApplication    *bool `pulumi:"galleryApplication"`
-	VisibleToUsers        *bool `pulumi:"visibleToUsers"`
+	// Whether this service principal represents a gallery application
+	GalleryApplication *bool `pulumi:"galleryApplication"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher
+	VisibleToUsers *bool `pulumi:"visibleToUsers"`
 }
 
 // ServicePrincipalFeatureInput is an input type that accepts ServicePrincipalFeatureArgs and ServicePrincipalFeatureOutput values.
@@ -7286,10 +7296,14 @@ type ServicePrincipalFeatureInput interface {
 }
 
 type ServicePrincipalFeatureArgs struct {
+	// Whether this service principal represents a custom SAML application
 	CustomSingleSignOnApp pulumi.BoolPtrInput `pulumi:"customSingleSignOnApp"`
+	// Whether this service principal represents an Enterprise Application
 	EnterpriseApplication pulumi.BoolPtrInput `pulumi:"enterpriseApplication"`
-	GalleryApplication    pulumi.BoolPtrInput `pulumi:"galleryApplication"`
-	VisibleToUsers        pulumi.BoolPtrInput `pulumi:"visibleToUsers"`
+	// Whether this service principal represents a gallery application
+	GalleryApplication pulumi.BoolPtrInput `pulumi:"galleryApplication"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher
+	VisibleToUsers pulumi.BoolPtrInput `pulumi:"visibleToUsers"`
 }
 
 func (ServicePrincipalFeatureArgs) ElementType() reflect.Type {
@@ -7343,18 +7357,22 @@ func (o ServicePrincipalFeatureOutput) ToServicePrincipalFeatureOutputWithContex
 	return o
 }
 
+// Whether this service principal represents a custom SAML application
 func (o ServicePrincipalFeatureOutput) CustomSingleSignOnApp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.CustomSingleSignOnApp }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this service principal represents an Enterprise Application
 func (o ServicePrincipalFeatureOutput) EnterpriseApplication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.EnterpriseApplication }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this service principal represents a gallery application
 func (o ServicePrincipalFeatureOutput) GalleryApplication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.GalleryApplication }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this app is visible to users in My Apps and Office 365 Launcher
 func (o ServicePrincipalFeatureOutput) VisibleToUsers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.VisibleToUsers }).(pulumi.BoolPtrOutput)
 }
@@ -10668,10 +10686,14 @@ func (o GetServicePrincipalFeatureArrayOutput) Index(i pulumi.IntInput) GetServi
 }
 
 type GetServicePrincipalFeatureTag struct {
+	// Whether this service principal represents a custom SAML application
 	CustomSingleSignOn bool `pulumi:"customSingleSignOn"`
-	Enterprise         bool `pulumi:"enterprise"`
-	Gallery            bool `pulumi:"gallery"`
-	Hide               bool `pulumi:"hide"`
+	// Whether this service principal represents an Enterprise Application
+	Enterprise bool `pulumi:"enterprise"`
+	// Whether this service principal represents a gallery application
+	Gallery bool `pulumi:"gallery"`
+	// Whether this app is invisible to users in My Apps and Office 365 Launcher
+	Hide bool `pulumi:"hide"`
 }
 
 // GetServicePrincipalFeatureTagInput is an input type that accepts GetServicePrincipalFeatureTagArgs and GetServicePrincipalFeatureTagOutput values.
@@ -10686,10 +10708,14 @@ type GetServicePrincipalFeatureTagInput interface {
 }
 
 type GetServicePrincipalFeatureTagArgs struct {
+	// Whether this service principal represents a custom SAML application
 	CustomSingleSignOn pulumi.BoolInput `pulumi:"customSingleSignOn"`
-	Enterprise         pulumi.BoolInput `pulumi:"enterprise"`
-	Gallery            pulumi.BoolInput `pulumi:"gallery"`
-	Hide               pulumi.BoolInput `pulumi:"hide"`
+	// Whether this service principal represents an Enterprise Application
+	Enterprise pulumi.BoolInput `pulumi:"enterprise"`
+	// Whether this service principal represents a gallery application
+	Gallery pulumi.BoolInput `pulumi:"gallery"`
+	// Whether this app is invisible to users in My Apps and Office 365 Launcher
+	Hide pulumi.BoolInput `pulumi:"hide"`
 }
 
 func (GetServicePrincipalFeatureTagArgs) ElementType() reflect.Type {
@@ -10743,18 +10769,22 @@ func (o GetServicePrincipalFeatureTagOutput) ToGetServicePrincipalFeatureTagOutp
 	return o
 }
 
+// Whether this service principal represents a custom SAML application
 func (o GetServicePrincipalFeatureTagOutput) CustomSingleSignOn() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalFeatureTag) bool { return v.CustomSingleSignOn }).(pulumi.BoolOutput)
 }
 
+// Whether this service principal represents an Enterprise Application
 func (o GetServicePrincipalFeatureTagOutput) Enterprise() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalFeatureTag) bool { return v.Enterprise }).(pulumi.BoolOutput)
 }
 
+// Whether this service principal represents a gallery application
 func (o GetServicePrincipalFeatureTagOutput) Gallery() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalFeatureTag) bool { return v.Gallery }).(pulumi.BoolOutput)
 }
 
+// Whether this app is invisible to users in My Apps and Office 365 Launcher
 func (o GetServicePrincipalFeatureTagOutput) Hide() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalFeatureTag) bool { return v.Hide }).(pulumi.BoolOutput)
 }
@@ -11041,11 +11071,14 @@ type GetServicePrincipalsServicePrincipal struct {
 	AccountEnabled bool `pulumi:"accountEnabled"`
 	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
 	AppRoleAssignmentRequired bool `pulumi:"appRoleAssignmentRequired"`
+	// The application ID (client ID) for the associated application
+	//
 	// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId string `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId string `pulumi:"applicationTenantId"`
-	ClientId            string `pulumi:"clientId"`
+	// The application ID (client ID) for the associated application
+	ClientId string `pulumi:"clientId"`
 	// The display name of the application associated with this service principal.
 	DisplayName string `pulumi:"displayName"`
 	// The object ID of the service principal.
@@ -11080,11 +11113,14 @@ type GetServicePrincipalsServicePrincipalArgs struct {
 	AccountEnabled pulumi.BoolInput `pulumi:"accountEnabled"`
 	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
 	AppRoleAssignmentRequired pulumi.BoolInput `pulumi:"appRoleAssignmentRequired"`
+	// The application ID (client ID) for the associated application
+	//
 	// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId pulumi.StringInput `pulumi:"applicationTenantId"`
-	ClientId            pulumi.StringInput `pulumi:"clientId"`
+	// The application ID (client ID) for the associated application
+	ClientId pulumi.StringInput `pulumi:"clientId"`
 	// The display name of the application associated with this service principal.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The object ID of the service principal.
@@ -11164,6 +11200,8 @@ func (o GetServicePrincipalsServicePrincipalOutput) AppRoleAssignmentRequired() 
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) bool { return v.AppRoleAssignmentRequired }).(pulumi.BoolOutput)
 }
 
+// The application ID (client ID) for the associated application
+//
 // Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
 func (o GetServicePrincipalsServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ApplicationId }).(pulumi.StringOutput)
@@ -11174,6 +11212,7 @@ func (o GetServicePrincipalsServicePrincipalOutput) ApplicationTenantId() pulumi
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ApplicationTenantId }).(pulumi.StringOutput)
 }
 
+// The application ID (client ID) for the associated application
 func (o GetServicePrincipalsServicePrincipalOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ClientId }).(pulumi.StringOutput)
 }

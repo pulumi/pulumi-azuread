@@ -35,7 +35,7 @@ namespace Pulumi.AzureAD
     ///     var example = new AzureAD.Invitation("example", new()
     ///     {
     ///         RedirectUrl = "https://portal.azure.com",
-    ///         UserEmailAddress = "jdoe@hashicorp.com",
+    ///         UserEmailAddress = "jdoe@example.com",
     ///     });
     /// 
     /// });
@@ -58,7 +58,7 @@ namespace Pulumi.AzureAD
     ///             Language = "en-US",
     ///         },
     ///         RedirectUrl = "https://portal.azure.com",
-    ///         UserEmailAddress = "jdoe@hashicorp.com",
+    ///         UserEmailAddress = "jdoe@example.com",
     ///     });
     /// 
     /// });
@@ -78,12 +78,12 @@ namespace Pulumi.AzureAD
     ///     {
     ///         Message = new AzureAD.Inputs.InvitationMessageArgs
     ///         {
-    ///             AdditionalRecipients = "aaliceberg@hashicorp.com",
+    ///             AdditionalRecipients = "aaliceberg@example.com",
     ///             Body = "Hello there! You are invited to join my Azure tenant!",
     ///         },
     ///         RedirectUrl = "https://portal.azure.com",
     ///         UserDisplayName = "Bob Bobson",
-    ///         UserEmailAddress = "bbobson@hashicorp.com",
+    ///         UserEmailAddress = "bbobson@example.com",
     ///     });
     /// 
     /// });

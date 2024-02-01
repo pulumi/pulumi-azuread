@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Invitation(&#34;example&#34;, InvitationArgs.builder()        
  *             .redirectUrl(&#34;https://portal.azure.com&#34;)
- *             .userEmailAddress(&#34;jdoe@hashicorp.com&#34;)
+ *             .userEmailAddress(&#34;jdoe@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *                 .language(&#34;en-US&#34;)
  *                 .build())
  *             .redirectUrl(&#34;https://portal.azure.com&#34;)
- *             .userEmailAddress(&#34;jdoe@hashicorp.com&#34;)
+ *             .userEmailAddress(&#34;jdoe@example.com&#34;)
  *             .build());
  * 
  *     }
@@ -119,12 +119,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Invitation(&#34;example&#34;, InvitationArgs.builder()        
  *             .message(InvitationMessageArgs.builder()
- *                 .additionalRecipients(&#34;aaliceberg@hashicorp.com&#34;)
+ *                 .additionalRecipients(&#34;aaliceberg@example.com&#34;)
  *                 .body(&#34;Hello there! You are invited to join my Azure tenant!&#34;)
  *                 .build())
  *             .redirectUrl(&#34;https://portal.azure.com&#34;)
  *             .userDisplayName(&#34;Bob Bobson&#34;)
- *             .userEmailAddress(&#34;bbobson@hashicorp.com&#34;)
+ *             .userEmailAddress(&#34;bbobson@example.com&#34;)
  *             .build());
  * 
  *     }

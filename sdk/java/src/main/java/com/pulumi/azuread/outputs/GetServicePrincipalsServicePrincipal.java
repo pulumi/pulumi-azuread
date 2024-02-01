@@ -23,6 +23,8 @@ public final class GetServicePrincipalsServicePrincipal {
      */
     private Boolean appRoleAssignmentRequired;
     /**
+     * @return The application ID (client ID) for the associated application
+     * 
      * @deprecated
      * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
      * 
@@ -34,6 +36,10 @@ public final class GetServicePrincipalsServicePrincipal {
      * 
      */
     private String applicationTenantId;
+    /**
+     * @return The application ID (client ID) for the associated application
+     * 
+     */
     private String clientId;
     /**
      * @return The display name of the application associated with this service principal.
@@ -92,6 +98,8 @@ public final class GetServicePrincipalsServicePrincipal {
         return this.appRoleAssignmentRequired;
     }
     /**
+     * @return The application ID (client ID) for the associated application
+     * 
      * @deprecated
      * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
      * 
@@ -107,6 +115,10 @@ public final class GetServicePrincipalsServicePrincipal {
     public String applicationTenantId() {
         return this.applicationTenantId;
     }
+    /**
+     * @return The application ID (client ID) for the associated application
+     * 
+     */
     public String clientId() {
         return this.clientId;
     }

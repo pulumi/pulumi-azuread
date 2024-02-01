@@ -97,9 +97,17 @@ public final class ApplicationAppRoleArgs extends com.pulumi.resources.ResourceA
         return this.id;
     }
 
+    /**
+     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -252,11 +260,23 @@ public final class ApplicationAppRoleArgs extends com.pulumi.resources.ResourceA
             return id(Output.of(id));
         }
 
+        /**
+         * @param value The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

@@ -12,15 +12,27 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class ServicePrincipalFeatureArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether this service principal represents a custom SAML application
+        /// </summary>
         [Input("customSingleSignOnApp")]
         public Input<bool>? CustomSingleSignOnApp { get; set; }
 
+        /// <summary>
+        /// Whether this service principal represents an Enterprise Application
+        /// </summary>
         [Input("enterpriseApplication")]
         public Input<bool>? EnterpriseApplication { get; set; }
 
+        /// <summary>
+        /// Whether this service principal represents a gallery application
+        /// </summary>
         [Input("galleryApplication")]
         public Input<bool>? GalleryApplication { get; set; }
 
+        /// <summary>
+        /// Whether this app is visible to users in My Apps and Office 365 Launcher
+        /// </summary>
         [Input("visibleToUsers")]
         public Input<bool>? VisibleToUsers { get; set; }
 

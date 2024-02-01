@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = azuread.getUser({
- *     userPrincipalName: "user@hashicorp.com",
+ *     userPrincipalName: "user@example.com",
  * });
  * ```
  */
@@ -266,7 +266,7 @@ export interface GetUserResult {
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = azuread.getUser({
- *     userPrincipalName: "user@hashicorp.com",
+ *     userPrincipalName: "user@example.com",
  * });
  * ```
  */

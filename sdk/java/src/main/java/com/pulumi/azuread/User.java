@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;J. Doe&#34;)
  *             .mailNickname(&#34;jdoe&#34;)
  *             .password(&#34;SecretP@sswd99!&#34;)
- *             .userPrincipalName(&#34;jdoe@hashicorp.com&#34;)
+ *             .userPrincipalName(&#34;jdoe@example.com&#34;)
  *             .build());
  * 
  *     }

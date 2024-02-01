@@ -246,7 +246,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
         example_user = azuread.User("exampleUser",
             display_name="J. Doe",
-            user_principal_name="jdoe@hashicorp.com",
+            user_principal_name="jdoe@example.com",
             mail_nickname="jdoe",
             password="SecretP@sswd99!")
         example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
@@ -358,7 +358,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
         example_user = azuread.User("exampleUser",
             display_name="J. Doe",
-            user_principal_name="jdoe@hashicorp.com",
+            user_principal_name="jdoe@example.com",
             mail_nickname="jdoe",
             password="SecretP@sswd99!")
         example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",

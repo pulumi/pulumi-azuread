@@ -148,8 +148,8 @@ def get_users(employee_ids: Optional[Sequence[str]] = None,
     import pulumi_azuread as azuread
 
     users = azuread.get_users(user_principal_names=[
-        "kat@hashicorp.com",
-        "byte@hashicorp.com",
+        "kat@example.com",
+        "byte@example.com",
     ])
     ```
 
@@ -210,8 +210,8 @@ def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[str]]
     import pulumi_azuread as azuread
 
     users = azuread.get_users(user_principal_names=[
-        "kat@hashicorp.com",
-        "byte@hashicorp.com",
+        "kat@example.com",
+        "byte@example.com",
     ])
     ```
 

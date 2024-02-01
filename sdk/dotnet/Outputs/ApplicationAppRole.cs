@@ -35,6 +35,9 @@ namespace Pulumi.AzureAD.Outputs
         /// &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

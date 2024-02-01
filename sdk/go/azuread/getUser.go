@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
-//				UserPrincipalName: pulumi.StringRef("user@hashicorp.com"),
+//				UserPrincipalName: pulumi.StringRef("user@example.com"),
 //			}, nil)
 //			if err != nil {
 //				return err
