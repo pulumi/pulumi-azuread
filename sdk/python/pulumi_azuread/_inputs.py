@@ -1010,6 +1010,7 @@ class ApplicationApiOauth2PermissionScopeArgs:
         :param pulumi.Input[str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
         :param pulumi.Input[str] user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         :param pulumi.Input[str] user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
+        :param pulumi.Input[str] value: The value that is used for the `scp` claim in OAuth 2.0 access tokens
         """
         pulumi.set(__self__, "id", id)
         if admin_consent_description is not None:
@@ -1116,6 +1117,9 @@ class ApplicationApiOauth2PermissionScopeArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value that is used for the `scp` claim in OAuth 2.0 access tokens
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1140,6 +1144,7 @@ class ApplicationAppRoleArgs:
                
                > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
         :param pulumi.Input[bool] enabled: Determines if the app role is enabled. Defaults to `true`.
+        :param pulumi.Input[str] value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
         """
         pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         pulumi.set(__self__, "description", description)
@@ -1215,6 +1220,9 @@ class ApplicationAppRoleArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -3010,6 +3018,12 @@ class ServicePrincipalFeatureArgs:
                  enterprise_application: Optional[pulumi.Input[bool]] = None,
                  gallery_application: Optional[pulumi.Input[bool]] = None,
                  visible_to_users: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] custom_single_sign_on_app: Whether this service principal represents a custom SAML application
+        :param pulumi.Input[bool] enterprise_application: Whether this service principal represents an Enterprise Application
+        :param pulumi.Input[bool] gallery_application: Whether this service principal represents a gallery application
+        :param pulumi.Input[bool] visible_to_users: Whether this app is visible to users in My Apps and Office 365 Launcher
+        """
         if custom_single_sign_on_app is not None:
             pulumi.set(__self__, "custom_single_sign_on_app", custom_single_sign_on_app)
         if enterprise_application is not None:
@@ -3022,6 +3036,9 @@ class ServicePrincipalFeatureArgs:
     @property
     @pulumi.getter(name="customSingleSignOnApp")
     def custom_single_sign_on_app(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this service principal represents a custom SAML application
+        """
         return pulumi.get(self, "custom_single_sign_on_app")
 
     @custom_single_sign_on_app.setter
@@ -3031,6 +3048,9 @@ class ServicePrincipalFeatureArgs:
     @property
     @pulumi.getter(name="enterpriseApplication")
     def enterprise_application(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this service principal represents an Enterprise Application
+        """
         return pulumi.get(self, "enterprise_application")
 
     @enterprise_application.setter
@@ -3040,6 +3060,9 @@ class ServicePrincipalFeatureArgs:
     @property
     @pulumi.getter(name="galleryApplication")
     def gallery_application(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this service principal represents a gallery application
+        """
         return pulumi.get(self, "gallery_application")
 
     @gallery_application.setter
@@ -3049,6 +3072,9 @@ class ServicePrincipalFeatureArgs:
     @property
     @pulumi.getter(name="visibleToUsers")
     def visible_to_users(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this app is visible to users in My Apps and Office 365 Launcher
+        """
         return pulumi.get(self, "visible_to_users")
 
     @visible_to_users.setter

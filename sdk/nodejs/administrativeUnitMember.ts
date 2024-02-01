@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const exampleUser = azuread.getUser({
- *     userPrincipalName: "jdoe@hashicorp.com",
+ *     userPrincipalName: "jdoe@example.com",
  * });
  * const exampleAdministrativeUnit = new azuread.AdministrativeUnit("exampleAdministrativeUnit", {displayName: "Example-AU"});
  * const exampleAdministrativeUnitMember = new azuread.AdministrativeUnitMember("exampleAdministrativeUnitMember", {

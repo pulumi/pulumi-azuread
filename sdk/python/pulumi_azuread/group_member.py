@@ -118,7 +118,7 @@ class GroupMember(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
         example_group = azuread.Group("exampleGroup",
             display_name="my_group",
             security_enabled=True)
@@ -169,7 +169,7 @@ class GroupMember(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
         example_group = azuread.Group("exampleGroup",
             display_name="my_group",
             security_enabled=True)

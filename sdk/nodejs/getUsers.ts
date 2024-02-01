@@ -25,8 +25,8 @@ import * as utilities from "./utilities";
  *
  * const users = azuread.getUsers({
  *     userPrincipalNames: [
- *         "kat@hashicorp.com",
- *         "byte@hashicorp.com",
+ *         "kat@example.com",
+ *         "byte@example.com",
  *     ],
  * });
  * ```
@@ -127,8 +127,8 @@ export interface GetUsersResult {
  *
  * const users = azuread.getUsers({
  *     userPrincipalNames: [
- *         "kat@hashicorp.com",
- *         "byte@hashicorp.com",
+ *         "kat@example.com",
+ *         "byte@example.com",
  *     ],
  * });
  * ```

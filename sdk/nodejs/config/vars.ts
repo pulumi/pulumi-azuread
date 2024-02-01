@@ -87,9 +87,6 @@ Object.defineProperty(exports, "clientSecretFilePath", {
     enumerable: true,
 });
 
-/**
- * Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
- */
 export declare const disableTerraformPartnerId: boolean | undefined;
 Object.defineProperty(exports, "disableTerraformPartnerId", {
     get() {

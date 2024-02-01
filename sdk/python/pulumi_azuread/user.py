@@ -1419,7 +1419,7 @@ class User(pulumi.CustomResource):
             display_name="J. Doe",
             mail_nickname="jdoe",
             password="SecretP@sswd99!",
-            user_principal_name="jdoe@hashicorp.com")
+            user_principal_name="jdoe@example.com")
         ```
 
         ## Import
@@ -1496,7 +1496,7 @@ class User(pulumi.CustomResource):
             display_name="J. Doe",
             mail_nickname="jdoe",
             password="SecretP@sswd99!",
-            user_principal_name="jdoe@hashicorp.com")
+            user_principal_name="jdoe@example.com")
         ```
 
         ## Import

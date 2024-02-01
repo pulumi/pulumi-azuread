@@ -289,6 +289,9 @@ export interface ApplicationApiOauth2PermissionScope {
      * Display name for the delegated permission that appears in the end user consent experience.
      */
     userConsentDisplayName?: pulumi.Input<string>;
+    /**
+     * The value that is used for the `scp` claim in OAuth 2.0 access tokens
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -315,6 +318,9 @@ export interface ApplicationAppRole {
      * > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
      */
     id: pulumi.Input<string>;
+    /**
+     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+     */
     value?: pulumi.Input<string>;
 }
 
@@ -814,9 +820,21 @@ export interface ServicePrincipalAppRole {
 }
 
 export interface ServicePrincipalFeature {
+    /**
+     * Whether this service principal represents a custom SAML application
+     */
     customSingleSignOnApp?: pulumi.Input<boolean>;
+    /**
+     * Whether this service principal represents an Enterprise Application
+     */
     enterpriseApplication?: pulumi.Input<boolean>;
+    /**
+     * Whether this service principal represents a gallery application
+     */
     galleryApplication?: pulumi.Input<boolean>;
+    /**
+     * Whether this app is visible to users in My Apps and Office 365 Launcher
+     */
     visibleToUsers?: pulumi.Input<boolean>;
 }
 
