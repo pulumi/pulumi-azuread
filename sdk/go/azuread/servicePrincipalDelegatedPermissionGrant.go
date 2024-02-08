@@ -185,9 +185,7 @@ import (
 // Delegated permission grants can be imported using their ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant example aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
-//
+// $ pulumi import azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant example aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
 // ```
 type ServicePrincipalDelegatedPermissionGrant struct {
 	pulumi.CustomResourceState

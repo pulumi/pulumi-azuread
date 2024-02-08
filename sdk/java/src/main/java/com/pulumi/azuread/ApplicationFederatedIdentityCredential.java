@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential example 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
+ * $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential example 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
  * ```
  * 
  *  -&gt; This ID format is unique to Terraform and is composed of the application&#39;s object ID, the string &#34;federatedIdentityCredential&#34; and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.

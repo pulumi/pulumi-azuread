@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * Claims Mapping Policy can be imported using the `id`, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
+ * $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
  * ```
  * 
  */

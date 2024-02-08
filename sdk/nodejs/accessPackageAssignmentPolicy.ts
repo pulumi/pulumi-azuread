@@ -74,7 +74,7 @@ import * as utilities from "./utilities";
  * An access package assignment policy can be imported using the ID, e.g.
  *
  * ```sh
- *  $ pulumi import azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy example 00000000-0000-0000-0000-000000000000
+ * $ pulumi import azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy example 00000000-0000-0000-0000-000000000000
  * ```
  */
 export class AccessPackageAssignmentPolicy extends pulumi.CustomResource {

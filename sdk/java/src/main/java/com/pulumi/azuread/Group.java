@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  * Groups can be imported using their object ID, e.g.
  * 
  * ```sh
- *  $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
+ * $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
  * ```
  * 
  */
