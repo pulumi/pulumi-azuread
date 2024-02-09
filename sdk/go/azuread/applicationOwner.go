@@ -60,9 +60,7 @@ import (
 // Application Owners can be imported using the object ID of the application and the object ID of the owner, in the following format.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/applicationOwner:ApplicationOwner example /applications/00000000-0000-0000-0000-000000000000/owners/11111111-1111-1111-1111-111111111111
-//
+// $ pulumi import azuread:index/applicationOwner:ApplicationOwner example /applications/00000000-0000-0000-0000-000000000000/owners/11111111-1111-1111-1111-111111111111
 // ```
 type ApplicationOwner struct {
 	pulumi.CustomResourceState

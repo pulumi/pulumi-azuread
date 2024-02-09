@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * The Application Fallback Public Client setting can be imported using the object ID of the application, in the following format.
  * 
  * ```sh
- *  $ pulumi import azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient example /applications/00000000-0000-0000-0000-000000000000/fallbackPublicClient
+ * $ pulumi import azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient example /applications/00000000-0000-0000-0000-000000000000/fallbackPublicClient
  * ```
  * 
  */

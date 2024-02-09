@@ -336,7 +336,7 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         Application App Roles can be imported using the object ID of the application and the ID of the permission scope, in the following format.
 
         ```sh
-         $ pulumi import azuread:index/applicationPermissionScope:ApplicationPermissionScope example /applications/00000000-0000-0000-0000-000000000000/permissionScopes/11111111-1111-1111-1111-111111111111
+        $ pulumi import azuread:index/applicationPermissionScope:ApplicationPermissionScope example /applications/00000000-0000-0000-0000-000000000000/permissionScopes/11111111-1111-1111-1111-111111111111
         ```
 
         :param str resource_name: The name of the resource.
@@ -394,7 +394,7 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         Application App Roles can be imported using the object ID of the application and the ID of the permission scope, in the following format.
 
         ```sh
-         $ pulumi import azuread:index/applicationPermissionScope:ApplicationPermissionScope example /applications/00000000-0000-0000-0000-000000000000/permissionScopes/11111111-1111-1111-1111-111111111111
+        $ pulumi import azuread:index/applicationPermissionScope:ApplicationPermissionScope example /applications/00000000-0000-0000-0000-000000000000/permissionScopes/11111111-1111-1111-1111-111111111111
         ```
 
         :param str resource_name: The name of the resource.

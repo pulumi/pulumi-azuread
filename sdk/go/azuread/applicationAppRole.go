@@ -95,9 +95,7 @@ import (
 // Application App Roles can be imported using the object ID of the application and the ID of the app role, in the following format.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/applicationAppRole:ApplicationAppRole example /applications/00000000-0000-0000-0000-000000000000/appRoles/11111111-1111-1111-1111-111111111111
-//
+// $ pulumi import azuread:index/applicationAppRole:ApplicationAppRole example /applications/00000000-0000-0000-0000-000000000000/appRoles/11111111-1111-1111-1111-111111111111
 // ```
 type ApplicationAppRole struct {
 	pulumi.CustomResourceState
