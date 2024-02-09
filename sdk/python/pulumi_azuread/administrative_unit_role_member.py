@@ -160,7 +160,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
 
         ```sh
-         $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
+        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
         ```
 
          -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.
@@ -208,7 +208,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
 
         ```sh
-         $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
+        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
         ```
 
          -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.

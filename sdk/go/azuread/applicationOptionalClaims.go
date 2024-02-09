@@ -72,9 +72,7 @@ import (
 // Application Optional Claims can be imported using the object ID of the application, in the following format.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/applicationOptionalClaims:ApplicationOptionalClaims example /applications/00000000-0000-0000-0000-000000000000
-//
+// $ pulumi import azuread:index/applicationOptionalClaims:ApplicationOptionalClaims example /applications/00000000-0000-0000-0000-000000000000
 // ```
 type ApplicationOptionalClaims struct {
 	pulumi.CustomResourceState

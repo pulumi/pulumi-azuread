@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * Groups can be imported using their object ID, e.g.
  *
  * ```sh
- *  $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
+ * $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
  * ```
  */
 export class Group extends pulumi.CustomResource {

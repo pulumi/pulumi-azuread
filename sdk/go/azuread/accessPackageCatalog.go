@@ -54,9 +54,7 @@ import (
 // An Access Package Catalog can be imported using the `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/accessPackageCatalog:AccessPackageCatalog example 00000000-0000-0000-0000-000000000000
-//
+// $ pulumi import azuread:index/accessPackageCatalog:AccessPackageCatalog example 00000000-0000-0000-0000-000000000000
 // ```
 type AccessPackageCatalog struct {
 	pulumi.CustomResourceState

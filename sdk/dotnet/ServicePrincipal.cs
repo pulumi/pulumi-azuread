@@ -144,7 +144,7 @@ namespace Pulumi.AzureAD
     /// Service principals can be imported using their object ID, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import azuread:index/servicePrincipal:ServicePrincipal example 00000000-0000-0000-0000-000000000000
+    /// $ pulumi import azuread:index/servicePrincipal:ServicePrincipal example 00000000-0000-0000-0000-000000000000
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/servicePrincipal:ServicePrincipal")]
