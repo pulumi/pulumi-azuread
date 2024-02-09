@@ -74,9 +74,7 @@ import (
 // Catalog role assignments can be imported using the ID of the assignment, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment example 00000000-0000-0000-0000-000000000000
-//
+// $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment example 00000000-0000-0000-0000-000000000000
 // ```
 type AccessPackageCatalogRoleAssignment struct {
 	pulumi.CustomResourceState

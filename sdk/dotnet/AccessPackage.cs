@@ -51,7 +51,7 @@ namespace Pulumi.AzureAD
     /// Access Packages can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import azuread:index/accessPackage:AccessPackage example_package 00000000-0000-0000-0000-000000000000
+    /// $ pulumi import azuread:index/accessPackage:AccessPackage example_package 00000000-0000-0000-0000-000000000000
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/accessPackage:AccessPackage")]

@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  * Application API Access can be imported using the object ID of the application and the client ID of the API, in the following format.
  *
  * ```sh
- *  $ pulumi import azuread:index/applicationApiAccess:ApplicationApiAccess example /applications/00000000-0000-0000-0000-000000000000/apiAccess/11111111-1111-1111-1111-111111111111
+ * $ pulumi import azuread:index/applicationApiAccess:ApplicationApiAccess example /applications/00000000-0000-0000-0000-000000000000/apiAccess/11111111-1111-1111-1111-111111111111
  * ```
  */
 export class ApplicationApiAccess extends pulumi.CustomResource {

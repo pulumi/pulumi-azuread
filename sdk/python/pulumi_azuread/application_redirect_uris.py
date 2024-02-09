@@ -170,7 +170,7 @@ class ApplicationRedirectUris(pulumi.CustomResource):
         Application API Access can be imported using the object ID of the application and the URI type, in the following format.
 
         ```sh
-         $ pulumi import azuread:index/applicationRedirectUris:ApplicationRedirectUris example /applications/00000000-0000-0000-0000-000000000000/redirectUris/Web
+        $ pulumi import azuread:index/applicationRedirectUris:ApplicationRedirectUris example /applications/00000000-0000-0000-0000-000000000000/redirectUris/Web
         ```
 
         :param str resource_name: The name of the resource.
@@ -226,7 +226,7 @@ class ApplicationRedirectUris(pulumi.CustomResource):
         Application API Access can be imported using the object ID of the application and the URI type, in the following format.
 
         ```sh
-         $ pulumi import azuread:index/applicationRedirectUris:ApplicationRedirectUris example /applications/00000000-0000-0000-0000-000000000000/redirectUris/Web
+        $ pulumi import azuread:index/applicationRedirectUris:ApplicationRedirectUris example /applications/00000000-0000-0000-0000-000000000000/redirectUris/Web
         ```
 
         :param str resource_name: The name of the resource.

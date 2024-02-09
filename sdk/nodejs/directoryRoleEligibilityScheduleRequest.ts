@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  * Directory role eligibility schedule requests can be imported using the ID of the assignment, e.g.
  *
  * ```sh
- *  $ pulumi import azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest example 822ec710-4c9f-4f71-a27a-451759cc7522
+ * $ pulumi import azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest example 822ec710-4c9f-4f71-a27a-451759cc7522
  * ```
  */
 export class DirectoryRoleEligibilityScheduleRequest extends pulumi.CustomResource {

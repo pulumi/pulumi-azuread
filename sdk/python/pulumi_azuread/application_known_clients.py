@@ -116,7 +116,7 @@ class ApplicationKnownClients(pulumi.CustomResource):
         Application Known Clients can be imported using the object ID of the application in the following format.
 
         ```sh
-         $ pulumi import azuread:index/applicationKnownClients:ApplicationKnownClients example /applications/00000000-0000-0000-0000-000000000000/knownClients
+        $ pulumi import azuread:index/applicationKnownClients:ApplicationKnownClients example /applications/00000000-0000-0000-0000-000000000000/knownClients
         ```
 
         :param str resource_name: The name of the resource.
@@ -149,7 +149,7 @@ class ApplicationKnownClients(pulumi.CustomResource):
         Application Known Clients can be imported using the object ID of the application in the following format.
 
         ```sh
-         $ pulumi import azuread:index/applicationKnownClients:ApplicationKnownClients example /applications/00000000-0000-0000-0000-000000000000/knownClients
+        $ pulumi import azuread:index/applicationKnownClients:ApplicationKnownClients example /applications/00000000-0000-0000-0000-000000000000/knownClients
         ```
 
         :param str resource_name: The name of the resource.

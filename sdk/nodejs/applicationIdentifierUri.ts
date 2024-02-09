@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  * Application Identifier URIs can be imported using the object ID of the application and the base64-encoded identifier URI, in the following format.
  *
  * ```sh
- *  $ pulumi import azuread:index/applicationIdentifierUri:ApplicationIdentifierUri example /applications/00000000-0000-0000-0000-000000000000/identifierUris/aHR0cHM6Ly9leGFtcGxlLm5ldC8=
+ * $ pulumi import azuread:index/applicationIdentifierUri:ApplicationIdentifierUri example /applications/00000000-0000-0000-0000-000000000000/identifierUris/aHR0cHM6Ly9leGFtcGxlLm5ldC8=
  * ```
  */
 export class ApplicationIdentifierUri extends pulumi.CustomResource {
