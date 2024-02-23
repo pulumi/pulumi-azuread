@@ -77,7 +77,7 @@ func makeResource(mod string, res string) tokens.Type {
 // preConfigureCallback returns an error when cloud provider setup is misconfigured
 //
 // nolint: lll
-func preConfigureCallback(vars resource.PropertyMap, c tfshim.ResourceConfig) error {
+func preConfigureCallback(vars resource.PropertyMap, _ tfshim.ResourceConfig) error {
 
 	envName := tfbridge.ConfigStringValue(vars, "environment", []string{"ARM_ENVIRONMENT"})
 	if envName == "" {
