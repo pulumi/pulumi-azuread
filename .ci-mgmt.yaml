@@ -25,7 +25,7 @@ plugins:
   - name: random
     version: "4.14.0"
   - name: terraform
-    version: "1.0.11"
+    version: "1.0.15"
     kind: converter
 license:
   ignore:
