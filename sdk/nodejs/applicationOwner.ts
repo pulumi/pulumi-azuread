@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *     displayName: "Jane Fischer",
  *     password: "Ch@ngeMe",
  * });
- * const exampleJane = new azuread.ApplicationOwner("exampleJane", {
+ * const exampleJane = new azuread.ApplicationOwner("example_jane", {
  *     applicationId: example.id,
  *     ownerObjectId: jane.objectId,
  * });

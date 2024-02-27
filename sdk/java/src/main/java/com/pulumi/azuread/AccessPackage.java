@@ -50,13 +50,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAccessPackageCatalog = new AccessPackageCatalog(&#34;exampleAccessPackageCatalog&#34;, AccessPackageCatalogArgs.builder()        
+ *         var example = new AccessPackageCatalog(&#34;example&#34;, AccessPackageCatalogArgs.builder()        
  *             .displayName(&#34;example-catalog&#34;)
  *             .description(&#34;Example catalog&#34;)
  *             .build());
  * 
  *         var exampleAccessPackage = new AccessPackage(&#34;exampleAccessPackage&#34;, AccessPackageArgs.builder()        
- *             .catalogId(exampleAccessPackageCatalog.id())
+ *             .catalogId(example.id())
  *             .displayName(&#34;access-package&#34;)
  *             .description(&#34;Access Package&#34;)
  *             .build());

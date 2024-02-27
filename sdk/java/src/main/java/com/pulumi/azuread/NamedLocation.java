@@ -62,13 +62,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example_country = new NamedLocation(&#34;example-country&#34;, NamedLocationArgs.builder()        
+ *             .displayName(&#34;Country Named Location&#34;)
  *             .country(NamedLocationCountryArgs.builder()
  *                 .countriesAndRegions(                
  *                     &#34;GB&#34;,
  *                     &#34;US&#34;)
  *                 .includeUnknownCountriesAndRegions(false)
  *                 .build())
- *             .displayName(&#34;Country Named Location&#34;)
  *             .build());
  * 
  *     }

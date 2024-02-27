@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationRegistration, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
+//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
@@ -38,8 +38,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationKnownClients(ctx, "exampleApplicationKnownClients", &azuread.ApplicationKnownClientsArgs{
-//				ApplicationId: exampleApplicationRegistration.ID(),
+//			_, err = azuread.NewApplicationKnownClients(ctx, "example", &azuread.ApplicationKnownClientsArgs{
+//				ApplicationId: example.ID(),
 //				KnownClientIds: pulumi.StringArray{
 //					client.ClientId,
 //				},

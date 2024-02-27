@@ -24,6 +24,12 @@ plugins:
     version: "5.52.0"
   - name: random
     version: "4.14.0"
+  - name: terraform
+    version: "1.0.15"
+    kind: converter
 license:
   ignore:
     - github.com/hashicorp/terraform-provider-azuread/shim
+
+# Use `pulumi convert` for translating examples from TF to Pulumi.
+pulumiConvert: 1

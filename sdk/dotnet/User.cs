@@ -32,10 +32,10 @@ namespace Pulumi.AzureAD
     /// {
     ///     var example = new AzureAD.User("example", new()
     ///     {
+    ///         UserPrincipalName = "jdoe@example.com",
     ///         DisplayName = "J. Doe",
     ///         MailNickname = "jdoe",
     ///         Password = "SecretP@sswd99!",
-    ///         UserPrincipalName = "jdoe@example.com",
     ///     });
     /// 
     /// });

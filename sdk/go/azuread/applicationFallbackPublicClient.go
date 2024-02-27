@@ -26,14 +26,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationRegistration, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
+//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationFallbackPublicClient(ctx, "exampleApplicationFallbackPublicClient", &azuread.ApplicationFallbackPublicClientArgs{
-//				ApplicationId: exampleApplicationRegistration.ID(),
+//			_, err = azuread.NewApplicationFallbackPublicClient(ctx, "example", &azuread.ApplicationFallbackPublicClientArgs{
+//				ApplicationId: example.ID(),
 //				Enabled:       pulumi.Bool(true),
 //			})
 //			if err != nil {

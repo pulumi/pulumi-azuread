@@ -36,37 +36,37 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+//			_, err := azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
 //				DisplayName:     pulumi.String("example-group"),
 //				SecurityEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
+//			_, err = azuread.NewAccessPackageCatalog(ctx, "example", &azuread.AccessPackageCatalogArgs{
 //				DisplayName: pulumi.String("example-catalog"),
 //				Description: pulumi.String("Example catalog"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleAccessPackageResourceCatalogAssociation, err := azuread.NewAccessPackageResourceCatalogAssociation(ctx, "exampleAccessPackageResourceCatalogAssociation", &azuread.AccessPackageResourceCatalogAssociationArgs{
-//				CatalogId:            pulumi.Any(azuread_access_package_catalog.Example_catalog.Id),
-//				ResourceOriginId:     pulumi.Any(azuread_group.Example_group.Object_id),
+//			exampleAccessPackageResourceCatalogAssociation, err := azuread.NewAccessPackageResourceCatalogAssociation(ctx, "example", &azuread.AccessPackageResourceCatalogAssociationArgs{
+//				CatalogId:            pulumi.Any(exampleCatalog.Id),
+//				ResourceOriginId:     pulumi.Any(exampleGroup.ObjectId),
 //				ResourceOriginSystem: pulumi.String("AadGroup"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleAccessPackage, err := azuread.NewAccessPackage(ctx, "exampleAccessPackage", &azuread.AccessPackageArgs{
+//			exampleAccessPackage, err := azuread.NewAccessPackage(ctx, "example", &azuread.AccessPackageArgs{
 //				DisplayName: pulumi.String("example-package"),
 //				Description: pulumi.String("Example Package"),
-//				CatalogId:   pulumi.Any(azuread_access_package_catalog.Example_catalog.Id),
+//				CatalogId:   pulumi.Any(exampleCatalog.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewAccessPackageResourcePackageAssociation(ctx, "exampleAccessPackageResourcePackageAssociation", &azuread.AccessPackageResourcePackageAssociationArgs{
+//			_, err = azuread.NewAccessPackageResourcePackageAssociation(ctx, "example", &azuread.AccessPackageResourcePackageAssociationArgs{
 //				AccessPackageId:              exampleAccessPackage.ID(),
 //				CatalogResourceAssociationId: exampleAccessPackageResourceCatalogAssociation.ID(),
 //			})

@@ -40,12 +40,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplicationRegistration = new ApplicationRegistration(&#34;exampleApplicationRegistration&#34;, ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
  *         var exampleApplicationFallbackPublicClient = new ApplicationFallbackPublicClient(&#34;exampleApplicationFallbackPublicClient&#34;, ApplicationFallbackPublicClientArgs.builder()        
- *             .applicationId(exampleApplicationRegistration.id())
+ *             .applicationId(example.id())
  *             .enabled(true)
  *             .build());
  * 

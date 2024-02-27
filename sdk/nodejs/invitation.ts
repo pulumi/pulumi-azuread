@@ -26,8 +26,8 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.Invitation("example", {
- *     redirectUrl: "https://portal.azure.com",
  *     userEmailAddress: "jdoe@example.com",
+ *     redirectUrl: "https://portal.azure.com",
  * });
  * ```
  *
@@ -38,11 +38,11 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.Invitation("example", {
+ *     userEmailAddress: "jdoe@example.com",
+ *     redirectUrl: "https://portal.azure.com",
  *     message: {
  *         language: "en-US",
  *     },
- *     redirectUrl: "https://portal.azure.com",
- *     userEmailAddress: "jdoe@example.com",
  * });
  * ```
  *
@@ -53,13 +53,13 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.Invitation("example", {
+ *     userDisplayName: "Bob Bobson",
+ *     userEmailAddress: "bbobson@example.com",
+ *     redirectUrl: "https://portal.azure.com",
  *     message: {
  *         additionalRecipients: "aaliceberg@example.com",
  *         body: "Hello there! You are invited to join my Azure tenant!",
  *     },
- *     redirectUrl: "https://portal.azure.com",
- *     userDisplayName: "Bob Bobson",
- *     userEmailAddress: "bbobson@example.com",
  * });
  * ```
  *

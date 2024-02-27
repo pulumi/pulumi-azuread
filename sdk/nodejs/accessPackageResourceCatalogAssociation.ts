@@ -21,17 +21,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleGroup = new azuread.Group("exampleGroup", {
+ * const example = new azuread.Group("example", {
  *     displayName: "example-group",
  *     securityEnabled: true,
  * });
- * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("exampleAccessPackageCatalog", {
+ * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("example", {
  *     displayName: "example-catalog",
  *     description: "Example catalog",
  * });
- * const exampleAccessPackageResourceCatalogAssociation = new azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", {
- *     catalogId: azuread_access_package_catalog.example_catalog.id,
- *     resourceOriginId: azuread_group.example_group.object_id,
+ * const exampleAccessPackageResourceCatalogAssociation = new azuread.AccessPackageResourceCatalogAssociation("example", {
+ *     catalogId: exampleCatalog.id,
+ *     resourceOriginId: exampleGroup.objectId,
  *     resourceOriginSystem: "AadGroup",
  * });
  * ```

@@ -63,15 +63,17 @@ import javax.annotation.Nullable;
  *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .identifierUris(&#34;api://example-app&#34;)
- *             .logoImage(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;/path/to/logo.png&#34;))))
+ *             .logoImage(StdFunctions.filebase64(Filebase64Args.builder()
+ *                 .input(&#34;/path/to/logo.png&#34;)
+ *                 .build()).result())
  *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .signInAudience(&#34;AzureADMultipleOrgs&#34;)
  *             .api(ApplicationApiArgs.builder()
  *                 .mappedClaimsEnabled(true)
  *                 .requestedAccessTokenVersion(2)
  *                 .knownClientApplications(                
- *                     azuread_application.known1().application_id(),
- *                     azuread_application.known2().application_id())
+ *                     known1.applicationId(),
+ *                     known2.applicationId())
  *                 .oauth2PermissionScopes(                
  *                     ApplicationApiOauth2PermissionScopeArgs.builder()
  *                         .adminConsentDescription(&#34;Allow the application to access example on behalf of the signed-in user.&#34;)
@@ -194,13 +196,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleApplicationTemplate = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+ *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
  *             .displayName(&#34;Marketo&#34;)
  *             .build());
  * 
  *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
- *             .templateId(exampleApplicationTemplate.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
+ *             .templateId(example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        

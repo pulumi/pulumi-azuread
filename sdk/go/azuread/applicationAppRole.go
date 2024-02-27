@@ -33,11 +33,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleAdministrator, err := random.NewRandomUuid(ctx, "exampleAdministrator", nil)
+//			exampleAdministrator, err := random.NewRandomUuid(ctx, "example_administrator", nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationAppRole(ctx, "exampleAdminister", &azuread.ApplicationAppRoleArgs{
+//			_, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
 //				ApplicationId: example.ID(),
 //				RoleId:        exampleAdministrator.ID(),
 //				AllowedMemberTypes: pulumi.StringArray{
@@ -78,7 +78,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationAppRole(ctx, "exampleAdminister", &azuread.ApplicationAppRoleArgs{
+//			_, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
 //				ApplicationId: example.ID(),
 //			})
 //			if err != nil {

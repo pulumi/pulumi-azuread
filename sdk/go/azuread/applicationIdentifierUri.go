@@ -26,14 +26,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationRegistration, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
+//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationIdentifierUri(ctx, "exampleApplicationIdentifierUri", &azuread.ApplicationIdentifierUriArgs{
-//				ApplicationId: exampleApplicationRegistration.ID(),
+//			_, err = azuread.NewApplicationIdentifierUri(ctx, "example", &azuread.ApplicationIdentifierUriArgs{
+//				ApplicationId: example.ID(),
 //				IdentifierUri: pulumi.String("https://app.hashitown.com"),
 //			})
 //			if err != nil {
@@ -61,14 +61,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationIdentifierUri(ctx, "exampleApplicationIdentifierUri", &azuread.ApplicationIdentifierUriArgs{
-//				ApplicationId: exampleApplication.ID(),
+//			_, err = azuread.NewApplicationIdentifierUri(ctx, "example", &azuread.ApplicationIdentifierUriArgs{
+//				ApplicationId: example.ID(),
 //			})
 //			if err != nil {
 //				return err

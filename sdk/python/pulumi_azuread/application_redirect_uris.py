@@ -137,7 +137,7 @@ class ApplicationRedirectUris(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.ApplicationRegistration("example", display_name="example")
-        example_public = azuread.ApplicationRedirectUris("examplePublic",
+        example_public = azuread.ApplicationRedirectUris("example_public",
             application_id=example.id,
             type="PublicClient",
             redirect_uris=[
@@ -148,14 +148,14 @@ class ApplicationRedirectUris(pulumi.CustomResource):
                 "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222",
                 "urn:ietf:wg:oauth:2.0:foo",
             ])
-        example_spa = azuread.ApplicationRedirectUris("exampleSpa",
+        example_spa = azuread.ApplicationRedirectUris("example_spa",
             application_id=example.id,
             type="SPA",
             redirect_uris=[
                 "https://mobile.hashitown.com/",
                 "https://beta.hashitown.com/",
             ])
-        example_web = azuread.ApplicationRedirectUris("exampleWeb",
+        example_web = azuread.ApplicationRedirectUris("example_web",
             application_id=example.id,
             type="Web",
             redirect_uris=[
@@ -193,7 +193,7 @@ class ApplicationRedirectUris(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.ApplicationRegistration("example", display_name="example")
-        example_public = azuread.ApplicationRedirectUris("examplePublic",
+        example_public = azuread.ApplicationRedirectUris("example_public",
             application_id=example.id,
             type="PublicClient",
             redirect_uris=[
@@ -204,14 +204,14 @@ class ApplicationRedirectUris(pulumi.CustomResource):
                 "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222",
                 "urn:ietf:wg:oauth:2.0:foo",
             ])
-        example_spa = azuread.ApplicationRedirectUris("exampleSpa",
+        example_spa = azuread.ApplicationRedirectUris("example_spa",
             application_id=example.id,
             type="SPA",
             redirect_uris=[
                 "https://mobile.hashitown.com/",
                 "https://beta.hashitown.com/",
             ])
-        example_web = azuread.ApplicationRedirectUris("exampleWeb",
+        example_web = azuread.ApplicationRedirectUris("example_web",
             application_id=example.id,
             type="Web",
             redirect_uris=[

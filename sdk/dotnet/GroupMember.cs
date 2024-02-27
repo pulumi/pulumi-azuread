@@ -34,21 +34,21 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
+    ///     var example = AzureAD.GetUser.Invoke(new()
     ///     {
     ///         UserPrincipalName = "jdoe@example.com",
     ///     });
     /// 
-    ///     var exampleGroup = new AzureAD.Group("exampleGroup", new()
+    ///     var exampleGroup = new AzureAD.Group("example", new()
     ///     {
     ///         DisplayName = "my_group",
     ///         SecurityEnabled = true,
     ///     });
     /// 
-    ///     var exampleGroupMember = new AzureAD.GroupMember("exampleGroupMember", new()
+    ///     var exampleGroupMember = new AzureAD.GroupMember("example", new()
     ///     {
     ///         GroupObjectId = exampleGroup.Id,
-    ///         MemberObjectId = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
+    ///         MemberObjectId = example.Apply(getUserResult =&gt; getUserResult.Id),
     ///     });
     /// 
     /// });

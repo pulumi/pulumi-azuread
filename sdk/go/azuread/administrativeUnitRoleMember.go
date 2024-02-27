@@ -36,28 +36,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+//			example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
 //				UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleAdministrativeUnit, err := azuread.NewAdministrativeUnit(ctx, "exampleAdministrativeUnit", &azuread.AdministrativeUnitArgs{
+//			exampleAdministrativeUnit, err := azuread.NewAdministrativeUnit(ctx, "example", &azuread.AdministrativeUnitArgs{
 //				DisplayName: pulumi.String("Example-AU"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, "exampleDirectoryRole", &azuread.DirectoryRoleArgs{
+//			exampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
 //				DisplayName: pulumi.String("Security administrator"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewAdministrativeUnitRoleMember(ctx, "exampleAdministrativeUnitRoleMember", &azuread.AdministrativeUnitRoleMemberArgs{
+//			_, err = azuread.NewAdministrativeUnitRoleMember(ctx, "example", &azuread.AdministrativeUnitRoleMemberArgs{
 //				RoleObjectId:               exampleDirectoryRole.ObjectId,
 //				AdministrativeUnitObjectId: exampleAdministrativeUnit.ID(),
-//				MemberObjectId:             *pulumi.String(exampleUser.Id),
+//				MemberObjectId:             *pulumi.String(example.Id),
 //			})
 //			if err != nil {
 //				return err

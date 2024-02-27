@@ -52,20 +52,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleApplicationTemplate = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+ *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
  *             .displayName(&#34;Marketo&#34;)
  *             .build());
  * 
  *         var exampleApplicationFromTemplate = new ApplicationFromTemplate(&#34;exampleApplicationFromTemplate&#34;, ApplicationFromTemplateArgs.builder()        
  *             .displayName(&#34;Example Application&#34;)
- *             .templateId(exampleApplicationTemplate.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
+ *             .templateId(example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
  *             .build());
  * 
- *         final var exampleApplication = AzureadFunctions.getApplication(GetApplicationArgs.builder()
+ *         final var exampleGetApplication = AzureadFunctions.getApplication(GetApplicationArgs.builder()
  *             .objectId(exampleApplicationFromTemplate.applicationObjectId())
  *             .build());
  * 
- *         final var exampleServicePrincipal = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+ *         final var exampleGetServicePrincipal = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
  *             .objectId(exampleApplicationFromTemplate.servicePrincipalObjectId())
  *             .build());
  * 

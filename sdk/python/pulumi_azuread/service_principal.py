@@ -837,11 +837,11 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         current = azuread.get_client_config()
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.Application("example",
             display_name="example",
             owners=[current.object_id])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            client_id=example_application.client_id,
+        example_service_principal = azuread.ServicePrincipal("example",
+            client_id=example.client_id,
             app_role_assignment_required=False,
             owners=[current.object_id])
         ```
@@ -853,11 +853,11 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         current = azuread.get_client_config()
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.Application("example",
             display_name="example",
             owners=[current.object_id])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            client_id=example_application.client_id,
+        example_service_principal = azuread.ServicePrincipal("example",
+            client_id=example.client_id,
             app_role_assignment_required=False,
             owners=[current.object_id],
             feature_tags=[azuread.ServicePrincipalFeatureTagArgs(
@@ -874,7 +874,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            client_id=well_known.result["MicrosoftGraph"],
+            client_id=well_known.result["microsoftGraph"],
             use_existing=True)
         ```
 
@@ -884,11 +884,11 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("example",
             display_name="example",
-            template_id=example_application_template.template_id)
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            template_id=example.template_id)
+        example_service_principal = azuread.ServicePrincipal("example",
             client_id=example_application.client_id,
             use_existing=True)
         ```
@@ -940,11 +940,11 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         current = azuread.get_client_config()
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.Application("example",
             display_name="example",
             owners=[current.object_id])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            client_id=example_application.client_id,
+        example_service_principal = azuread.ServicePrincipal("example",
+            client_id=example.client_id,
             app_role_assignment_required=False,
             owners=[current.object_id])
         ```
@@ -956,11 +956,11 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         current = azuread.get_client_config()
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.Application("example",
             display_name="example",
             owners=[current.object_id])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            client_id=example_application.client_id,
+        example_service_principal = azuread.ServicePrincipal("example",
+            client_id=example.client_id,
             app_role_assignment_required=False,
             owners=[current.object_id],
             feature_tags=[azuread.ServicePrincipalFeatureTagArgs(
@@ -977,7 +977,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            client_id=well_known.result["MicrosoftGraph"],
+            client_id=well_known.result["microsoftGraph"],
             use_existing=True)
         ```
 
@@ -987,11 +987,11 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("example",
             display_name="example",
-            template_id=example_application_template.template_id)
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            template_id=example.template_id)
+        example_service_principal = azuread.ServicePrincipal("example",
             client_id=example_application.client_id,
             use_existing=True)
         ```

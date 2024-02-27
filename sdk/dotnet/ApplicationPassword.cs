@@ -22,14 +22,14 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationPassword = new AzureAD.ApplicationPassword("exampleApplicationPassword", new()
+    ///     var exampleApplicationPassword = new AzureAD.ApplicationPassword("example", new()
     ///     {
-    ///         ApplicationId = exampleApplicationRegistration.Id,
+    ///         ApplicationId = example.Id,
     ///     });
     /// 
     /// });
@@ -46,19 +46,19 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleRotating = new Time.Rotating("exampleRotating", new()
+    ///     var exampleRotating = new Time.Rotating("example", new()
     ///     {
     ///         RotationDays = 7,
     ///     });
     /// 
-    ///     var exampleApplicationPassword = new AzureAD.ApplicationPassword("exampleApplicationPassword", new()
+    ///     var exampleApplicationPassword = new AzureAD.ApplicationPassword("example", new()
     ///     {
-    ///         ApplicationId = exampleApplicationRegistration.Id,
+    ///         ApplicationId = example.Id,
     ///         RotateWhenChanged = 
     ///         {
     ///             { "rotation", exampleRotating.Id },

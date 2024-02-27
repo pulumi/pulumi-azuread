@@ -265,9 +265,10 @@ class CustomDirectoryRole(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.CustomDirectoryRole("example",
-            description="Allows reading applications and updating groups",
             display_name="My Custom Role",
+            description="Allows reading applications and updating groups",
             enabled=True,
+            version="1.0",
             permissions=[
                 azuread.CustomDirectoryRolePermissionArgs(
                     allowed_resource_actions=[
@@ -285,8 +286,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
                         "microsoft.directory/groups/delete",
                     ],
                 ),
-            ],
-            version="1.0")
+            ])
         ```
 
         ## Import
@@ -328,9 +328,10 @@ class CustomDirectoryRole(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.CustomDirectoryRole("example",
-            description="Allows reading applications and updating groups",
             display_name="My Custom Role",
+            description="Allows reading applications and updating groups",
             enabled=True,
+            version="1.0",
             permissions=[
                 azuread.CustomDirectoryRolePermissionArgs(
                     allowed_resource_actions=[
@@ -348,8 +349,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
                         "microsoft.directory/groups/delete",
                     ],
                 ),
-            ],
-            version="1.0")
+            ])
         ```
 
         ## Import

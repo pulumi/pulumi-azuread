@@ -252,6 +252,66 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        *Assignment for a built-in role*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_directory_role = azuread.DirectoryRole("example", display_name="Security administrator")
+        example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
+            role_id=example_directory_role.template_id,
+            principal_object_id=example.object_id)
+        ```
+
+        > Note the use of the `template_id` attribute when referencing built-in roles.
+
+        *Assignment for a custom role*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_custom_directory_role = azuread.CustomDirectoryRole("example",
+            display_name="My Custom Role",
+            enabled=True,
+            version="1.0",
+            permissions=[azuread.CustomDirectoryRolePermissionArgs(
+                allowed_resource_actions=[
+                    "microsoft.directory/applications/basic/update",
+                    "microsoft.directory/applications/standard/read",
+                ],
+            )])
+        example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
+            role_id=example_custom_directory_role.object_id,
+            principal_object_id=example.object_id)
+        ```
+
+        *Scoped assignment for an application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+
+        def not_implemented(msg):
+            raise NotImplementedError(msg)
+
+        example_directory_role = azuread.DirectoryRole("example", display_name="Cloud application administrator")
+        example_application = azuread.Application("example", display_name="My Application")
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
+            role_id=example_directory_role.template_id,
+            principal_object_id=example.object_id,
+            directory_scope_id=not_implemented("format(\\"/%s\\",azuread_application.example.object_id)"))
+        ```
+
+        > Note the use of the `template_id` attribute when referencing built-in roles.
+
         ## Import
 
         Directory role assignments can be imported using the ID of the assignment, e.g.
@@ -285,6 +345,66 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        *Assignment for a built-in role*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_directory_role = azuread.DirectoryRole("example", display_name="Security administrator")
+        example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
+            role_id=example_directory_role.template_id,
+            principal_object_id=example.object_id)
+        ```
+
+        > Note the use of the `template_id` attribute when referencing built-in roles.
+
+        *Assignment for a custom role*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_custom_directory_role = azuread.CustomDirectoryRole("example",
+            display_name="My Custom Role",
+            enabled=True,
+            version="1.0",
+            permissions=[azuread.CustomDirectoryRolePermissionArgs(
+                allowed_resource_actions=[
+                    "microsoft.directory/applications/basic/update",
+                    "microsoft.directory/applications/standard/read",
+                ],
+            )])
+        example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
+            role_id=example_custom_directory_role.object_id,
+            principal_object_id=example.object_id)
+        ```
+
+        *Scoped assignment for an application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+
+        def not_implemented(msg):
+            raise NotImplementedError(msg)
+
+        example_directory_role = azuread.DirectoryRole("example", display_name="Cloud application administrator")
+        example_application = azuread.Application("example", display_name="My Application")
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
+            role_id=example_directory_role.template_id,
+            principal_object_id=example.object_id,
+            directory_scope_id=not_implemented("format(\\"/%s\\",azuread_application.example.object_id)"))
+        ```
+
+        > Note the use of the `template_id` attribute when referencing built-in roles.
 
         ## Import
 

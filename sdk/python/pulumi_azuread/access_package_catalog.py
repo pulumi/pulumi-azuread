@@ -181,8 +181,8 @@ class AccessPackageCatalog(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.AccessPackageCatalog("example",
-            description="Example access package catalog",
-            display_name="example-access-package-catalog")
+            display_name="example-access-package-catalog",
+            description="Example access package catalog")
         ```
 
         ## Import
@@ -224,8 +224,8 @@ class AccessPackageCatalog(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.AccessPackageCatalog("example",
-            description="Example access package catalog",
-            display_name="example-access-package-catalog")
+            display_name="example-access-package-catalog",
+            description="Example access package catalog")
         ```
 
         ## Import

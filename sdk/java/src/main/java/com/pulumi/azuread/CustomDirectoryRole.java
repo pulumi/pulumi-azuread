@@ -54,9 +54,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new CustomDirectoryRole(&#34;example&#34;, CustomDirectoryRoleArgs.builder()        
- *             .description(&#34;Allows reading applications and updating groups&#34;)
  *             .displayName(&#34;My Custom Role&#34;)
+ *             .description(&#34;Allows reading applications and updating groups&#34;)
  *             .enabled(true)
+ *             .version(&#34;1.0&#34;)
  *             .permissions(            
  *                 CustomDirectoryRolePermissionArgs.builder()
  *                     .allowedResourceActions(                    
@@ -72,7 +73,6 @@ import javax.annotation.Nullable;
  *                         &#34;microsoft.directory/groups/create&#34;,
  *                         &#34;microsoft.directory/groups/delete&#34;)
  *                     .build())
- *             .version(&#34;1.0&#34;)
  *             .build());
  * 
  *     }

@@ -50,10 +50,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new User(&#34;example&#34;, UserArgs.builder()        
+ *             .userPrincipalName(&#34;jdoe@example.com&#34;)
  *             .displayName(&#34;J. Doe&#34;)
  *             .mailNickname(&#34;jdoe&#34;)
  *             .password(&#34;SecretP@sswd99!&#34;)
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
  *             .build());
  * 
  *     }

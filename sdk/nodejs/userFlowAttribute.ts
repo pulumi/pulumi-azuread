@@ -22,9 +22,9 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.UserFlowAttribute("example", {
- *     dataType: "string",
- *     description: "Your hobby",
  *     displayName: "Hobby",
+ *     description: "Your hobby",
+ *     dataType: "string",
  * });
  * ```
  *

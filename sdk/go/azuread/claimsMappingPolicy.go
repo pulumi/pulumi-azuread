@@ -39,30 +39,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"ClaimsMappingPolicy": map[string]interface{}{
-//					"ClaimsSchema": []map[string]interface{}{
+//				"claimsMappingPolicy": map[string]interface{}{
+//					"claimsSchema": []map[string]interface{}{
 //						map[string]interface{}{
 //							"ID":            "employeeid",
-//							"JwtClaimType":  "name",
-//							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-//							"Source":        "user",
+//							"jwtClaimType":  "name",
+//							"samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+//							"source":        "user",
 //						},
 //						map[string]interface{}{
 //							"ID":            "tenantcountry",
-//							"JwtClaimType":  "country",
-//							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-//							"Source":        "company",
+//							"jwtClaimType":  "country",
+//							"samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+//							"source":        "company",
 //						},
 //					},
-//					"IncludeBasicClaimSet": "true",
-//					"Version":              1,
+//					"includeBasicClaimSet": "true",
+//					"version":              1,
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = azuread.NewClaimsMappingPolicy(ctx, "myPolicy", &azuread.ClaimsMappingPolicyArgs{
+//			_, err = azuread.NewClaimsMappingPolicy(ctx, "my_policy", &azuread.ClaimsMappingPolicyArgs{
 //				Definitions: pulumi.StringArray{
 //					pulumi.String(json0),
 //				},

@@ -1106,22 +1106,22 @@ class Application(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import base64
         import pulumi_azuread as azuread
+        import pulumi_std as std
 
         current = azuread.get_client_config()
         example = azuread.Application("example",
             display_name="example",
             identifier_uris=["api://example-app"],
-            logo_image=(lambda path: base64.b64encode(open(path).read().encode()).decode())("/path/to/logo.png"),
+            logo_image=std.filebase64(input="/path/to/logo.png").result,
             owners=[current.object_id],
             sign_in_audience="AzureADMultipleOrgs",
             api=azuread.ApplicationApiArgs(
                 mapped_claims_enabled=True,
                 requested_access_token_version=2,
                 known_client_applications=[
-                    azuread_application["known1"]["application_id"],
-                    azuread_application["known2"]["application_id"],
+                    known1["applicationId"],
+                    known2["applicationId"],
                 ],
                 oauth2_permission_scopes=[
                     azuread.ApplicationApiOauth2PermissionScopeArgs(
@@ -1227,11 +1227,11 @@ class Application(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("example",
             display_name="example",
-            template_id=example_application_template.template_id)
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            template_id=example.template_id)
+        example_service_principal = azuread.ServicePrincipal("example",
             application_id=example_application.application_id,
             use_existing=True)
         ```
@@ -1297,22 +1297,22 @@ class Application(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import base64
         import pulumi_azuread as azuread
+        import pulumi_std as std
 
         current = azuread.get_client_config()
         example = azuread.Application("example",
             display_name="example",
             identifier_uris=["api://example-app"],
-            logo_image=(lambda path: base64.b64encode(open(path).read().encode()).decode())("/path/to/logo.png"),
+            logo_image=std.filebase64(input="/path/to/logo.png").result,
             owners=[current.object_id],
             sign_in_audience="AzureADMultipleOrgs",
             api=azuread.ApplicationApiArgs(
                 mapped_claims_enabled=True,
                 requested_access_token_version=2,
                 known_client_applications=[
-                    azuread_application["known1"]["application_id"],
-                    azuread_application["known2"]["application_id"],
+                    known1["applicationId"],
+                    known2["applicationId"],
                 ],
                 oauth2_permission_scopes=[
                     azuread.ApplicationApiOauth2PermissionScopeArgs(
@@ -1418,11 +1418,11 @@ class Application(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("example",
             display_name="example",
-            template_id=example_application_template.template_id)
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            template_id=example.template_id)
+        example_service_principal = azuread.ServicePrincipal("example",
             application_id=example_application.application_id,
             use_existing=True)
         ```

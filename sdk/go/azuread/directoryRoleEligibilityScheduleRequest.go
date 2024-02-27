@@ -42,15 +42,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, "exampleDirectoryRole", &azuread.DirectoryRoleArgs{
+//			exampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
 //				DisplayName: pulumi.String("Application Administrator"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewDirectoryRoleEligibilityScheduleRequest(ctx, "exampleDirectoryRoleEligibilityScheduleRequest", &azuread.DirectoryRoleEligibilityScheduleRequestArgs{
+//			_, err = azuread.NewDirectoryRoleEligibilityScheduleRequest(ctx, "example", &azuread.DirectoryRoleEligibilityScheduleRequestArgs{
 //				RoleDefinitionId: exampleDirectoryRole.TemplateId,
-//				PrincipalId:      pulumi.Any(azuread_user.Example.Object_id),
+//				PrincipalId:      pulumi.Any(exampleAzureadUser.ObjectId),
 //				DirectoryScopeId: pulumi.String("/"),
 //				Justification:    pulumi.String("Example"),
 //			})

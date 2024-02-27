@@ -118,11 +118,11 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_administrative_unit = azuread.AdministrativeUnit("exampleAdministrativeUnit", display_name="Example-AU")
-        example_administrative_unit_member = azuread.AdministrativeUnitMember("exampleAdministrativeUnitMember",
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_administrative_unit = azuread.AdministrativeUnit("example", display_name="Example-AU")
+        example_administrative_unit_member = azuread.AdministrativeUnitMember("example",
             administrative_unit_object_id=example_administrative_unit.id,
-            member_object_id=example_user.id)
+            member_object_id=example.id)
         ```
 
         ## Import
@@ -165,11 +165,11 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_administrative_unit = azuread.AdministrativeUnit("exampleAdministrativeUnit", display_name="Example-AU")
-        example_administrative_unit_member = azuread.AdministrativeUnitMember("exampleAdministrativeUnitMember",
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_administrative_unit = azuread.AdministrativeUnit("example", display_name="Example-AU")
+        example_administrative_unit_member = azuread.AdministrativeUnitMember("example",
             administrative_unit_object_id=example_administrative_unit.id,
-            member_object_id=example_user.id)
+            member_object_id=example.id)
         ```
 
         ## Import

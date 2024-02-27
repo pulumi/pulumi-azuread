@@ -22,17 +22,17 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///         ApplicationId = example.ApplicationId,
     ///     });
     /// 
-    ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("exampleServicePrincipalPassword", new()
+    ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("example", new()
     ///     {
     ///         ServicePrincipalId = exampleServicePrincipal.ObjectId,
     ///     });
@@ -51,22 +51,22 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///         ApplicationId = example.ApplicationId,
     ///     });
     /// 
-    ///     var exampleRotating = new Time.Rotating("exampleRotating", new()
+    ///     var exampleRotating = new Time.Rotating("example", new()
     ///     {
     ///         RotationDays = 7,
     ///     });
     /// 
-    ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("exampleServicePrincipalPassword", new()
+    ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("example", new()
     ///     {
     ///         ServicePrincipalId = exampleServicePrincipal.ObjectId,
     ///         RotateWhenChanged = 

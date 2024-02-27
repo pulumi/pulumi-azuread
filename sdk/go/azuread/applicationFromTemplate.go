@@ -38,15 +38,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
+//			example, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
 //				DisplayName: pulumi.StringRef("Marketo"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplicationFromTemplate, err := azuread.NewApplicationFromTemplate(ctx, "exampleApplicationFromTemplate", &azuread.ApplicationFromTemplateArgs{
+//			exampleApplicationFromTemplate, err := azuread.NewApplicationFromTemplate(ctx, "example", &azuread.ApplicationFromTemplateArgs{
 //				DisplayName: pulumi.String("Example Application"),
-//				TemplateId:  *pulumi.String(exampleApplicationTemplate.TemplateId),
+//				TemplateId:  *pulumi.String(example.TemplateId),
 //			})
 //			if err != nil {
 //				return err

@@ -36,15 +36,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
+//			example, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
 //				DisplayName: pulumi.StringRef("Azure Databricks SCIM Provisioning Connector"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				TemplateId:  *pulumi.String(exampleApplicationTemplate.TemplateId),
+//				TemplateId:  *pulumi.String(example.TemplateId),
 //				FeatureTags: azuread.ApplicationFeatureTagArray{
 //					&azuread.ApplicationFeatureTagArgs{
 //						Enterprise: pulumi.Bool(true),
@@ -55,14 +55,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
 //				ApplicationId: exampleApplication.ApplicationId,
 //				UseExisting:   pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewSynchronizationSecret(ctx, "exampleSynchronizationSecret", &azuread.SynchronizationSecretArgs{
+//			_, err = azuread.NewSynchronizationSecret(ctx, "example", &azuread.SynchronizationSecretArgs{
 //				ServicePrincipalId: exampleServicePrincipal.ID(),
 //				Credentials: azuread.SynchronizationSecretCredentialArray{
 //					&azuread.SynchronizationSecretCredentialArgs{
@@ -78,7 +78,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewSynchronizationJob(ctx, "exampleSynchronizationJob", &azuread.SynchronizationJobArgs{
+//			_, err = azuread.NewSynchronizationJob(ctx, "example", &azuread.SynchronizationJobArgs{
 //				ServicePrincipalId: exampleServicePrincipal.ID(),
 //				TemplateId:         pulumi.String("dataBricks"),
 //				Enabled:            pulumi.Bool(true),

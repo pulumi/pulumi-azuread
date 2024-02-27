@@ -178,11 +178,11 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Application Administrator")
-        example_directory_role_eligibility_schedule_request = azuread.DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest",
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_directory_role = azuread.DirectoryRole("example", display_name="Application Administrator")
+        example_directory_role_eligibility_schedule_request = azuread.DirectoryRoleEligibilityScheduleRequest("example",
             role_definition_id=example_directory_role.template_id,
-            principal_id=azuread_user["example"]["object_id"],
+            principal_id=example_azuread_user["objectId"],
             directory_scope_id="/",
             justification="Example")
         ```
@@ -227,11 +227,11 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Application Administrator")
-        example_directory_role_eligibility_schedule_request = azuread.DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest",
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_directory_role = azuread.DirectoryRole("example", display_name="Application Administrator")
+        example_directory_role_eligibility_schedule_request = azuread.DirectoryRoleEligibilityScheduleRequest("example",
             role_definition_id=example_directory_role.template_id,
-            principal_id=azuread_user["example"]["object_id"],
+            principal_id=example_azuread_user["objectId"],
             directory_scope_id="/",
             justification="Example")
         ```

@@ -23,20 +23,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleGroup = new azuread.Group("exampleGroup", {
+ * const example = new azuread.Group("example", {
  *     displayName: "group-name",
  *     securityEnabled: true,
  * });
- * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("exampleAccessPackageCatalog", {
+ * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("example", {
  *     displayName: "example-catalog",
  *     description: "Example catalog",
  * });
- * const exampleAccessPackage = new azuread.AccessPackage("exampleAccessPackage", {
+ * const exampleAccessPackage = new azuread.AccessPackage("example", {
  *     catalogId: exampleAccessPackageCatalog.id,
  *     displayName: "access-package",
  *     description: "Access Package",
  * });
- * const exampleAccessPackageAssignmentPolicy = new azuread.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy", {
+ * const exampleAccessPackageAssignmentPolicy = new azuread.AccessPackageAssignmentPolicy("example", {
  *     accessPackageId: exampleAccessPackage.id,
  *     displayName: "assignment-policy",
  *     description: "My assignment policy",
@@ -49,7 +49,7 @@ import * as utilities from "./utilities";
  *         approvalStages: [{
  *             approvalTimeoutInDays: 14,
  *             primaryApprovers: [{
- *                 objectId: exampleGroup.objectId,
+ *                 objectId: example.objectId,
  *                 subjectType: "groupMembers",
  *             }],
  *         }],

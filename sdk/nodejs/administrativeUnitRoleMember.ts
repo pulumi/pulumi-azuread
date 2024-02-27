@@ -21,15 +21,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleUser = azuread.getUser({
+ * const example = azuread.getUser({
  *     userPrincipalName: "jdoe@example.com",
  * });
- * const exampleAdministrativeUnit = new azuread.AdministrativeUnit("exampleAdministrativeUnit", {displayName: "Example-AU"});
- * const exampleDirectoryRole = new azuread.DirectoryRole("exampleDirectoryRole", {displayName: "Security administrator"});
- * const exampleAdministrativeUnitRoleMember = new azuread.AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember", {
+ * const exampleAdministrativeUnit = new azuread.AdministrativeUnit("example", {displayName: "Example-AU"});
+ * const exampleDirectoryRole = new azuread.DirectoryRole("example", {displayName: "Security administrator"});
+ * const exampleAdministrativeUnitRoleMember = new azuread.AdministrativeUnitRoleMember("example", {
  *     roleObjectId: exampleDirectoryRole.objectId,
  *     administrativeUnitObjectId: exampleAdministrativeUnit.id,
- *     memberObjectId: exampleUser.then(exampleUser => exampleUser.id),
+ *     memberObjectId: example.then(example => example.id),
  * });
  * ```
  *

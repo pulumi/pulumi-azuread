@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationOwner(ctx, "exampleJane", &azuread.ApplicationOwnerArgs{
+//			_, err = azuread.NewApplicationOwner(ctx, "example_jane", &azuread.ApplicationOwnerArgs{
 //				ApplicationId: example.ID(),
 //				OwnerObjectId: jane.ObjectId,
 //			})

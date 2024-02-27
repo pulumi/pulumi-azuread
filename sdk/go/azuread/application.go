@@ -21,25 +21,21 @@ import (
 //
 // import (
 //
-//	"encoding/base64"
-//	"os"
-//
 //	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func filebase64OrPanic(path string) string {
-//		if fileData, err := os.ReadFile(path); err == nil {
-//			return base64.StdEncoding.EncodeToString(fileData[:])
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			current, err := azuread.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "/path/to/logo.png",
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -48,7 +44,7 @@ import (
 //				IdentifierUris: pulumi.StringArray{
 //					pulumi.String("api://example-app"),
 //				},
-//				LogoImage: filebase64OrPanic("/path/to/logo.png"),
+//				LogoImage: invokeFilebase64.Result,
 //				Owners: pulumi.StringArray{
 //					*pulumi.String(current.ObjectId),
 //				},
@@ -57,8 +53,8 @@ import (
 //					MappedClaimsEnabled:         pulumi.Bool(true),
 //					RequestedAccessTokenVersion: pulumi.Int(2),
 //					KnownClientApplications: pulumi.StringArray{
-//						azuread_application.Known1.Application_id,
-//						azuread_application.Known2.Application_id,
+//						known1.ApplicationId,
+//						known2.ApplicationId,
 //					},
 //					Oauth2PermissionScopes: azuread.ApplicationApiOauth2PermissionScopeArray{
 //						&azuread.ApplicationApiOauth2PermissionScopeArgs{
@@ -194,20 +190,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
+//			example, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
 //				DisplayName: pulumi.StringRef("Marketo"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				TemplateId:  *pulumi.String(exampleApplicationTemplate.TemplateId),
+//				TemplateId:  *pulumi.String(example.TemplateId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//			_, err = azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
 //				ApplicationId: exampleApplication.ApplicationId,
 //				UseExisting:   pulumi.Bool(true),
 //			})

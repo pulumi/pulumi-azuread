@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()
+ *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
  *             .userPrincipalName(&#34;jdoe@example.com&#34;)
  *             .build());
  * 
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleGroupMember = new GroupMember(&#34;exampleGroupMember&#34;, GroupMemberArgs.builder()        
  *             .groupObjectId(exampleGroup.id())
- *             .memberObjectId(exampleUser.applyValue(getUserResult -&gt; getUserResult.id()))
+ *             .memberObjectId(example.applyValue(getUserResult -&gt; getUserResult.id()))
  *             .build());
  * 
  *     }

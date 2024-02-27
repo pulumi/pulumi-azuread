@@ -250,8 +250,8 @@ class Invitation(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Invitation("example",
-            redirect_url="https://portal.azure.com",
-            user_email_address="jdoe@example.com")
+            user_email_address="jdoe@example.com",
+            redirect_url="https://portal.azure.com")
         ```
 
         *Invitation with standard message*
@@ -261,11 +261,11 @@ class Invitation(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Invitation("example",
+            user_email_address="jdoe@example.com",
+            redirect_url="https://portal.azure.com",
             message=azuread.InvitationMessageArgs(
                 language="en-US",
-            ),
-            redirect_url="https://portal.azure.com",
-            user_email_address="jdoe@example.com")
+            ))
         ```
 
         *Invitation with custom message body and an additional recipient*
@@ -275,13 +275,13 @@ class Invitation(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Invitation("example",
+            user_display_name="Bob Bobson",
+            user_email_address="bbobson@example.com",
+            redirect_url="https://portal.azure.com",
             message=azuread.InvitationMessageArgs(
                 additional_recipients="aaliceberg@example.com",
                 body="Hello there! You are invited to join my Azure tenant!",
-            ),
-            redirect_url="https://portal.azure.com",
-            user_display_name="Bob Bobson",
-            user_email_address="bbobson@example.com")
+            ))
         ```
 
         ## Import
@@ -322,8 +322,8 @@ class Invitation(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Invitation("example",
-            redirect_url="https://portal.azure.com",
-            user_email_address="jdoe@example.com")
+            user_email_address="jdoe@example.com",
+            redirect_url="https://portal.azure.com")
         ```
 
         *Invitation with standard message*
@@ -333,11 +333,11 @@ class Invitation(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Invitation("example",
+            user_email_address="jdoe@example.com",
+            redirect_url="https://portal.azure.com",
             message=azuread.InvitationMessageArgs(
                 language="en-US",
-            ),
-            redirect_url="https://portal.azure.com",
-            user_email_address="jdoe@example.com")
+            ))
         ```
 
         *Invitation with custom message body and an additional recipient*
@@ -347,13 +347,13 @@ class Invitation(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Invitation("example",
+            user_display_name="Bob Bobson",
+            user_email_address="bbobson@example.com",
+            redirect_url="https://portal.azure.com",
             message=azuread.InvitationMessageArgs(
                 additional_recipients="aaliceberg@example.com",
                 body="Hello there! You are invited to join my Azure tenant!",
-            ),
-            redirect_url="https://portal.azure.com",
-            user_display_name="Bob Bobson",
-            user_email_address="bbobson@example.com")
+            ))
         ```
 
         ## Import

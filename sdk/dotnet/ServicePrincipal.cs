@@ -24,7 +24,7 @@ namespace Pulumi.AzureAD
     /// {
     ///     var current = AzureAD.GetClientConfig.Invoke();
     /// 
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         Owners = new[]
@@ -33,9 +33,9 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ClientId = exampleApplication.ClientId,
+    ///         ClientId = example.ClientId,
     ///         AppRoleAssignmentRequired = false,
     ///         Owners = new[]
     ///         {
@@ -58,7 +58,7 @@ namespace Pulumi.AzureAD
     /// {
     ///     var current = AzureAD.GetClientConfig.Invoke();
     /// 
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         Owners = new[]
@@ -67,9 +67,9 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ClientId = exampleApplication.ClientId,
+    ///         ClientId = example.ClientId,
     ///         AppRoleAssignmentRequired = false,
     ///         Owners = new[]
     ///         {
@@ -119,18 +119,18 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplicationTemplate = AzureAD.GetApplicationTemplate.Invoke(new()
+    ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
     ///     {
     ///         DisplayName = "Marketo",
     ///     });
     /// 
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var exampleApplication = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
-    ///         TemplateId = exampleApplicationTemplate.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
+    ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = exampleApplication.ClientId,
     ///         UseExisting = true,

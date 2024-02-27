@@ -218,9 +218,9 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", service_principal_id=example_service_principal.id)
+        example = azuread.Application("example", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
         ```
 
         *Using custom settings*
@@ -229,9 +229,9 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate",
+        example = azuread.Application("example", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example",
             service_principal_id=example_service_principal.id,
             display_name="CN=example.com",
             end_date="2023-05-01T01:02:03Z")
@@ -271,9 +271,9 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", service_principal_id=example_service_principal.id)
+        example = azuread.Application("example", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
         ```
 
         *Using custom settings*
@@ -282,9 +282,9 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate",
+        example = azuread.Application("example", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example",
             service_principal_id=example_service_principal.id,
             display_name="CN=example.com",
             end_date="2023-05-01T01:02:03Z")

@@ -13,9 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
- * const exampleApplicationOptionalClaims = new azuread.ApplicationOptionalClaims("exampleApplicationOptionalClaims", {
- *     applicationId: exampleApplicationRegistration.id,
+ * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
+ * const exampleApplicationOptionalClaims = new azuread.ApplicationOptionalClaims("example", {
+ *     applicationId: example.id,
  *     accessTokens: [
  *         {
  *             name: "myclaim",

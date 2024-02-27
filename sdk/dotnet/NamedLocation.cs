@@ -46,6 +46,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var example_country = new AzureAD.NamedLocation("example-country", new()
     ///     {
+    ///         DisplayName = "Country Named Location",
     ///         Country = new AzureAD.Inputs.NamedLocationCountryArgs
     ///         {
     ///             CountriesAndRegions = new[]
@@ -55,7 +56,6 @@ namespace Pulumi.AzureAD
     ///             },
     ///             IncludeUnknownCountriesAndRegions = false,
     ///         },
-    ///         DisplayName = "Country Named Location",
     ///     });
     /// 
     /// });

@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()
+ *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
  *             .userPrincipalName(&#34;jdoe@example.com&#34;)
  *             .build());
  * 
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDirectoryRoleEligibilityScheduleRequest = new DirectoryRoleEligibilityScheduleRequest(&#34;exampleDirectoryRoleEligibilityScheduleRequest&#34;, DirectoryRoleEligibilityScheduleRequestArgs.builder()        
  *             .roleDefinitionId(exampleDirectoryRole.templateId())
- *             .principalId(azuread_user.example().object_id())
+ *             .principalId(exampleAzureadUser.objectId())
  *             .directoryScopeId(&#34;/&#34;)
  *             .justification(&#34;Example&#34;)
  *             .build());

@@ -34,13 +34,13 @@ namespace Pulumi.AzureAD
     /// {
     ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
-    ///         Description = "My example application",
     ///         DisplayName = "Example Application",
+    ///         Description = "My example application",
+    ///         SignInAudience = "AzureADMyOrg",
     ///         HomepageUrl = "https://app.hashitown.com/",
     ///         LogoutUrl = "https://app.hashitown.com/logout",
     ///         MarketingUrl = "https://hashitown.com/",
     ///         PrivacyStatementUrl = "https://hashitown.com/privacy",
-    ///         SignInAudience = "AzureADMyOrg",
     ///         SupportUrl = "https://support.hashitown.com/",
     ///         TermsOfServiceUrl = "https://hashitown.com/terms",
     ///     });

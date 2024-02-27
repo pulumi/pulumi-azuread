@@ -25,16 +25,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleUser = azuread.getUser({
+ * const example = azuread.getUser({
  *     userPrincipalName: "jdoe@example.com",
  * });
- * const exampleGroup = new azuread.Group("exampleGroup", {
+ * const exampleGroup = new azuread.Group("example", {
  *     displayName: "my_group",
  *     securityEnabled: true,
  * });
- * const exampleGroupMember = new azuread.GroupMember("exampleGroupMember", {
+ * const exampleGroupMember = new azuread.GroupMember("example", {
  *     groupObjectId: exampleGroup.id,
- *     memberObjectId: exampleUser.then(exampleUser => exampleUser.id),
+ *     memberObjectId: example.then(example => example.id),
  * });
  * ```
  *

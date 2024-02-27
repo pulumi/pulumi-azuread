@@ -32,7 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationRedirectUris(ctx, "examplePublic", &azuread.ApplicationRedirectUrisArgs{
+//			_, err = azuread.NewApplicationRedirectUris(ctx, "example_public", &azuread.ApplicationRedirectUrisArgs{
 //				ApplicationId: example.ID(),
 //				Type:          pulumi.String("PublicClient"),
 //				RedirectUris: pulumi.StringArray{
@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationRedirectUris(ctx, "exampleSpa", &azuread.ApplicationRedirectUrisArgs{
+//			_, err = azuread.NewApplicationRedirectUris(ctx, "example_spa", &azuread.ApplicationRedirectUrisArgs{
 //				ApplicationId: example.ID(),
 //				Type:          pulumi.String("SPA"),
 //				RedirectUris: pulumi.StringArray{
@@ -58,7 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationRedirectUris(ctx, "exampleWeb", &azuread.ApplicationRedirectUrisArgs{
+//			_, err = azuread.NewApplicationRedirectUris(ctx, "example_web", &azuread.ApplicationRedirectUrisArgs{
 //				ApplicationId: example.ID(),
 //				Type:          pulumi.String("Web"),
 //				RedirectUris: pulumi.StringArray{

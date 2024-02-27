@@ -35,19 +35,29 @@ namespace Pulumi.AzureAD
     /// {
     ///     var example = new AzureAD.ConditionalAccessPolicy("example", new()
     ///     {
+    ///         DisplayName = "example policy",
+    ///         State = "disabled",
     ///         Conditions = new AzureAD.Inputs.ConditionalAccessPolicyConditionsArgs
     ///         {
+    ///             ClientAppTypes = new[]
+    ///             {
+    ///                 "all",
+    ///             },
+    ///             SignInRiskLevels = new[]
+    ///             {
+    ///                 "medium",
+    ///             },
+    ///             UserRiskLevels = new[]
+    ///             {
+    ///                 "medium",
+    ///             },
     ///             Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs
     ///             {
-    ///                 ExcludedApplications = new() { },
     ///                 IncludedApplications = new[]
     ///                 {
     ///                     "All",
     ///                 },
-    ///             },
-    ///             ClientAppTypes = new[]
-    ///             {
-    ///                 "all",
+    ///                 ExcludedApplications = new() { },
     ///             },
     ///             Devices = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesArgs
     ///             {
@@ -59,64 +69,54 @@ namespace Pulumi.AzureAD
     ///             },
     ///             Locations = new AzureAD.Inputs.ConditionalAccessPolicyConditionsLocationsArgs
     ///             {
-    ///                 ExcludedLocations = new[]
-    ///                 {
-    ///                     "AllTrusted",
-    ///                 },
     ///                 IncludedLocations = new[]
     ///                 {
     ///                     "All",
     ///                 },
+    ///                 ExcludedLocations = new[]
+    ///                 {
+    ///                     "AllTrusted",
+    ///                 },
     ///             },
     ///             Platforms = new AzureAD.Inputs.ConditionalAccessPolicyConditionsPlatformsArgs
     ///             {
-    ///                 ExcludedPlatforms = new[]
-    ///                 {
-    ///                     "iOS",
-    ///                 },
     ///                 IncludedPlatforms = new[]
     ///                 {
     ///                     "android",
     ///                 },
-    ///             },
-    ///             SignInRiskLevels = new[]
-    ///             {
-    ///                 "medium",
-    ///             },
-    ///             UserRiskLevels = new[]
-    ///             {
-    ///                 "medium",
+    ///                 ExcludedPlatforms = new[]
+    ///                 {
+    ///                     "iOS",
+    ///                 },
     ///             },
     ///             Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs
     ///             {
-    ///                 ExcludedUsers = new[]
-    ///                 {
-    ///                     "GuestsOrExternalUsers",
-    ///                 },
     ///                 IncludedUsers = new[]
     ///                 {
     ///                     "All",
     ///                 },
+    ///                 ExcludedUsers = new[]
+    ///                 {
+    ///                     "GuestsOrExternalUsers",
+    ///                 },
     ///             },
     ///         },
-    ///         DisplayName = "example policy",
     ///         GrantControls = new AzureAD.Inputs.ConditionalAccessPolicyGrantControlsArgs
     ///         {
+    ///             Operator = "OR",
     ///             BuiltInControls = new[]
     ///             {
     ///                 "mfa",
     ///             },
-    ///             Operator = "OR",
     ///         },
     ///         SessionControls = new AzureAD.Inputs.ConditionalAccessPolicySessionControlsArgs
     ///         {
     ///             ApplicationEnforcedRestrictionsEnabled = true,
-    ///             CloudAppSecurityPolicy = "monitorOnly",
     ///             DisableResilienceDefaults = false,
     ///             SignInFrequency = 10,
     ///             SignInFrequencyPeriod = "hours",
+    ///             CloudAppSecurityPolicy = "monitorOnly",
     ///         },
-    ///         State = "disabled",
     ///     });
     /// 
     /// });

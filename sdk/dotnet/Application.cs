@@ -15,18 +15,11 @@ namespace Pulumi.AzureAD
     /// *Create an application*
     /// 
     /// ```csharp
-    /// using System;
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// 	
-    /// string ReadFileBase64(string path) 
-    /// {
-    ///     return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-    /// }
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -39,7 +32,10 @@ namespace Pulumi.AzureAD
     ///         {
     ///             "api://example-app",
     ///         },
-    ///         LogoImage = ReadFileBase64("/path/to/logo.png"),
+    ///         LogoImage = Std.Filebase64.Invoke(new()
+    ///         {
+    ///             Input = "/path/to/logo.png",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         Owners = new[]
     ///         {
     ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
@@ -51,8 +47,8 @@ namespace Pulumi.AzureAD
     ///             RequestedAccessTokenVersion = 2,
     ///             KnownClientApplications = new[]
     ///             {
-    ///                 azuread_application.Known1.Application_id,
-    ///                 azuread_application.Known2.Application_id,
+    ///                 known1.ApplicationId,
+    ///                 known2.ApplicationId,
     ///             },
     ///             Oauth2PermissionScopes = new[]
     ///             {
@@ -209,18 +205,18 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplicationTemplate = AzureAD.GetApplicationTemplate.Invoke(new()
+    ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
     ///     {
     ///         DisplayName = "Marketo",
     ///     });
     /// 
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var exampleApplication = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
-    ///         TemplateId = exampleApplicationTemplate.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
+    ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
     ///         ApplicationId = exampleApplication.ApplicationId,
     ///         UseExisting = true,

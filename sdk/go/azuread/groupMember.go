@@ -40,22 +40,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+//			example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
 //				UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+//			exampleGroup, err := azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
 //				DisplayName:     pulumi.String("my_group"),
 //				SecurityEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewGroupMember(ctx, "exampleGroupMember", &azuread.GroupMemberArgs{
+//			_, err = azuread.NewGroupMember(ctx, "example", &azuread.GroupMemberArgs{
 //				GroupObjectId:  exampleGroup.ID(),
-//				MemberObjectId: *pulumi.String(exampleUser.Id),
+//				MemberObjectId: *pulumi.String(example.Id),
 //			})
 //			if err != nil {
 //				return err

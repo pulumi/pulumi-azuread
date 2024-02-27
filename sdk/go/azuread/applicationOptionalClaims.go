@@ -26,14 +26,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationRegistration, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
+//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationOptionalClaims(ctx, "exampleApplicationOptionalClaims", &azuread.ApplicationOptionalClaimsArgs{
-//				ApplicationId: exampleApplicationRegistration.ID(),
+//			_, err = azuread.NewApplicationOptionalClaims(ctx, "example", &azuread.ApplicationOptionalClaimsArgs{
+//				ApplicationId: example.ID(),
 //				AccessTokens: azuread.ApplicationOptionalClaimsAccessTokenArray{
 //					&azuread.ApplicationOptionalClaimsAccessTokenArgs{
 //						Name: pulumi.String("myclaim"),

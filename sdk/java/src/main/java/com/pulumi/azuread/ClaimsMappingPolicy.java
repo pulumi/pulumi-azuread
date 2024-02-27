@@ -51,23 +51,23 @@ import javax.annotation.Nullable;
  *         var myPolicy = new ClaimsMappingPolicy(&#34;myPolicy&#34;, ClaimsMappingPolicyArgs.builder()        
  *             .definitions(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;ClaimsMappingPolicy&#34;, jsonObject(
- *                         jsonProperty(&#34;ClaimsSchema&#34;, jsonArray(
+ *                     jsonProperty(&#34;claimsMappingPolicy&#34;, jsonObject(
+ *                         jsonProperty(&#34;claimsSchema&#34;, jsonArray(
  *                             jsonObject(
  *                                 jsonProperty(&#34;ID&#34;, &#34;employeeid&#34;),
- *                                 jsonProperty(&#34;JwtClaimType&#34;, &#34;name&#34;),
- *                                 jsonProperty(&#34;SamlClaimType&#34;, &#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name&#34;),
- *                                 jsonProperty(&#34;Source&#34;, &#34;user&#34;)
+ *                                 jsonProperty(&#34;jwtClaimType&#34;, &#34;name&#34;),
+ *                                 jsonProperty(&#34;samlClaimType&#34;, &#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name&#34;),
+ *                                 jsonProperty(&#34;source&#34;, &#34;user&#34;)
  *                             ), 
  *                             jsonObject(
  *                                 jsonProperty(&#34;ID&#34;, &#34;tenantcountry&#34;),
- *                                 jsonProperty(&#34;JwtClaimType&#34;, &#34;country&#34;),
- *                                 jsonProperty(&#34;SamlClaimType&#34;, &#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country&#34;),
- *                                 jsonProperty(&#34;Source&#34;, &#34;company&#34;)
+ *                                 jsonProperty(&#34;jwtClaimType&#34;, &#34;country&#34;),
+ *                                 jsonProperty(&#34;samlClaimType&#34;, &#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country&#34;),
+ *                                 jsonProperty(&#34;source&#34;, &#34;company&#34;)
  *                             )
  *                         )),
- *                         jsonProperty(&#34;IncludeBasicClaimSet&#34;, &#34;true&#34;),
- *                         jsonProperty(&#34;Version&#34;, 1)
+ *                         jsonProperty(&#34;includeBasicClaimSet&#34;, &#34;true&#34;),
+ *                         jsonProperty(&#34;version&#34;, 1)
  *                     ))
  *                 )))
  *             .displayName(&#34;My Policy&#34;)

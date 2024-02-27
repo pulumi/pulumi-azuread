@@ -11,9 +11,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
- * const exampleApplicationFederatedIdentityCredential = new azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", {
- *     applicationId: exampleApplicationRegistration.id,
+ * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
+ * const exampleApplicationFederatedIdentityCredential = new azuread.ApplicationFederatedIdentityCredential("example", {
+ *     applicationId: example.id,
  *     displayName: "my-repo-deploy",
  *     description: "Deployments for my-repo",
  *     audiences: ["api://AzureADTokenExchange"],

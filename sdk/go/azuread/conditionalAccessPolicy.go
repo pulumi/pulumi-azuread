@@ -40,15 +40,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewConditionalAccessPolicy(ctx, "example", &azuread.ConditionalAccessPolicyArgs{
+//				DisplayName: pulumi.String("example policy"),
+//				State:       pulumi.String("disabled"),
 //				Conditions: &azuread.ConditionalAccessPolicyConditionsArgs{
+//					ClientAppTypes: pulumi.StringArray{
+//						pulumi.String("all"),
+//					},
+//					SignInRiskLevels: pulumi.StringArray{
+//						pulumi.String("medium"),
+//					},
+//					UserRiskLevels: pulumi.StringArray{
+//						pulumi.String("medium"),
+//					},
 //					Applications: &azuread.ConditionalAccessPolicyConditionsApplicationsArgs{
-//						ExcludedApplications: pulumi.StringArray{},
 //						IncludedApplications: pulumi.StringArray{
 //							pulumi.String("All"),
 //						},
-//					},
-//					ClientAppTypes: pulumi.StringArray{
-//						pulumi.String("all"),
+//						ExcludedApplications: pulumi.StringArray{},
 //					},
 //					Devices: &azuread.ConditionalAccessPolicyConditionsDevicesArgs{
 //						Filter: &azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs{
@@ -57,51 +65,43 @@ import (
 //						},
 //					},
 //					Locations: &azuread.ConditionalAccessPolicyConditionsLocationsArgs{
-//						ExcludedLocations: pulumi.StringArray{
-//							pulumi.String("AllTrusted"),
-//						},
 //						IncludedLocations: pulumi.StringArray{
 //							pulumi.String("All"),
 //						},
+//						ExcludedLocations: pulumi.StringArray{
+//							pulumi.String("AllTrusted"),
+//						},
 //					},
 //					Platforms: &azuread.ConditionalAccessPolicyConditionsPlatformsArgs{
-//						ExcludedPlatforms: pulumi.StringArray{
-//							pulumi.String("iOS"),
-//						},
 //						IncludedPlatforms: pulumi.StringArray{
 //							pulumi.String("android"),
 //						},
-//					},
-//					SignInRiskLevels: pulumi.StringArray{
-//						pulumi.String("medium"),
-//					},
-//					UserRiskLevels: pulumi.StringArray{
-//						pulumi.String("medium"),
+//						ExcludedPlatforms: pulumi.StringArray{
+//							pulumi.String("iOS"),
+//						},
 //					},
 //					Users: &azuread.ConditionalAccessPolicyConditionsUsersArgs{
-//						ExcludedUsers: pulumi.StringArray{
-//							pulumi.String("GuestsOrExternalUsers"),
-//						},
 //						IncludedUsers: pulumi.StringArray{
 //							pulumi.String("All"),
 //						},
+//						ExcludedUsers: pulumi.StringArray{
+//							pulumi.String("GuestsOrExternalUsers"),
+//						},
 //					},
 //				},
-//				DisplayName: pulumi.String("example policy"),
 //				GrantControls: &azuread.ConditionalAccessPolicyGrantControlsArgs{
+//					Operator: pulumi.String("OR"),
 //					BuiltInControls: pulumi.StringArray{
 //						pulumi.String("mfa"),
 //					},
-//					Operator: pulumi.String("OR"),
 //				},
 //				SessionControls: &azuread.ConditionalAccessPolicySessionControlsArgs{
 //					ApplicationEnforcedRestrictionsEnabled: pulumi.Bool(true),
-//					CloudAppSecurityPolicy:                 pulumi.String("monitorOnly"),
 //					DisableResilienceDefaults:              pulumi.Bool(false),
 //					SignInFrequency:                        pulumi.Int(10),
 //					SignInFrequencyPeriod:                  pulumi.String("hours"),
+//					CloudAppSecurityPolicy:                 pulumi.String("monitorOnly"),
 //				},
-//				State: pulumi.String("disabled"),
 //			})
 //			if err != nil {
 //				return err

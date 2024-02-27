@@ -31,7 +31,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //				Owners: pulumi.StringArray{
 //					*pulumi.String(current.ObjectId),
@@ -40,8 +40,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ClientId:                  exampleApplication.ClientId,
+//			_, err = azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+//				ClientId:                  example.ClientId,
 //				AppRoleAssignmentRequired: pulumi.Bool(false),
 //				Owners: pulumi.StringArray{
 //					*pulumi.String(current.ObjectId),
@@ -74,7 +74,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //				Owners: pulumi.StringArray{
 //					*pulumi.String(current.ObjectId),
@@ -83,8 +83,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ClientId:                  exampleApplication.ClientId,
+//			_, err = azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+//				ClientId:                  example.ClientId,
 //				AppRoleAssignmentRequired: pulumi.Bool(false),
 //				Owners: pulumi.StringArray{
 //					*pulumi.String(current.ObjectId),
@@ -150,20 +150,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
+//			example, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
 //				DisplayName: pulumi.StringRef("Marketo"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				TemplateId:  *pulumi.String(exampleApplicationTemplate.TemplateId),
+//				TemplateId:  *pulumi.String(example.TemplateId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//			_, err = azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
 //				ClientId:    exampleApplication.ClientId,
 //				UseExisting: pulumi.Bool(true),
 //			})

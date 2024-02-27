@@ -379,17 +379,17 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_group = azuread.Group("exampleGroup",
+        example = azuread.Group("example",
             display_name="group-name",
             security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+        example_access_package_catalog = azuread.AccessPackageCatalog("example",
             display_name="example-catalog",
             description="Example catalog")
-        example_access_package = azuread.AccessPackage("exampleAccessPackage",
+        example_access_package = azuread.AccessPackage("example",
             catalog_id=example_access_package_catalog.id,
             display_name="access-package",
             description="Access Package")
-        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy",
+        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("example",
             access_package_id=example_access_package.id,
             display_name="assignment-policy",
             description="My assignment policy",
@@ -402,7 +402,7 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
                 approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
                     approval_timeout_in_days=14,
                     primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
-                        object_id=example_group.object_id,
+                        object_id=example.object_id,
                         subject_type="groupMembers",
                     )],
                 )],
@@ -465,17 +465,17 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_group = azuread.Group("exampleGroup",
+        example = azuread.Group("example",
             display_name="group-name",
             security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+        example_access_package_catalog = azuread.AccessPackageCatalog("example",
             display_name="example-catalog",
             description="Example catalog")
-        example_access_package = azuread.AccessPackage("exampleAccessPackage",
+        example_access_package = azuread.AccessPackage("example",
             catalog_id=example_access_package_catalog.id,
             display_name="access-package",
             description="Access Package")
-        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy",
+        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("example",
             access_package_id=example_access_package.id,
             display_name="assignment-policy",
             description="My assignment policy",
@@ -488,7 +488,7 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
                 approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
                     approval_timeout_in_days=14,
                     primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
-                        object_id=example_group.object_id,
+                        object_id=example.object_id,
                         subject_type="groupMembers",
                     )],
                 )],

@@ -26,9 +26,9 @@ namespace Pulumi.AzureAD
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleAdministrator = new Random.RandomUuid("exampleAdministrator");
+    ///     var exampleAdministrator = new Random.RandomUuid("example_administrator");
     /// 
-    ///     var exampleAdminister = new AzureAD.ApplicationAppRole("exampleAdminister", new()
+    ///     var exampleAdminister = new AzureAD.ApplicationAppRole("example_administer", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         RoleId = exampleAdministrator.Id,
@@ -61,12 +61,11 @@ namespace Pulumi.AzureAD
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleAdminister = new AzureAD.ApplicationAppRole("exampleAdminister", new()
+    ///     var exampleAdminister = new AzureAD.ApplicationAppRole("example_administer", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///     });
     /// 
-    ///     // ...
     /// });
     /// ```
     /// 

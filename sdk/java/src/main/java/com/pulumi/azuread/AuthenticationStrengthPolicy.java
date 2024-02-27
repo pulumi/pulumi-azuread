@@ -49,14 +49,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new AuthenticationStrengthPolicy(&#34;example&#34;, AuthenticationStrengthPolicyArgs.builder()        
+ *             .displayName(&#34;Example Authentication Strength Policy&#34;)
+ *             .description(&#34;Policy for demo purposes&#34;)
  *             .allowedCombinations(            
  *                 &#34;fido2&#34;,
  *                 &#34;password&#34;)
- *             .description(&#34;Policy for demo purposes&#34;)
- *             .displayName(&#34;Example Authentication Strength Policy&#34;)
  *             .build());
  * 
  *         var example2 = new AuthenticationStrengthPolicy(&#34;example2&#34;, AuthenticationStrengthPolicyArgs.builder()        
+ *             .displayName(&#34;Example Authentication Strength Policy&#34;)
+ *             .description(&#34;Policy for demo purposes with all possible combinations&#34;)
  *             .allowedCombinations(            
  *                 &#34;fido2&#34;,
  *                 &#34;password&#34;,
@@ -79,8 +81,6 @@ import javax.annotation.Nullable;
  *                 &#34;windowsHelloForBusiness&#34;,
  *                 &#34;x509CertificateMultiFactor&#34;,
  *                 &#34;x509CertificateSingleFactor&#34;)
- *             .description(&#34;Policy for demo purposes with all possible combinations&#34;)
- *             .displayName(&#34;Example Authentication Strength Policy&#34;)
  *             .build());
  * 
  *     }

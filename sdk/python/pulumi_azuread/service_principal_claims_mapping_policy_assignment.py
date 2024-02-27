@@ -115,8 +115,8 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         app = azuread.ServicePrincipalClaimsMappingPolicyAssignment("app",
-            claims_mapping_policy_id=azuread_claims_mapping_policy["my_policy"]["id"],
-            service_principal_id=azuread_service_principal["my_principal"]["id"])
+            claims_mapping_policy_id=my_policy["id"],
+            service_principal_id=my_principal["id"])
         ```
 
         ## Import
@@ -156,8 +156,8 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         app = azuread.ServicePrincipalClaimsMappingPolicyAssignment("app",
-            claims_mapping_policy_id=azuread_claims_mapping_policy["my_policy"]["id"],
-            service_principal_id=azuread_service_principal["my_principal"]["id"])
+            claims_mapping_policy_id=my_policy["id"],
+            service_principal_id=my_principal["id"])
         ```
 
         ## Import

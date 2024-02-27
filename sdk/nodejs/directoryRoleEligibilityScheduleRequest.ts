@@ -21,13 +21,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleUser = azuread.getUser({
+ * const example = azuread.getUser({
  *     userPrincipalName: "jdoe@example.com",
  * });
- * const exampleDirectoryRole = new azuread.DirectoryRole("exampleDirectoryRole", {displayName: "Application Administrator"});
- * const exampleDirectoryRoleEligibilityScheduleRequest = new azuread.DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest", {
+ * const exampleDirectoryRole = new azuread.DirectoryRole("example", {displayName: "Application Administrator"});
+ * const exampleDirectoryRoleEligibilityScheduleRequest = new azuread.DirectoryRoleEligibilityScheduleRequest("example", {
  *     roleDefinitionId: exampleDirectoryRole.templateId,
- *     principalId: azuread_user.example.object_id,
+ *     principalId: exampleAzureadUser.objectId,
  *     directoryScopeId: "/",
  *     justification: "Example",
  * });

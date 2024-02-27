@@ -181,7 +181,7 @@ class ApplicationApiAccess(pulumi.CustomResource):
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.get_service_principal(client_id=well_known.result["MicrosoftGraph"])
         example = azuread.ApplicationRegistration("example", display_name="example")
-        example_msgraph = azuread.ApplicationApiAccess("exampleMsgraph",
+        example_msgraph = azuread.ApplicationApiAccess("example_msgraph",
             application_id=example.id,
             api_client_id=well_known.result["MicrosoftGraph"],
             role_ids=[
@@ -199,9 +199,8 @@ class ApplicationApiAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_api_access = azuread.ApplicationApiAccess("exampleApplicationApiAccess", application_id=example_application.id)
-        # ...
+        example = azuread.Application("example", display_name="example")
+        example_application_api_access = azuread.ApplicationApiAccess("example", application_id=example.id)
         ```
 
         ## Import
@@ -237,7 +236,7 @@ class ApplicationApiAccess(pulumi.CustomResource):
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.get_service_principal(client_id=well_known.result["MicrosoftGraph"])
         example = azuread.ApplicationRegistration("example", display_name="example")
-        example_msgraph = azuread.ApplicationApiAccess("exampleMsgraph",
+        example_msgraph = azuread.ApplicationApiAccess("example_msgraph",
             application_id=example.id,
             api_client_id=well_known.result["MicrosoftGraph"],
             role_ids=[
@@ -255,9 +254,8 @@ class ApplicationApiAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_api_access = azuread.ApplicationApiAccess("exampleApplicationApiAccess", application_id=example_application.id)
-        # ...
+        example = azuread.Application("example", display_name="example")
+        example_application_api_access = azuread.ApplicationApiAccess("example", application_id=example.id)
         ```
 
         ## Import

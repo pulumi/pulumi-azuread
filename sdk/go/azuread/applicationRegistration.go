@@ -39,13 +39,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				Description:         pulumi.String("My example application"),
 //				DisplayName:         pulumi.String("Example Application"),
+//				Description:         pulumi.String("My example application"),
+//				SignInAudience:      pulumi.String("AzureADMyOrg"),
 //				HomepageUrl:         pulumi.String("https://app.hashitown.com/"),
 //				LogoutUrl:           pulumi.String("https://app.hashitown.com/logout"),
 //				MarketingUrl:        pulumi.String("https://hashitown.com/"),
 //				PrivacyStatementUrl: pulumi.String("https://hashitown.com/privacy"),
-//				SignInAudience:      pulumi.String("AzureADMyOrg"),
 //				SupportUrl:          pulumi.String("https://support.hashitown.com/"),
 //				TermsOfServiceUrl:   pulumi.String("https://hashitown.com/terms"),
 //			})

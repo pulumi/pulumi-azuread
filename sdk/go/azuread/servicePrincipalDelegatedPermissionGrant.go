@@ -49,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
 //					&azuread.ApplicationRequiredResourceAccessArgs{
@@ -74,13 +74,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+//				ApplicationId: example.ApplicationId,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewServicePrincipalDelegatedPermissionGrant(ctx, "exampleServicePrincipalDelegatedPermissionGrant", &azuread.ServicePrincipalDelegatedPermissionGrantArgs{
+//			_, err = azuread.NewServicePrincipalDelegatedPermissionGrant(ctx, "example", &azuread.ServicePrincipalDelegatedPermissionGrantArgs{
 //				ServicePrincipalObjectId:         exampleServicePrincipal.ObjectId,
 //				ResourceServicePrincipalObjectId: msgraph.ObjectId,
 //				ClaimValues: pulumi.StringArray{
@@ -122,7 +122,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
 //					&azuread.ApplicationRequiredResourceAccessArgs{
@@ -147,13 +147,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+//				ApplicationId: example.ApplicationId,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleUser, err := azuread.NewUser(ctx, "exampleUser", &azuread.UserArgs{
+//			exampleUser, err := azuread.NewUser(ctx, "example", &azuread.UserArgs{
 //				DisplayName:       pulumi.String("J. Doe"),
 //				UserPrincipalName: pulumi.String("jdoe@example.com"),
 //				MailNickname:      pulumi.String("jdoe"),
@@ -162,7 +162,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewServicePrincipalDelegatedPermissionGrant(ctx, "exampleServicePrincipalDelegatedPermissionGrant", &azuread.ServicePrincipalDelegatedPermissionGrantArgs{
+//			_, err = azuread.NewServicePrincipalDelegatedPermissionGrant(ctx, "example", &azuread.ServicePrincipalDelegatedPermissionGrantArgs{
 //				ServicePrincipalObjectId:         exampleServicePrincipal.ObjectId,
 //				ResourceServicePrincipalObjectId: msgraph.ObjectId,
 //				ClaimValues: pulumi.StringArray{

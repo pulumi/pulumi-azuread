@@ -26,9 +26,10 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.CustomDirectoryRole("example", {
- *     description: "Allows reading applications and updating groups",
  *     displayName: "My Custom Role",
+ *     description: "Allows reading applications and updating groups",
  *     enabled: true,
+ *     version: "1.0",
  *     permissions: [
  *         {
  *             allowedResourceActions: [
@@ -47,7 +48,6 @@ import * as utilities from "./utilities";
  *             ],
  *         },
  *     ],
- *     version: "1.0",
  * });
  * ```
  *

@@ -37,10 +37,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewUser(ctx, "example", &azuread.UserArgs{
+//				UserPrincipalName: pulumi.String("jdoe@example.com"),
 //				DisplayName:       pulumi.String("J. Doe"),
 //				MailNickname:      pulumi.String("jdoe"),
 //				Password:          pulumi.String("SecretP@sswd99!"),
-//				UserPrincipalName: pulumi.String("jdoe@example.com"),
 //			})
 //			if err != nil {
 //				return err

@@ -23,13 +23,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleUser = azuread.getUser({
+ * const example = azuread.getUser({
  *     userPrincipalName: "jdoe@example.com",
  * });
- * const exampleAdministrativeUnit = new azuread.AdministrativeUnit("exampleAdministrativeUnit", {displayName: "Example-AU"});
- * const exampleAdministrativeUnitMember = new azuread.AdministrativeUnitMember("exampleAdministrativeUnitMember", {
+ * const exampleAdministrativeUnit = new azuread.AdministrativeUnit("example", {displayName: "Example-AU"});
+ * const exampleAdministrativeUnitMember = new azuread.AdministrativeUnitMember("example", {
  *     administrativeUnitObjectId: exampleAdministrativeUnit.id,
- *     memberObjectId: exampleUser.then(exampleUser => exampleUser.id),
+ *     memberObjectId: example.then(example => example.id),
  * });
  * ```
  *

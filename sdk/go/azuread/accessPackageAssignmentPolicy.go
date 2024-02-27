@@ -36,21 +36,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+//			example, err := azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
 //				DisplayName:     pulumi.String("group-name"),
 //				SecurityEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
+//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "example", &azuread.AccessPackageCatalogArgs{
 //				DisplayName: pulumi.String("example-catalog"),
 //				Description: pulumi.String("Example catalog"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleAccessPackage, err := azuread.NewAccessPackage(ctx, "exampleAccessPackage", &azuread.AccessPackageArgs{
+//			exampleAccessPackage, err := azuread.NewAccessPackage(ctx, "example", &azuread.AccessPackageArgs{
 //				CatalogId:   exampleAccessPackageCatalog.ID(),
 //				DisplayName: pulumi.String("access-package"),
 //				Description: pulumi.String("Access Package"),
@@ -58,7 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewAccessPackageAssignmentPolicy(ctx, "exampleAccessPackageAssignmentPolicy", &azuread.AccessPackageAssignmentPolicyArgs{
+//			_, err = azuread.NewAccessPackageAssignmentPolicy(ctx, "example", &azuread.AccessPackageAssignmentPolicyArgs{
 //				AccessPackageId: exampleAccessPackage.ID(),
 //				DisplayName:     pulumi.String("assignment-policy"),
 //				Description:     pulumi.String("My assignment policy"),
@@ -73,7 +73,7 @@ import (
 //							ApprovalTimeoutInDays: pulumi.Int(14),
 //							PrimaryApprovers: azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray{
 //								&azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs{
-//									ObjectId:    exampleGroup.ObjectId,
+//									ObjectId:    example.ObjectId,
 //									SubjectType: pulumi.String("groupMembers"),
 //								},
 //							},

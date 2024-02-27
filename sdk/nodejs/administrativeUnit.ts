@@ -22,8 +22,8 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.AdministrativeUnit("example", {
- *     description: "Just an example",
  *     displayName: "Example-AU",
+ *     description: "Just an example",
  *     hiddenMembershipEnabled: false,
  * });
  * ```
