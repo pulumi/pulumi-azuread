@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplicationRegistration = new ApplicationRegistration(&#34;exampleApplicationRegistration&#34;, ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
  *         var exampleApplicationPassword = new ApplicationPassword(&#34;exampleApplicationPassword&#34;, ApplicationPasswordArgs.builder()        
- *             .applicationId(exampleApplicationRegistration.id())
+ *             .applicationId(example.id())
  *             .build());
  * 
  *     }
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplicationRegistration = new ApplicationRegistration(&#34;exampleApplicationRegistration&#34;, ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleApplicationPassword = new ApplicationPassword(&#34;exampleApplicationPassword&#34;, ApplicationPasswordArgs.builder()        
- *             .applicationId(exampleApplicationRegistration.id())
+ *             .applicationId(example.id())
  *             .rotateWhenChanged(Map.of(&#34;rotation&#34;, exampleRotating.id()))
  *             .build());
  * 

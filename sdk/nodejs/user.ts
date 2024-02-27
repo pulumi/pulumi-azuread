@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.User("example", {
+ *     userPrincipalName: "jdoe@example.com",
  *     displayName: "J. Doe",
  *     mailNickname: "jdoe",
  *     password: "SecretP@sswd99!",
- *     userPrincipalName: "jdoe@example.com",
  * });
  * ```
  *

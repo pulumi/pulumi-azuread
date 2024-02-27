@@ -191,12 +191,12 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["MicrosoftGraph"],
+            application_id=well_known.result["microsoftGraph"],
             use_existing=True)
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=well_known.result["MicrosoftGraph"],
+                resource_app_id=well_known.result["microsoftGraph"],
                 resource_accesses=[
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
                         id=msgraph.oauth2_permission_scope_ids["openid"],
@@ -208,8 +208,8 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     ),
                 ],
             )])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("example",
             service_principal_object_id=example_service_principal.object_id,
             resource_service_principal_object_id=msgraph.object_id,
             claim_values=[
@@ -226,12 +226,12 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["MicrosoftGraph"],
+            application_id=well_known.result["microsoftGraph"],
             use_existing=True)
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=well_known.result["MicrosoftGraph"],
+                resource_app_id=well_known.result["microsoftGraph"],
                 resource_accesses=[
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
                         id=msgraph.oauth2_permission_scope_ids["openid"],
@@ -243,13 +243,13 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     ),
                 ],
             )])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_user = azuread.User("exampleUser",
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_user = azuread.User("example",
             display_name="J. Doe",
             user_principal_name="jdoe@example.com",
             mail_nickname="jdoe",
             password="SecretP@sswd99!")
-        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("example",
             service_principal_object_id=example_service_principal.object_id,
             resource_service_principal_object_id=msgraph.object_id,
             claim_values=[
@@ -303,12 +303,12 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["MicrosoftGraph"],
+            application_id=well_known.result["microsoftGraph"],
             use_existing=True)
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=well_known.result["MicrosoftGraph"],
+                resource_app_id=well_known.result["microsoftGraph"],
                 resource_accesses=[
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
                         id=msgraph.oauth2_permission_scope_ids["openid"],
@@ -320,8 +320,8 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     ),
                 ],
             )])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("example",
             service_principal_object_id=example_service_principal.object_id,
             resource_service_principal_object_id=msgraph.object_id,
             claim_values=[
@@ -338,12 +338,12 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["MicrosoftGraph"],
+            application_id=well_known.result["microsoftGraph"],
             use_existing=True)
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=well_known.result["MicrosoftGraph"],
+                resource_app_id=well_known.result["microsoftGraph"],
                 resource_accesses=[
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
                         id=msgraph.oauth2_permission_scope_ids["openid"],
@@ -355,13 +355,13 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     ),
                 ],
             )])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_user = azuread.User("exampleUser",
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_user = azuread.User("example",
             display_name="J. Doe",
             user_principal_name="jdoe@example.com",
             mail_nickname="jdoe",
             password="SecretP@sswd99!")
-        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("example",
             service_principal_object_id=example_service_principal.object_id,
             resource_service_principal_object_id=msgraph.object_id,
             claim_values=[

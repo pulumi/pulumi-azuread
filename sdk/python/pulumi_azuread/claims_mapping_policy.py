@@ -115,25 +115,25 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         import json
         import pulumi_azuread as azuread
 
-        my_policy = azuread.ClaimsMappingPolicy("myPolicy",
+        my_policy = azuread.ClaimsMappingPolicy("my_policy",
             definitions=[json.dumps({
-                "ClaimsMappingPolicy": {
-                    "ClaimsSchema": [
+                "claimsMappingPolicy": {
+                    "claimsSchema": [
                         {
                             "ID": "employeeid",
-                            "JwtClaimType": "name",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                            "Source": "user",
+                            "jwtClaimType": "name",
+                            "samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+                            "source": "user",
                         },
                         {
                             "ID": "tenantcountry",
-                            "JwtClaimType": "country",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-                            "Source": "company",
+                            "jwtClaimType": "country",
+                            "samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+                            "source": "company",
                         },
                     ],
-                    "IncludeBasicClaimSet": "true",
-                    "Version": 1,
+                    "includeBasicClaimSet": "true",
+                    "version": 1,
                 },
             })],
             display_name="My Policy")
@@ -176,25 +176,25 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         import json
         import pulumi_azuread as azuread
 
-        my_policy = azuread.ClaimsMappingPolicy("myPolicy",
+        my_policy = azuread.ClaimsMappingPolicy("my_policy",
             definitions=[json.dumps({
-                "ClaimsMappingPolicy": {
-                    "ClaimsSchema": [
+                "claimsMappingPolicy": {
+                    "claimsSchema": [
                         {
                             "ID": "employeeid",
-                            "JwtClaimType": "name",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                            "Source": "user",
+                            "jwtClaimType": "name",
+                            "samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+                            "source": "user",
                         },
                         {
                             "ID": "tenantcountry",
-                            "JwtClaimType": "country",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-                            "Source": "company",
+                            "jwtClaimType": "country",
+                            "samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+                            "source": "company",
                         },
                     ],
-                    "IncludeBasicClaimSet": "true",
-                    "Version": 1,
+                    "includeBasicClaimSet": "true",
+                    "version": 1,
                 },
             })],
             display_name="My Policy")

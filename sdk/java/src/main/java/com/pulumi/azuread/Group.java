@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var exampleUser = new User(&#34;exampleUser&#34;, UserArgs.builder()        
+ *         var example = new User(&#34;example&#34;, UserArgs.builder()        
  *             .displayName(&#34;J Doe&#34;)
  *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .password(&#34;notSecure123&#34;)
@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;MyGroup&#34;)
  *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .securityEnabled(true)
- *             .members(exampleUser.objectId())
+ *             .members(example.objectId())
  *             .build());
  * 
  *     }

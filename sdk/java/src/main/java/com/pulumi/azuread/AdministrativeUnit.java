@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new AdministrativeUnit(&#34;example&#34;, AdministrativeUnitArgs.builder()        
- *             .description(&#34;Just an example&#34;)
  *             .displayName(&#34;Example-AU&#34;)
+ *             .description(&#34;Just an example&#34;)
  *             .hiddenMembershipEnabled(false)
  *             .build());
  * 

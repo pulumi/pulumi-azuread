@@ -146,14 +146,14 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_get_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
+        example_access_package_catalog = azuread.AccessPackageCatalog("example",
             display_name="example-access-package-catalog",
             description="Example access package catalog")
-        example_access_package_catalog_role_assignment = azuread.AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment",
-            role_id=example_access_package_catalog_role.object_id,
-            principal_object_id=example_user.object_id,
+        example_access_package_catalog_role_assignment = azuread.AccessPackageCatalogRoleAssignment("example",
+            role_id=example_get_access_package_catalog_role.object_id,
+            principal_object_id=example.object_id,
             catalog_id=example_access_package_catalog.id)
         ```
 
@@ -194,14 +194,14 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_user = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_get_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
+        example_access_package_catalog = azuread.AccessPackageCatalog("example",
             display_name="example-access-package-catalog",
             description="Example access package catalog")
-        example_access_package_catalog_role_assignment = azuread.AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment",
-            role_id=example_access_package_catalog_role.object_id,
-            principal_object_id=example_user.object_id,
+        example_access_package_catalog_role_assignment = azuread.AccessPackageCatalogRoleAssignment("example",
+            role_id=example_get_access_package_catalog_role.object_id,
+            principal_object_id=example.object_id,
             catalog_id=example_access_package_catalog.id)
         ```
 

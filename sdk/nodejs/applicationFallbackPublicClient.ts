@@ -11,9 +11,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
- * const exampleApplicationFallbackPublicClient = new azuread.ApplicationFallbackPublicClient("exampleApplicationFallbackPublicClient", {
- *     applicationId: exampleApplicationRegistration.id,
+ * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
+ * const exampleApplicationFallbackPublicClient = new azuread.ApplicationFallbackPublicClient("example", {
+ *     applicationId: example.id,
  *     enabled: true,
  * });
  * ```

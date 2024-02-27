@@ -117,18 +117,18 @@ class SynchronizationSecret(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_template = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
+        example_application = azuread.Application("example",
             display_name="example",
-            template_id=example_application_template.template_id,
+            template_id=example.template_id,
             feature_tags=[azuread.ApplicationFeatureTagArgs(
                 enterprise=True,
                 gallery=True,
             )])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+        example_service_principal = azuread.ServicePrincipal("example",
             application_id=example_application.application_id,
             use_existing=True)
-        example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
+        example_synchronization_secret = azuread.SynchronizationSecret("example",
             service_principal_id=example_service_principal.id,
             credentials=[
                 azuread.SynchronizationSecretCredentialArgs(
@@ -174,18 +174,18 @@ class SynchronizationSecret(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_template = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
-        example_application = azuread.Application("exampleApplication",
+        example = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
+        example_application = azuread.Application("example",
             display_name="example",
-            template_id=example_application_template.template_id,
+            template_id=example.template_id,
             feature_tags=[azuread.ApplicationFeatureTagArgs(
                 enterprise=True,
                 gallery=True,
             )])
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+        example_service_principal = azuread.ServicePrincipal("example",
             application_id=example_application.application_id,
             use_existing=True)
-        example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
+        example_synchronization_secret = azuread.SynchronizationSecret("example",
             service_principal_id=example_service_principal.id,
             credentials=[
                 azuread.SynchronizationSecretCredentialArgs(

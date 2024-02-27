@@ -13,8 +13,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
- * const exampleApplicationPassword = new azuread.ApplicationPassword("exampleApplicationPassword", {applicationId: exampleApplicationRegistration.id});
+ * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
+ * const exampleApplicationPassword = new azuread.ApplicationPassword("example", {applicationId: example.id});
  * ```
  *
  * *Time-based rotation*
@@ -24,10 +24,10 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  * import * as time from "@pulumiverse/time";
  *
- * const exampleApplicationRegistration = new azuread.ApplicationRegistration("exampleApplicationRegistration", {displayName: "example"});
- * const exampleRotating = new time.Rotating("exampleRotating", {rotationDays: 7});
- * const exampleApplicationPassword = new azuread.ApplicationPassword("exampleApplicationPassword", {
- *     applicationId: exampleApplicationRegistration.id,
+ * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
+ * const exampleRotating = new time.Rotating("example", {rotationDays: 7});
+ * const exampleApplicationPassword = new azuread.ApplicationPassword("example", {
+ *     applicationId: example.id,
  *     rotateWhenChanged: {
  *         rotation: exampleRotating.id,
  *     },

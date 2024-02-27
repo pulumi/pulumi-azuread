@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var app = new ServicePrincipalClaimsMappingPolicyAssignment(&#34;app&#34;, ServicePrincipalClaimsMappingPolicyAssignmentArgs.builder()        
- *             .claimsMappingPolicyId(azuread_claims_mapping_policy.my_policy().id())
- *             .servicePrincipalId(azuread_service_principal.my_principal().id())
+ *             .claimsMappingPolicyId(myPolicy.id())
+ *             .servicePrincipalId(myPrincipal.id())
  *             .build());
  * 
  *     }

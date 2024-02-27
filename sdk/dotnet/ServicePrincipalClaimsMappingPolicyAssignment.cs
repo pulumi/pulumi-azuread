@@ -32,8 +32,8 @@ namespace Pulumi.AzureAD
     /// {
     ///     var app = new AzureAD.ServicePrincipalClaimsMappingPolicyAssignment("app", new()
     ///     {
-    ///         ClaimsMappingPolicyId = azuread_claims_mapping_policy.My_policy.Id,
-    ///         ServicePrincipalId = azuread_service_principal.My_principal.Id,
+    ///         ClaimsMappingPolicyId = myPolicy.Id,
+    ///         ServicePrincipalId = myPrincipal.Id,
     ///     });
     /// 
     /// });

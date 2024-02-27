@@ -32,17 +32,19 @@ namespace Pulumi.AzureAD
     /// {
     ///     var example = new AzureAD.AuthenticationStrengthPolicy("example", new()
     ///     {
+    ///         DisplayName = "Example Authentication Strength Policy",
+    ///         Description = "Policy for demo purposes",
     ///         AllowedCombinations = new[]
     ///         {
     ///             "fido2",
     ///             "password",
     ///         },
-    ///         Description = "Policy for demo purposes",
-    ///         DisplayName = "Example Authentication Strength Policy",
     ///     });
     /// 
     ///     var example2 = new AzureAD.AuthenticationStrengthPolicy("example2", new()
     ///     {
+    ///         DisplayName = "Example Authentication Strength Policy",
+    ///         Description = "Policy for demo purposes with all possible combinations",
     ///         AllowedCombinations = new[]
     ///         {
     ///             "fido2",
@@ -67,8 +69,6 @@ namespace Pulumi.AzureAD
     ///             "x509CertificateMultiFactor",
     ///             "x509CertificateSingleFactor",
     ///         },
-    ///         Description = "Policy for demo purposes with all possible combinations",
-    ///         DisplayName = "Example Authentication Strength Policy",
     ///     });
     /// 
     /// });

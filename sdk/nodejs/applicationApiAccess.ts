@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *     clientId: wellKnown.result?.MicrosoftGraph,
  * }));
  * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const exampleMsgraph = new azuread.ApplicationApiAccess("exampleMsgraph", {
+ * const exampleMsgraph = new azuread.ApplicationApiAccess("example_msgraph", {
  *     applicationId: example.id,
  *     apiClientId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
  *     roleIds: [
@@ -35,9 +35,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
- * const exampleApplicationApiAccess = new azuread.ApplicationApiAccess("exampleApplicationApiAccess", {applicationId: exampleApplication.id});
- * // ...
+ * const example = new azuread.Application("example", {displayName: "example"});
+ * const exampleApplicationApiAccess = new azuread.ApplicationApiAccess("example", {applicationId: example.id});
  * ```
  *
  * ## Import

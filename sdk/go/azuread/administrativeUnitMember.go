@@ -37,21 +37,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+//			example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
 //				UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleAdministrativeUnit, err := azuread.NewAdministrativeUnit(ctx, "exampleAdministrativeUnit", &azuread.AdministrativeUnitArgs{
+//			exampleAdministrativeUnit, err := azuread.NewAdministrativeUnit(ctx, "example", &azuread.AdministrativeUnitArgs{
 //				DisplayName: pulumi.String("Example-AU"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewAdministrativeUnitMember(ctx, "exampleAdministrativeUnitMember", &azuread.AdministrativeUnitMemberArgs{
+//			_, err = azuread.NewAdministrativeUnitMember(ctx, "example", &azuread.AdministrativeUnitMemberArgs{
 //				AdministrativeUnitObjectId: exampleAdministrativeUnit.ID(),
-//				MemberObjectId:             *pulumi.String(exampleUser.Id),
+//				MemberObjectId:             *pulumi.String(example.Id),
 //			})
 //			if err != nil {
 //				return err

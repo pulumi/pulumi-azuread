@@ -239,8 +239,8 @@ class AdministrativeUnit(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.AdministrativeUnit("example",
-            description="Just an example",
             display_name="Example-AU",
+            description="Just an example",
             hidden_membership_enabled=False)
         ```
 
@@ -286,8 +286,8 @@ class AdministrativeUnit(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.AdministrativeUnit("example",
-            description="Just an example",
             display_name="Example-AU",
+            description="Just an example",
             hidden_membership_enabled=False)
         ```
 

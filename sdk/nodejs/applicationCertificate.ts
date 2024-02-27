@@ -5,6 +5,107 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * *Using a PEM certificate*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * import * as std from "@pulumi/std";
+ *
+ * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
+ * const exampleApplicationCertificate = new azuread.ApplicationCertificate("example", {
+ *     applicationId: example.id,
+ *     type: "AsymmetricX509Cert",
+ *     value: std.file({
+ *         input: "cert.pem",
+ *     }).then(invoke => invoke.result),
+ *     endDate: "2021-05-01T01:02:03Z",
+ * });
+ * ```
+ *
+ * *Using a DER certificate*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * import * as std from "@pulumi/std";
+ *
+ * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
+ * const exampleApplicationCertificate = new azuread.ApplicationCertificate("example", {
+ *     applicationId: example.id,
+ *     type: "AsymmetricX509Cert",
+ *     encoding: "base64",
+ *     value: std.file({
+ *         input: "cert.der",
+ *     }).then(invoke => std.base64encode({
+ *         input: invoke.result,
+ *     })).then(invoke => invoke.result),
+ *     endDate: "2021-05-01T01:02:03Z",
+ * });
+ * ```
+ * ### Using a certificate from Azure Key Vault
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azure from "@pulumi/azure";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplication = new azuread.Application("example", {displayName: "example"});
+ * const example = new azure.keyvault.Certificate("example", {
+ *     name: "generated-cert",
+ *     keyVaultId: exampleAzurermKeyVault.id,
+ *     certificatePolicy: {
+ *         issuerParameters: {
+ *             name: "Self",
+ *         },
+ *         keyProperties: {
+ *             exportable: true,
+ *             keySize: 2048,
+ *             keyType: "RSA",
+ *             reuseKey: true,
+ *         },
+ *         lifetimeActions: [{
+ *             action: {
+ *                 actionType: "AutoRenew",
+ *             },
+ *             trigger: {
+ *                 daysBeforeExpiry: 30,
+ *             },
+ *         }],
+ *         secretProperties: {
+ *             contentType: "application/x-pkcs12",
+ *         },
+ *         x509CertificateProperties: {
+ *             extendedKeyUsages: ["1.3.6.1.5.5.7.3.2"],
+ *             keyUsages: [
+ *                 "dataEncipherment",
+ *                 "digitalSignature",
+ *                 "keyCertSign",
+ *                 "keyEncipherment",
+ *             ],
+ *             subjectAlternativeNames: {
+ *                 dnsNames: [
+ *                     "internal.contoso.com",
+ *                     "domain.hello.world",
+ *                 ],
+ *             },
+ *             subject: `CN=${exampleApplication.name}`,
+ *             validityInMonths: 12,
+ *         },
+ *     },
+ * });
+ * const exampleApplicationCertificate = new azuread.ApplicationCertificate("example", {
+ *     applicationId: exampleApplication.id,
+ *     type: "AsymmetricX509Cert",
+ *     encoding: "hex",
+ *     value: example.certificateData,
+ *     endDate: example.certificateAttributes.apply(certificateAttributes => certificateAttributes[0].expires),
+ *     startDate: example.certificateAttributes.apply(certificateAttributes => certificateAttributes[0].notBefore),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.

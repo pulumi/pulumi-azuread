@@ -37,8 +37,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewAccessPackageCatalog(ctx, "example", &azuread.AccessPackageCatalogArgs{
-//				Description: pulumi.String("Example access package catalog"),
 //				DisplayName: pulumi.String("example-access-package-catalog"),
+//				Description: pulumi.String("Example access package catalog"),
 //			})
 //			if err != nil {
 //				return err

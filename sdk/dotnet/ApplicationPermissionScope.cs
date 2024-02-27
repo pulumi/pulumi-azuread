@@ -21,16 +21,16 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleAdminister = new Random.RandomUuid("exampleAdminister");
+    ///     var exampleAdminister = new Random.RandomUuid("example_administer");
     /// 
-    ///     var exampleApplicationPermissionScope = new AzureAD.ApplicationPermissionScope("exampleApplicationPermissionScope", new()
+    ///     var exampleApplicationPermissionScope = new AzureAD.ApplicationPermissionScope("example", new()
     ///     {
-    ///         ApplicationId = azuread_application_registration.Test.Id,
+    ///         ApplicationId = test.Id,
     ///         ScopeId = exampleAdminister.Id,
     ///         Value = "administer",
     ///         AdminConsentDescription = "Administer the application",
@@ -52,17 +52,16 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationPermissionScope = new AzureAD.ApplicationPermissionScope("exampleApplicationPermissionScope", new()
+    ///     var exampleApplicationPermissionScope = new AzureAD.ApplicationPermissionScope("example", new()
     ///     {
-    ///         ApplicationId = exampleApplication.Id,
+    ///         ApplicationId = example.Id,
     ///     });
     /// 
-    ///     // ...
     /// });
     /// ```
     /// 

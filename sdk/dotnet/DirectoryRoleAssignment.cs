@@ -20,6 +20,124 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
     /// 
+    /// ## Example Usage
+    /// 
+    /// *Assignment for a built-in role*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = AzureAD.GetUser.Invoke(new()
+    ///     {
+    ///         UserPrincipalName = "jdoe@example.com",
+    ///     });
+    /// 
+    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("example", new()
+    ///     {
+    ///         DisplayName = "Security administrator",
+    ///     });
+    /// 
+    ///     var exampleDirectoryRoleAssignment = new AzureAD.DirectoryRoleAssignment("example", new()
+    ///     {
+    ///         RoleId = exampleDirectoryRole.TemplateId,
+    ///         PrincipalObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
+    /// 
+    /// *Assignment for a custom role*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = AzureAD.GetUser.Invoke(new()
+    ///     {
+    ///         UserPrincipalName = "jdoe@example.com",
+    ///     });
+    /// 
+    ///     var exampleCustomDirectoryRole = new AzureAD.CustomDirectoryRole("example", new()
+    ///     {
+    ///         DisplayName = "My Custom Role",
+    ///         Enabled = true,
+    ///         Version = "1.0",
+    ///         Permissions = new[]
+    ///         {
+    ///             new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
+    ///             {
+    ///                 AllowedResourceActions = new[]
+    ///                 {
+    ///                     "microsoft.directory/applications/basic/update",
+    ///                     "microsoft.directory/applications/standard/read",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleDirectoryRoleAssignment = new AzureAD.DirectoryRoleAssignment("example", new()
+    ///     {
+    ///         RoleId = exampleCustomDirectoryRole.ObjectId,
+    ///         PrincipalObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// *Scoped assignment for an application*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// 	
+    /// object NotImplemented(string errorMessage) 
+    /// {
+    ///     throw new System.NotImplementedException(errorMessage);
+    /// }
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("example", new()
+    ///     {
+    ///         DisplayName = "Cloud application administrator",
+    ///     });
+    /// 
+    ///     var exampleApplication = new AzureAD.Application("example", new()
+    ///     {
+    ///         DisplayName = "My Application",
+    ///     });
+    /// 
+    ///     var example = AzureAD.GetUser.Invoke(new()
+    ///     {
+    ///         UserPrincipalName = "jdoe@example.com",
+    ///     });
+    /// 
+    ///     var exampleDirectoryRoleAssignment = new AzureAD.DirectoryRoleAssignment("example", new()
+    ///     {
+    ///         RoleId = exampleDirectoryRole.TemplateId,
+    ///         PrincipalObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
+    ///         DirectoryScopeId = NotImplemented("format(\"/%s\",azuread_application.example.object_id)"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
+    /// 
     /// ## Import
     /// 
     /// Directory role assignments can be imported using the ID of the assignment, e.g.

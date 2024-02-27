@@ -36,15 +36,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
+//			example, err := azuread.NewAccessPackageCatalog(ctx, "example", &azuread.AccessPackageCatalogArgs{
 //				DisplayName: pulumi.String("example-catalog"),
 //				Description: pulumi.String("Example catalog"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewAccessPackage(ctx, "exampleAccessPackage", &azuread.AccessPackageArgs{
-//				CatalogId:   exampleAccessPackageCatalog.ID(),
+//			_, err = azuread.NewAccessPackage(ctx, "example", &azuread.AccessPackageArgs{
+//				CatalogId:   example.ID(),
 //				DisplayName: pulumi.String("access-package"),
 //				Description: pulumi.String("Access Package"),
 //			})

@@ -32,8 +32,8 @@ namespace Pulumi.AzureAD
     /// {
     ///     var example = new AzureAD.AdministrativeUnit("example", new()
     ///     {
-    ///         Description = "Just an example",
     ///         DisplayName = "Example-AU",
+    ///         Description = "Just an example",
     ///         HiddenMembershipEnabled = false,
     ///     });
     /// 

@@ -24,13 +24,13 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.ApplicationRegistration("example", {
- *     description: "My example application",
  *     displayName: "Example Application",
+ *     description: "My example application",
+ *     signInAudience: "AzureADMyOrg",
  *     homepageUrl: "https://app.hashitown.com/",
  *     logoutUrl: "https://app.hashitown.com/logout",
  *     marketingUrl: "https://hashitown.com/",
  *     privacyStatementUrl: "https://hashitown.com/privacy",
- *     signInAudience: "AzureADMyOrg",
  *     supportUrl: "https://support.hashitown.com/",
  *     termsOfServiceUrl: "https://hashitown.com/terms",
  * });

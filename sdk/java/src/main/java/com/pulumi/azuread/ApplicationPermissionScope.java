@@ -40,14 +40,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplicationRegistration = new ApplicationRegistration(&#34;exampleApplicationRegistration&#34;, ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
  *         var exampleAdminister = new RandomUuid(&#34;exampleAdminister&#34;);
  * 
  *         var exampleApplicationPermissionScope = new ApplicationPermissionScope(&#34;exampleApplicationPermissionScope&#34;, ApplicationPermissionScopeArgs.builder()        
- *             .applicationId(azuread_application_registration.test().id())
+ *             .applicationId(test.id())
  *             .scopeId(exampleAdminister.id())
  *             .value(&#34;administer&#34;)
  *             .adminConsentDescription(&#34;Administer the application&#34;)
@@ -84,12 +84,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
  *         var exampleApplicationPermissionScope = new ApplicationPermissionScope(&#34;exampleApplicationPermissionScope&#34;, ApplicationPermissionScopeArgs.builder()        
- *             .applicationId(exampleApplication.id())
+ *             .applicationId(example.id())
  *             .build());
  * 
  *     }

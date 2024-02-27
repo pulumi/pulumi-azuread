@@ -104,10 +104,10 @@ class ApplicationKnownClients(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example = azuread.ApplicationRegistration("example", display_name="example")
         client = azuread.ApplicationRegistration("client", display_name="example client")
-        example_application_known_clients = azuread.ApplicationKnownClients("exampleApplicationKnownClients",
-            application_id=example_application_registration.id,
+        example_application_known_clients = azuread.ApplicationKnownClients("example",
+            application_id=example.id,
             known_client_ids=[client.client_id])
         ```
 
@@ -137,10 +137,10 @@ class ApplicationKnownClients(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
+        example = azuread.ApplicationRegistration("example", display_name="example")
         client = azuread.ApplicationRegistration("client", display_name="example client")
-        example_application_known_clients = azuread.ApplicationKnownClients("exampleApplicationKnownClients",
-            application_id=example_application_registration.id,
+        example_application_known_clients = azuread.ApplicationKnownClients("example",
+            application_id=example.id,
             known_client_ids=[client.client_id])
         ```
 

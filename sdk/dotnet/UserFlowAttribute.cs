@@ -32,9 +32,9 @@ namespace Pulumi.AzureAD
     /// {
     ///     var example = new AzureAD.UserFlowAttribute("example", new()
     ///     {
-    ///         DataType = "string",
-    ///         Description = "Your hobby",
     ///         DisplayName = "Hobby",
+    ///         Description = "Your hobby",
+    ///         DataType = "string",
     ///     });
     /// 
     /// });

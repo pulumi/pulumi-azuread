@@ -226,12 +226,16 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.ConditionalAccessPolicy("example",
+            display_name="example policy",
+            state="disabled",
             conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    excluded_applications=[],
-                    included_applications=["All"],
-                ),
                 client_app_types=["all"],
+                sign_in_risk_levels=["medium"],
+                user_risk_levels=["medium"],
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    included_applications=["All"],
+                    excluded_applications=[],
+                ),
                 devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
                     filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
                         mode="exclude",
@@ -239,33 +243,29 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                     ),
                 ),
                 locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
-                    excluded_locations=["AllTrusted"],
                     included_locations=["All"],
+                    excluded_locations=["AllTrusted"],
                 ),
                 platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(
-                    excluded_platforms=["iOS"],
                     included_platforms=["android"],
+                    excluded_platforms=["iOS"],
                 ),
-                sign_in_risk_levels=["medium"],
-                user_risk_levels=["medium"],
                 users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    excluded_users=["GuestsOrExternalUsers"],
                     included_users=["All"],
+                    excluded_users=["GuestsOrExternalUsers"],
                 ),
             ),
-            display_name="example policy",
             grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                built_in_controls=["mfa"],
                 operator="OR",
+                built_in_controls=["mfa"],
             ),
             session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
                 application_enforced_restrictions_enabled=True,
-                cloud_app_security_policy="monitorOnly",
                 disable_resilience_defaults=False,
                 sign_in_frequency=10,
                 sign_in_frequency_period="hours",
-            ),
-            state="disabled")
+                cloud_app_security_policy="monitorOnly",
+            ))
         ```
         ### Included client applications / service principals
 
@@ -369,12 +369,16 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.ConditionalAccessPolicy("example",
+            display_name="example policy",
+            state="disabled",
             conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    excluded_applications=[],
-                    included_applications=["All"],
-                ),
                 client_app_types=["all"],
+                sign_in_risk_levels=["medium"],
+                user_risk_levels=["medium"],
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    included_applications=["All"],
+                    excluded_applications=[],
+                ),
                 devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
                     filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
                         mode="exclude",
@@ -382,33 +386,29 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                     ),
                 ),
                 locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
-                    excluded_locations=["AllTrusted"],
                     included_locations=["All"],
+                    excluded_locations=["AllTrusted"],
                 ),
                 platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(
-                    excluded_platforms=["iOS"],
                     included_platforms=["android"],
+                    excluded_platforms=["iOS"],
                 ),
-                sign_in_risk_levels=["medium"],
-                user_risk_levels=["medium"],
                 users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    excluded_users=["GuestsOrExternalUsers"],
                     included_users=["All"],
+                    excluded_users=["GuestsOrExternalUsers"],
                 ),
             ),
-            display_name="example policy",
             grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                built_in_controls=["mfa"],
                 operator="OR",
+                built_in_controls=["mfa"],
             ),
             session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
                 application_enforced_restrictions_enabled=True,
-                cloud_app_security_policy="monitorOnly",
                 disable_resilience_defaults=False,
                 sign_in_frequency=10,
                 sign_in_frequency_period="hours",
-            ),
-            state="disabled")
+                cloud_app_security_policy="monitorOnly",
+            ))
         ```
         ### Included client applications / service principals
 

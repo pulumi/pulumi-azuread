@@ -30,15 +30,15 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplicationTemplate = AzureAD.GetApplicationTemplate.Invoke(new()
+    ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
     ///     {
     ///         DisplayName = "Azure Databricks SCIM Provisioning Connector",
     ///     });
     /// 
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var exampleApplication = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
-    ///         TemplateId = exampleApplicationTemplate.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
+    ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
     ///         FeatureTags = new[]
     ///         {
     ///             new AzureAD.Inputs.ApplicationFeatureTagArgs
@@ -49,13 +49,13 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
     ///         ApplicationId = exampleApplication.ApplicationId,
     ///         UseExisting = true,
     ///     });
     /// 
-    ///     var exampleSynchronizationSecret = new AzureAD.SynchronizationSecret("exampleSynchronizationSecret", new()
+    ///     var exampleSynchronizationSecret = new AzureAD.SynchronizationSecret("example", new()
     ///     {
     ///         ServicePrincipalId = exampleServicePrincipal.Id,
     ///         Credentials = new[]

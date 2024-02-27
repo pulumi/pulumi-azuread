@@ -109,7 +109,7 @@ class ApplicationOwner(pulumi.CustomResource):
             user_principal_name="jane.fischer@hashitown.com",
             display_name="Jane Fischer",
             password="Ch@ngeMe")
-        example_jane = azuread.ApplicationOwner("exampleJane",
+        example_jane = azuread.ApplicationOwner("example_jane",
             application_id=example.id,
             owner_object_id=jane.object_id)
         ```
@@ -147,7 +147,7 @@ class ApplicationOwner(pulumi.CustomResource):
             user_principal_name="jane.fischer@hashitown.com",
             display_name="Jane Fischer",
             password="Ch@ngeMe")
-        example_jane = azuread.ApplicationOwner("exampleJane",
+        example_jane = azuread.ApplicationOwner("example_jane",
             application_id=example.id,
             owner_object_id=jane.object_id)
         ```

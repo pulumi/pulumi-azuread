@@ -23,17 +23,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplicationTemplate = azuread.getApplicationTemplate({
+ * const example = azuread.getApplicationTemplate({
  *     displayName: "Marketo",
  * });
- * const exampleApplicationFromTemplate = new azuread.ApplicationFromTemplate("exampleApplicationFromTemplate", {
+ * const exampleApplicationFromTemplate = new azuread.ApplicationFromTemplate("example", {
  *     displayName: "Example Application",
- *     templateId: exampleApplicationTemplate.then(exampleApplicationTemplate => exampleApplicationTemplate.templateId),
+ *     templateId: example.then(example => example.templateId),
  * });
- * const exampleApplication = azuread.getApplicationOutput({
+ * const exampleGetApplication = azuread.getApplicationOutput({
  *     objectId: exampleApplicationFromTemplate.applicationObjectId,
  * });
- * const exampleServicePrincipal = azuread.getServicePrincipalOutput({
+ * const exampleGetServicePrincipal = azuread.getServicePrincipalOutput({
  *     objectId: exampleApplicationFromTemplate.servicePrincipalObjectId,
  * });
  * ```

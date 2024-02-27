@@ -312,6 +312,41 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        *Using a PEM certificate*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_std as std
+
+        example = azuread.Application("example", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_certificate = azuread.ServicePrincipalCertificate("example",
+            service_principal_id=example_service_principal.id,
+            type="AsymmetricX509Cert",
+            value=std.file(input="cert.pem").result,
+            end_date="2021-05-01T01:02:03Z")
+        ```
+
+        *Using a DER certificate*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_std as std
+
+        example = azuread.Application("example", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_certificate = azuread.ServicePrincipalCertificate("example",
+            service_principal_id=example_service_principal.id,
+            type="AsymmetricX509Cert",
+            encoding="base64",
+            value=std.base64encode(input=std.file(input="cert.der").result).result,
+            end_date="2021-05-01T01:02:03Z")
+        ```
+
         ## Import
 
         Certificates can be imported using the object ID of the associated service principal and the key ID of the certificate credential, e.g.
@@ -344,6 +379,41 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
                  args: ServicePrincipalCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        *Using a PEM certificate*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_std as std
+
+        example = azuread.Application("example", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_certificate = azuread.ServicePrincipalCertificate("example",
+            service_principal_id=example_service_principal.id,
+            type="AsymmetricX509Cert",
+            value=std.file(input="cert.pem").result,
+            end_date="2021-05-01T01:02:03Z")
+        ```
+
+        *Using a DER certificate*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_std as std
+
+        example = azuread.Application("example", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_certificate = azuread.ServicePrincipalCertificate("example",
+            service_principal_id=example_service_principal.id,
+            type="AsymmetricX509Cert",
+            encoding="base64",
+            value=std.base64encode(input=std.file(input="cert.der").result).result,
+            end_date="2021-05-01T01:02:03Z")
+        ```
+
         ## Import
 
         Certificates can be imported using the object ID of the associated service principal and the key ID of the certificate credential, e.g.

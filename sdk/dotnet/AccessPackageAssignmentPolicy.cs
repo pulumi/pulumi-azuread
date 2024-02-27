@@ -30,26 +30,26 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleGroup = new AzureAD.Group("exampleGroup", new()
+    ///     var example = new AzureAD.Group("example", new()
     ///     {
     ///         DisplayName = "group-name",
     ///         SecurityEnabled = true,
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
+    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("example", new()
     ///     {
     ///         DisplayName = "example-catalog",
     ///         Description = "Example catalog",
     ///     });
     /// 
-    ///     var exampleAccessPackage = new AzureAD.AccessPackage("exampleAccessPackage", new()
+    ///     var exampleAccessPackage = new AzureAD.AccessPackage("example", new()
     ///     {
     ///         CatalogId = exampleAccessPackageCatalog.Id,
     ///         DisplayName = "access-package",
     ///         Description = "Access Package",
     ///     });
     /// 
-    ///     var exampleAccessPackageAssignmentPolicy = new AzureAD.AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy", new()
+    ///     var exampleAccessPackageAssignmentPolicy = new AzureAD.AccessPackageAssignmentPolicy("example", new()
     ///     {
     ///         AccessPackageId = exampleAccessPackage.Id,
     ///         DisplayName = "assignment-policy",
@@ -71,7 +71,7 @@ namespace Pulumi.AzureAD
     ///                     {
     ///                         new AzureAD.Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs
     ///                         {
-    ///                             ObjectId = exampleGroup.ObjectId,
+    ///                             ObjectId = example.ObjectId,
     ///                             SubjectType = "groupMembers",
     ///                         },
     ///                     },

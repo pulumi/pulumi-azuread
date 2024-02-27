@@ -30,26 +30,26 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
+    ///     var example = AzureAD.GetUser.Invoke(new()
     ///     {
     ///         UserPrincipalName = "jdoe@example.com",
     ///     });
     /// 
-    ///     var exampleAdministrativeUnit = new AzureAD.AdministrativeUnit("exampleAdministrativeUnit", new()
+    ///     var exampleAdministrativeUnit = new AzureAD.AdministrativeUnit("example", new()
     ///     {
     ///         DisplayName = "Example-AU",
     ///     });
     /// 
-    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("exampleDirectoryRole", new()
+    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("example", new()
     ///     {
     ///         DisplayName = "Security administrator",
     ///     });
     /// 
-    ///     var exampleAdministrativeUnitRoleMember = new AzureAD.AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember", new()
+    ///     var exampleAdministrativeUnitRoleMember = new AzureAD.AdministrativeUnitRoleMember("example", new()
     ///     {
     ///         RoleObjectId = exampleDirectoryRole.ObjectId,
     ///         AdministrativeUnitObjectId = exampleAdministrativeUnit.Id,
-    ///         MemberObjectId = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
+    ///         MemberObjectId = example.Apply(getUserResult =&gt; getUserResult.Id),
     ///     });
     /// 
     /// });

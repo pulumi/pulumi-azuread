@@ -180,12 +180,12 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application_from_template = azuread.ApplicationFromTemplate("exampleApplicationFromTemplate",
+        example = azuread.get_application_template(display_name="Marketo")
+        example_application_from_template = azuread.ApplicationFromTemplate("example",
             display_name="Example Application",
-            template_id=example_application_template.template_id)
-        example_application = azuread.get_application_output(object_id=example_application_from_template.application_object_id)
-        example_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
+            template_id=example.template_id)
+        example_get_application = azuread.get_application_output(object_id=example_application_from_template.application_object_id)
+        example_get_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
         ```
 
         ## Import
@@ -226,12 +226,12 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_template = azuread.get_application_template(display_name="Marketo")
-        example_application_from_template = azuread.ApplicationFromTemplate("exampleApplicationFromTemplate",
+        example = azuread.get_application_template(display_name="Marketo")
+        example_application_from_template = azuread.ApplicationFromTemplate("example",
             display_name="Example Application",
-            template_id=example_application_template.template_id)
-        example_application = azuread.get_application_output(object_id=example_application_from_template.application_object_id)
-        example_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
+            template_id=example.template_id)
+        example_get_application = azuread.get_application_output(object_id=example_application_from_template.application_object_id)
+        example_get_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
         ```
 
         ## Import

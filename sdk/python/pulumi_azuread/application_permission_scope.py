@@ -308,10 +308,10 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         import pulumi_azuread as azuread
         import pulumi_random as random
 
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_administer = random.RandomUuid("exampleAdminister")
-        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope",
-            application_id=azuread_application_registration["test"]["id"],
+        example = azuread.ApplicationRegistration("example", display_name="example")
+        example_administer = random.RandomUuid("example_administer")
+        example_application_permission_scope = azuread.ApplicationPermissionScope("example",
+            application_id=test["id"],
             scope_id=example_administer.id,
             value="administer",
             admin_consent_description="Administer the application",
@@ -326,9 +326,8 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope", application_id=example_application.id)
-        # ...
+        example = azuread.Application("example", display_name="example")
+        example_application_permission_scope = azuread.ApplicationPermissionScope("example", application_id=example.id)
         ```
 
         ## Import
@@ -366,10 +365,10 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         import pulumi_azuread as azuread
         import pulumi_random as random
 
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_administer = random.RandomUuid("exampleAdminister")
-        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope",
-            application_id=azuread_application_registration["test"]["id"],
+        example = azuread.ApplicationRegistration("example", display_name="example")
+        example_administer = random.RandomUuid("example_administer")
+        example_application_permission_scope = azuread.ApplicationPermissionScope("example",
+            application_id=test["id"],
             scope_id=example_administer.id,
             value="administer",
             admin_consent_description="Administer the application",
@@ -384,9 +383,8 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_permission_scope = azuread.ApplicationPermissionScope("exampleApplicationPermissionScope", application_id=example_application.id)
-        # ...
+        example = azuread.Application("example", display_name="example")
+        example_application_permission_scope = azuread.ApplicationPermissionScope("example", application_id=example.id)
         ```
 
         ## Import

@@ -51,11 +51,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()
+ *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
  *             .userPrincipalName(&#34;jdoe@example.com&#34;)
  *             .build());
  * 
- *         final var exampleAccessPackageCatalogRole = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
+ *         final var exampleGetAccessPackageCatalogRole = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
  *             .displayName(&#34;Catalog owner&#34;)
  *             .build());
  * 
@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAccessPackageCatalogRoleAssignment = new AccessPackageCatalogRoleAssignment(&#34;exampleAccessPackageCatalogRoleAssignment&#34;, AccessPackageCatalogRoleAssignmentArgs.builder()        
- *             .roleId(exampleAccessPackageCatalogRole.applyValue(getAccessPackageCatalogRoleResult -&gt; getAccessPackageCatalogRoleResult.objectId()))
- *             .principalObjectId(exampleUser.applyValue(getUserResult -&gt; getUserResult.objectId()))
+ *             .roleId(exampleGetAccessPackageCatalogRole.applyValue(getAccessPackageCatalogRoleResult -&gt; getAccessPackageCatalogRoleResult.objectId()))
+ *             .principalObjectId(example.applyValue(getUserResult -&gt; getUserResult.objectId()))
  *             .catalogId(exampleAccessPackageCatalog.id())
  *             .build());
  * 

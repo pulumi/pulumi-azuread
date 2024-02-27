@@ -20,7 +20,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
@@ -30,9 +30,9 @@ namespace Pulumi.AzureAD
     ///         DisplayName = "example client",
     ///     });
     /// 
-    ///     var exampleApplicationKnownClients = new AzureAD.ApplicationKnownClients("exampleApplicationKnownClients", new()
+    ///     var exampleApplicationKnownClients = new AzureAD.ApplicationKnownClients("example", new()
     ///     {
-    ///         ApplicationId = exampleApplicationRegistration.Id,
+    ///         ApplicationId = example.Id,
     ///         KnownClientIds = new[]
     ///         {
     ///             client.ClientId,

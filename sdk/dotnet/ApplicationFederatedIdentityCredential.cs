@@ -20,14 +20,14 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationFederatedIdentityCredential = new AzureAD.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", new()
+    ///     var exampleApplicationFederatedIdentityCredential = new AzureAD.ApplicationFederatedIdentityCredential("example", new()
     ///     {
-    ///         ApplicationId = exampleApplicationRegistration.Id,
+    ///         ApplicationId = example.Id,
     ///         DisplayName = "my-repo-deploy",
     ///         Description = "Deployments for my-repo",
     ///         Audiences = new[]

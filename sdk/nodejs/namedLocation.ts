@@ -34,6 +34,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const example_country = new azuread.NamedLocation("example-country", {
+ *     displayName: "Country Named Location",
  *     country: {
  *         countriesAndRegions: [
  *             "GB",
@@ -41,7 +42,6 @@ import * as utilities from "./utilities";
  *         ],
  *         includeUnknownCountriesAndRegions: false,
  *     },
- *     displayName: "Country Named Location",
  * });
  * ```
  *

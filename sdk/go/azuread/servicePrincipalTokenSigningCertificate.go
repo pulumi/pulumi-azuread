@@ -28,19 +28,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+//				ApplicationId: example.ApplicationId,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "exampleServicePrincipalTokenSigningCertificate", &azuread.ServicePrincipalTokenSigningCertificateArgs{
+//			_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "example", &azuread.ServicePrincipalTokenSigningCertificateArgs{
 //				ServicePrincipalId: exampleServicePrincipal.ID(),
 //			})
 //			if err != nil {
@@ -66,19 +66,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+//				ApplicationId: example.ApplicationId,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "exampleServicePrincipalTokenSigningCertificate", &azuread.ServicePrincipalTokenSigningCertificateArgs{
+//			_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "example", &azuread.ServicePrincipalTokenSigningCertificateArgs{
 //				ServicePrincipalId: exampleServicePrincipal.ID(),
 //				DisplayName:        pulumi.String("CN=example.com"),
 //				EndDate:            pulumi.String("2023-05-01T01:02:03Z"),

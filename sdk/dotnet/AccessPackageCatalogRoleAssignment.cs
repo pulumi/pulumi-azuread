@@ -30,26 +30,26 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
+    ///     var example = AzureAD.GetUser.Invoke(new()
     ///     {
     ///         UserPrincipalName = "jdoe@example.com",
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalogRole = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+    ///     var exampleGetAccessPackageCatalogRole = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
     ///     {
     ///         DisplayName = "Catalog owner",
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
+    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("example", new()
     ///     {
     ///         DisplayName = "example-access-package-catalog",
     ///         Description = "Example access package catalog",
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalogRoleAssignment = new AzureAD.AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment", new()
+    ///     var exampleAccessPackageCatalogRoleAssignment = new AzureAD.AccessPackageCatalogRoleAssignment("example", new()
     ///     {
-    ///         RoleId = exampleAccessPackageCatalogRole.Apply(getAccessPackageCatalogRoleResult =&gt; getAccessPackageCatalogRoleResult.ObjectId),
-    ///         PrincipalObjectId = exampleUser.Apply(getUserResult =&gt; getUserResult.ObjectId),
+    ///         RoleId = exampleGetAccessPackageCatalogRole.Apply(getAccessPackageCatalogRoleResult =&gt; getAccessPackageCatalogRoleResult.ObjectId),
+    ///         PrincipalObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
     ///         CatalogId = exampleAccessPackageCatalog.Id,
     ///     });
     /// 

@@ -10,6 +10,162 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// *Using a PEM certificate*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("example", new()
+    ///     {
+    ///         ApplicationId = example.Id,
+    ///         Type = "AsymmetricX509Cert",
+    ///         Value = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "cert.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         EndDate = "2021-05-01T01:02:03Z",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// *Using a DER certificate*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("example", new()
+    ///     {
+    ///         ApplicationId = example.Id,
+    ///         Type = "AsymmetricX509Cert",
+    ///         Encoding = "base64",
+    ///         Value = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "cert.der",
+    ///         }).Apply(invoke =&gt; Std.Base64encode.Invoke(new()
+    ///         {
+    ///             Input = invoke.Result,
+    ///         })).Apply(invoke =&gt; invoke.Result),
+    ///         EndDate = "2021-05-01T01:02:03Z",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Using a certificate from Azure Key Vault
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Azure = Pulumi.Azure;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleApplication = new AzureAD.Application("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var example = new Azure.KeyVault.Certificate("example", new()
+    ///     {
+    ///         Name = "generated-cert",
+    ///         KeyVaultId = exampleAzurermKeyVault.Id,
+    ///         CertificatePolicy = new Azure.KeyVault.Inputs.CertificateCertificatePolicyArgs
+    ///         {
+    ///             IssuerParameters = new Azure.KeyVault.Inputs.CertificateCertificatePolicyIssuerParametersArgs
+    ///             {
+    ///                 Name = "Self",
+    ///             },
+    ///             KeyProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicyKeyPropertiesArgs
+    ///             {
+    ///                 Exportable = true,
+    ///                 KeySize = 2048,
+    ///                 KeyType = "RSA",
+    ///                 ReuseKey = true,
+    ///             },
+    ///             LifetimeActions = new[]
+    ///             {
+    ///                 new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionArgs
+    ///                 {
+    ///                     Action = new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionActionArgs
+    ///                     {
+    ///                         ActionType = "AutoRenew",
+    ///                     },
+    ///                     Trigger = new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionTriggerArgs
+    ///                     {
+    ///                         DaysBeforeExpiry = 30,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             SecretProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicySecretPropertiesArgs
+    ///             {
+    ///                 ContentType = "application/x-pkcs12",
+    ///             },
+    ///             X509CertificateProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicyX509CertificatePropertiesArgs
+    ///             {
+    ///                 ExtendedKeyUsages = new[]
+    ///                 {
+    ///                     "1.3.6.1.5.5.7.3.2",
+    ///                 },
+    ///                 KeyUsages = new[]
+    ///                 {
+    ///                     "dataEncipherment",
+    ///                     "digitalSignature",
+    ///                     "keyCertSign",
+    ///                     "keyEncipherment",
+    ///                 },
+    ///                 SubjectAlternativeNames = new Azure.KeyVault.Inputs.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs
+    ///                 {
+    ///                     DnsNames = new[]
+    ///                     {
+    ///                         "internal.contoso.com",
+    ///                         "domain.hello.world",
+    ///                     },
+    ///                 },
+    ///                 Subject = $"CN={exampleApplication.Name}",
+    ///                 ValidityInMonths = 12,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("example", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.Id,
+    ///         Type = "AsymmetricX509Cert",
+    ///         Encoding = "hex",
+    ///         Value = example.CertificateData,
+    ///         EndDate = example.CertificateAttributes.Apply(certificateAttributes =&gt; certificateAttributes[0].Expires),
+    ///         StartDate = example.CertificateAttributes.Apply(certificateAttributes =&gt; certificateAttributes[0].NotBefore),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.

@@ -26,14 +26,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationRegistration, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
+//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationFederatedIdentityCredential(ctx, "exampleApplicationFederatedIdentityCredential", &azuread.ApplicationFederatedIdentityCredentialArgs{
-//				ApplicationId: exampleApplicationRegistration.ID(),
+//			_, err = azuread.NewApplicationFederatedIdentityCredential(ctx, "example", &azuread.ApplicationFederatedIdentityCredentialArgs{
+//				ApplicationId: example.ID(),
 //				DisplayName:   pulumi.String("my-repo-deploy"),
 //				Description:   pulumi.String("Deployments for my-repo"),
 //				Audiences: pulumi.StringArray{

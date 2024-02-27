@@ -13,9 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
- * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("exampleServicePrincipalPassword", {servicePrincipalId: exampleServicePrincipal.objectId});
+ * const example = new azuread.Application("example", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {servicePrincipalId: exampleServicePrincipal.objectId});
  * ```
  *
  * *Time-based rotation*
@@ -25,10 +25,10 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  * import * as time from "@pulumiverse/time";
  *
- * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
- * const exampleRotating = new time.Rotating("exampleRotating", {rotationDays: 7});
- * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("exampleServicePrincipalPassword", {
+ * const example = new azuread.Application("example", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleRotating = new time.Rotating("example", {rotationDays: 7});
+ * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {
  *     servicePrincipalId: exampleServicePrincipal.objectId,
  *     rotateWhenChanged: {
  *         rotation: exampleRotating.id,

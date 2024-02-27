@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .clientId(exampleApplication.clientId())
+ *             .clientId(example.clientId())
  *             .appRoleAssignmentRequired(false)
  *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .build());
@@ -95,13 +95,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .clientId(exampleApplication.clientId())
+ *             .clientId(example.clientId())
  *             .appRoleAssignmentRequired(false)
  *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .featureTags(ServicePrincipalFeatureTagArgs.builder()
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
  *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
- *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+ *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *             .useExisting(true)
  *             .build());
  * 
@@ -174,13 +174,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleApplicationTemplate = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+ *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
  *             .displayName(&#34;Marketo&#34;)
  *             .build());
  * 
  *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
- *             .templateId(exampleApplicationTemplate.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
+ *             .templateId(example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        

@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .description(&#34;My example application&#34;)
  *             .displayName(&#34;Example Application&#34;)
+ *             .description(&#34;My example application&#34;)
+ *             .signInAudience(&#34;AzureADMyOrg&#34;)
  *             .homepageUrl(&#34;https://app.hashitown.com/&#34;)
  *             .logoutUrl(&#34;https://app.hashitown.com/logout&#34;)
  *             .marketingUrl(&#34;https://hashitown.com/&#34;)
  *             .privacyStatementUrl(&#34;https://hashitown.com/privacy&#34;)
- *             .signInAudience(&#34;AzureADMyOrg&#34;)
  *             .supportUrl(&#34;https://support.hashitown.com/&#34;)
  *             .termsOfServiceUrl(&#34;https://hashitown.com/terms&#34;)
  *             .build());

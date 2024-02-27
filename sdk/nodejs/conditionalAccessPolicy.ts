@@ -27,12 +27,16 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.ConditionalAccessPolicy("example", {
+ *     displayName: "example policy",
+ *     state: "disabled",
  *     conditions: {
- *         applications: {
- *             excludedApplications: [],
- *             includedApplications: ["All"],
- *         },
  *         clientAppTypes: ["all"],
+ *         signInRiskLevels: ["medium"],
+ *         userRiskLevels: ["medium"],
+ *         applications: {
+ *             includedApplications: ["All"],
+ *             excludedApplications: [],
+ *         },
  *         devices: {
  *             filter: {
  *                 mode: "exclude",
@@ -40,33 +44,29 @@ import * as utilities from "./utilities";
  *             },
  *         },
  *         locations: {
- *             excludedLocations: ["AllTrusted"],
  *             includedLocations: ["All"],
+ *             excludedLocations: ["AllTrusted"],
  *         },
  *         platforms: {
- *             excludedPlatforms: ["iOS"],
  *             includedPlatforms: ["android"],
+ *             excludedPlatforms: ["iOS"],
  *         },
- *         signInRiskLevels: ["medium"],
- *         userRiskLevels: ["medium"],
  *         users: {
- *             excludedUsers: ["GuestsOrExternalUsers"],
  *             includedUsers: ["All"],
+ *             excludedUsers: ["GuestsOrExternalUsers"],
  *         },
  *     },
- *     displayName: "example policy",
  *     grantControls: {
- *         builtInControls: ["mfa"],
  *         operator: "OR",
+ *         builtInControls: ["mfa"],
  *     },
  *     sessionControls: {
  *         applicationEnforcedRestrictionsEnabled: true,
- *         cloudAppSecurityPolicy: "monitorOnly",
  *         disableResilienceDefaults: false,
  *         signInFrequency: 10,
  *         signInFrequencyPeriod: "hours",
+ *         cloudAppSecurityPolicy: "monitorOnly",
  *     },
- *     state: "disabled",
  * });
  * ```
  * ### Included client applications / service principals

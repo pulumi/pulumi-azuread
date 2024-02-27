@@ -36,28 +36,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+//			example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
 //				UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleAccessPackageCatalogRole, err := azuread.GetAccessPackageCatalogRole(ctx, &azuread.GetAccessPackageCatalogRoleArgs{
+//			exampleGetAccessPackageCatalogRole, err := azuread.GetAccessPackageCatalogRole(ctx, &azuread.GetAccessPackageCatalogRoleArgs{
 //				DisplayName: pulumi.StringRef("Catalog owner"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
+//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "example", &azuread.AccessPackageCatalogArgs{
 //				DisplayName: pulumi.String("example-access-package-catalog"),
 //				Description: pulumi.String("Example access package catalog"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewAccessPackageCatalogRoleAssignment(ctx, "exampleAccessPackageCatalogRoleAssignment", &azuread.AccessPackageCatalogRoleAssignmentArgs{
-//				RoleId:            *pulumi.String(exampleAccessPackageCatalogRole.ObjectId),
-//				PrincipalObjectId: *pulumi.String(exampleUser.ObjectId),
+//			_, err = azuread.NewAccessPackageCatalogRoleAssignment(ctx, "example", &azuread.AccessPackageCatalogRoleAssignmentArgs{
+//				RoleId:            *pulumi.String(exampleGetAccessPackageCatalogRole.ObjectId),
+//				PrincipalObjectId: *pulumi.String(example.ObjectId),
 //				CatalogId:         exampleAccessPackageCatalog.ID(),
 //			})
 //			if err != nil {

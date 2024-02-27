@@ -37,9 +37,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewUserFlowAttribute(ctx, "example", &azuread.UserFlowAttributeArgs{
-//				DataType:    pulumi.String("string"),
-//				Description: pulumi.String("Your hobby"),
 //				DisplayName: pulumi.String("Hobby"),
+//				Description: pulumi.String("Your hobby"),
+//				DataType:    pulumi.String("string"),
 //			})
 //			if err != nil {
 //				return err

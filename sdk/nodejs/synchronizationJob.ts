@@ -23,22 +23,22 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplicationTemplate = azuread.getApplicationTemplate({
+ * const example = azuread.getApplicationTemplate({
  *     displayName: "Azure Databricks SCIM Provisioning Connector",
  * });
- * const exampleApplication = new azuread.Application("exampleApplication", {
+ * const exampleApplication = new azuread.Application("example", {
  *     displayName: "example",
- *     templateId: exampleApplicationTemplate.then(exampleApplicationTemplate => exampleApplicationTemplate.templateId),
+ *     templateId: example.then(example => example.templateId),
  *     featureTags: [{
  *         enterprise: true,
  *         gallery: true,
  *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
  *     applicationId: exampleApplication.applicationId,
  *     useExisting: true,
  * });
- * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("exampleSynchronizationSecret", {
+ * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("example", {
  *     servicePrincipalId: exampleServicePrincipal.id,
  *     credentials: [
  *         {
@@ -51,7 +51,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * const exampleSynchronizationJob = new azuread.SynchronizationJob("exampleSynchronizationJob", {
+ * const exampleSynchronizationJob = new azuread.SynchronizationJob("example", {
  *     servicePrincipalId: exampleServicePrincipal.id,
  *     templateId: "dataBricks",
  *     enabled: true,

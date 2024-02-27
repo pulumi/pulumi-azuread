@@ -168,14 +168,14 @@ class NamedLocation(pulumi.CustomResource):
                 trusted=True,
             ))
         example_country = azuread.NamedLocation("example-country",
+            display_name="Country Named Location",
             country=azuread.NamedLocationCountryArgs(
                 countries_and_regions=[
                     "GB",
                     "US",
                 ],
                 include_unknown_countries_and_regions=False,
-            ),
-            display_name="Country Named Location")
+            ))
         ```
 
         ## Import
@@ -227,14 +227,14 @@ class NamedLocation(pulumi.CustomResource):
                 trusted=True,
             ))
         example_country = azuread.NamedLocation("example-country",
+            display_name="Country Named Location",
             country=azuread.NamedLocationCountryArgs(
                 countries_and_regions=[
                     "GB",
                     "US",
                 ],
                 include_unknown_countries_and_regions=False,
-            ),
-            display_name="Country Named Location")
+            ))
         ```
 
         ## Import

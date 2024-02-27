@@ -32,8 +32,8 @@ namespace Pulumi.AzureAD
     /// {
     ///     var example = new AzureAD.AccessPackageCatalog("example", new()
     ///     {
-    ///         Description = "Example access package catalog",
     ///         DisplayName = "example-access-package-catalog",
+    ///         Description = "Example access package catalog",
     ///     });
     /// 
     /// });

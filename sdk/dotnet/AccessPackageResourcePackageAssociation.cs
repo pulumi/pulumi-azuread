@@ -30,33 +30,33 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleGroup = new AzureAD.Group("exampleGroup", new()
+    ///     var example = new AzureAD.Group("example", new()
     ///     {
     ///         DisplayName = "example-group",
     ///         SecurityEnabled = true,
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
+    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("example", new()
     ///     {
     ///         DisplayName = "example-catalog",
     ///         Description = "Example catalog",
     ///     });
     /// 
-    ///     var exampleAccessPackageResourceCatalogAssociation = new AzureAD.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", new()
+    ///     var exampleAccessPackageResourceCatalogAssociation = new AzureAD.AccessPackageResourceCatalogAssociation("example", new()
     ///     {
-    ///         CatalogId = azuread_access_package_catalog.Example_catalog.Id,
-    ///         ResourceOriginId = azuread_group.Example_group.Object_id,
+    ///         CatalogId = exampleCatalog.Id,
+    ///         ResourceOriginId = exampleGroup.ObjectId,
     ///         ResourceOriginSystem = "AadGroup",
     ///     });
     /// 
-    ///     var exampleAccessPackage = new AzureAD.AccessPackage("exampleAccessPackage", new()
+    ///     var exampleAccessPackage = new AzureAD.AccessPackage("example", new()
     ///     {
     ///         DisplayName = "example-package",
     ///         Description = "Example Package",
-    ///         CatalogId = azuread_access_package_catalog.Example_catalog.Id,
+    ///         CatalogId = exampleCatalog.Id,
     ///     });
     /// 
-    ///     var exampleAccessPackageResourcePackageAssociation = new AzureAD.AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation", new()
+    ///     var exampleAccessPackageResourcePackageAssociation = new AzureAD.AccessPackageResourcePackageAssociation("example", new()
     ///     {
     ///         AccessPackageId = exampleAccessPackage.Id,
     ///         CatalogResourceAssociationId = exampleAccessPackageResourceCatalogAssociation.Id,

@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationApiAccess(ctx, "exampleMsgraph", &azuread.ApplicationApiAccessArgs{
+//			_, err = azuread.NewApplicationApiAccess(ctx, "example_msgraph", &azuread.ApplicationApiAccessArgs{
 //				ApplicationId: example.ID(),
 //				ApiClientId:   *pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				RoleIds: pulumi.StringArray{
@@ -78,14 +78,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationApiAccess(ctx, "exampleApplicationApiAccess", &azuread.ApplicationApiAccessArgs{
-//				ApplicationId: exampleApplication.ID(),
+//			_, err = azuread.NewApplicationApiAccess(ctx, "example", &azuread.ApplicationApiAccessArgs{
+//				ApplicationId: example.ID(),
 //			})
 //			if err != nil {
 //				return err

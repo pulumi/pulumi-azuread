@@ -34,8 +34,8 @@ namespace Pulumi.AzureAD
     /// {
     ///     var example = new AzureAD.Invitation("example", new()
     ///     {
-    ///         RedirectUrl = "https://portal.azure.com",
     ///         UserEmailAddress = "jdoe@example.com",
+    ///         RedirectUrl = "https://portal.azure.com",
     ///     });
     /// 
     /// });
@@ -53,12 +53,12 @@ namespace Pulumi.AzureAD
     /// {
     ///     var example = new AzureAD.Invitation("example", new()
     ///     {
+    ///         UserEmailAddress = "jdoe@example.com",
+    ///         RedirectUrl = "https://portal.azure.com",
     ///         Message = new AzureAD.Inputs.InvitationMessageArgs
     ///         {
     ///             Language = "en-US",
     ///         },
-    ///         RedirectUrl = "https://portal.azure.com",
-    ///         UserEmailAddress = "jdoe@example.com",
     ///     });
     /// 
     /// });
@@ -76,14 +76,14 @@ namespace Pulumi.AzureAD
     /// {
     ///     var example = new AzureAD.Invitation("example", new()
     ///     {
+    ///         UserDisplayName = "Bob Bobson",
+    ///         UserEmailAddress = "bbobson@example.com",
+    ///         RedirectUrl = "https://portal.azure.com",
     ///         Message = new AzureAD.Inputs.InvitationMessageArgs
     ///         {
     ///             AdditionalRecipients = "aaliceberg@example.com",
     ///             Body = "Hello there! You are invited to join my Azure tenant!",
     ///         },
-    ///         RedirectUrl = "https://portal.azure.com",
-    ///         UserDisplayName = "Bob Bobson",
-    ///         UserEmailAddress = "bbobson@example.com",
     ///     });
     /// 
     /// });

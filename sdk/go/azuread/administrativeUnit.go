@@ -37,8 +37,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewAdministrativeUnit(ctx, "example", &azuread.AdministrativeUnitArgs{
-//				Description:             pulumi.String("Just an example"),
 //				DisplayName:             pulumi.String("Example-AU"),
+//				Description:             pulumi.String("Just an example"),
 //				HiddenMembershipEnabled: pulumi.Bool(false),
 //			})
 //			if err != nil {

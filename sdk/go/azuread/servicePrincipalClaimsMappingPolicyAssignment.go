@@ -37,8 +37,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewServicePrincipalClaimsMappingPolicyAssignment(ctx, "app", &azuread.ServicePrincipalClaimsMappingPolicyAssignmentArgs{
-//				ClaimsMappingPolicyId: pulumi.Any(azuread_claims_mapping_policy.My_policy.Id),
-//				ServicePrincipalId:    pulumi.Any(azuread_service_principal.My_principal.Id),
+//				ClaimsMappingPolicyId: pulumi.Any(myPolicy.Id),
+//				ServicePrincipalId:    pulumi.Any(myPrincipal.Id),
 //			})
 //			if err != nil {
 //				return err

@@ -25,13 +25,13 @@ import * as utilities from "./utilities";
  *
  * const wellKnown = azuread.getApplicationPublishedAppIds({});
  * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
+ *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
  *     useExisting: true,
  * });
- * const exampleApplication = new azuread.Application("exampleApplication", {
+ * const example = new azuread.Application("example", {
  *     displayName: "example",
  *     requiredResourceAccesses: [{
- *         resourceAppId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
+ *         resourceAppId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
  *         resourceAccesses: [
  *             {
  *                 id: msgraph.oauth2PermissionScopeIds.openid,
@@ -44,8 +44,8 @@ import * as utilities from "./utilities";
  *         ],
  *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
- * const exampleServicePrincipalDelegatedPermissionGrant = new azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", {
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipalDelegatedPermissionGrant = new azuread.ServicePrincipalDelegatedPermissionGrant("example", {
  *     servicePrincipalObjectId: exampleServicePrincipal.objectId,
  *     resourceServicePrincipalObjectId: msgraph.objectId,
  *     claimValues: [
@@ -63,13 +63,13 @@ import * as utilities from "./utilities";
  *
  * const wellKnown = azuread.getApplicationPublishedAppIds({});
  * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
+ *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
  *     useExisting: true,
  * });
- * const exampleApplication = new azuread.Application("exampleApplication", {
+ * const example = new azuread.Application("example", {
  *     displayName: "example",
  *     requiredResourceAccesses: [{
- *         resourceAppId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
+ *         resourceAppId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
  *         resourceAccesses: [
  *             {
  *                 id: msgraph.oauth2PermissionScopeIds.openid,
@@ -82,14 +82,14 @@ import * as utilities from "./utilities";
  *         ],
  *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
- * const exampleUser = new azuread.User("exampleUser", {
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleUser = new azuread.User("example", {
  *     displayName: "J. Doe",
  *     userPrincipalName: "jdoe@example.com",
  *     mailNickname: "jdoe",
  *     password: "SecretP@sswd99!",
  * });
- * const exampleServicePrincipalDelegatedPermissionGrant = new azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", {
+ * const exampleServicePrincipalDelegatedPermissionGrant = new azuread.ServicePrincipalDelegatedPermissionGrant("example", {
  *     servicePrincipalObjectId: exampleServicePrincipal.objectId,
  *     resourceServicePrincipalObjectId: msgraph.objectId,
  *     claimValues: [

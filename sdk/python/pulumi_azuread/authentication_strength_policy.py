@@ -148,13 +148,15 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.AuthenticationStrengthPolicy("example",
+            display_name="Example Authentication Strength Policy",
+            description="Policy for demo purposes",
             allowed_combinations=[
                 "fido2",
                 "password",
-            ],
-            description="Policy for demo purposes",
-            display_name="Example Authentication Strength Policy")
+            ])
         example2 = azuread.AuthenticationStrengthPolicy("example2",
+            display_name="Example Authentication Strength Policy",
+            description="Policy for demo purposes with all possible combinations",
             allowed_combinations=[
                 "fido2",
                 "password",
@@ -177,9 +179,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
                 "windowsHelloForBusiness",
                 "x509CertificateMultiFactor",
                 "x509CertificateSingleFactor",
-            ],
-            description="Policy for demo purposes with all possible combinations",
-            display_name="Example Authentication Strength Policy")
+            ])
         ```
 
         ## Import
@@ -220,13 +220,15 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.AuthenticationStrengthPolicy("example",
+            display_name="Example Authentication Strength Policy",
+            description="Policy for demo purposes",
             allowed_combinations=[
                 "fido2",
                 "password",
-            ],
-            description="Policy for demo purposes",
-            display_name="Example Authentication Strength Policy")
+            ])
         example2 = azuread.AuthenticationStrengthPolicy("example2",
+            display_name="Example Authentication Strength Policy",
+            description="Policy for demo purposes with all possible combinations",
             allowed_combinations=[
                 "fido2",
                 "password",
@@ -249,9 +251,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
                 "windowsHelloForBusiness",
                 "x509CertificateMultiFactor",
                 "x509CertificateSingleFactor",
-            ],
-            description="Policy for demo purposes with all possible combinations",
-            display_name="Example Authentication Strength Policy")
+            ])
         ```
 
         ## Import

@@ -34,9 +34,10 @@ namespace Pulumi.AzureAD
     /// {
     ///     var example = new AzureAD.CustomDirectoryRole("example", new()
     ///     {
-    ///         Description = "Allows reading applications and updating groups",
     ///         DisplayName = "My Custom Role",
+    ///         Description = "Allows reading applications and updating groups",
     ///         Enabled = true,
+    ///         Version = "1.0",
     ///         Permissions = new[]
     ///         {
     ///             new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
@@ -60,7 +61,6 @@ namespace Pulumi.AzureAD
     ///                 },
     ///             },
     ///         },
-    ///         Version = "1.0",
     ///     });
     /// 
     /// });

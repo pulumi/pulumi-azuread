@@ -22,14 +22,16 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.AuthenticationStrengthPolicy("example", {
+ *     displayName: "Example Authentication Strength Policy",
+ *     description: "Policy for demo purposes",
  *     allowedCombinations: [
  *         "fido2",
  *         "password",
  *     ],
- *     description: "Policy for demo purposes",
- *     displayName: "Example Authentication Strength Policy",
  * });
  * const example2 = new azuread.AuthenticationStrengthPolicy("example2", {
+ *     displayName: "Example Authentication Strength Policy",
+ *     description: "Policy for demo purposes with all possible combinations",
  *     allowedCombinations: [
  *         "fido2",
  *         "password",
@@ -53,8 +55,6 @@ import * as utilities from "./utilities";
  *         "x509CertificateMultiFactor",
  *         "x509CertificateSingleFactor",
  *     ],
- *     description: "Policy for demo purposes with all possible combinations",
- *     displayName: "Example Authentication Strength Policy",
  * });
  * ```
  *

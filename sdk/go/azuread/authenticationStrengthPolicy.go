@@ -37,17 +37,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewAuthenticationStrengthPolicy(ctx, "example", &azuread.AuthenticationStrengthPolicyArgs{
+//				DisplayName: pulumi.String("Example Authentication Strength Policy"),
+//				Description: pulumi.String("Policy for demo purposes"),
 //				AllowedCombinations: pulumi.StringArray{
 //					pulumi.String("fido2"),
 //					pulumi.String("password"),
 //				},
-//				Description: pulumi.String("Policy for demo purposes"),
-//				DisplayName: pulumi.String("Example Authentication Strength Policy"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = azuread.NewAuthenticationStrengthPolicy(ctx, "example2", &azuread.AuthenticationStrengthPolicyArgs{
+//				DisplayName: pulumi.String("Example Authentication Strength Policy"),
+//				Description: pulumi.String("Policy for demo purposes with all possible combinations"),
 //				AllowedCombinations: pulumi.StringArray{
 //					pulumi.String("fido2"),
 //					pulumi.String("password"),
@@ -71,8 +73,6 @@ import (
 //					pulumi.String("x509CertificateMultiFactor"),
 //					pulumi.String("x509CertificateSingleFactor"),
 //				},
-//				Description: pulumi.String("Policy for demo purposes with all possible combinations"),
-//				DisplayName: pulumi.String("Example Authentication Strength Policy"),
 //			})
 //			if err != nil {
 //				return err

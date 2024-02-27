@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
+ *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
  *             .displayName(&#34;group-name&#34;)
  *             .securityEnabled(true)
  *             .build());
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *                 .approvalStages(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs.builder()
  *                     .approvalTimeoutInDays(14)
  *                     .primaryApprovers(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs.builder()
- *                         .objectId(exampleGroup.objectId())
+ *                         .objectId(example.objectId())
  *                         .subjectType(&#34;groupMembers&#34;)
  *                         .build())
  *                     .build())

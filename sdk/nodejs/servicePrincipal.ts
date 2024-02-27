@@ -16,12 +16,12 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const current = azuread.getClientConfig({});
- * const exampleApplication = new azuread.Application("exampleApplication", {
+ * const example = new azuread.Application("example", {
  *     displayName: "example",
  *     owners: [current.then(current => current.objectId)],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
- *     clientId: exampleApplication.clientId,
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
+ *     clientId: example.clientId,
  *     appRoleAssignmentRequired: false,
  *     owners: [current.then(current => current.objectId)],
  * });
@@ -34,12 +34,12 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const current = azuread.getClientConfig({});
- * const exampleApplication = new azuread.Application("exampleApplication", {
+ * const example = new azuread.Application("example", {
  *     displayName: "example",
  *     owners: [current.then(current => current.objectId)],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
- *     clientId: exampleApplication.clientId,
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
+ *     clientId: example.clientId,
  *     appRoleAssignmentRequired: false,
  *     owners: [current.then(current => current.objectId)],
  *     featureTags: [{
@@ -57,7 +57,7 @@ import * as utilities from "./utilities";
  *
  * const wellKnown = azuread.getApplicationPublishedAppIds({});
  * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     clientId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
+ *     clientId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
  *     useExisting: true,
  * });
  * ```
@@ -68,14 +68,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplicationTemplate = azuread.getApplicationTemplate({
+ * const example = azuread.getApplicationTemplate({
  *     displayName: "Marketo",
  * });
- * const exampleApplication = new azuread.Application("exampleApplication", {
+ * const exampleApplication = new azuread.Application("example", {
  *     displayName: "example",
- *     templateId: exampleApplicationTemplate.then(exampleApplicationTemplate => exampleApplicationTemplate.templateId),
+ *     templateId: example.then(example => example.templateId),
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
  *     clientId: exampleApplication.clientId,
  *     useExisting: true,
  * });

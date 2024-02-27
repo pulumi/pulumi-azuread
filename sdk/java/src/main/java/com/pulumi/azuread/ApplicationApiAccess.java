@@ -91,12 +91,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
  *         var exampleApplicationApiAccess = new ApplicationApiAccess(&#34;exampleApplicationApiAccess&#34;, ApplicationApiAccessArgs.builder()        
- *             .applicationId(exampleApplication.id())
+ *             .applicationId(example.id())
  *             .build());
  * 
  *     }

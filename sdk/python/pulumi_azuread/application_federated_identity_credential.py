@@ -295,9 +295,9 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential",
-            application_id=example_application_registration.id,
+        example = azuread.ApplicationRegistration("example", display_name="example")
+        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("example",
+            application_id=example.id,
             display_name="my-repo-deploy",
             description="Deployments for my-repo",
             audiences=["api://AzureADTokenExchange"],
@@ -338,9 +338,9 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential",
-            application_id=example_application_registration.id,
+        example = azuread.ApplicationRegistration("example", display_name="example")
+        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("example",
+            application_id=example.id,
             display_name="my-repo-deploy",
             description="Deployments for my-repo",
             audiences=["api://AzureADTokenExchange"],

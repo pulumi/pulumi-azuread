@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(exampleApplication.applicationId())
+ *             .applicationId(example.applicationId())
  *             .build());
  * 
  *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate(&#34;exampleServicePrincipalTokenSigningCertificate&#34;, ServicePrincipalTokenSigningCertificateArgs.builder()        
@@ -85,12 +85,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(exampleApplication.applicationId())
+ *             .applicationId(example.applicationId())
  *             .build());
  * 
  *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate(&#34;exampleServicePrincipalTokenSigningCertificate&#34;, ServicePrincipalTokenSigningCertificateArgs.builder()        

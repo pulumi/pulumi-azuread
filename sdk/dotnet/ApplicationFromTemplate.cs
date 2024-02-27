@@ -32,23 +32,23 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplicationTemplate = AzureAD.GetApplicationTemplate.Invoke(new()
+    ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
     ///     {
     ///         DisplayName = "Marketo",
     ///     });
     /// 
-    ///     var exampleApplicationFromTemplate = new AzureAD.ApplicationFromTemplate("exampleApplicationFromTemplate", new()
+    ///     var exampleApplicationFromTemplate = new AzureAD.ApplicationFromTemplate("example", new()
     ///     {
     ///         DisplayName = "Example Application",
-    ///         TemplateId = exampleApplicationTemplate.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
+    ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
     ///     });
     /// 
-    ///     var exampleApplication = AzureAD.GetApplication.Invoke(new()
+    ///     var exampleGetApplication = AzureAD.GetApplication.Invoke(new()
     ///     {
     ///         ObjectId = exampleApplicationFromTemplate.ApplicationObjectId,
     ///     });
     /// 
-    ///     var exampleServicePrincipal = AzureAD.GetServicePrincipal.Invoke(new()
+    ///     var exampleGetServicePrincipal = AzureAD.GetServicePrincipal.Invoke(new()
     ///     {
     ///         ObjectId = exampleApplicationFromTemplate.ServicePrincipalObjectId,
     ///     });

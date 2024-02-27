@@ -50,6 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewNamedLocation(ctx, "example-country", &azuread.NamedLocationArgs{
+//				DisplayName: pulumi.String("Country Named Location"),
 //				Country: &azuread.NamedLocationCountryArgs{
 //					CountriesAndRegions: pulumi.StringArray{
 //						pulumi.String("GB"),
@@ -57,7 +58,6 @@ import (
 //					},
 //					IncludeUnknownCountriesAndRegions: pulumi.Bool(false),
 //				},
-//				DisplayName: pulumi.String("Country Named Location"),
 //			})
 //			if err != nil {
 //				return err

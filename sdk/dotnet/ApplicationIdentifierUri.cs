@@ -20,14 +20,14 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplicationRegistration = new AzureAD.ApplicationRegistration("exampleApplicationRegistration", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationIdentifierUri = new AzureAD.ApplicationIdentifierUri("exampleApplicationIdentifierUri", new()
+    ///     var exampleApplicationIdentifierUri = new AzureAD.ApplicationIdentifierUri("example", new()
     ///     {
-    ///         ApplicationId = exampleApplicationRegistration.Id,
+    ///         ApplicationId = example.Id,
     ///         IdentifierUri = "https://app.hashitown.com",
     ///     });
     /// 
@@ -46,17 +46,16 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationIdentifierUri = new AzureAD.ApplicationIdentifierUri("exampleApplicationIdentifierUri", new()
+    ///     var exampleApplicationIdentifierUri = new AzureAD.ApplicationIdentifierUri("example", new()
     ///     {
-    ///         ApplicationId = exampleApplication.Id,
+    ///         ApplicationId = example.Id,
     ///     });
     /// 
-    ///     // ...
     /// });
     /// ```
     /// 

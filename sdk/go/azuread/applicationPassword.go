@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationRegistration, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
+//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationPassword(ctx, "exampleApplicationPassword", &azuread.ApplicationPasswordArgs{
-//				ApplicationId: exampleApplicationRegistration.ID(),
+//			_, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
+//				ApplicationId: example.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -60,20 +60,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationRegistration, err := azuread.NewApplicationRegistration(ctx, "exampleApplicationRegistration", &azuread.ApplicationRegistrationArgs{
+//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
 //				DisplayName: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleRotating, err := time.NewRotating(ctx, "exampleRotating", &time.RotatingArgs{
+//			exampleRotating, err := time.NewRotating(ctx, "example", &time.RotatingArgs{
 //				RotationDays: pulumi.Int(7),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = azuread.NewApplicationPassword(ctx, "exampleApplicationPassword", &azuread.ApplicationPasswordArgs{
-//				ApplicationId: exampleApplicationRegistration.ID(),
+//			_, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
+//				ApplicationId: example.ID(),
 //				RotateWhenChanged: pulumi.StringMap{
 //					"rotation": exampleRotating.ID(),
 //				},

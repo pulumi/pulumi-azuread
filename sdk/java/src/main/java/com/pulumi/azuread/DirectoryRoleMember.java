@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()
+ *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
  *             .userPrincipalName(&#34;jdoe@example.com&#34;)
  *             .build());
  * 
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDirectoryRoleMember = new DirectoryRoleMember(&#34;exampleDirectoryRoleMember&#34;, DirectoryRoleMemberArgs.builder()        
  *             .roleObjectId(exampleDirectoryRole.objectId())
- *             .memberObjectId(exampleUser.applyValue(getUserResult -&gt; getUserResult.objectId()))
+ *             .memberObjectId(example.applyValue(getUserResult -&gt; getUserResult.objectId()))
  *             .build());
  * 
  *     }

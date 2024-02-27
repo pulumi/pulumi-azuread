@@ -14,21 +14,23 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
- * import * as fs from "fs";
+ * import * as std from "@pulumi/std";
  *
  * const current = azuread.getClientConfig({});
  * const example = new azuread.Application("example", {
  *     displayName: "example",
  *     identifierUris: ["api://example-app"],
- *     logoImage: fs.readFileSync("/path/to/logo.png", { encoding: "base64" }),
+ *     logoImage: std.filebase64({
+ *         input: "/path/to/logo.png",
+ *     }).then(invoke => invoke.result),
  *     owners: [current.then(current => current.objectId)],
  *     signInAudience: "AzureADMultipleOrgs",
  *     api: {
  *         mappedClaimsEnabled: true,
  *         requestedAccessTokenVersion: 2,
  *         knownClientApplications: [
- *             azuread_application.known1.application_id,
- *             azuread_application.known2.application_id,
+ *             known1.applicationId,
+ *             known2.applicationId,
  *         ],
  *         oauth2PermissionScopes: [
  *             {
@@ -135,14 +137,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplicationTemplate = azuread.getApplicationTemplate({
+ * const example = azuread.getApplicationTemplate({
  *     displayName: "Marketo",
  * });
- * const exampleApplication = new azuread.Application("exampleApplication", {
+ * const exampleApplication = new azuread.Application("example", {
  *     displayName: "example",
- *     templateId: exampleApplicationTemplate.then(exampleApplicationTemplate => exampleApplicationTemplate.templateId),
+ *     templateId: example.then(example => example.templateId),
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
  *     applicationId: exampleApplication.applicationId,
  *     useExisting: true,
  * });

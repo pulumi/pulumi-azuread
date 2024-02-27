@@ -57,13 +57,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleApplicationTemplate = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+ *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
  *             .displayName(&#34;Azure Databricks SCIM Provisioning Connector&#34;)
  *             .build());
  * 
  *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
- *             .templateId(exampleApplicationTemplate.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
+ *             .templateId(example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
  *             .featureTags(ApplicationFeatureTagArgs.builder()
  *                 .enterprise(true)
  *                 .gallery(true)

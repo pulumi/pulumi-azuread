@@ -40,12 +40,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplicationRegistration = new ApplicationRegistration(&#34;exampleApplicationRegistration&#34;, ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .build());
  * 
  *         var exampleApplicationFederatedIdentityCredential = new ApplicationFederatedIdentityCredential(&#34;exampleApplicationFederatedIdentityCredential&#34;, ApplicationFederatedIdentityCredentialArgs.builder()        
- *             .applicationId(exampleApplicationRegistration.id())
+ *             .applicationId(example.id())
  *             .displayName(&#34;my-repo-deploy&#34;)
  *             .description(&#34;Deployments for my-repo&#34;)
  *             .audiences(&#34;api://AzureADTokenExchange&#34;)

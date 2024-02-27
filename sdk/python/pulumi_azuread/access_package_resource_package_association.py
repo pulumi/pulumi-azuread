@@ -147,21 +147,21 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_group = azuread.Group("exampleGroup",
+        example = azuread.Group("example",
             display_name="example-group",
             security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+        example_access_package_catalog = azuread.AccessPackageCatalog("example",
             display_name="example-catalog",
             description="Example catalog")
-        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation",
-            catalog_id=azuread_access_package_catalog["example_catalog"]["id"],
-            resource_origin_id=azuread_group["example_group"]["object_id"],
+        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("example",
+            catalog_id=example_catalog["id"],
+            resource_origin_id=example_group["objectId"],
             resource_origin_system="AadGroup")
-        example_access_package = azuread.AccessPackage("exampleAccessPackage",
+        example_access_package = azuread.AccessPackage("example",
             display_name="example-package",
             description="Example Package",
-            catalog_id=azuread_access_package_catalog["example_catalog"]["id"])
-        example_access_package_resource_package_association = azuread.AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation",
+            catalog_id=example_catalog["id"])
+        example_access_package_resource_package_association = azuread.AccessPackageResourcePackageAssociation("example",
             access_package_id=example_access_package.id,
             catalog_resource_association_id=example_access_package_resource_catalog_association.id)
         ```
@@ -205,21 +205,21 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_group = azuread.Group("exampleGroup",
+        example = azuread.Group("example",
             display_name="example-group",
             security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+        example_access_package_catalog = azuread.AccessPackageCatalog("example",
             display_name="example-catalog",
             description="Example catalog")
-        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation",
-            catalog_id=azuread_access_package_catalog["example_catalog"]["id"],
-            resource_origin_id=azuread_group["example_group"]["object_id"],
+        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("example",
+            catalog_id=example_catalog["id"],
+            resource_origin_id=example_group["objectId"],
             resource_origin_system="AadGroup")
-        example_access_package = azuread.AccessPackage("exampleAccessPackage",
+        example_access_package = azuread.AccessPackage("example",
             display_name="example-package",
             description="Example Package",
-            catalog_id=azuread_access_package_catalog["example_catalog"]["id"])
-        example_access_package_resource_package_association = azuread.AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation",
+            catalog_id=example_catalog["id"])
+        example_access_package_resource_package_association = azuread.AccessPackageResourcePackageAssociation("example",
             access_package_id=example_access_package.id,
             catalog_resource_association_id=example_access_package_resource_catalog_association.id)
         ```

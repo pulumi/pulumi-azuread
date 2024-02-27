@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const examplePublic = new azuread.ApplicationRedirectUris("examplePublic", {
+ * const examplePublic = new azuread.ApplicationRedirectUris("example_public", {
  *     applicationId: example.id,
  *     type: "PublicClient",
  *     redirectUris: [
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *         "urn:ietf:wg:oauth:2.0:foo",
  *     ],
  * });
- * const exampleSpa = new azuread.ApplicationRedirectUris("exampleSpa", {
+ * const exampleSpa = new azuread.ApplicationRedirectUris("example_spa", {
  *     applicationId: example.id,
  *     type: "SPA",
  *     redirectUris: [
@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  *         "https://beta.hashitown.com/",
  *     ],
  * });
- * const exampleWeb = new azuread.ApplicationRedirectUris("exampleWeb", {
+ * const exampleWeb = new azuread.ApplicationRedirectUris("example_web", {
  *     applicationId: example.id,
  *     type: "Web",
  *     redirectUris: [

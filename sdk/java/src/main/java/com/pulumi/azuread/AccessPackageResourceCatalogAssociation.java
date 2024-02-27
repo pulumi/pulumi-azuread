@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
+ *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
  *             .displayName(&#34;example-group&#34;)
  *             .securityEnabled(true)
  *             .build());
@@ -61,8 +61,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAccessPackageResourceCatalogAssociation = new AccessPackageResourceCatalogAssociation(&#34;exampleAccessPackageResourceCatalogAssociation&#34;, AccessPackageResourceCatalogAssociationArgs.builder()        
- *             .catalogId(azuread_access_package_catalog.example_catalog().id())
- *             .resourceOriginId(azuread_group.example_group().object_id())
+ *             .catalogId(exampleCatalog.id())
+ *             .resourceOriginId(exampleGroup.objectId())
  *             .resourceOriginSystem(&#34;AadGroup&#34;)
  *             .build());
  * 

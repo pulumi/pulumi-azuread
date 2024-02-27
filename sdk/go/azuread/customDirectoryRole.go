@@ -39,9 +39,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewCustomDirectoryRole(ctx, "example", &azuread.CustomDirectoryRoleArgs{
-//				Description: pulumi.String("Allows reading applications and updating groups"),
 //				DisplayName: pulumi.String("My Custom Role"),
+//				Description: pulumi.String("Allows reading applications and updating groups"),
 //				Enabled:     pulumi.Bool(true),
+//				Version:     pulumi.String("1.0"),
 //				Permissions: azuread.CustomDirectoryRolePermissionArray{
 //					&azuread.CustomDirectoryRolePermissionArgs{
 //						AllowedResourceActions: pulumi.StringArray{
@@ -60,7 +61,6 @@ import (
 //						},
 //					},
 //				},
-//				Version: pulumi.String("1.0"),
 //			})
 //			if err != nil {
 //				return err

@@ -243,8 +243,8 @@ class ApplicationAppRole(pulumi.CustomResource):
         import pulumi_random as random
 
         example = azuread.ApplicationRegistration("example", display_name="example")
-        example_administrator = random.RandomUuid("exampleAdministrator")
-        example_administer = azuread.ApplicationAppRole("exampleAdminister",
+        example_administrator = random.RandomUuid("example_administrator")
+        example_administer = azuread.ApplicationAppRole("example_administer",
             application_id=example.id,
             role_id=example_administrator.id,
             allowed_member_types=["User"],
@@ -262,8 +262,7 @@ class ApplicationAppRole(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Application("example", display_name="example")
-        example_administer = azuread.ApplicationAppRole("exampleAdminister", application_id=example.id)
-        # ...
+        example_administer = azuread.ApplicationAppRole("example_administer", application_id=example.id)
         ```
 
         ## Import
@@ -300,8 +299,8 @@ class ApplicationAppRole(pulumi.CustomResource):
         import pulumi_random as random
 
         example = azuread.ApplicationRegistration("example", display_name="example")
-        example_administrator = random.RandomUuid("exampleAdministrator")
-        example_administer = azuread.ApplicationAppRole("exampleAdminister",
+        example_administrator = random.RandomUuid("example_administrator")
+        example_administer = azuread.ApplicationAppRole("example_administer",
             application_id=example.id,
             role_id=example_administrator.id,
             allowed_member_types=["User"],
@@ -319,8 +318,7 @@ class ApplicationAppRole(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Application("example", display_name="example")
-        example_administer = azuread.ApplicationAppRole("exampleAdminister", application_id=example.id)
-        # ...
+        example_administer = azuread.ApplicationAppRole("example_administer", application_id=example.id)
         ```
 
         ## Import

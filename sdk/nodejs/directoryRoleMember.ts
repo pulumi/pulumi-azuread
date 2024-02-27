@@ -23,13 +23,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleUser = azuread.getUser({
+ * const example = azuread.getUser({
  *     userPrincipalName: "jdoe@example.com",
  * });
- * const exampleDirectoryRole = new azuread.DirectoryRole("exampleDirectoryRole", {displayName: "Security administrator"});
- * const exampleDirectoryRoleMember = new azuread.DirectoryRoleMember("exampleDirectoryRoleMember", {
+ * const exampleDirectoryRole = new azuread.DirectoryRole("example", {displayName: "Security administrator"});
+ * const exampleDirectoryRoleMember = new azuread.DirectoryRoleMember("example", {
  *     roleObjectId: exampleDirectoryRole.objectId,
- *     memberObjectId: exampleUser.then(exampleUser => exampleUser.objectId),
+ *     memberObjectId: example.then(example => example.objectId),
  * });
  * ```
  *

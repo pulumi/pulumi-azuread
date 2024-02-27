@@ -181,9 +181,9 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_application_optional_claims = azuread.ApplicationOptionalClaims("exampleApplicationOptionalClaims",
-            application_id=example_application_registration.id,
+        example = azuread.ApplicationRegistration("example", display_name="example")
+        example_application_optional_claims = azuread.ApplicationOptionalClaims("example",
+            application_id=example.id,
             access_tokens=[
                 azuread.ApplicationOptionalClaimsAccessTokenArgs(
                     name="myclaim",
@@ -233,9 +233,9 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application_registration = azuread.ApplicationRegistration("exampleApplicationRegistration", display_name="example")
-        example_application_optional_claims = azuread.ApplicationOptionalClaims("exampleApplicationOptionalClaims",
-            application_id=example_application_registration.id,
+        example = azuread.ApplicationRegistration("example", display_name="example")
+        example_application_optional_claims = azuread.ApplicationOptionalClaims("example",
+            application_id=example.id,
             access_tokens=[
                 azuread.ApplicationOptionalClaimsAccessTokenArgs(
                     name="myclaim",

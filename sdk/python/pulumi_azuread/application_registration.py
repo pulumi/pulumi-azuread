@@ -611,13 +611,13 @@ class ApplicationRegistration(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.ApplicationRegistration("example",
-            description="My example application",
             display_name="Example Application",
+            description="My example application",
+            sign_in_audience="AzureADMyOrg",
             homepage_url="https://app.hashitown.com/",
             logout_url="https://app.hashitown.com/logout",
             marketing_url="https://hashitown.com/",
             privacy_statement_url="https://hashitown.com/privacy",
-            sign_in_audience="AzureADMyOrg",
             support_url="https://support.hashitown.com/",
             terms_of_service_url="https://hashitown.com/terms")
         ```
@@ -674,13 +674,13 @@ class ApplicationRegistration(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.ApplicationRegistration("example",
-            description="My example application",
             display_name="Example Application",
+            description="My example application",
+            sign_in_audience="AzureADMyOrg",
             homepage_url="https://app.hashitown.com/",
             logout_url="https://app.hashitown.com/logout",
             marketing_url="https://hashitown.com/",
             privacy_statement_url="https://hashitown.com/privacy",
-            sign_in_audience="AzureADMyOrg",
             support_url="https://support.hashitown.com/",
             terms_of_service_url="https://hashitown.com/terms")
         ```

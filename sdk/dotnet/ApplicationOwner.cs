@@ -32,7 +32,7 @@ namespace Pulumi.AzureAD
     ///         Password = "Ch@ngeMe",
     ///     });
     /// 
-    ///     var exampleJane = new AzureAD.ApplicationOwner("exampleJane", new()
+    ///     var exampleJane = new AzureAD.ApplicationOwner("example_jane", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         OwnerObjectId = jane.ObjectId,
