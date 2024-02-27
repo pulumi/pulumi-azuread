@@ -19,62 +19,62 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/application "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/application"
+//	index/applicationPreAuthorized "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationPreAuthorized"
+//	index/applicationRegistration "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRegistration"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			authorized, err := azuread.NewApplicationRegistration(ctx, "authorized", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example-authorized-app"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			authorizer, err := azuread.NewApplication(ctx, "authorizer", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example-authorizing-app"),
-//				Api: &azuread.ApplicationApiArgs{
-//					Oauth2PermissionScopes: azuread.ApplicationApiOauth2PermissionScopeArray{
-//						&azuread.ApplicationApiOauth2PermissionScopeArgs{
-//							AdminConsentDescription: pulumi.String("Administer the application"),
-//							AdminConsentDisplayName: pulumi.String("Administer"),
-//							Enabled:                 pulumi.Bool(true),
-//							Id:                      pulumi.String("00000000-0000-0000-0000-000000000000"),
-//							Type:                    pulumi.String("Admin"),
-//							Value:                   pulumi.String("administer"),
-//						},
-//						&azuread.ApplicationApiOauth2PermissionScopeArgs{
-//							AdminConsentDescription: pulumi.String("Access the application"),
-//							AdminConsentDisplayName: pulumi.String("Access"),
-//							Enabled:                 pulumi.Bool(true),
-//							Id:                      pulumi.String("11111111-1111-1111-1111-111111111111"),
-//							Type:                    pulumi.String("User"),
-//							UserConsentDescription:  pulumi.String("Access the application"),
-//							UserConsentDisplayName:  pulumi.String("Access"),
-//							Value:                   pulumi.String("user_impersonation"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationPreAuthorized(ctx, "example", &azuread.ApplicationPreAuthorizedArgs{
-//				ApplicationId:      authorizer.ID(),
-//				AuthorizedClientId: authorized.ClientId,
-//				PermissionIds: pulumi.StringArray{
-//					pulumi.String("00000000-0000-0000-0000-000000000000"),
-//					pulumi.String("11111111-1111-1111-1111-111111111111"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// authorized, err := azuread.NewApplicationRegistration(ctx, "authorized", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "example-authorized-app",
+// })
+// if err != nil {
+// return err
+// }
+// authorizer, err := azuread.NewApplication(ctx, "authorizer", &azuread.ApplicationArgs{
+// DisplayName: "example-authorizing-app",
+// Api: map[string]interface{}{
+// "oauth2PermissionScopes": []map[string]interface{}{
+// map[string]interface{}{
+// "adminConsentDescription": "Administer the application",
+// "adminConsentDisplayName": "Administer",
+// "enabled": true,
+// "id": "00000000-0000-0000-0000-000000000000",
+// "type": "Admin",
+// "value": "administer",
+// },
+// map[string]interface{}{
+// "adminConsentDescription": "Access the application",
+// "adminConsentDisplayName": "Access",
+// "enabled": true,
+// "id": "11111111-1111-1111-1111-111111111111",
+// "type": "User",
+// "userConsentDescription": "Access the application",
+// "userConsentDisplayName": "Access",
+// "value": "user_impersonation",
+// },
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationPreAuthorized(ctx, "example", &azuread.ApplicationPreAuthorizedArgs{
+// ApplicationId: authorizer.Id,
+// AuthorizedClientId: authorized.ClientId,
+// PermissionIds: []string{
+// "00000000-0000-0000-0000-000000000000",
+// "11111111-1111-1111-1111-111111111111",
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

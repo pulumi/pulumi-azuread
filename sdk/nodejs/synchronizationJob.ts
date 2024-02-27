@@ -15,49 +15,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
  *
- * ## Example Usage
- *
- * *Basic example*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getApplicationTemplate({
- *     displayName: "Azure Databricks SCIM Provisioning Connector",
- * });
- * const exampleApplication = new azuread.Application("example", {
- *     displayName: "example",
- *     templateId: example.then(example => example.templateId),
- *     featureTags: [{
- *         enterprise: true,
- *         gallery: true,
- *     }],
- * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
- *     applicationId: exampleApplication.applicationId,
- *     useExisting: true,
- * });
- * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("example", {
- *     servicePrincipalId: exampleServicePrincipal.id,
- *     credentials: [
- *         {
- *             key: "BaseAddress",
- *             value: "https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
- *         },
- *         {
- *             key: "SecretToken",
- *             value: "some-token",
- *         },
- *     ],
- * });
- * const exampleSynchronizationJob = new azuread.SynchronizationJob("example", {
- *     servicePrincipalId: exampleServicePrincipal.id,
- *     templateId: "dataBricks",
- *     enabled: true,
- * });
- * ```
- *
  * ## Import
  *
  * Synchronization jobs can be imported using the `id`, e.g.

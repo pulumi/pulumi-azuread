@@ -21,32 +21,6 @@ namespace Pulumi.AzureAD
         /// When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var users = AzureAD.GetUsers.Invoke(new()
-        ///     {
-        ///         UserPrincipalNames = new[]
-        ///         {
-        ///             "kat@example.com",
-        ///             "byte@example.com",
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("azuread:index/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
@@ -61,32 +35,6 @@ namespace Pulumi.AzureAD
         /// When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var users = AzureAD.GetUsers.Invoke(new()
-        ///     {
-        ///         UserPrincipalNames = new[]
-        ///         {
-        ///             "kat@example.com",
-        ///             "byte@example.com",
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("azuread:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());

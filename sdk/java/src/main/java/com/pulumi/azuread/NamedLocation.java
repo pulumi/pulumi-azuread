@@ -36,8 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.azuread.NamedLocation;
  * import com.pulumi.azuread.NamedLocationArgs;
- * import com.pulumi.azuread.inputs.NamedLocationIpArgs;
- * import com.pulumi.azuread.inputs.NamedLocationCountryArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,22 +51,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example_ip = new NamedLocation(&#34;example-ip&#34;, NamedLocationArgs.builder()        
  *             .displayName(&#34;IP Named Location&#34;)
- *             .ip(NamedLocationIpArgs.builder()
- *                 .ipRanges(                
- *                     &#34;1.1.1.1/32&#34;,
- *                     &#34;2.2.2.2/32&#34;)
- *                 .trusted(true)
- *                 .build())
+ *             .ip(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *         var example_country = new NamedLocation(&#34;example-country&#34;, NamedLocationArgs.builder()        
  *             .displayName(&#34;Country Named Location&#34;)
- *             .country(NamedLocationCountryArgs.builder()
- *                 .countriesAndRegions(                
- *                     &#34;GB&#34;,
- *                     &#34;US&#34;)
- *                 .includeUnknownCountriesAndRegions(false)
- *                 .build())
+ *             .country(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }

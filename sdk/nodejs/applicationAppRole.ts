@@ -12,9 +12,9 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  * import * as random from "@pulumi/random";
  *
- * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const exampleAdministrator = new random.RandomUuid("example_administrator", {});
- * const exampleAdminister = new azuread.ApplicationAppRole("example_administer", {
+ * const example = new azuread.index/applicationRegistration.ApplicationRegistration("example", {displayName: "example"});
+ * const exampleAdministrator = new random.index/randomUuid.RandomUuid("example_administrator", {});
+ * const exampleAdminister = new azuread.index/applicationAppRole.ApplicationAppRole("example_administer", {
  *     applicationId: example.id,
  *     roleId: exampleAdministrator.id,
  *     allowedMemberTypes: ["User"],
@@ -32,8 +32,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleAdminister = new azuread.ApplicationAppRole("example_administer", {applicationId: example.id});
+ * const example = new azuread.index/application.Application("example", {displayName: "example"});
+ * const exampleAdminister = new azuread.index/applicationAppRole.ApplicationAppRole("example_administer", {applicationId: example.id});
  * ```
  *
  * ## Import

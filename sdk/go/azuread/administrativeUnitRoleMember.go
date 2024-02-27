@@ -22,52 +22,6 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
-//				UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleAdministrativeUnit, err := azuread.NewAdministrativeUnit(ctx, "example", &azuread.AdministrativeUnitArgs{
-//				DisplayName: pulumi.String("Example-AU"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
-//				DisplayName: pulumi.String("Security administrator"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAdministrativeUnitRoleMember(ctx, "example", &azuread.AdministrativeUnitRoleMemberArgs{
-//				RoleObjectId:               exampleDirectoryRole.ObjectId,
-//				AdministrativeUnitObjectId: exampleAdministrativeUnit.ID(),
-//				MemberObjectId:             *pulumi.String(example.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.

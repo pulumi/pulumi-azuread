@@ -20,29 +20,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/applicationPassword "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationPassword"
+//	index/applicationRegistration "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRegistration"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
-//				ApplicationId: example.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
+// ApplicationId: example.Id,
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // *Time-based rotation*
@@ -52,39 +51,38 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	index/applicationPassword "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationPassword"
+//	index/applicationRegistration "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRegistration"
+//	index/rotating "github.com/pulumi/pulumi-time/sdk/v1/go/time/index/rotating"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleRotating, err := time.NewRotating(ctx, "example", &time.RotatingArgs{
-//				RotationDays: pulumi.Int(7),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
-//				ApplicationId: example.ID(),
-//				RotateWhenChanged: pulumi.StringMap{
-//					"rotation": exampleRotating.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// exampleRotating, err := time.NewRotating(ctx, "example", &time.RotatingArgs{
+// RotationDays: 7,
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
+// ApplicationId: example.Id,
+// RotateWhenChanged: map[string]interface{}{
+// "rotation": exampleRotating.Id,
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

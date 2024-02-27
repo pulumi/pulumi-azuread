@@ -29,25 +29,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/administrativeUnit "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/administrativeUnit"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewAdministrativeUnit(ctx, "example", &azuread.AdministrativeUnitArgs{
-//				DisplayName:             pulumi.String("Example-AU"),
-//				Description:             pulumi.String("Just an example"),
-//				HiddenMembershipEnabled: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewAdministrativeUnit(ctx, "example", &azuread.AdministrativeUnitArgs{
+// DisplayName: "Example-AU",
+// Description: "Just an example",
+// HiddenMembershipEnabled: false,
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

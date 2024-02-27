@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const myPolicy = new azuread.ClaimsMappingPolicy("my_policy", {
+ * const myPolicy = new azuread.index/claimsMappingPolicy.ClaimsMappingPolicy("my_policy", {
  *     definitions: [JSON.stringify({
  *         claimsMappingPolicy: {
  *             claimsSchema: [

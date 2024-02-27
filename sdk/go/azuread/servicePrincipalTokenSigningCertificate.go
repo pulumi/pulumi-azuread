@@ -21,35 +21,35 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/application "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/application"
+//	index/servicePrincipal "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/servicePrincipal"
+//	index/servicePrincipalTokenSigningCertificate "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/servicePrincipalTokenSigningCertificate"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: example.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "example", &azuread.ServicePrincipalTokenSigningCertificateArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+// ApplicationId: example.ApplicationId,
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "example", &azuread.ServicePrincipalTokenSigningCertificateArgs{
+// ServicePrincipalId: exampleServicePrincipal.Id,
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // *Using custom settings*
@@ -59,37 +59,37 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/application "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/application"
+//	index/servicePrincipal "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/servicePrincipal"
+//	index/servicePrincipalTokenSigningCertificate "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/servicePrincipalTokenSigningCertificate"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: example.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "example", &azuread.ServicePrincipalTokenSigningCertificateArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
-//				DisplayName:        pulumi.String("CN=example.com"),
-//				EndDate:            pulumi.String("2023-05-01T01:02:03Z"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+// ApplicationId: example.ApplicationId,
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "example", &azuread.ServicePrincipalTokenSigningCertificateArgs{
+// ServicePrincipalId: exampleServicePrincipal.Id,
+// DisplayName: "CN=example.com",
+// EndDate: "2023-05-01T01:02:03Z",
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

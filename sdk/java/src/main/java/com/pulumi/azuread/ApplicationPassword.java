@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleApplicationPassword = new ApplicationPassword(&#34;exampleApplicationPassword&#34;, ApplicationPasswordArgs.builder()        
  *             .applicationId(example.id())
- *             .rotateWhenChanged(Map.of(&#34;rotation&#34;, exampleRotating.id()))
+ *             .rotateWhenChanged(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }

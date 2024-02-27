@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.AccessPackageCatalog("example", {
+ * const example = new azuread.index/accessPackageCatalog.AccessPackageCatalog("example", {
  *     displayName: "example-access-package-catalog",
  *     description: "Example access package catalog",
  * });

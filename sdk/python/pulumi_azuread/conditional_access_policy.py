@@ -225,103 +225,47 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ConditionalAccessPolicy("example",
-            display_name="example policy",
-            state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                client_app_types=["all"],
-                sign_in_risk_levels=["medium"],
-                user_risk_levels=["medium"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    included_applications=["All"],
-                    excluded_applications=[],
-                ),
-                devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
-                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
-                        mode="exclude",
-                        rule="device.operatingSystem eq \\"Doors\\"",
-                    ),
-                ),
-                locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
-                    included_locations=["All"],
-                    excluded_locations=["AllTrusted"],
-                ),
-                platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(
-                    included_platforms=["android"],
-                    excluded_platforms=["iOS"],
-                ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    included_users=["All"],
-                    excluded_users=["GuestsOrExternalUsers"],
-                ),
-            ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                operator="OR",
-                built_in_controls=["mfa"],
-            ),
-            session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
-                application_enforced_restrictions_enabled=True,
-                disable_resilience_defaults=False,
-                sign_in_frequency=10,
-                sign_in_frequency_period="hours",
-                cloud_app_security_policy="monitorOnly",
-            ))
-        ```
-        ### Included client applications / service principals
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.ConditionalAccessPolicy("example",
-            display_name="example policy",
-            state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    included_applications=["All"],
-                ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
-                    included_service_principals=[current.object_id],
-                    excluded_service_principals=[],
-                ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    included_users=["None"],
-                ),
-            ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                operator="OR",
-                built_in_controls=["block"],
-            ))
-        ```
-        ### Excluded client applications / service principals
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.ConditionalAccessPolicy("example",
-            display_name="example policy",
-            state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    included_applications=["All"],
-                ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
-                    included_service_principals=["ServicePrincipalsInMyTenant"],
-                    excluded_service_principals=[current.object_id],
-                ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    included_users=["None"],
-                ),
-            ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                operator="OR",
-                built_in_controls=["block"],
-            ))
+        example = azuread.index.conditional_access_policy.ConditionalAccessPolicy("example",
+            display_name=example policy,
+            state=disabled,
+            conditions={
+                clientAppTypes: [all],
+                signInRiskLevels: [medium],
+                userRiskLevels: [medium],
+                applications: {
+                    includedApplications: [All],
+                    excludedApplications: [],
+                },
+                devices: {
+                    filter: {
+                        mode: exclude,
+                        rule: device.operatingSystem eq "Doors",
+                    },
+                },
+                locations: {
+                    includedLocations: [All],
+                    excludedLocations: [AllTrusted],
+                },
+                platforms: {
+                    includedPlatforms: [android],
+                    excludedPlatforms: [iOS],
+                },
+                users: {
+                    includedUsers: [All],
+                    excludedUsers: [GuestsOrExternalUsers],
+                },
+            },
+            grant_controls={
+                operator: OR,
+                builtInControls: [mfa],
+            },
+            session_controls={
+                applicationEnforcedRestrictionsEnabled: True,
+                disableResilienceDefaults: False,
+                signInFrequency: 10,
+                signInFrequencyPeriod: hours,
+                cloudAppSecurityPolicy: monitorOnly,
+            })
         ```
 
         ## Import
@@ -368,103 +312,47 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ConditionalAccessPolicy("example",
-            display_name="example policy",
-            state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                client_app_types=["all"],
-                sign_in_risk_levels=["medium"],
-                user_risk_levels=["medium"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    included_applications=["All"],
-                    excluded_applications=[],
-                ),
-                devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
-                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
-                        mode="exclude",
-                        rule="device.operatingSystem eq \\"Doors\\"",
-                    ),
-                ),
-                locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
-                    included_locations=["All"],
-                    excluded_locations=["AllTrusted"],
-                ),
-                platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(
-                    included_platforms=["android"],
-                    excluded_platforms=["iOS"],
-                ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    included_users=["All"],
-                    excluded_users=["GuestsOrExternalUsers"],
-                ),
-            ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                operator="OR",
-                built_in_controls=["mfa"],
-            ),
-            session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
-                application_enforced_restrictions_enabled=True,
-                disable_resilience_defaults=False,
-                sign_in_frequency=10,
-                sign_in_frequency_period="hours",
-                cloud_app_security_policy="monitorOnly",
-            ))
-        ```
-        ### Included client applications / service principals
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.ConditionalAccessPolicy("example",
-            display_name="example policy",
-            state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    included_applications=["All"],
-                ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
-                    included_service_principals=[current.object_id],
-                    excluded_service_principals=[],
-                ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    included_users=["None"],
-                ),
-            ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                operator="OR",
-                built_in_controls=["block"],
-            ))
-        ```
-        ### Excluded client applications / service principals
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.ConditionalAccessPolicy("example",
-            display_name="example policy",
-            state="disabled",
-            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
-                client_app_types=["all"],
-                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    included_applications=["All"],
-                ),
-                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
-                    included_service_principals=["ServicePrincipalsInMyTenant"],
-                    excluded_service_principals=[current.object_id],
-                ),
-                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
-                    included_users=["None"],
-                ),
-            ),
-            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
-                operator="OR",
-                built_in_controls=["block"],
-            ))
+        example = azuread.index.conditional_access_policy.ConditionalAccessPolicy("example",
+            display_name=example policy,
+            state=disabled,
+            conditions={
+                clientAppTypes: [all],
+                signInRiskLevels: [medium],
+                userRiskLevels: [medium],
+                applications: {
+                    includedApplications: [All],
+                    excludedApplications: [],
+                },
+                devices: {
+                    filter: {
+                        mode: exclude,
+                        rule: device.operatingSystem eq "Doors",
+                    },
+                },
+                locations: {
+                    includedLocations: [All],
+                    excludedLocations: [AllTrusted],
+                },
+                platforms: {
+                    includedPlatforms: [android],
+                    excludedPlatforms: [iOS],
+                },
+                users: {
+                    includedUsers: [All],
+                    excludedUsers: [GuestsOrExternalUsers],
+                },
+            },
+            grant_controls={
+                operator: OR,
+                builtInControls: [mfa],
+            },
+            session_controls={
+                applicationEnforcedRestrictionsEnabled: True,
+                disableResilienceDefaults: False,
+                signInFrequency: 10,
+                signInFrequencyPeriod: hours,
+                cloudAppSecurityPolicy: monitorOnly,
+            })
         ```
 
         ## Import

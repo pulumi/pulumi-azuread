@@ -26,17 +26,17 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.AccessPackageCatalog("example", new()
+    ///     var example = new Azuread.Index.AccessPackageCatalog.AccessPackageCatalog("example", new()
     ///     {
     ///         DisplayName = "example-catalog",
     ///         Description = "Example catalog",
     ///     });
     /// 
-    ///     var exampleAccessPackage = new AzureAD.AccessPackage("example", new()
+    ///     var exampleAccessPackage = new Azuread.Index.AccessPackage.AccessPackage("example", new()
     ///     {
     ///         CatalogId = example.Id,
     ///         DisplayName = "access-package",

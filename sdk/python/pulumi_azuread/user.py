@@ -1415,11 +1415,11 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.User("example",
-            user_principal_name="jdoe@example.com",
-            display_name="J. Doe",
-            mail_nickname="jdoe",
-            password="SecretP@sswd99!")
+        example = azuread.index.user.User("example",
+            user_principal_name=jdoe@example.com,
+            display_name=J. Doe,
+            mail_nickname=jdoe,
+            password=SecretP@sswd99!)
         ```
 
         ## Import
@@ -1492,11 +1492,11 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.User("example",
-            user_principal_name="jdoe@example.com",
-            display_name="J. Doe",
-            mail_nickname="jdoe",
-            password="SecretP@sswd99!")
+        example = azuread.index.user.User("example",
+            user_principal_name=jdoe@example.com,
+            display_name=J. Doe,
+            mail_nickname=jdoe,
+            password=SecretP@sswd99!)
         ```
 
         ## Import

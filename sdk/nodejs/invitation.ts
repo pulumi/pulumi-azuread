@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Invitation("example", {
+ * const example = new azuread.index/invitation.Invitation("example", {
  *     userEmailAddress: "jdoe@example.com",
  *     redirectUrl: "https://portal.azure.com",
  * });
@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Invitation("example", {
+ * const example = new azuread.index/invitation.Invitation("example", {
  *     userEmailAddress: "jdoe@example.com",
  *     redirectUrl: "https://portal.azure.com",
  *     message: {
@@ -52,7 +52,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Invitation("example", {
+ * const example = new azuread.index/invitation.Invitation("example", {
  *     userDisplayName: "Bob Bobson",
  *     userEmailAddress: "bbobson@example.com",
  *     redirectUrl: "https://portal.azure.com",

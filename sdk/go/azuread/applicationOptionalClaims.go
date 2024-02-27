@@ -19,52 +19,51 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/applicationOptionalClaims "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationOptionalClaims"
+//	index/applicationRegistration "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRegistration"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationOptionalClaims(ctx, "example", &azuread.ApplicationOptionalClaimsArgs{
-//				ApplicationId: example.ID(),
-//				AccessTokens: azuread.ApplicationOptionalClaimsAccessTokenArray{
-//					&azuread.ApplicationOptionalClaimsAccessTokenArgs{
-//						Name: pulumi.String("myclaim"),
-//					},
-//					&azuread.ApplicationOptionalClaimsAccessTokenArgs{
-//						Name: pulumi.String("otherclaim"),
-//					},
-//				},
-//				IdTokens: azuread.ApplicationOptionalClaimsIdTokenArray{
-//					&azuread.ApplicationOptionalClaimsIdTokenArgs{
-//						Name:      pulumi.String("userclaim"),
-//						Source:    pulumi.String("user"),
-//						Essential: pulumi.Bool(true),
-//						AdditionalProperties: pulumi.StringArray{
-//							pulumi.String("emit_as_roles"),
-//						},
-//					},
-//				},
-//				Saml2Tokens: azuread.ApplicationOptionalClaimsSaml2TokenArray{
-//					&azuread.ApplicationOptionalClaimsSaml2TokenArgs{
-//						Name: pulumi.String("samlexample"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationOptionalClaims(ctx, "example", &azuread.ApplicationOptionalClaimsArgs{
+// ApplicationId: example.Id,
+// AccessTokens: []map[string]interface{}{
+// map[string]interface{}{
+// "name": "myclaim",
+// },
+// map[string]interface{}{
+// "name": "otherclaim",
+// },
+// },
+// IdTokens: []map[string]interface{}{
+// map[string]interface{}{
+// "name": "userclaim",
+// "source": "user",
+// "essential": true,
+// "additionalProperties": []string{
+// "emit_as_roles",
+// },
+// },
+// },
+// Saml2Tokens: []map[string]interface{}{
+// map[string]interface{}{
+// "name": "samlexample",
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

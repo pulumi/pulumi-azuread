@@ -359,37 +359,6 @@ class ApplicationCertificate(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-
-        *Using a PEM certificate*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumi_std as std
-
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_certificate = azuread.ApplicationCertificate("example",
-            application_id=example.id,
-            type="AsymmetricX509Cert",
-            value=std.file(input="cert.pem").result,
-            end_date="2021-05-01T01:02:03Z")
-        ```
-
-        *Using a DER certificate*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumi_std as std
-
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_certificate = azuread.ApplicationCertificate("example",
-            application_id=example.id,
-            type="AsymmetricX509Cert",
-            encoding="base64",
-            value=std.base64encode(input=std.file(input="cert.der").result).result,
-            end_date="2021-05-01T01:02:03Z")
-        ```
         ### Using a certificate from Azure Key Vault
 
         ```python
@@ -397,53 +366,53 @@ class ApplicationCertificate(pulumi.CustomResource):
         import pulumi_azure as azure
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("example", display_name="example")
-        example = azure.keyvault.Certificate("example",
-            name="generated-cert",
-            key_vault_id=example_azurerm_key_vault["id"],
-            certificate_policy=azure.keyvault.CertificateCertificatePolicyArgs(
-                issuer_parameters=azure.keyvault.CertificateCertificatePolicyIssuerParametersArgs(
-                    name="Self",
-                ),
-                key_properties=azure.keyvault.CertificateCertificatePolicyKeyPropertiesArgs(
-                    exportable=True,
-                    key_size=2048,
-                    key_type="RSA",
-                    reuse_key=True,
-                ),
-                lifetime_actions=[azure.keyvault.CertificateCertificatePolicyLifetimeActionArgs(
-                    action=azure.keyvault.CertificateCertificatePolicyLifetimeActionActionArgs(
-                        action_type="AutoRenew",
-                    ),
-                    trigger=azure.keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs(
-                        days_before_expiry=30,
-                    ),
-                )],
-                secret_properties=azure.keyvault.CertificateCertificatePolicySecretPropertiesArgs(
-                    content_type="application/x-pkcs12",
-                ),
-                x509_certificate_properties=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs(
-                    extended_key_usages=["1.3.6.1.5.5.7.3.2"],
-                    key_usages=[
-                        "dataEncipherment",
-                        "digitalSignature",
-                        "keyCertSign",
-                        "keyEncipherment",
+        example_application = azuread.index.application.Application("example", display_name=example)
+        example = azure.keyvault.certificate.Certificate("example",
+            name=generated-cert,
+            key_vault_id=example_azurerm_key_vault.id,
+            certificate_policy={
+                issuerParameters: {
+                    name: Self,
+                },
+                keyProperties: {
+                    exportable: True,
+                    keySize: 2048,
+                    keyType: RSA,
+                    reuseKey: True,
+                },
+                lifetimeActions: [{
+                    action: {
+                        actionType: AutoRenew,
+                    },
+                    trigger: {
+                        daysBeforeExpiry: 30,
+                    },
+                }],
+                secretProperties: {
+                    contentType: application/x-pkcs12,
+                },
+                x509CertificateProperties: {
+                    extendedKeyUsages: [1.3.6.1.5.5.7.3.2],
+                    keyUsages: [
+                        dataEncipherment,
+                        digitalSignature,
+                        keyCertSign,
+                        keyEncipherment,
                     ],
-                    subject_alternative_names=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs(
-                        dns_names=[
-                            "internal.contoso.com",
-                            "domain.hello.world",
+                    subjectAlternativeNames: {
+                        dnsNames: [
+                            internal.contoso.com,
+                            domain.hello.world,
                         ],
-                    ),
-                    subject=f"CN={example_application.name}",
-                    validity_in_months=12,
-                ),
-            ))
-        example_application_certificate = azuread.ApplicationCertificate("example",
+                    },
+                    subject: fCN={example_application.name},
+                    validityInMonths: 12,
+                },
+            })
+        example_application_certificate = azuread.index.application_certificate.ApplicationCertificate("example",
             application_id=example_application.id,
-            type="AsymmetricX509Cert",
-            encoding="hex",
+            type=AsymmetricX509Cert,
+            encoding=hex,
             value=example.certificate_data,
             end_date=example.certificate_attributes[0].expires,
             start_date=example.certificate_attributes[0].not_before)
@@ -483,37 +452,6 @@ class ApplicationCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        *Using a PEM certificate*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumi_std as std
-
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_certificate = azuread.ApplicationCertificate("example",
-            application_id=example.id,
-            type="AsymmetricX509Cert",
-            value=std.file(input="cert.pem").result,
-            end_date="2021-05-01T01:02:03Z")
-        ```
-
-        *Using a DER certificate*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-        import pulumi_std as std
-
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_certificate = azuread.ApplicationCertificate("example",
-            application_id=example.id,
-            type="AsymmetricX509Cert",
-            encoding="base64",
-            value=std.base64encode(input=std.file(input="cert.der").result).result,
-            end_date="2021-05-01T01:02:03Z")
-        ```
         ### Using a certificate from Azure Key Vault
 
         ```python
@@ -521,53 +459,53 @@ class ApplicationCertificate(pulumi.CustomResource):
         import pulumi_azure as azure
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("example", display_name="example")
-        example = azure.keyvault.Certificate("example",
-            name="generated-cert",
-            key_vault_id=example_azurerm_key_vault["id"],
-            certificate_policy=azure.keyvault.CertificateCertificatePolicyArgs(
-                issuer_parameters=azure.keyvault.CertificateCertificatePolicyIssuerParametersArgs(
-                    name="Self",
-                ),
-                key_properties=azure.keyvault.CertificateCertificatePolicyKeyPropertiesArgs(
-                    exportable=True,
-                    key_size=2048,
-                    key_type="RSA",
-                    reuse_key=True,
-                ),
-                lifetime_actions=[azure.keyvault.CertificateCertificatePolicyLifetimeActionArgs(
-                    action=azure.keyvault.CertificateCertificatePolicyLifetimeActionActionArgs(
-                        action_type="AutoRenew",
-                    ),
-                    trigger=azure.keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs(
-                        days_before_expiry=30,
-                    ),
-                )],
-                secret_properties=azure.keyvault.CertificateCertificatePolicySecretPropertiesArgs(
-                    content_type="application/x-pkcs12",
-                ),
-                x509_certificate_properties=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs(
-                    extended_key_usages=["1.3.6.1.5.5.7.3.2"],
-                    key_usages=[
-                        "dataEncipherment",
-                        "digitalSignature",
-                        "keyCertSign",
-                        "keyEncipherment",
+        example_application = azuread.index.application.Application("example", display_name=example)
+        example = azure.keyvault.certificate.Certificate("example",
+            name=generated-cert,
+            key_vault_id=example_azurerm_key_vault.id,
+            certificate_policy={
+                issuerParameters: {
+                    name: Self,
+                },
+                keyProperties: {
+                    exportable: True,
+                    keySize: 2048,
+                    keyType: RSA,
+                    reuseKey: True,
+                },
+                lifetimeActions: [{
+                    action: {
+                        actionType: AutoRenew,
+                    },
+                    trigger: {
+                        daysBeforeExpiry: 30,
+                    },
+                }],
+                secretProperties: {
+                    contentType: application/x-pkcs12,
+                },
+                x509CertificateProperties: {
+                    extendedKeyUsages: [1.3.6.1.5.5.7.3.2],
+                    keyUsages: [
+                        dataEncipherment,
+                        digitalSignature,
+                        keyCertSign,
+                        keyEncipherment,
                     ],
-                    subject_alternative_names=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs(
-                        dns_names=[
-                            "internal.contoso.com",
-                            "domain.hello.world",
+                    subjectAlternativeNames: {
+                        dnsNames: [
+                            internal.contoso.com,
+                            domain.hello.world,
                         ],
-                    ),
-                    subject=f"CN={example_application.name}",
-                    validity_in_months=12,
-                ),
-            ))
-        example_application_certificate = azuread.ApplicationCertificate("example",
+                    },
+                    subject: fCN={example_application.name},
+                    validityInMonths: 12,
+                },
+            })
+        example_application_certificate = azuread.index.application_certificate.ApplicationCertificate("example",
             application_id=example_application.id,
-            type="AsymmetricX509Cert",
-            encoding="hex",
+            type=AsymmetricX509Cert,
+            encoding=hex,
             value=example.certificate_data,
             end_date=example.certificate_attributes[0].expires,
             start_date=example.certificate_attributes[0].not_before)

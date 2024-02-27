@@ -13,8 +13,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const exampleApplicationOptionalClaims = new azuread.ApplicationOptionalClaims("example", {
+ * const example = new azuread.index/applicationRegistration.ApplicationRegistration("example", {displayName: "example"});
+ * const exampleApplicationOptionalClaims = new azuread.index/applicationOptionalClaims.ApplicationOptionalClaims("example", {
  *     applicationId: example.id,
  *     accessTokens: [
  *         {

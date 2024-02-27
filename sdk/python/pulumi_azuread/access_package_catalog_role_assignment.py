@@ -140,23 +140,6 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_get_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
-        example_access_package_catalog = azuread.AccessPackageCatalog("example",
-            display_name="example-access-package-catalog",
-            description="Example access package catalog")
-        example_access_package_catalog_role_assignment = azuread.AccessPackageCatalogRoleAssignment("example",
-            role_id=example_get_access_package_catalog_role.object_id,
-            principal_object_id=example.object_id,
-            catalog_id=example_access_package_catalog.id)
-        ```
-
         ## Import
 
         Catalog role assignments can be imported using the ID of the assignment, e.g.
@@ -187,23 +170,6 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `EntitlementManagement.ReadWrite.All` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_get_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
-        example_access_package_catalog = azuread.AccessPackageCatalog("example",
-            display_name="example-access-package-catalog",
-            description="Example access package catalog")
-        example_access_package_catalog_role_assignment = azuread.AccessPackageCatalogRoleAssignment("example",
-            role_id=example_get_access_package_catalog_role.object_id,
-            principal_object_id=example.object_id,
-            catalog_id=example_access_package_catalog.id)
-        ```
 
         ## Import
 

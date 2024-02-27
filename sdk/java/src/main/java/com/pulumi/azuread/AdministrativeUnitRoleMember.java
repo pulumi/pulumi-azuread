@@ -24,56 +24,6 @@ import javax.annotation.Nullable;
  * 
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
  * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.azuread.AzureadFunctions;
- * import com.pulumi.azuread.inputs.GetUserArgs;
- * import com.pulumi.azuread.AdministrativeUnit;
- * import com.pulumi.azuread.AdministrativeUnitArgs;
- * import com.pulumi.azuread.DirectoryRole;
- * import com.pulumi.azuread.DirectoryRoleArgs;
- * import com.pulumi.azuread.AdministrativeUnitRoleMember;
- * import com.pulumi.azuread.AdministrativeUnitRoleMemberArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
- *             .build());
- * 
- *         var exampleAdministrativeUnit = new AdministrativeUnit(&#34;exampleAdministrativeUnit&#34;, AdministrativeUnitArgs.builder()        
- *             .displayName(&#34;Example-AU&#34;)
- *             .build());
- * 
- *         var exampleDirectoryRole = new DirectoryRole(&#34;exampleDirectoryRole&#34;, DirectoryRoleArgs.builder()        
- *             .displayName(&#34;Security administrator&#34;)
- *             .build());
- * 
- *         var exampleAdministrativeUnitRoleMember = new AdministrativeUnitRoleMember(&#34;exampleAdministrativeUnitRoleMember&#34;, AdministrativeUnitRoleMemberArgs.builder()        
- *             .roleObjectId(exampleDirectoryRole.objectId())
- *             .administrativeUnitObjectId(exampleAdministrativeUnit.id())
- *             .memberObjectId(example.applyValue(getUserResult -&gt; getUserResult.id()))
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.

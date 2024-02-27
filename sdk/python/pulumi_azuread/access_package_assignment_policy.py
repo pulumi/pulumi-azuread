@@ -379,46 +379,46 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Group("example",
-            display_name="group-name",
+        example = azuread.index.group.Group("example",
+            display_name=group-name,
             security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("example",
-            display_name="example-catalog",
-            description="Example catalog")
-        example_access_package = azuread.AccessPackage("example",
+        example_access_package_catalog = azuread.index.access_package_catalog.AccessPackageCatalog("example",
+            display_name=example-catalog,
+            description=Example catalog)
+        example_access_package = azuread.index.access_package.AccessPackage("example",
             catalog_id=example_access_package_catalog.id,
-            display_name="access-package",
-            description="Access Package")
-        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("example",
+            display_name=access-package,
+            description=Access Package)
+        example_access_package_assignment_policy = azuread.index.access_package_assignment_policy.AccessPackageAssignmentPolicy("example",
             access_package_id=example_access_package.id,
-            display_name="assignment-policy",
-            description="My assignment policy",
+            display_name=assignment-policy,
+            description=My assignment policy,
             duration_in_days=90,
-            requestor_settings=azuread.AccessPackageAssignmentPolicyRequestorSettingsArgs(
-                scope_type="AllExistingDirectoryMemberUsers",
-            ),
-            approval_settings=azuread.AccessPackageAssignmentPolicyApprovalSettingsArgs(
-                approval_required=True,
-                approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
-                    approval_timeout_in_days=14,
-                    primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
-                        object_id=example.object_id,
-                        subject_type="groupMembers",
-                    )],
-                )],
-            ),
-            assignment_review_settings=azuread.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs(
-                enabled=True,
-                review_frequency="weekly",
-                duration_in_days=3,
-                review_type="Self",
-                access_review_timeout_behavior="keepAccess",
-            ),
-            questions=[azuread.AccessPackageAssignmentPolicyQuestionArgs(
-                text=azuread.AccessPackageAssignmentPolicyQuestionTextArgs(
-                    default_text="hello, how are you?",
-                ),
-            )])
+            requestor_settings={
+                scopeType: AllExistingDirectoryMemberUsers,
+            },
+            approval_settings={
+                approvalRequired: True,
+                approvalStages: [{
+                    approvalTimeoutInDays: 14,
+                    primaryApprovers: [{
+                        objectId: example.object_id,
+                        subjectType: groupMembers,
+                    }],
+                }],
+            },
+            assignment_review_settings={
+                enabled: True,
+                reviewFrequency: weekly,
+                durationInDays: 3,
+                reviewType: Self,
+                accessReviewTimeoutBehavior: keepAccess,
+            },
+            questions=[{
+                text: {
+                    defaultText: hello, how are you?,
+                },
+            }])
         ```
 
         ## Import
@@ -465,46 +465,46 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Group("example",
-            display_name="group-name",
+        example = azuread.index.group.Group("example",
+            display_name=group-name,
             security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("example",
-            display_name="example-catalog",
-            description="Example catalog")
-        example_access_package = azuread.AccessPackage("example",
+        example_access_package_catalog = azuread.index.access_package_catalog.AccessPackageCatalog("example",
+            display_name=example-catalog,
+            description=Example catalog)
+        example_access_package = azuread.index.access_package.AccessPackage("example",
             catalog_id=example_access_package_catalog.id,
-            display_name="access-package",
-            description="Access Package")
-        example_access_package_assignment_policy = azuread.AccessPackageAssignmentPolicy("example",
+            display_name=access-package,
+            description=Access Package)
+        example_access_package_assignment_policy = azuread.index.access_package_assignment_policy.AccessPackageAssignmentPolicy("example",
             access_package_id=example_access_package.id,
-            display_name="assignment-policy",
-            description="My assignment policy",
+            display_name=assignment-policy,
+            description=My assignment policy,
             duration_in_days=90,
-            requestor_settings=azuread.AccessPackageAssignmentPolicyRequestorSettingsArgs(
-                scope_type="AllExistingDirectoryMemberUsers",
-            ),
-            approval_settings=azuread.AccessPackageAssignmentPolicyApprovalSettingsArgs(
-                approval_required=True,
-                approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
-                    approval_timeout_in_days=14,
-                    primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
-                        object_id=example.object_id,
-                        subject_type="groupMembers",
-                    )],
-                )],
-            ),
-            assignment_review_settings=azuread.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs(
-                enabled=True,
-                review_frequency="weekly",
-                duration_in_days=3,
-                review_type="Self",
-                access_review_timeout_behavior="keepAccess",
-            ),
-            questions=[azuread.AccessPackageAssignmentPolicyQuestionArgs(
-                text=azuread.AccessPackageAssignmentPolicyQuestionTextArgs(
-                    default_text="hello, how are you?",
-                ),
-            )])
+            requestor_settings={
+                scopeType: AllExistingDirectoryMemberUsers,
+            },
+            approval_settings={
+                approvalRequired: True,
+                approvalStages: [{
+                    approvalTimeoutInDays: 14,
+                    primaryApprovers: [{
+                        objectId: example.object_id,
+                        subjectType: groupMembers,
+                    }],
+                }],
+            },
+            assignment_review_settings={
+                enabled: True,
+                reviewFrequency: weekly,
+                durationInDays: 3,
+                reviewType: Self,
+                accessReviewTimeoutBehavior: keepAccess,
+            },
+            questions=[{
+                text: {
+                    defaultText: hello, how are you?,
+                },
+            }])
         ```
 
         ## Import

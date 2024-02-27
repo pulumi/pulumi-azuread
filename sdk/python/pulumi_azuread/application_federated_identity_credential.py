@@ -295,14 +295,14 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("example",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_application_federated_identity_credential = azuread.index.application_federated_identity_credential.ApplicationFederatedIdentityCredential("example",
             application_id=example.id,
-            display_name="my-repo-deploy",
-            description="Deployments for my-repo",
-            audiences=["api://AzureADTokenExchange"],
-            issuer="https://token.actions.githubusercontent.com",
-            subject="repo:my-organization/my-repo:environment:prod")
+            display_name=my-repo-deploy,
+            description=Deployments for my-repo,
+            audiences=[api://AzureADTokenExchange],
+            issuer=https://token.actions.githubusercontent.com,
+            subject=repo:my-organization/my-repo:environment:prod)
         ```
 
         ## Import
@@ -338,14 +338,14 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("example",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_application_federated_identity_credential = azuread.index.application_federated_identity_credential.ApplicationFederatedIdentityCredential("example",
             application_id=example.id,
-            display_name="my-repo-deploy",
-            description="Deployments for my-repo",
-            audiences=["api://AzureADTokenExchange"],
-            issuer="https://token.actions.githubusercontent.com",
-            subject="repo:my-organization/my-repo:environment:prod")
+            display_name=my-repo-deploy,
+            description=Deployments for my-repo,
+            audiences=[api://AzureADTokenExchange],
+            issuer=https://token.actions.githubusercontent.com,
+            subject=repo:my-organization/my-repo:environment:prod)
         ```
 
         ## Import

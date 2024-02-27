@@ -18,64 +18,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
     /// 
-    /// ## Example Usage
-    /// 
-    /// *Basic example*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
-    ///     {
-    ///         DisplayName = "Azure Databricks SCIM Provisioning Connector",
-    ///     });
-    /// 
-    ///     var exampleApplication = new AzureAD.Application("example", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
-    ///         FeatureTags = new[]
-    ///         {
-    ///             new AzureAD.Inputs.ApplicationFeatureTagArgs
-    ///             {
-    ///                 Enterprise = true,
-    ///                 Gallery = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
-    ///     {
-    ///         ApplicationId = exampleApplication.ApplicationId,
-    ///         UseExisting = true,
-    ///     });
-    /// 
-    ///     var exampleSynchronizationSecret = new AzureAD.SynchronizationSecret("example", new()
-    ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.Id,
-    ///         Credentials = new[]
-    ///         {
-    ///             new AzureAD.Inputs.SynchronizationSecretCredentialArgs
-    ///             {
-    ///                 Key = "BaseAddress",
-    ///                 Value = "abc",
-    ///             },
-    ///             new AzureAD.Inputs.SynchronizationSecretCredentialArgs
-    ///             {
-    ///                 Key = "SecretToken",
-    ///                 Value = "some-token",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource does not support importing.

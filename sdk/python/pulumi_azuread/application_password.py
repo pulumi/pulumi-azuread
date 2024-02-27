@@ -317,8 +317,8 @@ class ApplicationPassword(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_password = azuread.ApplicationPassword("example", application_id=example.id)
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_application_password = azuread.index.application_password.ApplicationPassword("example", application_id=example.id)
         ```
 
         *Time-based rotation*
@@ -326,14 +326,14 @@ class ApplicationPassword(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_azuread as azuread
-        import pulumiverse_time as time
+        import pulumi_time as time
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_rotating = time.Rotating("example", rotation_days=7)
-        example_application_password = azuread.ApplicationPassword("example",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_rotating = time.index.rotating.Rotating("example", rotation_days=7)
+        example_application_password = azuread.index.application_password.ApplicationPassword("example",
             application_id=example.id,
             rotate_when_changed={
-                "rotation": example_rotating.id,
+                rotation: example_rotating.id,
             })
         ```
 
@@ -366,8 +366,8 @@ class ApplicationPassword(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_password = azuread.ApplicationPassword("example", application_id=example.id)
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_application_password = azuread.index.application_password.ApplicationPassword("example", application_id=example.id)
         ```
 
         *Time-based rotation*
@@ -375,14 +375,14 @@ class ApplicationPassword(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_azuread as azuread
-        import pulumiverse_time as time
+        import pulumi_time as time
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_rotating = time.Rotating("example", rotation_days=7)
-        example_application_password = azuread.ApplicationPassword("example",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_rotating = time.index.rotating.Rotating("example", rotation_days=7)
+        example_application_password = azuread.index.application_password.ApplicationPassword("example",
             application_id=example.id,
             rotate_when_changed={
-                "rotation": example_rotating.id,
+                rotation: example_rotating.id,
             })
         ```
 

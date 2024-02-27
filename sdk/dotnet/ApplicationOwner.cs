@@ -16,23 +16,23 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new Azuread.Index.ApplicationRegistration.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var jane = new AzureAD.User("jane", new()
+    ///     var jane = new Azuread.Index.User.User("jane", new()
     ///     {
     ///         UserPrincipalName = "jane.fischer@hashitown.com",
     ///         DisplayName = "Jane Fischer",
     ///         Password = "Ch@ngeMe",
     ///     });
     /// 
-    ///     var exampleJane = new AzureAD.ApplicationOwner("example_jane", new()
+    ///     var exampleJane = new Azuread.Index.ApplicationOwner.ApplicationOwner("example_jane", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         OwnerObjectId = jane.ObjectId,

@@ -181,26 +181,26 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_optional_claims = azuread.ApplicationOptionalClaims("example",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_application_optional_claims = azuread.index.application_optional_claims.ApplicationOptionalClaims("example",
             application_id=example.id,
             access_tokens=[
-                azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                    name="myclaim",
-                ),
-                azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                    name="otherclaim",
-                ),
+                {
+                    name: myclaim,
+                },
+                {
+                    name: otherclaim,
+                },
             ],
-            id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
-                name="userclaim",
-                source="user",
-                essential=True,
-                additional_properties=["emit_as_roles"],
-            )],
-            saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
-                name="samlexample",
-            )])
+            id_tokens=[{
+                name: userclaim,
+                source: user,
+                essential: True,
+                additionalProperties: [emit_as_roles],
+            }],
+            saml2_tokens=[{
+                name: samlexample,
+            }])
         ```
 
         ## Import
@@ -233,26 +233,26 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_optional_claims = azuread.ApplicationOptionalClaims("example",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_application_optional_claims = azuread.index.application_optional_claims.ApplicationOptionalClaims("example",
             application_id=example.id,
             access_tokens=[
-                azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                    name="myclaim",
-                ),
-                azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                    name="otherclaim",
-                ),
+                {
+                    name: myclaim,
+                },
+                {
+                    name: otherclaim,
+                },
             ],
-            id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
-                name="userclaim",
-                source="user",
-                essential=True,
-                additional_properties=["emit_as_roles"],
-            )],
-            saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
-                name="samlexample",
-            )])
+            id_tokens=[{
+                name: userclaim,
+                source: user,
+                essential: True,
+                additionalProperties: [emit_as_roles],
+            }],
+            saml2_tokens=[{
+                name: samlexample,
+            }])
         ```
 
         ## Import

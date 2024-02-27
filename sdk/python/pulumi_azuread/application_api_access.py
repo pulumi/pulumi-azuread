@@ -172,37 +172,6 @@ class ApplicationApiAccess(pulumi.CustomResource):
                  scope_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        well_known = azuread.get_application_published_app_ids()
-        msgraph = azuread.get_service_principal(client_id=well_known.result["MicrosoftGraph"])
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_msgraph = azuread.ApplicationApiAccess("example_msgraph",
-            application_id=example.id,
-            api_client_id=well_known.result["MicrosoftGraph"],
-            role_ids=[
-                msgraph.app_role_ids["Group.Read.All"],
-                msgraph.app_role_ids["User.Read.All"],
-            ],
-            scope_ids=[msgraph.oauth2_permission_scope_ids["User.ReadWrite"]])
-        ```
-
-        > **Tip** For managing permissions for an additional API, create another instance of this resource
-
-        *Usage with Application resource*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Application("example", display_name="example")
-        example_application_api_access = azuread.ApplicationApiAccess("example", application_id=example.id)
-        ```
-
         ## Import
 
         Application API Access can be imported using the object ID of the application and the client ID of the API, in the following format.
@@ -227,37 +196,6 @@ class ApplicationApiAccess(pulumi.CustomResource):
                  args: ApplicationApiAccessArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        well_known = azuread.get_application_published_app_ids()
-        msgraph = azuread.get_service_principal(client_id=well_known.result["MicrosoftGraph"])
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_msgraph = azuread.ApplicationApiAccess("example_msgraph",
-            application_id=example.id,
-            api_client_id=well_known.result["MicrosoftGraph"],
-            role_ids=[
-                msgraph.app_role_ids["Group.Read.All"],
-                msgraph.app_role_ids["User.Read.All"],
-            ],
-            scope_ids=[msgraph.oauth2_permission_scope_ids["User.ReadWrite"]])
-        ```
-
-        > **Tip** For managing permissions for an additional API, create another instance of this resource
-
-        *Usage with Application resource*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Application("example", display_name="example")
-        example_application_api_access = azuread.ApplicationApiAccess("example", application_id=example.id)
-        ```
-
         ## Import
 
         Application API Access can be imported using the object ID of the application and the client ID of the API, in the following format.

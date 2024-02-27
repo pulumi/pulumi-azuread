@@ -113,8 +113,8 @@ class ApplicationFallbackPublicClient(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_fallback_public_client = azuread.ApplicationFallbackPublicClient("example",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_application_fallback_public_client = azuread.index.application_fallback_public_client.ApplicationFallbackPublicClient("example",
             application_id=example.id,
             enabled=True)
         ```
@@ -147,8 +147,8 @@ class ApplicationFallbackPublicClient(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_fallback_public_client = azuread.ApplicationFallbackPublicClient("example",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_application_fallback_public_client = azuread.index.application_fallback_public_client.ApplicationFallbackPublicClient("example",
             application_id=example.id,
             enabled=True)
         ```

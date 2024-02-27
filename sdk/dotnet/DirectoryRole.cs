@@ -32,11 +32,11 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.DirectoryRole("example", new()
+    ///     var example = new Azuread.Index.DirectoryRole.DirectoryRole("example", new()
     ///     {
     ///         TemplateId = "00000000-0000-0000-0000-000000000000",
     ///     });
@@ -50,11 +50,11 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.DirectoryRole("example", new()
+    ///     var example = new Azuread.Index.DirectoryRole.DirectoryRole("example", new()
     ///     {
     ///         DisplayName = "Printer administrator",
     ///     });

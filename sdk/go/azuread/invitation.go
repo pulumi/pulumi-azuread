@@ -31,24 +31,22 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/invitation "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/invitation"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
-//				UserEmailAddress: pulumi.String("jdoe@example.com"),
-//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
+// UserEmailAddress: "jdoe@example.com",
+// RedirectUrl: "https://portal.azure.com",
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // *Invitation with standard message*
@@ -58,27 +56,25 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/invitation "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/invitation"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
-//				UserEmailAddress: pulumi.String("jdoe@example.com"),
-//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
-//				Message: &azuread.InvitationMessageArgs{
-//					Language: pulumi.String("en-US"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
+// UserEmailAddress: "jdoe@example.com",
+// RedirectUrl: "https://portal.azure.com",
+// Message: map[string]interface{}{
+// "language": "en-US",
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // *Invitation with custom message body and an additional recipient*
@@ -88,29 +84,27 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/invitation "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/invitation"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
-//				UserDisplayName:  pulumi.String("Bob Bobson"),
-//				UserEmailAddress: pulumi.String("bbobson@example.com"),
-//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
-//				Message: &azuread.InvitationMessageArgs{
-//					AdditionalRecipients: pulumi.String("aaliceberg@example.com"),
-//					Body:                 pulumi.String("Hello there! You are invited to join my Azure tenant!"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
+// UserDisplayName: "Bob Bobson",
+// UserEmailAddress: "bbobson@example.com",
+// RedirectUrl: "https://portal.azure.com",
+// Message: map[string]interface{}{
+// "additionalRecipients": "aaliceberg@example.com",
+// "body": "Hello there! You are invited to join my Azure tenant!",
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

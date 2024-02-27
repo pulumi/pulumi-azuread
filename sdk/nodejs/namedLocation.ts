@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example_ip = new azuread.NamedLocation("example-ip", {
+ * const example_ip = new azuread.index/namedLocation.NamedLocation("example-ip", {
  *     displayName: "IP Named Location",
  *     ip: {
  *         ipRanges: [
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  *         trusted: true,
  *     },
  * });
- * const example_country = new azuread.NamedLocation("example-country", {
+ * const example_country = new azuread.index/namedLocation.NamedLocation("example-country", {
  *     displayName: "Country Named Location",
  *     country: {
  *         countriesAndRegions: [

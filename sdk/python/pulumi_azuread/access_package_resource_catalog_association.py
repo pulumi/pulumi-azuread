@@ -146,16 +146,16 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Group("example",
-            display_name="example-group",
+        example = azuread.index.group.Group("example",
+            display_name=example-group,
             security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("example",
-            display_name="example-catalog",
-            description="Example catalog")
-        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("example",
-            catalog_id=example_catalog["id"],
-            resource_origin_id=example_group["objectId"],
-            resource_origin_system="AadGroup")
+        example_access_package_catalog = azuread.index.access_package_catalog.AccessPackageCatalog("example",
+            display_name=example-catalog,
+            description=Example catalog)
+        example_access_package_resource_catalog_association = azuread.index.access_package_resource_catalog_association.AccessPackageResourceCatalogAssociation("example",
+            catalog_id=example_catalog.id,
+            resource_origin_id=example_group.object_id,
+            resource_origin_system=AadGroup)
         ```
 
         ## Import
@@ -197,16 +197,16 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Group("example",
-            display_name="example-group",
+        example = azuread.index.group.Group("example",
+            display_name=example-group,
             security_enabled=True)
-        example_access_package_catalog = azuread.AccessPackageCatalog("example",
-            display_name="example-catalog",
-            description="Example catalog")
-        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("example",
-            catalog_id=example_catalog["id"],
-            resource_origin_id=example_group["objectId"],
-            resource_origin_system="AadGroup")
+        example_access_package_catalog = azuread.index.access_package_catalog.AccessPackageCatalog("example",
+            display_name=example-catalog,
+            description=Example catalog)
+        example_access_package_resource_catalog_association = azuread.index.access_package_resource_catalog_association.AccessPackageResourceCatalogAssociation("example",
+            catalog_id=example_catalog.id,
+            resource_origin_id=example_group.object_id,
+            resource_origin_system=AadGroup)
         ```
 
         ## Import

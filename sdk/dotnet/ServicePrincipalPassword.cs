@@ -18,21 +18,21 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new Azuread.Index.Application.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new Azuread.Index.ServicePrincipal.ServicePrincipal("example", new()
     ///     {
     ///         ApplicationId = example.ApplicationId,
     ///     });
     /// 
-    ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("example", new()
+    ///     var exampleServicePrincipalPassword = new Azuread.Index.ServicePrincipalPassword.ServicePrincipalPassword("example", new()
     ///     {
     ///         ServicePrincipalId = exampleServicePrincipal.ObjectId,
     ///     });
@@ -46,27 +46,27 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// using Time = Pulumiverse.Time;
+    /// using Azuread = Pulumi.Azuread;
+    /// using Time = Pulumi.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new Azuread.Index.Application.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new Azuread.Index.ServicePrincipal.ServicePrincipal("example", new()
     ///     {
     ///         ApplicationId = example.ApplicationId,
     ///     });
     /// 
-    ///     var exampleRotating = new Time.Rotating("example", new()
+    ///     var exampleRotating = new Time.Index.Rotating.Rotating("example", new()
     ///     {
     ///         RotationDays = 7,
     ///     });
     /// 
-    ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("example", new()
+    ///     var exampleServicePrincipalPassword = new Azuread.Index.ServicePrincipalPassword.ServicePrincipalPassword("example", new()
     ///     {
     ///         ServicePrincipalId = exampleServicePrincipal.ObjectId,
     ///         RotateWhenChanged = 

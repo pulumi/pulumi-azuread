@@ -242,15 +242,15 @@ class ApplicationAppRole(pulumi.CustomResource):
         import pulumi_azuread as azuread
         import pulumi_random as random
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_administrator = random.RandomUuid("example_administrator")
-        example_administer = azuread.ApplicationAppRole("example_administer",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_administrator = random.index.random_uuid.RandomUuid("example_administrator")
+        example_administer = azuread.index.application_app_role.ApplicationAppRole("example_administer",
             application_id=example.id,
             role_id=example_administrator.id,
-            allowed_member_types=["User"],
-            description="My role description",
-            display_name="Administer",
-            value="admin")
+            allowed_member_types=[User],
+            description=My role description,
+            display_name=Administer,
+            value=admin)
         ```
 
         > **Tip** For managing more app roles, create additional instances of this resource
@@ -261,8 +261,8 @@ class ApplicationAppRole(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Application("example", display_name="example")
-        example_administer = azuread.ApplicationAppRole("example_administer", application_id=example.id)
+        example = azuread.index.application.Application("example", display_name=example)
+        example_administer = azuread.index.application_app_role.ApplicationAppRole("example_administer", application_id=example.id)
         ```
 
         ## Import
@@ -298,15 +298,15 @@ class ApplicationAppRole(pulumi.CustomResource):
         import pulumi_azuread as azuread
         import pulumi_random as random
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_administrator = random.RandomUuid("example_administrator")
-        example_administer = azuread.ApplicationAppRole("example_administer",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_administrator = random.index.random_uuid.RandomUuid("example_administrator")
+        example_administer = azuread.index.application_app_role.ApplicationAppRole("example_administer",
             application_id=example.id,
             role_id=example_administrator.id,
-            allowed_member_types=["User"],
-            description="My role description",
-            display_name="Administer",
-            value="admin")
+            allowed_member_types=[User],
+            description=My role description,
+            display_name=Administer,
+            value=admin)
         ```
 
         > **Tip** For managing more app roles, create additional instances of this resource
@@ -317,8 +317,8 @@ class ApplicationAppRole(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Application("example", display_name="example")
-        example_administer = azuread.ApplicationAppRole("example_administer", application_id=example.id)
+        example = azuread.index.application.Application("example", display_name=example)
+        example_administer = azuread.index.application_app_role.ApplicationAppRole("example_administer", application_id=example.id)
         ```
 
         ## Import

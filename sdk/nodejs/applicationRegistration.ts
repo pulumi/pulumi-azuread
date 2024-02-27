@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.ApplicationRegistration("example", {
+ * const example = new azuread.index/applicationRegistration.ApplicationRegistration("example", {
  *     displayName: "Example Application",
  *     description: "My example application",
  *     signInAudience: "AzureADMyOrg",

@@ -72,69 +72,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetAccessPackageResult> getAccessPackage() {
         return getAccessPackage(GetAccessPackageArgs.Empty, InvokeOptions.Empty);
@@ -149,69 +86,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAccessPackageResult> getAccessPackagePlain() {
@@ -228,69 +102,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetAccessPackageResult> getAccessPackage(GetAccessPackageArgs args) {
         return getAccessPackage(args, InvokeOptions.Empty);
@@ -305,69 +116,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAccessPackageResult> getAccessPackagePlain(GetAccessPackagePlainArgs args) {
@@ -384,69 +132,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetAccessPackageResult> getAccessPackage(GetAccessPackageArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getAccessPackage:getAccessPackage", TypeShape.of(GetAccessPackageResult.class), args, Utilities.withVersion(options));
@@ -461,69 +146,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAccessPackageResult> getAccessPackagePlain(GetAccessPackagePlainArgs args, InvokeOptions options) {
@@ -541,68 +163,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetAccessPackageCatalogResult> getAccessPackageCatalog() {
         return getAccessPackageCatalog(GetAccessPackageCatalogArgs.Empty, InvokeOptions.Empty);
@@ -618,68 +178,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogResult> getAccessPackageCatalogPlain() {
@@ -697,68 +195,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetAccessPackageCatalogResult> getAccessPackageCatalog(GetAccessPackageCatalogArgs args) {
         return getAccessPackageCatalog(args, InvokeOptions.Empty);
@@ -774,68 +210,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogResult> getAccessPackageCatalogPlain(GetAccessPackageCatalogPlainArgs args) {
@@ -853,68 +227,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetAccessPackageCatalogResult> getAccessPackageCatalog(GetAccessPackageCatalogArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", TypeShape.of(GetAccessPackageCatalogResult.class), args, Utilities.withVersion(options));
@@ -930,68 +242,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
      * 
      * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by DisplayName*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogResult> getAccessPackageCatalogPlain(GetAccessPackageCatalogPlainArgs args, InvokeOptions options) {
@@ -1009,67 +259,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole() {
@@ -1087,67 +276,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRolePlain() {
@@ -1165,67 +293,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs args) {
@@ -1243,67 +310,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRolePlain(GetAccessPackageCatalogRolePlainArgs args) {
@@ -1321,67 +327,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs args, InvokeOptions options) {
@@ -1399,67 +344,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRolePlain(GetAccessPackageCatalogRolePlainArgs args, InvokeOptions options) {
@@ -1477,67 +361,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetAdministrativeUnitResult> getAdministrativeUnit() {
@@ -1555,67 +378,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAdministrativeUnitResult> getAdministrativeUnitPlain() {
@@ -1633,67 +395,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetAdministrativeUnitResult> getAdministrativeUnit(GetAdministrativeUnitArgs args) {
@@ -1711,67 +412,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAdministrativeUnitResult> getAdministrativeUnitPlain(GetAdministrativeUnitPlainArgs args) {
@@ -1789,67 +429,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetAdministrativeUnitResult> getAdministrativeUnit(GetAdministrativeUnitArgs args, InvokeOptions options) {
@@ -1867,67 +446,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * 
-     * *Look up by display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetAdministrativeUnitResult> getAdministrativeUnitPlain(GetAdministrativeUnitPlainArgs args, InvokeOptions options) {
@@ -1944,37 +462,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetApplicationResult> getApplication() {
         return getApplication(GetApplicationArgs.Empty, InvokeOptions.Empty);
@@ -1989,37 +476,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetApplicationResult> getApplicationPlain() {
@@ -2036,37 +492,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetApplicationResult> getApplication(GetApplicationArgs args) {
         return getApplication(args, InvokeOptions.Empty);
@@ -2081,37 +506,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetApplicationResult> getApplicationPlain(GetApplicationPlainArgs args) {
@@ -2128,37 +522,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetApplicationResult> getApplication(GetApplicationArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
@@ -2174,566 +537,25 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static CompletableFuture<GetApplicationResult> getApplicationPlain(GetApplicationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("azuread:index/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * 
-     * *Listing well-known application IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
-     *     }
-     * }
-     * ```
-     * 
-     * *Granting access to an application*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.ServicePrincipal;
-     * import com.pulumi.azuread.ServicePrincipalArgs;
-     * import com.pulumi.azuread.Application;
-     * import com.pulumi.azuread.ApplicationArgs;
-     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *             .useExisting(true)
-     *             .build());
-     * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
-     *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
-     *                         .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds() {
         return getApplicationPublishedAppIds(InvokeArgs.Empty, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * 
-     * *Listing well-known application IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
-     *     }
-     * }
-     * ```
-     * 
-     * *Granting access to an application*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.ServicePrincipal;
-     * import com.pulumi.azuread.ServicePrincipalArgs;
-     * import com.pulumi.azuread.Application;
-     * import com.pulumi.azuread.ApplicationArgs;
-     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *             .useExisting(true)
-     *             .build());
-     * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
-     *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
-     *                         .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIdsPlain() {
         return getApplicationPublishedAppIdsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * 
-     * *Listing well-known application IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
-     *     }
-     * }
-     * ```
-     * 
-     * *Granting access to an application*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.ServicePrincipal;
-     * import com.pulumi.azuread.ServicePrincipalArgs;
-     * import com.pulumi.azuread.Application;
-     * import com.pulumi.azuread.ApplicationArgs;
-     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *             .useExisting(true)
-     *             .build());
-     * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
-     *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
-     *                         .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds(InvokeArgs args) {
         return getApplicationPublishedAppIds(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * 
-     * *Listing well-known application IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
-     *     }
-     * }
-     * ```
-     * 
-     * *Granting access to an application*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.ServicePrincipal;
-     * import com.pulumi.azuread.ServicePrincipalArgs;
-     * import com.pulumi.azuread.Application;
-     * import com.pulumi.azuread.ApplicationArgs;
-     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *             .useExisting(true)
-     *             .build());
-     * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
-     *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
-     *                         .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIdsPlain(InvokeArgs args) {
         return getApplicationPublishedAppIdsPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * 
-     * *Listing well-known application IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
-     *     }
-     * }
-     * ```
-     * 
-     * *Granting access to an application*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.ServicePrincipal;
-     * import com.pulumi.azuread.ServicePrincipalArgs;
-     * import com.pulumi.azuread.Application;
-     * import com.pulumi.azuread.ApplicationArgs;
-     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *             .useExisting(true)
-     *             .build());
-     * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
-     *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
-     *                         .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", TypeShape.of(GetApplicationPublishedAppIdsResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * 
-     * *Listing well-known application IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
-     *     }
-     * }
-     * ```
-     * 
-     * *Granting access to an application*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.ServicePrincipal;
-     * import com.pulumi.azuread.ServicePrincipalArgs;
-     * import com.pulumi.azuread.Application;
-     * import com.pulumi.azuread.ApplicationArgs;
-     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
-     * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *             .useExisting(true)
-     *             .build());
-     * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
-     *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
-     *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
-     *                         .build())
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIdsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", TypeShape.of(GetApplicationPublishedAppIdsResult.class), args, Utilities.withVersion(options));
     }
@@ -2743,37 +565,6 @@ public final class AzureadFunctions {
      * ## API Permissions
      * 
      * This data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetApplicationTemplateResult> getApplicationTemplate() {
@@ -2786,37 +577,6 @@ public final class AzureadFunctions {
      * 
      * This data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static CompletableFuture<GetApplicationTemplateResult> getApplicationTemplatePlain() {
         return getApplicationTemplatePlain(GetApplicationTemplatePlainArgs.Empty, InvokeOptions.Empty);
@@ -2827,37 +587,6 @@ public final class AzureadFunctions {
      * ## API Permissions
      * 
      * This data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetApplicationTemplateResult> getApplicationTemplate(GetApplicationTemplateArgs args) {
@@ -2870,37 +599,6 @@ public final class AzureadFunctions {
      * 
      * This data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static CompletableFuture<GetApplicationTemplateResult> getApplicationTemplatePlain(GetApplicationTemplatePlainArgs args) {
         return getApplicationTemplatePlain(args, InvokeOptions.Empty);
@@ -2911,37 +609,6 @@ public final class AzureadFunctions {
      * ## API Permissions
      * 
      * This data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetApplicationTemplateResult> getApplicationTemplate(GetApplicationTemplateArgs args, InvokeOptions options) {
@@ -2954,37 +621,6 @@ public final class AzureadFunctions {
      * 
      * This data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static CompletableFuture<GetApplicationTemplateResult> getApplicationTemplatePlain(GetApplicationTemplatePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("azuread:index/getApplicationTemplate:getApplicationTemplate", TypeShape.of(GetApplicationTemplateResult.class), args, Utilities.withVersion(options));
@@ -2995,34 +631,6 @@ public final class AzureadFunctions {
      * ## API Permissions
      * 
      * No additional roles are required to use this data source.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig() {
@@ -3035,34 +643,6 @@ public final class AzureadFunctions {
      * 
      * No additional roles are required to use this data source.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain() {
         return getClientConfigPlain(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -3073,34 +653,6 @@ public final class AzureadFunctions {
      * ## API Permissions
      * 
      * No additional roles are required to use this data source.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args) {
@@ -3113,34 +665,6 @@ public final class AzureadFunctions {
      * 
      * No additional roles are required to use this data source.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args) {
         return getClientConfigPlain(args, InvokeOptions.Empty);
@@ -3152,34 +676,6 @@ public final class AzureadFunctions {
      * 
      * No additional roles are required to use this data source.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
@@ -3190,34 +686,6 @@ public final class AzureadFunctions {
      * ## API Permissions
      * 
      * No additional roles are required to use this data source.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
-     * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args, InvokeOptions options) {
@@ -3234,38 +702,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up and output type of object by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
-     *     }
-     * }
-     * ```
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -3288,38 +724,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up and output type of object by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
-     *     }
-     * }
-     * ```
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -3342,38 +746,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up and output type of object by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
-     *     }
-     * }
-     * ```
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -3396,38 +768,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up and output type of object by ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
-     *     }
-     * }
-     * ```
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -3450,34 +790,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates() {
         return getDirectoryRoleTemplates(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -3492,34 +804,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplatesPlain() {
@@ -3536,34 +820,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(InvokeArgs args) {
         return getDirectoryRoleTemplates(args, InvokeOptions.Empty);
@@ -3578,34 +834,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplatesPlain(InvokeArgs args) {
@@ -3622,34 +850,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", TypeShape.of(GetDirectoryRoleTemplatesResult.class), args, Utilities.withVersion(options));
@@ -3664,34 +864,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplatesPlain(InvokeArgs args, InvokeOptions options) {
@@ -3708,34 +880,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetDirectoryRolesResult> getDirectoryRoles() {
         return getDirectoryRoles(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -3750,34 +894,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDirectoryRolesResult> getDirectoryRolesPlain() {
@@ -3794,34 +910,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetDirectoryRolesResult> getDirectoryRoles(InvokeArgs args) {
         return getDirectoryRoles(args, InvokeOptions.Empty);
@@ -3836,34 +924,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDirectoryRolesResult> getDirectoryRolesPlain(InvokeArgs args) {
@@ -3880,34 +940,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetDirectoryRolesResult> getDirectoryRoles(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getDirectoryRoles:getDirectoryRoles", TypeShape.of(GetDirectoryRolesResult.class), args, Utilities.withVersion(options));
@@ -3922,34 +954,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
-     * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDirectoryRolesResult> getDirectoryRolesPlain(InvokeArgs args, InvokeOptions options) {
@@ -3966,35 +970,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
-     * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetDomainsResult> getDomains() {
         return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
@@ -4009,35 +984,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
-     * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
@@ -4054,35 +1000,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
-     * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
         return getDomains(args, InvokeOptions.Empty);
@@ -4097,35 +1014,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
-     * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
@@ -4142,35 +1030,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
-     * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
@@ -4185,35 +1044,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
-     * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
@@ -4231,36 +1061,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGroupResult> getGroup() {
@@ -4278,36 +1078,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain() {
@@ -4325,36 +1095,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args) {
@@ -4372,36 +1112,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args) {
@@ -4419,36 +1129,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args, InvokeOptions options) {
@@ -4466,36 +1146,6 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
-     * ### By Group Display Name)
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args, InvokeOptions options) {
@@ -4512,163 +1162,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by group name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by display name prefix*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all mail-enabled groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(true)
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all security-enabled groups that are not mail-enabled*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(false)
-     *             .returnAll(true)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetGroupsResult> getGroups() {
         return getGroups(GetGroupsArgs.Empty, InvokeOptions.Empty);
@@ -4683,163 +1176,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by group name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by display name prefix*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all mail-enabled groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(true)
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all security-enabled groups that are not mail-enabled*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(false)
-     *             .returnAll(true)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
@@ -4856,163 +1192,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by group name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by display name prefix*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all mail-enabled groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(true)
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all security-enabled groups that are not mail-enabled*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(false)
-     *             .returnAll(true)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
         return getGroups(args, InvokeOptions.Empty);
@@ -5027,163 +1206,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by group name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by display name prefix*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all mail-enabled groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(true)
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all security-enabled groups that are not mail-enabled*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(false)
-     *             .returnAll(true)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -5200,163 +1222,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by group name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by display name prefix*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all mail-enabled groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(true)
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all security-enabled groups that are not mail-enabled*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(false)
-     *             .returnAll(true)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
@@ -5371,163 +1236,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by group name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by display name prefix*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all mail-enabled groups*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(true)
-     *             .returnAll(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up all security-enabled groups that are not mail-enabled*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .mailEnabled(false)
-     *             .returnAll(true)
-     *             .securityEnabled(true)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
@@ -5544,35 +1252,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
-     *             .displayName(&#34;My Named Location&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -5610,35 +1289,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
-     *             .displayName(&#34;My Named Location&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -5676,35 +1326,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
-     *             .displayName(&#34;My Named Location&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -5742,35 +1363,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
-     *             .displayName(&#34;My Named Location&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -5808,98 +1400,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by application display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by client ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal() {
         return getServicePrincipal(GetServicePrincipalArgs.Empty, InvokeOptions.Empty);
@@ -5914,98 +1414,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by application display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by client ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain() {
@@ -6022,98 +1430,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by application display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by client ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal(GetServicePrincipalArgs args) {
         return getServicePrincipal(args, InvokeOptions.Empty);
@@ -6128,98 +1444,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by application display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by client ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain(GetServicePrincipalPlainArgs args) {
@@ -6236,98 +1460,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by application display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by client ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal(GetServicePrincipalArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getServicePrincipal:getServicePrincipal", TypeShape.of(GetServicePrincipalResult.class), args, Utilities.withVersion(options));
@@ -6342,98 +1474,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by application display name*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by client ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object ID*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain(GetServicePrincipalPlainArgs args, InvokeOptions options) {
@@ -6450,106 +1490,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by application display names*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by application IDs (client IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetServicePrincipalsResult> getServicePrincipals() {
         return getServicePrincipals(GetServicePrincipalsArgs.Empty, InvokeOptions.Empty);
@@ -6564,106 +1504,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by application display names*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by application IDs (client IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetServicePrincipalsResult> getServicePrincipalsPlain() {
@@ -6680,106 +1520,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by application display names*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by application IDs (client IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetServicePrincipalsResult> getServicePrincipals(GetServicePrincipalsArgs args) {
         return getServicePrincipals(args, InvokeOptions.Empty);
@@ -6794,106 +1534,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by application display names*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by application IDs (client IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetServicePrincipalsResult> getServicePrincipalsPlain(GetServicePrincipalsPlainArgs args) {
@@ -6910,106 +1550,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * 
-     * *Look up by application display names*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by application IDs (client IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetServicePrincipalsResult> getServicePrincipals(GetServicePrincipalsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getServicePrincipals:getServicePrincipals", TypeShape.of(GetServicePrincipalsResult.class), args, Utilities.withVersion(options));
@@ -7024,106 +1564,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * 
-     * *Look up by application display names*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by application IDs (client IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     * *Look up by service principal object IDs*
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
-     *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetServicePrincipalsResult> getServicePrincipalsPlain(GetServicePrincipalsPlainArgs args, InvokeOptions options) {
@@ -7140,36 +1580,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUserResult> getUser() {
         return getUser(GetUserArgs.Empty, InvokeOptions.Empty);
@@ -7184,36 +1594,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain() {
@@ -7230,36 +1610,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
         return getUser(args, InvokeOptions.Empty);
@@ -7274,36 +1624,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -7320,36 +1640,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getUser:getUser", TypeShape.of(GetUserResult.class), args, Utilities.withVersion(options));
@@ -7364,36 +1654,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
@@ -7410,38 +1670,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
-     *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUsersResult> getUsers() {
         return getUsers(GetUsersArgs.Empty, InvokeOptions.Empty);
@@ -7456,38 +1684,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
-     *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain() {
@@ -7504,38 +1700,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
-     *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
         return getUsers(args, InvokeOptions.Empty);
@@ -7550,38 +1714,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
-     *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
@@ -7598,38 +1730,6 @@ public final class AzureadFunctions {
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
-     *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
@@ -7644,38 +1744,6 @@ public final class AzureadFunctions {
      * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.azuread.AzureadFunctions;
-     * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
-     *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {

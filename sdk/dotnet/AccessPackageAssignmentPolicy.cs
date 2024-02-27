@@ -26,74 +26,74 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Group("example", new()
+    ///     var example = new Azuread.Index.Group.Group("example", new()
     ///     {
     ///         DisplayName = "group-name",
     ///         SecurityEnabled = true,
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("example", new()
+    ///     var exampleAccessPackageCatalog = new Azuread.Index.AccessPackageCatalog.AccessPackageCatalog("example", new()
     ///     {
     ///         DisplayName = "example-catalog",
     ///         Description = "Example catalog",
     ///     });
     /// 
-    ///     var exampleAccessPackage = new AzureAD.AccessPackage("example", new()
+    ///     var exampleAccessPackage = new Azuread.Index.AccessPackage.AccessPackage("example", new()
     ///     {
     ///         CatalogId = exampleAccessPackageCatalog.Id,
     ///         DisplayName = "access-package",
     ///         Description = "Access Package",
     ///     });
     /// 
-    ///     var exampleAccessPackageAssignmentPolicy = new AzureAD.AccessPackageAssignmentPolicy("example", new()
+    ///     var exampleAccessPackageAssignmentPolicy = new Azuread.Index.AccessPackageAssignmentPolicy.AccessPackageAssignmentPolicy("example", new()
     ///     {
     ///         AccessPackageId = exampleAccessPackage.Id,
     ///         DisplayName = "assignment-policy",
     ///         Description = "My assignment policy",
     ///         DurationInDays = 90,
-    ///         RequestorSettings = new AzureAD.Inputs.AccessPackageAssignmentPolicyRequestorSettingsArgs
+    ///         RequestorSettings = 
     ///         {
-    ///             ScopeType = "AllExistingDirectoryMemberUsers",
+    ///             { "scopeType", "AllExistingDirectoryMemberUsers" },
     ///         },
-    ///         ApprovalSettings = new AzureAD.Inputs.AccessPackageAssignmentPolicyApprovalSettingsArgs
+    ///         ApprovalSettings = 
     ///         {
-    ///             ApprovalRequired = true,
-    ///             ApprovalStages = new[]
+    ///             { "approvalRequired", true },
+    ///             { "approvalStages", new[]
     ///             {
-    ///                 new AzureAD.Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs
+    ///                 
     ///                 {
-    ///                     ApprovalTimeoutInDays = 14,
-    ///                     PrimaryApprovers = new[]
+    ///                     { "approvalTimeoutInDays", 14 },
+    ///                     { "primaryApprovers", new[]
     ///                     {
-    ///                         new AzureAD.Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs
+    ///                         
     ///                         {
-    ///                             ObjectId = example.ObjectId,
-    ///                             SubjectType = "groupMembers",
+    ///                             { "objectId", example.ObjectId },
+    ///                             { "subjectType", "groupMembers" },
     ///                         },
-    ///                     },
+    ///                     } },
     ///                 },
-    ///             },
+    ///             } },
     ///         },
-    ///         AssignmentReviewSettings = new AzureAD.Inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs
+    ///         AssignmentReviewSettings = 
     ///         {
-    ///             Enabled = true,
-    ///             ReviewFrequency = "weekly",
-    ///             DurationInDays = 3,
-    ///             ReviewType = "Self",
-    ///             AccessReviewTimeoutBehavior = "keepAccess",
+    ///             { "enabled", true },
+    ///             { "reviewFrequency", "weekly" },
+    ///             { "durationInDays", 3 },
+    ///             { "reviewType", "Self" },
+    ///             { "accessReviewTimeoutBehavior", "keepAccess" },
     ///         },
     ///         Questions = new[]
     ///         {
-    ///             new AzureAD.Inputs.AccessPackageAssignmentPolicyQuestionArgs
+    ///             
     ///             {
-    ///                 Text = new AzureAD.Inputs.AccessPackageAssignmentPolicyQuestionTextArgs
+    ///                 { "text", 
     ///                 {
-    ///                     DefaultText = "hello, how are you?",
-    ///                 },
+    ///                     { "defaultText", "hello, how are you?" },
+    ///                 } },
     ///             },
     ///         },
     ///     });

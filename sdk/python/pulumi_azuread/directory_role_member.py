@@ -112,19 +112,6 @@ class DirectoryRoleMember(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_directory_role = azuread.DirectoryRole("example", display_name="Security administrator")
-        example_directory_role_member = azuread.DirectoryRoleMember("example",
-            role_object_id=example_directory_role.object_id,
-            member_object_id=example.object_id)
-        ```
-
         ## Import
 
         Directory role members can be imported using the object ID of the role and the object ID of the member, e.g.
@@ -158,19 +145,6 @@ class DirectoryRoleMember(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_directory_role = azuread.DirectoryRole("example", display_name="Security administrator")
-        example_directory_role_member = azuread.DirectoryRoleMember("example",
-            role_object_id=example_directory_role.object_id,
-            member_object_id=example.object_id)
-        ```
 
         ## Import
 

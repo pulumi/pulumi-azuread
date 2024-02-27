@@ -24,36 +24,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = AzureAD.GetUser.Invoke(new()
-    ///     {
-    ///         UserPrincipalName = "jdoe@example.com",
-    ///     });
-    /// 
-    ///     var exampleGroup = new AzureAD.Group("example", new()
-    ///     {
-    ///         DisplayName = "my_group",
-    ///         SecurityEnabled = true,
-    ///     });
-    /// 
-    ///     var exampleGroupMember = new AzureAD.GroupMember("example", new()
-    ///     {
-    ///         GroupObjectId = exampleGroup.Id,
-    ///         MemberObjectId = example.Apply(getUserResult =&gt; getUserResult.Id),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Group members can be imported using the object ID of the group and the object ID of the member, e.g.

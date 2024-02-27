@@ -24,56 +24,6 @@ import javax.annotation.Nullable;
  * 
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
  * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.azuread.AzureadFunctions;
- * import com.pulumi.azuread.inputs.GetUserArgs;
- * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
- * import com.pulumi.azuread.AccessPackageCatalog;
- * import com.pulumi.azuread.AccessPackageCatalogArgs;
- * import com.pulumi.azuread.AccessPackageCatalogRoleAssignment;
- * import com.pulumi.azuread.AccessPackageCatalogRoleAssignmentArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
- *             .build());
- * 
- *         final var exampleGetAccessPackageCatalogRole = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
- *             .displayName(&#34;Catalog owner&#34;)
- *             .build());
- * 
- *         var exampleAccessPackageCatalog = new AccessPackageCatalog(&#34;exampleAccessPackageCatalog&#34;, AccessPackageCatalogArgs.builder()        
- *             .displayName(&#34;example-access-package-catalog&#34;)
- *             .description(&#34;Example access package catalog&#34;)
- *             .build());
- * 
- *         var exampleAccessPackageCatalogRoleAssignment = new AccessPackageCatalogRoleAssignment(&#34;exampleAccessPackageCatalogRoleAssignment&#34;, AccessPackageCatalogRoleAssignmentArgs.builder()        
- *             .roleId(exampleGetAccessPackageCatalogRole.applyValue(getAccessPackageCatalogRoleResult -&gt; getAccessPackageCatalogRoleResult.objectId()))
- *             .principalObjectId(example.applyValue(getUserResult -&gt; getUserResult.objectId()))
- *             .catalogId(exampleAccessPackageCatalog.id())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Catalog role assignments can be imported using the ID of the assignment, e.g.

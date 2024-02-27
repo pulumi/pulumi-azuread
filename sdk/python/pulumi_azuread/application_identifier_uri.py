@@ -104,10 +104,10 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_identifier_uri = azuread.ApplicationIdentifierUri("example",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_application_identifier_uri = azuread.index.application_identifier_uri.ApplicationIdentifierUri("example",
             application_id=example.id,
-            identifier_uri="https://app.hashitown.com")
+            identifier_uri=https://app.hashitown.com)
         ```
 
         > **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
@@ -118,8 +118,8 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Application("example", display_name="example")
-        example_application_identifier_uri = azuread.ApplicationIdentifierUri("example", application_id=example.id)
+        example = azuread.index.application.Application("example", display_name=example)
+        example_application_identifier_uri = azuread.index.application_identifier_uri.ApplicationIdentifierUri("example", application_id=example.id)
         ```
 
         ## Import
@@ -148,10 +148,10 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_application_identifier_uri = azuread.ApplicationIdentifierUri("example",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_application_identifier_uri = azuread.index.application_identifier_uri.ApplicationIdentifierUri("example",
             application_id=example.id,
-            identifier_uri="https://app.hashitown.com")
+            identifier_uri=https://app.hashitown.com)
         ```
 
         > **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
@@ -162,8 +162,8 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Application("example", display_name="example")
-        example_application_identifier_uri = azuread.ApplicationIdentifierUri("example", application_id=example.id)
+        example = azuread.index.application.Application("example", display_name=example)
+        example_application_identifier_uri = azuread.index.application_identifier_uri.ApplicationIdentifierUri("example", application_id=example.id)
         ```
 
         ## Import

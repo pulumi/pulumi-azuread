@@ -34,23 +34,21 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/directoryRole "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/directoryRole"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
-//				TemplateId: pulumi.String("00000000-0000-0000-0000-000000000000"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
+// TemplateId: "00000000-0000-0000-0000-000000000000",
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // *Activate a directory role by display name*
@@ -60,23 +58,21 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/directoryRole "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/directoryRole"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
-//				DisplayName: pulumi.String("Printer administrator"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
+// DisplayName: "Printer administrator",
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

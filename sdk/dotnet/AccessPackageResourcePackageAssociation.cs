@@ -26,37 +26,37 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Group("example", new()
+    ///     var example = new Azuread.Index.Group.Group("example", new()
     ///     {
     ///         DisplayName = "example-group",
     ///         SecurityEnabled = true,
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("example", new()
+    ///     var exampleAccessPackageCatalog = new Azuread.Index.AccessPackageCatalog.AccessPackageCatalog("example", new()
     ///     {
     ///         DisplayName = "example-catalog",
     ///         Description = "Example catalog",
     ///     });
     /// 
-    ///     var exampleAccessPackageResourceCatalogAssociation = new AzureAD.AccessPackageResourceCatalogAssociation("example", new()
+    ///     var exampleAccessPackageResourceCatalogAssociation = new Azuread.Index.AccessPackageResourceCatalogAssociation.AccessPackageResourceCatalogAssociation("example", new()
     ///     {
     ///         CatalogId = exampleCatalog.Id,
     ///         ResourceOriginId = exampleGroup.ObjectId,
     ///         ResourceOriginSystem = "AadGroup",
     ///     });
     /// 
-    ///     var exampleAccessPackage = new AzureAD.AccessPackage("example", new()
+    ///     var exampleAccessPackage = new Azuread.Index.AccessPackage.AccessPackage("example", new()
     ///     {
     ///         DisplayName = "example-package",
     ///         Description = "Example Package",
     ///         CatalogId = exampleCatalog.Id,
     ///     });
     /// 
-    ///     var exampleAccessPackageResourcePackageAssociation = new AzureAD.AccessPackageResourcePackageAssociation("example", new()
+    ///     var exampleAccessPackageResourcePackageAssociation = new Azuread.Index.AccessPackageResourcePackageAssociation.AccessPackageResourcePackageAssociation("example", new()
     ///     {
     ///         AccessPackageId = exampleAccessPackage.Id,
     ///         CatalogResourceAssociationId = exampleAccessPackageResourceCatalogAssociation.Id,

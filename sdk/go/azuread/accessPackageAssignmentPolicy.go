@@ -29,79 +29,80 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/accessPackage "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/accessPackage"
+//	index/accessPackageAssignmentPolicy "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/accessPackageAssignmentPolicy"
+//	index/accessPackageCatalog "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/accessPackageCatalog"
+//	index/group "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/group"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
-//				DisplayName:     pulumi.String("group-name"),
-//				SecurityEnabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "example", &azuread.AccessPackageCatalogArgs{
-//				DisplayName: pulumi.String("example-catalog"),
-//				Description: pulumi.String("Example catalog"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleAccessPackage, err := azuread.NewAccessPackage(ctx, "example", &azuread.AccessPackageArgs{
-//				CatalogId:   exampleAccessPackageCatalog.ID(),
-//				DisplayName: pulumi.String("access-package"),
-//				Description: pulumi.String("Access Package"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAccessPackageAssignmentPolicy(ctx, "example", &azuread.AccessPackageAssignmentPolicyArgs{
-//				AccessPackageId: exampleAccessPackage.ID(),
-//				DisplayName:     pulumi.String("assignment-policy"),
-//				Description:     pulumi.String("My assignment policy"),
-//				DurationInDays:  pulumi.Int(90),
-//				RequestorSettings: &azuread.AccessPackageAssignmentPolicyRequestorSettingsArgs{
-//					ScopeType: pulumi.String("AllExistingDirectoryMemberUsers"),
-//				},
-//				ApprovalSettings: &azuread.AccessPackageAssignmentPolicyApprovalSettingsArgs{
-//					ApprovalRequired: pulumi.Bool(true),
-//					ApprovalStages: azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArray{
-//						&azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs{
-//							ApprovalTimeoutInDays: pulumi.Int(14),
-//							PrimaryApprovers: azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray{
-//								&azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs{
-//									ObjectId:    example.ObjectId,
-//									SubjectType: pulumi.String("groupMembers"),
-//								},
-//							},
-//						},
-//					},
-//				},
-//				AssignmentReviewSettings: &azuread.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs{
-//					Enabled:                     pulumi.Bool(true),
-//					ReviewFrequency:             pulumi.String("weekly"),
-//					DurationInDays:              pulumi.Int(3),
-//					ReviewType:                  pulumi.String("Self"),
-//					AccessReviewTimeoutBehavior: pulumi.String("keepAccess"),
-//				},
-//				Questions: azuread.AccessPackageAssignmentPolicyQuestionArray{
-//					&azuread.AccessPackageAssignmentPolicyQuestionArgs{
-//						Text: &azuread.AccessPackageAssignmentPolicyQuestionTextArgs{
-//							DefaultText: pulumi.String("hello, how are you?"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
+// DisplayName: "group-name",
+// SecurityEnabled: true,
+// })
+// if err != nil {
+// return err
+// }
+// exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "example", &azuread.AccessPackageCatalogArgs{
+// DisplayName: "example-catalog",
+// Description: "Example catalog",
+// })
+// if err != nil {
+// return err
+// }
+// exampleAccessPackage, err := azuread.NewAccessPackage(ctx, "example", &azuread.AccessPackageArgs{
+// CatalogId: exampleAccessPackageCatalog.Id,
+// DisplayName: "access-package",
+// Description: "Access Package",
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewAccessPackageAssignmentPolicy(ctx, "example", &azuread.AccessPackageAssignmentPolicyArgs{
+// AccessPackageId: exampleAccessPackage.Id,
+// DisplayName: "assignment-policy",
+// Description: "My assignment policy",
+// DurationInDays: 90,
+// RequestorSettings: map[string]interface{}{
+// "scopeType": "AllExistingDirectoryMemberUsers",
+// },
+// ApprovalSettings: map[string]interface{}{
+// "approvalRequired": true,
+// "approvalStages": []map[string]interface{}{
+// map[string]interface{}{
+// "approvalTimeoutInDays": 14,
+// "primaryApprovers": []map[string]interface{}{
+// map[string]interface{}{
+// "objectId": example.ObjectId,
+// "subjectType": "groupMembers",
+// },
+// },
+// },
+// },
+// },
+// AssignmentReviewSettings: map[string]interface{}{
+// "enabled": true,
+// "reviewFrequency": "weekly",
+// "durationInDays": 3,
+// "reviewType": "Self",
+// "accessReviewTimeoutBehavior": "keepAccess",
+// },
+// Questions: []map[string]interface{}{
+// map[string]interface{}{
+// "text": map[string]interface{}{
+// "defaultText": "hello, how are you?",
+// },
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

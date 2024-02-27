@@ -19,36 +19,35 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/applicationFederatedIdentityCredential "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationFederatedIdentityCredential"
+//	index/applicationRegistration "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRegistration"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationFederatedIdentityCredential(ctx, "example", &azuread.ApplicationFederatedIdentityCredentialArgs{
-//				ApplicationId: example.ID(),
-//				DisplayName:   pulumi.String("my-repo-deploy"),
-//				Description:   pulumi.String("Deployments for my-repo"),
-//				Audiences: pulumi.StringArray{
-//					pulumi.String("api://AzureADTokenExchange"),
-//				},
-//				Issuer:  pulumi.String("https://token.actions.githubusercontent.com"),
-//				Subject: pulumi.String("repo:my-organization/my-repo:environment:prod"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationFederatedIdentityCredential(ctx, "example", &azuread.ApplicationFederatedIdentityCredentialArgs{
+// ApplicationId: example.Id,
+// DisplayName: "my-repo-deploy",
+// Description: "Deployments for my-repo",
+// Audiences: []string{
+// "api://AzureADTokenExchange",
+// },
+// Issuer: "https://token.actions.githubusercontent.com",
+// Subject: "repo:my-organization/my-repo:environment:prod",
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

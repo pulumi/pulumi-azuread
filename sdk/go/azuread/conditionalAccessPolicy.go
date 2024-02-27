@@ -32,200 +32,83 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/conditionalAccessPolicy "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/conditionalAccessPolicy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewConditionalAccessPolicy(ctx, "example", &azuread.ConditionalAccessPolicyArgs{
-//				DisplayName: pulumi.String("example policy"),
-//				State:       pulumi.String("disabled"),
-//				Conditions: &azuread.ConditionalAccessPolicyConditionsArgs{
-//					ClientAppTypes: pulumi.StringArray{
-//						pulumi.String("all"),
-//					},
-//					SignInRiskLevels: pulumi.StringArray{
-//						pulumi.String("medium"),
-//					},
-//					UserRiskLevels: pulumi.StringArray{
-//						pulumi.String("medium"),
-//					},
-//					Applications: &azuread.ConditionalAccessPolicyConditionsApplicationsArgs{
-//						IncludedApplications: pulumi.StringArray{
-//							pulumi.String("All"),
-//						},
-//						ExcludedApplications: pulumi.StringArray{},
-//					},
-//					Devices: &azuread.ConditionalAccessPolicyConditionsDevicesArgs{
-//						Filter: &azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs{
-//							Mode: pulumi.String("exclude"),
-//							Rule: pulumi.String("device.operatingSystem eq \"Doors\""),
-//						},
-//					},
-//					Locations: &azuread.ConditionalAccessPolicyConditionsLocationsArgs{
-//						IncludedLocations: pulumi.StringArray{
-//							pulumi.String("All"),
-//						},
-//						ExcludedLocations: pulumi.StringArray{
-//							pulumi.String("AllTrusted"),
-//						},
-//					},
-//					Platforms: &azuread.ConditionalAccessPolicyConditionsPlatformsArgs{
-//						IncludedPlatforms: pulumi.StringArray{
-//							pulumi.String("android"),
-//						},
-//						ExcludedPlatforms: pulumi.StringArray{
-//							pulumi.String("iOS"),
-//						},
-//					},
-//					Users: &azuread.ConditionalAccessPolicyConditionsUsersArgs{
-//						IncludedUsers: pulumi.StringArray{
-//							pulumi.String("All"),
-//						},
-//						ExcludedUsers: pulumi.StringArray{
-//							pulumi.String("GuestsOrExternalUsers"),
-//						},
-//					},
-//				},
-//				GrantControls: &azuread.ConditionalAccessPolicyGrantControlsArgs{
-//					Operator: pulumi.String("OR"),
-//					BuiltInControls: pulumi.StringArray{
-//						pulumi.String("mfa"),
-//					},
-//				},
-//				SessionControls: &azuread.ConditionalAccessPolicySessionControlsArgs{
-//					ApplicationEnforcedRestrictionsEnabled: pulumi.Bool(true),
-//					DisableResilienceDefaults:              pulumi.Bool(false),
-//					SignInFrequency:                        pulumi.Int(10),
-//					SignInFrequencyPeriod:                  pulumi.String("hours"),
-//					CloudAppSecurityPolicy:                 pulumi.String("monitorOnly"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Included client applications / service principals
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := azuread.GetClientConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewConditionalAccessPolicy(ctx, "example", &azuread.ConditionalAccessPolicyArgs{
-//				DisplayName: pulumi.String("example policy"),
-//				State:       pulumi.String("disabled"),
-//				Conditions: &azuread.ConditionalAccessPolicyConditionsArgs{
-//					ClientAppTypes: pulumi.StringArray{
-//						pulumi.String("all"),
-//					},
-//					Applications: &azuread.ConditionalAccessPolicyConditionsApplicationsArgs{
-//						IncludedApplications: pulumi.StringArray{
-//							pulumi.String("All"),
-//						},
-//					},
-//					ClientApplications: &azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs{
-//						IncludedServicePrincipals: pulumi.StringArray{
-//							*pulumi.String(current.ObjectId),
-//						},
-//						ExcludedServicePrincipals: pulumi.StringArray{},
-//					},
-//					Users: &azuread.ConditionalAccessPolicyConditionsUsersArgs{
-//						IncludedUsers: pulumi.StringArray{
-//							pulumi.String("None"),
-//						},
-//					},
-//				},
-//				GrantControls: &azuread.ConditionalAccessPolicyGrantControlsArgs{
-//					Operator: pulumi.String("OR"),
-//					BuiltInControls: pulumi.StringArray{
-//						pulumi.String("block"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Excluded client applications / service principals
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := azuread.GetClientConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewConditionalAccessPolicy(ctx, "example", &azuread.ConditionalAccessPolicyArgs{
-//				DisplayName: pulumi.String("example policy"),
-//				State:       pulumi.String("disabled"),
-//				Conditions: &azuread.ConditionalAccessPolicyConditionsArgs{
-//					ClientAppTypes: pulumi.StringArray{
-//						pulumi.String("all"),
-//					},
-//					Applications: &azuread.ConditionalAccessPolicyConditionsApplicationsArgs{
-//						IncludedApplications: pulumi.StringArray{
-//							pulumi.String("All"),
-//						},
-//					},
-//					ClientApplications: &azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs{
-//						IncludedServicePrincipals: pulumi.StringArray{
-//							pulumi.String("ServicePrincipalsInMyTenant"),
-//						},
-//						ExcludedServicePrincipals: pulumi.StringArray{
-//							*pulumi.String(current.ObjectId),
-//						},
-//					},
-//					Users: &azuread.ConditionalAccessPolicyConditionsUsersArgs{
-//						IncludedUsers: pulumi.StringArray{
-//							pulumi.String("None"),
-//						},
-//					},
-//				},
-//				GrantControls: &azuread.ConditionalAccessPolicyGrantControlsArgs{
-//					Operator: pulumi.String("OR"),
-//					BuiltInControls: pulumi.StringArray{
-//						pulumi.String("block"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewConditionalAccessPolicy(ctx, "example", &azuread.ConditionalAccessPolicyArgs{
+// DisplayName: "example policy",
+// State: "disabled",
+// Conditions: map[string]interface{}{
+// "clientAppTypes": []string{
+// "all",
+// },
+// "signInRiskLevels": []string{
+// "medium",
+// },
+// "userRiskLevels": []string{
+// "medium",
+// },
+// "applications": map[string]interface{}{
+// "includedApplications": []string{
+// "All",
+// },
+// "excludedApplications": []interface{}{
+// },
+// },
+// "devices": map[string]interface{}{
+// "filter": map[string]interface{}{
+// "mode": "exclude",
+// "rule": "device.operatingSystem eq \"Doors\"",
+// },
+// },
+// "locations": map[string]interface{}{
+// "includedLocations": []string{
+// "All",
+// },
+// "excludedLocations": []string{
+// "AllTrusted",
+// },
+// },
+// "platforms": map[string]interface{}{
+// "includedPlatforms": []string{
+// "android",
+// },
+// "excludedPlatforms": []string{
+// "iOS",
+// },
+// },
+// "users": map[string]interface{}{
+// "includedUsers": []string{
+// "All",
+// },
+// "excludedUsers": []string{
+// "GuestsOrExternalUsers",
+// },
+// },
+// },
+// GrantControls: map[string]interface{}{
+// "operator": "OR",
+// "builtInControls": []string{
+// "mfa",
+// },
+// },
+// SessionControls: map[string]interface{}{
+// "applicationEnforcedRestrictionsEnabled": true,
+// "disableResilienceDefaults": false,
+// "signInFrequency": 10,
+// "signInFrequencyPeriod": "hours",
+// "cloudAppSecurityPolicy": "monitorOnly",
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

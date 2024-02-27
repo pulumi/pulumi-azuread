@@ -19,41 +19,40 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	index/applicationAppRole "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationAppRole"
+//	index/applicationRegistration "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRegistration"
+//	index/randomUuid "github.com/pulumi/pulumi-random/sdk/v1/go/random/index/randomUuid"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleAdministrator, err := random.NewRandomUuid(ctx, "example_administrator", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
-//				ApplicationId: example.ID(),
-//				RoleId:        exampleAdministrator.ID(),
-//				AllowedMemberTypes: pulumi.StringArray{
-//					pulumi.String("User"),
-//				},
-//				Description: pulumi.String("My role description"),
-//				DisplayName: pulumi.String("Administer"),
-//				Value:       pulumi.String("admin"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// exampleAdministrator, err := random.NewRandomUuid(ctx, "example_administrator", nil)
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
+// ApplicationId: example.Id,
+// RoleId: exampleAdministrator.Id,
+// AllowedMemberTypes: []string{
+// "User",
+// },
+// Description: "My role description",
+// DisplayName: "Administer",
+// Value: "admin",
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // > **Tip** For managing more app roles, create additional instances of this resource
@@ -65,29 +64,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/application "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/application"
+//	index/applicationAppRole "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationAppRole"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
-//				ApplicationId: example.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
+// ApplicationId: example.Id,
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

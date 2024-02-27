@@ -271,9 +271,9 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
-        example_service_principal_password = azuread.ServicePrincipalPassword("example", service_principal_id=example_service_principal.object_id)
+        example = azuread.index.application.Application("example", display_name=example)
+        example_service_principal = azuread.index.service_principal.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_password = azuread.index.service_principal_password.ServicePrincipalPassword("example", service_principal_id=example_service_principal.object_id)
         ```
 
         *Time-based rotation*
@@ -281,15 +281,15 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_azuread as azuread
-        import pulumiverse_time as time
+        import pulumi_time as time
 
-        example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
-        example_rotating = time.Rotating("example", rotation_days=7)
-        example_service_principal_password = azuread.ServicePrincipalPassword("example",
+        example = azuread.index.application.Application("example", display_name=example)
+        example_service_principal = azuread.index.service_principal.ServicePrincipal("example", application_id=example.application_id)
+        example_rotating = time.index.rotating.Rotating("example", rotation_days=7)
+        example_service_principal_password = azuread.index.service_principal_password.ServicePrincipalPassword("example",
             service_principal_id=example_service_principal.object_id,
             rotate_when_changed={
-                "rotation": example_rotating.id,
+                rotation: example_rotating.id,
             })
         ```
 
@@ -321,9 +321,9 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
-        example_service_principal_password = azuread.ServicePrincipalPassword("example", service_principal_id=example_service_principal.object_id)
+        example = azuread.index.application.Application("example", display_name=example)
+        example_service_principal = azuread.index.service_principal.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_password = azuread.index.service_principal_password.ServicePrincipalPassword("example", service_principal_id=example_service_principal.object_id)
         ```
 
         *Time-based rotation*
@@ -331,15 +331,15 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_azuread as azuread
-        import pulumiverse_time as time
+        import pulumi_time as time
 
-        example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
-        example_rotating = time.Rotating("example", rotation_days=7)
-        example_service_principal_password = azuread.ServicePrincipalPassword("example",
+        example = azuread.index.application.Application("example", display_name=example)
+        example_service_principal = azuread.index.service_principal.ServicePrincipal("example", application_id=example.application_id)
+        example_rotating = time.index.rotating.Rotating("example", rotation_days=7)
+        example_service_principal_password = azuread.index.service_principal_password.ServicePrincipalPassword("example",
             service_principal_id=example_service_principal.object_id,
             rotate_when_changed={
-                "rotation": example_rotating.id,
+                rotation: example_rotating.id,
             })
         ```
 

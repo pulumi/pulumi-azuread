@@ -21,25 +21,25 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Group("example", {
+ * const example = new azuread.index/group.Group("example", {
  *     displayName: "example-group",
  *     securityEnabled: true,
  * });
- * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("example", {
+ * const exampleAccessPackageCatalog = new azuread.index/accessPackageCatalog.AccessPackageCatalog("example", {
  *     displayName: "example-catalog",
  *     description: "Example catalog",
  * });
- * const exampleAccessPackageResourceCatalogAssociation = new azuread.AccessPackageResourceCatalogAssociation("example", {
+ * const exampleAccessPackageResourceCatalogAssociation = new azuread.index/accessPackageResourceCatalogAssociation.AccessPackageResourceCatalogAssociation("example", {
  *     catalogId: exampleCatalog.id,
  *     resourceOriginId: exampleGroup.objectId,
  *     resourceOriginSystem: "AadGroup",
  * });
- * const exampleAccessPackage = new azuread.AccessPackage("example", {
+ * const exampleAccessPackage = new azuread.index/accessPackage.AccessPackage("example", {
  *     displayName: "example-package",
  *     description: "Example Package",
  *     catalogId: exampleCatalog.id,
  * });
- * const exampleAccessPackageResourcePackageAssociation = new azuread.AccessPackageResourcePackageAssociation("example", {
+ * const exampleAccessPackageResourcePackageAssociation = new azuread.index/accessPackageResourcePackageAssociation.AccessPackageResourcePackageAssociation("example", {
  *     accessPackageId: exampleAccessPackage.id,
  *     catalogResourceAssociationId: exampleAccessPackageResourceCatalogAssociation.id,
  * });

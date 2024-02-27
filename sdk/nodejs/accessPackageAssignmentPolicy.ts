@@ -23,20 +23,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Group("example", {
+ * const example = new azuread.index/group.Group("example", {
  *     displayName: "group-name",
  *     securityEnabled: true,
  * });
- * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("example", {
+ * const exampleAccessPackageCatalog = new azuread.index/accessPackageCatalog.AccessPackageCatalog("example", {
  *     displayName: "example-catalog",
  *     description: "Example catalog",
  * });
- * const exampleAccessPackage = new azuread.AccessPackage("example", {
+ * const exampleAccessPackage = new azuread.index/accessPackage.AccessPackage("example", {
  *     catalogId: exampleAccessPackageCatalog.id,
  *     displayName: "access-package",
  *     description: "Access Package",
  * });
- * const exampleAccessPackageAssignmentPolicy = new azuread.AccessPackageAssignmentPolicy("example", {
+ * const exampleAccessPackageAssignmentPolicy = new azuread.index/accessPackageAssignmentPolicy.AccessPackageAssignmentPolicy("example", {
  *     accessPackageId: exampleAccessPackage.id,
  *     displayName: "assignment-policy",
  *     description: "My assignment policy",

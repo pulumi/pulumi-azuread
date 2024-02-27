@@ -136,32 +136,32 @@ class ApplicationRedirectUris(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_public = azuread.ApplicationRedirectUris("example_public",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_public = azuread.index.application_redirect_uris.ApplicationRedirectUris("example_public",
             application_id=example.id,
-            type="PublicClient",
+            type=PublicClient,
             redirect_uris=[
-                "myapp://auth",
-                "sample.mobile.app.bundie.id://auth",
-                "https://login.microsoftonline.com/common/oauth2/nativeclient",
-                "https://login.live.com/oauth20_desktop.srf",
-                "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222",
-                "urn:ietf:wg:oauth:2.0:foo",
+                myapp://auth,
+                sample.mobile.app.bundie.id://auth,
+                https://login.microsoftonline.com/common/oauth2/nativeclient,
+                https://login.live.com/oauth20_desktop.srf,
+                ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222,
+                urn:ietf:wg:oauth:2.0:foo,
             ])
-        example_spa = azuread.ApplicationRedirectUris("example_spa",
+        example_spa = azuread.index.application_redirect_uris.ApplicationRedirectUris("example_spa",
             application_id=example.id,
-            type="SPA",
+            type=SPA,
             redirect_uris=[
-                "https://mobile.hashitown.com/",
-                "https://beta.hashitown.com/",
+                https://mobile.hashitown.com/,
+                https://beta.hashitown.com/,
             ])
-        example_web = azuread.ApplicationRedirectUris("example_web",
+        example_web = azuread.index.application_redirect_uris.ApplicationRedirectUris("example_web",
             application_id=example.id,
-            type="Web",
+            type=Web,
             redirect_uris=[
-                "https://app.hashitown.com/",
-                "https://classic.hashitown.com/",
-                "urn:ietf:wg:oauth:2.0:oob",
+                https://app.hashitown.com/,
+                https://classic.hashitown.com/,
+                urn:ietf:wg:oauth:2.0:oob,
             ])
         ```
 
@@ -192,32 +192,32 @@ class ApplicationRedirectUris(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        example_public = azuread.ApplicationRedirectUris("example_public",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        example_public = azuread.index.application_redirect_uris.ApplicationRedirectUris("example_public",
             application_id=example.id,
-            type="PublicClient",
+            type=PublicClient,
             redirect_uris=[
-                "myapp://auth",
-                "sample.mobile.app.bundie.id://auth",
-                "https://login.microsoftonline.com/common/oauth2/nativeclient",
-                "https://login.live.com/oauth20_desktop.srf",
-                "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222",
-                "urn:ietf:wg:oauth:2.0:foo",
+                myapp://auth,
+                sample.mobile.app.bundie.id://auth,
+                https://login.microsoftonline.com/common/oauth2/nativeclient,
+                https://login.live.com/oauth20_desktop.srf,
+                ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222,
+                urn:ietf:wg:oauth:2.0:foo,
             ])
-        example_spa = azuread.ApplicationRedirectUris("example_spa",
+        example_spa = azuread.index.application_redirect_uris.ApplicationRedirectUris("example_spa",
             application_id=example.id,
-            type="SPA",
+            type=SPA,
             redirect_uris=[
-                "https://mobile.hashitown.com/",
-                "https://beta.hashitown.com/",
+                https://mobile.hashitown.com/,
+                https://beta.hashitown.com/,
             ])
-        example_web = azuread.ApplicationRedirectUris("example_web",
+        example_web = azuread.index.application_redirect_uris.ApplicationRedirectUris("example_web",
             application_id=example.id,
-            type="Web",
+            type=Web,
             redirect_uris=[
-                "https://app.hashitown.com/",
-                "https://classic.hashitown.com/",
-                "urn:ietf:wg:oauth:2.0:oob",
+                https://app.hashitown.com/,
+                https://classic.hashitown.com/,
+                urn:ietf:wg:oauth:2.0:oob,
             ])
         ```
 

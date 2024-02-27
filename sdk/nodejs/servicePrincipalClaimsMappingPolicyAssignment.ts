@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const app = new azuread.ServicePrincipalClaimsMappingPolicyAssignment("app", {
+ * const app = new azuread.index/servicePrincipalClaimsMappingPolicyAssignment.ServicePrincipalClaimsMappingPolicyAssignment("app", {
  *     claimsMappingPolicyId: myPolicy.id,
  *     servicePrincipalId: myPrincipal.id,
  * });

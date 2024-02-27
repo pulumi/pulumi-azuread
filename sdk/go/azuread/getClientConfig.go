@@ -16,31 +16,6 @@ import (
 // ## API Permissions
 //
 // No additional roles are required to use this data source.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := azuread.GetClientConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("objectId", current.ObjectId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetClientConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClientConfigResult

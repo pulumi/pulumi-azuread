@@ -26,11 +26,11 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var app = new AzureAD.ServicePrincipalClaimsMappingPolicyAssignment("app", new()
+    ///     var app = new Azuread.Index.ServicePrincipalClaimsMappingPolicyAssignment.ServicePrincipalClaimsMappingPolicyAssignment("app", new()
     ///     {
     ///         ClaimsMappingPolicyId = myPolicy.Id,
     ///         ServicePrincipalId = myPrincipal.Id,

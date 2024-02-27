@@ -26,11 +26,11 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.AdministrativeUnit("example", new()
+    ///     var example = new Azuread.Index.AdministrativeUnit.AdministrativeUnit("example", new()
     ///     {
     ///         DisplayName = "Example-AU",
     ///         Description = "Just an example",

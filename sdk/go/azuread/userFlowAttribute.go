@@ -29,25 +29,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/userFlowAttribute "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/userFlowAttribute"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewUserFlowAttribute(ctx, "example", &azuread.UserFlowAttributeArgs{
-//				DisplayName: pulumi.String("Hobby"),
-//				Description: pulumi.String("Your hobby"),
-//				DataType:    pulumi.String("string"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewUserFlowAttribute(ctx, "example", &azuread.UserFlowAttributeArgs{
+// DisplayName: "Hobby",
+// Description: "Your hobby",
+// DataType: "string",
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

@@ -26,7 +26,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.ApplicationRegistrationArgs;
  * import com.pulumi.azuread.Application;
  * import com.pulumi.azuread.ApplicationArgs;
- * import com.pulumi.azuread.inputs.ApplicationApiArgs;
  * import com.pulumi.azuread.ApplicationPreAuthorized;
  * import com.pulumi.azuread.ApplicationPreAuthorizedArgs;
  * import java.util.List;
@@ -48,27 +47,7 @@ import javax.annotation.Nullable;
  * 
  *         var authorizer = new Application(&#34;authorizer&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example-authorizing-app&#34;)
- *             .api(ApplicationApiArgs.builder()
- *                 .oauth2PermissionScopes(                
- *                     ApplicationApiOauth2PermissionScopeArgs.builder()
- *                         .adminConsentDescription(&#34;Administer the application&#34;)
- *                         .adminConsentDisplayName(&#34;Administer&#34;)
- *                         .enabled(true)
- *                         .id(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *                         .type(&#34;Admin&#34;)
- *                         .value(&#34;administer&#34;)
- *                         .build(),
- *                     ApplicationApiOauth2PermissionScopeArgs.builder()
- *                         .adminConsentDescription(&#34;Access the application&#34;)
- *                         .adminConsentDisplayName(&#34;Access&#34;)
- *                         .enabled(true)
- *                         .id(&#34;11111111-1111-1111-1111-111111111111&#34;)
- *                         .type(&#34;User&#34;)
- *                         .userConsentDescription(&#34;Access the application&#34;)
- *                         .userConsentDisplayName(&#34;Access&#34;)
- *                         .value(&#34;user_impersonation&#34;)
- *                         .build())
- *                 .build())
+ *             .api(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *         var example = new ApplicationPreAuthorized(&#34;example&#34;, ApplicationPreAuthorizedArgs.builder()        

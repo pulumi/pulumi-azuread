@@ -13,95 +13,6 @@ import (
 )
 
 // ## Example Usage
-//
-// *Using a PEM certificate*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "cert.pem",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-//				ApplicationId: example.ID(),
-//				Type:          pulumi.String("AsymmetricX509Cert"),
-//				Value:         invokeFile.Result,
-//				EndDate:       pulumi.String("2021-05-01T01:02:03Z"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// *Using a DER certificate*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-// DisplayName: pulumi.String("example"),
-// })
-// if err != nil {
-// return err
-// }
-// invokeBase64encode, err := std.Base64encode(ctx, invokeFile1, err := std.File(ctx, &std.FileArgs{
-// Input: "cert.der",
-// }, nil)
-// if err != nil {
-// return err
-// }
-// &std.Base64encodeArgs{
-// Input: invokeFile1.Result,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// _, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-// ApplicationId: example.ID(),
-// Type: pulumi.String("AsymmetricX509Cert"),
-// Encoding: pulumi.String("base64"),
-// Value: invokeBase64encode.Result,
-// EndDate: pulumi.String("2021-05-01T01:02:03Z"),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
-// ```
 // ### Using a certificate from Azure Key Vault
 //
 // ```go
@@ -111,89 +22,84 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-azure/sdk/v5/go/azure/keyvault"
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	keyvault/certificate "github.com/pulumi/pulumi-azure/sdk/v1/go/azure/keyvault/certificate"
+//	index/application "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/application"
+//	index/applicationCertificate "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationCertificate"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			example, err := keyvault.NewCertificate(ctx, "example", &keyvault.CertificateArgs{
-//				Name:       pulumi.String("generated-cert"),
-//				KeyVaultId: pulumi.Any(exampleAzurermKeyVault.Id),
-//				CertificatePolicy: &keyvault.CertificateCertificatePolicyArgs{
-//					IssuerParameters: &keyvault.CertificateCertificatePolicyIssuerParametersArgs{
-//						Name: pulumi.String("Self"),
-//					},
-//					KeyProperties: &keyvault.CertificateCertificatePolicyKeyPropertiesArgs{
-//						Exportable: pulumi.Bool(true),
-//						KeySize:    pulumi.Int(2048),
-//						KeyType:    pulumi.String("RSA"),
-//						ReuseKey:   pulumi.Bool(true),
-//					},
-//					LifetimeActions: keyvault.CertificateCertificatePolicyLifetimeActionArray{
-//						&keyvault.CertificateCertificatePolicyLifetimeActionArgs{
-//							Action: &keyvault.CertificateCertificatePolicyLifetimeActionActionArgs{
-//								ActionType: pulumi.String("AutoRenew"),
-//							},
-//							Trigger: &keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs{
-//								DaysBeforeExpiry: pulumi.Int(30),
-//							},
-//						},
-//					},
-//					SecretProperties: &keyvault.CertificateCertificatePolicySecretPropertiesArgs{
-//						ContentType: pulumi.String("application/x-pkcs12"),
-//					},
-//					X509CertificateProperties: &keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs{
-//						ExtendedKeyUsages: pulumi.StringArray{
-//							pulumi.String("1.3.6.1.5.5.7.3.2"),
-//						},
-//						KeyUsages: pulumi.StringArray{
-//							pulumi.String("dataEncipherment"),
-//							pulumi.String("digitalSignature"),
-//							pulumi.String("keyCertSign"),
-//							pulumi.String("keyEncipherment"),
-//						},
-//						SubjectAlternativeNames: &keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs{
-//							DnsNames: pulumi.StringArray{
-//								pulumi.String("internal.contoso.com"),
-//								pulumi.String("domain.hello.world"),
-//							},
-//						},
-//						Subject:          pulumi.String(fmt.Sprintf("CN=%v", exampleApplication.Name)),
-//						ValidityInMonths: pulumi.Int(12),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-//				ApplicationId: exampleApplication.ID(),
-//				Type:          pulumi.String("AsymmetricX509Cert"),
-//				Encoding:      pulumi.String("hex"),
-//				Value:         example.CertificateData,
-//				EndDate: example.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (*string, error) {
-//					return &certificateAttributes[0].Expires, nil
-//				}).(pulumi.StringPtrOutput),
-//				StartDate: example.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (*string, error) {
-//					return &certificateAttributes[0].NotBefore, nil
-//				}).(pulumi.StringPtrOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// example, err := keyvault/certificate.NewCertificate(ctx, "example", &keyvault/certificate.CertificateArgs{
+// Name: "generated-cert",
+// KeyVaultId: exampleAzurermKeyVault.Id,
+// CertificatePolicy: map[string]interface{}{
+// "issuerParameters": map[string]interface{}{
+// "name": "Self",
+// },
+// "keyProperties": map[string]interface{}{
+// "exportable": true,
+// "keySize": 2048,
+// "keyType": "RSA",
+// "reuseKey": true,
+// },
+// "lifetimeActions": []map[string]interface{}{
+// map[string]interface{}{
+// "action": map[string]interface{}{
+// "actionType": "AutoRenew",
+// },
+// "trigger": map[string]interface{}{
+// "daysBeforeExpiry": 30,
+// },
+// },
+// },
+// "secretProperties": map[string]interface{}{
+// "contentType": "application/x-pkcs12",
+// },
+// "x509CertificateProperties": map[string]interface{}{
+// "extendedKeyUsages": []string{
+// "1.3.6.1.5.5.7.3.2",
+// },
+// "keyUsages": []string{
+// "dataEncipherment",
+// "digitalSignature",
+// "keyCertSign",
+// "keyEncipherment",
+// },
+// "subjectAlternativeNames": map[string]interface{}{
+// "dnsNames": []string{
+// "internal.contoso.com",
+// "domain.hello.world",
+// },
+// },
+// "subject": fmt.Sprintf("CN=%v", exampleApplication.Name),
+// "validityInMonths": 12,
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
+// ApplicationId: exampleApplication.Id,
+// Type: "AsymmetricX509Cert",
+// Encoding: "hex",
+// Value: example.CertificateData,
+// EndDate: example.CertificateAttributes[0].Expires,
+// StartDate: example.CertificateAttributes[0].NotBefore,
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

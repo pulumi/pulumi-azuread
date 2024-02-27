@@ -29,39 +29,39 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/accessPackageCatalog "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/accessPackageCatalog"
+//	index/accessPackageResourceCatalogAssociation "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/accessPackageResourceCatalogAssociation"
+//	index/group "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/group"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
-//				DisplayName:     pulumi.String("example-group"),
-//				SecurityEnabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAccessPackageCatalog(ctx, "example", &azuread.AccessPackageCatalogArgs{
-//				DisplayName: pulumi.String("example-catalog"),
-//				Description: pulumi.String("Example catalog"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAccessPackageResourceCatalogAssociation(ctx, "example", &azuread.AccessPackageResourceCatalogAssociationArgs{
-//				CatalogId:            pulumi.Any(exampleCatalog.Id),
-//				ResourceOriginId:     pulumi.Any(exampleGroup.ObjectId),
-//				ResourceOriginSystem: pulumi.String("AadGroup"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
+// DisplayName: "example-group",
+// SecurityEnabled: true,
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewAccessPackageCatalog(ctx, "example", &azuread.AccessPackageCatalogArgs{
+// DisplayName: "example-catalog",
+// Description: "Example catalog",
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewAccessPackageResourceCatalogAssociation(ctx, "example", &azuread.AccessPackageResourceCatalogAssociationArgs{
+// CatalogId: exampleCatalog.Id,
+// ResourceOriginId: exampleGroup.ObjectId,
+// ResourceOriginSystem: "AadGroup",
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

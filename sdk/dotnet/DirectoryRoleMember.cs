@@ -22,35 +22,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = AzureAD.GetUser.Invoke(new()
-    ///     {
-    ///         UserPrincipalName = "jdoe@example.com",
-    ///     });
-    /// 
-    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("example", new()
-    ///     {
-    ///         DisplayName = "Security administrator",
-    ///     });
-    /// 
-    ///     var exampleDirectoryRoleMember = new AzureAD.DirectoryRoleMember("example", new()
-    ///     {
-    ///         RoleObjectId = exampleDirectoryRole.ObjectId,
-    ///         MemberObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Directory role members can be imported using the object ID of the role and the object ID of the member, e.g.

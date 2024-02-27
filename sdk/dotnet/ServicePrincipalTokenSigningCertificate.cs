@@ -18,21 +18,21 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new Azuread.Index.Application.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new Azuread.Index.ServicePrincipal.ServicePrincipal("example", new()
     ///     {
     ///         ApplicationId = example.ApplicationId,
     ///     });
     /// 
-    ///     var exampleServicePrincipalTokenSigningCertificate = new AzureAD.ServicePrincipalTokenSigningCertificate("example", new()
+    ///     var exampleServicePrincipalTokenSigningCertificate = new Azuread.Index.ServicePrincipalTokenSigningCertificate.ServicePrincipalTokenSigningCertificate("example", new()
     ///     {
     ///         ServicePrincipalId = exampleServicePrincipal.Id,
     ///     });
@@ -46,21 +46,21 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new Azuread.Index.Application.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new Azuread.Index.ServicePrincipal.ServicePrincipal("example", new()
     ///     {
     ///         ApplicationId = example.ApplicationId,
     ///     });
     /// 
-    ///     var exampleServicePrincipalTokenSigningCertificate = new AzureAD.ServicePrincipalTokenSigningCertificate("example", new()
+    ///     var exampleServicePrincipalTokenSigningCertificate = new Azuread.Index.ServicePrincipalTokenSigningCertificate.ServicePrincipalTokenSigningCertificate("example", new()
     ///     {
     ///         ServicePrincipalId = exampleServicePrincipal.Id,
     ///         DisplayName = "CN=example.com",

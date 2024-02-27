@@ -141,18 +141,6 @@ def get_users(employee_ids: Optional[Sequence[str]] = None,
 
     When authenticated with a user principal, this data source does not require any additional roles.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    users = azuread.get_users(user_principal_names=[
-        "kat@example.com",
-        "byte@example.com",
-    ])
-    ```
-
 
     :param Sequence[str] employee_ids: The employee identifiers assigned to the users by the organisation.
     :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
@@ -202,18 +190,6 @@ def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[str]]
     When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
 
     When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    users = azuread.get_users(user_principal_names=[
-        "kat@example.com",
-        "byte@example.com",
-    ])
-    ```
 
 
     :param Sequence[str] employee_ids: The employee identifiers assigned to the users by the organisation.

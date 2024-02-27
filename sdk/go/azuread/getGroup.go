@@ -22,32 +22,6 @@ import (
 // When authenticated with a user principal, this data source does not require any additional roles.
 //
 // ## Example Usage
-// ### By Group Display Name)
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.LookupGroup(ctx, &azuread.LookupGroupArgs{
-//				DisplayName:     pulumi.StringRef("MyGroupName"),
-//				SecurityEnabled: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupResult

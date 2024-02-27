@@ -28,50 +28,6 @@ import javax.annotation.Nullable;
  * 
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
  * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.azuread.AzureadFunctions;
- * import com.pulumi.azuread.inputs.GetUserArgs;
- * import com.pulumi.azuread.Group;
- * import com.pulumi.azuread.GroupArgs;
- * import com.pulumi.azuread.GroupMember;
- * import com.pulumi.azuread.GroupMemberArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
- *             .build());
- * 
- *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
- *             .displayName(&#34;my_group&#34;)
- *             .securityEnabled(true)
- *             .build());
- * 
- *         var exampleGroupMember = new GroupMember(&#34;exampleGroupMember&#34;, GroupMemberArgs.builder()        
- *             .groupObjectId(exampleGroup.id())
- *             .memberObjectId(example.applyValue(getUserResult -&gt; getUserResult.id()))
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Group members can be imported using the object ID of the group and the object ID of the member, e.g.

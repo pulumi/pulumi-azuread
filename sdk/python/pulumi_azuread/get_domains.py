@@ -132,16 +132,6 @@ def get_domains(admin_managed: Optional[bool] = None,
 
     When authenticated with a user principal, this data source does not require any additional roles.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    aad_domains = azuread.get_domains()
-    pulumi.export("domainNames", [__item.domain_name for __item in aad_domains.domains])
-    ```
-
 
     :param bool admin_managed: Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
     :param bool include_unverified: Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
@@ -191,16 +181,6 @@ def get_domains_output(admin_managed: Optional[pulumi.Input[Optional[bool]]] = N
     When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
 
     When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    aad_domains = azuread.get_domains()
-    pulumi.export("domainNames", [__item.domain_name for __item in aad_domains.domains])
-    ```
 
 
     :param bool admin_managed: Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.

@@ -157,43 +157,6 @@ class SynchronizationJob(pulumi.CustomResource):
 
         When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
 
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
-        example_application = azuread.Application("example",
-            display_name="example",
-            template_id=example.template_id,
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )])
-        example_service_principal = azuread.ServicePrincipal("example",
-            application_id=example_application.application_id,
-            use_existing=True)
-        example_synchronization_secret = azuread.SynchronizationSecret("example",
-            service_principal_id=example_service_principal.id,
-            credentials=[
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="BaseAddress",
-                    value="https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
-                ),
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="SecretToken",
-                    value="some-token",
-                ),
-            ])
-        example_synchronization_job = azuread.SynchronizationJob("example",
-            service_principal_id=example_service_principal.id,
-            template_id="dataBricks",
-            enabled=True)
-        ```
-
         ## Import
 
         Synchronization jobs can be imported using the `id`, e.g.
@@ -224,43 +187,6 @@ class SynchronizationJob(pulumi.CustomResource):
         The following API permissions are required in order to use this resource.
 
         When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
-        example_application = azuread.Application("example",
-            display_name="example",
-            template_id=example.template_id,
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )])
-        example_service_principal = azuread.ServicePrincipal("example",
-            application_id=example_application.application_id,
-            use_existing=True)
-        example_synchronization_secret = azuread.SynchronizationSecret("example",
-            service_principal_id=example_service_principal.id,
-            credentials=[
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="BaseAddress",
-                    value="https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
-                ),
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="SecretToken",
-                    value="some-token",
-                ),
-            ])
-        example_synchronization_job = azuread.SynchronizationJob("example",
-            service_principal_id=example_service_principal.id,
-            template_id="dataBricks",
-            enabled=True)
-        ```
 
         ## Import
 

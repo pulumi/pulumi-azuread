@@ -26,35 +26,35 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example_ip = new AzureAD.NamedLocation("example-ip", new()
+    ///     var example_ip = new Azuread.Index.NamedLocation.NamedLocation("example-ip", new()
     ///     {
     ///         DisplayName = "IP Named Location",
-    ///         Ip = new AzureAD.Inputs.NamedLocationIpArgs
+    ///         Ip = 
     ///         {
-    ///             IpRanges = new[]
+    ///             { "ipRanges", new[]
     ///             {
     ///                 "1.1.1.1/32",
     ///                 "2.2.2.2/32",
-    ///             },
-    ///             Trusted = true,
+    ///             } },
+    ///             { "trusted", true },
     ///         },
     ///     });
     /// 
-    ///     var example_country = new AzureAD.NamedLocation("example-country", new()
+    ///     var example_country = new Azuread.Index.NamedLocation.NamedLocation("example-country", new()
     ///     {
     ///         DisplayName = "Country Named Location",
-    ///         Country = new AzureAD.Inputs.NamedLocationCountryArgs
+    ///         Country = 
     ///         {
-    ///             CountriesAndRegions = new[]
+    ///             { "countriesAndRegions", new[]
     ///             {
     ///                 "GB",
     ///                 "US",
-    ///             },
-    ///             IncludeUnknownCountriesAndRegions = false,
+    ///             } },
+    ///             { "includeUnknownCountriesAndRegions", false },
     ///         },
     ///     });
     /// 

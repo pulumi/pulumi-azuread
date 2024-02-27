@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.ConditionalAccessPolicy("example", {
+ * const example = new azuread.index/conditionalAccessPolicy.ConditionalAccessPolicy("example", {
  *     displayName: "example policy",
  *     state: "disabled",
  *     conditions: {
@@ -66,64 +66,6 @@ import * as utilities from "./utilities";
  *         signInFrequency: 10,
  *         signInFrequencyPeriod: "hours",
  *         cloudAppSecurityPolicy: "monitorOnly",
- *     },
- * });
- * ```
- * ### Included client applications / service principals
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const current = azuread.getClientConfig({});
- * const example = new azuread.ConditionalAccessPolicy("example", {
- *     displayName: "example policy",
- *     state: "disabled",
- *     conditions: {
- *         clientAppTypes: ["all"],
- *         applications: {
- *             includedApplications: ["All"],
- *         },
- *         clientApplications: {
- *             includedServicePrincipals: [current.then(current => current.objectId)],
- *             excludedServicePrincipals: [],
- *         },
- *         users: {
- *             includedUsers: ["None"],
- *         },
- *     },
- *     grantControls: {
- *         operator: "OR",
- *         builtInControls: ["block"],
- *     },
- * });
- * ```
- * ### Excluded client applications / service principals
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const current = azuread.getClientConfig({});
- * const example = new azuread.ConditionalAccessPolicy("example", {
- *     displayName: "example policy",
- *     state: "disabled",
- *     conditions: {
- *         clientAppTypes: ["all"],
- *         applications: {
- *             includedApplications: ["All"],
- *         },
- *         clientApplications: {
- *             includedServicePrincipals: ["ServicePrincipalsInMyTenant"],
- *             excludedServicePrincipals: [current.then(current => current.objectId)],
- *         },
- *         users: {
- *             includedUsers: ["None"],
- *         },
- *     },
- *     grantControls: {
- *         operator: "OR",
- *         builtInControls: ["block"],
  *     },
  * });
  * ```

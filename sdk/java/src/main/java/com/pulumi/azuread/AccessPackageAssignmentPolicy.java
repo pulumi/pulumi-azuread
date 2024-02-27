@@ -47,11 +47,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.AccessPackageArgs;
  * import com.pulumi.azuread.AccessPackageAssignmentPolicy;
  * import com.pulumi.azuread.AccessPackageAssignmentPolicyArgs;
- * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyRequestorSettingsArgs;
- * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyApprovalSettingsArgs;
- * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs;
- * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionArgs;
- * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionTextArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -86,31 +81,10 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;assignment-policy&#34;)
  *             .description(&#34;My assignment policy&#34;)
  *             .durationInDays(90)
- *             .requestorSettings(AccessPackageAssignmentPolicyRequestorSettingsArgs.builder()
- *                 .scopeType(&#34;AllExistingDirectoryMemberUsers&#34;)
- *                 .build())
- *             .approvalSettings(AccessPackageAssignmentPolicyApprovalSettingsArgs.builder()
- *                 .approvalRequired(true)
- *                 .approvalStages(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs.builder()
- *                     .approvalTimeoutInDays(14)
- *                     .primaryApprovers(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs.builder()
- *                         .objectId(example.objectId())
- *                         .subjectType(&#34;groupMembers&#34;)
- *                         .build())
- *                     .build())
- *                 .build())
- *             .assignmentReviewSettings(AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs.builder()
- *                 .enabled(true)
- *                 .reviewFrequency(&#34;weekly&#34;)
- *                 .durationInDays(3)
- *                 .reviewType(&#34;Self&#34;)
- *                 .accessReviewTimeoutBehavior(&#34;keepAccess&#34;)
- *                 .build())
- *             .questions(AccessPackageAssignmentPolicyQuestionArgs.builder()
- *                 .text(AccessPackageAssignmentPolicyQuestionTextArgs.builder()
- *                     .defaultText(&#34;hello, how are you?&#34;)
- *                     .build())
- *                 .build())
+ *             .requestorSettings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .approvalSettings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .assignmentReviewSettings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .questions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }

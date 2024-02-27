@@ -16,19 +16,19 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new Azuread.Index.ApplicationRegistration.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleAdminister = new Random.RandomUuid("example_administer");
+    ///     var exampleAdminister = new Random.Index.RandomUuid.RandomUuid("example_administer");
     /// 
-    ///     var exampleApplicationPermissionScope = new AzureAD.ApplicationPermissionScope("example", new()
+    ///     var exampleApplicationPermissionScope = new Azuread.Index.ApplicationPermissionScope.ApplicationPermissionScope("example", new()
     ///     {
     ///         ApplicationId = test.Id,
     ///         ScopeId = exampleAdminister.Id,
@@ -48,16 +48,16 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new Azuread.Index.Application.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationPermissionScope = new AzureAD.ApplicationPermissionScope("example", new()
+    ///     var exampleApplicationPermissionScope = new Azuread.Index.ApplicationPermissionScope.ApplicationPermissionScope("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///     });

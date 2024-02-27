@@ -115,28 +115,28 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         import json
         import pulumi_azuread as azuread
 
-        my_policy = azuread.ClaimsMappingPolicy("my_policy",
+        my_policy = azuread.index.claims_mapping_policy.ClaimsMappingPolicy("my_policy",
             definitions=[json.dumps({
-                "claimsMappingPolicy": {
-                    "claimsSchema": [
+                claimsMappingPolicy: {
+                    claimsSchema: [
                         {
-                            "ID": "employeeid",
-                            "jwtClaimType": "name",
-                            "samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                            "source": "user",
+                            ID: employeeid,
+                            jwtClaimType: name,
+                            samlClaimType: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name,
+                            source: user,
                         },
                         {
-                            "ID": "tenantcountry",
-                            "jwtClaimType": "country",
-                            "samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-                            "source": "company",
+                            ID: tenantcountry,
+                            jwtClaimType: country,
+                            samlClaimType: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country,
+                            source: company,
                         },
                     ],
-                    "includeBasicClaimSet": "true",
-                    "version": 1,
+                    includeBasicClaimSet: true,
+                    version: 1,
                 },
             })],
-            display_name="My Policy")
+            display_name=My Policy)
         ```
 
         ## Import
@@ -176,28 +176,28 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         import json
         import pulumi_azuread as azuread
 
-        my_policy = azuread.ClaimsMappingPolicy("my_policy",
+        my_policy = azuread.index.claims_mapping_policy.ClaimsMappingPolicy("my_policy",
             definitions=[json.dumps({
-                "claimsMappingPolicy": {
-                    "claimsSchema": [
+                claimsMappingPolicy: {
+                    claimsSchema: [
                         {
-                            "ID": "employeeid",
-                            "jwtClaimType": "name",
-                            "samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                            "source": "user",
+                            ID: employeeid,
+                            jwtClaimType: name,
+                            samlClaimType: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name,
+                            source: user,
                         },
                         {
-                            "ID": "tenantcountry",
-                            "jwtClaimType": "country",
-                            "samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-                            "source": "company",
+                            ID: tenantcountry,
+                            jwtClaimType: country,
+                            samlClaimType: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country,
+                            source: company,
                         },
                     ],
-                    "includeBasicClaimSet": "true",
-                    "version": 1,
+                    includeBasicClaimSet: true,
+                    version: 1,
                 },
             })],
-            display_name="My Policy")
+            display_name=My Policy)
         ```
 
         ## Import

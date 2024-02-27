@@ -17,27 +17,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getApplicationTemplate({
- *     displayName: "Marketo",
- * });
- * const exampleApplicationFromTemplate = new azuread.ApplicationFromTemplate("example", {
- *     displayName: "Example Application",
- *     templateId: example.then(example => example.templateId),
- * });
- * const exampleGetApplication = azuread.getApplicationOutput({
- *     objectId: exampleApplicationFromTemplate.applicationObjectId,
- * });
- * const exampleGetServicePrincipal = azuread.getServicePrincipalOutput({
- *     objectId: exampleApplicationFromTemplate.servicePrincipalObjectId,
- * });
- * ```
- *
  * ## Import
  *
  * Templated Applications can be imported using the template ID, the object ID of the application, and the object ID of the service principal, in the following format.

@@ -17,91 +17,6 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * 
- * *Using a PEM certificate*
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.azuread.ApplicationRegistration;
- * import com.pulumi.azuread.ApplicationRegistrationArgs;
- * import com.pulumi.azuread.ApplicationCertificate;
- * import com.pulumi.azuread.ApplicationCertificateArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
- *             .build());
- * 
- *         var exampleApplicationCertificate = new ApplicationCertificate(&#34;exampleApplicationCertificate&#34;, ApplicationCertificateArgs.builder()        
- *             .applicationId(example.id())
- *             .type(&#34;AsymmetricX509Cert&#34;)
- *             .value(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;cert.pem&#34;)
- *                 .build()).result())
- *             .endDate(&#34;2021-05-01T01:02:03Z&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * *Using a DER certificate*
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.azuread.ApplicationRegistration;
- * import com.pulumi.azuread.ApplicationRegistrationArgs;
- * import com.pulumi.azuread.ApplicationCertificate;
- * import com.pulumi.azuread.ApplicationCertificateArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
- *             .build());
- * 
- *         var exampleApplicationCertificate = new ApplicationCertificate(&#34;exampleApplicationCertificate&#34;, ApplicationCertificateArgs.builder()        
- *             .applicationId(example.id())
- *             .type(&#34;AsymmetricX509Cert&#34;)
- *             .encoding(&#34;base64&#34;)
- *             .value(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                 .input(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;cert.der&#34;)
- *                     .build()).result())
- *                 .build()).result())
- *             .endDate(&#34;2021-05-01T01:02:03Z&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * ### Using a certificate from Azure Key Vault
  * ```java
  * package generated_program;
@@ -113,12 +28,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.ApplicationArgs;
  * import com.pulumi.azure.keyvault.Certificate;
  * import com.pulumi.azure.keyvault.CertificateArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyIssuerParametersArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyKeyPropertiesArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicySecretPropertiesArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyX509CertificatePropertiesArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs;
  * import com.pulumi.azuread.ApplicationCertificate;
  * import com.pulumi.azuread.ApplicationCertificateArgs;
  * import java.util.List;
@@ -141,43 +50,7 @@ import javax.annotation.Nullable;
  *         var example = new Certificate(&#34;example&#34;, CertificateArgs.builder()        
  *             .name(&#34;generated-cert&#34;)
  *             .keyVaultId(exampleAzurermKeyVault.id())
- *             .certificatePolicy(CertificateCertificatePolicyArgs.builder()
- *                 .issuerParameters(CertificateCertificatePolicyIssuerParametersArgs.builder()
- *                     .name(&#34;Self&#34;)
- *                     .build())
- *                 .keyProperties(CertificateCertificatePolicyKeyPropertiesArgs.builder()
- *                     .exportable(true)
- *                     .keySize(2048)
- *                     .keyType(&#34;RSA&#34;)
- *                     .reuseKey(true)
- *                     .build())
- *                 .lifetimeActions(CertificateCertificatePolicyLifetimeActionArgs.builder()
- *                     .action(CertificateCertificatePolicyLifetimeActionActionArgs.builder()
- *                         .actionType(&#34;AutoRenew&#34;)
- *                         .build())
- *                     .trigger(CertificateCertificatePolicyLifetimeActionTriggerArgs.builder()
- *                         .daysBeforeExpiry(30)
- *                         .build())
- *                     .build())
- *                 .secretProperties(CertificateCertificatePolicySecretPropertiesArgs.builder()
- *                     .contentType(&#34;application/x-pkcs12&#34;)
- *                     .build())
- *                 .x509CertificateProperties(CertificateCertificatePolicyX509CertificatePropertiesArgs.builder()
- *                     .extendedKeyUsages(&#34;1.3.6.1.5.5.7.3.2&#34;)
- *                     .keyUsages(                    
- *                         &#34;dataEncipherment&#34;,
- *                         &#34;digitalSignature&#34;,
- *                         &#34;keyCertSign&#34;,
- *                         &#34;keyEncipherment&#34;)
- *                     .subjectAlternativeNames(CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs.builder()
- *                         .dnsNames(                        
- *                             &#34;internal.contoso.com&#34;,
- *                             &#34;domain.hello.world&#34;)
- *                         .build())
- *                     .subject(String.format(&#34;CN=%s&#34;, exampleApplication.name()))
- *                     .validityInMonths(12)
- *                     .build())
- *                 .build())
+ *             .certificatePolicy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *         var exampleApplicationCertificate = new ApplicationCertificate(&#34;exampleApplicationCertificate&#34;, ApplicationCertificateArgs.builder()        
@@ -185,8 +58,8 @@ import javax.annotation.Nullable;
  *             .type(&#34;AsymmetricX509Cert&#34;)
  *             .encoding(&#34;hex&#34;)
  *             .value(example.certificateData())
- *             .endDate(example.certificateAttributes().applyValue(certificateAttributes -&gt; certificateAttributes[0].expires()))
- *             .startDate(example.certificateAttributes().applyValue(certificateAttributes -&gt; certificateAttributes[0].notBefore()))
+ *             .endDate(example.certificateAttributes()[0].expires())
+ *             .startDate(example.certificateAttributes()[0].notBefore())
  *             .build());
  * 
  *     }

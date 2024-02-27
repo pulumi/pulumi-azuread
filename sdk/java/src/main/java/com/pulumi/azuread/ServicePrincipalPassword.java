@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleServicePrincipalPassword = new ServicePrincipalPassword(&#34;exampleServicePrincipalPassword&#34;, ServicePrincipalPasswordArgs.builder()        
  *             .servicePrincipalId(exampleServicePrincipal.objectId())
- *             .rotateWhenChanged(Map.of(&#34;rotation&#34;, exampleRotating.id()))
+ *             .rotateWhenChanged(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }

@@ -29,26 +29,24 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/user "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/user"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewUser(ctx, "example", &azuread.UserArgs{
-//				UserPrincipalName: pulumi.String("jdoe@example.com"),
-//				DisplayName:       pulumi.String("J. Doe"),
-//				MailNickname:      pulumi.String("jdoe"),
-//				Password:          pulumi.String("SecretP@sswd99!"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewUser(ctx, "example", &azuread.UserArgs{
+// UserPrincipalName: "jdoe@example.com",
+// DisplayName: "J. Doe",
+// MailNickname: "jdoe",
+// Password: "SecretP@sswd99!",
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

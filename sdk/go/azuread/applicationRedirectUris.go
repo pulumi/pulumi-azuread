@@ -19,61 +19,60 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/applicationRedirectUris "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRedirectUris"
+//	index/applicationRegistration "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRegistration"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationRedirectUris(ctx, "example_public", &azuread.ApplicationRedirectUrisArgs{
-//				ApplicationId: example.ID(),
-//				Type:          pulumi.String("PublicClient"),
-//				RedirectUris: pulumi.StringArray{
-//					pulumi.String("myapp://auth"),
-//					pulumi.String("sample.mobile.app.bundie.id://auth"),
-//					pulumi.String("https://login.microsoftonline.com/common/oauth2/nativeclient"),
-//					pulumi.String("https://login.live.com/oauth20_desktop.srf"),
-//					pulumi.String("ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222"),
-//					pulumi.String("urn:ietf:wg:oauth:2.0:foo"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationRedirectUris(ctx, "example_spa", &azuread.ApplicationRedirectUrisArgs{
-//				ApplicationId: example.ID(),
-//				Type:          pulumi.String("SPA"),
-//				RedirectUris: pulumi.StringArray{
-//					pulumi.String("https://mobile.hashitown.com/"),
-//					pulumi.String("https://beta.hashitown.com/"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationRedirectUris(ctx, "example_web", &azuread.ApplicationRedirectUrisArgs{
-//				ApplicationId: example.ID(),
-//				Type:          pulumi.String("Web"),
-//				RedirectUris: pulumi.StringArray{
-//					pulumi.String("https://app.hashitown.com/"),
-//					pulumi.String("https://classic.hashitown.com/"),
-//					pulumi.String("urn:ietf:wg:oauth:2.0:oob"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationRedirectUris(ctx, "example_public", &azuread.ApplicationRedirectUrisArgs{
+// ApplicationId: example.Id,
+// Type: "PublicClient",
+// RedirectUris: []string{
+// "myapp://auth",
+// "sample.mobile.app.bundie.id://auth",
+// "https://login.microsoftonline.com/common/oauth2/nativeclient",
+// "https://login.live.com/oauth20_desktop.srf",
+// "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222",
+// "urn:ietf:wg:oauth:2.0:foo",
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationRedirectUris(ctx, "example_spa", &azuread.ApplicationRedirectUrisArgs{
+// ApplicationId: example.Id,
+// Type: "SPA",
+// RedirectUris: []string{
+// "https://mobile.hashitown.com/",
+// "https://beta.hashitown.com/",
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationRedirectUris(ctx, "example_web", &azuread.ApplicationRedirectUrisArgs{
+// ApplicationId: example.Id,
+// Type: "Web",
+// RedirectUris: []string{
+// "https://app.hashitown.com/",
+// "https://classic.hashitown.com/",
+// "urn:ietf:wg:oauth:2.0:oob",
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

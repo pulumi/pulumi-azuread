@@ -150,16 +150,6 @@ def get_application_template(display_name: Optional[str] = None,
 
     This data source does not require any additional roles.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_application_template(display_name="Marketo")
-    pulumi.export("applicationTemplateId", example.template_id)
-    ```
-
 
     :param str display_name: Specifies the display name of the templated application.
     :param str template_id: Specifies the ID of the templated application.
@@ -194,16 +184,6 @@ def get_application_template_output(display_name: Optional[pulumi.Input[Optional
     ## API Permissions
 
     This data source does not require any additional roles.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_application_template(display_name="Marketo")
-    pulumi.export("applicationTemplateId", example.template_id)
-    ```
 
 
     :param str display_name: Specifies the display name of the templated application.

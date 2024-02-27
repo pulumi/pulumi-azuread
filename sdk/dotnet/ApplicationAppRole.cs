@@ -16,19 +16,19 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new Azuread.Index.ApplicationRegistration.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleAdministrator = new Random.RandomUuid("example_administrator");
+    ///     var exampleAdministrator = new Random.Index.RandomUuid.RandomUuid("example_administrator");
     /// 
-    ///     var exampleAdminister = new AzureAD.ApplicationAppRole("example_administer", new()
+    ///     var exampleAdminister = new Azuread.Index.ApplicationAppRole.ApplicationAppRole("example_administer", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         RoleId = exampleAdministrator.Id,
@@ -52,16 +52,16 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new Azuread.Index.Application.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleAdminister = new AzureAD.ApplicationAppRole("example_administer", new()
+    ///     var exampleAdminister = new Azuread.Index.ApplicationAppRole.ApplicationAppRole("example_administer", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///     });

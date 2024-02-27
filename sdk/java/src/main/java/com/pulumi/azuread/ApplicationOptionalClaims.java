@@ -30,9 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.ApplicationRegistrationArgs;
  * import com.pulumi.azuread.ApplicationOptionalClaims;
  * import com.pulumi.azuread.ApplicationOptionalClaimsArgs;
- * import com.pulumi.azuread.inputs.ApplicationOptionalClaimsAccessTokenArgs;
- * import com.pulumi.azuread.inputs.ApplicationOptionalClaimsIdTokenArgs;
- * import com.pulumi.azuread.inputs.ApplicationOptionalClaimsSaml2TokenArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,21 +50,10 @@ import javax.annotation.Nullable;
  *         var exampleApplicationOptionalClaims = new ApplicationOptionalClaims(&#34;exampleApplicationOptionalClaims&#34;, ApplicationOptionalClaimsArgs.builder()        
  *             .applicationId(example.id())
  *             .accessTokens(            
- *                 ApplicationOptionalClaimsAccessTokenArgs.builder()
- *                     .name(&#34;myclaim&#34;)
- *                     .build(),
- *                 ApplicationOptionalClaimsAccessTokenArgs.builder()
- *                     .name(&#34;otherclaim&#34;)
- *                     .build())
- *             .idTokens(ApplicationOptionalClaimsIdTokenArgs.builder()
- *                 .name(&#34;userclaim&#34;)
- *                 .source(&#34;user&#34;)
- *                 .essential(true)
- *                 .additionalProperties(&#34;emit_as_roles&#34;)
- *                 .build())
- *             .saml2Tokens(ApplicationOptionalClaimsSaml2TokenArgs.builder()
- *                 .name(&#34;samlexample&#34;)
- *                 .build())
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .idTokens(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .saml2Tokens(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }

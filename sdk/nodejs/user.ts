@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.User("example", {
+ * const example = new azuread.index/user.User("example", {
  *     userPrincipalName: "jdoe@example.com",
  *     displayName: "J. Doe",
  *     mailNickname: "jdoe",

@@ -58,44 +58,7 @@ class AwaitableGetApplicationPublishedAppIdsResult(GetApplicationPublishedAppIds
 
 def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationPublishedAppIdsResult:
     """
-    ## Example Usage
-
-    *Listing well-known application IDs*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    well_known = azuread.get_application_published_app_ids()
-    pulumi.export("publishedAppIds", well_known.result)
-    ```
-
-    *Granting access to an application*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    well_known = azuread.get_application_published_app_ids()
-    msgraph = azuread.ServicePrincipal("msgraph",
-        client_id=well_known.result["MicrosoftGraph"],
-        use_existing=True)
-    example = azuread.Application("example",
-        display_name="example",
-        required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-            resource_app_id=well_known.result["MicrosoftGraph"],
-            resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=msgraph.app_role_ids["User.Read.All"],
-                    type="Role",
-                ),
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
-                    type="Scope",
-                ),
-            ],
-        )])
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -109,43 +72,6 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
 @_utilities.lift_output_func(get_application_published_app_ids)
 def get_application_published_app_ids_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationPublishedAppIdsResult]:
     """
-    ## Example Usage
-
-    *Listing well-known application IDs*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    well_known = azuread.get_application_published_app_ids()
-    pulumi.export("publishedAppIds", well_known.result)
-    ```
-
-    *Granting access to an application*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    well_known = azuread.get_application_published_app_ids()
-    msgraph = azuread.ServicePrincipal("msgraph",
-        client_id=well_known.result["MicrosoftGraph"],
-        use_existing=True)
-    example = azuread.Application("example",
-        display_name="example",
-        required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-            resource_app_id=well_known.result["MicrosoftGraph"],
-            resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=msgraph.app_role_ids["User.Read.All"],
-                    type="Role",
-                ),
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
-                    type="Scope",
-                ),
-            ],
-        )])
-    ```
+    Use this data source to access information about an existing resource.
     """
     ...

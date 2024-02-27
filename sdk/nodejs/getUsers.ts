@@ -16,20 +16,6 @@ import * as utilities from "./utilities";
  * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const users = azuread.getUsers({
- *     userPrincipalNames: [
- *         "kat@example.com",
- *         "byte@example.com",
- *     ],
- * });
- * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
@@ -118,20 +104,6 @@ export interface GetUsersResult {
  * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
  *
  * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const users = azuread.getUsers({
- *     userPrincipalNames: [
- *         "kat@example.com",
- *         "byte@example.com",
- *     ],
- * });
- * ```
  */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))

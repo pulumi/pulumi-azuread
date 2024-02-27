@@ -13,9 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
- * const exampleServicePrincipalTokenSigningCertificate = new azuread.ServicePrincipalTokenSigningCertificate("example", {servicePrincipalId: exampleServicePrincipal.id});
+ * const example = new azuread.index/application.Application("example", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.index/servicePrincipal.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipalTokenSigningCertificate = new azuread.index/servicePrincipalTokenSigningCertificate.ServicePrincipalTokenSigningCertificate("example", {servicePrincipalId: exampleServicePrincipal.id});
  * ```
  *
  * *Using custom settings*
@@ -24,9 +24,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
- * const exampleServicePrincipalTokenSigningCertificate = new azuread.ServicePrincipalTokenSigningCertificate("example", {
+ * const example = new azuread.index/application.Application("example", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.index/servicePrincipal.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipalTokenSigningCertificate = new azuread.index/servicePrincipalTokenSigningCertificate.ServicePrincipalTokenSigningCertificate("example", {
  *     servicePrincipalId: exampleServicePrincipal.id,
  *     displayName: "CN=example.com",
  *     endDate: "2023-05-01T01:02:03Z",

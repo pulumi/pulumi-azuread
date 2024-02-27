@@ -22,40 +22,6 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
-    ///     {
-    ///         DisplayName = "Marketo",
-    ///     });
-    /// 
-    ///     var exampleApplicationFromTemplate = new AzureAD.ApplicationFromTemplate("example", new()
-    ///     {
-    ///         DisplayName = "Example Application",
-    ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
-    ///     });
-    /// 
-    ///     var exampleGetApplication = AzureAD.GetApplication.Invoke(new()
-    ///     {
-    ///         ObjectId = exampleApplicationFromTemplate.ApplicationObjectId,
-    ///     });
-    /// 
-    ///     var exampleGetServicePrincipal = AzureAD.GetServicePrincipal.Invoke(new()
-    ///     {
-    ///         ObjectId = exampleApplicationFromTemplate.ServicePrincipalObjectId,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Templated Applications can be imported using the template ID, the object ID of the application, and the object ID of the service principal, in the following format.

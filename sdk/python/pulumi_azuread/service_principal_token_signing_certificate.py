@@ -218,9 +218,9 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
+        example = azuread.index.application.Application("example", display_name=example)
+        example_service_principal = azuread.index.service_principal.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_token_signing_certificate = azuread.index.service_principal_token_signing_certificate.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
         ```
 
         *Using custom settings*
@@ -229,12 +229,12 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example",
+        example = azuread.index.application.Application("example", display_name=example)
+        example_service_principal = azuread.index.service_principal.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_token_signing_certificate = azuread.index.service_principal_token_signing_certificate.ServicePrincipalTokenSigningCertificate("example",
             service_principal_id=example_service_principal.id,
-            display_name="CN=example.com",
-            end_date="2023-05-01T01:02:03Z")
+            display_name=CN=example.com,
+            end_date=2023-05-01T01:02:03Z)
         ```
 
         ## Import
@@ -271,9 +271,9 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
+        example = azuread.index.application.Application("example", display_name=example)
+        example_service_principal = azuread.index.service_principal.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_token_signing_certificate = azuread.index.service_principal_token_signing_certificate.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
         ```
 
         *Using custom settings*
@@ -282,12 +282,12 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
-        example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example",
+        example = azuread.index.application.Application("example", display_name=example)
+        example_service_principal = azuread.index.service_principal.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal_token_signing_certificate = azuread.index.service_principal_token_signing_certificate.ServicePrincipalTokenSigningCertificate("example",
             service_principal_id=example_service_principal.id,
-            display_name="CN=example.com",
-            end_date="2023-05-01T01:02:03Z")
+            display_name=CN=example.com,
+            end_date=2023-05-01T01:02:03Z)
         ```
 
         ## Import

@@ -162,10 +162,10 @@ class UserFlowAttribute(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.UserFlowAttribute("example",
-            display_name="Hobby",
-            description="Your hobby",
-            data_type="string")
+        example = azuread.index.user_flow_attribute.UserFlowAttribute("example",
+            display_name=Hobby,
+            description=Your hobby,
+            data_type=string)
         ```
 
         ## Import
@@ -207,10 +207,10 @@ class UserFlowAttribute(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.UserFlowAttribute("example",
-            display_name="Hobby",
-            description="Your hobby",
-            data_type="string")
+        example = azuread.index.user_flow_attribute.UserFlowAttribute("example",
+            display_name=Hobby,
+            description=Your hobby,
+            data_type=string)
         ```
 
         ## Import

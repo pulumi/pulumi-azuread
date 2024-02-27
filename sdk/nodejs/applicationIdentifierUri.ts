@@ -11,8 +11,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const exampleApplicationIdentifierUri = new azuread.ApplicationIdentifierUri("example", {
+ * const example = new azuread.index/applicationRegistration.ApplicationRegistration("example", {displayName: "example"});
+ * const exampleApplicationIdentifierUri = new azuread.index/applicationIdentifierUri.ApplicationIdentifierUri("example", {
  *     applicationId: example.id,
  *     identifierUri: "https://app.hashitown.com",
  * });
@@ -26,8 +26,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleApplicationIdentifierUri = new azuread.ApplicationIdentifierUri("example", {applicationId: example.id});
+ * const example = new azuread.index/application.Application("example", {displayName: "example"});
+ * const exampleApplicationIdentifierUri = new azuread.index/applicationIdentifierUri.ApplicationIdentifierUri("example", {applicationId: example.id});
  * ```
  *
  * ## Import

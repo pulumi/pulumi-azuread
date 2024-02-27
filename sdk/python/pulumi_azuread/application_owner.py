@@ -104,12 +104,12 @@ class ApplicationOwner(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        jane = azuread.User("jane",
-            user_principal_name="jane.fischer@hashitown.com",
-            display_name="Jane Fischer",
-            password="Ch@ngeMe")
-        example_jane = azuread.ApplicationOwner("example_jane",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        jane = azuread.index.user.User("jane",
+            user_principal_name=jane.fischer@hashitown.com,
+            display_name=Jane Fischer,
+            password=Ch@ngeMe)
+        example_jane = azuread.index.application_owner.ApplicationOwner("example_jane",
             application_id=example.id,
             owner_object_id=jane.object_id)
         ```
@@ -142,12 +142,12 @@ class ApplicationOwner(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example", display_name="example")
-        jane = azuread.User("jane",
-            user_principal_name="jane.fischer@hashitown.com",
-            display_name="Jane Fischer",
-            password="Ch@ngeMe")
-        example_jane = azuread.ApplicationOwner("example_jane",
+        example = azuread.index.application_registration.ApplicationRegistration("example", display_name=example)
+        jane = azuread.index.user.User("jane",
+            user_principal_name=jane.fischer@hashitown.com,
+            display_name=Jane Fischer,
+            password=Ch@ngeMe)
+        example_jane = azuread.index.application_owner.ApplicationOwner("example_jane",
             application_id=example.id,
             owner_object_id=jane.object_id)
         ```

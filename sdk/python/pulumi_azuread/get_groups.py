@@ -132,54 +132,6 @@ def get_groups(display_name_prefix: Optional[str] = None,
 
     When authenticated with a user principal, this data source does not require any additional roles.
 
-    ## Example Usage
-
-    *Look up by group name*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_groups(display_names=[
-        "group-a",
-        "group-b",
-    ])
-    ```
-
-    *Look up by display name prefix*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    sales = azuread.get_groups(display_name_prefix="sales-")
-    ```
-
-    *Look up all groups*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    all = azuread.get_groups(return_all=True)
-    ```
-
-    *Look up all mail-enabled groups*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    mail_enabled = azuread.get_groups(mail_enabled=True,
-        return_all=True)
-    ```
-
-    *Look up all security-enabled groups that are not mail-enabled*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    security_only = azuread.get_groups(mail_enabled=False,
-        return_all=True,
-        security_enabled=True)
-    ```
-
 
     :param str display_name_prefix: A common display name prefix to match when returning groups.
     :param Sequence[str] display_names: The display names of the groups.
@@ -232,54 +184,6 @@ def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]]
     When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
 
     When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-
-    *Look up by group name*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_groups(display_names=[
-        "group-a",
-        "group-b",
-    ])
-    ```
-
-    *Look up by display name prefix*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    sales = azuread.get_groups(display_name_prefix="sales-")
-    ```
-
-    *Look up all groups*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    all = azuread.get_groups(return_all=True)
-    ```
-
-    *Look up all mail-enabled groups*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    mail_enabled = azuread.get_groups(mail_enabled=True,
-        return_all=True)
-    ```
-
-    *Look up all security-enabled groups that are not mail-enabled*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    security_only = azuread.get_groups(mail_enabled=False,
-        return_all=True,
-        security_enabled=True)
-    ```
 
 
     :param str display_name_prefix: A common display name prefix to match when returning groups.

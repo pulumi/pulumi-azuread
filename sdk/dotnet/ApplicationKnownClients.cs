@@ -16,21 +16,21 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new Azuread.Index.ApplicationRegistration.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var client = new AzureAD.ApplicationRegistration("client", new()
+    ///     var client = new Azuread.Index.ApplicationRegistration.ApplicationRegistration("client", new()
     ///     {
     ///         DisplayName = "example client",
     ///     });
     /// 
-    ///     var exampleApplicationKnownClients = new AzureAD.ApplicationKnownClients("example", new()
+    ///     var exampleApplicationKnownClients = new Azuread.Index.ApplicationKnownClients.ApplicationKnownClients("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         KnownClientIds = new[]

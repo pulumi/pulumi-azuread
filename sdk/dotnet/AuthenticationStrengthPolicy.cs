@@ -26,11 +26,11 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.AuthenticationStrengthPolicy("example", new()
+    ///     var example = new Azuread.Index.AuthenticationStrengthPolicy.AuthenticationStrengthPolicy("example", new()
     ///     {
     ///         DisplayName = "Example Authentication Strength Policy",
     ///         Description = "Policy for demo purposes",
@@ -41,7 +41,7 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var example2 = new AzureAD.AuthenticationStrengthPolicy("example2", new()
+    ///     var example2 = new Azuread.Index.AuthenticationStrengthPolicy.AuthenticationStrengthPolicy("example2", new()
     ///     {
     ///         DisplayName = "Example Authentication Strength Policy",
     ///         Description = "Policy for demo purposes with all possible combinations",

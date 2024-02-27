@@ -24,53 +24,6 @@ import javax.annotation.Nullable;
  * 
  * The calling principal requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`.
  * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.azuread.AzureadFunctions;
- * import com.pulumi.azuread.inputs.GetUserArgs;
- * import com.pulumi.azuread.DirectoryRole;
- * import com.pulumi.azuread.DirectoryRoleArgs;
- * import com.pulumi.azuread.DirectoryRoleEligibilityScheduleRequest;
- * import com.pulumi.azuread.DirectoryRoleEligibilityScheduleRequestArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
- *             .build());
- * 
- *         var exampleDirectoryRole = new DirectoryRole(&#34;exampleDirectoryRole&#34;, DirectoryRoleArgs.builder()        
- *             .displayName(&#34;Application Administrator&#34;)
- *             .build());
- * 
- *         var exampleDirectoryRoleEligibilityScheduleRequest = new DirectoryRoleEligibilityScheduleRequest(&#34;exampleDirectoryRoleEligibilityScheduleRequest&#34;, DirectoryRoleEligibilityScheduleRequestArgs.builder()        
- *             .roleDefinitionId(exampleDirectoryRole.templateId())
- *             .principalId(exampleAzureadUser.objectId())
- *             .directoryScopeId(&#34;/&#34;)
- *             .justification(&#34;Example&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * &gt; Note the use of the `template_id` attribute when referencing built-in roles.
- * 
  * ## Import
  * 
  * Directory role eligibility schedule requests can be imported using the ID of the assignment, e.g.

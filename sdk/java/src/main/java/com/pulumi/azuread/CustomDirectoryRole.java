@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.azuread.CustomDirectoryRole;
  * import com.pulumi.azuread.CustomDirectoryRoleArgs;
- * import com.pulumi.azuread.inputs.CustomDirectoryRolePermissionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,20 +58,8 @@ import javax.annotation.Nullable;
  *             .enabled(true)
  *             .version(&#34;1.0&#34;)
  *             .permissions(            
- *                 CustomDirectoryRolePermissionArgs.builder()
- *                     .allowedResourceActions(                    
- *                         &#34;microsoft.directory/applications/basic/update&#34;,
- *                         &#34;microsoft.directory/applications/create&#34;,
- *                         &#34;microsoft.directory/applications/standard/read&#34;)
- *                     .build(),
- *                 CustomDirectoryRolePermissionArgs.builder()
- *                     .allowedResourceActions(                    
- *                         &#34;microsoft.directory/groups/allProperties/read&#34;,
- *                         &#34;microsoft.directory/groups/allProperties/read&#34;,
- *                         &#34;microsoft.directory/groups/basic/update&#34;,
- *                         &#34;microsoft.directory/groups/create&#34;,
- *                         &#34;microsoft.directory/groups/delete&#34;)
- *                     .build())
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }

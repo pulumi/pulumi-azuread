@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.AuthenticationStrengthPolicy("example", {
+ * const example = new azuread.index/authenticationStrengthPolicy.AuthenticationStrengthPolicy("example", {
  *     displayName: "Example Authentication Strength Policy",
  *     description: "Policy for demo purposes",
  *     allowedCombinations: [
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *         "password",
  *     ],
  * });
- * const example2 = new azuread.AuthenticationStrengthPolicy("example2", {
+ * const example2 = new azuread.index/authenticationStrengthPolicy.AuthenticationStrengthPolicy("example2", {
  *     displayName: "Example Authentication Strength Policy",
  *     description: "Policy for demo purposes with all possible combinations",
  *     allowedCombinations: [

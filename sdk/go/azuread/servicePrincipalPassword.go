@@ -21,35 +21,35 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/application "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/application"
+//	index/servicePrincipal "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/servicePrincipal"
+//	index/servicePrincipalPassword "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/servicePrincipalPassword"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: example.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipalPassword(ctx, "example", &azuread.ServicePrincipalPasswordArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ObjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+// ApplicationId: example.ApplicationId,
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewServicePrincipalPassword(ctx, "example", &azuread.ServicePrincipalPasswordArgs{
+// ServicePrincipalId: exampleServicePrincipal.ObjectId,
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // *Time-based rotation*
@@ -59,45 +59,45 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	index/application "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/application"
+//	index/servicePrincipal "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/servicePrincipal"
+//	index/servicePrincipalPassword "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/servicePrincipalPassword"
+//	index/rotating "github.com/pulumi/pulumi-time/sdk/v1/go/time/index/rotating"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: example.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleRotating, err := time.NewRotating(ctx, "example", &time.RotatingArgs{
-//				RotationDays: pulumi.Int(7),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipalPassword(ctx, "example", &azuread.ServicePrincipalPasswordArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ObjectId,
-//				RotateWhenChanged: pulumi.StringMap{
-//					"rotation": exampleRotating.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+// ApplicationId: example.ApplicationId,
+// })
+// if err != nil {
+// return err
+// }
+// exampleRotating, err := time.NewRotating(ctx, "example", &time.RotatingArgs{
+// RotationDays: 7,
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewServicePrincipalPassword(ctx, "example", &azuread.ServicePrincipalPasswordArgs{
+// ServicePrincipalId: exampleServicePrincipal.ObjectId,
+// RotateWhenChanged: map[string]interface{}{
+// "rotation": exampleRotating.Id,
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

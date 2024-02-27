@@ -16,47 +16,47 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var authorized = new AzureAD.ApplicationRegistration("authorized", new()
+    ///     var authorized = new Azuread.Index.ApplicationRegistration.ApplicationRegistration("authorized", new()
     ///     {
     ///         DisplayName = "example-authorized-app",
     ///     });
     /// 
-    ///     var authorizer = new AzureAD.Application("authorizer", new()
+    ///     var authorizer = new Azuread.Index.Application.Application("authorizer", new()
     ///     {
     ///         DisplayName = "example-authorizing-app",
-    ///         Api = new AzureAD.Inputs.ApplicationApiArgs
+    ///         Api = 
     ///         {
-    ///             Oauth2PermissionScopes = new[]
+    ///             { "oauth2PermissionScopes", new[]
     ///             {
-    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
+    ///                 
     ///                 {
-    ///                     AdminConsentDescription = "Administer the application",
-    ///                     AdminConsentDisplayName = "Administer",
-    ///                     Enabled = true,
-    ///                     Id = "00000000-0000-0000-0000-000000000000",
-    ///                     Type = "Admin",
-    ///                     Value = "administer",
+    ///                     { "adminConsentDescription", "Administer the application" },
+    ///                     { "adminConsentDisplayName", "Administer" },
+    ///                     { "enabled", true },
+    ///                     { "id", "00000000-0000-0000-0000-000000000000" },
+    ///                     { "type", "Admin" },
+    ///                     { "value", "administer" },
     ///                 },
-    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
+    ///                 
     ///                 {
-    ///                     AdminConsentDescription = "Access the application",
-    ///                     AdminConsentDisplayName = "Access",
-    ///                     Enabled = true,
-    ///                     Id = "11111111-1111-1111-1111-111111111111",
-    ///                     Type = "User",
-    ///                     UserConsentDescription = "Access the application",
-    ///                     UserConsentDisplayName = "Access",
-    ///                     Value = "user_impersonation",
+    ///                     { "adminConsentDescription", "Access the application" },
+    ///                     { "adminConsentDisplayName", "Access" },
+    ///                     { "enabled", true },
+    ///                     { "id", "11111111-1111-1111-1111-111111111111" },
+    ///                     { "type", "User" },
+    ///                     { "userConsentDescription", "Access the application" },
+    ///                     { "userConsentDisplayName", "Access" },
+    ///                     { "value", "user_impersonation" },
     ///                 },
-    ///             },
+    ///             } },
     ///         },
     ///     });
     /// 
-    ///     var example = new AzureAD.ApplicationPreAuthorized("example", new()
+    ///     var example = new Azuread.Index.ApplicationPreAuthorized.ApplicationPreAuthorized("example", new()
     ///     {
     ///         ApplicationId = authorizer.Id,
     ///         AuthorizedClientId = authorized.ClientId,

@@ -29,43 +29,41 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/namedLocation "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/namedLocation"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewNamedLocation(ctx, "example-ip", &azuread.NamedLocationArgs{
-//				DisplayName: pulumi.String("IP Named Location"),
-//				Ip: &azuread.NamedLocationIpArgs{
-//					IpRanges: pulumi.StringArray{
-//						pulumi.String("1.1.1.1/32"),
-//						pulumi.String("2.2.2.2/32"),
-//					},
-//					Trusted: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewNamedLocation(ctx, "example-country", &azuread.NamedLocationArgs{
-//				DisplayName: pulumi.String("Country Named Location"),
-//				Country: &azuread.NamedLocationCountryArgs{
-//					CountriesAndRegions: pulumi.StringArray{
-//						pulumi.String("GB"),
-//						pulumi.String("US"),
-//					},
-//					IncludeUnknownCountriesAndRegions: pulumi.Bool(false),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewNamedLocation(ctx, "example-ip", &azuread.NamedLocationArgs{
+// DisplayName: "IP Named Location",
+// Ip: map[string]interface{}{
+// "ipRanges": []string{
+// "1.1.1.1/32",
+// "2.2.2.2/32",
+// },
+// "trusted": true,
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewNamedLocation(ctx, "example-country", &azuread.NamedLocationArgs{
+// DisplayName: "Country Named Location",
+// Country: map[string]interface{}{
+// "countriesAndRegions": []string{
+// "GB",
+// "US",
+// },
+// "includeUnknownCountriesAndRegions": false,
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

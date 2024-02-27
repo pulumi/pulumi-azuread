@@ -13,9 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
- * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {servicePrincipalId: exampleServicePrincipal.objectId});
+ * const example = new azuread.index/application.Application("example", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.index/servicePrincipal.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipalPassword = new azuread.index/servicePrincipalPassword.ServicePrincipalPassword("example", {servicePrincipalId: exampleServicePrincipal.objectId});
  * ```
  *
  * *Time-based rotation*
@@ -23,12 +23,12 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
- * import * as time from "@pulumiverse/time";
+ * import * as time from "@pulumi/time";
  *
- * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
- * const exampleRotating = new time.Rotating("example", {rotationDays: 7});
- * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {
+ * const example = new azuread.index/application.Application("example", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.index/servicePrincipal.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleRotating = new time.index/rotating.Rotating("example", {rotationDays: 7});
+ * const exampleServicePrincipalPassword = new azuread.index/servicePrincipalPassword.ServicePrincipalPassword("example", {
  *     servicePrincipalId: exampleServicePrincipal.objectId,
  *     rotateWhenChanged: {
  *         rotation: exampleRotating.id,

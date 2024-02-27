@@ -29,58 +29,56 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/authenticationStrengthPolicy "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/authenticationStrengthPolicy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewAuthenticationStrengthPolicy(ctx, "example", &azuread.AuthenticationStrengthPolicyArgs{
-//				DisplayName: pulumi.String("Example Authentication Strength Policy"),
-//				Description: pulumi.String("Policy for demo purposes"),
-//				AllowedCombinations: pulumi.StringArray{
-//					pulumi.String("fido2"),
-//					pulumi.String("password"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAuthenticationStrengthPolicy(ctx, "example2", &azuread.AuthenticationStrengthPolicyArgs{
-//				DisplayName: pulumi.String("Example Authentication Strength Policy"),
-//				Description: pulumi.String("Policy for demo purposes with all possible combinations"),
-//				AllowedCombinations: pulumi.StringArray{
-//					pulumi.String("fido2"),
-//					pulumi.String("password"),
-//					pulumi.String("deviceBasedPush"),
-//					pulumi.String("temporaryAccessPassOneTime"),
-//					pulumi.String("federatedMultiFactor"),
-//					pulumi.String("federatedSingleFactor"),
-//					pulumi.String("hardwareOath,federatedSingleFactor"),
-//					pulumi.String("microsoftAuthenticatorPush,federatedSingleFactor"),
-//					pulumi.String("password,hardwareOath"),
-//					pulumi.String("password,microsoftAuthenticatorPush"),
-//					pulumi.String("password,sms"),
-//					pulumi.String("password,softwareOath"),
-//					pulumi.String("password,voice"),
-//					pulumi.String("sms"),
-//					pulumi.String("sms,federatedSingleFactor"),
-//					pulumi.String("softwareOath,federatedSingleFactor"),
-//					pulumi.String("temporaryAccessPassMultiUse"),
-//					pulumi.String("voice,federatedSingleFactor"),
-//					pulumi.String("windowsHelloForBusiness"),
-//					pulumi.String("x509CertificateMultiFactor"),
-//					pulumi.String("x509CertificateSingleFactor"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewAuthenticationStrengthPolicy(ctx, "example", &azuread.AuthenticationStrengthPolicyArgs{
+// DisplayName: "Example Authentication Strength Policy",
+// Description: "Policy for demo purposes",
+// AllowedCombinations: []string{
+// "fido2",
+// "password",
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewAuthenticationStrengthPolicy(ctx, "example2", &azuread.AuthenticationStrengthPolicyArgs{
+// DisplayName: "Example Authentication Strength Policy",
+// Description: "Policy for demo purposes with all possible combinations",
+// AllowedCombinations: []string{
+// "fido2",
+// "password",
+// "deviceBasedPush",
+// "temporaryAccessPassOneTime",
+// "federatedMultiFactor",
+// "federatedSingleFactor",
+// "hardwareOath,federatedSingleFactor",
+// "microsoftAuthenticatorPush,federatedSingleFactor",
+// "password,hardwareOath",
+// "password,microsoftAuthenticatorPush",
+// "password,sms",
+// "password,softwareOath",
+// "password,voice",
+// "sms",
+// "sms,federatedSingleFactor",
+// "softwareOath,federatedSingleFactor",
+// "temporaryAccessPassMultiUse",
+// "voice,federatedSingleFactor",
+// "windowsHelloForBusiness",
+// "x509CertificateMultiFactor",
+// "x509CertificateSingleFactor",
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

@@ -12,9 +12,9 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  * import * as random from "@pulumi/random";
  *
- * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const exampleAdminister = new random.RandomUuid("example_administer", {});
- * const exampleApplicationPermissionScope = new azuread.ApplicationPermissionScope("example", {
+ * const example = new azuread.index/applicationRegistration.ApplicationRegistration("example", {displayName: "example"});
+ * const exampleAdminister = new random.index/randomUuid.RandomUuid("example_administer", {});
+ * const exampleApplicationPermissionScope = new azuread.index/applicationPermissionScope.ApplicationPermissionScope("example", {
  *     applicationId: test.id,
  *     scopeId: exampleAdminister.id,
  *     value: "administer",
@@ -31,8 +31,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleApplicationPermissionScope = new azuread.ApplicationPermissionScope("example", {applicationId: example.id});
+ * const example = new azuread.index/application.Application("example", {displayName: "example"});
+ * const exampleApplicationPermissionScope = new azuread.index/applicationPermissionScope.ApplicationPermissionScope("example", {applicationId: example.id});
  * ```
  *
  * ## Import

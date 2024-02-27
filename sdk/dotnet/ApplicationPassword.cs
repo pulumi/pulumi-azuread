@@ -18,16 +18,16 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new Azuread.Index.ApplicationRegistration.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationPassword = new AzureAD.ApplicationPassword("example", new()
+    ///     var exampleApplicationPassword = new Azuread.Index.ApplicationPassword.ApplicationPassword("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///     });
@@ -41,22 +41,22 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// using Time = Pulumiverse.Time;
+    /// using Azuread = Pulumi.Azuread;
+    /// using Time = Pulumi.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new Azuread.Index.ApplicationRegistration.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleRotating = new Time.Rotating("example", new()
+    ///     var exampleRotating = new Time.Index.Rotating.Rotating("example", new()
     ///     {
     ///         RotationDays = 7,
     ///     });
     /// 
-    ///     var exampleApplicationPassword = new AzureAD.ApplicationPassword("example", new()
+    ///     var exampleApplicationPassword = new Azuread.Index.ApplicationPassword.ApplicationPassword("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         RotateWhenChanged = 

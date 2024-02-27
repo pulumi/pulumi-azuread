@@ -19,38 +19,38 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/applicationOwner "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationOwner"
+//	index/applicationRegistration "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRegistration"
+//	index/user "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/user"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			jane, err := azuread.NewUser(ctx, "jane", &azuread.UserArgs{
-//				UserPrincipalName: pulumi.String("jane.fischer@hashitown.com"),
-//				DisplayName:       pulumi.String("Jane Fischer"),
-//				Password:          pulumi.String("Ch@ngeMe"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationOwner(ctx, "example_jane", &azuread.ApplicationOwnerArgs{
-//				ApplicationId: example.ID(),
-//				OwnerObjectId: jane.ObjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// jane, err := azuread.NewUser(ctx, "jane", &azuread.UserArgs{
+// UserPrincipalName: "jane.fischer@hashitown.com",
+// DisplayName: "Jane Fischer",
+// Password: "Ch@ngeMe",
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationOwner(ctx, "example_jane", &azuread.ApplicationOwnerArgs{
+// ApplicationId: example.Id,
+// OwnerObjectId: jane.ObjectId,
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // > **Tip** For managing more application owners, create additional instances of this resource

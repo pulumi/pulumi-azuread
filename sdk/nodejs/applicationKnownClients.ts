@@ -11,9 +11,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const client = new azuread.ApplicationRegistration("client", {displayName: "example client"});
- * const exampleApplicationKnownClients = new azuread.ApplicationKnownClients("example", {
+ * const example = new azuread.index/applicationRegistration.ApplicationRegistration("example", {displayName: "example"});
+ * const client = new azuread.index/applicationRegistration.ApplicationRegistration("client", {displayName: "example client"});
+ * const exampleApplicationKnownClients = new azuread.index/applicationKnownClients.ApplicationKnownClients("example", {
  *     applicationId: example.id,
  *     knownClientIds: [client.clientId],
  * });

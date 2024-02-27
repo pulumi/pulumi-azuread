@@ -16,16 +16,16 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new Azuread.Index.ApplicationRegistration.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationIdentifierUri = new AzureAD.ApplicationIdentifierUri("example", new()
+    ///     var exampleApplicationIdentifierUri = new Azuread.Index.ApplicationIdentifierUri.ApplicationIdentifierUri("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         IdentifierUri = "https://app.hashitown.com",
@@ -42,16 +42,16 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new Azuread.Index.Application.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationIdentifierUri = new AzureAD.ApplicationIdentifierUri("example", new()
+    ///     var exampleApplicationIdentifierUri = new Azuread.Index.ApplicationIdentifierUri.ApplicationIdentifierUri("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///     });

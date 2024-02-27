@@ -16,16 +16,16 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new Azuread.Index.ApplicationRegistration.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var examplePublic = new AzureAD.ApplicationRedirectUris("example_public", new()
+    ///     var examplePublic = new Azuread.Index.ApplicationRedirectUris.ApplicationRedirectUris("example_public", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         Type = "PublicClient",
@@ -40,7 +40,7 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleSpa = new AzureAD.ApplicationRedirectUris("example_spa", new()
+    ///     var exampleSpa = new Azuread.Index.ApplicationRedirectUris.ApplicationRedirectUris("example_spa", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         Type = "SPA",
@@ -51,7 +51,7 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleWeb = new AzureAD.ApplicationRedirectUris("example_web", new()
+    ///     var exampleWeb = new Azuread.Index.ApplicationRedirectUris.ApplicationRedirectUris("example_web", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         Type = "Web",

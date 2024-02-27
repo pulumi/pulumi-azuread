@@ -610,16 +610,16 @@ class ApplicationRegistration(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example",
-            display_name="Example Application",
-            description="My example application",
-            sign_in_audience="AzureADMyOrg",
-            homepage_url="https://app.hashitown.com/",
-            logout_url="https://app.hashitown.com/logout",
-            marketing_url="https://hashitown.com/",
-            privacy_statement_url="https://hashitown.com/privacy",
-            support_url="https://support.hashitown.com/",
-            terms_of_service_url="https://hashitown.com/terms")
+        example = azuread.index.application_registration.ApplicationRegistration("example",
+            display_name=Example Application,
+            description=My example application,
+            sign_in_audience=AzureADMyOrg,
+            homepage_url=https://app.hashitown.com/,
+            logout_url=https://app.hashitown.com/logout,
+            marketing_url=https://hashitown.com/,
+            privacy_statement_url=https://hashitown.com/privacy,
+            support_url=https://support.hashitown.com/,
+            terms_of_service_url=https://hashitown.com/terms)
         ```
 
         ## Import
@@ -673,16 +673,16 @@ class ApplicationRegistration(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.ApplicationRegistration("example",
-            display_name="Example Application",
-            description="My example application",
-            sign_in_audience="AzureADMyOrg",
-            homepage_url="https://app.hashitown.com/",
-            logout_url="https://app.hashitown.com/logout",
-            marketing_url="https://hashitown.com/",
-            privacy_statement_url="https://hashitown.com/privacy",
-            support_url="https://support.hashitown.com/",
-            terms_of_service_url="https://hashitown.com/terms")
+        example = azuread.index.application_registration.ApplicationRegistration("example",
+            display_name=Example Application,
+            description=My example application,
+            sign_in_audience=AzureADMyOrg,
+            homepage_url=https://app.hashitown.com/,
+            logout_url=https://app.hashitown.com/logout,
+            marketing_url=https://hashitown.com/,
+            privacy_statement_url=https://hashitown.com/privacy,
+            support_url=https://support.hashitown.com/,
+            terms_of_service_url=https://hashitown.com/terms)
         ```
 
         ## Import

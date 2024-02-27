@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.DirectoryRole("example", {templateId: "00000000-0000-0000-0000-000000000000"});
+ * const example = new azuread.index/directoryRole.DirectoryRole("example", {templateId: "00000000-0000-0000-0000-000000000000"});
  * ```
  *
  * *Activate a directory role by display name*
@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.DirectoryRole("example", {displayName: "Printer administrator"});
+ * const example = new azuread.index/directoryRole.DirectoryRole("example", {displayName: "Printer administrator"});
  * ```
  *
  * ## Import

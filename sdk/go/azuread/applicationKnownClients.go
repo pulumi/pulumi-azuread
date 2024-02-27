@@ -19,38 +19,37 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/applicationKnownClients "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationKnownClients"
+//	index/applicationRegistration "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRegistration"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			client, err := azuread.NewApplicationRegistration(ctx, "client", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example client"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationKnownClients(ctx, "example", &azuread.ApplicationKnownClientsArgs{
-//				ApplicationId: example.ID(),
-//				KnownClientIds: pulumi.StringArray{
-//					client.ClientId,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// client, err := azuread.NewApplicationRegistration(ctx, "client", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "example client",
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationKnownClients(ctx, "example", &azuread.ApplicationKnownClientsArgs{
+// ApplicationId: example.Id,
+// KnownClientIds: []interface{}{
+// client.ClientId,
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

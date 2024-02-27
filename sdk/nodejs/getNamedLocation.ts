@@ -17,16 +17,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getNamedLocation({
- *     displayName: "My Named Location",
- * });
- * ```
  * ## Attributes Reference
  *
  * The following attributes are exported:
@@ -90,16 +80,6 @@ export interface GetNamedLocationResult {
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getNamedLocation({
- *     displayName: "My Named Location",
- * });
- * ```
  * ## Attributes Reference
  *
  * The following attributes are exported:

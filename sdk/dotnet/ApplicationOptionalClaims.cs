@@ -16,47 +16,47 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new Azuread.Index.ApplicationRegistration.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationOptionalClaims = new AzureAD.ApplicationOptionalClaims("example", new()
+    ///     var exampleApplicationOptionalClaims = new Azuread.Index.ApplicationOptionalClaims.ApplicationOptionalClaims("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         AccessTokens = new[]
     ///         {
-    ///             new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs
+    ///             
     ///             {
-    ///                 Name = "myclaim",
+    ///                 { "name", "myclaim" },
     ///             },
-    ///             new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs
+    ///             
     ///             {
-    ///                 Name = "otherclaim",
+    ///                 { "name", "otherclaim" },
     ///             },
     ///         },
     ///         IdTokens = new[]
     ///         {
-    ///             new AzureAD.Inputs.ApplicationOptionalClaimsIdTokenArgs
+    ///             
     ///             {
-    ///                 Name = "userclaim",
-    ///                 Source = "user",
-    ///                 Essential = true,
-    ///                 AdditionalProperties = new[]
+    ///                 { "name", "userclaim" },
+    ///                 { "source", "user" },
+    ///                 { "essential", true },
+    ///                 { "additionalProperties", new[]
     ///                 {
     ///                     "emit_as_roles",
-    ///                 },
+    ///                 } },
     ///             },
     ///         },
     ///         Saml2Tokens = new[]
     ///         {
-    ///             new AzureAD.Inputs.ApplicationOptionalClaimsSaml2TokenArgs
+    ///             
     ///             {
-    ///                 Name = "samlexample",
+    ///                 { "name", "samlexample" },
     ///             },
     ///         },
     ///     });

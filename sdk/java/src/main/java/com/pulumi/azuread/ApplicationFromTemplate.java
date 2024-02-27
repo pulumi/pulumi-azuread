@@ -26,53 +26,6 @@ import javax.annotation.Nullable;
  * 
  * When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
  * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.azuread.AzureadFunctions;
- * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
- * import com.pulumi.azuread.ApplicationFromTemplate;
- * import com.pulumi.azuread.ApplicationFromTemplateArgs;
- * import com.pulumi.azuread.inputs.GetApplicationArgs;
- * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
- *             .displayName(&#34;Marketo&#34;)
- *             .build());
- * 
- *         var exampleApplicationFromTemplate = new ApplicationFromTemplate(&#34;exampleApplicationFromTemplate&#34;, ApplicationFromTemplateArgs.builder()        
- *             .displayName(&#34;Example Application&#34;)
- *             .templateId(example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
- *             .build());
- * 
- *         final var exampleGetApplication = AzureadFunctions.getApplication(GetApplicationArgs.builder()
- *             .objectId(exampleApplicationFromTemplate.applicationObjectId())
- *             .build());
- * 
- *         final var exampleGetServicePrincipal = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
- *             .objectId(exampleApplicationFromTemplate.servicePrincipalObjectId())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Templated Applications can be imported using the template ID, the object ID of the application, and the object ID of the service principal, in the following format.

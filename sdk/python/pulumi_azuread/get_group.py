@@ -411,15 +411,6 @@ def get_group(display_name: Optional[str] = None,
     When authenticated with a user principal, this data source does not require any additional roles.
 
     ## Example Usage
-    ### By Group Display Name)
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_group(display_name="MyGroupName",
-        security_enabled=True)
-    ```
 
 
     :param str display_name: The display name for the group.
@@ -491,15 +482,6 @@ def get_group_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
     When authenticated with a user principal, this data source does not require any additional roles.
 
     ## Example Usage
-    ### By Group Display Name)
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_group(display_name="MyGroupName",
-        security_enabled=True)
-    ```
 
 
     :param str display_name: The display name for the group.

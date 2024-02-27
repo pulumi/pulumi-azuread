@@ -158,24 +158,24 @@ class NamedLocation(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_ip = azuread.NamedLocation("example-ip",
-            display_name="IP Named Location",
-            ip=azuread.NamedLocationIpArgs(
-                ip_ranges=[
-                    "1.1.1.1/32",
-                    "2.2.2.2/32",
+        example_ip = azuread.index.named_location.NamedLocation("example-ip",
+            display_name=IP Named Location,
+            ip={
+                ipRanges: [
+                    1.1.1.1/32,
+                    2.2.2.2/32,
                 ],
-                trusted=True,
-            ))
-        example_country = azuread.NamedLocation("example-country",
-            display_name="Country Named Location",
-            country=azuread.NamedLocationCountryArgs(
-                countries_and_regions=[
-                    "GB",
-                    "US",
+                trusted: True,
+            })
+        example_country = azuread.index.named_location.NamedLocation("example-country",
+            display_name=Country Named Location,
+            country={
+                countriesAndRegions: [
+                    GB,
+                    US,
                 ],
-                include_unknown_countries_and_regions=False,
-            ))
+                includeUnknownCountriesAndRegions: False,
+            })
         ```
 
         ## Import
@@ -217,24 +217,24 @@ class NamedLocation(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_ip = azuread.NamedLocation("example-ip",
-            display_name="IP Named Location",
-            ip=azuread.NamedLocationIpArgs(
-                ip_ranges=[
-                    "1.1.1.1/32",
-                    "2.2.2.2/32",
+        example_ip = azuread.index.named_location.NamedLocation("example-ip",
+            display_name=IP Named Location,
+            ip={
+                ipRanges: [
+                    1.1.1.1/32,
+                    2.2.2.2/32,
                 ],
-                trusted=True,
-            ))
-        example_country = azuread.NamedLocation("example-country",
-            display_name="Country Named Location",
-            country=azuread.NamedLocationCountryArgs(
-                countries_and_regions=[
-                    "GB",
-                    "US",
+                trusted: True,
+            })
+        example_country = azuread.index.named_location.NamedLocation("example-country",
+            display_name=Country Named Location,
+            country={
+                countriesAndRegions: [
+                    GB,
+                    US,
                 ],
-                include_unknown_countries_and_regions=False,
-            ))
+                includeUnknownCountriesAndRegions: False,
+            })
         ```
 
         ## Import

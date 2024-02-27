@@ -68,7 +68,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.azuread.Invitation;
  * import com.pulumi.azuread.InvitationArgs;
- * import com.pulumi.azuread.inputs.InvitationMessageArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -85,9 +84,7 @@ import javax.annotation.Nullable;
  *         var example = new Invitation(&#34;example&#34;, InvitationArgs.builder()        
  *             .userEmailAddress(&#34;jdoe@example.com&#34;)
  *             .redirectUrl(&#34;https://portal.azure.com&#34;)
- *             .message(InvitationMessageArgs.builder()
- *                 .language(&#34;en-US&#34;)
- *                 .build())
+ *             .message(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }
@@ -103,7 +100,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.azuread.Invitation;
  * import com.pulumi.azuread.InvitationArgs;
- * import com.pulumi.azuread.inputs.InvitationMessageArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -121,10 +117,7 @@ import javax.annotation.Nullable;
  *             .userDisplayName(&#34;Bob Bobson&#34;)
  *             .userEmailAddress(&#34;bbobson@example.com&#34;)
  *             .redirectUrl(&#34;https://portal.azure.com&#34;)
- *             .message(InvitationMessageArgs.builder()
- *                 .additionalRecipients(&#34;aaliceberg@example.com&#34;)
- *                 .body(&#34;Hello there! You are invited to join my Azure tenant!&#34;)
- *                 .build())
+ *             .message(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }

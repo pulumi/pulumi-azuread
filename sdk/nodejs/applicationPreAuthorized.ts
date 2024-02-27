@@ -11,8 +11,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const authorized = new azuread.ApplicationRegistration("authorized", {displayName: "example-authorized-app"});
- * const authorizer = new azuread.Application("authorizer", {
+ * const authorized = new azuread.index/applicationRegistration.ApplicationRegistration("authorized", {displayName: "example-authorized-app"});
+ * const authorizer = new azuread.index/application.Application("authorizer", {
  *     displayName: "example-authorizing-app",
  *     api: {
  *         oauth2PermissionScopes: [
@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  *         ],
  *     },
  * });
- * const example = new azuread.ApplicationPreAuthorized("example", {
+ * const example = new azuread.index/applicationPreAuthorized.ApplicationPreAuthorized("example", {
  *     applicationId: authorizer.id,
  *     authorizedClientId: authorized.clientId,
  *     permissionIds: [

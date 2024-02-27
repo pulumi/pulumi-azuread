@@ -28,11 +28,11 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.CustomDirectoryRole("example", new()
+    ///     var example = new Azuread.Index.CustomDirectoryRole.CustomDirectoryRole("example", new()
     ///     {
     ///         DisplayName = "My Custom Role",
     ///         Description = "Allows reading applications and updating groups",
@@ -40,25 +40,25 @@ namespace Pulumi.AzureAD
     ///         Version = "1.0",
     ///         Permissions = new[]
     ///         {
-    ///             new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
+    ///             
     ///             {
-    ///                 AllowedResourceActions = new[]
+    ///                 { "allowedResourceActions", new[]
     ///                 {
     ///                     "microsoft.directory/applications/basic/update",
     ///                     "microsoft.directory/applications/create",
     ///                     "microsoft.directory/applications/standard/read",
-    ///                 },
+    ///                 } },
     ///             },
-    ///             new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
+    ///             
     ///             {
-    ///                 AllowedResourceActions = new[]
+    ///                 { "allowedResourceActions", new[]
     ///                 {
     ///                     "microsoft.directory/groups/allProperties/read",
     ///                     "microsoft.directory/groups/allProperties/read",
     ///                     "microsoft.directory/groups/basic/update",
     ///                     "microsoft.directory/groups/create",
     ///                     "microsoft.directory/groups/delete",
-    ///                 },
+    ///                 } },
     ///             },
     ///         },
     ///     });

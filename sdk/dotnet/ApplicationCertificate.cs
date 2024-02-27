@@ -11,70 +11,6 @@ namespace Pulumi.AzureAD
 {
     /// <summary>
     /// ## Example Usage
-    /// 
-    /// *Using a PEM certificate*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///     });
-    /// 
-    ///     var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("example", new()
-    ///     {
-    ///         ApplicationId = example.Id,
-    ///         Type = "AsymmetricX509Cert",
-    ///         Value = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "cert.pem",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         EndDate = "2021-05-01T01:02:03Z",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// *Using a DER certificate*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///     });
-    /// 
-    ///     var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("example", new()
-    ///     {
-    ///         ApplicationId = example.Id,
-    ///         Type = "AsymmetricX509Cert",
-    ///         Encoding = "base64",
-    ///         Value = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "cert.der",
-    ///         }).Apply(invoke =&gt; Std.Base64encode.Invoke(new()
-    ///         {
-    ///             Input = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result),
-    ///         EndDate = "2021-05-01T01:02:03Z",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Using a certificate from Azure Key Vault
     /// 
     /// ```csharp
@@ -82,85 +18,85 @@ namespace Pulumi.AzureAD
     /// using System.Linq;
     /// using Pulumi;
     /// using Azure = Pulumi.Azure;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplication = new AzureAD.Application("example", new()
+    ///     var exampleApplication = new Azuread.Index.Application.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var example = new Azure.KeyVault.Certificate("example", new()
+    ///     var example = new Azure.Keyvault.Certificate.Certificate("example", new()
     ///     {
     ///         Name = "generated-cert",
     ///         KeyVaultId = exampleAzurermKeyVault.Id,
-    ///         CertificatePolicy = new Azure.KeyVault.Inputs.CertificateCertificatePolicyArgs
+    ///         CertificatePolicy = 
     ///         {
-    ///             IssuerParameters = new Azure.KeyVault.Inputs.CertificateCertificatePolicyIssuerParametersArgs
+    ///             { "issuerParameters", 
     ///             {
-    ///                 Name = "Self",
-    ///             },
-    ///             KeyProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicyKeyPropertiesArgs
+    ///                 { "name", "Self" },
+    ///             } },
+    ///             { "keyProperties", 
     ///             {
-    ///                 Exportable = true,
-    ///                 KeySize = 2048,
-    ///                 KeyType = "RSA",
-    ///                 ReuseKey = true,
-    ///             },
-    ///             LifetimeActions = new[]
+    ///                 { "exportable", true },
+    ///                 { "keySize", 2048 },
+    ///                 { "keyType", "RSA" },
+    ///                 { "reuseKey", true },
+    ///             } },
+    ///             { "lifetimeActions", new[]
     ///             {
-    ///                 new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionArgs
+    ///                 
     ///                 {
-    ///                     Action = new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionActionArgs
+    ///                     { "action", 
     ///                     {
-    ///                         ActionType = "AutoRenew",
-    ///                     },
-    ///                     Trigger = new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionTriggerArgs
+    ///                         { "actionType", "AutoRenew" },
+    ///                     } },
+    ///                     { "trigger", 
     ///                     {
-    ///                         DaysBeforeExpiry = 30,
-    ///                     },
+    ///                         { "daysBeforeExpiry", 30 },
+    ///                     } },
     ///                 },
-    ///             },
-    ///             SecretProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicySecretPropertiesArgs
+    ///             } },
+    ///             { "secretProperties", 
     ///             {
-    ///                 ContentType = "application/x-pkcs12",
-    ///             },
-    ///             X509CertificateProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicyX509CertificatePropertiesArgs
+    ///                 { "contentType", "application/x-pkcs12" },
+    ///             } },
+    ///             { "x509CertificateProperties", 
     ///             {
-    ///                 ExtendedKeyUsages = new[]
+    ///                 { "extendedKeyUsages", new[]
     ///                 {
     ///                     "1.3.6.1.5.5.7.3.2",
-    ///                 },
-    ///                 KeyUsages = new[]
+    ///                 } },
+    ///                 { "keyUsages", new[]
     ///                 {
     ///                     "dataEncipherment",
     ///                     "digitalSignature",
     ///                     "keyCertSign",
     ///                     "keyEncipherment",
-    ///                 },
-    ///                 SubjectAlternativeNames = new Azure.KeyVault.Inputs.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs
+    ///                 } },
+    ///                 { "subjectAlternativeNames", 
     ///                 {
-    ///                     DnsNames = new[]
+    ///                     { "dnsNames", new[]
     ///                     {
     ///                         "internal.contoso.com",
     ///                         "domain.hello.world",
-    ///                     },
-    ///                 },
-    ///                 Subject = $"CN={exampleApplication.Name}",
-    ///                 ValidityInMonths = 12,
-    ///             },
+    ///                     } },
+    ///                 } },
+    ///                 { "subject", $"CN={exampleApplication.Name}" },
+    ///                 { "validityInMonths", 12 },
+    ///             } },
     ///         },
     ///     });
     /// 
-    ///     var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("example", new()
+    ///     var exampleApplicationCertificate = new Azuread.Index.ApplicationCertificate.ApplicationCertificate("example", new()
     ///     {
     ///         ApplicationId = exampleApplication.Id,
     ///         Type = "AsymmetricX509Cert",
     ///         Encoding = "hex",
     ///         Value = example.CertificateData,
-    ///         EndDate = example.CertificateAttributes.Apply(certificateAttributes =&gt; certificateAttributes[0].Expires),
-    ///         StartDate = example.CertificateAttributes.Apply(certificateAttributes =&gt; certificateAttributes[0].NotBefore),
+    ///         EndDate = example.CertificateAttributes[0].Expires,
+    ///         StartDate = example.CertificateAttributes[0].NotBefore,
     ///     });
     /// 
     /// });

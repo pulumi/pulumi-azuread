@@ -31,44 +31,42 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/customDirectoryRole "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/customDirectoryRole"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewCustomDirectoryRole(ctx, "example", &azuread.CustomDirectoryRoleArgs{
-//				DisplayName: pulumi.String("My Custom Role"),
-//				Description: pulumi.String("Allows reading applications and updating groups"),
-//				Enabled:     pulumi.Bool(true),
-//				Version:     pulumi.String("1.0"),
-//				Permissions: azuread.CustomDirectoryRolePermissionArray{
-//					&azuread.CustomDirectoryRolePermissionArgs{
-//						AllowedResourceActions: pulumi.StringArray{
-//							pulumi.String("microsoft.directory/applications/basic/update"),
-//							pulumi.String("microsoft.directory/applications/create"),
-//							pulumi.String("microsoft.directory/applications/standard/read"),
-//						},
-//					},
-//					&azuread.CustomDirectoryRolePermissionArgs{
-//						AllowedResourceActions: pulumi.StringArray{
-//							pulumi.String("microsoft.directory/groups/allProperties/read"),
-//							pulumi.String("microsoft.directory/groups/allProperties/read"),
-//							pulumi.String("microsoft.directory/groups/basic/update"),
-//							pulumi.String("microsoft.directory/groups/create"),
-//							pulumi.String("microsoft.directory/groups/delete"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewCustomDirectoryRole(ctx, "example", &azuread.CustomDirectoryRoleArgs{
+// DisplayName: "My Custom Role",
+// Description: "Allows reading applications and updating groups",
+// Enabled: true,
+// Version: "1.0",
+// Permissions: []map[string]interface{}{
+// map[string]interface{}{
+// "allowedResourceActions": []string{
+// "microsoft.directory/applications/basic/update",
+// "microsoft.directory/applications/create",
+// "microsoft.directory/applications/standard/read",
+// },
+// },
+// map[string]interface{}{
+// "allowedResourceActions": []string{
+// "microsoft.directory/groups/allProperties/read",
+// "microsoft.directory/groups/allProperties/read",
+// "microsoft.directory/groups/basic/update",
+// "microsoft.directory/groups/create",
+// "microsoft.directory/groups/delete",
+// },
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

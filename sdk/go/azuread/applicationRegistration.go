@@ -31,31 +31,29 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/applicationRegistration "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRegistration"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName:         pulumi.String("Example Application"),
-//				Description:         pulumi.String("My example application"),
-//				SignInAudience:      pulumi.String("AzureADMyOrg"),
-//				HomepageUrl:         pulumi.String("https://app.hashitown.com/"),
-//				LogoutUrl:           pulumi.String("https://app.hashitown.com/logout"),
-//				MarketingUrl:        pulumi.String("https://hashitown.com/"),
-//				PrivacyStatementUrl: pulumi.String("https://hashitown.com/privacy"),
-//				SupportUrl:          pulumi.String("https://support.hashitown.com/"),
-//				TermsOfServiceUrl:   pulumi.String("https://hashitown.com/terms"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "Example Application",
+// Description: "My example application",
+// SignInAudience: "AzureADMyOrg",
+// HomepageUrl: "https://app.hashitown.com/",
+// LogoutUrl: "https://app.hashitown.com/logout",
+// MarketingUrl: "https://hashitown.com/",
+// PrivacyStatementUrl: "https://hashitown.com/privacy",
+// SupportUrl: "https://support.hashitown.com/",
+// TermsOfServiceUrl: "https://hashitown.com/terms",
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

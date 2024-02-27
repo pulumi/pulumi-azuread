@@ -29,24 +29,22 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/servicePrincipalClaimsMappingPolicyAssignment "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/servicePrincipalClaimsMappingPolicyAssignment"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewServicePrincipalClaimsMappingPolicyAssignment(ctx, "app", &azuread.ServicePrincipalClaimsMappingPolicyAssignmentArgs{
-//				ClaimsMappingPolicyId: pulumi.Any(myPolicy.Id),
-//				ServicePrincipalId:    pulumi.Any(myPrincipal.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewServicePrincipalClaimsMappingPolicyAssignment(ctx, "app", &azuread.ServicePrincipalClaimsMappingPolicyAssignmentArgs{
+// ClaimsMappingPolicyId: myPolicy.Id,
+// ServicePrincipalId: myPrincipal.Id,
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

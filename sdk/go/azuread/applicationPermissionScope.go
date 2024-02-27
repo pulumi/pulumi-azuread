@@ -19,38 +19,37 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	index/applicationPermissionScope "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationPermissionScope"
+//	index/applicationRegistration "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationRegistration"
+//	index/randomUuid "github.com/pulumi/pulumi-random/sdk/v1/go/random/index/randomUuid"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleAdminister, err := random.NewRandomUuid(ctx, "example_administer", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationPermissionScope(ctx, "example", &azuread.ApplicationPermissionScopeArgs{
-//				ApplicationId:           pulumi.Any(test.Id),
-//				ScopeId:                 exampleAdminister.ID(),
-//				Value:                   pulumi.String("administer"),
-//				AdminConsentDescription: pulumi.String("Administer the application"),
-//				AdminConsentDisplayName: pulumi.String("Administer"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// exampleAdminister, err := random.NewRandomUuid(ctx, "example_administer", nil)
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationPermissionScope(ctx, "example", &azuread.ApplicationPermissionScopeArgs{
+// ApplicationId: test.Id,
+// ScopeId: exampleAdminister.Id,
+// Value: "administer",
+// AdminConsentDescription: "Administer the application",
+// AdminConsentDisplayName: "Administer",
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // > **Tip** For managing more permissions scopes, create additional instances of this resource
@@ -62,29 +61,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	index/application "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/application"
+//	index/applicationPermissionScope "github.com/pulumi/pulumi-azuread/sdk/v1/go/azuread/index/applicationPermissionScope"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationPermissionScope(ctx, "example", &azuread.ApplicationPermissionScopeArgs{
-//				ApplicationId: example.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+// DisplayName: "example",
+// })
+// if err != nil {
+// return err
+// }
+// _, err = azuread.NewApplicationPermissionScope(ctx, "example", &azuread.ApplicationPermissionScopeArgs{
+// ApplicationId: example.Id,
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

@@ -11,13 +11,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const jane = new azuread.User("jane", {
+ * const example = new azuread.index/applicationRegistration.ApplicationRegistration("example", {displayName: "example"});
+ * const jane = new azuread.index/user.User("jane", {
  *     userPrincipalName: "jane.fischer@hashitown.com",
  *     displayName: "Jane Fischer",
  *     password: "Ch@ngeMe",
  * });
- * const exampleJane = new azuread.ApplicationOwner("example_jane", {
+ * const exampleJane = new azuread.index/applicationOwner.ApplicationOwner("example_jane", {
  *     applicationId: example.id,
  *     ownerObjectId: jane.objectId,
  * });

@@ -264,28 +264,28 @@ class CustomDirectoryRole(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.CustomDirectoryRole("example",
-            display_name="My Custom Role",
-            description="Allows reading applications and updating groups",
+        example = azuread.index.custom_directory_role.CustomDirectoryRole("example",
+            display_name=My Custom Role,
+            description=Allows reading applications and updating groups,
             enabled=True,
-            version="1.0",
+            version=1.0,
             permissions=[
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
-                        "microsoft.directory/applications/basic/update",
-                        "microsoft.directory/applications/create",
-                        "microsoft.directory/applications/standard/read",
+                {
+                    allowedResourceActions: [
+                        microsoft.directory/applications/basic/update,
+                        microsoft.directory/applications/create,
+                        microsoft.directory/applications/standard/read,
                     ],
-                ),
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
-                        "microsoft.directory/groups/allProperties/read",
-                        "microsoft.directory/groups/allProperties/read",
-                        "microsoft.directory/groups/basic/update",
-                        "microsoft.directory/groups/create",
-                        "microsoft.directory/groups/delete",
+                },
+                {
+                    allowedResourceActions: [
+                        microsoft.directory/groups/allProperties/read,
+                        microsoft.directory/groups/allProperties/read,
+                        microsoft.directory/groups/basic/update,
+                        microsoft.directory/groups/create,
+                        microsoft.directory/groups/delete,
                     ],
-                ),
+                },
             ])
         ```
 
@@ -327,28 +327,28 @@ class CustomDirectoryRole(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.CustomDirectoryRole("example",
-            display_name="My Custom Role",
-            description="Allows reading applications and updating groups",
+        example = azuread.index.custom_directory_role.CustomDirectoryRole("example",
+            display_name=My Custom Role,
+            description=Allows reading applications and updating groups,
             enabled=True,
-            version="1.0",
+            version=1.0,
             permissions=[
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
-                        "microsoft.directory/applications/basic/update",
-                        "microsoft.directory/applications/create",
-                        "microsoft.directory/applications/standard/read",
+                {
+                    allowedResourceActions: [
+                        microsoft.directory/applications/basic/update,
+                        microsoft.directory/applications/create,
+                        microsoft.directory/applications/standard/read,
                     ],
-                ),
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
-                        "microsoft.directory/groups/allProperties/read",
-                        "microsoft.directory/groups/allProperties/read",
-                        "microsoft.directory/groups/basic/update",
-                        "microsoft.directory/groups/create",
-                        "microsoft.directory/groups/delete",
+                },
+                {
+                    allowedResourceActions: [
+                        microsoft.directory/groups/allProperties/read,
+                        microsoft.directory/groups/allProperties/read,
+                        microsoft.directory/groups/basic/update,
+                        microsoft.directory/groups/create,
+                        microsoft.directory/groups/delete,
                     ],
-                ),
+                },
             ])
         ```
 

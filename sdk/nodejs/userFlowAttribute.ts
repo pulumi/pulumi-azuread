@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.UserFlowAttribute("example", {
+ * const example = new azuread.index/userFlowAttribute.UserFlowAttribute("example", {
  *     displayName: "Hobby",
  *     description: "Your hobby",
  *     dataType: "string",

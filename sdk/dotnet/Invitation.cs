@@ -28,11 +28,11 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Invitation("example", new()
+    ///     var example = new Azuread.Index.Invitation.Invitation("example", new()
     ///     {
     ///         UserEmailAddress = "jdoe@example.com",
     ///         RedirectUrl = "https://portal.azure.com",
@@ -47,17 +47,17 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Invitation("example", new()
+    ///     var example = new Azuread.Index.Invitation.Invitation("example", new()
     ///     {
     ///         UserEmailAddress = "jdoe@example.com",
     ///         RedirectUrl = "https://portal.azure.com",
-    ///         Message = new AzureAD.Inputs.InvitationMessageArgs
+    ///         Message = 
     ///         {
-    ///             Language = "en-US",
+    ///             { "language", "en-US" },
     ///         },
     ///     });
     /// 
@@ -70,19 +70,19 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// using Azuread = Pulumi.Azuread;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Invitation("example", new()
+    ///     var example = new Azuread.Index.Invitation.Invitation("example", new()
     ///     {
     ///         UserDisplayName = "Bob Bobson",
     ///         UserEmailAddress = "bbobson@example.com",
     ///         RedirectUrl = "https://portal.azure.com",
-    ///         Message = new AzureAD.Inputs.InvitationMessageArgs
+    ///         Message = 
     ///         {
-    ///             AdditionalRecipients = "aaliceberg@example.com",
-    ///             Body = "Hello there! You are invited to join my Azure tenant!",
+    ///             { "additionalRecipients", "aaliceberg@example.com" },
+    ///             { "body", "Hello there! You are invited to join my Azure tenant!" },
     ///         },
     ///     });
     /// 
