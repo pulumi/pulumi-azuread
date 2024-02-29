@@ -5,7 +5,7 @@ go 1.21.3
 require (
 	github.com/hashicorp/go-azure-sdk v0.20231117.1130141
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.76.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.76.1-0.20240229114854-e1756b040e64
 	github.com/pulumi/pulumi/sdk/v3 v3.107.0
 )
 
@@ -130,7 +130,7 @@ require (
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.19.0 // indirect
 	github.com/hashicorp/terraform-json v0.17.1 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.22.0 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.21.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.5.1 // indirect
