@@ -29,6 +29,7 @@ import (
 //
 // *Activate a directory role by its template ID*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,9 +53,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // *Activate a directory role by display name*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,6 +81,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

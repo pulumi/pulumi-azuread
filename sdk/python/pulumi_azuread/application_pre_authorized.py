@@ -224,6 +224,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -261,6 +262,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                 "11111111-1111-1111-1111-111111111111",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -270,7 +272,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationPreAuthorized:ApplicationPreAuthorized example 00000000-0000-0000-0000-000000000000/preAuthorizedApplication/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
+        -> This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -289,6 +291,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -326,6 +329,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                 "11111111-1111-1111-1111-111111111111",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -335,7 +339,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationPreAuthorized:ApplicationPreAuthorized example 00000000-0000-0000-0000-000000000000/preAuthorizedApplication/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
+        -> This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
 
         :param str resource_name: The name of the resource.
         :param ApplicationPreAuthorizedArgs args: The arguments to use to populate this resource's properties.

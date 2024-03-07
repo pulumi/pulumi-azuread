@@ -100,6 +100,7 @@ class ApplicationKnownClients(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -110,6 +111,7 @@ class ApplicationKnownClients(pulumi.CustomResource):
             application_id=example.id,
             known_client_ids=[client.client_id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -133,6 +135,7 @@ class ApplicationKnownClients(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -143,6 +146,7 @@ class ApplicationKnownClients(pulumi.CustomResource):
             application_id=example.id,
             known_client_ids=[client.client_id])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

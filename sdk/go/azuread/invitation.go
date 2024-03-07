@@ -26,6 +26,7 @@ import (
 //
 // *Basic example*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,9 +51,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // *Invitation with standard message*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -80,9 +83,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // *Invitation with custom message body and an additional recipient*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -112,6 +117,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

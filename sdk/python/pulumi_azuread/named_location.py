@@ -154,6 +154,7 @@ class NamedLocation(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -177,6 +178,7 @@ class NamedLocation(pulumi.CustomResource):
                 include_unknown_countries_and_regions=False,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -213,6 +215,7 @@ class NamedLocation(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -236,6 +239,7 @@ class NamedLocation(pulumi.CustomResource):
                 include_unknown_countries_and_regions=False,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

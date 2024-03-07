@@ -83,6 +83,7 @@ def get_directory_role_templates(opts: Optional[pulumi.InvokeOptions] = None) ->
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -90,6 +91,7 @@ def get_directory_role_templates(opts: Optional[pulumi.InvokeOptions] = None) ->
     current = azuread.get_directory_role_templates()
     pulumi.export("roles", current.object_ids)
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -116,6 +118,7 @@ def get_directory_role_templates_output(opts: Optional[pulumi.InvokeOptions] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -123,5 +126,6 @@ def get_directory_role_templates_output(opts: Optional[pulumi.InvokeOptions] = N
     current = azuread.get_directory_role_templates()
     pulumi.export("roles", current.object_ids)
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

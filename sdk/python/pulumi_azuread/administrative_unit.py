@@ -234,6 +234,7 @@ class AdministrativeUnit(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -243,6 +244,7 @@ class AdministrativeUnit(pulumi.CustomResource):
             description="Just an example",
             hidden_membership_enabled=False)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -281,6 +283,7 @@ class AdministrativeUnit(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -290,6 +293,7 @@ class AdministrativeUnit(pulumi.CustomResource):
             description="Just an example",
             hidden_membership_enabled=False)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

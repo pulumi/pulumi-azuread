@@ -989,6 +989,51 @@ class Group(pulumi.CustomResource):
 
         The `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
 
+        ## Example Usage
+
+        *Basic example*
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.Group("example",
+            display_name="example",
+            owners=[current.object_id],
+            security_enabled=True)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        *Microsoft 365 group*
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        group_owner = azuread.User("group_owner",
+            user_principal_name="example-group-owner@example.com",
+            display_name="Group Owner",
+            mail_nickname="example-group-owner",
+            password="SecretP@sswd99!")
+        example = azuread.Group("example",
+            display_name="example",
+            mail_enabled=True,
+            mail_nickname="ExampleGroup",
+            security_enabled=True,
+            types=["Unified"],
+            owners=[
+                current.object_id,
+                group_owner.object_id,
+            ])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        *Group with members*
+
         ## Import
 
         Groups can be imported using their object ID, e.g.
@@ -1064,6 +1109,51 @@ class Group(pulumi.CustomResource):
         When creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.
 
         The `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
+
+        ## Example Usage
+
+        *Basic example*
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.Group("example",
+            display_name="example",
+            owners=[current.object_id],
+            security_enabled=True)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        *Microsoft 365 group*
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        group_owner = azuread.User("group_owner",
+            user_principal_name="example-group-owner@example.com",
+            display_name="Group Owner",
+            mail_nickname="example-group-owner",
+            password="SecretP@sswd99!")
+        example = azuread.Group("example",
+            display_name="example",
+            mail_enabled=True,
+            mail_nickname="ExampleGroup",
+            security_enabled=True,
+            types=["Unified"],
+            owners=[
+                current.object_id,
+                group_owner.object_id,
+            ])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        *Group with members*
 
         ## Import
 

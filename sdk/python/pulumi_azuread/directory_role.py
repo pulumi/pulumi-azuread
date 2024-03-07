@@ -158,21 +158,25 @@ class DirectoryRole(pulumi.CustomResource):
 
         *Activate a directory role by its template ID*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
 
         example = azuread.DirectoryRole("example", template_id="00000000-0000-0000-0000-000000000000")
         ```
+        <!--End PulumiCodeChooser -->
 
         *Activate a directory role by display name*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
 
         example = azuread.DirectoryRole("example", display_name="Printer administrator")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -210,21 +214,25 @@ class DirectoryRole(pulumi.CustomResource):
 
         *Activate a directory role by its template ID*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
 
         example = azuread.DirectoryRole("example", template_id="00000000-0000-0000-0000-000000000000")
         ```
+        <!--End PulumiCodeChooser -->
 
         *Activate a directory role by display name*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
 
         example = azuread.DirectoryRole("example", display_name="Printer administrator")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

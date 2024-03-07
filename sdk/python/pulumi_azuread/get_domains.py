@@ -134,6 +134,7 @@ def get_domains(admin_managed: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -141,6 +142,7 @@ def get_domains(admin_managed: Optional[bool] = None,
     aad_domains = azuread.get_domains()
     pulumi.export("domainNames", [__item.domain_name for __item in aad_domains.domains])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool admin_managed: Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
@@ -194,6 +196,7 @@ def get_domains_output(admin_managed: Optional[pulumi.Input[Optional[bool]]] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -201,6 +204,7 @@ def get_domains_output(admin_managed: Optional[pulumi.Input[Optional[bool]]] = N
     aad_domains = azuread.get_domains()
     pulumi.export("domainNames", [__item.domain_name for __item in aad_domains.domains])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool admin_managed: Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.

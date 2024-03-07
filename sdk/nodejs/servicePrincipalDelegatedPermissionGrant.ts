@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *
  * *Delegated permission grant for all users*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -54,9 +55,11 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Delegated permission grant for a single user*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -99,6 +102,7 @@ import * as utilities from "./utilities";
  *     userObjectId: exampleUser.objectId,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

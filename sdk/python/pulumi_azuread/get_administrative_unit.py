@@ -119,23 +119,28 @@ def get_administrative_unit(display_name: Optional[str] = None,
     When authenticated with a user principal, this data source does not require any additional roles.
 
     ## Example Usage
+
     ### By Group Display Name)
 
     *Look up by display name*
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_administrative_unit(display_name="Example-AU")
     ```
+    <!--End PulumiCodeChooser -->
 
     *Look up by object ID*
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_administrative_unit(object_id="00000000-0000-0000-0000-000000000000")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: Specifies the display name of the administrative unit.
@@ -174,23 +179,28 @@ def get_administrative_unit_output(display_name: Optional[pulumi.Input[Optional[
     When authenticated with a user principal, this data source does not require any additional roles.
 
     ## Example Usage
+
     ### By Group Display Name)
 
     *Look up by display name*
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_administrative_unit(display_name="Example-AU")
     ```
+    <!--End PulumiCodeChooser -->
 
     *Look up by object ID*
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_administrative_unit(object_id="00000000-0000-0000-0000-000000000000")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: Specifies the display name of the administrative unit.

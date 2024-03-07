@@ -62,6 +62,7 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
 
     *Listing well-known application IDs*
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -69,9 +70,11 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
     well_known = azuread.get_application_published_app_ids()
     pulumi.export("publishedAppIds", well_known.result)
     ```
+    <!--End PulumiCodeChooser -->
 
     *Granting access to an application*
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -96,6 +99,7 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
             ],
         )])
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -113,6 +117,7 @@ def get_application_published_app_ids_output(opts: Optional[pulumi.InvokeOptions
 
     *Listing well-known application IDs*
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -120,9 +125,11 @@ def get_application_published_app_ids_output(opts: Optional[pulumi.InvokeOptions
     well_known = azuread.get_application_published_app_ids()
     pulumi.export("publishedAppIds", well_known.result)
     ```
+    <!--End PulumiCodeChooser -->
 
     *Granting access to an application*
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -147,5 +154,6 @@ def get_application_published_app_ids_output(opts: Optional[pulumi.InvokeOptions
             ],
         )])
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

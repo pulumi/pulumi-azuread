@@ -22,11 +22,10 @@ namespace Pulumi.AzureAD
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// *Look up and output type of object by ID*
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -46,8 +45,8 @@ namespace Pulumi.AzureAD
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Attributes Reference 
         /// 
         /// The following attributes are exported:
@@ -69,11 +68,10 @@ namespace Pulumi.AzureAD
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// *Look up and output type of object by ID*
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -93,8 +91,8 @@ namespace Pulumi.AzureAD
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Attributes Reference 
         /// 
         /// The following attributes are exported:

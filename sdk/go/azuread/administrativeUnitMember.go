@@ -25,6 +25,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,6 +62,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -70,7 +72,7 @@ import (
 // $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
 // ```
 //
-//	-> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
+// -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
 type AdministrativeUnitMember struct {
 	pulumi.CustomResourceState
 

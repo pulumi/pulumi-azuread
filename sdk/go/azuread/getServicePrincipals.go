@@ -25,6 +25,7 @@ import (
 //
 // *Look up by application display names*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,9 +52,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // *Look up by application IDs (client IDs*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,9 +84,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // *Look up by service principal object IDs*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,6 +116,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, opts ...pulumi.InvokeOption) (*GetServicePrincipalsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicePrincipalsResult

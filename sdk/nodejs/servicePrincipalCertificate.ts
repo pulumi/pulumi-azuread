@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * *Using a PEM certificate*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -25,9 +26,11 @@ import * as utilities from "./utilities";
  *     endDate: "2021-05-01T01:02:03Z",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Using a DER certificate*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -47,6 +50,7 @@ import * as utilities from "./utilities";
  *     endDate: "2021-05-01T01:02:03Z",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -56,7 +60,7 @@ import * as utilities from "./utilities";
  * $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
  * ```
  *
- *  -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
+ * -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
  */
 export class ServicePrincipalCertificate extends pulumi.CustomResource {
     /**

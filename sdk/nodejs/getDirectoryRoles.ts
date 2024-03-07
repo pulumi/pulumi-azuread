@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -26,6 +27,7 @@ import * as utilities from "./utilities";
  * const current = azuread.getDirectoryRoles({});
  * export const roles = current.then(current => current.objectIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDirectoryRoles(opts?: pulumi.InvokeOptions): Promise<GetDirectoryRolesResult> {
 
@@ -68,6 +70,7 @@ export interface GetDirectoryRolesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -75,6 +78,7 @@ export interface GetDirectoryRolesResult {
  * const current = azuread.getDirectoryRoles({});
  * export const roles = current.then(current => current.objectIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDirectoryRolesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryRolesResult> {
     return pulumi.output(getDirectoryRoles(opts))

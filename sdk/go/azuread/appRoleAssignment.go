@@ -22,6 +22,165 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 //
+// ## Example Usage
+//
+// *App role assignment for accessing Microsoft Graph*
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
+//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				UseExisting:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+//					&azuread.ApplicationRequiredResourceAccessArgs{
+//						ResourceAppId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
+//								Id: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+//									return appRoleIds.User.Read.All, nil
+//								}).(pulumi.StringOutput),
+//								Type: pulumi.String("Role"),
+//							},
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
+//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+//									return oauth2PermissionScopeIds.User.ReadWrite, nil
+//								}).(pulumi.StringOutput),
+//								Type: pulumi.String("Scope"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+//				ApplicationId: example.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAppRoleAssignment(ctx, "example", &azuread.AppRoleAssignmentArgs{
+//				AppRoleId: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+//					return appRoleIds.User.Read.All, nil
+//				}).(pulumi.StringOutput),
+//				PrincipalObjectId: exampleServicePrincipal.ObjectId,
+//				ResourceObjectId:  msgraph.ObjectId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// *App role assignment for internal application*
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			internal, err := azuread.NewApplication(ctx, "internal", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("internal"),
+//				AppRoles: azuread.ApplicationAppRoleTypeArray{
+//					&azuread.ApplicationAppRoleTypeArgs{
+//						AllowedMemberTypes: pulumi.StringArray{
+//							pulumi.String("Application"),
+//						},
+//						Description: pulumi.String("Apps can query the database"),
+//						DisplayName: pulumi.String("Query"),
+//						Enabled:     pulumi.Bool(true),
+//						Id:          pulumi.String("00000000-0000-0000-0000-111111111111"),
+//						Value:       pulumi.String("Query.All"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: internal.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+//					&azuread.ApplicationRequiredResourceAccessArgs{
+//						ResourceAppId: internal.ApplicationId,
+//						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
+//								Id: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+//									return appRoleIds.Query.All, nil
+//								}).(pulumi.StringOutput),
+//								Type: pulumi.String("Role"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+//				ApplicationId: example.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAppRoleAssignment(ctx, "example", &azuread.AppRoleAssignmentArgs{
+//				AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+//					return appRoleIds.Query.All, nil
+//				}).(pulumi.StringOutput),
+//				PrincipalObjectId: exampleServicePrincipal.ObjectId,
+//				ResourceObjectId:  internalServicePrincipal.ObjectId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// *Assign a user and group to an internal application*
+//
 // ## Import
 //
 // App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note: _not_ the ID of the app role), e.g.
@@ -30,7 +189,7 @@ import (
 // $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
 // ```
 //
-//	-> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
+// -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
 type AppRoleAssignment struct {
 	pulumi.CustomResourceState
 

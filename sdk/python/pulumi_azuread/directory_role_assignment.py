@@ -256,6 +256,7 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
 
         *Assignment for a built-in role*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -266,11 +267,13 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             role_id=example_directory_role.template_id,
             principal_object_id=example.object_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         > Note the use of the `template_id` attribute when referencing built-in roles.
 
         *Assignment for a custom role*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -290,27 +293,9 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             role_id=example_custom_directory_role.object_id,
             principal_object_id=example.object_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         *Scoped assignment for an application*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-
-        def not_implemented(msg):
-            raise NotImplementedError(msg)
-
-        example_directory_role = azuread.DirectoryRole("example", display_name="Cloud application administrator")
-        example_application = azuread.Application("example", display_name="My Application")
-        example = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
-            role_id=example_directory_role.template_id,
-            principal_object_id=example.object_id,
-            directory_scope_id=not_implemented("format(\\"/%s\\",azuread_application.example.object_id)"))
-        ```
-
-        > Note the use of the `template_id` attribute when referencing built-in roles.
 
         ## Import
 
@@ -350,6 +335,7 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
 
         *Assignment for a built-in role*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -360,11 +346,13 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             role_id=example_directory_role.template_id,
             principal_object_id=example.object_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         > Note the use of the `template_id` attribute when referencing built-in roles.
 
         *Assignment for a custom role*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -384,27 +372,9 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             role_id=example_custom_directory_role.object_id,
             principal_object_id=example.object_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         *Scoped assignment for an application*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-
-        def not_implemented(msg):
-            raise NotImplementedError(msg)
-
-        example_directory_role = azuread.DirectoryRole("example", display_name="Cloud application administrator")
-        example_application = azuread.Application("example", display_name="My Application")
-        example = azuread.get_user(user_principal_name="jdoe@example.com")
-        example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
-            role_id=example_directory_role.template_id,
-            principal_object_id=example.object_id,
-            directory_scope_id=not_implemented("format(\\"/%s\\",azuread_application.example.object_id)"))
-        ```
-
-        > Note the use of the `template_id` attribute when referencing built-in roles.
 
         ## Import
 

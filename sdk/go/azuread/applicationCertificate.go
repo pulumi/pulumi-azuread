@@ -16,6 +16,7 @@ import (
 //
 // *Using a PEM certificate*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,9 +56,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // *Using a DER certificate*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -102,8 +105,11 @@ import (
 // })
 // }
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Using a certificate from Azure Key Vault
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -195,6 +201,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -204,7 +211,7 @@ import (
 // $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
 // ```
 //
-//	-> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
+// -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 type ApplicationCertificate struct {
 	pulumi.CustomResourceState
 

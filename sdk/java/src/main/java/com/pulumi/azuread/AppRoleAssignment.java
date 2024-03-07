@@ -24,6 +24,150 @@ import javax.annotation.Nullable;
  * 
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
  * 
+ * ## Example Usage
+ * 
+ * *App role assignment for accessing Microsoft Graph*
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+ * import com.pulumi.azuread.AppRoleAssignment;
+ * import com.pulumi.azuread.AppRoleAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+ * 
+ *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
+ *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *             .useExisting(true)
+ *             .build());
+ * 
+ *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
+ *             .displayName(&#34;example&#34;)
+ *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
+ *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *                 .resourceAccesses(                
+ *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+ *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
+ *                         .type(&#34;Role&#34;)
+ *                         .build(),
+ *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
+ *                         .type(&#34;Scope&#34;)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *             .applicationId(example.applicationId())
+ *             .build());
+ * 
+ *         var exampleAppRoleAssignment = new AppRoleAssignment(&#34;exampleAppRoleAssignment&#34;, AppRoleAssignmentArgs.builder()        
+ *             .appRoleId(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
+ *             .principalObjectId(exampleServicePrincipal.objectId())
+ *             .resourceObjectId(msgraph.objectId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * *App role assignment for internal application*
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.inputs.ApplicationAppRoleArgs;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+ * import com.pulumi.azuread.AppRoleAssignment;
+ * import com.pulumi.azuread.AppRoleAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var internal = new Application(&#34;internal&#34;, ApplicationArgs.builder()        
+ *             .displayName(&#34;internal&#34;)
+ *             .appRoles(ApplicationAppRoleArgs.builder()
+ *                 .allowedMemberTypes(&#34;Application&#34;)
+ *                 .description(&#34;Apps can query the database&#34;)
+ *                 .displayName(&#34;Query&#34;)
+ *                 .enabled(true)
+ *                 .id(&#34;00000000-0000-0000-0000-111111111111&#34;)
+ *                 .value(&#34;Query.All&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var internalServicePrincipal = new ServicePrincipal(&#34;internalServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *             .applicationId(internal.applicationId())
+ *             .build());
+ * 
+ *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
+ *             .displayName(&#34;example&#34;)
+ *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
+ *                 .resourceAppId(internal.applicationId())
+ *                 .resourceAccesses(ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+ *                     .id(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.Query.All()))
+ *                     .type(&#34;Role&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *             .applicationId(example.applicationId())
+ *             .build());
+ * 
+ *         var exampleAppRoleAssignment = new AppRoleAssignment(&#34;exampleAppRoleAssignment&#34;, AppRoleAssignmentArgs.builder()        
+ *             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.Query.All()))
+ *             .principalObjectId(exampleServicePrincipal.objectId())
+ *             .resourceObjectId(internalServicePrincipal.objectId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * *Assign a user and group to an internal application*
+ * 
  * ## Import
  * 
  * App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note: _not_ the ID of the app role), e.g.
@@ -32,7 +176,7 @@ import javax.annotation.Nullable;
  * $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
  * ```
  * 
- *  -&gt; This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
+ * -&gt; This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
  * 
  */
 @ResourceType(type="azuread:index/appRoleAssignment:AppRoleAssignment")

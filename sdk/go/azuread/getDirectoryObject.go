@@ -24,6 +24,7 @@ import (
 // ## Example Usage
 //
 // *Look up and output type of object by ID*
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +49,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Attributes Reference
 //
 // The following attributes are exported:

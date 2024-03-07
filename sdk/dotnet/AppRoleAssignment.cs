@@ -20,6 +20,142 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
     /// 
+    /// ## Example Usage
+    /// 
+    /// *App role assignment for accessing Microsoft Graph*
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
+    /// 
+    ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
+    ///     {
+    ///         ApplicationId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+    ///         UseExisting = true,
+    ///     });
+    /// 
+    ///     var example = new AzureAD.Application("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         RequiredResourceAccesses = new[]
+    ///         {
+    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+    ///             {
+    ///                 ResourceAppId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+    ///                 ResourceAccesses = new[]
+    ///                 {
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+    ///                     {
+    ///                         Id = msgraph.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.User_Read_All),
+    ///                         Type = "Role",
+    ///                     },
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+    ///                     {
+    ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_ReadWrite),
+    ///                         Type = "Scope",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     {
+    ///         ApplicationId = example.ApplicationId,
+    ///     });
+    /// 
+    ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("example", new()
+    ///     {
+    ///         AppRoleId = msgraph.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.User_Read_All),
+    ///         PrincipalObjectId = exampleServicePrincipal.ObjectId,
+    ///         ResourceObjectId = msgraph.ObjectId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// *App role assignment for internal application*
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @internal = new AzureAD.Application("internal", new()
+    ///     {
+    ///         DisplayName = "internal",
+    ///         AppRoles = new[]
+    ///         {
+    ///             new AzureAD.Inputs.ApplicationAppRoleArgs
+    ///             {
+    ///                 AllowedMemberTypes = new[]
+    ///                 {
+    ///                     "Application",
+    ///                 },
+    ///                 Description = "Apps can query the database",
+    ///                 DisplayName = "Query",
+    ///                 Enabled = true,
+    ///                 Id = "00000000-0000-0000-0000-111111111111",
+    ///                 Value = "Query.All",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var internalServicePrincipal = new AzureAD.ServicePrincipal("internal", new()
+    ///     {
+    ///         ApplicationId = @internal.ApplicationId,
+    ///     });
+    /// 
+    ///     var example = new AzureAD.Application("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         RequiredResourceAccesses = new[]
+    ///         {
+    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+    ///             {
+    ///                 ResourceAppId = @internal.ApplicationId,
+    ///                 ResourceAccesses = new[]
+    ///                 {
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+    ///                     {
+    ///                         Id = internalServicePrincipal.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.Query_All),
+    ///                         Type = "Role",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     {
+    ///         ApplicationId = example.ApplicationId,
+    ///     });
+    /// 
+    ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("example", new()
+    ///     {
+    ///         AppRoleId = internalServicePrincipal.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.Query_All),
+    ///         PrincipalObjectId = exampleServicePrincipal.ObjectId,
+    ///         ResourceObjectId = internalServicePrincipal.ObjectId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// *Assign a user and group to an internal application*
+    /// 
     /// ## Import
     /// 
     /// App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note: _not_ the ID of the app role), e.g.
@@ -28,7 +164,7 @@ namespace Pulumi.AzureAD
     /// $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
     /// ```
     /// 
-    ///  -&gt; This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
+    /// -&gt; This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
     /// </summary>
     [AzureADResourceType("azuread:index/appRoleAssignment:AppRoleAssignment")]
     public partial class AppRoleAssignment : global::Pulumi.CustomResource

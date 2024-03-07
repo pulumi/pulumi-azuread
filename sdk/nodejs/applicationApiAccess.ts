@@ -7,6 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -26,11 +27,13 @@ import * as utilities from "./utilities";
  *     scopeIds: [msgraph.then(msgraph => msgraph.oauth2PermissionScopeIds?.["User.ReadWrite"])],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > **Tip** For managing permissions for an additional API, create another instance of this resource
  *
  * *Usage with azuread.Application resource*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -38,6 +41,7 @@ import * as utilities from "./utilities";
  * const example = new azuread.Application("example", {displayName: "example"});
  * const exampleApplicationApiAccess = new azuread.ApplicationApiAccess("example", {applicationId: example.id});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
