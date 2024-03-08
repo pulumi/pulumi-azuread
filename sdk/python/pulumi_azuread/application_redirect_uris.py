@@ -132,6 +132,7 @@ class ApplicationRedirectUris(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -164,6 +165,7 @@ class ApplicationRedirectUris(pulumi.CustomResource):
                 "urn:ietf:wg:oauth:2.0:oob",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -188,6 +190,7 @@ class ApplicationRedirectUris(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -220,6 +223,7 @@ class ApplicationRedirectUris(pulumi.CustomResource):
                 "urn:ietf:wg:oauth:2.0:oob",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  * });
  * export const applicationTemplateId = example.then(example => example.templateId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationTemplate(args?: GetApplicationTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationTemplateResult> {
     args = args || {};
@@ -99,6 +101,7 @@ export interface GetApplicationTemplateResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -108,6 +111,7 @@ export interface GetApplicationTemplateResult {
  * });
  * export const applicationTemplateId = example.then(example => example.templateId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationTemplateOutput(args?: GetApplicationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationTemplateResult> {
     return pulumi.output(args).apply((a: any) => getApplicationTemplate(a, opts))

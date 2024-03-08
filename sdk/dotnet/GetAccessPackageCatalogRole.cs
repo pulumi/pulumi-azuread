@@ -22,12 +22,12 @@ namespace Pulumi.AzureAD
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### By Group Display Name)
         /// 
         /// *Look up by display name*
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,8 +43,10 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// *Look up by object ID*
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,8 +62,7 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccessPackageCatalogRoleResult> InvokeAsync(GetAccessPackageCatalogRoleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessPackageCatalogRoleResult>("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args ?? new GetAccessPackageCatalogRoleArgs(), options.WithDefaults());
@@ -77,12 +78,12 @@ namespace Pulumi.AzureAD
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
+        /// 
         /// ### By Group Display Name)
         /// 
         /// *Look up by display name*
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -98,8 +99,10 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// *Look up by object ID*
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -115,8 +118,7 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccessPackageCatalogRoleResult> Invoke(GetAccessPackageCatalogRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessPackageCatalogRoleResult>("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args ?? new GetAccessPackageCatalogRoleInvokeArgs(), options.WithDefaults());

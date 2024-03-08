@@ -16,9 +16,11 @@ import * as utilities from "./utilities";
  * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
+ *
  * ### By Group Display Name)
  *
  * *Look up by display name*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -27,8 +29,10 @@ import * as utilities from "./utilities";
  *     displayName: "Example-AU",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Look up by object ID*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -37,6 +41,7 @@ import * as utilities from "./utilities";
  *     objectId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAdministrativeUnit(args?: GetAdministrativeUnitArgs, opts?: pulumi.InvokeOptions): Promise<GetAdministrativeUnitResult> {
     args = args || {};
@@ -105,9 +110,11 @@ export interface GetAdministrativeUnitResult {
  * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
+ *
  * ### By Group Display Name)
  *
  * *Look up by display name*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -116,8 +123,10 @@ export interface GetAdministrativeUnitResult {
  *     displayName: "Example-AU",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Look up by object ID*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -126,6 +135,7 @@ export interface GetAdministrativeUnitResult {
  *     objectId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAdministrativeUnitOutput(args?: GetAdministrativeUnitOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdministrativeUnitResult> {
     return pulumi.output(args).apply((a: any) => getAdministrativeUnit(a, opts))

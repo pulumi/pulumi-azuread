@@ -142,6 +142,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -156,6 +157,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
             principal_object_id=example.object_id,
             catalog_id=example_access_package_catalog.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -190,6 +192,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -204,6 +207,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
             principal_object_id=example.object_id,
             catalog_id=example_access_package_catalog.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

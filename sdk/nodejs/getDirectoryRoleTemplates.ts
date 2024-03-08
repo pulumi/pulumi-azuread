@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -26,6 +27,7 @@ import * as utilities from "./utilities";
  * const current = azuread.getDirectoryRoleTemplates({});
  * export const roles = current.then(current => current.objectIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDirectoryRoleTemplates(opts?: pulumi.InvokeOptions): Promise<GetDirectoryRoleTemplatesResult> {
 
@@ -64,6 +66,7 @@ export interface GetDirectoryRoleTemplatesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -71,6 +74,7 @@ export interface GetDirectoryRoleTemplatesResult {
  * const current = azuread.getDirectoryRoleTemplates({});
  * export const roles = current.then(current => current.objectIds);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDirectoryRoleTemplatesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryRoleTemplatesResult> {
     return pulumi.output(getDirectoryRoleTemplates(opts))

@@ -107,23 +107,28 @@ def get_access_package_catalog_role(display_name: Optional[str] = None,
     When authenticated with a user principal, this data source does not require any additional roles.
 
     ## Example Usage
+
     ### By Group Display Name)
 
     *Look up by display name*
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_access_package_catalog_role(display_name="Catalog owner")
     ```
+    <!--End PulumiCodeChooser -->
 
     *Look up by object ID*
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_access_package_catalog_role(object_id="00000000-0000-0000-0000-000000000000")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: Specifies the display name of the role.
@@ -161,23 +166,28 @@ def get_access_package_catalog_role_output(display_name: Optional[pulumi.Input[O
     When authenticated with a user principal, this data source does not require any additional roles.
 
     ## Example Usage
+
     ### By Group Display Name)
 
     *Look up by display name*
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_access_package_catalog_role(display_name="Catalog owner")
     ```
+    <!--End PulumiCodeChooser -->
 
     *Look up by object ID*
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_access_package_catalog_role(object_id="00000000-0000-0000-0000-000000000000")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: Specifies the display name of the role.

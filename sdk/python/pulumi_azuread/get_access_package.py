@@ -114,15 +114,18 @@ def get_access_package(catalog_id: Optional[str] = None,
 
     *Look up by ID*
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_access_package(object_id="00000000-0000-0000-0000-000000000000")
     ```
+    <!--End PulumiCodeChooser -->
 
     *Look up by DisplayName*
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -130,6 +133,7 @@ def get_access_package(catalog_id: Optional[str] = None,
     example = azuread.get_access_package(catalog_id="00000000-0000-0000-0000-000000000000",
         display_name="My access package Catalog")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str catalog_id: The ID of the Catalog this access package is in.
@@ -174,15 +178,18 @@ def get_access_package_output(catalog_id: Optional[pulumi.Input[Optional[str]]] 
 
     *Look up by ID*
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_access_package(object_id="00000000-0000-0000-0000-000000000000")
     ```
+    <!--End PulumiCodeChooser -->
 
     *Look up by DisplayName*
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -190,6 +197,7 @@ def get_access_package_output(catalog_id: Optional[pulumi.Input[Optional[str]]] 
     example = azuread.get_access_package(catalog_id="00000000-0000-0000-0000-000000000000",
         display_name="My access package Catalog")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str catalog_id: The ID of the Catalog this access package is in.

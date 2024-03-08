@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * The calling principal requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -68,6 +70,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; Note the use of the `template_id` attribute when referencing built-in roles.
  * 

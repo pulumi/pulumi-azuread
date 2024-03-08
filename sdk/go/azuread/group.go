@@ -32,6 +32,97 @@ import (
 //
 // The `externalSendersAllowed`, `autoSubscribeNewMembers`, `hideFromAddressLists` and `hideFromOutlookClients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
 //
+// ## Example Usage
+//
+// *Basic example*
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := azuread.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
+//				DisplayName: pulumi.String("example"),
+//				Owners: pulumi.StringArray{
+//					*pulumi.String(current.ObjectId),
+//				},
+//				SecurityEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// *Microsoft 365 group*
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := azuread.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			groupOwner, err := azuread.NewUser(ctx, "group_owner", &azuread.UserArgs{
+//				UserPrincipalName: pulumi.String("example-group-owner@example.com"),
+//				DisplayName:       pulumi.String("Group Owner"),
+//				MailNickname:      pulumi.String("example-group-owner"),
+//				Password:          pulumi.String("SecretP@sswd99!"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
+//				DisplayName:     pulumi.String("example"),
+//				MailEnabled:     pulumi.Bool(true),
+//				MailNickname:    pulumi.String("ExampleGroup"),
+//				SecurityEnabled: pulumi.Bool(true),
+//				Types: pulumi.StringArray{
+//					pulumi.String("Unified"),
+//				},
+//				Owners: pulumi.StringArray{
+//					*pulumi.String(current.ObjectId),
+//					groupOwner.ObjectId,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// *Group with members*
+//
 // ## Import
 //
 // Groups can be imported using their object ID, e.g.

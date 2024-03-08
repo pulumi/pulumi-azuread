@@ -174,6 +174,7 @@ class ApplicationApiAccess(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -190,11 +191,13 @@ class ApplicationApiAccess(pulumi.CustomResource):
             ],
             scope_ids=[msgraph.oauth2_permission_scope_ids["User.ReadWrite"]])
         ```
+        <!--End PulumiCodeChooser -->
 
         > **Tip** For managing permissions for an additional API, create another instance of this resource
 
         *Usage with Application resource*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -202,6 +205,7 @@ class ApplicationApiAccess(pulumi.CustomResource):
         example = azuread.Application("example", display_name="example")
         example_application_api_access = azuread.ApplicationApiAccess("example", application_id=example.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -229,6 +233,7 @@ class ApplicationApiAccess(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -245,11 +250,13 @@ class ApplicationApiAccess(pulumi.CustomResource):
             ],
             scope_ids=[msgraph.oauth2_permission_scope_ids["User.ReadWrite"]])
         ```
+        <!--End PulumiCodeChooser -->
 
         > **Tip** For managing permissions for an additional API, create another instance of this resource
 
         *Usage with Application resource*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -257,6 +264,7 @@ class ApplicationApiAccess(pulumi.CustomResource):
         example = azuread.Application("example", display_name="example")
         example_application_api_access = azuread.ApplicationApiAccess("example", application_id=example.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

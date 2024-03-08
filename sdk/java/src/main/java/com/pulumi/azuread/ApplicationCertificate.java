@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * *Using a PEM certificate*
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,8 +60,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Using a DER certificate*
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -102,7 +107,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Using a certificate from Azure Key Vault
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -192,6 +201,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -201,7 +211,7 @@ import javax.annotation.Nullable;
  * $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
  * ```
  * 
- *  -&gt; This ID format is unique to Terraform and is composed of the application&#39;s object ID, the string &#34;certificate&#34; and the certificate&#39;s key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
+ * -&gt; This ID format is unique to Terraform and is composed of the application&#39;s object ID, the string &#34;certificate&#34; and the certificate&#39;s key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
  * 
  */
 @ResourceType(type="azuread:index/applicationCertificate:ApplicationCertificate")
