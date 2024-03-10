@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				UseExisting:   pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -53,7 +53,7 @@ import (
 //				DisplayName: pulumi.String("example"),
 //				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
 //					&azuread.ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//						ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
 //						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
@@ -116,7 +116,7 @@ import (
 //				return err
 //			}
 //			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				UseExisting:   pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -126,7 +126,7 @@ import (
 //				DisplayName: pulumi.String("example"),
 //				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
 //					&azuread.ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//						ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
 //						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
