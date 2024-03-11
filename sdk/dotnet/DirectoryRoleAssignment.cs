@@ -24,6 +24,7 @@ namespace Pulumi.AzureAD
     /// 
     /// *Assignment for a built-in role*
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,11 +51,13 @@ namespace Pulumi.AzureAD
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
     /// 
     /// *Assignment for a custom role*
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -94,49 +97,9 @@ namespace Pulumi.AzureAD
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// *Scoped assignment for an application*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// 	
-    /// object NotImplemented(string errorMessage) 
-    /// {
-    ///     throw new System.NotImplementedException(errorMessage);
-    /// }
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("example", new()
-    ///     {
-    ///         DisplayName = "Cloud application administrator",
-    ///     });
-    /// 
-    ///     var exampleApplication = new AzureAD.Application("example", new()
-    ///     {
-    ///         DisplayName = "My Application",
-    ///     });
-    /// 
-    ///     var example = AzureAD.GetUser.Invoke(new()
-    ///     {
-    ///         UserPrincipalName = "jdoe@example.com",
-    ///     });
-    /// 
-    ///     var exampleDirectoryRoleAssignment = new AzureAD.DirectoryRoleAssignment("example", new()
-    ///     {
-    ///         RoleId = exampleDirectoryRole.TemplateId,
-    ///         PrincipalObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
-    ///         DirectoryScopeId = NotImplemented("format(\"/%s\",azuread_application.example.object_id)"),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
     /// 
     /// ## Import
     /// 

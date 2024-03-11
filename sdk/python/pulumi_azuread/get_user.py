@@ -579,12 +579,14 @@ def get_user(employee_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_user(user_principal_name="user@example.com")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str employee_id: The employee identifier assigned to the user by the organisation.
@@ -671,12 +673,14 @@ def get_user_output(employee_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_user(user_principal_name="user@example.com")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str employee_id: The employee identifier assigned to the user by the organisation.

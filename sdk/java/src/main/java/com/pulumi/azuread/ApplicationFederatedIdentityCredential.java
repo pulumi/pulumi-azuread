@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -56,6 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -65,7 +68,7 @@ import javax.annotation.Nullable;
  * $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential example 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
  * ```
  * 
- *  -&gt; This ID format is unique to Terraform and is composed of the application&#39;s object ID, the string &#34;federatedIdentityCredential&#34; and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
+ * -&gt; This ID format is unique to Terraform and is composed of the application&#39;s object ID, the string &#34;federatedIdentityCredential&#34; and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
  * 
  */
 @ResourceType(type="azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential")

@@ -291,6 +291,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -304,6 +305,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
             issuer="https://token.actions.githubusercontent.com",
             subject="repo:my-organization/my-repo:environment:prod")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -313,7 +315,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential example 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
+        -> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -334,6 +336,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -347,6 +350,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
             issuer="https://token.actions.githubusercontent.com",
             subject="repo:my-organization/my-repo:environment:prod")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -356,7 +360,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential example 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
+        -> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
 
         :param str resource_name: The name of the resource.
         :param ApplicationFederatedIdentityCredentialArgs args: The arguments to use to populate this resource's properties.

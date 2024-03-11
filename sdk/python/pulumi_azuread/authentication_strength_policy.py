@@ -143,6 +143,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -181,6 +182,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
                 "x509CertificateSingleFactor",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -215,6 +217,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -253,6 +256,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
                 "x509CertificateSingleFactor",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

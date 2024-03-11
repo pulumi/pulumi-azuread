@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * *Look up and output type of object by ID*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -27,6 +28,8 @@ import * as utilities from "./utilities";
  * });
  * export const objectType = example.then(example => example.type);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Attributes Reference
  *
  * The following attributes are exported:
@@ -77,6 +80,7 @@ export interface GetDirectoryObjectResult {
  * ## Example Usage
  *
  * *Look up and output type of object by ID*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -86,6 +90,8 @@ export interface GetDirectoryObjectResult {
  * });
  * export const objectType = example.then(example => example.type);
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Attributes Reference
  *
  * The following attributes are exported:

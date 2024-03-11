@@ -95,6 +95,7 @@ def get_directory_roles(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -102,6 +103,7 @@ def get_directory_roles(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     current = azuread.get_directory_roles()
     pulumi.export("roles", current.object_ids)
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -129,6 +131,7 @@ def get_directory_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -136,5 +139,6 @@ def get_directory_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
     current = azuread.get_directory_roles()
     pulumi.export("roles", current.object_ids)
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

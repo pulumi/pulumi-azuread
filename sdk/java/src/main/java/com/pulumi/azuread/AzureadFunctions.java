@@ -75,6 +75,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -103,8 +105,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -134,6 +139,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPackageResult> getAccessPackage() {
@@ -153,6 +159,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -181,8 +189,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -212,6 +223,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPackageResult> getAccessPackagePlain() {
@@ -231,6 +243,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -259,8 +273,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -290,6 +307,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPackageResult> getAccessPackage(GetAccessPackageArgs args) {
@@ -309,6 +327,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -337,8 +357,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -368,6 +391,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPackageResult> getAccessPackagePlain(GetAccessPackagePlainArgs args) {
@@ -387,6 +411,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -415,8 +441,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -446,6 +475,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPackageResult> getAccessPackage(GetAccessPackageArgs args, InvokeOptions options) {
@@ -465,6 +495,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -493,8 +525,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -524,6 +559,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPackageResult> getAccessPackagePlain(GetAccessPackagePlainArgs args, InvokeOptions options) {
@@ -544,6 +580,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -572,8 +610,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -602,6 +643,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPackageCatalogResult> getAccessPackageCatalog() {
@@ -622,6 +664,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -650,8 +694,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -680,6 +727,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogResult> getAccessPackageCatalogPlain() {
@@ -700,6 +748,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -728,8 +778,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -758,6 +811,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPackageCatalogResult> getAccessPackageCatalog(GetAccessPackageCatalogArgs args) {
@@ -778,6 +832,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -806,8 +862,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -836,6 +895,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogResult> getAccessPackageCatalogPlain(GetAccessPackageCatalogPlainArgs args) {
@@ -856,6 +916,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -884,8 +946,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -914,6 +979,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPackageCatalogResult> getAccessPackageCatalog(GetAccessPackageCatalogArgs args, InvokeOptions options) {
@@ -934,6 +1000,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -962,8 +1030,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -992,6 +1063,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogResult> getAccessPackageCatalogPlain(GetAccessPackageCatalogPlainArgs args, InvokeOptions options) {
@@ -1009,9 +1081,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1040,8 +1114,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1070,6 +1146,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole() {
@@ -1087,9 +1164,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1118,8 +1197,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1148,6 +1229,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRolePlain() {
@@ -1165,9 +1247,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1196,8 +1280,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1226,6 +1312,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs args) {
@@ -1243,9 +1330,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1274,8 +1363,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1304,6 +1395,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRolePlain(GetAccessPackageCatalogRolePlainArgs args) {
@@ -1321,9 +1413,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1352,8 +1446,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1382,6 +1478,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs args, InvokeOptions options) {
@@ -1399,9 +1496,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1430,8 +1529,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1460,6 +1561,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessPackageCatalogRoleResult> getAccessPackageCatalogRolePlain(GetAccessPackageCatalogRolePlainArgs args, InvokeOptions options) {
@@ -1477,9 +1579,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1508,8 +1612,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1538,6 +1644,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAdministrativeUnitResult> getAdministrativeUnit() {
@@ -1555,9 +1662,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1586,8 +1695,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1616,6 +1727,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAdministrativeUnitResult> getAdministrativeUnitPlain() {
@@ -1633,9 +1745,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1664,8 +1778,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1694,6 +1810,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAdministrativeUnitResult> getAdministrativeUnit(GetAdministrativeUnitArgs args) {
@@ -1711,9 +1828,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1742,8 +1861,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1772,6 +1893,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAdministrativeUnitResult> getAdministrativeUnitPlain(GetAdministrativeUnitPlainArgs args) {
@@ -1789,9 +1911,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1820,8 +1944,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1850,6 +1976,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAdministrativeUnitResult> getAdministrativeUnit(GetAdministrativeUnitArgs args, InvokeOptions options) {
@@ -1867,9 +1994,11 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
      * 
      * *Look up by display name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1898,8 +2027,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1928,6 +2059,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAdministrativeUnitResult> getAdministrativeUnitPlain(GetAdministrativeUnitPlainArgs args, InvokeOptions options) {
@@ -1945,6 +2077,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1974,6 +2108,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationResult> getApplication() {
@@ -1991,6 +2126,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2020,6 +2157,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationResult> getApplicationPlain() {
@@ -2037,6 +2175,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2066,6 +2206,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationResult> getApplication(GetApplicationArgs args) {
@@ -2083,6 +2224,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2112,6 +2255,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationResult> getApplicationPlain(GetApplicationPlainArgs args) {
@@ -2129,6 +2273,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2158,6 +2304,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationResult> getApplication(GetApplicationArgs args, InvokeOptions options) {
@@ -2175,6 +2322,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2204,6 +2353,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationResult> getApplicationPlain(GetApplicationPlainArgs args, InvokeOptions options) {
@@ -2213,6 +2363,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2239,8 +2391,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2292,6 +2447,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds() {
@@ -2301,6 +2457,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2327,8 +2485,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2380,6 +2541,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIdsPlain() {
@@ -2389,6 +2551,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2415,8 +2579,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2468,6 +2635,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds(InvokeArgs args) {
@@ -2477,6 +2645,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2503,8 +2673,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2556,6 +2729,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIdsPlain(InvokeArgs args) {
@@ -2565,6 +2739,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2591,8 +2767,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2644,6 +2823,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIds(InvokeArgs args, InvokeOptions options) {
@@ -2653,6 +2833,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2679,8 +2861,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2732,6 +2917,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationPublishedAppIdsResult> getApplicationPublishedAppIdsPlain(InvokeArgs args, InvokeOptions options) {
@@ -2745,6 +2931,8 @@ public final class AzureadFunctions {
      * This data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2774,6 +2962,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationTemplateResult> getApplicationTemplate() {
@@ -2787,6 +2976,8 @@ public final class AzureadFunctions {
      * This data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2816,6 +3007,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationTemplateResult> getApplicationTemplatePlain() {
@@ -2829,6 +3021,8 @@ public final class AzureadFunctions {
      * This data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2858,6 +3052,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationTemplateResult> getApplicationTemplate(GetApplicationTemplateArgs args) {
@@ -2871,6 +3066,8 @@ public final class AzureadFunctions {
      * This data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2900,6 +3097,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationTemplateResult> getApplicationTemplatePlain(GetApplicationTemplatePlainArgs args) {
@@ -2913,6 +3111,8 @@ public final class AzureadFunctions {
      * This data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2942,6 +3142,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApplicationTemplateResult> getApplicationTemplate(GetApplicationTemplateArgs args, InvokeOptions options) {
@@ -2955,6 +3156,8 @@ public final class AzureadFunctions {
      * This data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2984,6 +3187,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApplicationTemplateResult> getApplicationTemplatePlain(GetApplicationTemplatePlainArgs args, InvokeOptions options) {
@@ -2997,6 +3201,8 @@ public final class AzureadFunctions {
      * No additional roles are required to use this data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3023,6 +3229,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig() {
@@ -3036,6 +3243,8 @@ public final class AzureadFunctions {
      * No additional roles are required to use this data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3062,6 +3271,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain() {
@@ -3075,6 +3285,8 @@ public final class AzureadFunctions {
      * No additional roles are required to use this data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3101,6 +3313,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args) {
@@ -3114,6 +3327,8 @@ public final class AzureadFunctions {
      * No additional roles are required to use this data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3140,6 +3355,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args) {
@@ -3153,6 +3369,8 @@ public final class AzureadFunctions {
      * No additional roles are required to use this data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3179,6 +3397,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args, InvokeOptions options) {
@@ -3192,6 +3411,8 @@ public final class AzureadFunctions {
      * No additional roles are required to use this data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3218,6 +3439,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args, InvokeOptions options) {
@@ -3237,6 +3459,7 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up and output type of object by ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3266,6 +3489,8 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -3291,6 +3516,7 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up and output type of object by ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3320,6 +3546,8 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -3345,6 +3573,7 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up and output type of object by ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3374,6 +3603,8 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -3399,6 +3630,7 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up and output type of object by ID*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3428,6 +3660,8 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -3451,6 +3685,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3477,6 +3713,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates() {
@@ -3494,6 +3731,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3520,6 +3759,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplatesPlain() {
@@ -3537,6 +3777,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3563,6 +3805,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(InvokeArgs args) {
@@ -3580,6 +3823,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3606,6 +3851,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplatesPlain(InvokeArgs args) {
@@ -3623,6 +3869,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3649,6 +3897,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(InvokeArgs args, InvokeOptions options) {
@@ -3666,6 +3915,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3692,6 +3943,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplatesPlain(InvokeArgs args, InvokeOptions options) {
@@ -3709,6 +3961,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3735,6 +3989,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDirectoryRolesResult> getDirectoryRoles() {
@@ -3752,6 +4007,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3778,6 +4035,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDirectoryRolesResult> getDirectoryRolesPlain() {
@@ -3795,6 +4053,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3821,6 +4081,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDirectoryRolesResult> getDirectoryRoles(InvokeArgs args) {
@@ -3838,6 +4099,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3864,6 +4127,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDirectoryRolesResult> getDirectoryRolesPlain(InvokeArgs args) {
@@ -3881,6 +4145,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3907,6 +4173,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDirectoryRolesResult> getDirectoryRoles(InvokeArgs args, InvokeOptions options) {
@@ -3924,6 +4191,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3950,6 +4219,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDirectoryRolesResult> getDirectoryRolesPlain(InvokeArgs args, InvokeOptions options) {
@@ -3967,6 +4237,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3994,6 +4266,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainsResult> getDomains() {
@@ -4011,6 +4284,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4038,6 +4313,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain() {
@@ -4055,6 +4331,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4082,6 +4360,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args) {
@@ -4099,6 +4378,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4126,6 +4407,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args) {
@@ -4143,6 +4425,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4170,6 +4454,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDomainsResult> getDomains(GetDomainsArgs args, InvokeOptions options) {
@@ -4187,6 +4472,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4214,6 +4501,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDomainsResult> getDomainsPlain(GetDomainsPlainArgs args, InvokeOptions options) {
@@ -4231,7 +4519,10 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4261,6 +4552,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupResult> getGroup() {
@@ -4278,7 +4570,10 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4308,6 +4603,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain() {
@@ -4325,7 +4621,10 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4355,6 +4654,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args) {
@@ -4372,7 +4672,10 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4402,6 +4705,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args) {
@@ -4419,7 +4723,10 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4449,6 +4756,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupResult> getGroup(GetGroupArgs args, InvokeOptions options) {
@@ -4466,7 +4774,10 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
      * ### By Group Display Name)
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4496,6 +4807,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupResult> getGroupPlain(GetGroupPlainArgs args, InvokeOptions options) {
@@ -4515,6 +4827,7 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by group name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4545,8 +4858,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4575,8 +4890,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4605,8 +4922,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4636,8 +4955,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4668,6 +4989,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups() {
@@ -4687,6 +5009,7 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by group name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4717,8 +5040,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4747,8 +5072,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4777,8 +5104,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4808,8 +5137,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4840,6 +5171,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
@@ -4859,6 +5191,7 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by group name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4889,8 +5222,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4919,8 +5254,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4949,8 +5286,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4980,8 +5319,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5012,6 +5353,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args) {
@@ -5031,6 +5373,7 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by group name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5061,8 +5404,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5091,8 +5436,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5121,8 +5468,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5152,8 +5501,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5184,6 +5535,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args) {
@@ -5203,6 +5555,7 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by group name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5233,8 +5586,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5263,8 +5618,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5293,8 +5650,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5324,8 +5683,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5356,6 +5717,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
@@ -5375,6 +5737,7 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by group name*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5405,8 +5768,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5435,8 +5800,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5465,8 +5832,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5496,8 +5865,10 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5528,6 +5899,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
@@ -5545,6 +5917,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5573,6 +5947,8 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -5611,6 +5987,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5639,6 +6017,8 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -5677,6 +6057,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5705,6 +6087,8 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -5743,6 +6127,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5771,6 +6157,8 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes Reference
      * 
      * The following attributes are exported:
@@ -5811,6 +6199,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display name*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5839,8 +6229,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5869,8 +6262,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5899,6 +6295,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal() {
@@ -5918,6 +6315,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display name*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5946,8 +6345,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5976,8 +6378,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6006,6 +6411,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain() {
@@ -6025,6 +6431,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display name*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6053,8 +6461,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6083,8 +6494,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6113,6 +6527,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal(GetServicePrincipalArgs args) {
@@ -6132,6 +6547,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display name*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6160,8 +6577,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6190,8 +6610,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6220,6 +6643,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain(GetServicePrincipalPlainArgs args) {
@@ -6239,6 +6663,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display name*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6267,8 +6693,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6297,8 +6726,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6327,6 +6759,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServicePrincipalResult> getServicePrincipal(GetServicePrincipalArgs args, InvokeOptions options) {
@@ -6346,6 +6779,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display name*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6374,8 +6809,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6404,8 +6842,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6434,6 +6875,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicePrincipalResult> getServicePrincipalPlain(GetServicePrincipalPlainArgs args, InvokeOptions options) {
@@ -6453,6 +6895,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display names*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6483,8 +6927,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6516,8 +6963,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6549,6 +6999,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServicePrincipalsResult> getServicePrincipals() {
@@ -6568,6 +7019,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display names*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6598,8 +7051,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6631,8 +7087,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6664,6 +7123,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicePrincipalsResult> getServicePrincipalsPlain() {
@@ -6683,6 +7143,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display names*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6713,8 +7175,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6746,8 +7211,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6779,6 +7247,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServicePrincipalsResult> getServicePrincipals(GetServicePrincipalsArgs args) {
@@ -6798,6 +7267,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display names*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6828,8 +7299,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6861,8 +7335,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6894,6 +7371,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicePrincipalsResult> getServicePrincipalsPlain(GetServicePrincipalsPlainArgs args) {
@@ -6913,6 +7391,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display names*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6943,8 +7423,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6976,8 +7459,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7009,6 +7495,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServicePrincipalsResult> getServicePrincipals(GetServicePrincipalsArgs args, InvokeOptions options) {
@@ -7028,6 +7515,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * *Look up by application display names*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7058,8 +7547,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7091,8 +7583,11 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7124,6 +7619,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServicePrincipalsResult> getServicePrincipalsPlain(GetServicePrincipalsPlainArgs args, InvokeOptions options) {
@@ -7141,6 +7637,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7169,6 +7667,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser() {
@@ -7186,6 +7685,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7214,6 +7715,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain() {
@@ -7231,6 +7733,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7259,6 +7763,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args) {
@@ -7276,6 +7781,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7304,6 +7811,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args) {
@@ -7321,6 +7829,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7349,6 +7859,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(GetUserArgs args, InvokeOptions options) {
@@ -7366,6 +7877,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7394,6 +7907,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(GetUserPlainArgs args, InvokeOptions options) {
@@ -7411,6 +7925,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7441,6 +7957,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers() {
@@ -7458,6 +7975,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7488,6 +8007,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain() {
@@ -7505,6 +8025,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7535,6 +8057,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args) {
@@ -7552,6 +8075,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7582,6 +8107,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args) {
@@ -7599,6 +8125,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7629,6 +8157,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUsersResult> getUsers(GetUsersArgs args, InvokeOptions options) {
@@ -7646,6 +8175,8 @@ public final class AzureadFunctions {
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7676,6 +8207,7 @@ public final class AzureadFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(GetUsersPlainArgs args, InvokeOptions options) {

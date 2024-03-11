@@ -1411,6 +1411,7 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -1421,6 +1422,7 @@ class User(pulumi.CustomResource):
             mail_nickname="jdoe",
             password="SecretP@sswd99!")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1488,6 +1490,7 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -1498,6 +1501,7 @@ class User(pulumi.CustomResource):
             mail_nickname="jdoe",
             password="SecretP@sswd99!")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

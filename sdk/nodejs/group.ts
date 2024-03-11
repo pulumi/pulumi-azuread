@@ -27,6 +27,54 @@ import * as utilities from "./utilities";
  *
  * The `externalSendersAllowed`, `autoSubscribeNewMembers`, `hideFromAddressLists` and `hideFromOutlookClients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
  *
+ * ## Example Usage
+ *
+ * *Basic example*
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getClientConfig({});
+ * const example = new azuread.Group("example", {
+ *     displayName: "example",
+ *     owners: [current.then(current => current.objectId)],
+ *     securityEnabled: true,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * *Microsoft 365 group*
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getClientConfig({});
+ * const groupOwner = new azuread.User("group_owner", {
+ *     userPrincipalName: "example-group-owner@example.com",
+ *     displayName: "Group Owner",
+ *     mailNickname: "example-group-owner",
+ *     password: "SecretP@sswd99!",
+ * });
+ * const example = new azuread.Group("example", {
+ *     displayName: "example",
+ *     mailEnabled: true,
+ *     mailNickname: "ExampleGroup",
+ *     securityEnabled: true,
+ *     types: ["Unified"],
+ *     owners: [
+ *         current.then(current => current.objectId),
+ *         groupOwner.objectId,
+ *     ],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * *Group with members*
+ *
  * ## Import
  *
  * Groups can be imported using their object ID, e.g.

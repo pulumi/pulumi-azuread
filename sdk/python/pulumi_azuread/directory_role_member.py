@@ -114,6 +114,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -124,6 +125,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
             role_object_id=example_directory_role.object_id,
             member_object_id=example.object_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -133,7 +135,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
         $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
+        -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -161,6 +163,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -171,6 +174,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
             role_object_id=example_directory_role.object_id,
             member_object_id=example.object_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -180,7 +184,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
         $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
+        -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
 
         :param str resource_name: The name of the resource.
         :param DirectoryRoleMemberArgs args: The arguments to use to populate this resource's properties.

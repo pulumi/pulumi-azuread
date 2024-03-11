@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -28,6 +29,7 @@ import * as utilities from "./utilities";
  * });
  * export const applicationObjectId = example.then(example => example.objectId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
     args = args || {};
@@ -215,6 +217,7 @@ export interface GetApplicationResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -224,6 +227,7 @@ export interface GetApplicationResult {
  * });
  * export const applicationObjectId = example.then(example => example.objectId);
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationOutput(args?: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
     return pulumi.output(args).apply((a: any) => getApplication(a, opts))

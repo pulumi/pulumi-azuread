@@ -15,6 +15,7 @@ import (
 //
 // *Listing well-known application IDs*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,9 +38,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // *Granting access to an application*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,6 +96,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetApplicationPublishedAppIds(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetApplicationPublishedAppIdsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApplicationPublishedAppIdsResult

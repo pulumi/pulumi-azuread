@@ -1104,6 +1104,7 @@ class Application(pulumi.CustomResource):
 
         *Create an application*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -1220,9 +1221,11 @@ class Application(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         *Create application from a gallery template*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -1235,6 +1238,7 @@ class Application(pulumi.CustomResource):
             application_id=example_application.application_id,
             use_existing=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1295,6 +1299,7 @@ class Application(pulumi.CustomResource):
 
         *Create an application*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -1411,9 +1416,11 @@ class Application(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         *Create application from a gallery template*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -1426,6 +1433,7 @@ class Application(pulumi.CustomResource):
             application_id=example_application.application_id,
             use_existing=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

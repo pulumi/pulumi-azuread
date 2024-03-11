@@ -143,6 +143,7 @@ def get_users(employee_ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -152,6 +153,7 @@ def get_users(employee_ids: Optional[Sequence[str]] = None,
         "byte@example.com",
     ])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] employee_ids: The employee identifiers assigned to the users by the organisation.
@@ -205,6 +207,7 @@ def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -214,6 +217,7 @@ def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[str]]
         "byte@example.com",
     ])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] employee_ids: The employee identifiers assigned to the users by the organisation.

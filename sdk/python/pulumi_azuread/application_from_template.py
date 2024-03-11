@@ -176,6 +176,7 @@ class ApplicationFromTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -187,6 +188,7 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         example_get_application = azuread.get_application_output(object_id=example_application_from_template.application_object_id)
         example_get_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -222,6 +224,7 @@ class ApplicationFromTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -233,6 +236,7 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         example_get_application = azuread.get_application_output(object_id=example_application_from_template.application_object_id)
         example_get_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

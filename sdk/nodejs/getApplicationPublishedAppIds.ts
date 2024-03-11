@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * *Listing well-known application IDs*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -16,9 +17,11 @@ import * as utilities from "./utilities";
  * const wellKnown = azuread.getApplicationPublishedAppIds({});
  * export const publishedAppIds = wellKnown.then(wellKnown => wellKnown.result);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Granting access to an application*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -45,6 +48,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationPublishedAppIds(opts?: pulumi.InvokeOptions): Promise<GetApplicationPublishedAppIdsResult> {
 
@@ -71,6 +75,7 @@ export interface GetApplicationPublishedAppIdsResult {
  *
  * *Listing well-known application IDs*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -78,9 +83,11 @@ export interface GetApplicationPublishedAppIdsResult {
  * const wellKnown = azuread.getApplicationPublishedAppIds({});
  * export const publishedAppIds = wellKnown.then(wellKnown => wellKnown.result);
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Granting access to an application*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -107,6 +114,7 @@ export interface GetApplicationPublishedAppIdsResult {
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getApplicationPublishedAppIdsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationPublishedAppIdsResult> {
     return pulumi.output(getApplicationPublishedAppIds(opts))

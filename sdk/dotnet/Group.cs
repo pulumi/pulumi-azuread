@@ -30,6 +30,79 @@ namespace Pulumi.AzureAD
     /// 
     /// The `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
     /// 
+    /// ## Example Usage
+    /// 
+    /// *Basic example*
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = AzureAD.GetClientConfig.Invoke();
+    /// 
+    ///     var example = new AzureAD.Group("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         Owners = new[]
+    ///         {
+    ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///         },
+    ///         SecurityEnabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// *Microsoft 365 group*
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = AzureAD.GetClientConfig.Invoke();
+    /// 
+    ///     var groupOwner = new AzureAD.User("group_owner", new()
+    ///     {
+    ///         UserPrincipalName = "example-group-owner@example.com",
+    ///         DisplayName = "Group Owner",
+    ///         MailNickname = "example-group-owner",
+    ///         Password = "SecretP@sswd99!",
+    ///     });
+    /// 
+    ///     var example = new AzureAD.Group("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         MailEnabled = true,
+    ///         MailNickname = "ExampleGroup",
+    ///         SecurityEnabled = true,
+    ///         Types = new[]
+    ///         {
+    ///             "Unified",
+    ///         },
+    ///         Owners = new[]
+    ///         {
+    ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///             groupOwner.ObjectId,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// *Group with members*
+    /// 
     /// ## Import
     /// 
     /// Groups can be imported using their object ID, e.g.

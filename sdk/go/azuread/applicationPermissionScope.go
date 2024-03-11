@@ -14,6 +14,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,11 +53,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // > **Tip** For managing more permissions scopes, create additional instances of this resource
 //
 // *Usage with Application resource*
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -86,6 +89,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -303,6 +303,7 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -317,11 +318,13 @@ class ApplicationPermissionScope(pulumi.CustomResource):
             admin_consent_description="Administer the application",
             admin_consent_display_name="Administer")
         ```
+        <!--End PulumiCodeChooser -->
 
         > **Tip** For managing more permissions scopes, create additional instances of this resource
 
         *Usage with Application resource*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -329,6 +332,7 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         example = azuread.Application("example", display_name="example")
         example_application_permission_scope = azuread.ApplicationPermissionScope("example", application_id=example.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -360,6 +364,7 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -374,11 +379,13 @@ class ApplicationPermissionScope(pulumi.CustomResource):
             admin_consent_description="Administer the application",
             admin_consent_display_name="Administer")
         ```
+        <!--End PulumiCodeChooser -->
 
         > **Tip** For managing more permissions scopes, create additional instances of this resource
 
         *Usage with Application resource*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -386,6 +393,7 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         example = azuread.Application("example", display_name="example")
         example_application_permission_scope = azuread.ApplicationPermissionScope("example", application_id=example.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

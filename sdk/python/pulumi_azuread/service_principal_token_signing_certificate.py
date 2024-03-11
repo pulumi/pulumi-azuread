@@ -214,6 +214,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
 
         *Using default settings*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -222,9 +223,11 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
         example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         *Using custom settings*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -236,6 +239,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
             display_name="CN=example.com",
             end_date="2023-05-01T01:02:03Z")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -245,7 +249,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         $ pulumi import azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate example 00000000-0000-0000-0000-000000000000/tokenSigningCertificate/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
+        -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -267,6 +271,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
 
         *Using default settings*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -275,9 +280,11 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
         example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         *Using custom settings*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -289,6 +296,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
             display_name="CN=example.com",
             end_date="2023-05-01T01:02:03Z")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -298,7 +306,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         $ pulumi import azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate example 00000000-0000-0000-0000-000000000000/tokenSigningCertificate/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
+        -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalTokenSigningCertificateArgs args: The arguments to use to populate this resource's properties.
