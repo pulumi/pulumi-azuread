@@ -185,6 +185,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         *Delegated permission grant for all users*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -217,9 +218,11 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                 "User.Read.All",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         *Delegated permission grant for a single user*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -258,6 +261,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
             ],
             user_object_id=example_user.object_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -297,6 +301,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         *Delegated permission grant for all users*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -329,9 +334,11 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                 "User.Read.All",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         *Delegated permission grant for a single user*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -370,6 +377,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
             ],
             user_object_id=example_user.object_id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * *Look up by group name*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -29,8 +30,10 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Look up by display name prefix*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -39,8 +42,10 @@ import * as utilities from "./utilities";
  *     displayNamePrefix: "sales-",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Look up all groups*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -49,8 +54,10 @@ import * as utilities from "./utilities";
  *     returnAll: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Look up all mail-enabled groups*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -60,8 +67,10 @@ import * as utilities from "./utilities";
  *     returnAll: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Look up all security-enabled groups that are not mail-enabled*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -72,6 +81,7 @@ import * as utilities from "./utilities";
  *     securityEnabled: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
@@ -160,6 +170,7 @@ export interface GetGroupsResult {
  * ## Example Usage
  *
  * *Look up by group name*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -171,8 +182,10 @@ export interface GetGroupsResult {
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Look up by display name prefix*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -181,8 +194,10 @@ export interface GetGroupsResult {
  *     displayNamePrefix: "sales-",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Look up all groups*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -191,8 +206,10 @@ export interface GetGroupsResult {
  *     returnAll: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Look up all mail-enabled groups*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -202,8 +219,10 @@ export interface GetGroupsResult {
  *     returnAll: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Look up all security-enabled groups that are not mail-enabled*
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -214,6 +233,7 @@ export interface GetGroupsResult {
  *     securityEnabled: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
     return pulumi.output(args).apply((a: any) => getGroups(a, opts))

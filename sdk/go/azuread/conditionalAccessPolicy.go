@@ -25,8 +25,10 @@ import (
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 //
 // ## Example Usage
+//
 // ### All users except guests or external users
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,8 +113,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Included client applications / service principals
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -168,8 +173,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Excluded client applications / service principals
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -227,6 +235,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

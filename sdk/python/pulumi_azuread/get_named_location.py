@@ -87,12 +87,15 @@ def get_named_location(display_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_named_location(display_name="My Named Location")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Attributes Reference
 
     The following attributes are exported:
@@ -146,12 +149,15 @@ def get_named_location_output(display_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_named_location(display_name="My Named Location")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Attributes Reference
 
     The following attributes are exported:

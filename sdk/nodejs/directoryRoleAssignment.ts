@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *
  * *Assignment for a built-in role*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -32,11 +33,13 @@ import * as utilities from "./utilities";
  *     principalObjectId: example.then(example => example.objectId),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > Note the use of the `templateId` attribute when referencing built-in roles.
  *
  * *Assignment for a custom role*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -60,30 +63,9 @@ import * as utilities from "./utilities";
  *     principalObjectId: example.then(example => example.objectId),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Scoped assignment for an application*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * function notImplemented(message: string) {
- *     throw new Error(message);
- * }
- *
- * const exampleDirectoryRole = new azuread.DirectoryRole("example", {displayName: "Cloud application administrator"});
- * const exampleApplication = new azuread.Application("example", {displayName: "My Application"});
- * const example = azuread.getUser({
- *     userPrincipalName: "jdoe@example.com",
- * });
- * const exampleDirectoryRoleAssignment = new azuread.DirectoryRoleAssignment("example", {
- *     roleId: exampleDirectoryRole.templateId,
- *     principalObjectId: example.then(example => example.objectId),
- *     directoryScopeId: notImplemented("format(\"/%s\",azuread_application.example.object_id)"),
- * });
- * ```
- *
- * > Note the use of the `templateId` attribute when referencing built-in roles.
  *
  * ## Import
  *

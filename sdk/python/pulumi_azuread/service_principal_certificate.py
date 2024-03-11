@@ -316,6 +316,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
 
         *Using a PEM certificate*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -329,9 +330,11 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
             value=std.file(input="cert.pem").result,
             end_date="2021-05-01T01:02:03Z")
         ```
+        <!--End PulumiCodeChooser -->
 
         *Using a DER certificate*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -346,6 +349,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
             value=std.base64encode(input=std.file(input="cert.der").result).result,
             end_date="2021-05-01T01:02:03Z")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -355,7 +359,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
+        -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -383,6 +387,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
 
         *Using a PEM certificate*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -396,9 +401,11 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
             value=std.file(input="cert.pem").result,
             end_date="2021-05-01T01:02:03Z")
         ```
+        <!--End PulumiCodeChooser -->
 
         *Using a DER certificate*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -413,6 +420,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
             value=std.base64encode(input=std.file(input="cert.der").result).result,
             end_date="2021-05-01T01:02:03Z")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -422,7 +430,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
+        -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalCertificateArgs args: The arguments to use to populate this resource's properties.

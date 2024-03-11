@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * *Basic example*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -16,9 +17,11 @@ import * as utilities from "./utilities";
  * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
  * const exampleApplicationPassword = new azuread.ApplicationPassword("example", {applicationId: example.id});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * *Time-based rotation*
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -33,6 +36,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -15,6 +15,85 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
  *
+ * ## Example Usage
+ *
+ * *App role assignment for accessing Microsoft Graph*
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const wellKnown = azuread.getApplicationPublishedAppIds({});
+ * const msgraph = new azuread.ServicePrincipal("msgraph", {
+ *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
+ *     useExisting: true,
+ * });
+ * const example = new azuread.Application("example", {
+ *     displayName: "example",
+ *     requiredResourceAccesses: [{
+ *         resourceAppId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
+ *         resourceAccesses: [
+ *             {
+ *                 id: msgraph.appRoleIds["User.Read.All"],
+ *                 type: "Role",
+ *             },
+ *             {
+ *                 id: msgraph.oauth2PermissionScopeIds["User.ReadWrite"],
+ *                 type: "Scope",
+ *             },
+ *         ],
+ *     }],
+ * });
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleAppRoleAssignment = new azuread.AppRoleAssignment("example", {
+ *     appRoleId: msgraph.appRoleIds["User.Read.All"],
+ *     principalObjectId: exampleServicePrincipal.objectId,
+ *     resourceObjectId: msgraph.objectId,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * *App role assignment for internal application*
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const internal = new azuread.Application("internal", {
+ *     displayName: "internal",
+ *     appRoles: [{
+ *         allowedMemberTypes: ["Application"],
+ *         description: "Apps can query the database",
+ *         displayName: "Query",
+ *         enabled: true,
+ *         id: "00000000-0000-0000-0000-111111111111",
+ *         value: "Query.All",
+ *     }],
+ * });
+ * const internalServicePrincipal = new azuread.ServicePrincipal("internal", {applicationId: internal.applicationId});
+ * const example = new azuread.Application("example", {
+ *     displayName: "example",
+ *     requiredResourceAccesses: [{
+ *         resourceAppId: internal.applicationId,
+ *         resourceAccesses: [{
+ *             id: internalServicePrincipal.appRoleIds["Query.All"],
+ *             type: "Role",
+ *         }],
+ *     }],
+ * });
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleAppRoleAssignment = new azuread.AppRoleAssignment("example", {
+ *     appRoleId: internalServicePrincipal.appRoleIds["Query.All"],
+ *     principalObjectId: exampleServicePrincipal.objectId,
+ *     resourceObjectId: internalServicePrincipal.objectId,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * *Assign a user and group to an internal application*
+ *
  * ## Import
  *
  * App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note: _not_ the ID of the app role), e.g.
@@ -23,7 +102,7 @@ import * as utilities from "./utilities";
  * $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
  * ```
  *
- *  -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
+ * -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
  */
 export class AppRoleAssignment extends pulumi.CustomResource {
     /**

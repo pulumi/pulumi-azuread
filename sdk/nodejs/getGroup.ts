@@ -18,8 +18,10 @@ import * as utilities from "./utilities";
  * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
+ *
  * ### By Group Display Name)
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -29,6 +31,7 @@ import * as utilities from "./utilities";
  *     securityEnabled: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     args = args || {};
@@ -208,8 +211,10 @@ export interface GetGroupResult {
  * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
+ *
  * ### By Group Display Name)
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -219,6 +224,7 @@ export interface GetGroupResult {
  *     securityEnabled: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getGroupOutput(args?: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
     return pulumi.output(args).apply((a: any) => getGroup(a, opts))

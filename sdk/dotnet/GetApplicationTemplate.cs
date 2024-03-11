@@ -18,10 +18,9 @@ namespace Pulumi.AzureAD
         /// 
         /// This data source does not require any additional roles.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace Pulumi.AzureAD
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetApplicationTemplateResult> InvokeAsync(GetApplicationTemplateArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationTemplateResult>("azuread:index/getApplicationTemplate:getApplicationTemplate", args ?? new GetApplicationTemplateArgs(), options.WithDefaults());
@@ -54,10 +52,9 @@ namespace Pulumi.AzureAD
         /// 
         /// This data source does not require any additional roles.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +74,7 @@ namespace Pulumi.AzureAD
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetApplicationTemplateResult> Invoke(GetApplicationTemplateInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationTemplateResult>("azuread:index/getApplicationTemplate:getApplicationTemplate", args ?? new GetApplicationTemplateInvokeArgs(), options.WithDefaults());

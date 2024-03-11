@@ -110,6 +110,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -118,6 +119,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
             claims_mapping_policy_id=my_policy["id"],
             service_principal_id=my_principal["id"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -151,6 +153,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -159,6 +162,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
             claims_mapping_policy_id=my_policy["id"],
             service_principal_id=my_principal["id"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

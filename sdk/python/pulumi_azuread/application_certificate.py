@@ -362,6 +362,7 @@ class ApplicationCertificate(pulumi.CustomResource):
 
         *Using a PEM certificate*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -374,9 +375,11 @@ class ApplicationCertificate(pulumi.CustomResource):
             value=std.file(input="cert.pem").result,
             end_date="2021-05-01T01:02:03Z")
         ```
+        <!--End PulumiCodeChooser -->
 
         *Using a DER certificate*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -390,8 +393,11 @@ class ApplicationCertificate(pulumi.CustomResource):
             value=std.base64encode(input=std.file(input="cert.der").result).result,
             end_date="2021-05-01T01:02:03Z")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Using a certificate from Azure Key Vault
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azure as azure
@@ -448,6 +454,7 @@ class ApplicationCertificate(pulumi.CustomResource):
             end_date=example.certificate_attributes[0].expires,
             start_date=example.certificate_attributes[0].not_before)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -457,7 +464,7 @@ class ApplicationCertificate(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
+        -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -486,6 +493,7 @@ class ApplicationCertificate(pulumi.CustomResource):
 
         *Using a PEM certificate*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -498,9 +506,11 @@ class ApplicationCertificate(pulumi.CustomResource):
             value=std.file(input="cert.pem").result,
             end_date="2021-05-01T01:02:03Z")
         ```
+        <!--End PulumiCodeChooser -->
 
         *Using a DER certificate*
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -514,8 +524,11 @@ class ApplicationCertificate(pulumi.CustomResource):
             value=std.base64encode(input=std.file(input="cert.der").result).result,
             end_date="2021-05-01T01:02:03Z")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Using a certificate from Azure Key Vault
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azure as azure
@@ -572,6 +585,7 @@ class ApplicationCertificate(pulumi.CustomResource):
             end_date=example.certificate_attributes[0].expires,
             start_date=example.certificate_attributes[0].not_before)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -581,7 +595,7 @@ class ApplicationCertificate(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
+        -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
         :param ApplicationCertificateArgs args: The arguments to use to populate this resource's properties.

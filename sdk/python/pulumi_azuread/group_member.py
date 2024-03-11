@@ -114,6 +114,7 @@ class GroupMember(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -126,6 +127,7 @@ class GroupMember(pulumi.CustomResource):
             group_object_id=example_group.id,
             member_object_id=example.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -135,7 +137,7 @@ class GroupMember(pulumi.CustomResource):
         $ pulumi import azuread:index/groupMember:GroupMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
+        -> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -165,6 +167,7 @@ class GroupMember(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -177,6 +180,7 @@ class GroupMember(pulumi.CustomResource):
             group_object_id=example_group.id,
             member_object_id=example.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -186,7 +190,7 @@ class GroupMember(pulumi.CustomResource):
         $ pulumi import azuread:index/groupMember:GroupMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
+        -> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
 
         :param str resource_name: The name of the resource.
         :param GroupMemberArgs args: The arguments to use to populate this resource's properties.

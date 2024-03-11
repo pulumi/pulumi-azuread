@@ -219,8 +219,10 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
         ## Example Usage
+
         ### All users except guests or external users
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -267,8 +269,11 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                 cloud_app_security_policy="monitorOnly",
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Included client applications / service principals
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -295,8 +300,11 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                 built_in_controls=["block"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Excluded client applications / service principals
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -323,6 +331,7 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                 built_in_controls=["block"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -362,8 +371,10 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
         ## Example Usage
+
         ### All users except guests or external users
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -410,8 +421,11 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                 cloud_app_security_policy="monitorOnly",
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Included client applications / service principals
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -438,8 +452,11 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                 built_in_controls=["block"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Excluded client applications / service principals
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -466,6 +483,7 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                 built_in_controls=["block"],
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

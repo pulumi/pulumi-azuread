@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * *Using default settings*
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,8 +60,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Using custom settings*
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -102,6 +107,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -111,7 +117,7 @@ import javax.annotation.Nullable;
  * $ pulumi import azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate example 00000000-0000-0000-0000-000000000000/tokenSigningCertificate/11111111-1111-1111-1111-111111111111
  * ```
  * 
- *  -&gt; This ID format is unique to Terraform and is composed of the service principal&#39;s object ID, the string &#34;tokenSigningCertificate&#34; and the verify certificate&#39;s key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
+ * -&gt; This ID format is unique to Terraform and is composed of the service principal&#39;s object ID, the string &#34;tokenSigningCertificate&#34; and the verify certificate&#39;s key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
  * 
  */
 @ResourceType(type="azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate")

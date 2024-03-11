@@ -188,6 +188,79 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        *App role assignment for accessing Microsoft Graph*
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["microsoftGraph"],
+            use_existing=True)
+        example = azuread.Application("example",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=well_known.result["microsoftGraph"],
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.app_role_ids["User.Read.All"],
+                        type="Role",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("example",
+            app_role_id=msgraph.app_role_ids["User.Read.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=msgraph.object_id)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        *App role assignment for internal application*
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        internal = azuread.Application("internal",
+            display_name="internal",
+            app_roles=[azuread.ApplicationAppRoleArgs(
+                allowed_member_types=["Application"],
+                description="Apps can query the database",
+                display_name="Query",
+                enabled=True,
+                id="00000000-0000-0000-0000-111111111111",
+                value="Query.All",
+            )])
+        internal_service_principal = azuread.ServicePrincipal("internal", application_id=internal.application_id)
+        example = azuread.Application("example",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=internal.application_id,
+                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    id=internal_service_principal.app_role_ids["Query.All"],
+                    type="Role",
+                )],
+            )])
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("example",
+            app_role_id=internal_service_principal.app_role_ids["Query.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        *Assign a user and group to an internal application*
+
         ## Import
 
         App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note: _not_ the ID of the app role), e.g.
@@ -196,7 +269,7 @@ class AppRoleAssignment(pulumi.CustomResource):
         $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
         ```
 
-         -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
+        -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -221,6 +294,79 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        *App role assignment for accessing Microsoft Graph*
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["microsoftGraph"],
+            use_existing=True)
+        example = azuread.Application("example",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=well_known.result["microsoftGraph"],
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.app_role_ids["User.Read.All"],
+                        type="Role",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("example",
+            app_role_id=msgraph.app_role_ids["User.Read.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=msgraph.object_id)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        *App role assignment for internal application*
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        internal = azuread.Application("internal",
+            display_name="internal",
+            app_roles=[azuread.ApplicationAppRoleArgs(
+                allowed_member_types=["Application"],
+                description="Apps can query the database",
+                display_name="Query",
+                enabled=True,
+                id="00000000-0000-0000-0000-111111111111",
+                value="Query.All",
+            )])
+        internal_service_principal = azuread.ServicePrincipal("internal", application_id=internal.application_id)
+        example = azuread.Application("example",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=internal.application_id,
+                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    id=internal_service_principal.app_role_ids["Query.All"],
+                    type="Role",
+                )],
+            )])
+        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("example",
+            app_role_id=internal_service_principal.app_role_ids["Query.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        *Assign a user and group to an internal application*
+
         ## Import
 
         App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note: _not_ the ID of the app role), e.g.
@@ -229,7 +375,7 @@ class AppRoleAssignment(pulumi.CustomResource):
         $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
         ```
 
-         -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
+        -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
 
         :param str resource_name: The name of the resource.
         :param AppRoleAssignmentArgs args: The arguments to use to populate this resource's properties.

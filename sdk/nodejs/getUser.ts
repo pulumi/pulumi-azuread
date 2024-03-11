@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -25,6 +26,7 @@ import * as utilities from "./utilities";
  *     userPrincipalName: "user@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
@@ -261,6 +263,7 @@ export interface GetUserResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -269,6 +272,7 @@ export interface GetUserResult {
  *     userPrincipalName: "user@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
     return pulumi.output(args).apply((a: any) => getUser(a, opts))
