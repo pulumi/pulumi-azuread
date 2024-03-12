@@ -52,7 +52,7 @@ import (
 //			}
 //			_, err = azuread.NewAdministrativeUnitMember(ctx, "example", &azuread.AdministrativeUnitMemberArgs{
 //				AdministrativeUnitObjectId: exampleAdministrativeUnit.ID(),
-//				MemberObjectId:             *pulumi.String(example.Id),
+//				MemberObjectId:             pulumi.String(example.Id),
 //			})
 //			if err != nil {
 //				return err
