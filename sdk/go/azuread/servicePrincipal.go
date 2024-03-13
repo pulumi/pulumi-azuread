@@ -35,7 +35,7 @@ import (
 //			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
+//					pulumi.String(current.ObjectId),
 //				},
 //			})
 //			if err != nil {
@@ -45,7 +45,7 @@ import (
 //				ClientId:                  example.ClientId,
 //				AppRoleAssignmentRequired: pulumi.Bool(false),
 //				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
+//					pulumi.String(current.ObjectId),
 //				},
 //			})
 //			if err != nil {
@@ -80,7 +80,7 @@ import (
 //			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
+//					pulumi.String(current.ObjectId),
 //				},
 //			})
 //			if err != nil {
@@ -90,7 +90,7 @@ import (
 //				ClientId:                  example.ClientId,
 //				AppRoleAssignmentRequired: pulumi.Bool(false),
 //				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
+//					pulumi.String(current.ObjectId),
 //				},
 //				FeatureTags: azuread.ServicePrincipalFeatureTagArray{
 //					&azuread.ServicePrincipalFeatureTagArgs{
@@ -129,7 +129,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ClientId:    *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				ClientId:    pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				UseExisting: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -165,7 +165,7 @@ import (
 //			}
 //			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				TemplateId:  *pulumi.String(example.TemplateId),
+//				TemplateId:  pulumi.String(example.TemplateId),
 //			})
 //			if err != nil {
 //				return err

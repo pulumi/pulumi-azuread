@@ -47,7 +47,7 @@ import (
 //			}
 //			exampleApplicationFromTemplate, err := azuread.NewApplicationFromTemplate(ctx, "example", &azuread.ApplicationFromTemplateArgs{
 //				DisplayName: pulumi.String("Example Application"),
-//				TemplateId:  *pulumi.String(example.TemplateId),
+//				TemplateId:  pulumi.String(example.TemplateId),
 //			})
 //			if err != nil {
 //				return err
