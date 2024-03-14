@@ -45,7 +45,7 @@ import (
 //			}
 //			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				TemplateId:  *pulumi.String(example.TemplateId),
+//				TemplateId:  pulumi.String(example.TemplateId),
 //				FeatureTags: azuread.ApplicationFeatureTagArray{
 //					&azuread.ApplicationFeatureTagArgs{
 //						Enterprise: pulumi.Bool(true),
