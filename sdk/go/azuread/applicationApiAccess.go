@@ -45,13 +45,13 @@ import (
 //			}
 //			_, err = azuread.NewApplicationApiAccess(ctx, "example_msgraph", &azuread.ApplicationApiAccessArgs{
 //				ApplicationId: example.ID(),
-//				ApiClientId:   *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				ApiClientId:   pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				RoleIds: pulumi.StringArray{
-//					*pulumi.String(msgraph.AppRoleIds.Group.Read.All),
-//					*pulumi.String(msgraph.AppRoleIds.User.Read.All),
+//					pulumi.String(msgraph.AppRoleIds.Group.Read.All),
+//					pulumi.String(msgraph.AppRoleIds.User.Read.All),
 //				},
 //				ScopeIds: pulumi.StringArray{
-//					*pulumi.String(msgraph.Oauth2PermissionScopeIds.User.ReadWrite),
+//					pulumi.String(msgraph.Oauth2PermissionScopeIds.User.ReadWrite),
 //				},
 //			})
 //			if err != nil {
