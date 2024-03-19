@@ -148,7 +148,7 @@ import (
 //					},
 //					ClientApplications: &azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs{
 //						IncludedServicePrincipals: pulumi.StringArray{
-//							*pulumi.String(current.ObjectId),
+//							pulumi.String(current.ObjectId),
 //						},
 //						ExcludedServicePrincipals: pulumi.StringArray{},
 //					},
@@ -211,7 +211,7 @@ import (
 //							pulumi.String("ServicePrincipalsInMyTenant"),
 //						},
 //						ExcludedServicePrincipals: pulumi.StringArray{
-//							*pulumi.String(current.ObjectId),
+//							pulumi.String(current.ObjectId),
 //						},
 //					},
 //					Users: &azuread.ConditionalAccessPolicyConditionsUsersArgs{
