@@ -56,7 +56,7 @@ import (
 //			_, err = azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
 //				DisplayName: pulumi.String("example"),
 //				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
+//					pulumi.String(current.ObjectId),
 //				},
 //				SecurityEnabled: pulumi.Bool(true),
 //			})
@@ -107,7 +107,7 @@ import (
 //					pulumi.String("Unified"),
 //				},
 //				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
+//					pulumi.String(current.ObjectId),
 //					groupOwner.ObjectId,
 //				},
 //			})

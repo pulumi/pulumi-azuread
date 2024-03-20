@@ -219,7 +219,7 @@ type ApplicationCertificate struct {
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// The object ID of the application for which this certificate should be created
 	//
-	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
@@ -285,7 +285,7 @@ type applicationCertificateState struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// The object ID of the application for which this certificate should be created
 	//
-	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
@@ -312,7 +312,7 @@ type ApplicationCertificateState struct {
 	ApplicationId pulumi.StringPtrInput
 	// The object ID of the application for which this certificate should be created
 	//
-	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId pulumi.StringPtrInput
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
@@ -343,7 +343,7 @@ type applicationCertificateArgs struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// The object ID of the application for which this certificate should be created
 	//
-	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
@@ -371,7 +371,7 @@ type ApplicationCertificateArgs struct {
 	ApplicationId pulumi.StringPtrInput
 	// The object ID of the application for which this certificate should be created
 	//
-	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId pulumi.StringPtrInput
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
@@ -487,7 +487,7 @@ func (o ApplicationCertificateOutput) ApplicationId() pulumi.StringOutput {
 
 // The object ID of the application for which this certificate should be created
 //
-// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 func (o ApplicationCertificateOutput) ApplicationObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
 }

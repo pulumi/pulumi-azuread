@@ -48,7 +48,7 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
  */
 export interface GetApplicationArgs {
     /**
-     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: string;
     /**
@@ -84,7 +84,7 @@ export interface GetApplicationResult {
      */
     readonly appRoles: outputs.GetApplicationAppRole[];
     /**
-     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
      */
     readonly applicationId: string;
     /**
@@ -238,7 +238,7 @@ export function getApplicationOutput(args?: GetApplicationOutputArgs, opts?: pul
  */
 export interface GetApplicationOutputArgs {
     /**
-     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: pulumi.Input<string>;
     /**

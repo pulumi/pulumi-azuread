@@ -11073,7 +11073,7 @@ type GetServicePrincipalsServicePrincipal struct {
 	AppRoleAssignmentRequired bool `pulumi:"appRoleAssignmentRequired"`
 	// The application ID (client ID) for the associated application
 	//
-	// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId string `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId string `pulumi:"applicationTenantId"`
@@ -11115,7 +11115,7 @@ type GetServicePrincipalsServicePrincipalArgs struct {
 	AppRoleAssignmentRequired pulumi.BoolInput `pulumi:"appRoleAssignmentRequired"`
 	// The application ID (client ID) for the associated application
 	//
-	// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId pulumi.StringInput `pulumi:"applicationTenantId"`
@@ -11202,7 +11202,7 @@ func (o GetServicePrincipalsServicePrincipalOutput) AppRoleAssignmentRequired() 
 
 // The application ID (client ID) for the associated application
 //
-// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
+// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
 func (o GetServicePrincipalsServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ApplicationId }).(pulumi.StringOutput)
 }

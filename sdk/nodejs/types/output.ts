@@ -1189,7 +1189,7 @@ export interface GetServicePrincipalsServicePrincipal {
     /**
      * The application ID (client ID) for the associated application
      *
-     * @deprecated The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId: string;
     /**

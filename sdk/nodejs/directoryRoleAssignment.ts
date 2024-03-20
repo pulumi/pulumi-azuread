@@ -110,7 +110,7 @@ export class DirectoryRoleAssignment extends pulumi.CustomResource {
     /**
      * Identifier of the app-specific scope when the assignment scope is app-specific
      *
-     * @deprecated `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
+     * @deprecated `appScopeObjectId` has been renamed to `appScopeId` and will be removed in version 3.0 or the AzureAD Provider
      */
     public readonly appScopeObjectId!: pulumi.Output<string>;
     /**
@@ -180,7 +180,7 @@ export interface DirectoryRoleAssignmentState {
     /**
      * Identifier of the app-specific scope when the assignment scope is app-specific
      *
-     * @deprecated `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
+     * @deprecated `appScopeObjectId` has been renamed to `appScopeId` and will be removed in version 3.0 or the AzureAD Provider
      */
     appScopeObjectId?: pulumi.Input<string>;
     /**
@@ -212,7 +212,7 @@ export interface DirectoryRoleAssignmentArgs {
     /**
      * Identifier of the app-specific scope when the assignment scope is app-specific
      *
-     * @deprecated `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
+     * @deprecated `appScopeObjectId` has been renamed to `appScopeId` and will be removed in version 3.0 or the AzureAD Provider
      */
     appScopeObjectId?: pulumi.Input<string>;
     /**
