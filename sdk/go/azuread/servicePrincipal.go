@@ -35,7 +35,7 @@ import (
 //			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
+//					pulumi.String(current.ObjectId),
 //				},
 //			})
 //			if err != nil {
@@ -45,7 +45,7 @@ import (
 //				ClientId:                  example.ClientId,
 //				AppRoleAssignmentRequired: pulumi.Bool(false),
 //				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
+//					pulumi.String(current.ObjectId),
 //				},
 //			})
 //			if err != nil {
@@ -80,7 +80,7 @@ import (
 //			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
+//					pulumi.String(current.ObjectId),
 //				},
 //			})
 //			if err != nil {
@@ -90,7 +90,7 @@ import (
 //				ClientId:                  example.ClientId,
 //				AppRoleAssignmentRequired: pulumi.Bool(false),
 //				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
+//					pulumi.String(current.ObjectId),
 //				},
 //				FeatureTags: azuread.ServicePrincipalFeatureTagArray{
 //					&azuread.ServicePrincipalFeatureTagArgs{
@@ -129,7 +129,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ClientId:    *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				ClientId:    pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				UseExisting: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -165,7 +165,7 @@ import (
 //			}
 //			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				TemplateId:  *pulumi.String(example.TemplateId),
+//				TemplateId:  pulumi.String(example.TemplateId),
 //			})
 //			if err != nil {
 //				return err
@@ -206,7 +206,7 @@ type ServicePrincipal struct {
 	AppRoles ServicePrincipalAppRoleArrayOutput `pulumi:"appRoles"`
 	// The application ID (client ID) of the application for which to create a service principal
 	//
-	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId pulumi.StringOutput `pulumi:"applicationTenantId"`
@@ -222,7 +222,7 @@ type ServicePrincipal struct {
 	FeatureTags ServicePrincipalFeatureTagArrayOutput `pulumi:"featureTags"`
 	// Block of features to configure for this service principal using tags
 	//
-	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+	// Deprecated: This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
 	Features ServicePrincipalFeatureArrayOutput `pulumi:"features"`
 	// Home page or landing page of the associated application.
 	HomepageUrl pulumi.StringOutput `pulumi:"homepageUrl"`
@@ -306,7 +306,7 @@ type servicePrincipalState struct {
 	AppRoles []ServicePrincipalAppRole `pulumi:"appRoles"`
 	// The application ID (client ID) of the application for which to create a service principal
 	//
-	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId *string `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId *string `pulumi:"applicationTenantId"`
@@ -322,7 +322,7 @@ type servicePrincipalState struct {
 	FeatureTags []ServicePrincipalFeatureTag `pulumi:"featureTags"`
 	// Block of features to configure for this service principal using tags
 	//
-	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+	// Deprecated: This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
 	Features []ServicePrincipalFeature `pulumi:"features"`
 	// Home page or landing page of the associated application.
 	HomepageUrl *string `pulumi:"homepageUrl"`
@@ -377,7 +377,7 @@ type ServicePrincipalState struct {
 	AppRoles ServicePrincipalAppRoleArrayInput
 	// The application ID (client ID) of the application for which to create a service principal
 	//
-	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringPtrInput
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId pulumi.StringPtrInput
@@ -393,7 +393,7 @@ type ServicePrincipalState struct {
 	FeatureTags ServicePrincipalFeatureTagArrayInput
 	// Block of features to configure for this service principal using tags
 	//
-	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+	// Deprecated: This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
 	Features ServicePrincipalFeatureArrayInput
 	// Home page or landing page of the associated application.
 	HomepageUrl pulumi.StringPtrInput
@@ -448,7 +448,7 @@ type servicePrincipalArgs struct {
 	AppRoleAssignmentRequired *bool `pulumi:"appRoleAssignmentRequired"`
 	// The application ID (client ID) of the application for which to create a service principal
 	//
-	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId *string `pulumi:"applicationId"`
 	// The client ID of the application for which to create a service principal.
 	ClientId *string `pulumi:"clientId"`
@@ -460,7 +460,7 @@ type servicePrincipalArgs struct {
 	FeatureTags []ServicePrincipalFeatureTag `pulumi:"featureTags"`
 	// Block of features to configure for this service principal using tags
 	//
-	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+	// Deprecated: This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
 	Features []ServicePrincipalFeature `pulumi:"features"`
 	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
 	LoginUrl *string `pulumi:"loginUrl"`
@@ -492,7 +492,7 @@ type ServicePrincipalArgs struct {
 	AppRoleAssignmentRequired pulumi.BoolPtrInput
 	// The application ID (client ID) of the application for which to create a service principal
 	//
-	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringPtrInput
 	// The client ID of the application for which to create a service principal.
 	ClientId pulumi.StringPtrInput
@@ -504,7 +504,7 @@ type ServicePrincipalArgs struct {
 	FeatureTags ServicePrincipalFeatureTagArrayInput
 	// Block of features to configure for this service principal using tags
 	//
-	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+	// Deprecated: This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
 	Features ServicePrincipalFeatureArrayInput
 	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
 	LoginUrl pulumi.StringPtrInput
@@ -640,7 +640,7 @@ func (o ServicePrincipalOutput) AppRoles() ServicePrincipalAppRoleArrayOutput {
 
 // The application ID (client ID) of the application for which to create a service principal
 //
-// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
 func (o ServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
@@ -674,7 +674,7 @@ func (o ServicePrincipalOutput) FeatureTags() ServicePrincipalFeatureTagArrayOut
 
 // Block of features to configure for this service principal using tags
 //
-// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+// Deprecated: This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
 func (o ServicePrincipalOutput) Features() ServicePrincipalFeatureArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalFeatureArrayOutput { return v.Features }).(ServicePrincipalFeatureArrayOutput)
 }

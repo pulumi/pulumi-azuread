@@ -101,7 +101,7 @@ type ApplicationPassword struct {
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// The object ID of the application for which this password should be created
 	//
-	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -157,7 +157,7 @@ type applicationPasswordState struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// The object ID of the application for which this password should be created
 	//
-	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
@@ -180,7 +180,7 @@ type ApplicationPasswordState struct {
 	ApplicationId pulumi.StringPtrInput
 	// The object ID of the application for which this password should be created
 	//
-	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId pulumi.StringPtrInput
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
@@ -207,7 +207,7 @@ type applicationPasswordArgs struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// The object ID of the application for which this password should be created
 	//
-	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
@@ -227,7 +227,7 @@ type ApplicationPasswordArgs struct {
 	ApplicationId pulumi.StringPtrInput
 	// The object ID of the application for which this password should be created
 	//
-	// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationObjectId pulumi.StringPtrInput
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
@@ -335,7 +335,7 @@ func (o ApplicationPasswordOutput) ApplicationId() pulumi.StringOutput {
 
 // The object ID of the application for which this password should be created
 //
-// Deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
 func (o ApplicationPasswordOutput) ApplicationObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPassword) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
 }

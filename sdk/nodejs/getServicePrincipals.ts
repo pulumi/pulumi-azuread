@@ -90,7 +90,7 @@ export interface GetServicePrincipalsArgs {
     /**
      * A list of client IDs of the applications associated with the service principals.
      *
-     * @deprecated The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationIds?: string[];
     /**
@@ -124,7 +124,7 @@ export interface GetServicePrincipalsResult {
     /**
      * A list of client IDs of the applications associated with the service principals.
      *
-     * @deprecated The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
      */
     readonly applicationIds: string[];
     /**
@@ -224,7 +224,7 @@ export interface GetServicePrincipalsOutputArgs {
     /**
      * A list of client IDs of the applications associated with the service principals.
      *
-     * @deprecated The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

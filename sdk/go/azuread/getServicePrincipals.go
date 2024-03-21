@@ -131,7 +131,7 @@ func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, o
 type GetServicePrincipalsArgs struct {
 	// A list of client IDs of the applications associated with the service principals.
 	//
-	// Deprecated: The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationIds []string `pulumi:"applicationIds"`
 	// A list of client IDs of the applications associated with the service principals.
 	ClientIds []string `pulumi:"clientIds"`
@@ -151,7 +151,7 @@ type GetServicePrincipalsArgs struct {
 type GetServicePrincipalsResult struct {
 	// A list of client IDs of the applications associated with the service principals.
 	//
-	// Deprecated: The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationIds []string `pulumi:"applicationIds"`
 	// The client ID of the application associated with this service principal.
 	ClientIds []string `pulumi:"clientIds"`
@@ -184,7 +184,7 @@ func GetServicePrincipalsOutput(ctx *pulumi.Context, args GetServicePrincipalsOu
 type GetServicePrincipalsOutputArgs struct {
 	// A list of client IDs of the applications associated with the service principals.
 	//
-	// Deprecated: The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationIds pulumi.StringArrayInput `pulumi:"applicationIds"`
 	// A list of client IDs of the applications associated with the service principals.
 	ClientIds pulumi.StringArrayInput `pulumi:"clientIds"`
@@ -221,7 +221,7 @@ func (o GetServicePrincipalsResultOutput) ToGetServicePrincipalsResultOutputWith
 
 // A list of client IDs of the applications associated with the service principals.
 //
-// Deprecated: The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
+// Deprecated: The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
 func (o GetServicePrincipalsResultOutput) ApplicationIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.ApplicationIds }).(pulumi.StringArrayOutput)
 }
