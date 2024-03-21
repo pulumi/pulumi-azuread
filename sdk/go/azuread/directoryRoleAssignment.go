@@ -53,7 +53,7 @@ import (
 //			}
 //			_, err = azuread.NewDirectoryRoleAssignment(ctx, "example", &azuread.DirectoryRoleAssignmentArgs{
 //				RoleId:            exampleDirectoryRole.TemplateId,
-//				PrincipalObjectId: *pulumi.String(example.ObjectId),
+//				PrincipalObjectId: pulumi.String(example.ObjectId),
 //			})
 //			if err != nil {
 //				return err
@@ -106,7 +106,7 @@ import (
 //			}
 //			_, err = azuread.NewDirectoryRoleAssignment(ctx, "example", &azuread.DirectoryRoleAssignmentArgs{
 //				RoleId:            exampleCustomDirectoryRole.ObjectId,
-//				PrincipalObjectId: *pulumi.String(example.ObjectId),
+//				PrincipalObjectId: pulumi.String(example.ObjectId),
 //			})
 //			if err != nil {
 //				return err
@@ -134,7 +134,7 @@ type DirectoryRoleAssignment struct {
 	AppScopeId pulumi.StringOutput `pulumi:"appScopeId"`
 	// Identifier of the app-specific scope when the assignment scope is app-specific
 	//
-	// Deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
+	// Deprecated: `appScopeObjectId` has been renamed to `appScopeId` and will be removed in version 3.0 or the AzureAD Provider
 	AppScopeObjectId pulumi.StringOutput `pulumi:"appScopeObjectId"`
 	// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	DirectoryScopeId pulumi.StringOutput `pulumi:"directoryScopeId"`
@@ -186,7 +186,7 @@ type directoryRoleAssignmentState struct {
 	AppScopeId *string `pulumi:"appScopeId"`
 	// Identifier of the app-specific scope when the assignment scope is app-specific
 	//
-	// Deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
+	// Deprecated: `appScopeObjectId` has been renamed to `appScopeId` and will be removed in version 3.0 or the AzureAD Provider
 	AppScopeObjectId *string `pulumi:"appScopeObjectId"`
 	// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	DirectoryScopeId *string `pulumi:"directoryScopeId"`
@@ -203,7 +203,7 @@ type DirectoryRoleAssignmentState struct {
 	AppScopeId pulumi.StringPtrInput
 	// Identifier of the app-specific scope when the assignment scope is app-specific
 	//
-	// Deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
+	// Deprecated: `appScopeObjectId` has been renamed to `appScopeId` and will be removed in version 3.0 or the AzureAD Provider
 	AppScopeObjectId pulumi.StringPtrInput
 	// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	DirectoryScopeId pulumi.StringPtrInput
@@ -224,7 +224,7 @@ type directoryRoleAssignmentArgs struct {
 	AppScopeId *string `pulumi:"appScopeId"`
 	// Identifier of the app-specific scope when the assignment scope is app-specific
 	//
-	// Deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
+	// Deprecated: `appScopeObjectId` has been renamed to `appScopeId` and will be removed in version 3.0 or the AzureAD Provider
 	AppScopeObjectId *string `pulumi:"appScopeObjectId"`
 	// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	DirectoryScopeId *string `pulumi:"directoryScopeId"`
@@ -242,7 +242,7 @@ type DirectoryRoleAssignmentArgs struct {
 	AppScopeId pulumi.StringPtrInput
 	// Identifier of the app-specific scope when the assignment scope is app-specific
 	//
-	// Deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
+	// Deprecated: `appScopeObjectId` has been renamed to `appScopeId` and will be removed in version 3.0 or the AzureAD Provider
 	AppScopeObjectId pulumi.StringPtrInput
 	// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	DirectoryScopeId pulumi.StringPtrInput
@@ -348,7 +348,7 @@ func (o DirectoryRoleAssignmentOutput) AppScopeId() pulumi.StringOutput {
 
 // Identifier of the app-specific scope when the assignment scope is app-specific
 //
-// Deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
+// Deprecated: `appScopeObjectId` has been renamed to `appScopeId` and will be removed in version 3.0 or the AzureAD Provider
 func (o DirectoryRoleAssignmentOutput) AppScopeObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DirectoryRoleAssignment) pulumi.StringOutput { return v.AppScopeObjectId }).(pulumi.StringOutput)
 }

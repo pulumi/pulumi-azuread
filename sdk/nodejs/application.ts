@@ -205,7 +205,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * The Application ID (also called Client ID)
      *
-     * @deprecated The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
      */
     public /*out*/ readonly applicationId!: pulumi.Output<string>;
     /**
@@ -456,7 +456,7 @@ export interface ApplicationState {
     /**
      * The Application ID (also called Client ID)
      *
-     * @deprecated The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: pulumi.Input<string>;
     /**

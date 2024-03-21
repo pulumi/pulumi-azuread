@@ -52,7 +52,7 @@ import (
 //			}
 //			_, err = azuread.NewDirectoryRoleMember(ctx, "example", &azuread.DirectoryRoleMemberArgs{
 //				RoleObjectId:   exampleDirectoryRole.ObjectId,
-//				MemberObjectId: *pulumi.String(example.ObjectId),
+//				MemberObjectId: pulumi.String(example.ObjectId),
 //			})
 //			if err != nil {
 //				return err

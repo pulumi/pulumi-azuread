@@ -148,7 +148,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
     /**
      * The application ID (client ID) of the application for which to create a service principal
      *
-     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
@@ -176,7 +176,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
     /**
      * Block of features to configure for this service principal using tags
      *
-     * @deprecated This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+     * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      */
     public readonly features!: pulumi.Output<outputs.ServicePrincipalFeature[]>;
     /**
@@ -362,7 +362,7 @@ export interface ServicePrincipalState {
     /**
      * The application ID (client ID) of the application for which to create a service principal
      *
-     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: pulumi.Input<string>;
     /**
@@ -390,7 +390,7 @@ export interface ServicePrincipalState {
     /**
      * Block of features to configure for this service principal using tags
      *
-     * @deprecated This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+     * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      */
     features?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalFeature>[]>;
     /**
@@ -488,7 +488,7 @@ export interface ServicePrincipalArgs {
     /**
      * The application ID (client ID) of the application for which to create a service principal
      *
-     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: pulumi.Input<string>;
     /**
@@ -508,7 +508,7 @@ export interface ServicePrincipalArgs {
     /**
      * Block of features to configure for this service principal using tags
      *
-     * @deprecated This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+     * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      */
     features?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalFeature>[]>;
     /**

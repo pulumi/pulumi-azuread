@@ -69,7 +69,7 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
     /**
      * The object ID of the application for which this federated identity credential should be created
      *
-     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
@@ -157,7 +157,7 @@ export interface ApplicationFederatedIdentityCredentialState {
     /**
      * The object ID of the application for which this federated identity credential should be created
      *
-     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationObjectId?: pulumi.Input<string>;
     /**
@@ -197,7 +197,7 @@ export interface ApplicationFederatedIdentityCredentialArgs {
     /**
      * The object ID of the application for which this federated identity credential should be created
      *
-     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationObjectId?: pulumi.Input<string>;
     /**

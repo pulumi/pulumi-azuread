@@ -118,7 +118,7 @@ func LookupServicePrincipal(ctx *pulumi.Context, args *LookupServicePrincipalArg
 
 // A collection of arguments for invoking getServicePrincipal.
 type LookupServicePrincipalArgs struct {
-	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId *string `pulumi:"applicationId"`
 	// The client ID of the application associated with this service principal.
 	ClientId *string `pulumi:"clientId"`
@@ -142,7 +142,7 @@ type LookupServicePrincipalResult struct {
 	AppRoleIds map[string]string `pulumi:"appRoleIds"`
 	// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles []GetServicePrincipalAppRole `pulumi:"appRoles"`
-	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId string `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId string `pulumi:"applicationTenantId"`
@@ -155,7 +155,7 @@ type LookupServicePrincipalResult struct {
 	FeatureTags []GetServicePrincipalFeatureTag `pulumi:"featureTags"`
 	// A `features` block as described below.
 	//
-	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+	// Deprecated: This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
 	Features []GetServicePrincipalFeature `pulumi:"features"`
 	// Home page or landing page of the associated application.
 	HomepageUrl string `pulumi:"homepageUrl"`
@@ -208,7 +208,7 @@ func LookupServicePrincipalOutput(ctx *pulumi.Context, args LookupServicePrincip
 
 // A collection of arguments for invoking getServicePrincipal.
 type LookupServicePrincipalOutputArgs struct {
-	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
 	// The client ID of the application associated with this service principal.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
@@ -264,7 +264,7 @@ func (o LookupServicePrincipalResultOutput) AppRoles() GetServicePrincipalAppRol
 	return o.ApplyT(func(v LookupServicePrincipalResult) []GetServicePrincipalAppRole { return v.AppRoles }).(GetServicePrincipalAppRoleArrayOutput)
 }
 
-// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
+// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
 func (o LookupServicePrincipalResultOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
@@ -295,7 +295,7 @@ func (o LookupServicePrincipalResultOutput) FeatureTags() GetServicePrincipalFea
 
 // A `features` block as described below.
 //
-// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+// Deprecated: This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
 func (o LookupServicePrincipalResultOutput) Features() GetServicePrincipalFeatureArrayOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) []GetServicePrincipalFeature { return v.Features }).(GetServicePrincipalFeatureArrayOutput)
 }
