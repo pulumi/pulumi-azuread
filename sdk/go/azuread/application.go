@@ -238,7 +238,7 @@ type Application struct {
 	AppRoles ApplicationAppRoleTypeArrayOutput `pulumi:"appRoles"`
 	// The Application ID (also called Client ID)
 	//
-	// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// The Client ID for the application.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
@@ -355,7 +355,7 @@ type applicationState struct {
 	AppRoles []ApplicationAppRoleType `pulumi:"appRoles"`
 	// The Application ID (also called Client ID)
 	//
-	// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId *string `pulumi:"applicationId"`
 	// The Client ID for the application.
 	ClientId *string `pulumi:"clientId"`
@@ -440,7 +440,7 @@ type ApplicationState struct {
 	AppRoles ApplicationAppRoleTypeArrayInput
 	// The Application ID (also called Client ID)
 	//
-	// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringPtrInput
 	// The Client ID for the application.
 	ClientId pulumi.StringPtrInput
@@ -759,7 +759,7 @@ func (o ApplicationOutput) AppRoles() ApplicationAppRoleTypeArrayOutput {
 
 // The Application ID (also called Client ID)
 //
-// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
+// Deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
 func (o ApplicationOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
