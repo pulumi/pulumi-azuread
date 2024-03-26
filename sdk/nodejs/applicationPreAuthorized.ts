@@ -94,13 +94,13 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
     /**
      * The object ID of the application to which this pre-authorized application should be added
      *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
      * The application ID of the pre-authorized application
      *
-     * @deprecated The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     public readonly authorizedAppId!: pulumi.Output<string>;
     /**
@@ -157,13 +157,13 @@ export interface ApplicationPreAuthorizedState {
     /**
      * The object ID of the application to which this pre-authorized application should be added
      *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationObjectId?: pulumi.Input<string>;
     /**
      * The application ID of the pre-authorized application
      *
-     * @deprecated The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     authorizedAppId?: pulumi.Input<string>;
     /**
@@ -187,13 +187,13 @@ export interface ApplicationPreAuthorizedArgs {
     /**
      * The object ID of the application to which this pre-authorized application should be added
      *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationObjectId?: pulumi.Input<string>;
     /**
      * The application ID of the pre-authorized application
      *
-     * @deprecated The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     authorizedAppId?: pulumi.Input<string>;
     /**

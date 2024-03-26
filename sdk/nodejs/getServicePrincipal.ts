@@ -75,7 +75,7 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
  */
 export interface GetServicePrincipalArgs {
     /**
-     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: string;
     /**
@@ -119,7 +119,7 @@ export interface GetServicePrincipalResult {
      */
     readonly appRoles: outputs.GetServicePrincipalAppRole[];
     /**
-     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     readonly applicationId: string;
     /**
@@ -142,7 +142,7 @@ export interface GetServicePrincipalResult {
     /**
      * A `features` block as described below.
      *
-     * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
+     * @deprecated This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
      */
     readonly features: outputs.GetServicePrincipalFeature[];
     /**
@@ -275,7 +275,7 @@ export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, 
  */
 export interface GetServicePrincipalOutputArgs {
     /**
-     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
+     * @deprecated The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
      */
     applicationId?: pulumi.Input<string>;
     /**

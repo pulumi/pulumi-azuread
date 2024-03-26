@@ -61,7 +61,7 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 
 // A collection of arguments for invoking getApplication.
 type LookupApplicationArgs struct {
-	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId *string `pulumi:"applicationId"`
 	// Specifies the Client ID of the application.
 	ClientId *string `pulumi:"clientId"`
@@ -81,7 +81,7 @@ type LookupApplicationResult struct {
 	AppRoleIds map[string]string `pulumi:"appRoleIds"`
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles []GetApplicationAppRoleType `pulumi:"appRoles"`
-	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId string `pulumi:"applicationId"`
 	// The Client ID for the application.
 	ClientId string `pulumi:"clientId"`
@@ -158,7 +158,7 @@ func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputAr
 
 // A collection of arguments for invoking getApplication.
 type LookupApplicationOutputArgs struct {
-	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
+	// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
 	// Specifies the Client ID of the application.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
@@ -204,7 +204,7 @@ func (o LookupApplicationResultOutput) AppRoles() GetApplicationAppRoleTypeArray
 	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationAppRoleType { return v.AppRoles }).(GetApplicationAppRoleTypeArrayOutput)
 }
 
-// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
+// Deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
 func (o LookupApplicationResultOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
