@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: example.ApplicationId,
+//				ClientId: example.ClientId,
 //			})
 //			if err != nil {
 //				return err
@@ -77,7 +77,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: example.ApplicationId,
+//				ClientId: example.ClientId,
 //			})
 //			if err != nil {
 //				return err

@@ -65,7 +65,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-        /// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+        /// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+        /// when `metadata_host` is specified.
         /// </summary>
         [Output("environment")]
         public Output<string?> Environment { get; private set; } = null!;
@@ -201,7 +202,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-        /// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+        /// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+        /// when `metadata_host` is specified.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
@@ -255,6 +257,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
+
+        /// <summary>
+        /// Allow Azure AKS Workload Identity to be used for Authentication.
+        /// </summary>
+        [Input("useAksWorkloadIdentity", json: true)]
+        public Input<bool>? UseAksWorkloadIdentity { get; set; }
 
         /// <summary>
         /// Allow Azure CLI to be used for Authentication

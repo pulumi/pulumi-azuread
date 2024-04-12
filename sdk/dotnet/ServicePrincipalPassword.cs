@@ -30,7 +30,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ApplicationId = example.ApplicationId,
+    ///         ClientId = example.ClientId,
     ///     });
     /// 
     ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("example", new()
@@ -61,7 +61,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ApplicationId = example.ApplicationId,
+    ///         ClientId = example.ClientId,
     ///     });
     /// 
     ///     var exampleRotating = new Time.Rotating("example", new()

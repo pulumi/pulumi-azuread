@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(example.applicationId())
+ *             .clientId(example.clientId())
  *             .build());
  * 
  *         var exampleServicePrincipalPassword = new ServicePrincipalPassword(&#34;exampleServicePrincipalPassword&#34;, ServicePrincipalPasswordArgs.builder()        
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(example.applicationId())
+ *             .clientId(example.clientId())
  *             .build());
  * 
  *         var exampleRotating = new Rotating(&#34;exampleRotating&#34;, RotatingArgs.builder()        

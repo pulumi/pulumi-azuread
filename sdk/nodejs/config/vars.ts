@@ -97,7 +97,8 @@ Object.defineProperty(exports, "disableTerraformPartnerId", {
 
 /**
  * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
- * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+ * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+ * when `metadataHost` is specified.
  */
 export declare const environment: string;
 Object.defineProperty(exports, "environment", {
@@ -193,6 +194,17 @@ export declare const tenantId: string | undefined;
 Object.defineProperty(exports, "tenantId", {
     get() {
         return __config.get("tenantId");
+    },
+    enumerable: true,
+});
+
+/**
+ * Allow Azure AKS Workload Identity to be used for Authentication.
+ */
+export declare const useAksWorkloadIdentity: boolean | undefined;
+Object.defineProperty(exports, "useAksWorkloadIdentity", {
+    get() {
+        return __config.getObject<boolean>("useAksWorkloadIdentity");
     },
     enumerable: true,
 });

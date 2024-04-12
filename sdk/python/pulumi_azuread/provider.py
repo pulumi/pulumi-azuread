@@ -31,6 +31,7 @@ class ProviderArgs:
                  oidc_token_file_path: Optional[pulumi.Input[str]] = None,
                  partner_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 use_aks_workload_identity: Optional[pulumi.Input[bool]] = None,
                  use_cli: Optional[pulumi.Input[bool]] = None,
                  use_msi: Optional[pulumi.Input[bool]] = None,
                  use_oidc: Optional[pulumi.Input[bool]] = None):
@@ -49,7 +50,8 @@ class ProviderArgs:
                Secret
         :param pulumi.Input[bool] disable_terraform_partner_id: Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
         :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-               `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+               `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+               when `metadata_host` is specified.
         :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
         :param pulumi.Input[str] oidc_request_token: The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
                Connect.
@@ -59,6 +61,7 @@ class ProviderArgs:
         :param pulumi.Input[str] oidc_token_file_path: The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.
         :param pulumi.Input[str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
         :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except Managed Identity
+        :param pulumi.Input[bool] use_aks_workload_identity: Allow Azure AKS Workload Identity to be used for Authentication.
         :param pulumi.Input[bool] use_cli: Allow Azure CLI to be used for Authentication
         :param pulumi.Input[bool] use_msi: Allow Managed Identity to be used for Authentication
         :param pulumi.Input[bool] use_oidc: Allow OpenID Connect to be used for authentication
@@ -100,6 +103,8 @@ class ProviderArgs:
             pulumi.set(__self__, "partner_id", partner_id)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
+        if use_aks_workload_identity is not None:
+            pulumi.set(__self__, "use_aks_workload_identity", use_aks_workload_identity)
         if use_cli is not None:
             pulumi.set(__self__, "use_cli", use_cli)
         if use_msi is None:
@@ -225,7 +230,8 @@ class ProviderArgs:
     def environment(self) -> Optional[pulumi.Input[str]]:
         """
         The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-        `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+        `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+        when `metadata_host` is specified.
         """
         return pulumi.get(self, "environment")
 
@@ -320,6 +326,18 @@ class ProviderArgs:
         pulumi.set(self, "tenant_id", value)
 
     @property
+    @pulumi.getter(name="useAksWorkloadIdentity")
+    def use_aks_workload_identity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow Azure AKS Workload Identity to be used for Authentication.
+        """
+        return pulumi.get(self, "use_aks_workload_identity")
+
+    @use_aks_workload_identity.setter
+    def use_aks_workload_identity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_aks_workload_identity", value)
+
+    @property
     @pulumi.getter(name="useCli")
     def use_cli(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -378,6 +396,7 @@ class Provider(pulumi.ProviderResource):
                  oidc_token_file_path: Optional[pulumi.Input[str]] = None,
                  partner_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 use_aks_workload_identity: Optional[pulumi.Input[bool]] = None,
                  use_cli: Optional[pulumi.Input[bool]] = None,
                  use_msi: Optional[pulumi.Input[bool]] = None,
                  use_oidc: Optional[pulumi.Input[bool]] = None,
@@ -402,7 +421,8 @@ class Provider(pulumi.ProviderResource):
                Secret
         :param pulumi.Input[bool] disable_terraform_partner_id: Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
         :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-               `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+               `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+               when `metadata_host` is specified.
         :param pulumi.Input[str] metadata_host: The Hostname which should be used for the Azure Metadata Service.
         :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
         :param pulumi.Input[str] oidc_request_token: The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
@@ -413,6 +433,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] oidc_token_file_path: The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.
         :param pulumi.Input[str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
         :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except Managed Identity
+        :param pulumi.Input[bool] use_aks_workload_identity: Allow Azure AKS Workload Identity to be used for Authentication.
         :param pulumi.Input[bool] use_cli: Allow Azure CLI to be used for Authentication
         :param pulumi.Input[bool] use_msi: Allow Managed Identity to be used for Authentication
         :param pulumi.Input[bool] use_oidc: Allow OpenID Connect to be used for authentication
@@ -461,6 +482,7 @@ class Provider(pulumi.ProviderResource):
                  oidc_token_file_path: Optional[pulumi.Input[str]] = None,
                  partner_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 use_aks_workload_identity: Optional[pulumi.Input[bool]] = None,
                  use_cli: Optional[pulumi.Input[bool]] = None,
                  use_msi: Optional[pulumi.Input[bool]] = None,
                  use_oidc: Optional[pulumi.Input[bool]] = None,
@@ -496,6 +518,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["oidc_token_file_path"] = oidc_token_file_path
             __props__.__dict__["partner_id"] = partner_id
             __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["use_aks_workload_identity"] = pulumi.Output.from_input(use_aks_workload_identity).apply(pulumi.runtime.to_json) if use_aks_workload_identity is not None else None
             __props__.__dict__["use_cli"] = pulumi.Output.from_input(use_cli).apply(pulumi.runtime.to_json) if use_cli is not None else None
             if use_msi is None:
                 use_msi = (_utilities.get_env_bool('ARM_USE_MSI') or False)
@@ -571,7 +594,8 @@ class Provider(pulumi.ProviderResource):
     def environment(self) -> pulumi.Output[Optional[str]]:
         """
         The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-        `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+        `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+        when `metadata_host` is specified.
         """
         return pulumi.get(self, "environment")
 
