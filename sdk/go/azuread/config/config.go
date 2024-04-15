@@ -53,7 +53,8 @@ func GetDisableTerraformPartnerId(ctx *pulumi.Context) bool {
 }
 
 // The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+// when `metadataHost` is specified.
 func GetEnvironment(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:environment")
 	if err == nil {
@@ -114,6 +115,11 @@ func GetPartnerId(ctx *pulumi.Context) string {
 // The Tenant ID which should be used. Works with all authentication methods except Managed Identity
 func GetTenantId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:tenantId")
+}
+
+// Allow Azure AKS Workload Identity to be used for Authentication.
+func GetUseAksWorkloadIdentity(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "azuread:useAksWorkloadIdentity")
 }
 
 // Allow Azure CLI to be used for Authentication

@@ -52,7 +52,8 @@ disableTerraformPartnerId: Optional[bool]
 environment: str
 """
 The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-`usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+`usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+when `metadata_host` is specified.
 """
 
 metadataHost: Optional[str]
@@ -95,6 +96,11 @@ A GUID/UUID that is registered with Microsoft to facilitate partner resource usa
 tenantId: Optional[str]
 """
 The Tenant ID which should be used. Works with all authentication methods except Managed Identity
+"""
+
+useAksWorkloadIdentity: Optional[bool]
+"""
+Allow Azure AKS Workload Identity to be used for Authentication.
 """
 
 useCli: Optional[bool]

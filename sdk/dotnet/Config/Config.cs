@@ -115,7 +115,8 @@ namespace Pulumi.AzureAD
         private static readonly __Value<string?> _environment = new __Value<string?>(() => __config.Get("environment") ?? Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public");
         /// <summary>
         /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-        /// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+        /// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+        /// when `metadata_host` is specified.
         /// </summary>
         public static string? Environment
         {
@@ -203,6 +204,16 @@ namespace Pulumi.AzureAD
         {
             get => _tenantId.Get();
             set => _tenantId.Set(value);
+        }
+
+        private static readonly __Value<bool?> _useAksWorkloadIdentity = new __Value<bool?>(() => __config.GetBoolean("useAksWorkloadIdentity"));
+        /// <summary>
+        /// Allow Azure AKS Workload Identity to be used for Authentication.
+        /// </summary>
+        public static bool? UseAksWorkloadIdentity
+        {
+            get => _useAksWorkloadIdentity.Get();
+            set => _useAksWorkloadIdentity.Set(value);
         }
 
         private static readonly __Value<bool?> _useCli = new __Value<bool?>(() => __config.GetBoolean("useCli"));

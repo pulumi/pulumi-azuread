@@ -58,7 +58,8 @@ export class Provider extends pulumi.ProviderResource {
     public readonly clientSecretFilePath!: pulumi.Output<string | undefined>;
     /**
      * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-     * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+     * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+     * when `metadata_host` is specified.
      */
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
@@ -127,6 +128,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["oidcTokenFilePath"] = args ? args.oidcTokenFilePath : undefined;
             resourceInputs["partnerId"] = args ? args.partnerId : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["useAksWorkloadIdentity"] = pulumi.output(args ? args.useAksWorkloadIdentity : undefined).apply(JSON.stringify);
             resourceInputs["useCli"] = pulumi.output(args ? args.useCli : undefined).apply(JSON.stringify);
             resourceInputs["useMsi"] = pulumi.output((args ? args.useMsi : undefined) ?? (utilities.getEnvBoolean("ARM_USE_MSI") || false)).apply(JSON.stringify);
             resourceInputs["useOidc"] = pulumi.output(args ? args.useOidc : undefined).apply(JSON.stringify);
@@ -177,7 +179,8 @@ export interface ProviderArgs {
     disableTerraformPartnerId?: pulumi.Input<boolean>;
     /**
      * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-     * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+     * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+     * when `metadata_host` is specified.
      */
     environment?: pulumi.Input<string>;
     /**
@@ -214,6 +217,10 @@ export interface ProviderArgs {
      * The Tenant ID which should be used. Works with all authentication methods except Managed Identity
      */
     tenantId?: pulumi.Input<string>;
+    /**
+     * Allow Azure AKS Workload Identity to be used for Authentication.
+     */
+    useAksWorkloadIdentity?: pulumi.Input<boolean>;
     /**
      * Allow Azure CLI to be used for Authentication
      */

@@ -75,7 +75,8 @@ class _ExportableConfig(types.ModuleType):
     def environment(self) -> str:
         """
         The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-        `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+        `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+        when `metadata_host` is specified.
         """
         return __config__.get('environment') or (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
 
@@ -136,6 +137,13 @@ class _ExportableConfig(types.ModuleType):
         The Tenant ID which should be used. Works with all authentication methods except Managed Identity
         """
         return __config__.get('tenantId')
+
+    @property
+    def use_aks_workload_identity(self) -> Optional[bool]:
+        """
+        Allow Azure AKS Workload Identity to be used for Authentication.
+        """
+        return __config__.get_bool('useAksWorkloadIdentity')
 
     @property
     def use_cli(self) -> Optional[bool]:

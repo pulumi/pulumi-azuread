@@ -37,7 +37,8 @@ type Provider struct {
 	// Secret
 	ClientSecretFilePath pulumi.StringPtrOutput `pulumi:"clientSecretFilePath"`
 	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-	// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+	// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+	// when `metadata_host` is specified.
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
 	// The Hostname which should be used for the Azure Metadata Service.
 	MetadataHost pulumi.StringOutput `pulumi:"metadataHost"`
@@ -114,7 +115,8 @@ type providerArgs struct {
 	// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
 	DisableTerraformPartnerId *bool `pulumi:"disableTerraformPartnerId"`
 	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-	// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+	// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+	// when `metadata_host` is specified.
 	Environment *string `pulumi:"environment"`
 	// The Hostname which should be used for the Azure Metadata Service.
 	MetadataHost string `pulumi:"metadataHost"`
@@ -134,6 +136,8 @@ type providerArgs struct {
 	PartnerId *string `pulumi:"partnerId"`
 	// The Tenant ID which should be used. Works with all authentication methods except Managed Identity
 	TenantId *string `pulumi:"tenantId"`
+	// Allow Azure AKS Workload Identity to be used for Authentication.
+	UseAksWorkloadIdentity *bool `pulumi:"useAksWorkloadIdentity"`
 	// Allow Azure CLI to be used for Authentication
 	UseCli *bool `pulumi:"useCli"`
 	// Allow Managed Identity to be used for Authentication
@@ -164,7 +168,8 @@ type ProviderArgs struct {
 	// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
 	DisableTerraformPartnerId pulumi.BoolPtrInput
 	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-	// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+	// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+	// when `metadata_host` is specified.
 	Environment pulumi.StringPtrInput
 	// The Hostname which should be used for the Azure Metadata Service.
 	MetadataHost pulumi.StringInput
@@ -184,6 +189,8 @@ type ProviderArgs struct {
 	PartnerId pulumi.StringPtrInput
 	// The Tenant ID which should be used. Works with all authentication methods except Managed Identity
 	TenantId pulumi.StringPtrInput
+	// Allow Azure AKS Workload Identity to be used for Authentication.
+	UseAksWorkloadIdentity pulumi.BoolPtrInput
 	// Allow Azure CLI to be used for Authentication
 	UseCli pulumi.BoolPtrInput
 	// Allow Managed Identity to be used for Authentication
@@ -268,7 +275,8 @@ func (o ProviderOutput) ClientSecretFilePath() pulumi.StringPtrOutput {
 }
 
 // The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+// when `metadata_host` is specified.
 func (o ProviderOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Environment }).(pulumi.StringPtrOutput)
 }

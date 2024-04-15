@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
  * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {servicePrincipalId: exampleServicePrincipal.objectId});
  * ```
  * <!--End PulumiCodeChooser -->
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
  * const exampleRotating = new time.Rotating("example", {rotationDays: 7});
  * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {
  *     servicePrincipalId: exampleServicePrincipal.objectId,

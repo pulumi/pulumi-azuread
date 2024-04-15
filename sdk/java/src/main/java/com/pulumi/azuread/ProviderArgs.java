@@ -146,7 +146,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-     * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+     * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+     * when `metadata_host` is specified.
      * 
      */
     @Import(name="environment")
@@ -154,7 +155,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-     * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+     * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+     * when `metadata_host` is specified.
      * 
      */
     public Optional<Output<String>> environment() {
@@ -286,6 +288,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Allow Azure AKS Workload Identity to be used for Authentication.
+     * 
+     */
+    @Import(name="useAksWorkloadIdentity", json=true)
+    private @Nullable Output<Boolean> useAksWorkloadIdentity;
+
+    /**
+     * @return Allow Azure AKS Workload Identity to be used for Authentication.
+     * 
+     */
+    public Optional<Output<Boolean>> useAksWorkloadIdentity() {
+        return Optional.ofNullable(this.useAksWorkloadIdentity);
+    }
+
+    /**
      * Allow Azure CLI to be used for Authentication
      * 
      */
@@ -350,6 +367,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.oidcTokenFilePath = $.oidcTokenFilePath;
         this.partnerId = $.partnerId;
         this.tenantId = $.tenantId;
+        this.useAksWorkloadIdentity = $.useAksWorkloadIdentity;
         this.useCli = $.useCli;
         this.useMsi = $.useMsi;
         this.useOidc = $.useOidc;
@@ -549,7 +567,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param environment The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-         * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+         * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+         * when `metadata_host` is specified.
          * 
          * @return builder
          * 
@@ -561,7 +580,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param environment The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-         * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+         * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
+         * when `metadata_host` is specified.
          * 
          * @return builder
          * 
@@ -740,6 +760,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tenantId(String tenantId) {
             return tenantId(Output.of(tenantId));
+        }
+
+        /**
+         * @param useAksWorkloadIdentity Allow Azure AKS Workload Identity to be used for Authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useAksWorkloadIdentity(@Nullable Output<Boolean> useAksWorkloadIdentity) {
+            $.useAksWorkloadIdentity = useAksWorkloadIdentity;
+            return this;
+        }
+
+        /**
+         * @param useAksWorkloadIdentity Allow Azure AKS Workload Identity to be used for Authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useAksWorkloadIdentity(Boolean useAksWorkloadIdentity) {
+            return useAksWorkloadIdentity(Output.of(useAksWorkloadIdentity));
         }
 
         /**

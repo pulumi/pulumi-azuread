@@ -273,7 +273,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_password = azuread.ServicePrincipalPassword("example", service_principal_id=example_service_principal.object_id)
         ```
         <!--End PulumiCodeChooser -->
@@ -287,7 +287,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         import pulumiverse_time as time
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_rotating = time.Rotating("example", rotation_days=7)
         example_service_principal_password = azuread.ServicePrincipalPassword("example",
             service_principal_id=example_service_principal.object_id,
@@ -327,7 +327,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_password = azuread.ServicePrincipalPassword("example", service_principal_id=example_service_principal.object_id)
         ```
         <!--End PulumiCodeChooser -->
@@ -341,7 +341,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         import pulumiverse_time as time
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_rotating = time.Rotating("example", rotation_days=7)
         example_service_principal_password = azuread.ServicePrincipalPassword("example",
             service_principal_id=example_service_principal.object_id,
