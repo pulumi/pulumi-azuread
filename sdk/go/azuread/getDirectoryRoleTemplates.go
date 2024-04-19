@@ -23,7 +23,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDirectoryRoleTemplates(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetDirectoryRoleTemplatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDirectoryRoleTemplatesResult

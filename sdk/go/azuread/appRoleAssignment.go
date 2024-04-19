@@ -26,7 +26,6 @@ import (
 //
 // *App role assignment for accessing Microsoft Graph*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -96,11 +95,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *App role assignment for internal application*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -177,7 +174,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Assign a user and group to an internal application*
 //

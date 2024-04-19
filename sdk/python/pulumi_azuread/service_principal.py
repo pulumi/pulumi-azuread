@@ -832,7 +832,6 @@ class ServicePrincipal(pulumi.CustomResource):
 
         *Create a service principal for an application*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -846,11 +845,9 @@ class ServicePrincipal(pulumi.CustomResource):
             app_role_assignment_required=False,
             owners=[current.object_id])
         ```
-        <!--End PulumiCodeChooser -->
 
         *Create a service principal for an enterprise application*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -868,11 +865,9 @@ class ServicePrincipal(pulumi.CustomResource):
                 gallery=True,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         *Manage a service principal for a first-party Microsoft application*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -882,11 +877,9 @@ class ServicePrincipal(pulumi.CustomResource):
             client_id=well_known.result["microsoftGraph"],
             use_existing=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Create a service principal for an application created from a gallery template*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -899,7 +892,6 @@ class ServicePrincipal(pulumi.CustomResource):
             client_id=example_application.client_id,
             use_existing=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -943,7 +935,6 @@ class ServicePrincipal(pulumi.CustomResource):
 
         *Create a service principal for an application*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -957,11 +948,9 @@ class ServicePrincipal(pulumi.CustomResource):
             app_role_assignment_required=False,
             owners=[current.object_id])
         ```
-        <!--End PulumiCodeChooser -->
 
         *Create a service principal for an enterprise application*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -979,11 +968,9 @@ class ServicePrincipal(pulumi.CustomResource):
                 gallery=True,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         *Manage a service principal for a first-party Microsoft application*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -993,11 +980,9 @@ class ServicePrincipal(pulumi.CustomResource):
             client_id=well_known.result["microsoftGraph"],
             use_existing=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Create a service principal for an application created from a gallery template*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -1010,7 +995,6 @@ class ServicePrincipal(pulumi.CustomResource):
             client_id=example_application.client_id,
             use_existing=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

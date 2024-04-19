@@ -158,7 +158,6 @@ class UserFlowAttribute(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -168,7 +167,6 @@ class UserFlowAttribute(pulumi.CustomResource):
             description="Your hobby",
             data_type="string")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -205,7 +203,6 @@ class UserFlowAttribute(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -215,7 +212,6 @@ class UserFlowAttribute(pulumi.CustomResource):
             description="Your hobby",
             data_type="string")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -24,7 +24,6 @@ namespace Pulumi.AzureAD
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.AzureAD
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDirectoryRoleTemplatesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDirectoryRoleTemplatesResult>("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", InvokeArgs.Empty, options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AzureAD
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.AzureAD
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDirectoryRoleTemplatesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDirectoryRoleTemplatesResult>("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", InvokeArgs.Empty, options.WithDefaults());

@@ -256,7 +256,6 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
 
         *Assignment for a built-in role*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -267,13 +266,11 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             role_id=example_directory_role.template_id,
             principal_object_id=example.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         > Note the use of the `template_id` attribute when referencing built-in roles.
 
         *Assignment for a custom role*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -293,7 +290,6 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             role_id=example_custom_directory_role.object_id,
             principal_object_id=example.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Scoped assignment for an application*
 
@@ -335,7 +331,6 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
 
         *Assignment for a built-in role*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -346,13 +341,11 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             role_id=example_directory_role.template_id,
             principal_object_id=example.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         > Note the use of the `template_id` attribute when referencing built-in roles.
 
         *Assignment for a custom role*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -372,7 +365,6 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             role_id=example_custom_directory_role.object_id,
             principal_object_id=example.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Scoped assignment for an application*
 

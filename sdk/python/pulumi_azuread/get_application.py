@@ -447,7 +447,6 @@ def get_application(application_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -455,7 +454,6 @@ def get_application(application_id: Optional[str] = None,
     example = azuread.get_application(display_name="My First AzureAD Application")
     pulumi.export("applicationObjectId", example.object_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str client_id: Specifies the Client ID of the application.
@@ -527,7 +525,6 @@ def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -535,7 +532,6 @@ def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]]
     example = azuread.get_application(display_name="My First AzureAD Application")
     pulumi.export("applicationObjectId", example.object_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str client_id: Specifies the Client ID of the application.

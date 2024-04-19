@@ -100,7 +100,6 @@ class ApplicationOwner(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -114,7 +113,6 @@ class ApplicationOwner(pulumi.CustomResource):
             application_id=example.id,
             owner_object_id=jane.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Tip** For managing more application owners, create additional instances of this resource
 
@@ -140,7 +138,6 @@ class ApplicationOwner(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -154,7 +151,6 @@ class ApplicationOwner(pulumi.CustomResource):
             application_id=example.id,
             owner_object_id=jane.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Tip** For managing more application owners, create additional instances of this resource
 

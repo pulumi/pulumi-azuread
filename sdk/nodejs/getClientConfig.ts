@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  * const current = azuread.getClientConfig({});
  * export const objectId = current.then(current => current.objectId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> {
 
@@ -60,7 +58,6 @@ export interface GetClientConfigResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -68,7 +65,6 @@ export interface GetClientConfigResult {
  * const current = azuread.getClientConfig({});
  * export const objectId = current.then(current => current.objectId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClientConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientConfigResult> {
     return pulumi.output(getClientConfig(opts))

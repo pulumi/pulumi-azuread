@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -24,13 +23,11 @@ import * as utilities from "./utilities";
  *     value: "admin",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * > **Tip** For managing more app roles, create additional instances of this resource
  *
  * *Usage with azuread.Application resource*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -38,7 +35,6 @@ import * as utilities from "./utilities";
  * const example = new azuread.Application("example", {displayName: "example"});
  * const exampleAdminister = new azuread.ApplicationAppRole("example_administer", {applicationId: example.id});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

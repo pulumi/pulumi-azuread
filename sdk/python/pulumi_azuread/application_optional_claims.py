@@ -177,7 +177,6 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -203,7 +202,6 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
                 name="samlexample",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -231,7 +229,6 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -257,7 +254,6 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
                 name="samlexample",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

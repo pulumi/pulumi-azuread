@@ -24,7 +24,6 @@ import (
 // ## Example Usage
 //
 // *Look up by group name*
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,10 +50,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Look up by display name prefix*
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,10 +75,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Look up all groups*
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -105,10 +100,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Look up all mail-enabled groups*
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -133,10 +126,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Look up all security-enabled groups that are not mail-enabled*
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -162,7 +153,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupsResult

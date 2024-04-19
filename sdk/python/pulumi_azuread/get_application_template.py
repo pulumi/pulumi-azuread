@@ -152,7 +152,6 @@ def get_application_template(display_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -160,7 +159,6 @@ def get_application_template(display_name: Optional[str] = None,
     example = azuread.get_application_template(display_name="Marketo")
     pulumi.export("applicationTemplateId", example.template_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: Specifies the display name of the templated application.
@@ -199,7 +197,6 @@ def get_application_template_output(display_name: Optional[pulumi.Input[Optional
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -207,7 +204,6 @@ def get_application_template_output(display_name: Optional[pulumi.Input[Optional
     example = azuread.get_application_template(display_name="Marketo")
     pulumi.export("applicationTemplateId", example.template_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: Specifies the display name of the templated application.

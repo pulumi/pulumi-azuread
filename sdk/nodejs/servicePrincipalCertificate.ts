@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * *Using a PEM certificate*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -26,11 +25,9 @@ import * as utilities from "./utilities";
  *     endDate: "2021-05-01T01:02:03Z",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Using a DER certificate*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -50,7 +47,6 @@ import * as utilities from "./utilities";
  *     endDate: "2021-05-01T01:02:03Z",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

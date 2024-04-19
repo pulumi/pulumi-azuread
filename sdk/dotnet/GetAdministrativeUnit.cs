@@ -27,7 +27,6 @@ namespace Pulumi.AzureAD
         /// ### By Group Display Name)
         /// 
         /// *Look up by display name*
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,10 +42,8 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// *Look up by object ID*
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAdministrativeUnitResult> InvokeAsync(GetAdministrativeUnitArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitArgs(), options.WithDefaults());
@@ -83,7 +79,6 @@ namespace Pulumi.AzureAD
         /// ### By Group Display Name)
         /// 
         /// *Look up by display name*
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -99,10 +94,8 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// *Look up by object ID*
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -118,7 +111,6 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAdministrativeUnitResult> Invoke(GetAdministrativeUnitInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitInvokeArgs(), options.WithDefaults());

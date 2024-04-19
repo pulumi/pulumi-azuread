@@ -26,7 +26,6 @@ import (
 //
 // *Assignment for a built-in role*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,13 +62,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // > Note the use of the `templateId` attribute when referencing built-in roles.
 //
 // *Assignment for a custom role*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -116,7 +113,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Scoped assignment for an application*
 //
