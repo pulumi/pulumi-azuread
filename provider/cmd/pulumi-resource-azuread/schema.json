@@ -189,33 +189,33 @@
             "properties": {
                 "alternativeApprovalEnabled": {
                     "type": "boolean",
-                    "description": "Whether alternative approvers are enabled.\n"
+                    "description": "If no action taken, forward to alternate approvers?\n"
                 },
                 "alternativeApprovers": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover:AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover"
                     },
-                    "description": "A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.\n"
+                    "description": "If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection\n"
                 },
                 "approvalTimeoutInDays": {
                     "type": "integer",
-                    "description": "Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.\n"
+                    "description": "Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected\n"
                 },
                 "approverJustificationRequired": {
                     "type": "boolean",
-                    "description": "Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.\n"
+                    "description": "Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor\n"
                 },
                 "enableAlternativeApprovalInDays": {
                     "type": "integer",
-                    "description": "Number of days before the request is forwarded to alternative approvers.\n"
+                    "description": "Forward to alternate approver(s) after how many days?\n"
                 },
                 "primaryApprovers": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover:AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover"
                     },
-                    "description": "A block specifying the users who will be asked to approve requests, as documented below.\n"
+                    "description": "The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection\n"
                 }
             },
             "type": "object",
@@ -227,15 +227,15 @@
             "properties": {
                 "backup": {
                     "type": "boolean",
-                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver.\n"
+                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver\n"
                 },
                 "objectId": {
                     "type": "string",
-                    "description": "The ID of the subject.\n"
+                    "description": "The object ID of the subject\n"
                 },
                 "subjectType": {
                     "type": "string",
-                    "description": "Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.\n"
+                    "description": "Type of users\n"
                 }
             },
             "type": "object",
@@ -247,15 +247,15 @@
             "properties": {
                 "backup": {
                     "type": "boolean",
-                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver.\n"
+                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver\n"
                 },
                 "objectId": {
                     "type": "string",
-                    "description": "The ID of the subject.\n"
+                    "description": "The object ID of the subject\n"
                 },
                 "subjectType": {
                     "type": "string",
-                    "description": "Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.\n"
+                    "description": "Type of users\n"
                 }
             },
             "type": "object",
@@ -311,15 +311,15 @@
             "properties": {
                 "backup": {
                     "type": "boolean",
-                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver.\n"
+                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver\n"
                 },
                 "objectId": {
                     "type": "string",
-                    "description": "The ID of the subject.\n"
+                    "description": "The object ID of the subject\n"
                 },
                 "subjectType": {
                     "type": "string",
-                    "description": "Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.\n"
+                    "description": "Type of users\n"
                 }
             },
             "type": "object",
@@ -358,11 +358,11 @@
             "properties": {
                 "actualValue": {
                     "type": "string",
-                    "description": "The actual value of this choice.\n"
+                    "description": "The actual value of this choice\n"
                 },
                 "displayValue": {
                     "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionChoiceDisplayValue:AccessPackageAssignmentPolicyQuestionChoiceDisplayValue",
-                    "description": "A block describing the display text of this choice, as documented below.\n"
+                    "description": "The display text of this choice\n"
                 }
             },
             "type": "object",
@@ -375,14 +375,14 @@
             "properties": {
                 "defaultText": {
                     "type": "string",
-                    "description": "The default text of this question choice.\n"
+                    "description": "The default text of this question\n"
                 },
                 "localizedTexts": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText:AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText"
                     },
-                    "description": "One or more blocks describing localized text of this question choice, as documented below.\n"
+                    "description": "The localized text of this question\n"
                 }
             },
             "type": "object",
@@ -394,11 +394,11 @@
             "properties": {
                 "content": {
                     "type": "string",
-                    "description": "The localized content of this question choice.\n"
+                    "description": "The localized content of this question\n"
                 },
                 "languageCode": {
                     "type": "string",
-                    "description": "The ISO 639 language code for this question choice content.\n"
+                    "description": "The language code of this question content\n"
                 }
             },
             "type": "object",
@@ -411,14 +411,14 @@
             "properties": {
                 "defaultText": {
                     "type": "string",
-                    "description": "The default text of this question choice.\n"
+                    "description": "The default text of this question\n"
                 },
                 "localizedTexts": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionTextLocalizedText:AccessPackageAssignmentPolicyQuestionTextLocalizedText"
                     },
-                    "description": "One or more blocks describing localized text of this question choice, as documented below.\n"
+                    "description": "The localized text of this question\n"
                 }
             },
             "type": "object",
@@ -430,11 +430,11 @@
             "properties": {
                 "content": {
                     "type": "string",
-                    "description": "The localized content of this question choice.\n"
+                    "description": "The localized content of this question\n"
                 },
                 "languageCode": {
                     "type": "string",
-                    "description": "The ISO 639 language code for this question choice content.\n"
+                    "description": "The language code of this question content\n"
                 }
             },
             "type": "object",
@@ -467,15 +467,15 @@
             "properties": {
                 "backup": {
                     "type": "boolean",
-                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver.\n"
+                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver\n"
                 },
                 "objectId": {
                     "type": "string",
-                    "description": "The ID of the subject.\n"
+                    "description": "The object ID of the subject\n"
                 },
                 "subjectType": {
                     "type": "string",
-                    "description": "Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.\n"
+                    "description": "Type of users\n"
                 }
             },
             "type": "object",
@@ -1058,15 +1058,13 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant:ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant"
-                    },
-                    "description": "An `external_tenants` block as documented below, which specifies external tenants in a policy scope.\n"
+                    }
                 },
                 "guestOrExternalUserTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.\n"
+                    }
                 }
             },
             "type": "object",
@@ -1099,15 +1097,13 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant:ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant"
-                    },
-                    "description": "An `external_tenants` block as documented below, which specifies external tenants in a policy scope.\n"
+                    }
                 },
                 "guestOrExternalUserTypes": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.\n"
+                    }
                 }
             },
             "type": "object",
