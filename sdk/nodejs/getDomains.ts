@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -27,7 +26,6 @@ import * as utilities from "./utilities";
  * const aadDomains = azuread.getDomains({});
  * export const domainNames = aadDomains.then(aadDomains => aadDomains.domains.map(__item => __item.domainName));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
@@ -110,7 +108,6 @@ export interface GetDomainsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -118,7 +115,6 @@ export interface GetDomainsResult {
  * const aadDomains = azuread.getDomains({});
  * export const domainNames = aadDomains.then(aadDomains => aadDomains.domains.map(__item => __item.domainName));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
     return pulumi.output(args).apply((a: any) => getDomains(a, opts))

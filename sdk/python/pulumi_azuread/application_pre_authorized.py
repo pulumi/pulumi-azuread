@@ -224,7 +224,6 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -262,7 +261,6 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                 "11111111-1111-1111-1111-111111111111",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -291,7 +289,6 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -329,7 +326,6 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                 "11111111-1111-1111-1111-111111111111",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

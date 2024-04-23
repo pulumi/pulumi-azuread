@@ -14,27 +14,27 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage
     {
         /// <summary>
-        /// Whether alternative approvers are enabled.
+        /// If no action taken, forward to alternate approvers?
         /// </summary>
         public readonly bool? AlternativeApprovalEnabled;
         /// <summary>
-        /// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+        /// If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover> AlternativeApprovers;
         /// <summary>
-        /// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+        /// Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
         /// </summary>
         public readonly int ApprovalTimeoutInDays;
         /// <summary>
-        /// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+        /// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
         /// </summary>
         public readonly bool? ApproverJustificationRequired;
         /// <summary>
-        /// Number of days before the request is forwarded to alternative approvers.
+        /// Forward to alternate approver(s) after how many days?
         /// </summary>
         public readonly int? EnableAlternativeApprovalInDays;
         /// <summary>
-        /// A block specifying the users who will be asked to approve requests, as documented below.
+        /// The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover> PrimaryApprovers;
 

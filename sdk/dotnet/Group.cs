@@ -34,7 +34,6 @@ namespace Pulumi.AzureAD
     /// 
     /// *Basic example*
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,11 +56,9 @@ namespace Pulumi.AzureAD
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// *Microsoft 365 group*
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -99,7 +96,6 @@ namespace Pulumi.AzureAD
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// *Group with members*
     /// 

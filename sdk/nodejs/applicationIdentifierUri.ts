@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -18,13 +17,11 @@ import * as utilities from "./utilities";
  *     identifierUri: "https://app.hashitown.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * > **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
  *
  * *Usage with azuread.Application resource*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -32,7 +29,6 @@ import * as utilities from "./utilities";
  * const example = new azuread.Application("example", {displayName: "example"});
  * const exampleApplicationIdentifierUri = new azuread.ApplicationIdentifierUri("example", {applicationId: example.id});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

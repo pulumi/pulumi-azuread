@@ -18,14 +18,14 @@ public final class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs e
     public static final AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs Empty = new AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs();
 
     /**
-     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      * 
      */
     @Import(name="backup")
     private @Nullable Output<Boolean> backup;
 
     /**
-     * @return For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * @return For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      * 
      */
     public Optional<Output<Boolean>> backup() {
@@ -33,14 +33,14 @@ public final class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs e
     }
 
     /**
-     * The ID of the subject.
+     * The object ID of the subject
      * 
      */
     @Import(name="objectId")
     private @Nullable Output<String> objectId;
 
     /**
-     * @return The ID of the subject.
+     * @return The object ID of the subject
      * 
      */
     public Optional<Output<String>> objectId() {
@@ -48,14 +48,14 @@ public final class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs e
     }
 
     /**
-     * Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     * Type of users
      * 
      */
     @Import(name="subjectType", required=true)
     private Output<String> subjectType;
 
     /**
-     * @return Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     * @return Type of users
      * 
      */
     public Output<String> subjectType() {
@@ -89,7 +89,7 @@ public final class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs e
         }
 
         /**
-         * @param backup For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+         * @param backup For a user in an approval stage, this property indicates whether the user is a backup fallback approver
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs e
         }
 
         /**
-         * @param backup For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+         * @param backup For a user in an approval stage, this property indicates whether the user is a backup fallback approver
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs e
         }
 
         /**
-         * @param objectId The ID of the subject.
+         * @param objectId The object ID of the subject
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs e
         }
 
         /**
-         * @param objectId The ID of the subject.
+         * @param objectId The object ID of the subject
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs e
         }
 
         /**
-         * @param subjectType Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+         * @param subjectType Type of users
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs e
         }
 
         /**
-         * @param subjectType Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+         * @param subjectType Type of users
          * 
          * @return builder
          * 

@@ -26,7 +26,6 @@ import (
 //
 // *Delegated permission grant for all users*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,11 +96,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Delegated permission grant for a single user*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -182,7 +179,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

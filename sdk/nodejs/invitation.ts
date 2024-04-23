@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  *
  * *Basic example*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -31,11 +30,9 @@ import * as utilities from "./utilities";
  *     redirectUrl: "https://portal.azure.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Invitation with standard message*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -48,11 +45,9 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Invitation with custom message body and an additional recipient*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -67,7 +62,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

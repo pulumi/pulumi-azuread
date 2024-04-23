@@ -22,7 +22,6 @@ namespace Pulumi.AzureAD
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,7 +50,6 @@ namespace Pulumi.AzureAD
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
     /// 

@@ -16,7 +16,6 @@ import (
 //
 // *Create an application*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -176,11 +175,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Create application from a gallery template*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -218,7 +215,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

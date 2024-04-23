@@ -14,7 +14,6 @@ import (
 
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,13 +55,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // > **Tip** For managing more app roles, create additional instances of this resource
 //
 // *Usage with Application resource*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -92,7 +89,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

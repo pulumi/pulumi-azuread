@@ -19,14 +19,14 @@ public final class AccessPackageAssignmentPolicyQuestionTextArgs extends com.pul
     public static final AccessPackageAssignmentPolicyQuestionTextArgs Empty = new AccessPackageAssignmentPolicyQuestionTextArgs();
 
     /**
-     * The default text of this question choice.
+     * The default text of this question
      * 
      */
     @Import(name="defaultText", required=true)
     private Output<String> defaultText;
 
     /**
-     * @return The default text of this question choice.
+     * @return The default text of this question
      * 
      */
     public Output<String> defaultText() {
@@ -34,14 +34,14 @@ public final class AccessPackageAssignmentPolicyQuestionTextArgs extends com.pul
     }
 
     /**
-     * One or more blocks describing localized text of this question choice, as documented below.
+     * The localized text of this question
      * 
      */
     @Import(name="localizedTexts")
     private @Nullable Output<List<AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs>> localizedTexts;
 
     /**
-     * @return One or more blocks describing localized text of this question choice, as documented below.
+     * @return The localized text of this question
      * 
      */
     public Optional<Output<List<AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs>>> localizedTexts() {
@@ -74,7 +74,7 @@ public final class AccessPackageAssignmentPolicyQuestionTextArgs extends com.pul
         }
 
         /**
-         * @param defaultText The default text of this question choice.
+         * @param defaultText The default text of this question
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class AccessPackageAssignmentPolicyQuestionTextArgs extends com.pul
         }
 
         /**
-         * @param defaultText The default text of this question choice.
+         * @param defaultText The default text of this question
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class AccessPackageAssignmentPolicyQuestionTextArgs extends com.pul
         }
 
         /**
-         * @param localizedTexts One or more blocks describing localized text of this question choice, as documented below.
+         * @param localizedTexts The localized text of this question
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class AccessPackageAssignmentPolicyQuestionTextArgs extends com.pul
         }
 
         /**
-         * @param localizedTexts One or more blocks describing localized text of this question choice, as documented below.
+         * @param localizedTexts The localized text of this question
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class AccessPackageAssignmentPolicyQuestionTextArgs extends com.pul
         }
 
         /**
-         * @param localizedTexts One or more blocks describing localized text of this question choice, as documented below.
+         * @param localizedTexts The localized text of this question
          * 
          * @return builder
          * 

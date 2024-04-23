@@ -24,7 +24,6 @@ namespace Pulumi.AzureAD
     /// 
     /// *Delegated permission grant for all users*
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -84,11 +83,9 @@ namespace Pulumi.AzureAD
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// *Delegated permission grant for a single user*
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -157,7 +154,6 @@ namespace Pulumi.AzureAD
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

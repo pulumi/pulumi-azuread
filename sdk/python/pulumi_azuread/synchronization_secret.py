@@ -113,7 +113,6 @@ class SynchronizationSecret(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -142,7 +141,6 @@ class SynchronizationSecret(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -172,7 +170,6 @@ class SynchronizationSecret(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -201,7 +198,6 @@ class SynchronizationSecret(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

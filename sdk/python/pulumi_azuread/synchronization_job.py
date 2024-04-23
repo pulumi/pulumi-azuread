@@ -161,7 +161,6 @@ class SynchronizationJob(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -194,7 +193,6 @@ class SynchronizationJob(pulumi.CustomResource):
             template_id="dataBricks",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -231,7 +229,6 @@ class SynchronizationJob(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -264,7 +261,6 @@ class SynchronizationJob(pulumi.CustomResource):
             template_id="dataBricks",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

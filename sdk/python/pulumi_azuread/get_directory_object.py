@@ -78,7 +78,6 @@ def get_directory_object(object_id: Optional[str] = None,
     ## Example Usage
 
     *Look up and output type of object by ID*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -86,7 +85,6 @@ def get_directory_object(object_id: Optional[str] = None,
     example = azuread.get_directory_object(object_id="00000000-0000-0000-0000-000000000000")
     pulumi.export("objectType", example.type)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Attributes Reference
 
@@ -126,7 +124,6 @@ def get_directory_object_output(object_id: Optional[pulumi.Input[str]] = None,
     ## Example Usage
 
     *Look up and output type of object by ID*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -134,7 +131,6 @@ def get_directory_object_output(object_id: Optional[pulumi.Input[str]] = None,
     example = azuread.get_directory_object(object_id="00000000-0000-0000-0000-000000000000")
     pulumi.export("objectType", example.type)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Attributes Reference
 

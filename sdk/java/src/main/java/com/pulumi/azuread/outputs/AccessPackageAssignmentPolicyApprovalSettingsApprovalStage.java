@@ -17,74 +17,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
     /**
-     * @return Whether alternative approvers are enabled.
+     * @return If no action taken, forward to alternate approvers?
      * 
      */
     private @Nullable Boolean alternativeApprovalEnabled;
     /**
-     * @return A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+     * @return If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
      * 
      */
     private @Nullable List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover> alternativeApprovers;
     /**
-     * @return Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+     * @return Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
      * 
      */
     private Integer approvalTimeoutInDays;
     /**
-     * @return Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+     * @return Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
      * 
      */
     private @Nullable Boolean approverJustificationRequired;
     /**
-     * @return Number of days before the request is forwarded to alternative approvers.
+     * @return Forward to alternate approver(s) after how many days?
      * 
      */
     private @Nullable Integer enableAlternativeApprovalInDays;
     /**
-     * @return A block specifying the users who will be asked to approve requests, as documented below.
+     * @return The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
      * 
      */
     private @Nullable List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover> primaryApprovers;
 
     private AccessPackageAssignmentPolicyApprovalSettingsApprovalStage() {}
     /**
-     * @return Whether alternative approvers are enabled.
+     * @return If no action taken, forward to alternate approvers?
      * 
      */
     public Optional<Boolean> alternativeApprovalEnabled() {
         return Optional.ofNullable(this.alternativeApprovalEnabled);
     }
     /**
-     * @return A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+     * @return If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
      * 
      */
     public List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover> alternativeApprovers() {
         return this.alternativeApprovers == null ? List.of() : this.alternativeApprovers;
     }
     /**
-     * @return Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+     * @return Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
      * 
      */
     public Integer approvalTimeoutInDays() {
         return this.approvalTimeoutInDays;
     }
     /**
-     * @return Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+     * @return Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
      * 
      */
     public Optional<Boolean> approverJustificationRequired() {
         return Optional.ofNullable(this.approverJustificationRequired);
     }
     /**
-     * @return Number of days before the request is forwarded to alternative approvers.
+     * @return Forward to alternate approver(s) after how many days?
      * 
      */
     public Optional<Integer> enableAlternativeApprovalInDays() {
         return Optional.ofNullable(this.enableAlternativeApprovalInDays);
     }
     /**
-     * @return A block specifying the users who will be asked to approve requests, as documented below.
+     * @return The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
      * 
      */
     public List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover> primaryApprovers() {

@@ -16,7 +16,6 @@ import (
 //
 // *Using a PEM certificate*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,11 +55,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Using a DER certificate*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -105,11 +102,9 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Using a certificate from Azure Key Vault
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -201,7 +196,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  *
  * *App role assignment for accessing Microsoft Graph*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -52,11 +51,9 @@ import * as utilities from "./utilities";
  *     resourceObjectId: msgraph.objectId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *App role assignment for internal application*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -90,7 +87,6 @@ import * as utilities from "./utilities";
  *     resourceObjectId: internalServicePrincipal.objectId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Assign a user and group to an internal application*
  *

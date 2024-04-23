@@ -142,7 +142,6 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -155,7 +154,6 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
             administrative_unit_object_id=example_administrative_unit.id,
             member_object_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -192,7 +190,6 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -205,7 +202,6 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
             administrative_unit_object_id=example_administrative_unit.id,
             member_object_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -114,7 +114,6 @@ class GroupMember(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -127,7 +126,6 @@ class GroupMember(pulumi.CustomResource):
             group_object_id=example_group.id,
             member_object_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -167,7 +165,6 @@ class GroupMember(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -180,7 +177,6 @@ class GroupMember(pulumi.CustomResource):
             group_object_id=example_group.id,
             member_object_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,7 +15,6 @@ import (
 //
 // *Create a service principal for an application*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,11 +55,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Create a service principal for an enterprise application*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -107,11 +104,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Manage a service principal for a first-party Microsoft application*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -140,11 +135,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Create a service principal for an application created from a gallery template*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -182,7 +175,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

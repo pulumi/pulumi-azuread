@@ -148,7 +148,6 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
 
     *Look up by application display names*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -158,11 +157,9 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
         "another-app",
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up by application IDs (client IDs*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -173,11 +170,9 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
         "33333333-0000-0000-0000-000000000000",
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up by service principal object IDs*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -188,7 +183,6 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
         "00000000-0000-0000-0000-222222222222",
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] application_ids: A list of client IDs of the applications associated with the service principals.
@@ -244,7 +238,6 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
 
     *Look up by application display names*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -254,11 +247,9 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
         "another-app",
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up by application IDs (client IDs*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -269,11 +260,9 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
         "33333333-0000-0000-0000-000000000000",
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up by service principal object IDs*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -284,7 +273,6 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
         "00000000-0000-0000-0000-222222222222",
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] application_ids: A list of client IDs of the applications associated with the service principals.

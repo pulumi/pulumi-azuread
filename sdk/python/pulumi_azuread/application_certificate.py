@@ -362,7 +362,6 @@ class ApplicationCertificate(pulumi.CustomResource):
 
         *Using a PEM certificate*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -375,11 +374,9 @@ class ApplicationCertificate(pulumi.CustomResource):
             value=std.file(input="cert.pem").result,
             end_date="2021-05-01T01:02:03Z")
         ```
-        <!--End PulumiCodeChooser -->
 
         *Using a DER certificate*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -393,11 +390,9 @@ class ApplicationCertificate(pulumi.CustomResource):
             value=std.base64encode(input=std.file(input="cert.der").result).result,
             end_date="2021-05-01T01:02:03Z")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Using a certificate from Azure Key Vault
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azure as azure
@@ -454,7 +449,6 @@ class ApplicationCertificate(pulumi.CustomResource):
             end_date=example.certificate_attributes[0].expires,
             start_date=example.certificate_attributes[0].not_before)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -493,7 +487,6 @@ class ApplicationCertificate(pulumi.CustomResource):
 
         *Using a PEM certificate*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -506,11 +499,9 @@ class ApplicationCertificate(pulumi.CustomResource):
             value=std.file(input="cert.pem").result,
             end_date="2021-05-01T01:02:03Z")
         ```
-        <!--End PulumiCodeChooser -->
 
         *Using a DER certificate*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -524,11 +515,9 @@ class ApplicationCertificate(pulumi.CustomResource):
             value=std.base64encode(input=std.file(input="cert.der").result).result,
             end_date="2021-05-01T01:02:03Z")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Using a certificate from Azure Key Vault
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azure as azure
@@ -585,7 +574,6 @@ class ApplicationCertificate(pulumi.CustomResource):
             end_date=example.certificate_attributes[0].expires,
             start_date=example.certificate_attributes[0].not_before)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

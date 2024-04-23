@@ -21,14 +21,14 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
     public static final AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs Empty = new AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs();
 
     /**
-     * Whether alternative approvers are enabled.
+     * If no action taken, forward to alternate approvers?
      * 
      */
     @Import(name="alternativeApprovalEnabled")
     private @Nullable Output<Boolean> alternativeApprovalEnabled;
 
     /**
-     * @return Whether alternative approvers are enabled.
+     * @return If no action taken, forward to alternate approvers?
      * 
      */
     public Optional<Output<Boolean>> alternativeApprovalEnabled() {
@@ -36,14 +36,14 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
     }
 
     /**
-     * A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+     * If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
      * 
      */
     @Import(name="alternativeApprovers")
     private @Nullable Output<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs>> alternativeApprovers;
 
     /**
-     * @return A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+     * @return If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
      * 
      */
     public Optional<Output<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs>>> alternativeApprovers() {
@@ -51,14 +51,14 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
     }
 
     /**
-     * Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+     * Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
      * 
      */
     @Import(name="approvalTimeoutInDays", required=true)
     private Output<Integer> approvalTimeoutInDays;
 
     /**
-     * @return Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+     * @return Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
      * 
      */
     public Output<Integer> approvalTimeoutInDays() {
@@ -66,14 +66,14 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
     }
 
     /**
-     * Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+     * Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
      * 
      */
     @Import(name="approverJustificationRequired")
     private @Nullable Output<Boolean> approverJustificationRequired;
 
     /**
-     * @return Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+     * @return Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
      * 
      */
     public Optional<Output<Boolean>> approverJustificationRequired() {
@@ -81,14 +81,14 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
     }
 
     /**
-     * Number of days before the request is forwarded to alternative approvers.
+     * Forward to alternate approver(s) after how many days?
      * 
      */
     @Import(name="enableAlternativeApprovalInDays")
     private @Nullable Output<Integer> enableAlternativeApprovalInDays;
 
     /**
-     * @return Number of days before the request is forwarded to alternative approvers.
+     * @return Forward to alternate approver(s) after how many days?
      * 
      */
     public Optional<Output<Integer>> enableAlternativeApprovalInDays() {
@@ -96,14 +96,14 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
     }
 
     /**
-     * A block specifying the users who will be asked to approve requests, as documented below.
+     * The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
      * 
      */
     @Import(name="primaryApprovers")
     private @Nullable Output<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs>> primaryApprovers;
 
     /**
-     * @return A block specifying the users who will be asked to approve requests, as documented below.
+     * @return The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
      * 
      */
     public Optional<Output<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs>>> primaryApprovers() {
@@ -140,7 +140,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param alternativeApprovalEnabled Whether alternative approvers are enabled.
+         * @param alternativeApprovalEnabled If no action taken, forward to alternate approvers?
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param alternativeApprovalEnabled Whether alternative approvers are enabled.
+         * @param alternativeApprovalEnabled If no action taken, forward to alternate approvers?
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param alternativeApprovers A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+         * @param alternativeApprovers If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param alternativeApprovers A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+         * @param alternativeApprovers If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param alternativeApprovers A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+         * @param alternativeApprovers If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param approvalTimeoutInDays Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+         * @param approvalTimeoutInDays Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param approvalTimeoutInDays Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+         * @param approvalTimeoutInDays Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param approverJustificationRequired Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+         * @param approverJustificationRequired Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param approverJustificationRequired Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+         * @param approverJustificationRequired Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param enableAlternativeApprovalInDays Number of days before the request is forwarded to alternative approvers.
+         * @param enableAlternativeApprovalInDays Forward to alternate approver(s) after how many days?
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param enableAlternativeApprovalInDays Number of days before the request is forwarded to alternative approvers.
+         * @param enableAlternativeApprovalInDays Forward to alternate approver(s) after how many days?
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param primaryApprovers A block specifying the users who will be asked to approve requests, as documented below.
+         * @param primaryApprovers The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param primaryApprovers A block specifying the users who will be asked to approve requests, as documented below.
+         * @param primaryApprovers The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArg
         }
 
         /**
-         * @param primaryApprovers A block specifying the users who will be asked to approve requests, as documented below.
+         * @param primaryApprovers The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
          * 
          * @return builder
          * 

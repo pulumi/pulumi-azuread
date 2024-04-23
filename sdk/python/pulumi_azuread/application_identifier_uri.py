@@ -100,7 +100,6 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -110,13 +109,11 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
             application_id=example.id,
             identifier_uri="https://app.hashitown.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
 
         *Usage with Application resource*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -124,7 +121,6 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
         example = azuread.Application("example", display_name="example")
         example_application_identifier_uri = azuread.ApplicationIdentifierUri("example", application_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -148,7 +144,6 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -158,13 +153,11 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
             application_id=example.id,
             identifier_uri="https://app.hashitown.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
 
         *Usage with Application resource*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -172,7 +165,6 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
         example = azuread.Application("example", display_name="example")
         example_application_identifier_uri = azuread.ApplicationIdentifierUri("example", application_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
