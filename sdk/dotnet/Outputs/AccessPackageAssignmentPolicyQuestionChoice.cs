@@ -14,11 +14,11 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class AccessPackageAssignmentPolicyQuestionChoice
     {
         /// <summary>
-        /// The actual value of this choice.
+        /// The actual value of this choice
         /// </summary>
         public readonly string ActualValue;
         /// <summary>
-        /// A block describing the display text of this choice, as documented below.
+        /// The display text of this choice
         /// </summary>
         public readonly Outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue DisplayValue;
 

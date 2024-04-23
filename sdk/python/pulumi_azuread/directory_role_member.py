@@ -114,7 +114,6 @@ class DirectoryRoleMember(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -125,7 +124,6 @@ class DirectoryRoleMember(pulumi.CustomResource):
             role_object_id=example_directory_role.object_id,
             member_object_id=example.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -163,7 +161,6 @@ class DirectoryRoleMember(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -174,7 +171,6 @@ class DirectoryRoleMember(pulumi.CustomResource):
             role_object_id=example_directory_role.object_id,
             member_object_id=example.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

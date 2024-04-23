@@ -13,13 +13,7 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser
     {
-        /// <summary>
-        /// An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant> ExternalTenants;
-        /// <summary>
-        /// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-        /// </summary>
         public readonly ImmutableArray<string> GuestOrExternalUserTypes;
 
         [OutputConstructor]

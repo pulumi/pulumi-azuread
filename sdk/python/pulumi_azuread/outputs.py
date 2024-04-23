@@ -209,12 +209,12 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
                  enable_alternative_approval_in_days: Optional[int] = None,
                  primary_approvers: Optional[Sequence['outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover']] = None):
         """
-        :param int approval_timeout_in_days: Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
-        :param bool alternative_approval_enabled: Whether alternative approvers are enabled.
-        :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs'] alternative_approvers: A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
-        :param bool approver_justification_required: Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
-        :param int enable_alternative_approval_in_days: Number of days before the request is forwarded to alternative approvers.
-        :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs'] primary_approvers: A block specifying the users who will be asked to approve requests, as documented below.
+        :param int approval_timeout_in_days: Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
+        :param bool alternative_approval_enabled: If no action taken, forward to alternate approvers?
+        :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs'] alternative_approvers: If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
+        :param bool approver_justification_required: Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
+        :param int enable_alternative_approval_in_days: Forward to alternate approver(s) after how many days?
+        :param Sequence['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs'] primary_approvers: The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
         """
         pulumi.set(__self__, "approval_timeout_in_days", approval_timeout_in_days)
         if alternative_approval_enabled is not None:
@@ -232,7 +232,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
     @pulumi.getter(name="approvalTimeoutInDays")
     def approval_timeout_in_days(self) -> int:
         """
-        Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+        Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
         """
         return pulumi.get(self, "approval_timeout_in_days")
 
@@ -240,7 +240,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
     @pulumi.getter(name="alternativeApprovalEnabled")
     def alternative_approval_enabled(self) -> Optional[bool]:
         """
-        Whether alternative approvers are enabled.
+        If no action taken, forward to alternate approvers?
         """
         return pulumi.get(self, "alternative_approval_enabled")
 
@@ -248,7 +248,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
     @pulumi.getter(name="alternativeApprovers")
     def alternative_approvers(self) -> Optional[Sequence['outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover']]:
         """
-        A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+        If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
         """
         return pulumi.get(self, "alternative_approvers")
 
@@ -256,7 +256,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
     @pulumi.getter(name="approverJustificationRequired")
     def approver_justification_required(self) -> Optional[bool]:
         """
-        Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+        Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
         """
         return pulumi.get(self, "approver_justification_required")
 
@@ -264,7 +264,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
     @pulumi.getter(name="enableAlternativeApprovalInDays")
     def enable_alternative_approval_in_days(self) -> Optional[int]:
         """
-        Number of days before the request is forwarded to alternative approvers.
+        Forward to alternate approver(s) after how many days?
         """
         return pulumi.get(self, "enable_alternative_approval_in_days")
 
@@ -272,7 +272,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(dict):
     @pulumi.getter(name="primaryApprovers")
     def primary_approvers(self) -> Optional[Sequence['outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover']]:
         """
-        A block specifying the users who will be asked to approve requests, as documented below.
+        The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
         """
         return pulumi.get(self, "primary_approvers")
 
@@ -303,9 +303,9 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
                  backup: Optional[bool] = None,
                  object_id: Optional[str] = None):
         """
-        :param str subject_type: Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
-        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
-        :param str object_id: The ID of the subject.
+        :param str subject_type: Type of users
+        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver
+        :param str object_id: The object ID of the subject
         """
         pulumi.set(__self__, "subject_type", subject_type)
         if backup is not None:
@@ -317,7 +317,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
     @pulumi.getter(name="subjectType")
     def subject_type(self) -> str:
         """
-        Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        Type of users
         """
         return pulumi.get(self, "subject_type")
 
@@ -325,7 +325,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
     @pulumi.getter
     def backup(self) -> Optional[bool]:
         """
-        For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver
         """
         return pulumi.get(self, "backup")
 
@@ -333,7 +333,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[str]:
         """
-        The ID of the subject.
+        The object ID of the subject
         """
         return pulumi.get(self, "object_id")
 
@@ -364,9 +364,9 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover(
                  backup: Optional[bool] = None,
                  object_id: Optional[str] = None):
         """
-        :param str subject_type: Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
-        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
-        :param str object_id: The ID of the subject.
+        :param str subject_type: Type of users
+        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver
+        :param str object_id: The object ID of the subject
         """
         pulumi.set(__self__, "subject_type", subject_type)
         if backup is not None:
@@ -378,7 +378,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover(
     @pulumi.getter(name="subjectType")
     def subject_type(self) -> str:
         """
-        Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        Type of users
         """
         return pulumi.get(self, "subject_type")
 
@@ -386,7 +386,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover(
     @pulumi.getter
     def backup(self) -> Optional[bool]:
         """
-        For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver
         """
         return pulumi.get(self, "backup")
 
@@ -394,7 +394,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover(
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[str]:
         """
-        The ID of the subject.
+        The object ID of the subject
         """
         return pulumi.get(self, "object_id")
 
@@ -569,9 +569,9 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(dict):
                  backup: Optional[bool] = None,
                  object_id: Optional[str] = None):
         """
-        :param str subject_type: Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
-        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
-        :param str object_id: The ID of the subject.
+        :param str subject_type: Type of users
+        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver
+        :param str object_id: The object ID of the subject
         """
         pulumi.set(__self__, "subject_type", subject_type)
         if backup is not None:
@@ -583,7 +583,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(dict):
     @pulumi.getter(name="subjectType")
     def subject_type(self) -> str:
         """
-        Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        Type of users
         """
         return pulumi.get(self, "subject_type")
 
@@ -591,7 +591,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(dict):
     @pulumi.getter
     def backup(self) -> Optional[bool]:
         """
-        For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver
         """
         return pulumi.get(self, "backup")
 
@@ -599,7 +599,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(dict):
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[str]:
         """
-        The ID of the subject.
+        The object ID of the subject
         """
         return pulumi.get(self, "object_id")
 
@@ -683,8 +683,8 @@ class AccessPackageAssignmentPolicyQuestionChoice(dict):
                  actual_value: str,
                  display_value: 'outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue'):
         """
-        :param str actual_value: The actual value of this choice.
-        :param 'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs' display_value: A block describing the display text of this choice, as documented below.
+        :param str actual_value: The actual value of this choice
+        :param 'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs' display_value: The display text of this choice
         """
         pulumi.set(__self__, "actual_value", actual_value)
         pulumi.set(__self__, "display_value", display_value)
@@ -693,7 +693,7 @@ class AccessPackageAssignmentPolicyQuestionChoice(dict):
     @pulumi.getter(name="actualValue")
     def actual_value(self) -> str:
         """
-        The actual value of this choice.
+        The actual value of this choice
         """
         return pulumi.get(self, "actual_value")
 
@@ -701,7 +701,7 @@ class AccessPackageAssignmentPolicyQuestionChoice(dict):
     @pulumi.getter(name="displayValue")
     def display_value(self) -> 'outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue':
         """
-        A block describing the display text of this choice, as documented below.
+        The display text of this choice
         """
         return pulumi.get(self, "display_value")
 
@@ -731,8 +731,8 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
                  default_text: str,
                  localized_texts: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText']] = None):
         """
-        :param str default_text: The default text of this question choice.
-        :param Sequence['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs'] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
+        :param str default_text: The default text of this question
+        :param Sequence['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs'] localized_texts: The localized text of this question
         """
         pulumi.set(__self__, "default_text", default_text)
         if localized_texts is not None:
@@ -742,7 +742,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
     @pulumi.getter(name="defaultText")
     def default_text(self) -> str:
         """
-        The default text of this question choice.
+        The default text of this question
         """
         return pulumi.get(self, "default_text")
 
@@ -750,7 +750,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(dict):
     @pulumi.getter(name="localizedTexts")
     def localized_texts(self) -> Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText']]:
         """
-        One or more blocks describing localized text of this question choice, as documented below.
+        The localized text of this question
         """
         return pulumi.get(self, "localized_texts")
 
@@ -778,8 +778,8 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText(dict)
                  content: str,
                  language_code: str):
         """
-        :param str content: The localized content of this question choice.
-        :param str language_code: The ISO 639 language code for this question choice content.
+        :param str content: The localized content of this question
+        :param str language_code: The language code of this question content
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "language_code", language_code)
@@ -788,7 +788,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText(dict)
     @pulumi.getter
     def content(self) -> str:
         """
-        The localized content of this question choice.
+        The localized content of this question
         """
         return pulumi.get(self, "content")
 
@@ -796,7 +796,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText(dict)
     @pulumi.getter(name="languageCode")
     def language_code(self) -> str:
         """
-        The ISO 639 language code for this question choice content.
+        The language code of this question content
         """
         return pulumi.get(self, "language_code")
 
@@ -826,8 +826,8 @@ class AccessPackageAssignmentPolicyQuestionText(dict):
                  default_text: str,
                  localized_texts: Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText']] = None):
         """
-        :param str default_text: The default text of this question choice.
-        :param Sequence['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs'] localized_texts: One or more blocks describing localized text of this question choice, as documented below.
+        :param str default_text: The default text of this question
+        :param Sequence['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs'] localized_texts: The localized text of this question
         """
         pulumi.set(__self__, "default_text", default_text)
         if localized_texts is not None:
@@ -837,7 +837,7 @@ class AccessPackageAssignmentPolicyQuestionText(dict):
     @pulumi.getter(name="defaultText")
     def default_text(self) -> str:
         """
-        The default text of this question choice.
+        The default text of this question
         """
         return pulumi.get(self, "default_text")
 
@@ -845,7 +845,7 @@ class AccessPackageAssignmentPolicyQuestionText(dict):
     @pulumi.getter(name="localizedTexts")
     def localized_texts(self) -> Optional[Sequence['outputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText']]:
         """
-        One or more blocks describing localized text of this question choice, as documented below.
+        The localized text of this question
         """
         return pulumi.get(self, "localized_texts")
 
@@ -873,8 +873,8 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText(dict):
                  content: str,
                  language_code: str):
         """
-        :param str content: The localized content of this question choice.
-        :param str language_code: The ISO 639 language code for this question choice content.
+        :param str content: The localized content of this question
+        :param str language_code: The language code of this question content
         """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "language_code", language_code)
@@ -883,7 +883,7 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText(dict):
     @pulumi.getter
     def content(self) -> str:
         """
-        The localized content of this question choice.
+        The localized content of this question
         """
         return pulumi.get(self, "content")
 
@@ -891,7 +891,7 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText(dict):
     @pulumi.getter(name="languageCode")
     def language_code(self) -> str:
         """
-        The ISO 639 language code for this question choice content.
+        The language code of this question content
         """
         return pulumi.get(self, "language_code")
 
@@ -984,9 +984,9 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestor(dict):
                  backup: Optional[bool] = None,
                  object_id: Optional[str] = None):
         """
-        :param str subject_type: Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
-        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
-        :param str object_id: The ID of the subject.
+        :param str subject_type: Type of users
+        :param bool backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver
+        :param str object_id: The object ID of the subject
         """
         pulumi.set(__self__, "subject_type", subject_type)
         if backup is not None:
@@ -998,7 +998,7 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestor(dict):
     @pulumi.getter(name="subjectType")
     def subject_type(self) -> str:
         """
-        Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        Type of users
         """
         return pulumi.get(self, "subject_type")
 
@@ -1006,7 +1006,7 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestor(dict):
     @pulumi.getter
     def backup(self) -> Optional[bool]:
         """
-        For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver
         """
         return pulumi.get(self, "backup")
 
@@ -1014,7 +1014,7 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestor(dict):
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[str]:
         """
-        The ID of the subject.
+        The object ID of the subject
         """
         return pulumi.get(self, "object_id")
 
@@ -2525,10 +2525,6 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser(dict):
     def __init__(__self__, *,
                  guest_or_external_user_types: Sequence[str],
                  external_tenants: Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant']] = None):
-        """
-        :param Sequence[str] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-        :param Sequence['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs'] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
-        """
         pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
         if external_tenants is not None:
             pulumi.set(__self__, "external_tenants", external_tenants)
@@ -2536,17 +2532,11 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser(dict):
     @property
     @pulumi.getter(name="guestOrExternalUserTypes")
     def guest_or_external_user_types(self) -> Sequence[str]:
-        """
-        A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-        """
         return pulumi.get(self, "guest_or_external_user_types")
 
     @property
     @pulumi.getter(name="externalTenants")
     def external_tenants(self) -> Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant']]:
-        """
-        An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
-        """
         return pulumi.get(self, "external_tenants")
 
 
@@ -2621,10 +2611,6 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser(dict):
     def __init__(__self__, *,
                  guest_or_external_user_types: Sequence[str],
                  external_tenants: Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant']] = None):
-        """
-        :param Sequence[str] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-        :param Sequence['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs'] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
-        """
         pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
         if external_tenants is not None:
             pulumi.set(__self__, "external_tenants", external_tenants)
@@ -2632,17 +2618,11 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser(dict):
     @property
     @pulumi.getter(name="guestOrExternalUserTypes")
     def guest_or_external_user_types(self) -> Sequence[str]:
-        """
-        A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-        """
         return pulumi.get(self, "guest_or_external_user_types")
 
     @property
     @pulumi.getter(name="externalTenants")
     def external_tenants(self) -> Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant']]:
-        """
-        An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
-        """
         return pulumi.get(self, "external_tenants")
 
 

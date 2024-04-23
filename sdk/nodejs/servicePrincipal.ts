@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * *Create a service principal for an application*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -27,11 +26,9 @@ import * as utilities from "./utilities";
  *     owners: [current.then(current => current.objectId)],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Create a service principal for an enterprise application*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -51,11 +48,9 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Manage a service principal for a first-party Microsoft application*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -66,11 +61,9 @@ import * as utilities from "./utilities";
  *     useExisting: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Create a service principal for an application created from a gallery template*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -87,7 +80,6 @@ import * as utilities from "./utilities";
  *     useExisting: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

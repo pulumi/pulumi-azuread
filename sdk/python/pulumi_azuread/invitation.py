@@ -245,7 +245,6 @@ class Invitation(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -254,11 +253,9 @@ class Invitation(pulumi.CustomResource):
             user_email_address="jdoe@example.com",
             redirect_url="https://portal.azure.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         *Invitation with standard message*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -270,11 +267,9 @@ class Invitation(pulumi.CustomResource):
                 language="en-US",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         *Invitation with custom message body and an additional recipient*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -288,7 +283,6 @@ class Invitation(pulumi.CustomResource):
                 body="Hello there! You are invited to join my Azure tenant!",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -323,7 +317,6 @@ class Invitation(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -332,11 +325,9 @@ class Invitation(pulumi.CustomResource):
             user_email_address="jdoe@example.com",
             redirect_url="https://portal.azure.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         *Invitation with standard message*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -348,11 +339,9 @@ class Invitation(pulumi.CustomResource):
                 language="en-US",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         *Invitation with custom message body and an additional recipient*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -366,7 +355,6 @@ class Invitation(pulumi.CustomResource):
                 body="Hello there! You are invited to join my Azure tenant!",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

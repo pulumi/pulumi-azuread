@@ -26,7 +26,6 @@ import (
 // ### By Group Display Name)
 //
 // *Look up by display name*
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,10 +49,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Look up by object ID*
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,7 +74,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupAdministrativeUnit(ctx *pulumi.Context, args *LookupAdministrativeUnitArgs, opts ...pulumi.InvokeOption) (*LookupAdministrativeUnitResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAdministrativeUnitResult

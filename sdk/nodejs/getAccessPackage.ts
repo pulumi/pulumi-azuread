@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  *
  * *Look up by ID*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -28,11 +27,9 @@ import * as utilities from "./utilities";
  *     objectId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Look up by DisplayName*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -42,7 +39,6 @@ import * as utilities from "./utilities";
  *     displayName: "My access package Catalog",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessPackage(args?: GetAccessPackageArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPackageResult> {
     args = args || {};
@@ -110,7 +106,6 @@ export interface GetAccessPackageResult {
  *
  * *Look up by ID*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -119,11 +114,9 @@ export interface GetAccessPackageResult {
  *     objectId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Look up by DisplayName*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -133,7 +126,6 @@ export interface GetAccessPackageResult {
  *     displayName: "My access package Catalog",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessPackageOutput(args?: GetAccessPackageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPackageResult> {
     return pulumi.output(args).apply((a: any) => getAccessPackage(a, opts))

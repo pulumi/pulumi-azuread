@@ -993,7 +993,6 @@ class Group(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -1004,11 +1003,9 @@ class Group(pulumi.CustomResource):
             owners=[current.object_id],
             security_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Microsoft 365 group*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -1030,7 +1027,6 @@ class Group(pulumi.CustomResource):
                 group_owner.object_id,
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         *Group with members*
 
@@ -1114,7 +1110,6 @@ class Group(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -1125,11 +1120,9 @@ class Group(pulumi.CustomResource):
             owners=[current.object_id],
             security_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Microsoft 365 group*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -1151,7 +1144,6 @@ class Group(pulumi.CustomResource):
                 group_owner.object_id,
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         *Group with members*
 

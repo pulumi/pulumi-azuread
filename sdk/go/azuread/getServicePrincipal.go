@@ -25,7 +25,6 @@ import (
 //
 // *Look up by application display name*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,11 +48,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Look up by client ID*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,11 +74,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Look up by service principal object ID*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -105,7 +100,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupServicePrincipal(ctx *pulumi.Context, args *LookupServicePrincipalArgs, opts ...pulumi.InvokeOption) (*LookupServicePrincipalResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServicePrincipalResult

@@ -25,7 +25,6 @@ namespace Pulumi.AzureAD
         /// ## Example Usage
         /// 
         /// *Look up and output type of object by ID*
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AzureAD
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Attributes Reference 
         /// 
@@ -71,7 +69,6 @@ namespace Pulumi.AzureAD
         /// ## Example Usage
         /// 
         /// *Look up and output type of object by ID*
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -91,7 +88,6 @@ namespace Pulumi.AzureAD
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Attributes Reference 
         /// 

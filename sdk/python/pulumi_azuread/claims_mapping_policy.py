@@ -110,7 +110,6 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -139,7 +138,6 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
             })],
             display_name="My Policy")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -173,7 +171,6 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -202,7 +199,6 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
             })],
             display_name="My Policy")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ### By Group Display Name)
  *
  * *Look up by display name*
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -29,10 +28,8 @@ import * as utilities from "./utilities";
  *     displayName: "Catalog owner",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Look up by object ID*
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -41,7 +38,6 @@ import * as utilities from "./utilities";
  *     objectId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessPackageCatalogRole(args?: GetAccessPackageCatalogRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPackageCatalogRoleResult> {
     args = args || {};
@@ -110,7 +106,6 @@ export interface GetAccessPackageCatalogRoleResult {
  * ### By Group Display Name)
  *
  * *Look up by display name*
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -119,10 +114,8 @@ export interface GetAccessPackageCatalogRoleResult {
  *     displayName: "Catalog owner",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Look up by object ID*
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -131,7 +124,6 @@ export interface GetAccessPackageCatalogRoleResult {
  *     objectId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessPackageCatalogRoleOutput(args?: GetAccessPackageCatalogRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPackageCatalogRoleResult> {
     return pulumi.output(args).apply((a: any) => getAccessPackageCatalogRole(a, opts))

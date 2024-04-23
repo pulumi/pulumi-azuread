@@ -25,7 +25,6 @@ import (
 //
 // *Look up by ID*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,11 +48,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Look up by DisplayName*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,7 +75,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupAccessPackage(ctx *pulumi.Context, args *LookupAccessPackageArgs, opts ...pulumi.InvokeOption) (*LookupAccessPackageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessPackageResult

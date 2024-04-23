@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  *
  * *Assignment for a built-in role*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -33,13 +32,11 @@ import * as utilities from "./utilities";
  *     principalObjectId: example.then(example => example.objectId),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * > Note the use of the `templateId` attribute when referencing built-in roles.
  *
  * *Assignment for a custom role*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -63,7 +60,6 @@ import * as utilities from "./utilities";
  *     principalObjectId: example.then(example => example.objectId),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Scoped assignment for an application*
  *

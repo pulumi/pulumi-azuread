@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  *
  * *Look up by application display name*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -30,11 +29,9 @@ import * as utilities from "./utilities";
  *     displayName: "my-awesome-application",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Look up by client ID*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -43,11 +40,9 @@ import * as utilities from "./utilities";
  *     clientId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Look up by service principal object ID*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -56,7 +51,6 @@ import * as utilities from "./utilities";
  *     objectId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> {
     args = args || {};
@@ -229,7 +223,6 @@ export interface GetServicePrincipalResult {
  *
  * *Look up by application display name*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -238,11 +231,9 @@ export interface GetServicePrincipalResult {
  *     displayName: "my-awesome-application",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Look up by client ID*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -251,11 +242,9 @@ export interface GetServicePrincipalResult {
  *     clientId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Look up by service principal object ID*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -264,7 +253,6 @@ export interface GetServicePrincipalResult {
  *     objectId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalResult> {
     return pulumi.output(args).apply((a: any) => getServicePrincipal(a, opts))

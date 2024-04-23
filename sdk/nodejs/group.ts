@@ -31,7 +31,6 @@ import * as utilities from "./utilities";
  *
  * *Basic example*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -43,11 +42,9 @@ import * as utilities from "./utilities";
  *     securityEnabled: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Microsoft 365 group*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -71,7 +68,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Group with members*
  *

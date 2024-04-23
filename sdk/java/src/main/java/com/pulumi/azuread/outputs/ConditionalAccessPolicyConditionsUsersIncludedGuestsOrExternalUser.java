@@ -13,29 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser {
-    /**
-     * @return An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
-     * 
-     */
     private @Nullable List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant> externalTenants;
-    /**
-     * @return A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-     * 
-     */
     private List<String> guestOrExternalUserTypes;
 
     private ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser() {}
-    /**
-     * @return An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
-     * 
-     */
     public List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant> externalTenants() {
         return this.externalTenants == null ? List.of() : this.externalTenants;
     }
-    /**
-     * @return A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-     * 
-     */
     public List<String> guestOrExternalUserTypes() {
         return this.guestOrExternalUserTypes;
     }

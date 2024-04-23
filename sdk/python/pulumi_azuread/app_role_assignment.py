@@ -192,7 +192,6 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         *App role assignment for accessing Microsoft Graph*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -222,11 +221,9 @@ class AppRoleAssignment(pulumi.CustomResource):
             principal_object_id=example_service_principal.object_id,
             resource_object_id=msgraph.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         *App role assignment for internal application*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -257,7 +254,6 @@ class AppRoleAssignment(pulumi.CustomResource):
             principal_object_id=example_service_principal.object_id,
             resource_object_id=internal_service_principal.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Assign a user and group to an internal application*
 
@@ -298,7 +294,6 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         *App role assignment for accessing Microsoft Graph*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -328,11 +323,9 @@ class AppRoleAssignment(pulumi.CustomResource):
             principal_object_id=example_service_principal.object_id,
             resource_object_id=msgraph.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         *App role assignment for internal application*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -363,7 +356,6 @@ class AppRoleAssignment(pulumi.CustomResource):
             principal_object_id=example_service_principal.object_id,
             resource_object_id=internal_service_principal.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Assign a user and group to an internal application*
 
