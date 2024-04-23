@@ -26,57 +26,57 @@ export interface AccessPackageAssignmentPolicyApprovalSettings {
 
 export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
     /**
-     * Whether alternative approvers are enabled.
+     * If no action taken, forward to alternate approvers?
      */
     alternativeApprovalEnabled?: pulumi.Input<boolean>;
     /**
-     * A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+     * If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
      */
     alternativeApprovers?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover>[]>;
     /**
-     * Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+     * Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
      */
     approvalTimeoutInDays: pulumi.Input<number>;
     /**
-     * Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+     * Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
      */
     approverJustificationRequired?: pulumi.Input<boolean>;
     /**
-     * Number of days before the request is forwarded to alternative approvers.
+     * Forward to alternate approver(s) after how many days?
      */
     enableAlternativeApprovalInDays?: pulumi.Input<number>;
     /**
-     * A block specifying the users who will be asked to approve requests, as documented below.
+     * The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
      */
     primaryApprovers?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover>[]>;
 }
 
 export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover {
     /**
-     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      */
     backup?: pulumi.Input<boolean>;
     /**
-     * The ID of the subject.
+     * The object ID of the subject
      */
     objectId?: pulumi.Input<string>;
     /**
-     * Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     * Type of users
      */
     subjectType: pulumi.Input<string>;
 }
 
 export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover {
     /**
-     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      */
     backup?: pulumi.Input<boolean>;
     /**
-     * The ID of the subject.
+     * The object ID of the subject
      */
     objectId?: pulumi.Input<string>;
     /**
-     * Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     * Type of users
      */
     subjectType: pulumi.Input<string>;
 }
@@ -122,15 +122,15 @@ export interface AccessPackageAssignmentPolicyAssignmentReviewSettings {
 
 export interface AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer {
     /**
-     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      */
     backup?: pulumi.Input<boolean>;
     /**
-     * The ID of the subject.
+     * The object ID of the subject
      */
     objectId?: pulumi.Input<string>;
     /**
-     * Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     * Type of users
      */
     subjectType: pulumi.Input<string>;
 }
@@ -156,55 +156,55 @@ export interface AccessPackageAssignmentPolicyQuestion {
 
 export interface AccessPackageAssignmentPolicyQuestionChoice {
     /**
-     * The actual value of this choice.
+     * The actual value of this choice
      */
     actualValue: pulumi.Input<string>;
     /**
-     * A block describing the display text of this choice, as documented below.
+     * The display text of this choice
      */
     displayValue: pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
     /**
-     * The default text of this question choice.
+     * The default text of this question
      */
     defaultText: pulumi.Input<string>;
     /**
-     * One or more blocks describing localized text of this question choice, as documented below.
+     * The localized text of this question
      */
     localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>[]>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
     /**
-     * The localized content of this question choice.
+     * The localized content of this question
      */
     content: pulumi.Input<string>;
     /**
-     * The ISO 639 language code for this question choice content.
+     * The language code of this question content
      */
     languageCode: pulumi.Input<string>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionText {
     /**
-     * The default text of this question choice.
+     * The default text of this question
      */
     defaultText: pulumi.Input<string>;
     /**
-     * One or more blocks describing localized text of this question choice, as documented below.
+     * The localized text of this question
      */
     localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText>[]>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionTextLocalizedText {
     /**
-     * The localized content of this question choice.
+     * The localized content of this question
      */
     content: pulumi.Input<string>;
     /**
-     * The ISO 639 language code for this question choice content.
+     * The language code of this question content
      */
     languageCode: pulumi.Input<string>;
 }
@@ -226,15 +226,15 @@ export interface AccessPackageAssignmentPolicyRequestorSettings {
 
 export interface AccessPackageAssignmentPolicyRequestorSettingsRequestor {
     /**
-     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      */
     backup?: pulumi.Input<boolean>;
     /**
-     * The ID of the subject.
+     * The object ID of the subject
      */
     objectId?: pulumi.Input<string>;
     /**
-     * Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     * Type of users
      */
     subjectType: pulumi.Input<string>;
 }
@@ -630,13 +630,7 @@ export interface ConditionalAccessPolicyConditionsUsers {
 }
 
 export interface ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser {
-    /**
-     * An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
-     */
     externalTenants?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant>[]>;
-    /**
-     * A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-     */
     guestOrExternalUserTypes: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -652,13 +646,7 @@ export interface ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalU
 }
 
 export interface ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser {
-    /**
-     * An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
-     */
     externalTenants?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant>[]>;
-    /**
-     * A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-     */
     guestOrExternalUserTypes: pulumi.Input<pulumi.Input<string>[]>;
 }
 

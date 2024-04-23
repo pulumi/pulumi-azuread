@@ -28,7 +28,6 @@ import (
 //
 // ### All users except guests or external users
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -113,11 +112,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Included client applications / service principals
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -173,11 +170,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Excluded client applications / service principals
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -235,7 +230,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

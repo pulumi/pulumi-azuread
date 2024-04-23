@@ -23,25 +23,21 @@ import * as utilities from "./utilities";
  *
  * *Activate a directory role by its template ID*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.DirectoryRole("example", {templateId: "00000000-0000-0000-0000-000000000000"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Activate a directory role by display name*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.DirectoryRole("example", {displayName: "Printer administrator"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

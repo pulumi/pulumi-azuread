@@ -267,7 +267,6 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -276,11 +275,9 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_password = azuread.ServicePrincipalPassword("example", service_principal_id=example_service_principal.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Time-based rotation*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -295,7 +292,6 @@ class ServicePrincipalPassword(pulumi.CustomResource):
                 "rotation": example_rotating.id,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -321,7 +317,6 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
         *Basic example*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -330,11 +325,9 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_password = azuread.ServicePrincipalPassword("example", service_principal_id=example_service_principal.object_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Time-based rotation*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -349,7 +342,6 @@ class ServicePrincipalPassword(pulumi.CustomResource):
                 "rotation": example_rotating.id,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

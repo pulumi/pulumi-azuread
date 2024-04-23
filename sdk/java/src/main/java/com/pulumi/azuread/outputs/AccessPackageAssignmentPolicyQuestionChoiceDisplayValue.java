@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
     /**
-     * @return The default text of this question choice.
+     * @return The default text of this question
      * 
      */
     private String defaultText;
     /**
-     * @return One or more blocks describing localized text of this question choice, as documented below.
+     * @return The localized text of this question
      * 
      */
     private @Nullable List<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText> localizedTexts;
 
     private AccessPackageAssignmentPolicyQuestionChoiceDisplayValue() {}
     /**
-     * @return The default text of this question choice.
+     * @return The default text of this question
      * 
      */
     public String defaultText() {
         return this.defaultText;
     }
     /**
-     * @return One or more blocks describing localized text of this question choice, as documented below.
+     * @return The localized text of this question
      * 
      */
     public List<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText> localizedTexts() {

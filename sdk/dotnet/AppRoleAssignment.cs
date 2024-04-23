@@ -24,7 +24,6 @@ namespace Pulumi.AzureAD
     /// 
     /// *App role assignment for accessing Microsoft Graph*
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -80,11 +79,9 @@ namespace Pulumi.AzureAD
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// *App role assignment for internal application*
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -152,7 +149,6 @@ namespace Pulumi.AzureAD
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// *Assign a user and group to an internal application*
     /// 

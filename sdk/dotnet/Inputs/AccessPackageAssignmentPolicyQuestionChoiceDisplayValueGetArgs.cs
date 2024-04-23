@@ -13,7 +13,7 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default text of this question choice.
+        /// The default text of this question
         /// </summary>
         [Input("defaultText", required: true)]
         public Input<string> DefaultText { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextGetArgs>? _localizedTexts;
 
         /// <summary>
-        /// One or more blocks describing localized text of this question choice, as documented below.
+        /// The localized text of this question
         /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextGetArgs> LocalizedTexts
         {

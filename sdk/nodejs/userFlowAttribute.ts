@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * *Basic example*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -28,7 +27,6 @@ import * as utilities from "./utilities";
  *     dataType: "string",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

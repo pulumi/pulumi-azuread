@@ -174,7 +174,6 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -187,7 +186,6 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
             directory_scope_id="/",
             justification="Example")
         ```
-        <!--End PulumiCodeChooser -->
 
         > Note the use of the `template_id` attribute when referencing built-in roles.
 
@@ -225,7 +223,6 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -238,7 +235,6 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
             directory_scope_id="/",
             justification="Example")
         ```
-        <!--End PulumiCodeChooser -->
 
         > Note the use of the `template_id` attribute when referencing built-in roles.
 

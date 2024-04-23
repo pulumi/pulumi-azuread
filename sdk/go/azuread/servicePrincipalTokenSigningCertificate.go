@@ -16,7 +16,6 @@ import (
 //
 // *Using default settings*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,11 +51,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // *Using custom settings*
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,7 +91,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

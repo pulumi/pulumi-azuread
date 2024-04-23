@@ -13,19 +13,19 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        /// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
         /// </summary>
         [Input("backup")]
         public Input<bool>? Backup { get; set; }
 
         /// <summary>
-        /// The ID of the subject.
+        /// The object ID of the subject
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
         /// <summary>
-        /// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        /// Type of users
         /// </summary>
         [Input("subjectType", required: true)]
         public Input<string> SubjectType { get; set; } = null!;

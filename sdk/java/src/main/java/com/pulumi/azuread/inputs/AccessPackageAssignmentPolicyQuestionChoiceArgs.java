@@ -16,14 +16,14 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceArgs extends com.p
     public static final AccessPackageAssignmentPolicyQuestionChoiceArgs Empty = new AccessPackageAssignmentPolicyQuestionChoiceArgs();
 
     /**
-     * The actual value of this choice.
+     * The actual value of this choice
      * 
      */
     @Import(name="actualValue", required=true)
     private Output<String> actualValue;
 
     /**
-     * @return The actual value of this choice.
+     * @return The actual value of this choice
      * 
      */
     public Output<String> actualValue() {
@@ -31,14 +31,14 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceArgs extends com.p
     }
 
     /**
-     * A block describing the display text of this choice, as documented below.
+     * The display text of this choice
      * 
      */
     @Import(name="displayValue", required=true)
     private Output<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs> displayValue;
 
     /**
-     * @return A block describing the display text of this choice, as documented below.
+     * @return The display text of this choice
      * 
      */
     public Output<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs> displayValue() {
@@ -71,7 +71,7 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceArgs extends com.p
         }
 
         /**
-         * @param actualValue The actual value of this choice.
+         * @param actualValue The actual value of this choice
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceArgs extends com.p
         }
 
         /**
-         * @param actualValue The actual value of this choice.
+         * @param actualValue The actual value of this choice
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceArgs extends com.p
         }
 
         /**
-         * @param displayValue A block describing the display text of this choice, as documented below.
+         * @param displayValue The display text of this choice
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class AccessPackageAssignmentPolicyQuestionChoiceArgs extends com.p
         }
 
         /**
-         * @param displayValue A block describing the display text of this choice, as documented below.
+         * @param displayValue The display text of this choice
          * 
          * @return builder
          * 

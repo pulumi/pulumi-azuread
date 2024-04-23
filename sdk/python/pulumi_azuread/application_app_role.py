@@ -237,7 +237,6 @@ class ApplicationAppRole(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -253,13 +252,11 @@ class ApplicationAppRole(pulumi.CustomResource):
             display_name="Administer",
             value="admin")
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Tip** For managing more app roles, create additional instances of this resource
 
         *Usage with Application resource*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -267,7 +264,6 @@ class ApplicationAppRole(pulumi.CustomResource):
         example = azuread.Application("example", display_name="example")
         example_administer = azuread.ApplicationAppRole("example_administer", application_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -297,7 +293,6 @@ class ApplicationAppRole(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -313,13 +308,11 @@ class ApplicationAppRole(pulumi.CustomResource):
             display_name="Administer",
             value="admin")
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Tip** For managing more app roles, create additional instances of this resource
 
         *Usage with Application resource*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -327,7 +320,6 @@ class ApplicationAppRole(pulumi.CustomResource):
         example = azuread.Application("example", display_name="example")
         example_administer = azuread.ApplicationAppRole("example_administer", application_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

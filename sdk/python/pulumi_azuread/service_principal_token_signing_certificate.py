@@ -214,7 +214,6 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
 
         *Using default settings*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -223,11 +222,9 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
         example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Using custom settings*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -239,7 +236,6 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
             display_name="CN=example.com",
             end_date="2023-05-01T01:02:03Z")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -271,7 +267,6 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
 
         *Using default settings*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -280,11 +275,9 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
         example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         *Using custom settings*
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -296,7 +289,6 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
             display_name="CN=example.com",
             end_date="2023-05-01T01:02:03Z")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

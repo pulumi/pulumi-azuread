@@ -26,7 +26,6 @@ namespace Pulumi.AzureAD
         /// 
         /// *Look up by ID*
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,11 +41,9 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// *Look up by DisplayName*
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,7 +60,6 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccessPackageResult> InvokeAsync(GetAccessPackageArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessPackageResult>("azuread:index/getAccessPackage:getAccessPackage", args ?? new GetAccessPackageArgs(), options.WithDefaults());
@@ -83,7 +79,6 @@ namespace Pulumi.AzureAD
         /// 
         /// *Look up by ID*
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -99,11 +94,9 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// *Look up by DisplayName*
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -120,7 +113,6 @@ namespace Pulumi.AzureAD
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccessPackageResult> Invoke(GetAccessPackageInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessPackageResult>("azuread:index/getAccessPackage:getAccessPackage", args ?? new GetAccessPackageInvokeArgs(), options.WithDefaults());

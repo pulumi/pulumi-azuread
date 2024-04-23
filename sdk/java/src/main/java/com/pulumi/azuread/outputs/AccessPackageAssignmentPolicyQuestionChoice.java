@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class AccessPackageAssignmentPolicyQuestionChoice {
     /**
-     * @return The actual value of this choice.
+     * @return The actual value of this choice
      * 
      */
     private String actualValue;
     /**
-     * @return A block describing the display text of this choice, as documented below.
+     * @return The display text of this choice
      * 
      */
     private AccessPackageAssignmentPolicyQuestionChoiceDisplayValue displayValue;
 
     private AccessPackageAssignmentPolicyQuestionChoice() {}
     /**
-     * @return The actual value of this choice.
+     * @return The actual value of this choice
      * 
      */
     public String actualValue() {
         return this.actualValue;
     }
     /**
-     * @return A block describing the display text of this choice, as documented below.
+     * @return The display text of this choice
      * 
      */
     public AccessPackageAssignmentPolicyQuestionChoiceDisplayValue displayValue() {

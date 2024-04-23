@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * *Using default settings*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -18,11 +17,9 @@ import * as utilities from "./utilities";
  * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
  * const exampleServicePrincipalTokenSigningCertificate = new azuread.ServicePrincipalTokenSigningCertificate("example", {servicePrincipalId: exampleServicePrincipal.id});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * *Using custom settings*
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -35,7 +32,6 @@ import * as utilities from "./utilities";
  *     endDate: "2023-05-01T01:02:03Z",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

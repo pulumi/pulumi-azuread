@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer {
     /**
-     * @return For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * @return For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      * 
      */
     private @Nullable Boolean backup;
     /**
-     * @return The ID of the subject.
+     * @return The object ID of the subject
      * 
      */
     private @Nullable String objectId;
     /**
-     * @return Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     * @return Type of users
      * 
      */
     private String subjectType;
 
     private AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer() {}
     /**
-     * @return For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     * @return For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      * 
      */
     public Optional<Boolean> backup() {
         return Optional.ofNullable(this.backup);
     }
     /**
-     * @return The ID of the subject.
+     * @return The object ID of the subject
      * 
      */
     public Optional<String> objectId() {
         return Optional.ofNullable(this.objectId);
     }
     /**
-     * @return Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     * @return Type of users
      * 
      */
     public String subjectType() {

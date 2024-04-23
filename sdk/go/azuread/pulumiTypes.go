@@ -210,17 +210,17 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) RequestorJustifi
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStage struct {
-	// Whether alternative approvers are enabled.
+	// If no action taken, forward to alternate approvers?
 	AlternativeApprovalEnabled *bool `pulumi:"alternativeApprovalEnabled"`
-	// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+	// If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
 	AlternativeApprovers []AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover `pulumi:"alternativeApprovers"`
-	// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+	// Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
 	ApprovalTimeoutInDays int `pulumi:"approvalTimeoutInDays"`
-	// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+	// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
 	ApproverJustificationRequired *bool `pulumi:"approverJustificationRequired"`
-	// Number of days before the request is forwarded to alternative approvers.
+	// Forward to alternate approver(s) after how many days?
 	EnableAlternativeApprovalInDays *int `pulumi:"enableAlternativeApprovalInDays"`
-	// A block specifying the users who will be asked to approve requests, as documented below.
+	// The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
 	PrimaryApprovers []AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover `pulumi:"primaryApprovers"`
 }
 
@@ -236,17 +236,17 @@ type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageInput interface {
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs struct {
-	// Whether alternative approvers are enabled.
+	// If no action taken, forward to alternate approvers?
 	AlternativeApprovalEnabled pulumi.BoolPtrInput `pulumi:"alternativeApprovalEnabled"`
-	// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+	// If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
 	AlternativeApprovers AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayInput `pulumi:"alternativeApprovers"`
-	// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+	// Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
 	ApprovalTimeoutInDays pulumi.IntInput `pulumi:"approvalTimeoutInDays"`
-	// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+	// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
 	ApproverJustificationRequired pulumi.BoolPtrInput `pulumi:"approverJustificationRequired"`
-	// Number of days before the request is forwarded to alternative approvers.
+	// Forward to alternate approver(s) after how many days?
 	EnableAlternativeApprovalInDays pulumi.IntPtrInput `pulumi:"enableAlternativeApprovalInDays"`
-	// A block specifying the users who will be asked to approve requests, as documented below.
+	// The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
 	PrimaryApprovers AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayInput `pulumi:"primaryApprovers"`
 }
 
@@ -301,40 +301,40 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) ToAcce
 	return o
 }
 
-// Whether alternative approvers are enabled.
+// If no action taken, forward to alternate approvers?
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) AlternativeApprovalEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) *bool {
 		return v.AlternativeApprovalEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+// If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) AlternativeApprovers() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) []AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover {
 		return v.AlternativeApprovers
 	}).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput)
 }
 
-// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+// Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) ApprovalTimeoutInDays() pulumi.IntOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) int { return v.ApprovalTimeoutInDays }).(pulumi.IntOutput)
 }
 
-// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) ApproverJustificationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) *bool {
 		return v.ApproverJustificationRequired
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Number of days before the request is forwarded to alternative approvers.
+// Forward to alternate approver(s) after how many days?
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) EnableAlternativeApprovalInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) *int {
 		return v.EnableAlternativeApprovalInDays
 	}).(pulumi.IntPtrOutput)
 }
 
-// A block specifying the users who will be asked to approve requests, as documented below.
+// The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) PrimaryApprovers() AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) []AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover {
 		return v.PrimaryApprovers
@@ -362,11 +362,11 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput) I
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 	Backup *bool `pulumi:"backup"`
-	// The ID of the subject.
+	// The object ID of the subject
 	ObjectId *string `pulumi:"objectId"`
-	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	// Type of users
 	SubjectType string `pulumi:"subjectType"`
 }
 
@@ -382,11 +382,11 @@ type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprov
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 	Backup pulumi.BoolPtrInput `pulumi:"backup"`
-	// The ID of the subject.
+	// The object ID of the subject
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
-	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	// Type of users
 	SubjectType pulumi.StringInput `pulumi:"subjectType"`
 }
 
@@ -441,21 +441,21 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApp
 	return o
 }
 
-// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover) *bool {
 		return v.Backup
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the subject.
+// The object ID of the subject
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover) *string {
 		return v.ObjectId
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+// Type of users
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) SubjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover) string {
 		return v.SubjectType
@@ -483,11 +483,11 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApp
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 	Backup *bool `pulumi:"backup"`
-	// The ID of the subject.
+	// The object ID of the subject
 	ObjectId *string `pulumi:"objectId"`
-	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	// Type of users
 	SubjectType string `pulumi:"subjectType"`
 }
 
@@ -503,11 +503,11 @@ type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverIn
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 	Backup pulumi.BoolPtrInput `pulumi:"backup"`
-	// The ID of the subject.
+	// The object ID of the subject
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
-	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	// Type of users
 	SubjectType pulumi.StringInput `pulumi:"subjectType"`
 }
 
@@ -562,21 +562,21 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprove
 	return o
 }
 
-// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover) *bool {
 		return v.Backup
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the subject.
+// The object ID of the subject
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover) *string {
 		return v.ObjectId
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+// Type of users
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) SubjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover) string {
 		return v.SubjectType
@@ -901,11 +901,11 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Starting
 }
 
 type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 	Backup *bool `pulumi:"backup"`
-	// The ID of the subject.
+	// The object ID of the subject
 	ObjectId *string `pulumi:"objectId"`
-	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	// Type of users
 	SubjectType string `pulumi:"subjectType"`
 }
 
@@ -921,11 +921,11 @@ type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerInput interfac
 }
 
 type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 	Backup pulumi.BoolPtrInput `pulumi:"backup"`
-	// The ID of the subject.
+	// The object ID of the subject
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
-	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	// Type of users
 	SubjectType pulumi.StringInput `pulumi:"subjectType"`
 }
 
@@ -980,17 +980,17 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) ToA
 	return o
 }
 
-// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the subject.
+// The object ID of the subject
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+// Type of users
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) SubjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer) string { return v.SubjectType }).(pulumi.StringOutput)
 }
@@ -1142,9 +1142,9 @@ func (o AccessPackageAssignmentPolicyQuestionArrayOutput) Index(i pulumi.IntInpu
 }
 
 type AccessPackageAssignmentPolicyQuestionChoice struct {
-	// The actual value of this choice.
+	// The actual value of this choice
 	ActualValue string `pulumi:"actualValue"`
-	// A block describing the display text of this choice, as documented below.
+	// The display text of this choice
 	DisplayValue AccessPackageAssignmentPolicyQuestionChoiceDisplayValue `pulumi:"displayValue"`
 }
 
@@ -1160,9 +1160,9 @@ type AccessPackageAssignmentPolicyQuestionChoiceInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceArgs struct {
-	// The actual value of this choice.
+	// The actual value of this choice
 	ActualValue pulumi.StringInput `pulumi:"actualValue"`
-	// A block describing the display text of this choice, as documented below.
+	// The display text of this choice
 	DisplayValue AccessPackageAssignmentPolicyQuestionChoiceDisplayValueInput `pulumi:"displayValue"`
 }
 
@@ -1217,12 +1217,12 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceOutput) ToAccessPackageAssign
 	return o
 }
 
-// The actual value of this choice.
+// The actual value of this choice
 func (o AccessPackageAssignmentPolicyQuestionChoiceOutput) ActualValue() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoice) string { return v.ActualValue }).(pulumi.StringOutput)
 }
 
-// A block describing the display text of this choice, as documented below.
+// The display text of this choice
 func (o AccessPackageAssignmentPolicyQuestionChoiceOutput) DisplayValue() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoice) AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
 		return v.DisplayValue
@@ -1250,9 +1250,9 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceArrayOutput) Index(i pulumi.I
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValue struct {
-	// The default text of this question choice.
+	// The default text of this question
 	DefaultText string `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question choice, as documented below.
+	// The localized text of this question
 	LocalizedTexts []AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText `pulumi:"localizedTexts"`
 }
 
@@ -1268,9 +1268,9 @@ type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs struct {
-	// The default text of this question choice.
+	// The default text of this question
 	DefaultText pulumi.StringInput `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question choice, as documented below.
+	// The localized text of this question
 	LocalizedTexts AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayInput `pulumi:"localizedTexts"`
 }
 
@@ -1300,12 +1300,12 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) ToAccessP
 	return o
 }
 
-// The default text of this question choice.
+// The default text of this question
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) DefaultText() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValue) string { return v.DefaultText }).(pulumi.StringOutput)
 }
 
-// One or more blocks describing localized text of this question choice, as documented below.
+// The localized text of this question
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) LocalizedTexts() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValue) []AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
 		return v.LocalizedTexts
@@ -1313,9 +1313,9 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) Localized
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText struct {
-	// The localized content of this question choice.
+	// The localized content of this question
 	Content string `pulumi:"content"`
-	// The ISO 639 language code for this question choice content.
+	// The language code of this question content
 	LanguageCode string `pulumi:"languageCode"`
 }
 
@@ -1331,9 +1331,9 @@ type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextInput i
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs struct {
-	// The localized content of this question choice.
+	// The localized content of this question
 	Content pulumi.StringInput `pulumi:"content"`
-	// The ISO 639 language code for this question choice content.
+	// The language code of this question content
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 }
 
@@ -1388,12 +1388,12 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutp
 	return o
 }
 
-// The localized content of this question choice.
+// The localized content of this question
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// The ISO 639 language code for this question choice content.
+// The language code of this question content
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText) string {
 		return v.LanguageCode
@@ -1421,9 +1421,9 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArra
 }
 
 type AccessPackageAssignmentPolicyQuestionText struct {
-	// The default text of this question choice.
+	// The default text of this question
 	DefaultText string `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question choice, as documented below.
+	// The localized text of this question
 	LocalizedTexts []AccessPackageAssignmentPolicyQuestionTextLocalizedText `pulumi:"localizedTexts"`
 }
 
@@ -1439,9 +1439,9 @@ type AccessPackageAssignmentPolicyQuestionTextInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionTextArgs struct {
-	// The default text of this question choice.
+	// The default text of this question
 	DefaultText pulumi.StringInput `pulumi:"defaultText"`
-	// One or more blocks describing localized text of this question choice, as documented below.
+	// The localized text of this question
 	LocalizedTexts AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayInput `pulumi:"localizedTexts"`
 }
 
@@ -1471,12 +1471,12 @@ func (o AccessPackageAssignmentPolicyQuestionTextOutput) ToAccessPackageAssignme
 	return o
 }
 
-// The default text of this question choice.
+// The default text of this question
 func (o AccessPackageAssignmentPolicyQuestionTextOutput) DefaultText() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionText) string { return v.DefaultText }).(pulumi.StringOutput)
 }
 
-// One or more blocks describing localized text of this question choice, as documented below.
+// The localized text of this question
 func (o AccessPackageAssignmentPolicyQuestionTextOutput) LocalizedTexts() AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionText) []AccessPackageAssignmentPolicyQuestionTextLocalizedText {
 		return v.LocalizedTexts
@@ -1484,9 +1484,9 @@ func (o AccessPackageAssignmentPolicyQuestionTextOutput) LocalizedTexts() Access
 }
 
 type AccessPackageAssignmentPolicyQuestionTextLocalizedText struct {
-	// The localized content of this question choice.
+	// The localized content of this question
 	Content string `pulumi:"content"`
-	// The ISO 639 language code for this question choice content.
+	// The language code of this question content
 	LanguageCode string `pulumi:"languageCode"`
 }
 
@@ -1502,9 +1502,9 @@ type AccessPackageAssignmentPolicyQuestionTextLocalizedTextInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs struct {
-	// The localized content of this question choice.
+	// The localized content of this question
 	Content pulumi.StringInput `pulumi:"content"`
-	// The ISO 639 language code for this question choice content.
+	// The language code of this question content
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 }
 
@@ -1559,12 +1559,12 @@ func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) ToAccessPa
 	return o
 }
 
-// The localized content of this question choice.
+// The localized content of this question
 func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionTextLocalizedText) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// The ISO 639 language code for this question choice content.
+// The language code of this question content
 func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionTextLocalizedText) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
@@ -1767,11 +1767,11 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) ScopeType() pul
 }
 
 type AccessPackageAssignmentPolicyRequestorSettingsRequestor struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 	Backup *bool `pulumi:"backup"`
-	// The ID of the subject.
+	// The object ID of the subject
 	ObjectId *string `pulumi:"objectId"`
-	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	// Type of users
 	SubjectType string `pulumi:"subjectType"`
 }
 
@@ -1787,11 +1787,11 @@ type AccessPackageAssignmentPolicyRequestorSettingsRequestorInput interface {
 }
 
 type AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs struct {
-	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 	Backup pulumi.BoolPtrInput `pulumi:"backup"`
-	// The ID of the subject.
+	// The object ID of the subject
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
-	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	// Type of users
 	SubjectType pulumi.StringInput `pulumi:"subjectType"`
 }
 
@@ -1846,17 +1846,17 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) ToAccessP
 	return o
 }
 
-// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver
 func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettingsRequestor) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the subject.
+// The object ID of the subject
 func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettingsRequestor) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+// Type of users
 func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) SubjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettingsRequestor) string { return v.SubjectType }).(pulumi.StringOutput)
 }
@@ -5445,10 +5445,8 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedUsers() pulumi.
 }
 
 type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser struct {
-	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
-	ExternalTenants []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant `pulumi:"externalTenants"`
-	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-	GuestOrExternalUserTypes []string `pulumi:"guestOrExternalUserTypes"`
+	ExternalTenants          []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant `pulumi:"externalTenants"`
+	GuestOrExternalUserTypes []string                                                                           `pulumi:"guestOrExternalUserTypes"`
 }
 
 // ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserInput is an input type that accepts ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs and ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput values.
@@ -5463,10 +5461,8 @@ type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserInput int
 }
 
 type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs struct {
-	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
-	ExternalTenants ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayInput `pulumi:"externalTenants"`
-	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-	GuestOrExternalUserTypes pulumi.StringArrayInput `pulumi:"guestOrExternalUserTypes"`
+	ExternalTenants          ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayInput `pulumi:"externalTenants"`
+	GuestOrExternalUserTypes pulumi.StringArrayInput                                                                    `pulumi:"guestOrExternalUserTypes"`
 }
 
 func (ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs) ElementType() reflect.Type {
@@ -5520,14 +5516,12 @@ func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput
 	return o
 }
 
-// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
 func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput) ExternalTenants() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser) []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant {
 		return v.ExternalTenants
 	}).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput)
 }
 
-// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput) GuestOrExternalUserTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser) []string {
 		return v.GuestOrExternalUserTypes
@@ -5665,10 +5659,8 @@ func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExtern
 }
 
 type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser struct {
-	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
-	ExternalTenants []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant `pulumi:"externalTenants"`
-	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-	GuestOrExternalUserTypes []string `pulumi:"guestOrExternalUserTypes"`
+	ExternalTenants          []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant `pulumi:"externalTenants"`
+	GuestOrExternalUserTypes []string                                                                           `pulumi:"guestOrExternalUserTypes"`
 }
 
 // ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserInput is an input type that accepts ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs and ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput values.
@@ -5683,10 +5675,8 @@ type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserInput int
 }
 
 type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs struct {
-	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
-	ExternalTenants ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayInput `pulumi:"externalTenants"`
-	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
-	GuestOrExternalUserTypes pulumi.StringArrayInput `pulumi:"guestOrExternalUserTypes"`
+	ExternalTenants          ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayInput `pulumi:"externalTenants"`
+	GuestOrExternalUserTypes pulumi.StringArrayInput                                                                    `pulumi:"guestOrExternalUserTypes"`
 }
 
 func (ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs) ElementType() reflect.Type {
@@ -5740,14 +5730,12 @@ func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput
 	return o
 }
 
-// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
 func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput) ExternalTenants() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser) []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant {
 		return v.ExternalTenants
 	}).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput)
 }
 
-// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput) GuestOrExternalUserTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser) []string {
 		return v.GuestOrExternalUserTypes

@@ -135,7 +135,6 @@ def get_groups(display_name_prefix: Optional[str] = None,
     ## Example Usage
 
     *Look up by group name*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -145,30 +144,24 @@ def get_groups(display_name_prefix: Optional[str] = None,
         "group-b",
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up by display name prefix*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     sales = azuread.get_groups(display_name_prefix="sales-")
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up all groups*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     all = azuread.get_groups(return_all=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up all mail-enabled groups*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -176,10 +169,8 @@ def get_groups(display_name_prefix: Optional[str] = None,
     mail_enabled = azuread.get_groups(mail_enabled=True,
         return_all=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up all security-enabled groups that are not mail-enabled*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -188,7 +179,6 @@ def get_groups(display_name_prefix: Optional[str] = None,
         return_all=True,
         security_enabled=True)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str display_name_prefix: A common display name prefix to match when returning groups.
@@ -246,7 +236,6 @@ def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]]
     ## Example Usage
 
     *Look up by group name*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -256,30 +245,24 @@ def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]]
         "group-b",
     ])
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up by display name prefix*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     sales = azuread.get_groups(display_name_prefix="sales-")
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up all groups*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     all = azuread.get_groups(return_all=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up all mail-enabled groups*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -287,10 +270,8 @@ def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]]
     mail_enabled = azuread.get_groups(mail_enabled=True,
         return_all=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up all security-enabled groups that are not mail-enabled*
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -299,7 +280,6 @@ def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]]
         return_all=True,
         security_enabled=True)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str display_name_prefix: A common display name prefix to match when returning groups.

@@ -142,7 +142,6 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -158,7 +157,6 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
             resource_origin_id=example_group["objectId"],
             resource_origin_system="AadGroup")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -195,7 +193,6 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -211,7 +208,6 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
             resource_origin_id=example_group["objectId"],
             resource_origin_system="AadGroup")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

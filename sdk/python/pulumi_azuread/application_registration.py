@@ -606,7 +606,6 @@ class ApplicationRegistration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -622,7 +621,6 @@ class ApplicationRegistration(pulumi.CustomResource):
             support_url="https://support.hashitown.com/",
             terms_of_service_url="https://hashitown.com/terms")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -671,7 +669,6 @@ class ApplicationRegistration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -687,7 +684,6 @@ class ApplicationRegistration(pulumi.CustomResource):
             support_url="https://support.hashitown.com/",
             terms_of_service_url="https://hashitown.com/terms")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

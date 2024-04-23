@@ -401,36 +401,30 @@ def get_service_principal(application_id: Optional[str] = None,
 
     *Look up by application display name*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_service_principal(display_name="my-awesome-application")
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up by client ID*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_service_principal(client_id="00000000-0000-0000-0000-000000000000")
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up by service principal object ID*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_service_principal(object_id="00000000-0000-0000-0000-000000000000")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str client_id: The client ID of the application associated with this service principal.
@@ -500,36 +494,30 @@ def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[
 
     *Look up by application display name*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_service_principal(display_name="my-awesome-application")
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up by client ID*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_service_principal(client_id="00000000-0000-0000-0000-000000000000")
     ```
-    <!--End PulumiCodeChooser -->
 
     *Look up by service principal object ID*
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
     example = azuread.get_service_principal(object_id="00000000-0000-0000-0000-000000000000")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str client_id: The client ID of the application associated with this service principal.
