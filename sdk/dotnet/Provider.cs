@@ -194,9 +194,6 @@ namespace Pulumi.AzureAD
         [Input("clientSecretFilePath")]
         public Input<string>? ClientSecretFilePath { get; set; }
 
-        /// <summary>
-        /// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
-        /// </summary>
         [Input("disableTerraformPartnerId", json: true)]
         public Input<bool>? DisableTerraformPartnerId { get; set; }
 
