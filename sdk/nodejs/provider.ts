@@ -59,7 +59,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
      * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-     * when `metadata_host` is specified.
+     * when `metadataHost` is specified.
      */
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
@@ -173,14 +173,11 @@ export interface ProviderArgs {
      * Secret
      */
     clientSecretFilePath?: pulumi.Input<string>;
-    /**
-     * Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
-     */
     disableTerraformPartnerId?: pulumi.Input<boolean>;
     /**
      * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
      * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-     * when `metadata_host` is specified.
+     * when `metadataHost` is specified.
      */
     environment?: pulumi.Input<string>;
     /**
