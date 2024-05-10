@@ -37,6 +37,7 @@ export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Prom
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getGroup:getGroup", {
         "displayName": args.displayName,
+        "includeTransitiveMembers": args.includeTransitiveMembers,
         "mailEnabled": args.mailEnabled,
         "mailNickname": args.mailNickname,
         "objectId": args.objectId,
@@ -52,6 +53,10 @@ export interface GetGroupArgs {
      * The display name for the group.
      */
     displayName?: string;
+    /**
+     * Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+     */
+    includeTransitiveMembers?: boolean;
     /**
      * Whether the group is mail-enabled.
      */
@@ -116,6 +121,7 @@ export interface GetGroupResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly includeTransitiveMembers?: boolean;
     /**
      * The SMTP address for the group.
      */
@@ -129,7 +135,7 @@ export interface GetGroupResult {
      */
     readonly mailNickname: string;
     /**
-     * List of object IDs of the group members.
+     * List of object IDs of the group members. When `includeTransitiveMembers` is `true`, contains a list of object IDs of all transitive group members.
      */
     readonly members: string[];
     /**
@@ -234,6 +240,10 @@ export interface GetGroupOutputArgs {
      * The display name for the group.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+     */
+    includeTransitiveMembers?: pulumi.Input<boolean>;
     /**
      * Whether the group is mail-enabled.
      */

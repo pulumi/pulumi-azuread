@@ -93,10 +93,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "azuread:index/groupMember:GroupMember":
 		r = &GroupMember{}
+	case "azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy":
+		r = &GroupRoleManagementPolicy{}
 	case "azuread:index/invitation:Invitation":
 		r = &Invitation{}
 	case "azuread:index/namedLocation:NamedLocation":
 		r = &NamedLocation{}
+	case "azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule":
+		r = &PrivilegedAccessGroupAssignmentSchedule{}
+	case "azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule":
+		r = &PrivilegedAccessGroupEligibilitySchedule{}
 	case "azuread:index/servicePrincipal:ServicePrincipal":
 		r = &ServicePrincipal{}
 	case "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate":
@@ -111,6 +117,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServicePrincipalTokenSigningCertificate{}
 	case "azuread:index/synchronizationJob:SynchronizationJob":
 		r = &SynchronizationJob{}
+	case "azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand":
+		r = &SynchronizationJobProvisionOnDemand{}
 	case "azuread:index/synchronizationSecret:SynchronizationSecret":
 		r = &SynchronizationSecret{}
 	case "azuread:index/user:User":
@@ -330,12 +338,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"azuread",
+		"index/groupRoleManagementPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
 		"index/invitation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/namedLocation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/privilegedAccessGroupAssignmentSchedule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/privilegedAccessGroupEligibilitySchedule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -371,6 +394,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/synchronizationJob",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/synchronizationJobProvisionOnDemand",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -46,7 +46,7 @@ namespace Pulumi.AzureAD
         /// });
         /// ```
         /// 
-        /// *Look up by application IDs (client IDs*
+        /// *Look up by application IDs (client IDs)*
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -130,7 +130,7 @@ namespace Pulumi.AzureAD
         /// });
         /// ```
         /// 
-        /// *Look up by application IDs (client IDs*
+        /// *Look up by application IDs (client IDs)*
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

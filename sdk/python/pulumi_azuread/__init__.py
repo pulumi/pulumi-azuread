@@ -52,6 +52,7 @@ from .get_directory_role_templates import *
 from .get_directory_roles import *
 from .get_domains import *
 from .get_group import *
+from .get_group_role_management_policy import *
 from .get_groups import *
 from .get_named_location import *
 from .get_service_principal import *
@@ -60,8 +61,11 @@ from .get_user import *
 from .get_users import *
 from .group import *
 from .group_member import *
+from .group_role_management_policy import *
 from .invitation import *
 from .named_location import *
+from .privileged_access_group_assignment_schedule import *
+from .privileged_access_group_eligibility_schedule import *
 from .provider import *
 from .service_principal import *
 from .service_principal_certificate import *
@@ -70,6 +74,7 @@ from .service_principal_delegated_permission_grant import *
 from .service_principal_password import *
 from .service_principal_token_signing_certificate import *
 from .synchronization_job import *
+from .synchronization_job_provision_on_demand import *
 from .synchronization_secret import *
 from .user import *
 from .user_flow_attribute import *
@@ -376,6 +381,14 @@ _utilities.register(
  },
  {
   "pkg": "azuread",
+  "mod": "index/groupRoleManagementPolicy",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy": "GroupRoleManagementPolicy"
+  }
+ },
+ {
+  "pkg": "azuread",
   "mod": "index/invitation",
   "fqn": "pulumi_azuread",
   "classes": {
@@ -388,6 +401,22 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/namedLocation:NamedLocation": "NamedLocation"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/privilegedAccessGroupAssignmentSchedule",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule": "PrivilegedAccessGroupAssignmentSchedule"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/privilegedAccessGroupEligibilitySchedule",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule": "PrivilegedAccessGroupEligibilitySchedule"
   }
  },
  {
@@ -444,6 +473,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/synchronizationJob:SynchronizationJob": "SynchronizationJob"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/synchronizationJobProvisionOnDemand",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand": "SynchronizationJobProvisionOnDemand"
   }
  },
  {

@@ -55,6 +55,24 @@ __all__ = [
     'ConditionalAccessPolicySessionControls',
     'CustomDirectoryRolePermission',
     'GroupDynamicMembership',
+    'GroupRoleManagementPolicyActivationRules',
+    'GroupRoleManagementPolicyActivationRulesApprovalStage',
+    'GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover',
+    'GroupRoleManagementPolicyActiveAssignmentRules',
+    'GroupRoleManagementPolicyEligibleAssignmentRules',
+    'GroupRoleManagementPolicyNotificationRules',
+    'GroupRoleManagementPolicyNotificationRulesActiveAssignments',
+    'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications',
+    'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications',
+    'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications',
+    'GroupRoleManagementPolicyNotificationRulesEligibleActivations',
+    'GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications',
+    'GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications',
+    'GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications',
+    'GroupRoleManagementPolicyNotificationRulesEligibleAssignments',
+    'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications',
+    'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications',
+    'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications',
     'InvitationMessage',
     'NamedLocationCountry',
     'NamedLocationIp',
@@ -63,6 +81,8 @@ __all__ = [
     'ServicePrincipalFeatureTag',
     'ServicePrincipalOauth2PermissionScope',
     'ServicePrincipalSamlSingleSignOn',
+    'SynchronizationJobProvisionOnDemandParameter',
+    'SynchronizationJobProvisionOnDemandParameterSubject',
     'SynchronizationJobSchedule',
     'SynchronizationSecretCredential',
     'GetApplicationApiResult',
@@ -2973,6 +2993,1176 @@ class GroupDynamicMembership(dict):
 
 
 @pulumi.output_type
+class GroupRoleManagementPolicyActivationRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvalStage":
+            suggest = "approval_stage"
+        elif key == "maximumDuration":
+            suggest = "maximum_duration"
+        elif key == "requireApproval":
+            suggest = "require_approval"
+        elif key == "requireJustification":
+            suggest = "require_justification"
+        elif key == "requireMultifactorAuthentication":
+            suggest = "require_multifactor_authentication"
+        elif key == "requireTicketInfo":
+            suggest = "require_ticket_info"
+        elif key == "requiredConditionalAccessAuthenticationContext":
+            suggest = "required_conditional_access_authentication_context"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyActivationRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyActivationRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyActivationRules.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approval_stage: Optional['outputs.GroupRoleManagementPolicyActivationRulesApprovalStage'] = None,
+                 maximum_duration: Optional[str] = None,
+                 require_approval: Optional[bool] = None,
+                 require_justification: Optional[bool] = None,
+                 require_multifactor_authentication: Optional[bool] = None,
+                 require_ticket_info: Optional[bool] = None,
+                 required_conditional_access_authentication_context: Optional[str] = None):
+        """
+        :param 'GroupRoleManagementPolicyActivationRulesApprovalStageArgs' approval_stage: An `approval_stage` block as defined below.
+        :param str maximum_duration: The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+        :param bool require_approval: Is approval required for activation. If `true` an `approval_stage` block must be provided.
+        :param bool require_justification: Is a justification required during activation of the role.
+        :param bool require_multifactor_authentication: Is multi-factor authentication required to activate the role. Conflicts with `required_conditional_access_authentication_context`.
+        :param bool require_ticket_info: Is ticket information requrired during activation of the role.
+        :param str required_conditional_access_authentication_context: The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
+        """
+        if approval_stage is not None:
+            pulumi.set(__self__, "approval_stage", approval_stage)
+        if maximum_duration is not None:
+            pulumi.set(__self__, "maximum_duration", maximum_duration)
+        if require_approval is not None:
+            pulumi.set(__self__, "require_approval", require_approval)
+        if require_justification is not None:
+            pulumi.set(__self__, "require_justification", require_justification)
+        if require_multifactor_authentication is not None:
+            pulumi.set(__self__, "require_multifactor_authentication", require_multifactor_authentication)
+        if require_ticket_info is not None:
+            pulumi.set(__self__, "require_ticket_info", require_ticket_info)
+        if required_conditional_access_authentication_context is not None:
+            pulumi.set(__self__, "required_conditional_access_authentication_context", required_conditional_access_authentication_context)
+
+    @property
+    @pulumi.getter(name="approvalStage")
+    def approval_stage(self) -> Optional['outputs.GroupRoleManagementPolicyActivationRulesApprovalStage']:
+        """
+        An `approval_stage` block as defined below.
+        """
+        return pulumi.get(self, "approval_stage")
+
+    @property
+    @pulumi.getter(name="maximumDuration")
+    def maximum_duration(self) -> Optional[str]:
+        """
+        The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+        """
+        return pulumi.get(self, "maximum_duration")
+
+    @property
+    @pulumi.getter(name="requireApproval")
+    def require_approval(self) -> Optional[bool]:
+        """
+        Is approval required for activation. If `true` an `approval_stage` block must be provided.
+        """
+        return pulumi.get(self, "require_approval")
+
+    @property
+    @pulumi.getter(name="requireJustification")
+    def require_justification(self) -> Optional[bool]:
+        """
+        Is a justification required during activation of the role.
+        """
+        return pulumi.get(self, "require_justification")
+
+    @property
+    @pulumi.getter(name="requireMultifactorAuthentication")
+    def require_multifactor_authentication(self) -> Optional[bool]:
+        """
+        Is multi-factor authentication required to activate the role. Conflicts with `required_conditional_access_authentication_context`.
+        """
+        return pulumi.get(self, "require_multifactor_authentication")
+
+    @property
+    @pulumi.getter(name="requireTicketInfo")
+    def require_ticket_info(self) -> Optional[bool]:
+        """
+        Is ticket information requrired during activation of the role.
+        """
+        return pulumi.get(self, "require_ticket_info")
+
+    @property
+    @pulumi.getter(name="requiredConditionalAccessAuthenticationContext")
+    def required_conditional_access_authentication_context(self) -> Optional[str]:
+        """
+        The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
+        """
+        return pulumi.get(self, "required_conditional_access_authentication_context")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyActivationRulesApprovalStage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryApprovers":
+            suggest = "primary_approvers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyActivationRulesApprovalStage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyActivationRulesApprovalStage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyActivationRulesApprovalStage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 primary_approvers: Sequence['outputs.GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover']):
+        """
+        :param Sequence['GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApproverArgs'] primary_approvers: The IDs of the users or groups who can approve the activation
+        """
+        pulumi.set(__self__, "primary_approvers", primary_approvers)
+
+    @property
+    @pulumi.getter(name="primaryApprovers")
+    def primary_approvers(self) -> Sequence['outputs.GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover']:
+        """
+        The IDs of the users or groups who can approve the activation
+        """
+        return pulumi.get(self, "primary_approvers")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectId":
+            suggest = "object_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_id: str,
+                 type: Optional[str] = None):
+        """
+        :param str object_id: The ID of the object which will act as an approver.
+        :param str type: The type of object acting as an approver. Possible options are `singleUser` and `groupMembers`.
+        """
+        pulumi.set(__self__, "object_id", object_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> str:
+        """
+        The ID of the object which will act as an approver.
+        """
+        return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of object acting as an approver. Possible options are `singleUser` and `groupMembers`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyActiveAssignmentRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationRequired":
+            suggest = "expiration_required"
+        elif key == "expireAfter":
+            suggest = "expire_after"
+        elif key == "requireJustification":
+            suggest = "require_justification"
+        elif key == "requireMultifactorAuthentication":
+            suggest = "require_multifactor_authentication"
+        elif key == "requireTicketInfo":
+            suggest = "require_ticket_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyActiveAssignmentRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyActiveAssignmentRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyActiveAssignmentRules.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expiration_required: Optional[bool] = None,
+                 expire_after: Optional[str] = None,
+                 require_justification: Optional[bool] = None,
+                 require_multifactor_authentication: Optional[bool] = None,
+                 require_ticket_info: Optional[bool] = None):
+        """
+        :param bool expiration_required: Must an assignment have an expiry date. `false` allows permanent assignment.
+        :param str expire_after: The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
+        :param bool require_justification: Is a justification required to create new assignments.
+        :param bool require_multifactor_authentication: Is multi-factor authentication required to create new assignments.
+        :param bool require_ticket_info: Is ticket information required to create new assignments.
+               
+               One of `expiration_required` or `expire_after` must be provided.
+        """
+        if expiration_required is not None:
+            pulumi.set(__self__, "expiration_required", expiration_required)
+        if expire_after is not None:
+            pulumi.set(__self__, "expire_after", expire_after)
+        if require_justification is not None:
+            pulumi.set(__self__, "require_justification", require_justification)
+        if require_multifactor_authentication is not None:
+            pulumi.set(__self__, "require_multifactor_authentication", require_multifactor_authentication)
+        if require_ticket_info is not None:
+            pulumi.set(__self__, "require_ticket_info", require_ticket_info)
+
+    @property
+    @pulumi.getter(name="expirationRequired")
+    def expiration_required(self) -> Optional[bool]:
+        """
+        Must an assignment have an expiry date. `false` allows permanent assignment.
+        """
+        return pulumi.get(self, "expiration_required")
+
+    @property
+    @pulumi.getter(name="expireAfter")
+    def expire_after(self) -> Optional[str]:
+        """
+        The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
+        """
+        return pulumi.get(self, "expire_after")
+
+    @property
+    @pulumi.getter(name="requireJustification")
+    def require_justification(self) -> Optional[bool]:
+        """
+        Is a justification required to create new assignments.
+        """
+        return pulumi.get(self, "require_justification")
+
+    @property
+    @pulumi.getter(name="requireMultifactorAuthentication")
+    def require_multifactor_authentication(self) -> Optional[bool]:
+        """
+        Is multi-factor authentication required to create new assignments.
+        """
+        return pulumi.get(self, "require_multifactor_authentication")
+
+    @property
+    @pulumi.getter(name="requireTicketInfo")
+    def require_ticket_info(self) -> Optional[bool]:
+        """
+        Is ticket information required to create new assignments.
+
+        One of `expiration_required` or `expire_after` must be provided.
+        """
+        return pulumi.get(self, "require_ticket_info")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyEligibleAssignmentRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationRequired":
+            suggest = "expiration_required"
+        elif key == "expireAfter":
+            suggest = "expire_after"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyEligibleAssignmentRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyEligibleAssignmentRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyEligibleAssignmentRules.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expiration_required: Optional[bool] = None,
+                 expire_after: Optional[str] = None):
+        """
+        :param bool expiration_required: Must an assignment have an expiry date. `false` allows permanent assignment.
+        :param str expire_after: The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
+               
+               One of `expiration_required` or `expire_after` must be provided.
+        """
+        if expiration_required is not None:
+            pulumi.set(__self__, "expiration_required", expiration_required)
+        if expire_after is not None:
+            pulumi.set(__self__, "expire_after", expire_after)
+
+    @property
+    @pulumi.getter(name="expirationRequired")
+    def expiration_required(self) -> Optional[bool]:
+        """
+        Must an assignment have an expiry date. `false` allows permanent assignment.
+        """
+        return pulumi.get(self, "expiration_required")
+
+    @property
+    @pulumi.getter(name="expireAfter")
+    def expire_after(self) -> Optional[str]:
+        """
+        The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
+
+        One of `expiration_required` or `expire_after` must be provided.
+        """
+        return pulumi.get(self, "expire_after")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeAssignments":
+            suggest = "active_assignments"
+        elif key == "eligibleActivations":
+            suggest = "eligible_activations"
+        elif key == "eligibleAssignments":
+            suggest = "eligible_assignments"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRules.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 active_assignments: Optional['outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignments'] = None,
+                 eligible_activations: Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivations'] = None,
+                 eligible_assignments: Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignments'] = None):
+        """
+        :param 'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs' active_assignments: A `notification_target` block as defined below to configure notfications on active role assignments.
+        :param 'GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgs' eligible_activations: A `notification_target` block as defined below for configuring notifications on activation of eligible role.
+        :param 'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs' eligible_assignments: A `notification_target` block as defined below to configure notification on eligible role assignments.
+               
+               At least one `notification_target` block must be provided.
+        """
+        if active_assignments is not None:
+            pulumi.set(__self__, "active_assignments", active_assignments)
+        if eligible_activations is not None:
+            pulumi.set(__self__, "eligible_activations", eligible_activations)
+        if eligible_assignments is not None:
+            pulumi.set(__self__, "eligible_assignments", eligible_assignments)
+
+    @property
+    @pulumi.getter(name="activeAssignments")
+    def active_assignments(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignments']:
+        """
+        A `notification_target` block as defined below to configure notfications on active role assignments.
+        """
+        return pulumi.get(self, "active_assignments")
+
+    @property
+    @pulumi.getter(name="eligibleActivations")
+    def eligible_activations(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivations']:
+        """
+        A `notification_target` block as defined below for configuring notifications on activation of eligible role.
+        """
+        return pulumi.get(self, "eligible_activations")
+
+    @property
+    @pulumi.getter(name="eligibleAssignments")
+    def eligible_assignments(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignments']:
+        """
+        A `notification_target` block as defined below to configure notification on eligible role assignments.
+
+        At least one `notification_target` block must be provided.
+        """
+        return pulumi.get(self, "eligible_assignments")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesActiveAssignments(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminNotifications":
+            suggest = "admin_notifications"
+        elif key == "approverNotifications":
+            suggest = "approver_notifications"
+        elif key == "assigneeNotifications":
+            suggest = "assignee_notifications"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesActiveAssignments. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesActiveAssignments.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesActiveAssignments.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_notifications: Optional['outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications'] = None,
+                 approver_notifications: Optional['outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications'] = None,
+                 assignee_notifications: Optional['outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications'] = None):
+        """
+        :param 'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgs' admin_notifications: Admin notification settings
+        :param 'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotificationsArgs' approver_notifications: Approver notification settings
+        :param 'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotificationsArgs' assignee_notifications: Assignee notification settings
+        """
+        if admin_notifications is not None:
+            pulumi.set(__self__, "admin_notifications", admin_notifications)
+        if approver_notifications is not None:
+            pulumi.set(__self__, "approver_notifications", approver_notifications)
+        if assignee_notifications is not None:
+            pulumi.set(__self__, "assignee_notifications", assignee_notifications)
+
+    @property
+    @pulumi.getter(name="adminNotifications")
+    def admin_notifications(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications']:
+        """
+        Admin notification settings
+        """
+        return pulumi.get(self, "admin_notifications")
+
+    @property
+    @pulumi.getter(name="approverNotifications")
+    def approver_notifications(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications']:
+        """
+        Approver notification settings
+        """
+        return pulumi.get(self, "approver_notifications")
+
+    @property
+    @pulumi.getter(name="assigneeNotifications")
+    def assignee_notifications(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications']:
+        """
+        Assignee notification settings
+        """
+        return pulumi.get(self, "assignee_notifications")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRecipients":
+            suggest = "default_recipients"
+        elif key == "notificationLevel":
+            suggest = "notification_level"
+        elif key == "additionalRecipients":
+            suggest = "additional_recipients"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_recipients: bool,
+                 notification_level: str,
+                 additional_recipients: Optional[Sequence[str]] = None):
+        """
+        :param bool default_recipients: Whether the default recipients are notified
+        :param str notification_level: What level of notifications are sent
+        :param Sequence[str] additional_recipients: The additional recipients to notify
+        """
+        pulumi.set(__self__, "default_recipients", default_recipients)
+        pulumi.set(__self__, "notification_level", notification_level)
+        if additional_recipients is not None:
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
+
+    @property
+    @pulumi.getter(name="defaultRecipients")
+    def default_recipients(self) -> bool:
+        """
+        Whether the default recipients are notified
+        """
+        return pulumi.get(self, "default_recipients")
+
+    @property
+    @pulumi.getter(name="notificationLevel")
+    def notification_level(self) -> str:
+        """
+        What level of notifications are sent
+        """
+        return pulumi.get(self, "notification_level")
+
+    @property
+    @pulumi.getter(name="additionalRecipients")
+    def additional_recipients(self) -> Optional[Sequence[str]]:
+        """
+        The additional recipients to notify
+        """
+        return pulumi.get(self, "additional_recipients")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRecipients":
+            suggest = "default_recipients"
+        elif key == "notificationLevel":
+            suggest = "notification_level"
+        elif key == "additionalRecipients":
+            suggest = "additional_recipients"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_recipients: bool,
+                 notification_level: str,
+                 additional_recipients: Optional[Sequence[str]] = None):
+        """
+        :param bool default_recipients: Whether the default recipients are notified
+        :param str notification_level: What level of notifications are sent
+        :param Sequence[str] additional_recipients: The additional recipients to notify
+        """
+        pulumi.set(__self__, "default_recipients", default_recipients)
+        pulumi.set(__self__, "notification_level", notification_level)
+        if additional_recipients is not None:
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
+
+    @property
+    @pulumi.getter(name="defaultRecipients")
+    def default_recipients(self) -> bool:
+        """
+        Whether the default recipients are notified
+        """
+        return pulumi.get(self, "default_recipients")
+
+    @property
+    @pulumi.getter(name="notificationLevel")
+    def notification_level(self) -> str:
+        """
+        What level of notifications are sent
+        """
+        return pulumi.get(self, "notification_level")
+
+    @property
+    @pulumi.getter(name="additionalRecipients")
+    def additional_recipients(self) -> Optional[Sequence[str]]:
+        """
+        The additional recipients to notify
+        """
+        return pulumi.get(self, "additional_recipients")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRecipients":
+            suggest = "default_recipients"
+        elif key == "notificationLevel":
+            suggest = "notification_level"
+        elif key == "additionalRecipients":
+            suggest = "additional_recipients"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_recipients: bool,
+                 notification_level: str,
+                 additional_recipients: Optional[Sequence[str]] = None):
+        """
+        :param bool default_recipients: Whether the default recipients are notified
+        :param str notification_level: What level of notifications are sent
+        :param Sequence[str] additional_recipients: The additional recipients to notify
+        """
+        pulumi.set(__self__, "default_recipients", default_recipients)
+        pulumi.set(__self__, "notification_level", notification_level)
+        if additional_recipients is not None:
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
+
+    @property
+    @pulumi.getter(name="defaultRecipients")
+    def default_recipients(self) -> bool:
+        """
+        Whether the default recipients are notified
+        """
+        return pulumi.get(self, "default_recipients")
+
+    @property
+    @pulumi.getter(name="notificationLevel")
+    def notification_level(self) -> str:
+        """
+        What level of notifications are sent
+        """
+        return pulumi.get(self, "notification_level")
+
+    @property
+    @pulumi.getter(name="additionalRecipients")
+    def additional_recipients(self) -> Optional[Sequence[str]]:
+        """
+        The additional recipients to notify
+        """
+        return pulumi.get(self, "additional_recipients")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesEligibleActivations(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminNotifications":
+            suggest = "admin_notifications"
+        elif key == "approverNotifications":
+            suggest = "approver_notifications"
+        elif key == "assigneeNotifications":
+            suggest = "assignee_notifications"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesEligibleActivations. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleActivations.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleActivations.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_notifications: Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications'] = None,
+                 approver_notifications: Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications'] = None,
+                 assignee_notifications: Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications'] = None):
+        """
+        :param 'GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotificationsArgs' admin_notifications: Admin notification settings
+        :param 'GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotificationsArgs' approver_notifications: Approver notification settings
+        :param 'GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotificationsArgs' assignee_notifications: Assignee notification settings
+        """
+        if admin_notifications is not None:
+            pulumi.set(__self__, "admin_notifications", admin_notifications)
+        if approver_notifications is not None:
+            pulumi.set(__self__, "approver_notifications", approver_notifications)
+        if assignee_notifications is not None:
+            pulumi.set(__self__, "assignee_notifications", assignee_notifications)
+
+    @property
+    @pulumi.getter(name="adminNotifications")
+    def admin_notifications(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications']:
+        """
+        Admin notification settings
+        """
+        return pulumi.get(self, "admin_notifications")
+
+    @property
+    @pulumi.getter(name="approverNotifications")
+    def approver_notifications(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications']:
+        """
+        Approver notification settings
+        """
+        return pulumi.get(self, "approver_notifications")
+
+    @property
+    @pulumi.getter(name="assigneeNotifications")
+    def assignee_notifications(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications']:
+        """
+        Assignee notification settings
+        """
+        return pulumi.get(self, "assignee_notifications")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRecipients":
+            suggest = "default_recipients"
+        elif key == "notificationLevel":
+            suggest = "notification_level"
+        elif key == "additionalRecipients":
+            suggest = "additional_recipients"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_recipients: bool,
+                 notification_level: str,
+                 additional_recipients: Optional[Sequence[str]] = None):
+        """
+        :param bool default_recipients: Whether the default recipients are notified
+        :param str notification_level: What level of notifications are sent
+        :param Sequence[str] additional_recipients: The additional recipients to notify
+        """
+        pulumi.set(__self__, "default_recipients", default_recipients)
+        pulumi.set(__self__, "notification_level", notification_level)
+        if additional_recipients is not None:
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
+
+    @property
+    @pulumi.getter(name="defaultRecipients")
+    def default_recipients(self) -> bool:
+        """
+        Whether the default recipients are notified
+        """
+        return pulumi.get(self, "default_recipients")
+
+    @property
+    @pulumi.getter(name="notificationLevel")
+    def notification_level(self) -> str:
+        """
+        What level of notifications are sent
+        """
+        return pulumi.get(self, "notification_level")
+
+    @property
+    @pulumi.getter(name="additionalRecipients")
+    def additional_recipients(self) -> Optional[Sequence[str]]:
+        """
+        The additional recipients to notify
+        """
+        return pulumi.get(self, "additional_recipients")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRecipients":
+            suggest = "default_recipients"
+        elif key == "notificationLevel":
+            suggest = "notification_level"
+        elif key == "additionalRecipients":
+            suggest = "additional_recipients"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_recipients: bool,
+                 notification_level: str,
+                 additional_recipients: Optional[Sequence[str]] = None):
+        """
+        :param bool default_recipients: Whether the default recipients are notified
+        :param str notification_level: What level of notifications are sent
+        :param Sequence[str] additional_recipients: The additional recipients to notify
+        """
+        pulumi.set(__self__, "default_recipients", default_recipients)
+        pulumi.set(__self__, "notification_level", notification_level)
+        if additional_recipients is not None:
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
+
+    @property
+    @pulumi.getter(name="defaultRecipients")
+    def default_recipients(self) -> bool:
+        """
+        Whether the default recipients are notified
+        """
+        return pulumi.get(self, "default_recipients")
+
+    @property
+    @pulumi.getter(name="notificationLevel")
+    def notification_level(self) -> str:
+        """
+        What level of notifications are sent
+        """
+        return pulumi.get(self, "notification_level")
+
+    @property
+    @pulumi.getter(name="additionalRecipients")
+    def additional_recipients(self) -> Optional[Sequence[str]]:
+        """
+        The additional recipients to notify
+        """
+        return pulumi.get(self, "additional_recipients")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRecipients":
+            suggest = "default_recipients"
+        elif key == "notificationLevel":
+            suggest = "notification_level"
+        elif key == "additionalRecipients":
+            suggest = "additional_recipients"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_recipients: bool,
+                 notification_level: str,
+                 additional_recipients: Optional[Sequence[str]] = None):
+        """
+        :param bool default_recipients: Whether the default recipients are notified
+        :param str notification_level: What level of notifications are sent
+        :param Sequence[str] additional_recipients: The additional recipients to notify
+        """
+        pulumi.set(__self__, "default_recipients", default_recipients)
+        pulumi.set(__self__, "notification_level", notification_level)
+        if additional_recipients is not None:
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
+
+    @property
+    @pulumi.getter(name="defaultRecipients")
+    def default_recipients(self) -> bool:
+        """
+        Whether the default recipients are notified
+        """
+        return pulumi.get(self, "default_recipients")
+
+    @property
+    @pulumi.getter(name="notificationLevel")
+    def notification_level(self) -> str:
+        """
+        What level of notifications are sent
+        """
+        return pulumi.get(self, "notification_level")
+
+    @property
+    @pulumi.getter(name="additionalRecipients")
+    def additional_recipients(self) -> Optional[Sequence[str]]:
+        """
+        The additional recipients to notify
+        """
+        return pulumi.get(self, "additional_recipients")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesEligibleAssignments(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminNotifications":
+            suggest = "admin_notifications"
+        elif key == "approverNotifications":
+            suggest = "approver_notifications"
+        elif key == "assigneeNotifications":
+            suggest = "assignee_notifications"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesEligibleAssignments. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleAssignments.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleAssignments.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_notifications: Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications'] = None,
+                 approver_notifications: Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications'] = None,
+                 assignee_notifications: Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications'] = None):
+        """
+        :param 'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotificationsArgs' admin_notifications: Admin notification settings
+        :param 'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs' approver_notifications: Approver notification settings
+        :param 'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgs' assignee_notifications: Assignee notification settings
+        """
+        if admin_notifications is not None:
+            pulumi.set(__self__, "admin_notifications", admin_notifications)
+        if approver_notifications is not None:
+            pulumi.set(__self__, "approver_notifications", approver_notifications)
+        if assignee_notifications is not None:
+            pulumi.set(__self__, "assignee_notifications", assignee_notifications)
+
+    @property
+    @pulumi.getter(name="adminNotifications")
+    def admin_notifications(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications']:
+        """
+        Admin notification settings
+        """
+        return pulumi.get(self, "admin_notifications")
+
+    @property
+    @pulumi.getter(name="approverNotifications")
+    def approver_notifications(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications']:
+        """
+        Approver notification settings
+        """
+        return pulumi.get(self, "approver_notifications")
+
+    @property
+    @pulumi.getter(name="assigneeNotifications")
+    def assignee_notifications(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications']:
+        """
+        Assignee notification settings
+        """
+        return pulumi.get(self, "assignee_notifications")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRecipients":
+            suggest = "default_recipients"
+        elif key == "notificationLevel":
+            suggest = "notification_level"
+        elif key == "additionalRecipients":
+            suggest = "additional_recipients"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_recipients: bool,
+                 notification_level: str,
+                 additional_recipients: Optional[Sequence[str]] = None):
+        """
+        :param bool default_recipients: Whether the default recipients are notified
+        :param str notification_level: What level of notifications are sent
+        :param Sequence[str] additional_recipients: The additional recipients to notify
+        """
+        pulumi.set(__self__, "default_recipients", default_recipients)
+        pulumi.set(__self__, "notification_level", notification_level)
+        if additional_recipients is not None:
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
+
+    @property
+    @pulumi.getter(name="defaultRecipients")
+    def default_recipients(self) -> bool:
+        """
+        Whether the default recipients are notified
+        """
+        return pulumi.get(self, "default_recipients")
+
+    @property
+    @pulumi.getter(name="notificationLevel")
+    def notification_level(self) -> str:
+        """
+        What level of notifications are sent
+        """
+        return pulumi.get(self, "notification_level")
+
+    @property
+    @pulumi.getter(name="additionalRecipients")
+    def additional_recipients(self) -> Optional[Sequence[str]]:
+        """
+        The additional recipients to notify
+        """
+        return pulumi.get(self, "additional_recipients")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRecipients":
+            suggest = "default_recipients"
+        elif key == "notificationLevel":
+            suggest = "notification_level"
+        elif key == "additionalRecipients":
+            suggest = "additional_recipients"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_recipients: bool,
+                 notification_level: str,
+                 additional_recipients: Optional[Sequence[str]] = None):
+        """
+        :param bool default_recipients: Whether the default recipients are notified
+        :param str notification_level: What level of notifications are sent
+        :param Sequence[str] additional_recipients: The additional recipients to notify
+        """
+        pulumi.set(__self__, "default_recipients", default_recipients)
+        pulumi.set(__self__, "notification_level", notification_level)
+        if additional_recipients is not None:
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
+
+    @property
+    @pulumi.getter(name="defaultRecipients")
+    def default_recipients(self) -> bool:
+        """
+        Whether the default recipients are notified
+        """
+        return pulumi.get(self, "default_recipients")
+
+    @property
+    @pulumi.getter(name="notificationLevel")
+    def notification_level(self) -> str:
+        """
+        What level of notifications are sent
+        """
+        return pulumi.get(self, "notification_level")
+
+    @property
+    @pulumi.getter(name="additionalRecipients")
+    def additional_recipients(self) -> Optional[Sequence[str]]:
+        """
+        The additional recipients to notify
+        """
+        return pulumi.get(self, "additional_recipients")
+
+
+@pulumi.output_type
+class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRecipients":
+            suggest = "default_recipients"
+        elif key == "notificationLevel":
+            suggest = "notification_level"
+        elif key == "additionalRecipients":
+            suggest = "additional_recipients"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_recipients: bool,
+                 notification_level: str,
+                 additional_recipients: Optional[Sequence[str]] = None):
+        """
+        :param bool default_recipients: Whether the default recipients are notified
+        :param str notification_level: What level of notifications are sent
+        :param Sequence[str] additional_recipients: The additional recipients to notify
+        """
+        pulumi.set(__self__, "default_recipients", default_recipients)
+        pulumi.set(__self__, "notification_level", notification_level)
+        if additional_recipients is not None:
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
+
+    @property
+    @pulumi.getter(name="defaultRecipients")
+    def default_recipients(self) -> bool:
+        """
+        Whether the default recipients are notified
+        """
+        return pulumi.get(self, "default_recipients")
+
+    @property
+    @pulumi.getter(name="notificationLevel")
+    def notification_level(self) -> str:
+        """
+        What level of notifications are sent
+        """
+        return pulumi.get(self, "notification_level")
+
+    @property
+    @pulumi.getter(name="additionalRecipients")
+    def additional_recipients(self) -> Optional[Sequence[str]]:
+        """
+        The additional recipients to notify
+        """
+        return pulumi.get(self, "additional_recipients")
+
+
+@pulumi.output_type
 class InvitationMessage(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3536,6 +4726,100 @@ class ServicePrincipalSamlSingleSignOn(dict):
         The relative URI the service provider would redirect to after completion of the single sign-on flow.
         """
         return pulumi.get(self, "relay_state")
+
+
+@pulumi.output_type
+class SynchronizationJobProvisionOnDemandParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ruleId":
+            suggest = "rule_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SynchronizationJobProvisionOnDemandParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SynchronizationJobProvisionOnDemandParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SynchronizationJobProvisionOnDemandParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rule_id: str,
+                 subjects: Sequence['outputs.SynchronizationJobProvisionOnDemandParameterSubject']):
+        """
+        :param str rule_id: The identifier of the synchronization rule to be applied. This rule ID is defined in the schema for a given synchronization job or template.
+        :param Sequence['SynchronizationJobProvisionOnDemandParameterSubjectArgs'] subjects: One or more `subject` blocks as documented below.
+        """
+        pulumi.set(__self__, "rule_id", rule_id)
+        pulumi.set(__self__, "subjects", subjects)
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> str:
+        """
+        The identifier of the synchronization rule to be applied. This rule ID is defined in the schema for a given synchronization job or template.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter
+    def subjects(self) -> Sequence['outputs.SynchronizationJobProvisionOnDemandParameterSubject']:
+        """
+        One or more `subject` blocks as documented below.
+        """
+        return pulumi.get(self, "subjects")
+
+
+@pulumi.output_type
+class SynchronizationJobProvisionOnDemandParameterSubject(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectId":
+            suggest = "object_id"
+        elif key == "objectTypeName":
+            suggest = "object_type_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SynchronizationJobProvisionOnDemandParameterSubject. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SynchronizationJobProvisionOnDemandParameterSubject.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SynchronizationJobProvisionOnDemandParameterSubject.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 object_id: str,
+                 object_type_name: str):
+        """
+        :param str object_id: The identifier of an object to which a synchronization job is to be applied. Can be one of the following: (1) An onPremisesDistinguishedName for synchronization from Active Directory to Azure AD. (2) The user ID for synchronization from Azure AD to a third-party. (3) The Worker ID of the Workday worker for synchronization from Workday to either Active Directory or Azure AD.
+        :param str object_type_name: The type of the object to which a synchronization job is to be applied. Can be one of the following: `user` for synchronizing between Active Directory and Azure AD, `User` for synchronizing a user between Azure AD and a third-party application, `Worker` for synchronization a user between Workday and either Active Directory or Azure AD, `Group` for synchronizing a group between Azure AD and a third-party application.
+        """
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "object_type_name", object_type_name)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> str:
+        """
+        The identifier of an object to which a synchronization job is to be applied. Can be one of the following: (1) An onPremisesDistinguishedName for synchronization from Active Directory to Azure AD. (2) The user ID for synchronization from Azure AD to a third-party. (3) The Worker ID of the Workday worker for synchronization from Workday to either Active Directory or Azure AD.
+        """
+        return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter(name="objectTypeName")
+    def object_type_name(self) -> str:
+        """
+        The type of the object to which a synchronization job is to be applied. Can be one of the following: `user` for synchronizing between Active Directory and Azure AD, `User` for synchronizing a user between Azure AD and a third-party application, `Worker` for synchronization a user between Workday and either Active Directory or Azure AD, `Group` for synchronizing a group between Azure AD and a third-party application.
+        """
+        return pulumi.get(self, "object_type_name")
 
 
 @pulumi.output_type

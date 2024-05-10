@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * *Look up by application IDs (client IDs*
+ * *Look up by application IDs (client IDs)*
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -171,7 +171,7 @@ export interface GetServicePrincipalsResult {
  * });
  * ```
  *
- * *Look up by application IDs (client IDs*
+ * *Look up by application IDs (client IDs)*
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

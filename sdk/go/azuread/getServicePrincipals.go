@@ -52,7 +52,7 @@ import (
 //
 // ```
 //
-// *Look up by application IDs (client IDs*
+// *Look up by application IDs (client IDs)*
 //
 // ```go
 // package main

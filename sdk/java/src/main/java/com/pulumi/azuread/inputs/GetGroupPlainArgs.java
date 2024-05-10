@@ -31,6 +31,21 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+     * 
+     */
+    @Import(name="includeTransitiveMembers")
+    private @Nullable Boolean includeTransitiveMembers;
+
+    /**
+     * @return Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+     * 
+     */
+    public Optional<Boolean> includeTransitiveMembers() {
+        return Optional.ofNullable(this.includeTransitiveMembers);
+    }
+
+    /**
      * Whether the group is mail-enabled.
      * 
      */
@@ -98,6 +113,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetGroupPlainArgs(GetGroupPlainArgs $) {
         this.displayName = $.displayName;
+        this.includeTransitiveMembers = $.includeTransitiveMembers;
         this.mailEnabled = $.mailEnabled;
         this.mailNickname = $.mailNickname;
         this.objectId = $.objectId;
@@ -130,6 +146,17 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder displayName(@Nullable String displayName) {
             $.displayName = displayName;
+            return this;
+        }
+
+        /**
+         * @param includeTransitiveMembers Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTransitiveMembers(@Nullable Boolean includeTransitiveMembers) {
+            $.includeTransitiveMembers = includeTransitiveMembers;
             return this;
         }
 

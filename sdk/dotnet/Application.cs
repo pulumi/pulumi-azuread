@@ -305,7 +305,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<Outputs.ApplicationFeatureTag>> FeatureTags { get; private set; } = null!;
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        /// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         [Output("groupMembershipClaims")]
         public Output<ImmutableArray<string>> GroupMembershipClaims { get; private set; } = null!;
@@ -562,7 +562,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _groupMembershipClaims;
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        /// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         public InputList<string> GroupMembershipClaims
         {
@@ -814,7 +814,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _groupMembershipClaims;
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        /// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         public InputList<string> GroupMembershipClaims
         {

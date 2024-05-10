@@ -235,7 +235,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly featureTags!: pulumi.Output<outputs.ApplicationFeatureTag[]>;
     /**
-     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+     * A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
     public readonly groupMembershipClaims!: pulumi.Output<string[] | undefined>;
     /**
@@ -486,7 +486,7 @@ export interface ApplicationState {
      */
     featureTags?: pulumi.Input<pulumi.Input<inputs.ApplicationFeatureTag>[]>;
     /**
-     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+     * A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
     groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -626,7 +626,7 @@ export interface ApplicationArgs {
      */
     featureTags?: pulumi.Input<pulumi.Input<inputs.ApplicationFeatureTag>[]>;
     /**
-     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+     * A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
     groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[]>;
     /**

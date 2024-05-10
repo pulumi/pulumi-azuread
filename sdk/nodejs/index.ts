@@ -240,6 +240,11 @@ export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
 
+export { GetGroupRoleManagementPolicyArgs, GetGroupRoleManagementPolicyResult, GetGroupRoleManagementPolicyOutputArgs } from "./getGroupRoleManagementPolicy";
+export const getGroupRoleManagementPolicy: typeof import("./getGroupRoleManagementPolicy").getGroupRoleManagementPolicy = null as any;
+export const getGroupRoleManagementPolicyOutput: typeof import("./getGroupRoleManagementPolicy").getGroupRoleManagementPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupRoleManagementPolicy","getGroupRoleManagementPolicyOutput"], () => require("./getGroupRoleManagementPolicy"));
+
 export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups";
 export const getGroups: typeof import("./getGroups").getGroups = null as any;
 export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
@@ -280,6 +285,11 @@ export type GroupMember = import("./groupMember").GroupMember;
 export const GroupMember: typeof import("./groupMember").GroupMember = null as any;
 utilities.lazyLoad(exports, ["GroupMember"], () => require("./groupMember"));
 
+export { GroupRoleManagementPolicyArgs, GroupRoleManagementPolicyState } from "./groupRoleManagementPolicy";
+export type GroupRoleManagementPolicy = import("./groupRoleManagementPolicy").GroupRoleManagementPolicy;
+export const GroupRoleManagementPolicy: typeof import("./groupRoleManagementPolicy").GroupRoleManagementPolicy = null as any;
+utilities.lazyLoad(exports, ["GroupRoleManagementPolicy"], () => require("./groupRoleManagementPolicy"));
+
 export { InvitationArgs, InvitationState } from "./invitation";
 export type Invitation = import("./invitation").Invitation;
 export const Invitation: typeof import("./invitation").Invitation = null as any;
@@ -289,6 +299,16 @@ export { NamedLocationArgs, NamedLocationState } from "./namedLocation";
 export type NamedLocation = import("./namedLocation").NamedLocation;
 export const NamedLocation: typeof import("./namedLocation").NamedLocation = null as any;
 utilities.lazyLoad(exports, ["NamedLocation"], () => require("./namedLocation"));
+
+export { PrivilegedAccessGroupAssignmentScheduleArgs, PrivilegedAccessGroupAssignmentScheduleState } from "./privilegedAccessGroupAssignmentSchedule";
+export type PrivilegedAccessGroupAssignmentSchedule = import("./privilegedAccessGroupAssignmentSchedule").PrivilegedAccessGroupAssignmentSchedule;
+export const PrivilegedAccessGroupAssignmentSchedule: typeof import("./privilegedAccessGroupAssignmentSchedule").PrivilegedAccessGroupAssignmentSchedule = null as any;
+utilities.lazyLoad(exports, ["PrivilegedAccessGroupAssignmentSchedule"], () => require("./privilegedAccessGroupAssignmentSchedule"));
+
+export { PrivilegedAccessGroupEligibilityScheduleArgs, PrivilegedAccessGroupEligibilityScheduleState } from "./privilegedAccessGroupEligibilitySchedule";
+export type PrivilegedAccessGroupEligibilitySchedule = import("./privilegedAccessGroupEligibilitySchedule").PrivilegedAccessGroupEligibilitySchedule;
+export const PrivilegedAccessGroupEligibilitySchedule: typeof import("./privilegedAccessGroupEligibilitySchedule").PrivilegedAccessGroupEligibilitySchedule = null as any;
+utilities.lazyLoad(exports, ["PrivilegedAccessGroupEligibilitySchedule"], () => require("./privilegedAccessGroupEligibilitySchedule"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
@@ -329,6 +349,11 @@ export { SynchronizationJobArgs, SynchronizationJobState } from "./synchronizati
 export type SynchronizationJob = import("./synchronizationJob").SynchronizationJob;
 export const SynchronizationJob: typeof import("./synchronizationJob").SynchronizationJob = null as any;
 utilities.lazyLoad(exports, ["SynchronizationJob"], () => require("./synchronizationJob"));
+
+export { SynchronizationJobProvisionOnDemandArgs, SynchronizationJobProvisionOnDemandState } from "./synchronizationJobProvisionOnDemand";
+export type SynchronizationJobProvisionOnDemand = import("./synchronizationJobProvisionOnDemand").SynchronizationJobProvisionOnDemand;
+export const SynchronizationJobProvisionOnDemand: typeof import("./synchronizationJobProvisionOnDemand").SynchronizationJobProvisionOnDemand = null as any;
+utilities.lazyLoad(exports, ["SynchronizationJobProvisionOnDemand"], () => require("./synchronizationJobProvisionOnDemand"));
 
 export { SynchronizationSecretArgs, SynchronizationSecretState } from "./synchronizationSecret";
 export type SynchronizationSecret = import("./synchronizationSecret").SynchronizationSecret;
@@ -431,10 +456,16 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "azuread:index/groupMember:GroupMember":
                 return new GroupMember(name, <any>undefined, { urn })
+            case "azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy":
+                return new GroupRoleManagementPolicy(name, <any>undefined, { urn })
             case "azuread:index/invitation:Invitation":
                 return new Invitation(name, <any>undefined, { urn })
             case "azuread:index/namedLocation:NamedLocation":
                 return new NamedLocation(name, <any>undefined, { urn })
+            case "azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule":
+                return new PrivilegedAccessGroupAssignmentSchedule(name, <any>undefined, { urn })
+            case "azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule":
+                return new PrivilegedAccessGroupEligibilitySchedule(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipal:ServicePrincipal":
                 return new ServicePrincipal(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate":
@@ -449,6 +480,8 @@ const _module = {
                 return new ServicePrincipalTokenSigningCertificate(name, <any>undefined, { urn })
             case "azuread:index/synchronizationJob:SynchronizationJob":
                 return new SynchronizationJob(name, <any>undefined, { urn })
+            case "azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand":
+                return new SynchronizationJobProvisionOnDemand(name, <any>undefined, { urn })
             case "azuread:index/synchronizationSecret:SynchronizationSecret":
                 return new SynchronizationSecret(name, <any>undefined, { urn })
             case "azuread:index/user:User":
@@ -496,8 +529,11 @@ pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleEligibility
 pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/group", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupMember", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/groupRoleManagementPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/invitation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/namedLocation", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/privilegedAccessGroupAssignmentSchedule", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/privilegedAccessGroupEligibilitySchedule", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipal", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalCertificate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalClaimsMappingPolicyAssignment", _module)
@@ -505,6 +541,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalDelegate
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalPassword", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalTokenSigningCertificate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/synchronizationJob", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/synchronizationJobProvisionOnDemand", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/synchronizationSecret", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/user", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/userFlowAttribute", _module)

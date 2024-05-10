@@ -1236,6 +1236,540 @@
                 "rule"
             ]
         },
+        "azuread:index/GroupRoleManagementPolicyActivationRules:GroupRoleManagementPolicyActivationRules": {
+            "properties": {
+                "approvalStage": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyActivationRulesApprovalStage:GroupRoleManagementPolicyActivationRulesApprovalStage",
+                    "description": "An `approval_stage` block as defined below.\n"
+                },
+                "maximumDuration": {
+                    "type": "string",
+                    "description": "The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.\n"
+                },
+                "requireApproval": {
+                    "type": "boolean",
+                    "description": "Is approval required for activation. If `true` an `approval_stage` block must be provided.\n"
+                },
+                "requireJustification": {
+                    "type": "boolean",
+                    "description": "Is a justification required during activation of the role.\n"
+                },
+                "requireMultifactorAuthentication": {
+                    "type": "boolean",
+                    "description": "Is multi-factor authentication required to activate the role. Conflicts with `required_conditional_access_authentication_context`.\n"
+                },
+                "requireTicketInfo": {
+                    "type": "boolean",
+                    "description": "Is ticket information requrired during activation of the role.\n"
+                },
+                "requiredConditionalAccessAuthenticationContext": {
+                    "type": "string",
+                    "description": "The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "maximumDuration",
+                        "requireApproval",
+                        "requireJustification",
+                        "requireMultifactorAuthentication",
+                        "requireTicketInfo",
+                        "requiredConditionalAccessAuthenticationContext"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyActivationRulesApprovalStage:GroupRoleManagementPolicyActivationRulesApprovalStage": {
+            "properties": {
+                "primaryApprovers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover:GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover"
+                    },
+                    "description": "The IDs of the users or groups who can approve the activation\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "primaryApprovers"
+            ]
+        },
+        "azuread:index/GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover:GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover": {
+            "properties": {
+                "objectId": {
+                    "type": "string",
+                    "description": "The ID of the object which will act as an approver.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of object acting as an approver. Possible options are `singleUser` and `groupMembers`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "objectId"
+            ]
+        },
+        "azuread:index/GroupRoleManagementPolicyActiveAssignmentRules:GroupRoleManagementPolicyActiveAssignmentRules": {
+            "properties": {
+                "expirationRequired": {
+                    "type": "boolean",
+                    "description": "Must an assignment have an expiry date. `false` allows permanent assignment.\n"
+                },
+                "expireAfter": {
+                    "type": "string",
+                    "description": "The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.\n"
+                },
+                "requireJustification": {
+                    "type": "boolean",
+                    "description": "Is a justification required to create new assignments.\n"
+                },
+                "requireMultifactorAuthentication": {
+                    "type": "boolean",
+                    "description": "Is multi-factor authentication required to create new assignments.\n"
+                },
+                "requireTicketInfo": {
+                    "type": "boolean",
+                    "description": "Is ticket information required to create new assignments.\n\nOne of `expiration_required` or `expire_after` must be provided.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "expirationRequired",
+                        "expireAfter",
+                        "requireJustification",
+                        "requireMultifactorAuthentication",
+                        "requireTicketInfo"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyEligibleAssignmentRules:GroupRoleManagementPolicyEligibleAssignmentRules": {
+            "properties": {
+                "expirationRequired": {
+                    "type": "boolean",
+                    "description": "Must an assignment have an expiry date. `false` allows permanent assignment.\n"
+                },
+                "expireAfter": {
+                    "type": "string",
+                    "description": "The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.\n\nOne of `expiration_required` or `expire_after` must be provided.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "expirationRequired",
+                        "expireAfter"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRules:GroupRoleManagementPolicyNotificationRules": {
+            "properties": {
+                "activeAssignments": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesActiveAssignments:GroupRoleManagementPolicyNotificationRulesActiveAssignments",
+                    "description": "A `notification_target` block as defined below to configure notfications on active role assignments.\n"
+                },
+                "eligibleActivations": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleActivations:GroupRoleManagementPolicyNotificationRulesEligibleActivations",
+                    "description": "A `notification_target` block as defined below for configuring notifications on activation of eligible role.\n"
+                },
+                "eligibleAssignments": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleAssignments:GroupRoleManagementPolicyNotificationRulesEligibleAssignments",
+                    "description": "A `notification_target` block as defined below to configure notification on eligible role assignments.\n\nAt least one `notification_target` block must be provided.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "activeAssignments",
+                        "eligibleActivations",
+                        "eligibleAssignments"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesActiveAssignments:GroupRoleManagementPolicyNotificationRulesActiveAssignments": {
+            "properties": {
+                "adminNotifications": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications:GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications",
+                    "description": "Admin notification settings\n"
+                },
+                "approverNotifications": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications:GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications",
+                    "description": "Approver notification settings\n"
+                },
+                "assigneeNotifications": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications:GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications",
+                    "description": "Assignee notification settings\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "adminNotifications",
+                        "approverNotifications",
+                        "assigneeNotifications"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications:GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications": {
+            "properties": {
+                "additionalRecipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The additional recipients to notify\n"
+                },
+                "defaultRecipients": {
+                    "type": "boolean",
+                    "description": "Whether the default recipients are notified\n"
+                },
+                "notificationLevel": {
+                    "type": "string",
+                    "description": "What level of notifications are sent\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultRecipients",
+                "notificationLevel"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalRecipients",
+                        "defaultRecipients",
+                        "notificationLevel"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications:GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications": {
+            "properties": {
+                "additionalRecipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The additional recipients to notify\n"
+                },
+                "defaultRecipients": {
+                    "type": "boolean",
+                    "description": "Whether the default recipients are notified\n"
+                },
+                "notificationLevel": {
+                    "type": "string",
+                    "description": "What level of notifications are sent\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultRecipients",
+                "notificationLevel"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalRecipients",
+                        "defaultRecipients",
+                        "notificationLevel"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications:GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications": {
+            "properties": {
+                "additionalRecipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The additional recipients to notify\n"
+                },
+                "defaultRecipients": {
+                    "type": "boolean",
+                    "description": "Whether the default recipients are notified\n"
+                },
+                "notificationLevel": {
+                    "type": "string",
+                    "description": "What level of notifications are sent\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultRecipients",
+                "notificationLevel"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalRecipients",
+                        "defaultRecipients",
+                        "notificationLevel"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleActivations:GroupRoleManagementPolicyNotificationRulesEligibleActivations": {
+            "properties": {
+                "adminNotifications": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications:GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications",
+                    "description": "Admin notification settings\n"
+                },
+                "approverNotifications": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications:GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications",
+                    "description": "Approver notification settings\n"
+                },
+                "assigneeNotifications": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications:GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications",
+                    "description": "Assignee notification settings\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "adminNotifications",
+                        "approverNotifications",
+                        "assigneeNotifications"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications:GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications": {
+            "properties": {
+                "additionalRecipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The additional recipients to notify\n"
+                },
+                "defaultRecipients": {
+                    "type": "boolean",
+                    "description": "Whether the default recipients are notified\n"
+                },
+                "notificationLevel": {
+                    "type": "string",
+                    "description": "What level of notifications are sent\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultRecipients",
+                "notificationLevel"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalRecipients",
+                        "defaultRecipients",
+                        "notificationLevel"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications:GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications": {
+            "properties": {
+                "additionalRecipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The additional recipients to notify\n"
+                },
+                "defaultRecipients": {
+                    "type": "boolean",
+                    "description": "Whether the default recipients are notified\n"
+                },
+                "notificationLevel": {
+                    "type": "string",
+                    "description": "What level of notifications are sent\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultRecipients",
+                "notificationLevel"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalRecipients",
+                        "defaultRecipients",
+                        "notificationLevel"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications:GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications": {
+            "properties": {
+                "additionalRecipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The additional recipients to notify\n"
+                },
+                "defaultRecipients": {
+                    "type": "boolean",
+                    "description": "Whether the default recipients are notified\n"
+                },
+                "notificationLevel": {
+                    "type": "string",
+                    "description": "What level of notifications are sent\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultRecipients",
+                "notificationLevel"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalRecipients",
+                        "defaultRecipients",
+                        "notificationLevel"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleAssignments:GroupRoleManagementPolicyNotificationRulesEligibleAssignments": {
+            "properties": {
+                "adminNotifications": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications:GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications",
+                    "description": "Admin notification settings\n"
+                },
+                "approverNotifications": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications:GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications",
+                    "description": "Approver notification settings\n"
+                },
+                "assigneeNotifications": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications:GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications",
+                    "description": "Assignee notification settings\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "adminNotifications",
+                        "approverNotifications",
+                        "assigneeNotifications"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications:GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications": {
+            "properties": {
+                "additionalRecipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The additional recipients to notify\n"
+                },
+                "defaultRecipients": {
+                    "type": "boolean",
+                    "description": "Whether the default recipients are notified\n"
+                },
+                "notificationLevel": {
+                    "type": "string",
+                    "description": "What level of notifications are sent\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultRecipients",
+                "notificationLevel"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalRecipients",
+                        "defaultRecipients",
+                        "notificationLevel"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications:GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications": {
+            "properties": {
+                "additionalRecipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The additional recipients to notify\n"
+                },
+                "defaultRecipients": {
+                    "type": "boolean",
+                    "description": "Whether the default recipients are notified\n"
+                },
+                "notificationLevel": {
+                    "type": "string",
+                    "description": "What level of notifications are sent\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultRecipients",
+                "notificationLevel"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalRecipients",
+                        "defaultRecipients",
+                        "notificationLevel"
+                    ]
+                }
+            }
+        },
+        "azuread:index/GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications:GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications": {
+            "properties": {
+                "additionalRecipients": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The additional recipients to notify\n"
+                },
+                "defaultRecipients": {
+                    "type": "boolean",
+                    "description": "Whether the default recipients are notified\n"
+                },
+                "notificationLevel": {
+                    "type": "string",
+                    "description": "What level of notifications are sent\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultRecipients",
+                "notificationLevel"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalRecipients",
+                        "defaultRecipients",
+                        "notificationLevel"
+                    ]
+                }
+            }
+        },
         "azuread:index/InvitationMessage:InvitationMessage": {
             "properties": {
                 "additionalRecipients": {
@@ -1436,6 +1970,45 @@
                 }
             },
             "type": "object"
+        },
+        "azuread:index/SynchronizationJobProvisionOnDemandParameter:SynchronizationJobProvisionOnDemandParameter": {
+            "properties": {
+                "ruleId": {
+                    "type": "string",
+                    "description": "The identifier of the synchronization rule to be applied. This rule ID is defined in the schema for a given synchronization job or template.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subjects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/SynchronizationJobProvisionOnDemandParameterSubject:SynchronizationJobProvisionOnDemandParameterSubject"
+                    },
+                    "description": "One or more `subject` blocks as documented below.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "ruleId",
+                "subjects"
+            ]
+        },
+        "azuread:index/SynchronizationJobProvisionOnDemandParameterSubject:SynchronizationJobProvisionOnDemandParameterSubject": {
+            "properties": {
+                "objectId": {
+                    "type": "string",
+                    "description": "The identifier of an object to which a synchronization job is to be applied. Can be one of the following: (1) An onPremisesDistinguishedName for synchronization from Active Directory to Azure AD. (2) The user ID for synchronization from Azure AD to a third-party. (3) The Worker ID of the Workday worker for synchronization from Workday to either Active Directory or Azure AD.\n"
+                },
+                "objectTypeName": {
+                    "type": "string",
+                    "description": "The type of the object to which a synchronization job is to be applied. Can be one of the following: `user` for synchronizing between Active Directory and Azure AD, `User` for synchronizing a user between Azure AD and a third-party application, `Worker` for synchronization a user between Workday and either Active Directory or Azure AD, `Group` for synchronizing a group between Azure AD and a third-party application.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "objectId",
+                "objectTypeName"
+            ]
         },
         "azuread:index/SynchronizationJobSchedule:SynchronizationJobSchedule": {
             "properties": {
@@ -3460,7 +4033,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.\n"
+                    "description": "A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.\n"
                 },
                 "identifierUris": {
                     "type": "array",
@@ -3624,7 +4197,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.\n"
+                    "description": "A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.\n"
                 },
                 "identifierUris": {
                     "type": "array",
@@ -3781,7 +4354,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.\n"
+                        "description": "A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.\n"
                     },
                     "identifierUris": {
                         "type": "array",
@@ -6090,7 +6663,7 @@
             }
         },
         "azuread:index/group:Group": {
-            "description": "Manages a group within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.\n\nAlternatively, if the authenticated service principal is also an owner of the group being managed, this resource can use the application role: `Group.Create`.\n\nIf using the `assignable_to_role` property, this resource additionally requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`\n\nIf specifying owners for a group, which are user principals, this resource additionally requires one of the following application roles: `User.Read.All`, `User.ReadWrite.All`, `Directory.Read.All` or `Directory.ReadWrite.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`\n\nWhen creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.\n\nThe `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.\n\n## Example Usage\n\n*Basic example*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"example\",\n    owners: [current.then(current =\u003e current.objectId)],\n    securityEnabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample = azuread.Group(\"example\",\n    display_name=\"example\",\n    owners=[current.object_id],\n    security_enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"example\",\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n        },\n        SecurityEnabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"example\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: example\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Microsoft 365 group*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst groupOwner = new azuread.User(\"group_owner\", {\n    userPrincipalName: \"example-group-owner@example.com\",\n    displayName: \"Group Owner\",\n    mailNickname: \"example-group-owner\",\n    password: \"SecretP@sswd99!\",\n});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"example\",\n    mailEnabled: true,\n    mailNickname: \"ExampleGroup\",\n    securityEnabled: true,\n    types: [\"Unified\"],\n    owners: [\n        current.then(current =\u003e current.objectId),\n        groupOwner.objectId,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\ngroup_owner = azuread.User(\"group_owner\",\n    user_principal_name=\"example-group-owner@example.com\",\n    display_name=\"Group Owner\",\n    mail_nickname=\"example-group-owner\",\n    password=\"SecretP@sswd99!\")\nexample = azuread.Group(\"example\",\n    display_name=\"example\",\n    mail_enabled=True,\n    mail_nickname=\"ExampleGroup\",\n    security_enabled=True,\n    types=[\"Unified\"],\n    owners=[\n        current.object_id,\n        group_owner.object_id,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var groupOwner = new AzureAD.User(\"group_owner\", new()\n    {\n        UserPrincipalName = \"example-group-owner@example.com\",\n        DisplayName = \"Group Owner\",\n        MailNickname = \"example-group-owner\",\n        Password = \"SecretP@sswd99!\",\n    });\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"example\",\n        MailEnabled = true,\n        MailNickname = \"ExampleGroup\",\n        SecurityEnabled = true,\n        Types = new[]\n        {\n            \"Unified\",\n        },\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n            groupOwner.ObjectId,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgroupOwner, err := azuread.NewUser(ctx, \"group_owner\", \u0026azuread.UserArgs{\n\t\t\tUserPrincipalName: pulumi.String(\"example-group-owner@example.com\"),\n\t\t\tDisplayName:       pulumi.String(\"Group Owner\"),\n\t\t\tMailNickname:      pulumi.String(\"example-group-owner\"),\n\t\t\tPassword:          pulumi.String(\"SecretP@sswd99!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"example\"),\n\t\t\tMailEnabled:     pulumi.Bool(true),\n\t\t\tMailNickname:    pulumi.String(\"ExampleGroup\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t\tTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Unified\"),\n\t\t\t},\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t\tgroupOwner.ObjectId,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.User;\nimport com.pulumi.azuread.UserArgs;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var groupOwner = new User(\"groupOwner\", UserArgs.builder()        \n            .userPrincipalName(\"example-group-owner@example.com\")\n            .displayName(\"Group Owner\")\n            .mailNickname(\"example-group-owner\")\n            .password(\"SecretP@sswd99!\")\n            .build());\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"example\")\n            .mailEnabled(true)\n            .mailNickname(\"ExampleGroup\")\n            .securityEnabled(true)\n            .types(\"Unified\")\n            .owners(            \n                current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()),\n                groupOwner.objectId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  groupOwner:\n    type: azuread:User\n    name: group_owner\n    properties:\n      userPrincipalName: example-group-owner@example.com\n      displayName: Group Owner\n      mailNickname: example-group-owner\n      password: SecretP@sswd99!\n  example:\n    type: azuread:Group\n    properties:\n      displayName: example\n      mailEnabled: true\n      mailNickname: ExampleGroup\n      securityEnabled: true\n      types:\n        - Unified\n      owners:\n        - ${current.objectId}\n        - ${groupOwner.objectId}\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Group with members*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.User;\nimport com.pulumi.azuread.UserArgs;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var example = new User(\"example\", UserArgs.builder()        \n            .displayName(\"J Doe\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .password(\"notSecure123\")\n            .userPrincipalName(\"jdoe@example.com\")\n            .build());\n\n        var exampleGroup = new Group(\"exampleGroup\", GroupArgs.builder()        \n            .displayName(\"MyGroup\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .members(example.objectId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:User\n    properties:\n      displayName: J Doe\n      owners:\n        - ${current.objectId}\n      password: notSecure123\n      userPrincipalName: jdoe@example.com\n  exampleGroup:\n    type: azuread:Group\n    name: example\n    properties:\n      displayName: MyGroup\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\n      members:\n        - ${example.objectId}\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Group with dynamic membership*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"MyGroup\",\n    owners: [current.then(current =\u003e current.objectId)],\n    securityEnabled: true,\n    types: [\"DynamicMembership\"],\n    dynamicMembership: {\n        enabled: true,\n        rule: \"user.department -eq \\\"Sales\\\"\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample = azuread.Group(\"example\",\n    display_name=\"MyGroup\",\n    owners=[current.object_id],\n    security_enabled=True,\n    types=[\"DynamicMembership\"],\n    dynamic_membership=azuread.GroupDynamicMembershipArgs(\n        enabled=True,\n        rule=\"user.department -eq \\\"Sales\\\"\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"MyGroup\",\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n        },\n        SecurityEnabled = true,\n        Types = new[]\n        {\n            \"DynamicMembership\",\n        },\n        DynamicMembership = new AzureAD.Inputs.GroupDynamicMembershipArgs\n        {\n            Enabled = true,\n            Rule = \"user.department -eq \\\"Sales\\\"\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName: pulumi.String(\"MyGroup\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t\tTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"DynamicMembership\"),\n\t\t\t},\n\t\t\tDynamicMembership: \u0026azuread.GroupDynamicMembershipArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tRule:    pulumi.String(\"user.department -eq \\\"Sales\\\"\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.inputs.GroupDynamicMembershipArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"MyGroup\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .types(\"DynamicMembership\")\n            .dynamicMembership(GroupDynamicMembershipArgs.builder()\n                .enabled(true)\n                .rule(\"user.department -eq \\\"Sales\\\"\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: MyGroup\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\n      types:\n        - DynamicMembership\n      dynamicMembership:\n        enabled: true\n        rule: user.department -eq \"Sales\"\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGroups can be imported using their object ID, e.g.\n\n```sh\n$ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000\n```\n\n",
+            "description": "Manages a group within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.\n\nAlternatively, if the authenticated service principal is also an owner of the group being managed, this resource can use the application role: `Group.Create`.\n\nIf using the `assignable_to_role` property, this resource additionally requires the `RoleManagement.ReadWrite.Directory` application role.\n\nIf specifying owners for a group, which are user principals, this resource additionally requires one of the following application roles: `User.Read.All`, `User.ReadWrite.All`, `Directory.Read.All` or `Directory.ReadWrite.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`\n\nWhen creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.\n\nThe `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.\n\n## Example Usage\n\n*Basic example*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"example\",\n    owners: [current.then(current =\u003e current.objectId)],\n    securityEnabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample = azuread.Group(\"example\",\n    display_name=\"example\",\n    owners=[current.object_id],\n    security_enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"example\",\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n        },\n        SecurityEnabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"example\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: example\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Microsoft 365 group*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst groupOwner = new azuread.User(\"group_owner\", {\n    userPrincipalName: \"example-group-owner@example.com\",\n    displayName: \"Group Owner\",\n    mailNickname: \"example-group-owner\",\n    password: \"SecretP@sswd99!\",\n});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"example\",\n    mailEnabled: true,\n    mailNickname: \"ExampleGroup\",\n    securityEnabled: true,\n    types: [\"Unified\"],\n    owners: [\n        current.then(current =\u003e current.objectId),\n        groupOwner.objectId,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\ngroup_owner = azuread.User(\"group_owner\",\n    user_principal_name=\"example-group-owner@example.com\",\n    display_name=\"Group Owner\",\n    mail_nickname=\"example-group-owner\",\n    password=\"SecretP@sswd99!\")\nexample = azuread.Group(\"example\",\n    display_name=\"example\",\n    mail_enabled=True,\n    mail_nickname=\"ExampleGroup\",\n    security_enabled=True,\n    types=[\"Unified\"],\n    owners=[\n        current.object_id,\n        group_owner.object_id,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var groupOwner = new AzureAD.User(\"group_owner\", new()\n    {\n        UserPrincipalName = \"example-group-owner@example.com\",\n        DisplayName = \"Group Owner\",\n        MailNickname = \"example-group-owner\",\n        Password = \"SecretP@sswd99!\",\n    });\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"example\",\n        MailEnabled = true,\n        MailNickname = \"ExampleGroup\",\n        SecurityEnabled = true,\n        Types = new[]\n        {\n            \"Unified\",\n        },\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n            groupOwner.ObjectId,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgroupOwner, err := azuread.NewUser(ctx, \"group_owner\", \u0026azuread.UserArgs{\n\t\t\tUserPrincipalName: pulumi.String(\"example-group-owner@example.com\"),\n\t\t\tDisplayName:       pulumi.String(\"Group Owner\"),\n\t\t\tMailNickname:      pulumi.String(\"example-group-owner\"),\n\t\t\tPassword:          pulumi.String(\"SecretP@sswd99!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"example\"),\n\t\t\tMailEnabled:     pulumi.Bool(true),\n\t\t\tMailNickname:    pulumi.String(\"ExampleGroup\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t\tTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Unified\"),\n\t\t\t},\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t\tgroupOwner.ObjectId,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.User;\nimport com.pulumi.azuread.UserArgs;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var groupOwner = new User(\"groupOwner\", UserArgs.builder()        \n            .userPrincipalName(\"example-group-owner@example.com\")\n            .displayName(\"Group Owner\")\n            .mailNickname(\"example-group-owner\")\n            .password(\"SecretP@sswd99!\")\n            .build());\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"example\")\n            .mailEnabled(true)\n            .mailNickname(\"ExampleGroup\")\n            .securityEnabled(true)\n            .types(\"Unified\")\n            .owners(            \n                current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()),\n                groupOwner.objectId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  groupOwner:\n    type: azuread:User\n    name: group_owner\n    properties:\n      userPrincipalName: example-group-owner@example.com\n      displayName: Group Owner\n      mailNickname: example-group-owner\n      password: SecretP@sswd99!\n  example:\n    type: azuread:Group\n    properties:\n      displayName: example\n      mailEnabled: true\n      mailNickname: ExampleGroup\n      securityEnabled: true\n      types:\n        - Unified\n      owners:\n        - ${current.objectId}\n        - ${groupOwner.objectId}\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Group with members*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.User;\nimport com.pulumi.azuread.UserArgs;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var example = new User(\"example\", UserArgs.builder()        \n            .displayName(\"J Doe\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .password(\"notSecure123\")\n            .userPrincipalName(\"jdoe@example.com\")\n            .build());\n\n        var exampleGroup = new Group(\"exampleGroup\", GroupArgs.builder()        \n            .displayName(\"MyGroup\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .members(example.objectId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:User\n    properties:\n      displayName: J Doe\n      owners:\n        - ${current.objectId}\n      password: notSecure123\n      userPrincipalName: jdoe@example.com\n  exampleGroup:\n    type: azuread:Group\n    name: example\n    properties:\n      displayName: MyGroup\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\n      members:\n        - ${example.objectId}\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Group with dynamic membership*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"MyGroup\",\n    owners: [current.then(current =\u003e current.objectId)],\n    securityEnabled: true,\n    types: [\"DynamicMembership\"],\n    dynamicMembership: {\n        enabled: true,\n        rule: \"user.department -eq \\\"Sales\\\"\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample = azuread.Group(\"example\",\n    display_name=\"MyGroup\",\n    owners=[current.object_id],\n    security_enabled=True,\n    types=[\"DynamicMembership\"],\n    dynamic_membership=azuread.GroupDynamicMembershipArgs(\n        enabled=True,\n        rule=\"user.department -eq \\\"Sales\\\"\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"MyGroup\",\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n        },\n        SecurityEnabled = true,\n        Types = new[]\n        {\n            \"DynamicMembership\",\n        },\n        DynamicMembership = new AzureAD.Inputs.GroupDynamicMembershipArgs\n        {\n            Enabled = true,\n            Rule = \"user.department -eq \\\"Sales\\\"\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName: pulumi.String(\"MyGroup\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t\tTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"DynamicMembership\"),\n\t\t\t},\n\t\t\tDynamicMembership: \u0026azuread.GroupDynamicMembershipArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tRule:    pulumi.String(\"user.department -eq \\\"Sales\\\"\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.inputs.GroupDynamicMembershipArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"MyGroup\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .types(\"DynamicMembership\")\n            .dynamicMembership(GroupDynamicMembershipArgs.builder()\n                .enabled(true)\n                .rule(\"user.department -eq \\\"Sales\\\"\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: MyGroup\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\n      types:\n        - DynamicMembership\n      dynamicMembership:\n        enabled: true\n        rule: user.department -eq \"Sales\"\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nGroups can be imported using their object ID, e.g.\n\n```sh\n$ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000\n```\n\n",
             "properties": {
                 "administrativeUnitIds": {
                     "type": "array",
@@ -6112,7 +6685,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n"
+                    "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SkipExchangeInstantOn`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n"
                 },
                 "description": {
                     "type": "string",
@@ -6281,7 +6854,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n",
+                    "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SkipExchangeInstantOn`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n",
                     "willReplaceOnChanges": true
                 },
                 "description": {
@@ -6399,7 +6972,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n",
+                        "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SkipExchangeInstantOn`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n",
                         "willReplaceOnChanges": true
                     },
                     "description": {
@@ -6581,6 +7154,125 @@
                 "type": "object"
             }
         },
+        "azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy": {
+            "description": "Manage a role policy for an Azure AD group.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the `RoleManagementPolicy.ReadWrite.AzureADGroup` Microsoft Graph API permissions.\n\nWhen authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.User;\nimport com.pulumi.azuread.UserArgs;\nimport com.pulumi.azuread.GroupRoleManagementPolicy;\nimport com.pulumi.azuread.GroupRoleManagementPolicyArgs;\nimport com.pulumi.azuread.inputs.GroupRoleManagementPolicyActiveAssignmentRulesArgs;\nimport com.pulumi.azuread.inputs.GroupRoleManagementPolicyEligibleAssignmentRulesArgs;\nimport com.pulumi.azuread.inputs.GroupRoleManagementPolicyNotificationRulesArgs;\nimport com.pulumi.azuread.inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs;\nimport com.pulumi.azuread.inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"group-name\")\n            .securityEnabled(true)\n            .build());\n\n        var member = new User(\"member\", UserArgs.builder()        \n            .userPrincipalName(\"jdoe@example.com\")\n            .displayName(\"J. Doe\")\n            .mailNickname(\"jdoe\")\n            .password(\"SecretP@sswd99!\")\n            .build());\n\n        var exampleGroupRoleManagementPolicy = new GroupRoleManagementPolicy(\"exampleGroupRoleManagementPolicy\", GroupRoleManagementPolicyArgs.builder()        \n            .groupId(example.id())\n            .assignmentType(\"member\")\n            .activeAssignmentRules(GroupRoleManagementPolicyActiveAssignmentRulesArgs.builder()\n                .expireAfter(\"P365D\")\n                .build())\n            .eligibleAssignmentRules(GroupRoleManagementPolicyEligibleAssignmentRulesArgs.builder()\n                .expirationRequired(false)\n                .build())\n            .notificationRules(GroupRoleManagementPolicyNotificationRulesArgs.builder()\n                .eligibleAssignments(GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs.builder()\n                    .approverNotifications(GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs.builder()\n                        .notificationLevel(\"Critical\")\n                        .defaultRecipients(false)\n                        .additionalRecipients(                        \n                            \"someone@example.com\",\n                            \"someone.else@example.com\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: group-name\n      securityEnabled: true\n  member:\n    type: azuread:User\n    properties:\n      userPrincipalName: jdoe@example.com\n      displayName: J. Doe\n      mailNickname: jdoe\n      password: SecretP@sswd99!\n  exampleGroupRoleManagementPolicy:\n    type: azuread:GroupRoleManagementPolicy\n    name: example\n    properties:\n      groupId: ${example.id}\n      assignmentType: member\n      activeAssignmentRules:\n        expireAfter: P365D\n      eligibleAssignmentRules:\n        expirationRequired: false\n      notificationRules:\n        eligibleAssignments:\n          approverNotifications:\n            notificationLevel: Critical\n            defaultRecipients: false\n            additionalRecipients:\n              - someone@example.com\n              - someone.else@example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nBecause these policies are created automatically by Entra ID, they will auto-import on first use.\n\n",
+            "properties": {
+                "activationRules": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyActivationRules:GroupRoleManagementPolicyActivationRules",
+                    "description": "An `activation_rules` block as defined below.\n"
+                },
+                "activeAssignmentRules": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyActiveAssignmentRules:GroupRoleManagementPolicyActiveAssignmentRules",
+                    "description": "An `active_assignment_rules` block as defined below.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "(String) The description of this policy.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "(String) The display name of this policy.\n"
+                },
+                "eligibleAssignmentRules": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyEligibleAssignmentRules:GroupRoleManagementPolicyEligibleAssignmentRules",
+                    "description": "An `eligible_assignment_rules` block as defined below.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The ID of the Azure AD group for which the policy applies.\n"
+                },
+                "notificationRules": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRules:GroupRoleManagementPolicyNotificationRules",
+                    "description": "A `notification_rules` block as defined below.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The type of assignment this policy coveres. Can be either `member` or `owner`.\n"
+                }
+            },
+            "required": [
+                "activationRules",
+                "activeAssignmentRules",
+                "description",
+                "displayName",
+                "eligibleAssignmentRules",
+                "groupId",
+                "notificationRules",
+                "roleId"
+            ],
+            "inputProperties": {
+                "activationRules": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyActivationRules:GroupRoleManagementPolicyActivationRules",
+                    "description": "An `activation_rules` block as defined below.\n"
+                },
+                "activeAssignmentRules": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyActiveAssignmentRules:GroupRoleManagementPolicyActiveAssignmentRules",
+                    "description": "An `active_assignment_rules` block as defined below.\n"
+                },
+                "eligibleAssignmentRules": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyEligibleAssignmentRules:GroupRoleManagementPolicyEligibleAssignmentRules",
+                    "description": "An `eligible_assignment_rules` block as defined below.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The ID of the Azure AD group for which the policy applies.\n",
+                    "willReplaceOnChanges": true
+                },
+                "notificationRules": {
+                    "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRules:GroupRoleManagementPolicyNotificationRules",
+                    "description": "A `notification_rules` block as defined below.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The type of assignment this policy coveres. Can be either `member` or `owner`.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "groupId",
+                "roleId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupRoleManagementPolicy resources.\n",
+                "properties": {
+                    "activationRules": {
+                        "$ref": "#/types/azuread:index/GroupRoleManagementPolicyActivationRules:GroupRoleManagementPolicyActivationRules",
+                        "description": "An `activation_rules` block as defined below.\n"
+                    },
+                    "activeAssignmentRules": {
+                        "$ref": "#/types/azuread:index/GroupRoleManagementPolicyActiveAssignmentRules:GroupRoleManagementPolicyActiveAssignmentRules",
+                        "description": "An `active_assignment_rules` block as defined below.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "(String) The description of this policy.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "(String) The display name of this policy.\n"
+                    },
+                    "eligibleAssignmentRules": {
+                        "$ref": "#/types/azuread:index/GroupRoleManagementPolicyEligibleAssignmentRules:GroupRoleManagementPolicyEligibleAssignmentRules",
+                        "description": "An `eligible_assignment_rules` block as defined below.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The ID of the Azure AD group for which the policy applies.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "notificationRules": {
+                        "$ref": "#/types/azuread:index/GroupRoleManagementPolicyNotificationRules:GroupRoleManagementPolicyNotificationRules",
+                        "description": "A `notification_rules` block as defined below.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The type of assignment this policy coveres. Can be either `member` or `owner`.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "azuread:index/invitation:Invitation": {
             "description": "Manages an invitation of a guest user within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `User.Invite.All`, `User.ReadWrite.All` or `Directory.ReadWrite.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`\n\n## Example Usage\n\n*Basic example*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Invitation(\"example\", {\n    userEmailAddress: \"jdoe@example.com\",\n    redirectUrl: \"https://portal.azure.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Invitation(\"example\",\n    user_email_address=\"jdoe@example.com\",\n    redirect_url=\"https://portal.azure.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new AzureAD.Invitation(\"example\", new()\n    {\n        UserEmailAddress = \"jdoe@example.com\",\n        RedirectUrl = \"https://portal.azure.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewInvitation(ctx, \"example\", \u0026azuread.InvitationArgs{\n\t\t\tUserEmailAddress: pulumi.String(\"jdoe@example.com\"),\n\t\t\tRedirectUrl:      pulumi.String(\"https://portal.azure.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.Invitation;\nimport com.pulumi.azuread.InvitationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Invitation(\"example\", InvitationArgs.builder()        \n            .userEmailAddress(\"jdoe@example.com\")\n            .redirectUrl(\"https://portal.azure.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Invitation\n    properties:\n      userEmailAddress: jdoe@example.com\n      redirectUrl: https://portal.azure.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Invitation with standard message*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Invitation(\"example\", {\n    userEmailAddress: \"jdoe@example.com\",\n    redirectUrl: \"https://portal.azure.com\",\n    message: {\n        language: \"en-US\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Invitation(\"example\",\n    user_email_address=\"jdoe@example.com\",\n    redirect_url=\"https://portal.azure.com\",\n    message=azuread.InvitationMessageArgs(\n        language=\"en-US\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new AzureAD.Invitation(\"example\", new()\n    {\n        UserEmailAddress = \"jdoe@example.com\",\n        RedirectUrl = \"https://portal.azure.com\",\n        Message = new AzureAD.Inputs.InvitationMessageArgs\n        {\n            Language = \"en-US\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewInvitation(ctx, \"example\", \u0026azuread.InvitationArgs{\n\t\t\tUserEmailAddress: pulumi.String(\"jdoe@example.com\"),\n\t\t\tRedirectUrl:      pulumi.String(\"https://portal.azure.com\"),\n\t\t\tMessage: \u0026azuread.InvitationMessageArgs{\n\t\t\t\tLanguage: pulumi.String(\"en-US\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.Invitation;\nimport com.pulumi.azuread.InvitationArgs;\nimport com.pulumi.azuread.inputs.InvitationMessageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Invitation(\"example\", InvitationArgs.builder()        \n            .userEmailAddress(\"jdoe@example.com\")\n            .redirectUrl(\"https://portal.azure.com\")\n            .message(InvitationMessageArgs.builder()\n                .language(\"en-US\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Invitation\n    properties:\n      userEmailAddress: jdoe@example.com\n      redirectUrl: https://portal.azure.com\n      message:\n        language: en-US\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Invitation with custom message body and an additional recipient*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Invitation(\"example\", {\n    userDisplayName: \"Bob Bobson\",\n    userEmailAddress: \"bbobson@example.com\",\n    redirectUrl: \"https://portal.azure.com\",\n    message: {\n        additionalRecipients: \"aaliceberg@example.com\",\n        body: \"Hello there! You are invited to join my Azure tenant!\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Invitation(\"example\",\n    user_display_name=\"Bob Bobson\",\n    user_email_address=\"bbobson@example.com\",\n    redirect_url=\"https://portal.azure.com\",\n    message=azuread.InvitationMessageArgs(\n        additional_recipients=\"aaliceberg@example.com\",\n        body=\"Hello there! You are invited to join my Azure tenant!\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new AzureAD.Invitation(\"example\", new()\n    {\n        UserDisplayName = \"Bob Bobson\",\n        UserEmailAddress = \"bbobson@example.com\",\n        RedirectUrl = \"https://portal.azure.com\",\n        Message = new AzureAD.Inputs.InvitationMessageArgs\n        {\n            AdditionalRecipients = \"aaliceberg@example.com\",\n            Body = \"Hello there! You are invited to join my Azure tenant!\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewInvitation(ctx, \"example\", \u0026azuread.InvitationArgs{\n\t\t\tUserDisplayName:  pulumi.String(\"Bob Bobson\"),\n\t\t\tUserEmailAddress: pulumi.String(\"bbobson@example.com\"),\n\t\t\tRedirectUrl:      pulumi.String(\"https://portal.azure.com\"),\n\t\t\tMessage: \u0026azuread.InvitationMessageArgs{\n\t\t\t\tAdditionalRecipients: pulumi.String(\"aaliceberg@example.com\"),\n\t\t\t\tBody:                 pulumi.String(\"Hello there! You are invited to join my Azure tenant!\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.Invitation;\nimport com.pulumi.azuread.InvitationArgs;\nimport com.pulumi.azuread.inputs.InvitationMessageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Invitation(\"example\", InvitationArgs.builder()        \n            .userDisplayName(\"Bob Bobson\")\n            .userEmailAddress(\"bbobson@example.com\")\n            .redirectUrl(\"https://portal.azure.com\")\n            .message(InvitationMessageArgs.builder()\n                .additionalRecipients(\"aaliceberg@example.com\")\n                .body(\"Hello there! You are invited to join my Azure tenant!\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Invitation\n    properties:\n      userDisplayName: Bob Bobson\n      userEmailAddress: bbobson@example.com\n      redirectUrl: https://portal.azure.com\n      message:\n        additionalRecipients: aaliceberg@example.com\n        body: Hello there! You are invited to join my Azure tenant!\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource does not support importing.\n\n",
             "properties": {
@@ -6744,6 +7436,328 @@
                         "$ref": "#/types/azuread:index/NamedLocationIp:NamedLocationIp",
                         "description": "An `ip` block as documented below, which configures an IP-based named location.\n\n\u003e Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule": {
+            "description": "Manages an active assignment to a privileged access group.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the `PrivilegedAssignmentSchedule.ReadWrite.AzureADGroup` Microsoft Graph API permissions.\n\nWhen authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Group(\"example\", {\n    displayName: \"group-name\",\n    securityEnabled: true,\n});\nconst member = new azuread.User(\"member\", {\n    userPrincipalName: \"jdoe@example.com\",\n    displayName: \"J. Doe\",\n    mailNickname: \"jdoe\",\n    password: \"SecretP@sswd99!\",\n});\nconst examplePrivilegedAccessGroupAssignmentSchedule = new azuread.PrivilegedAccessGroupAssignmentSchedule(\"example\", {\n    groupId: pim.id,\n    principalId: member.id,\n    assignmentType: \"member\",\n    duration: \"P30D\",\n    justification: \"as requested\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Group(\"example\",\n    display_name=\"group-name\",\n    security_enabled=True)\nmember = azuread.User(\"member\",\n    user_principal_name=\"jdoe@example.com\",\n    display_name=\"J. Doe\",\n    mail_nickname=\"jdoe\",\n    password=\"SecretP@sswd99!\")\nexample_privileged_access_group_assignment_schedule = azuread.PrivilegedAccessGroupAssignmentSchedule(\"example\",\n    group_id=pim[\"id\"],\n    principal_id=member.id,\n    assignment_type=\"member\",\n    duration=\"P30D\",\n    justification=\"as requested\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"group-name\",\n        SecurityEnabled = true,\n    });\n\n    var member = new AzureAD.User(\"member\", new()\n    {\n        UserPrincipalName = \"jdoe@example.com\",\n        DisplayName = \"J. Doe\",\n        MailNickname = \"jdoe\",\n        Password = \"SecretP@sswd99!\",\n    });\n\n    var examplePrivilegedAccessGroupAssignmentSchedule = new AzureAD.PrivilegedAccessGroupAssignmentSchedule(\"example\", new()\n    {\n        GroupId = pim.Id,\n        PrincipalId = member.Id,\n        AssignmentType = \"member\",\n        Duration = \"P30D\",\n        Justification = \"as requested\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"group-name\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmember, err := azuread.NewUser(ctx, \"member\", \u0026azuread.UserArgs{\n\t\t\tUserPrincipalName: pulumi.String(\"jdoe@example.com\"),\n\t\t\tDisplayName:       pulumi.String(\"J. Doe\"),\n\t\t\tMailNickname:      pulumi.String(\"jdoe\"),\n\t\t\tPassword:          pulumi.String(\"SecretP@sswd99!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewPrivilegedAccessGroupAssignmentSchedule(ctx, \"example\", \u0026azuread.PrivilegedAccessGroupAssignmentScheduleArgs{\n\t\t\tGroupId:        pulumi.Any(pim.Id),\n\t\t\tPrincipalId:    member.ID(),\n\t\t\tAssignmentType: pulumi.String(\"member\"),\n\t\t\tDuration:       pulumi.String(\"P30D\"),\n\t\t\tJustification:  pulumi.String(\"as requested\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.User;\nimport com.pulumi.azuread.UserArgs;\nimport com.pulumi.azuread.PrivilegedAccessGroupAssignmentSchedule;\nimport com.pulumi.azuread.PrivilegedAccessGroupAssignmentScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"group-name\")\n            .securityEnabled(true)\n            .build());\n\n        var member = new User(\"member\", UserArgs.builder()        \n            .userPrincipalName(\"jdoe@example.com\")\n            .displayName(\"J. Doe\")\n            .mailNickname(\"jdoe\")\n            .password(\"SecretP@sswd99!\")\n            .build());\n\n        var examplePrivilegedAccessGroupAssignmentSchedule = new PrivilegedAccessGroupAssignmentSchedule(\"examplePrivilegedAccessGroupAssignmentSchedule\", PrivilegedAccessGroupAssignmentScheduleArgs.builder()        \n            .groupId(pim.id())\n            .principalId(member.id())\n            .assignmentType(\"member\")\n            .duration(\"P30D\")\n            .justification(\"as requested\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: group-name\n      securityEnabled: true\n  member:\n    type: azuread:User\n    properties:\n      userPrincipalName: jdoe@example.com\n      displayName: J. Doe\n      mailNickname: jdoe\n      password: SecretP@sswd99!\n  examplePrivilegedAccessGroupAssignmentSchedule:\n    type: azuread:PrivilegedAccessGroupAssignmentSchedule\n    name: example\n    properties:\n      groupId: ${pim.id}\n      principalId: ${member.id}\n      assignmentType: member\n      duration: P30D\n      justification: as requested\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn assignment schedule can be imported using the schedule ID, e.g.\n\n```sh\n$ pulumi import azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule example 00000000-0000-0000-0000-000000000000_member_00000000-0000-0000-0000-000000000000\n```\n\n",
+            "properties": {
+                "assignmentType": {
+                    "type": "string",
+                    "description": "The type of assignment to the group. Can be either `member` or `owner`.\n"
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).\n"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The Object ID of the Azure AD group to which the principal will be assigned.\n"
+                },
+                "justification": {
+                    "type": "string",
+                    "description": "The justification for this assignment. May be required by the role policy.\n"
+                },
+                "permanentAssignment": {
+                    "type": "boolean",
+                    "description": "Is this assigment permanently valid.\n\nAt least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.\n"
+                },
+                "principalId": {
+                    "type": "string",
+                    "description": "The Object ID of the principal to be assigned to the above group. Can be either a user or a group.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "(String) The provisioning status of this request.\n"
+                },
+                "ticketNumber": {
+                    "type": "string",
+                    "description": "The ticket number in the ticket system approving this assignment. May be required by the role policy.\n"
+                },
+                "ticketSystem": {
+                    "type": "string",
+                    "description": "The ticket system containing the ticket number approving this assignment. May be required by the role policy.\n"
+                }
+            },
+            "required": [
+                "assignmentType",
+                "expirationDate",
+                "groupId",
+                "permanentAssignment",
+                "principalId",
+                "startDate",
+                "status"
+            ],
+            "inputProperties": {
+                "assignmentType": {
+                    "type": "string",
+                    "description": "The type of assignment to the group. Can be either `member` or `owner`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).\n"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The Object ID of the Azure AD group to which the principal will be assigned.\n",
+                    "willReplaceOnChanges": true
+                },
+                "justification": {
+                    "type": "string",
+                    "description": "The justification for this assignment. May be required by the role policy.\n"
+                },
+                "permanentAssignment": {
+                    "type": "boolean",
+                    "description": "Is this assigment permanently valid.\n\nAt least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.\n"
+                },
+                "principalId": {
+                    "type": "string",
+                    "description": "The Object ID of the principal to be assigned to the above group. Can be either a user or a group.\n",
+                    "willReplaceOnChanges": true
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.\n"
+                },
+                "ticketNumber": {
+                    "type": "string",
+                    "description": "The ticket number in the ticket system approving this assignment. May be required by the role policy.\n"
+                },
+                "ticketSystem": {
+                    "type": "string",
+                    "description": "The ticket system containing the ticket number approving this assignment. May be required by the role policy.\n"
+                }
+            },
+            "requiredInputs": [
+                "assignmentType",
+                "groupId",
+                "principalId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PrivilegedAccessGroupAssignmentSchedule resources.\n",
+                "properties": {
+                    "assignmentType": {
+                        "type": "string",
+                        "description": "The type of assignment to the group. Can be either `member` or `owner`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "duration": {
+                        "type": "string",
+                        "description": "The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).\n"
+                    },
+                    "expirationDate": {
+                        "type": "string",
+                        "description": "The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The Object ID of the Azure AD group to which the principal will be assigned.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "justification": {
+                        "type": "string",
+                        "description": "The justification for this assignment. May be required by the role policy.\n"
+                    },
+                    "permanentAssignment": {
+                        "type": "boolean",
+                        "description": "Is this assigment permanently valid.\n\nAt least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.\n"
+                    },
+                    "principalId": {
+                        "type": "string",
+                        "description": "The Object ID of the principal to be assigned to the above group. Can be either a user or a group.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "description": "The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "(String) The provisioning status of this request.\n"
+                    },
+                    "ticketNumber": {
+                        "type": "string",
+                        "description": "The ticket number in the ticket system approving this assignment. May be required by the role policy.\n"
+                    },
+                    "ticketSystem": {
+                        "type": "string",
+                        "description": "The ticket system containing the ticket number approving this assignment. May be required by the role policy.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule": {
+            "description": "Manages an eligible assignment to a privileged access group.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the `PrivilegedEligibilitySchedule.ReadWrite.AzureADGroup` Microsoft Graph API permissions.\n\nWhen authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Group(\"example\", {\n    displayName: \"group-name\",\n    securityEnabled: true,\n});\nconst member = new azuread.User(\"member\", {\n    userPrincipalName: \"jdoe@example.com\",\n    displayName: \"J. Doe\",\n    mailNickname: \"jdoe\",\n    password: \"SecretP@sswd99!\",\n});\nconst examplePrivilegedAccessGroupEligibilitySchedule = new azuread.PrivilegedAccessGroupEligibilitySchedule(\"example\", {\n    groupId: pim.id,\n    principalId: member.id,\n    assignmentType: \"member\",\n    duration: \"P30D\",\n    justification: \"as requested\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Group(\"example\",\n    display_name=\"group-name\",\n    security_enabled=True)\nmember = azuread.User(\"member\",\n    user_principal_name=\"jdoe@example.com\",\n    display_name=\"J. Doe\",\n    mail_nickname=\"jdoe\",\n    password=\"SecretP@sswd99!\")\nexample_privileged_access_group_eligibility_schedule = azuread.PrivilegedAccessGroupEligibilitySchedule(\"example\",\n    group_id=pim[\"id\"],\n    principal_id=member.id,\n    assignment_type=\"member\",\n    duration=\"P30D\",\n    justification=\"as requested\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"group-name\",\n        SecurityEnabled = true,\n    });\n\n    var member = new AzureAD.User(\"member\", new()\n    {\n        UserPrincipalName = \"jdoe@example.com\",\n        DisplayName = \"J. Doe\",\n        MailNickname = \"jdoe\",\n        Password = \"SecretP@sswd99!\",\n    });\n\n    var examplePrivilegedAccessGroupEligibilitySchedule = new AzureAD.PrivilegedAccessGroupEligibilitySchedule(\"example\", new()\n    {\n        GroupId = pim.Id,\n        PrincipalId = member.Id,\n        AssignmentType = \"member\",\n        Duration = \"P30D\",\n        Justification = \"as requested\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"group-name\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmember, err := azuread.NewUser(ctx, \"member\", \u0026azuread.UserArgs{\n\t\t\tUserPrincipalName: pulumi.String(\"jdoe@example.com\"),\n\t\t\tDisplayName:       pulumi.String(\"J. Doe\"),\n\t\t\tMailNickname:      pulumi.String(\"jdoe\"),\n\t\t\tPassword:          pulumi.String(\"SecretP@sswd99!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewPrivilegedAccessGroupEligibilitySchedule(ctx, \"example\", \u0026azuread.PrivilegedAccessGroupEligibilityScheduleArgs{\n\t\t\tGroupId:        pulumi.Any(pim.Id),\n\t\t\tPrincipalId:    member.ID(),\n\t\t\tAssignmentType: pulumi.String(\"member\"),\n\t\t\tDuration:       pulumi.String(\"P30D\"),\n\t\t\tJustification:  pulumi.String(\"as requested\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.User;\nimport com.pulumi.azuread.UserArgs;\nimport com.pulumi.azuread.PrivilegedAccessGroupEligibilitySchedule;\nimport com.pulumi.azuread.PrivilegedAccessGroupEligibilityScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"group-name\")\n            .securityEnabled(true)\n            .build());\n\n        var member = new User(\"member\", UserArgs.builder()        \n            .userPrincipalName(\"jdoe@example.com\")\n            .displayName(\"J. Doe\")\n            .mailNickname(\"jdoe\")\n            .password(\"SecretP@sswd99!\")\n            .build());\n\n        var examplePrivilegedAccessGroupEligibilitySchedule = new PrivilegedAccessGroupEligibilitySchedule(\"examplePrivilegedAccessGroupEligibilitySchedule\", PrivilegedAccessGroupEligibilityScheduleArgs.builder()        \n            .groupId(pim.id())\n            .principalId(member.id())\n            .assignmentType(\"member\")\n            .duration(\"P30D\")\n            .justification(\"as requested\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: group-name\n      securityEnabled: true\n  member:\n    type: azuread:User\n    properties:\n      userPrincipalName: jdoe@example.com\n      displayName: J. Doe\n      mailNickname: jdoe\n      password: SecretP@sswd99!\n  examplePrivilegedAccessGroupEligibilitySchedule:\n    type: azuread:PrivilegedAccessGroupEligibilitySchedule\n    name: example\n    properties:\n      groupId: ${pim.id}\n      principalId: ${member.id}\n      assignmentType: member\n      duration: P30D\n      justification: as requested\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn assignment schedule can be imported using the schedule ID, e.g.\n\n```sh\n$ pulumi import azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule example 00000000-0000-0000-0000-000000000000_member_00000000-0000-0000-0000-000000000000\n```\n\n",
+            "properties": {
+                "assignmentType": {
+                    "type": "string",
+                    "description": "The type of assignment to the group. Can be either `member` or `owner`.\n"
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).\n"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The Object ID of the Azure AD group to which the principal will be assigned.\n"
+                },
+                "justification": {
+                    "type": "string",
+                    "description": "The justification for this assignment. May be required by the role policy.\n"
+                },
+                "permanentAssignment": {
+                    "type": "boolean",
+                    "description": "Is this assigment permanently valid.\n\nAt least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.\n"
+                },
+                "principalId": {
+                    "type": "string",
+                    "description": "The Object ID of the principal to be assigned to the above group. Can be either a user or a group.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "(String) The provisioning status of this request.\n"
+                },
+                "ticketNumber": {
+                    "type": "string",
+                    "description": "The ticket number in the ticket system approving this assignment. May be required by the role policy.\n"
+                },
+                "ticketSystem": {
+                    "type": "string",
+                    "description": "The ticket system containing the ticket number approving this assignment. May be required by the role policy.\n"
+                }
+            },
+            "required": [
+                "assignmentType",
+                "expirationDate",
+                "groupId",
+                "permanentAssignment",
+                "principalId",
+                "startDate",
+                "status"
+            ],
+            "inputProperties": {
+                "assignmentType": {
+                    "type": "string",
+                    "description": "The type of assignment to the group. Can be either `member` or `owner`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).\n"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The Object ID of the Azure AD group to which the principal will be assigned.\n",
+                    "willReplaceOnChanges": true
+                },
+                "justification": {
+                    "type": "string",
+                    "description": "The justification for this assignment. May be required by the role policy.\n"
+                },
+                "permanentAssignment": {
+                    "type": "boolean",
+                    "description": "Is this assigment permanently valid.\n\nAt least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.\n"
+                },
+                "principalId": {
+                    "type": "string",
+                    "description": "The Object ID of the principal to be assigned to the above group. Can be either a user or a group.\n",
+                    "willReplaceOnChanges": true
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.\n"
+                },
+                "ticketNumber": {
+                    "type": "string",
+                    "description": "The ticket number in the ticket system approving this assignment. May be required by the role policy.\n"
+                },
+                "ticketSystem": {
+                    "type": "string",
+                    "description": "The ticket system containing the ticket number approving this assignment. May be required by the role policy.\n"
+                }
+            },
+            "requiredInputs": [
+                "assignmentType",
+                "groupId",
+                "principalId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PrivilegedAccessGroupEligibilitySchedule resources.\n",
+                "properties": {
+                    "assignmentType": {
+                        "type": "string",
+                        "description": "The type of assignment to the group. Can be either `member` or `owner`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "duration": {
+                        "type": "string",
+                        "description": "The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).\n"
+                    },
+                    "expirationDate": {
+                        "type": "string",
+                        "description": "The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The Object ID of the Azure AD group to which the principal will be assigned.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "justification": {
+                        "type": "string",
+                        "description": "The justification for this assignment. May be required by the role policy.\n"
+                    },
+                    "permanentAssignment": {
+                        "type": "boolean",
+                        "description": "Is this assigment permanently valid.\n\nAt least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.\n"
+                    },
+                    "principalId": {
+                        "type": "string",
+                        "description": "The Object ID of the principal to be assigned to the above group. Can be either a user or a group.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "description": "The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "(String) The provisioning status of this request.\n"
+                    },
+                    "ticketNumber": {
+                        "type": "string",
+                        "description": "The ticket number in the ticket system approving this assignment. May be required by the role policy.\n"
+                    },
+                    "ticketSystem": {
+                        "type": "string",
+                        "description": "The ticket system containing the ticket number approving this assignment. May be required by the role policy.\n"
                     }
                 },
                 "type": "object"
@@ -7767,6 +8781,100 @@
                     "templateId": {
                         "type": "string",
                         "description": "Identifier of the synchronization template this job is based on.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand": {
+            "description": "Manages synchronization job on demand provisioning associated with a service principal (enterprise application) within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `Synchronization.ReadWrite.All`\n\n## Example Usage\n\n*Basic example*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst exampleGroup = new azuread.Group(\"example\", {\n    displayName: \"example\",\n    owners: [current.then(current =\u003e current.objectId)],\n    securityEnabled: true,\n});\nconst example = azuread.getApplicationTemplate({\n    displayName: \"Azure Databricks SCIM Provisioning Connector\",\n});\nconst exampleApplication = new azuread.Application(\"example\", {\n    displayName: \"example\",\n    templateId: example.then(example =\u003e example.templateId),\n    featureTags: [{\n        enterprise: true,\n        gallery: true,\n    }],\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"example\", {\n    clientId: exampleApplication.clientId,\n    useExisting: true,\n});\nconst exampleSynchronizationSecret = new azuread.SynchronizationSecret(\"example\", {\n    servicePrincipalId: exampleServicePrincipal.id,\n    credentials: [\n        {\n            key: \"BaseAddress\",\n            value: \"https://adb-example.azuredatabricks.net/api/2.0/preview/scim\",\n        },\n        {\n            key: \"SecretToken\",\n            value: \"some-token\",\n        },\n    ],\n});\nconst exampleSynchronizationJob = new azuread.SynchronizationJob(\"example\", {\n    servicePrincipalId: exampleServicePrincipal.id,\n    templateId: \"dataBricks\",\n    enabled: true,\n});\nconst exampleSynchronizationJobProvisionOnDemand = new azuread.SynchronizationJobProvisionOnDemand(\"example\", {\n    servicePrincipalId: exampleServicePrincipal.id,\n    synchronizationJobId: exampleSynchronizationJob.id,\n    parameters: [{\n        ruleId: \"\",\n        subjects: [{\n            objectId: exampleGroup.objectId,\n            objectTypeName: \"Group\",\n        }],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample_group = azuread.Group(\"example\",\n    display_name=\"example\",\n    owners=[current.object_id],\n    security_enabled=True)\nexample = azuread.get_application_template(display_name=\"Azure Databricks SCIM Provisioning Connector\")\nexample_application = azuread.Application(\"example\",\n    display_name=\"example\",\n    template_id=example.template_id,\n    feature_tags=[azuread.ApplicationFeatureTagArgs(\n        enterprise=True,\n        gallery=True,\n    )])\nexample_service_principal = azuread.ServicePrincipal(\"example\",\n    client_id=example_application.client_id,\n    use_existing=True)\nexample_synchronization_secret = azuread.SynchronizationSecret(\"example\",\n    service_principal_id=example_service_principal.id,\n    credentials=[\n        azuread.SynchronizationSecretCredentialArgs(\n            key=\"BaseAddress\",\n            value=\"https://adb-example.azuredatabricks.net/api/2.0/preview/scim\",\n        ),\n        azuread.SynchronizationSecretCredentialArgs(\n            key=\"SecretToken\",\n            value=\"some-token\",\n        ),\n    ])\nexample_synchronization_job = azuread.SynchronizationJob(\"example\",\n    service_principal_id=example_service_principal.id,\n    template_id=\"dataBricks\",\n    enabled=True)\nexample_synchronization_job_provision_on_demand = azuread.SynchronizationJobProvisionOnDemand(\"example\",\n    service_principal_id=example_service_principal.id,\n    synchronization_job_id=example_synchronization_job.id,\n    parameters=[azuread.SynchronizationJobProvisionOnDemandParameterArgs(\n        rule_id=\"\",\n        subjects=[azuread.SynchronizationJobProvisionOnDemandParameterSubjectArgs(\n            object_id=example_group.object_id,\n            object_type_name=\"Group\",\n        )],\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var exampleGroup = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"example\",\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n        },\n        SecurityEnabled = true,\n    });\n\n    var example = AzureAD.GetApplicationTemplate.Invoke(new()\n    {\n        DisplayName = \"Azure Databricks SCIM Provisioning Connector\",\n    });\n\n    var exampleApplication = new AzureAD.Application(\"example\", new()\n    {\n        DisplayName = \"example\",\n        TemplateId = example.Apply(getApplicationTemplateResult =\u003e getApplicationTemplateResult.TemplateId),\n        FeatureTags = new[]\n        {\n            new AzureAD.Inputs.ApplicationFeatureTagArgs\n            {\n                Enterprise = true,\n                Gallery = true,\n            },\n        },\n    });\n\n    var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"example\", new()\n    {\n        ClientId = exampleApplication.ClientId,\n        UseExisting = true,\n    });\n\n    var exampleSynchronizationSecret = new AzureAD.SynchronizationSecret(\"example\", new()\n    {\n        ServicePrincipalId = exampleServicePrincipal.Id,\n        Credentials = new[]\n        {\n            new AzureAD.Inputs.SynchronizationSecretCredentialArgs\n            {\n                Key = \"BaseAddress\",\n                Value = \"https://adb-example.azuredatabricks.net/api/2.0/preview/scim\",\n            },\n            new AzureAD.Inputs.SynchronizationSecretCredentialArgs\n            {\n                Key = \"SecretToken\",\n                Value = \"some-token\",\n            },\n        },\n    });\n\n    var exampleSynchronizationJob = new AzureAD.SynchronizationJob(\"example\", new()\n    {\n        ServicePrincipalId = exampleServicePrincipal.Id,\n        TemplateId = \"dataBricks\",\n        Enabled = true,\n    });\n\n    var exampleSynchronizationJobProvisionOnDemand = new AzureAD.SynchronizationJobProvisionOnDemand(\"example\", new()\n    {\n        ServicePrincipalId = exampleServicePrincipal.Id,\n        SynchronizationJobId = exampleSynchronizationJob.Id,\n        Parameters = new[]\n        {\n            new AzureAD.Inputs.SynchronizationJobProvisionOnDemandParameterArgs\n            {\n                RuleId = \"\",\n                Subjects = new[]\n                {\n                    new AzureAD.Inputs.SynchronizationJobProvisionOnDemandParameterSubjectArgs\n                    {\n                        ObjectId = exampleGroup.ObjectId,\n                        ObjectTypeName = \"Group\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleGroup, err := azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texample, err := azuread.GetApplicationTemplate(ctx, \u0026azuread.GetApplicationTemplateArgs{\n\t\t\tDisplayName: pulumi.StringRef(\"Azure Databricks SCIM Provisioning Connector\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"example\", \u0026azuread.ApplicationArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tTemplateId:  pulumi.String(example.TemplateId),\n\t\t\tFeatureTags: azuread.ApplicationFeatureTagArray{\n\t\t\t\t\u0026azuread.ApplicationFeatureTagArgs{\n\t\t\t\t\tEnterprise: pulumi.Bool(true),\n\t\t\t\t\tGallery:    pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, \"example\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tClientId:    exampleApplication.ClientId,\n\t\t\tUseExisting: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewSynchronizationSecret(ctx, \"example\", \u0026azuread.SynchronizationSecretArgs{\n\t\t\tServicePrincipalId: exampleServicePrincipal.ID(),\n\t\t\tCredentials: azuread.SynchronizationSecretCredentialArray{\n\t\t\t\t\u0026azuread.SynchronizationSecretCredentialArgs{\n\t\t\t\t\tKey:   pulumi.String(\"BaseAddress\"),\n\t\t\t\t\tValue: pulumi.String(\"https://adb-example.azuredatabricks.net/api/2.0/preview/scim\"),\n\t\t\t\t},\n\t\t\t\t\u0026azuread.SynchronizationSecretCredentialArgs{\n\t\t\t\t\tKey:   pulumi.String(\"SecretToken\"),\n\t\t\t\t\tValue: pulumi.String(\"some-token\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleSynchronizationJob, err := azuread.NewSynchronizationJob(ctx, \"example\", \u0026azuread.SynchronizationJobArgs{\n\t\t\tServicePrincipalId: exampleServicePrincipal.ID(),\n\t\t\tTemplateId:         pulumi.String(\"dataBricks\"),\n\t\t\tEnabled:            pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewSynchronizationJobProvisionOnDemand(ctx, \"example\", \u0026azuread.SynchronizationJobProvisionOnDemandArgs{\n\t\t\tServicePrincipalId:   exampleServicePrincipal.ID(),\n\t\t\tSynchronizationJobId: exampleSynchronizationJob.ID(),\n\t\t\tParameters: azuread.SynchronizationJobProvisionOnDemandParameterArray{\n\t\t\t\t\u0026azuread.SynchronizationJobProvisionOnDemandParameterArgs{\n\t\t\t\t\tRuleId: pulumi.String(\"\"),\n\t\t\t\t\tSubjects: azuread.SynchronizationJobProvisionOnDemandParameterSubjectArray{\n\t\t\t\t\t\t\u0026azuread.SynchronizationJobProvisionOnDemandParameterSubjectArgs{\n\t\t\t\t\t\t\tObjectId:       exampleGroup.ObjectId,\n\t\t\t\t\t\t\tObjectTypeName: pulumi.String(\"Group\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.inputs.GetApplicationTemplateArgs;\nimport com.pulumi.azuread.Application;\nimport com.pulumi.azuread.ApplicationArgs;\nimport com.pulumi.azuread.inputs.ApplicationFeatureTagArgs;\nimport com.pulumi.azuread.ServicePrincipal;\nimport com.pulumi.azuread.ServicePrincipalArgs;\nimport com.pulumi.azuread.SynchronizationSecret;\nimport com.pulumi.azuread.SynchronizationSecretArgs;\nimport com.pulumi.azuread.inputs.SynchronizationSecretCredentialArgs;\nimport com.pulumi.azuread.SynchronizationJob;\nimport com.pulumi.azuread.SynchronizationJobArgs;\nimport com.pulumi.azuread.SynchronizationJobProvisionOnDemand;\nimport com.pulumi.azuread.SynchronizationJobProvisionOnDemandArgs;\nimport com.pulumi.azuread.inputs.SynchronizationJobProvisionOnDemandParameterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var exampleGroup = new Group(\"exampleGroup\", GroupArgs.builder()        \n            .displayName(\"example\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .build());\n\n        final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()\n            .displayName(\"Azure Databricks SCIM Provisioning Connector\")\n            .build());\n\n        var exampleApplication = new Application(\"exampleApplication\", ApplicationArgs.builder()        \n            .displayName(\"example\")\n            .templateId(example.applyValue(getApplicationTemplateResult -\u003e getApplicationTemplateResult.templateId()))\n            .featureTags(ApplicationFeatureTagArgs.builder()\n                .enterprise(true)\n                .gallery(true)\n                .build())\n            .build());\n\n        var exampleServicePrincipal = new ServicePrincipal(\"exampleServicePrincipal\", ServicePrincipalArgs.builder()        \n            .clientId(exampleApplication.clientId())\n            .useExisting(true)\n            .build());\n\n        var exampleSynchronizationSecret = new SynchronizationSecret(\"exampleSynchronizationSecret\", SynchronizationSecretArgs.builder()        \n            .servicePrincipalId(exampleServicePrincipal.id())\n            .credentials(            \n                SynchronizationSecretCredentialArgs.builder()\n                    .key(\"BaseAddress\")\n                    .value(\"https://adb-example.azuredatabricks.net/api/2.0/preview/scim\")\n                    .build(),\n                SynchronizationSecretCredentialArgs.builder()\n                    .key(\"SecretToken\")\n                    .value(\"some-token\")\n                    .build())\n            .build());\n\n        var exampleSynchronizationJob = new SynchronizationJob(\"exampleSynchronizationJob\", SynchronizationJobArgs.builder()        \n            .servicePrincipalId(exampleServicePrincipal.id())\n            .templateId(\"dataBricks\")\n            .enabled(true)\n            .build());\n\n        var exampleSynchronizationJobProvisionOnDemand = new SynchronizationJobProvisionOnDemand(\"exampleSynchronizationJobProvisionOnDemand\", SynchronizationJobProvisionOnDemandArgs.builder()        \n            .servicePrincipalId(exampleServicePrincipal.id())\n            .synchronizationJobId(exampleSynchronizationJob.id())\n            .parameters(SynchronizationJobProvisionOnDemandParameterArgs.builder()\n                .ruleId(\"\")\n                .subjects(SynchronizationJobProvisionOnDemandParameterSubjectArgs.builder()\n                    .objectId(exampleGroup.objectId())\n                    .objectTypeName(\"Group\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleGroup:\n    type: azuread:Group\n    name: example\n    properties:\n      displayName: example\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\n  exampleApplication:\n    type: azuread:Application\n    name: example\n    properties:\n      displayName: example\n      templateId: ${example.templateId}\n      featureTags:\n        - enterprise: true\n          gallery: true\n  exampleServicePrincipal:\n    type: azuread:ServicePrincipal\n    name: example\n    properties:\n      clientId: ${exampleApplication.clientId}\n      useExisting: true\n  exampleSynchronizationSecret:\n    type: azuread:SynchronizationSecret\n    name: example\n    properties:\n      servicePrincipalId: ${exampleServicePrincipal.id}\n      credentials:\n        - key: BaseAddress\n          value: https://adb-example.azuredatabricks.net/api/2.0/preview/scim\n        - key: SecretToken\n          value: some-token\n  exampleSynchronizationJob:\n    type: azuread:SynchronizationJob\n    name: example\n    properties:\n      servicePrincipalId: ${exampleServicePrincipal.id}\n      templateId: dataBricks\n      enabled: true\n  exampleSynchronizationJobProvisionOnDemand:\n    type: azuread:SynchronizationJobProvisionOnDemand\n    name: example\n    properties:\n      servicePrincipalId: ${exampleServicePrincipal.id}\n      synchronizationJobId: ${exampleSynchronizationJob.id}\n      parameters:\n        - ruleId:\n          subjects:\n            - objectId: ${exampleGroup.objectId}\n              objectTypeName: Group\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n  example:\n    fn::invoke:\n      Function: azuread:getApplicationTemplate\n      Arguments:\n        displayName: Azure Databricks SCIM Provisioning Connector\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource does not support importing.\n\n",
+            "properties": {
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/SynchronizationJobProvisionOnDemandParameter:SynchronizationJobProvisionOnDemandParameter"
+                    },
+                    "description": "One or more `parameter` blocks as documented below.\n"
+                },
+                "servicePrincipalId": {
+                    "type": "string",
+                    "description": "The object ID of the service principal for the synchronization job.\n"
+                },
+                "synchronizationJobId": {
+                    "type": "string",
+                    "description": "Identifier of the synchronization template this job is based on.\n"
+                },
+                "triggers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "parameters",
+                "servicePrincipalId",
+                "synchronizationJobId"
+            ],
+            "inputProperties": {
+                "parameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/SynchronizationJobProvisionOnDemandParameter:SynchronizationJobProvisionOnDemandParameter"
+                    },
+                    "description": "One or more `parameter` blocks as documented below.\n",
+                    "willReplaceOnChanges": true
+                },
+                "servicePrincipalId": {
+                    "type": "string",
+                    "description": "The object ID of the service principal for the synchronization job.\n",
+                    "willReplaceOnChanges": true
+                },
+                "synchronizationJobId": {
+                    "type": "string",
+                    "description": "Identifier of the synchronization template this job is based on.\n",
+                    "willReplaceOnChanges": true
+                },
+                "triggers": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "parameters",
+                "servicePrincipalId",
+                "synchronizationJobId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SynchronizationJobProvisionOnDemand resources.\n",
+                "properties": {
+                    "parameters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:index/SynchronizationJobProvisionOnDemandParameter:SynchronizationJobProvisionOnDemandParameter"
+                        },
+                        "description": "One or more `parameter` blocks as documented below.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "servicePrincipalId": {
+                        "type": "string",
+                        "description": "The object ID of the service principal for the synchronization job.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "synchronizationJobId": {
+                        "type": "string",
+                        "description": "Identifier of the synchronization template this job is based on.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "triggers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
                         "willReplaceOnChanges": true
                     }
                 },
@@ -9284,6 +10392,10 @@
                         "type": "string",
                         "description": "The display name for the group.\n"
                     },
+                    "includeTransitiveMembers": {
+                        "type": "boolean",
+                        "description": "Whether to include transitive members (a flat list of all nested members). Defaults to `false`.\n"
+                    },
                     "mailEnabled": {
                         "type": "boolean",
                         "description": "Whether the group is mail-enabled.\n"
@@ -9352,6 +10464,9 @@
                         "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
                     },
+                    "includeTransitiveMembers": {
+                        "type": "boolean"
+                    },
                     "mail": {
                         "description": "The SMTP address for the group.\n",
                         "type": "string"
@@ -9365,7 +10480,7 @@
                         "type": "string"
                     },
                     "members": {
-                        "description": "List of object IDs of the group members.\n",
+                        "description": "List of object IDs of the group members. When `include_transitive_members` is `true`, contains a list of object IDs of all transitive group members.\n",
                         "items": {
                             "type": "string"
                         },
@@ -9478,6 +10593,60 @@
                     "types",
                     "visibility",
                     "writebackEnabled",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy": {
+            "description": "Use this data source to retrieve a role policy for an Azure AD group.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the `RoleManagementPolicy.Read.AzureADGroup` Microsoft Graph API permissions.\n\nWhen authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Group(\"example\", {\n    displayName: \"group-name\",\n    securityEnabled: true,\n});\nconst ownersPolicy = azuread.getGroupRoleManagementPolicyOutput({\n    groupId: example.id,\n    roleId: \"owner\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Group(\"example\",\n    display_name=\"group-name\",\n    security_enabled=True)\nowners_policy = azuread.get_group_role_management_policy_output(group_id=example.id,\n    role_id=\"owner\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"group-name\",\n        SecurityEnabled = true,\n    });\n\n    var ownersPolicy = AzureAD.GetGroupRoleManagementPolicy.Invoke(new()\n    {\n        GroupId = example.Id,\n        RoleId = \"owner\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"group-name\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_ = azuread.LookupGroupRoleManagementPolicyOutput(ctx, azuread.GetGroupRoleManagementPolicyOutputArgs{\n\t\t\tGroupId: example.ID(),\n\t\t\tRoleId:  pulumi.String(\"owner\"),\n\t\t}, nil)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"group-name\")\n            .securityEnabled(true)\n            .build());\n\n        final var ownersPolicy = AzureadFunctions.getGroupRoleManagementPolicy(GetGroupRoleManagementPolicyArgs.builder()\n            .groupId(example.id())\n            .roleId(\"owner\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: group-name\n      securityEnabled: true\nvariables:\n  ownersPolicy:\n    fn::invoke:\n      Function: azuread:getGroupRoleManagementPolicy\n      Arguments:\n        groupId: ${example.id}\n        roleId: owner\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroupRoleManagementPolicy.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "The ID of the Azure AD group for which the policy applies.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The type of assignment this policy coveres. Can be either `member` or `owner`.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "groupId",
+                    "roleId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroupRoleManagementPolicy.\n",
+                "properties": {
+                    "description": {
+                        "description": "(String) The description of this policy.\n",
+                        "type": "string"
+                    },
+                    "displayName": {
+                        "description": "(String) The display name of this policy.\n",
+                        "type": "string"
+                    },
+                    "groupId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "roleId": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "description",
+                    "displayName",
+                    "groupId",
+                    "roleId",
                     "id"
                 ],
                 "type": "object"
@@ -9835,7 +11004,7 @@
             }
         },
         "azuread:index/getServicePrincipals:getServicePrincipals": {
-            "description": "Gets basic information for multiple Azure Active Directory service principals.\n\n## API Permissions\n\nThe following API permissions are required in order to use this data source.\n\nWhen authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`\n\nWhen authenticated with a user principal, this data source does not require any additional roles.\n\n## Example Usage\n\n*Look up by application display names*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getServicePrincipals({\n    displayNames: [\n        \"example-app\",\n        \"another-app\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principals(display_names=[\n    \"example-app\",\n    \"another-app\",\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetServicePrincipals.Invoke(new()\n    {\n        DisplayNames = new[]\n        {\n            \"example-app\",\n            \"another-app\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetServicePrincipals(ctx, \u0026azuread.GetServicePrincipalsArgs{\n\t\t\tDisplayNames: []string{\n\t\t\t\t\"example-app\",\n\t\t\t\t\"another-app\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetServicePrincipalsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()\n            .displayNames(            \n                \"example-app\",\n                \"another-app\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getServicePrincipals\n      Arguments:\n        displayNames:\n          - example-app\n          - another-app\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Look up by application IDs (client IDs*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getServicePrincipals({\n    clientIds: [\n        \"11111111-0000-0000-0000-000000000000\",\n        \"22222222-0000-0000-0000-000000000000\",\n        \"33333333-0000-0000-0000-000000000000\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principals(client_ids=[\n    \"11111111-0000-0000-0000-000000000000\",\n    \"22222222-0000-0000-0000-000000000000\",\n    \"33333333-0000-0000-0000-000000000000\",\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetServicePrincipals.Invoke(new()\n    {\n        ClientIds = new[]\n        {\n            \"11111111-0000-0000-0000-000000000000\",\n            \"22222222-0000-0000-0000-000000000000\",\n            \"33333333-0000-0000-0000-000000000000\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetServicePrincipals(ctx, \u0026azuread.GetServicePrincipalsArgs{\n\t\t\tClientIds: []string{\n\t\t\t\t\"11111111-0000-0000-0000-000000000000\",\n\t\t\t\t\"22222222-0000-0000-0000-000000000000\",\n\t\t\t\t\"33333333-0000-0000-0000-000000000000\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetServicePrincipalsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()\n            .clientIds(            \n                \"11111111-0000-0000-0000-000000000000\",\n                \"22222222-0000-0000-0000-000000000000\",\n                \"33333333-0000-0000-0000-000000000000\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getServicePrincipals\n      Arguments:\n        clientIds:\n          - 11111111-0000-0000-0000-000000000000\n          - 22222222-0000-0000-0000-000000000000\n          - 33333333-0000-0000-0000-000000000000\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Look up by service principal object IDs*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getServicePrincipals({\n    objectIds: [\n        \"00000000-0000-0000-0000-000000000000\",\n        \"00000000-0000-0000-0000-111111111111\",\n        \"00000000-0000-0000-0000-222222222222\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principals(object_ids=[\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-111111111111\",\n    \"00000000-0000-0000-0000-222222222222\",\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetServicePrincipals.Invoke(new()\n    {\n        ObjectIds = new[]\n        {\n            \"00000000-0000-0000-0000-000000000000\",\n            \"00000000-0000-0000-0000-111111111111\",\n            \"00000000-0000-0000-0000-222222222222\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetServicePrincipals(ctx, \u0026azuread.GetServicePrincipalsArgs{\n\t\t\tObjectIds: []string{\n\t\t\t\t\"00000000-0000-0000-0000-000000000000\",\n\t\t\t\t\"00000000-0000-0000-0000-111111111111\",\n\t\t\t\t\"00000000-0000-0000-0000-222222222222\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetServicePrincipalsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()\n            .objectIds(            \n                \"00000000-0000-0000-0000-000000000000\",\n                \"00000000-0000-0000-0000-111111111111\",\n                \"00000000-0000-0000-0000-222222222222\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getServicePrincipals\n      Arguments:\n        objectIds:\n          - 00000000-0000-0000-0000-000000000000\n          - 00000000-0000-0000-0000-111111111111\n          - 00000000-0000-0000-0000-222222222222\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Gets basic information for multiple Azure Active Directory service principals.\n\n## API Permissions\n\nThe following API permissions are required in order to use this data source.\n\nWhen authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`\n\nWhen authenticated with a user principal, this data source does not require any additional roles.\n\n## Example Usage\n\n*Look up by application display names*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getServicePrincipals({\n    displayNames: [\n        \"example-app\",\n        \"another-app\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principals(display_names=[\n    \"example-app\",\n    \"another-app\",\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetServicePrincipals.Invoke(new()\n    {\n        DisplayNames = new[]\n        {\n            \"example-app\",\n            \"another-app\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetServicePrincipals(ctx, \u0026azuread.GetServicePrincipalsArgs{\n\t\t\tDisplayNames: []string{\n\t\t\t\t\"example-app\",\n\t\t\t\t\"another-app\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetServicePrincipalsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()\n            .displayNames(            \n                \"example-app\",\n                \"another-app\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getServicePrincipals\n      Arguments:\n        displayNames:\n          - example-app\n          - another-app\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Look up by application IDs (client IDs)*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getServicePrincipals({\n    clientIds: [\n        \"11111111-0000-0000-0000-000000000000\",\n        \"22222222-0000-0000-0000-000000000000\",\n        \"33333333-0000-0000-0000-000000000000\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principals(client_ids=[\n    \"11111111-0000-0000-0000-000000000000\",\n    \"22222222-0000-0000-0000-000000000000\",\n    \"33333333-0000-0000-0000-000000000000\",\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetServicePrincipals.Invoke(new()\n    {\n        ClientIds = new[]\n        {\n            \"11111111-0000-0000-0000-000000000000\",\n            \"22222222-0000-0000-0000-000000000000\",\n            \"33333333-0000-0000-0000-000000000000\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetServicePrincipals(ctx, \u0026azuread.GetServicePrincipalsArgs{\n\t\t\tClientIds: []string{\n\t\t\t\t\"11111111-0000-0000-0000-000000000000\",\n\t\t\t\t\"22222222-0000-0000-0000-000000000000\",\n\t\t\t\t\"33333333-0000-0000-0000-000000000000\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetServicePrincipalsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()\n            .clientIds(            \n                \"11111111-0000-0000-0000-000000000000\",\n                \"22222222-0000-0000-0000-000000000000\",\n                \"33333333-0000-0000-0000-000000000000\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getServicePrincipals\n      Arguments:\n        clientIds:\n          - 11111111-0000-0000-0000-000000000000\n          - 22222222-0000-0000-0000-000000000000\n          - 33333333-0000-0000-0000-000000000000\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n*Look up by service principal object IDs*\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getServicePrincipals({\n    objectIds: [\n        \"00000000-0000-0000-0000-000000000000\",\n        \"00000000-0000-0000-0000-111111111111\",\n        \"00000000-0000-0000-0000-222222222222\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principals(object_ids=[\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-111111111111\",\n    \"00000000-0000-0000-0000-222222222222\",\n])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetServicePrincipals.Invoke(new()\n    {\n        ObjectIds = new[]\n        {\n            \"00000000-0000-0000-0000-000000000000\",\n            \"00000000-0000-0000-0000-111111111111\",\n            \"00000000-0000-0000-0000-222222222222\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetServicePrincipals(ctx, \u0026azuread.GetServicePrincipalsArgs{\n\t\t\tObjectIds: []string{\n\t\t\t\t\"00000000-0000-0000-0000-000000000000\",\n\t\t\t\t\"00000000-0000-0000-0000-111111111111\",\n\t\t\t\t\"00000000-0000-0000-0000-222222222222\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetServicePrincipalsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()\n            .objectIds(            \n                \"00000000-0000-0000-0000-000000000000\",\n                \"00000000-0000-0000-0000-111111111111\",\n                \"00000000-0000-0000-0000-222222222222\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getServicePrincipals\n      Arguments:\n        objectIds:\n          - 00000000-0000-0000-0000-000000000000\n          - 00000000-0000-0000-0000-111111111111\n          - 00000000-0000-0000-0000-222222222222\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getServicePrincipals.\n",
                 "properties": {

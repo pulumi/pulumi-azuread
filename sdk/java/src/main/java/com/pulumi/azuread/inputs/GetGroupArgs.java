@@ -32,6 +32,21 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+     * 
+     */
+    @Import(name="includeTransitiveMembers")
+    private @Nullable Output<Boolean> includeTransitiveMembers;
+
+    /**
+     * @return Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> includeTransitiveMembers() {
+        return Optional.ofNullable(this.includeTransitiveMembers);
+    }
+
+    /**
      * Whether the group is mail-enabled.
      * 
      */
@@ -99,6 +114,7 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetGroupArgs(GetGroupArgs $) {
         this.displayName = $.displayName;
+        this.includeTransitiveMembers = $.includeTransitiveMembers;
         this.mailEnabled = $.mailEnabled;
         this.mailNickname = $.mailNickname;
         this.objectId = $.objectId;
@@ -142,6 +158,27 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param includeTransitiveMembers Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTransitiveMembers(@Nullable Output<Boolean> includeTransitiveMembers) {
+            $.includeTransitiveMembers = includeTransitiveMembers;
+            return this;
+        }
+
+        /**
+         * @param includeTransitiveMembers Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeTransitiveMembers(Boolean includeTransitiveMembers) {
+            return includeTransitiveMembers(Output.of(includeTransitiveMembers));
         }
 
         /**

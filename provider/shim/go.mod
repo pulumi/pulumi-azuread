@@ -4,7 +4,7 @@ go 1.21.3
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20240411223630-0d6e12c0f7b7
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20240509203949-3503c4ecac1d
 )
 
 require (
@@ -38,7 +38,7 @@ require (
 	github.com/hashicorp/terraform-registry-address v0.2.2 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/yamux v0.1.1 // indirect
-	github.com/manicminer/hamilton v0.66.0 // indirect
+	github.com/manicminer/hamilton v0.67.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.19 // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
