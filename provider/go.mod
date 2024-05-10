@@ -134,7 +134,7 @@ require (
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.5.1 // indirect
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20240411223630-0d6e12c0f7b7 // indirect
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20240509203949-3503c4ecac1d // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/vault/api v1.8.2 // indirect
@@ -151,7 +151,7 @@ require (
 	github.com/klauspost/compress v1.15.11 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
-	github.com/manicminer/hamilton v0.66.0 // indirect
+	github.com/manicminer/hamilton v0.67.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-localereader v0.0.1 // indirect

@@ -598,6 +598,152 @@
             "azuread_group_member": {
                 "current": "azuread:index/groupMember:GroupMember"
             },
+            "azuread_group_role_management_policy": {
+                "current": "azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy",
+                "fields": {
+                    "activation_rules": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "approval_stage": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "primary_approver": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "active_assignment_rules": {
+                        "maxItemsOne": true
+                    },
+                    "eligible_assignment_rules": {
+                        "maxItemsOne": true
+                    },
+                    "notification_rules": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "active_assignments": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "admin_notifications": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "additional_recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "approver_notifications": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "additional_recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "assignee_notifications": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "additional_recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "eligible_activations": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "admin_notifications": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "additional_recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "approver_notifications": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "additional_recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "assignee_notifications": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "additional_recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "eligible_assignments": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "admin_notifications": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "additional_recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "approver_notifications": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "additional_recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "assignee_notifications": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "additional_recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "azuread_invitation": {
                 "current": "azuread:index/invitation:Invitation",
                 "fields": {
@@ -637,6 +783,12 @@
                         }
                     }
                 }
+            },
+            "azuread_privileged_access_group_assignment_schedule": {
+                "current": "azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule"
+            },
+            "azuread_privileged_access_group_eligibility_schedule": {
+                "current": "azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule"
             },
             "azuread_service_principal": {
                 "current": "azuread:index/servicePrincipal:ServicePrincipal",
@@ -708,6 +860,21 @@
                 "fields": {
                     "schedule": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "azuread_synchronization_job_provision_on_demand": {
+                "current": "azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand",
+                "fields": {
+                    "parameter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "subject": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -972,6 +1139,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "azuread_group_role_management_policy": {
+                "current": "azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy"
             },
             "azuread_groups": {
                 "current": "azuread:index/getGroups:getGroups",
