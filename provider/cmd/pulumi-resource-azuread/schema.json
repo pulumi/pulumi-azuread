@@ -2450,8 +2450,7 @@
                 "description": "The path to a file containing the application password to use when authenticating as a Service Principal using a Client\nSecret\n"
             },
             "disableTerraformPartnerId": {
-                "type": "boolean",
-                "description": "Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified\n"
+                "type": "boolean"
             },
             "environment": {
                 "type": "string",
@@ -2539,8 +2538,7 @@
                 "description": "The path to a file containing the application password to use when authenticating as a Service Principal using a Client\nSecret\n"
             },
             "disableTerraformPartnerId": {
-                "type": "boolean",
-                "description": "Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified\n"
+                "type": "boolean"
             },
             "environment": {
                 "type": "string",
