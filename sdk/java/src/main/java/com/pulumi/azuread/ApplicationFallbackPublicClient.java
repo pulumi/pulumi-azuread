@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,18 +43,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationFallbackPublicClient = new ApplicationFallbackPublicClient(&#34;exampleApplicationFallbackPublicClient&#34;, ApplicationFallbackPublicClientArgs.builder()        
+ *         var exampleApplicationFallbackPublicClient = new ApplicationFallbackPublicClient("exampleApplicationFallbackPublicClient", ApplicationFallbackPublicClientArgs.builder()        
  *             .applicationId(example.id())
  *             .enabled(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

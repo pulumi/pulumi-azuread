@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,22 +42,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var client = new ApplicationRegistration(&#34;client&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example client&#34;)
+ *         var client = new ApplicationRegistration("client", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example client")
  *             .build());
  * 
- *         var exampleApplicationKnownClients = new ApplicationKnownClients(&#34;exampleApplicationKnownClients&#34;, ApplicationKnownClientsArgs.builder()        
+ *         var exampleApplicationKnownClients = new ApplicationKnownClients("exampleApplicationKnownClients", ApplicationKnownClientsArgs.builder()        
  *             .applicationId(example.id())
  *             .knownClientIds(client.clientId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

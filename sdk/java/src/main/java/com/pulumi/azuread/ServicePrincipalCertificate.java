@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * *Using a PEM certificate*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,32 +47,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleServicePrincipalCertificate = new ServicePrincipalCertificate(&#34;exampleServicePrincipalCertificate&#34;, ServicePrincipalCertificateArgs.builder()        
+ *         var exampleServicePrincipalCertificate = new ServicePrincipalCertificate("exampleServicePrincipalCertificate", ServicePrincipalCertificateArgs.builder()        
  *             .servicePrincipalId(exampleServicePrincipal.id())
- *             .type(&#34;AsymmetricX509Cert&#34;)
+ *             .type("AsymmetricX509Cert")
  *             .value(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;cert.pem&#34;)
+ *                 .input("cert.pem")
  *                 .build()).result())
- *             .endDate(&#34;2021-05-01T01:02:03Z&#34;)
+ *             .endDate("2021-05-01T01:02:03Z")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Using a DER certificate*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,29 +99,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleServicePrincipalCertificate = new ServicePrincipalCertificate(&#34;exampleServicePrincipalCertificate&#34;, ServicePrincipalCertificateArgs.builder()        
+ *         var exampleServicePrincipalCertificate = new ServicePrincipalCertificate("exampleServicePrincipalCertificate", ServicePrincipalCertificateArgs.builder()        
  *             .servicePrincipalId(exampleServicePrincipal.id())
- *             .type(&#34;AsymmetricX509Cert&#34;)
- *             .encoding(&#34;base64&#34;)
+ *             .type("AsymmetricX509Cert")
+ *             .encoding("base64")
  *             .value(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;cert.der&#34;)
+ *                     .input("cert.der")
  *                     .build()).result())
  *                 .build()).result())
- *             .endDate(&#34;2021-05-01T01:02:03Z&#34;)
+ *             .endDate("2021-05-01T01:02:03Z")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

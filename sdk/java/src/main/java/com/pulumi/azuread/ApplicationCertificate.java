@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * *Using a PEM certificate*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,28 +45,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationCertificate = new ApplicationCertificate(&#34;exampleApplicationCertificate&#34;, ApplicationCertificateArgs.builder()        
+ *         var exampleApplicationCertificate = new ApplicationCertificate("exampleApplicationCertificate", ApplicationCertificateArgs.builder()        
  *             .applicationId(example.id())
- *             .type(&#34;AsymmetricX509Cert&#34;)
+ *             .type("AsymmetricX509Cert")
  *             .value(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;cert.pem&#34;)
+ *                 .input("cert.pem")
  *                 .build()).result())
- *             .endDate(&#34;2021-05-01T01:02:03Z&#34;)
+ *             .endDate("2021-05-01T01:02:03Z")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Using a DER certificate*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -88,31 +91,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationCertificate = new ApplicationCertificate(&#34;exampleApplicationCertificate&#34;, ApplicationCertificateArgs.builder()        
+ *         var exampleApplicationCertificate = new ApplicationCertificate("exampleApplicationCertificate", ApplicationCertificateArgs.builder()        
  *             .applicationId(example.id())
- *             .type(&#34;AsymmetricX509Cert&#34;)
- *             .encoding(&#34;base64&#34;)
+ *             .type("AsymmetricX509Cert")
+ *             .encoding("base64")
  *             .value(StdFunctions.base64encode(Base64encodeArgs.builder()
  *                 .input(StdFunctions.file(FileArgs.builder()
- *                     .input(&#34;cert.der&#34;)
+ *                     .input("cert.der")
  *                     .build()).result())
  *                 .build()).result())
- *             .endDate(&#34;2021-05-01T01:02:03Z&#34;)
+ *             .endDate("2021-05-01T01:02:03Z")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Using a certificate from Azure Key Vault
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -143,64 +148,65 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var example = new Certificate(&#34;example&#34;, CertificateArgs.builder()        
- *             .name(&#34;generated-cert&#34;)
+ *         var example = new Certificate("example", CertificateArgs.builder()        
+ *             .name("generated-cert")
  *             .keyVaultId(exampleAzurermKeyVault.id())
  *             .certificatePolicy(CertificateCertificatePolicyArgs.builder()
  *                 .issuerParameters(CertificateCertificatePolicyIssuerParametersArgs.builder()
- *                     .name(&#34;Self&#34;)
+ *                     .name("Self")
  *                     .build())
  *                 .keyProperties(CertificateCertificatePolicyKeyPropertiesArgs.builder()
  *                     .exportable(true)
  *                     .keySize(2048)
- *                     .keyType(&#34;RSA&#34;)
+ *                     .keyType("RSA")
  *                     .reuseKey(true)
  *                     .build())
  *                 .lifetimeActions(CertificateCertificatePolicyLifetimeActionArgs.builder()
  *                     .action(CertificateCertificatePolicyLifetimeActionActionArgs.builder()
- *                         .actionType(&#34;AutoRenew&#34;)
+ *                         .actionType("AutoRenew")
  *                         .build())
  *                     .trigger(CertificateCertificatePolicyLifetimeActionTriggerArgs.builder()
  *                         .daysBeforeExpiry(30)
  *                         .build())
  *                     .build())
  *                 .secretProperties(CertificateCertificatePolicySecretPropertiesArgs.builder()
- *                     .contentType(&#34;application/x-pkcs12&#34;)
+ *                     .contentType("application/x-pkcs12")
  *                     .build())
  *                 .x509CertificateProperties(CertificateCertificatePolicyX509CertificatePropertiesArgs.builder()
- *                     .extendedKeyUsages(&#34;1.3.6.1.5.5.7.3.2&#34;)
+ *                     .extendedKeyUsages("1.3.6.1.5.5.7.3.2")
  *                     .keyUsages(                    
- *                         &#34;dataEncipherment&#34;,
- *                         &#34;digitalSignature&#34;,
- *                         &#34;keyCertSign&#34;,
- *                         &#34;keyEncipherment&#34;)
+ *                         "dataEncipherment",
+ *                         "digitalSignature",
+ *                         "keyCertSign",
+ *                         "keyEncipherment")
  *                     .subjectAlternativeNames(CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs.builder()
  *                         .dnsNames(                        
- *                             &#34;internal.contoso.com&#34;,
- *                             &#34;domain.hello.world&#34;)
+ *                             "internal.contoso.com",
+ *                             "domain.hello.world")
  *                         .build())
- *                     .subject(String.format(&#34;CN=%s&#34;, exampleApplication.name()))
+ *                     .subject(String.format("CN=%s", exampleApplication.name()))
  *                     .validityInMonths(12)
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var exampleApplicationCertificate = new ApplicationCertificate(&#34;exampleApplicationCertificate&#34;, ApplicationCertificateArgs.builder()        
+ *         var exampleApplicationCertificate = new ApplicationCertificate("exampleApplicationCertificate", ApplicationCertificateArgs.builder()        
  *             .applicationId(exampleApplication.id())
- *             .type(&#34;AsymmetricX509Cert&#34;)
- *             .encoding(&#34;hex&#34;)
+ *             .type("AsymmetricX509Cert")
+ *             .encoding("hex")
  *             .value(example.certificateData())
- *             .endDate(example.certificateAttributes().applyValue(certificateAttributes -&gt; certificateAttributes[0].expires()))
- *             .startDate(example.certificateAttributes().applyValue(certificateAttributes -&gt; certificateAttributes[0].notBefore()))
+ *             .endDate(example.certificateAttributes().applyValue(certificateAttributes -> certificateAttributes[0].expires()))
+ *             .startDate(example.certificateAttributes().applyValue(certificateAttributes -> certificateAttributes[0].notBefore()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

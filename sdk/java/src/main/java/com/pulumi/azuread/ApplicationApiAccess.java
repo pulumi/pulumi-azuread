@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,25 +48,26 @@ import javax.annotation.Nullable;
  *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
  *         final var msgraph = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
- *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+ *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
  *             .build());
  * 
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleMsgraph = new ApplicationApiAccess(&#34;exampleMsgraph&#34;, ApplicationApiAccessArgs.builder()        
+ *         var exampleMsgraph = new ApplicationApiAccess("exampleMsgraph", ApplicationApiAccessArgs.builder()        
  *             .applicationId(example.id())
- *             .apiClientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+ *             .apiClientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
  *             .roleIds(            
- *                 msgraph.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.appRoleIds().Group.Read.All()),
- *                 msgraph.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.appRoleIds().User.Read.All()))
- *             .scopeIds(msgraph.applyValue(getServicePrincipalResult -&gt; getServicePrincipalResult.oauth2PermissionScopeIds().User.ReadWrite()))
+ *                 msgraph.applyValue(getServicePrincipalResult -> getServicePrincipalResult.appRoleIds().Group.Read.All()),
+ *                 msgraph.applyValue(getServicePrincipalResult -> getServicePrincipalResult.appRoleIds().User.Read.All()))
+ *             .scopeIds(msgraph.applyValue(getServicePrincipalResult -> getServicePrincipalResult.oauth2PermissionScopeIds().User.ReadWrite()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; **Tip** For managing permissions for an additional API, create another instance of this resource
@@ -73,7 +75,8 @@ import javax.annotation.Nullable;
  * *Usage with azuread.Application resource*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,17 +99,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationApiAccess = new ApplicationApiAccess(&#34;exampleApplicationApiAccess&#34;, ApplicationApiAccessArgs.builder()        
+ *         var exampleApplicationApiAccess = new ApplicationApiAccess("exampleApplicationApiAccess", ApplicationApiAccessArgs.builder()        
  *             .applicationId(example.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

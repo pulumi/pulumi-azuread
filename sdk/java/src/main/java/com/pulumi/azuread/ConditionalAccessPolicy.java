@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ### All users except guests or external users
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,58 +66,60 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ConditionalAccessPolicy(&#34;example&#34;, ConditionalAccessPolicyArgs.builder()        
- *             .displayName(&#34;example policy&#34;)
- *             .state(&#34;disabled&#34;)
+ *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()        
+ *             .displayName("example policy")
+ *             .state("disabled")
  *             .conditions(ConditionalAccessPolicyConditionsArgs.builder()
- *                 .clientAppTypes(&#34;all&#34;)
- *                 .signInRiskLevels(&#34;medium&#34;)
- *                 .userRiskLevels(&#34;medium&#34;)
+ *                 .clientAppTypes("all")
+ *                 .signInRiskLevels("medium")
+ *                 .userRiskLevels("medium")
  *                 .applications(ConditionalAccessPolicyConditionsApplicationsArgs.builder()
- *                     .includedApplications(&#34;All&#34;)
+ *                     .includedApplications("All")
  *                     .excludedApplications()
  *                     .build())
  *                 .devices(ConditionalAccessPolicyConditionsDevicesArgs.builder()
  *                     .filter(ConditionalAccessPolicyConditionsDevicesFilterArgs.builder()
- *                         .mode(&#34;exclude&#34;)
- *                         .rule(&#34;device.operatingSystem eq \&#34;Doors\&#34;&#34;)
+ *                         .mode("exclude")
+ *                         .rule("device.operatingSystem eq \"Doors\"")
  *                         .build())
  *                     .build())
  *                 .locations(ConditionalAccessPolicyConditionsLocationsArgs.builder()
- *                     .includedLocations(&#34;All&#34;)
- *                     .excludedLocations(&#34;AllTrusted&#34;)
+ *                     .includedLocations("All")
+ *                     .excludedLocations("AllTrusted")
  *                     .build())
  *                 .platforms(ConditionalAccessPolicyConditionsPlatformsArgs.builder()
- *                     .includedPlatforms(&#34;android&#34;)
- *                     .excludedPlatforms(&#34;iOS&#34;)
+ *                     .includedPlatforms("android")
+ *                     .excludedPlatforms("iOS")
  *                     .build())
  *                 .users(ConditionalAccessPolicyConditionsUsersArgs.builder()
- *                     .includedUsers(&#34;All&#34;)
- *                     .excludedUsers(&#34;GuestsOrExternalUsers&#34;)
+ *                     .includedUsers("All")
+ *                     .excludedUsers("GuestsOrExternalUsers")
  *                     .build())
  *                 .build())
  *             .grantControls(ConditionalAccessPolicyGrantControlsArgs.builder()
- *                 .operator(&#34;OR&#34;)
- *                 .builtInControls(&#34;mfa&#34;)
+ *                 .operator("OR")
+ *                 .builtInControls("mfa")
  *                 .build())
  *             .sessionControls(ConditionalAccessPolicySessionControlsArgs.builder()
  *                 .applicationEnforcedRestrictionsEnabled(true)
  *                 .disableResilienceDefaults(false)
  *                 .signInFrequency(10)
- *                 .signInFrequencyPeriod(&#34;hours&#34;)
- *                 .cloudAppSecurityPolicy(&#34;monitorOnly&#34;)
+ *                 .signInFrequencyPeriod("hours")
+ *                 .cloudAppSecurityPolicy("monitorOnly")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Included client applications / service principals
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -145,37 +148,39 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new ConditionalAccessPolicy(&#34;example&#34;, ConditionalAccessPolicyArgs.builder()        
- *             .displayName(&#34;example policy&#34;)
- *             .state(&#34;disabled&#34;)
+ *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()        
+ *             .displayName("example policy")
+ *             .state("disabled")
  *             .conditions(ConditionalAccessPolicyConditionsArgs.builder()
- *                 .clientAppTypes(&#34;all&#34;)
+ *                 .clientAppTypes("all")
  *                 .applications(ConditionalAccessPolicyConditionsApplicationsArgs.builder()
- *                     .includedApplications(&#34;All&#34;)
+ *                     .includedApplications("All")
  *                     .build())
  *                 .clientApplications(ConditionalAccessPolicyConditionsClientApplicationsArgs.builder()
- *                     .includedServicePrincipals(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *                     .includedServicePrincipals(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *                     .excludedServicePrincipals()
  *                     .build())
  *                 .users(ConditionalAccessPolicyConditionsUsersArgs.builder()
- *                     .includedUsers(&#34;None&#34;)
+ *                     .includedUsers("None")
  *                     .build())
  *                 .build())
  *             .grantControls(ConditionalAccessPolicyGrantControlsArgs.builder()
- *                 .operator(&#34;OR&#34;)
- *                 .builtInControls(&#34;block&#34;)
+ *                 .operator("OR")
+ *                 .builtInControls("block")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Excluded client applications / service principals
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -204,31 +209,32 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new ConditionalAccessPolicy(&#34;example&#34;, ConditionalAccessPolicyArgs.builder()        
- *             .displayName(&#34;example policy&#34;)
- *             .state(&#34;disabled&#34;)
+ *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()        
+ *             .displayName("example policy")
+ *             .state("disabled")
  *             .conditions(ConditionalAccessPolicyConditionsArgs.builder()
- *                 .clientAppTypes(&#34;all&#34;)
+ *                 .clientAppTypes("all")
  *                 .applications(ConditionalAccessPolicyConditionsApplicationsArgs.builder()
- *                     .includedApplications(&#34;All&#34;)
+ *                     .includedApplications("All")
  *                     .build())
  *                 .clientApplications(ConditionalAccessPolicyConditionsClientApplicationsArgs.builder()
- *                     .includedServicePrincipals(&#34;ServicePrincipalsInMyTenant&#34;)
- *                     .excludedServicePrincipals(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *                     .includedServicePrincipals("ServicePrincipalsInMyTenant")
+ *                     .excludedServicePrincipals(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *                     .build())
  *                 .users(ConditionalAccessPolicyConditionsUsersArgs.builder()
- *                     .includedUsers(&#34;None&#34;)
+ *                     .includedUsers("None")
  *                     .build())
  *                 .build())
  *             .grantControls(ConditionalAccessPolicyGrantControlsArgs.builder()
- *                 .operator(&#34;OR&#34;)
- *                 .builtInControls(&#34;block&#34;)
+ *                 .operator("OR")
+ *                 .builtInControls("block")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

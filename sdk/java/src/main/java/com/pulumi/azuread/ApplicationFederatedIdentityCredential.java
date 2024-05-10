@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,22 +43,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationFederatedIdentityCredential = new ApplicationFederatedIdentityCredential(&#34;exampleApplicationFederatedIdentityCredential&#34;, ApplicationFederatedIdentityCredentialArgs.builder()        
+ *         var exampleApplicationFederatedIdentityCredential = new ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", ApplicationFederatedIdentityCredentialArgs.builder()        
  *             .applicationId(example.id())
- *             .displayName(&#34;my-repo-deploy&#34;)
- *             .description(&#34;Deployments for my-repo&#34;)
- *             .audiences(&#34;api://AzureADTokenExchange&#34;)
- *             .issuer(&#34;https://token.actions.githubusercontent.com&#34;)
- *             .subject(&#34;repo:my-organization/my-repo:environment:prod&#34;)
+ *             .displayName("my-repo-deploy")
+ *             .description("Deployments for my-repo")
+ *             .audiences("api://AzureADTokenExchange")
+ *             .issuer("https://token.actions.githubusercontent.com")
+ *             .subject("repo:my-organization/my-repo:environment:prod")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * *Basic example*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,20 +53,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Invitation(&#34;example&#34;, InvitationArgs.builder()        
- *             .userEmailAddress(&#34;jdoe@example.com&#34;)
- *             .redirectUrl(&#34;https://portal.azure.com&#34;)
+ *         var example = new Invitation("example", InvitationArgs.builder()        
+ *             .userEmailAddress("jdoe{@literal @}example.com")
+ *             .redirectUrl("https://portal.azure.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Invitation with standard message*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -87,23 +90,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Invitation(&#34;example&#34;, InvitationArgs.builder()        
- *             .userEmailAddress(&#34;jdoe@example.com&#34;)
- *             .redirectUrl(&#34;https://portal.azure.com&#34;)
+ *         var example = new Invitation("example", InvitationArgs.builder()        
+ *             .userEmailAddress("jdoe{@literal @}example.com")
+ *             .redirectUrl("https://portal.azure.com")
  *             .message(InvitationMessageArgs.builder()
- *                 .language(&#34;en-US&#34;)
+ *                 .language("en-US")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Invitation with custom message body and an additional recipient*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -125,19 +130,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Invitation(&#34;example&#34;, InvitationArgs.builder()        
- *             .userDisplayName(&#34;Bob Bobson&#34;)
- *             .userEmailAddress(&#34;bbobson@example.com&#34;)
- *             .redirectUrl(&#34;https://portal.azure.com&#34;)
+ *         var example = new Invitation("example", InvitationArgs.builder()        
+ *             .userDisplayName("Bob Bobson")
+ *             .userEmailAddress("bbobson{@literal @}example.com")
+ *             .redirectUrl("https://portal.azure.com")
  *             .message(InvitationMessageArgs.builder()
- *                 .additionalRecipients(&#34;aaliceberg@example.com&#34;)
- *                 .body(&#34;Hello there! You are invited to join my Azure tenant!&#34;)
+ *                 .additionalRecipients("aaliceberg{@literal @}example.com")
+ *                 .body("Hello there! You are invited to join my Azure tenant!")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

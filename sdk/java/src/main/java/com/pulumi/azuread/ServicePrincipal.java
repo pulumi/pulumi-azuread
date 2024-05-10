@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * *Create a service principal for an application*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,26 +55,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
- *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
+ *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .clientId(example.clientId())
  *             .appRoleAssignmentRequired(false)
- *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Create a service principal for an enterprise application*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,15 +103,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
- *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
+ *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .clientId(example.clientId())
  *             .appRoleAssignmentRequired(false)
- *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *             .featureTags(ServicePrincipalFeatureTagArgs.builder()
  *                 .enterprise(true)
  *                 .gallery(true)
@@ -117,13 +120,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Manage a service principal for a first-party Microsoft application*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -147,20 +152,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
- *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
- *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+ *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *             .useExisting(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Create a service principal for an application created from a gallery template*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -186,22 +193,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
- *             .displayName(&#34;Marketo&#34;)
+ *             .displayName("Marketo")
  *             .build());
  * 
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
- *             .templateId(example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
+ *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()        
+ *             .displayName("example")
+ *             .templateId(example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()))
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .clientId(exampleApplication.clientId())
  *             .useExisting(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

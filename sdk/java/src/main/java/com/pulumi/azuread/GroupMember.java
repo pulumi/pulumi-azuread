@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,22 +58,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
+ *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
- *             .displayName(&#34;my_group&#34;)
+ *         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()        
+ *             .displayName("my_group")
  *             .securityEnabled(true)
  *             .build());
  * 
- *         var exampleGroupMember = new GroupMember(&#34;exampleGroupMember&#34;, GroupMemberArgs.builder()        
+ *         var exampleGroupMember = new GroupMember("exampleGroupMember", GroupMemberArgs.builder()        
  *             .groupObjectId(exampleGroup.id())
- *             .memberObjectId(example.applyValue(getUserResult -&gt; getUserResult.id()))
+ *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

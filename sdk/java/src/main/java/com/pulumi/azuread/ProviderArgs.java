@@ -129,17 +129,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clientSecretFilePath);
     }
 
-    /**
-     * Disable the Terraform Partner ID, which is used if a custom `partner_id` isn&#39;t specified
-     * 
-     */
     @Import(name="disableTerraformPartnerId", json=true)
     private @Nullable Output<Boolean> disableTerraformPartnerId;
 
-    /**
-     * @return Disable the Terraform Partner ID, which is used if a custom `partner_id` isn&#39;t specified
-     * 
-     */
     public Optional<Output<Boolean>> disableTerraformPartnerId() {
         return Optional.ofNullable(this.disableTerraformPartnerId);
     }
@@ -544,23 +536,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return clientSecretFilePath(Output.of(clientSecretFilePath));
         }
 
-        /**
-         * @param disableTerraformPartnerId Disable the Terraform Partner ID, which is used if a custom `partner_id` isn&#39;t specified
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableTerraformPartnerId(@Nullable Output<Boolean> disableTerraformPartnerId) {
             $.disableTerraformPartnerId = disableTerraformPartnerId;
             return this;
         }
 
-        /**
-         * @param disableTerraformPartnerId Disable the Terraform Partner ID, which is used if a custom `partner_id` isn&#39;t specified
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableTerraformPartnerId(Boolean disableTerraformPartnerId) {
             return disableTerraformPartnerId(Output.of(disableTerraformPartnerId));
         }

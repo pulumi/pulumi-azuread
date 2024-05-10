@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,21 +57,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
+ *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleAdministrativeUnit = new AdministrativeUnit(&#34;exampleAdministrativeUnit&#34;, AdministrativeUnitArgs.builder()        
- *             .displayName(&#34;Example-AU&#34;)
+ *         var exampleAdministrativeUnit = new AdministrativeUnit("exampleAdministrativeUnit", AdministrativeUnitArgs.builder()        
+ *             .displayName("Example-AU")
  *             .build());
  * 
- *         var exampleAdministrativeUnitMember = new AdministrativeUnitMember(&#34;exampleAdministrativeUnitMember&#34;, AdministrativeUnitMemberArgs.builder()        
+ *         var exampleAdministrativeUnitMember = new AdministrativeUnitMember("exampleAdministrativeUnitMember", AdministrativeUnitMemberArgs.builder()        
  *             .administrativeUnitObjectId(exampleAdministrativeUnit.id())
- *             .memberObjectId(example.applyValue(getUserResult -&gt; getUserResult.id()))
+ *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

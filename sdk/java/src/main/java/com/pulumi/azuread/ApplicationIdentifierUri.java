@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,18 +41,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationIdentifierUri = new ApplicationIdentifierUri(&#34;exampleApplicationIdentifierUri&#34;, ApplicationIdentifierUriArgs.builder()        
+ *         var exampleApplicationIdentifierUri = new ApplicationIdentifierUri("exampleApplicationIdentifierUri", ApplicationIdentifierUriArgs.builder()        
  *             .applicationId(example.id())
- *             .identifierUri(&#34;https://app.hashitown.com&#34;)
+ *             .identifierUri("https://app.hashitown.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; **Tip** For managing multiple identifier URIs for the same application, create another instance of this resource
@@ -59,7 +61,8 @@ import javax.annotation.Nullable;
  * *Usage with azuread.Application resource*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -82,17 +85,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationIdentifierUri = new ApplicationIdentifierUri(&#34;exampleApplicationIdentifierUri&#34;, ApplicationIdentifierUriArgs.builder()        
+ *         var exampleApplicationIdentifierUri = new ApplicationIdentifierUri("exampleApplicationIdentifierUri", ApplicationIdentifierUriArgs.builder()        
  *             .applicationId(example.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

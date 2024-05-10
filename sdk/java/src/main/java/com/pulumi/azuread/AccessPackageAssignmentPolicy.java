@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,29 +68,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
- *             .displayName(&#34;group-name&#34;)
+ *         var example = new Group("example", GroupArgs.builder()        
+ *             .displayName("group-name")
  *             .securityEnabled(true)
  *             .build());
  * 
- *         var exampleAccessPackageCatalog = new AccessPackageCatalog(&#34;exampleAccessPackageCatalog&#34;, AccessPackageCatalogArgs.builder()        
- *             .displayName(&#34;example-catalog&#34;)
- *             .description(&#34;Example catalog&#34;)
+ *         var exampleAccessPackageCatalog = new AccessPackageCatalog("exampleAccessPackageCatalog", AccessPackageCatalogArgs.builder()        
+ *             .displayName("example-catalog")
+ *             .description("Example catalog")
  *             .build());
  * 
- *         var exampleAccessPackage = new AccessPackage(&#34;exampleAccessPackage&#34;, AccessPackageArgs.builder()        
+ *         var exampleAccessPackage = new AccessPackage("exampleAccessPackage", AccessPackageArgs.builder()        
  *             .catalogId(exampleAccessPackageCatalog.id())
- *             .displayName(&#34;access-package&#34;)
- *             .description(&#34;Access Package&#34;)
+ *             .displayName("access-package")
+ *             .description("Access Package")
  *             .build());
  * 
- *         var exampleAccessPackageAssignmentPolicy = new AccessPackageAssignmentPolicy(&#34;exampleAccessPackageAssignmentPolicy&#34;, AccessPackageAssignmentPolicyArgs.builder()        
+ *         var exampleAccessPackageAssignmentPolicy = new AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy", AccessPackageAssignmentPolicyArgs.builder()        
  *             .accessPackageId(exampleAccessPackage.id())
- *             .displayName(&#34;assignment-policy&#34;)
- *             .description(&#34;My assignment policy&#34;)
+ *             .displayName("assignment-policy")
+ *             .description("My assignment policy")
  *             .durationInDays(90)
  *             .requestorSettings(AccessPackageAssignmentPolicyRequestorSettingsArgs.builder()
- *                 .scopeType(&#34;AllExistingDirectoryMemberUsers&#34;)
+ *                 .scopeType("AllExistingDirectoryMemberUsers")
  *                 .build())
  *             .approvalSettings(AccessPackageAssignmentPolicyApprovalSettingsArgs.builder()
  *                 .approvalRequired(true)
@@ -97,27 +98,28 @@ import javax.annotation.Nullable;
  *                     .approvalTimeoutInDays(14)
  *                     .primaryApprovers(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs.builder()
  *                         .objectId(example.objectId())
- *                         .subjectType(&#34;groupMembers&#34;)
+ *                         .subjectType("groupMembers")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .assignmentReviewSettings(AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs.builder()
  *                 .enabled(true)
- *                 .reviewFrequency(&#34;weekly&#34;)
+ *                 .reviewFrequency("weekly")
  *                 .durationInDays(3)
- *                 .reviewType(&#34;Self&#34;)
- *                 .accessReviewTimeoutBehavior(&#34;keepAccess&#34;)
+ *                 .reviewType("Self")
+ *                 .accessReviewTimeoutBehavior("keepAccess")
  *                 .build())
  *             .questions(AccessPackageAssignmentPolicyQuestionArgs.builder()
  *                 .text(AccessPackageAssignmentPolicyQuestionTextArgs.builder()
- *                     .defaultText(&#34;hello, how are you?&#34;)
+ *                     .defaultText("hello, how are you?")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

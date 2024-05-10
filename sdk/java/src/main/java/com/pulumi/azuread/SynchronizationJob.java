@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * *Basic example*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,45 +64,46 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
- *             .displayName(&#34;Azure Databricks SCIM Provisioning Connector&#34;)
+ *             .displayName("Azure Databricks SCIM Provisioning Connector")
  *             .build());
  * 
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
- *             .templateId(example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
+ *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()        
+ *             .displayName("example")
+ *             .templateId(example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()))
  *             .featureTags(ApplicationFeatureTagArgs.builder()
  *                 .enterprise(true)
  *                 .gallery(true)
  *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .applicationId(exampleApplication.applicationId())
  *             .useExisting(true)
  *             .build());
  * 
- *         var exampleSynchronizationSecret = new SynchronizationSecret(&#34;exampleSynchronizationSecret&#34;, SynchronizationSecretArgs.builder()        
+ *         var exampleSynchronizationSecret = new SynchronizationSecret("exampleSynchronizationSecret", SynchronizationSecretArgs.builder()        
  *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .credentials(            
  *                 SynchronizationSecretCredentialArgs.builder()
- *                     .key(&#34;BaseAddress&#34;)
- *                     .value(&#34;https://adb-example.azuredatabricks.net/api/2.0/preview/scim&#34;)
+ *                     .key("BaseAddress")
+ *                     .value("https://adb-example.azuredatabricks.net/api/2.0/preview/scim")
  *                     .build(),
  *                 SynchronizationSecretCredentialArgs.builder()
- *                     .key(&#34;SecretToken&#34;)
- *                     .value(&#34;some-token&#34;)
+ *                     .key("SecretToken")
+ *                     .value("some-token")
  *                     .build())
  *             .build());
  * 
- *         var exampleSynchronizationJob = new SynchronizationJob(&#34;exampleSynchronizationJob&#34;, SynchronizationJobArgs.builder()        
+ *         var exampleSynchronizationJob = new SynchronizationJob("exampleSynchronizationJob", SynchronizationJobArgs.builder()        
  *             .servicePrincipalId(exampleServicePrincipal.id())
- *             .templateId(&#34;dataBricks&#34;)
+ *             .templateId("dataBricks")
  *             .enabled(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

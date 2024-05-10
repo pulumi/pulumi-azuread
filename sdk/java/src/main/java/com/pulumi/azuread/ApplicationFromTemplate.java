@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,12 +56,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
- *             .displayName(&#34;Marketo&#34;)
+ *             .displayName("Marketo")
  *             .build());
  * 
- *         var exampleApplicationFromTemplate = new ApplicationFromTemplate(&#34;exampleApplicationFromTemplate&#34;, ApplicationFromTemplateArgs.builder()        
- *             .displayName(&#34;Example Application&#34;)
- *             .templateId(example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
+ *         var exampleApplicationFromTemplate = new ApplicationFromTemplate("exampleApplicationFromTemplate", ApplicationFromTemplateArgs.builder()        
+ *             .displayName("Example Application")
+ *             .templateId(example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()))
  *             .build());
  * 
  *         final var exampleGetApplication = AzureadFunctions.getApplication(GetApplicationArgs.builder()
@@ -73,7 +74,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

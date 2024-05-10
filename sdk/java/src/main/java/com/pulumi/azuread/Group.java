@@ -43,7 +43,8 @@ import javax.annotation.Nullable;
  * *Basic example*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,21 +68,23 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
- *             .displayName(&#34;example&#34;)
- *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *         var example = new Group("example", GroupArgs.builder()        
+ *             .displayName("example")
+ *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *             .securityEnabled(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Microsoft 365 group*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -107,33 +110,35 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var groupOwner = new User(&#34;groupOwner&#34;, UserArgs.builder()        
- *             .userPrincipalName(&#34;example-group-owner@example.com&#34;)
- *             .displayName(&#34;Group Owner&#34;)
- *             .mailNickname(&#34;example-group-owner&#34;)
- *             .password(&#34;SecretP@sswd99!&#34;)
+ *         var groupOwner = new User("groupOwner", UserArgs.builder()        
+ *             .userPrincipalName("example-group-owner{@literal @}example.com")
+ *             .displayName("Group Owner")
+ *             .mailNickname("example-group-owner")
+ *             .password("SecretP{@literal @}sswd99!")
  *             .build());
  * 
- *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Group("example", GroupArgs.builder()        
+ *             .displayName("example")
  *             .mailEnabled(true)
- *             .mailNickname(&#34;ExampleGroup&#34;)
+ *             .mailNickname("ExampleGroup")
  *             .securityEnabled(true)
- *             .types(&#34;Unified&#34;)
+ *             .types("Unified")
  *             .owners(            
- *                 current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()),
+ *                 current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()),
  *                 groupOwner.objectId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Group with members*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -159,29 +164,31 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new User(&#34;example&#34;, UserArgs.builder()        
- *             .displayName(&#34;J Doe&#34;)
- *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
- *             .password(&#34;notSecure123&#34;)
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
+ *         var example = new User("example", UserArgs.builder()        
+ *             .displayName("J Doe")
+ *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
+ *             .password("notSecure123")
+ *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
- *             .displayName(&#34;MyGroup&#34;)
- *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()        
+ *             .displayName("MyGroup")
+ *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *             .securityEnabled(true)
  *             .members(example.objectId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Group with dynamic membership*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -206,20 +213,21 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
- *             .displayName(&#34;MyGroup&#34;)
- *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *         var example = new Group("example", GroupArgs.builder()        
+ *             .displayName("MyGroup")
+ *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *             .securityEnabled(true)
- *             .types(&#34;DynamicMembership&#34;)
+ *             .types("DynamicMembership")
  *             .dynamicMembership(GroupDynamicMembershipArgs.builder()
  *                 .enabled(true)
- *                 .rule(&#34;user.department -eq \&#34;Sales\&#34;&#34;)
+ *                 .rule("user.department -eq \"Sales\"")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

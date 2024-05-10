@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * *App role assignment for accessing Microsoft Graph*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,46 +59,48 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
- *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+ *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *             .useExisting(true)
  *             .build());
  * 
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
- *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *                 .resourceAccesses(                
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
- *                         .type(&#34;Role&#34;)
+ *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+ *                         .type("Role")
  *                         .build(),
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
- *                         .type(&#34;Scope&#34;)
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+ *                         .type("Scope")
  *                         .build())
  *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleAppRoleAssignment = new AppRoleAssignment(&#34;exampleAppRoleAssignment&#34;, AppRoleAssignmentArgs.builder()        
- *             .appRoleId(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
+ *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()        
+ *             .appRoleId(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
  *             .principalObjectId(exampleServicePrincipal.objectId())
  *             .resourceObjectId(msgraph.objectId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *App role assignment for internal application*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -124,46 +127,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var internal = new Application(&#34;internal&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;internal&#34;)
+ *         var internal = new Application("internal", ApplicationArgs.builder()        
+ *             .displayName("internal")
  *             .appRoles(ApplicationAppRoleArgs.builder()
- *                 .allowedMemberTypes(&#34;Application&#34;)
- *                 .description(&#34;Apps can query the database&#34;)
- *                 .displayName(&#34;Query&#34;)
+ *                 .allowedMemberTypes("Application")
+ *                 .description("Apps can query the database")
+ *                 .displayName("Query")
  *                 .enabled(true)
- *                 .id(&#34;00000000-0000-0000-0000-111111111111&#34;)
- *                 .value(&#34;Query.All&#34;)
+ *                 .id("00000000-0000-0000-0000-111111111111")
+ *                 .value("Query.All")
  *                 .build())
  *             .build());
  * 
- *         var internalServicePrincipal = new ServicePrincipal(&#34;internalServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var internalServicePrincipal = new ServicePrincipal("internalServicePrincipal", ServicePrincipalArgs.builder()        
  *             .applicationId(internal.applicationId())
  *             .build());
  * 
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
  *                 .resourceAppId(internal.applicationId())
  *                 .resourceAccesses(ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                     .id(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.Query.All()))
- *                     .type(&#34;Role&#34;)
+ *                     .id(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -> appRoleIds.Query.All()))
+ *                     .type("Role")
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleAppRoleAssignment = new AppRoleAssignment(&#34;exampleAppRoleAssignment&#34;, AppRoleAssignmentArgs.builder()        
- *             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.Query.All()))
+ *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()        
+ *             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -> appRoleIds.Query.All()))
  *             .principalObjectId(exampleServicePrincipal.objectId())
  *             .resourceObjectId(internalServicePrincipal.objectId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Assign a user and group to an internal application*

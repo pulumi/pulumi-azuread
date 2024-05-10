@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,16 +52,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new User(&#34;example&#34;, UserArgs.builder()        
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
- *             .displayName(&#34;J. Doe&#34;)
- *             .mailNickname(&#34;jdoe&#34;)
- *             .password(&#34;SecretP@sswd99!&#34;)
+ *         var example = new User("example", UserArgs.builder()        
+ *             .userPrincipalName("jdoe{@literal @}example.com")
+ *             .displayName("J. Doe")
+ *             .mailNickname("jdoe")
+ *             .password("SecretP{@literal @}sswd99!")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

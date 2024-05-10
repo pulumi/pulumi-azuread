@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * *Using default settings*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,27 +46,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate(&#34;exampleServicePrincipalTokenSigningCertificate&#34;, ServicePrincipalTokenSigningCertificateArgs.builder()        
+ *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", ServicePrincipalTokenSigningCertificateArgs.builder()        
  *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Using custom settings*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -90,23 +93,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate(&#34;exampleServicePrincipalTokenSigningCertificate&#34;, ServicePrincipalTokenSigningCertificateArgs.builder()        
+ *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", ServicePrincipalTokenSigningCertificateArgs.builder()        
  *             .servicePrincipalId(exampleServicePrincipal.id())
- *             .displayName(&#34;CN=example.com&#34;)
- *             .endDate(&#34;2023-05-01T01:02:03Z&#34;)
+ *             .displayName("CN=example.com")
+ *             .endDate("2023-05-01T01:02:03Z")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

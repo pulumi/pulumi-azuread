@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,23 +43,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleAdminister = new RandomUuid(&#34;exampleAdminister&#34;);
+ *         var exampleAdminister = new RandomUuid("exampleAdminister");
  * 
- *         var exampleApplicationPermissionScope = new ApplicationPermissionScope(&#34;exampleApplicationPermissionScope&#34;, ApplicationPermissionScopeArgs.builder()        
+ *         var exampleApplicationPermissionScope = new ApplicationPermissionScope("exampleApplicationPermissionScope", ApplicationPermissionScopeArgs.builder()        
  *             .applicationId(test.id())
  *             .scopeId(exampleAdminister.id())
- *             .value(&#34;administer&#34;)
- *             .adminConsentDescription(&#34;Administer the application&#34;)
- *             .adminConsentDisplayName(&#34;Administer&#34;)
+ *             .value("administer")
+ *             .adminConsentDescription("Administer the application")
+ *             .adminConsentDisplayName("Administer")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; **Tip** For managing more permissions scopes, create additional instances of this resource
@@ -66,7 +68,8 @@ import javax.annotation.Nullable;
  * *Usage with azuread.Application resource*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -89,17 +92,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationPermissionScope = new ApplicationPermissionScope(&#34;exampleApplicationPermissionScope&#34;, ApplicationPermissionScopeArgs.builder()        
+ *         var exampleApplicationPermissionScope = new ApplicationPermissionScope("exampleApplicationPermissionScope", ApplicationPermissionScopeArgs.builder()        
  *             .applicationId(example.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * *Basic example*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,15 +49,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new UserFlowAttribute(&#34;example&#34;, UserFlowAttributeArgs.builder()        
- *             .displayName(&#34;Hobby&#34;)
- *             .description(&#34;Your hobby&#34;)
- *             .dataType(&#34;string&#34;)
+ *         var example = new UserFlowAttribute("example", UserFlowAttributeArgs.builder()        
+ *             .displayName("Hobby")
+ *             .description("Your hobby")
+ *             .dataType("string")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

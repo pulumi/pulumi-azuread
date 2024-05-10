@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,14 +51,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AccessPackageCatalog(&#34;example&#34;, AccessPackageCatalogArgs.builder()        
- *             .displayName(&#34;example-access-package-catalog&#34;)
- *             .description(&#34;Example access package catalog&#34;)
+ *         var example = new AccessPackageCatalog("example", AccessPackageCatalogArgs.builder()        
+ *             .displayName("example-access-package-catalog")
+ *             .description("Example access package catalog")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

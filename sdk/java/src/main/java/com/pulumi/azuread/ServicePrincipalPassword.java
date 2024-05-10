@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * *Basic example*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,27 +48,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .clientId(example.clientId())
  *             .build());
  * 
- *         var exampleServicePrincipalPassword = new ServicePrincipalPassword(&#34;exampleServicePrincipalPassword&#34;, ServicePrincipalPasswordArgs.builder()        
+ *         var exampleServicePrincipalPassword = new ServicePrincipalPassword("exampleServicePrincipalPassword", ServicePrincipalPasswordArgs.builder()        
  *             .servicePrincipalId(exampleServicePrincipal.objectId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Time-based rotation*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,26 +97,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .clientId(example.clientId())
  *             .build());
  * 
- *         var exampleRotating = new Rotating(&#34;exampleRotating&#34;, RotatingArgs.builder()        
+ *         var exampleRotating = new Rotating("exampleRotating", RotatingArgs.builder()        
  *             .rotationDays(7)
  *             .build());
  * 
- *         var exampleServicePrincipalPassword = new ServicePrincipalPassword(&#34;exampleServicePrincipalPassword&#34;, ServicePrincipalPasswordArgs.builder()        
+ *         var exampleServicePrincipalPassword = new ServicePrincipalPassword("exampleServicePrincipalPassword", ServicePrincipalPasswordArgs.builder()        
  *             .servicePrincipalId(exampleServicePrincipal.objectId())
- *             .rotateWhenChanged(Map.of(&#34;rotation&#34;, exampleRotating.id()))
+ *             .rotateWhenChanged(Map.of("rotation", exampleRotating.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

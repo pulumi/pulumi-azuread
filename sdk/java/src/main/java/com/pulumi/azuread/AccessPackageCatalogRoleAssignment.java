@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,27 +55,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
+ *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
  *         final var exampleGetAccessPackageCatalogRole = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
- *             .displayName(&#34;Catalog owner&#34;)
+ *             .displayName("Catalog owner")
  *             .build());
  * 
- *         var exampleAccessPackageCatalog = new AccessPackageCatalog(&#34;exampleAccessPackageCatalog&#34;, AccessPackageCatalogArgs.builder()        
- *             .displayName(&#34;example-access-package-catalog&#34;)
- *             .description(&#34;Example access package catalog&#34;)
+ *         var exampleAccessPackageCatalog = new AccessPackageCatalog("exampleAccessPackageCatalog", AccessPackageCatalogArgs.builder()        
+ *             .displayName("example-access-package-catalog")
+ *             .description("Example access package catalog")
  *             .build());
  * 
- *         var exampleAccessPackageCatalogRoleAssignment = new AccessPackageCatalogRoleAssignment(&#34;exampleAccessPackageCatalogRoleAssignment&#34;, AccessPackageCatalogRoleAssignmentArgs.builder()        
- *             .roleId(exampleGetAccessPackageCatalogRole.applyValue(getAccessPackageCatalogRoleResult -&gt; getAccessPackageCatalogRoleResult.objectId()))
- *             .principalObjectId(example.applyValue(getUserResult -&gt; getUserResult.objectId()))
+ *         var exampleAccessPackageCatalogRoleAssignment = new AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment", AccessPackageCatalogRoleAssignmentArgs.builder()        
+ *             .roleId(exampleGetAccessPackageCatalogRole.applyValue(getAccessPackageCatalogRoleResult -> getAccessPackageCatalogRoleResult.objectId()))
+ *             .principalObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
  *             .catalogId(exampleAccessPackageCatalog.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
