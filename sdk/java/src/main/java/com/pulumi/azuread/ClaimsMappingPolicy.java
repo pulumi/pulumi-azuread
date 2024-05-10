@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,34 +51,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myPolicy = new ClaimsMappingPolicy(&#34;myPolicy&#34;, ClaimsMappingPolicyArgs.builder()        
+ *         var myPolicy = new ClaimsMappingPolicy("myPolicy", ClaimsMappingPolicyArgs.builder()        
  *             .definitions(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;claimsMappingPolicy&#34;, jsonObject(
- *                         jsonProperty(&#34;claimsSchema&#34;, jsonArray(
+ *                     jsonProperty("claimsMappingPolicy", jsonObject(
+ *                         jsonProperty("claimsSchema", jsonArray(
  *                             jsonObject(
- *                                 jsonProperty(&#34;ID&#34;, &#34;employeeid&#34;),
- *                                 jsonProperty(&#34;jwtClaimType&#34;, &#34;name&#34;),
- *                                 jsonProperty(&#34;samlClaimType&#34;, &#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name&#34;),
- *                                 jsonProperty(&#34;source&#34;, &#34;user&#34;)
+ *                                 jsonProperty("ID", "employeeid"),
+ *                                 jsonProperty("jwtClaimType", "name"),
+ *                                 jsonProperty("samlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
+ *                                 jsonProperty("source", "user")
  *                             ), 
  *                             jsonObject(
- *                                 jsonProperty(&#34;ID&#34;, &#34;tenantcountry&#34;),
- *                                 jsonProperty(&#34;jwtClaimType&#34;, &#34;country&#34;),
- *                                 jsonProperty(&#34;samlClaimType&#34;, &#34;http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country&#34;),
- *                                 jsonProperty(&#34;source&#34;, &#34;company&#34;)
+ *                                 jsonProperty("ID", "tenantcountry"),
+ *                                 jsonProperty("jwtClaimType", "country"),
+ *                                 jsonProperty("samlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country"),
+ *                                 jsonProperty("source", "company")
  *                             )
  *                         )),
- *                         jsonProperty(&#34;includeBasicClaimSet&#34;, &#34;true&#34;),
- *                         jsonProperty(&#34;version&#34;, 1)
+ *                         jsonProperty("includeBasicClaimSet", "true"),
+ *                         jsonProperty("version", 1)
  *                     ))
  *                 )))
- *             .displayName(&#34;My Policy&#34;)
+ *             .displayName("My Policy")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

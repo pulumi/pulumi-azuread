@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,25 +53,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
- *             .displayName(&#34;example-group&#34;)
+ *         var example = new Group("example", GroupArgs.builder()        
+ *             .displayName("example-group")
  *             .securityEnabled(true)
  *             .build());
  * 
- *         var exampleAccessPackageCatalog = new AccessPackageCatalog(&#34;exampleAccessPackageCatalog&#34;, AccessPackageCatalogArgs.builder()        
- *             .displayName(&#34;example-catalog&#34;)
- *             .description(&#34;Example catalog&#34;)
+ *         var exampleAccessPackageCatalog = new AccessPackageCatalog("exampleAccessPackageCatalog", AccessPackageCatalogArgs.builder()        
+ *             .displayName("example-catalog")
+ *             .description("Example catalog")
  *             .build());
  * 
- *         var exampleAccessPackageResourceCatalogAssociation = new AccessPackageResourceCatalogAssociation(&#34;exampleAccessPackageResourceCatalogAssociation&#34;, AccessPackageResourceCatalogAssociationArgs.builder()        
+ *         var exampleAccessPackageResourceCatalogAssociation = new AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", AccessPackageResourceCatalogAssociationArgs.builder()        
  *             .catalogId(exampleCatalog.id())
  *             .resourceOriginId(exampleGroup.objectId())
- *             .resourceOriginSystem(&#34;AadGroup&#34;)
+ *             .resourceOriginSystem("AadGroup")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

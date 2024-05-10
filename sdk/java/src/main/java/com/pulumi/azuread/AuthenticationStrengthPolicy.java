@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,44 +51,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AuthenticationStrengthPolicy(&#34;example&#34;, AuthenticationStrengthPolicyArgs.builder()        
- *             .displayName(&#34;Example Authentication Strength Policy&#34;)
- *             .description(&#34;Policy for demo purposes&#34;)
+ *         var example = new AuthenticationStrengthPolicy("example", AuthenticationStrengthPolicyArgs.builder()        
+ *             .displayName("Example Authentication Strength Policy")
+ *             .description("Policy for demo purposes")
  *             .allowedCombinations(            
- *                 &#34;fido2&#34;,
- *                 &#34;password&#34;)
+ *                 "fido2",
+ *                 "password")
  *             .build());
  * 
- *         var example2 = new AuthenticationStrengthPolicy(&#34;example2&#34;, AuthenticationStrengthPolicyArgs.builder()        
- *             .displayName(&#34;Example Authentication Strength Policy&#34;)
- *             .description(&#34;Policy for demo purposes with all possible combinations&#34;)
+ *         var example2 = new AuthenticationStrengthPolicy("example2", AuthenticationStrengthPolicyArgs.builder()        
+ *             .displayName("Example Authentication Strength Policy")
+ *             .description("Policy for demo purposes with all possible combinations")
  *             .allowedCombinations(            
- *                 &#34;fido2&#34;,
- *                 &#34;password&#34;,
- *                 &#34;deviceBasedPush&#34;,
- *                 &#34;temporaryAccessPassOneTime&#34;,
- *                 &#34;federatedMultiFactor&#34;,
- *                 &#34;federatedSingleFactor&#34;,
- *                 &#34;hardwareOath,federatedSingleFactor&#34;,
- *                 &#34;microsoftAuthenticatorPush,federatedSingleFactor&#34;,
- *                 &#34;password,hardwareOath&#34;,
- *                 &#34;password,microsoftAuthenticatorPush&#34;,
- *                 &#34;password,sms&#34;,
- *                 &#34;password,softwareOath&#34;,
- *                 &#34;password,voice&#34;,
- *                 &#34;sms&#34;,
- *                 &#34;sms,federatedSingleFactor&#34;,
- *                 &#34;softwareOath,federatedSingleFactor&#34;,
- *                 &#34;temporaryAccessPassMultiUse&#34;,
- *                 &#34;voice,federatedSingleFactor&#34;,
- *                 &#34;windowsHelloForBusiness&#34;,
- *                 &#34;x509CertificateMultiFactor&#34;,
- *                 &#34;x509CertificateSingleFactor&#34;)
+ *                 "fido2",
+ *                 "password",
+ *                 "deviceBasedPush",
+ *                 "temporaryAccessPassOneTime",
+ *                 "federatedMultiFactor",
+ *                 "federatedSingleFactor",
+ *                 "hardwareOath,federatedSingleFactor",
+ *                 "microsoftAuthenticatorPush,federatedSingleFactor",
+ *                 "password,hardwareOath",
+ *                 "password,microsoftAuthenticatorPush",
+ *                 "password,sms",
+ *                 "password,softwareOath",
+ *                 "password,voice",
+ *                 "sms",
+ *                 "sms,federatedSingleFactor",
+ *                 "softwareOath,federatedSingleFactor",
+ *                 "temporaryAccessPassMultiUse",
+ *                 "voice,federatedSingleFactor",
+ *                 "windowsHelloForBusiness",
+ *                 "x509CertificateMultiFactor",
+ *                 "x509CertificateSingleFactor")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

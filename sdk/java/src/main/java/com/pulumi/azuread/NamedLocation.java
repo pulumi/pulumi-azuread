@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,29 +54,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_ip = new NamedLocation(&#34;example-ip&#34;, NamedLocationArgs.builder()        
- *             .displayName(&#34;IP Named Location&#34;)
+ *         var example_ip = new NamedLocation("example-ip", NamedLocationArgs.builder()        
+ *             .displayName("IP Named Location")
  *             .ip(NamedLocationIpArgs.builder()
  *                 .ipRanges(                
- *                     &#34;1.1.1.1/32&#34;,
- *                     &#34;2.2.2.2/32&#34;)
+ *                     "1.1.1.1/32",
+ *                     "2.2.2.2/32")
  *                 .trusted(true)
  *                 .build())
  *             .build());
  * 
- *         var example_country = new NamedLocation(&#34;example-country&#34;, NamedLocationArgs.builder()        
- *             .displayName(&#34;Country Named Location&#34;)
+ *         var example_country = new NamedLocation("example-country", NamedLocationArgs.builder()        
+ *             .displayName("Country Named Location")
  *             .country(NamedLocationCountryArgs.builder()
  *                 .countriesAndRegions(                
- *                     &#34;GB&#34;,
- *                     &#34;US&#34;)
+ *                     "GB",
+ *                     "US")
  *                 .includeUnknownCountriesAndRegions(false)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * *Assignment for a built-in role*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,21 +56,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
+ *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleDirectoryRole = new DirectoryRole(&#34;exampleDirectoryRole&#34;, DirectoryRoleArgs.builder()        
- *             .displayName(&#34;Security administrator&#34;)
+ *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()        
+ *             .displayName("Security administrator")
  *             .build());
  * 
- *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment(&#34;exampleDirectoryRoleAssignment&#34;, DirectoryRoleAssignmentArgs.builder()        
+ *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment("exampleDirectoryRoleAssignment", DirectoryRoleAssignmentArgs.builder()        
  *             .roleId(exampleDirectoryRole.templateId())
- *             .principalObjectId(example.applyValue(getUserResult -&gt; getUserResult.objectId()))
+ *             .principalObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; Note the use of the `template_id` attribute when referencing built-in roles.
@@ -77,7 +79,8 @@ import javax.annotation.Nullable;
  * *Assignment for a custom role*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,28 +107,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
+ *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleCustomDirectoryRole = new CustomDirectoryRole(&#34;exampleCustomDirectoryRole&#34;, CustomDirectoryRoleArgs.builder()        
- *             .displayName(&#34;My Custom Role&#34;)
+ *         var exampleCustomDirectoryRole = new CustomDirectoryRole("exampleCustomDirectoryRole", CustomDirectoryRoleArgs.builder()        
+ *             .displayName("My Custom Role")
  *             .enabled(true)
- *             .version(&#34;1.0&#34;)
+ *             .version("1.0")
  *             .permissions(CustomDirectoryRolePermissionArgs.builder()
  *                 .allowedResourceActions(                
- *                     &#34;microsoft.directory/applications/basic/update&#34;,
- *                     &#34;microsoft.directory/applications/standard/read&#34;)
+ *                     "microsoft.directory/applications/basic/update",
+ *                     "microsoft.directory/applications/standard/read")
  *                 .build())
  *             .build());
  * 
- *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment(&#34;exampleDirectoryRoleAssignment&#34;, DirectoryRoleAssignmentArgs.builder()        
+ *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment("exampleDirectoryRoleAssignment", DirectoryRoleAssignmentArgs.builder()        
  *             .roleId(exampleCustomDirectoryRole.objectId())
- *             .principalObjectId(example.applyValue(getUserResult -&gt; getUserResult.objectId()))
+ *             .principalObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Scoped assignment for an application*

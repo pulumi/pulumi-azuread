@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,24 +44,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleAdministrator = new RandomUuid(&#34;exampleAdministrator&#34;);
+ *         var exampleAdministrator = new RandomUuid("exampleAdministrator");
  * 
- *         var exampleAdminister = new ApplicationAppRole(&#34;exampleAdminister&#34;, ApplicationAppRoleArgs.builder()        
+ *         var exampleAdminister = new ApplicationAppRole("exampleAdminister", ApplicationAppRoleArgs.builder()        
  *             .applicationId(example.id())
  *             .roleId(exampleAdministrator.id())
- *             .allowedMemberTypes(&#34;User&#34;)
- *             .description(&#34;My role description&#34;)
- *             .displayName(&#34;Administer&#34;)
- *             .value(&#34;admin&#34;)
+ *             .allowedMemberTypes("User")
+ *             .description("My role description")
+ *             .displayName("Administer")
+ *             .value("admin")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; **Tip** For managing more app roles, create additional instances of this resource
@@ -68,7 +70,8 @@ import javax.annotation.Nullable;
  * *Usage with azuread.Application resource*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -91,17 +94,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var exampleAdminister = new ApplicationAppRole(&#34;exampleAdminister&#34;, ApplicationAppRoleArgs.builder()        
+ *         var exampleAdminister = new ApplicationAppRole("exampleAdminister", ApplicationAppRoleArgs.builder()        
  *             .applicationId(example.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

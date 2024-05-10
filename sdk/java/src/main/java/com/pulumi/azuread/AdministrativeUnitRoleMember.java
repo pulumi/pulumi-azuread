@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,26 +56,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
+ *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleAdministrativeUnit = new AdministrativeUnit(&#34;exampleAdministrativeUnit&#34;, AdministrativeUnitArgs.builder()        
- *             .displayName(&#34;Example-AU&#34;)
+ *         var exampleAdministrativeUnit = new AdministrativeUnit("exampleAdministrativeUnit", AdministrativeUnitArgs.builder()        
+ *             .displayName("Example-AU")
  *             .build());
  * 
- *         var exampleDirectoryRole = new DirectoryRole(&#34;exampleDirectoryRole&#34;, DirectoryRoleArgs.builder()        
- *             .displayName(&#34;Security administrator&#34;)
+ *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()        
+ *             .displayName("Security administrator")
  *             .build());
  * 
- *         var exampleAdministrativeUnitRoleMember = new AdministrativeUnitRoleMember(&#34;exampleAdministrativeUnitRoleMember&#34;, AdministrativeUnitRoleMemberArgs.builder()        
+ *         var exampleAdministrativeUnitRoleMember = new AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember", AdministrativeUnitRoleMemberArgs.builder()        
  *             .roleObjectId(exampleDirectoryRole.objectId())
  *             .administrativeUnitObjectId(exampleAdministrativeUnit.id())
- *             .memberObjectId(example.applyValue(getUserResult -&gt; getUserResult.id()))
+ *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,21 +55,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;Example Application&#34;)
- *             .description(&#34;My example application&#34;)
- *             .signInAudience(&#34;AzureADMyOrg&#34;)
- *             .homepageUrl(&#34;https://app.hashitown.com/&#34;)
- *             .logoutUrl(&#34;https://app.hashitown.com/logout&#34;)
- *             .marketingUrl(&#34;https://hashitown.com/&#34;)
- *             .privacyStatementUrl(&#34;https://hashitown.com/privacy&#34;)
- *             .supportUrl(&#34;https://support.hashitown.com/&#34;)
- *             .termsOfServiceUrl(&#34;https://hashitown.com/terms&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("Example Application")
+ *             .description("My example application")
+ *             .signInAudience("AzureADMyOrg")
+ *             .homepageUrl("https://app.hashitown.com/")
+ *             .logoutUrl("https://app.hashitown.com/logout")
+ *             .marketingUrl("https://hashitown.com/")
+ *             .privacyStatementUrl("https://hashitown.com/privacy")
+ *             .supportUrl("https://support.hashitown.com/")
+ *             .termsOfServiceUrl("https://hashitown.com/terms")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

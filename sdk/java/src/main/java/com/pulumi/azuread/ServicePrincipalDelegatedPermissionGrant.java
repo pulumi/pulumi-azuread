@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * *Delegated permission grant for all users*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,48 +61,50 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
- *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+ *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *             .useExisting(true)
  *             .build());
  * 
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
- *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *                 .resourceAccesses(                
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.openid()))
- *                         .type(&#34;Scope&#34;)
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.openid()))
+ *                         .type("Scope")
  *                         .build(),
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.Read()))
- *                         .type(&#34;Scope&#34;)
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.Read()))
+ *                         .type("Scope")
  *                         .build())
  *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleServicePrincipalDelegatedPermissionGrant = new ServicePrincipalDelegatedPermissionGrant(&#34;exampleServicePrincipalDelegatedPermissionGrant&#34;, ServicePrincipalDelegatedPermissionGrantArgs.builder()        
+ *         var exampleServicePrincipalDelegatedPermissionGrant = new ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", ServicePrincipalDelegatedPermissionGrantArgs.builder()        
  *             .servicePrincipalObjectId(exampleServicePrincipal.objectId())
  *             .resourceServicePrincipalObjectId(msgraph.objectId())
  *             .claimValues(            
- *                 &#34;openid&#34;,
- *                 &#34;User.Read.All&#34;)
+ *                 "openid",
+ *                 "User.Read.All")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Delegated permission grant for a single user*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -132,50 +135,51 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
- *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+ *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *             .useExisting(true)
  *             .build());
  * 
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
- *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *                 .resourceAccesses(                
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.openid()))
- *                         .type(&#34;Scope&#34;)
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.openid()))
+ *                         .type("Scope")
  *                         .build(),
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.Read()))
- *                         .type(&#34;Scope&#34;)
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.Read()))
+ *                         .type("Scope")
  *                         .build())
  *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleUser = new User(&#34;exampleUser&#34;, UserArgs.builder()        
- *             .displayName(&#34;J. Doe&#34;)
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
- *             .mailNickname(&#34;jdoe&#34;)
- *             .password(&#34;SecretP@sswd99!&#34;)
+ *         var exampleUser = new User("exampleUser", UserArgs.builder()        
+ *             .displayName("J. Doe")
+ *             .userPrincipalName("jdoe{@literal @}example.com")
+ *             .mailNickname("jdoe")
+ *             .password("SecretP{@literal @}sswd99!")
  *             .build());
  * 
- *         var exampleServicePrincipalDelegatedPermissionGrant = new ServicePrincipalDelegatedPermissionGrant(&#34;exampleServicePrincipalDelegatedPermissionGrant&#34;, ServicePrincipalDelegatedPermissionGrantArgs.builder()        
+ *         var exampleServicePrincipalDelegatedPermissionGrant = new ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", ServicePrincipalDelegatedPermissionGrantArgs.builder()        
  *             .servicePrincipalObjectId(exampleServicePrincipal.objectId())
  *             .resourceServicePrincipalObjectId(msgraph.objectId())
  *             .claimValues(            
- *                 &#34;openid&#34;,
- *                 &#34;User.Read.All&#34;)
+ *                 "openid",
+ *                 "User.Read.All")
  *             .userObjectId(exampleUser.objectId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

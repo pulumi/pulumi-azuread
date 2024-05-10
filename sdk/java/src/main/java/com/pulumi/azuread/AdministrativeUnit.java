@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,15 +52,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AdministrativeUnit(&#34;example&#34;, AdministrativeUnitArgs.builder()        
- *             .displayName(&#34;Example-AU&#34;)
- *             .description(&#34;Just an example&#34;)
+ *         var example = new AdministrativeUnit("example", AdministrativeUnitArgs.builder()        
+ *             .displayName("Example-AU")
+ *             .description("Just an example")
  *             .hiddenMembershipEnabled(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

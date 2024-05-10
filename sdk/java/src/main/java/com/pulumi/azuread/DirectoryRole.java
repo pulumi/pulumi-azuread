@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * *Activate a directory role by its template ID*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,19 +55,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DirectoryRole(&#34;example&#34;, DirectoryRoleArgs.builder()        
- *             .templateId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+ *         var example = new DirectoryRole("example", DirectoryRoleArgs.builder()        
+ *             .templateId("00000000-0000-0000-0000-000000000000")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Activate a directory role by display name*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -87,13 +90,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DirectoryRole(&#34;example&#34;, DirectoryRoleArgs.builder()        
- *             .displayName(&#34;Printer administrator&#34;)
+ *         var example = new DirectoryRole("example", DirectoryRoleArgs.builder()        
+ *             .displayName("Printer administrator")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,31 +56,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CustomDirectoryRole(&#34;example&#34;, CustomDirectoryRoleArgs.builder()        
- *             .displayName(&#34;My Custom Role&#34;)
- *             .description(&#34;Allows reading applications and updating groups&#34;)
+ *         var example = new CustomDirectoryRole("example", CustomDirectoryRoleArgs.builder()        
+ *             .displayName("My Custom Role")
+ *             .description("Allows reading applications and updating groups")
  *             .enabled(true)
- *             .version(&#34;1.0&#34;)
+ *             .version("1.0")
  *             .permissions(            
  *                 CustomDirectoryRolePermissionArgs.builder()
  *                     .allowedResourceActions(                    
- *                         &#34;microsoft.directory/applications/basic/update&#34;,
- *                         &#34;microsoft.directory/applications/create&#34;,
- *                         &#34;microsoft.directory/applications/standard/read&#34;)
+ *                         "microsoft.directory/applications/basic/update",
+ *                         "microsoft.directory/applications/create",
+ *                         "microsoft.directory/applications/standard/read")
  *                     .build(),
  *                 CustomDirectoryRolePermissionArgs.builder()
  *                     .allowedResourceActions(                    
- *                         &#34;microsoft.directory/groups/allProperties/read&#34;,
- *                         &#34;microsoft.directory/groups/allProperties/read&#34;,
- *                         &#34;microsoft.directory/groups/basic/update&#34;,
- *                         &#34;microsoft.directory/groups/create&#34;,
- *                         &#34;microsoft.directory/groups/delete&#34;)
+ *                         "microsoft.directory/groups/allProperties/read",
+ *                         "microsoft.directory/groups/allProperties/read",
+ *                         "microsoft.directory/groups/basic/update",
+ *                         "microsoft.directory/groups/create",
+ *                         "microsoft.directory/groups/delete")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

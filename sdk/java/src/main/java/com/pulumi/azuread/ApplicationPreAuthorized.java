@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,46 +45,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var authorized = new ApplicationRegistration(&#34;authorized&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example-authorized-app&#34;)
+ *         var authorized = new ApplicationRegistration("authorized", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example-authorized-app")
  *             .build());
  * 
- *         var authorizer = new Application(&#34;authorizer&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example-authorizing-app&#34;)
+ *         var authorizer = new Application("authorizer", ApplicationArgs.builder()        
+ *             .displayName("example-authorizing-app")
  *             .api(ApplicationApiArgs.builder()
  *                 .oauth2PermissionScopes(                
  *                     ApplicationApiOauth2PermissionScopeArgs.builder()
- *                         .adminConsentDescription(&#34;Administer the application&#34;)
- *                         .adminConsentDisplayName(&#34;Administer&#34;)
+ *                         .adminConsentDescription("Administer the application")
+ *                         .adminConsentDisplayName("Administer")
  *                         .enabled(true)
- *                         .id(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *                         .type(&#34;Admin&#34;)
- *                         .value(&#34;administer&#34;)
+ *                         .id("00000000-0000-0000-0000-000000000000")
+ *                         .type("Admin")
+ *                         .value("administer")
  *                         .build(),
  *                     ApplicationApiOauth2PermissionScopeArgs.builder()
- *                         .adminConsentDescription(&#34;Access the application&#34;)
- *                         .adminConsentDisplayName(&#34;Access&#34;)
+ *                         .adminConsentDescription("Access the application")
+ *                         .adminConsentDisplayName("Access")
  *                         .enabled(true)
- *                         .id(&#34;11111111-1111-1111-1111-111111111111&#34;)
- *                         .type(&#34;User&#34;)
- *                         .userConsentDescription(&#34;Access the application&#34;)
- *                         .userConsentDisplayName(&#34;Access&#34;)
- *                         .value(&#34;user_impersonation&#34;)
+ *                         .id("11111111-1111-1111-1111-111111111111")
+ *                         .type("User")
+ *                         .userConsentDescription("Access the application")
+ *                         .userConsentDisplayName("Access")
+ *                         .value("user_impersonation")
  *                         .build())
  *                 .build())
  *             .build());
  * 
- *         var example = new ApplicationPreAuthorized(&#34;example&#34;, ApplicationPreAuthorizedArgs.builder()        
+ *         var example = new ApplicationPreAuthorized("example", ApplicationPreAuthorizedArgs.builder()        
  *             .applicationId(authorizer.id())
  *             .authorizedClientId(authorized.clientId())
  *             .permissionIds(            
- *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
- *                 &#34;11111111-1111-1111-1111-111111111111&#34;)
+ *                 "00000000-0000-0000-0000-000000000000",
+ *                 "11111111-1111-1111-1111-111111111111")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -77,7 +77,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -99,18 +100,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -132,13 +135,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .catalogId("00000000-0000-0000-0000-000000000000")
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -161,7 +165,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -183,18 +188,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -216,13 +223,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .catalogId("00000000-0000-0000-0000-000000000000")
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -245,7 +253,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -267,18 +276,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -300,13 +311,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .catalogId("00000000-0000-0000-0000-000000000000")
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -329,7 +341,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -351,18 +364,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -384,13 +399,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .catalogId("00000000-0000-0000-0000-000000000000")
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -413,7 +429,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -435,18 +452,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -468,13 +487,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .catalogId("00000000-0000-0000-0000-000000000000")
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -497,7 +517,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -519,18 +540,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -552,13 +575,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
-     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .catalogId("00000000-0000-0000-0000-000000000000")
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -582,7 +606,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -604,18 +629,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -637,12 +664,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -666,7 +694,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -688,18 +717,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -721,12 +752,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -750,7 +782,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -772,18 +805,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -805,12 +840,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -834,7 +870,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -856,18 +893,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -889,12 +928,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -918,7 +958,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -940,18 +981,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -973,12 +1016,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1002,7 +1046,8 @@ public final class AzureadFunctions {
      * *Look up by ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1024,18 +1069,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by DisplayName*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1057,12 +1104,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
-     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .displayName("My access package Catalog")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1086,7 +1134,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1108,17 +1157,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
+     *             .displayName("Catalog owner")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1140,12 +1191,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1169,7 +1221,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1191,17 +1244,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
+     *             .displayName("Catalog owner")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1223,12 +1278,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1252,7 +1308,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1274,17 +1331,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
+     *             .displayName("Catalog owner")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1306,12 +1365,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1335,7 +1395,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1357,17 +1418,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
+     *             .displayName("Catalog owner")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1389,12 +1452,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1418,7 +1482,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1440,17 +1505,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
+     *             .displayName("Catalog owner")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1472,12 +1539,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1501,7 +1569,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1523,17 +1592,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .displayName(&#34;Catalog owner&#34;)
+     *             .displayName("Catalog owner")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1555,12 +1626,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAccessPackageCatalogRole(GetAccessPackageCatalogRoleArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1584,7 +1656,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1606,17 +1679,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
+     *             .displayName("Example-AU")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1638,12 +1713,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1667,7 +1743,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1689,17 +1766,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
+     *             .displayName("Example-AU")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1721,12 +1800,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1750,7 +1830,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1772,17 +1853,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
+     *             .displayName("Example-AU")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1804,12 +1887,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1833,7 +1917,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1855,17 +1940,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
+     *             .displayName("Example-AU")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1887,12 +1974,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1916,7 +2004,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1938,17 +2027,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
+     *             .displayName("Example-AU")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1970,12 +2061,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1999,7 +2091,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2021,17 +2114,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .displayName(&#34;Example-AU&#34;)
+     *             .displayName("Example-AU")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by object ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2053,12 +2148,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2079,7 +2175,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2101,13 +2198,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
+     *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2128,7 +2226,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2150,13 +2249,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
+     *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2177,7 +2277,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2199,13 +2300,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
+     *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2226,7 +2328,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2248,13 +2351,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
+     *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2275,7 +2379,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2297,13 +2402,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
+     *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2324,7 +2430,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2346,13 +2453,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
-     *             .displayName(&#34;My First AzureAD Application&#34;)
+     *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2365,7 +2473,8 @@ public final class AzureadFunctions {
      * *Listing well-known application IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2387,16 +2496,18 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2423,30 +2534,31 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
+     *         var example = new Application("example", ApplicationArgs.builder()        
+     *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .type("Scope")
      *                         .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2459,7 +2571,8 @@ public final class AzureadFunctions {
      * *Listing well-known application IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2481,16 +2594,18 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2517,30 +2632,31 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
+     *         var example = new Application("example", ApplicationArgs.builder()        
+     *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .type("Scope")
      *                         .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2553,7 +2669,8 @@ public final class AzureadFunctions {
      * *Listing well-known application IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2575,16 +2692,18 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2611,30 +2730,31 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
+     *         var example = new Application("example", ApplicationArgs.builder()        
+     *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .type("Scope")
      *                         .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2647,7 +2767,8 @@ public final class AzureadFunctions {
      * *Listing well-known application IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2669,16 +2790,18 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2705,30 +2828,31 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
+     *         var example = new Application("example", ApplicationArgs.builder()        
+     *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .type("Scope")
      *                         .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2741,7 +2865,8 @@ public final class AzureadFunctions {
      * *Listing well-known application IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2763,16 +2888,18 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2799,30 +2926,31 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
+     *         var example = new Application("example", ApplicationArgs.builder()        
+     *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .type("Scope")
      *                         .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2835,7 +2963,8 @@ public final class AzureadFunctions {
      * *Listing well-known application IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2857,16 +2986,18 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Granting access to an application*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2893,30 +3024,31 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
-     *             .displayName(&#34;example&#34;)
+     *         var example = new Application("example", ApplicationArgs.builder()        
+     *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
-     *                         .type(&#34;Role&#34;)
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
-     *                         .type(&#34;Scope&#34;)
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .type("Scope")
      *                         .build())
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2933,7 +3065,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2955,13 +3088,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
+     *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2978,7 +3112,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3000,13 +3135,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
+     *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3023,7 +3159,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3045,13 +3182,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
+     *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3068,7 +3206,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3090,13 +3229,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
+     *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3113,7 +3253,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3135,13 +3276,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
+     *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3158,7 +3300,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3180,13 +3323,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
-     *             .displayName(&#34;Marketo&#34;)
+     *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3203,7 +3347,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3225,10 +3370,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3245,7 +3391,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3267,10 +3414,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3287,7 +3435,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3309,10 +3458,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3329,7 +3479,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3351,10 +3502,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3371,7 +3523,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3393,10 +3546,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3413,7 +3567,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3435,10 +3590,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3460,7 +3616,8 @@ public final class AzureadFunctions {
      * 
      * *Look up and output type of object by ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3482,13 +3639,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
-     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
+     *         ctx.export("objectType", example.applyValue(getDirectoryObjectResult -> getDirectoryObjectResult.type()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes Reference
@@ -3517,7 +3675,8 @@ public final class AzureadFunctions {
      * 
      * *Look up and output type of object by ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3539,13 +3698,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
-     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
+     *         ctx.export("objectType", example.applyValue(getDirectoryObjectResult -> getDirectoryObjectResult.type()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes Reference
@@ -3574,7 +3734,8 @@ public final class AzureadFunctions {
      * 
      * *Look up and output type of object by ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3596,13 +3757,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
-     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
+     *         ctx.export("objectType", example.applyValue(getDirectoryObjectResult -> getDirectoryObjectResult.type()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes Reference
@@ -3631,7 +3793,8 @@ public final class AzureadFunctions {
      * 
      * *Look up and output type of object by ID*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3653,13 +3816,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
-     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
+     *         ctx.export("objectType", example.applyValue(getDirectoryObjectResult -> getDirectoryObjectResult.type()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes Reference
@@ -3687,7 +3851,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3709,10 +3874,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3733,7 +3899,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3755,10 +3922,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3779,7 +3947,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3801,10 +3970,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3825,7 +3995,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3847,10 +4018,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3871,7 +4043,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3893,10 +4066,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3917,7 +4091,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3939,10 +4114,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3963,7 +4139,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3985,10 +4162,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoles();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4009,7 +4187,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4031,10 +4210,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoles();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4055,7 +4235,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4077,10 +4258,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoles();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4101,7 +4283,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4123,10 +4306,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoles();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4147,7 +4331,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4169,10 +4354,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoles();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4193,7 +4379,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4215,10 +4402,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AzureadFunctions.getDirectoryRoles();
      * 
-     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4239,7 +4427,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4262,10 +4451,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4286,7 +4476,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4309,10 +4500,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4333,7 +4525,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4356,10 +4549,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4380,7 +4574,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4403,10 +4598,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4427,7 +4623,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4450,10 +4647,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4474,7 +4672,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4497,10 +4696,11 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4523,7 +4723,8 @@ public final class AzureadFunctions {
      * ### By Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4545,13 +4746,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
+     *             .displayName("MyGroupName")
      *             .securityEnabled(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4574,7 +4776,8 @@ public final class AzureadFunctions {
      * ### By Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4596,13 +4799,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
+     *             .displayName("MyGroupName")
      *             .securityEnabled(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4625,7 +4829,8 @@ public final class AzureadFunctions {
      * ### By Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4647,13 +4852,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
+     *             .displayName("MyGroupName")
      *             .securityEnabled(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4676,7 +4882,8 @@ public final class AzureadFunctions {
      * ### By Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4698,13 +4905,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
+     *             .displayName("MyGroupName")
      *             .securityEnabled(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4727,7 +4935,8 @@ public final class AzureadFunctions {
      * ### By Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4749,13 +4958,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
+     *             .displayName("MyGroupName")
      *             .securityEnabled(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4778,7 +4988,8 @@ public final class AzureadFunctions {
      * ### By Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4800,13 +5011,14 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
-     *             .displayName(&#34;MyGroupName&#34;)
+     *             .displayName("MyGroupName")
      *             .securityEnabled(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4828,7 +5040,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by group name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4851,18 +5064,20 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
+     *                 "group-a",
+     *                 "group-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4884,17 +5099,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
+     *             .displayNamePrefix("sales-")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4921,12 +5138,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4954,12 +5173,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4988,7 +5209,8 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5010,7 +5232,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by group name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5033,18 +5256,20 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
+     *                 "group-a",
+     *                 "group-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5066,17 +5291,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
+     *             .displayNamePrefix("sales-")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5103,12 +5330,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5136,12 +5365,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5170,7 +5401,8 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5192,7 +5424,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by group name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5215,18 +5448,20 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
+     *                 "group-a",
+     *                 "group-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5248,17 +5483,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
+     *             .displayNamePrefix("sales-")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5285,12 +5522,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5318,12 +5557,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5352,7 +5593,8 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5374,7 +5616,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by group name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5397,18 +5640,20 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
+     *                 "group-a",
+     *                 "group-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5430,17 +5675,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
+     *             .displayNamePrefix("sales-")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5467,12 +5714,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5500,12 +5749,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5534,7 +5785,8 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5556,7 +5808,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by group name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5579,18 +5832,20 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
+     *                 "group-a",
+     *                 "group-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5612,17 +5867,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
+     *             .displayNamePrefix("sales-")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5649,12 +5906,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5682,12 +5941,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5716,7 +5977,8 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5738,7 +6000,8 @@ public final class AzureadFunctions {
      * 
      * *Look up by group name*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5761,18 +6024,20 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
-     *                 &#34;group-a&#34;,
-     *                 &#34;group-b&#34;)
+     *                 "group-a",
+     *                 "group-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by display name prefix*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5794,17 +6059,19 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
-     *             .displayNamePrefix(&#34;sales-&#34;)
+     *             .displayNamePrefix("sales-")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5831,12 +6098,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all mail-enabled groups*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5864,12 +6133,14 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up all security-enabled groups that are not mail-enabled*
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5898,7 +6169,8 @@ public final class AzureadFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5919,7 +6191,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5941,12 +6214,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
-     *             .displayName(&#34;My Named Location&#34;)
+     *             .displayName("My Named Location")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes Reference
@@ -5989,7 +6263,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6011,12 +6286,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
-     *             .displayName(&#34;My Named Location&#34;)
+     *             .displayName("My Named Location")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes Reference
@@ -6059,7 +6335,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6081,12 +6358,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
-     *             .displayName(&#34;My Named Location&#34;)
+     *             .displayName("My Named Location")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes Reference
@@ -6129,7 +6407,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6151,12 +6430,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
-     *             .displayName(&#34;My Named Location&#34;)
+     *             .displayName("My Named Location")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes Reference
@@ -6201,7 +6481,8 @@ public final class AzureadFunctions {
      * *Look up by application display name*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6223,18 +6504,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
+     *             .displayName("my-awesome-application")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6256,18 +6539,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6289,12 +6574,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6317,7 +6603,8 @@ public final class AzureadFunctions {
      * *Look up by application display name*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6339,18 +6626,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
+     *             .displayName("my-awesome-application")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6372,18 +6661,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6405,12 +6696,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6433,7 +6725,8 @@ public final class AzureadFunctions {
      * *Look up by application display name*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6455,18 +6748,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
+     *             .displayName("my-awesome-application")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6488,18 +6783,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6521,12 +6818,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6549,7 +6847,8 @@ public final class AzureadFunctions {
      * *Look up by application display name*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6571,18 +6870,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
+     *             .displayName("my-awesome-application")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6604,18 +6905,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6637,12 +6940,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6665,7 +6969,8 @@ public final class AzureadFunctions {
      * *Look up by application display name*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6687,18 +6992,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
+     *             .displayName("my-awesome-application")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6720,18 +7027,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6753,12 +7062,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6781,7 +7091,8 @@ public final class AzureadFunctions {
      * *Look up by application display name*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6803,18 +7114,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .displayName(&#34;my-awesome-application&#34;)
+     *             .displayName("my-awesome-application")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by client ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6836,18 +7149,20 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .clientId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .clientId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object ID*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6869,12 +7184,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
-     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6897,7 +7213,8 @@ public final class AzureadFunctions {
      * *Look up by application display names*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6920,19 +7237,21 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
+     *                 "example-app",
+     *                 "another-app")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6955,20 +7274,22 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
+     *                 "11111111-0000-0000-0000-000000000000",
+     *                 "22222222-0000-0000-0000-000000000000",
+     *                 "33333333-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6991,14 +7312,15 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
+     *                 "00000000-0000-0000-0000-000000000000",
+     *                 "00000000-0000-0000-0000-111111111111",
+     *                 "00000000-0000-0000-0000-222222222222")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7021,7 +7343,8 @@ public final class AzureadFunctions {
      * *Look up by application display names*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7044,19 +7367,21 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
+     *                 "example-app",
+     *                 "another-app")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7079,20 +7404,22 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
+     *                 "11111111-0000-0000-0000-000000000000",
+     *                 "22222222-0000-0000-0000-000000000000",
+     *                 "33333333-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7115,14 +7442,15 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
+     *                 "00000000-0000-0000-0000-000000000000",
+     *                 "00000000-0000-0000-0000-111111111111",
+     *                 "00000000-0000-0000-0000-222222222222")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7145,7 +7473,8 @@ public final class AzureadFunctions {
      * *Look up by application display names*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7168,19 +7497,21 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
+     *                 "example-app",
+     *                 "another-app")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7203,20 +7534,22 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
+     *                 "11111111-0000-0000-0000-000000000000",
+     *                 "22222222-0000-0000-0000-000000000000",
+     *                 "33333333-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7239,14 +7572,15 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
+     *                 "00000000-0000-0000-0000-000000000000",
+     *                 "00000000-0000-0000-0000-111111111111",
+     *                 "00000000-0000-0000-0000-222222222222")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7269,7 +7603,8 @@ public final class AzureadFunctions {
      * *Look up by application display names*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7292,19 +7627,21 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
+     *                 "example-app",
+     *                 "another-app")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7327,20 +7664,22 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
+     *                 "11111111-0000-0000-0000-000000000000",
+     *                 "22222222-0000-0000-0000-000000000000",
+     *                 "33333333-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7363,14 +7702,15 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
+     *                 "00000000-0000-0000-0000-000000000000",
+     *                 "00000000-0000-0000-0000-111111111111",
+     *                 "00000000-0000-0000-0000-222222222222")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7393,7 +7733,8 @@ public final class AzureadFunctions {
      * *Look up by application display names*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7416,19 +7757,21 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
+     *                 "example-app",
+     *                 "another-app")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7451,20 +7794,22 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
+     *                 "11111111-0000-0000-0000-000000000000",
+     *                 "22222222-0000-0000-0000-000000000000",
+     *                 "33333333-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7487,14 +7832,15 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
+     *                 "00000000-0000-0000-0000-000000000000",
+     *                 "00000000-0000-0000-0000-111111111111",
+     *                 "00000000-0000-0000-0000-222222222222")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7517,7 +7863,8 @@ public final class AzureadFunctions {
      * *Look up by application display names*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7540,19 +7887,21 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
-     *                 &#34;example-app&#34;,
-     *                 &#34;another-app&#34;)
+     *                 "example-app",
+     *                 "another-app")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by application IDs (client IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7575,20 +7924,22 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .clientIds(            
-     *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
-     *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
-     *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
+     *                 "11111111-0000-0000-0000-000000000000",
+     *                 "22222222-0000-0000-0000-000000000000",
+     *                 "33333333-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * *Look up by service principal object IDs*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7611,14 +7962,15 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
-     *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
-     *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
-     *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
+     *                 "00000000-0000-0000-0000-000000000000",
+     *                 "00000000-0000-0000-0000-111111111111",
+     *                 "00000000-0000-0000-0000-222222222222")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7639,7 +7991,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7661,12 +8014,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
+     *             .userPrincipalName("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7687,7 +8041,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7709,12 +8064,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
+     *             .userPrincipalName("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7735,7 +8091,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7757,12 +8114,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
+     *             .userPrincipalName("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7783,7 +8141,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7805,12 +8164,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
+     *             .userPrincipalName("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7831,7 +8191,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7853,12 +8214,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
+     *             .userPrincipalName("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7879,7 +8241,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7901,12 +8264,13 @@ public final class AzureadFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName(&#34;user@example.com&#34;)
+     *             .userPrincipalName("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7927,7 +8291,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7950,13 +8315,14 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
+     *                 "kat{@literal @}example.com",
+     *                 "byte{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7977,7 +8343,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8000,13 +8367,14 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
+     *                 "kat{@literal @}example.com",
+     *                 "byte{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8027,7 +8395,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8050,13 +8419,14 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
+     *                 "kat{@literal @}example.com",
+     *                 "byte{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8077,7 +8447,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8100,13 +8471,14 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
+     *                 "kat{@literal @}example.com",
+     *                 "byte{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8127,7 +8499,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8150,13 +8523,14 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
+     *                 "kat{@literal @}example.com",
+     *                 "byte{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8177,7 +8551,8 @@ public final class AzureadFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8200,13 +8575,14 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 &#34;kat@example.com&#34;,
-     *                 &#34;byte@example.com&#34;)
+     *                 "kat{@literal @}example.com",
+     *                 "byte{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

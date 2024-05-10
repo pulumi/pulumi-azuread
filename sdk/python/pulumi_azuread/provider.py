@@ -48,7 +48,6 @@ class ProviderArgs:
         :param pulumi.Input[str] client_secret: The application password to use when authenticating as a Service Principal using a Client Secret
         :param pulumi.Input[str] client_secret_file_path: The path to a file containing the application password to use when authenticating as a Service Principal using a Client
                Secret
-        :param pulumi.Input[bool] disable_terraform_partner_id: Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
         :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
                `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
                when `metadata_host` is specified.
@@ -216,9 +215,6 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="disableTerraformPartnerId")
     def disable_terraform_partner_id(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
-        """
         return pulumi.get(self, "disable_terraform_partner_id")
 
     @disable_terraform_partner_id.setter
@@ -419,7 +415,6 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_secret: The application password to use when authenticating as a Service Principal using a Client Secret
         :param pulumi.Input[str] client_secret_file_path: The path to a file containing the application password to use when authenticating as a Service Principal using a Client
                Secret
-        :param pulumi.Input[bool] disable_terraform_partner_id: Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
         :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
                `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
                when `metadata_host` is specified.

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,23 +54,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@example.com&#34;)
+ *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleDirectoryRole = new DirectoryRole(&#34;exampleDirectoryRole&#34;, DirectoryRoleArgs.builder()        
- *             .displayName(&#34;Application Administrator&#34;)
+ *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()        
+ *             .displayName("Application Administrator")
  *             .build());
  * 
- *         var exampleDirectoryRoleEligibilityScheduleRequest = new DirectoryRoleEligibilityScheduleRequest(&#34;exampleDirectoryRoleEligibilityScheduleRequest&#34;, DirectoryRoleEligibilityScheduleRequestArgs.builder()        
+ *         var exampleDirectoryRoleEligibilityScheduleRequest = new DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest", DirectoryRoleEligibilityScheduleRequestArgs.builder()        
  *             .roleDefinitionId(exampleDirectoryRole.templateId())
  *             .principalId(exampleAzureadUser.objectId())
- *             .directoryScopeId(&#34;/&#34;)
- *             .justification(&#34;Example&#34;)
+ *             .directoryScopeId("/")
+ *             .justification("Example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; Note the use of the `template_id` attribute when referencing built-in roles.

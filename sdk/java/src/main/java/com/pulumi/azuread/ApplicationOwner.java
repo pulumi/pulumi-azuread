@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,24 +43,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var jane = new User(&#34;jane&#34;, UserArgs.builder()        
- *             .userPrincipalName(&#34;jane.fischer@hashitown.com&#34;)
- *             .displayName(&#34;Jane Fischer&#34;)
- *             .password(&#34;Ch@ngeMe&#34;)
+ *         var jane = new User("jane", UserArgs.builder()        
+ *             .userPrincipalName("jane.fischer{@literal @}hashitown.com")
+ *             .displayName("Jane Fischer")
+ *             .password("Ch{@literal @}ngeMe")
  *             .build());
  * 
- *         var exampleJane = new ApplicationOwner(&#34;exampleJane&#34;, ApplicationOwnerArgs.builder()        
+ *         var exampleJane = new ApplicationOwner("exampleJane", ApplicationOwnerArgs.builder()        
  *             .applicationId(example.id())
  *             .ownerObjectId(jane.objectId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; **Tip** For managing more application owners, create additional instances of this resource

@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,42 +42,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration(&#34;example&#34;, ApplicationRegistrationArgs.builder()        
- *             .displayName(&#34;example&#34;)
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *             .displayName("example")
  *             .build());
  * 
- *         var examplePublic = new ApplicationRedirectUris(&#34;examplePublic&#34;, ApplicationRedirectUrisArgs.builder()        
+ *         var examplePublic = new ApplicationRedirectUris("examplePublic", ApplicationRedirectUrisArgs.builder()        
  *             .applicationId(example.id())
- *             .type(&#34;PublicClient&#34;)
+ *             .type("PublicClient")
  *             .redirectUris(            
- *                 &#34;myapp://auth&#34;,
- *                 &#34;sample.mobile.app.bundie.id://auth&#34;,
- *                 &#34;https://login.microsoftonline.com/common/oauth2/nativeclient&#34;,
- *                 &#34;https://login.live.com/oauth20_desktop.srf&#34;,
- *                 &#34;ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222&#34;,
- *                 &#34;urn:ietf:wg:oauth:2.0:foo&#34;)
+ *                 "myapp://auth",
+ *                 "sample.mobile.app.bundie.id://auth",
+ *                 "https://login.microsoftonline.com/common/oauth2/nativeclient",
+ *                 "https://login.live.com/oauth20_desktop.srf",
+ *                 "ms-appx-web://Microsoft.AAD.BrokerPlugin/00000000-1111-1111-1111-222222222222",
+ *                 "urn:ietf:wg:oauth:2.0:foo")
  *             .build());
  * 
- *         var exampleSpa = new ApplicationRedirectUris(&#34;exampleSpa&#34;, ApplicationRedirectUrisArgs.builder()        
+ *         var exampleSpa = new ApplicationRedirectUris("exampleSpa", ApplicationRedirectUrisArgs.builder()        
  *             .applicationId(example.id())
- *             .type(&#34;SPA&#34;)
+ *             .type("SPA")
  *             .redirectUris(            
- *                 &#34;https://mobile.hashitown.com/&#34;,
- *                 &#34;https://beta.hashitown.com/&#34;)
+ *                 "https://mobile.hashitown.com/",
+ *                 "https://beta.hashitown.com/")
  *             .build());
  * 
- *         var exampleWeb = new ApplicationRedirectUris(&#34;exampleWeb&#34;, ApplicationRedirectUrisArgs.builder()        
+ *         var exampleWeb = new ApplicationRedirectUris("exampleWeb", ApplicationRedirectUrisArgs.builder()        
  *             .applicationId(example.id())
- *             .type(&#34;Web&#34;)
+ *             .type("Web")
  *             .redirectUris(            
- *                 &#34;https://app.hashitown.com/&#34;,
- *                 &#34;https://classic.hashitown.com/&#34;,
- *                 &#34;urn:ietf:wg:oauth:2.0:oob&#34;)
+ *                 "https://app.hashitown.com/",
+ *                 "https://classic.hashitown.com/",
+ *                 "urn:ietf:wg:oauth:2.0:oob")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

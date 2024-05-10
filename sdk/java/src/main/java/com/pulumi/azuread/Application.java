@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * *Create an application*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,14 +63,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
- *             .identifierUris(&#34;api://example-app&#34;)
+ *         var example = new Application("example", ApplicationArgs.builder()        
+ *             .displayName("example")
+ *             .identifierUris("api://example-app")
  *             .logoImage(StdFunctions.filebase64(Filebase64Args.builder()
- *                 .input(&#34;/path/to/logo.png&#34;)
+ *                 .input("/path/to/logo.png")
  *                 .build()).result())
- *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
- *             .signInAudience(&#34;AzureADMultipleOrgs&#34;)
+ *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
+ *             .signInAudience("AzureADMultipleOrgs")
  *             .api(ApplicationApiArgs.builder()
  *                 .mappedClaimsEnabled(true)
  *                 .requestedAccessTokenVersion(2)
@@ -78,42 +79,42 @@ import javax.annotation.Nullable;
  *                     known2.applicationId())
  *                 .oauth2PermissionScopes(                
  *                     ApplicationApiOauth2PermissionScopeArgs.builder()
- *                         .adminConsentDescription(&#34;Allow the application to access example on behalf of the signed-in user.&#34;)
- *                         .adminConsentDisplayName(&#34;Access example&#34;)
+ *                         .adminConsentDescription("Allow the application to access example on behalf of the signed-in user.")
+ *                         .adminConsentDisplayName("Access example")
  *                         .enabled(true)
- *                         .id(&#34;96183846-204b-4b43-82e1-5d2222eb4b9b&#34;)
- *                         .type(&#34;User&#34;)
- *                         .userConsentDescription(&#34;Allow the application to access example on your behalf.&#34;)
- *                         .userConsentDisplayName(&#34;Access example&#34;)
- *                         .value(&#34;user_impersonation&#34;)
+ *                         .id("96183846-204b-4b43-82e1-5d2222eb4b9b")
+ *                         .type("User")
+ *                         .userConsentDescription("Allow the application to access example on your behalf.")
+ *                         .userConsentDisplayName("Access example")
+ *                         .value("user_impersonation")
  *                         .build(),
  *                     ApplicationApiOauth2PermissionScopeArgs.builder()
- *                         .adminConsentDescription(&#34;Administer the example application&#34;)
- *                         .adminConsentDisplayName(&#34;Administer&#34;)
+ *                         .adminConsentDescription("Administer the example application")
+ *                         .adminConsentDisplayName("Administer")
  *                         .enabled(true)
- *                         .id(&#34;be98fa3e-ab5b-4b11-83d9-04ba2b7946bc&#34;)
- *                         .type(&#34;Admin&#34;)
- *                         .value(&#34;administer&#34;)
+ *                         .id("be98fa3e-ab5b-4b11-83d9-04ba2b7946bc")
+ *                         .type("Admin")
+ *                         .value("administer")
  *                         .build())
  *                 .build())
  *             .appRoles(            
  *                 ApplicationAppRoleArgs.builder()
  *                     .allowedMemberTypes(                    
- *                         &#34;User&#34;,
- *                         &#34;Application&#34;)
- *                     .description(&#34;Admins can manage roles and perform all task actions&#34;)
- *                     .displayName(&#34;Admin&#34;)
+ *                         "User",
+ *                         "Application")
+ *                     .description("Admins can manage roles and perform all task actions")
+ *                     .displayName("Admin")
  *                     .enabled(true)
- *                     .id(&#34;1b19509b-32b1-4e9f-b71d-4992aa991967&#34;)
- *                     .value(&#34;admin&#34;)
+ *                     .id("1b19509b-32b1-4e9f-b71d-4992aa991967")
+ *                     .value("admin")
  *                     .build(),
  *                 ApplicationAppRoleArgs.builder()
- *                     .allowedMemberTypes(&#34;User&#34;)
- *                     .description(&#34;ReadOnly roles have limited query access&#34;)
- *                     .displayName(&#34;ReadOnly&#34;)
+ *                     .allowedMemberTypes("User")
+ *                     .description("ReadOnly roles have limited query access")
+ *                     .displayName("ReadOnly")
  *                     .enabled(true)
- *                     .id(&#34;497406e4-012a-4267-bf18-45a1cb148a01&#34;)
- *                     .value(&#34;User&#34;)
+ *                     .id("497406e4-012a-4267-bf18-45a1cb148a01")
+ *                     .value("User")
  *                     .build())
  *             .featureTags(ApplicationFeatureTagArgs.builder()
  *                 .enterprise(true)
@@ -122,45 +123,45 @@ import javax.annotation.Nullable;
  *             .optionalClaims(ApplicationOptionalClaimsArgs.builder()
  *                 .accessTokens(                
  *                     ApplicationOptionalClaimsAccessTokenArgs.builder()
- *                         .name(&#34;myclaim&#34;)
+ *                         .name("myclaim")
  *                         .build(),
  *                     ApplicationOptionalClaimsAccessTokenArgs.builder()
- *                         .name(&#34;otherclaim&#34;)
+ *                         .name("otherclaim")
  *                         .build())
  *                 .idTokens(ApplicationOptionalClaimsIdTokenArgs.builder()
- *                     .name(&#34;userclaim&#34;)
- *                     .source(&#34;user&#34;)
+ *                     .name("userclaim")
+ *                     .source("user")
  *                     .essential(true)
- *                     .additionalProperties(&#34;emit_as_roles&#34;)
+ *                     .additionalProperties("emit_as_roles")
  *                     .build())
  *                 .saml2Tokens(ApplicationOptionalClaimsSaml2TokenArgs.builder()
- *                     .name(&#34;samlexample&#34;)
+ *                     .name("samlexample")
  *                     .build())
  *                 .build())
  *             .requiredResourceAccesses(            
  *                 ApplicationRequiredResourceAccessArgs.builder()
- *                     .resourceAppId(&#34;00000003-0000-0000-c000-000000000000&#34;)
+ *                     .resourceAppId("00000003-0000-0000-c000-000000000000")
  *                     .resourceAccesses(                    
  *                         ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                             .id(&#34;df021288-bdef-4463-88db-98f22de89214&#34;)
- *                             .type(&#34;Role&#34;)
+ *                             .id("df021288-bdef-4463-88db-98f22de89214")
+ *                             .type("Role")
  *                             .build(),
  *                         ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                             .id(&#34;b4e74841-8e56-480b-be8b-910348b18b4c&#34;)
- *                             .type(&#34;Scope&#34;)
+ *                             .id("b4e74841-8e56-480b-be8b-910348b18b4c")
+ *                             .type("Scope")
  *                             .build())
  *                     .build(),
  *                 ApplicationRequiredResourceAccessArgs.builder()
- *                     .resourceAppId(&#34;c5393580-f805-4401-95e8-94b7a6ef2fc2&#34;)
+ *                     .resourceAppId("c5393580-f805-4401-95e8-94b7a6ef2fc2")
  *                     .resourceAccesses(ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(&#34;594c1fb6-4f81-4475-ae41-0c394909246c&#34;)
- *                         .type(&#34;Role&#34;)
+ *                         .id("594c1fb6-4f81-4475-ae41-0c394909246c")
+ *                         .type("Role")
  *                         .build())
  *                     .build())
  *             .web(ApplicationWebArgs.builder()
- *                 .homepageUrl(&#34;https://app.example.net&#34;)
- *                 .logoutUrl(&#34;https://app.example.net/logout&#34;)
- *                 .redirectUris(&#34;https://app.example.net/account&#34;)
+ *                 .homepageUrl("https://app.example.net")
+ *                 .logoutUrl("https://app.example.net/logout")
+ *                 .redirectUris("https://app.example.net/account")
  *                 .implicitGrant(ApplicationWebImplicitGrantArgs.builder()
  *                     .accessTokenIssuanceEnabled(true)
  *                     .idTokenIssuanceEnabled(true)
@@ -170,13 +171,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Create application from a gallery template*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -202,22 +205,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
- *             .displayName(&#34;Marketo&#34;)
+ *             .displayName("Marketo")
  *             .build());
  * 
- *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
- *             .displayName(&#34;example&#34;)
- *             .templateId(example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
+ *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()        
+ *             .displayName("example")
+ *             .templateId(example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()))
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
  *             .applicationId(exampleApplication.applicationId())
  *             .useExisting(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
