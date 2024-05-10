@@ -22,7 +22,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, assignable_to_role=None, auto_subscribe_new_members=None, behaviors=None, description=None, display_name=None, dynamic_memberships=None, external_senders_allowed=None, hide_from_address_lists=None, hide_from_outlook_clients=None, id=None, mail=None, mail_enabled=None, mail_nickname=None, members=None, object_id=None, onpremises_domain_name=None, onpremises_group_type=None, onpremises_netbios_name=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, owners=None, preferred_language=None, provisioning_options=None, proxy_addresses=None, security_enabled=None, theme=None, types=None, visibility=None, writeback_enabled=None):
+    def __init__(__self__, assignable_to_role=None, auto_subscribe_new_members=None, behaviors=None, description=None, display_name=None, dynamic_memberships=None, external_senders_allowed=None, hide_from_address_lists=None, hide_from_outlook_clients=None, id=None, include_transitive_members=None, mail=None, mail_enabled=None, mail_nickname=None, members=None, object_id=None, onpremises_domain_name=None, onpremises_group_type=None, onpremises_netbios_name=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, owners=None, preferred_language=None, provisioning_options=None, proxy_addresses=None, security_enabled=None, theme=None, types=None, visibility=None, writeback_enabled=None):
         if assignable_to_role and not isinstance(assignable_to_role, bool):
             raise TypeError("Expected argument 'assignable_to_role' to be a bool")
         pulumi.set(__self__, "assignable_to_role", assignable_to_role)
@@ -53,6 +53,9 @@ class GetGroupResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if include_transitive_members and not isinstance(include_transitive_members, bool):
+            raise TypeError("Expected argument 'include_transitive_members' to be a bool")
+        pulumi.set(__self__, "include_transitive_members", include_transitive_members)
         if mail and not isinstance(mail, str):
             raise TypeError("Expected argument 'mail' to be a str")
         pulumi.set(__self__, "mail", mail)
@@ -195,6 +198,11 @@ class GetGroupResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="includeTransitiveMembers")
+    def include_transitive_members(self) -> Optional[bool]:
+        return pulumi.get(self, "include_transitive_members")
+
+    @property
     @pulumi.getter
     def mail(self) -> str:
         """
@@ -222,7 +230,7 @@ class GetGroupResult:
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        List of object IDs of the group members.
+        List of object IDs of the group members. When `include_transitive_members` is `true`, contains a list of object IDs of all transitive group members.
         """
         return pulumi.get(self, "members")
 
@@ -371,6 +379,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             hide_from_address_lists=self.hide_from_address_lists,
             hide_from_outlook_clients=self.hide_from_outlook_clients,
             id=self.id,
+            include_transitive_members=self.include_transitive_members,
             mail=self.mail,
             mail_enabled=self.mail_enabled,
             mail_nickname=self.mail_nickname,
@@ -394,6 +403,7 @@ class AwaitableGetGroupResult(GetGroupResult):
 
 
 def get_group(display_name: Optional[str] = None,
+              include_transitive_members: Optional[bool] = None,
               mail_enabled: Optional[bool] = None,
               mail_nickname: Optional[str] = None,
               object_id: Optional[str] = None,
@@ -424,6 +434,7 @@ def get_group(display_name: Optional[str] = None,
 
 
     :param str display_name: The display name for the group.
+    :param bool include_transitive_members: Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
     :param bool mail_enabled: Whether the group is mail-enabled.
     :param str mail_nickname: The mail alias for the group, unique in the organisation.
     :param str object_id: Specifies the object ID of the group.
@@ -433,6 +444,7 @@ def get_group(display_name: Optional[str] = None,
     """
     __args__ = dict()
     __args__['displayName'] = display_name
+    __args__['includeTransitiveMembers'] = include_transitive_members
     __args__['mailEnabled'] = mail_enabled
     __args__['mailNickname'] = mail_nickname
     __args__['objectId'] = object_id
@@ -451,6 +463,7 @@ def get_group(display_name: Optional[str] = None,
         hide_from_address_lists=pulumi.get(__ret__, 'hide_from_address_lists'),
         hide_from_outlook_clients=pulumi.get(__ret__, 'hide_from_outlook_clients'),
         id=pulumi.get(__ret__, 'id'),
+        include_transitive_members=pulumi.get(__ret__, 'include_transitive_members'),
         mail=pulumi.get(__ret__, 'mail'),
         mail_enabled=pulumi.get(__ret__, 'mail_enabled'),
         mail_nickname=pulumi.get(__ret__, 'mail_nickname'),
@@ -475,6 +488,7 @@ def get_group(display_name: Optional[str] = None,
 
 @_utilities.lift_output_func(get_group)
 def get_group_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
+                     include_transitive_members: Optional[pulumi.Input[Optional[bool]]] = None,
                      mail_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                      mail_nickname: Optional[pulumi.Input[Optional[str]]] = None,
                      object_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -505,6 +519,7 @@ def get_group_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str display_name: The display name for the group.
+    :param bool include_transitive_members: Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
     :param bool mail_enabled: Whether the group is mail-enabled.
     :param str mail_nickname: The mail alias for the group, unique in the organisation.
     :param str object_id: Specifies the object ID of the group.

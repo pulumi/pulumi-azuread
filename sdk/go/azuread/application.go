@@ -252,7 +252,7 @@ type Application struct {
 	//
 	// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
 	FeatureTags ApplicationFeatureTagArrayOutput `pulumi:"featureTags"`
-	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+	// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringArrayOutput `pulumi:"groupMembershipClaims"`
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayOutput `pulumi:"identifierUris"`
@@ -369,7 +369,7 @@ type applicationState struct {
 	//
 	// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
 	FeatureTags []ApplicationFeatureTag `pulumi:"featureTags"`
-	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+	// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
@@ -454,7 +454,7 @@ type ApplicationState struct {
 	//
 	// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
 	FeatureTags ApplicationFeatureTagArrayInput
-	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+	// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringArrayInput
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayInput
@@ -533,7 +533,7 @@ type applicationArgs struct {
 	//
 	// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
 	FeatureTags []ApplicationFeatureTag `pulumi:"featureTags"`
-	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+	// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
@@ -601,7 +601,7 @@ type ApplicationArgs struct {
 	//
 	// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
 	FeatureTags ApplicationFeatureTagArrayInput
-	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+	// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringArrayInput
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayInput
@@ -797,7 +797,7 @@ func (o ApplicationOutput) FeatureTags() ApplicationFeatureTagArrayOutput {
 	return o.ApplyT(func(v *Application) ApplicationFeatureTagArrayOutput { return v.FeatureTags }).(ApplicationFeatureTagArrayOutput)
 }
 
-// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+// A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 func (o ApplicationOutput) GroupMembershipClaims() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringArrayOutput { return v.GroupMembershipClaims }).(pulumi.StringArrayOutput)
 }

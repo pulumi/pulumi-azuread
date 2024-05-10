@@ -22,6 +22,8 @@ import com.pulumi.azuread.inputs.GetDomainsArgs;
 import com.pulumi.azuread.inputs.GetDomainsPlainArgs;
 import com.pulumi.azuread.inputs.GetGroupArgs;
 import com.pulumi.azuread.inputs.GetGroupPlainArgs;
+import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;
+import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyPlainArgs;
 import com.pulumi.azuread.inputs.GetGroupsArgs;
 import com.pulumi.azuread.inputs.GetGroupsPlainArgs;
 import com.pulumi.azuread.inputs.GetNamedLocationArgs;
@@ -47,6 +49,7 @@ import com.pulumi.azuread.outputs.GetDirectoryRoleTemplatesResult;
 import com.pulumi.azuread.outputs.GetDirectoryRolesResult;
 import com.pulumi.azuread.outputs.GetDomainsResult;
 import com.pulumi.azuread.outputs.GetGroupResult;
+import com.pulumi.azuread.outputs.GetGroupRoleManagementPolicyResult;
 import com.pulumi.azuread.outputs.GetGroupsResult;
 import com.pulumi.azuread.outputs.GetNamedLocationResult;
 import com.pulumi.azuread.outputs.GetServicePrincipalResult;
@@ -5026,6 +5029,238 @@ public final class AzureadFunctions {
         return Deployment.getInstance().invokeAsync("azuread:index/getGroup:getGroup", TypeShape.of(GetGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to retrieve a role policy for an Azure AD group.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires the `RoleManagementPolicy.Read.AzureADGroup` Microsoft Graph API permissions.
+     * 
+     * When authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.Group;
+     * import com.pulumi.azuread.GroupArgs;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new Group("example", GroupArgs.builder()        
+     *             .displayName("group-name")
+     *             .securityEnabled(true)
+     *             .build());
+     * 
+     *         final var ownersPolicy = AzureadFunctions.getGroupRoleManagementPolicy(GetGroupRoleManagementPolicyArgs.builder()
+     *             .groupId(example.id())
+     *             .roleId("owner")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(GetGroupRoleManagementPolicyArgs args) {
+        return getGroupRoleManagementPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve a role policy for an Azure AD group.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires the `RoleManagementPolicy.Read.AzureADGroup` Microsoft Graph API permissions.
+     * 
+     * When authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.Group;
+     * import com.pulumi.azuread.GroupArgs;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new Group("example", GroupArgs.builder()        
+     *             .displayName("group-name")
+     *             .securityEnabled(true)
+     *             .build());
+     * 
+     *         final var ownersPolicy = AzureadFunctions.getGroupRoleManagementPolicy(GetGroupRoleManagementPolicyArgs.builder()
+     *             .groupId(example.id())
+     *             .roleId("owner")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicyPlain(GetGroupRoleManagementPolicyPlainArgs args) {
+        return getGroupRoleManagementPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve a role policy for an Azure AD group.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires the `RoleManagementPolicy.Read.AzureADGroup` Microsoft Graph API permissions.
+     * 
+     * When authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.Group;
+     * import com.pulumi.azuread.GroupArgs;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new Group("example", GroupArgs.builder()        
+     *             .displayName("group-name")
+     *             .securityEnabled(true)
+     *             .build());
+     * 
+     *         final var ownersPolicy = AzureadFunctions.getGroupRoleManagementPolicy(GetGroupRoleManagementPolicyArgs.builder()
+     *             .groupId(example.id())
+     *             .roleId("owner")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicy(GetGroupRoleManagementPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy", TypeShape.of(GetGroupRoleManagementPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve a role policy for an Azure AD group.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires the `RoleManagementPolicy.Read.AzureADGroup` Microsoft Graph API permissions.
+     * 
+     * When authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.Group;
+     * import com.pulumi.azuread.GroupArgs;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new Group("example", GroupArgs.builder()        
+     *             .displayName("group-name")
+     *             .securityEnabled(true)
+     *             .build());
+     * 
+     *         final var ownersPolicy = AzureadFunctions.getGroupRoleManagementPolicy(GetGroupRoleManagementPolicyArgs.builder()
+     *             .groupId(example.id())
+     *             .roleId("owner")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupRoleManagementPolicyResult> getGroupRoleManagementPolicyPlain(GetGroupRoleManagementPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy", TypeShape.of(GetGroupRoleManagementPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Gets Object IDs or Display Names for multiple Azure Active Directory groups.
      * 
      * ## API Permissions
@@ -7247,7 +7482,7 @@ public final class AzureadFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * *Look up by application IDs (client IDs*
+     * *Look up by application IDs (client IDs)*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -7377,7 +7612,7 @@ public final class AzureadFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * *Look up by application IDs (client IDs*
+     * *Look up by application IDs (client IDs)*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -7507,7 +7742,7 @@ public final class AzureadFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * *Look up by application IDs (client IDs*
+     * *Look up by application IDs (client IDs)*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -7637,7 +7872,7 @@ public final class AzureadFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * *Look up by application IDs (client IDs*
+     * *Look up by application IDs (client IDs)*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -7767,7 +8002,7 @@ public final class AzureadFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * *Look up by application IDs (client IDs*
+     * *Look up by application IDs (client IDs)*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -7897,7 +8132,7 @@ public final class AzureadFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * *Look up by application IDs (client IDs*
+     * *Look up by application IDs (client IDs)*
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>

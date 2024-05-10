@@ -398,14 +398,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.featureTags;
     }
     /**
-     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+     * A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      * 
      */
     @Export(name="groupMembershipClaims", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupMembershipClaims;
 
     /**
-     * @return Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+     * @return A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      * 
      */
     public Output<Optional<List<String>>> groupMembershipClaims() {

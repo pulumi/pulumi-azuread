@@ -10,6 +10,8 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGroupResult {
@@ -63,6 +65,7 @@ public final class GetGroupResult {
      * 
      */
     private String id;
+    private @Nullable Boolean includeTransitiveMembers;
     /**
      * @return The SMTP address for the group.
      * 
@@ -79,7 +82,7 @@ public final class GetGroupResult {
      */
     private String mailNickname;
     /**
-     * @return List of object IDs of the group members.
+     * @return List of object IDs of the group members. When `include_transitive_members` is `true`, contains a list of object IDs of all transitive group members.
      * 
      */
     private List<String> members;
@@ -235,6 +238,9 @@ public final class GetGroupResult {
     public String id() {
         return this.id;
     }
+    public Optional<Boolean> includeTransitiveMembers() {
+        return Optional.ofNullable(this.includeTransitiveMembers);
+    }
     /**
      * @return The SMTP address for the group.
      * 
@@ -257,7 +263,7 @@ public final class GetGroupResult {
         return this.mailNickname;
     }
     /**
-     * @return List of object IDs of the group members.
+     * @return List of object IDs of the group members. When `include_transitive_members` is `true`, contains a list of object IDs of all transitive group members.
      * 
      */
     public List<String> members() {
@@ -395,6 +401,7 @@ public final class GetGroupResult {
         private Boolean hideFromAddressLists;
         private Boolean hideFromOutlookClients;
         private String id;
+        private @Nullable Boolean includeTransitiveMembers;
         private String mail;
         private Boolean mailEnabled;
         private String mailNickname;
@@ -428,6 +435,7 @@ public final class GetGroupResult {
     	      this.hideFromAddressLists = defaults.hideFromAddressLists;
     	      this.hideFromOutlookClients = defaults.hideFromOutlookClients;
     	      this.id = defaults.id;
+    	      this.includeTransitiveMembers = defaults.includeTransitiveMembers;
     	      this.mail = defaults.mail;
     	      this.mailEnabled = defaults.mailEnabled;
     	      this.mailNickname = defaults.mailNickname;
@@ -534,6 +542,12 @@ public final class GetGroupResult {
               throw new MissingRequiredPropertyException("GetGroupResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder includeTransitiveMembers(@Nullable Boolean includeTransitiveMembers) {
+
+            this.includeTransitiveMembers = includeTransitiveMembers;
             return this;
         }
         @CustomType.Setter
@@ -723,6 +737,7 @@ public final class GetGroupResult {
             _resultValue.hideFromAddressLists = hideFromAddressLists;
             _resultValue.hideFromOutlookClients = hideFromOutlookClients;
             _resultValue.id = id;
+            _resultValue.includeTransitiveMembers = includeTransitiveMembers;
             _resultValue.mail = mail;
             _resultValue.mailEnabled = mailEnabled;
             _resultValue.mailNickname = mailNickname;

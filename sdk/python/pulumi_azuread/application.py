@@ -54,7 +54,7 @@ class ApplicationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
@@ -227,7 +227,7 @@ class ApplicationArgs:
     @pulumi.getter(name="groupMembershipClaims")
     def group_membership_claims(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         """
         return pulumi.get(self, "group_membership_claims")
 
@@ -525,7 +525,7 @@ class _ApplicationState:
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
         :param pulumi.Input[str] logo_url: CDN URL to the application's logo, as uploaded with the `logo_image` property.
@@ -773,7 +773,7 @@ class _ApplicationState:
     @pulumi.getter(name="groupMembershipClaims")
     def group_membership_claims(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         """
         return pulumi.get(self, "group_membership_claims")
 
@@ -1255,7 +1255,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
@@ -1588,7 +1588,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
         :param pulumi.Input[str] logo_url: CDN URL to the application's logo, as uploaded with the `logo_image` property.
@@ -1759,7 +1759,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="groupMembershipClaims")
     def group_membership_claims(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         """
         return pulumi.get(self, "group_membership_claims")
 

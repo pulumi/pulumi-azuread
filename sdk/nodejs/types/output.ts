@@ -1282,6 +1282,290 @@ export interface GroupDynamicMembership {
     rule: string;
 }
 
+export interface GroupRoleManagementPolicyActivationRules {
+    /**
+     * An `approvalStage` block as defined below.
+     */
+    approvalStage?: outputs.GroupRoleManagementPolicyActivationRulesApprovalStage;
+    /**
+     * The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+     */
+    maximumDuration: string;
+    /**
+     * Is approval required for activation. If `true` an `approvalStage` block must be provided.
+     */
+    requireApproval: boolean;
+    /**
+     * Is a justification required during activation of the role.
+     */
+    requireJustification: boolean;
+    /**
+     * Is multi-factor authentication required to activate the role. Conflicts with `requiredConditionalAccessAuthenticationContext`.
+     */
+    requireMultifactorAuthentication: boolean;
+    /**
+     * Is ticket information requrired during activation of the role.
+     */
+    requireTicketInfo: boolean;
+    /**
+     * The Entra ID Conditional Access context that must be present for activation. Conflicts with `requireMultifactorAuthentication`.
+     */
+    requiredConditionalAccessAuthenticationContext: string;
+}
+
+export interface GroupRoleManagementPolicyActivationRulesApprovalStage {
+    /**
+     * The IDs of the users or groups who can approve the activation
+     */
+    primaryApprovers: outputs.GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover[];
+}
+
+export interface GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApprover {
+    /**
+     * The ID of the object which will act as an approver.
+     */
+    objectId: string;
+    /**
+     * The type of object acting as an approver. Possible options are `singleUser` and `groupMembers`.
+     */
+    type?: string;
+}
+
+export interface GroupRoleManagementPolicyActiveAssignmentRules {
+    /**
+     * Must an assignment have an expiry date. `false` allows permanent assignment.
+     */
+    expirationRequired: boolean;
+    /**
+     * The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
+     */
+    expireAfter: string;
+    /**
+     * Is a justification required to create new assignments.
+     */
+    requireJustification: boolean;
+    /**
+     * Is multi-factor authentication required to create new assignments.
+     */
+    requireMultifactorAuthentication: boolean;
+    /**
+     * Is ticket information required to create new assignments.
+     *
+     * One of `expirationRequired` or `expireAfter` must be provided.
+     */
+    requireTicketInfo: boolean;
+}
+
+export interface GroupRoleManagementPolicyEligibleAssignmentRules {
+    /**
+     * Must an assignment have an expiry date. `false` allows permanent assignment.
+     */
+    expirationRequired: boolean;
+    /**
+     * The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
+     *
+     * One of `expirationRequired` or `expireAfter` must be provided.
+     */
+    expireAfter: string;
+}
+
+export interface GroupRoleManagementPolicyNotificationRules {
+    /**
+     * A `notificationTarget` block as defined below to configure notfications on active role assignments.
+     */
+    activeAssignments: outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignments;
+    /**
+     * A `notificationTarget` block as defined below for configuring notifications on activation of eligible role.
+     */
+    eligibleActivations: outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivations;
+    /**
+     * A `notificationTarget` block as defined below to configure notification on eligible role assignments.
+     *
+     * At least one `notificationTarget` block must be provided.
+     */
+    eligibleAssignments: outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignments;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesActiveAssignments {
+    /**
+     * Admin notification settings
+     */
+    adminNotifications: outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications;
+    /**
+     * Approver notification settings
+     */
+    approverNotifications: outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications;
+    /**
+     * Assignee notification settings
+     */
+    assigneeNotifications: outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications {
+    /**
+     * The additional recipients to notify
+     */
+    additionalRecipients: string[];
+    /**
+     * Whether the default recipients are notified
+     */
+    defaultRecipients: boolean;
+    /**
+     * What level of notifications are sent
+     */
+    notificationLevel: string;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications {
+    /**
+     * The additional recipients to notify
+     */
+    additionalRecipients: string[];
+    /**
+     * Whether the default recipients are notified
+     */
+    defaultRecipients: boolean;
+    /**
+     * What level of notifications are sent
+     */
+    notificationLevel: string;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications {
+    /**
+     * The additional recipients to notify
+     */
+    additionalRecipients: string[];
+    /**
+     * Whether the default recipients are notified
+     */
+    defaultRecipients: boolean;
+    /**
+     * What level of notifications are sent
+     */
+    notificationLevel: string;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesEligibleActivations {
+    /**
+     * Admin notification settings
+     */
+    adminNotifications: outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications;
+    /**
+     * Approver notification settings
+     */
+    approverNotifications: outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications;
+    /**
+     * Assignee notification settings
+     */
+    assigneeNotifications: outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications {
+    /**
+     * The additional recipients to notify
+     */
+    additionalRecipients: string[];
+    /**
+     * Whether the default recipients are notified
+     */
+    defaultRecipients: boolean;
+    /**
+     * What level of notifications are sent
+     */
+    notificationLevel: string;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications {
+    /**
+     * The additional recipients to notify
+     */
+    additionalRecipients: string[];
+    /**
+     * Whether the default recipients are notified
+     */
+    defaultRecipients: boolean;
+    /**
+     * What level of notifications are sent
+     */
+    notificationLevel: string;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications {
+    /**
+     * The additional recipients to notify
+     */
+    additionalRecipients: string[];
+    /**
+     * Whether the default recipients are notified
+     */
+    defaultRecipients: boolean;
+    /**
+     * What level of notifications are sent
+     */
+    notificationLevel: string;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesEligibleAssignments {
+    /**
+     * Admin notification settings
+     */
+    adminNotifications: outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications;
+    /**
+     * Approver notification settings
+     */
+    approverNotifications: outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications;
+    /**
+     * Assignee notification settings
+     */
+    assigneeNotifications: outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications {
+    /**
+     * The additional recipients to notify
+     */
+    additionalRecipients: string[];
+    /**
+     * Whether the default recipients are notified
+     */
+    defaultRecipients: boolean;
+    /**
+     * What level of notifications are sent
+     */
+    notificationLevel: string;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications {
+    /**
+     * The additional recipients to notify
+     */
+    additionalRecipients: string[];
+    /**
+     * Whether the default recipients are notified
+     */
+    defaultRecipients: boolean;
+    /**
+     * What level of notifications are sent
+     */
+    notificationLevel: string;
+}
+
+export interface GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications {
+    /**
+     * The additional recipients to notify
+     */
+    additionalRecipients: string[];
+    /**
+     * Whether the default recipients are notified
+     */
+    defaultRecipients: boolean;
+    /**
+     * What level of notifications are sent
+     */
+    notificationLevel: string;
+}
+
 export interface InvitationMessage {
     /**
      * Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
@@ -1424,6 +1708,28 @@ export interface ServicePrincipalSamlSingleSignOn {
      * The relative URI the service provider would redirect to after completion of the single sign-on flow.
      */
     relayState?: string;
+}
+
+export interface SynchronizationJobProvisionOnDemandParameter {
+    /**
+     * The identifier of the synchronization rule to be applied. This rule ID is defined in the schema for a given synchronization job or template.
+     */
+    ruleId: string;
+    /**
+     * One or more `subject` blocks as documented below.
+     */
+    subjects: outputs.SynchronizationJobProvisionOnDemandParameterSubject[];
+}
+
+export interface SynchronizationJobProvisionOnDemandParameterSubject {
+    /**
+     * The identifier of an object to which a synchronization job is to be applied. Can be one of the following: (1) An onPremisesDistinguishedName for synchronization from Active Directory to Azure AD. (2) The user ID for synchronization from Azure AD to a third-party. (3) The Worker ID of the Workday worker for synchronization from Workday to either Active Directory or Azure AD.
+     */
+    objectId: string;
+    /**
+     * The type of the object to which a synchronization job is to be applied. Can be one of the following: `user` for synchronizing between Active Directory and Azure AD, `User` for synchronizing a user between Azure AD and a third-party application, `Worker` for synchronization a user between Workday and either Active Directory or Azure AD, `Group` for synchronizing a group between Azure AD and a third-party application.
+     */
+    objectTypeName: string;
 }
 
 export interface SynchronizationJobSchedule {

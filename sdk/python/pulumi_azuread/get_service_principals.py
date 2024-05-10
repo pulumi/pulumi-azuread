@@ -158,7 +158,7 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
     ])
     ```
 
-    *Look up by application IDs (client IDs*
+    *Look up by application IDs (client IDs)*
 
     ```python
     import pulumi
@@ -248,7 +248,7 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     ])
     ```
 
-    *Look up by application IDs (client IDs*
+    *Look up by application IDs (client IDs)*
 
     ```python
     import pulumi

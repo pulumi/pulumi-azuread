@@ -63,6 +63,8 @@ func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.Invo
 type LookupGroupArgs struct {
 	// The display name for the group.
 	DisplayName *string `pulumi:"displayName"`
+	// Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+	IncludeTransitiveMembers *bool `pulumi:"includeTransitiveMembers"`
 	// Whether the group is mail-enabled.
 	MailEnabled *bool `pulumi:"mailEnabled"`
 	// The mail alias for the group, unique in the organisation.
@@ -96,14 +98,15 @@ type LookupGroupResult struct {
 	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Only set for Unified groups.
 	HideFromOutlookClients bool `pulumi:"hideFromOutlookClients"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                       string `pulumi:"id"`
+	IncludeTransitiveMembers *bool  `pulumi:"includeTransitiveMembers"`
 	// The SMTP address for the group.
 	Mail string `pulumi:"mail"`
 	// Whether the group is mail-enabled.
 	MailEnabled bool `pulumi:"mailEnabled"`
 	// The mail alias for the group, unique in the organisation.
 	MailNickname string `pulumi:"mailNickname"`
-	// List of object IDs of the group members.
+	// List of object IDs of the group members. When `includeTransitiveMembers` is `true`, contains a list of object IDs of all transitive group members.
 	Members []string `pulumi:"members"`
 	// The object ID of the group.
 	ObjectId string `pulumi:"objectId"`
@@ -156,6 +159,8 @@ func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...
 type LookupGroupOutputArgs struct {
 	// The display name for the group.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+	IncludeTransitiveMembers pulumi.BoolPtrInput `pulumi:"includeTransitiveMembers"`
 	// Whether the group is mail-enabled.
 	MailEnabled pulumi.BoolPtrInput `pulumi:"mailEnabled"`
 	// The mail alias for the group, unique in the organisation.
@@ -237,6 +242,10 @@ func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o LookupGroupResultOutput) IncludeTransitiveMembers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupGroupResult) *bool { return v.IncludeTransitiveMembers }).(pulumi.BoolPtrOutput)
+}
+
 // The SMTP address for the group.
 func (o LookupGroupResultOutput) Mail() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Mail }).(pulumi.StringOutput)
@@ -252,7 +261,7 @@ func (o LookupGroupResultOutput) MailNickname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.MailNickname }).(pulumi.StringOutput)
 }
 
-// List of object IDs of the group members.
+// List of object IDs of the group members. When `includeTransitiveMembers` is `true`, contains a list of object IDs of all transitive group members.
 func (o LookupGroupResultOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.Members }).(pulumi.StringArrayOutput)
 }

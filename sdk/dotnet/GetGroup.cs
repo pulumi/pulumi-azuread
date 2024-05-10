@@ -92,6 +92,12 @@ namespace Pulumi.AzureAD
         public string? DisplayName { get; set; }
 
         /// <summary>
+        /// Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+        /// </summary>
+        [Input("includeTransitiveMembers")]
+        public bool? IncludeTransitiveMembers { get; set; }
+
+        /// <summary>
         /// Whether the group is mail-enabled.
         /// </summary>
         [Input("mailEnabled")]
@@ -130,6 +136,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+        /// </summary>
+        [Input("includeTransitiveMembers")]
+        public Input<bool>? IncludeTransitiveMembers { get; set; }
 
         /// <summary>
         /// Whether the group is mail-enabled.
@@ -207,6 +219,7 @@ namespace Pulumi.AzureAD
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool? IncludeTransitiveMembers;
         /// <summary>
         /// The SMTP address for the group.
         /// </summary>
@@ -220,7 +233,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string MailNickname;
         /// <summary>
-        /// List of object IDs of the group members.
+        /// List of object IDs of the group members. When `include_transitive_members` is `true`, contains a list of object IDs of all transitive group members.
         /// </summary>
         public readonly ImmutableArray<string> Members;
         /// <summary>
@@ -310,6 +323,8 @@ namespace Pulumi.AzureAD
 
             string id,
 
+            bool? includeTransitiveMembers,
+
             string mail,
 
             bool mailEnabled,
@@ -360,6 +375,7 @@ namespace Pulumi.AzureAD
             HideFromAddressLists = hideFromAddressLists;
             HideFromOutlookClients = hideFromOutlookClients;
             Id = id;
+            IncludeTransitiveMembers = includeTransitiveMembers;
             Mail = mail;
             MailEnabled = mailEnabled;
             MailNickname = mailNickname;
