@@ -5,8 +5,8 @@ go 1.21.3
 require (
 	github.com/hashicorp/go-azure-sdk/sdk v0.20240411.1104331
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.82.0
-	github.com/pulumi/pulumi/sdk/v3 v3.114.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.82.1-0.20240513144526-3242c866b548
+	github.com/pulumi/pulumi/sdk/v3 v3.115.2
 )
 
 replace (
@@ -188,8 +188,8 @@ require (
 	github.com/pulumi/esc v0.6.2 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.10.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
-	github.com/pulumi/pulumi-yaml v1.6.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.114.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.7.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.115.2 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
