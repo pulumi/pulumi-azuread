@@ -49,11 +49,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationOptionalClaims = new ApplicationOptionalClaims("exampleApplicationOptionalClaims", ApplicationOptionalClaimsArgs.builder()        
+ *         var exampleApplicationOptionalClaims = new ApplicationOptionalClaims("exampleApplicationOptionalClaims", ApplicationOptionalClaimsArgs.builder()
  *             .applicationId(example.id())
  *             .accessTokens(            
  *                 ApplicationOptionalClaimsAccessTokenArgs.builder()
