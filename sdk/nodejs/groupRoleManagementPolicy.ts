@@ -16,6 +16,50 @@ import * as utilities from "./utilities";
  * When authenticated with a service principal, this resource requires the `RoleManagementPolicy.ReadWrite.AzureADGroup` Microsoft Graph API permissions.
  *
  * When authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.Group("example", {
+ *     displayName: "group-name",
+ *     securityEnabled: true,
+ * });
+ * const member = new azuread.User("member", {
+ *     userPrincipalName: "jdoe@example.com",
+ *     displayName: "J. Doe",
+ *     mailNickname: "jdoe",
+ *     password: "SecretP@sswd99!",
+ * });
+ * const exampleGroupRoleManagementPolicy = new azuread.GroupRoleManagementPolicy("example", {
+ *     groupId: example.id,
+ *     roleId: "member",
+ *     activeAssignmentRules: {
+ *         expireAfter: "P365D",
+ *     },
+ *     eligibleAssignmentRules: {
+ *         expirationRequired: false,
+ *     },
+ *     notificationRules: {
+ *         eligibleAssignments: {
+ *             approverNotifications: {
+ *                 notificationLevel: "Critical",
+ *                 defaultRecipients: false,
+ *                 additionalRecipients: [
+ *                     "someone@example.com",
+ *                     "someone.else@example.com",
+ *                 ],
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Because these policies are created automatically by Entra ID, they will auto-import on first use.
  */
 export class GroupRoleManagementPolicy extends pulumi.CustomResource {
     /**

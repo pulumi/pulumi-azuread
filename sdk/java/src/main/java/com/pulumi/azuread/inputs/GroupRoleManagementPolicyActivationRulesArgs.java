@@ -33,14 +33,14 @@ public final class GroupRoleManagementPolicyActivationRulesArgs extends com.pulu
     }
 
     /**
-     * The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+     * The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
      * 
      */
     @Import(name="maximumDuration")
     private @Nullable Output<String> maximumDuration;
 
     /**
-     * @return The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+     * @return The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
      * 
      */
     public Optional<Output<String>> maximumDuration() {
@@ -108,14 +108,14 @@ public final class GroupRoleManagementPolicyActivationRulesArgs extends com.pulu
     }
 
     /**
-     * The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
+     * The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
      * 
      */
     @Import(name="requiredConditionalAccessAuthenticationContext")
     private @Nullable Output<String> requiredConditionalAccessAuthenticationContext;
 
     /**
-     * @return The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
+     * @return The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
      * 
      */
     public Optional<Output<String>> requiredConditionalAccessAuthenticationContext() {
@@ -174,7 +174,7 @@ public final class GroupRoleManagementPolicyActivationRulesArgs extends com.pulu
         }
 
         /**
-         * @param maximumDuration The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+         * @param maximumDuration The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class GroupRoleManagementPolicyActivationRulesArgs extends com.pulu
         }
 
         /**
-         * @param maximumDuration The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+         * @param maximumDuration The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class GroupRoleManagementPolicyActivationRulesArgs extends com.pulu
         }
 
         /**
-         * @param requiredConditionalAccessAuthenticationContext The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
+         * @param requiredConditionalAccessAuthenticationContext The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GroupRoleManagementPolicyActivationRulesArgs extends com.pulu
         }
 
         /**
-         * @param requiredConditionalAccessAuthenticationContext The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
+         * @param requiredConditionalAccessAuthenticationContext The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
          * 
          * @return builder
          * 

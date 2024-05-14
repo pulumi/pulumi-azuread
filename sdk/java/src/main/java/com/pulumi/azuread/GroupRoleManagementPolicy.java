@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleGroupRoleManagementPolicy = new GroupRoleManagementPolicy("exampleGroupRoleManagementPolicy", GroupRoleManagementPolicyArgs.builder()        
  *             .groupId(example.id())
- *             .assignmentType("member")
+ *             .roleId("member")
  *             .activeAssignmentRules(GroupRoleManagementPolicyActiveAssignmentRulesArgs.builder()
  *                 .expireAfter("P365D")
  *                 .build())

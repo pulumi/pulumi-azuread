@@ -274,6 +274,47 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Group("example",
+            display_name="group-name",
+            security_enabled=True)
+        member = azuread.User("member",
+            user_principal_name="jdoe@example.com",
+            display_name="J. Doe",
+            mail_nickname="jdoe",
+            password="SecretP@sswd99!")
+        example_group_role_management_policy = azuread.GroupRoleManagementPolicy("example",
+            group_id=example.id,
+            role_id="member",
+            active_assignment_rules=azuread.GroupRoleManagementPolicyActiveAssignmentRulesArgs(
+                expire_after="P365D",
+            ),
+            eligible_assignment_rules=azuread.GroupRoleManagementPolicyEligibleAssignmentRulesArgs(
+                expiration_required=False,
+            ),
+            notification_rules=azuread.GroupRoleManagementPolicyNotificationRulesArgs(
+                eligible_assignments=azuread.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs(
+                    approver_notifications=azuread.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs(
+                        notification_level="Critical",
+                        default_recipients=False,
+                        additional_recipients=[
+                            "someone@example.com",
+                            "someone.else@example.com",
+                        ],
+                    ),
+                ),
+            ))
+        ```
+
+        ## Import
+
+        Because these policies are created automatically by Entra ID, they will auto-import on first use.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyActivationRulesArgs']] activation_rules: An `activation_rules` block as defined below.
@@ -299,6 +340,47 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the `RoleManagementPolicy.ReadWrite.AzureADGroup` Microsoft Graph API permissions.
 
         When authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Group("example",
+            display_name="group-name",
+            security_enabled=True)
+        member = azuread.User("member",
+            user_principal_name="jdoe@example.com",
+            display_name="J. Doe",
+            mail_nickname="jdoe",
+            password="SecretP@sswd99!")
+        example_group_role_management_policy = azuread.GroupRoleManagementPolicy("example",
+            group_id=example.id,
+            role_id="member",
+            active_assignment_rules=azuread.GroupRoleManagementPolicyActiveAssignmentRulesArgs(
+                expire_after="P365D",
+            ),
+            eligible_assignment_rules=azuread.GroupRoleManagementPolicyEligibleAssignmentRulesArgs(
+                expiration_required=False,
+            ),
+            notification_rules=azuread.GroupRoleManagementPolicyNotificationRulesArgs(
+                eligible_assignments=azuread.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs(
+                    approver_notifications=azuread.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs(
+                        notification_level="Critical",
+                        default_recipients=False,
+                        additional_recipients=[
+                            "someone@example.com",
+                            "someone.else@example.com",
+                        ],
+                    ),
+                ),
+            ))
+        ```
+
+        ## Import
+
+        Because these policies are created automatically by Entra ID, they will auto-import on first use.
 
         :param str resource_name: The name of the resource.
         :param GroupRoleManagementPolicyArgs args: The arguments to use to populate this resource's properties.

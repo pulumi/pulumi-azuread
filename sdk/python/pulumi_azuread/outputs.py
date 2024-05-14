@@ -3033,12 +3033,12 @@ class GroupRoleManagementPolicyActivationRules(dict):
                  required_conditional_access_authentication_context: Optional[str] = None):
         """
         :param 'GroupRoleManagementPolicyActivationRulesApprovalStageArgs' approval_stage: An `approval_stage` block as defined below.
-        :param str maximum_duration: The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+        :param str maximum_duration: The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
         :param bool require_approval: Is approval required for activation. If `true` an `approval_stage` block must be provided.
         :param bool require_justification: Is a justification required during activation of the role.
         :param bool require_multifactor_authentication: Is multi-factor authentication required to activate the role. Conflicts with `required_conditional_access_authentication_context`.
         :param bool require_ticket_info: Is ticket information requrired during activation of the role.
-        :param str required_conditional_access_authentication_context: The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
+        :param str required_conditional_access_authentication_context: The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
         """
         if approval_stage is not None:
             pulumi.set(__self__, "approval_stage", approval_stage)
@@ -3067,7 +3067,7 @@ class GroupRoleManagementPolicyActivationRules(dict):
     @pulumi.getter(name="maximumDuration")
     def maximum_duration(self) -> Optional[str]:
         """
-        The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+        The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
         """
         return pulumi.get(self, "maximum_duration")
 
@@ -3107,7 +3107,7 @@ class GroupRoleManagementPolicyActivationRules(dict):
     @pulumi.getter(name="requiredConditionalAccessAuthenticationContext")
     def required_conditional_access_authentication_context(self) -> Optional[str]:
         """
-        The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
+        The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
         """
         return pulumi.get(self, "required_conditional_access_authentication_context")
 
