@@ -2537,12 +2537,12 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
      *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application("example", ApplicationArgs.builder()        
+     *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
      *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
@@ -2635,12 +2635,12 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
      *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application("example", ApplicationArgs.builder()        
+     *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
      *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
@@ -2733,12 +2733,12 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
      *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application("example", ApplicationArgs.builder()        
+     *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
      *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
@@ -2831,12 +2831,12 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
      *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application("example", ApplicationArgs.builder()        
+     *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
      *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
@@ -2929,12 +2929,12 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
      *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application("example", ApplicationArgs.builder()        
+     *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
      *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
@@ -3027,12 +3027,12 @@ public final class AzureadFunctions {
      *     public static void stack(Context ctx) {
      *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+     *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
      *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
-     *         var example = new Application("example", ApplicationArgs.builder()        
+     *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
      *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
@@ -5066,7 +5066,7 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new Group("example", GroupArgs.builder()        
+     *         var example = new Group("example", GroupArgs.builder()
      *             .displayName("group-name")
      *             .securityEnabled(true)
      *             .build());
@@ -5124,7 +5124,7 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new Group("example", GroupArgs.builder()        
+     *         var example = new Group("example", GroupArgs.builder()
      *             .displayName("group-name")
      *             .securityEnabled(true)
      *             .build());
@@ -5182,7 +5182,7 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new Group("example", GroupArgs.builder()        
+     *         var example = new Group("example", GroupArgs.builder()
      *             .displayName("group-name")
      *             .securityEnabled(true)
      *             .build());
@@ -5240,7 +5240,7 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new Group("example", GroupArgs.builder()        
+     *         var example = new Group("example", GroupArgs.builder()
      *             .displayName("group-name")
      *             .securityEnabled(true)
      *             .build());

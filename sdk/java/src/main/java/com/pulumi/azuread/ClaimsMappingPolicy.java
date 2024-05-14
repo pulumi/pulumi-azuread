@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myPolicy = new ClaimsMappingPolicy("myPolicy", ClaimsMappingPolicyArgs.builder()        
+ *         var myPolicy = new ClaimsMappingPolicy("myPolicy", ClaimsMappingPolicyArgs.builder()
  *             .definitions(serializeJson(
  *                 jsonObject(
  *                     jsonProperty("claimsMappingPolicy", jsonObject(
