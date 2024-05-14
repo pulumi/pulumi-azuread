@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/azuread",
-    "version": "${VERSION}",
+    "version": "5.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing Azure Active Directory (Azure AD) cloud resources.",
     "keywords": [
         "pulumi",
@@ -22,6 +22,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "azuread"
+        "name": "azuread",
+        "version": "5.0.0-alpha.0+dev"
     }
 }
