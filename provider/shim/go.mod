@@ -4,7 +4,7 @@ go 1.21.3
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20240509203949-3503c4ecac1d
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20240513072501-5f29606b5417
 )
 
 require (
