@@ -78,7 +78,6 @@ func makeResource(mod string, res string) tokens.Type {
 //
 // nolint: lll
 func preConfigureCallback(vars resource.PropertyMap, _ tfshim.ResourceConfig) error {
-
 	envName := tfbridge.ConfigStringValue(vars, "environment", []string{"ARM_ENVIRONMENT"})
 	if envName == "" {
 		envName = "public"
@@ -232,12 +231,15 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
+			RespectSchemaVersion: true,
 		},
 		Python: (func() *tfbridge.PythonInfo {
 			i := &tfbridge.PythonInfo{
+				RespectSchemaVersion: true,
 				Requires: map[string]string{
 					"pulumi": ">=3.0.0,<4.0.0",
-				}}
+				},
+			}
 			i.PyProject.Enabled = true
 			return i
 		})(),
@@ -250,8 +252,10 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg,
 			),
 			GenerateResourceContainerTypes: true,
+			RespectSchemaVersion:           true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RespectSchemaVersion: true,
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
