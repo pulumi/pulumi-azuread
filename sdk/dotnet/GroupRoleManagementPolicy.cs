@@ -19,6 +19,67 @@ namespace Pulumi.AzureAD
     /// When authenticated with a service principal, this resource requires the `RoleManagementPolicy.ReadWrite.AzureADGroup` Microsoft Graph API permissions.
     /// 
     /// When authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.Group("example", new()
+    ///     {
+    ///         DisplayName = "group-name",
+    ///         SecurityEnabled = true,
+    ///     });
+    /// 
+    ///     var member = new AzureAD.User("member", new()
+    ///     {
+    ///         UserPrincipalName = "jdoe@example.com",
+    ///         DisplayName = "J. Doe",
+    ///         MailNickname = "jdoe",
+    ///         Password = "SecretP@sswd99!",
+    ///     });
+    /// 
+    ///     var exampleGroupRoleManagementPolicy = new AzureAD.GroupRoleManagementPolicy("example", new()
+    ///     {
+    ///         GroupId = example.Id,
+    ///         RoleId = "member",
+    ///         ActiveAssignmentRules = new AzureAD.Inputs.GroupRoleManagementPolicyActiveAssignmentRulesArgs
+    ///         {
+    ///             ExpireAfter = "P365D",
+    ///         },
+    ///         EligibleAssignmentRules = new AzureAD.Inputs.GroupRoleManagementPolicyEligibleAssignmentRulesArgs
+    ///         {
+    ///             ExpirationRequired = false,
+    ///         },
+    ///         NotificationRules = new AzureAD.Inputs.GroupRoleManagementPolicyNotificationRulesArgs
+    ///         {
+    ///             EligibleAssignments = new AzureAD.Inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs
+    ///             {
+    ///                 ApproverNotifications = new AzureAD.Inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs
+    ///                 {
+    ///                     NotificationLevel = "Critical",
+    ///                     DefaultRecipients = false,
+    ///                     AdditionalRecipients = new[]
+    ///                     {
+    ///                         "someone@example.com",
+    ///                         "someone.else@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Because these policies are created automatically by Entra ID, they will auto-import on first use.
     /// </summary>
     [AzureADResourceType("azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy")]
     public partial class GroupRoleManagementPolicy : global::Pulumi.CustomResource

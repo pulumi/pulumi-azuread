@@ -19,7 +19,7 @@ public final class GroupRoleManagementPolicyActivationRules {
      */
     private @Nullable GroupRoleManagementPolicyActivationRulesApprovalStage approvalStage;
     /**
-     * @return The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+     * @return The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
      * 
      */
     private @Nullable String maximumDuration;
@@ -44,7 +44,7 @@ public final class GroupRoleManagementPolicyActivationRules {
      */
     private @Nullable Boolean requireTicketInfo;
     /**
-     * @return The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
+     * @return The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
      * 
      */
     private @Nullable String requiredConditionalAccessAuthenticationContext;
@@ -58,7 +58,7 @@ public final class GroupRoleManagementPolicyActivationRules {
         return Optional.ofNullable(this.approvalStage);
     }
     /**
-     * @return The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+     * @return The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
      * 
      */
     public Optional<String> maximumDuration() {
@@ -93,7 +93,7 @@ public final class GroupRoleManagementPolicyActivationRules {
         return Optional.ofNullable(this.requireTicketInfo);
     }
     /**
-     * @return The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
+     * @return The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
      * 
      */
     public Optional<String> requiredConditionalAccessAuthenticationContext() {

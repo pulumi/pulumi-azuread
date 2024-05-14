@@ -19,7 +19,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<Inputs.GroupRoleManagementPolicyActivationRulesApprovalStageGetArgs>? ApprovalStage { get; set; }
 
         /// <summary>
-        /// The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+        /// The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
         /// </summary>
         [Input("maximumDuration")]
         public Input<string>? MaximumDuration { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<bool>? RequireTicketInfo { get; set; }
 
         /// <summary>
-        /// The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
+        /// The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
         /// </summary>
         [Input("requiredConditionalAccessAuthenticationContext")]
         public Input<string>? RequiredConditionalAccessAuthenticationContext { get; set; }

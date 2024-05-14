@@ -21,6 +21,71 @@ import (
 // When authenticated with a service principal, this resource requires the `RoleManagementPolicy.ReadWrite.AzureADGroup` Microsoft Graph API permissions.
 //
 // When authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
+//				DisplayName:     pulumi.String("group-name"),
+//				SecurityEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewUser(ctx, "member", &azuread.UserArgs{
+//				UserPrincipalName: pulumi.String("jdoe@example.com"),
+//				DisplayName:       pulumi.String("J. Doe"),
+//				MailNickname:      pulumi.String("jdoe"),
+//				Password:          pulumi.String("SecretP@sswd99!"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewGroupRoleManagementPolicy(ctx, "example", &azuread.GroupRoleManagementPolicyArgs{
+//				GroupId: example.ID(),
+//				RoleId:  pulumi.String("member"),
+//				ActiveAssignmentRules: &azuread.GroupRoleManagementPolicyActiveAssignmentRulesArgs{
+//					ExpireAfter: pulumi.String("P365D"),
+//				},
+//				EligibleAssignmentRules: &azuread.GroupRoleManagementPolicyEligibleAssignmentRulesArgs{
+//					ExpirationRequired: pulumi.Bool(false),
+//				},
+//				NotificationRules: &azuread.GroupRoleManagementPolicyNotificationRulesArgs{
+//					EligibleAssignments: &azuread.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs{
+//						ApproverNotifications: &azuread.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs{
+//							NotificationLevel: pulumi.String("Critical"),
+//							DefaultRecipients: pulumi.Bool(false),
+//							AdditionalRecipients: pulumi.StringArray{
+//								pulumi.String("someone@example.com"),
+//								pulumi.String("someone.else@example.com"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Because these policies are created automatically by Entra ID, they will auto-import on first use.
 type GroupRoleManagementPolicy struct {
 	pulumi.CustomResourceState
 

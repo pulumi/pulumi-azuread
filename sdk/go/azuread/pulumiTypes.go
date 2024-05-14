@@ -6635,7 +6635,7 @@ func (o GroupDynamicMembershipPtrOutput) Rule() pulumi.StringPtrOutput {
 type GroupRoleManagementPolicyActivationRules struct {
 	// An `approvalStage` block as defined below.
 	ApprovalStage *GroupRoleManagementPolicyActivationRulesApprovalStage `pulumi:"approvalStage"`
-	// The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+	// The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
 	MaximumDuration *string `pulumi:"maximumDuration"`
 	// Is approval required for activation. If `true` an `approvalStage` block must be provided.
 	RequireApproval *bool `pulumi:"requireApproval"`
@@ -6645,7 +6645,7 @@ type GroupRoleManagementPolicyActivationRules struct {
 	RequireMultifactorAuthentication *bool `pulumi:"requireMultifactorAuthentication"`
 	// Is ticket information requrired during activation of the role.
 	RequireTicketInfo *bool `pulumi:"requireTicketInfo"`
-	// The Entra ID Conditional Access context that must be present for activation. Conflicts with `requireMultifactorAuthentication`.
+	// The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `requireMultifactorAuthentication`.
 	RequiredConditionalAccessAuthenticationContext *string `pulumi:"requiredConditionalAccessAuthenticationContext"`
 }
 
@@ -6663,7 +6663,7 @@ type GroupRoleManagementPolicyActivationRulesInput interface {
 type GroupRoleManagementPolicyActivationRulesArgs struct {
 	// An `approvalStage` block as defined below.
 	ApprovalStage GroupRoleManagementPolicyActivationRulesApprovalStagePtrInput `pulumi:"approvalStage"`
-	// The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+	// The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
 	MaximumDuration pulumi.StringPtrInput `pulumi:"maximumDuration"`
 	// Is approval required for activation. If `true` an `approvalStage` block must be provided.
 	RequireApproval pulumi.BoolPtrInput `pulumi:"requireApproval"`
@@ -6673,7 +6673,7 @@ type GroupRoleManagementPolicyActivationRulesArgs struct {
 	RequireMultifactorAuthentication pulumi.BoolPtrInput `pulumi:"requireMultifactorAuthentication"`
 	// Is ticket information requrired during activation of the role.
 	RequireTicketInfo pulumi.BoolPtrInput `pulumi:"requireTicketInfo"`
-	// The Entra ID Conditional Access context that must be present for activation. Conflicts with `requireMultifactorAuthentication`.
+	// The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `requireMultifactorAuthentication`.
 	RequiredConditionalAccessAuthenticationContext pulumi.StringPtrInput `pulumi:"requiredConditionalAccessAuthenticationContext"`
 }
 
@@ -6761,7 +6761,7 @@ func (o GroupRoleManagementPolicyActivationRulesOutput) ApprovalStage() GroupRol
 	}).(GroupRoleManagementPolicyActivationRulesApprovalStagePtrOutput)
 }
 
-// The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+// The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
 func (o GroupRoleManagementPolicyActivationRulesOutput) MaximumDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupRoleManagementPolicyActivationRules) *string { return v.MaximumDuration }).(pulumi.StringPtrOutput)
 }
@@ -6786,7 +6786,7 @@ func (o GroupRoleManagementPolicyActivationRulesOutput) RequireTicketInfo() pulu
 	return o.ApplyT(func(v GroupRoleManagementPolicyActivationRules) *bool { return v.RequireTicketInfo }).(pulumi.BoolPtrOutput)
 }
 
-// The Entra ID Conditional Access context that must be present for activation. Conflicts with `requireMultifactorAuthentication`.
+// The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `requireMultifactorAuthentication`.
 func (o GroupRoleManagementPolicyActivationRulesOutput) RequiredConditionalAccessAuthenticationContext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupRoleManagementPolicyActivationRules) *string {
 		return v.RequiredConditionalAccessAuthenticationContext
@@ -6827,7 +6827,7 @@ func (o GroupRoleManagementPolicyActivationRulesPtrOutput) ApprovalStage() Group
 	}).(GroupRoleManagementPolicyActivationRulesApprovalStagePtrOutput)
 }
 
-// The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+// The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
 func (o GroupRoleManagementPolicyActivationRulesPtrOutput) MaximumDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupRoleManagementPolicyActivationRules) *string {
 		if v == nil {
@@ -6877,7 +6877,7 @@ func (o GroupRoleManagementPolicyActivationRulesPtrOutput) RequireTicketInfo() p
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Entra ID Conditional Access context that must be present for activation. Conflicts with `requireMultifactorAuthentication`.
+// The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `requireMultifactorAuthentication`.
 func (o GroupRoleManagementPolicyActivationRulesPtrOutput) RequiredConditionalAccessAuthenticationContext() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupRoleManagementPolicyActivationRules) *string {
 		if v == nil {

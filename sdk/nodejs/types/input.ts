@@ -749,7 +749,7 @@ export interface GroupRoleManagementPolicyActivationRules {
      */
     approvalStage?: pulumi.Input<inputs.GroupRoleManagementPolicyActivationRulesApprovalStage>;
     /**
-     * The maximum length of time an activated role can be valid, in an IS)8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+     * The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
      */
     maximumDuration?: pulumi.Input<string>;
     /**
@@ -769,7 +769,7 @@ export interface GroupRoleManagementPolicyActivationRules {
      */
     requireTicketInfo?: pulumi.Input<boolean>;
     /**
-     * The Entra ID Conditional Access context that must be present for activation. Conflicts with `requireMultifactorAuthentication`.
+     * The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `requireMultifactorAuthentication`.
      */
     requiredConditionalAccessAuthenticationContext?: pulumi.Input<string>;
 }
