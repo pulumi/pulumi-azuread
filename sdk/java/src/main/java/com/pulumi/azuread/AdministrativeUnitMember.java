@@ -60,11 +60,11 @@ import javax.annotation.Nullable;
  *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleAdministrativeUnit = new AdministrativeUnit("exampleAdministrativeUnit", AdministrativeUnitArgs.builder()        
+ *         var exampleAdministrativeUnit = new AdministrativeUnit("exampleAdministrativeUnit", AdministrativeUnitArgs.builder()
  *             .displayName("Example-AU")
  *             .build());
  * 
- *         var exampleAdministrativeUnitMember = new AdministrativeUnitMember("exampleAdministrativeUnitMember", AdministrativeUnitMemberArgs.builder()        
+ *         var exampleAdministrativeUnitMember = new AdministrativeUnitMember("exampleAdministrativeUnitMember", AdministrativeUnitMemberArgs.builder()
  *             .administrativeUnitObjectId(exampleAdministrativeUnit.id())
  *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.id()))
  *             .build());

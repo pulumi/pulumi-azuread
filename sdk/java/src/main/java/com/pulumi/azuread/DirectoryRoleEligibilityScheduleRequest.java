@@ -57,11 +57,11 @@ import javax.annotation.Nullable;
  *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()        
+ *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()
  *             .displayName("Application Administrator")
  *             .build());
  * 
- *         var exampleDirectoryRoleEligibilityScheduleRequest = new DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest", DirectoryRoleEligibilityScheduleRequestArgs.builder()        
+ *         var exampleDirectoryRoleEligibilityScheduleRequest = new DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest", DirectoryRoleEligibilityScheduleRequestArgs.builder()
  *             .roleDefinitionId(exampleDirectoryRole.templateId())
  *             .principalId(exampleAzureadUser.objectId())
  *             .directoryScopeId("/")
