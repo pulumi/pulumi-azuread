@@ -44,13 +44,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
  *         var exampleAdministrator = new RandomUuid("exampleAdministrator");
  * 
- *         var exampleAdminister = new ApplicationAppRole("exampleAdminister", ApplicationAppRoleArgs.builder()        
+ *         var exampleAdminister = new ApplicationAppRole("exampleAdminister", ApplicationAppRoleArgs.builder()
  *             .applicationId(example.id())
  *             .roleId(exampleAdministrator.id())
  *             .allowedMemberTypes("User")
@@ -94,11 +94,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleAdminister = new ApplicationAppRole("exampleAdminister", ApplicationAppRoleArgs.builder()        
+ *         var exampleAdminister = new ApplicationAppRole("exampleAdminister", ApplicationAppRoleArgs.builder()
  *             .applicationId(example.id())
  *             .build());
  * 

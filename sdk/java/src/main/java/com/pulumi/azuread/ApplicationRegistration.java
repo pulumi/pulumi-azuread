@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("Example Application")
  *             .description("My example application")
  *             .signInAudience("AzureADMyOrg")
