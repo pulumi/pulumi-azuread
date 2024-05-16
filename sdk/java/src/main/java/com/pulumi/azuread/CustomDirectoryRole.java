@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CustomDirectoryRole("example", CustomDirectoryRoleArgs.builder()        
+ *         var example = new CustomDirectoryRole("example", CustomDirectoryRoleArgs.builder()
  *             .displayName("My Custom Role")
  *             .description("Allows reading applications and updating groups")
  *             .enabled(true)

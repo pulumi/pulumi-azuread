@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .displayName("Azure Databricks SCIM Provisioning Connector")
  *             .build());
  * 
- *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()        
+ *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
  *             .displayName("example")
  *             .templateId(example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()))
  *             .featureTags(ApplicationFeatureTagArgs.builder()
@@ -76,12 +76,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
  *             .applicationId(exampleApplication.applicationId())
  *             .useExisting(true)
  *             .build());
  * 
- *         var exampleSynchronizationSecret = new SynchronizationSecret("exampleSynchronizationSecret", SynchronizationSecretArgs.builder()        
+ *         var exampleSynchronizationSecret = new SynchronizationSecret("exampleSynchronizationSecret", SynchronizationSecretArgs.builder()
  *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .credentials(            
  *                 SynchronizationSecretCredentialArgs.builder()
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var exampleSynchronizationJob = new SynchronizationJob("exampleSynchronizationJob", SynchronizationJobArgs.builder()        
+ *         var exampleSynchronizationJob = new SynchronizationJob("exampleSynchronizationJob", SynchronizationJobArgs.builder()
  *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .templateId("dataBricks")
  *             .enabled(true)

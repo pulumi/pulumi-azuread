@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AuthenticationStrengthPolicy("example", AuthenticationStrengthPolicyArgs.builder()        
+ *         var example = new AuthenticationStrengthPolicy("example", AuthenticationStrengthPolicyArgs.builder()
  *             .displayName("Example Authentication Strength Policy")
  *             .description("Policy for demo purposes")
  *             .allowedCombinations(            
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *                 "password")
  *             .build());
  * 
- *         var example2 = new AuthenticationStrengthPolicy("example2", AuthenticationStrengthPolicyArgs.builder()        
+ *         var example2 = new AuthenticationStrengthPolicy("example2", AuthenticationStrengthPolicyArgs.builder()
  *             .displayName("Example Authentication Strength Policy")
  *             .description("Policy for demo purposes with all possible combinations")
  *             .allowedCombinations(            

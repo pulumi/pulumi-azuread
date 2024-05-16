@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationFederatedIdentityCredential = new ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", ApplicationFederatedIdentityCredentialArgs.builder()        
+ *         var exampleApplicationFederatedIdentityCredential = new ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", ApplicationFederatedIdentityCredentialArgs.builder()
  *             .applicationId(example.id())
  *             .displayName("my-repo-deploy")
  *             .description("Deployments for my-repo")
