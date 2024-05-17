@@ -103,9 +103,15 @@ namespace Pulumi.AzureAD
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// Specifies the Object ID of the application.
+        /// Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
         /// 
-        /// &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
+        /// &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+        /// </summary>
+        [Input("identifierUri")]
+        public string? IdentifierUri { get; set; }
+
+        /// <summary>
+        /// Specifies the Object ID of the application.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -134,9 +140,15 @@ namespace Pulumi.AzureAD
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Specifies the Object ID of the application.
+        /// Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
         /// 
-        /// &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
+        /// &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+        /// </summary>
+        [Input("identifierUri")]
+        public Input<string>? IdentifierUri { get; set; }
+
+        /// <summary>
+        /// Specifies the Object ID of the application.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
@@ -200,6 +212,7 @@ namespace Pulumi.AzureAD
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string IdentifierUri;
         /// <summary>
         /// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         /// </summary>
@@ -309,6 +322,8 @@ namespace Pulumi.AzureAD
 
             string id,
 
+            string identifierUri,
+
             ImmutableArray<string> identifierUris,
 
             string logoUrl,
@@ -362,6 +377,7 @@ namespace Pulumi.AzureAD
             FeatureTags = featureTags;
             GroupMembershipClaims = groupMembershipClaims;
             Id = id;
+            IdentifierUri = identifierUri;
             IdentifierUris = identifierUris;
             LogoUrl = logoUrl;
             MarketingUrl = marketingUrl;

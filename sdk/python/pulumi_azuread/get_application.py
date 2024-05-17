@@ -22,7 +22,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, application_id=None, client_id=None, description=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, feature_tags=None, group_membership_claims=None, id=None, identifier_uris=None, logo_url=None, marketing_url=None, notes=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, service_management_reference=None, sign_in_audience=None, single_page_applications=None, support_url=None, tags=None, terms_of_service_url=None, webs=None):
+    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, application_id=None, client_id=None, description=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, feature_tags=None, group_membership_claims=None, id=None, identifier_uri=None, identifier_uris=None, logo_url=None, marketing_url=None, notes=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, service_management_reference=None, sign_in_audience=None, single_page_applications=None, support_url=None, tags=None, terms_of_service_url=None, webs=None):
         if apis and not isinstance(apis, list):
             raise TypeError("Expected argument 'apis' to be a list")
         pulumi.set(__self__, "apis", apis)
@@ -62,6 +62,9 @@ class GetApplicationResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if identifier_uri and not isinstance(identifier_uri, str):
+            raise TypeError("Expected argument 'identifier_uri' to be a str")
+        pulumi.set(__self__, "identifier_uri", identifier_uri)
         if identifier_uris and not isinstance(identifier_uris, list):
             raise TypeError("Expected argument 'identifier_uris' to be a list")
         pulumi.set(__self__, "identifier_uris", identifier_uris)
@@ -226,6 +229,11 @@ class GetApplicationResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identifierUri")
+    def identifier_uri(self) -> str:
+        return pulumi.get(self, "identifier_uri")
 
     @property
     @pulumi.getter(name="identifierUris")
@@ -407,6 +415,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             feature_tags=self.feature_tags,
             group_membership_claims=self.group_membership_claims,
             id=self.id,
+            identifier_uri=self.identifier_uri,
             identifier_uris=self.identifier_uris,
             logo_url=self.logo_url,
             marketing_url=self.marketing_url,
@@ -432,6 +441,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
 def get_application(application_id: Optional[str] = None,
                     client_id: Optional[str] = None,
                     display_name: Optional[str] = None,
+                    identifier_uri: Optional[str] = None,
                     object_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationResult:
     """
@@ -458,14 +468,16 @@ def get_application(application_id: Optional[str] = None,
 
     :param str client_id: Specifies the Client ID of the application.
     :param str display_name: Specifies the display name of the application.
-    :param str object_id: Specifies the Object ID of the application.
+    :param str identifier_uri: Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
            
-           > One of `client_id`, `display_name`, or `object_id` must be specified.
+           > One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+    :param str object_id: Specifies the Object ID of the application.
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
     __args__['clientId'] = client_id
     __args__['displayName'] = display_name
+    __args__['identifierUri'] = identifier_uri
     __args__['objectId'] = object_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('azuread:index/getApplication:getApplication', __args__, opts=opts, typ=GetApplicationResult).value
@@ -484,6 +496,7 @@ def get_application(application_id: Optional[str] = None,
         feature_tags=pulumi.get(__ret__, 'feature_tags'),
         group_membership_claims=pulumi.get(__ret__, 'group_membership_claims'),
         id=pulumi.get(__ret__, 'id'),
+        identifier_uri=pulumi.get(__ret__, 'identifier_uri'),
         identifier_uris=pulumi.get(__ret__, 'identifier_uris'),
         logo_url=pulumi.get(__ret__, 'logo_url'),
         marketing_url=pulumi.get(__ret__, 'marketing_url'),
@@ -510,6 +523,7 @@ def get_application(application_id: Optional[str] = None,
 def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]] = None,
                            client_id: Optional[pulumi.Input[Optional[str]]] = None,
                            display_name: Optional[pulumi.Input[Optional[str]]] = None,
+                           identifier_uri: Optional[pulumi.Input[Optional[str]]] = None,
                            object_id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationResult]:
     """
@@ -536,8 +550,9 @@ def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]]
 
     :param str client_id: Specifies the Client ID of the application.
     :param str display_name: Specifies the display name of the application.
-    :param str object_id: Specifies the Object ID of the application.
+    :param str identifier_uri: Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
            
-           > One of `client_id`, `display_name`, or `object_id` must be specified.
+           > One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+    :param str object_id: Specifies the Object ID of the application.
     """
     ...

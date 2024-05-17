@@ -65,9 +65,11 @@ type LookupApplicationArgs struct {
 	ClientId *string `pulumi:"clientId"`
 	// Specifies the display name of the application.
 	DisplayName *string `pulumi:"displayName"`
-	// Specifies the Object ID of the application.
+	// Specifies any identifier URI of the application. See also the `identifierUris` attribute which contains a list of all identifier URIs for the application.
 	//
-	// > One of `clientId`, `displayName`, or `objectId` must be specified.
+	// > One of `clientId`, `displayName`, `objectId`, or `identifierUri` must be specified.
+	IdentifierUri *string `pulumi:"identifierUri"`
+	// Specifies the Object ID of the application.
 	ObjectId *string `pulumi:"objectId"`
 }
 
@@ -98,7 +100,8 @@ type LookupApplicationResult struct {
 	// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
 	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id            string `pulumi:"id"`
+	IdentifierUri string `pulumi:"identifierUri"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
 	// CDN URL to the application's logo.
@@ -162,9 +165,11 @@ type LookupApplicationOutputArgs struct {
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Specifies the display name of the application.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Specifies the Object ID of the application.
+	// Specifies any identifier URI of the application. See also the `identifierUris` attribute which contains a list of all identifier URIs for the application.
 	//
-	// > One of `clientId`, `displayName`, or `objectId` must be specified.
+	// > One of `clientId`, `displayName`, `objectId`, or `identifierUri` must be specified.
+	IdentifierUri pulumi.StringPtrInput `pulumi:"identifierUri"`
+	// Specifies the Object ID of the application.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 }
 
@@ -250,6 +255,10 @@ func (o LookupApplicationResultOutput) GroupMembershipClaims() pulumi.StringArra
 // The provider-assigned unique ID for this managed resource.
 func (o LookupApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupApplicationResultOutput) IdentifierUri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationResult) string { return v.IdentifierUri }).(pulumi.StringOutput)
 }
 
 // A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.

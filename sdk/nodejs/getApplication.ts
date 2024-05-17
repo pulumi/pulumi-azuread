@@ -37,6 +37,7 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
         "applicationId": args.applicationId,
         "clientId": args.clientId,
         "displayName": args.displayName,
+        "identifierUri": args.identifierUri,
         "objectId": args.objectId,
     }, opts);
 }
@@ -58,9 +59,13 @@ export interface GetApplicationArgs {
      */
     displayName?: string;
     /**
-     * Specifies the Object ID of the application.
+     * Specifies any identifier URI of the application. See also the `identifierUris` attribute which contains a list of all identifier URIs for the application.
      *
-     * > One of `clientId`, `displayName`, or `objectId` must be specified.
+     * > One of `clientId`, `displayName`, `objectId`, or `identifierUri` must be specified.
+     */
+    identifierUri?: string;
+    /**
+     * Specifies the Object ID of the application.
      */
     objectId?: string;
 }
@@ -121,6 +126,7 @@ export interface GetApplicationResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly identifierUri: string;
     /**
      * A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      */
@@ -246,9 +252,13 @@ export interface GetApplicationOutputArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Specifies the Object ID of the application.
+     * Specifies any identifier URI of the application. See also the `identifierUris` attribute which contains a list of all identifier URIs for the application.
      *
-     * > One of `clientId`, `displayName`, or `objectId` must be specified.
+     * > One of `clientId`, `displayName`, `objectId`, or `identifierUri` must be specified.
+     */
+    identifierUri?: pulumi.Input<string>;
+    /**
+     * Specifies the Object ID of the application.
      */
     objectId?: pulumi.Input<string>;
 }
