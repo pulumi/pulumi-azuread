@@ -1206,7 +1206,15 @@
                     "description": "The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "signInFrequencyAuthenticationType",
+                        "signInFrequencyInterval"
+                    ]
+                }
+            }
         },
         "azuread:index/CustomDirectoryRolePermission:CustomDirectoryRolePermission": {
             "properties": {
@@ -9842,9 +9850,13 @@
                         "type": "string",
                         "description": "Specifies the display name of the application.\n"
                     },
+                    "identifierUri": {
+                        "type": "string",
+                        "description": "Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.\n\n\u003e One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.\n"
+                    },
                     "objectId": {
                         "type": "string",
-                        "description": "Specifies the Object ID of the application.\n\n\u003e One of `client_id`, `display_name`, or `object_id` must be specified.\n"
+                        "description": "Specifies the Object ID of the application.\n"
                     }
                 },
                 "type": "object"
@@ -9917,6 +9929,9 @@
                     },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "identifierUri": {
                         "type": "string"
                     },
                     "identifierUris": {
@@ -10040,6 +10055,7 @@
                     "fallbackPublicClientEnabled",
                     "featureTags",
                     "groupMembershipClaims",
+                    "identifierUri",
                     "identifierUris",
                     "logoUrl",
                     "marketingUrl",
