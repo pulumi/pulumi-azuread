@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AdministrativeUnit("example", AdministrativeUnitArgs.builder()        
+ *         var example = new AdministrativeUnit("example", AdministrativeUnitArgs.builder()
  *             .displayName("Example-AU")
  *             .description("Just an example")
  *             .hiddenMembershipEnabled(false)

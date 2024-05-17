@@ -68,23 +68,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Group("example", GroupArgs.builder()        
+ *         var example = new Group("example", GroupArgs.builder()
  *             .displayName("group-name")
  *             .securityEnabled(true)
  *             .build());
  * 
- *         var exampleAccessPackageCatalog = new AccessPackageCatalog("exampleAccessPackageCatalog", AccessPackageCatalogArgs.builder()        
+ *         var exampleAccessPackageCatalog = new AccessPackageCatalog("exampleAccessPackageCatalog", AccessPackageCatalogArgs.builder()
  *             .displayName("example-catalog")
  *             .description("Example catalog")
  *             .build());
  * 
- *         var exampleAccessPackage = new AccessPackage("exampleAccessPackage", AccessPackageArgs.builder()        
+ *         var exampleAccessPackage = new AccessPackage("exampleAccessPackage", AccessPackageArgs.builder()
  *             .catalogId(exampleAccessPackageCatalog.id())
  *             .displayName("access-package")
  *             .description("Access Package")
  *             .build());
  * 
- *         var exampleAccessPackageAssignmentPolicy = new AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy", AccessPackageAssignmentPolicyArgs.builder()        
+ *         var exampleAccessPackageAssignmentPolicy = new AccessPackageAssignmentPolicy("exampleAccessPackageAssignmentPolicy", AccessPackageAssignmentPolicyArgs.builder()
  *             .accessPackageId(exampleAccessPackage.id())
  *             .displayName("assignment-policy")
  *             .description("My assignment policy")

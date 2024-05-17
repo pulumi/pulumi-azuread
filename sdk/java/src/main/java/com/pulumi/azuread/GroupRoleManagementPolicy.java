@@ -62,19 +62,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Group("example", GroupArgs.builder()        
+ *         var example = new Group("example", GroupArgs.builder()
  *             .displayName("group-name")
  *             .securityEnabled(true)
  *             .build());
  * 
- *         var member = new User("member", UserArgs.builder()        
+ *         var member = new User("member", UserArgs.builder()
  *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .displayName("J. Doe")
  *             .mailNickname("jdoe")
  *             .password("SecretP{@literal @}sswd99!")
  *             .build());
  * 
- *         var exampleGroupRoleManagementPolicy = new GroupRoleManagementPolicy("exampleGroupRoleManagementPolicy", GroupRoleManagementPolicyArgs.builder()        
+ *         var exampleGroupRoleManagementPolicy = new GroupRoleManagementPolicy("exampleGroupRoleManagementPolicy", GroupRoleManagementPolicyArgs.builder()
  *             .groupId(example.id())
  *             .roleId("member")
  *             .activeAssignmentRules(GroupRoleManagementPolicyActiveAssignmentRulesArgs.builder()
