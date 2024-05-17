@@ -57,13 +57,13 @@ import (
 //						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-//									return appRoleIds.User.Read.All, nil
+//									return appRoleIds.UserReadAll, nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Role"),
 //							},
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.User.ReadWrite, nil
+//									return oauth2PermissionScopeIds.UserReadWrite, nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Scope"),
 //							},
@@ -82,7 +82,7 @@ import (
 //			}
 //			_, err = azuread.NewAppRoleAssignment(ctx, "example", &azuread.AppRoleAssignmentArgs{
 //				AppRoleId: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-//					return appRoleIds.User.Read.All, nil
+//					return appRoleIds.UserReadAll, nil
 //				}).(pulumi.StringOutput),
 //				PrincipalObjectId: exampleServicePrincipal.ObjectId,
 //				ResourceObjectId:  msgraph.ObjectId,
@@ -142,7 +142,7 @@ import (
 //						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-//									return appRoleIds.Query.All, nil
+//									return appRoleIds.QueryAll, nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Role"),
 //							},
@@ -161,7 +161,7 @@ import (
 //			}
 //			_, err = azuread.NewAppRoleAssignment(ctx, "example", &azuread.AppRoleAssignmentArgs{
 //				AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-//					return appRoleIds.Query.All, nil
+//					return appRoleIds.QueryAll, nil
 //				}).(pulumi.StringOutput),
 //				PrincipalObjectId: exampleServicePrincipal.ObjectId,
 //				ResourceObjectId:  internalServicePrincipal.ObjectId,

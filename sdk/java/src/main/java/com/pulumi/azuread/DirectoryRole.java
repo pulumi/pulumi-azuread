@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DirectoryRole("example", DirectoryRoleArgs.builder()        
+ *         var example = new DirectoryRole("example", DirectoryRoleArgs.builder()
  *             .templateId("00000000-0000-0000-0000-000000000000")
  *             .build());
  * 
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DirectoryRole("example", DirectoryRoleArgs.builder()        
+ *         var example = new DirectoryRole("example", DirectoryRoleArgs.builder()
  *             .displayName("Printer administrator")
  *             .build());
  * 

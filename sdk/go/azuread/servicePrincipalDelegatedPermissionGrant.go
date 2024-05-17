@@ -63,7 +63,7 @@ import (
 //							},
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.User.Read, nil
+//									return oauth2PermissionScopeIds.UserRead, nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Scope"),
 //							},
@@ -136,7 +136,7 @@ import (
 //							},
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.User.Read, nil
+//									return oauth2PermissionScopeIds.UserRead, nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Scope"),
 //							},

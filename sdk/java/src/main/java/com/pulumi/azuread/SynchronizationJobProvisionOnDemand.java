@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()        
+ *         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
  *             .displayName("example")
  *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *             .securityEnabled(true)
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .displayName("Azure Databricks SCIM Provisioning Connector")
  *             .build());
  * 
- *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()        
+ *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
  *             .displayName("example")
  *             .templateId(example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()))
  *             .featureTags(ApplicationFeatureTagArgs.builder()
@@ -89,12 +89,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
  *             .clientId(exampleApplication.clientId())
  *             .useExisting(true)
  *             .build());
  * 
- *         var exampleSynchronizationSecret = new SynchronizationSecret("exampleSynchronizationSecret", SynchronizationSecretArgs.builder()        
+ *         var exampleSynchronizationSecret = new SynchronizationSecret("exampleSynchronizationSecret", SynchronizationSecretArgs.builder()
  *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .credentials(            
  *                 SynchronizationSecretCredentialArgs.builder()
@@ -107,13 +107,13 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var exampleSynchronizationJob = new SynchronizationJob("exampleSynchronizationJob", SynchronizationJobArgs.builder()        
+ *         var exampleSynchronizationJob = new SynchronizationJob("exampleSynchronizationJob", SynchronizationJobArgs.builder()
  *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .templateId("dataBricks")
  *             .enabled(true)
  *             .build());
  * 
- *         var exampleSynchronizationJobProvisionOnDemand = new SynchronizationJobProvisionOnDemand("exampleSynchronizationJobProvisionOnDemand", SynchronizationJobProvisionOnDemandArgs.builder()        
+ *         var exampleSynchronizationJobProvisionOnDemand = new SynchronizationJobProvisionOnDemand("exampleSynchronizationJobProvisionOnDemand", SynchronizationJobProvisionOnDemandArgs.builder()
  *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .synchronizationJobId(exampleSynchronizationJob.id())
  *             .parameters(SynchronizationJobProvisionOnDemandParameterArgs.builder()
