@@ -65,9 +65,26 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Specifies the Object ID of the application.
+     * Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
      * 
-     * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
+     * &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+     * 
+     */
+    @Import(name="identifierUri")
+    private @Nullable Output<String> identifierUri;
+
+    /**
+     * @return Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
+     * 
+     * &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+     * 
+     */
+    public Optional<Output<String>> identifierUri() {
+        return Optional.ofNullable(this.identifierUri);
+    }
+
+    /**
+     * Specifies the Object ID of the application.
      * 
      */
     @Import(name="objectId")
@@ -75,8 +92,6 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Specifies the Object ID of the application.
-     * 
-     * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
      * 
      */
     public Optional<Output<String>> objectId() {
@@ -89,6 +104,7 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
         this.applicationId = $.applicationId;
         this.clientId = $.clientId;
         this.displayName = $.displayName;
+        this.identifierUri = $.identifierUri;
         this.objectId = $.objectId;
     }
 
@@ -178,9 +194,32 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param objectId Specifies the Object ID of the application.
+         * @param identifierUri Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
          * 
-         * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
+         * &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifierUri(@Nullable Output<String> identifierUri) {
+            $.identifierUri = identifierUri;
+            return this;
+        }
+
+        /**
+         * @param identifierUri Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
+         * 
+         * &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifierUri(String identifierUri) {
+            return identifierUri(Output.of(identifierUri));
+        }
+
+        /**
+         * @param objectId Specifies the Object ID of the application.
          * 
          * @return builder
          * 
@@ -192,8 +231,6 @@ public final class GetApplicationArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param objectId Specifies the Object ID of the application.
-         * 
-         * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
          * 
          * @return builder
          * 

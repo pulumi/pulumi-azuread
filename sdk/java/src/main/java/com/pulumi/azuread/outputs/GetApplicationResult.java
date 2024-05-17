@@ -88,6 +88,7 @@ public final class GetApplicationResult {
      * 
      */
     private String id;
+    private String identifierUri;
     /**
      * @return A list of user-defined URI(s) that uniquely identify a Web application within it&#39;s Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      * 
@@ -283,6 +284,9 @@ public final class GetApplicationResult {
     public String id() {
         return this.id;
     }
+    public String identifierUri() {
+        return this.identifierUri;
+    }
     /**
      * @return A list of user-defined URI(s) that uniquely identify a Web application within it&#39;s Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      * 
@@ -446,6 +450,7 @@ public final class GetApplicationResult {
         private List<GetApplicationFeatureTag> featureTags;
         private List<String> groupMembershipClaims;
         private String id;
+        private String identifierUri;
         private List<String> identifierUris;
         private String logoUrl;
         private String marketingUrl;
@@ -482,6 +487,7 @@ public final class GetApplicationResult {
     	      this.featureTags = defaults.featureTags;
     	      this.groupMembershipClaims = defaults.groupMembershipClaims;
     	      this.id = defaults.id;
+    	      this.identifierUri = defaults.identifierUri;
     	      this.identifierUris = defaults.identifierUris;
     	      this.logoUrl = defaults.logoUrl;
     	      this.marketingUrl = defaults.marketingUrl;
@@ -618,6 +624,14 @@ public final class GetApplicationResult {
               throw new MissingRequiredPropertyException("GetApplicationResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder identifierUri(String identifierUri) {
+            if (identifierUri == null) {
+              throw new MissingRequiredPropertyException("GetApplicationResult", "identifierUri");
+            }
+            this.identifierUri = identifierUri;
             return this;
         }
         @CustomType.Setter
@@ -819,6 +833,7 @@ public final class GetApplicationResult {
             _resultValue.featureTags = featureTags;
             _resultValue.groupMembershipClaims = groupMembershipClaims;
             _resultValue.id = id;
+            _resultValue.identifierUri = identifierUri;
             _resultValue.identifierUris = identifierUris;
             _resultValue.logoUrl = logoUrl;
             _resultValue.marketingUrl = marketingUrl;

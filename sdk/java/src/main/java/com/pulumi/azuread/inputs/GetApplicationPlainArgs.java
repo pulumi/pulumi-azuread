@@ -64,9 +64,26 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Specifies the Object ID of the application.
+     * Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
      * 
-     * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
+     * &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+     * 
+     */
+    @Import(name="identifierUri")
+    private @Nullable String identifierUri;
+
+    /**
+     * @return Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
+     * 
+     * &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+     * 
+     */
+    public Optional<String> identifierUri() {
+        return Optional.ofNullable(this.identifierUri);
+    }
+
+    /**
+     * Specifies the Object ID of the application.
      * 
      */
     @Import(name="objectId")
@@ -74,8 +91,6 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * @return Specifies the Object ID of the application.
-     * 
-     * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
      * 
      */
     public Optional<String> objectId() {
@@ -88,6 +103,7 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
         this.applicationId = $.applicationId;
         this.clientId = $.clientId;
         this.displayName = $.displayName;
+        this.identifierUri = $.identifierUri;
         this.objectId = $.objectId;
     }
 
@@ -145,9 +161,20 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param objectId Specifies the Object ID of the application.
+         * @param identifierUri Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
          * 
-         * &gt; One of `client_id`, `display_name`, or `object_id` must be specified.
+         * &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifierUri(@Nullable String identifierUri) {
+            $.identifierUri = identifierUri;
+            return this;
+        }
+
+        /**
+         * @param objectId Specifies the Object ID of the application.
          * 
          * @return builder
          * 

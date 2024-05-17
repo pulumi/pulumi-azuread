@@ -712,11 +712,11 @@ export interface ConditionalAccessPolicySessionControls {
     /**
      * Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
      */
-    signInFrequencyAuthenticationType?: string;
+    signInFrequencyAuthenticationType: string;
     /**
      * The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
      */
-    signInFrequencyInterval?: string;
+    signInFrequencyInterval: string;
     /**
      * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
      */
