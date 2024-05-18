@@ -43,17 +43,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var jane = new User("jane", UserArgs.builder()        
+ *         var jane = new User("jane", UserArgs.builder()
  *             .userPrincipalName("jane.fischer{@literal @}hashitown.com")
  *             .displayName("Jane Fischer")
  *             .password("Ch{@literal @}ngeMe")
  *             .build());
  * 
- *         var exampleJane = new ApplicationOwner("exampleJane", ApplicationOwnerArgs.builder()        
+ *         var exampleJane = new ApplicationOwner("exampleJane", ApplicationOwnerArgs.builder()
  *             .applicationId(example.id())
  *             .ownerObjectId(jane.objectId())
  *             .build());

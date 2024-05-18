@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
- *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+ *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
  *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *             .useExisting(true)
  *             .build());
  * 
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
  *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
@@ -82,11 +82,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleServicePrincipalDelegatedPermissionGrant = new ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", ServicePrincipalDelegatedPermissionGrantArgs.builder()        
+ *         var exampleServicePrincipalDelegatedPermissionGrant = new ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", ServicePrincipalDelegatedPermissionGrantArgs.builder()
  *             .servicePrincipalObjectId(exampleServicePrincipal.objectId())
  *             .resourceServicePrincipalObjectId(msgraph.objectId())
  *             .claimValues(            
@@ -135,12 +135,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
- *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+ *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
  *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *             .useExisting(true)
  *             .build());
  * 
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
  *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
@@ -156,18 +156,18 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleUser = new User("exampleUser", UserArgs.builder()        
+ *         var exampleUser = new User("exampleUser", UserArgs.builder()
  *             .displayName("J. Doe")
  *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .mailNickname("jdoe")
  *             .password("SecretP{@literal @}sswd99!")
  *             .build());
  * 
- *         var exampleServicePrincipalDelegatedPermissionGrant = new ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", ServicePrincipalDelegatedPermissionGrantArgs.builder()        
+ *         var exampleServicePrincipalDelegatedPermissionGrant = new ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", ServicePrincipalDelegatedPermissionGrantArgs.builder()
  *             .servicePrincipalObjectId(exampleServicePrincipal.objectId())
  *             .resourceServicePrincipalObjectId(msgraph.objectId())
  *             .claimValues(            
