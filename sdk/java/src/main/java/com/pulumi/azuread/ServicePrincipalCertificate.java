@@ -47,15 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleServicePrincipalCertificate = new ServicePrincipalCertificate("exampleServicePrincipalCertificate", ServicePrincipalCertificateArgs.builder()        
+ *         var exampleServicePrincipalCertificate = new ServicePrincipalCertificate("exampleServicePrincipalCertificate", ServicePrincipalCertificateArgs.builder()
  *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .type("AsymmetricX509Cert")
  *             .value(StdFunctions.file(FileArgs.builder()
@@ -99,15 +99,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleServicePrincipalCertificate = new ServicePrincipalCertificate("exampleServicePrincipalCertificate", ServicePrincipalCertificateArgs.builder()        
+ *         var exampleServicePrincipalCertificate = new ServicePrincipalCertificate("exampleServicePrincipalCertificate", ServicePrincipalCertificateArgs.builder()
  *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .type("AsymmetricX509Cert")
  *             .encoding("base64")
