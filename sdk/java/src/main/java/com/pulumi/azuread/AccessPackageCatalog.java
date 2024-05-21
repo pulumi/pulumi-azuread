@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AccessPackageCatalog("example", AccessPackageCatalogArgs.builder()        
+ *         var example = new AccessPackageCatalog("example", AccessPackageCatalogArgs.builder()
  *             .displayName("example-access-package-catalog")
  *             .description("Example access package catalog")
  *             .build());

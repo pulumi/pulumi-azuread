@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()        
+ *         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
  *             .displayName("my_group")
  *             .securityEnabled(true)
  *             .build());
  * 
- *         var exampleGroupMember = new GroupMember("exampleGroupMember", GroupMemberArgs.builder()        
+ *         var exampleGroupMember = new GroupMember("exampleGroupMember", GroupMemberArgs.builder()
  *             .groupObjectId(exampleGroup.id())
  *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.id()))
  *             .build());
