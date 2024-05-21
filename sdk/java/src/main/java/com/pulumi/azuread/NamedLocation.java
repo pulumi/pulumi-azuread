@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_ip = new NamedLocation("example-ip", NamedLocationArgs.builder()        
+ *         var example_ip = new NamedLocation("example-ip", NamedLocationArgs.builder()
  *             .displayName("IP Named Location")
  *             .ip(NamedLocationIpArgs.builder()
  *                 .ipRanges(                
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var example_country = new NamedLocation("example-country", NamedLocationArgs.builder()        
+ *         var example_country = new NamedLocation("example-country", NamedLocationArgs.builder()
  *             .displayName("Country Named Location")
  *             .country(NamedLocationCountryArgs.builder()
  *                 .countriesAndRegions(                

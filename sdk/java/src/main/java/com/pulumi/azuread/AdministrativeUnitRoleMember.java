@@ -59,15 +59,15 @@ import javax.annotation.Nullable;
  *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleAdministrativeUnit = new AdministrativeUnit("exampleAdministrativeUnit", AdministrativeUnitArgs.builder()        
+ *         var exampleAdministrativeUnit = new AdministrativeUnit("exampleAdministrativeUnit", AdministrativeUnitArgs.builder()
  *             .displayName("Example-AU")
  *             .build());
  * 
- *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()        
+ *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()
  *             .displayName("Security administrator")
  *             .build());
  * 
- *         var exampleAdministrativeUnitRoleMember = new AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember", AdministrativeUnitRoleMemberArgs.builder()        
+ *         var exampleAdministrativeUnitRoleMember = new AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember", AdministrativeUnitRoleMemberArgs.builder()
  *             .roleObjectId(exampleDirectoryRole.objectId())
  *             .administrativeUnitObjectId(exampleAdministrativeUnit.id())
  *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.id()))
