@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .displayName("Marketo")
  *             .build());
  * 
- *         var exampleApplicationFromTemplate = new ApplicationFromTemplate("exampleApplicationFromTemplate", ApplicationFromTemplateArgs.builder()        
+ *         var exampleApplicationFromTemplate = new ApplicationFromTemplate("exampleApplicationFromTemplate", ApplicationFromTemplateArgs.builder()
  *             .displayName("Example Application")
  *             .templateId(example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()))
  *             .build());

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Invitation("example", InvitationArgs.builder()        
+ *         var example = new Invitation("example", InvitationArgs.builder()
  *             .userEmailAddress("jdoe{@literal @}example.com")
  *             .redirectUrl("https://portal.azure.com")
  *             .build());
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Invitation("example", InvitationArgs.builder()        
+ *         var example = new Invitation("example", InvitationArgs.builder()
  *             .userEmailAddress("jdoe{@literal @}example.com")
  *             .redirectUrl("https://portal.azure.com")
  *             .message(InvitationMessageArgs.builder()
@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Invitation("example", InvitationArgs.builder()        
+ *         var example = new Invitation("example", InvitationArgs.builder()
  *             .userDisplayName("Bob Bobson")
  *             .userEmailAddress("bbobson{@literal @}example.com")
  *             .redirectUrl("https://portal.azure.com")

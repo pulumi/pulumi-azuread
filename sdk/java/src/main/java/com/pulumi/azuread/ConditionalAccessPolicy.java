@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()        
+ *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()
  *             .displayName("example policy")
  *             .state("disabled")
  *             .conditions(ConditionalAccessPolicyConditionsArgs.builder()
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()        
+ *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()
  *             .displayName("example policy")
  *             .state("disabled")
  *             .conditions(ConditionalAccessPolicyConditionsArgs.builder()
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()        
+ *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()
  *             .displayName("example policy")
  *             .state("disabled")
  *             .conditions(ConditionalAccessPolicyConditionsArgs.builder()
