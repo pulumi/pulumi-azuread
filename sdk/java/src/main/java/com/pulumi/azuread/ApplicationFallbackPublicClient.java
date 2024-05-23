@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationFallbackPublicClient = new ApplicationFallbackPublicClient("exampleApplicationFallbackPublicClient", ApplicationFallbackPublicClientArgs.builder()        
+ *         var exampleApplicationFallbackPublicClient = new ApplicationFallbackPublicClient("exampleApplicationFallbackPublicClient", ApplicationFallbackPublicClientArgs.builder()
  *             .applicationId(example.id())
  *             .enabled(true)
  *             .build());

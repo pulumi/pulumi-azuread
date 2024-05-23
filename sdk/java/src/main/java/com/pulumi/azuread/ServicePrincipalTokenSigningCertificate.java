@@ -46,15 +46,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", ServicePrincipalTokenSigningCertificateArgs.builder()        
+ *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", ServicePrincipalTokenSigningCertificateArgs.builder()
  *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .build());
  * 
@@ -93,15 +93,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", ServicePrincipalTokenSigningCertificateArgs.builder()        
+ *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", ServicePrincipalTokenSigningCertificateArgs.builder()
  *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .displayName("CN=example.com")
  *             .endDate("2023-05-01T01:02:03Z")
