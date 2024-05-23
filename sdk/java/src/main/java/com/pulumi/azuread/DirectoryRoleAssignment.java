@@ -59,11 +59,11 @@ import javax.annotation.Nullable;
  *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()        
+ *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()
  *             .displayName("Security administrator")
  *             .build());
  * 
- *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment("exampleDirectoryRoleAssignment", DirectoryRoleAssignmentArgs.builder()        
+ *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment("exampleDirectoryRoleAssignment", DirectoryRoleAssignmentArgs.builder()
  *             .roleId(exampleDirectoryRole.templateId())
  *             .principalObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
  *             .build());
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleCustomDirectoryRole = new CustomDirectoryRole("exampleCustomDirectoryRole", CustomDirectoryRoleArgs.builder()        
+ *         var exampleCustomDirectoryRole = new CustomDirectoryRole("exampleCustomDirectoryRole", CustomDirectoryRoleArgs.builder()
  *             .displayName("My Custom Role")
  *             .enabled(true)
  *             .version("1.0")
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment("exampleDirectoryRoleAssignment", DirectoryRoleAssignmentArgs.builder()        
+ *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment("exampleDirectoryRoleAssignment", DirectoryRoleAssignmentArgs.builder()
  *             .roleId(exampleCustomDirectoryRole.objectId())
  *             .principalObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
  *             .build());
