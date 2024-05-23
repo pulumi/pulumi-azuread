@@ -60,11 +60,11 @@ import javax.annotation.Nullable;
  *             .userPrincipalName("jdoe{@literal @}example.com")
  *             .build());
  * 
- *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()        
+ *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()
  *             .displayName("Security administrator")
  *             .build());
  * 
- *         var exampleDirectoryRoleMember = new DirectoryRoleMember("exampleDirectoryRoleMember", DirectoryRoleMemberArgs.builder()        
+ *         var exampleDirectoryRoleMember = new DirectoryRoleMember("exampleDirectoryRoleMember", DirectoryRoleMemberArgs.builder()
  *             .roleObjectId(exampleDirectoryRole.objectId())
  *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
  *             .build());

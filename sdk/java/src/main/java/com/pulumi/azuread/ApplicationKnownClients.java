@@ -42,15 +42,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var client = new ApplicationRegistration("client", ApplicationRegistrationArgs.builder()        
+ *         var client = new ApplicationRegistration("client", ApplicationRegistrationArgs.builder()
  *             .displayName("example client")
  *             .build());
  * 
- *         var exampleApplicationKnownClients = new ApplicationKnownClients("exampleApplicationKnownClients", ApplicationKnownClientsArgs.builder()        
+ *         var exampleApplicationKnownClients = new ApplicationKnownClients("exampleApplicationKnownClients", ApplicationKnownClientsArgs.builder()
  *             .applicationId(example.id())
  *             .knownClientIds(client.clientId())
  *             .build());
