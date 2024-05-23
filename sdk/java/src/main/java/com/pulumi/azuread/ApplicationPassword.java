@@ -46,11 +46,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationPassword = new ApplicationPassword("exampleApplicationPassword", ApplicationPasswordArgs.builder()        
+ *         var exampleApplicationPassword = new ApplicationPassword("exampleApplicationPassword", ApplicationPasswordArgs.builder()
  *             .applicationId(example.id())
  *             .build());
  * 
@@ -89,15 +89,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleRotating = new Rotating("exampleRotating", RotatingArgs.builder()        
+ *         var exampleRotating = new Rotating("exampleRotating", RotatingArgs.builder()
  *             .rotationDays(7)
  *             .build());
  * 
- *         var exampleApplicationPassword = new ApplicationPassword("exampleApplicationPassword", ApplicationPasswordArgs.builder()        
+ *         var exampleApplicationPassword = new ApplicationPassword("exampleApplicationPassword", ApplicationPasswordArgs.builder()
  *             .applicationId(example.id())
  *             .rotateWhenChanged(Map.of("rotation", exampleRotating.id()))
  *             .build());

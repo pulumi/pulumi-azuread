@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new UserFlowAttribute("example", UserFlowAttributeArgs.builder()        
+ *         var example = new UserFlowAttribute("example", UserFlowAttributeArgs.builder()
  *             .displayName("Hobby")
  *             .description("Your hobby")
  *             .dataType("string")

@@ -51,11 +51,11 @@ import javax.annotation.Nullable;
  *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
  *             .build());
  * 
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleMsgraph = new ApplicationApiAccess("exampleMsgraph", ApplicationApiAccessArgs.builder()        
+ *         var exampleMsgraph = new ApplicationApiAccess("exampleMsgraph", ApplicationApiAccessArgs.builder()
  *             .applicationId(example.id())
  *             .apiClientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
  *             .roleIds(            
@@ -99,11 +99,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationApiAccess = new ApplicationApiAccess("exampleApplicationApiAccess", ApplicationApiAccessArgs.builder()        
+ *         var exampleApplicationApiAccess = new ApplicationApiAccess("exampleApplicationApiAccess", ApplicationApiAccessArgs.builder()
  *             .applicationId(example.id())
  *             .build());
  * 

@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new Group("example", GroupArgs.builder()        
+ *         var example = new Group("example", GroupArgs.builder()
  *             .displayName("example")
  *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *             .securityEnabled(true)
@@ -110,14 +110,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var groupOwner = new User("groupOwner", UserArgs.builder()        
+ *         var groupOwner = new User("groupOwner", UserArgs.builder()
  *             .userPrincipalName("example-group-owner{@literal @}example.com")
  *             .displayName("Group Owner")
  *             .mailNickname("example-group-owner")
  *             .password("SecretP{@literal @}sswd99!")
  *             .build());
  * 
- *         var example = new Group("example", GroupArgs.builder()        
+ *         var example = new Group("example", GroupArgs.builder()
  *             .displayName("example")
  *             .mailEnabled(true)
  *             .mailNickname("ExampleGroup")
@@ -137,51 +137,6 @@ import javax.annotation.Nullable;
  * *Group with members*
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.azuread.AzureadFunctions;
- * import com.pulumi.azuread.User;
- * import com.pulumi.azuread.UserArgs;
- * import com.pulumi.azuread.Group;
- * import com.pulumi.azuread.GroupArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var current = AzureadFunctions.getClientConfig();
- * 
- *         var example = new User("example", UserArgs.builder()        
- *             .displayName("J Doe")
- *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
- *             .password("notSecure123")
- *             .userPrincipalName("jdoe{@literal @}example.com")
- *             .build());
- * 
- *         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()        
- *             .displayName("MyGroup")
- *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
- *             .securityEnabled(true)
- *             .members(example.objectId())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * *Group with dynamic membership*
@@ -213,7 +168,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AzureadFunctions.getClientConfig();
  * 
- *         var example = new Group("example", GroupArgs.builder()        
+ *         var example = new Group("example", GroupArgs.builder()
  *             .displayName("MyGroup")
  *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
  *             .securityEnabled(true)

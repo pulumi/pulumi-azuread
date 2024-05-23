@@ -62,12 +62,12 @@ import javax.annotation.Nullable;
  *             .displayName("Catalog owner")
  *             .build());
  * 
- *         var exampleAccessPackageCatalog = new AccessPackageCatalog("exampleAccessPackageCatalog", AccessPackageCatalogArgs.builder()        
+ *         var exampleAccessPackageCatalog = new AccessPackageCatalog("exampleAccessPackageCatalog", AccessPackageCatalogArgs.builder()
  *             .displayName("example-access-package-catalog")
  *             .description("Example access package catalog")
  *             .build());
  * 
- *         var exampleAccessPackageCatalogRoleAssignment = new AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment", AccessPackageCatalogRoleAssignmentArgs.builder()        
+ *         var exampleAccessPackageCatalogRoleAssignment = new AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment", AccessPackageCatalogRoleAssignmentArgs.builder()
  *             .roleId(exampleGetAccessPackageCatalogRole.applyValue(getAccessPackageCatalogRoleResult -> getAccessPackageCatalogRoleResult.objectId()))
  *             .principalObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
  *             .catalogId(exampleAccessPackageCatalog.id())
