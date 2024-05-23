@@ -45,11 +45,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var authorized = new ApplicationRegistration("authorized", ApplicationRegistrationArgs.builder()        
+ *         var authorized = new ApplicationRegistration("authorized", ApplicationRegistrationArgs.builder()
  *             .displayName("example-authorized-app")
  *             .build());
  * 
- *         var authorizer = new Application("authorizer", ApplicationArgs.builder()        
+ *         var authorizer = new Application("authorizer", ApplicationArgs.builder()
  *             .displayName("example-authorizing-app")
  *             .api(ApplicationApiArgs.builder()
  *                 .oauth2PermissionScopes(                
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var example = new ApplicationPreAuthorized("example", ApplicationPreAuthorizedArgs.builder()        
+ *         var example = new ApplicationPreAuthorized("example", ApplicationPreAuthorizedArgs.builder()
  *             .applicationId(authorizer.id())
  *             .authorizedClientId(authorized.clientId())
  *             .permissionIds(            
