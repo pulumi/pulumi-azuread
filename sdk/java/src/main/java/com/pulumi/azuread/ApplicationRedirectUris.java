@@ -42,11 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var examplePublic = new ApplicationRedirectUris("examplePublic", ApplicationRedirectUrisArgs.builder()        
+ *         var examplePublic = new ApplicationRedirectUris("examplePublic", ApplicationRedirectUrisArgs.builder()
  *             .applicationId(example.id())
  *             .type("PublicClient")
  *             .redirectUris(            
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *                 "urn:ietf:wg:oauth:2.0:foo")
  *             .build());
  * 
- *         var exampleSpa = new ApplicationRedirectUris("exampleSpa", ApplicationRedirectUrisArgs.builder()        
+ *         var exampleSpa = new ApplicationRedirectUris("exampleSpa", ApplicationRedirectUrisArgs.builder()
  *             .applicationId(example.id())
  *             .type("SPA")
  *             .redirectUris(            
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *                 "https://beta.hashitown.com/")
  *             .build());
  * 
- *         var exampleWeb = new ApplicationRedirectUris("exampleWeb", ApplicationRedirectUrisArgs.builder()        
+ *         var exampleWeb = new ApplicationRedirectUris("exampleWeb", ApplicationRedirectUrisArgs.builder()
  *             .applicationId(example.id())
  *             .type("Web")
  *             .redirectUris(            

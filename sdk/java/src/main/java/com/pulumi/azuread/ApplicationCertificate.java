@@ -45,11 +45,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationCertificate = new ApplicationCertificate("exampleApplicationCertificate", ApplicationCertificateArgs.builder()        
+ *         var exampleApplicationCertificate = new ApplicationCertificate("exampleApplicationCertificate", ApplicationCertificateArgs.builder()
  *             .applicationId(example.id())
  *             .type("AsymmetricX509Cert")
  *             .value(StdFunctions.file(FileArgs.builder()
@@ -91,11 +91,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationCertificate = new ApplicationCertificate("exampleApplicationCertificate", ApplicationCertificateArgs.builder()        
+ *         var exampleApplicationCertificate = new ApplicationCertificate("exampleApplicationCertificate", ApplicationCertificateArgs.builder()
  *             .applicationId(example.id())
  *             .type("AsymmetricX509Cert")
  *             .encoding("base64")
@@ -148,11 +148,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()        
+ *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var example = new Certificate("example", CertificateArgs.builder()        
+ *         var example = new Certificate("example", CertificateArgs.builder()
  *             .name("generated-cert")
  *             .keyVaultId(exampleAzurermKeyVault.id())
  *             .certificatePolicy(CertificateCertificatePolicyArgs.builder()
@@ -194,7 +194,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleApplicationCertificate = new ApplicationCertificate("exampleApplicationCertificate", ApplicationCertificateArgs.builder()        
+ *         var exampleApplicationCertificate = new ApplicationCertificate("exampleApplicationCertificate", ApplicationCertificateArgs.builder()
  *             .applicationId(exampleApplication.id())
  *             .type("AsymmetricX509Cert")
  *             .encoding("hex")
