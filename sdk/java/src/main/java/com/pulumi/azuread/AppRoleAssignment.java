@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
- *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()        
+ *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
  *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *             .useExisting(true)
  *             .build());
  * 
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
  *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
@@ -80,11 +80,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()        
+ *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
  *             .appRoleId(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
  *             .principalObjectId(exampleServicePrincipal.objectId())
  *             .resourceObjectId(msgraph.objectId())
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var internal = new Application("internal", ApplicationArgs.builder()        
+ *         var internal = new Application("internal", ApplicationArgs.builder()
  *             .displayName("internal")
  *             .appRoles(ApplicationAppRoleArgs.builder()
  *                 .allowedMemberTypes("Application")
@@ -139,11 +139,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var internalServicePrincipal = new ServicePrincipal("internalServicePrincipal", ServicePrincipalArgs.builder()        
+ *         var internalServicePrincipal = new ServicePrincipal("internalServicePrincipal", ServicePrincipalArgs.builder()
  *             .applicationId(internal.applicationId())
  *             .build());
  * 
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
  *                 .resourceAppId(internal.applicationId())
@@ -154,11 +154,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()        
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
  *             .applicationId(example.applicationId())
  *             .build());
  * 
- *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()        
+ *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
  *             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -> appRoleIds.Query.All()))
  *             .principalObjectId(exampleServicePrincipal.objectId())
  *             .resourceObjectId(internalServicePrincipal.objectId())

@@ -41,11 +41,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()        
+ *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationIdentifierUri = new ApplicationIdentifierUri("exampleApplicationIdentifierUri", ApplicationIdentifierUriArgs.builder()        
+ *         var exampleApplicationIdentifierUri = new ApplicationIdentifierUri("exampleApplicationIdentifierUri", ApplicationIdentifierUriArgs.builder()
  *             .applicationId(example.id())
  *             .identifierUri("https://app.hashitown.com")
  *             .build());
@@ -85,11 +85,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Application("example", ApplicationArgs.builder()        
+ *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleApplicationIdentifierUri = new ApplicationIdentifierUri("exampleApplicationIdentifierUri", ApplicationIdentifierUriArgs.builder()        
+ *         var exampleApplicationIdentifierUri = new ApplicationIdentifierUri("exampleApplicationIdentifierUri", ApplicationIdentifierUriArgs.builder()
  *             .applicationId(example.id())
  *             .build());
  * 
