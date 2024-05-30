@@ -46,11 +46,11 @@ import (
 //				ApplicationId: example.ID(),
 //				ApiClientId:   pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				RoleIds: pulumi.StringArray{
-//					pulumi.String(msgraph.AppRoleIds.Group.Read.All),
-//					pulumi.String(msgraph.AppRoleIds.User.Read.All),
+//					pulumi.String(msgraph.AppRoleIds.GroupReadAll),
+//					pulumi.String(msgraph.AppRoleIds.UserReadAll),
 //				},
 //				ScopeIds: pulumi.StringArray{
-//					pulumi.String(msgraph.Oauth2PermissionScopeIds.User.ReadWrite),
+//					pulumi.String(msgraph.Oauth2PermissionScopeIds.UserReadWrite),
 //				},
 //			})
 //			if err != nil {
