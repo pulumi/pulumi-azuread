@@ -179,3 +179,7 @@ require (
 
 // get rid of dependabot high severity security alert #14
 replace github.com/gogo/protobuf => github.com/gogo/protobuf v1.3.2
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.117.1-0.20240606114120-282eedc71033
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.117.1-0.20240606114120-282eedc71033
