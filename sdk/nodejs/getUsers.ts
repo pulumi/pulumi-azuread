@@ -39,6 +39,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
         "employeeIds": args.employeeIds,
         "ignoreMissing": args.ignoreMissing,
         "mailNicknames": args.mailNicknames,
+        "mails": args.mails,
         "objectIds": args.objectIds,
         "returnAll": args.returnAll,
         "userPrincipalNames": args.userPrincipalNames,
@@ -62,6 +63,10 @@ export interface GetUsersArgs {
      */
     mailNicknames?: string[];
     /**
+     * The SMTP email addresses of the users.
+     */
+    mails?: string[];
+    /**
      * The object IDs of the users.
      */
     objectIds?: string[];
@@ -72,7 +77,7 @@ export interface GetUsersArgs {
     /**
      * The user principal names (UPNs) of the users.
      *
-     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames` or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      */
     userPrincipalNames?: string[];
 }
@@ -94,6 +99,10 @@ export interface GetUsersResult {
      * The email aliases of the users.
      */
     readonly mailNicknames: string[];
+    /**
+     * The SMTP email addresses of the users.
+     */
+    readonly mails: string[];
     /**
      * The object IDs of the users.
      */
@@ -154,6 +163,10 @@ export interface GetUsersOutputArgs {
      */
     mailNicknames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The SMTP email addresses of the users.
+     */
+    mails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The object IDs of the users.
      */
     objectIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -164,7 +177,7 @@ export interface GetUsersOutputArgs {
     /**
      * The user principal names (UPNs) of the users.
      *
-     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames` or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      */
     userPrincipalNames?: pulumi.Input<pulumi.Input<string>[]>;
 }

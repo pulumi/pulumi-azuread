@@ -72,6 +72,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+        /// 
+        /// &gt; **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
         /// </summary>
         [Output("memberObjectId")]
         public Output<string?> MemberObjectId { get; private set; } = null!;
@@ -130,6 +132,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+        /// 
+        /// &gt; **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
         /// </summary>
         [Input("memberObjectId")]
         public Input<string>? MemberObjectId { get; set; }
@@ -150,6 +154,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+        /// 
+        /// &gt; **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
         /// </summary>
         [Input("memberObjectId")]
         public Input<string>? MemberObjectId { get; set; }

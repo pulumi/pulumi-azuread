@@ -14728,13 +14728,13 @@ func (o GetServicePrincipalsServicePrincipalArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetUsersUser struct {
-	// Whether or not the account is enabled.
+	// Whether the account is enabled.
 	AccountEnabled bool `pulumi:"accountEnabled"`
 	// The display name of the user.
 	DisplayName string `pulumi:"displayName"`
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId string `pulumi:"employeeId"`
-	// The primary email address of the user.
+	// The SMTP email address of the user.
 	Mail string `pulumi:"mail"`
 	// The email alias of the user.
 	MailNickname string `pulumi:"mailNickname"`
@@ -14764,13 +14764,13 @@ type GetUsersUserInput interface {
 }
 
 type GetUsersUserArgs struct {
-	// Whether or not the account is enabled.
+	// Whether the account is enabled.
 	AccountEnabled pulumi.BoolInput `pulumi:"accountEnabled"`
 	// The display name of the user.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId pulumi.StringInput `pulumi:"employeeId"`
-	// The primary email address of the user.
+	// The SMTP email address of the user.
 	Mail pulumi.StringInput `pulumi:"mail"`
 	// The email alias of the user.
 	MailNickname pulumi.StringInput `pulumi:"mailNickname"`
@@ -14839,7 +14839,7 @@ func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Whether or not the account is enabled.
+// Whether the account is enabled.
 func (o GetUsersUserOutput) AccountEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.AccountEnabled }).(pulumi.BoolOutput)
 }
@@ -14854,7 +14854,7 @@ func (o GetUsersUserOutput) EmployeeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.EmployeeId }).(pulumi.StringOutput)
 }
 
-// The primary email address of the user.
+// The SMTP email address of the user.
 func (o GetUsersUserOutput) Mail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Mail }).(pulumi.StringOutput)
 }

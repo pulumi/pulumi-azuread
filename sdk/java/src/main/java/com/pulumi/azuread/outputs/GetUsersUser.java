@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetUsersUser {
     /**
-     * @return Whether or not the account is enabled.
+     * @return Whether the account is enabled.
      * 
      */
     private Boolean accountEnabled;
@@ -27,7 +27,7 @@ public final class GetUsersUser {
      */
     private String employeeId;
     /**
-     * @return The primary email address of the user.
+     * @return The SMTP email address of the user.
      * 
      */
     private String mail;
@@ -69,7 +69,7 @@ public final class GetUsersUser {
 
     private GetUsersUser() {}
     /**
-     * @return Whether or not the account is enabled.
+     * @return Whether the account is enabled.
      * 
      */
     public Boolean accountEnabled() {
@@ -90,7 +90,7 @@ public final class GetUsersUser {
         return this.employeeId;
     }
     /**
-     * @return The primary email address of the user.
+     * @return The SMTP email address of the user.
      * 
      */
     public String mail() {

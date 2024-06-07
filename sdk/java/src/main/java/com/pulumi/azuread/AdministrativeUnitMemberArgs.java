@@ -33,12 +33,16 @@ public final class AdministrativeUnitMemberArgs extends com.pulumi.resources.Res
     /**
      * The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
      * 
+     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+     * 
      */
     @Import(name="memberObjectId")
     private @Nullable Output<String> memberObjectId;
 
     /**
      * @return The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+     * 
+     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      * 
      */
     public Optional<Output<String>> memberObjectId() {
@@ -94,6 +98,8 @@ public final class AdministrativeUnitMemberArgs extends com.pulumi.resources.Res
         /**
          * @param memberObjectId The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
          * 
+         * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+         * 
          * @return builder
          * 
          */
@@ -104,6 +110,8 @@ public final class AdministrativeUnitMemberArgs extends com.pulumi.resources.Res
 
         /**
          * @param memberObjectId The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+         * 
+         * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
          * 
          * @return builder
          * 

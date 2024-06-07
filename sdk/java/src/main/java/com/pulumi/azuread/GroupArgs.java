@@ -22,7 +22,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
      * 
-     * !&gt; **Warning** Do not use the `administrative_unit_ids` property at the same time as the azuread.AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      * 
      */
     @Import(name="administrativeUnitIds")
@@ -31,7 +31,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
      * 
-     * !&gt; **Warning** Do not use the `administrative_unit_ids` property at the same time as the azuread.AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      * 
      */
     public Optional<Output<List<String>>> administrativeUnitIds() {
@@ -429,7 +429,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param administrativeUnitIds The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
          * 
-         * !&gt; **Warning** Do not use the `administrative_unit_ids` property at the same time as the azuread.AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+         * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param administrativeUnitIds The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
          * 
-         * !&gt; **Warning** Do not use the `administrative_unit_ids` property at the same time as the azuread.AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+         * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param administrativeUnitIds The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
          * 
-         * !&gt; **Warning** Do not use the `administrative_unit_ids` property at the same time as the azuread.AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+         * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
          * 
          * @return builder
          * 

@@ -68,6 +68,8 @@ type AdministrativeUnit struct {
 	HiddenMembershipEnabled pulumi.BoolPtrOutput `pulumi:"hiddenMembershipEnabled"`
 	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
 	//
+	// > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+	//
 	// !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The object ID of the administrative unit.
@@ -117,6 +119,8 @@ type administrativeUnitState struct {
 	HiddenMembershipEnabled *bool `pulumi:"hiddenMembershipEnabled"`
 	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
 	//
+	// > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+	//
 	// !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 	Members []string `pulumi:"members"`
 	// The object ID of the administrative unit.
@@ -133,6 +137,8 @@ type AdministrativeUnitState struct {
 	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled pulumi.BoolPtrInput
 	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+	//
+	// > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	//
 	// !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 	Members pulumi.StringArrayInput
@@ -155,6 +161,8 @@ type administrativeUnitArgs struct {
 	HiddenMembershipEnabled *bool `pulumi:"hiddenMembershipEnabled"`
 	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
 	//
+	// > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+	//
 	// !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 	Members []string `pulumi:"members"`
 	// If `true`, will return an error if an existing administrative unit is found with the same name
@@ -170,6 +178,8 @@ type AdministrativeUnitArgs struct {
 	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled pulumi.BoolPtrInput
 	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+	//
+	// > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	//
 	// !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 	Members pulumi.StringArrayInput
@@ -280,6 +290,8 @@ func (o AdministrativeUnitOutput) HiddenMembershipEnabled() pulumi.BoolPtrOutput
 }
 
 // A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+//
+// > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 //
 // !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 func (o AdministrativeUnitOutput) Members() pulumi.StringArrayOutput {

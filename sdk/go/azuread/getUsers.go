@@ -67,13 +67,15 @@ type GetUsersArgs struct {
 	IgnoreMissing *bool `pulumi:"ignoreMissing"`
 	// The email aliases of the users.
 	MailNicknames []string `pulumi:"mailNicknames"`
+	// The SMTP email addresses of the users.
+	Mails []string `pulumi:"mails"`
 	// The object IDs of the users.
 	ObjectIds []string `pulumi:"objectIds"`
 	// When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
 	ReturnAll *bool `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
 	//
-	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames` or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
 }
 
@@ -86,6 +88,8 @@ type GetUsersResult struct {
 	IgnoreMissing *bool  `pulumi:"ignoreMissing"`
 	// The email aliases of the users.
 	MailNicknames []string `pulumi:"mailNicknames"`
+	// The SMTP email addresses of the users.
+	Mails []string `pulumi:"mails"`
 	// The object IDs of the users.
 	ObjectIds []string `pulumi:"objectIds"`
 	ReturnAll *bool    `pulumi:"returnAll"`
@@ -116,13 +120,15 @@ type GetUsersOutputArgs struct {
 	IgnoreMissing pulumi.BoolPtrInput `pulumi:"ignoreMissing"`
 	// The email aliases of the users.
 	MailNicknames pulumi.StringArrayInput `pulumi:"mailNicknames"`
+	// The SMTP email addresses of the users.
+	Mails pulumi.StringArrayInput `pulumi:"mails"`
 	// The object IDs of the users.
 	ObjectIds pulumi.StringArrayInput `pulumi:"objectIds"`
 	// When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
 	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
 	//
-	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames` or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
 	UserPrincipalNames pulumi.StringArrayInput `pulumi:"userPrincipalNames"`
 }
 
@@ -162,6 +168,11 @@ func (o GetUsersResultOutput) IgnoreMissing() pulumi.BoolPtrOutput {
 // The email aliases of the users.
 func (o GetUsersResultOutput) MailNicknames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []string { return v.MailNicknames }).(pulumi.StringArrayOutput)
+}
+
+// The SMTP email addresses of the users.
+func (o GetUsersResultOutput) Mails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.Mails }).(pulumi.StringArrayOutput)
 }
 
 // The object IDs of the users.

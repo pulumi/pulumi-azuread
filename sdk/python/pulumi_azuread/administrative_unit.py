@@ -26,6 +26,8 @@ class AdministrativeUnitArgs:
         :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
                
+               > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+               
                !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
         """
@@ -81,6 +83,8 @@ class AdministrativeUnitArgs:
         """
         A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
 
+        > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+
         !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         """
         return pulumi.get(self, "members")
@@ -117,6 +121,8 @@ class _AdministrativeUnitState:
         :param pulumi.Input[str] display_name: The display name of the administrative unit.
         :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+               
+               > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
                
                !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         :param pulumi.Input[str] object_id: The object ID of the administrative unit.
@@ -176,6 +182,8 @@ class _AdministrativeUnitState:
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+
+        > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 
         !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         """
@@ -258,6 +266,8 @@ class AdministrativeUnit(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the administrative unit.
         :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+               
+               > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
                
                !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
@@ -364,6 +374,8 @@ class AdministrativeUnit(pulumi.CustomResource):
         :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
                
+               > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+               
                !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         :param pulumi.Input[str] object_id: The object ID of the administrative unit.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
@@ -409,6 +421,8 @@ class AdministrativeUnit(pulumi.CustomResource):
     def members(self) -> pulumi.Output[Sequence[str]]:
         """
         A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+
+        > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 
         !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         """

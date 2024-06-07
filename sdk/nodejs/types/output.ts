@@ -1224,7 +1224,7 @@ export interface GetServicePrincipalsServicePrincipal {
 
 export interface GetUsersUser {
     /**
-     * Whether or not the account is enabled.
+     * Whether the account is enabled.
      */
     accountEnabled: boolean;
     /**
@@ -1236,7 +1236,7 @@ export interface GetUsersUser {
      */
     employeeId: string;
     /**
-     * The primary email address of the user.
+     * The SMTP email address of the user.
      */
     mail: string;
     /**

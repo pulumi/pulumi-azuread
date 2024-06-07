@@ -43,7 +43,7 @@ class GroupArgs:
         :param pulumi.Input[str] display_name: The display name for the group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
                
-               !> **Warning** Do not use the `administrative_unit_ids` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+               > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
                
@@ -141,7 +141,7 @@ class GroupArgs:
         """
         The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 
-        !> **Warning** Do not use the `administrative_unit_ids` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+        > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         """
         return pulumi.get(self, "administrative_unit_ids")
 
@@ -442,7 +442,7 @@ class _GroupState:
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
                
-               !> **Warning** Do not use the `administrative_unit_ids` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+               > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
                
@@ -557,7 +557,7 @@ class _GroupState:
         """
         The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 
-        !> **Warning** Do not use the `administrative_unit_ids` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+        > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         """
         return pulumi.get(self, "administrative_unit_ids")
 
@@ -1042,7 +1042,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
                
-               !> **Warning** Do not use the `administrative_unit_ids` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+               > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
                
@@ -1284,7 +1284,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
                
-               !> **Warning** Do not use the `administrative_unit_ids` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+               > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
                
@@ -1373,7 +1373,7 @@ class Group(pulumi.CustomResource):
         """
         The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 
-        !> **Warning** Do not use the `administrative_unit_ids` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+        > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         """
         return pulumi.get(self, "administrative_unit_ids")
 
