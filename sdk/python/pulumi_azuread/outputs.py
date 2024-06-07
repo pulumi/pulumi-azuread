@@ -6256,10 +6256,10 @@ class GetUsersUserResult(dict):
                  usage_location: str,
                  user_principal_name: str):
         """
-        :param bool account_enabled: Whether or not the account is enabled.
+        :param bool account_enabled: Whether the account is enabled.
         :param str display_name: The display name of the user.
         :param str employee_id: The employee identifier assigned to the user by the organisation.
-        :param str mail: The primary email address of the user.
+        :param str mail: The SMTP email address of the user.
         :param str mail_nickname: The email alias of the user.
         :param str object_id: The object ID of the user.
         :param str onpremises_immutable_id: The value used to associate an on-premises Active Directory user account with their Azure AD user object.
@@ -6284,7 +6284,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="accountEnabled")
     def account_enabled(self) -> bool:
         """
-        Whether or not the account is enabled.
+        Whether the account is enabled.
         """
         return pulumi.get(self, "account_enabled")
 
@@ -6308,7 +6308,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter
     def mail(self) -> str:
         """
-        The primary email address of the user.
+        The SMTP email address of the user.
         """
         return pulumi.get(self, "mail")
 

@@ -32,6 +32,11 @@ public final class GetUsersResult {
      */
     private List<String> mailNicknames;
     /**
+     * @return The SMTP email addresses of the users.
+     * 
+     */
+    private List<String> mails;
+    /**
      * @return The object IDs of the users.
      * 
      */
@@ -74,6 +79,13 @@ public final class GetUsersResult {
         return this.mailNicknames;
     }
     /**
+     * @return The SMTP email addresses of the users.
+     * 
+     */
+    public List<String> mails() {
+        return this.mails;
+    }
+    /**
      * @return The object IDs of the users.
      * 
      */
@@ -111,6 +123,7 @@ public final class GetUsersResult {
         private String id;
         private @Nullable Boolean ignoreMissing;
         private List<String> mailNicknames;
+        private List<String> mails;
         private List<String> objectIds;
         private @Nullable Boolean returnAll;
         private List<String> userPrincipalNames;
@@ -122,6 +135,7 @@ public final class GetUsersResult {
     	      this.id = defaults.id;
     	      this.ignoreMissing = defaults.ignoreMissing;
     	      this.mailNicknames = defaults.mailNicknames;
+    	      this.mails = defaults.mails;
     	      this.objectIds = defaults.objectIds;
     	      this.returnAll = defaults.returnAll;
     	      this.userPrincipalNames = defaults.userPrincipalNames;
@@ -163,6 +177,17 @@ public final class GetUsersResult {
         }
         public Builder mailNicknames(String... mailNicknames) {
             return mailNicknames(List.of(mailNicknames));
+        }
+        @CustomType.Setter
+        public Builder mails(List<String> mails) {
+            if (mails == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "mails");
+            }
+            this.mails = mails;
+            return this;
+        }
+        public Builder mails(String... mails) {
+            return mails(List.of(mails));
         }
         @CustomType.Setter
         public Builder objectIds(List<String> objectIds) {
@@ -209,6 +234,7 @@ public final class GetUsersResult {
             _resultValue.id = id;
             _resultValue.ignoreMissing = ignoreMissing;
             _resultValue.mailNicknames = mailNicknames;
+            _resultValue.mails = mails;
             _resultValue.objectIds = objectIds;
             _resultValue.returnAll = returnAll;
             _resultValue.userPrincipalNames = userPrincipalNames;

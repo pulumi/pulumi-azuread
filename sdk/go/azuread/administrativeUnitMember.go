@@ -77,6 +77,8 @@ type AdministrativeUnitMember struct {
 	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
 	AdministrativeUnitObjectId pulumi.StringPtrOutput `pulumi:"administrativeUnitObjectId"`
 	// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	//
+	// > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	MemberObjectId pulumi.StringPtrOutput `pulumi:"memberObjectId"`
 }
 
@@ -113,6 +115,8 @@ type administrativeUnitMemberState struct {
 	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
 	AdministrativeUnitObjectId *string `pulumi:"administrativeUnitObjectId"`
 	// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	//
+	// > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	MemberObjectId *string `pulumi:"memberObjectId"`
 }
 
@@ -120,6 +124,8 @@ type AdministrativeUnitMemberState struct {
 	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
 	AdministrativeUnitObjectId pulumi.StringPtrInput
 	// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	//
+	// > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	MemberObjectId pulumi.StringPtrInput
 }
 
@@ -131,6 +137,8 @@ type administrativeUnitMemberArgs struct {
 	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
 	AdministrativeUnitObjectId *string `pulumi:"administrativeUnitObjectId"`
 	// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	//
+	// > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	MemberObjectId *string `pulumi:"memberObjectId"`
 }
 
@@ -139,6 +147,8 @@ type AdministrativeUnitMemberArgs struct {
 	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
 	AdministrativeUnitObjectId pulumi.StringPtrInput
 	// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	//
+	// > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	MemberObjectId pulumi.StringPtrInput
 }
 
@@ -235,6 +245,8 @@ func (o AdministrativeUnitMemberOutput) AdministrativeUnitObjectId() pulumi.Stri
 }
 
 // The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+//
+// > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 func (o AdministrativeUnitMemberOutput) MemberObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AdministrativeUnitMember) pulumi.StringPtrOutput { return v.MemberObjectId }).(pulumi.StringPtrOutput)
 }

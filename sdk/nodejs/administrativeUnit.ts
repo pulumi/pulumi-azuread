@@ -79,6 +79,8 @@ export class AdministrativeUnit extends pulumi.CustomResource {
     /**
      * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
      *
+     * > **Caution** When using the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+     *
      * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */
     public readonly members!: pulumi.Output<string[]>;
@@ -146,6 +148,8 @@ export interface AdministrativeUnitState {
     /**
      * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
      *
+     * > **Caution** When using the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+     *
      * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
@@ -177,6 +181,8 @@ export interface AdministrativeUnitArgs {
     hiddenMembershipEnabled?: pulumi.Input<boolean>;
     /**
      * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+     *
+     * > **Caution** When using the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      *
      * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */

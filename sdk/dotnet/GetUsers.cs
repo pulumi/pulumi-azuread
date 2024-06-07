@@ -117,6 +117,18 @@ namespace Pulumi.AzureAD
             set => _mailNicknames = value;
         }
 
+        [Input("mails")]
+        private List<string>? _mails;
+
+        /// <summary>
+        /// The SMTP email addresses of the users.
+        /// </summary>
+        public List<string> Mails
+        {
+            get => _mails ?? (_mails = new List<string>());
+            set => _mails = value;
+        }
+
         [Input("objectIds")]
         private List<string>? _objectIds;
 
@@ -141,7 +153,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal names (UPNs) of the users.
         /// 
-        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         public List<string> UserPrincipalNames
         {
@@ -187,6 +199,18 @@ namespace Pulumi.AzureAD
             set => _mailNicknames = value;
         }
 
+        [Input("mails")]
+        private InputList<string>? _mails;
+
+        /// <summary>
+        /// The SMTP email addresses of the users.
+        /// </summary>
+        public InputList<string> Mails
+        {
+            get => _mails ?? (_mails = new InputList<string>());
+            set => _mails = value;
+        }
+
         [Input("objectIds")]
         private InputList<string>? _objectIds;
 
@@ -211,7 +235,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal names (UPNs) of the users.
         /// 
-        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         public InputList<string> UserPrincipalNames
         {
@@ -243,6 +267,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<string> MailNicknames;
         /// <summary>
+        /// The SMTP email addresses of the users.
+        /// </summary>
+        public readonly ImmutableArray<string> Mails;
+        /// <summary>
         /// The object IDs of the users.
         /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
@@ -266,6 +294,8 @@ namespace Pulumi.AzureAD
 
             ImmutableArray<string> mailNicknames,
 
+            ImmutableArray<string> mails,
+
             ImmutableArray<string> objectIds,
 
             bool? returnAll,
@@ -278,6 +308,7 @@ namespace Pulumi.AzureAD
             Id = id;
             IgnoreMissing = ignoreMissing;
             MailNicknames = mailNicknames;
+            Mails = mails;
             ObjectIds = objectIds;
             ReturnAll = returnAll;
             UserPrincipalNames = userPrincipalNames;

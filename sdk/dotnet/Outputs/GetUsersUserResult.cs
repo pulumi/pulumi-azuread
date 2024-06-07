@@ -14,7 +14,7 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetUsersUserResult
     {
         /// <summary>
-        /// Whether or not the account is enabled.
+        /// Whether the account is enabled.
         /// </summary>
         public readonly bool AccountEnabled;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string EmployeeId;
         /// <summary>
-        /// The primary email address of the user.
+        /// The SMTP email address of the user.
         /// </summary>
         public readonly string Mail;
         /// <summary>

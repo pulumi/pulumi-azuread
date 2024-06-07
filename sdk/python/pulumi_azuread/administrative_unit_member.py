@@ -20,6 +20,8 @@ class AdministrativeUnitMemberArgs:
         The set of arguments for constructing a AdministrativeUnitMember resource.
         :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+               
+               > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         """
         if administrative_unit_object_id is not None:
             pulumi.set(__self__, "administrative_unit_object_id", administrative_unit_object_id)
@@ -43,6 +45,8 @@ class AdministrativeUnitMemberArgs:
     def member_object_id(self) -> Optional[pulumi.Input[str]]:
         """
         The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+
+        > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         """
         return pulumi.get(self, "member_object_id")
 
@@ -60,6 +64,8 @@ class _AdministrativeUnitMemberState:
         Input properties used for looking up and filtering AdministrativeUnitMember resources.
         :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+               
+               > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         """
         if administrative_unit_object_id is not None:
             pulumi.set(__self__, "administrative_unit_object_id", administrative_unit_object_id)
@@ -83,6 +89,8 @@ class _AdministrativeUnitMemberState:
     def member_object_id(self) -> Optional[pulumi.Input[str]]:
         """
         The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+
+        > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         """
         return pulumi.get(self, "member_object_id")
 
@@ -139,6 +147,8 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+               
+               > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         """
         ...
     @overload
@@ -231,6 +241,8 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+               
+               > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -253,6 +265,8 @@ class AdministrativeUnitMember(pulumi.CustomResource):
     def member_object_id(self) -> pulumi.Output[Optional[str]]:
         """
         The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+
+        > **Caution** When using the AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
         """
         return pulumi.get(self, "member_object_id")
 

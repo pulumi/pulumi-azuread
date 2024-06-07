@@ -62,6 +62,21 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The SMTP email addresses of the users.
+     * 
+     */
+    @Import(name="mails")
+    private @Nullable List<String> mails;
+
+    /**
+     * @return The SMTP email addresses of the users.
+     * 
+     */
+    public Optional<List<String>> mails() {
+        return Optional.ofNullable(this.mails);
+    }
+
+    /**
      * The object IDs of the users.
      * 
      */
@@ -94,7 +109,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The user principal names (UPNs) of the users.
      * 
-     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     @Import(name="userPrincipalNames")
@@ -103,7 +118,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The user principal names (UPNs) of the users.
      * 
-     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     public Optional<List<String>> userPrincipalNames() {
@@ -116,6 +131,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.employeeIds = $.employeeIds;
         this.ignoreMissing = $.ignoreMissing;
         this.mailNicknames = $.mailNicknames;
+        this.mails = $.mails;
         this.objectIds = $.objectIds;
         this.returnAll = $.returnAll;
         this.userPrincipalNames = $.userPrincipalNames;
@@ -193,6 +209,27 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param mails The SMTP email addresses of the users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mails(@Nullable List<String> mails) {
+            $.mails = mails;
+            return this;
+        }
+
+        /**
+         * @param mails The SMTP email addresses of the users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mails(String... mails) {
+            return mails(List.of(mails));
+        }
+
+        /**
          * @param objectIds The object IDs of the users.
          * 
          * @return builder
@@ -227,7 +264,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param userPrincipalNames The user principal names (UPNs) of the users.
          * 
-         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 
@@ -240,7 +277,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param userPrincipalNames The user principal names (UPNs) of the users.
          * 
-         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 
