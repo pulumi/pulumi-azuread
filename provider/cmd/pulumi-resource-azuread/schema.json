@@ -2939,7 +2939,7 @@
             "properties": {
                 "accountEnabled": {
                     "type": "boolean",
-                    "description": "Whether or not the account is enabled.\n"
+                    "description": "Whether the account is enabled.\n"
                 },
                 "displayName": {
                     "type": "string",
@@ -2951,7 +2951,7 @@
                 },
                 "mail": {
                     "type": "string",
-                    "description": "The primary email address of the user.\n"
+                    "description": "The SMTP email address of the user.\n"
                 },
                 "mailNickname": {
                     "type": "string",
@@ -3707,7 +3707,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.\n\n!\u003e **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.\n"
+                    "description": "A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.\n\n\u003e **Caution** When using the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.\n\n!\u003e **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.\n"
                 },
                 "objectId": {
                     "type": "string",
@@ -3741,7 +3741,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.\n\n!\u003e **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.\n"
+                    "description": "A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.\n\n\u003e **Caution** When using the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.\n\n!\u003e **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.\n"
                 },
                 "preventDuplicateNames": {
                     "type": "boolean",
@@ -3771,7 +3771,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.\n\n!\u003e **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.\n"
+                        "description": "A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.\n\n\u003e **Caution** When using the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.\n\n!\u003e **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.\n"
                     },
                     "objectId": {
                         "type": "string",
@@ -3794,7 +3794,7 @@
                 },
                 "memberObjectId": {
                     "type": "string",
-                    "description": "The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.\n"
+                    "description": "The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.\n\n\u003e **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.\n"
                 }
             },
             "inputProperties": {
@@ -3805,7 +3805,7 @@
                 },
                 "memberObjectId": {
                     "type": "string",
-                    "description": "The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.\n",
+                    "description": "The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.\n\n\u003e **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -3819,7 +3819,7 @@
                     },
                     "memberObjectId": {
                         "type": "string",
-                        "description": "The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.\n",
+                        "description": "The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.\n\n\u003e **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -6682,7 +6682,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.\n\n!\u003e **Warning** Do not use the `administrative_unit_ids` property at the same time as the azuread.AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.\n"
+                    "description": "The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.\n\n\u003e **Caution** When using the azuread.AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.\n"
                 },
                 "assignableToRole": {
                     "type": "boolean",
@@ -6850,7 +6850,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.\n\n!\u003e **Warning** Do not use the `administrative_unit_ids` property at the same time as the azuread.AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.\n"
+                    "description": "The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.\n\n\u003e **Caution** When using the azuread.AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.\n"
                 },
                 "assignableToRole": {
                     "type": "boolean",
@@ -6968,7 +6968,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.\n\n!\u003e **Warning** Do not use the `administrative_unit_ids` property at the same time as the azuread.AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.\n"
+                        "description": "The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.\n\n\u003e **Caution** When using the azuread.AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.\n"
                     },
                     "assignableToRole": {
                         "type": "boolean",
@@ -11421,6 +11421,13 @@
                         },
                         "description": "The email aliases of the users.\n"
                     },
+                    "mails": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The SMTP email addresses of the users.\n"
+                    },
                     "objectIds": {
                         "type": "array",
                         "items": {
@@ -11437,7 +11444,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The user principal names (UPNs) of the users.\n\n\u003e Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.\n"
+                        "description": "The user principal names (UPNs) of the users.\n\n\u003e Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.\n"
                     }
                 },
                 "type": "object"
@@ -11461,6 +11468,13 @@
                     },
                     "mailNicknames": {
                         "description": "The email aliases of the users.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "mails": {
+                        "description": "The SMTP email addresses of the users.\n",
                         "items": {
                             "type": "string"
                         },
@@ -11494,6 +11508,7 @@
                 "required": [
                     "employeeIds",
                     "mailNicknames",
+                    "mails",
                     "objectIds",
                     "userPrincipalNames",
                     "users",

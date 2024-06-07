@@ -1277,6 +1277,9 @@
                     "mail_nicknames": {
                         "maxItemsOne": false
                     },
+                    "mails": {
+                        "maxItemsOne": false
+                    },
                     "object_ids": {
                         "maxItemsOne": false
                     },
