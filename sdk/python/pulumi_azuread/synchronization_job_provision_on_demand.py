@@ -151,7 +151,7 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationJobProvisionOnDemandParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]]] = None,
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  synchronization_job_id: Optional[pulumi.Input[str]] = None,
                  triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -182,24 +182,24 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
         example_application = azuread.Application("example",
             display_name="example",
             template_id=example.template_id,
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )])
+            feature_tags=[{
+                "enterprise": True,
+                "gallery": True,
+            }])
         example_service_principal = azuread.ServicePrincipal("example",
             client_id=example_application.client_id,
             use_existing=True)
         example_synchronization_secret = azuread.SynchronizationSecret("example",
             service_principal_id=example_service_principal.id,
             credentials=[
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="BaseAddress",
-                    value="https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
-                ),
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="SecretToken",
-                    value="some-token",
-                ),
+                {
+                    "key": "BaseAddress",
+                    "value": "https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
+                },
+                {
+                    "key": "SecretToken",
+                    "value": "some-token",
+                },
             ])
         example_synchronization_job = azuread.SynchronizationJob("example",
             service_principal_id=example_service_principal.id,
@@ -208,13 +208,13 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
         example_synchronization_job_provision_on_demand = azuread.SynchronizationJobProvisionOnDemand("example",
             service_principal_id=example_service_principal.id,
             synchronization_job_id=example_synchronization_job.id,
-            parameters=[azuread.SynchronizationJobProvisionOnDemandParameterArgs(
-                rule_id="",
-                subjects=[azuread.SynchronizationJobProvisionOnDemandParameterSubjectArgs(
-                    object_id=example_group.object_id,
-                    object_type_name="Group",
-                )],
-            )])
+            parameters=[{
+                "ruleId": "",
+                "subjects": [{
+                    "objectId": example_group.object_id,
+                    "objectTypeName": "Group",
+                }],
+            }])
         ```
 
         ## Import
@@ -223,7 +223,7 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationJobProvisionOnDemandParameterArgs']]]] parameters: One or more `parameter` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]] parameters: One or more `parameter` blocks as documented below.
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the synchronization job.
         :param pulumi.Input[str] synchronization_job_id: Identifier of the synchronization template this job is based on.
         """
@@ -259,24 +259,24 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
         example_application = azuread.Application("example",
             display_name="example",
             template_id=example.template_id,
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )])
+            feature_tags=[{
+                "enterprise": True,
+                "gallery": True,
+            }])
         example_service_principal = azuread.ServicePrincipal("example",
             client_id=example_application.client_id,
             use_existing=True)
         example_synchronization_secret = azuread.SynchronizationSecret("example",
             service_principal_id=example_service_principal.id,
             credentials=[
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="BaseAddress",
-                    value="https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
-                ),
-                azuread.SynchronizationSecretCredentialArgs(
-                    key="SecretToken",
-                    value="some-token",
-                ),
+                {
+                    "key": "BaseAddress",
+                    "value": "https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
+                },
+                {
+                    "key": "SecretToken",
+                    "value": "some-token",
+                },
             ])
         example_synchronization_job = azuread.SynchronizationJob("example",
             service_principal_id=example_service_principal.id,
@@ -285,13 +285,13 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
         example_synchronization_job_provision_on_demand = azuread.SynchronizationJobProvisionOnDemand("example",
             service_principal_id=example_service_principal.id,
             synchronization_job_id=example_synchronization_job.id,
-            parameters=[azuread.SynchronizationJobProvisionOnDemandParameterArgs(
-                rule_id="",
-                subjects=[azuread.SynchronizationJobProvisionOnDemandParameterSubjectArgs(
-                    object_id=example_group.object_id,
-                    object_type_name="Group",
-                )],
-            )])
+            parameters=[{
+                "ruleId": "",
+                "subjects": [{
+                    "objectId": example_group.object_id,
+                    "objectTypeName": "Group",
+                }],
+            }])
         ```
 
         ## Import
@@ -313,7 +313,7 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationJobProvisionOnDemandParameterArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]]] = None,
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  synchronization_job_id: Optional[pulumi.Input[str]] = None,
                  triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -346,7 +346,7 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationJobProvisionOnDemandParameterArgs']]]]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]]] = None,
             service_principal_id: Optional[pulumi.Input[str]] = None,
             synchronization_job_id: Optional[pulumi.Input[str]] = None,
             triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'SynchronizationJobProvisionOnDemand':
@@ -357,7 +357,7 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationJobProvisionOnDemandParameterArgs']]]] parameters: One or more `parameter` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]] parameters: One or more `parameter` blocks as documented below.
         :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the synchronization job.
         :param pulumi.Input[str] synchronization_job_id: Identifier of the synchronization template this job is based on.
         """

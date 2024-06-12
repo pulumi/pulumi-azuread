@@ -816,14 +816,14 @@ class ServicePrincipal(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureTagArgs']]]]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureArgs']]]]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict']]]]] = None,
                  login_url: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
-                 saml_single_sign_on: Optional[pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']]] = None,
+                 saml_single_sign_on: Optional[pulumi.Input[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_existing: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -860,10 +860,10 @@ class ServicePrincipal(pulumi.CustomResource):
             client_id=example.client_id,
             app_role_assignment_required=False,
             owners=[current.object_id],
-            feature_tags=[azuread.ServicePrincipalFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )])
+            feature_tags=[{
+                "enterprise": True,
+                "gallery": True,
+            }])
         ```
 
         *Manage a service principal for a first-party Microsoft application*
@@ -909,16 +909,16 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[str] application_id: The application ID (client ID) of the application for which to create a service principal
         :param pulumi.Input[str] client_id: The client ID of the application for which to create a service principal.
         :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureArgs']]]] features: Block of features to configure for this service principal using tags
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict']]]] features: Block of features to configure for this service principal using tags
         :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         :param pulumi.Input[str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the service principal
         :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
-        :param pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
+        :param pulumi.Input[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
                
                > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
@@ -963,10 +963,10 @@ class ServicePrincipal(pulumi.CustomResource):
             client_id=example.client_id,
             app_role_assignment_required=False,
             owners=[current.object_id],
-            feature_tags=[azuread.ServicePrincipalFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )])
+            feature_tags=[{
+                "enterprise": True,
+                "gallery": True,
+            }])
         ```
 
         *Manage a service principal for a first-party Microsoft application*
@@ -1025,14 +1025,14 @@ class ServicePrincipal(pulumi.CustomResource):
                  application_id: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureTagArgs']]]]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureArgs']]]]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict']]]]] = None,
                  login_url: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
-                 saml_single_sign_on: Optional[pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']]] = None,
+                 saml_single_sign_on: Optional[pulumi.Input[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_existing: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -1088,27 +1088,27 @@ class ServicePrincipal(pulumi.CustomResource):
             alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
             app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalAppRoleArgs']]]]] = None,
+            app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalAppRoleArgs', 'ServicePrincipalAppRoleArgsDict']]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
             application_tenant_id: Optional[pulumi.Input[str]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureTagArgs']]]]] = None,
-            features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureArgs']]]]] = None,
+            feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]]] = None,
+            features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict']]]]] = None,
             homepage_url: Optional[pulumi.Input[str]] = None,
             login_url: Optional[pulumi.Input[str]] = None,
             logout_url: Optional[pulumi.Input[str]] = None,
             notes: Optional[pulumi.Input[str]] = None,
             notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]]] = None,
+            oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalOauth2PermissionScopeArgs', 'ServicePrincipalOauth2PermissionScopeArgsDict']]]]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
             redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             saml_metadata_url: Optional[pulumi.Input[str]] = None,
-            saml_single_sign_on: Optional[pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']]] = None,
+            saml_single_sign_on: Optional[pulumi.Input[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']]] = None,
             service_principal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             sign_in_audience: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1125,29 +1125,29 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alternative_names: A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
         :param pulumi.Input[bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalAppRoleArgs']]]] app_roles: A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalAppRoleArgs', 'ServicePrincipalAppRoleArgsDict']]]] app_roles: A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] application_id: The application ID (client ID) of the application for which to create a service principal
         :param pulumi.Input[str] application_tenant_id: The tenant ID where the associated application is registered.
         :param pulumi.Input[str] client_id: The client ID of the application for which to create a service principal.
         :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
         :param pulumi.Input[str] display_name: Display name for the app role that appears during app role assignment and in consent experiences.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureArgs']]]] features: Block of features to configure for this service principal using tags
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict']]]] features: Block of features to configure for this service principal using tags
         :param pulumi.Input[str] homepage_url: Home page or landing page of the associated application.
         :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         :param pulumi.Input[str] logout_url: The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
         :param pulumi.Input[str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]] oauth2_permission_scopes: A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalOauth2PermissionScopeArgs', 'ServicePrincipalOauth2PermissionScopeArgsDict']]]] oauth2_permission_scopes: A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
         :param pulumi.Input[str] object_id: The object ID of the service principal.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the service principal
         :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
         :param pulumi.Input[str] saml_metadata_url: The URL where the service exposes SAML metadata for federation.
-        :param pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
+        :param pulumi.Input[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_principal_names: A list of identifier URI(s), copied over from the associated application.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.

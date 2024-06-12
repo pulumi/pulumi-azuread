@@ -1071,33 +1071,33 @@ class Application(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArgs']]] = None,
-                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
+                 api: Optional[pulumi.Input[Union['ApplicationApiArgs', 'ApplicationApiArgsDict']]] = None,
+                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationAppRoleArgs', 'ApplicationAppRoleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationFeatureTagArgs', 'ApplicationFeatureTagArgsDict']]]]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
-                 optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
+                 optional_claims: Optional[pulumi.Input[Union['ApplicationOptionalClaimsArgs', 'ApplicationOptionalClaimsArgsDict']]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
-                 public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
-                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
+                 public_client: Optional[pulumi.Input[Union['ApplicationPublicClientArgs', 'ApplicationPublicClientArgsDict']]] = None,
+                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationRequiredResourceAccessArgs', 'ApplicationRequiredResourceAccessArgsDict']]]]] = None,
                  service_management_reference: Optional[pulumi.Input[str]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
-                 single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
+                 single_page_application: Optional[pulumi.Input[Union['ApplicationSinglePageApplicationArgs', 'ApplicationSinglePageApplicationArgsDict']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
-                 web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
+                 web: Optional[pulumi.Input[Union['ApplicationWebArgs', 'ApplicationWebArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -1116,109 +1116,109 @@ class Application(pulumi.CustomResource):
             logo_image=std.filebase64(input="/path/to/logo.png").result,
             owners=[current.object_id],
             sign_in_audience="AzureADMultipleOrgs",
-            api=azuread.ApplicationApiArgs(
-                mapped_claims_enabled=True,
-                requested_access_token_version=2,
-                known_client_applications=[
+            api={
+                "mappedClaimsEnabled": True,
+                "requestedAccessTokenVersion": 2,
+                "knownClientApplications": [
                     known1["applicationId"],
                     known2["applicationId"],
                 ],
-                oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Allow the application to access example on behalf of the signed-in user.",
-                        admin_consent_display_name="Access example",
-                        enabled=True,
-                        id="96183846-204b-4b43-82e1-5d2222eb4b9b",
-                        type="User",
-                        user_consent_description="Allow the application to access example on your behalf.",
-                        user_consent_display_name="Access example",
-                        value="user_impersonation",
-                    ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Administer the example application",
-                        admin_consent_display_name="Administer",
-                        enabled=True,
-                        id="be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
-                        type="Admin",
-                        value="administer",
-                    ),
+                "oauth2PermissionScopes": [
+                    {
+                        "adminConsentDescription": "Allow the application to access example on behalf of the signed-in user.",
+                        "adminConsentDisplayName": "Access example",
+                        "enabled": True,
+                        "id": "96183846-204b-4b43-82e1-5d2222eb4b9b",
+                        "type": "User",
+                        "userConsentDescription": "Allow the application to access example on your behalf.",
+                        "userConsentDisplayName": "Access example",
+                        "value": "user_impersonation",
+                    },
+                    {
+                        "adminConsentDescription": "Administer the example application",
+                        "adminConsentDisplayName": "Administer",
+                        "enabled": True,
+                        "id": "be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
+                        "type": "Admin",
+                        "value": "administer",
+                    },
                 ],
-            ),
+            },
             app_roles=[
-                azuread.ApplicationAppRoleArgs(
-                    allowed_member_types=[
+                {
+                    "allowedMemberTypes": [
                         "User",
                         "Application",
                     ],
-                    description="Admins can manage roles and perform all task actions",
-                    display_name="Admin",
-                    enabled=True,
-                    id="1b19509b-32b1-4e9f-b71d-4992aa991967",
-                    value="admin",
-                ),
-                azuread.ApplicationAppRoleArgs(
-                    allowed_member_types=["User"],
-                    description="ReadOnly roles have limited query access",
-                    display_name="ReadOnly",
-                    enabled=True,
-                    id="497406e4-012a-4267-bf18-45a1cb148a01",
-                    value="User",
-                ),
+                    "description": "Admins can manage roles and perform all task actions",
+                    "displayName": "Admin",
+                    "enabled": True,
+                    "id": "1b19509b-32b1-4e9f-b71d-4992aa991967",
+                    "value": "admin",
+                },
+                {
+                    "allowedMemberTypes": ["User"],
+                    "description": "ReadOnly roles have limited query access",
+                    "displayName": "ReadOnly",
+                    "enabled": True,
+                    "id": "497406e4-012a-4267-bf18-45a1cb148a01",
+                    "value": "User",
+                },
             ],
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )],
-            optional_claims=azuread.ApplicationOptionalClaimsArgs(
-                access_tokens=[
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="myclaim",
-                    ),
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="otherclaim",
-                    ),
+            feature_tags=[{
+                "enterprise": True,
+                "gallery": True,
+            }],
+            optional_claims={
+                "accessTokens": [
+                    {
+                        "name": "myclaim",
+                    },
+                    {
+                        "name": "otherclaim",
+                    },
                 ],
-                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
-                    name="userclaim",
-                    source="user",
-                    essential=True,
-                    additional_properties=["emit_as_roles"],
-                )],
-                saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
-                    name="samlexample",
-                )],
-            ),
+                "idTokens": [{
+                    "name": "userclaim",
+                    "source": "user",
+                    "essential": True,
+                    "additionalProperties": ["emit_as_roles"],
+                }],
+                "saml2Tokens": [{
+                    "name": "samlexample",
+                }],
+            },
             required_resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="00000003-0000-0000-c000-000000000000",
-                    resource_accesses=[
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="df021288-bdef-4463-88db-98f22de89214",
-                            type="Role",
-                        ),
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="b4e74841-8e56-480b-be8b-910348b18b4c",
-                            type="Scope",
-                        ),
+                {
+                    "resourceAppId": "00000003-0000-0000-c000-000000000000",
+                    "resourceAccesses": [
+                        {
+                            "id": "df021288-bdef-4463-88db-98f22de89214",
+                            "type": "Role",
+                        },
+                        {
+                            "id": "b4e74841-8e56-480b-be8b-910348b18b4c",
+                            "type": "Scope",
+                        },
                     ],
-                ),
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="c5393580-f805-4401-95e8-94b7a6ef2fc2",
-                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id="594c1fb6-4f81-4475-ae41-0c394909246c",
-                        type="Role",
-                    )],
-                ),
+                },
+                {
+                    "resourceAppId": "c5393580-f805-4401-95e8-94b7a6ef2fc2",
+                    "resourceAccesses": [{
+                        "id": "594c1fb6-4f81-4475-ae41-0c394909246c",
+                        "type": "Role",
+                    }],
+                },
             ],
-            web=azuread.ApplicationWebArgs(
-                homepage_url="https://app.example.net",
-                logout_url="https://app.example.net/logout",
-                redirect_uris=["https://app.example.net/account"],
-                implicit_grant=azuread.ApplicationWebImplicitGrantArgs(
-                    access_token_issuance_enabled=True,
-                    id_token_issuance_enabled=True,
-                ),
-            ))
+            web={
+                "homepageUrl": "https://app.example.net",
+                "logoutUrl": "https://app.example.net/logout",
+                "redirectUris": ["https://app.example.net/account"],
+                "implicitGrant": {
+                    "accessTokenIssuanceEnabled": True,
+                    "idTokenIssuanceEnabled": True,
+                },
+            })
         ```
 
         *Create application from a gallery template*
@@ -1246,13 +1246,13 @@ class Application(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApplicationApiArgs']] api: An `api` block as documented below, which configures API related settings for this application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input[Union['ApplicationApiArgs', 'ApplicationApiArgsDict']] api: An `api` block as documented below, which configures API related settings for this application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationAppRoleArgs', 'ApplicationAppRoleArgsDict']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] description: A description of the application, as shown to end users.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationFeatureTagArgs', 'ApplicationFeatureTagArgsDict']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
@@ -1261,17 +1261,17 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
         :param pulumi.Input[str] notes: User-specified notes relevant for the management of the application.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
-        :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
+        :param pulumi.Input[Union['ApplicationOptionalClaimsArgs', 'ApplicationOptionalClaimsArgsDict']] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
-        :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
+        :param pulumi.Input[Union['ApplicationPublicClientArgs', 'ApplicationPublicClientArgsDict']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationRequiredResourceAccessArgs', 'ApplicationRequiredResourceAccessArgsDict']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
                
                > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
-        :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        :param pulumi.Input[Union['ApplicationSinglePageApplicationArgs', 'ApplicationSinglePageApplicationArgsDict']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
                
@@ -1280,7 +1280,7 @@ class Application(pulumi.CustomResource):
                
                > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
-        :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
+        :param pulumi.Input[Union['ApplicationWebArgs', 'ApplicationWebArgsDict']] web: A `web` block as documented below, which configures web related settings for this application.
                
                > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
@@ -1307,109 +1307,109 @@ class Application(pulumi.CustomResource):
             logo_image=std.filebase64(input="/path/to/logo.png").result,
             owners=[current.object_id],
             sign_in_audience="AzureADMultipleOrgs",
-            api=azuread.ApplicationApiArgs(
-                mapped_claims_enabled=True,
-                requested_access_token_version=2,
-                known_client_applications=[
+            api={
+                "mappedClaimsEnabled": True,
+                "requestedAccessTokenVersion": 2,
+                "knownClientApplications": [
                     known1["applicationId"],
                     known2["applicationId"],
                 ],
-                oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Allow the application to access example on behalf of the signed-in user.",
-                        admin_consent_display_name="Access example",
-                        enabled=True,
-                        id="96183846-204b-4b43-82e1-5d2222eb4b9b",
-                        type="User",
-                        user_consent_description="Allow the application to access example on your behalf.",
-                        user_consent_display_name="Access example",
-                        value="user_impersonation",
-                    ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Administer the example application",
-                        admin_consent_display_name="Administer",
-                        enabled=True,
-                        id="be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
-                        type="Admin",
-                        value="administer",
-                    ),
+                "oauth2PermissionScopes": [
+                    {
+                        "adminConsentDescription": "Allow the application to access example on behalf of the signed-in user.",
+                        "adminConsentDisplayName": "Access example",
+                        "enabled": True,
+                        "id": "96183846-204b-4b43-82e1-5d2222eb4b9b",
+                        "type": "User",
+                        "userConsentDescription": "Allow the application to access example on your behalf.",
+                        "userConsentDisplayName": "Access example",
+                        "value": "user_impersonation",
+                    },
+                    {
+                        "adminConsentDescription": "Administer the example application",
+                        "adminConsentDisplayName": "Administer",
+                        "enabled": True,
+                        "id": "be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
+                        "type": "Admin",
+                        "value": "administer",
+                    },
                 ],
-            ),
+            },
             app_roles=[
-                azuread.ApplicationAppRoleArgs(
-                    allowed_member_types=[
+                {
+                    "allowedMemberTypes": [
                         "User",
                         "Application",
                     ],
-                    description="Admins can manage roles and perform all task actions",
-                    display_name="Admin",
-                    enabled=True,
-                    id="1b19509b-32b1-4e9f-b71d-4992aa991967",
-                    value="admin",
-                ),
-                azuread.ApplicationAppRoleArgs(
-                    allowed_member_types=["User"],
-                    description="ReadOnly roles have limited query access",
-                    display_name="ReadOnly",
-                    enabled=True,
-                    id="497406e4-012a-4267-bf18-45a1cb148a01",
-                    value="User",
-                ),
+                    "description": "Admins can manage roles and perform all task actions",
+                    "displayName": "Admin",
+                    "enabled": True,
+                    "id": "1b19509b-32b1-4e9f-b71d-4992aa991967",
+                    "value": "admin",
+                },
+                {
+                    "allowedMemberTypes": ["User"],
+                    "description": "ReadOnly roles have limited query access",
+                    "displayName": "ReadOnly",
+                    "enabled": True,
+                    "id": "497406e4-012a-4267-bf18-45a1cb148a01",
+                    "value": "User",
+                },
             ],
-            feature_tags=[azuread.ApplicationFeatureTagArgs(
-                enterprise=True,
-                gallery=True,
-            )],
-            optional_claims=azuread.ApplicationOptionalClaimsArgs(
-                access_tokens=[
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="myclaim",
-                    ),
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="otherclaim",
-                    ),
+            feature_tags=[{
+                "enterprise": True,
+                "gallery": True,
+            }],
+            optional_claims={
+                "accessTokens": [
+                    {
+                        "name": "myclaim",
+                    },
+                    {
+                        "name": "otherclaim",
+                    },
                 ],
-                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
-                    name="userclaim",
-                    source="user",
-                    essential=True,
-                    additional_properties=["emit_as_roles"],
-                )],
-                saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
-                    name="samlexample",
-                )],
-            ),
+                "idTokens": [{
+                    "name": "userclaim",
+                    "source": "user",
+                    "essential": True,
+                    "additionalProperties": ["emit_as_roles"],
+                }],
+                "saml2Tokens": [{
+                    "name": "samlexample",
+                }],
+            },
             required_resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="00000003-0000-0000-c000-000000000000",
-                    resource_accesses=[
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="df021288-bdef-4463-88db-98f22de89214",
-                            type="Role",
-                        ),
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="b4e74841-8e56-480b-be8b-910348b18b4c",
-                            type="Scope",
-                        ),
+                {
+                    "resourceAppId": "00000003-0000-0000-c000-000000000000",
+                    "resourceAccesses": [
+                        {
+                            "id": "df021288-bdef-4463-88db-98f22de89214",
+                            "type": "Role",
+                        },
+                        {
+                            "id": "b4e74841-8e56-480b-be8b-910348b18b4c",
+                            "type": "Scope",
+                        },
                     ],
-                ),
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="c5393580-f805-4401-95e8-94b7a6ef2fc2",
-                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id="594c1fb6-4f81-4475-ae41-0c394909246c",
-                        type="Role",
-                    )],
-                ),
+                },
+                {
+                    "resourceAppId": "c5393580-f805-4401-95e8-94b7a6ef2fc2",
+                    "resourceAccesses": [{
+                        "id": "594c1fb6-4f81-4475-ae41-0c394909246c",
+                        "type": "Role",
+                    }],
+                },
             ],
-            web=azuread.ApplicationWebArgs(
-                homepage_url="https://app.example.net",
-                logout_url="https://app.example.net/logout",
-                redirect_uris=["https://app.example.net/account"],
-                implicit_grant=azuread.ApplicationWebImplicitGrantArgs(
-                    access_token_issuance_enabled=True,
-                    id_token_issuance_enabled=True,
-                ),
-            ))
+            web={
+                "homepageUrl": "https://app.example.net",
+                "logoutUrl": "https://app.example.net/logout",
+                "redirectUris": ["https://app.example.net/account"],
+                "implicitGrant": {
+                    "accessTokenIssuanceEnabled": True,
+                    "idTokenIssuanceEnabled": True,
+                },
+            })
         ```
 
         *Create application from a gallery template*
@@ -1450,33 +1450,33 @@ class Application(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArgs']]] = None,
-                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
+                 api: Optional[pulumi.Input[Union['ApplicationApiArgs', 'ApplicationApiArgsDict']]] = None,
+                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationAppRoleArgs', 'ApplicationAppRoleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationFeatureTagArgs', 'ApplicationFeatureTagArgsDict']]]]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
-                 optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
+                 optional_claims: Optional[pulumi.Input[Union['ApplicationOptionalClaimsArgs', 'ApplicationOptionalClaimsArgsDict']]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
-                 public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
-                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
+                 public_client: Optional[pulumi.Input[Union['ApplicationPublicClientArgs', 'ApplicationPublicClientArgsDict']]] = None,
+                 required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationRequiredResourceAccessArgs', 'ApplicationRequiredResourceAccessArgsDict']]]]] = None,
                  service_management_reference: Optional[pulumi.Input[str]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
-                 single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
+                 single_page_application: Optional[pulumi.Input[Union['ApplicationSinglePageApplicationArgs', 'ApplicationSinglePageApplicationArgsDict']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
-                 web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
+                 web: Optional[pulumi.Input[Union['ApplicationWebArgs', 'ApplicationWebArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1533,9 +1533,9 @@ class Application(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArgs']]] = None,
+            api: Optional[pulumi.Input[Union['ApplicationApiArgs', 'ApplicationApiArgsDict']]] = None,
             app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
+            app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationAppRoleArgs', 'ApplicationAppRoleArgsDict']]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1543,7 +1543,7 @@ class Application(pulumi.CustomResource):
             disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-            feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]]] = None,
+            feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationFeatureTagArgs', 'ApplicationFeatureTagArgsDict']]]]] = None,
             group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             logo_image: Optional[pulumi.Input[str]] = None,
@@ -1553,21 +1553,21 @@ class Application(pulumi.CustomResource):
             oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
-            optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
+            optional_claims: Optional[pulumi.Input[Union['ApplicationOptionalClaimsArgs', 'ApplicationOptionalClaimsArgsDict']]] = None,
             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
             privacy_statement_url: Optional[pulumi.Input[str]] = None,
-            public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
+            public_client: Optional[pulumi.Input[Union['ApplicationPublicClientArgs', 'ApplicationPublicClientArgsDict']]] = None,
             publisher_domain: Optional[pulumi.Input[str]] = None,
-            required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
+            required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationRequiredResourceAccessArgs', 'ApplicationRequiredResourceAccessArgsDict']]]]] = None,
             service_management_reference: Optional[pulumi.Input[str]] = None,
             sign_in_audience: Optional[pulumi.Input[str]] = None,
-            single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
+            single_page_application: Optional[pulumi.Input[Union['ApplicationSinglePageApplicationArgs', 'ApplicationSinglePageApplicationArgsDict']]] = None,
             support_url: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template_id: Optional[pulumi.Input[str]] = None,
             terms_of_service_url: Optional[pulumi.Input[str]] = None,
-            web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None) -> 'Application':
+            web: Optional[pulumi.Input[Union['ApplicationWebArgs', 'ApplicationWebArgsDict']]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1575,9 +1575,9 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApplicationApiArgs']] api: An `api` block as documented below, which configures API related settings for this application.
+        :param pulumi.Input[Union['ApplicationApiArgs', 'ApplicationApiArgsDict']] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationAppRoleArgs', 'ApplicationAppRoleArgsDict']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] application_id: The Application ID (also called Client ID)
         :param pulumi.Input[str] client_id: The Client ID for the application.
         :param pulumi.Input[str] description: A description of the application, as shown to end users.
@@ -1585,7 +1585,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationFeatureTagArgs', 'ApplicationFeatureTagArgsDict']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
                > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
@@ -1597,18 +1597,18 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[str] object_id: The application's object ID.
-        :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
+        :param pulumi.Input[Union['ApplicationOptionalClaimsArgs', 'ApplicationOptionalClaimsArgsDict']] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
-        :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+        :param pulumi.Input[Union['ApplicationPublicClientArgs', 'ApplicationPublicClientArgsDict']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         :param pulumi.Input[str] publisher_domain: The verified publisher domain for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationRequiredResourceAccessArgs', 'ApplicationRequiredResourceAccessArgsDict']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
                
                > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
-        :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        :param pulumi.Input[Union['ApplicationSinglePageApplicationArgs', 'ApplicationSinglePageApplicationArgsDict']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
                
@@ -1617,7 +1617,7 @@ class Application(pulumi.CustomResource):
                
                > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the ApplicationRegistration resource instead.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
-        :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
+        :param pulumi.Input[Union['ApplicationWebArgs', 'ApplicationWebArgsDict']] web: A `web` block as documented below, which configures web related settings for this application.
                
                > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """

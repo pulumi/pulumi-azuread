@@ -280,12 +280,12 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             display_name="My Custom Role",
             enabled=True,
             version="1.0",
-            permissions=[azuread.CustomDirectoryRolePermissionArgs(
-                allowed_resource_actions=[
+            permissions=[{
+                "allowedResourceActions": [
                     "microsoft.directory/applications/basic/update",
                     "microsoft.directory/applications/standard/read",
                 ],
-            )])
+            }])
         example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
             role_id=example_custom_directory_role.object_id,
             principal_object_id=example.object_id)
@@ -355,12 +355,12 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             display_name="My Custom Role",
             enabled=True,
             version="1.0",
-            permissions=[azuread.CustomDirectoryRolePermissionArgs(
-                allowed_resource_actions=[
+            permissions=[{
+                "allowedResourceActions": [
                     "microsoft.directory/applications/basic/update",
                     "microsoft.directory/applications/standard/read",
                 ],
-            )])
+            }])
         example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
             role_id=example_custom_directory_role.object_id,
             principal_object_id=example.object_id)

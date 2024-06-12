@@ -241,7 +241,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDirectoryRolePermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict']]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -270,22 +270,22 @@ class CustomDirectoryRole(pulumi.CustomResource):
             enabled=True,
             version="1.0",
             permissions=[
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
+                {
+                    "allowedResourceActions": [
                         "microsoft.directory/applications/basic/update",
                         "microsoft.directory/applications/create",
                         "microsoft.directory/applications/standard/read",
                     ],
-                ),
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
+                },
+                {
+                    "allowedResourceActions": [
                         "microsoft.directory/groups/allProperties/read",
                         "microsoft.directory/groups/allProperties/read",
                         "microsoft.directory/groups/basic/update",
                         "microsoft.directory/groups/create",
                         "microsoft.directory/groups/delete",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -298,7 +298,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the custom directory role.
         :param pulumi.Input[str] display_name: The display name of the custom directory role.
         :param pulumi.Input[bool] enabled: Indicates whether the role is enabled for assignment.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDirectoryRolePermissionArgs']]]] permissions: A collection of `permissions` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict']]]] permissions: A collection of `permissions` blocks as documented below.
         :param pulumi.Input[str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
         :param pulumi.Input[str] version: The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """
@@ -333,22 +333,22 @@ class CustomDirectoryRole(pulumi.CustomResource):
             enabled=True,
             version="1.0",
             permissions=[
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
+                {
+                    "allowedResourceActions": [
                         "microsoft.directory/applications/basic/update",
                         "microsoft.directory/applications/create",
                         "microsoft.directory/applications/standard/read",
                     ],
-                ),
-                azuread.CustomDirectoryRolePermissionArgs(
-                    allowed_resource_actions=[
+                },
+                {
+                    "allowedResourceActions": [
                         "microsoft.directory/groups/allProperties/read",
                         "microsoft.directory/groups/allProperties/read",
                         "microsoft.directory/groups/basic/update",
                         "microsoft.directory/groups/create",
                         "microsoft.directory/groups/delete",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -374,7 +374,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDirectoryRolePermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict']]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -415,7 +415,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDirectoryRolePermissionArgs']]]]] = None,
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict']]]]] = None,
             template_id: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'CustomDirectoryRole':
         """
@@ -429,7 +429,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the custom directory role.
         :param pulumi.Input[bool] enabled: Indicates whether the role is enabled for assignment.
         :param pulumi.Input[str] object_id: The object ID of the custom directory role.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDirectoryRolePermissionArgs']]]] permissions: A collection of `permissions` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict']]]] permissions: A collection of `permissions` blocks as documented below.
         :param pulumi.Input[str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
         :param pulumi.Input[str] version: The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """

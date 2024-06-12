@@ -82,19 +82,19 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
         use_existing=True)
     example = azuread.Application("example",
         display_name="example",
-        required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-            resource_app_id=well_known.result["MicrosoftGraph"],
-            resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=msgraph.app_role_ids["User.Read.All"],
-                    type="Role",
-                ),
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
-                    type="Scope",
-                ),
+        required_resource_accesses=[{
+            "resourceAppId": well_known.result["MicrosoftGraph"],
+            "resourceAccesses": [
+                {
+                    "id": msgraph.app_role_ids["User.Read.All"],
+                    "type": "Role",
+                },
+                {
+                    "id": msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
+                    "type": "Scope",
+                },
             ],
-        )])
+        }])
     ```
     """
     __args__ = dict()
@@ -133,19 +133,19 @@ def get_application_published_app_ids_output(opts: Optional[pulumi.InvokeOptions
         use_existing=True)
     example = azuread.Application("example",
         display_name="example",
-        required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-            resource_app_id=well_known.result["MicrosoftGraph"],
-            resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=msgraph.app_role_ids["User.Read.All"],
-                    type="Role",
-                ),
-                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
-                    type="Scope",
-                ),
+        required_resource_accesses=[{
+            "resourceAppId": well_known.result["MicrosoftGraph"],
+            "resourceAccesses": [
+                {
+                    "id": msgraph.app_role_ids["User.Read.All"],
+                    "type": "Role",
+                },
+                {
+                    "id": msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
+                    "type": "Scope",
+                },
             ],
-        )])
+        }])
     ```
     """
     ...
