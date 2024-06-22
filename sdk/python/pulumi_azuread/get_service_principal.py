@@ -153,10 +153,8 @@ class GetServicePrincipalResult:
 
     @property
     @pulumi.getter(name="applicationId")
+    @_utilities.deprecated("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def application_id(self) -> str:
-        warnings.warn("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_id is deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_id")
 
     @property
@@ -198,13 +196,11 @@ class GetServicePrincipalResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
     def features(self) -> Sequence['outputs.GetServicePrincipalFeatureResult']:
         """
         A `features` block as described below.
         """
-        warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
-        pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
-
         return pulumi.get(self, "features")
 
     @property

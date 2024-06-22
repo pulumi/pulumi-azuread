@@ -107,13 +107,11 @@ class ApplicationFederatedIdentityCredentialArgs:
 
     @property
     @pulumi.getter(name="applicationObjectId")
+    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def application_object_id(self) -> Optional[pulumi.Input[str]]:
         """
         The object ID of the application for which this federated identity credential should be created
         """
-        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_object_id")
 
     @application_object_id.setter
@@ -189,13 +187,11 @@ class _ApplicationFederatedIdentityCredentialState:
 
     @property
     @pulumi.getter(name="applicationObjectId")
+    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def application_object_id(self) -> Optional[pulumi.Input[str]]:
         """
         The object ID of the application for which this federated identity credential should be created
         """
-        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_object_id")
 
     @application_object_id.setter
@@ -463,13 +459,11 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationObjectId")
+    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def application_object_id(self) -> pulumi.Output[str]:
         """
         The object ID of the application for which this federated identity credential should be created
         """
-        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_object_id")
 
     @property

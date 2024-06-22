@@ -670,13 +670,11 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="applicationId")
+    @_utilities.deprecated("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
         The Application ID (also called Client ID)
         """
-        warnings.warn("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_id is deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_id")
 
     @application_id.setter
@@ -1688,13 +1686,11 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationId")
+    @_utilities.deprecated("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
     def application_id(self) -> pulumi.Output[str]:
         """
         The Application ID (also called Client ID)
         """
-        warnings.warn("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_id is deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_id")
 
     @property
