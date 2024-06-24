@@ -69,13 +69,11 @@ class ApplicationPreAuthorizedArgs:
 
     @property
     @pulumi.getter(name="applicationObjectId")
+    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def application_object_id(self) -> Optional[pulumi.Input[str]]:
         """
         The object ID of the application to which this pre-authorized application should be added
         """
-        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_object_id")
 
     @application_object_id.setter
@@ -84,13 +82,11 @@ class ApplicationPreAuthorizedArgs:
 
     @property
     @pulumi.getter(name="authorizedAppId")
+    @_utilities.deprecated("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def authorized_app_id(self) -> Optional[pulumi.Input[str]]:
         """
         The application ID of the pre-authorized application
         """
-        warnings.warn("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""authorized_app_id is deprecated: The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "authorized_app_id")
 
     @authorized_app_id.setter
@@ -157,13 +153,11 @@ class _ApplicationPreAuthorizedState:
 
     @property
     @pulumi.getter(name="applicationObjectId")
+    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def application_object_id(self) -> Optional[pulumi.Input[str]]:
         """
         The object ID of the application to which this pre-authorized application should be added
         """
-        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_object_id")
 
     @application_object_id.setter
@@ -172,13 +166,11 @@ class _ApplicationPreAuthorizedState:
 
     @property
     @pulumi.getter(name="authorizedAppId")
+    @_utilities.deprecated("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def authorized_app_id(self) -> Optional[pulumi.Input[str]]:
         """
         The application ID of the pre-authorized application
         """
-        warnings.warn("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""authorized_app_id is deprecated: The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "authorized_app_id")
 
     @authorized_app_id.setter
@@ -422,24 +414,20 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationObjectId")
+    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def application_object_id(self) -> pulumi.Output[str]:
         """
         The object ID of the application to which this pre-authorized application should be added
         """
-        warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_object_id")
 
     @property
     @pulumi.getter(name="authorizedAppId")
+    @_utilities.deprecated("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def authorized_app_id(self) -> pulumi.Output[str]:
         """
         The application ID of the pre-authorized application
         """
-        warnings.warn("""The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""authorized_app_id is deprecated: The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "authorized_app_id")
 
     @property

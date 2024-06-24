@@ -6151,13 +6151,11 @@ class GetServicePrincipalsServicePrincipalResult(dict):
 
     @property
     @pulumi.getter(name="applicationId")
+    @_utilities.deprecated("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
     def application_id(self) -> str:
         """
         The application ID (client ID) for the associated application
         """
-        warnings.warn("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_id is deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_id")
 
     @property
