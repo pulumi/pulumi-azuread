@@ -132,13 +132,11 @@ class ServicePrincipalArgs:
 
     @property
     @pulumi.getter(name="applicationId")
+    @_utilities.deprecated("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
         The application ID (client ID) of the application for which to create a service principal
         """
-        warnings.warn("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_id is deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_id")
 
     @application_id.setter
@@ -185,13 +183,11 @@ class ServicePrincipalArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
     def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]:
         """
         Block of features to configure for this service principal using tags
         """
-        warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
-        pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
-
         return pulumi.get(self, "features")
 
     @features.setter
@@ -496,13 +492,11 @@ class _ServicePrincipalState:
 
     @property
     @pulumi.getter(name="applicationId")
+    @_utilities.deprecated("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
         The application ID (client ID) of the application for which to create a service principal
         """
-        warnings.warn("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_id is deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_id")
 
     @application_id.setter
@@ -573,13 +567,11 @@ class _ServicePrincipalState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
     def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]:
         """
         Block of features to configure for this service principal using tags
         """
-        warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
-        pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
-
         return pulumi.get(self, "features")
 
     @features.setter
@@ -1234,13 +1226,11 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationId")
+    @_utilities.deprecated("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
     def application_id(self) -> pulumi.Output[str]:
         """
         The application ID (client ID) of the application for which to create a service principal
         """
-        warnings.warn("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_id is deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_id")
 
     @property
@@ -1287,13 +1277,11 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
     def features(self) -> pulumi.Output[Sequence['outputs.ServicePrincipalFeature']]:
         """
         Block of features to configure for this service principal using tags
         """
-        warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
-        pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
-
         return pulumi.get(self, "features")
 
     @property

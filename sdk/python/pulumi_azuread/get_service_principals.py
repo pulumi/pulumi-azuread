@@ -50,13 +50,11 @@ class GetServicePrincipalsResult:
 
     @property
     @pulumi.getter(name="applicationIds")
+    @_utilities.deprecated("""The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider""")
     def application_ids(self) -> Sequence[str]:
         """
         A list of client IDs of the applications associated with the service principals.
         """
-        warnings.warn("""The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-        pulumi.log.warn("""application_ids is deprecated: The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider""")
-
         return pulumi.get(self, "application_ids")
 
     @property

@@ -81,13 +81,11 @@ class DirectoryRoleAssignmentArgs:
 
     @property
     @pulumi.getter(name="appScopeObjectId")
+    @_utilities.deprecated("""`app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""")
     def app_scope_object_id(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier of the app-specific scope when the assignment scope is app-specific
         """
-        warnings.warn("""`app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""", DeprecationWarning)
-        pulumi.log.warn("""app_scope_object_id is deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""")
-
         return pulumi.get(self, "app_scope_object_id")
 
     @app_scope_object_id.setter
@@ -167,13 +165,11 @@ class _DirectoryRoleAssignmentState:
 
     @property
     @pulumi.getter(name="appScopeObjectId")
+    @_utilities.deprecated("""`app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""")
     def app_scope_object_id(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier of the app-specific scope when the assignment scope is app-specific
         """
-        warnings.warn("""`app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""", DeprecationWarning)
-        pulumi.log.warn("""app_scope_object_id is deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""")
-
         return pulumi.get(self, "app_scope_object_id")
 
     @app_scope_object_id.setter
@@ -468,13 +464,11 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appScopeObjectId")
+    @_utilities.deprecated("""`app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""")
     def app_scope_object_id(self) -> pulumi.Output[str]:
         """
         Identifier of the app-specific scope when the assignment scope is app-specific
         """
-        warnings.warn("""`app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""", DeprecationWarning)
-        pulumi.log.warn("""app_scope_object_id is deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""")
-
         return pulumi.get(self, "app_scope_object_id")
 
     @property
