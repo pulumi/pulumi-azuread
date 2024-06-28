@@ -32,6 +32,7 @@ __all__ = [
     'ApplicationOptionalClaimsAccessTokenArgs',
     'ApplicationOptionalClaimsIdTokenArgs',
     'ApplicationOptionalClaimsSaml2TokenArgs',
+    'ApplicationPasswordArgs',
     'ApplicationPublicClientArgs',
     'ApplicationRequiredResourceAccessArgs',
     'ApplicationRequiredResourceAccessResourceAccessArgs',
@@ -1584,6 +1585,92 @@ class ApplicationOptionalClaimsSaml2TokenArgs:
     @source.setter
     def source(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source", value)
+
+
+@pulumi.input_type
+class ApplicationPasswordArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 end_date: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 start_date: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: A display name for the password. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] key_id: (Required) The unique key ID for the generated password.
+        :param pulumi.Input[str] start_date: The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] value: (Required) The generated password for the application.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        A display name for the password. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_date", value)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Required) The unique key ID for the generated password.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_date", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Required) The generated password for the application.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

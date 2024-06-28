@@ -33,6 +33,7 @@ __all__ = [
     'ApplicationOptionalClaimsAccessToken',
     'ApplicationOptionalClaimsIdToken',
     'ApplicationOptionalClaimsSaml2Token',
+    'ApplicationPassword',
     'ApplicationPublicClient',
     'ApplicationRequiredResourceAccess',
     'ApplicationRequiredResourceAccessResourceAccess',
@@ -1691,6 +1692,95 @@ class ApplicationOptionalClaimsSaml2Token(dict):
         The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
         return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class ApplicationPassword(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "endDate":
+            suggest = "end_date"
+        elif key == "keyId":
+            suggest = "key_id"
+        elif key == "startDate":
+            suggest = "start_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationPassword. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationPassword.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationPassword.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 end_date: Optional[str] = None,
+                 key_id: Optional[str] = None,
+                 start_date: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str display_name: A display name for the password. Changing this field forces a new resource to be created.
+        :param str end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        :param str key_id: (Required) The unique key ID for the generated password.
+        :param str start_date: The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        :param str value: (Required) The generated password for the application.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        A display name for the password. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[str]:
+        """
+        The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "end_date")
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[str]:
+        """
+        (Required) The unique key ID for the generated password.
+        """
+        return pulumi.get(self, "key_id")
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> Optional[str]:
+        """
+        The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "start_date")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        (Required) The generated password for the application.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

@@ -176,45 +176,7 @@ import (
 //
 // ```
 //
-// *Create application from a gallery template*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
-//				DisplayName: pulumi.StringRef("Marketo"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				TemplateId:  pulumi.String(example.TemplateId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//				UseExisting:   pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// *Create application and generate a password*
 //
 // ## Import
 //
@@ -274,6 +236,10 @@ type Application struct {
 	OptionalClaims ApplicationOptionalClaimsTypePtrOutput `pulumi:"optionalClaims"`
 	// A list of object IDs of principals that will be granted ownership of the application
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
+	// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+	//
+	// > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
+	Password ApplicationPasswordTypeOutput `pulumi:"password"`
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
 	PreventDuplicateNames pulumi.BoolPtrOutput `pulumi:"preventDuplicateNames"`
 	// URL of the application's privacy statement.
@@ -391,6 +357,10 @@ type applicationState struct {
 	OptionalClaims *ApplicationOptionalClaimsType `pulumi:"optionalClaims"`
 	// A list of object IDs of principals that will be granted ownership of the application
 	Owners []string `pulumi:"owners"`
+	// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+	//
+	// > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
+	Password *ApplicationPasswordType `pulumi:"password"`
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
 	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
 	// URL of the application's privacy statement.
@@ -476,6 +446,10 @@ type ApplicationState struct {
 	OptionalClaims ApplicationOptionalClaimsTypePtrInput
 	// A list of object IDs of principals that will be granted ownership of the application
 	Owners pulumi.StringArrayInput
+	// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+	//
+	// > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
+	Password ApplicationPasswordTypePtrInput
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
 	PreventDuplicateNames pulumi.BoolPtrInput
 	// URL of the application's privacy statement.
@@ -549,6 +523,10 @@ type applicationArgs struct {
 	OptionalClaims *ApplicationOptionalClaimsType `pulumi:"optionalClaims"`
 	// A list of object IDs of principals that will be granted ownership of the application
 	Owners []string `pulumi:"owners"`
+	// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+	//
+	// > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
+	Password *ApplicationPasswordType `pulumi:"password"`
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
 	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
 	// URL of the application's privacy statement.
@@ -617,6 +595,10 @@ type ApplicationArgs struct {
 	OptionalClaims ApplicationOptionalClaimsTypePtrInput
 	// A list of object IDs of principals that will be granted ownership of the application
 	Owners pulumi.StringArrayInput
+	// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+	//
+	// > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
+	Password ApplicationPasswordTypePtrInput
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
 	PreventDuplicateNames pulumi.BoolPtrInput
 	// URL of the application's privacy statement.
@@ -850,6 +832,13 @@ func (o ApplicationOutput) OptionalClaims() ApplicationOptionalClaimsTypePtrOutp
 // A list of object IDs of principals that will be granted ownership of the application
 func (o ApplicationOutput) Owners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringArrayOutput { return v.Owners }).(pulumi.StringArrayOutput)
+}
+
+// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+//
+// > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
+func (o ApplicationOutput) Password() ApplicationPasswordTypeOutput {
+	return o.ApplyT(func(v *Application) ApplicationPasswordTypeOutput { return v.Password }).(ApplicationPasswordTypeOutput)
 }
 
 // If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.

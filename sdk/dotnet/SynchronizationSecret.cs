@@ -51,7 +51,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///         ClientId = exampleApplication.ApplicationId,
     ///         UseExisting = true,
     ///     });
     /// 

@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .applicationId(exampleApplication.applicationId())
+ *             .clientId(exampleApplication.applicationId())
  *             .useExisting(true)
  *             .build());
  * 

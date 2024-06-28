@@ -1667,8 +1667,8 @@ github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
 github.com/hashicorp/terraform-plugin-testing v1.5.1 h1:T4aQh9JAhmWo4+t1A7x+rnxAJHCDIYW9kXyo4sVO92c=
 github.com/hashicorp/terraform-plugin-testing v1.5.1/go.mod h1:dg8clO6K59rZ8w9EshBmDp1CxTIPu3yA4iaDpX1h5u0=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20240613211906-b70b34dc6099 h1:NJpmdHrMcTM8n7kuzYYlpwUJeSy6fbiGZzfu78FCUS0=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20240613211906-b70b34dc6099/go.mod h1:GQj8u/+v5MTKs/zxW9rInIQw3v9vDxjCfgvVnLAkyms=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20240628000858-1ad927eca069 h1:YMICLrIASGQGeeTas6HhbumEB+Y/C3UoNT/ml+9h9GE=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20240628000858-1ad927eca069/go.mod h1:mTKc9KDAHPQjradh56k1cuv6hsIhvdYvBy0mdMmb1jc=
 github.com/hashicorp/terraform-registry-address v0.2.3 h1:2TAiKJ1A3MAkZlH1YI/aTVcLZRu7JseiXNRHbOAyoTI=
 github.com/hashicorp/terraform-registry-address v0.2.3/go.mod h1:lFHA76T8jfQteVfT7caREqguFrW3c4MFSPhZB7HHgUM=
 github.com/hashicorp/terraform-svchost v0.0.0-20191011084731-65d371908596/go.mod h1:kNDNcF7sN4DocDLBkQYz73HGKwN1ANB1blq4lIYLYvg=
@@ -1753,8 +1753,8 @@ github.com/lyft/protoc-gen-star v0.6.0/go.mod h1:TGAoBVkt8w7MPG72TrKIu85MIdXwDuz
 github.com/lyft/protoc-gen-star v0.6.1/go.mod h1:TGAoBVkt8w7MPG72TrKIu85MIdXwDuzJYeZuUPFPNwA=
 github.com/lyft/protoc-gen-star/v2 v2.0.1/go.mod h1:RcCdONR2ScXaYnQC5tUzxzlpA3WVYF7/opLeUgcQs/o=
 github.com/lyft/protoc-gen-star/v2 v2.0.3/go.mod h1:amey7yeodaJhXSbf/TlLvWiqQfLOSpEk//mLlc+axEk=
-github.com/manicminer/hamilton v0.70.0 h1:XMgVcwVtUGq2aBXqVAynaUDZdPXCXC8/rd7D5Zsg3UM=
-github.com/manicminer/hamilton v0.70.0/go.mod h1:u80g9rPtJpCG7EC0iayttt8UfeAp6jknClixgZGE950=
+github.com/manicminer/hamilton v0.71.0 h1:y81l1HDsdkWotmYYASmJxaL0kVqiRgzA0tWSuXS41EY=
+github.com/manicminer/hamilton v0.71.0/go.mod h1:u80g9rPtJpCG7EC0iayttt8UfeAp6jknClixgZGE950=
 github.com/mattn/go-colorable v0.0.9/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
 github.com/mattn/go-colorable v0.1.1/go.mod h1:FuOcm+DKB9mbwrcAfNl7/TZVBZ6rcnceauSikq3lYCQ=
 github.com/mattn/go-colorable v0.1.4/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=

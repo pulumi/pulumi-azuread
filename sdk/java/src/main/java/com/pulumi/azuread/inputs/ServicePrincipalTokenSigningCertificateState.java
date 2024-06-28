@@ -16,8 +16,7 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
     public static final ServicePrincipalTokenSigningCertificateState Empty = new ServicePrincipalTokenSigningCertificateState();
 
     /**
-     * Specifies a friendly name for the certificate.
-     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     * Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
      * 
      * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      * 
@@ -26,8 +25,7 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Specifies a friendly name for the certificate.
-     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     * @return Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
      * 
      * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      * 
@@ -112,16 +110,14 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
     }
 
     /**
-     * The certificate data, which is PEM encoded but does not include the
-     * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+     * The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The certificate data, which is PEM encoded but does not include the
-     * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+     * @return The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
      * 
      */
     public Optional<Output<String>> value() {
@@ -159,8 +155,7 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
         }
 
         /**
-         * @param displayName Specifies a friendly name for the certificate.
-         * Must start with `CN=`. Changing this field forces a new resource to be created.
+         * @param displayName Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
          * 
          * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
          * 
@@ -173,8 +168,7 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
         }
 
         /**
-         * @param displayName Specifies a friendly name for the certificate.
-         * Must start with `CN=`. Changing this field forces a new resource to be created.
+         * @param displayName Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
          * 
          * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
          * 
@@ -291,8 +285,7 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
         }
 
         /**
-         * @param value The certificate data, which is PEM encoded but does not include the
-         * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+         * @param value The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
          * 
          * @return builder
          * 
@@ -303,8 +296,7 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
         }
 
         /**
-         * @param value The certificate data, which is PEM encoded but does not include the
-         * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+         * @param value The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
          * 
          * @return builder
          * 

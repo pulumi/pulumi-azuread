@@ -187,6 +187,9 @@
                     "owners": {
                         "maxItemsOne": false
                     },
+                    "password": {
+                        "maxItemsOne": true
+                    },
                     "public_client": {
                         "maxItemsOne": true,
                         "elem": {

@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: example.ApplicationId,
+//				ClientId: example.ApplicationId,
 //			})
 //			if err != nil {
 //				return err
@@ -73,7 +73,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: example.ApplicationId,
+//				ClientId: example.ApplicationId,
 //			})
 //			if err != nil {
 //				return err
@@ -104,8 +104,7 @@ import (
 type ServicePrincipalTokenSigningCertificate struct {
 	pulumi.CustomResourceState
 
-	// Specifies a friendly name for the certificate.
-	// Must start with `CN=`. Changing this field forces a new resource to be created.
+	// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
 	//
 	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -119,8 +118,7 @@ type ServicePrincipalTokenSigningCertificate struct {
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
 	// A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
 	Thumbprint pulumi.StringOutput `pulumi:"thumbprint"`
-	// The certificate data, which is PEM encoded but does not include the
-	// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+	// The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -161,8 +159,7 @@ func GetServicePrincipalTokenSigningCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipalTokenSigningCertificate resources.
 type servicePrincipalTokenSigningCertificateState struct {
-	// Specifies a friendly name for the certificate.
-	// Must start with `CN=`. Changing this field forces a new resource to be created.
+	// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
 	//
 	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 	DisplayName *string `pulumi:"displayName"`
@@ -176,14 +173,12 @@ type servicePrincipalTokenSigningCertificateState struct {
 	StartDate *string `pulumi:"startDate"`
 	// A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
 	Thumbprint *string `pulumi:"thumbprint"`
-	// The certificate data, which is PEM encoded but does not include the
-	// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+	// The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
 	Value *string `pulumi:"value"`
 }
 
 type ServicePrincipalTokenSigningCertificateState struct {
-	// Specifies a friendly name for the certificate.
-	// Must start with `CN=`. Changing this field forces a new resource to be created.
+	// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
 	//
 	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 	DisplayName pulumi.StringPtrInput
@@ -197,8 +192,7 @@ type ServicePrincipalTokenSigningCertificateState struct {
 	StartDate pulumi.StringPtrInput
 	// A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
 	Thumbprint pulumi.StringPtrInput
-	// The certificate data, which is PEM encoded but does not include the
-	// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+	// The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
 	Value pulumi.StringPtrInput
 }
 
@@ -207,8 +201,7 @@ func (ServicePrincipalTokenSigningCertificateState) ElementType() reflect.Type {
 }
 
 type servicePrincipalTokenSigningCertificateArgs struct {
-	// Specifies a friendly name for the certificate.
-	// Must start with `CN=`. Changing this field forces a new resource to be created.
+	// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
 	//
 	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 	DisplayName *string `pulumi:"displayName"`
@@ -220,8 +213,7 @@ type servicePrincipalTokenSigningCertificateArgs struct {
 
 // The set of arguments for constructing a ServicePrincipalTokenSigningCertificate resource.
 type ServicePrincipalTokenSigningCertificateArgs struct {
-	// Specifies a friendly name for the certificate.
-	// Must start with `CN=`. Changing this field forces a new resource to be created.
+	// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
 	//
 	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 	DisplayName pulumi.StringPtrInput
@@ -318,8 +310,7 @@ func (o ServicePrincipalTokenSigningCertificateOutput) ToServicePrincipalTokenSi
 	return o
 }
 
-// Specifies a friendly name for the certificate.
-// Must start with `CN=`. Changing this field forces a new resource to be created.
+// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
 //
 // > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 func (o ServicePrincipalTokenSigningCertificateOutput) DisplayName() pulumi.StringOutput {
@@ -351,8 +342,7 @@ func (o ServicePrincipalTokenSigningCertificateOutput) Thumbprint() pulumi.Strin
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
-// The certificate data, which is PEM encoded but does not include the
-// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+// The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
 func (o ServicePrincipalTokenSigningCertificateOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

@@ -10,18 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
-    /// Manages a Conditional Access Policy within Azure Active Directory.
-    /// 
-    /// &gt; **Licensing Requirements** Specifying `client_applications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
-    /// 
-    /// ## API Permissions
-    /// 
-    /// The following API permissions are required in order to use this resource.
-    /// 
-    /// When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`
-    /// 
-    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
-    /// 
     /// ## Example Usage
     /// 
     /// ### All users except guests or external users

@@ -415,6 +415,29 @@ export interface ApplicationOptionalClaimsSaml2Token {
     source?: string;
 }
 
+export interface ApplicationPassword {
+    /**
+     * A display name for the password. Changing this field forces a new resource to be created.
+     */
+    displayName: string;
+    /**
+     * The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+     */
+    endDate: string;
+    /**
+     * (Required) The unique key ID for the generated password.
+     */
+    keyId: string;
+    /**
+     * The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+     */
+    startDate: string;
+    /**
+     * (Required) The generated password for the application.
+     */
+    value: string;
+}
+
 export interface ApplicationPublicClient {
     /**
      * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
