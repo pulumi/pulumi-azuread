@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
  * const exampleServicePrincipalTokenSigningCertificate = new azuread.ServicePrincipalTokenSigningCertificate("example", {servicePrincipalId: exampleServicePrincipal.id});
  * ```
  *
@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
  * const exampleServicePrincipalTokenSigningCertificate = new azuread.ServicePrincipalTokenSigningCertificate("example", {
  *     servicePrincipalId: exampleServicePrincipal.id,
  *     displayName: "CN=example.com",
@@ -72,8 +72,7 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
     }
 
     /**
-     * Specifies a friendly name for the certificate.
-     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     * Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
      *
      * > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      */
@@ -99,8 +98,7 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
      */
     public /*out*/ readonly thumbprint!: pulumi.Output<string>;
     /**
-     * The certificate data, which is PEM encoded but does not include the
-     * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+     * The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
      */
     public /*out*/ readonly value!: pulumi.Output<string>;
 
@@ -149,8 +147,7 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
  */
 export interface ServicePrincipalTokenSigningCertificateState {
     /**
-     * Specifies a friendly name for the certificate.
-     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     * Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
      *
      * > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      */
@@ -176,8 +173,7 @@ export interface ServicePrincipalTokenSigningCertificateState {
      */
     thumbprint?: pulumi.Input<string>;
     /**
-     * The certificate data, which is PEM encoded but does not include the
-     * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+     * The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
      */
     value?: pulumi.Input<string>;
 }
@@ -187,8 +183,7 @@ export interface ServicePrincipalTokenSigningCertificateState {
  */
 export interface ServicePrincipalTokenSigningCertificateArgs {
     /**
-     * Specifies a friendly name for the certificate.
-     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     * Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
      *
      * > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      */

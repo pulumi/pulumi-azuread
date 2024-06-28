@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .applicationId(example.applicationId())
+ *             .clientId(example.applicationId())
  *             .build());
  * 
  *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", ServicePrincipalTokenSigningCertificateArgs.builder()
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .applicationId(example.applicationId())
+ *             .clientId(example.applicationId())
  *             .build());
  * 
  *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", ServicePrincipalTokenSigningCertificateArgs.builder()
@@ -127,8 +127,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate")
 public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies a friendly name for the certificate.
-     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     * Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
      * 
      * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      * 
@@ -137,8 +136,7 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
     private Output<String> displayName;
 
     /**
-     * @return Specifies a friendly name for the certificate.
-     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     * @return Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
      * 
      * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      * 
@@ -217,16 +215,14 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
         return this.thumbprint;
     }
     /**
-     * The certificate data, which is PEM encoded but does not include the
-     * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+     * The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
-     * @return The certificate data, which is PEM encoded but does not include the
-     * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+     * @return The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
      * 
      */
     public Output<String> value() {

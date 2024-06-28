@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
  *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
- *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
  *             .useExisting(true)
  *             .build());
  * 
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .applicationId(example.applicationId())
+ *             .clientId(example.applicationId())
  *             .build());
  * 
  *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var internalServicePrincipal = new ServicePrincipal("internalServicePrincipal", ServicePrincipalArgs.builder()
- *             .applicationId(internal.applicationId())
+ *             .clientId(internal.applicationId())
  *             .build());
  * 
  *         var example = new Application("example", ApplicationArgs.builder()
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .applicationId(example.applicationId())
+ *             .clientId(example.applicationId())
  *             .build());
  * 
  *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()

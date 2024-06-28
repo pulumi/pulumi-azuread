@@ -3060,6 +3060,219 @@ func (o ApplicationOptionalClaimsSaml2TokenArrayOutput) Index(i pulumi.IntInput)
 	}).(ApplicationOptionalClaimsSaml2TokenOutput)
 }
 
+type ApplicationPasswordType struct {
+	// A display name for the password. Changing this field forces a new resource to be created.
+	DisplayName string `pulumi:"displayName"`
+	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	EndDate *string `pulumi:"endDate"`
+	// (Required) The unique key ID for the generated password.
+	KeyId *string `pulumi:"keyId"`
+	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	StartDate *string `pulumi:"startDate"`
+	// (Required) The generated password for the application.
+	Value *string `pulumi:"value"`
+}
+
+// ApplicationPasswordTypeInput is an input type that accepts ApplicationPasswordTypeArgs and ApplicationPasswordTypeOutput values.
+// You can construct a concrete instance of `ApplicationPasswordTypeInput` via:
+//
+//	ApplicationPasswordTypeArgs{...}
+type ApplicationPasswordTypeInput interface {
+	pulumi.Input
+
+	ToApplicationPasswordTypeOutput() ApplicationPasswordTypeOutput
+	ToApplicationPasswordTypeOutputWithContext(context.Context) ApplicationPasswordTypeOutput
+}
+
+type ApplicationPasswordTypeArgs struct {
+	// A display name for the password. Changing this field forces a new resource to be created.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	EndDate pulumi.StringPtrInput `pulumi:"endDate"`
+	// (Required) The unique key ID for the generated password.
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
+	// (Required) The generated password for the application.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ApplicationPasswordTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPasswordType)(nil)).Elem()
+}
+
+func (i ApplicationPasswordTypeArgs) ToApplicationPasswordTypeOutput() ApplicationPasswordTypeOutput {
+	return i.ToApplicationPasswordTypeOutputWithContext(context.Background())
+}
+
+func (i ApplicationPasswordTypeArgs) ToApplicationPasswordTypeOutputWithContext(ctx context.Context) ApplicationPasswordTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPasswordTypeOutput)
+}
+
+func (i ApplicationPasswordTypeArgs) ToApplicationPasswordTypePtrOutput() ApplicationPasswordTypePtrOutput {
+	return i.ToApplicationPasswordTypePtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationPasswordTypeArgs) ToApplicationPasswordTypePtrOutputWithContext(ctx context.Context) ApplicationPasswordTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPasswordTypeOutput).ToApplicationPasswordTypePtrOutputWithContext(ctx)
+}
+
+// ApplicationPasswordTypePtrInput is an input type that accepts ApplicationPasswordTypeArgs, ApplicationPasswordTypePtr and ApplicationPasswordTypePtrOutput values.
+// You can construct a concrete instance of `ApplicationPasswordTypePtrInput` via:
+//
+//	        ApplicationPasswordTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationPasswordTypePtrInput interface {
+	pulumi.Input
+
+	ToApplicationPasswordTypePtrOutput() ApplicationPasswordTypePtrOutput
+	ToApplicationPasswordTypePtrOutputWithContext(context.Context) ApplicationPasswordTypePtrOutput
+}
+
+type applicationPasswordTypePtrType ApplicationPasswordTypeArgs
+
+func ApplicationPasswordTypePtr(v *ApplicationPasswordTypeArgs) ApplicationPasswordTypePtrInput {
+	return (*applicationPasswordTypePtrType)(v)
+}
+
+func (*applicationPasswordTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPasswordType)(nil)).Elem()
+}
+
+func (i *applicationPasswordTypePtrType) ToApplicationPasswordTypePtrOutput() ApplicationPasswordTypePtrOutput {
+	return i.ToApplicationPasswordTypePtrOutputWithContext(context.Background())
+}
+
+func (i *applicationPasswordTypePtrType) ToApplicationPasswordTypePtrOutputWithContext(ctx context.Context) ApplicationPasswordTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPasswordTypePtrOutput)
+}
+
+type ApplicationPasswordTypeOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPasswordTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPasswordType)(nil)).Elem()
+}
+
+func (o ApplicationPasswordTypeOutput) ToApplicationPasswordTypeOutput() ApplicationPasswordTypeOutput {
+	return o
+}
+
+func (o ApplicationPasswordTypeOutput) ToApplicationPasswordTypeOutputWithContext(ctx context.Context) ApplicationPasswordTypeOutput {
+	return o
+}
+
+func (o ApplicationPasswordTypeOutput) ToApplicationPasswordTypePtrOutput() ApplicationPasswordTypePtrOutput {
+	return o.ToApplicationPasswordTypePtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationPasswordTypeOutput) ToApplicationPasswordTypePtrOutputWithContext(ctx context.Context) ApplicationPasswordTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationPasswordType) *ApplicationPasswordType {
+		return &v
+	}).(ApplicationPasswordTypePtrOutput)
+}
+
+// A display name for the password. Changing this field forces a new resource to be created.
+func (o ApplicationPasswordTypeOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationPasswordType) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+func (o ApplicationPasswordTypeOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationPasswordType) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// (Required) The unique key ID for the generated password.
+func (o ApplicationPasswordTypeOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationPasswordType) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+func (o ApplicationPasswordTypeOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationPasswordType) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+// (Required) The generated password for the application.
+func (o ApplicationPasswordTypeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationPasswordType) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationPasswordTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPasswordTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPasswordType)(nil)).Elem()
+}
+
+func (o ApplicationPasswordTypePtrOutput) ToApplicationPasswordTypePtrOutput() ApplicationPasswordTypePtrOutput {
+	return o
+}
+
+func (o ApplicationPasswordTypePtrOutput) ToApplicationPasswordTypePtrOutputWithContext(ctx context.Context) ApplicationPasswordTypePtrOutput {
+	return o
+}
+
+func (o ApplicationPasswordTypePtrOutput) Elem() ApplicationPasswordTypeOutput {
+	return o.ApplyT(func(v *ApplicationPasswordType) ApplicationPasswordType {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationPasswordType
+		return ret
+	}).(ApplicationPasswordTypeOutput)
+}
+
+// A display name for the password. Changing this field forces a new resource to be created.
+func (o ApplicationPasswordTypePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationPasswordType) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+func (o ApplicationPasswordTypePtrOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationPasswordType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Required) The unique key ID for the generated password.
+func (o ApplicationPasswordTypePtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationPasswordType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+func (o ApplicationPasswordTypePtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationPasswordType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Required) The generated password for the application.
+func (o ApplicationPasswordTypePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationPasswordType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 type ApplicationPublicClient struct {
 	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
 	RedirectUris []string `pulumi:"redirectUris"`
@@ -14957,6 +15170,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOptionalClaimsIdTokenArrayInput)(nil)).Elem(), ApplicationOptionalClaimsIdTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOptionalClaimsSaml2TokenInput)(nil)).Elem(), ApplicationOptionalClaimsSaml2TokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationOptionalClaimsSaml2TokenArrayInput)(nil)).Elem(), ApplicationOptionalClaimsSaml2TokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPasswordTypeInput)(nil)).Elem(), ApplicationPasswordTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPasswordTypePtrInput)(nil)).Elem(), ApplicationPasswordTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPublicClientInput)(nil)).Elem(), ApplicationPublicClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPublicClientPtrInput)(nil)).Elem(), ApplicationPublicClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationRequiredResourceAccessInput)(nil)).Elem(), ApplicationRequiredResourceAccessArgs{})
@@ -15157,6 +15372,8 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsIdTokenArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsSaml2TokenOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsSaml2TokenArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationPasswordTypeOutput{})
+	pulumi.RegisterOutputType(ApplicationPasswordTypePtrOutput{})
 	pulumi.RegisterOutputType(ApplicationPublicClientOutput{})
 	pulumi.RegisterOutputType(ApplicationPublicClientPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessOutput{})

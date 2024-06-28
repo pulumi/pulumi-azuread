@@ -31,6 +31,7 @@ class ApplicationArgs:
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 password: Optional[pulumi.Input['ApplicationPasswordArgs']] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
                  public_client: Optional[pulumi.Input['ApplicationPublicClientArgs']] = None,
@@ -62,6 +63,9 @@ class ApplicationArgs:
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
+        :param pulumi.Input['ApplicationPasswordArgs'] password: A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+               
+               > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
         :param pulumi.Input['ApplicationPublicClientArgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
@@ -112,6 +116,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "optional_claims", optional_claims)
         if owners is not None:
             pulumi.set(__self__, "owners", owners)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if prevent_duplicate_names is not None:
             pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
         if privacy_statement_url is not None:
@@ -320,6 +326,20 @@ class ApplicationArgs:
         pulumi.set(self, "owners", value)
 
     @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input['ApplicationPasswordArgs']]:
+        """
+        A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+
+        > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input['ApplicationPasswordArgs']]):
+        pulumi.set(self, "password", value)
+
+    @property
     @pulumi.getter(name="preventDuplicateNames")
     def prevent_duplicate_names(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -497,6 +517,7 @@ class _ApplicationState:
                  object_id: Optional[pulumi.Input[str]] = None,
                  optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 password: Optional[pulumi.Input['ApplicationPasswordArgs']] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
                  public_client: Optional[pulumi.Input['ApplicationPublicClientArgs']] = None,
@@ -536,6 +557,9 @@ class _ApplicationState:
         :param pulumi.Input[str] object_id: The application's object ID.
         :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
+        :param pulumi.Input['ApplicationPasswordArgs'] password: A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+               
+               > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
         :param pulumi.Input['ApplicationPublicClientArgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
@@ -605,6 +629,8 @@ class _ApplicationState:
             pulumi.set(__self__, "optional_claims", optional_claims)
         if owners is not None:
             pulumi.set(__self__, "owners", owners)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if prevent_duplicate_names is not None:
             pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
         if privacy_statement_url is not None:
@@ -900,6 +926,20 @@ class _ApplicationState:
         pulumi.set(self, "owners", value)
 
     @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input['ApplicationPasswordArgs']]:
+        """
+        A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+
+        > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input['ApplicationPasswordArgs']]):
+        pulumi.set(self, "password", value)
+
+    @property
     @pulumi.getter(name="preventDuplicateNames")
     def prevent_duplicate_names(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1084,6 +1124,7 @@ class Application(pulumi.CustomResource):
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 password: Optional[pulumi.Input[pulumi.InputType['ApplicationPasswordArgs']]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
                  public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
@@ -1219,20 +1260,7 @@ class Application(pulumi.CustomResource):
             ))
         ```
 
-        *Create application from a gallery template*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.get_application_template(display_name="Marketo")
-        example_application = azuread.Application("example",
-            display_name="example",
-            template_id=example.template_id)
-        example_service_principal = azuread.ServicePrincipal("example",
-            application_id=example_application.application_id,
-            use_existing=True)
-        ```
+        *Create application and generate a password*
 
         ## Import
 
@@ -1261,6 +1289,9 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
+        :param pulumi.Input[pulumi.InputType['ApplicationPasswordArgs']] password: A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+               
+               > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
         :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
@@ -1410,20 +1441,7 @@ class Application(pulumi.CustomResource):
             ))
         ```
 
-        *Create application from a gallery template*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.get_application_template(display_name="Marketo")
-        example_application = azuread.Application("example",
-            display_name="example",
-            template_id=example.template_id)
-        example_service_principal = azuread.ServicePrincipal("example",
-            application_id=example_application.application_id,
-            use_existing=True)
-        ```
+        *Create application and generate a password*
 
         ## Import
 
@@ -1463,6 +1481,7 @@ class Application(pulumi.CustomResource):
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 password: Optional[pulumi.Input[pulumi.InputType['ApplicationPasswordArgs']]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
                  public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
@@ -1501,6 +1520,7 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["oauth2_post_response_required"] = oauth2_post_response_required
             __props__.__dict__["optional_claims"] = optional_claims
             __props__.__dict__["owners"] = owners
+            __props__.__dict__["password"] = password
             __props__.__dict__["prevent_duplicate_names"] = prevent_duplicate_names
             __props__.__dict__["privacy_statement_url"] = privacy_statement_url
             __props__.__dict__["public_client"] = public_client
@@ -1553,6 +1573,7 @@ class Application(pulumi.CustomResource):
             object_id: Optional[pulumi.Input[str]] = None,
             optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            password: Optional[pulumi.Input[pulumi.InputType['ApplicationPasswordArgs']]] = None,
             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
             privacy_statement_url: Optional[pulumi.Input[str]] = None,
             public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
@@ -1597,6 +1618,9 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] object_id: The application's object ID.
         :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
+        :param pulumi.Input[pulumi.InputType['ApplicationPasswordArgs']] password: A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+               
+               > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
         :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
@@ -1645,6 +1669,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["optional_claims"] = optional_claims
         __props__.__dict__["owners"] = owners
+        __props__.__dict__["password"] = password
         __props__.__dict__["prevent_duplicate_names"] = prevent_duplicate_names
         __props__.__dict__["privacy_statement_url"] = privacy_statement_url
         __props__.__dict__["public_client"] = public_client
@@ -1838,6 +1863,16 @@ class Application(pulumi.CustomResource):
         A list of object IDs of principals that will be granted ownership of the application
         """
         return pulumi.get(self, "owners")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output['outputs.ApplicationPassword']:
+        """
+        A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+
+        > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
+        """
+        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="preventDuplicateNames")

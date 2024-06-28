@@ -7,6 +7,7 @@ import com.pulumi.azuread.inputs.ApplicationApiArgs;
 import com.pulumi.azuread.inputs.ApplicationAppRoleArgs;
 import com.pulumi.azuread.inputs.ApplicationFeatureTagArgs;
 import com.pulumi.azuread.inputs.ApplicationOptionalClaimsArgs;
+import com.pulumi.azuread.inputs.ApplicationPasswordArgs;
 import com.pulumi.azuread.inputs.ApplicationPublicClientArgs;
 import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
 import com.pulumi.azuread.inputs.ApplicationSinglePageApplicationArgs;
@@ -369,6 +370,25 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+     * 
+     * &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+     * 
+     */
+    @Import(name="password")
+    private @Nullable Output<ApplicationPasswordArgs> password;
+
+    /**
+     * @return A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+     * 
+     * &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+     * 
+     */
+    public Optional<Output<ApplicationPasswordArgs>> password() {
+        return Optional.ofNullable(this.password);
+    }
+
+    /**
      * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      * 
      */
@@ -604,6 +624,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         this.objectId = $.objectId;
         this.optionalClaims = $.optionalClaims;
         this.owners = $.owners;
+        this.password = $.password;
         this.preventDuplicateNames = $.preventDuplicateNames;
         this.privacyStatementUrl = $.privacyStatementUrl;
         this.publicClient = $.publicClient;
@@ -1161,6 +1182,31 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder owners(String... owners) {
             return owners(List.of(owners));
+        }
+
+        /**
+         * @param password A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+         * 
+         * &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(@Nullable Output<ApplicationPasswordArgs> password) {
+            $.password = password;
+            return this;
+        }
+
+        /**
+         * @param password A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+         * 
+         * &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(ApplicationPasswordArgs password) {
+            return password(Output.of(password));
         }
 
         /**

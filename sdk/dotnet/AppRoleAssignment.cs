@@ -36,7 +36,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
     ///     {
-    ///         ApplicationId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+    ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
     ///         UseExisting = true,
     ///     });
     /// 
@@ -67,7 +67,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ApplicationId = example.ApplicationId,
+    ///         ClientId = example.ApplicationId,
     ///     });
     /// 
     ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("example", new()
@@ -112,7 +112,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var internalServicePrincipal = new AzureAD.ServicePrincipal("internal", new()
     ///     {
-    ///         ApplicationId = @internal.ApplicationId,
+    ///         ClientId = @internal.ApplicationId,
     ///     });
     /// 
     ///     var example = new AzureAD.Application("example", new()
@@ -137,7 +137,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ApplicationId = example.ApplicationId,
+    ///         ClientId = example.ApplicationId,
     ///     });
     /// 
     ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("example", new()

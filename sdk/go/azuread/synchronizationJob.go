@@ -56,8 +56,8 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//				UseExisting:   pulumi.Bool(true),
+//				ClientId:    exampleApplication.ApplicationId,
+//				UseExisting: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * const wellKnown = azuread.getApplicationPublishedAppIds({});
  * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
+ *     clientId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
  *     useExisting: true,
  * });
  * const example = new azuread.Application("example", {
@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  *         ],
  *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
  * const exampleAppRoleAssignment = new azuread.AppRoleAssignment("example", {
  *     appRoleId: msgraph.appRoleIds["User.Read.All"],
  *     principalObjectId: exampleServicePrincipal.objectId,
@@ -69,7 +69,7 @@ import * as utilities from "./utilities";
  *         value: "Query.All",
  *     }],
  * });
- * const internalServicePrincipal = new azuread.ServicePrincipal("internal", {applicationId: internal.applicationId});
+ * const internalServicePrincipal = new azuread.ServicePrincipal("internal", {clientId: internal.applicationId});
  * const example = new azuread.Application("example", {
  *     displayName: "example",
  *     requiredResourceAccesses: [{
@@ -80,7 +80,7 @@ import * as utilities from "./utilities";
  *         }],
  *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
  * const exampleAppRoleAssignment = new azuread.AppRoleAssignment("example", {
  *     appRoleId: internalServicePrincipal.appRoleIds["Query.All"],
  *     principalObjectId: exampleServicePrincipal.objectId,

@@ -131,24 +131,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * *Create application from a gallery template*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = azuread.getApplicationTemplate({
- *     displayName: "Marketo",
- * });
- * const exampleApplication = new azuread.Application("example", {
- *     displayName: "example",
- *     templateId: example.then(example => example.templateId),
- * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
- *     applicationId: exampleApplication.applicationId,
- *     useExisting: true,
- * });
- * ```
+ * *Create application and generate a password*
  *
  * ## Import
  *
@@ -279,6 +262,12 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly owners!: pulumi.Output<string[] | undefined>;
     /**
+     * A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+     *
+     * > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+     */
+    public readonly password!: pulumi.Output<outputs.ApplicationPassword>;
+    /**
      * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      */
     public readonly preventDuplicateNames!: pulumi.Output<boolean | undefined>;
@@ -374,6 +363,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["objectId"] = state ? state.objectId : undefined;
             resourceInputs["optionalClaims"] = state ? state.optionalClaims : undefined;
             resourceInputs["owners"] = state ? state.owners : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
             resourceInputs["privacyStatementUrl"] = state ? state.privacyStatementUrl : undefined;
             resourceInputs["publicClient"] = state ? state.publicClient : undefined;
@@ -407,6 +397,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["oauth2PostResponseRequired"] = args ? args.oauth2PostResponseRequired : undefined;
             resourceInputs["optionalClaims"] = args ? args.optionalClaims : undefined;
             resourceInputs["owners"] = args ? args.owners : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
             resourceInputs["privacyStatementUrl"] = args ? args.privacyStatementUrl : undefined;
             resourceInputs["publicClient"] = args ? args.publicClient : undefined;
@@ -529,6 +520,12 @@ export interface ApplicationState {
      * A list of object IDs of principals that will be granted ownership of the application
      */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+     *
+     * > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+     */
+    password?: pulumi.Input<inputs.ApplicationPassword>;
     /**
      * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      */
@@ -657,6 +654,12 @@ export interface ApplicationArgs {
      * A list of object IDs of principals that will be granted ownership of the application
      */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+     *
+     * > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+     */
+    password?: pulumi.Input<inputs.ApplicationPassword>;
     /**
      * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      */

@@ -195,35 +195,7 @@ namespace Pulumi.AzureAD
     /// });
     /// ```
     /// 
-    /// *Create application from a gallery template*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
-    ///     {
-    ///         DisplayName = "Marketo",
-    ///     });
-    /// 
-    ///     var exampleApplication = new AzureAD.Application("example", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
-    ///     });
-    /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
-    ///     {
-    ///         ApplicationId = exampleApplication.ApplicationId,
-    ///         UseExisting = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// *Create application and generate a password*
     /// 
     /// ## Import
     /// 
@@ -369,6 +341,14 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("owners")]
         public Output<ImmutableArray<string>> Owners { get; private set; } = null!;
+
+        /// <summary>
+        /// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+        /// 
+        /// &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+        /// </summary>
+        [Output("password")]
+        public Output<Outputs.ApplicationPassword> Password { get; private set; } = null!;
 
         /// <summary>
         /// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
@@ -623,6 +603,14 @@ namespace Pulumi.AzureAD
             get => _owners ?? (_owners = new InputList<string>());
             set => _owners = value;
         }
+
+        /// <summary>
+        /// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+        /// 
+        /// &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+        /// </summary>
+        [Input("password")]
+        public Input<Inputs.ApplicationPasswordArgs>? Password { get; set; }
 
         /// <summary>
         /// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
@@ -899,6 +887,14 @@ namespace Pulumi.AzureAD
             get => _owners ?? (_owners = new InputList<string>());
             set => _owners = value;
         }
+
+        /// <summary>
+        /// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+        /// 
+        /// &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+        /// </summary>
+        [Input("password")]
+        public Input<Inputs.ApplicationPasswordGetArgs>? Password { get; set; }
 
         /// <summary>
         /// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.

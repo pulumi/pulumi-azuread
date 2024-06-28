@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * const wellKnown = azuread.getApplicationPublishedAppIds({});
  * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
+ *     clientId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
  *     useExisting: true,
  * });
  * const example = new azuread.Application("example", {
@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  *         ],
  *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
  * const exampleServicePrincipalDelegatedPermissionGrant = new azuread.ServicePrincipalDelegatedPermissionGrant("example", {
  *     servicePrincipalObjectId: exampleServicePrincipal.objectId,
  *     resourceServicePrincipalObjectId: msgraph.objectId,
@@ -63,7 +63,7 @@ import * as utilities from "./utilities";
  *
  * const wellKnown = azuread.getApplicationPublishedAppIds({});
  * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
+ *     clientId: wellKnown.then(wellKnown => wellKnown.result?.microsoftGraph),
  *     useExisting: true,
  * });
  * const example = new azuread.Application("example", {
@@ -82,7 +82,7 @@ import * as utilities from "./utilities";
  *         ],
  *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
  * const exampleUser = new azuread.User("example", {
  *     displayName: "J. Doe",
  *     userPrincipalName: "jdoe@example.com",

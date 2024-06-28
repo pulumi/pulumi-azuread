@@ -29,7 +29,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ApplicationId = example.ApplicationId,
+    ///         ClientId = example.ApplicationId,
     ///     });
     /// 
     ///     var exampleServicePrincipalTokenSigningCertificate = new AzureAD.ServicePrincipalTokenSigningCertificate("example", new()
@@ -57,7 +57,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ApplicationId = example.ApplicationId,
+    ///         ClientId = example.ApplicationId,
     ///     });
     /// 
     ///     var exampleServicePrincipalTokenSigningCertificate = new AzureAD.ServicePrincipalTokenSigningCertificate("example", new()
@@ -84,8 +84,7 @@ namespace Pulumi.AzureAD
     public partial class ServicePrincipalTokenSigningCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies a friendly name for the certificate.
-        /// Must start with `CN=`. Changing this field forces a new resource to be created.
+        /// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
         /// 
         /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
         /// </summary>
@@ -123,8 +122,7 @@ namespace Pulumi.AzureAD
         public Output<string> Thumbprint { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate data, which is PEM encoded but does not include the
-        /// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+        /// The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -180,8 +178,7 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalTokenSigningCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies a friendly name for the certificate.
-        /// Must start with `CN=`. Changing this field forces a new resource to be created.
+        /// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
         /// 
         /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
         /// </summary>
@@ -209,8 +206,7 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalTokenSigningCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies a friendly name for the certificate.
-        /// Must start with `CN=`. Changing this field forces a new resource to be created.
+        /// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
         /// 
         /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
         /// </summary>
@@ -251,8 +247,7 @@ namespace Pulumi.AzureAD
         private Input<string>? _value;
 
         /// <summary>
-        /// The certificate data, which is PEM encoded but does not include the
-        /// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+        /// The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
         /// </summary>
         public Input<string>? Value
         {

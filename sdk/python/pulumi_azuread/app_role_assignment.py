@@ -198,7 +198,7 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["microsoftGraph"],
+            client_id=well_known.result["microsoftGraph"],
             use_existing=True)
         example = azuread.Application("example",
             display_name="example",
@@ -215,7 +215,7 @@ class AppRoleAssignment(pulumi.CustomResource):
                     ),
                 ],
             )])
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_app_role_assignment = azuread.AppRoleAssignment("example",
             app_role_id=msgraph.app_role_ids["User.Read.All"],
             principal_object_id=example_service_principal.object_id,
@@ -238,7 +238,7 @@ class AppRoleAssignment(pulumi.CustomResource):
                 id="00000000-0000-0000-0000-111111111111",
                 value="Query.All",
             )])
-        internal_service_principal = azuread.ServicePrincipal("internal", application_id=internal.application_id)
+        internal_service_principal = azuread.ServicePrincipal("internal", client_id=internal.application_id)
         example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
@@ -248,7 +248,7 @@ class AppRoleAssignment(pulumi.CustomResource):
                     type="Role",
                 )],
             )])
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_app_role_assignment = azuread.AppRoleAssignment("example",
             app_role_id=internal_service_principal.app_role_ids["Query.All"],
             principal_object_id=example_service_principal.object_id,
@@ -300,7 +300,7 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["microsoftGraph"],
+            client_id=well_known.result["microsoftGraph"],
             use_existing=True)
         example = azuread.Application("example",
             display_name="example",
@@ -317,7 +317,7 @@ class AppRoleAssignment(pulumi.CustomResource):
                     ),
                 ],
             )])
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_app_role_assignment = azuread.AppRoleAssignment("example",
             app_role_id=msgraph.app_role_ids["User.Read.All"],
             principal_object_id=example_service_principal.object_id,
@@ -340,7 +340,7 @@ class AppRoleAssignment(pulumi.CustomResource):
                 id="00000000-0000-0000-0000-111111111111",
                 value="Query.All",
             )])
-        internal_service_principal = azuread.ServicePrincipal("internal", application_id=internal.application_id)
+        internal_service_principal = azuread.ServicePrincipal("internal", client_id=internal.application_id)
         example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
@@ -350,7 +350,7 @@ class AppRoleAssignment(pulumi.CustomResource):
                     type="Role",
                 )],
             )])
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_app_role_assignment = azuread.AppRoleAssignment("example",
             app_role_id=internal_service_principal.app_role_ids["Query.All"],
             principal_object_id=example_service_principal.object_id,

@@ -17,8 +17,7 @@ public final class ServicePrincipalTokenSigningCertificateArgs extends com.pulum
     public static final ServicePrincipalTokenSigningCertificateArgs Empty = new ServicePrincipalTokenSigningCertificateArgs();
 
     /**
-     * Specifies a friendly name for the certificate.
-     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     * Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
      * 
      * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      * 
@@ -27,8 +26,7 @@ public final class ServicePrincipalTokenSigningCertificateArgs extends com.pulum
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Specifies a friendly name for the certificate.
-     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     * @return Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
      * 
      * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      * 
@@ -94,8 +92,7 @@ public final class ServicePrincipalTokenSigningCertificateArgs extends com.pulum
         }
 
         /**
-         * @param displayName Specifies a friendly name for the certificate.
-         * Must start with `CN=`. Changing this field forces a new resource to be created.
+         * @param displayName Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
          * 
          * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
          * 
@@ -108,8 +105,7 @@ public final class ServicePrincipalTokenSigningCertificateArgs extends com.pulum
         }
 
         /**
-         * @param displayName Specifies a friendly name for the certificate.
-         * Must start with `CN=`. Changing this field forces a new resource to be created.
+         * @param displayName Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
          * 
          * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
          * 

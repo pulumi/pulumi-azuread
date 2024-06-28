@@ -174,7 +174,7 @@ class SynchronizationJob(pulumi.CustomResource):
                 gallery=True,
             )])
         example_service_principal = azuread.ServicePrincipal("example",
-            application_id=example_application.application_id,
+            client_id=example_application.application_id,
             use_existing=True)
         example_synchronization_secret = azuread.SynchronizationSecret("example",
             service_principal_id=example_service_principal.id,
@@ -242,7 +242,7 @@ class SynchronizationJob(pulumi.CustomResource):
                 gallery=True,
             )])
         example_service_principal = azuread.ServicePrincipal("example",
-            application_id=example_application.application_id,
+            client_id=example_application.application_id,
             use_existing=True)
         example_synchronization_secret = azuread.SynchronizationSecret("example",
             service_principal_id=example_service_principal.id,

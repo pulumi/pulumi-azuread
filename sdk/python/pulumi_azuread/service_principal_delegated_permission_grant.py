@@ -191,7 +191,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["microsoftGraph"],
+            client_id=well_known.result["microsoftGraph"],
             use_existing=True)
         example = azuread.Application("example",
             display_name="example",
@@ -208,7 +208,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     ),
                 ],
             )])
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("example",
             service_principal_object_id=example_service_principal.object_id,
             resource_service_principal_object_id=msgraph.object_id,
@@ -226,7 +226,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["microsoftGraph"],
+            client_id=well_known.result["microsoftGraph"],
             use_existing=True)
         example = azuread.Application("example",
             display_name="example",
@@ -243,7 +243,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     ),
                 ],
             )])
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_user = azuread.User("example",
             display_name="J. Doe",
             user_principal_name="jdoe@example.com",
@@ -303,7 +303,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["microsoftGraph"],
+            client_id=well_known.result["microsoftGraph"],
             use_existing=True)
         example = azuread.Application("example",
             display_name="example",
@@ -320,7 +320,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     ),
                 ],
             )])
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("example",
             service_principal_object_id=example_service_principal.object_id,
             resource_service_principal_object_id=msgraph.object_id,
@@ -338,7 +338,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         well_known = azuread.get_application_published_app_ids()
         msgraph = azuread.ServicePrincipal("msgraph",
-            application_id=well_known.result["microsoftGraph"],
+            client_id=well_known.result["microsoftGraph"],
             use_existing=True)
         example = azuread.Application("example",
             display_name="example",
@@ -355,7 +355,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     ),
                 ],
             )])
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_user = azuread.User("example",
             display_name="J. Doe",
             user_principal_name="jdoe@example.com",

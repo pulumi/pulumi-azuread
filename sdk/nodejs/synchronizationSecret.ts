@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
- *     applicationId: exampleApplication.applicationId,
+ *     clientId: exampleApplication.applicationId,
  *     useExisting: true,
  * });
  * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("example", {

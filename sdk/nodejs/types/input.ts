@@ -415,6 +415,29 @@ export interface ApplicationOptionalClaimsSaml2Token {
     source?: pulumi.Input<string>;
 }
 
+export interface ApplicationPassword {
+    /**
+     * A display name for the password. Changing this field forces a new resource to be created.
+     */
+    displayName: pulumi.Input<string>;
+    /**
+     * The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+     */
+    endDate?: pulumi.Input<string>;
+    /**
+     * (Required) The unique key ID for the generated password.
+     */
+    keyId?: pulumi.Input<string>;
+    /**
+     * The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+     */
+    startDate?: pulumi.Input<string>;
+    /**
+     * (Required) The generated password for the application.
+     */
+    value?: pulumi.Input<string>;
+}
+
 export interface ApplicationPublicClient {
     /**
      * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
