@@ -138,7 +138,7 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["value"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(ServicePrincipalTokenSigningCertificate.__pulumiType, name, resourceInputs, opts);
+        super(ServicePrincipalTokenSigningCertificate.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

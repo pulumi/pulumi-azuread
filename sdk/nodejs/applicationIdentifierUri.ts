@@ -102,7 +102,7 @@ export class ApplicationIdentifierUri extends pulumi.CustomResource {
             resourceInputs["identifierUri"] = args ? args.identifierUri : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationIdentifierUri.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationIdentifierUri.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -125,7 +125,7 @@ export class AccessPackageResourcePackageAssociation extends pulumi.CustomResour
             resourceInputs["catalogResourceAssociationId"] = args ? args.catalogResourceAssociationId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AccessPackageResourcePackageAssociation.__pulumiType, name, resourceInputs, opts);
+        super(AccessPackageResourcePackageAssociation.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

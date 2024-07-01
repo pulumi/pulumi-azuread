@@ -140,7 +140,7 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
             resourceInputs["credentialId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationFederatedIdentityCredential.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationFederatedIdentityCredential.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

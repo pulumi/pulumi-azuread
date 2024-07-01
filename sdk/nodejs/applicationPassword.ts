@@ -142,7 +142,7 @@ export class ApplicationPassword extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["value"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(ApplicationPassword.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationPassword.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

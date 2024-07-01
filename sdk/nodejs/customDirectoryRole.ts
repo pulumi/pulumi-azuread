@@ -155,7 +155,7 @@ export class CustomDirectoryRole extends pulumi.CustomResource {
             resourceInputs["objectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CustomDirectoryRole.__pulumiType, name, resourceInputs, opts);
+        super(CustomDirectoryRole.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

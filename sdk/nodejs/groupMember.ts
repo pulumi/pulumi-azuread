@@ -112,7 +112,7 @@ export class GroupMember extends pulumi.CustomResource {
             resourceInputs["memberObjectId"] = args ? args.memberObjectId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(GroupMember.__pulumiType, name, resourceInputs, opts);
+        super(GroupMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -189,7 +189,7 @@ export class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResou
             resourceInputs["userObjectId"] = args ? args.userObjectId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ServicePrincipalDelegatedPermissionGrant.__pulumiType, name, resourceInputs, opts);
+        super(ServicePrincipalDelegatedPermissionGrant.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

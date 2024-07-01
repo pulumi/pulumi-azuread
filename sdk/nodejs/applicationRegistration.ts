@@ -207,7 +207,7 @@ export class ApplicationRegistration extends pulumi.CustomResource {
             resourceInputs["publisherDomain"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationRegistration.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationRegistration.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

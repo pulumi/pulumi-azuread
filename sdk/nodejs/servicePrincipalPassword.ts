@@ -139,7 +139,7 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["value"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(ServicePrincipalPassword.__pulumiType, name, resourceInputs, opts);
+        super(ServicePrincipalPassword.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

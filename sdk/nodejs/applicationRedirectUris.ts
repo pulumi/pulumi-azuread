@@ -124,7 +124,7 @@ export class ApplicationRedirectUris extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationRedirectUris.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationRedirectUris.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

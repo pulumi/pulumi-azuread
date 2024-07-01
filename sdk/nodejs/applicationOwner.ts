@@ -97,7 +97,7 @@ export class ApplicationOwner extends pulumi.CustomResource {
             resourceInputs["ownerObjectId"] = args ? args.ownerObjectId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationOwner.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationOwner.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

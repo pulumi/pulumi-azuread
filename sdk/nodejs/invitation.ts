@@ -161,7 +161,7 @@ export class Invitation extends pulumi.CustomResource {
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Invitation.__pulumiType, name, resourceInputs, opts);
+        super(Invitation.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -171,7 +171,7 @@ export class PrivilegedAccessGroupEligibilitySchedule extends pulumi.CustomResou
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(PrivilegedAccessGroupEligibilitySchedule.__pulumiType, name, resourceInputs, opts);
+        super(PrivilegedAccessGroupEligibilitySchedule.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

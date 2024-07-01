@@ -125,7 +125,7 @@ export class AdministrativeUnit extends pulumi.CustomResource {
             resourceInputs["objectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AdministrativeUnit.__pulumiType, name, resourceInputs, opts);
+        super(AdministrativeUnit.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

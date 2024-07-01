@@ -144,7 +144,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["schedules"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SynchronizationJob.__pulumiType, name, resourceInputs, opts);
+        super(SynchronizationJob.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

@@ -118,7 +118,7 @@ export class ClaimsMappingPolicy extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ClaimsMappingPolicy.__pulumiType, name, resourceInputs, opts);
+        super(ClaimsMappingPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

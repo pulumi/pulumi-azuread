@@ -119,7 +119,7 @@ export class ApplicationOptionalClaims extends pulumi.CustomResource {
             resourceInputs["saml2Tokens"] = args ? args.saml2Tokens : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationOptionalClaims.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationOptionalClaims.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

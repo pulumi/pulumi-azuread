@@ -192,7 +192,7 @@ export class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
             resourceInputs["requestorSettings"] = args ? args.requestorSettings : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AccessPackageAssignmentPolicy.__pulumiType, name, resourceInputs, opts);
+        super(AccessPackageAssignmentPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

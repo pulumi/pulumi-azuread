@@ -119,7 +119,7 @@ export class AccessPackage extends pulumi.CustomResource {
             resourceInputs["hidden"] = args ? args.hidden : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AccessPackage.__pulumiType, name, resourceInputs, opts);
+        super(AccessPackage.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

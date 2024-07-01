@@ -118,7 +118,7 @@ export class SynchronizationSecret extends pulumi.CustomResource {
             resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SynchronizationSecret.__pulumiType, name, resourceInputs, opts);
+        super(SynchronizationSecret.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 
