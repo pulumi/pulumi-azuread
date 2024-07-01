@@ -103,7 +103,7 @@ export class AdministrativeUnitMember extends pulumi.CustomResource {
             resourceInputs["memberObjectId"] = args ? args.memberObjectId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AdministrativeUnitMember.__pulumiType, name, resourceInputs, opts);
+        super(AdministrativeUnitMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

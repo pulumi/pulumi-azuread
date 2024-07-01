@@ -134,7 +134,7 @@ export class ApplicationFromTemplate extends pulumi.CustomResource {
             resourceInputs["servicePrincipalObjectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationFromTemplate.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationFromTemplate.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

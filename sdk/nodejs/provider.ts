@@ -134,7 +134,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["useOidc"] = pulumi.output(args ? args.useOidc : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Provider.__pulumiType, name, resourceInputs, opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

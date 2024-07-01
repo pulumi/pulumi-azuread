@@ -116,7 +116,7 @@ export class AdministrativeUnitRoleMember extends pulumi.CustomResource {
             resourceInputs["roleObjectId"] = args ? args.roleObjectId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AdministrativeUnitRoleMember.__pulumiType, name, resourceInputs, opts);
+        super(AdministrativeUnitRoleMember.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

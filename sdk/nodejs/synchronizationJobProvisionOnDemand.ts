@@ -155,7 +155,7 @@ export class SynchronizationJobProvisionOnDemand extends pulumi.CustomResource {
             resourceInputs["triggers"] = args ? args.triggers : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SynchronizationJobProvisionOnDemand.__pulumiType, name, resourceInputs, opts);
+        super(SynchronizationJobProvisionOnDemand.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 
