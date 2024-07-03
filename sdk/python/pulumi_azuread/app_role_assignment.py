@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = ['AppRoleAssignmentArgs', 'AppRoleAssignment']
@@ -202,19 +207,19 @@ class AppRoleAssignment(pulumi.CustomResource):
             use_existing=True)
         example = azuread.Application("example",
             display_name="example",
-            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=well_known.result["microsoftGraph"],
-                resource_accesses=[
-                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=msgraph.app_role_ids["User.Read.All"],
-                        type="Role",
-                    ),
-                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
-                        type="Scope",
-                    ),
+            required_resource_accesses=[{
+                "resourceAppId": well_known.result["microsoftGraph"],
+                "resourceAccesses": [
+                    {
+                        "id": msgraph.app_role_ids["User.Read.All"],
+                        "type": "Role",
+                    },
+                    {
+                        "id": msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
+                        "type": "Scope",
+                    },
                 ],
-            )])
+            }])
         example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_app_role_assignment = azuread.AppRoleAssignment("example",
             app_role_id=msgraph.app_role_ids["User.Read.All"],
@@ -230,24 +235,24 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         internal = azuread.Application("internal",
             display_name="internal",
-            app_roles=[azuread.ApplicationAppRoleArgs(
-                allowed_member_types=["Application"],
-                description="Apps can query the database",
-                display_name="Query",
-                enabled=True,
-                id="00000000-0000-0000-0000-111111111111",
-                value="Query.All",
-            )])
+            app_roles=[{
+                "allowedMemberTypes": ["Application"],
+                "description": "Apps can query the database",
+                "displayName": "Query",
+                "enabled": True,
+                "id": "00000000-0000-0000-0000-111111111111",
+                "value": "Query.All",
+            }])
         internal_service_principal = azuread.ServicePrincipal("internal", client_id=internal.application_id)
         example = azuread.Application("example",
             display_name="example",
-            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=internal.application_id,
-                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=internal_service_principal.app_role_ids["Query.All"],
-                    type="Role",
-                )],
-            )])
+            required_resource_accesses=[{
+                "resourceAppId": internal.application_id,
+                "resourceAccesses": [{
+                    "id": internal_service_principal.app_role_ids["Query.All"],
+                    "type": "Role",
+                }],
+            }])
         example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_app_role_assignment = azuread.AppRoleAssignment("example",
             app_role_id=internal_service_principal.app_role_ids["Query.All"],
@@ -304,19 +309,19 @@ class AppRoleAssignment(pulumi.CustomResource):
             use_existing=True)
         example = azuread.Application("example",
             display_name="example",
-            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=well_known.result["microsoftGraph"],
-                resource_accesses=[
-                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=msgraph.app_role_ids["User.Read.All"],
-                        type="Role",
-                    ),
-                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
-                        type="Scope",
-                    ),
+            required_resource_accesses=[{
+                "resourceAppId": well_known.result["microsoftGraph"],
+                "resourceAccesses": [
+                    {
+                        "id": msgraph.app_role_ids["User.Read.All"],
+                        "type": "Role",
+                    },
+                    {
+                        "id": msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
+                        "type": "Scope",
+                    },
                 ],
-            )])
+            }])
         example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_app_role_assignment = azuread.AppRoleAssignment("example",
             app_role_id=msgraph.app_role_ids["User.Read.All"],
@@ -332,24 +337,24 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         internal = azuread.Application("internal",
             display_name="internal",
-            app_roles=[azuread.ApplicationAppRoleArgs(
-                allowed_member_types=["Application"],
-                description="Apps can query the database",
-                display_name="Query",
-                enabled=True,
-                id="00000000-0000-0000-0000-111111111111",
-                value="Query.All",
-            )])
+            app_roles=[{
+                "allowedMemberTypes": ["Application"],
+                "description": "Apps can query the database",
+                "displayName": "Query",
+                "enabled": True,
+                "id": "00000000-0000-0000-0000-111111111111",
+                "value": "Query.All",
+            }])
         internal_service_principal = azuread.ServicePrincipal("internal", client_id=internal.application_id)
         example = azuread.Application("example",
             display_name="example",
-            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=internal.application_id,
-                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=internal_service_principal.app_role_ids["Query.All"],
-                    type="Role",
-                )],
-            )])
+            required_resource_accesses=[{
+                "resourceAppId": internal.application_id,
+                "resourceAccesses": [{
+                    "id": internal_service_principal.app_role_ids["Query.All"],
+                    "type": "Role",
+                }],
+            }])
         example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
         example_app_role_assignment = azuread.AppRoleAssignment("example",
             app_role_id=internal_service_principal.app_role_ids["Query.All"],
