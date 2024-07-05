@@ -74,45 +74,43 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
-// DisplayName: pulumi.String("example"),
-// })
-// if err != nil {
-// return err
-// }
-// exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-// ApplicationId: example.ApplicationId,
-// })
-// if err != nil {
-// return err
-// }
-// invokeBase64encode, err := std.Base64encode(ctx, invokeFile1, err := std.File(ctx, &std.FileArgs{
-// Input: "cert.der",
-// }, nil)
-// if err != nil {
-// return err
-// }
-// &std.Base64encodeArgs{
-// Input: invokeFile1.Result,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// _, err = azuread.NewServicePrincipalCertificate(ctx, "example", &azuread.ServicePrincipalCertificateArgs{
-// ServicePrincipalId: exampleServicePrincipal.ID(),
-// Type: pulumi.String("AsymmetricX509Cert"),
-// Encoding: pulumi.String("base64"),
-// Value: invokeBase64encode.Result,
-// EndDate: pulumi.String("2021-05-01T01:02:03Z"),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+//				ApplicationId: example.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: std.File(ctx, &std.FileArgs{
+//					Input: "cert.der",
+//				}, nil).Result,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewServicePrincipalCertificate(ctx, "example", &azuread.ServicePrincipalCertificateArgs{
+//				ServicePrincipalId: exampleServicePrincipal.ID(),
+//				Type:               pulumi.String("AsymmetricX509Cert"),
+//				Encoding:           pulumi.String("base64"),
+//				Value:              invokeBase64encode.Result,
+//				EndDate:            pulumi.String("2021-05-01T01:02:03Z"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
