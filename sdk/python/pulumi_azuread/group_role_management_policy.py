@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -256,11 +261,11 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activation_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyActivationRulesArgs']]] = None,
-                 active_assignment_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyActiveAssignmentRulesArgs']]] = None,
-                 eligible_assignment_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyEligibleAssignmentRulesArgs']]] = None,
+                 activation_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyActivationRulesArgs', 'GroupRoleManagementPolicyActivationRulesArgsDict']]] = None,
+                 active_assignment_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyActiveAssignmentRulesArgs', 'GroupRoleManagementPolicyActiveAssignmentRulesArgsDict']]] = None,
+                 eligible_assignment_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyEligibleAssignmentRulesArgs', 'GroupRoleManagementPolicyEligibleAssignmentRulesArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 notification_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyNotificationRulesArgs']]] = None,
+                 notification_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyNotificationRulesArgs', 'GroupRoleManagementPolicyNotificationRulesArgsDict']]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -291,24 +296,24 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
         example_group_role_management_policy = azuread.GroupRoleManagementPolicy("example",
             group_id=example.id,
             role_id="member",
-            active_assignment_rules=azuread.GroupRoleManagementPolicyActiveAssignmentRulesArgs(
-                expire_after="P365D",
-            ),
-            eligible_assignment_rules=azuread.GroupRoleManagementPolicyEligibleAssignmentRulesArgs(
-                expiration_required=False,
-            ),
-            notification_rules=azuread.GroupRoleManagementPolicyNotificationRulesArgs(
-                eligible_assignments=azuread.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs(
-                    approver_notifications=azuread.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs(
-                        notification_level="Critical",
-                        default_recipients=False,
-                        additional_recipients=[
+            active_assignment_rules={
+                "expireAfter": "P365D",
+            },
+            eligible_assignment_rules={
+                "expirationRequired": False,
+            },
+            notification_rules={
+                "eligibleAssignments": {
+                    "approverNotifications": {
+                        "notificationLevel": "Critical",
+                        "defaultRecipients": False,
+                        "additionalRecipients": [
                             "someone@example.com",
                             "someone.else@example.com",
                         ],
-                    ),
-                ),
-            ))
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -317,11 +322,11 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyActivationRulesArgs']] activation_rules: An `activation_rules` block as defined below.
-        :param pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyActiveAssignmentRulesArgs']] active_assignment_rules: An `active_assignment_rules` block as defined below.
-        :param pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyEligibleAssignmentRulesArgs']] eligible_assignment_rules: An `eligible_assignment_rules` block as defined below.
+        :param pulumi.Input[Union['GroupRoleManagementPolicyActivationRulesArgs', 'GroupRoleManagementPolicyActivationRulesArgsDict']] activation_rules: An `activation_rules` block as defined below.
+        :param pulumi.Input[Union['GroupRoleManagementPolicyActiveAssignmentRulesArgs', 'GroupRoleManagementPolicyActiveAssignmentRulesArgsDict']] active_assignment_rules: An `active_assignment_rules` block as defined below.
+        :param pulumi.Input[Union['GroupRoleManagementPolicyEligibleAssignmentRulesArgs', 'GroupRoleManagementPolicyEligibleAssignmentRulesArgsDict']] eligible_assignment_rules: An `eligible_assignment_rules` block as defined below.
         :param pulumi.Input[str] group_id: The ID of the Azure AD group for which the policy applies.
-        :param pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyNotificationRulesArgs']] notification_rules: A `notification_rules` block as defined below.
+        :param pulumi.Input[Union['GroupRoleManagementPolicyNotificationRulesArgs', 'GroupRoleManagementPolicyNotificationRulesArgsDict']] notification_rules: A `notification_rules` block as defined below.
         :param pulumi.Input[str] role_id: The type of assignment this policy coveres. Can be either `member` or `owner`.
         """
         ...
@@ -358,24 +363,24 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
         example_group_role_management_policy = azuread.GroupRoleManagementPolicy("example",
             group_id=example.id,
             role_id="member",
-            active_assignment_rules=azuread.GroupRoleManagementPolicyActiveAssignmentRulesArgs(
-                expire_after="P365D",
-            ),
-            eligible_assignment_rules=azuread.GroupRoleManagementPolicyEligibleAssignmentRulesArgs(
-                expiration_required=False,
-            ),
-            notification_rules=azuread.GroupRoleManagementPolicyNotificationRulesArgs(
-                eligible_assignments=azuread.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs(
-                    approver_notifications=azuread.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs(
-                        notification_level="Critical",
-                        default_recipients=False,
-                        additional_recipients=[
+            active_assignment_rules={
+                "expireAfter": "P365D",
+            },
+            eligible_assignment_rules={
+                "expirationRequired": False,
+            },
+            notification_rules={
+                "eligibleAssignments": {
+                    "approverNotifications": {
+                        "notificationLevel": "Critical",
+                        "defaultRecipients": False,
+                        "additionalRecipients": [
                             "someone@example.com",
                             "someone.else@example.com",
                         ],
-                    ),
-                ),
-            ))
+                    },
+                },
+            })
         ```
 
         ## Import
@@ -397,11 +402,11 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activation_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyActivationRulesArgs']]] = None,
-                 active_assignment_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyActiveAssignmentRulesArgs']]] = None,
-                 eligible_assignment_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyEligibleAssignmentRulesArgs']]] = None,
+                 activation_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyActivationRulesArgs', 'GroupRoleManagementPolicyActivationRulesArgsDict']]] = None,
+                 active_assignment_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyActiveAssignmentRulesArgs', 'GroupRoleManagementPolicyActiveAssignmentRulesArgsDict']]] = None,
+                 eligible_assignment_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyEligibleAssignmentRulesArgs', 'GroupRoleManagementPolicyEligibleAssignmentRulesArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 notification_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyNotificationRulesArgs']]] = None,
+                 notification_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyNotificationRulesArgs', 'GroupRoleManagementPolicyNotificationRulesArgsDict']]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -434,13 +439,13 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            activation_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyActivationRulesArgs']]] = None,
-            active_assignment_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyActiveAssignmentRulesArgs']]] = None,
+            activation_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyActivationRulesArgs', 'GroupRoleManagementPolicyActivationRulesArgsDict']]] = None,
+            active_assignment_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyActiveAssignmentRulesArgs', 'GroupRoleManagementPolicyActiveAssignmentRulesArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            eligible_assignment_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyEligibleAssignmentRulesArgs']]] = None,
+            eligible_assignment_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyEligibleAssignmentRulesArgs', 'GroupRoleManagementPolicyEligibleAssignmentRulesArgsDict']]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
-            notification_rules: Optional[pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyNotificationRulesArgs']]] = None,
+            notification_rules: Optional[pulumi.Input[Union['GroupRoleManagementPolicyNotificationRulesArgs', 'GroupRoleManagementPolicyNotificationRulesArgsDict']]] = None,
             role_id: Optional[pulumi.Input[str]] = None) -> 'GroupRoleManagementPolicy':
         """
         Get an existing GroupRoleManagementPolicy resource's state with the given name, id, and optional extra
@@ -449,13 +454,13 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyActivationRulesArgs']] activation_rules: An `activation_rules` block as defined below.
-        :param pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyActiveAssignmentRulesArgs']] active_assignment_rules: An `active_assignment_rules` block as defined below.
+        :param pulumi.Input[Union['GroupRoleManagementPolicyActivationRulesArgs', 'GroupRoleManagementPolicyActivationRulesArgsDict']] activation_rules: An `activation_rules` block as defined below.
+        :param pulumi.Input[Union['GroupRoleManagementPolicyActiveAssignmentRulesArgs', 'GroupRoleManagementPolicyActiveAssignmentRulesArgsDict']] active_assignment_rules: An `active_assignment_rules` block as defined below.
         :param pulumi.Input[str] description: (String) The description of this policy.
         :param pulumi.Input[str] display_name: (String) The display name of this policy.
-        :param pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyEligibleAssignmentRulesArgs']] eligible_assignment_rules: An `eligible_assignment_rules` block as defined below.
+        :param pulumi.Input[Union['GroupRoleManagementPolicyEligibleAssignmentRulesArgs', 'GroupRoleManagementPolicyEligibleAssignmentRulesArgsDict']] eligible_assignment_rules: An `eligible_assignment_rules` block as defined below.
         :param pulumi.Input[str] group_id: The ID of the Azure AD group for which the policy applies.
-        :param pulumi.Input[pulumi.InputType['GroupRoleManagementPolicyNotificationRulesArgs']] notification_rules: A `notification_rules` block as defined below.
+        :param pulumi.Input[Union['GroupRoleManagementPolicyNotificationRulesArgs', 'GroupRoleManagementPolicyNotificationRulesArgsDict']] notification_rules: A `notification_rules` block as defined below.
         :param pulumi.Input[str] role_id: The type of assignment this policy coveres. Can be either `member` or `owner`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

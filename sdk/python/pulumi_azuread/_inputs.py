@@ -4,88 +4,191 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'AccessPackageAssignmentPolicyApprovalSettingsArgs',
+    'AccessPackageAssignmentPolicyApprovalSettingsArgsDict',
     'AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs',
+    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgsDict',
     'AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs',
+    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgsDict',
     'AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs',
+    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgsDict',
     'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs',
+    'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict',
     'AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs',
+    'AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgsDict',
     'AccessPackageAssignmentPolicyQuestionArgs',
+    'AccessPackageAssignmentPolicyQuestionArgsDict',
     'AccessPackageAssignmentPolicyQuestionChoiceArgs',
+    'AccessPackageAssignmentPolicyQuestionChoiceArgsDict',
     'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs',
+    'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgsDict',
     'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs',
+    'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgsDict',
     'AccessPackageAssignmentPolicyQuestionTextArgs',
+    'AccessPackageAssignmentPolicyQuestionTextArgsDict',
     'AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs',
+    'AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgsDict',
     'AccessPackageAssignmentPolicyRequestorSettingsArgs',
+    'AccessPackageAssignmentPolicyRequestorSettingsArgsDict',
     'AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs',
+    'AccessPackageAssignmentPolicyRequestorSettingsRequestorArgsDict',
     'ApplicationApiArgs',
+    'ApplicationApiArgsDict',
     'ApplicationApiOauth2PermissionScopeArgs',
+    'ApplicationApiOauth2PermissionScopeArgsDict',
     'ApplicationAppRoleArgs',
+    'ApplicationAppRoleArgsDict',
     'ApplicationFeatureTagArgs',
+    'ApplicationFeatureTagArgsDict',
     'ApplicationOptionalClaimsArgs',
+    'ApplicationOptionalClaimsArgsDict',
     'ApplicationOptionalClaimsAccessTokenArgs',
+    'ApplicationOptionalClaimsAccessTokenArgsDict',
     'ApplicationOptionalClaimsIdTokenArgs',
+    'ApplicationOptionalClaimsIdTokenArgsDict',
     'ApplicationOptionalClaimsSaml2TokenArgs',
+    'ApplicationOptionalClaimsSaml2TokenArgsDict',
     'ApplicationPasswordArgs',
+    'ApplicationPasswordArgsDict',
     'ApplicationPublicClientArgs',
+    'ApplicationPublicClientArgsDict',
     'ApplicationRequiredResourceAccessArgs',
+    'ApplicationRequiredResourceAccessArgsDict',
     'ApplicationRequiredResourceAccessResourceAccessArgs',
+    'ApplicationRequiredResourceAccessResourceAccessArgsDict',
     'ApplicationSinglePageApplicationArgs',
+    'ApplicationSinglePageApplicationArgsDict',
     'ApplicationWebArgs',
+    'ApplicationWebArgsDict',
     'ApplicationWebImplicitGrantArgs',
+    'ApplicationWebImplicitGrantArgsDict',
     'ConditionalAccessPolicyConditionsArgs',
+    'ConditionalAccessPolicyConditionsArgsDict',
     'ConditionalAccessPolicyConditionsApplicationsArgs',
+    'ConditionalAccessPolicyConditionsApplicationsArgsDict',
     'ConditionalAccessPolicyConditionsClientApplicationsArgs',
+    'ConditionalAccessPolicyConditionsClientApplicationsArgsDict',
     'ConditionalAccessPolicyConditionsDevicesArgs',
+    'ConditionalAccessPolicyConditionsDevicesArgsDict',
     'ConditionalAccessPolicyConditionsDevicesFilterArgs',
+    'ConditionalAccessPolicyConditionsDevicesFilterArgsDict',
     'ConditionalAccessPolicyConditionsLocationsArgs',
+    'ConditionalAccessPolicyConditionsLocationsArgsDict',
     'ConditionalAccessPolicyConditionsPlatformsArgs',
+    'ConditionalAccessPolicyConditionsPlatformsArgsDict',
     'ConditionalAccessPolicyConditionsUsersArgs',
+    'ConditionalAccessPolicyConditionsUsersArgsDict',
     'ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs',
+    'ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgsDict',
     'ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs',
+    'ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgsDict',
     'ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs',
+    'ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgsDict',
     'ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs',
+    'ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgsDict',
     'ConditionalAccessPolicyGrantControlsArgs',
+    'ConditionalAccessPolicyGrantControlsArgsDict',
     'ConditionalAccessPolicySessionControlsArgs',
+    'ConditionalAccessPolicySessionControlsArgsDict',
     'CustomDirectoryRolePermissionArgs',
+    'CustomDirectoryRolePermissionArgsDict',
     'GroupDynamicMembershipArgs',
+    'GroupDynamicMembershipArgsDict',
     'GroupRoleManagementPolicyActivationRulesArgs',
+    'GroupRoleManagementPolicyActivationRulesArgsDict',
     'GroupRoleManagementPolicyActivationRulesApprovalStageArgs',
+    'GroupRoleManagementPolicyActivationRulesApprovalStageArgsDict',
     'GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApproverArgs',
+    'GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApproverArgsDict',
     'GroupRoleManagementPolicyActiveAssignmentRulesArgs',
+    'GroupRoleManagementPolicyActiveAssignmentRulesArgsDict',
     'GroupRoleManagementPolicyEligibleAssignmentRulesArgs',
+    'GroupRoleManagementPolicyEligibleAssignmentRulesArgsDict',
     'GroupRoleManagementPolicyNotificationRulesArgs',
+    'GroupRoleManagementPolicyNotificationRulesArgsDict',
     'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs',
+    'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgs',
+    'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotificationsArgs',
+    'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotificationsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotificationsArgs',
+    'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotificationsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgs',
+    'GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotificationsArgs',
+    'GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotificationsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotificationsArgs',
+    'GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotificationsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotificationsArgs',
+    'GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotificationsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs',
+    'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotificationsArgs',
+    'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotificationsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs',
+    'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgs',
+    'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgsDict',
     'InvitationMessageArgs',
+    'InvitationMessageArgsDict',
     'NamedLocationCountryArgs',
+    'NamedLocationCountryArgsDict',
     'NamedLocationIpArgs',
+    'NamedLocationIpArgsDict',
     'ServicePrincipalAppRoleArgs',
+    'ServicePrincipalAppRoleArgsDict',
     'ServicePrincipalFeatureArgs',
+    'ServicePrincipalFeatureArgsDict',
     'ServicePrincipalFeatureTagArgs',
+    'ServicePrincipalFeatureTagArgsDict',
     'ServicePrincipalOauth2PermissionScopeArgs',
+    'ServicePrincipalOauth2PermissionScopeArgsDict',
     'ServicePrincipalSamlSingleSignOnArgs',
+    'ServicePrincipalSamlSingleSignOnArgsDict',
     'SynchronizationJobProvisionOnDemandParameterArgs',
+    'SynchronizationJobProvisionOnDemandParameterArgsDict',
     'SynchronizationJobProvisionOnDemandParameterSubjectArgs',
+    'SynchronizationJobProvisionOnDemandParameterSubjectArgsDict',
     'SynchronizationJobScheduleArgs',
+    'SynchronizationJobScheduleArgsDict',
     'SynchronizationSecretCredentialArgs',
+    'SynchronizationSecretCredentialArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AccessPackageAssignmentPolicyApprovalSettingsArgsDict(TypedDict):
+        approval_required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether an approval is required.
+        """
+        approval_required_for_extension: NotRequired[pulumi.Input[bool]]
+        """
+        Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
+        """
+        approval_stages: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgsDict']]]]
+        """
+        An `approval_stage` block specifying the process to obtain an approval, as documented below.
+        """
+        requestor_justification_required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+        """
+elif False:
+    AccessPackageAssignmentPolicyApprovalSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPackageAssignmentPolicyApprovalSettingsArgs:
@@ -157,6 +260,35 @@ class AccessPackageAssignmentPolicyApprovalSettingsArgs:
     def requestor_justification_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "requestor_justification_required", value)
 
+
+if not MYPY:
+    class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgsDict(TypedDict):
+        approval_timeout_in_days: pulumi.Input[int]
+        """
+        Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
+        """
+        alternative_approval_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If no action taken, forward to alternate approvers?
+        """
+        alternative_approvers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgsDict']]]]
+        """
+        If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
+        """
+        approver_justification_required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
+        """
+        enable_alternative_approval_in_days: NotRequired[pulumi.Input[int]]
+        """
+        Forward to alternate approver(s) after how many days?
+        """
+        primary_approvers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgsDict']]]]
+        """
+        The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
+        """
+elif False:
+    AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs:
@@ -260,6 +392,23 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs:
         pulumi.set(self, "primary_approvers", value)
 
 
+if not MYPY:
+    class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgsDict(TypedDict):
+        subject_type: pulumi.Input[str]
+        """
+        Type of users
+        """
+        backup: NotRequired[pulumi.Input[bool]]
+        """
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver
+        """
+        object_id: NotRequired[pulumi.Input[str]]
+        """
+        The object ID of the subject
+        """
+elif False:
+    AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs:
     def __init__(__self__, *,
@@ -314,6 +463,23 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeAppro
         pulumi.set(self, "object_id", value)
 
 
+if not MYPY:
+    class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgsDict(TypedDict):
+        subject_type: pulumi.Input[str]
+        """
+        Type of users
+        """
+        backup: NotRequired[pulumi.Input[bool]]
+        """
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver
+        """
+        object_id: NotRequired[pulumi.Input[str]]
+        """
+        The object ID of the subject
+        """
+elif False:
+    AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs:
     def __init__(__self__, *,
@@ -367,6 +533,47 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverA
     def object_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "object_id", value)
 
+
+if not MYPY:
+    class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict(TypedDict):
+        access_recommendation_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
+        """
+        access_review_timeout_behavior: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
+        """
+        approver_justification_required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
+        """
+        duration_in_days: NotRequired[pulumi.Input[int]]
+        """
+        How many days each occurrence of the access review series will run.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable assignment review.
+        """
+        review_frequency: NotRequired[pulumi.Input[str]]
+        """
+        This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+        """
+        review_type: NotRequired[pulumi.Input[str]]
+        """
+        Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
+        """
+        reviewers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgsDict']]]]
+        """
+        One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+        """
+        starting_on: NotRequired[pulumi.Input[str]]
+        """
+        This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
+        """
+elif False:
+    AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs:
@@ -519,6 +726,23 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs:
         pulumi.set(self, "starting_on", value)
 
 
+if not MYPY:
+    class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgsDict(TypedDict):
+        subject_type: pulumi.Input[str]
+        """
+        Type of users
+        """
+        backup: NotRequired[pulumi.Input[bool]]
+        """
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver
+        """
+        object_id: NotRequired[pulumi.Input[str]]
+        """
+        The object ID of the subject
+        """
+elif False:
+    AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs:
     def __init__(__self__, *,
@@ -572,6 +796,27 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs:
     def object_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "object_id", value)
 
+
+if not MYPY:
+    class AccessPackageAssignmentPolicyQuestionArgsDict(TypedDict):
+        text: pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArgsDict']
+        """
+        A block describing the content of this question, as documented below.
+        """
+        choices: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArgsDict']]]]
+        """
+        One or more blocks configuring a choice to the question, as documented below.
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this question is required.
+        """
+        sequence: NotRequired[pulumi.Input[int]]
+        """
+        The sequence number of this question.
+        """
+elif False:
+    AccessPackageAssignmentPolicyQuestionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPackageAssignmentPolicyQuestionArgs:
@@ -643,6 +888,19 @@ class AccessPackageAssignmentPolicyQuestionArgs:
         pulumi.set(self, "sequence", value)
 
 
+if not MYPY:
+    class AccessPackageAssignmentPolicyQuestionChoiceArgsDict(TypedDict):
+        actual_value: pulumi.Input[str]
+        """
+        The actual value of this choice
+        """
+        display_value: pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgsDict']
+        """
+        The display text of this choice
+        """
+elif False:
+    AccessPackageAssignmentPolicyQuestionChoiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPackageAssignmentPolicyQuestionChoiceArgs:
     def __init__(__self__, *,
@@ -679,6 +937,19 @@ class AccessPackageAssignmentPolicyQuestionChoiceArgs:
     def display_value(self, value: pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs']):
         pulumi.set(self, "display_value", value)
 
+
+if not MYPY:
+    class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgsDict(TypedDict):
+        default_text: pulumi.Input[str]
+        """
+        The default text of this question
+        """
+        localized_texts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgsDict']]]]
+        """
+        The localized text of this question
+        """
+elif False:
+    AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs:
@@ -718,6 +989,19 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs:
         pulumi.set(self, "localized_texts", value)
 
 
+if not MYPY:
+    class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        The localized content of this question
+        """
+        language_code: pulumi.Input[str]
+        """
+        The language code of this question content
+        """
+elif False:
+    AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs:
     def __init__(__self__, *,
@@ -754,6 +1038,19 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs:
     def language_code(self, value: pulumi.Input[str]):
         pulumi.set(self, "language_code", value)
 
+
+if not MYPY:
+    class AccessPackageAssignmentPolicyQuestionTextArgsDict(TypedDict):
+        default_text: pulumi.Input[str]
+        """
+        The default text of this question
+        """
+        localized_texts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgsDict']]]]
+        """
+        The localized text of this question
+        """
+elif False:
+    AccessPackageAssignmentPolicyQuestionTextArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPackageAssignmentPolicyQuestionTextArgs:
@@ -793,6 +1090,19 @@ class AccessPackageAssignmentPolicyQuestionTextArgs:
         pulumi.set(self, "localized_texts", value)
 
 
+if not MYPY:
+    class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        The localized content of this question
+        """
+        language_code: pulumi.Input[str]
+        """
+        The language code of this question content
+        """
+elif False:
+    AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs:
     def __init__(__self__, *,
@@ -829,6 +1139,23 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs:
     def language_code(self, value: pulumi.Input[str]):
         pulumi.set(self, "language_code", value)
 
+
+if not MYPY:
+    class AccessPackageAssignmentPolicyRequestorSettingsArgsDict(TypedDict):
+        requestors: NotRequired[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgsDict']]]]
+        """
+        A block specifying the users who are allowed to request on this policy, as documented below.
+        """
+        requests_accepted: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+        """
+        scope_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
+        """
+elif False:
+    AccessPackageAssignmentPolicyRequestorSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPackageAssignmentPolicyRequestorSettingsArgs:
@@ -885,6 +1212,23 @@ class AccessPackageAssignmentPolicyRequestorSettingsArgs:
         pulumi.set(self, "scope_type", value)
 
 
+if not MYPY:
+    class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgsDict(TypedDict):
+        subject_type: pulumi.Input[str]
+        """
+        Type of users
+        """
+        backup: NotRequired[pulumi.Input[bool]]
+        """
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver
+        """
+        object_id: NotRequired[pulumi.Input[str]]
+        """
+        The object ID of the subject
+        """
+elif False:
+    AccessPackageAssignmentPolicyRequestorSettingsRequestorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs:
     def __init__(__self__, *,
@@ -938,6 +1282,27 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs:
     def object_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "object_id", value)
 
+
+if not MYPY:
+    class ApplicationApiArgsDict(TypedDict):
+        known_client_applications: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+        """
+        mapped_claims_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
+        """
+        oauth2_permission_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationApiOauth2PermissionScopeArgsDict']]]]
+        """
+        One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+        """
+        requested_access_token_version: NotRequired[pulumi.Input[int]]
+        """
+        The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+        """
+elif False:
+    ApplicationApiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationApiArgs:
@@ -1009,6 +1374,45 @@ class ApplicationApiArgs:
     def requested_access_token_version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "requested_access_token_version", value)
 
+
+if not MYPY:
+    class ApplicationApiOauth2PermissionScopeArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The unique identifier of the delegated permission. Must be a valid UUID.
+
+        > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+        """
+        admin_consent_description: NotRequired[pulumi.Input[str]]
+        """
+        Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
+        """
+        admin_consent_display_name: NotRequired[pulumi.Input[str]]
+        """
+        Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Determines if the permission scope is enabled. Defaults to `true`.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
+        """
+        user_consent_description: NotRequired[pulumi.Input[str]]
+        """
+        Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+        """
+        user_consent_display_name: NotRequired[pulumi.Input[str]]
+        """
+        Display name for the delegated permission that appears in the end user consent experience.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value that is used for the `scp` claim in OAuth 2.0 access tokens
+        """
+elif False:
+    ApplicationApiOauth2PermissionScopeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationApiOauth2PermissionScopeArgs:
@@ -1148,6 +1552,37 @@ class ApplicationApiOauth2PermissionScopeArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ApplicationAppRoleArgsDict(TypedDict):
+        allowed_member_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
+        """
+        description: pulumi.Input[str]
+        """
+        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        """
+        display_name: pulumi.Input[str]
+        """
+        Display name for the app role that appears during app role assignment and in consent experiences.
+        """
+        id: pulumi.Input[str]
+        """
+        The unique identifier of the app role. Must be a valid UUID.
+
+        > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Determines if the app role is enabled. Defaults to `true`.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+        """
+elif False:
+    ApplicationAppRoleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationAppRoleArgs:
     def __init__(__self__, *,
@@ -1251,6 +1686,27 @@ class ApplicationAppRoleArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ApplicationFeatureTagArgsDict(TypedDict):
+        custom_single_sign_on: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+        """
+        enterprise: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+        """
+        gallery: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+        """
+        hide: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+        """
+elif False:
+    ApplicationFeatureTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationFeatureTagArgs:
     def __init__(__self__, *,
@@ -1322,6 +1778,23 @@ class ApplicationFeatureTagArgs:
         pulumi.set(self, "hide", value)
 
 
+if not MYPY:
+    class ApplicationOptionalClaimsArgsDict(TypedDict):
+        access_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgsDict']]]]
+        """
+        One or more `access_token` blocks as documented below.
+        """
+        id_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgsDict']]]]
+        """
+        One or more `id_token` blocks as documented below.
+        """
+        saml2_tokens: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgsDict']]]]
+        """
+        One or more `saml2_token` blocks as documented below.
+        """
+elif False:
+    ApplicationOptionalClaimsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationOptionalClaimsArgs:
     def __init__(__self__, *,
@@ -1376,6 +1849,27 @@ class ApplicationOptionalClaimsArgs:
     def saml2_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]):
         pulumi.set(self, "saml2_tokens", value)
 
+
+if not MYPY:
+    class ApplicationOptionalClaimsAccessTokenArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the optional claim.
+        """
+        additional_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
+        """
+        essential: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+        """
+elif False:
+    ApplicationOptionalClaimsAccessTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationOptionalClaimsAccessTokenArgs:
@@ -1447,6 +1941,27 @@ class ApplicationOptionalClaimsAccessTokenArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class ApplicationOptionalClaimsIdTokenArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the optional claim.
+        """
+        additional_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
+        """
+        essential: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+        """
+elif False:
+    ApplicationOptionalClaimsIdTokenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationOptionalClaimsIdTokenArgs:
     def __init__(__self__, *,
@@ -1517,6 +2032,27 @@ class ApplicationOptionalClaimsIdTokenArgs:
         pulumi.set(self, "source", value)
 
 
+if not MYPY:
+    class ApplicationOptionalClaimsSaml2TokenArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the optional claim.
+        """
+        additional_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
+        """
+        essential: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+        """
+        source: NotRequired[pulumi.Input[str]]
+        """
+        The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+        """
+elif False:
+    ApplicationOptionalClaimsSaml2TokenArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationOptionalClaimsSaml2TokenArgs:
     def __init__(__self__, *,
@@ -1586,6 +2122,31 @@ class ApplicationOptionalClaimsSaml2TokenArgs:
     def source(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source", value)
 
+
+if not MYPY:
+    class ApplicationPasswordArgsDict(TypedDict):
+        display_name: pulumi.Input[str]
+        """
+        A display name for the password. Changing this field forces a new resource to be created.
+        """
+        end_date: NotRequired[pulumi.Input[str]]
+        """
+        The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        """
+        key_id: NotRequired[pulumi.Input[str]]
+        """
+        (Required) The unique key ID for the generated password.
+        """
+        start_date: NotRequired[pulumi.Input[str]]
+        """
+        The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        (Required) The generated password for the application.
+        """
+elif False:
+    ApplicationPasswordArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationPasswordArgs:
@@ -1673,6 +2234,15 @@ class ApplicationPasswordArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ApplicationPublicClientArgsDict(TypedDict):
+        redirect_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
+        """
+elif False:
+    ApplicationPublicClientArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationPublicClientArgs:
     def __init__(__self__, *,
@@ -1695,6 +2265,21 @@ class ApplicationPublicClientArgs:
     def redirect_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "redirect_uris", value)
 
+
+if not MYPY:
+    class ApplicationRequiredResourceAccessArgsDict(TypedDict):
+        resource_accesses: pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgsDict']]]
+        """
+        A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
+        """
+        resource_app_id: pulumi.Input[str]
+        """
+        The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
+
+        > **Note:** Documentation on `resource_app_id` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
+        """
+elif False:
+    ApplicationRequiredResourceAccessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationRequiredResourceAccessArgs:
@@ -1737,6 +2322,19 @@ class ApplicationRequiredResourceAccessArgs:
         pulumi.set(self, "resource_app_id", value)
 
 
+if not MYPY:
+    class ApplicationRequiredResourceAccessResourceAccessArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+        """
+        type: pulumi.Input[str]
+        """
+        Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
+        """
+elif False:
+    ApplicationRequiredResourceAccessResourceAccessArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationRequiredResourceAccessResourceAccessArgs:
     def __init__(__self__, *,
@@ -1774,6 +2372,15 @@ class ApplicationRequiredResourceAccessResourceAccessArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ApplicationSinglePageApplicationArgsDict(TypedDict):
+        redirect_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
+        """
+elif False:
+    ApplicationSinglePageApplicationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationSinglePageApplicationArgs:
     def __init__(__self__, *,
@@ -1796,6 +2403,27 @@ class ApplicationSinglePageApplicationArgs:
     def redirect_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "redirect_uris", value)
 
+
+if not MYPY:
+    class ApplicationWebArgsDict(TypedDict):
+        homepage_url: NotRequired[pulumi.Input[str]]
+        """
+        Home page or landing page of the application.
+        """
+        implicit_grant: NotRequired[pulumi.Input['ApplicationWebImplicitGrantArgsDict']]
+        """
+        An `implicit_grant` block as documented above.
+        """
+        logout_url: NotRequired[pulumi.Input[str]]
+        """
+        The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
+        """
+        redirect_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
+        """
+elif False:
+    ApplicationWebArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationWebArgs:
@@ -1868,6 +2496,19 @@ class ApplicationWebArgs:
         pulumi.set(self, "redirect_uris", value)
 
 
+if not MYPY:
+    class ApplicationWebImplicitGrantArgsDict(TypedDict):
+        access_token_issuance_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this web application can request an access token using OAuth 2.0 implicit flow.
+        """
+        id_token_issuance_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+        """
+elif False:
+    ApplicationWebImplicitGrantArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApplicationWebImplicitGrantArgs:
     def __init__(__self__, *,
@@ -1906,6 +2547,51 @@ class ApplicationWebImplicitGrantArgs:
     def id_token_issuance_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "id_token_issuance_enabled", value)
 
+
+if not MYPY:
+    class ConditionalAccessPolicyConditionsArgsDict(TypedDict):
+        applications: pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgsDict']
+        """
+        An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+        """
+        client_app_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+        """
+        users: pulumi.Input['ConditionalAccessPolicyConditionsUsersArgsDict']
+        """
+        A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        """
+        client_applications: NotRequired[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgsDict']]
+        """
+        An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+        """
+        devices: NotRequired[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgsDict']]
+        """
+        A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+        """
+        locations: NotRequired[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgsDict']]
+        """
+        A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+        """
+        platforms: NotRequired[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgsDict']]
+        """
+        A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+        """
+        service_principal_risk_levels: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+        """
+        sign_in_risk_levels: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        """
+        user_risk_levels: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        """
+elif False:
+    ConditionalAccessPolicyConditionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsArgs:
@@ -2071,6 +2757,23 @@ class ConditionalAccessPolicyConditionsArgs:
         pulumi.set(self, "user_risk_levels", value)
 
 
+if not MYPY:
+    class ConditionalAccessPolicyConditionsApplicationsArgsDict(TypedDict):
+        excluded_applications: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
+        """
+        included_applications: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+        """
+        included_user_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
+        """
+elif False:
+    ConditionalAccessPolicyConditionsApplicationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsApplicationsArgs:
     def __init__(__self__, *,
@@ -2126,6 +2829,19 @@ class ConditionalAccessPolicyConditionsApplicationsArgs:
         pulumi.set(self, "included_user_actions", value)
 
 
+if not MYPY:
+    class ConditionalAccessPolicyConditionsClientApplicationsArgsDict(TypedDict):
+        excluded_service_principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of service principal IDs explicitly excluded in the policy.
+        """
+        included_service_principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+        """
+elif False:
+    ConditionalAccessPolicyConditionsClientApplicationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsClientApplicationsArgs:
     def __init__(__self__, *,
@@ -2165,6 +2881,15 @@ class ConditionalAccessPolicyConditionsClientApplicationsArgs:
         pulumi.set(self, "included_service_principals", value)
 
 
+if not MYPY:
+    class ConditionalAccessPolicyConditionsDevicesArgsDict(TypedDict):
+        filter: NotRequired[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgsDict']]
+        """
+        A `filter` block as described below.
+        """
+elif False:
+    ConditionalAccessPolicyConditionsDevicesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsDevicesArgs:
     def __init__(__self__, *,
@@ -2187,6 +2912,19 @@ class ConditionalAccessPolicyConditionsDevicesArgs:
     def filter(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs']]):
         pulumi.set(self, "filter", value)
 
+
+if not MYPY:
+    class ConditionalAccessPolicyConditionsDevicesFilterArgsDict(TypedDict):
+        mode: pulumi.Input[str]
+        """
+        Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+        """
+        rule: pulumi.Input[str]
+        """
+        Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+        """
+elif False:
+    ConditionalAccessPolicyConditionsDevicesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsDevicesFilterArgs:
@@ -2224,6 +2962,19 @@ class ConditionalAccessPolicyConditionsDevicesFilterArgs:
     def rule(self, value: pulumi.Input[str]):
         pulumi.set(self, "rule", value)
 
+
+if not MYPY:
+    class ConditionalAccessPolicyConditionsLocationsArgsDict(TypedDict):
+        included_locations: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
+        """
+        excluded_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
+        """
+elif False:
+    ConditionalAccessPolicyConditionsLocationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsLocationsArgs:
@@ -2263,6 +3014,19 @@ class ConditionalAccessPolicyConditionsLocationsArgs:
         pulumi.set(self, "excluded_locations", value)
 
 
+if not MYPY:
+    class ConditionalAccessPolicyConditionsPlatformsArgsDict(TypedDict):
+        included_platforms: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+        """
+        excluded_platforms: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+        """
+elif False:
+    ConditionalAccessPolicyConditionsPlatformsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsPlatformsArgs:
     def __init__(__self__, *,
@@ -2300,6 +3064,45 @@ class ConditionalAccessPolicyConditionsPlatformsArgs:
     def excluded_platforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "excluded_platforms", value)
 
+
+if not MYPY:
+    class ConditionalAccessPolicyConditionsUsersArgsDict(TypedDict):
+        excluded_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of group IDs excluded from scope of policy.
+        """
+        excluded_guests_or_external_users: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgsDict']]]]
+        """
+        A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+        """
+        excluded_roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of role IDs excluded from scope of policy.
+        """
+        excluded_users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
+        """
+        included_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of group IDs in scope of policy unless explicitly excluded.
+        """
+        included_guests_or_external_users: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgsDict']]]]
+        """
+        A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+        """
+        included_roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of role IDs in scope of policy unless explicitly excluded.
+        """
+        included_users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+
+        > At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
+        """
+elif False:
+    ConditionalAccessPolicyConditionsUsersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsUsersArgs:
@@ -2440,6 +3243,13 @@ class ConditionalAccessPolicyConditionsUsersArgs:
         pulumi.set(self, "included_users", value)
 
 
+if not MYPY:
+    class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgsDict(TypedDict):
+        guest_or_external_user_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        external_tenants: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgsDict']]]]
+elif False:
+    ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs:
     def __init__(__self__, *,
@@ -2467,6 +3277,19 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs:
     def external_tenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs']]]]):
         pulumi.set(self, "external_tenants", value)
 
+
+if not MYPY:
+    class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgsDict(TypedDict):
+        membership_kind: pulumi.Input[str]
+        """
+        The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+        """
+        members: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+        """
+elif False:
+    ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs:
@@ -2506,6 +3329,13 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternal
         pulumi.set(self, "members", value)
 
 
+if not MYPY:
+    class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgsDict(TypedDict):
+        guest_or_external_user_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        external_tenants: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgsDict']]]]
+elif False:
+    ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs:
     def __init__(__self__, *,
@@ -2533,6 +3363,19 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs:
     def external_tenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs']]]]):
         pulumi.set(self, "external_tenants", value)
 
+
+if not MYPY:
+    class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgsDict(TypedDict):
+        membership_kind: pulumi.Input[str]
+        """
+        The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+        """
+        members: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+        """
+elif False:
+    ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs:
@@ -2571,6 +3414,33 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternal
     def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "members", value)
 
+
+if not MYPY:
+    class ConditionalAccessPolicyGrantControlsArgsDict(TypedDict):
+        operator: pulumi.Input[str]
+        """
+        Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+        """
+        authentication_strength_policy_id: NotRequired[pulumi.Input[str]]
+        """
+        ID of an Authentication Strength Policy to use in this policy.
+        """
+        built_in_controls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
+        """
+        custom_authentication_factors: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of custom controls IDs required by the policy.
+        """
+        terms_of_uses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of terms of use IDs required by the policy.
+
+        > At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
+        """
+elif False:
+    ConditionalAccessPolicyGrantControlsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConditionalAccessPolicyGrantControlsArgs:
@@ -2661,6 +3531,45 @@ class ConditionalAccessPolicyGrantControlsArgs:
     def terms_of_uses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "terms_of_uses", value)
 
+
+if not MYPY:
+    class ConditionalAccessPolicySessionControlsArgsDict(TypedDict):
+        application_enforced_restrictions_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether application enforced restrictions are enabled. Defaults to `false`.
+
+        > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
+        """
+        cloud_app_security_policy: NotRequired[pulumi.Input[str]]
+        """
+        Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
+        """
+        disable_resilience_defaults: NotRequired[pulumi.Input[bool]]
+        """
+        Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+        """
+        persistent_browser_mode: NotRequired[pulumi.Input[str]]
+        """
+        Session control to define whether to persist cookies. Possible values are: `always` or `never`.
+        """
+        sign_in_frequency: NotRequired[pulumi.Input[int]]
+        """
+        Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+        """
+        sign_in_frequency_authentication_type: NotRequired[pulumi.Input[str]]
+        """
+        Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
+        """
+        sign_in_frequency_interval: NotRequired[pulumi.Input[str]]
+        """
+        The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
+        """
+        sign_in_frequency_period: NotRequired[pulumi.Input[str]]
+        """
+        The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+        """
+elif False:
+    ConditionalAccessPolicySessionControlsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConditionalAccessPolicySessionControlsArgs:
@@ -2801,6 +3710,15 @@ class ConditionalAccessPolicySessionControlsArgs:
         pulumi.set(self, "sign_in_frequency_period", value)
 
 
+if not MYPY:
+    class CustomDirectoryRolePermissionArgsDict(TypedDict):
+        allowed_resource_actions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+        """
+elif False:
+    CustomDirectoryRolePermissionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CustomDirectoryRolePermissionArgs:
     def __init__(__self__, *,
@@ -2822,6 +3740,21 @@ class CustomDirectoryRolePermissionArgs:
     def allowed_resource_actions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "allowed_resource_actions", value)
 
+
+if not MYPY:
+    class GroupDynamicMembershipArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether rule processing is "On" (true) or "Paused" (false).
+        """
+        rule: pulumi.Input[str]
+        """
+        The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+
+        > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+        """
+elif False:
+    GroupDynamicMembershipArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupDynamicMembershipArgs:
@@ -2863,6 +3796,39 @@ class GroupDynamicMembershipArgs:
     def rule(self, value: pulumi.Input[str]):
         pulumi.set(self, "rule", value)
 
+
+if not MYPY:
+    class GroupRoleManagementPolicyActivationRulesArgsDict(TypedDict):
+        approval_stage: NotRequired[pulumi.Input['GroupRoleManagementPolicyActivationRulesApprovalStageArgsDict']]
+        """
+        An `approval_stage` block as defined below.
+        """
+        maximum_duration: NotRequired[pulumi.Input[str]]
+        """
+        The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
+        """
+        require_approval: NotRequired[pulumi.Input[bool]]
+        """
+        Is approval required for activation. If `true` an `approval_stage` block must be provided.
+        """
+        require_justification: NotRequired[pulumi.Input[bool]]
+        """
+        Is a justification required during activation of the role.
+        """
+        require_multifactor_authentication: NotRequired[pulumi.Input[bool]]
+        """
+        Is multi-factor authentication required to activate the role. Conflicts with `required_conditional_access_authentication_context`.
+        """
+        require_ticket_info: NotRequired[pulumi.Input[bool]]
+        """
+        Is ticket information requrired during activation of the role.
+        """
+        required_conditional_access_authentication_context: NotRequired[pulumi.Input[str]]
+        """
+        The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
+        """
+elif False:
+    GroupRoleManagementPolicyActivationRulesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupRoleManagementPolicyActivationRulesArgs:
@@ -2983,6 +3949,15 @@ class GroupRoleManagementPolicyActivationRulesArgs:
         pulumi.set(self, "required_conditional_access_authentication_context", value)
 
 
+if not MYPY:
+    class GroupRoleManagementPolicyActivationRulesApprovalStageArgsDict(TypedDict):
+        primary_approvers: pulumi.Input[Sequence[pulumi.Input['GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApproverArgsDict']]]
+        """
+        The IDs of the users or groups who can approve the activation
+        """
+elif False:
+    GroupRoleManagementPolicyActivationRulesApprovalStageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupRoleManagementPolicyActivationRulesApprovalStageArgs:
     def __init__(__self__, *,
@@ -3004,6 +3979,19 @@ class GroupRoleManagementPolicyActivationRulesApprovalStageArgs:
     def primary_approvers(self, value: pulumi.Input[Sequence[pulumi.Input['GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApproverArgs']]]):
         pulumi.set(self, "primary_approvers", value)
 
+
+if not MYPY:
+    class GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApproverArgsDict(TypedDict):
+        object_id: pulumi.Input[str]
+        """
+        The ID of the object which will act as an approver.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of object acting as an approver. Possible options are `singleUser` and `groupMembers`.
+        """
+elif False:
+    GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApproverArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApproverArgs:
@@ -3042,6 +4030,33 @@ class GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApproverArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class GroupRoleManagementPolicyActiveAssignmentRulesArgsDict(TypedDict):
+        expiration_required: NotRequired[pulumi.Input[bool]]
+        """
+        Must an assignment have an expiry date. `false` allows permanent assignment.
+        """
+        expire_after: NotRequired[pulumi.Input[str]]
+        """
+        The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
+        """
+        require_justification: NotRequired[pulumi.Input[bool]]
+        """
+        Is a justification required to create new assignments.
+        """
+        require_multifactor_authentication: NotRequired[pulumi.Input[bool]]
+        """
+        Is multi-factor authentication required to create new assignments.
+        """
+        require_ticket_info: NotRequired[pulumi.Input[bool]]
+        """
+        Is ticket information required to create new assignments.
+
+        One of `expiration_required` or `expire_after` must be provided.
+        """
+elif False:
+    GroupRoleManagementPolicyActiveAssignmentRulesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupRoleManagementPolicyActiveAssignmentRulesArgs:
@@ -3134,6 +4149,21 @@ class GroupRoleManagementPolicyActiveAssignmentRulesArgs:
         pulumi.set(self, "require_ticket_info", value)
 
 
+if not MYPY:
+    class GroupRoleManagementPolicyEligibleAssignmentRulesArgsDict(TypedDict):
+        expiration_required: NotRequired[pulumi.Input[bool]]
+        """
+        Must an assignment have an expiry date. `false` allows permanent assignment.
+        """
+        expire_after: NotRequired[pulumi.Input[str]]
+        """
+        The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
+
+        One of `expiration_required` or `expire_after` must be provided.
+        """
+elif False:
+    GroupRoleManagementPolicyEligibleAssignmentRulesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupRoleManagementPolicyEligibleAssignmentRulesArgs:
     def __init__(__self__, *,
@@ -3176,6 +4206,25 @@ class GroupRoleManagementPolicyEligibleAssignmentRulesArgs:
     def expire_after(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "expire_after", value)
 
+
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesArgsDict(TypedDict):
+        active_assignments: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgsDict']]
+        """
+        A `notification_target` block as defined below to configure notfications on active role assignments.
+        """
+        eligible_activations: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgsDict']]
+        """
+        A `notification_target` block as defined below for configuring notifications on activation of eligible role.
+        """
+        eligible_assignments: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgsDict']]
+        """
+        A `notification_target` block as defined below to configure notification on eligible role assignments.
+
+        At least one `notification_target` block must be provided.
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesArgs:
@@ -3236,6 +4285,23 @@ class GroupRoleManagementPolicyNotificationRulesArgs:
         pulumi.set(self, "eligible_assignments", value)
 
 
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgsDict(TypedDict):
+        admin_notifications: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgsDict']]
+        """
+        Admin notification settings
+        """
+        approver_notifications: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotificationsArgsDict']]
+        """
+        Approver notification settings
+        """
+        assignee_notifications: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotificationsArgsDict']]
+        """
+        Assignee notification settings
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs:
     def __init__(__self__, *,
@@ -3291,6 +4357,23 @@ class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs:
         pulumi.set(self, "assignee_notifications", value)
 
 
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgsDict(TypedDict):
+        default_recipients: pulumi.Input[bool]
+        """
+        Whether the default recipients are notified
+        """
+        notification_level: pulumi.Input[str]
+        """
+        What level of notifications are sent
+        """
+        additional_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The additional recipients to notify
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgs:
     def __init__(__self__, *,
@@ -3343,6 +4426,23 @@ class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificati
     def additional_recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_recipients", value)
 
+
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotificationsArgsDict(TypedDict):
+        default_recipients: pulumi.Input[bool]
+        """
+        Whether the default recipients are notified
+        """
+        notification_level: pulumi.Input[str]
+        """
+        What level of notifications are sent
+        """
+        additional_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The additional recipients to notify
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotificationsArgs:
@@ -3397,6 +4497,23 @@ class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotific
         pulumi.set(self, "additional_recipients", value)
 
 
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotificationsArgsDict(TypedDict):
+        default_recipients: pulumi.Input[bool]
+        """
+        Whether the default recipients are notified
+        """
+        notification_level: pulumi.Input[str]
+        """
+        What level of notifications are sent
+        """
+        additional_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The additional recipients to notify
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotificationsArgs:
     def __init__(__self__, *,
@@ -3449,6 +4566,23 @@ class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotific
     def additional_recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_recipients", value)
 
+
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgsDict(TypedDict):
+        admin_notifications: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotificationsArgsDict']]
+        """
+        Admin notification settings
+        """
+        approver_notifications: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotificationsArgsDict']]
+        """
+        Approver notification settings
+        """
+        assignee_notifications: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotificationsArgsDict']]
+        """
+        Assignee notification settings
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgs:
@@ -3505,6 +4639,23 @@ class GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgs:
         pulumi.set(self, "assignee_notifications", value)
 
 
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotificationsArgsDict(TypedDict):
+        default_recipients: pulumi.Input[bool]
+        """
+        Whether the default recipients are notified
+        """
+        notification_level: pulumi.Input[str]
+        """
+        What level of notifications are sent
+        """
+        additional_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The additional recipients to notify
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotificationsArgs:
     def __init__(__self__, *,
@@ -3557,6 +4708,23 @@ class GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifica
     def additional_recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_recipients", value)
 
+
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotificationsArgsDict(TypedDict):
+        default_recipients: pulumi.Input[bool]
+        """
+        Whether the default recipients are notified
+        """
+        notification_level: pulumi.Input[str]
+        """
+        What level of notifications are sent
+        """
+        additional_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The additional recipients to notify
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotificationsArgs:
@@ -3611,6 +4779,23 @@ class GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotif
         pulumi.set(self, "additional_recipients", value)
 
 
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotificationsArgsDict(TypedDict):
+        default_recipients: pulumi.Input[bool]
+        """
+        Whether the default recipients are notified
+        """
+        notification_level: pulumi.Input[str]
+        """
+        What level of notifications are sent
+        """
+        additional_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The additional recipients to notify
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotificationsArgs:
     def __init__(__self__, *,
@@ -3663,6 +4848,23 @@ class GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotif
     def additional_recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_recipients", value)
 
+
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgsDict(TypedDict):
+        admin_notifications: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotificationsArgsDict']]
+        """
+        Admin notification settings
+        """
+        approver_notifications: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgsDict']]
+        """
+        Approver notification settings
+        """
+        assignee_notifications: NotRequired[pulumi.Input['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgsDict']]
+        """
+        Assignee notification settings
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs:
@@ -3719,6 +4921,23 @@ class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs:
         pulumi.set(self, "assignee_notifications", value)
 
 
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotificationsArgsDict(TypedDict):
+        default_recipients: pulumi.Input[bool]
+        """
+        Whether the default recipients are notified
+        """
+        notification_level: pulumi.Input[str]
+        """
+        What level of notifications are sent
+        """
+        additional_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The additional recipients to notify
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotificationsArgs:
     def __init__(__self__, *,
@@ -3771,6 +4990,23 @@ class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifica
     def additional_recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_recipients", value)
 
+
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgsDict(TypedDict):
+        default_recipients: pulumi.Input[bool]
+        """
+        Whether the default recipients are notified
+        """
+        notification_level: pulumi.Input[str]
+        """
+        What level of notifications are sent
+        """
+        additional_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The additional recipients to notify
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs:
@@ -3825,6 +5061,23 @@ class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotif
         pulumi.set(self, "additional_recipients", value)
 
 
+if not MYPY:
+    class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgsDict(TypedDict):
+        default_recipients: pulumi.Input[bool]
+        """
+        Whether the default recipients are notified
+        """
+        notification_level: pulumi.Input[str]
+        """
+        What level of notifications are sent
+        """
+        additional_recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The additional recipients to notify
+        """
+elif False:
+    GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgs:
     def __init__(__self__, *,
@@ -3877,6 +5130,23 @@ class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotif
     def additional_recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_recipients", value)
 
+
+if not MYPY:
+    class InvitationMessageArgsDict(TypedDict):
+        additional_recipients: NotRequired[pulumi.Input[str]]
+        """
+        Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
+        """
+        body: NotRequired[pulumi.Input[str]]
+        """
+        Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+        """
+        language: NotRequired[pulumi.Input[str]]
+        """
+        The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+        """
+elif False:
+    InvitationMessageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InvitationMessageArgs:
@@ -3933,6 +5203,19 @@ class InvitationMessageArgs:
         pulumi.set(self, "language", value)
 
 
+if not MYPY:
+    class NamedLocationCountryArgsDict(TypedDict):
+        countries_and_regions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        """
+        include_unknown_countries_and_regions: NotRequired[pulumi.Input[bool]]
+        """
+        Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+        """
+elif False:
+    NamedLocationCountryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NamedLocationCountryArgs:
     def __init__(__self__, *,
@@ -3971,6 +5254,19 @@ class NamedLocationCountryArgs:
         pulumi.set(self, "include_unknown_countries_and_regions", value)
 
 
+if not MYPY:
+    class NamedLocationIpArgsDict(TypedDict):
+        ip_ranges: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596. Each CIDR prefix must be `/8` or larger.
+        """
+        trusted: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the named location is trusted. Defaults to `false`.
+        """
+elif False:
+    NamedLocationIpArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NamedLocationIpArgs:
     def __init__(__self__, *,
@@ -4008,6 +5304,35 @@ class NamedLocationIpArgs:
     def trusted(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "trusted", value)
 
+
+if not MYPY:
+    class ServicePrincipalAppRoleArgsDict(TypedDict):
+        allowed_member_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description of the service principal provided for internal end-users.
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        Display name for the app role that appears during app role assignment and in consent experiences.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the permission scope is enabled.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of the delegated permission.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+        """
+elif False:
+    ServicePrincipalAppRoleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServicePrincipalAppRoleArgs:
@@ -4112,6 +5437,27 @@ class ServicePrincipalAppRoleArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ServicePrincipalFeatureArgsDict(TypedDict):
+        custom_single_sign_on_app: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this service principal represents a custom SAML application
+        """
+        enterprise_application: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this service principal represents an Enterprise Application
+        """
+        gallery_application: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this service principal represents a gallery application
+        """
+        visible_to_users: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this app is visible to users in My Apps and Office 365 Launcher
+        """
+elif False:
+    ServicePrincipalFeatureArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServicePrincipalFeatureArgs:
     def __init__(__self__, *,
@@ -4183,6 +5529,27 @@ class ServicePrincipalFeatureArgs:
         pulumi.set(self, "visible_to_users", value)
 
 
+if not MYPY:
+    class ServicePrincipalFeatureTagArgsDict(TypedDict):
+        custom_single_sign_on: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+        """
+        enterprise: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+        """
+        gallery: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+        """
+        hide: NotRequired[pulumi.Input[bool]]
+        """
+        Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+        """
+elif False:
+    ServicePrincipalFeatureTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServicePrincipalFeatureTagArgs:
     def __init__(__self__, *,
@@ -4253,6 +5620,43 @@ class ServicePrincipalFeatureTagArgs:
     def hide(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "hide", value)
 
+
+if not MYPY:
+    class ServicePrincipalOauth2PermissionScopeArgsDict(TypedDict):
+        admin_consent_description: NotRequired[pulumi.Input[str]]
+        """
+        Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
+        """
+        admin_consent_display_name: NotRequired[pulumi.Input[str]]
+        """
+        Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the permission scope is enabled.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The unique identifier of the delegated permission.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+        """
+        user_consent_description: NotRequired[pulumi.Input[str]]
+        """
+        Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+        """
+        user_consent_display_name: NotRequired[pulumi.Input[str]]
+        """
+        Display name for the delegated permission that appears in the end user consent experience.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+        """
+elif False:
+    ServicePrincipalOauth2PermissionScopeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServicePrincipalOauth2PermissionScopeArgs:
@@ -4389,6 +5793,15 @@ class ServicePrincipalOauth2PermissionScopeArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ServicePrincipalSamlSingleSignOnArgsDict(TypedDict):
+        relay_state: NotRequired[pulumi.Input[str]]
+        """
+        The relative URI the service provider would redirect to after completion of the single sign-on flow.
+        """
+elif False:
+    ServicePrincipalSamlSingleSignOnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServicePrincipalSamlSingleSignOnArgs:
     def __init__(__self__, *,
@@ -4411,6 +5824,19 @@ class ServicePrincipalSamlSingleSignOnArgs:
     def relay_state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "relay_state", value)
 
+
+if not MYPY:
+    class SynchronizationJobProvisionOnDemandParameterArgsDict(TypedDict):
+        rule_id: pulumi.Input[str]
+        """
+        The identifier of the synchronization rule to be applied. This rule ID is defined in the schema for a given synchronization job or template.
+        """
+        subjects: pulumi.Input[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterSubjectArgsDict']]]
+        """
+        One or more `subject` blocks as documented below.
+        """
+elif False:
+    SynchronizationJobProvisionOnDemandParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SynchronizationJobProvisionOnDemandParameterArgs:
@@ -4449,6 +5875,19 @@ class SynchronizationJobProvisionOnDemandParameterArgs:
         pulumi.set(self, "subjects", value)
 
 
+if not MYPY:
+    class SynchronizationJobProvisionOnDemandParameterSubjectArgsDict(TypedDict):
+        object_id: pulumi.Input[str]
+        """
+        The identifier of an object to which a synchronization job is to be applied. Can be one of the following: (1) An onPremisesDistinguishedName for synchronization from Active Directory to Azure AD. (2) The user ID for synchronization from Azure AD to a third-party. (3) The Worker ID of the Workday worker for synchronization from Workday to either Active Directory or Azure AD.
+        """
+        object_type_name: pulumi.Input[str]
+        """
+        The type of the object to which a synchronization job is to be applied. Can be one of the following: `user` for synchronizing between Active Directory and Azure AD, `User` for synchronizing a user between Azure AD and a third-party application, `Worker` for synchronization a user between Workday and either Active Directory or Azure AD, `Group` for synchronizing a group between Azure AD and a third-party application.
+        """
+elif False:
+    SynchronizationJobProvisionOnDemandParameterSubjectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SynchronizationJobProvisionOnDemandParameterSubjectArgs:
     def __init__(__self__, *,
@@ -4485,6 +5924,23 @@ class SynchronizationJobProvisionOnDemandParameterSubjectArgs:
     def object_type_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "object_type_name", value)
 
+
+if not MYPY:
+    class SynchronizationJobScheduleArgsDict(TypedDict):
+        expiration: NotRequired[pulumi.Input[str]]
+        """
+        Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        """
+        interval: NotRequired[pulumi.Input[str]]
+        """
+        The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        State of the job.
+        """
+elif False:
+    SynchronizationJobScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SynchronizationJobScheduleArgs:
@@ -4540,6 +5996,19 @@ class SynchronizationJobScheduleArgs:
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
 
+
+if not MYPY:
+    class SynchronizationSecretCredentialArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The key of the secret.
+        """
+        value: pulumi.Input[str]
+        """
+        The value of the secret.
+        """
+elif False:
+    SynchronizationSecretCredentialArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SynchronizationSecretCredentialArgs:

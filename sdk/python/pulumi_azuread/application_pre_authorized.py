@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = ['ApplicationPreAuthorizedArgs', 'ApplicationPreAuthorized']
@@ -223,28 +228,28 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         authorized = azuread.ApplicationRegistration("authorized", display_name="example-authorized-app")
         authorizer = azuread.Application("authorizer",
             display_name="example-authorizing-app",
-            api=azuread.ApplicationApiArgs(
-                oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Administer the application",
-                        admin_consent_display_name="Administer",
-                        enabled=True,
-                        id="00000000-0000-0000-0000-000000000000",
-                        type="Admin",
-                        value="administer",
-                    ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Access the application",
-                        admin_consent_display_name="Access",
-                        enabled=True,
-                        id="11111111-1111-1111-1111-111111111111",
-                        type="User",
-                        user_consent_description="Access the application",
-                        user_consent_display_name="Access",
-                        value="user_impersonation",
-                    ),
+            api={
+                "oauth2PermissionScopes": [
+                    {
+                        "adminConsentDescription": "Administer the application",
+                        "adminConsentDisplayName": "Administer",
+                        "enabled": True,
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "type": "Admin",
+                        "value": "administer",
+                    },
+                    {
+                        "adminConsentDescription": "Access the application",
+                        "adminConsentDisplayName": "Access",
+                        "enabled": True,
+                        "id": "11111111-1111-1111-1111-111111111111",
+                        "type": "User",
+                        "userConsentDescription": "Access the application",
+                        "userConsentDisplayName": "Access",
+                        "value": "user_impersonation",
+                    },
                 ],
-            ))
+            })
         example = azuread.ApplicationPreAuthorized("example",
             application_id=authorizer.id,
             authorized_client_id=authorized.client_id,
@@ -288,28 +293,28 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         authorized = azuread.ApplicationRegistration("authorized", display_name="example-authorized-app")
         authorizer = azuread.Application("authorizer",
             display_name="example-authorizing-app",
-            api=azuread.ApplicationApiArgs(
-                oauth2_permission_scopes=[
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Administer the application",
-                        admin_consent_display_name="Administer",
-                        enabled=True,
-                        id="00000000-0000-0000-0000-000000000000",
-                        type="Admin",
-                        value="administer",
-                    ),
-                    azuread.ApplicationApiOauth2PermissionScopeArgs(
-                        admin_consent_description="Access the application",
-                        admin_consent_display_name="Access",
-                        enabled=True,
-                        id="11111111-1111-1111-1111-111111111111",
-                        type="User",
-                        user_consent_description="Access the application",
-                        user_consent_display_name="Access",
-                        value="user_impersonation",
-                    ),
+            api={
+                "oauth2PermissionScopes": [
+                    {
+                        "adminConsentDescription": "Administer the application",
+                        "adminConsentDisplayName": "Administer",
+                        "enabled": True,
+                        "id": "00000000-0000-0000-0000-000000000000",
+                        "type": "Admin",
+                        "value": "administer",
+                    },
+                    {
+                        "adminConsentDescription": "Access the application",
+                        "adminConsentDisplayName": "Access",
+                        "enabled": True,
+                        "id": "11111111-1111-1111-1111-111111111111",
+                        "type": "User",
+                        "userConsentDescription": "Access the application",
+                        "userConsentDisplayName": "Access",
+                        "value": "user_impersonation",
+                    },
                 ],
-            ))
+            })
         example = azuread.ApplicationPreAuthorized("example",
             application_id=authorizer.id,
             authorized_client_id=authorized.client_id,
