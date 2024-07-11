@@ -91,7 +91,7 @@ export class ApplicationKnownClients extends pulumi.CustomResource {
             resourceInputs["knownClientIds"] = args ? args.knownClientIds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationKnownClients.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationKnownClients.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

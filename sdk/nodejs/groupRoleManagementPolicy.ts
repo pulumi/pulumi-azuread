@@ -161,7 +161,7 @@ export class GroupRoleManagementPolicy extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(GroupRoleManagementPolicy.__pulumiType, name, resourceInputs, opts);
+        super(GroupRoleManagementPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

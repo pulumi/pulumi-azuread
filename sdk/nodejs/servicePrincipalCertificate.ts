@@ -164,7 +164,7 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["value"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(ServicePrincipalCertificate.__pulumiType, name, resourceInputs, opts);
+        super(ServicePrincipalCertificate.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

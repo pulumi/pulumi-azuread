@@ -140,7 +140,7 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
             resourceInputs["permissionIds"] = args ? args.permissionIds : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationPreAuthorized.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationPreAuthorized.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 
