@@ -111,7 +111,7 @@ export class AccessPackageCatalog extends pulumi.CustomResource {
             resourceInputs["published"] = args ? args.published : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AccessPackageCatalog.__pulumiType, name, resourceInputs, opts);
+        super(AccessPackageCatalog.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 
