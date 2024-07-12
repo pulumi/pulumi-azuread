@@ -24,7 +24,7 @@ public final class Config {
  * 
  */
     public Optional<String> clientCertificatePassword() {
-        return Codegen.stringProp("clientCertificatePassword").config(config).get();
+        return Codegen.stringProp("clientCertificatePassword").config(config).env("ARM_CLIENT_CERTIFICATE_PASSWORD").get();
     }
 /**
  * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
@@ -32,14 +32,14 @@ public final class Config {
  * 
  */
     public Optional<String> clientCertificatePath() {
-        return Codegen.stringProp("clientCertificatePath").config(config).get();
+        return Codegen.stringProp("clientCertificatePath").config(config).env("ARM_CLIENT_CERTIFICATE_PATH").get();
     }
 /**
  * The Client ID which should be used for service principal authentication
  * 
  */
     public Optional<String> clientId() {
-        return Codegen.stringProp("clientId").config(config).get();
+        return Codegen.stringProp("clientId").config(config).env("ARM_CLIENT_ID").get();
     }
 /**
  * The path to a file containing the Client ID which should be used for service principal authentication
@@ -53,7 +53,7 @@ public final class Config {
  * 
  */
     public Optional<String> clientSecret() {
-        return Codegen.stringProp("clientSecret").config(config).get();
+        return Codegen.stringProp("clientSecret").config(config).env("ARM_CLIENT_SECRET").get();
     }
 /**
  * The path to a file containing the application password to use when authenticating as a Service Principal using a Client
@@ -131,7 +131,7 @@ public final class Config {
  * 
  */
     public Optional<String> tenantId() {
-        return Codegen.stringProp("tenantId").config(config).get();
+        return Codegen.stringProp("tenantId").config(config).env("ARM_TENANT_ID").get();
     }
 /**
  * Allow Azure AKS Workload Identity to be used for Authentication.

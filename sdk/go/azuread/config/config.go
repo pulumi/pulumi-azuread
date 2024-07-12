@@ -19,18 +19,42 @@ func GetClientCertificate(ctx *pulumi.Context) string {
 // The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
 // Certificate
 func GetClientCertificatePassword(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:clientCertificatePassword")
+	v, err := config.Try(ctx, "azuread:clientCertificatePassword")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_CERTIFICATE_PASSWORD"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
 // Principal using a Client Certificate
 func GetClientCertificatePath(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:clientCertificatePath")
+	v, err := config.Try(ctx, "azuread:clientCertificatePath")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_CERTIFICATE_PATH"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The Client ID which should be used for service principal authentication
 func GetClientId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:clientId")
+	v, err := config.Try(ctx, "azuread:clientId")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_ID"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The path to a file containing the Client ID which should be used for service principal authentication
@@ -40,7 +64,15 @@ func GetClientIdFilePath(ctx *pulumi.Context) string {
 
 // The application password to use when authenticating as a Service Principal using a Client Secret
 func GetClientSecret(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:clientSecret")
+	v, err := config.Try(ctx, "azuread:clientSecret")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_SECRET"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The path to a file containing the application password to use when authenticating as a Service Principal using a Client
@@ -114,7 +146,15 @@ func GetPartnerId(ctx *pulumi.Context) string {
 
 // The Tenant ID which should be used. Works with all authentication methods except Managed Identity
 func GetTenantId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:tenantId")
+	v, err := config.Try(ctx, "azuread:tenantId")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "ARM_TENANT_ID"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // Allow Azure AKS Workload Identity to be used for Authentication.

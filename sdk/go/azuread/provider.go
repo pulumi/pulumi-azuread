@@ -70,6 +70,26 @@ func NewProvider(ctx *pulumi.Context,
 	if args.MetadataHost == nil {
 		return nil, errors.New("invalid value for required argument 'MetadataHost'")
 	}
+	if args.ClientCertificatePassword == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_CERTIFICATE_PASSWORD"); d != nil {
+			args.ClientCertificatePassword = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.ClientCertificatePath == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_CERTIFICATE_PATH"); d != nil {
+			args.ClientCertificatePath = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.ClientId == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_ID"); d != nil {
+			args.ClientId = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.ClientSecret == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_SECRET"); d != nil {
+			args.ClientSecret = pulumi.StringPtr(d.(string))
+		}
+	}
 	if args.Environment == nil {
 		if d := internal.GetEnvOrDefault("public", nil, "ARM_ENVIRONMENT"); d != nil {
 			args.Environment = pulumi.StringPtr(d.(string))
@@ -80,11 +100,31 @@ func NewProvider(ctx *pulumi.Context,
 			args.MsiEndpoint = pulumi.StringPtr(d.(string))
 		}
 	}
+	if args.TenantId == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ARM_TENANT_ID"); d != nil {
+			args.TenantId = pulumi.StringPtr(d.(string))
+		}
+	}
 	if args.UseMsi == nil {
 		if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "ARM_USE_MSI"); d != nil {
 			args.UseMsi = pulumi.BoolPtr(d.(bool))
 		}
 	}
+	if args.ClientCertificatePassword != nil {
+		args.ClientCertificatePassword = pulumi.ToSecret(args.ClientCertificatePassword).(pulumi.StringPtrInput)
+	}
+	if args.ClientId != nil {
+		args.ClientId = pulumi.ToSecret(args.ClientId).(pulumi.StringPtrInput)
+	}
+	if args.ClientSecret != nil {
+		args.ClientSecret = pulumi.ToSecret(args.ClientSecret).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clientCertificatePassword",
+		"clientId",
+		"clientSecret",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:azuread", name, args, &resource, opts...)

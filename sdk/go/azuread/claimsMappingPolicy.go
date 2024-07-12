@@ -39,23 +39,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"claimsMappingPolicy": map[string]interface{}{
-//					"claimsSchema": []map[string]interface{}{
+//				"ClaimsMappingPolicy": map[string]interface{}{
+//					"ClaimsSchema": []map[string]interface{}{
 //						map[string]interface{}{
 //							"ID":            "employeeid",
-//							"jwtClaimType":  "name",
-//							"samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-//							"source":        "user",
+//							"JwtClaimType":  "name",
+//							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+//							"Source":        "user",
 //						},
 //						map[string]interface{}{
 //							"ID":            "tenantcountry",
-//							"jwtClaimType":  "country",
-//							"samlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-//							"source":        "company",
+//							"JwtClaimType":  "country",
+//							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+//							"Source":        "company",
 //						},
 //					},
-//					"includeBasicClaimSet": "true",
-//					"version":              1,
+//					"IncludeBasicClaimSet": "true",
+//					"Version":              1,
 //				},
 //			})
 //			if err != nil {

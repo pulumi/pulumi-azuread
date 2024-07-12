@@ -139,6 +139,12 @@ namespace Pulumi.AzureAD
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "clientCertificatePassword",
+                    "clientId",
+                    "clientSecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -155,12 +161,22 @@ namespace Pulumi.AzureAD
         [Input("clientCertificate")]
         public Input<string>? ClientCertificate { get; set; }
 
+        [Input("clientCertificatePassword")]
+        private Input<string>? _clientCertificatePassword;
+
         /// <summary>
         /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
         /// Certificate
         /// </summary>
-        [Input("clientCertificatePassword")]
-        public Input<string>? ClientCertificatePassword { get; set; }
+        public Input<string>? ClientCertificatePassword
+        {
+            get => _clientCertificatePassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCertificatePassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
@@ -169,11 +185,21 @@ namespace Pulumi.AzureAD
         [Input("clientCertificatePath")]
         public Input<string>? ClientCertificatePath { get; set; }
 
+        [Input("clientId")]
+        private Input<string>? _clientId;
+
         /// <summary>
         /// The Client ID which should be used for service principal authentication
         /// </summary>
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
+        public Input<string>? ClientId
+        {
+            get => _clientId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The path to a file containing the Client ID which should be used for service principal authentication
@@ -181,11 +207,21 @@ namespace Pulumi.AzureAD
         [Input("clientIdFilePath")]
         public Input<string>? ClientIdFilePath { get; set; }
 
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
         /// <summary>
         /// The application password to use when authenticating as a Service Principal using a Client Secret
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
@@ -281,8 +317,13 @@ namespace Pulumi.AzureAD
 
         public ProviderArgs()
         {
+            ClientCertificatePassword = Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PASSWORD");
+            ClientCertificatePath = Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PATH");
+            ClientId = Utilities.GetEnv("ARM_CLIENT_ID");
+            ClientSecret = Utilities.GetEnv("ARM_CLIENT_SECRET");
             Environment = Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public";
             MsiEndpoint = Utilities.GetEnv("ARM_MSI_ENDPOINT");
+            TenantId = Utilities.GetEnv("ARM_TENANT_ID");
             UseMsi = Utilities.GetEnvBoolean("ARM_USE_MSI") ?? false;
         }
         public static new ProviderArgs Empty => new ProviderArgs();

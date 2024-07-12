@@ -25,7 +25,7 @@ Object.defineProperty(exports, "clientCertificate", {
 export declare const clientCertificatePassword: string | undefined;
 Object.defineProperty(exports, "clientCertificatePassword", {
     get() {
-        return __config.get("clientCertificatePassword");
+        return __config.get("clientCertificatePassword") ?? utilities.getEnv("ARM_CLIENT_CERTIFICATE_PASSWORD");
     },
     enumerable: true,
 });
@@ -37,7 +37,7 @@ Object.defineProperty(exports, "clientCertificatePassword", {
 export declare const clientCertificatePath: string | undefined;
 Object.defineProperty(exports, "clientCertificatePath", {
     get() {
-        return __config.get("clientCertificatePath");
+        return __config.get("clientCertificatePath") ?? utilities.getEnv("ARM_CLIENT_CERTIFICATE_PATH");
     },
     enumerable: true,
 });
@@ -48,7 +48,7 @@ Object.defineProperty(exports, "clientCertificatePath", {
 export declare const clientId: string | undefined;
 Object.defineProperty(exports, "clientId", {
     get() {
-        return __config.get("clientId");
+        return __config.get("clientId") ?? utilities.getEnv("ARM_CLIENT_ID");
     },
     enumerable: true,
 });
@@ -70,7 +70,7 @@ Object.defineProperty(exports, "clientIdFilePath", {
 export declare const clientSecret: string | undefined;
 Object.defineProperty(exports, "clientSecret", {
     get() {
-        return __config.get("clientSecret");
+        return __config.get("clientSecret") ?? utilities.getEnv("ARM_CLIENT_SECRET");
     },
     enumerable: true,
 });
@@ -193,7 +193,7 @@ Object.defineProperty(exports, "partnerId", {
 export declare const tenantId: string | undefined;
 Object.defineProperty(exports, "tenantId", {
     get() {
-        return __config.get("tenantId");
+        return __config.get("tenantId") ?? utilities.getEnv("ARM_TENANT_ID");
     },
     enumerable: true,
 });

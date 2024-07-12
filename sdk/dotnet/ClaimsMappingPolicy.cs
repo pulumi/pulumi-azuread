@@ -37,27 +37,27 @@ namespace Pulumi.AzureAD
     ///         {
     ///             JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 ["claimsMappingPolicy"] = new Dictionary&lt;string, object?&gt;
+    ///                 ["ClaimsMappingPolicy"] = new Dictionary&lt;string, object?&gt;
     ///                 {
-    ///                     ["claimsSchema"] = new[]
+    ///                     ["ClaimsSchema"] = new[]
     ///                     {
     ///                         new Dictionary&lt;string, object?&gt;
     ///                         {
     ///                             ["ID"] = "employeeid",
-    ///                             ["jwtClaimType"] = "name",
-    ///                             ["samlClaimType"] = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-    ///                             ["source"] = "user",
+    ///                             ["JwtClaimType"] = "name",
+    ///                             ["SamlClaimType"] = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+    ///                             ["Source"] = "user",
     ///                         },
     ///                         new Dictionary&lt;string, object?&gt;
     ///                         {
     ///                             ["ID"] = "tenantcountry",
-    ///                             ["jwtClaimType"] = "country",
-    ///                             ["samlClaimType"] = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-    ///                             ["source"] = "company",
+    ///                             ["JwtClaimType"] = "country",
+    ///                             ["SamlClaimType"] = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+    ///                             ["Source"] = "company",
     ///                         },
     ///                     },
-    ///                     ["includeBasicClaimSet"] = "true",
-    ///                     ["version"] = 1,
+    ///                     ["IncludeBasicClaimSet"] = "true",
+    ///                     ["Version"] = 1,
     ///                 },
     ///             }),
     ///         },

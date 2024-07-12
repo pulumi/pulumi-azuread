@@ -112,11 +112,11 @@ export class Provider extends pulumi.ProviderResource {
                 throw new Error("Missing required property 'metadataHost'");
             }
             resourceInputs["clientCertificate"] = args ? args.clientCertificate : undefined;
-            resourceInputs["clientCertificatePassword"] = args ? args.clientCertificatePassword : undefined;
-            resourceInputs["clientCertificatePath"] = args ? args.clientCertificatePath : undefined;
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
+            resourceInputs["clientCertificatePassword"] = (args?.clientCertificatePassword ? pulumi.secret(args.clientCertificatePassword) : undefined) ?? utilities.getEnv("ARM_CLIENT_CERTIFICATE_PASSWORD");
+            resourceInputs["clientCertificatePath"] = (args ? args.clientCertificatePath : undefined) ?? utilities.getEnv("ARM_CLIENT_CERTIFICATE_PATH");
+            resourceInputs["clientId"] = (args?.clientId ? pulumi.secret(args.clientId) : undefined) ?? utilities.getEnv("ARM_CLIENT_ID");
             resourceInputs["clientIdFilePath"] = args ? args.clientIdFilePath : undefined;
-            resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
+            resourceInputs["clientSecret"] = (args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined) ?? utilities.getEnv("ARM_CLIENT_SECRET");
             resourceInputs["clientSecretFilePath"] = args ? args.clientSecretFilePath : undefined;
             resourceInputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined).apply(JSON.stringify);
             resourceInputs["environment"] = (args ? args.environment : undefined) ?? (utilities.getEnv("ARM_ENVIRONMENT") || "public");
@@ -127,13 +127,15 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["oidcToken"] = args ? args.oidcToken : undefined;
             resourceInputs["oidcTokenFilePath"] = args ? args.oidcTokenFilePath : undefined;
             resourceInputs["partnerId"] = args ? args.partnerId : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["tenantId"] = (args ? args.tenantId : undefined) ?? utilities.getEnv("ARM_TENANT_ID");
             resourceInputs["useAksWorkloadIdentity"] = pulumi.output(args ? args.useAksWorkloadIdentity : undefined).apply(JSON.stringify);
             resourceInputs["useCli"] = pulumi.output(args ? args.useCli : undefined).apply(JSON.stringify);
             resourceInputs["useMsi"] = pulumi.output((args ? args.useMsi : undefined) ?? (utilities.getEnvBoolean("ARM_USE_MSI") || false)).apply(JSON.stringify);
             resourceInputs["useOidc"] = pulumi.output(args ? args.useOidc : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["clientCertificatePassword", "clientId", "clientSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
