@@ -33,6 +33,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 
 	"github.com/pulumi/pulumi-azuread/provider/v5/pkg/version"
 )
@@ -144,6 +145,29 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:   "hashicorp",
 		Repository:  "https://github.com/pulumi/pulumi-azuread",
 		Config: map[string]*tfbridge.SchemaInfo{
+			"client_certificate_path": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ARM_CLIENT_CERTIFICATE_PATH"},
+				},
+			},
+			"client_certificate_password": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ARM_CLIENT_CERTIFICATE_PASSWORD"},
+				},
+				Secret: pulumi.BoolRef(true),
+			},
+			"client_id": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ARM_CLIENT_ID"},
+				},
+				Secret: pulumi.BoolRef(true),
+			},
+			"client_secret": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ARM_CLIENT_SECRET"},
+				},
+				Secret: pulumi.BoolRef(true),
+			},
 			"environment": {
 				Default: &tfbridge.DefaultInfo{
 					Value:   "public",
@@ -153,6 +177,11 @@ func Provider() tfbridge.ProviderInfo {
 			"msi_endpoint": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"ARM_MSI_ENDPOINT"},
+				},
+			},
+			"tenant_id": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ARM_TENANT_ID"},
 				},
 			},
 			"use_msi": {
