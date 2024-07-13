@@ -33,7 +33,6 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 
 	"github.com/pulumi/pulumi-azuread/provider/v5/pkg/version"
 )
@@ -146,13 +145,13 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:  "https://github.com/pulumi/pulumi-azuread",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"client_certificate_password": {
-				Secret: pulumi.BoolRef(true),
+				Secret: tfbridge.True(),
 			},
 			"client_id": {
-				Secret: pulumi.BoolRef(true),
+				Secret: tfbridge.True(),
 			},
 			"client_secret": {
-				Secret: pulumi.BoolRef(true),
+				Secret: tfbridge.True(),
 			},
 			"environment": {
 				Default: &tfbridge.DefaultInfo{
