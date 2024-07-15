@@ -33,7 +33,7 @@ class _ExportableConfig(types.ModuleType):
         The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
         Certificate
         """
-        return __config__.get('clientCertificatePassword') or _utilities.get_env('ARM_CLIENT_CERTIFICATE_PASSWORD')
+        return __config__.get('clientCertificatePassword')
 
     @property
     def client_certificate_path(self) -> Optional[str]:
@@ -41,14 +41,14 @@ class _ExportableConfig(types.ModuleType):
         The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
         Principal using a Client Certificate
         """
-        return __config__.get('clientCertificatePath') or _utilities.get_env('ARM_CLIENT_CERTIFICATE_PATH')
+        return __config__.get('clientCertificatePath')
 
     @property
     def client_id(self) -> Optional[str]:
         """
         The Client ID which should be used for service principal authentication
         """
-        return __config__.get('clientId') or _utilities.get_env('ARM_CLIENT_ID')
+        return __config__.get('clientId')
 
     @property
     def client_id_file_path(self) -> Optional[str]:
@@ -62,7 +62,7 @@ class _ExportableConfig(types.ModuleType):
         """
         The application password to use when authenticating as a Service Principal using a Client Secret
         """
-        return __config__.get('clientSecret') or _utilities.get_env('ARM_CLIENT_SECRET')
+        return __config__.get('clientSecret')
 
     @property
     def client_secret_file_path(self) -> Optional[str]:
@@ -141,7 +141,7 @@ class _ExportableConfig(types.ModuleType):
         """
         The Tenant ID which should be used. Works with all authentication methods except Managed Identity
         """
-        return __config__.get('tenantId') or _utilities.get_env('ARM_TENANT_ID')
+        return __config__.get('tenantId')
 
     @property
     def use_aks_workload_identity(self) -> Optional[bool]:

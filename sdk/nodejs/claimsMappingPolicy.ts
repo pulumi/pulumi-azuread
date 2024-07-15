@@ -23,23 +23,23 @@ import * as utilities from "./utilities";
  *
  * const myPolicy = new azuread.ClaimsMappingPolicy("my_policy", {
  *     definitions: [JSON.stringify({
- *         ClaimsMappingPolicy: {
- *             ClaimsSchema: [
+ *         claimsMappingPolicy: {
+ *             claimsSchema: [
  *                 {
  *                     ID: "employeeid",
- *                     JwtClaimType: "name",
- *                     SamlClaimType: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
- *                     Source: "user",
+ *                     jwtClaimType: "name",
+ *                     samlClaimType: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+ *                     source: "user",
  *                 },
  *                 {
  *                     ID: "tenantcountry",
- *                     JwtClaimType: "country",
- *                     SamlClaimType: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
- *                     Source: "company",
+ *                     jwtClaimType: "country",
+ *                     samlClaimType: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+ *                     source: "company",
  *                 },
  *             ],
- *             IncludeBasicClaimSet: "true",
- *             Version: 1,
+ *             includeBasicClaimSet: "true",
+ *             version: 1,
  *         },
  *     })],
  *     displayName: "My Policy",

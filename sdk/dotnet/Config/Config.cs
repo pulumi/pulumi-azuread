@@ -42,7 +42,7 @@ namespace Pulumi.AzureAD
             set => _clientCertificate.Set(value);
         }
 
-        private static readonly __Value<string?> _clientCertificatePassword = new __Value<string?>(() => __config.Get("clientCertificatePassword") ?? Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PASSWORD"));
+        private static readonly __Value<string?> _clientCertificatePassword = new __Value<string?>(() => __config.Get("clientCertificatePassword"));
         /// <summary>
         /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
         /// Certificate
@@ -53,7 +53,7 @@ namespace Pulumi.AzureAD
             set => _clientCertificatePassword.Set(value);
         }
 
-        private static readonly __Value<string?> _clientCertificatePath = new __Value<string?>(() => __config.Get("clientCertificatePath") ?? Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PATH"));
+        private static readonly __Value<string?> _clientCertificatePath = new __Value<string?>(() => __config.Get("clientCertificatePath"));
         /// <summary>
         /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
         /// Principal using a Client Certificate
@@ -64,7 +64,7 @@ namespace Pulumi.AzureAD
             set => _clientCertificatePath.Set(value);
         }
 
-        private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId") ?? Utilities.GetEnv("ARM_CLIENT_ID"));
+        private static readonly __Value<string?> _clientId = new __Value<string?>(() => __config.Get("clientId"));
         /// <summary>
         /// The Client ID which should be used for service principal authentication
         /// </summary>
@@ -84,7 +84,7 @@ namespace Pulumi.AzureAD
             set => _clientIdFilePath.Set(value);
         }
 
-        private static readonly __Value<string?> _clientSecret = new __Value<string?>(() => __config.Get("clientSecret") ?? Utilities.GetEnv("ARM_CLIENT_SECRET"));
+        private static readonly __Value<string?> _clientSecret = new __Value<string?>(() => __config.Get("clientSecret"));
         /// <summary>
         /// The application password to use when authenticating as a Service Principal using a Client Secret
         /// </summary>
@@ -196,7 +196,7 @@ namespace Pulumi.AzureAD
             set => _partnerId.Set(value);
         }
 
-        private static readonly __Value<string?> _tenantId = new __Value<string?>(() => __config.Get("tenantId") ?? Utilities.GetEnv("ARM_TENANT_ID"));
+        private static readonly __Value<string?> _tenantId = new __Value<string?>(() => __config.Get("tenantId"));
         /// <summary>
         /// The Tenant ID which should be used. Works with all authentication methods except Managed Identity
         /// </summary>

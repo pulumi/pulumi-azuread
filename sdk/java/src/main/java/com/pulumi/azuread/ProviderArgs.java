@@ -827,16 +827,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.clientCertificatePassword = Codegen.stringProp("clientCertificatePassword").secret().arg($.clientCertificatePassword).env("ARM_CLIENT_CERTIFICATE_PASSWORD").getNullable();
-            $.clientCertificatePath = Codegen.stringProp("clientCertificatePath").output().arg($.clientCertificatePath).env("ARM_CLIENT_CERTIFICATE_PATH").getNullable();
-            $.clientId = Codegen.stringProp("clientId").secret().arg($.clientId).env("ARM_CLIENT_ID").getNullable();
-            $.clientSecret = Codegen.stringProp("clientSecret").secret().arg($.clientSecret).env("ARM_CLIENT_SECRET").getNullable();
             $.environment = Codegen.stringProp("environment").output().arg($.environment).env("ARM_ENVIRONMENT").def("public").getNullable();
             if ($.metadataHost == null) {
                 throw new MissingRequiredPropertyException("ProviderArgs", "metadataHost");
             }
             $.msiEndpoint = Codegen.stringProp("msiEndpoint").output().arg($.msiEndpoint).env("ARM_MSI_ENDPOINT").getNullable();
-            $.tenantId = Codegen.stringProp("tenantId").output().arg($.tenantId).env("ARM_TENANT_ID").getNullable();
             $.useMsi = Codegen.booleanProp("useMsi").output().arg($.useMsi).env("ARM_USE_MSI").def(false).getNullable();
             return $;
         }

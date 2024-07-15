@@ -70,26 +70,6 @@ func NewProvider(ctx *pulumi.Context,
 	if args.MetadataHost == nil {
 		return nil, errors.New("invalid value for required argument 'MetadataHost'")
 	}
-	if args.ClientCertificatePassword == nil {
-		if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_CERTIFICATE_PASSWORD"); d != nil {
-			args.ClientCertificatePassword = pulumi.StringPtr(d.(string))
-		}
-	}
-	if args.ClientCertificatePath == nil {
-		if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_CERTIFICATE_PATH"); d != nil {
-			args.ClientCertificatePath = pulumi.StringPtr(d.(string))
-		}
-	}
-	if args.ClientId == nil {
-		if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_ID"); d != nil {
-			args.ClientId = pulumi.StringPtr(d.(string))
-		}
-	}
-	if args.ClientSecret == nil {
-		if d := internal.GetEnvOrDefault(nil, nil, "ARM_CLIENT_SECRET"); d != nil {
-			args.ClientSecret = pulumi.StringPtr(d.(string))
-		}
-	}
 	if args.Environment == nil {
 		if d := internal.GetEnvOrDefault("public", nil, "ARM_ENVIRONMENT"); d != nil {
 			args.Environment = pulumi.StringPtr(d.(string))
@@ -98,11 +78,6 @@ func NewProvider(ctx *pulumi.Context,
 	if args.MsiEndpoint == nil {
 		if d := internal.GetEnvOrDefault(nil, nil, "ARM_MSI_ENDPOINT"); d != nil {
 			args.MsiEndpoint = pulumi.StringPtr(d.(string))
-		}
-	}
-	if args.TenantId == nil {
-		if d := internal.GetEnvOrDefault(nil, nil, "ARM_TENANT_ID"); d != nil {
-			args.TenantId = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.UseMsi == nil {

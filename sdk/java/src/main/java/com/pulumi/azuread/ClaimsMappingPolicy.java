@@ -54,23 +54,23 @@ import javax.annotation.Nullable;
  *         var myPolicy = new ClaimsMappingPolicy("myPolicy", ClaimsMappingPolicyArgs.builder()
  *             .definitions(serializeJson(
  *                 jsonObject(
- *                     jsonProperty("ClaimsMappingPolicy", jsonObject(
- *                         jsonProperty("ClaimsSchema", jsonArray(
+ *                     jsonProperty("claimsMappingPolicy", jsonObject(
+ *                         jsonProperty("claimsSchema", jsonArray(
  *                             jsonObject(
  *                                 jsonProperty("ID", "employeeid"),
- *                                 jsonProperty("JwtClaimType", "name"),
- *                                 jsonProperty("SamlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
- *                                 jsonProperty("Source", "user")
+ *                                 jsonProperty("jwtClaimType", "name"),
+ *                                 jsonProperty("samlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
+ *                                 jsonProperty("source", "user")
  *                             ), 
  *                             jsonObject(
  *                                 jsonProperty("ID", "tenantcountry"),
- *                                 jsonProperty("JwtClaimType", "country"),
- *                                 jsonProperty("SamlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country"),
- *                                 jsonProperty("Source", "company")
+ *                                 jsonProperty("jwtClaimType", "country"),
+ *                                 jsonProperty("samlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country"),
+ *                                 jsonProperty("source", "company")
  *                             )
  *                         )),
- *                         jsonProperty("IncludeBasicClaimSet", "true"),
- *                         jsonProperty("Version", 1)
+ *                         jsonProperty("includeBasicClaimSet", "true"),
+ *                         jsonProperty("version", 1)
  *                     ))
  *                 )))
  *             .displayName("My Policy")
