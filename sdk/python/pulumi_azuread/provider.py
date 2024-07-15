@@ -496,11 +496,11 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["client_certificate"] = client_certificate
-            __props__.__dict__["client_certificate_password"] = client_certificate_password
+            __props__.__dict__["client_certificate_password"] = None if client_certificate_password is None else pulumi.Output.secret(client_certificate_password)
             __props__.__dict__["client_certificate_path"] = client_certificate_path
-            __props__.__dict__["client_id"] = client_id
+            __props__.__dict__["client_id"] = None if client_id is None else pulumi.Output.secret(client_id)
             __props__.__dict__["client_id_file_path"] = client_id_file_path
-            __props__.__dict__["client_secret"] = client_secret
+            __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
             __props__.__dict__["client_secret_file_path"] = client_secret_file_path
             __props__.__dict__["disable_terraform_partner_id"] = pulumi.Output.from_input(disable_terraform_partner_id).apply(pulumi.runtime.to_json) if disable_terraform_partner_id is not None else None
             if environment is None:
@@ -524,6 +524,8 @@ class Provider(pulumi.ProviderResource):
                 use_msi = (_utilities.get_env_bool('ARM_USE_MSI') or False)
             __props__.__dict__["use_msi"] = pulumi.Output.from_input(use_msi).apply(pulumi.runtime.to_json) if use_msi is not None else None
             __props__.__dict__["use_oidc"] = pulumi.Output.from_input(use_oidc).apply(pulumi.runtime.to_json) if use_oidc is not None else None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientCertificatePassword", "clientId", "clientSecret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'azuread',
             resource_name,

@@ -65,7 +65,8 @@
             },
             "clientCertificatePassword": {
                 "type": "string",
-                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client\nCertificate\n"
+                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client\nCertificate\n",
+                "secret": true
             },
             "clientCertificatePath": {
                 "type": "string",
@@ -73,7 +74,8 @@
             },
             "clientId": {
                 "type": "string",
-                "description": "The Client ID which should be used for service principal authentication\n"
+                "description": "The Client ID which should be used for service principal authentication\n",
+                "secret": true
             },
             "clientIdFilePath": {
                 "type": "string",
@@ -81,7 +83,8 @@
             },
             "clientSecret": {
                 "type": "string",
-                "description": "The application password to use when authenticating as a Service Principal using a Client Secret\n"
+                "description": "The application password to use when authenticating as a Service Principal using a Client Secret\n",
+                "secret": true
             },
             "clientSecretFilePath": {
                 "type": "string",
@@ -3053,7 +3056,8 @@
             },
             "clientCertificatePassword": {
                 "type": "string",
-                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client\nCertificate\n"
+                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client\nCertificate\n",
+                "secret": true
             },
             "clientCertificatePath": {
                 "type": "string",
@@ -3061,7 +3065,8 @@
             },
             "clientId": {
                 "type": "string",
-                "description": "The Client ID which should be used for service principal authentication\n"
+                "description": "The Client ID which should be used for service principal authentication\n",
+                "secret": true
             },
             "clientIdFilePath": {
                 "type": "string",
@@ -3069,7 +3074,8 @@
             },
             "clientSecret": {
                 "type": "string",
-                "description": "The application password to use when authenticating as a Service Principal using a Client Secret\n"
+                "description": "The application password to use when authenticating as a Service Principal using a Client Secret\n",
+                "secret": true
             },
             "clientSecretFilePath": {
                 "type": "string",
@@ -3141,7 +3147,8 @@
             },
             "clientCertificatePassword": {
                 "type": "string",
-                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client\nCertificate\n"
+                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client\nCertificate\n",
+                "secret": true
             },
             "clientCertificatePath": {
                 "type": "string",
@@ -3149,7 +3156,8 @@
             },
             "clientId": {
                 "type": "string",
-                "description": "The Client ID which should be used for service principal authentication\n"
+                "description": "The Client ID which should be used for service principal authentication\n",
+                "secret": true
             },
             "clientIdFilePath": {
                 "type": "string",
@@ -3157,7 +3165,8 @@
             },
             "clientSecret": {
                 "type": "string",
-                "description": "The application password to use when authenticating as a Service Principal using a Client Secret\n"
+                "description": "The application password to use when authenticating as a Service Principal using a Client Secret\n",
+                "secret": true
             },
             "clientSecretFilePath": {
                 "type": "string",

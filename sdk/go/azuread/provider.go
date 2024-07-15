@@ -85,6 +85,21 @@ func NewProvider(ctx *pulumi.Context,
 			args.UseMsi = pulumi.BoolPtr(d.(bool))
 		}
 	}
+	if args.ClientCertificatePassword != nil {
+		args.ClientCertificatePassword = pulumi.ToSecret(args.ClientCertificatePassword).(pulumi.StringPtrInput)
+	}
+	if args.ClientId != nil {
+		args.ClientId = pulumi.ToSecret(args.ClientId).(pulumi.StringPtrInput)
+	}
+	if args.ClientSecret != nil {
+		args.ClientSecret = pulumi.ToSecret(args.ClientSecret).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clientCertificatePassword",
+		"clientId",
+		"clientSecret",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:azuread", name, args, &resource, opts...)

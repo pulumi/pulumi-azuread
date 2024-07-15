@@ -144,6 +144,15 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:   "hashicorp",
 		Repository:  "https://github.com/pulumi/pulumi-azuread",
 		Config: map[string]*tfbridge.SchemaInfo{
+			"client_certificate_password": {
+				Secret: tfbridge.True(),
+			},
+			"client_id": {
+				Secret: tfbridge.True(),
+			},
+			"client_secret": {
+				Secret: tfbridge.True(),
+			},
 			"environment": {
 				Default: &tfbridge.DefaultInfo{
 					Value:   "public",
