@@ -5658,8 +5658,10 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedUsers() pulumi.
 }
 
 type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser struct {
-	ExternalTenants          []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant `pulumi:"externalTenants"`
-	GuestOrExternalUserTypes []string                                                                           `pulumi:"guestOrExternalUserTypes"`
+	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+	ExternalTenants []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant `pulumi:"externalTenants"`
+	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+	GuestOrExternalUserTypes []string `pulumi:"guestOrExternalUserTypes"`
 }
 
 // ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserInput is an input type that accepts ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs and ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput values.
@@ -5674,8 +5676,10 @@ type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserInput int
 }
 
 type ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs struct {
-	ExternalTenants          ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayInput `pulumi:"externalTenants"`
-	GuestOrExternalUserTypes pulumi.StringArrayInput                                                                    `pulumi:"guestOrExternalUserTypes"`
+	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+	ExternalTenants ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayInput `pulumi:"externalTenants"`
+	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+	GuestOrExternalUserTypes pulumi.StringArrayInput `pulumi:"guestOrExternalUserTypes"`
 }
 
 func (ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs) ElementType() reflect.Type {
@@ -5729,12 +5733,14 @@ func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput
 	return o
 }
 
+// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
 func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput) ExternalTenants() ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser) []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant {
 		return v.ExternalTenants
 	}).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArrayOutput)
 }
 
+// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserOutput) GuestOrExternalUserTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser) []string {
 		return v.GuestOrExternalUserTypes
@@ -5872,8 +5878,10 @@ func (o ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExtern
 }
 
 type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser struct {
-	ExternalTenants          []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant `pulumi:"externalTenants"`
-	GuestOrExternalUserTypes []string                                                                           `pulumi:"guestOrExternalUserTypes"`
+	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+	ExternalTenants []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant `pulumi:"externalTenants"`
+	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+	GuestOrExternalUserTypes []string `pulumi:"guestOrExternalUserTypes"`
 }
 
 // ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserInput is an input type that accepts ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs and ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput values.
@@ -5888,8 +5896,10 @@ type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserInput int
 }
 
 type ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs struct {
-	ExternalTenants          ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayInput `pulumi:"externalTenants"`
-	GuestOrExternalUserTypes pulumi.StringArrayInput                                                                    `pulumi:"guestOrExternalUserTypes"`
+	// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+	ExternalTenants ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayInput `pulumi:"externalTenants"`
+	// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+	GuestOrExternalUserTypes pulumi.StringArrayInput `pulumi:"guestOrExternalUserTypes"`
 }
 
 func (ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs) ElementType() reflect.Type {
@@ -5943,12 +5953,14 @@ func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput
 	return o
 }
 
+// An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
 func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput) ExternalTenants() ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser) []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant {
 		return v.ExternalTenants
 	}).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArrayOutput)
 }
 
+// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserOutput) GuestOrExternalUserTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser) []string {
 		return v.GuestOrExternalUserTypes

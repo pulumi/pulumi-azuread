@@ -3246,7 +3246,13 @@ class ConditionalAccessPolicyConditionsUsersArgs:
 if not MYPY:
     class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgsDict(TypedDict):
         guest_or_external_user_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        """
         external_tenants: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgsDict']]]]
+        """
+        An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
 elif False:
     ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3255,6 +3261,10 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs:
     def __init__(__self__, *,
                  guest_or_external_user_types: pulumi.Input[Sequence[pulumi.Input[str]]],
                  external_tenants: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs']]] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
         pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
         if external_tenants is not None:
             pulumi.set(__self__, "external_tenants", external_tenants)
@@ -3262,6 +3272,9 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs:
     @property
     @pulumi.getter(name="guestOrExternalUserTypes")
     def guest_or_external_user_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        """
         return pulumi.get(self, "guest_or_external_user_types")
 
     @guest_or_external_user_types.setter
@@ -3271,6 +3284,9 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs:
     @property
     @pulumi.getter(name="externalTenants")
     def external_tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs']]]]:
+        """
+        An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
         return pulumi.get(self, "external_tenants")
 
     @external_tenants.setter
@@ -3332,7 +3348,13 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternal
 if not MYPY:
     class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgsDict(TypedDict):
         guest_or_external_user_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        """
         external_tenants: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgsDict']]]]
+        """
+        An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
 elif False:
     ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3341,6 +3363,10 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs:
     def __init__(__self__, *,
                  guest_or_external_user_types: pulumi.Input[Sequence[pulumi.Input[str]]],
                  external_tenants: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs']]] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
         pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
         if external_tenants is not None:
             pulumi.set(__self__, "external_tenants", external_tenants)
@@ -3348,6 +3374,9 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs:
     @property
     @pulumi.getter(name="guestOrExternalUserTypes")
     def guest_or_external_user_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        """
         return pulumi.get(self, "guest_or_external_user_types")
 
     @guest_or_external_user_types.setter
@@ -3357,6 +3386,9 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs:
     @property
     @pulumi.getter(name="externalTenants")
     def external_tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs']]]]:
+        """
+        An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
         return pulumi.get(self, "external_tenants")
 
     @external_tenants.setter

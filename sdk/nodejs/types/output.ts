@@ -653,7 +653,13 @@ export interface ConditionalAccessPolicyConditionsUsers {
 }
 
 export interface ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser {
+    /**
+     * An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+     */
     externalTenants?: outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant[];
+    /**
+     * A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+     */
     guestOrExternalUserTypes: string[];
 }
 
@@ -669,7 +675,13 @@ export interface ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalU
 }
 
 export interface ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser {
+    /**
+     * An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
+     */
     externalTenants?: outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant[];
+    /**
+     * A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+     */
     guestOrExternalUserTypes: string[];
 }
 

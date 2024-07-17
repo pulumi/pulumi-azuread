@@ -18,16 +18,32 @@ public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExterna
 
     public static final ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs Empty = new ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs();
 
+    /**
+     * An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+     * 
+     */
     @Import(name="externalTenants")
     private @Nullable Output<List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs>> externalTenants;
 
+    /**
+     * @return An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+     * 
+     */
     public Optional<Output<List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs>>> externalTenants() {
         return Optional.ofNullable(this.externalTenants);
     }
 
+    /**
+     * A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+     * 
+     */
     @Import(name="guestOrExternalUserTypes", required=true)
     private Output<List<String>> guestOrExternalUserTypes;
 
+    /**
+     * @return A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+     * 
+     */
     public Output<List<String>> guestOrExternalUserTypes() {
         return this.guestOrExternalUserTypes;
     }
@@ -57,28 +73,64 @@ public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExterna
             $ = new ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param externalTenants An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalTenants(@Nullable Output<List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs>> externalTenants) {
             $.externalTenants = externalTenants;
             return this;
         }
 
+        /**
+         * @param externalTenants An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalTenants(List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs> externalTenants) {
             return externalTenants(Output.of(externalTenants));
         }
 
+        /**
+         * @param externalTenants An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalTenants(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs... externalTenants) {
             return externalTenants(List.of(externalTenants));
         }
 
+        /**
+         * @param guestOrExternalUserTypes A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder guestOrExternalUserTypes(Output<List<String>> guestOrExternalUserTypes) {
             $.guestOrExternalUserTypes = guestOrExternalUserTypes;
             return this;
         }
 
+        /**
+         * @param guestOrExternalUserTypes A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder guestOrExternalUserTypes(List<String> guestOrExternalUserTypes) {
             return guestOrExternalUserTypes(Output.of(guestOrExternalUserTypes));
         }
 
+        /**
+         * @param guestOrExternalUserTypes A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder guestOrExternalUserTypes(String... guestOrExternalUserTypes) {
             return guestOrExternalUserTypes(List.of(guestOrExternalUserTypes));
         }

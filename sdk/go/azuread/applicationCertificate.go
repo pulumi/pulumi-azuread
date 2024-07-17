@@ -68,39 +68,37 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-// DisplayName: pulumi.String("example"),
-// })
-// if err != nil {
-// return err
-// }
-// invokeBase64encode, err := std.Base64encode(ctx, invokeFile1, err := std.File(ctx, &std.FileArgs{
-// Input: "cert.der",
-// }, nil)
-// if err != nil {
-// return err
-// }
-// &std.Base64encodeArgs{
-// Input: invokeFile1.Result,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// _, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-// ApplicationId: example.ID(),
-// Type: pulumi.String("AsymmetricX509Cert"),
-// Encoding: pulumi.String("base64"),
-// Value: invokeBase64encode.Result,
-// EndDate: pulumi.String("2021-05-01T01:02:03Z"),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
+//				DisplayName: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: std.File(ctx, &std.FileArgs{
+//					Input: "cert.der",
+//				}, nil).Result,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
+//				ApplicationId: example.ID(),
+//				Type:          pulumi.String("AsymmetricX509Cert"),
+//				Encoding:      pulumi.String("base64"),
+//				Value:         invokeBase64encode.Result,
+//				EndDate:       pulumi.String("2021-05-01T01:02:03Z"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ### Using a certificate from Azure Key Vault
