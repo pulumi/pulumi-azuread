@@ -2640,6 +2640,10 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser(dict):
     def __init__(__self__, *,
                  guest_or_external_user_types: Sequence[str],
                  external_tenants: Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant']] = None):
+        """
+        :param Sequence[str] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        :param Sequence['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs'] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
         pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
         if external_tenants is not None:
             pulumi.set(__self__, "external_tenants", external_tenants)
@@ -2647,11 +2651,17 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser(dict):
     @property
     @pulumi.getter(name="guestOrExternalUserTypes")
     def guest_or_external_user_types(self) -> Sequence[str]:
+        """
+        A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        """
         return pulumi.get(self, "guest_or_external_user_types")
 
     @property
     @pulumi.getter(name="externalTenants")
     def external_tenants(self) -> Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant']]:
+        """
+        An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
         return pulumi.get(self, "external_tenants")
 
 
@@ -2726,6 +2736,10 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser(dict):
     def __init__(__self__, *,
                  guest_or_external_user_types: Sequence[str],
                  external_tenants: Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant']] = None):
+        """
+        :param Sequence[str] guest_or_external_user_types: A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        :param Sequence['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs'] external_tenants: An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
         pulumi.set(__self__, "guest_or_external_user_types", guest_or_external_user_types)
         if external_tenants is not None:
             pulumi.set(__self__, "external_tenants", external_tenants)
@@ -2733,11 +2747,17 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser(dict):
     @property
     @pulumi.getter(name="guestOrExternalUserTypes")
     def guest_or_external_user_types(self) -> Sequence[str]:
+        """
+        A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        """
         return pulumi.get(self, "guest_or_external_user_types")
 
     @property
     @pulumi.getter(name="externalTenants")
     def external_tenants(self) -> Optional[Sequence['outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant']]:
+        """
+        An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        """
         return pulumi.get(self, "external_tenants")
 
 
