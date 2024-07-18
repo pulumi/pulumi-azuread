@@ -282,7 +282,7 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             enabled=True,
             version="1.0",
             permissions=[{
-                "allowedResourceActions": [
+                "allowed_resource_actions": [
                     "microsoft.directory/applications/basic/update",
                     "microsoft.directory/applications/standard/read",
                 ],
@@ -357,7 +357,7 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
             enabled=True,
             version="1.0",
             permissions=[{
-                "allowedResourceActions": [
+                "allowed_resource_actions": [
                     "microsoft.directory/applications/basic/update",
                     "microsoft.directory/applications/standard/read",
                 ],
