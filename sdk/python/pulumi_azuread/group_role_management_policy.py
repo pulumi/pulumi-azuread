@@ -297,17 +297,17 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
             group_id=example.id,
             role_id="member",
             active_assignment_rules={
-                "expireAfter": "P365D",
+                "expire_after": "P365D",
             },
             eligible_assignment_rules={
-                "expirationRequired": False,
+                "expiration_required": False,
             },
             notification_rules={
-                "eligibleAssignments": {
-                    "approverNotifications": {
-                        "notificationLevel": "Critical",
-                        "defaultRecipients": False,
-                        "additionalRecipients": [
+                "eligible_assignments": {
+                    "approver_notifications": {
+                        "notification_level": "Critical",
+                        "default_recipients": False,
+                        "additional_recipients": [
                             "someone@example.com",
                             "someone.else@example.com",
                         ],
@@ -364,17 +364,17 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
             group_id=example.id,
             role_id="member",
             active_assignment_rules={
-                "expireAfter": "P365D",
+                "expire_after": "P365D",
             },
             eligible_assignment_rules={
-                "expirationRequired": False,
+                "expiration_required": False,
             },
             notification_rules={
-                "eligibleAssignments": {
-                    "approverNotifications": {
-                        "notificationLevel": "Critical",
-                        "defaultRecipients": False,
-                        "additionalRecipients": [
+                "eligible_assignments": {
+                    "approver_notifications": {
+                        "notification_level": "Critical",
+                        "default_recipients": False,
+                        "additional_recipients": [
                             "someone@example.com",
                             "someone.else@example.com",
                         ],
