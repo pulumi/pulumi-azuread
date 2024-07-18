@@ -276,14 +276,14 @@ class CustomDirectoryRole(pulumi.CustomResource):
             version="1.0",
             permissions=[
                 {
-                    "allowedResourceActions": [
+                    "allowed_resource_actions": [
                         "microsoft.directory/applications/basic/update",
                         "microsoft.directory/applications/create",
                         "microsoft.directory/applications/standard/read",
                     ],
                 },
                 {
-                    "allowedResourceActions": [
+                    "allowed_resource_actions": [
                         "microsoft.directory/groups/allProperties/read",
                         "microsoft.directory/groups/allProperties/read",
                         "microsoft.directory/groups/basic/update",
@@ -339,14 +339,14 @@ class CustomDirectoryRole(pulumi.CustomResource):
             version="1.0",
             permissions=[
                 {
-                    "allowedResourceActions": [
+                    "allowed_resource_actions": [
                         "microsoft.directory/applications/basic/update",
                         "microsoft.directory/applications/create",
                         "microsoft.directory/applications/standard/read",
                     ],
                 },
                 {
-                    "allowedResourceActions": [
+                    "allowed_resource_actions": [
                         "microsoft.directory/groups/allProperties/read",
                         "microsoft.directory/groups/allProperties/read",
                         "microsoft.directory/groups/basic/update",
