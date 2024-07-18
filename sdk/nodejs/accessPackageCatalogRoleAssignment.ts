@@ -119,7 +119,7 @@ export class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
             resourceInputs["roleId"] = args ? args.roleId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AccessPackageCatalogRoleAssignment.__pulumiType, name, resourceInputs, opts);
+        super(AccessPackageCatalogRoleAssignment.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

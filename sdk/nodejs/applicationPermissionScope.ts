@@ -154,7 +154,7 @@ export class ApplicationPermissionScope extends pulumi.CustomResource {
             resourceInputs["value"] = args ? args.value : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationPermissionScope.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationPermissionScope.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

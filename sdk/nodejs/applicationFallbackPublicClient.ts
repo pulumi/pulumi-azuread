@@ -89,7 +89,7 @@ export class ApplicationFallbackPublicClient extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApplicationFallbackPublicClient.__pulumiType, name, resourceInputs, opts);
+        super(ApplicationFallbackPublicClient.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 
