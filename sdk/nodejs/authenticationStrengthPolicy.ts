@@ -136,7 +136,7 @@ export class AuthenticationStrengthPolicy extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AuthenticationStrengthPolicy.__pulumiType, name, resourceInputs, opts);
+        super(AuthenticationStrengthPolicy.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

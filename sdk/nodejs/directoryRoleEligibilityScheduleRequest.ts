@@ -125,7 +125,7 @@ export class DirectoryRoleEligibilityScheduleRequest extends pulumi.CustomResour
             resourceInputs["roleDefinitionId"] = args ? args.roleDefinitionId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DirectoryRoleEligibilityScheduleRequest.__pulumiType, name, resourceInputs, opts);
+        super(DirectoryRoleEligibilityScheduleRequest.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

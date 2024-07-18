@@ -136,7 +136,7 @@ export class Provider extends pulumi.ProviderResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["clientCertificatePassword", "clientId", "clientSecret"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(Provider.__pulumiType, name, resourceInputs, opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

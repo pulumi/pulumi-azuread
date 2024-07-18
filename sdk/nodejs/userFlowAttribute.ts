@@ -117,7 +117,7 @@ export class UserFlowAttribute extends pulumi.CustomResource {
             resourceInputs["attributeType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(UserFlowAttribute.__pulumiType, name, resourceInputs, opts);
+        super(UserFlowAttribute.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

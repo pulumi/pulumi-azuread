@@ -171,7 +171,7 @@ export class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResour
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(PrivilegedAccessGroupAssignmentSchedule.__pulumiType, name, resourceInputs, opts);
+        super(PrivilegedAccessGroupAssignmentSchedule.__pulumiType, name, resourceInputs, opts, false /*remote*/);
     }
 }
 

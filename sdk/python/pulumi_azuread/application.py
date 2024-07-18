@@ -1161,26 +1161,26 @@ class Application(pulumi.CustomResource):
             owners=[current.object_id],
             sign_in_audience="AzureADMultipleOrgs",
             api={
-                "mappedClaimsEnabled": True,
-                "requestedAccessTokenVersion": 2,
-                "knownClientApplications": [
+                "mapped_claims_enabled": True,
+                "requested_access_token_version": 2,
+                "known_client_applications": [
                     known1["applicationId"],
                     known2["applicationId"],
                 ],
-                "oauth2PermissionScopes": [
+                "oauth2_permission_scopes": [
                     {
-                        "adminConsentDescription": "Allow the application to access example on behalf of the signed-in user.",
-                        "adminConsentDisplayName": "Access example",
+                        "admin_consent_description": "Allow the application to access example on behalf of the signed-in user.",
+                        "admin_consent_display_name": "Access example",
                         "enabled": True,
                         "id": "96183846-204b-4b43-82e1-5d2222eb4b9b",
                         "type": "User",
-                        "userConsentDescription": "Allow the application to access example on your behalf.",
-                        "userConsentDisplayName": "Access example",
+                        "user_consent_description": "Allow the application to access example on your behalf.",
+                        "user_consent_display_name": "Access example",
                         "value": "user_impersonation",
                     },
                     {
-                        "adminConsentDescription": "Administer the example application",
-                        "adminConsentDisplayName": "Administer",
+                        "admin_consent_description": "Administer the example application",
+                        "admin_consent_display_name": "Administer",
                         "enabled": True,
                         "id": "be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
                         "type": "Admin",
@@ -1190,20 +1190,20 @@ class Application(pulumi.CustomResource):
             },
             app_roles=[
                 {
-                    "allowedMemberTypes": [
+                    "allowed_member_types": [
                         "User",
                         "Application",
                     ],
                     "description": "Admins can manage roles and perform all task actions",
-                    "displayName": "Admin",
+                    "display_name": "Admin",
                     "enabled": True,
                     "id": "1b19509b-32b1-4e9f-b71d-4992aa991967",
                     "value": "admin",
                 },
                 {
-                    "allowedMemberTypes": ["User"],
+                    "allowed_member_types": ["User"],
                     "description": "ReadOnly roles have limited query access",
-                    "displayName": "ReadOnly",
+                    "display_name": "ReadOnly",
                     "enabled": True,
                     "id": "497406e4-012a-4267-bf18-45a1cb148a01",
                     "value": "User",
@@ -1214,7 +1214,7 @@ class Application(pulumi.CustomResource):
                 "gallery": True,
             }],
             optional_claims={
-                "accessTokens": [
+                "access_tokens": [
                     {
                         "name": "myclaim",
                     },
@@ -1222,20 +1222,20 @@ class Application(pulumi.CustomResource):
                         "name": "otherclaim",
                     },
                 ],
-                "idTokens": [{
+                "id_tokens": [{
                     "name": "userclaim",
                     "source": "user",
                     "essential": True,
-                    "additionalProperties": ["emit_as_roles"],
+                    "additional_properties": ["emit_as_roles"],
                 }],
-                "saml2Tokens": [{
+                "saml2_tokens": [{
                     "name": "samlexample",
                 }],
             },
             required_resource_accesses=[
                 {
-                    "resourceAppId": "00000003-0000-0000-c000-000000000000",
-                    "resourceAccesses": [
+                    "resource_app_id": "00000003-0000-0000-c000-000000000000",
+                    "resource_accesses": [
                         {
                             "id": "df021288-bdef-4463-88db-98f22de89214",
                             "type": "Role",
@@ -1247,20 +1247,20 @@ class Application(pulumi.CustomResource):
                     ],
                 },
                 {
-                    "resourceAppId": "c5393580-f805-4401-95e8-94b7a6ef2fc2",
-                    "resourceAccesses": [{
+                    "resource_app_id": "c5393580-f805-4401-95e8-94b7a6ef2fc2",
+                    "resource_accesses": [{
                         "id": "594c1fb6-4f81-4475-ae41-0c394909246c",
                         "type": "Role",
                     }],
                 },
             ],
             web={
-                "homepageUrl": "https://app.example.net",
-                "logoutUrl": "https://app.example.net/logout",
-                "redirectUris": ["https://app.example.net/account"],
-                "implicitGrant": {
-                    "accessTokenIssuanceEnabled": True,
-                    "idTokenIssuanceEnabled": True,
+                "homepage_url": "https://app.example.net",
+                "logout_url": "https://app.example.net/logout",
+                "redirect_uris": ["https://app.example.net/account"],
+                "implicit_grant": {
+                    "access_token_issuance_enabled": True,
+                    "id_token_issuance_enabled": True,
                 },
             })
         ```
@@ -1342,26 +1342,26 @@ class Application(pulumi.CustomResource):
             owners=[current.object_id],
             sign_in_audience="AzureADMultipleOrgs",
             api={
-                "mappedClaimsEnabled": True,
-                "requestedAccessTokenVersion": 2,
-                "knownClientApplications": [
+                "mapped_claims_enabled": True,
+                "requested_access_token_version": 2,
+                "known_client_applications": [
                     known1["applicationId"],
                     known2["applicationId"],
                 ],
-                "oauth2PermissionScopes": [
+                "oauth2_permission_scopes": [
                     {
-                        "adminConsentDescription": "Allow the application to access example on behalf of the signed-in user.",
-                        "adminConsentDisplayName": "Access example",
+                        "admin_consent_description": "Allow the application to access example on behalf of the signed-in user.",
+                        "admin_consent_display_name": "Access example",
                         "enabled": True,
                         "id": "96183846-204b-4b43-82e1-5d2222eb4b9b",
                         "type": "User",
-                        "userConsentDescription": "Allow the application to access example on your behalf.",
-                        "userConsentDisplayName": "Access example",
+                        "user_consent_description": "Allow the application to access example on your behalf.",
+                        "user_consent_display_name": "Access example",
                         "value": "user_impersonation",
                     },
                     {
-                        "adminConsentDescription": "Administer the example application",
-                        "adminConsentDisplayName": "Administer",
+                        "admin_consent_description": "Administer the example application",
+                        "admin_consent_display_name": "Administer",
                         "enabled": True,
                         "id": "be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
                         "type": "Admin",
@@ -1371,20 +1371,20 @@ class Application(pulumi.CustomResource):
             },
             app_roles=[
                 {
-                    "allowedMemberTypes": [
+                    "allowed_member_types": [
                         "User",
                         "Application",
                     ],
                     "description": "Admins can manage roles and perform all task actions",
-                    "displayName": "Admin",
+                    "display_name": "Admin",
                     "enabled": True,
                     "id": "1b19509b-32b1-4e9f-b71d-4992aa991967",
                     "value": "admin",
                 },
                 {
-                    "allowedMemberTypes": ["User"],
+                    "allowed_member_types": ["User"],
                     "description": "ReadOnly roles have limited query access",
-                    "displayName": "ReadOnly",
+                    "display_name": "ReadOnly",
                     "enabled": True,
                     "id": "497406e4-012a-4267-bf18-45a1cb148a01",
                     "value": "User",
@@ -1395,7 +1395,7 @@ class Application(pulumi.CustomResource):
                 "gallery": True,
             }],
             optional_claims={
-                "accessTokens": [
+                "access_tokens": [
                     {
                         "name": "myclaim",
                     },
@@ -1403,20 +1403,20 @@ class Application(pulumi.CustomResource):
                         "name": "otherclaim",
                     },
                 ],
-                "idTokens": [{
+                "id_tokens": [{
                     "name": "userclaim",
                     "source": "user",
                     "essential": True,
-                    "additionalProperties": ["emit_as_roles"],
+                    "additional_properties": ["emit_as_roles"],
                 }],
-                "saml2Tokens": [{
+                "saml2_tokens": [{
                     "name": "samlexample",
                 }],
             },
             required_resource_accesses=[
                 {
-                    "resourceAppId": "00000003-0000-0000-c000-000000000000",
-                    "resourceAccesses": [
+                    "resource_app_id": "00000003-0000-0000-c000-000000000000",
+                    "resource_accesses": [
                         {
                             "id": "df021288-bdef-4463-88db-98f22de89214",
                             "type": "Role",
@@ -1428,20 +1428,20 @@ class Application(pulumi.CustomResource):
                     ],
                 },
                 {
-                    "resourceAppId": "c5393580-f805-4401-95e8-94b7a6ef2fc2",
-                    "resourceAccesses": [{
+                    "resource_app_id": "c5393580-f805-4401-95e8-94b7a6ef2fc2",
+                    "resource_accesses": [{
                         "id": "594c1fb6-4f81-4475-ae41-0c394909246c",
                         "type": "Role",
                     }],
                 },
             ],
             web={
-                "homepageUrl": "https://app.example.net",
-                "logoutUrl": "https://app.example.net/logout",
-                "redirectUris": ["https://app.example.net/account"],
-                "implicitGrant": {
-                    "accessTokenIssuanceEnabled": True,
-                    "idTokenIssuanceEnabled": True,
+                "homepage_url": "https://app.example.net",
+                "logout_url": "https://app.example.net/logout",
+                "redirect_uris": ["https://app.example.net/account"],
+                "implicit_grant": {
+                    "access_token_issuance_enabled": True,
+                    "id_token_issuance_enabled": True,
                 },
             })
         ```
