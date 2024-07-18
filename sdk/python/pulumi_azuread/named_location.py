@@ -156,7 +156,7 @@ class NamedLocation(pulumi.CustomResource):
         example_ip = azuread.NamedLocation("example-ip",
             display_name="IP Named Location",
             ip={
-                "ipRanges": [
+                "ip_ranges": [
                     "1.1.1.1/32",
                     "2.2.2.2/32",
                 ],
@@ -165,11 +165,11 @@ class NamedLocation(pulumi.CustomResource):
         example_country = azuread.NamedLocation("example-country",
             display_name="Country Named Location",
             country={
-                "countriesAndRegions": [
+                "countries_and_regions": [
                     "GB",
                     "US",
                 ],
-                "includeUnknownCountriesAndRegions": False,
+                "include_unknown_countries_and_regions": False,
             })
         ```
 
@@ -205,7 +205,7 @@ class NamedLocation(pulumi.CustomResource):
         example_ip = azuread.NamedLocation("example-ip",
             display_name="IP Named Location",
             ip={
-                "ipRanges": [
+                "ip_ranges": [
                     "1.1.1.1/32",
                     "2.2.2.2/32",
                 ],
@@ -214,11 +214,11 @@ class NamedLocation(pulumi.CustomResource):
         example_country = azuread.NamedLocation("example-country",
             display_name="Country Named Location",
             country={
-                "countriesAndRegions": [
+                "countries_and_regions": [
                     "GB",
                     "US",
                 ],
-                "includeUnknownCountriesAndRegions": False,
+                "include_unknown_countries_and_regions": False,
             })
         ```
 
