@@ -159,6 +159,9 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"ARM_ENVIRONMENT"},
 				},
 			},
+			"metadata_host": {
+				MarkAsOptional: tfbridge.True(),
+			},
 			"msi_endpoint": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"ARM_MSI_ENDPOINT"},
