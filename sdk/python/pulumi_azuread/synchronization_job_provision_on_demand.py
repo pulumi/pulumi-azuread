@@ -214,10 +214,10 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
             service_principal_id=example_service_principal.id,
             synchronization_job_id=example_synchronization_job.id,
             parameters=[{
-                "ruleId": "",
+                "rule_id": "",
                 "subjects": [{
-                    "objectId": example_group.object_id,
-                    "objectTypeName": "Group",
+                    "object_id": example_group.object_id,
+                    "object_type_name": "Group",
                 }],
             }])
         ```
@@ -291,10 +291,10 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
             service_principal_id=example_service_principal.id,
             synchronization_job_id=example_synchronization_job.id,
             parameters=[{
-                "ruleId": "",
+                "rule_id": "",
                 "subjects": [{
-                    "objectId": example_group.object_id,
-                    "objectTypeName": "Group",
+                    "object_id": example_group.object_id,
+                    "object_type_name": "Group",
                 }],
             }])
         ```
