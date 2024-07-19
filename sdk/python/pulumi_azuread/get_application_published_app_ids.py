@@ -88,8 +88,8 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
     example = azuread.Application("example",
         display_name="example",
         required_resource_accesses=[{
-            "resourceAppId": well_known.result["MicrosoftGraph"],
-            "resourceAccesses": [
+            "resource_app_id": well_known.result["MicrosoftGraph"],
+            "resource_accesses": [
                 {
                     "id": msgraph.app_role_ids["User.Read.All"],
                     "type": "Role",
@@ -139,8 +139,8 @@ def get_application_published_app_ids_output(opts: Optional[pulumi.InvokeOptions
     example = azuread.Application("example",
         display_name="example",
         required_resource_accesses=[{
-            "resourceAppId": well_known.result["MicrosoftGraph"],
-            "resourceAccesses": [
+            "resource_app_id": well_known.result["MicrosoftGraph"],
+            "resource_accesses": [
                 {
                     "id": msgraph.app_role_ids["User.Read.All"],
                     "type": "Role",
