@@ -208,8 +208,8 @@ class AppRoleAssignment(pulumi.CustomResource):
         example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[{
-                "resourceAppId": well_known.result["microsoftGraph"],
-                "resourceAccesses": [
+                "resource_app_id": well_known.result["microsoftGraph"],
+                "resource_accesses": [
                     {
                         "id": msgraph.app_role_ids["User.Read.All"],
                         "type": "Role",
@@ -236,9 +236,9 @@ class AppRoleAssignment(pulumi.CustomResource):
         internal = azuread.Application("internal",
             display_name="internal",
             app_roles=[{
-                "allowedMemberTypes": ["Application"],
+                "allowed_member_types": ["Application"],
                 "description": "Apps can query the database",
-                "displayName": "Query",
+                "display_name": "Query",
                 "enabled": True,
                 "id": "00000000-0000-0000-0000-111111111111",
                 "value": "Query.All",
@@ -247,8 +247,8 @@ class AppRoleAssignment(pulumi.CustomResource):
         example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[{
-                "resourceAppId": internal.application_id,
-                "resourceAccesses": [{
+                "resource_app_id": internal.application_id,
+                "resource_accesses": [{
                     "id": internal_service_principal.app_role_ids["Query.All"],
                     "type": "Role",
                 }],
@@ -310,8 +310,8 @@ class AppRoleAssignment(pulumi.CustomResource):
         example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[{
-                "resourceAppId": well_known.result["microsoftGraph"],
-                "resourceAccesses": [
+                "resource_app_id": well_known.result["microsoftGraph"],
+                "resource_accesses": [
                     {
                         "id": msgraph.app_role_ids["User.Read.All"],
                         "type": "Role",
@@ -338,9 +338,9 @@ class AppRoleAssignment(pulumi.CustomResource):
         internal = azuread.Application("internal",
             display_name="internal",
             app_roles=[{
-                "allowedMemberTypes": ["Application"],
+                "allowed_member_types": ["Application"],
                 "description": "Apps can query the database",
-                "displayName": "Query",
+                "display_name": "Query",
                 "enabled": True,
                 "id": "00000000-0000-0000-0000-111111111111",
                 "value": "Query.All",
@@ -349,8 +349,8 @@ class AppRoleAssignment(pulumi.CustomResource):
         example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[{
-                "resourceAppId": internal.application_id,
-                "resourceAccesses": [{
+                "resource_app_id": internal.application_id,
+                "resource_accesses": [{
                     "id": internal_service_principal.app_role_ids["Query.All"],
                     "type": "Role",
                 }],
