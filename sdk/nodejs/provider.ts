@@ -65,7 +65,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The Hostname which should be used for the Azure Metadata Service.
      */
-    public readonly metadataHost!: pulumi.Output<string>;
+    public readonly metadataHost!: pulumi.Output<string | undefined>;
     /**
      * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
      */
@@ -104,13 +104,10 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.metadataHost === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'metadataHost'");
-            }
             resourceInputs["clientCertificate"] = args ? args.clientCertificate : undefined;
             resourceInputs["clientCertificatePassword"] = args?.clientCertificatePassword ? pulumi.secret(args.clientCertificatePassword) : undefined;
             resourceInputs["clientCertificatePath"] = args ? args.clientCertificatePath : undefined;
@@ -185,7 +182,7 @@ export interface ProviderArgs {
     /**
      * The Hostname which should be used for the Azure Metadata Service.
      */
-    metadataHost: pulumi.Input<string>;
+    metadataHost?: pulumi.Input<string>;
     /**
      * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
      */

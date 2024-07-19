@@ -6,7 +6,6 @@ package com.pulumi.azuread;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -159,15 +158,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * The Hostname which should be used for the Azure Metadata Service.
      * 
      */
-    @Import(name="metadataHost", required=true)
-    private Output<String> metadataHost;
+    @Import(name="metadataHost")
+    private @Nullable Output<String> metadataHost;
 
     /**
      * @return The Hostname which should be used for the Azure Metadata Service.
      * 
      */
-    public Output<String> metadataHost() {
-        return this.metadataHost;
+    public Optional<Output<String>> metadataHost() {
+        return Optional.ofNullable(this.metadataHost);
     }
 
     /**
@@ -576,7 +575,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder metadataHost(Output<String> metadataHost) {
+        public Builder metadataHost(@Nullable Output<String> metadataHost) {
             $.metadataHost = metadataHost;
             return this;
         }
@@ -828,9 +827,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public ProviderArgs build() {
             $.environment = Codegen.stringProp("environment").output().arg($.environment).env("ARM_ENVIRONMENT").def("public").getNullable();
-            if ($.metadataHost == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "metadataHost");
-            }
             $.msiEndpoint = Codegen.stringProp("msiEndpoint").output().arg($.msiEndpoint).env("ARM_MSI_ENDPOINT").getNullable();
             $.useMsi = Codegen.booleanProp("useMsi").output().arg($.useMsi).env("ARM_USE_MSI").def(false).getNullable();
             return $;

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -41,7 +40,7 @@ type Provider struct {
 	// when `metadataHost` is specified.
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
 	// The Hostname which should be used for the Azure Metadata Service.
-	MetadataHost pulumi.StringOutput `pulumi:"metadataHost"`
+	MetadataHost pulumi.StringPtrOutput `pulumi:"metadataHost"`
 	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint pulumi.StringPtrOutput `pulumi:"msiEndpoint"`
 	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
@@ -64,12 +63,9 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.MetadataHost == nil {
-		return nil, errors.New("invalid value for required argument 'MetadataHost'")
-	}
 	if args.Environment == nil {
 		if d := internal.GetEnvOrDefault("public", nil, "ARM_ENVIRONMENT"); d != nil {
 			args.Environment = pulumi.StringPtr(d.(string))
@@ -133,7 +129,7 @@ type providerArgs struct {
 	// when `metadataHost` is specified.
 	Environment *string `pulumi:"environment"`
 	// The Hostname which should be used for the Azure Metadata Service.
-	MetadataHost string `pulumi:"metadataHost"`
+	MetadataHost *string `pulumi:"metadataHost"`
 	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint *string `pulumi:"msiEndpoint"`
 	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
@@ -185,7 +181,7 @@ type ProviderArgs struct {
 	// when `metadataHost` is specified.
 	Environment pulumi.StringPtrInput
 	// The Hostname which should be used for the Azure Metadata Service.
-	MetadataHost pulumi.StringInput
+	MetadataHost pulumi.StringPtrInput
 	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint pulumi.StringPtrInput
 	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
@@ -295,8 +291,8 @@ func (o ProviderOutput) Environment() pulumi.StringPtrOutput {
 }
 
 // The Hostname which should be used for the Azure Metadata Service.
-func (o ProviderOutput) MetadataHost() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.MetadataHost }).(pulumi.StringOutput)
+func (o ProviderOutput) MetadataHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MetadataHost }).(pulumi.StringPtrOutput)
 }
 
 // The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically

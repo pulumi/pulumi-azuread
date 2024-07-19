@@ -150,14 +150,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Export(name="metadataHost", refs={String.class}, tree="[0]")
-    private Output<String> metadataHost;
+    private Output</* @Nullable */ String> metadataHost;
 
     /**
      * @return The Hostname which should be used for the Azure Metadata Service.
      * 
      */
-    public Output<String> metadataHost() {
-        return this.metadataHost;
+    public Output<Optional<String>> metadataHost() {
+        return Codegen.optional(this.metadataHost);
     }
     /**
      * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
@@ -274,7 +274,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Provider(String name, ProviderArgs args) {
+    public Provider(String name, @Nullable ProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -283,7 +283,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Provider(String name, ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Provider(String name, @Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread", name, args == null ? ProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

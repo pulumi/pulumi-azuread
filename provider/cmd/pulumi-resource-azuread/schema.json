@@ -164,8 +164,7 @@
             }
         },
         "defaults": [
-            "environment",
-            "metadataHost"
+            "environment"
         ]
     },
     "types": {
@@ -3141,9 +3140,6 @@
                 "description": "Allow OpenID Connect to be used for authentication\n"
             }
         },
-        "required": [
-            "metadataHost"
-        ],
         "inputProperties": {
             "clientCertificate": {
                 "type": "string",
@@ -3248,10 +3244,7 @@
                 "type": "boolean",
                 "description": "Allow OpenID Connect to be used for authentication\n"
             }
-        },
-        "requiredInputs": [
-            "metadataHost"
-        ]
+        }
     },
     "resources": {
         "azuread:index/accessPackage:AccessPackage": {
