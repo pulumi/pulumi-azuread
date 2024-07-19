@@ -75,7 +75,7 @@ namespace Pulumi.AzureAD
         /// The Hostname which should be used for the Azure Metadata Service.
         /// </summary>
         [Output("metadataHost")]
-        public Output<string> MetadataHost { get; private set; } = null!;
+        public Output<string?> MetadataHost { get; private set; } = null!;
 
         /// <summary>
         /// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
@@ -129,7 +129,7 @@ namespace Pulumi.AzureAD
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("azuread", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -244,8 +244,8 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The Hostname which should be used for the Azure Metadata Service.
         /// </summary>
-        [Input("metadataHost", required: true)]
-        public Input<string> MetadataHost { get; set; } = null!;
+        [Input("metadataHost")]
+        public Input<string>? MetadataHost { get; set; }
 
         /// <summary>
         /// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically

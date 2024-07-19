@@ -19,7 +19,6 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 metadata_host: pulumi.Input[str],
                  client_certificate: Optional[pulumi.Input[str]] = None,
                  client_certificate_password: Optional[pulumi.Input[str]] = None,
                  client_certificate_path: Optional[pulumi.Input[str]] = None,
@@ -29,6 +28,7 @@ class ProviderArgs:
                  client_secret_file_path: Optional[pulumi.Input[str]] = None,
                  disable_terraform_partner_id: Optional[pulumi.Input[bool]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
+                 metadata_host: Optional[pulumi.Input[str]] = None,
                  msi_endpoint: Optional[pulumi.Input[str]] = None,
                  oidc_request_token: Optional[pulumi.Input[str]] = None,
                  oidc_request_url: Optional[pulumi.Input[str]] = None,
@@ -42,7 +42,6 @@ class ProviderArgs:
                  use_oidc: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] metadata_host: The Hostname which should be used for the Azure Metadata Service.
         :param pulumi.Input[str] client_certificate: Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
         :param pulumi.Input[str] client_certificate_password: The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
                Certificate
@@ -56,6 +55,7 @@ class ProviderArgs:
         :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
                `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
                when `metadata_host` is specified.
+        :param pulumi.Input[str] metadata_host: The Hostname which should be used for the Azure Metadata Service.
         :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
         :param pulumi.Input[str] oidc_request_token: The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
                Connect.
@@ -70,7 +70,6 @@ class ProviderArgs:
         :param pulumi.Input[bool] use_msi: Allow Managed Identity to be used for Authentication
         :param pulumi.Input[bool] use_oidc: Allow OpenID Connect to be used for authentication
         """
-        pulumi.set(__self__, "metadata_host", metadata_host)
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_certificate_password is not None:
@@ -91,6 +90,8 @@ class ProviderArgs:
             environment = (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
+        if metadata_host is not None:
+            pulumi.set(__self__, "metadata_host", metadata_host)
         if msi_endpoint is None:
             msi_endpoint = _utilities.get_env('ARM_MSI_ENDPOINT')
         if msi_endpoint is not None:
@@ -117,18 +118,6 @@ class ProviderArgs:
             pulumi.set(__self__, "use_msi", use_msi)
         if use_oidc is not None:
             pulumi.set(__self__, "use_oidc", use_oidc)
-
-    @property
-    @pulumi.getter(name="metadataHost")
-    def metadata_host(self) -> pulumi.Input[str]:
-        """
-        The Hostname which should be used for the Azure Metadata Service.
-        """
-        return pulumi.get(self, "metadata_host")
-
-    @metadata_host.setter
-    def metadata_host(self, value: pulumi.Input[str]):
-        pulumi.set(self, "metadata_host", value)
 
     @property
     @pulumi.getter(name="clientCertificate")
@@ -239,6 +228,18 @@ class ProviderArgs:
     @environment.setter
     def environment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter(name="metadataHost")
+    def metadata_host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Hostname which should be used for the Azure Metadata Service.
+        """
+        return pulumi.get(self, "metadata_host")
+
+    @metadata_host.setter
+    def metadata_host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata_host", value)
 
     @property
     @pulumi.getter(name="msiEndpoint")
@@ -442,7 +443,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the azuread package. By default, resources use package-wide configuration
@@ -506,8 +507,6 @@ class Provider(pulumi.ProviderResource):
             if environment is None:
                 environment = (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
             __props__.__dict__["environment"] = environment
-            if metadata_host is None and not opts.urn:
-                raise TypeError("Missing required property 'metadata_host'")
             __props__.__dict__["metadata_host"] = metadata_host
             if msi_endpoint is None:
                 msi_endpoint = _utilities.get_env('ARM_MSI_ENDPOINT')
@@ -603,7 +602,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="metadataHost")
-    def metadata_host(self) -> pulumi.Output[str]:
+    def metadata_host(self) -> pulumi.Output[Optional[str]]:
         """
         The Hostname which should be used for the Azure Metadata Service.
         """

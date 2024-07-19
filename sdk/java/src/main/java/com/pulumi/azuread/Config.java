@@ -79,8 +79,8 @@ public final class Config {
  * The Hostname which should be used for the Azure Metadata Service.
  * 
  */
-    public String metadataHost() {
-        return Codegen.stringProp("metadataHost").config(config).require();
+    public Optional<String> metadataHost() {
+        return Codegen.stringProp("metadataHost").config(config).get();
     }
 /**
  * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
