@@ -229,23 +229,23 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         authorizer = azuread.Application("authorizer",
             display_name="example-authorizing-app",
             api={
-                "oauth2PermissionScopes": [
+                "oauth2_permission_scopes": [
                     {
-                        "adminConsentDescription": "Administer the application",
-                        "adminConsentDisplayName": "Administer",
+                        "admin_consent_description": "Administer the application",
+                        "admin_consent_display_name": "Administer",
                         "enabled": True,
                         "id": "00000000-0000-0000-0000-000000000000",
                         "type": "Admin",
                         "value": "administer",
                     },
                     {
-                        "adminConsentDescription": "Access the application",
-                        "adminConsentDisplayName": "Access",
+                        "admin_consent_description": "Access the application",
+                        "admin_consent_display_name": "Access",
                         "enabled": True,
                         "id": "11111111-1111-1111-1111-111111111111",
                         "type": "User",
-                        "userConsentDescription": "Access the application",
-                        "userConsentDisplayName": "Access",
+                        "user_consent_description": "Access the application",
+                        "user_consent_display_name": "Access",
                         "value": "user_impersonation",
                     },
                 ],
@@ -294,23 +294,23 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         authorizer = azuread.Application("authorizer",
             display_name="example-authorizing-app",
             api={
-                "oauth2PermissionScopes": [
+                "oauth2_permission_scopes": [
                     {
-                        "adminConsentDescription": "Administer the application",
-                        "adminConsentDisplayName": "Administer",
+                        "admin_consent_description": "Administer the application",
+                        "admin_consent_display_name": "Administer",
                         "enabled": True,
                         "id": "00000000-0000-0000-0000-000000000000",
                         "type": "Admin",
                         "value": "administer",
                     },
                     {
-                        "adminConsentDescription": "Access the application",
-                        "adminConsentDisplayName": "Access",
+                        "admin_consent_description": "Access the application",
+                        "admin_consent_display_name": "Access",
                         "enabled": True,
                         "id": "11111111-1111-1111-1111-111111111111",
                         "type": "User",
-                        "userConsentDescription": "Access the application",
-                        "userConsentDisplayName": "Access",
+                        "user_consent_description": "Access the application",
+                        "user_consent_display_name": "Access",
                         "value": "user_impersonation",
                     },
                 ],
