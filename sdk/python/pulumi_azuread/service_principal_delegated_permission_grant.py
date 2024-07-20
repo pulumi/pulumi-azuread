@@ -201,8 +201,8 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[{
-                "resourceAppId": well_known.result["microsoftGraph"],
-                "resourceAccesses": [
+                "resource_app_id": well_known.result["microsoftGraph"],
+                "resource_accesses": [
                     {
                         "id": msgraph.oauth2_permission_scope_ids["openid"],
                         "type": "Scope",
@@ -236,8 +236,8 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[{
-                "resourceAppId": well_known.result["microsoftGraph"],
-                "resourceAccesses": [
+                "resource_app_id": well_known.result["microsoftGraph"],
+                "resource_accesses": [
                     {
                         "id": msgraph.oauth2_permission_scope_ids["openid"],
                         "type": "Scope",
@@ -313,8 +313,8 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[{
-                "resourceAppId": well_known.result["microsoftGraph"],
-                "resourceAccesses": [
+                "resource_app_id": well_known.result["microsoftGraph"],
+                "resource_accesses": [
                     {
                         "id": msgraph.oauth2_permission_scope_ids["openid"],
                         "type": "Scope",
@@ -348,8 +348,8 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         example = azuread.Application("example",
             display_name="example",
             required_resource_accesses=[{
-                "resourceAppId": well_known.result["microsoftGraph"],
-                "resourceAccesses": [
+                "resource_app_id": well_known.result["microsoftGraph"],
+                "resource_accesses": [
                     {
                         "id": msgraph.oauth2_permission_scope_ids["openid"],
                         "type": "Scope",

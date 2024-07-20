@@ -201,7 +201,7 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
                 "name": "userclaim",
                 "source": "user",
                 "essential": True,
-                "additionalProperties": ["emit_as_roles"],
+                "additional_properties": ["emit_as_roles"],
             }],
             saml2_tokens=[{
                 "name": "samlexample",
@@ -253,7 +253,7 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
                 "name": "userclaim",
                 "source": "user",
                 "essential": True,
-                "additionalProperties": ["emit_as_roles"],
+                "additional_properties": ["emit_as_roles"],
             }],
             saml2_tokens=[{
                 "name": "samlexample",
