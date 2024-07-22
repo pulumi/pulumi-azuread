@@ -44,7 +44,7 @@ import (
 //				IdentifierUris: pulumi.StringArray{
 //					pulumi.String("api://example-app"),
 //				},
-//				LogoImage: invokeFilebase64.Result,
+//				LogoImage: pulumi.String(invokeFilebase64.Result),
 //				Owners: pulumi.StringArray{
 //					pulumi.String(current.ObjectId),
 //				},
