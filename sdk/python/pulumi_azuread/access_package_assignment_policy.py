@@ -400,28 +400,28 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
             description="My assignment policy",
             duration_in_days=90,
             requestor_settings={
-                "scopeType": "AllExistingDirectoryMemberUsers",
+                "scope_type": "AllExistingDirectoryMemberUsers",
             },
             approval_settings={
-                "approvalRequired": True,
-                "approvalStages": [{
-                    "approvalTimeoutInDays": 14,
-                    "primaryApprovers": [{
-                        "objectId": example.object_id,
-                        "subjectType": "groupMembers",
+                "approval_required": True,
+                "approval_stages": [{
+                    "approval_timeout_in_days": 14,
+                    "primary_approvers": [{
+                        "object_id": example.object_id,
+                        "subject_type": "groupMembers",
                     }],
                 }],
             },
             assignment_review_settings={
                 "enabled": True,
-                "reviewFrequency": "weekly",
-                "durationInDays": 3,
-                "reviewType": "Self",
-                "accessReviewTimeoutBehavior": "keepAccess",
+                "review_frequency": "weekly",
+                "duration_in_days": 3,
+                "review_type": "Self",
+                "access_review_timeout_behavior": "keepAccess",
             },
             questions=[{
                 "text": {
-                    "defaultText": "hello, how are you?",
+                    "default_text": "hello, how are you?",
                 },
             }])
         ```
@@ -486,28 +486,28 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
             description="My assignment policy",
             duration_in_days=90,
             requestor_settings={
-                "scopeType": "AllExistingDirectoryMemberUsers",
+                "scope_type": "AllExistingDirectoryMemberUsers",
             },
             approval_settings={
-                "approvalRequired": True,
-                "approvalStages": [{
-                    "approvalTimeoutInDays": 14,
-                    "primaryApprovers": [{
-                        "objectId": example.object_id,
-                        "subjectType": "groupMembers",
+                "approval_required": True,
+                "approval_stages": [{
+                    "approval_timeout_in_days": 14,
+                    "primary_approvers": [{
+                        "object_id": example.object_id,
+                        "subject_type": "groupMembers",
                     }],
                 }],
             },
             assignment_review_settings={
                 "enabled": True,
-                "reviewFrequency": "weekly",
-                "durationInDays": 3,
-                "reviewType": "Self",
-                "accessReviewTimeoutBehavior": "keepAccess",
+                "review_frequency": "weekly",
+                "duration_in_days": 3,
+                "review_type": "Self",
+                "access_review_timeout_behavior": "keepAccess",
             },
             questions=[{
                 "text": {
-                    "defaultText": "hello, how are you?",
+                    "default_text": "hello, how are you?",
                 },
             }])
         ```
