@@ -284,7 +284,7 @@ class Invitation(pulumi.CustomResource):
             user_email_address="bbobson@example.com",
             redirect_url="https://portal.azure.com",
             message={
-                "additionalRecipients": "aaliceberg@example.com",
+                "additional_recipients": "aaliceberg@example.com",
                 "body": "Hello there! You are invited to join my Azure tenant!",
             })
         ```
@@ -356,7 +356,7 @@ class Invitation(pulumi.CustomResource):
             user_email_address="bbobson@example.com",
             redirect_url="https://portal.azure.com",
             message={
-                "additionalRecipients": "aaliceberg@example.com",
+                "additional_recipients": "aaliceberg@example.com",
                 "body": "Hello there! You are invited to join my Azure tenant!",
             })
         ```
