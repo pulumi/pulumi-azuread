@@ -223,12 +223,12 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
             display_name="example policy",
             state="disabled",
             conditions={
-                "clientAppTypes": ["all"],
-                "signInRiskLevels": ["medium"],
-                "userRiskLevels": ["medium"],
+                "client_app_types": ["all"],
+                "sign_in_risk_levels": ["medium"],
+                "user_risk_levels": ["medium"],
                 "applications": {
-                    "includedApplications": ["All"],
-                    "excludedApplications": [],
+                    "included_applications": ["All"],
+                    "excluded_applications": [],
                 },
                 "devices": {
                     "filter": {
@@ -237,28 +237,28 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                     },
                 },
                 "locations": {
-                    "includedLocations": ["All"],
-                    "excludedLocations": ["AllTrusted"],
+                    "included_locations": ["All"],
+                    "excluded_locations": ["AllTrusted"],
                 },
                 "platforms": {
-                    "includedPlatforms": ["android"],
-                    "excludedPlatforms": ["iOS"],
+                    "included_platforms": ["android"],
+                    "excluded_platforms": ["iOS"],
                 },
                 "users": {
-                    "includedUsers": ["All"],
-                    "excludedUsers": ["GuestsOrExternalUsers"],
+                    "included_users": ["All"],
+                    "excluded_users": ["GuestsOrExternalUsers"],
                 },
             },
             grant_controls={
                 "operator": "OR",
-                "builtInControls": ["mfa"],
+                "built_in_controls": ["mfa"],
             },
             session_controls={
-                "applicationEnforcedRestrictionsEnabled": True,
-                "disableResilienceDefaults": False,
-                "signInFrequency": 10,
-                "signInFrequencyPeriod": "hours",
-                "cloudAppSecurityPolicy": "monitorOnly",
+                "application_enforced_restrictions_enabled": True,
+                "disable_resilience_defaults": False,
+                "sign_in_frequency": 10,
+                "sign_in_frequency_period": "hours",
+                "cloud_app_security_policy": "monitorOnly",
             })
         ```
 
@@ -273,21 +273,21 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
             display_name="example policy",
             state="disabled",
             conditions={
-                "clientAppTypes": ["all"],
+                "client_app_types": ["all"],
                 "applications": {
-                    "includedApplications": ["All"],
+                    "included_applications": ["All"],
                 },
-                "clientApplications": {
-                    "includedServicePrincipals": [current.object_id],
-                    "excludedServicePrincipals": [],
+                "client_applications": {
+                    "included_service_principals": [current.object_id],
+                    "excluded_service_principals": [],
                 },
                 "users": {
-                    "includedUsers": ["None"],
+                    "included_users": ["None"],
                 },
             },
             grant_controls={
                 "operator": "OR",
-                "builtInControls": ["block"],
+                "built_in_controls": ["block"],
             })
         ```
 
@@ -302,21 +302,21 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
             display_name="example policy",
             state="disabled",
             conditions={
-                "clientAppTypes": ["all"],
+                "client_app_types": ["all"],
                 "applications": {
-                    "includedApplications": ["All"],
+                    "included_applications": ["All"],
                 },
-                "clientApplications": {
-                    "includedServicePrincipals": ["ServicePrincipalsInMyTenant"],
-                    "excludedServicePrincipals": [current.object_id],
+                "client_applications": {
+                    "included_service_principals": ["ServicePrincipalsInMyTenant"],
+                    "excluded_service_principals": [current.object_id],
                 },
                 "users": {
-                    "includedUsers": ["None"],
+                    "included_users": ["None"],
                 },
             },
             grant_controls={
                 "operator": "OR",
-                "builtInControls": ["block"],
+                "built_in_controls": ["block"],
             })
         ```
 
@@ -357,12 +357,12 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
             display_name="example policy",
             state="disabled",
             conditions={
-                "clientAppTypes": ["all"],
-                "signInRiskLevels": ["medium"],
-                "userRiskLevels": ["medium"],
+                "client_app_types": ["all"],
+                "sign_in_risk_levels": ["medium"],
+                "user_risk_levels": ["medium"],
                 "applications": {
-                    "includedApplications": ["All"],
-                    "excludedApplications": [],
+                    "included_applications": ["All"],
+                    "excluded_applications": [],
                 },
                 "devices": {
                     "filter": {
@@ -371,28 +371,28 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                     },
                 },
                 "locations": {
-                    "includedLocations": ["All"],
-                    "excludedLocations": ["AllTrusted"],
+                    "included_locations": ["All"],
+                    "excluded_locations": ["AllTrusted"],
                 },
                 "platforms": {
-                    "includedPlatforms": ["android"],
-                    "excludedPlatforms": ["iOS"],
+                    "included_platforms": ["android"],
+                    "excluded_platforms": ["iOS"],
                 },
                 "users": {
-                    "includedUsers": ["All"],
-                    "excludedUsers": ["GuestsOrExternalUsers"],
+                    "included_users": ["All"],
+                    "excluded_users": ["GuestsOrExternalUsers"],
                 },
             },
             grant_controls={
                 "operator": "OR",
-                "builtInControls": ["mfa"],
+                "built_in_controls": ["mfa"],
             },
             session_controls={
-                "applicationEnforcedRestrictionsEnabled": True,
-                "disableResilienceDefaults": False,
-                "signInFrequency": 10,
-                "signInFrequencyPeriod": "hours",
-                "cloudAppSecurityPolicy": "monitorOnly",
+                "application_enforced_restrictions_enabled": True,
+                "disable_resilience_defaults": False,
+                "sign_in_frequency": 10,
+                "sign_in_frequency_period": "hours",
+                "cloud_app_security_policy": "monitorOnly",
             })
         ```
 
@@ -407,21 +407,21 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
             display_name="example policy",
             state="disabled",
             conditions={
-                "clientAppTypes": ["all"],
+                "client_app_types": ["all"],
                 "applications": {
-                    "includedApplications": ["All"],
+                    "included_applications": ["All"],
                 },
-                "clientApplications": {
-                    "includedServicePrincipals": [current.object_id],
-                    "excludedServicePrincipals": [],
+                "client_applications": {
+                    "included_service_principals": [current.object_id],
+                    "excluded_service_principals": [],
                 },
                 "users": {
-                    "includedUsers": ["None"],
+                    "included_users": ["None"],
                 },
             },
             grant_controls={
                 "operator": "OR",
-                "builtInControls": ["block"],
+                "built_in_controls": ["block"],
             })
         ```
 
@@ -436,21 +436,21 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
             display_name="example policy",
             state="disabled",
             conditions={
-                "clientAppTypes": ["all"],
+                "client_app_types": ["all"],
                 "applications": {
-                    "includedApplications": ["All"],
+                    "included_applications": ["All"],
                 },
-                "clientApplications": {
-                    "includedServicePrincipals": ["ServicePrincipalsInMyTenant"],
-                    "excludedServicePrincipals": [current.object_id],
+                "client_applications": {
+                    "included_service_principals": ["ServicePrincipalsInMyTenant"],
+                    "excluded_service_principals": [current.object_id],
                 },
                 "users": {
-                    "includedUsers": ["None"],
+                    "included_users": ["None"],
                 },
             },
             grant_controls={
                 "operator": "OR",
-                "builtInControls": ["block"],
+                "built_in_controls": ["block"],
             })
         ```
 
