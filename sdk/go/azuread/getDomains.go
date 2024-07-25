@@ -32,22 +32,16 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			aadDomains, err := azuread.GetDomains(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			var splat0 []*string
-//			for _, val0 := range aadDomains.Domains {
-//				splat0 = append(splat0, val0.DomainName)
-//			}
-//			ctx.Export("domainNames", splat0)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// aadDomains, err := azuread.GetDomains(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("domainNames", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-43)))
+// return nil
+// })
+// }
 // ```
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

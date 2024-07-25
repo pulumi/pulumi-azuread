@@ -44,7 +44,7 @@ import (
 //			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
 //				ApplicationId: example.ID(),
 //				Type:          pulumi.String("AsymmetricX509Cert"),
-//				Value:         invokeFile.Result,
+//				Value:         pulumi.String(invokeFile.Result),
 //				EndDate:       pulumi.String("2021-05-01T01:02:03Z"),
 //			})
 //			if err != nil {
@@ -89,7 +89,7 @@ import (
 //				ApplicationId: example.ID(),
 //				Type:          pulumi.String("AsymmetricX509Cert"),
 //				Encoding:      pulumi.String("base64"),
-//				Value:         invokeBase64encode.Result,
+//				Value:         pulumi.String(invokeBase64encode.Result),
 //				EndDate:       pulumi.String("2021-05-01T01:02:03Z"),
 //			})
 //			if err != nil {
@@ -179,12 +179,12 @@ import (
 //				Type:          pulumi.String("AsymmetricX509Cert"),
 //				Encoding:      pulumi.String("hex"),
 //				Value:         example.CertificateData,
-//				EndDate: example.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (*string, error) {
+//				EndDate: pulumi.String(example.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (*string, error) {
 //					return &certificateAttributes[0].Expires, nil
-//				}).(pulumi.StringPtrOutput),
-//				StartDate: example.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (*string, error) {
+//				}).(pulumi.StringPtrOutput)),
+//				StartDate: pulumi.String(example.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (*string, error) {
 //					return &certificateAttributes[0].NotBefore, nil
-//				}).(pulumi.StringPtrOutput),
+//				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
 //				return err

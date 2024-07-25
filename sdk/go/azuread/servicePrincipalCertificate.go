@@ -50,7 +50,7 @@ import (
 //			_, err = azuread.NewServicePrincipalCertificate(ctx, "example", &azuread.ServicePrincipalCertificateArgs{
 //				ServicePrincipalId: exampleServicePrincipal.ID(),
 //				Type:               pulumi.String("AsymmetricX509Cert"),
-//				Value:              invokeFile.Result,
+//				Value:              pulumi.String(invokeFile.Result),
 //				EndDate:            pulumi.String("2021-05-01T01:02:03Z"),
 //			})
 //			if err != nil {
@@ -101,7 +101,7 @@ import (
 //				ServicePrincipalId: exampleServicePrincipal.ID(),
 //				Type:               pulumi.String("AsymmetricX509Cert"),
 //				Encoding:           pulumi.String("base64"),
-//				Value:              invokeBase64encode.Result,
+//				Value:              pulumi.String(invokeBase64encode.Result),
 //				EndDate:            pulumi.String("2021-05-01T01:02:03Z"),
 //			})
 //			if err != nil {
