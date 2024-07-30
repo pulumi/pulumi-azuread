@@ -251,11 +251,18 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * @param options A bag of options that control this resource's behavior.
      */
     public ServicePrincipalTokenSigningCertificate(String name, ServicePrincipalTokenSigningCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate", name, args == null ? ServicePrincipalTokenSigningCertificateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServicePrincipalTokenSigningCertificate(String name, Output<String> id, @Nullable ServicePrincipalTokenSigningCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServicePrincipalTokenSigningCertificateArgs makeArgs(ServicePrincipalTokenSigningCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServicePrincipalTokenSigningCertificateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
