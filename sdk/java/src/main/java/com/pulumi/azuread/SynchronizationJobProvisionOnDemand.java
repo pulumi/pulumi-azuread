@@ -209,11 +209,18 @@ public class SynchronizationJobProvisionOnDemand extends com.pulumi.resources.Cu
      * @param options A bag of options that control this resource's behavior.
      */
     public SynchronizationJobProvisionOnDemand(String name, SynchronizationJobProvisionOnDemandArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand", name, args == null ? SynchronizationJobProvisionOnDemandArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SynchronizationJobProvisionOnDemand(String name, Output<String> id, @Nullable SynchronizationJobProvisionOnDemandState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SynchronizationJobProvisionOnDemandArgs makeArgs(SynchronizationJobProvisionOnDemandArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SynchronizationJobProvisionOnDemandArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

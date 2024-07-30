@@ -123,11 +123,18 @@ public class ApplicationKnownClients extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public ApplicationKnownClients(String name, ApplicationKnownClientsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationKnownClients:ApplicationKnownClients", name, args == null ? ApplicationKnownClientsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/applicationKnownClients:ApplicationKnownClients", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApplicationKnownClients(String name, Output<String> id, @Nullable ApplicationKnownClientsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/applicationKnownClients:ApplicationKnownClients", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApplicationKnownClientsArgs makeArgs(ApplicationKnownClientsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationKnownClientsArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
