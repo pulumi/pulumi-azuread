@@ -274,11 +274,18 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Invitation(String name, InvitationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/invitation:Invitation", name, args == null ? InvitationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/invitation:Invitation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Invitation(String name, Output<String> id, @Nullable InvitationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/invitation:Invitation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static InvitationArgs makeArgs(InvitationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InvitationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
