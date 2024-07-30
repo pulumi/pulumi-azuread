@@ -155,11 +155,18 @@ public class SynchronizationSecret extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SynchronizationSecret(String name, SynchronizationSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/synchronizationSecret:SynchronizationSecret", name, args == null ? SynchronizationSecretArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/synchronizationSecret:SynchronizationSecret", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SynchronizationSecret(String name, Output<String> id, @Nullable SynchronizationSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/synchronizationSecret:SynchronizationSecret", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SynchronizationSecretArgs makeArgs(SynchronizationSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SynchronizationSecretArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
