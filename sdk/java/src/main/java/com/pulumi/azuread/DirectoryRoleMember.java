@@ -139,11 +139,18 @@ public class DirectoryRoleMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DirectoryRoleMember(String name, @Nullable DirectoryRoleMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/directoryRoleMember:DirectoryRoleMember", name, args == null ? DirectoryRoleMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/directoryRoleMember:DirectoryRoleMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DirectoryRoleMember(String name, Output<String> id, @Nullable DirectoryRoleMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/directoryRoleMember:DirectoryRoleMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DirectoryRoleMemberArgs makeArgs(@Nullable DirectoryRoleMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DirectoryRoleMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

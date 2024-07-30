@@ -141,11 +141,18 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public GroupMember(String name, GroupMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/groupMember:GroupMember", name, args == null ? GroupMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/groupMember:GroupMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GroupMember(String name, Output<String> id, @Nullable GroupMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/groupMember:GroupMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GroupMemberArgs makeArgs(GroupMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GroupMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

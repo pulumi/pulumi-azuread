@@ -333,11 +333,18 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
      * @param options A bag of options that control this resource's behavior.
      */
     public ConditionalAccessPolicy(String name, ConditionalAccessPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy", name, args == null ? ConditionalAccessPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ConditionalAccessPolicy(String name, Output<String> id, @Nullable ConditionalAccessPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ConditionalAccessPolicyArgs makeArgs(ConditionalAccessPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConditionalAccessPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

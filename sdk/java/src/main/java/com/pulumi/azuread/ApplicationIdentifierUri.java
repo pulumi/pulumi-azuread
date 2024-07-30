@@ -161,11 +161,18 @@ public class ApplicationIdentifierUri extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public ApplicationIdentifierUri(String name, ApplicationIdentifierUriArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationIdentifierUri:ApplicationIdentifierUri", name, args == null ? ApplicationIdentifierUriArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/applicationIdentifierUri:ApplicationIdentifierUri", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApplicationIdentifierUri(String name, Output<String> id, @Nullable ApplicationIdentifierUriState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/applicationIdentifierUri:ApplicationIdentifierUri", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApplicationIdentifierUriArgs makeArgs(ApplicationIdentifierUriArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationIdentifierUriArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
