@@ -166,11 +166,18 @@ public class DirectoryRoleEligibilityScheduleRequest extends com.pulumi.resource
      * @param options A bag of options that control this resource's behavior.
      */
     public DirectoryRoleEligibilityScheduleRequest(String name, DirectoryRoleEligibilityScheduleRequestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest", name, args == null ? DirectoryRoleEligibilityScheduleRequestArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DirectoryRoleEligibilityScheduleRequest(String name, Output<String> id, @Nullable DirectoryRoleEligibilityScheduleRequestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DirectoryRoleEligibilityScheduleRequestArgs makeArgs(DirectoryRoleEligibilityScheduleRequestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DirectoryRoleEligibilityScheduleRequestArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
