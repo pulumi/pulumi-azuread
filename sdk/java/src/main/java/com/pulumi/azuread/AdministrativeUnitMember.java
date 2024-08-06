@@ -143,11 +143,18 @@ public class AdministrativeUnitMember extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public AdministrativeUnitMember(String name, @Nullable AdministrativeUnitMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/administrativeUnitMember:AdministrativeUnitMember", name, args == null ? AdministrativeUnitMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/administrativeUnitMember:AdministrativeUnitMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AdministrativeUnitMember(String name, Output<String> id, @Nullable AdministrativeUnitMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/administrativeUnitMember:AdministrativeUnitMember", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AdministrativeUnitMemberArgs makeArgs(@Nullable AdministrativeUnitMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AdministrativeUnitMemberArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

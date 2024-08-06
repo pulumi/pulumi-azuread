@@ -168,11 +168,18 @@ public class AuthenticationStrengthPolicy extends com.pulumi.resources.CustomRes
      * @param options A bag of options that control this resource's behavior.
      */
     public AuthenticationStrengthPolicy(String name, AuthenticationStrengthPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy", name, args == null ? AuthenticationStrengthPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AuthenticationStrengthPolicy(String name, Output<String> id, @Nullable AuthenticationStrengthPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AuthenticationStrengthPolicyArgs makeArgs(AuthenticationStrengthPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthenticationStrengthPolicyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

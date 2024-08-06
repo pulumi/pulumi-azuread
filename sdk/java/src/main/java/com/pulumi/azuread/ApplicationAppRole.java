@@ -230,11 +230,18 @@ public class ApplicationAppRole extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ApplicationAppRole(String name, ApplicationAppRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationAppRole:ApplicationAppRole", name, args == null ? ApplicationAppRoleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/applicationAppRole:ApplicationAppRole", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApplicationAppRole(String name, Output<String> id, @Nullable ApplicationAppRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/applicationAppRole:ApplicationAppRole", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApplicationAppRoleArgs makeArgs(ApplicationAppRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationAppRoleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

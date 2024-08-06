@@ -276,11 +276,18 @@ public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resourc
      * @param options A bag of options that control this resource's behavior.
      */
     public ServicePrincipalDelegatedPermissionGrant(String name, ServicePrincipalDelegatedPermissionGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant", name, args == null ? ServicePrincipalDelegatedPermissionGrantArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ServicePrincipalDelegatedPermissionGrant(String name, Output<String> id, @Nullable ServicePrincipalDelegatedPermissionGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ServicePrincipalDelegatedPermissionGrantArgs makeArgs(ServicePrincipalDelegatedPermissionGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServicePrincipalDelegatedPermissionGrantArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

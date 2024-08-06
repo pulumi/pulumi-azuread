@@ -124,11 +124,18 @@ public class ApplicationFallbackPublicClient extends com.pulumi.resources.Custom
      * @param options A bag of options that control this resource's behavior.
      */
     public ApplicationFallbackPublicClient(String name, ApplicationFallbackPublicClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient", name, args == null ? ApplicationFallbackPublicClientArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApplicationFallbackPublicClient(String name, Output<String> id, @Nullable ApplicationFallbackPublicClientState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApplicationFallbackPublicClientArgs makeArgs(ApplicationFallbackPublicClientArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationFallbackPublicClientArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

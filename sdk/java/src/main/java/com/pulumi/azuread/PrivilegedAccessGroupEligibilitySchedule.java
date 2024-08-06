@@ -273,11 +273,18 @@ public class PrivilegedAccessGroupEligibilitySchedule extends com.pulumi.resourc
      * @param options A bag of options that control this resource's behavior.
      */
     public PrivilegedAccessGroupEligibilitySchedule(String name, PrivilegedAccessGroupEligibilityScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule", name, args == null ? PrivilegedAccessGroupEligibilityScheduleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private PrivilegedAccessGroupEligibilitySchedule(String name, Output<String> id, @Nullable PrivilegedAccessGroupEligibilityScheduleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PrivilegedAccessGroupEligibilityScheduleArgs makeArgs(PrivilegedAccessGroupEligibilityScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PrivilegedAccessGroupEligibilityScheduleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

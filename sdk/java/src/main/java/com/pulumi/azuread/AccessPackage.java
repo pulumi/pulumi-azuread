@@ -160,11 +160,18 @@ public class AccessPackage extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AccessPackage(String name, AccessPackageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/accessPackage:AccessPackage", name, args == null ? AccessPackageArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/accessPackage:AccessPackage", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AccessPackage(String name, Output<String> id, @Nullable AccessPackageState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/accessPackage:AccessPackage", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AccessPackageArgs makeArgs(AccessPackageArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessPackageArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

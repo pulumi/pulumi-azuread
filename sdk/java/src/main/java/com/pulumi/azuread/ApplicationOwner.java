@@ -128,11 +128,18 @@ public class ApplicationOwner extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ApplicationOwner(String name, ApplicationOwnerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationOwner:ApplicationOwner", name, args == null ? ApplicationOwnerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/applicationOwner:ApplicationOwner", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApplicationOwner(String name, Output<String> id, @Nullable ApplicationOwnerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/applicationOwner:ApplicationOwner", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApplicationOwnerArgs makeArgs(ApplicationOwnerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationOwnerArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

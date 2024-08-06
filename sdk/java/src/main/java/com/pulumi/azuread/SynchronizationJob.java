@@ -198,11 +198,18 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SynchronizationJob(String name, SynchronizationJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/synchronizationJob:SynchronizationJob", name, args == null ? SynchronizationJobArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/synchronizationJob:SynchronizationJob", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SynchronizationJob(String name, Output<String> id, @Nullable SynchronizationJobState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/synchronizationJob:SynchronizationJob", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SynchronizationJobArgs makeArgs(SynchronizationJobArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SynchronizationJobArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

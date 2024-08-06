@@ -202,11 +202,18 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public ApplicationPreAuthorized(String name, ApplicationPreAuthorizedArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationPreAuthorized:ApplicationPreAuthorized", name, args == null ? ApplicationPreAuthorizedArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/applicationPreAuthorized:ApplicationPreAuthorized", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ApplicationPreAuthorized(String name, Output<String> id, @Nullable ApplicationPreAuthorizedState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/applicationPreAuthorized:ApplicationPreAuthorized", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ApplicationPreAuthorizedArgs makeArgs(ApplicationPreAuthorizedArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationPreAuthorizedArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
