@@ -190,11 +190,18 @@ public class AdministrativeUnit extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AdministrativeUnit(String name, AdministrativeUnitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/administrativeUnit:AdministrativeUnit", name, args == null ? AdministrativeUnitArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("azuread:index/administrativeUnit:AdministrativeUnit", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AdministrativeUnit(String name, Output<String> id, @Nullable AdministrativeUnitState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/administrativeUnit:AdministrativeUnit", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AdministrativeUnitArgs makeArgs(AdministrativeUnitArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AdministrativeUnitArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
