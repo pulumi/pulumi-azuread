@@ -56,22 +56,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Group("example", GroupArgs.builder()
  *             .displayName("group-name")
  *             .securityEnabled(true)
  *             .build());
  * 
  *         var member = new User("member", UserArgs.builder()
- *             .userPrincipalName("jdoe{@literal @}example.com")
+ *             .userPrincipalName("jdoe}{@literal @}{@code example.com")
  *             .displayName("J. Doe")
  *             .mailNickname("jdoe")
- *             .password("SecretP{@literal @}sswd99!")
+ *             .password("SecretP}{@literal @}{@code sswd99!")
  *             .build());
  * 
  *         var exampleGroupRoleManagementPolicy = new GroupRoleManagementPolicy("exampleGroupRoleManagementPolicy", GroupRoleManagementPolicyArgs.builder()
@@ -89,15 +89,15 @@ import javax.annotation.Nullable;
  *                         .notificationLevel("Critical")
  *                         .defaultRecipients(false)
  *                         .additionalRecipients(                        
- *                             "someone{@literal @}example.com",
- *                             "someone.else{@literal @}example.com")
+ *                             "someone}{@literal @}{@code example.com",
+ *                             "someone.else}{@literal @}{@code example.com")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -226,7 +226,7 @@ public class GroupRoleManagementPolicy extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GroupRoleManagementPolicy(String name) {
+    public GroupRoleManagementPolicy(java.lang.String name) {
         this(name, GroupRoleManagementPolicyArgs.Empty);
     }
     /**
@@ -234,7 +234,7 @@ public class GroupRoleManagementPolicy extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GroupRoleManagementPolicy(String name, GroupRoleManagementPolicyArgs args) {
+    public GroupRoleManagementPolicy(java.lang.String name, GroupRoleManagementPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -243,15 +243,22 @@ public class GroupRoleManagementPolicy extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GroupRoleManagementPolicy(String name, GroupRoleManagementPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy", name, args == null ? GroupRoleManagementPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GroupRoleManagementPolicy(java.lang.String name, GroupRoleManagementPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GroupRoleManagementPolicy(String name, Output<String> id, @Nullable GroupRoleManagementPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy", name, state, makeResourceOptions(options, id));
+    private GroupRoleManagementPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable GroupRoleManagementPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GroupRoleManagementPolicyArgs makeArgs(GroupRoleManagementPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GroupRoleManagementPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -267,7 +274,7 @@ public class GroupRoleManagementPolicy extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GroupRoleManagementPolicy get(String name, Output<String> id, @Nullable GroupRoleManagementPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GroupRoleManagementPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable GroupRoleManagementPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GroupRoleManagementPolicy(name, id, state, options);
     }
 }

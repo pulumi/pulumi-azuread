@@ -104,7 +104,7 @@ public class ServicePrincipalClaimsMappingPolicyAssignment extends com.pulumi.re
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServicePrincipalClaimsMappingPolicyAssignment(String name) {
+    public ServicePrincipalClaimsMappingPolicyAssignment(java.lang.String name) {
         this(name, ServicePrincipalClaimsMappingPolicyAssignmentArgs.Empty);
     }
     /**
@@ -112,7 +112,7 @@ public class ServicePrincipalClaimsMappingPolicyAssignment extends com.pulumi.re
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServicePrincipalClaimsMappingPolicyAssignment(String name, ServicePrincipalClaimsMappingPolicyAssignmentArgs args) {
+    public ServicePrincipalClaimsMappingPolicyAssignment(java.lang.String name, ServicePrincipalClaimsMappingPolicyAssignmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -121,15 +121,22 @@ public class ServicePrincipalClaimsMappingPolicyAssignment extends com.pulumi.re
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServicePrincipalClaimsMappingPolicyAssignment(String name, ServicePrincipalClaimsMappingPolicyAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment", name, args == null ? ServicePrincipalClaimsMappingPolicyAssignmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServicePrincipalClaimsMappingPolicyAssignment(java.lang.String name, ServicePrincipalClaimsMappingPolicyAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServicePrincipalClaimsMappingPolicyAssignment(String name, Output<String> id, @Nullable ServicePrincipalClaimsMappingPolicyAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment", name, state, makeResourceOptions(options, id));
+    private ServicePrincipalClaimsMappingPolicyAssignment(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePrincipalClaimsMappingPolicyAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServicePrincipalClaimsMappingPolicyAssignmentArgs makeArgs(ServicePrincipalClaimsMappingPolicyAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServicePrincipalClaimsMappingPolicyAssignmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -145,7 +152,7 @@ public class ServicePrincipalClaimsMappingPolicyAssignment extends com.pulumi.re
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServicePrincipalClaimsMappingPolicyAssignment get(String name, Output<String> id, @Nullable ServicePrincipalClaimsMappingPolicyAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServicePrincipalClaimsMappingPolicyAssignment get(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePrincipalClaimsMappingPolicyAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServicePrincipalClaimsMappingPolicyAssignment(name, id, state, options);
     }
 }

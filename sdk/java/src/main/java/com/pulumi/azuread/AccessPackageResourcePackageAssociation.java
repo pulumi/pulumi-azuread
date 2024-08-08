@@ -151,7 +151,7 @@ public class AccessPackageResourcePackageAssociation extends com.pulumi.resource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessPackageResourcePackageAssociation(String name) {
+    public AccessPackageResourcePackageAssociation(java.lang.String name) {
         this(name, AccessPackageResourcePackageAssociationArgs.Empty);
     }
     /**
@@ -159,7 +159,7 @@ public class AccessPackageResourcePackageAssociation extends com.pulumi.resource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessPackageResourcePackageAssociation(String name, AccessPackageResourcePackageAssociationArgs args) {
+    public AccessPackageResourcePackageAssociation(java.lang.String name, AccessPackageResourcePackageAssociationArgs args) {
         this(name, args, null);
     }
     /**
@@ -168,15 +168,22 @@ public class AccessPackageResourcePackageAssociation extends com.pulumi.resource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessPackageResourcePackageAssociation(String name, AccessPackageResourcePackageAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation", name, args == null ? AccessPackageResourcePackageAssociationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccessPackageResourcePackageAssociation(java.lang.String name, AccessPackageResourcePackageAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessPackageResourcePackageAssociation(String name, Output<String> id, @Nullable AccessPackageResourcePackageAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation", name, state, makeResourceOptions(options, id));
+    private AccessPackageResourcePackageAssociation(java.lang.String name, Output<java.lang.String> id, @Nullable AccessPackageResourcePackageAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccessPackageResourcePackageAssociationArgs makeArgs(AccessPackageResourcePackageAssociationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessPackageResourcePackageAssociationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -192,7 +199,7 @@ public class AccessPackageResourcePackageAssociation extends com.pulumi.resource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessPackageResourcePackageAssociation get(String name, Output<String> id, @Nullable AccessPackageResourcePackageAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessPackageResourcePackageAssociation get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessPackageResourcePackageAssociationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessPackageResourcePackageAssociation(name, id, state, options);
     }
 }

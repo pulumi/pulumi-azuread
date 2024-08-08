@@ -126,7 +126,7 @@ public class ClaimsMappingPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClaimsMappingPolicy(String name) {
+    public ClaimsMappingPolicy(java.lang.String name) {
         this(name, ClaimsMappingPolicyArgs.Empty);
     }
     /**
@@ -134,7 +134,7 @@ public class ClaimsMappingPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClaimsMappingPolicy(String name, ClaimsMappingPolicyArgs args) {
+    public ClaimsMappingPolicy(java.lang.String name, ClaimsMappingPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -143,15 +143,22 @@ public class ClaimsMappingPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClaimsMappingPolicy(String name, ClaimsMappingPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/claimsMappingPolicy:ClaimsMappingPolicy", name, args == null ? ClaimsMappingPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ClaimsMappingPolicy(java.lang.String name, ClaimsMappingPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/claimsMappingPolicy:ClaimsMappingPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ClaimsMappingPolicy(String name, Output<String> id, @Nullable ClaimsMappingPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/claimsMappingPolicy:ClaimsMappingPolicy", name, state, makeResourceOptions(options, id));
+    private ClaimsMappingPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable ClaimsMappingPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/claimsMappingPolicy:ClaimsMappingPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ClaimsMappingPolicyArgs makeArgs(ClaimsMappingPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ClaimsMappingPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -167,7 +174,7 @@ public class ClaimsMappingPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClaimsMappingPolicy get(String name, Output<String> id, @Nullable ClaimsMappingPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ClaimsMappingPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable ClaimsMappingPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ClaimsMappingPolicy(name, id, state, options);
     }
 }

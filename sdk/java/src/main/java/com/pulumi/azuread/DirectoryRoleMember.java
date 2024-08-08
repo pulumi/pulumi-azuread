@@ -50,14 +50,14 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName("jdoe{@literal @}example.com")
+ *             .userPrincipalName("jdoe}{@literal @}{@code example.com")
  *             .build());
  * 
  *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()
@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -121,7 +121,7 @@ public class DirectoryRoleMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DirectoryRoleMember(String name) {
+    public DirectoryRoleMember(java.lang.String name) {
         this(name, DirectoryRoleMemberArgs.Empty);
     }
     /**
@@ -129,7 +129,7 @@ public class DirectoryRoleMember extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DirectoryRoleMember(String name, @Nullable DirectoryRoleMemberArgs args) {
+    public DirectoryRoleMember(java.lang.String name, @Nullable DirectoryRoleMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -138,15 +138,22 @@ public class DirectoryRoleMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DirectoryRoleMember(String name, @Nullable DirectoryRoleMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/directoryRoleMember:DirectoryRoleMember", name, args == null ? DirectoryRoleMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DirectoryRoleMember(java.lang.String name, @Nullable DirectoryRoleMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/directoryRoleMember:DirectoryRoleMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DirectoryRoleMember(String name, Output<String> id, @Nullable DirectoryRoleMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/directoryRoleMember:DirectoryRoleMember", name, state, makeResourceOptions(options, id));
+    private DirectoryRoleMember(java.lang.String name, Output<java.lang.String> id, @Nullable DirectoryRoleMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/directoryRoleMember:DirectoryRoleMember", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DirectoryRoleMemberArgs makeArgs(@Nullable DirectoryRoleMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DirectoryRoleMemberArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -162,7 +169,7 @@ public class DirectoryRoleMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DirectoryRoleMember get(String name, Output<String> id, @Nullable DirectoryRoleMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DirectoryRoleMember get(java.lang.String name, Output<java.lang.String> id, @Nullable DirectoryRoleMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DirectoryRoleMember(name, id, state, options);
     }
 }

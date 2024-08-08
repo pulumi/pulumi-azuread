@@ -315,7 +315,7 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConditionalAccessPolicy(String name) {
+    public ConditionalAccessPolicy(java.lang.String name) {
         this(name, ConditionalAccessPolicyArgs.Empty);
     }
     /**
@@ -323,7 +323,7 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConditionalAccessPolicy(String name, ConditionalAccessPolicyArgs args) {
+    public ConditionalAccessPolicy(java.lang.String name, ConditionalAccessPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -332,15 +332,22 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConditionalAccessPolicy(String name, ConditionalAccessPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy", name, args == null ? ConditionalAccessPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConditionalAccessPolicy(java.lang.String name, ConditionalAccessPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ConditionalAccessPolicy(String name, Output<String> id, @Nullable ConditionalAccessPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy", name, state, makeResourceOptions(options, id));
+    private ConditionalAccessPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable ConditionalAccessPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ConditionalAccessPolicyArgs makeArgs(ConditionalAccessPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ConditionalAccessPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -356,7 +363,7 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConditionalAccessPolicy get(String name, Output<String> id, @Nullable ConditionalAccessPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ConditionalAccessPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable ConditionalAccessPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ConditionalAccessPolicy(name, id, state, options);
     }
 }

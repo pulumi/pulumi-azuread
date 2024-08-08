@@ -47,19 +47,19 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Invitation("example", InvitationArgs.builder()
- *             .userEmailAddress("jdoe{@literal @}example.com")
+ *             .userEmailAddress("jdoe}{@literal @}{@code example.com")
  *             .redirectUrl("https://portal.azure.com")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -84,22 +84,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Invitation("example", InvitationArgs.builder()
- *             .userEmailAddress("jdoe{@literal @}example.com")
+ *             .userEmailAddress("jdoe}{@literal @}{@code example.com")
  *             .redirectUrl("https://portal.azure.com")
  *             .message(InvitationMessageArgs.builder()
  *                 .language("en-US")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -124,24 +124,24 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Invitation("example", InvitationArgs.builder()
  *             .userDisplayName("Bob Bobson")
- *             .userEmailAddress("bbobson{@literal @}example.com")
+ *             .userEmailAddress("bbobson}{@literal @}{@code example.com")
  *             .redirectUrl("https://portal.azure.com")
  *             .message(InvitationMessageArgs.builder()
- *                 .additionalRecipients("aaliceberg{@literal @}example.com")
+ *                 .additionalRecipients("aaliceberg}{@literal @}{@code example.com")
  *                 .body("Hello there! You are invited to join my Azure tenant!")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -256,7 +256,7 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Invitation(String name) {
+    public Invitation(java.lang.String name) {
         this(name, InvitationArgs.Empty);
     }
     /**
@@ -264,7 +264,7 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Invitation(String name, InvitationArgs args) {
+    public Invitation(java.lang.String name, InvitationArgs args) {
         this(name, args, null);
     }
     /**
@@ -273,15 +273,22 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Invitation(String name, InvitationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/invitation:Invitation", name, args == null ? InvitationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Invitation(java.lang.String name, InvitationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/invitation:Invitation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Invitation(String name, Output<String> id, @Nullable InvitationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/invitation:Invitation", name, state, makeResourceOptions(options, id));
+    private Invitation(java.lang.String name, Output<java.lang.String> id, @Nullable InvitationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/invitation:Invitation", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static InvitationArgs makeArgs(InvitationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? InvitationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -297,7 +304,7 @@ public class Invitation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Invitation get(String name, Output<String> id, @Nullable InvitationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Invitation get(java.lang.String name, Output<java.lang.String> id, @Nullable InvitationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Invitation(name, id, state, options);
     }
 }
