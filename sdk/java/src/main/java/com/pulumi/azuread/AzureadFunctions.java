@@ -8242,18 +8242,18 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName("user{@literal @}example.com")
+     *             .userPrincipalName("user}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -8292,18 +8292,18 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName("user{@literal @}example.com")
+     *             .userPrincipalName("user}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -8342,18 +8342,18 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName("user{@literal @}example.com")
+     *             .userPrincipalName("user}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -8392,18 +8392,18 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName("user{@literal @}example.com")
+     *             .userPrincipalName("user}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -8442,18 +8442,18 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName("user{@literal @}example.com")
+     *             .userPrincipalName("user}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -8492,18 +8492,18 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
-     *             .userPrincipalName("user{@literal @}example.com")
+     *             .userPrincipalName("user}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -8542,20 +8542,20 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 "kat{@literal @}example.com",
-     *                 "byte{@literal @}example.com")
+     *                 "kat}{@literal @}{@code example.com",
+     *                 "byte}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -8594,20 +8594,20 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 "kat{@literal @}example.com",
-     *                 "byte{@literal @}example.com")
+     *                 "kat}{@literal @}{@code example.com",
+     *                 "byte}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -8646,20 +8646,20 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 "kat{@literal @}example.com",
-     *                 "byte{@literal @}example.com")
+     *                 "kat}{@literal @}{@code example.com",
+     *                 "byte}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -8698,20 +8698,20 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 "kat{@literal @}example.com",
-     *                 "byte{@literal @}example.com")
+     *                 "kat}{@literal @}{@code example.com",
+     *                 "byte}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -8750,20 +8750,20 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 "kat{@literal @}example.com",
-     *                 "byte{@literal @}example.com")
+     *                 "kat}{@literal @}{@code example.com",
+     *                 "byte}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -8802,20 +8802,20 @@ public final class AzureadFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
-     *                 "kat{@literal @}example.com",
-     *                 "byte{@literal @}example.com")
+     *                 "kat}{@literal @}{@code example.com",
+     *                 "byte}{@literal @}{@code example.com")
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

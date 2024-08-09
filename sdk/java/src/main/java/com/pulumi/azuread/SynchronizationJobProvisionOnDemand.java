@@ -191,7 +191,7 @@ public class SynchronizationJobProvisionOnDemand extends com.pulumi.resources.Cu
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SynchronizationJobProvisionOnDemand(String name) {
+    public SynchronizationJobProvisionOnDemand(java.lang.String name) {
         this(name, SynchronizationJobProvisionOnDemandArgs.Empty);
     }
     /**
@@ -199,7 +199,7 @@ public class SynchronizationJobProvisionOnDemand extends com.pulumi.resources.Cu
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SynchronizationJobProvisionOnDemand(String name, SynchronizationJobProvisionOnDemandArgs args) {
+    public SynchronizationJobProvisionOnDemand(java.lang.String name, SynchronizationJobProvisionOnDemandArgs args) {
         this(name, args, null);
     }
     /**
@@ -208,15 +208,22 @@ public class SynchronizationJobProvisionOnDemand extends com.pulumi.resources.Cu
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SynchronizationJobProvisionOnDemand(String name, SynchronizationJobProvisionOnDemandArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand", name, args == null ? SynchronizationJobProvisionOnDemandArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SynchronizationJobProvisionOnDemand(java.lang.String name, SynchronizationJobProvisionOnDemandArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SynchronizationJobProvisionOnDemand(String name, Output<String> id, @Nullable SynchronizationJobProvisionOnDemandState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand", name, state, makeResourceOptions(options, id));
+    private SynchronizationJobProvisionOnDemand(java.lang.String name, Output<java.lang.String> id, @Nullable SynchronizationJobProvisionOnDemandState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SynchronizationJobProvisionOnDemandArgs makeArgs(SynchronizationJobProvisionOnDemandArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SynchronizationJobProvisionOnDemandArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -232,7 +239,7 @@ public class SynchronizationJobProvisionOnDemand extends com.pulumi.resources.Cu
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SynchronizationJobProvisionOnDemand get(String name, Output<String> id, @Nullable SynchronizationJobProvisionOnDemandState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SynchronizationJobProvisionOnDemand get(java.lang.String name, Output<java.lang.String> id, @Nullable SynchronizationJobProvisionOnDemandState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SynchronizationJobProvisionOnDemand(name, id, state, options);
     }
 }
