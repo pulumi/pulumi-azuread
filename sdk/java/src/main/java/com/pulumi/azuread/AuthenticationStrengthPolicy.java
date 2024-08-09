@@ -150,7 +150,7 @@ public class AuthenticationStrengthPolicy extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuthenticationStrengthPolicy(String name) {
+    public AuthenticationStrengthPolicy(java.lang.String name) {
         this(name, AuthenticationStrengthPolicyArgs.Empty);
     }
     /**
@@ -158,7 +158,7 @@ public class AuthenticationStrengthPolicy extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuthenticationStrengthPolicy(String name, AuthenticationStrengthPolicyArgs args) {
+    public AuthenticationStrengthPolicy(java.lang.String name, AuthenticationStrengthPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -167,15 +167,22 @@ public class AuthenticationStrengthPolicy extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuthenticationStrengthPolicy(String name, AuthenticationStrengthPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy", name, args == null ? AuthenticationStrengthPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AuthenticationStrengthPolicy(java.lang.String name, AuthenticationStrengthPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuthenticationStrengthPolicy(String name, Output<String> id, @Nullable AuthenticationStrengthPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy", name, state, makeResourceOptions(options, id));
+    private AuthenticationStrengthPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable AuthenticationStrengthPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AuthenticationStrengthPolicyArgs makeArgs(AuthenticationStrengthPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthenticationStrengthPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -191,7 +198,7 @@ public class AuthenticationStrengthPolicy extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuthenticationStrengthPolicy get(String name, Output<String> id, @Nullable AuthenticationStrengthPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuthenticationStrengthPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthenticationStrengthPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuthenticationStrengthPolicy(name, id, state, options);
     }
 }

@@ -166,7 +166,7 @@ import (
 //								pulumi.String("domain.hello.world"),
 //							},
 //						},
-//						Subject:          pulumi.String(fmt.Sprintf("CN=%v", exampleApplication.Name)),
+//						Subject:          pulumi.Sprintf("CN=%v", exampleApplication.Name),
 //						ValidityInMonths: pulumi.Int(12),
 //					},
 //				},

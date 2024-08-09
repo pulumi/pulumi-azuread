@@ -49,22 +49,22 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Group("example", GroupArgs.builder()
  *             .displayName("group-name")
  *             .securityEnabled(true)
  *             .build());
  * 
  *         var member = new User("member", UserArgs.builder()
- *             .userPrincipalName("jdoe{@literal @}example.com")
+ *             .userPrincipalName("jdoe}{@literal @}{@code example.com")
  *             .displayName("J. Doe")
  *             .mailNickname("jdoe")
- *             .password("SecretP{@literal @}sswd99!")
+ *             .password("SecretP}{@literal @}{@code sswd99!")
  *             .build());
  * 
  *         var examplePrivilegedAccessGroupAssignmentSchedule = new PrivilegedAccessGroupAssignmentSchedule("examplePrivilegedAccessGroupAssignmentSchedule", PrivilegedAccessGroupAssignmentScheduleArgs.builder()
@@ -75,8 +75,8 @@ import javax.annotation.Nullable;
  *             .justification("as requested")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -255,7 +255,7 @@ public class PrivilegedAccessGroupAssignmentSchedule extends com.pulumi.resource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PrivilegedAccessGroupAssignmentSchedule(String name) {
+    public PrivilegedAccessGroupAssignmentSchedule(java.lang.String name) {
         this(name, PrivilegedAccessGroupAssignmentScheduleArgs.Empty);
     }
     /**
@@ -263,7 +263,7 @@ public class PrivilegedAccessGroupAssignmentSchedule extends com.pulumi.resource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PrivilegedAccessGroupAssignmentSchedule(String name, PrivilegedAccessGroupAssignmentScheduleArgs args) {
+    public PrivilegedAccessGroupAssignmentSchedule(java.lang.String name, PrivilegedAccessGroupAssignmentScheduleArgs args) {
         this(name, args, null);
     }
     /**
@@ -272,15 +272,22 @@ public class PrivilegedAccessGroupAssignmentSchedule extends com.pulumi.resource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PrivilegedAccessGroupAssignmentSchedule(String name, PrivilegedAccessGroupAssignmentScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule", name, args == null ? PrivilegedAccessGroupAssignmentScheduleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public PrivilegedAccessGroupAssignmentSchedule(java.lang.String name, PrivilegedAccessGroupAssignmentScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PrivilegedAccessGroupAssignmentSchedule(String name, Output<String> id, @Nullable PrivilegedAccessGroupAssignmentScheduleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule", name, state, makeResourceOptions(options, id));
+    private PrivilegedAccessGroupAssignmentSchedule(java.lang.String name, Output<java.lang.String> id, @Nullable PrivilegedAccessGroupAssignmentScheduleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static PrivilegedAccessGroupAssignmentScheduleArgs makeArgs(PrivilegedAccessGroupAssignmentScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PrivilegedAccessGroupAssignmentScheduleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -296,7 +303,7 @@ public class PrivilegedAccessGroupAssignmentSchedule extends com.pulumi.resource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PrivilegedAccessGroupAssignmentSchedule get(String name, Output<String> id, @Nullable PrivilegedAccessGroupAssignmentScheduleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PrivilegedAccessGroupAssignmentSchedule get(java.lang.String name, Output<java.lang.String> id, @Nullable PrivilegedAccessGroupAssignmentScheduleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PrivilegedAccessGroupAssignmentSchedule(name, id, state, options);
     }
 }

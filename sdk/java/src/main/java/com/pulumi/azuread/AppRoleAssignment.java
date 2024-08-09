@@ -274,7 +274,7 @@ public class AppRoleAssignment extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AppRoleAssignment(String name) {
+    public AppRoleAssignment(java.lang.String name) {
         this(name, AppRoleAssignmentArgs.Empty);
     }
     /**
@@ -282,7 +282,7 @@ public class AppRoleAssignment extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AppRoleAssignment(String name, AppRoleAssignmentArgs args) {
+    public AppRoleAssignment(java.lang.String name, AppRoleAssignmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -291,15 +291,22 @@ public class AppRoleAssignment extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AppRoleAssignment(String name, AppRoleAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/appRoleAssignment:AppRoleAssignment", name, args == null ? AppRoleAssignmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AppRoleAssignment(java.lang.String name, AppRoleAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/appRoleAssignment:AppRoleAssignment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AppRoleAssignment(String name, Output<String> id, @Nullable AppRoleAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/appRoleAssignment:AppRoleAssignment", name, state, makeResourceOptions(options, id));
+    private AppRoleAssignment(java.lang.String name, Output<java.lang.String> id, @Nullable AppRoleAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/appRoleAssignment:AppRoleAssignment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AppRoleAssignmentArgs makeArgs(AppRoleAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AppRoleAssignmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -315,7 +322,7 @@ public class AppRoleAssignment extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AppRoleAssignment get(String name, Output<String> id, @Nullable AppRoleAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AppRoleAssignment get(java.lang.String name, Output<java.lang.String> id, @Nullable AppRoleAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AppRoleAssignment(name, id, state, options);
     }
 }

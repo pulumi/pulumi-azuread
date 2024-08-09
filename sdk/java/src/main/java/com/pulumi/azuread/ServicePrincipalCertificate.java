@@ -263,7 +263,7 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServicePrincipalCertificate(String name) {
+    public ServicePrincipalCertificate(java.lang.String name) {
         this(name, ServicePrincipalCertificateArgs.Empty);
     }
     /**
@@ -271,7 +271,7 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServicePrincipalCertificate(String name, ServicePrincipalCertificateArgs args) {
+    public ServicePrincipalCertificate(java.lang.String name, ServicePrincipalCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -280,15 +280,22 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServicePrincipalCertificate(String name, ServicePrincipalCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate", name, args == null ? ServicePrincipalCertificateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServicePrincipalCertificate(java.lang.String name, ServicePrincipalCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServicePrincipalCertificate(String name, Output<String> id, @Nullable ServicePrincipalCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate", name, state, makeResourceOptions(options, id));
+    private ServicePrincipalCertificate(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePrincipalCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServicePrincipalCertificateArgs makeArgs(ServicePrincipalCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServicePrincipalCertificateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -307,7 +314,7 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServicePrincipalCertificate get(String name, Output<String> id, @Nullable ServicePrincipalCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServicePrincipalCertificate get(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePrincipalCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServicePrincipalCertificate(name, id, state, options);
     }
 }

@@ -127,12 +127,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
  *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
@@ -162,9 +162,9 @@ import javax.annotation.Nullable;
  * 
  *         var exampleUser = new User("exampleUser", UserArgs.builder()
  *             .displayName("J. Doe")
- *             .userPrincipalName("jdoe{@literal @}example.com")
+ *             .userPrincipalName("jdoe}{@literal @}{@code example.com")
  *             .mailNickname("jdoe")
- *             .password("SecretP{@literal @}sswd99!")
+ *             .password("SecretP}{@literal @}{@code sswd99!")
  *             .build());
  * 
  *         var exampleServicePrincipalDelegatedPermissionGrant = new ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", ServicePrincipalDelegatedPermissionGrantArgs.builder()
@@ -176,8 +176,8 @@ import javax.annotation.Nullable;
  *             .userObjectId(exampleUser.objectId())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -258,7 +258,7 @@ public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ServicePrincipalDelegatedPermissionGrant(String name) {
+    public ServicePrincipalDelegatedPermissionGrant(java.lang.String name) {
         this(name, ServicePrincipalDelegatedPermissionGrantArgs.Empty);
     }
     /**
@@ -266,7 +266,7 @@ public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServicePrincipalDelegatedPermissionGrant(String name, ServicePrincipalDelegatedPermissionGrantArgs args) {
+    public ServicePrincipalDelegatedPermissionGrant(java.lang.String name, ServicePrincipalDelegatedPermissionGrantArgs args) {
         this(name, args, null);
     }
     /**
@@ -275,15 +275,22 @@ public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServicePrincipalDelegatedPermissionGrant(String name, ServicePrincipalDelegatedPermissionGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant", name, args == null ? ServicePrincipalDelegatedPermissionGrantArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ServicePrincipalDelegatedPermissionGrant(java.lang.String name, ServicePrincipalDelegatedPermissionGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ServicePrincipalDelegatedPermissionGrant(String name, Output<String> id, @Nullable ServicePrincipalDelegatedPermissionGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant", name, state, makeResourceOptions(options, id));
+    private ServicePrincipalDelegatedPermissionGrant(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePrincipalDelegatedPermissionGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ServicePrincipalDelegatedPermissionGrantArgs makeArgs(ServicePrincipalDelegatedPermissionGrantArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ServicePrincipalDelegatedPermissionGrantArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -299,7 +306,7 @@ public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ServicePrincipalDelegatedPermissionGrant get(String name, Output<String> id, @Nullable ServicePrincipalDelegatedPermissionGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ServicePrincipalDelegatedPermissionGrant get(java.lang.String name, Output<java.lang.String> id, @Nullable ServicePrincipalDelegatedPermissionGrantState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ServicePrincipalDelegatedPermissionGrant(name, id, state, options);
     }
 }

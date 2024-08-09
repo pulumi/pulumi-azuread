@@ -196,7 +196,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationFederatedIdentityCredential(String name) {
+    public ApplicationFederatedIdentityCredential(java.lang.String name) {
         this(name, ApplicationFederatedIdentityCredentialArgs.Empty);
     }
     /**
@@ -204,7 +204,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationFederatedIdentityCredential(String name, ApplicationFederatedIdentityCredentialArgs args) {
+    public ApplicationFederatedIdentityCredential(java.lang.String name, ApplicationFederatedIdentityCredentialArgs args) {
         this(name, args, null);
     }
     /**
@@ -213,15 +213,22 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationFederatedIdentityCredential(String name, ApplicationFederatedIdentityCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential", name, args == null ? ApplicationFederatedIdentityCredentialArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApplicationFederatedIdentityCredential(java.lang.String name, ApplicationFederatedIdentityCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApplicationFederatedIdentityCredential(String name, Output<String> id, @Nullable ApplicationFederatedIdentityCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential", name, state, makeResourceOptions(options, id));
+    private ApplicationFederatedIdentityCredential(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationFederatedIdentityCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationFederatedIdentityCredentialArgs makeArgs(ApplicationFederatedIdentityCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationFederatedIdentityCredentialArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -237,7 +244,7 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationFederatedIdentityCredential get(String name, Output<String> id, @Nullable ApplicationFederatedIdentityCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationFederatedIdentityCredential get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationFederatedIdentityCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationFederatedIdentityCredential(name, id, state, options);
     }
 }

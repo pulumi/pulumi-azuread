@@ -155,7 +155,7 @@ public class ApplicationOptionalClaims extends com.pulumi.resources.CustomResour
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationOptionalClaims(String name) {
+    public ApplicationOptionalClaims(java.lang.String name) {
         this(name, ApplicationOptionalClaimsArgs.Empty);
     }
     /**
@@ -163,7 +163,7 @@ public class ApplicationOptionalClaims extends com.pulumi.resources.CustomResour
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationOptionalClaims(String name, ApplicationOptionalClaimsArgs args) {
+    public ApplicationOptionalClaims(java.lang.String name, ApplicationOptionalClaimsArgs args) {
         this(name, args, null);
     }
     /**
@@ -172,15 +172,22 @@ public class ApplicationOptionalClaims extends com.pulumi.resources.CustomResour
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationOptionalClaims(String name, ApplicationOptionalClaimsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationOptionalClaims:ApplicationOptionalClaims", name, args == null ? ApplicationOptionalClaimsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApplicationOptionalClaims(java.lang.String name, ApplicationOptionalClaimsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationOptionalClaims:ApplicationOptionalClaims", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApplicationOptionalClaims(String name, Output<String> id, @Nullable ApplicationOptionalClaimsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationOptionalClaims:ApplicationOptionalClaims", name, state, makeResourceOptions(options, id));
+    private ApplicationOptionalClaims(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationOptionalClaimsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationOptionalClaims:ApplicationOptionalClaims", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationOptionalClaimsArgs makeArgs(ApplicationOptionalClaimsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationOptionalClaimsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -196,7 +203,7 @@ public class ApplicationOptionalClaims extends com.pulumi.resources.CustomResour
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationOptionalClaims get(String name, Output<String> id, @Nullable ApplicationOptionalClaimsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationOptionalClaims get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationOptionalClaimsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationOptionalClaims(name, id, state, options);
     }
 }

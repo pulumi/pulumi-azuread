@@ -238,7 +238,7 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationPermissionScope(String name) {
+    public ApplicationPermissionScope(java.lang.String name) {
         this(name, ApplicationPermissionScopeArgs.Empty);
     }
     /**
@@ -246,7 +246,7 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationPermissionScope(String name, ApplicationPermissionScopeArgs args) {
+    public ApplicationPermissionScope(java.lang.String name, ApplicationPermissionScopeArgs args) {
         this(name, args, null);
     }
     /**
@@ -255,15 +255,22 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationPermissionScope(String name, ApplicationPermissionScopeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationPermissionScope:ApplicationPermissionScope", name, args == null ? ApplicationPermissionScopeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApplicationPermissionScope(java.lang.String name, ApplicationPermissionScopeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationPermissionScope:ApplicationPermissionScope", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApplicationPermissionScope(String name, Output<String> id, @Nullable ApplicationPermissionScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationPermissionScope:ApplicationPermissionScope", name, state, makeResourceOptions(options, id));
+    private ApplicationPermissionScope(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationPermissionScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationPermissionScope:ApplicationPermissionScope", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationPermissionScopeArgs makeArgs(ApplicationPermissionScopeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationPermissionScopeArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -279,7 +286,7 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationPermissionScope get(String name, Output<String> id, @Nullable ApplicationPermissionScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationPermissionScope get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationPermissionScopeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationPermissionScope(name, id, state, options);
     }
 }

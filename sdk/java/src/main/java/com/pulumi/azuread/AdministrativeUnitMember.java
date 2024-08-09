@@ -50,14 +50,14 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName("jdoe{@literal @}example.com")
+ *             .userPrincipalName("jdoe}{@literal @}{@code example.com")
  *             .build());
  * 
  *         var exampleAdministrativeUnit = new AdministrativeUnit("exampleAdministrativeUnit", AdministrativeUnitArgs.builder()
@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.id()))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -125,7 +125,7 @@ public class AdministrativeUnitMember extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AdministrativeUnitMember(String name) {
+    public AdministrativeUnitMember(java.lang.String name) {
         this(name, AdministrativeUnitMemberArgs.Empty);
     }
     /**
@@ -133,7 +133,7 @@ public class AdministrativeUnitMember extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AdministrativeUnitMember(String name, @Nullable AdministrativeUnitMemberArgs args) {
+    public AdministrativeUnitMember(java.lang.String name, @Nullable AdministrativeUnitMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -142,15 +142,22 @@ public class AdministrativeUnitMember extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AdministrativeUnitMember(String name, @Nullable AdministrativeUnitMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/administrativeUnitMember:AdministrativeUnitMember", name, args == null ? AdministrativeUnitMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AdministrativeUnitMember(java.lang.String name, @Nullable AdministrativeUnitMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/administrativeUnitMember:AdministrativeUnitMember", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AdministrativeUnitMember(String name, Output<String> id, @Nullable AdministrativeUnitMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/administrativeUnitMember:AdministrativeUnitMember", name, state, makeResourceOptions(options, id));
+    private AdministrativeUnitMember(java.lang.String name, Output<java.lang.String> id, @Nullable AdministrativeUnitMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/administrativeUnitMember:AdministrativeUnitMember", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AdministrativeUnitMemberArgs makeArgs(@Nullable AdministrativeUnitMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AdministrativeUnitMemberArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -166,7 +173,7 @@ public class AdministrativeUnitMember extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AdministrativeUnitMember get(String name, Output<String> id, @Nullable AdministrativeUnitMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AdministrativeUnitMember get(java.lang.String name, Output<java.lang.String> id, @Nullable AdministrativeUnitMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AdministrativeUnitMember(name, id, state, options);
     }
 }
