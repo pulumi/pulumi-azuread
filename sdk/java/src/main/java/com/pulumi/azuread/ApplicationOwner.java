@@ -37,20 +37,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
  *             .displayName("example")
  *             .build());
  * 
  *         var jane = new User("jane", UserArgs.builder()
- *             .userPrincipalName("jane.fischer{@literal @}hashitown.com")
+ *             .userPrincipalName("jane.fischer}{@literal @}{@code hashitown.com")
  *             .displayName("Jane Fischer")
- *             .password("Ch{@literal @}ngeMe")
+ *             .password("Ch}{@literal @}{@code ngeMe")
  *             .build());
  * 
  *         var exampleJane = new ApplicationOwner("exampleJane", ApplicationOwnerArgs.builder()
@@ -58,8 +58,8 @@ import javax.annotation.Nullable;
  *             .ownerObjectId(jane.objectId())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -110,7 +110,7 @@ public class ApplicationOwner extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationOwner(String name) {
+    public ApplicationOwner(java.lang.String name) {
         this(name, ApplicationOwnerArgs.Empty);
     }
     /**
@@ -118,7 +118,7 @@ public class ApplicationOwner extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationOwner(String name, ApplicationOwnerArgs args) {
+    public ApplicationOwner(java.lang.String name, ApplicationOwnerArgs args) {
         this(name, args, null);
     }
     /**
@@ -127,15 +127,22 @@ public class ApplicationOwner extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationOwner(String name, ApplicationOwnerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationOwner:ApplicationOwner", name, args == null ? ApplicationOwnerArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApplicationOwner(java.lang.String name, ApplicationOwnerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationOwner:ApplicationOwner", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApplicationOwner(String name, Output<String> id, @Nullable ApplicationOwnerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationOwner:ApplicationOwner", name, state, makeResourceOptions(options, id));
+    private ApplicationOwner(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationOwnerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationOwner:ApplicationOwner", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationOwnerArgs makeArgs(ApplicationOwnerArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationOwnerArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -151,7 +158,7 @@ public class ApplicationOwner extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationOwner get(String name, Output<String> id, @Nullable ApplicationOwnerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationOwner get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationOwnerState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationOwner(name, id, state, options);
     }
 }

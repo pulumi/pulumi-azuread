@@ -139,7 +139,7 @@ public class ApplicationRedirectUris extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationRedirectUris(String name) {
+    public ApplicationRedirectUris(java.lang.String name) {
         this(name, ApplicationRedirectUrisArgs.Empty);
     }
     /**
@@ -147,7 +147,7 @@ public class ApplicationRedirectUris extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationRedirectUris(String name, ApplicationRedirectUrisArgs args) {
+    public ApplicationRedirectUris(java.lang.String name, ApplicationRedirectUrisArgs args) {
         this(name, args, null);
     }
     /**
@@ -156,15 +156,22 @@ public class ApplicationRedirectUris extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationRedirectUris(String name, ApplicationRedirectUrisArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationRedirectUris:ApplicationRedirectUris", name, args == null ? ApplicationRedirectUrisArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApplicationRedirectUris(java.lang.String name, ApplicationRedirectUrisArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationRedirectUris:ApplicationRedirectUris", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApplicationRedirectUris(String name, Output<String> id, @Nullable ApplicationRedirectUrisState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationRedirectUris:ApplicationRedirectUris", name, state, makeResourceOptions(options, id));
+    private ApplicationRedirectUris(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationRedirectUrisState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationRedirectUris:ApplicationRedirectUris", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationRedirectUrisArgs makeArgs(ApplicationRedirectUrisArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationRedirectUrisArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -180,7 +187,7 @@ public class ApplicationRedirectUris extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationRedirectUris get(String name, Output<String> id, @Nullable ApplicationRedirectUrisState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationRedirectUris get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationRedirectUrisState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationRedirectUris(name, id, state, options);
     }
 }

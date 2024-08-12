@@ -365,7 +365,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApplicationCertificate(String name) {
+    public ApplicationCertificate(java.lang.String name) {
         this(name, ApplicationCertificateArgs.Empty);
     }
     /**
@@ -373,7 +373,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationCertificate(String name, ApplicationCertificateArgs args) {
+    public ApplicationCertificate(java.lang.String name, ApplicationCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -382,15 +382,22 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationCertificate(String name, ApplicationCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationCertificate:ApplicationCertificate", name, args == null ? ApplicationCertificateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApplicationCertificate(java.lang.String name, ApplicationCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationCertificate:ApplicationCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApplicationCertificate(String name, Output<String> id, @Nullable ApplicationCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/applicationCertificate:ApplicationCertificate", name, state, makeResourceOptions(options, id));
+    private ApplicationCertificate(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/applicationCertificate:ApplicationCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApplicationCertificateArgs makeArgs(ApplicationCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApplicationCertificateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -409,7 +416,7 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApplicationCertificate get(String name, Output<String> id, @Nullable ApplicationCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApplicationCertificate get(java.lang.String name, Output<java.lang.String> id, @Nullable ApplicationCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApplicationCertificate(name, id, state, options);
     }
 }

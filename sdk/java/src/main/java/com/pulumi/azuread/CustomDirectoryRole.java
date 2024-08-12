@@ -194,7 +194,7 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CustomDirectoryRole(String name) {
+    public CustomDirectoryRole(java.lang.String name) {
         this(name, CustomDirectoryRoleArgs.Empty);
     }
     /**
@@ -202,7 +202,7 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CustomDirectoryRole(String name, CustomDirectoryRoleArgs args) {
+    public CustomDirectoryRole(java.lang.String name, CustomDirectoryRoleArgs args) {
         this(name, args, null);
     }
     /**
@@ -211,15 +211,22 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CustomDirectoryRole(String name, CustomDirectoryRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/customDirectoryRole:CustomDirectoryRole", name, args == null ? CustomDirectoryRoleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CustomDirectoryRole(java.lang.String name, CustomDirectoryRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/customDirectoryRole:CustomDirectoryRole", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CustomDirectoryRole(String name, Output<String> id, @Nullable CustomDirectoryRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("azuread:index/customDirectoryRole:CustomDirectoryRole", name, state, makeResourceOptions(options, id));
+    private CustomDirectoryRole(java.lang.String name, Output<java.lang.String> id, @Nullable CustomDirectoryRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("azuread:index/customDirectoryRole:CustomDirectoryRole", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CustomDirectoryRoleArgs makeArgs(CustomDirectoryRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CustomDirectoryRoleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -235,7 +242,7 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CustomDirectoryRole get(String name, Output<String> id, @Nullable CustomDirectoryRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CustomDirectoryRole get(java.lang.String name, Output<java.lang.String> id, @Nullable CustomDirectoryRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CustomDirectoryRole(name, id, state, options);
     }
 }
