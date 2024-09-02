@@ -95,14 +95,20 @@ type LookupNamedLocationResult struct {
 
 func LookupNamedLocationOutput(ctx *pulumi.Context, args LookupNamedLocationOutputArgs, opts ...pulumi.InvokeOption) LookupNamedLocationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNamedLocationResult, error) {
+		ApplyT(func(v interface{}) (LookupNamedLocationResultOutput, error) {
 			args := v.(LookupNamedLocationArgs)
-			r, err := LookupNamedLocation(ctx, &args, opts...)
-			var s LookupNamedLocationResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupNamedLocationResult
+			secret, err := ctx.InvokePackageRaw("azuread:index/getNamedLocation:getNamedLocation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNamedLocationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNamedLocationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNamedLocationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNamedLocationResultOutput)
 }
 

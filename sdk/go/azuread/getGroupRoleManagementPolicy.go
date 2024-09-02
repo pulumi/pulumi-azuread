@@ -83,14 +83,20 @@ type LookupGroupRoleManagementPolicyResult struct {
 
 func LookupGroupRoleManagementPolicyOutput(ctx *pulumi.Context, args LookupGroupRoleManagementPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupGroupRoleManagementPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGroupRoleManagementPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupGroupRoleManagementPolicyResultOutput, error) {
 			args := v.(LookupGroupRoleManagementPolicyArgs)
-			r, err := LookupGroupRoleManagementPolicy(ctx, &args, opts...)
-			var s LookupGroupRoleManagementPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupGroupRoleManagementPolicyResult
+			secret, err := ctx.InvokePackageRaw("azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGroupRoleManagementPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGroupRoleManagementPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGroupRoleManagementPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGroupRoleManagementPolicyResultOutput)
 }
 
