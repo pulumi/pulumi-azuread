@@ -131,7 +131,7 @@ type Group struct {
 
 	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 	//
-	// > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+	// > **Caution** When using the AdministrativeUnitMember resource, or the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	AdministrativeUnitIds pulumi.StringArrayOutput `pulumi:"administrativeUnitIds"`
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrOutput `pulumi:"assignableToRole"`
@@ -244,7 +244,7 @@ func GetGroup(ctx *pulumi.Context,
 type groupState struct {
 	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 	//
-	// > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+	// > **Caution** When using the AdministrativeUnitMember resource, or the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	AdministrativeUnitIds []string `pulumi:"administrativeUnitIds"`
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole *bool `pulumi:"assignableToRole"`
@@ -325,7 +325,7 @@ type groupState struct {
 type GroupState struct {
 	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 	//
-	// > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+	// > **Caution** When using the AdministrativeUnitMember resource, or the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	AdministrativeUnitIds pulumi.StringArrayInput
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrInput
@@ -410,7 +410,7 @@ func (GroupState) ElementType() reflect.Type {
 type groupArgs struct {
 	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 	//
-	// > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+	// > **Caution** When using the AdministrativeUnitMember resource, or the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	AdministrativeUnitIds []string `pulumi:"administrativeUnitIds"`
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole *bool `pulumi:"assignableToRole"`
@@ -474,7 +474,7 @@ type groupArgs struct {
 type GroupArgs struct {
 	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 	//
-	// > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+	// > **Caution** When using the AdministrativeUnitMember resource, or the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 	AdministrativeUnitIds pulumi.StringArrayInput
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrInput
@@ -623,7 +623,7 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 
 // The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 //
-// > **Caution** When using the AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
+// > **Caution** When using the AdministrativeUnitMember resource, or the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 func (o GroupOutput) AdministrativeUnitIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.AdministrativeUnitIds }).(pulumi.StringArrayOutput)
 }
