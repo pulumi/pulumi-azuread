@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNamedLocationIp {
+    /**
+     * @return List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * 
+     */
     private List<String> ipRanges;
+    /**
+     * @return Whether the named location is trusted.
+     * 
+     */
     private Boolean trusted;
 
     private GetNamedLocationIp() {}
+    /**
+     * @return List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * 
+     */
     public List<String> ipRanges() {
         return this.ipRanges;
     }
+    /**
+     * @return Whether the named location is trusted.
+     * 
+     */
     public Boolean trusted() {
         return this.trusted;
     }

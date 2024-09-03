@@ -23,7 +23,7 @@ import (
 //
 // ## Example Usage
 //
-// ### By Group Display Name)
+// ### by Group Display Name)
 //
 // *Look up by display name*
 // ```go
@@ -106,7 +106,7 @@ type LookupAdministrativeUnitResult struct {
 	Members []string `pulumi:"members"`
 	// The object ID of the administrative unit.
 	ObjectId string `pulumi:"objectId"`
-	// Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
+	// Whether the administrative unit *and* its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
 	Visibility string `pulumi:"visibility"`
 }
 
@@ -177,7 +177,7 @@ func (o LookupAdministrativeUnitResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdministrativeUnitResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
+// Whether the administrative unit *and* its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
 func (o LookupAdministrativeUnitResultOutput) Visibility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdministrativeUnitResult) string { return v.Visibility }).(pulumi.StringOutput)
 }

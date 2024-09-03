@@ -13895,8 +13895,10 @@ func (o GetGroupDynamicMembershipArrayOutput) Index(i pulumi.IntInput) GetGroupD
 }
 
 type GetNamedLocationCountry struct {
-	CountriesAndRegions               []string `pulumi:"countriesAndRegions"`
-	IncludeUnknownCountriesAndRegions bool     `pulumi:"includeUnknownCountriesAndRegions"`
+	// List of countries and/or regions in two-letter format specified by ISO 3166-2.
+	CountriesAndRegions []string `pulumi:"countriesAndRegions"`
+	// Whether IP addresses that don't map to a country or region are included in the named location.
+	IncludeUnknownCountriesAndRegions bool `pulumi:"includeUnknownCountriesAndRegions"`
 }
 
 // GetNamedLocationCountryInput is an input type that accepts GetNamedLocationCountryArgs and GetNamedLocationCountryOutput values.
@@ -13911,8 +13913,10 @@ type GetNamedLocationCountryInput interface {
 }
 
 type GetNamedLocationCountryArgs struct {
-	CountriesAndRegions               pulumi.StringArrayInput `pulumi:"countriesAndRegions"`
-	IncludeUnknownCountriesAndRegions pulumi.BoolInput        `pulumi:"includeUnknownCountriesAndRegions"`
+	// List of countries and/or regions in two-letter format specified by ISO 3166-2.
+	CountriesAndRegions pulumi.StringArrayInput `pulumi:"countriesAndRegions"`
+	// Whether IP addresses that don't map to a country or region are included in the named location.
+	IncludeUnknownCountriesAndRegions pulumi.BoolInput `pulumi:"includeUnknownCountriesAndRegions"`
 }
 
 func (GetNamedLocationCountryArgs) ElementType() reflect.Type {
@@ -13966,10 +13970,12 @@ func (o GetNamedLocationCountryOutput) ToGetNamedLocationCountryOutputWithContex
 	return o
 }
 
+// List of countries and/or regions in two-letter format specified by ISO 3166-2.
 func (o GetNamedLocationCountryOutput) CountriesAndRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNamedLocationCountry) []string { return v.CountriesAndRegions }).(pulumi.StringArrayOutput)
 }
 
+// Whether IP addresses that don't map to a country or region are included in the named location.
 func (o GetNamedLocationCountryOutput) IncludeUnknownCountriesAndRegions() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNamedLocationCountry) bool { return v.IncludeUnknownCountriesAndRegions }).(pulumi.BoolOutput)
 }
@@ -13995,8 +14001,10 @@ func (o GetNamedLocationCountryArrayOutput) Index(i pulumi.IntInput) GetNamedLoc
 }
 
 type GetNamedLocationIp struct {
+	// List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
 	IpRanges []string `pulumi:"ipRanges"`
-	Trusted  bool     `pulumi:"trusted"`
+	// Whether the named location is trusted.
+	Trusted bool `pulumi:"trusted"`
 }
 
 // GetNamedLocationIpInput is an input type that accepts GetNamedLocationIpArgs and GetNamedLocationIpOutput values.
@@ -14011,8 +14019,10 @@ type GetNamedLocationIpInput interface {
 }
 
 type GetNamedLocationIpArgs struct {
+	// List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
-	Trusted  pulumi.BoolInput        `pulumi:"trusted"`
+	// Whether the named location is trusted.
+	Trusted pulumi.BoolInput `pulumi:"trusted"`
 }
 
 func (GetNamedLocationIpArgs) ElementType() reflect.Type {
@@ -14066,10 +14076,12 @@ func (o GetNamedLocationIpOutput) ToGetNamedLocationIpOutputWithContext(ctx cont
 	return o
 }
 
+// List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
 func (o GetNamedLocationIpOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNamedLocationIp) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
 
+// Whether the named location is trusted.
 func (o GetNamedLocationIpOutput) Trusted() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNamedLocationIp) bool { return v.Trusted }).(pulumi.BoolOutput)
 }

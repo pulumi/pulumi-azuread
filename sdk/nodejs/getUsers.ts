@@ -77,7 +77,7 @@ export interface GetUsersArgs {
     /**
      * The user principal names (UPNs) of the users.
      *
-     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
      */
     userPrincipalNames?: string[];
 }
@@ -177,7 +177,7 @@ export interface GetUsersOutputArgs {
     /**
      * The user principal names (UPNs) of the users.
      *
-     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
      */
     userPrincipalNames?: pulumi.Input<pulumi.Input<string>[]>;
 }

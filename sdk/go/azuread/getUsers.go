@@ -75,7 +75,7 @@ type GetUsersArgs struct {
 	ReturnAll *bool `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
 	//
-	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
 }
 
@@ -128,7 +128,7 @@ type GetUsersOutputArgs struct {
 	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
 	//
-	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
 	UserPrincipalNames pulumi.StringArrayInput `pulumi:"userPrincipalNames"`
 }
 

@@ -1133,7 +1133,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1220,7 +1220,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1307,7 +1307,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1394,7 +1394,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1481,7 +1481,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1568,7 +1568,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1655,7 +1655,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1742,7 +1742,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1829,7 +1829,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1916,7 +1916,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2003,7 +2003,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -2090,7 +2090,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * *Look up by display name*
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -3652,13 +3652,6 @@ public final class AzureadFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Attributes Reference
-     * 
-     * The following attributes are exported:
-     * 
-     * *`object_id` - The object ID of the directory object.
-     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
-     * 
      */
     public static Output<GetDirectoryObjectResult> getDirectoryObject(GetDirectoryObjectArgs args) {
         return getDirectoryObject(args, InvokeOptions.Empty);
@@ -3710,13 +3703,6 @@ public final class AzureadFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ## Attributes Reference
-     * 
-     * The following attributes are exported:
-     * 
-     * *`object_id` - The object ID of the directory object.
-     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
     public static CompletableFuture<GetDirectoryObjectResult> getDirectoryObjectPlain(GetDirectoryObjectPlainArgs args) {
@@ -3770,13 +3756,6 @@ public final class AzureadFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Attributes Reference
-     * 
-     * The following attributes are exported:
-     * 
-     * *`object_id` - The object ID of the directory object.
-     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
-     * 
      */
     public static Output<GetDirectoryObjectResult> getDirectoryObject(GetDirectoryObjectArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getDirectoryObject:getDirectoryObject", TypeShape.of(GetDirectoryObjectResult.class), args, Utilities.withVersion(options));
@@ -3828,13 +3807,6 @@ public final class AzureadFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ## Attributes Reference
-     * 
-     * The following attributes are exported:
-     * 
-     * *`object_id` - The object ID of the directory object.
-     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
     public static CompletableFuture<GetDirectoryObjectResult> getDirectoryObjectPlain(GetDirectoryObjectPlainArgs args, InvokeOptions options) {
@@ -4723,7 +4695,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4776,7 +4748,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4829,7 +4801,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4882,7 +4854,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4935,7 +4907,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -4988,7 +4960,7 @@ public final class AzureadFunctions {
      * 
      * ## Example Usage
      * 
-     * ### By Group Display Name)
+     * ### by Group Display Name)
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -6458,28 +6430,6 @@ public final class AzureadFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Attributes Reference
-     * 
-     * The following attributes are exported:
-     * 
-     * * `country` - A `country` block as documented below, which describes a country-based named location.
-     * * `id` - The ID of the named location.
-     * * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-     * * 
-     * ***
-     * 
-     * `country` block exports the following:
-     * 
-     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
-     * 
-     * ***
-     * 
-     * `ip` block exports the following:
-     * 
-     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
-     * * `trusted` - Whether the named location is trusted.
-     * 
      */
     public static Output<GetNamedLocationResult> getNamedLocation(GetNamedLocationArgs args) {
         return getNamedLocation(args, InvokeOptions.Empty);
@@ -6529,28 +6479,6 @@ public final class AzureadFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ## Attributes Reference
-     * 
-     * The following attributes are exported:
-     * 
-     * * `country` - A `country` block as documented below, which describes a country-based named location.
-     * * `id` - The ID of the named location.
-     * * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-     * * 
-     * ***
-     * 
-     * `country` block exports the following:
-     * 
-     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
-     * 
-     * ***
-     * 
-     * `ip` block exports the following:
-     * 
-     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
-     * * `trusted` - Whether the named location is trusted.
      * 
      */
     public static CompletableFuture<GetNamedLocationResult> getNamedLocationPlain(GetNamedLocationPlainArgs args) {
@@ -6602,28 +6530,6 @@ public final class AzureadFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Attributes Reference
-     * 
-     * The following attributes are exported:
-     * 
-     * * `country` - A `country` block as documented below, which describes a country-based named location.
-     * * `id` - The ID of the named location.
-     * * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-     * * 
-     * ***
-     * 
-     * `country` block exports the following:
-     * 
-     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
-     * 
-     * ***
-     * 
-     * `ip` block exports the following:
-     * 
-     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
-     * * `trusted` - Whether the named location is trusted.
-     * 
      */
     public static Output<GetNamedLocationResult> getNamedLocation(GetNamedLocationArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("azuread:index/getNamedLocation:getNamedLocation", TypeShape.of(GetNamedLocationResult.class), args, Utilities.withVersion(options));
@@ -6673,28 +6579,6 @@ public final class AzureadFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ## Attributes Reference
-     * 
-     * The following attributes are exported:
-     * 
-     * * `country` - A `country` block as documented below, which describes a country-based named location.
-     * * `id` - The ID of the named location.
-     * * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-     * * 
-     * ***
-     * 
-     * `country` block exports the following:
-     * 
-     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
-     * 
-     * ***
-     * 
-     * `ip` block exports the following:
-     * 
-     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
-     * * `trusted` - Whether the named location is trusted.
      * 
      */
     public static CompletableFuture<GetNamedLocationResult> getNamedLocationPlain(GetNamedLocationPlainArgs args, InvokeOptions options) {

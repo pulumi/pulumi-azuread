@@ -5882,17 +5882,27 @@ class GetNamedLocationCountryResult(dict):
     def __init__(__self__, *,
                  countries_and_regions: Sequence[str],
                  include_unknown_countries_and_regions: bool):
+        """
+        :param Sequence[str] countries_and_regions: List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        :param bool include_unknown_countries_and_regions: Whether IP addresses that don't map to a country or region are included in the named location.
+        """
         pulumi.set(__self__, "countries_and_regions", countries_and_regions)
         pulumi.set(__self__, "include_unknown_countries_and_regions", include_unknown_countries_and_regions)
 
     @property
     @pulumi.getter(name="countriesAndRegions")
     def countries_and_regions(self) -> Sequence[str]:
+        """
+        List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        """
         return pulumi.get(self, "countries_and_regions")
 
     @property
     @pulumi.getter(name="includeUnknownCountriesAndRegions")
     def include_unknown_countries_and_regions(self) -> bool:
+        """
+        Whether IP addresses that don't map to a country or region are included in the named location.
+        """
         return pulumi.get(self, "include_unknown_countries_and_regions")
 
 
@@ -5901,17 +5911,27 @@ class GetNamedLocationIpResult(dict):
     def __init__(__self__, *,
                  ip_ranges: Sequence[str],
                  trusted: bool):
+        """
+        :param Sequence[str] ip_ranges: List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+        :param bool trusted: Whether the named location is trusted.
+        """
         pulumi.set(__self__, "ip_ranges", ip_ranges)
         pulumi.set(__self__, "trusted", trusted)
 
     @property
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Sequence[str]:
+        """
+        List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+        """
         return pulumi.get(self, "ip_ranges")
 
     @property
     @pulumi.getter
     def trusted(self) -> bool:
+        """
+        Whether the named location is trusted.
+        """
         return pulumi.get(self, "trusted")
 
 

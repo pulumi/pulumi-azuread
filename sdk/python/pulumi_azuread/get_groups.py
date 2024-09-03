@@ -189,12 +189,12 @@ def get_groups(display_name_prefix: Optional[str] = None,
     :param str display_name_prefix: A common display name prefix to match when returning groups.
     :param Sequence[str] display_names: The display names of the groups.
     :param bool ignore_missing: Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
-    :param bool mail_enabled: Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+    :param bool mail_enabled: Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are *not* mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
     :param Sequence[str] object_ids: The object IDs of the groups.
     :param bool return_all: A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
-    :param bool security_enabled: Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+    :param bool security_enabled: Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are *not* security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
            
-           > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+           > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` *may* be specified as an empty list, in which case no results will be returned.
     """
     __args__ = dict()
     __args__['displayNamePrefix'] = display_name_prefix
@@ -290,11 +290,11 @@ def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]]
     :param str display_name_prefix: A common display name prefix to match when returning groups.
     :param Sequence[str] display_names: The display names of the groups.
     :param bool ignore_missing: Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
-    :param bool mail_enabled: Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+    :param bool mail_enabled: Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are *not* mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
     :param Sequence[str] object_ids: The object IDs of the groups.
     :param bool return_all: A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
-    :param bool security_enabled: Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+    :param bool security_enabled: Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are *not* security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
            
-           > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+           > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` *may* be specified as an empty list, in which case no results will be returned.
     """
     ...

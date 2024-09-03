@@ -256,7 +256,7 @@ namespace Pulumi.AzureAD
         public bool? IgnoreMissing { get; set; }
 
         /// <summary>
-        /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are *not* mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
         /// </summary>
         [Input("mailEnabled")]
         public bool? MailEnabled { get; set; }
@@ -280,9 +280,9 @@ namespace Pulumi.AzureAD
         public bool? ReturnAll { get; set; }
 
         /// <summary>
-        /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are *not* security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
         /// 
-        /// &gt; One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` *may* be specified as an empty list, in which case no results will be returned.
         /// </summary>
         [Input("securityEnabled")]
         public bool? SecurityEnabled { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.AzureAD
         public Input<bool>? IgnoreMissing { get; set; }
 
         /// <summary>
-        /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are *not* mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
         /// </summary>
         [Input("mailEnabled")]
         public Input<bool>? MailEnabled { get; set; }
@@ -344,9 +344,9 @@ namespace Pulumi.AzureAD
         public Input<bool>? ReturnAll { get; set; }
 
         /// <summary>
-        /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are *not* security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
         /// 
-        /// &gt; One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` *may* be specified as an empty list, in which case no results will be returned.
         /// </summary>
         [Input("securityEnabled")]
         public Input<bool>? SecurityEnabled { get; set; }

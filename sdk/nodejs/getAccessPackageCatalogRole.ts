@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### By Group Display Name)
+ * ### by Group Display Name)
  *
  * *Look up by display name*
  * ```typescript
@@ -103,7 +103,7 @@ export interface GetAccessPackageCatalogRoleResult {
  *
  * ## Example Usage
  *
- * ### By Group Display Name)
+ * ### by Group Display Name)
  *
  * *Look up by display name*
  * ```typescript

@@ -153,7 +153,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal names (UPNs) of the users.
         /// 
-        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
         /// </summary>
         public List<string> UserPrincipalNames
         {
@@ -235,7 +235,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal names (UPNs) of the users.
         /// 
-        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
         /// </summary>
         public InputList<string> UserPrincipalNames
         {

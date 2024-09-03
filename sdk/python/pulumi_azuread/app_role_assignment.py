@@ -264,7 +264,7 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         ## Import
 
-        App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note: _not_ the ID of the app role), e.g.
+        App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note: *not* the ID of the app role), e.g.
 
         ```sh
         $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
@@ -366,7 +366,7 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         ## Import
 
-        App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note: _not_ the ID of the app role), e.g.
+        App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note: *not* the ID of the app role), e.g.
 
         ```sh
         $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz

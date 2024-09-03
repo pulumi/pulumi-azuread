@@ -48,13 +48,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Attributes Reference
-//
-// The following attributes are exported:
-//
-// *`objectId` - The object ID of the directory object.
-// *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
 func GetDirectoryObject(ctx *pulumi.Context, args *GetDirectoryObjectArgs, opts ...pulumi.InvokeOption) (*GetDirectoryObjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDirectoryObjectResult
@@ -74,9 +67,11 @@ type GetDirectoryObjectArgs struct {
 // A collection of values returned by getDirectoryObject.
 type GetDirectoryObjectResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The object ID of the directory object.
 	ObjectId string `pulumi:"objectId"`
-	Type     string `pulumi:"type"`
+	// The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+	Type string `pulumi:"type"`
 }
 
 func GetDirectoryObjectOutput(ctx *pulumi.Context, args GetDirectoryObjectOutputArgs, opts ...pulumi.InvokeOption) GetDirectoryObjectResultOutput {
@@ -122,10 +117,12 @@ func (o GetDirectoryObjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoryObjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The object ID of the directory object.
 func (o GetDirectoryObjectResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoryObjectResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
+// The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
 func (o GetDirectoryObjectResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoryObjectResult) string { return v.Type }).(pulumi.StringOutput)
 }

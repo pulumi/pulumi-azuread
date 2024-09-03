@@ -48,11 +48,17 @@ class GetDirectoryObjectResult:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
+        """
+        The object ID of the directory object.
+        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+        """
         return pulumi.get(self, "type")
 
 
@@ -90,13 +96,6 @@ def get_directory_object(object_id: Optional[str] = None,
     example = azuread.get_directory_object(object_id="00000000-0000-0000-0000-000000000000")
     pulumi.export("objectType", example.type)
     ```
-
-    ## Attributes Reference
-
-    The following attributes are exported:
-
-    *`object_id` - The object ID of the directory object.
-    *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
 
 
     :param str object_id: Specifies the Object ID of the directory object to look up.
@@ -136,13 +135,6 @@ def get_directory_object_output(object_id: Optional[pulumi.Input[str]] = None,
     example = azuread.get_directory_object(object_id="00000000-0000-0000-0000-000000000000")
     pulumi.export("objectType", example.type)
     ```
-
-    ## Attributes Reference
-
-    The following attributes are exported:
-
-    *`object_id` - The object ID of the directory object.
-    *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
 
 
     :param str object_id: Specifies the Object ID of the directory object to look up.

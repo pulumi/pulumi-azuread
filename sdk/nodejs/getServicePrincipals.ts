@@ -106,7 +106,7 @@ export interface GetServicePrincipalsArgs {
     /**
      * When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
      *
-     * > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
      */
     returnAll?: boolean;
 }
@@ -234,7 +234,7 @@ export interface GetServicePrincipalsOutputArgs {
     /**
      * When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
      *
-     * > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
      */
     returnAll?: pulumi.Input<boolean>;
 }

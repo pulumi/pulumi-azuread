@@ -24,7 +24,7 @@ namespace Pulumi.AzureAD
         /// 
         /// ## Example Usage
         /// 
-        /// ### By Group Display Name)
+        /// ### by Group Display Name)
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -59,7 +59,7 @@ namespace Pulumi.AzureAD
         /// 
         /// ## Example Usage
         /// 
-        /// ### By Group Display Name)
+        /// ### by Group Display Name)
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

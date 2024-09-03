@@ -195,7 +195,7 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
     :param Sequence[str] object_ids: The object IDs of the service principals.
     :param bool return_all: When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
            
-           > Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+           > Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
     """
     __args__ = dict()
     __args__['applicationIds'] = application_ids
@@ -285,6 +285,6 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     :param Sequence[str] object_ids: The object IDs of the service principals.
     :param bool return_all: When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
            
-           > Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+           > Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
     """
     ...

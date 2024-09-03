@@ -1084,12 +1084,24 @@ export interface GetGroupDynamicMembership {
 }
 
 export interface GetNamedLocationCountry {
+    /**
+     * List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     */
     countriesAndRegions: string[];
+    /**
+     * Whether IP addresses that don't map to a country or region are included in the named location.
+     */
     includeUnknownCountriesAndRegions: boolean;
 }
 
 export interface GetNamedLocationIp {
+    /**
+     * List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     */
     ipRanges: string[];
+    /**
+     * Whether the named location is trusted.
+     */
     trusted: boolean;
 }
 

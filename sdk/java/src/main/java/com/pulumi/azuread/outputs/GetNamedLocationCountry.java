@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNamedLocationCountry {
+    /**
+     * @return List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     * 
+     */
     private List<String> countriesAndRegions;
+    /**
+     * @return Whether IP addresses that don&#39;t map to a country or region are included in the named location.
+     * 
+     */
     private Boolean includeUnknownCountriesAndRegions;
 
     private GetNamedLocationCountry() {}
+    /**
+     * @return List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     * 
+     */
     public List<String> countriesAndRegions() {
         return this.countriesAndRegions;
     }
+    /**
+     * @return Whether IP addresses that don&#39;t map to a country or region are included in the named location.
+     * 
+     */
     public Boolean includeUnknownCountriesAndRegions() {
         return this.includeUnknownCountriesAndRegions;
     }

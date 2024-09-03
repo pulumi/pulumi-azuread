@@ -44,13 +44,6 @@ namespace Pulumi.AzureAD
         ///     };
         /// });
         /// ```
-        /// 
-        /// ## Attributes Reference 
-        /// 
-        /// The following attributes are exported:
-        /// 
-        /// *`object_id` - The object ID of the directory object.
-        /// *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
         /// </summary>
         public static Task<GetDirectoryObjectResult> InvokeAsync(GetDirectoryObjectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDirectoryObjectResult>("azuread:index/getDirectoryObject:getDirectoryObject", args ?? new GetDirectoryObjectArgs(), options.WithDefaults());
@@ -88,13 +81,6 @@ namespace Pulumi.AzureAD
         ///     };
         /// });
         /// ```
-        /// 
-        /// ## Attributes Reference 
-        /// 
-        /// The following attributes are exported:
-        /// 
-        /// *`object_id` - The object ID of the directory object.
-        /// *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
         /// </summary>
         public static Output<GetDirectoryObjectResult> Invoke(GetDirectoryObjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDirectoryObjectResult>("azuread:index/getDirectoryObject:getDirectoryObject", args ?? new GetDirectoryObjectInvokeArgs(), options.WithDefaults());
@@ -137,7 +123,13 @@ namespace Pulumi.AzureAD
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The object ID of the directory object.
+        /// </summary>
         public readonly string ObjectId;
+        /// <summary>
+        /// The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]
