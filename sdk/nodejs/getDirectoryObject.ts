@@ -27,13 +27,6 @@ import * as utilities from "./utilities";
  * });
  * export const objectType = example.then(example => example.type);
  * ```
- *
- * ## Attributes Reference
- *
- * The following attributes are exported:
- *
- * *`objectId` - The object ID of the directory object.
- * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
  */
 export function getDirectoryObject(args: GetDirectoryObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetDirectoryObjectResult> {
 
@@ -61,7 +54,13 @@ export interface GetDirectoryObjectResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The object ID of the directory object.
+     */
     readonly objectId: string;
+    /**
+     * The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     */
     readonly type: string;
 }
 /**
@@ -87,13 +86,6 @@ export interface GetDirectoryObjectResult {
  * });
  * export const objectType = example.then(example => example.type);
  * ```
- *
- * ## Attributes Reference
- *
- * The following attributes are exported:
- *
- * *`objectId` - The object ID of the directory object.
- * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
  */
 export function getDirectoryObjectOutput(args: GetDirectoryObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryObjectResult> {
     return pulumi.output(args).apply((a: any) => getDirectoryObject(a, opts))

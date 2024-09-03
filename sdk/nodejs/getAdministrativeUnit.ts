@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### By Group Display Name)
+ * ### by Group Display Name)
  *
  * *Look up by display name*
  * ```typescript
@@ -90,7 +90,7 @@ export interface GetAdministrativeUnitResult {
      */
     readonly objectId: string;
     /**
-     * Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
+     * Whether the administrative unit *and* its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
      */
     readonly visibility: string;
 }
@@ -107,7 +107,7 @@ export interface GetAdministrativeUnitResult {
  *
  * ## Example Usage
  *
- * ### By Group Display Name)
+ * ### by Group Display Name)
  *
  * *Look up by display name*
  * ```typescript

@@ -15,7 +15,15 @@ public final class GetDirectoryObjectResult {
      * 
      */
     private String id;
+    /**
+     * @return The object ID of the directory object.
+     * 
+     */
     private String objectId;
+    /**
+     * @return The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     * 
+     */
     private String type;
 
     private GetDirectoryObjectResult() {}
@@ -26,9 +34,17 @@ public final class GetDirectoryObjectResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The object ID of the directory object.
+     * 
+     */
     public String objectId() {
         return this.objectId;
     }
+    /**
+     * @return The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     * 
+     */
     public String type() {
         return this.type;
     }

@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### By Group Display Name)
+ * ### by Group Display Name)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -216,7 +216,7 @@ export interface GetGroupResult {
  *
  * ## Example Usage
  *
- * ### By Group Display Name)
+ * ### by Group Display Name)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

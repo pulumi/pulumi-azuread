@@ -102,7 +102,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     /**
      * When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
      * 
-     * &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
      * 
      */
     @Import(name="returnAll")
@@ -111,7 +111,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     /**
      * @return When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
      * 
-     * &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
      * 
      */
     public Optional<Boolean> returnAll() {
@@ -253,7 +253,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
         /**
          * @param returnAll When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
          * 
-         * &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * &gt; Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 

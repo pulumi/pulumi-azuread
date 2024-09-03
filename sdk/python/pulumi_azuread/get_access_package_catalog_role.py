@@ -113,7 +113,7 @@ def get_access_package_catalog_role(display_name: Optional[str] = None,
 
     ## Example Usage
 
-    ### By Group Display Name)
+    ### by Group Display Name)
 
     *Look up by display name*
     ```python
@@ -168,7 +168,7 @@ def get_access_package_catalog_role_output(display_name: Optional[pulumi.Input[O
 
     ## Example Usage
 
-    ### By Group Display Name)
+    ### by Group Display Name)
 
     *Look up by display name*
     ```python

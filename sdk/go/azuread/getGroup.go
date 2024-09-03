@@ -23,7 +23,7 @@ import (
 //
 // ## Example Usage
 //
-// ### By Group Display Name)
+// ### by Group Display Name)
 //
 // ```go
 // package main

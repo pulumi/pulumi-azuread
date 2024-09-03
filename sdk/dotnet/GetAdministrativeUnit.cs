@@ -24,7 +24,7 @@ namespace Pulumi.AzureAD
         /// 
         /// ## Example Usage
         /// 
-        /// ### By Group Display Name)
+        /// ### by Group Display Name)
         /// 
         /// *Look up by display name*
         /// ```csharp
@@ -76,7 +76,7 @@ namespace Pulumi.AzureAD
         /// 
         /// ## Example Usage
         /// 
-        /// ### By Group Display Name)
+        /// ### by Group Display Name)
         /// 
         /// *Look up by display name*
         /// ```csharp
@@ -186,7 +186,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string ObjectId;
         /// <summary>
-        /// Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
+        /// Whether the administrative unit *and* its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
         /// </summary>
         public readonly string Visibility;
 

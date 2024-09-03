@@ -427,7 +427,7 @@ def get_group(display_name: Optional[str] = None,
 
     ## Example Usage
 
-    ### By Group Display Name)
+    ### by Group Display Name)
 
     ```python
     import pulumi
@@ -512,7 +512,7 @@ def get_group_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    ### By Group Display Name)
+    ### by Group Display Name)
 
     ```python
     import pulumi

@@ -46,28 +46,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Attributes Reference
-//
-// The following attributes are exported:
-//
-// * `country` - A `country` block as documented below, which describes a country-based named location.
-// * `id` - The ID of the named location.
-// * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-// *
-// ***
-//
-// `country` block exports the following:
-//
-// * `countriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-// * `includeUnknownCountriesAndRegions` - Whether IP addresses that don't map to a country or region are included in the named location.
-//
-// ***
-//
-// `ip` block exports the following:
-//
-// * `ipRanges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
-// * `trusted` - Whether the named location is trusted.
 func LookupNamedLocation(ctx *pulumi.Context, args *LookupNamedLocationArgs, opts ...pulumi.InvokeOption) (*LookupNamedLocationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamedLocationResult
@@ -86,10 +64,13 @@ type LookupNamedLocationArgs struct {
 
 // A collection of values returned by getNamedLocation.
 type LookupNamedLocationResult struct {
+	// A `country` block as documented below, which describes a country-based named location.
 	Countries   []GetNamedLocationCountry `pulumi:"countries"`
 	DisplayName string                    `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id  string               `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// An `ip` block as documented below, which describes an IP-based named location.
+	// ---
 	Ips []GetNamedLocationIp `pulumi:"ips"`
 }
 
@@ -131,6 +112,7 @@ func (o LookupNamedLocationResultOutput) ToLookupNamedLocationResultOutputWithCo
 	return o
 }
 
+// A `country` block as documented below, which describes a country-based named location.
 func (o LookupNamedLocationResultOutput) Countries() GetNamedLocationCountryArrayOutput {
 	return o.ApplyT(func(v LookupNamedLocationResult) []GetNamedLocationCountry { return v.Countries }).(GetNamedLocationCountryArrayOutput)
 }
@@ -144,6 +126,8 @@ func (o LookupNamedLocationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamedLocationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// An `ip` block as documented below, which describes an IP-based named location.
+// ---
 func (o LookupNamedLocationResultOutput) Ips() GetNamedLocationIpArrayOutput {
 	return o.ApplyT(func(v LookupNamedLocationResult) []GetNamedLocationIp { return v.Ips }).(GetNamedLocationIpArrayOutput)
 }

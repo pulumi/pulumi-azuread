@@ -137,7 +137,7 @@ type GetServicePrincipalsArgs struct {
 	ObjectIds []string `pulumi:"objectIds"`
 	// When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
 	//
-	// > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+	// > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
 	ReturnAll *bool `pulumi:"returnAll"`
 }
 
@@ -190,7 +190,7 @@ type GetServicePrincipalsOutputArgs struct {
 	ObjectIds pulumi.StringArrayInput `pulumi:"objectIds"`
 	// When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
 	//
-	// > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+	// > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These *may* be specified as an empty list, in which case no results will be returned.
 	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
 }
 

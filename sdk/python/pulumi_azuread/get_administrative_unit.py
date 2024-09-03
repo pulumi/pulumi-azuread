@@ -90,7 +90,7 @@ class GetAdministrativeUnitResult:
     @pulumi.getter
     def visibility(self) -> str:
         """
-        Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
+        Whether the administrative unit *and* its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
         """
         return pulumi.get(self, "visibility")
 
@@ -125,7 +125,7 @@ def get_administrative_unit(display_name: Optional[str] = None,
 
     ## Example Usage
 
-    ### By Group Display Name)
+    ### by Group Display Name)
 
     *Look up by display name*
     ```python
@@ -181,7 +181,7 @@ def get_administrative_unit_output(display_name: Optional[pulumi.Input[Optional[
 
     ## Example Usage
 
-    ### By Group Display Name)
+    ### by Group Display Name)
 
     *Look up by display name*
     ```python

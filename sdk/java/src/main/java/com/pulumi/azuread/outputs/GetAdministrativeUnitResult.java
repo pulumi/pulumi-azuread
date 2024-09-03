@@ -37,7 +37,7 @@ public final class GetAdministrativeUnitResult {
      */
     private String objectId;
     /**
-     * @return Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
+     * @return Whether the administrative unit *and* its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
      * 
      */
     private String visibility;
@@ -79,7 +79,7 @@ public final class GetAdministrativeUnitResult {
         return this.objectId;
     }
     /**
-     * @return Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
+     * @return Whether the administrative unit *and* its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
      * 
      */
     public String visibility() {

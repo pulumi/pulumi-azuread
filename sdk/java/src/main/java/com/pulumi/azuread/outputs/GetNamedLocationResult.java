@@ -13,6 +13,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNamedLocationResult {
+    /**
+     * @return A `country` block as documented below, which describes a country-based named location.
+     * 
+     */
     private List<GetNamedLocationCountry> countries;
     private String displayName;
     /**
@@ -20,9 +24,18 @@ public final class GetNamedLocationResult {
      * 
      */
     private String id;
+    /**
+     * @return An `ip` block as documented below, which describes an IP-based named location.
+     * ---
+     * 
+     */
     private List<GetNamedLocationIp> ips;
 
     private GetNamedLocationResult() {}
+    /**
+     * @return A `country` block as documented below, which describes a country-based named location.
+     * 
+     */
     public List<GetNamedLocationCountry> countries() {
         return this.countries;
     }
@@ -36,6 +49,11 @@ public final class GetNamedLocationResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return An `ip` block as documented below, which describes an IP-based named location.
+     * ---
+     * 
+     */
     public List<GetNamedLocationIp> ips() {
         return this.ips;
     }

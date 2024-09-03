@@ -105,7 +105,7 @@ export interface GetGroupsArgs {
      */
     ignoreMissing?: boolean;
     /**
-     * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are *not* mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      */
     mailEnabled?: boolean;
     /**
@@ -117,9 +117,9 @@ export interface GetGroupsArgs {
      */
     returnAll?: boolean;
     /**
-     * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are *not* security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      *
-     * > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
+     * > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` *may* be specified as an empty list, in which case no results will be returned.
      */
     securityEnabled?: boolean;
 }
@@ -236,7 +236,7 @@ export interface GetGroupsOutputArgs {
      */
     ignoreMissing?: pulumi.Input<boolean>;
     /**
-     * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are *not* mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      */
     mailEnabled?: pulumi.Input<boolean>;
     /**
@@ -248,9 +248,9 @@ export interface GetGroupsOutputArgs {
      */
     returnAll?: pulumi.Input<boolean>;
     /**
-     * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are *not* security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      *
-     * > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
+     * > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` *may* be specified as an empty list, in which case no results will be returned.
      */
     securityEnabled?: pulumi.Input<boolean>;
 }
