@@ -199,7 +199,7 @@ public class Group extends com.pulumi.resources.CustomResource {
     /**
      * The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
      * 
-     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      * 
      */
     @Export(name="administrativeUnitIds", refs={List.class,String.class}, tree="[0,1]")
@@ -208,7 +208,7 @@ public class Group extends com.pulumi.resources.CustomResource {
     /**
      * @return The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
      * 
-     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      * 
      */
     public Output<Optional<List<String>>> administrativeUnitIds() {
