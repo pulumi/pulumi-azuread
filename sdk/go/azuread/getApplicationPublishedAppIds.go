@@ -112,13 +112,19 @@ type GetApplicationPublishedAppIdsResult struct {
 }
 
 func GetApplicationPublishedAppIdsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetApplicationPublishedAppIdsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetApplicationPublishedAppIdsResult, error) {
-		r, err := GetApplicationPublishedAppIds(ctx, opts...)
-		var s GetApplicationPublishedAppIdsResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetApplicationPublishedAppIdsResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetApplicationPublishedAppIdsResult
+		secret, err := ctx.InvokePackageRaw("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", nil, &rv, "", opts...)
+		if err != nil {
+			return GetApplicationPublishedAppIdsResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetApplicationPublishedAppIdsResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetApplicationPublishedAppIdsResultOutput), nil
+		}
+		return output, nil
 	}).(GetApplicationPublishedAppIdsResultOutput)
 }
 

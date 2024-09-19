@@ -68,13 +68,19 @@ type GetDirectoryRolesResult struct {
 }
 
 func GetDirectoryRolesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDirectoryRolesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetDirectoryRolesResult, error) {
-		r, err := GetDirectoryRoles(ctx, opts...)
-		var s GetDirectoryRolesResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetDirectoryRolesResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetDirectoryRolesResult
+		secret, err := ctx.InvokePackageRaw("azuread:index/getDirectoryRoles:getDirectoryRoles", nil, &rv, "", opts...)
+		if err != nil {
+			return GetDirectoryRolesResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetDirectoryRolesResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetDirectoryRolesResultOutput), nil
+		}
+		return output, nil
 	}).(GetDirectoryRolesResultOutput)
 }
 
