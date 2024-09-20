@@ -51,7 +51,6 @@ import * as utilities from "./utilities";
  * * `trusted` - Whether the named location is trusted.
  */
 export function getNamedLocation(args: GetNamedLocationArgs, opts?: pulumi.InvokeOptions): Promise<GetNamedLocationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getNamedLocation:getNamedLocation", {
         "displayName": args.displayName,
@@ -125,7 +124,10 @@ export interface GetNamedLocationResult {
  * * `trusted` - Whether the named location is trusted.
  */
 export function getNamedLocationOutput(args: GetNamedLocationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamedLocationResult> {
-    return pulumi.output(args).apply((a: any) => getNamedLocation(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azuread:index/getNamedLocation:getNamedLocation", {
+        "displayName": args.displayName,
+    }, opts);
 }
 
 /**

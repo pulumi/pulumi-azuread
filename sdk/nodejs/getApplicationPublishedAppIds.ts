@@ -47,7 +47,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getApplicationPublishedAppIds(opts?: pulumi.InvokeOptions): Promise<GetApplicationPublishedAppIdsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", {
     }, opts);
@@ -109,5 +108,7 @@ export interface GetApplicationPublishedAppIdsResult {
  * ```
  */
 export function getApplicationPublishedAppIdsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationPublishedAppIdsResult> {
-    return pulumi.output(getApplicationPublishedAppIds(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", {
+    }, opts);
 }

@@ -28,7 +28,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDirectoryRoles(opts?: pulumi.InvokeOptions): Promise<GetDirectoryRolesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getDirectoryRoles:getDirectoryRoles", {
     }, opts);
@@ -77,5 +76,7 @@ export interface GetDirectoryRolesResult {
  * ```
  */
 export function getDirectoryRolesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryRolesResult> {
-    return pulumi.output(getDirectoryRoles(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azuread:index/getDirectoryRoles:getDirectoryRoles", {
+    }, opts);
 }

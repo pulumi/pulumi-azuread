@@ -41,7 +41,6 @@ import * as utilities from "./utilities";
  */
 export function getAccessPackageCatalogRole(args?: GetAccessPackageCatalogRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPackageCatalogRoleResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", {
         "displayName": args.displayName,
@@ -126,7 +125,12 @@ export interface GetAccessPackageCatalogRoleResult {
  * ```
  */
 export function getAccessPackageCatalogRoleOutput(args?: GetAccessPackageCatalogRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPackageCatalogRoleResult> {
-    return pulumi.output(args).apply((a: any) => getAccessPackageCatalogRole(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", {
+        "displayName": args.displayName,
+        "objectId": args.objectId,
+    }, opts);
 }
 
 /**
