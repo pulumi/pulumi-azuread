@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getDomains:getDomains", {
         "adminManaged": args.adminManaged,
@@ -117,7 +116,16 @@ export interface GetDomainsResult {
  * ```
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
-    return pulumi.output(args).apply((a: any) => getDomains(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azuread:index/getDomains:getDomains", {
+        "adminManaged": args.adminManaged,
+        "includeUnverified": args.includeUnverified,
+        "onlyDefault": args.onlyDefault,
+        "onlyInitial": args.onlyInitial,
+        "onlyRoot": args.onlyRoot,
+        "supportsServices": args.supportsServices,
+    }, opts);
 }
 
 /**

@@ -54,7 +54,6 @@ import * as utilities from "./utilities";
  */
 export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
         "applicationId": args.applicationId,
@@ -255,7 +254,14 @@ export interface GetServicePrincipalResult {
  * ```
  */
 export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalResult> {
-    return pulumi.output(args).apply((a: any) => getServicePrincipal(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azuread:index/getServicePrincipal:getServicePrincipal", {
+        "applicationId": args.applicationId,
+        "clientId": args.clientId,
+        "displayName": args.displayName,
+        "objectId": args.objectId,
+    }, opts);
 }
 
 /**

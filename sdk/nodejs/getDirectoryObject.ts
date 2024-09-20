@@ -36,7 +36,6 @@ import * as utilities from "./utilities";
  * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
  */
 export function getDirectoryObject(args: GetDirectoryObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetDirectoryObjectResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getDirectoryObject:getDirectoryObject", {
         "objectId": args.objectId,
@@ -96,7 +95,10 @@ export interface GetDirectoryObjectResult {
  * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
  */
 export function getDirectoryObjectOutput(args: GetDirectoryObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryObjectResult> {
-    return pulumi.output(args).apply((a: any) => getDirectoryObject(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("azuread:index/getDirectoryObject:getDirectoryObject", {
+        "objectId": args.objectId,
+    }, opts);
 }
 
 /**
