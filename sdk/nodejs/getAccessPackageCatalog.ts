@@ -42,6 +42,7 @@ import * as utilities from "./utilities";
  */
 export function getAccessPackageCatalog(args?: GetAccessPackageCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPackageCatalogResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", {
         "displayName": args.displayName,
@@ -125,12 +126,7 @@ export interface GetAccessPackageCatalogResult {
  * ```
  */
 export function getAccessPackageCatalogOutput(args?: GetAccessPackageCatalogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPackageCatalogResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", {
-        "displayName": args.displayName,
-        "objectId": args.objectId,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAccessPackageCatalog(a, opts))
 }
 
 /**

@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getUser:getUser", {
         "employeeId": args.employeeId,
@@ -270,15 +271,7 @@ export interface GetUserResult {
  * ```
  */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("azuread:index/getUser:getUser", {
-        "employeeId": args.employeeId,
-        "mail": args.mail,
-        "mailNickname": args.mailNickname,
-        "objectId": args.objectId,
-        "userPrincipalName": args.userPrincipalName,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getUser(a, opts))
 }
 
 /**

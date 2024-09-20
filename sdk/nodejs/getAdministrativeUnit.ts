@@ -41,6 +41,7 @@ import * as utilities from "./utilities";
  */
 export function getAdministrativeUnit(args?: GetAdministrativeUnitArgs, opts?: pulumi.InvokeOptions): Promise<GetAdministrativeUnitResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getAdministrativeUnit:getAdministrativeUnit", {
         "displayName": args.displayName,
@@ -129,12 +130,7 @@ export interface GetAdministrativeUnitResult {
  * ```
  */
 export function getAdministrativeUnitOutput(args?: GetAdministrativeUnitOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdministrativeUnitResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("azuread:index/getAdministrativeUnit:getAdministrativeUnit", {
-        "displayName": args.displayName,
-        "objectId": args.objectId,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAdministrativeUnit(a, opts))
 }
 
 /**

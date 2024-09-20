@@ -33,6 +33,7 @@ import * as utilities from "./utilities";
  */
 export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getGroup:getGroup", {
         "displayName": args.displayName,
@@ -228,16 +229,7 @@ export interface GetGroupResult {
  * ```
  */
 export function getGroupOutput(args?: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("azuread:index/getGroup:getGroup", {
-        "displayName": args.displayName,
-        "includeTransitiveMembers": args.includeTransitiveMembers,
-        "mailEnabled": args.mailEnabled,
-        "mailNickname": args.mailNickname,
-        "objectId": args.objectId,
-        "securityEnabled": args.securityEnabled,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getGroup(a, opts))
 }
 
 /**

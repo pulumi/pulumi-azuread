@@ -33,6 +33,7 @@ import * as utilities from "./utilities";
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getUsers:getUsers", {
         "employeeIds": args.employeeIds,
@@ -142,17 +143,7 @@ export interface GetUsersResult {
  * ```
  */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("azuread:index/getUsers:getUsers", {
-        "employeeIds": args.employeeIds,
-        "ignoreMissing": args.ignoreMissing,
-        "mailNicknames": args.mailNicknames,
-        "mails": args.mails,
-        "objectIds": args.objectIds,
-        "returnAll": args.returnAll,
-        "userPrincipalNames": args.userPrincipalNames,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getUsers(a, opts))
 }
 
 /**

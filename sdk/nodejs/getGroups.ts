@@ -75,6 +75,7 @@ import * as utilities from "./utilities";
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getGroups:getGroups", {
         "displayNamePrefix": args.displayNamePrefix,
@@ -215,17 +216,7 @@ export interface GetGroupsResult {
  * ```
  */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("azuread:index/getGroups:getGroups", {
-        "displayNamePrefix": args.displayNamePrefix,
-        "displayNames": args.displayNames,
-        "ignoreMissing": args.ignoreMissing,
-        "mailEnabled": args.mailEnabled,
-        "objectIds": args.objectIds,
-        "returnAll": args.returnAll,
-        "securityEnabled": args.securityEnabled,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getGroups(a, opts))
 }
 
 /**

@@ -31,6 +31,7 @@ import * as utilities from "./utilities";
  */
 export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getApplication:getApplication", {
         "applicationId": args.applicationId,
@@ -231,15 +232,7 @@ export interface GetApplicationResult {
  * ```
  */
 export function getApplicationOutput(args?: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("azuread:index/getApplication:getApplication", {
-        "applicationId": args.applicationId,
-        "clientId": args.clientId,
-        "displayName": args.displayName,
-        "identifierUri": args.identifierUri,
-        "objectId": args.objectId,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getApplication(a, opts))
 }
 
 /**

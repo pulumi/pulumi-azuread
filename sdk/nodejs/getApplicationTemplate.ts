@@ -25,6 +25,7 @@ import * as utilities from "./utilities";
  */
 export function getApplicationTemplate(args?: GetApplicationTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationTemplateResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getApplicationTemplate:getApplicationTemplate", {
         "displayName": args.displayName,
@@ -109,12 +110,7 @@ export interface GetApplicationTemplateResult {
  * ```
  */
 export function getApplicationTemplateOutput(args?: GetApplicationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationTemplateResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("azuread:index/getApplicationTemplate:getApplicationTemplate", {
-        "displayName": args.displayName,
-        "templateId": args.templateId,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getApplicationTemplate(a, opts))
 }
 
 /**
