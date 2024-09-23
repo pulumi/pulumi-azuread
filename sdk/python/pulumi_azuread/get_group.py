@@ -489,9 +489,6 @@ def get_group(display_name: Optional[str] = None,
         types=pulumi.get(__ret__, 'types'),
         visibility=pulumi.get(__ret__, 'visibility'),
         writeback_enabled=pulumi.get(__ret__, 'writeback_enabled'))
-
-
-@_utilities.lift_output_func(get_group)
 def get_group_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                      include_transitive_members: Optional[pulumi.Input[Optional[bool]]] = None,
                      mail_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -532,4 +529,44 @@ def get_group_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
            
            > One of `display_name`, `object_id` or `mail_nickname` must be specified.
     """
-    ...
+    __args__ = dict()
+    __args__['displayName'] = display_name
+    __args__['includeTransitiveMembers'] = include_transitive_members
+    __args__['mailEnabled'] = mail_enabled
+    __args__['mailNickname'] = mail_nickname
+    __args__['objectId'] = object_id
+    __args__['securityEnabled'] = security_enabled
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult)
+    return __ret__.apply(lambda __response__: GetGroupResult(
+        assignable_to_role=pulumi.get(__response__, 'assignable_to_role'),
+        auto_subscribe_new_members=pulumi.get(__response__, 'auto_subscribe_new_members'),
+        behaviors=pulumi.get(__response__, 'behaviors'),
+        description=pulumi.get(__response__, 'description'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        dynamic_memberships=pulumi.get(__response__, 'dynamic_memberships'),
+        external_senders_allowed=pulumi.get(__response__, 'external_senders_allowed'),
+        hide_from_address_lists=pulumi.get(__response__, 'hide_from_address_lists'),
+        hide_from_outlook_clients=pulumi.get(__response__, 'hide_from_outlook_clients'),
+        id=pulumi.get(__response__, 'id'),
+        include_transitive_members=pulumi.get(__response__, 'include_transitive_members'),
+        mail=pulumi.get(__response__, 'mail'),
+        mail_enabled=pulumi.get(__response__, 'mail_enabled'),
+        mail_nickname=pulumi.get(__response__, 'mail_nickname'),
+        members=pulumi.get(__response__, 'members'),
+        object_id=pulumi.get(__response__, 'object_id'),
+        onpremises_domain_name=pulumi.get(__response__, 'onpremises_domain_name'),
+        onpremises_group_type=pulumi.get(__response__, 'onpremises_group_type'),
+        onpremises_netbios_name=pulumi.get(__response__, 'onpremises_netbios_name'),
+        onpremises_sam_account_name=pulumi.get(__response__, 'onpremises_sam_account_name'),
+        onpremises_security_identifier=pulumi.get(__response__, 'onpremises_security_identifier'),
+        onpremises_sync_enabled=pulumi.get(__response__, 'onpremises_sync_enabled'),
+        owners=pulumi.get(__response__, 'owners'),
+        preferred_language=pulumi.get(__response__, 'preferred_language'),
+        provisioning_options=pulumi.get(__response__, 'provisioning_options'),
+        proxy_addresses=pulumi.get(__response__, 'proxy_addresses'),
+        security_enabled=pulumi.get(__response__, 'security_enabled'),
+        theme=pulumi.get(__response__, 'theme'),
+        types=pulumi.get(__response__, 'types'),
+        visibility=pulumi.get(__response__, 'visibility'),
+        writeback_enabled=pulumi.get(__response__, 'writeback_enabled')))
