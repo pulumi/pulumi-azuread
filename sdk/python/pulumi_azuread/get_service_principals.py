@@ -216,9 +216,6 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
         object_ids=pulumi.get(__ret__, 'object_ids'),
         return_all=pulumi.get(__ret__, 'return_all'),
         service_principals=pulumi.get(__ret__, 'service_principals'))
-
-
-@_utilities.lift_output_func(get_service_principals)
 def get_service_principals_output(application_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   client_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   display_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -287,4 +284,21 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
            
            > Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
     """
-    ...
+    __args__ = dict()
+    __args__['applicationIds'] = application_ids
+    __args__['clientIds'] = client_ids
+    __args__['displayNames'] = display_names
+    __args__['ignoreMissing'] = ignore_missing
+    __args__['objectIds'] = object_ids
+    __args__['returnAll'] = return_all
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getServicePrincipals:getServicePrincipals', __args__, opts=opts, typ=GetServicePrincipalsResult)
+    return __ret__.apply(lambda __response__: GetServicePrincipalsResult(
+        application_ids=pulumi.get(__response__, 'application_ids'),
+        client_ids=pulumi.get(__response__, 'client_ids'),
+        display_names=pulumi.get(__response__, 'display_names'),
+        id=pulumi.get(__response__, 'id'),
+        ignore_missing=pulumi.get(__response__, 'ignore_missing'),
+        object_ids=pulumi.get(__response__, 'object_ids'),
+        return_all=pulumi.get(__response__, 'return_all'),
+        service_principals=pulumi.get(__response__, 'service_principals')))
