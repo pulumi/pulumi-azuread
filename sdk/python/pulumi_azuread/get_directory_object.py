@@ -110,9 +110,6 @@ def get_directory_object(object_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_directory_object)
 def get_directory_object_output(object_id: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoryObjectResult]:
     """
@@ -147,4 +144,11 @@ def get_directory_object_output(object_id: Optional[pulumi.Input[str]] = None,
 
     :param str object_id: Specifies the Object ID of the directory object to look up.
     """
-    ...
+    __args__ = dict()
+    __args__['objectId'] = object_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getDirectoryObject:getDirectoryObject', __args__, opts=opts, typ=GetDirectoryObjectResult)
+    return __ret__.apply(lambda __response__: GetDirectoryObjectResult(
+        id=pulumi.get(__response__, 'id'),
+        object_id=pulumi.get(__response__, 'object_id'),
+        type=pulumi.get(__response__, 'type')))
