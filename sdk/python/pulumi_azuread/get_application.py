@@ -520,9 +520,6 @@ def get_application(application_id: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         terms_of_service_url=pulumi.get(__ret__, 'terms_of_service_url'),
         webs=pulumi.get(__ret__, 'webs'))
-
-
-@_utilities.lift_output_func(get_application)
 def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]] = None,
                            client_id: Optional[pulumi.Input[Optional[str]]] = None,
                            display_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -558,4 +555,46 @@ def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]]
            > One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
     :param str object_id: Specifies the Object ID of the application.
     """
-    ...
+    __args__ = dict()
+    __args__['applicationId'] = application_id
+    __args__['clientId'] = client_id
+    __args__['displayName'] = display_name
+    __args__['identifierUri'] = identifier_uri
+    __args__['objectId'] = object_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getApplication:getApplication', __args__, opts=opts, typ=GetApplicationResult)
+    return __ret__.apply(lambda __response__: GetApplicationResult(
+        apis=pulumi.get(__response__, 'apis'),
+        app_role_ids=pulumi.get(__response__, 'app_role_ids'),
+        app_roles=pulumi.get(__response__, 'app_roles'),
+        application_id=pulumi.get(__response__, 'application_id'),
+        client_id=pulumi.get(__response__, 'client_id'),
+        description=pulumi.get(__response__, 'description'),
+        device_only_auth_enabled=pulumi.get(__response__, 'device_only_auth_enabled'),
+        disabled_by_microsoft=pulumi.get(__response__, 'disabled_by_microsoft'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        fallback_public_client_enabled=pulumi.get(__response__, 'fallback_public_client_enabled'),
+        feature_tags=pulumi.get(__response__, 'feature_tags'),
+        group_membership_claims=pulumi.get(__response__, 'group_membership_claims'),
+        id=pulumi.get(__response__, 'id'),
+        identifier_uri=pulumi.get(__response__, 'identifier_uri'),
+        identifier_uris=pulumi.get(__response__, 'identifier_uris'),
+        logo_url=pulumi.get(__response__, 'logo_url'),
+        marketing_url=pulumi.get(__response__, 'marketing_url'),
+        notes=pulumi.get(__response__, 'notes'),
+        oauth2_permission_scope_ids=pulumi.get(__response__, 'oauth2_permission_scope_ids'),
+        oauth2_post_response_required=pulumi.get(__response__, 'oauth2_post_response_required'),
+        object_id=pulumi.get(__response__, 'object_id'),
+        optional_claims=pulumi.get(__response__, 'optional_claims'),
+        owners=pulumi.get(__response__, 'owners'),
+        privacy_statement_url=pulumi.get(__response__, 'privacy_statement_url'),
+        public_clients=pulumi.get(__response__, 'public_clients'),
+        publisher_domain=pulumi.get(__response__, 'publisher_domain'),
+        required_resource_accesses=pulumi.get(__response__, 'required_resource_accesses'),
+        service_management_reference=pulumi.get(__response__, 'service_management_reference'),
+        sign_in_audience=pulumi.get(__response__, 'sign_in_audience'),
+        single_page_applications=pulumi.get(__response__, 'single_page_applications'),
+        support_url=pulumi.get(__response__, 'support_url'),
+        tags=pulumi.get(__response__, 'tags'),
+        terms_of_service_url=pulumi.get(__response__, 'terms_of_service_url'),
+        webs=pulumi.get(__response__, 'webs')))
