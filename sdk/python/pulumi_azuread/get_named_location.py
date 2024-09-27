@@ -134,9 +134,6 @@ def get_named_location(display_name: Optional[str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
         ips=pulumi.get(__ret__, 'ips'))
-
-
-@_utilities.lift_output_func(get_named_location)
 def get_named_location_output(display_name: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNamedLocationResult]:
     """
@@ -184,4 +181,12 @@ def get_named_location_output(display_name: Optional[pulumi.Input[str]] = None,
 
     :param str display_name: Specifies the display named of the named location to look up.
     """
-    ...
+    __args__ = dict()
+    __args__['displayName'] = display_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getNamedLocation:getNamedLocation', __args__, opts=opts, typ=GetNamedLocationResult)
+    return __ret__.apply(lambda __response__: GetNamedLocationResult(
+        countries=pulumi.get(__response__, 'countries'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        ips=pulumi.get(__response__, 'ips')))
