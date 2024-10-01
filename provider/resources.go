@@ -264,7 +264,9 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			RespectSchemaVersion: true,
-			PackageReferences:    map[string]string{},
+			PackageReferences: map[string]string{
+				"Pulumi": "3.*",
+			},
 			Namespaces: map[string]string{
 				"azuread": "AzureAD",
 			},

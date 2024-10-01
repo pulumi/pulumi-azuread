@@ -15,6 +15,9 @@
     },
     "language": {
         "csharp": {
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
             "namespaces": {
                 "azuread": "AzureAD"
             },
