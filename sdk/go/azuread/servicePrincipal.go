@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := azuread.GetClientConfig(ctx, nil, nil)
+//			current, err := azuread.GetClientConfig(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -70,7 +70,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := azuread.GetClientConfig(ctx, nil, nil)
+//			current, err := azuread.GetClientConfig(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -119,7 +119,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
