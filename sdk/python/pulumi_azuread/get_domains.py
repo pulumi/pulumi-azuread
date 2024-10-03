@@ -176,9 +176,6 @@ def get_domains(admin_managed: Optional[bool] = None,
         only_initial=pulumi.get(__ret__, 'only_initial'),
         only_root=pulumi.get(__ret__, 'only_root'),
         supports_services=pulumi.get(__ret__, 'supports_services'))
-
-
-@_utilities.lift_output_func(get_domains)
 def get_domains_output(admin_managed: Optional[pulumi.Input[Optional[bool]]] = None,
                        include_unverified: Optional[pulumi.Input[Optional[bool]]] = None,
                        only_default: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -217,4 +214,21 @@ def get_domains_output(admin_managed: Optional[pulumi.Input[Optional[bool]]] = N
            
            > **Note on filters** If `include_unverified` is set to `true`, you cannot specify `only_default` or `only_initial`. Additionally, you cannot combine `only_default` with `only_initial`.
     """
-    ...
+    __args__ = dict()
+    __args__['adminManaged'] = admin_managed
+    __args__['includeUnverified'] = include_unverified
+    __args__['onlyDefault'] = only_default
+    __args__['onlyInitial'] = only_initial
+    __args__['onlyRoot'] = only_root
+    __args__['supportsServices'] = supports_services
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult)
+    return __ret__.apply(lambda __response__: GetDomainsResult(
+        admin_managed=pulumi.get(__response__, 'admin_managed'),
+        domains=pulumi.get(__response__, 'domains'),
+        id=pulumi.get(__response__, 'id'),
+        include_unverified=pulumi.get(__response__, 'include_unverified'),
+        only_default=pulumi.get(__response__, 'only_default'),
+        only_initial=pulumi.get(__response__, 'only_initial'),
+        only_root=pulumi.get(__response__, 'only_root'),
+        supports_services=pulumi.get(__response__, 'supports_services')))
