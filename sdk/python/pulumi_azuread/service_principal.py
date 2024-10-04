@@ -21,11 +21,10 @@ __all__ = ['ServicePrincipalArgs', 'ServicePrincipal']
 @pulumi.input_type
 class ServicePrincipalArgs:
     def __init__(__self__, *,
+                 client_id: pulumi.Input[str],
                  account_enabled: Optional[pulumi.Input[bool]] = None,
                  alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
-                 application_id: Optional[pulumi.Input[str]] = None,
-                 client_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]] = None,
                  features: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]] = None,
@@ -39,11 +38,10 @@ class ServicePrincipalArgs:
                  use_existing: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ServicePrincipal resource.
+        :param pulumi.Input[str] client_id: The client ID of the application for which to create a service principal.
         :param pulumi.Input[bool] account_enabled: Whether or not the service principal account is enabled. Defaults to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alternative_names: A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
         :param pulumi.Input[bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
-        :param pulumi.Input[str] application_id: The application ID (client ID) of the application for which to create a service principal
-        :param pulumi.Input[str] client_id: The client ID of the application for which to create a service principal.
         :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
         :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
                
@@ -60,19 +58,13 @@ class ServicePrincipalArgs:
                > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
         :param pulumi.Input[bool] use_existing: When true, the resource will return an existing service principal instead of failing with an error
         """
+        pulumi.set(__self__, "client_id", client_id)
         if account_enabled is not None:
             pulumi.set(__self__, "account_enabled", account_enabled)
         if alternative_names is not None:
             pulumi.set(__self__, "alternative_names", alternative_names)
         if app_role_assignment_required is not None:
             pulumi.set(__self__, "app_role_assignment_required", app_role_assignment_required)
-        if application_id is not None:
-            warnings.warn("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""application_id is deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-        if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
-        if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if feature_tags is not None:
@@ -98,6 +90,18 @@ class ServicePrincipalArgs:
             pulumi.set(__self__, "tags", tags)
         if use_existing is not None:
             pulumi.set(__self__, "use_existing", use_existing)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[str]:
+        """
+        The client ID of the application for which to create a service principal.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "client_id", value)
 
     @property
     @pulumi.getter(name="accountEnabled")
@@ -134,31 +138,6 @@ class ServicePrincipalArgs:
     @app_role_assignment_required.setter
     def app_role_assignment_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "app_role_assignment_required", value)
-
-    @property
-    @pulumi.getter(name="applicationId")
-    @_utilities.deprecated("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The application ID (client ID) of the application for which to create a service principal
-        """
-        return pulumi.get(self, "application_id")
-
-    @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "application_id", value)
-
-    @property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The client ID of the application for which to create a service principal.
-        """
-        return pulumi.get(self, "client_id")
-
-    @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "client_id", value)
 
     @property
     @pulumi.getter
@@ -306,7 +285,6 @@ class _ServicePrincipalState:
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
                  app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]] = None,
-                 application_id: Optional[pulumi.Input[str]] = None,
                  application_tenant_id: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -338,7 +316,6 @@ class _ServicePrincipalState:
         :param pulumi.Input[bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]] app_roles: A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] application_id: The application ID (client ID) of the application for which to create a service principal
         :param pulumi.Input[str] application_tenant_id: The tenant ID where the associated application is registered.
         :param pulumi.Input[str] client_id: The client ID of the application for which to create a service principal.
         :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
@@ -378,11 +355,6 @@ class _ServicePrincipalState:
             pulumi.set(__self__, "app_role_ids", app_role_ids)
         if app_roles is not None:
             pulumi.set(__self__, "app_roles", app_roles)
-        if application_id is not None:
-            warnings.warn("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""application_id is deprecated: The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-        if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
         if application_tenant_id is not None:
             pulumi.set(__self__, "application_tenant_id", application_tenant_id)
         if client_id is not None:
@@ -494,19 +466,6 @@ class _ServicePrincipalState:
     @app_roles.setter
     def app_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]]):
         pulumi.set(self, "app_roles", value)
-
-    @property
-    @pulumi.getter(name="applicationId")
-    @_utilities.deprecated("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The application ID (client ID) of the application for which to create a service principal
-        """
-        return pulumi.get(self, "application_id")
-
-    @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "application_id", value)
 
     @property
     @pulumi.getter(name="applicationTenantId")
@@ -810,7 +769,6 @@ class ServicePrincipal(pulumi.CustomResource):
                  account_enabled: Optional[pulumi.Input[bool]] = None,
                  alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
-                 application_id: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]]] = None,
@@ -903,7 +861,6 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[bool] account_enabled: Whether or not the service principal account is enabled. Defaults to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alternative_names: A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
         :param pulumi.Input[bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
-        :param pulumi.Input[str] application_id: The application ID (client ID) of the application for which to create a service principal
         :param pulumi.Input[str] client_id: The client ID of the application for which to create a service principal.
         :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
@@ -925,7 +882,7 @@ class ServicePrincipal(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ServicePrincipalArgs] = None,
+                 args: ServicePrincipalArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -1019,7 +976,6 @@ class ServicePrincipal(pulumi.CustomResource):
                  account_enabled: Optional[pulumi.Input[bool]] = None,
                  alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
-                 application_id: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]]] = None,
@@ -1044,7 +1000,8 @@ class ServicePrincipal(pulumi.CustomResource):
             __props__.__dict__["account_enabled"] = account_enabled
             __props__.__dict__["alternative_names"] = alternative_names
             __props__.__dict__["app_role_assignment_required"] = app_role_assignment_required
-            __props__.__dict__["application_id"] = application_id
+            if client_id is None and not opts.urn:
+                raise TypeError("Missing required property 'client_id'")
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["description"] = description
             __props__.__dict__["feature_tags"] = feature_tags
@@ -1086,7 +1043,6 @@ class ServicePrincipal(pulumi.CustomResource):
             app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
             app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalAppRoleArgs', 'ServicePrincipalAppRoleArgsDict']]]]] = None,
-            application_id: Optional[pulumi.Input[str]] = None,
             application_tenant_id: Optional[pulumi.Input[str]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1123,7 +1079,6 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalAppRoleArgs', 'ServicePrincipalAppRoleArgsDict']]]] app_roles: A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] application_id: The application ID (client ID) of the application for which to create a service principal
         :param pulumi.Input[str] application_tenant_id: The tenant ID where the associated application is registered.
         :param pulumi.Input[str] client_id: The client ID of the application for which to create a service principal.
         :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
@@ -1162,7 +1117,6 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__.__dict__["app_role_assignment_required"] = app_role_assignment_required
         __props__.__dict__["app_role_ids"] = app_role_ids
         __props__.__dict__["app_roles"] = app_roles
-        __props__.__dict__["application_id"] = application_id
         __props__.__dict__["application_tenant_id"] = application_tenant_id
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["description"] = description
@@ -1228,15 +1182,6 @@ class ServicePrincipal(pulumi.CustomResource):
         A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         """
         return pulumi.get(self, "app_roles")
-
-    @property
-    @pulumi.getter(name="applicationId")
-    @_utilities.deprecated("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_id(self) -> pulumi.Output[str]:
-        """
-        The application ID (client ID) of the application for which to create a service principal
-        """
-        return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="applicationTenantId")

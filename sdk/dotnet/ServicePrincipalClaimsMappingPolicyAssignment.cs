@@ -57,7 +57,7 @@ namespace Pulumi.AzureAD
         public Output<string> ClaimsMappingPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for the policy assignment.
+        /// The ID of the service principal for the policy assignment.
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.AzureAD
         public Input<string> ClaimsMappingPolicyId { get; set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for the policy assignment.
+        /// The ID of the service principal for the policy assignment.
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.AzureAD
         public Input<string>? ClaimsMappingPolicyId { get; set; }
 
         /// <summary>
-        /// The object ID of the service principal for the policy assignment.
+        /// The ID of the service principal for the policy assignment.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }

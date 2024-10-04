@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -61,7 +61,7 @@ type ServicePrincipalClaimsMappingPolicyAssignment struct {
 
 	// The ID of the claims mapping policy to assign.
 	ClaimsMappingPolicyId pulumi.StringOutput `pulumi:"claimsMappingPolicyId"`
-	// The object ID of the service principal for the policy assignment.
+	// The ID of the service principal for the policy assignment.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 }
 
@@ -103,14 +103,14 @@ func GetServicePrincipalClaimsMappingPolicyAssignment(ctx *pulumi.Context,
 type servicePrincipalClaimsMappingPolicyAssignmentState struct {
 	// The ID of the claims mapping policy to assign.
 	ClaimsMappingPolicyId *string `pulumi:"claimsMappingPolicyId"`
-	// The object ID of the service principal for the policy assignment.
+	// The ID of the service principal for the policy assignment.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 }
 
 type ServicePrincipalClaimsMappingPolicyAssignmentState struct {
 	// The ID of the claims mapping policy to assign.
 	ClaimsMappingPolicyId pulumi.StringPtrInput
-	// The object ID of the service principal for the policy assignment.
+	// The ID of the service principal for the policy assignment.
 	ServicePrincipalId pulumi.StringPtrInput
 }
 
@@ -121,7 +121,7 @@ func (ServicePrincipalClaimsMappingPolicyAssignmentState) ElementType() reflect.
 type servicePrincipalClaimsMappingPolicyAssignmentArgs struct {
 	// The ID of the claims mapping policy to assign.
 	ClaimsMappingPolicyId string `pulumi:"claimsMappingPolicyId"`
-	// The object ID of the service principal for the policy assignment.
+	// The ID of the service principal for the policy assignment.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 }
 
@@ -129,7 +129,7 @@ type servicePrincipalClaimsMappingPolicyAssignmentArgs struct {
 type ServicePrincipalClaimsMappingPolicyAssignmentArgs struct {
 	// The ID of the claims mapping policy to assign.
 	ClaimsMappingPolicyId pulumi.StringInput
-	// The object ID of the service principal for the policy assignment.
+	// The ID of the service principal for the policy assignment.
 	ServicePrincipalId pulumi.StringInput
 }
 
@@ -227,7 +227,7 @@ func (o ServicePrincipalClaimsMappingPolicyAssignmentOutput) ClaimsMappingPolicy
 	}).(pulumi.StringOutput)
 }
 
-// The object ID of the service principal for the policy assignment.
+// The ID of the service principal for the policy assignment.
 func (o ServicePrincipalClaimsMappingPolicyAssignmentOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalClaimsMappingPolicyAssignment) pulumi.StringOutput {
 		return v.ServicePrincipalId

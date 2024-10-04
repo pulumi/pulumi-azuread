@@ -19,29 +19,6 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     /**
      * A list of client IDs of the applications associated with the service principals.
      * 
-     * @deprecated
-     * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="applicationIds")
-    private @Nullable List<String> applicationIds;
-
-    /**
-     * @return A list of client IDs of the applications associated with the service principals.
-     * 
-     * @deprecated
-     * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<List<String>> applicationIds() {
-        return Optional.ofNullable(this.applicationIds);
-    }
-
-    /**
-     * A list of client IDs of the applications associated with the service principals.
-     * 
      */
     @Import(name="clientIds")
     private @Nullable List<String> clientIds;
@@ -121,7 +98,6 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     private GetServicePrincipalsPlainArgs() {}
 
     private GetServicePrincipalsPlainArgs(GetServicePrincipalsPlainArgs $) {
-        this.applicationIds = $.applicationIds;
         this.clientIds = $.clientIds;
         this.displayNames = $.displayNames;
         this.ignoreMissing = $.ignoreMissing;
@@ -145,35 +121,6 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
 
         public Builder(GetServicePrincipalsPlainArgs defaults) {
             $ = new GetServicePrincipalsPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param applicationIds A list of client IDs of the applications associated with the service principals.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationIds(@Nullable List<String> applicationIds) {
-            $.applicationIds = applicationIds;
-            return this;
-        }
-
-        /**
-         * @param applicationIds A list of client IDs of the applications associated with the service principals.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationIds(String... applicationIds) {
-            return applicationIds(List.of(applicationIds));
         }
 
         /**

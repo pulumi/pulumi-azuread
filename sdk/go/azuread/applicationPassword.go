@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"errors"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -52,7 +53,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -95,15 +96,13 @@ type ApplicationPassword struct {
 
 	// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// The object ID of the application for which this password should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
 	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrOutput `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this password credential.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
@@ -119,9 +118,12 @@ type ApplicationPassword struct {
 func NewApplicationPassword(ctx *pulumi.Context,
 	name string, args *ApplicationPasswordArgs, opts ...pulumi.ResourceOption) (*ApplicationPassword, error) {
 	if args == nil {
-		args = &ApplicationPasswordArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"value",
 	})
@@ -151,15 +153,13 @@ func GetApplicationPassword(ctx *pulumi.Context,
 type applicationPasswordState struct {
 	// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationId *string `pulumi:"applicationId"`
-	// The object ID of the application for which this password should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this password credential.
 	KeyId *string `pulumi:"keyId"`
@@ -174,15 +174,13 @@ type applicationPasswordState struct {
 type ApplicationPasswordState struct {
 	// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationId pulumi.StringPtrInput
-	// The object ID of the application for which this password should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringPtrInput
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this password credential.
 	KeyId pulumi.StringPtrInput
@@ -200,16 +198,14 @@ func (ApplicationPasswordState) ElementType() reflect.Type {
 
 type applicationPasswordArgs struct {
 	// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
-	ApplicationId *string `pulumi:"applicationId"`
-	// The object ID of the application for which this password should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId *string `pulumi:"applicationObjectId"`
+	ApplicationId string `pulumi:"applicationId"`
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
@@ -220,16 +216,14 @@ type applicationPasswordArgs struct {
 // The set of arguments for constructing a ApplicationPassword resource.
 type ApplicationPasswordArgs struct {
 	// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
-	ApplicationId pulumi.StringPtrInput
-	// The object ID of the application for which this password should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringPtrInput
+	ApplicationId pulumi.StringInput
 	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrInput
 	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapInput
@@ -329,13 +323,6 @@ func (o ApplicationPasswordOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPassword) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// The object ID of the application for which this password should be created
-//
-// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-func (o ApplicationPasswordOutput) ApplicationObjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationPassword) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
-}
-
 // A display name for the password. Changing this field forces a new resource to be created.
 func (o ApplicationPasswordOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPassword) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
@@ -347,6 +334,8 @@ func (o ApplicationPasswordOutput) EndDate() pulumi.StringOutput {
 }
 
 // A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+//
+// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 func (o ApplicationPasswordOutput) EndDateRelative() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationPassword) pulumi.StringPtrOutput { return v.EndDateRelative }).(pulumi.StringPtrOutput)
 }

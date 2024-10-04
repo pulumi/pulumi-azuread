@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +31,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -75,7 +75,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ClientId: example.ApplicationId,
+//				ClientId: example.ClientId,
 //			})
 //			if err != nil {
 //				return err
@@ -104,7 +104,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -148,7 +148,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ClientId: example.ApplicationId,
+//				ClientId: example.ClientId,
 //			})
 //			if err != nil {
 //				return err

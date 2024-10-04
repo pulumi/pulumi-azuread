@@ -86,14 +86,14 @@ public class ServicePrincipalClaimsMappingPolicyAssignment extends com.pulumi.re
         return this.claimsMappingPolicyId;
     }
     /**
-     * The object ID of the service principal for the policy assignment.
+     * The ID of the service principal for the policy assignment.
      * 
      */
     @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for the policy assignment.
+     * @return The ID of the service principal for the policy assignment.
      * 
      */
     public Output<String> servicePrincipalId() {

@@ -67,7 +67,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ClientId = example.ApplicationId,
+    ///         ClientId = example.ClientId,
     ///     });
     /// 
     ///     var exampleServicePrincipalDelegatedPermissionGrant = new AzureAD.ServicePrincipalDelegatedPermissionGrant("example", new()
@@ -129,7 +129,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ClientId = example.ApplicationId,
+    ///         ClientId = example.ClientId,
     ///     });
     /// 
     ///     var exampleUser = new AzureAD.User("example", new()

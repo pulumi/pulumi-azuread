@@ -24,7 +24,7 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
         """
         The set of arguments for constructing a ServicePrincipalClaimsMappingPolicyAssignment resource.
         :param pulumi.Input[str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the policy assignment.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for the policy assignment.
         """
         pulumi.set(__self__, "claims_mapping_policy_id", claims_mapping_policy_id)
         pulumi.set(__self__, "service_principal_id", service_principal_id)
@@ -45,7 +45,7 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the service principal for the policy assignment.
+        The ID of the service principal for the policy assignment.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -62,7 +62,7 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
         """
         Input properties used for looking up and filtering ServicePrincipalClaimsMappingPolicyAssignment resources.
         :param pulumi.Input[str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the policy assignment.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for the policy assignment.
         """
         if claims_mapping_policy_id is not None:
             pulumi.set(__self__, "claims_mapping_policy_id", claims_mapping_policy_id)
@@ -85,7 +85,7 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the service principal for the policy assignment.
+        The ID of the service principal for the policy assignment.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -135,7 +135,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the policy assignment.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for the policy assignment.
         """
         ...
     @overload
@@ -225,7 +225,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the policy assignment.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for the policy assignment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -247,7 +247,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the service principal for the policy assignment.
+        The ID of the service principal for the policy assignment.
         """
         return pulumi.get(self, "service_principal_id")
 

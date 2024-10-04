@@ -90,18 +90,6 @@ namespace Pulumi.AzureAD
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the application to which this pre-authorized application should be added
-        /// </summary>
-        [Output("applicationObjectId")]
-        public Output<string> ApplicationObjectId { get; private set; } = null!;
-
-        /// <summary>
-        /// The application ID of the pre-authorized application
-        /// </summary>
-        [Output("authorizedAppId")]
-        public Output<string> AuthorizedAppId { get; private set; } = null!;
-
-        /// <summary>
         /// The client ID of the application being authorized. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("authorizedClientId")]
@@ -162,26 +150,14 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
         /// </summary>
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
-
-        /// <summary>
-        /// The object ID of the application to which this pre-authorized application should be added
-        /// </summary>
-        [Input("applicationObjectId")]
-        public Input<string>? ApplicationObjectId { get; set; }
-
-        /// <summary>
-        /// The application ID of the pre-authorized application
-        /// </summary>
-        [Input("authorizedAppId")]
-        public Input<string>? AuthorizedAppId { get; set; }
+        [Input("applicationId", required: true)]
+        public Input<string> ApplicationId { get; set; } = null!;
 
         /// <summary>
         /// The client ID of the application being authorized. Changing this field forces a new resource to be created.
         /// </summary>
-        [Input("authorizedClientId")]
-        public Input<string>? AuthorizedClientId { get; set; }
+        [Input("authorizedClientId", required: true)]
+        public Input<string> AuthorizedClientId { get; set; } = null!;
 
         [Input("permissionIds", required: true)]
         private InputList<string>? _permissionIds;
@@ -208,18 +184,6 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
-
-        /// <summary>
-        /// The object ID of the application to which this pre-authorized application should be added
-        /// </summary>
-        [Input("applicationObjectId")]
-        public Input<string>? ApplicationObjectId { get; set; }
-
-        /// <summary>
-        /// The application ID of the pre-authorized application
-        /// </summary>
-        [Input("authorizedAppId")]
-        public Input<string>? AuthorizedAppId { get; set; }
 
         /// <summary>
         /// The client ID of the application being authorized. Changing this field forces a new resource to be created.

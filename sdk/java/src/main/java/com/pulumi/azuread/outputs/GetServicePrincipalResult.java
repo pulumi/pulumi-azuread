@@ -44,13 +44,6 @@ public final class GetServicePrincipalResult {
      */
     private List<GetServicePrincipalAppRole> appRoles;
     /**
-     * @deprecated
-     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    private String applicationId;
-    /**
      * @return The tenant ID where the associated application is registered.
      * 
      */
@@ -201,15 +194,6 @@ public final class GetServicePrincipalResult {
      */
     public List<GetServicePrincipalAppRole> appRoles() {
         return this.appRoles;
-    }
-    /**
-     * @deprecated
-     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public String applicationId() {
-        return this.applicationId;
     }
     /**
      * @return The tenant ID where the associated application is registered.
@@ -387,7 +371,6 @@ public final class GetServicePrincipalResult {
         private Boolean appRoleAssignmentRequired;
         private Map<String,String> appRoleIds;
         private List<GetServicePrincipalAppRole> appRoles;
-        private String applicationId;
         private String applicationTenantId;
         private String clientId;
         private String description;
@@ -419,7 +402,6 @@ public final class GetServicePrincipalResult {
     	      this.appRoleAssignmentRequired = defaults.appRoleAssignmentRequired;
     	      this.appRoleIds = defaults.appRoleIds;
     	      this.appRoles = defaults.appRoles;
-    	      this.applicationId = defaults.applicationId;
     	      this.applicationTenantId = defaults.applicationTenantId;
     	      this.clientId = defaults.clientId;
     	      this.description = defaults.description;
@@ -490,14 +472,6 @@ public final class GetServicePrincipalResult {
         }
         public Builder appRoles(GetServicePrincipalAppRole... appRoles) {
             return appRoles(List.of(appRoles));
-        }
-        @CustomType.Setter
-        public Builder applicationId(String applicationId) {
-            if (applicationId == null) {
-              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "applicationId");
-            }
-            this.applicationId = applicationId;
-            return this;
         }
         @CustomType.Setter
         public Builder applicationTenantId(String applicationTenantId) {
@@ -714,7 +688,6 @@ public final class GetServicePrincipalResult {
             _resultValue.appRoleAssignmentRequired = appRoleAssignmentRequired;
             _resultValue.appRoleIds = appRoleIds;
             _resultValue.appRoles = appRoles;
-            _resultValue.applicationId = applicationId;
             _resultValue.applicationTenantId = applicationTenantId;
             _resultValue.clientId = clientId;
             _resultValue.description = description;

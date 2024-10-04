@@ -32,20 +32,15 @@ import * as utilities from "./utilities";
  * const example = azuread.getApplicationTemplate({
  *     displayName: "Azure Databricks SCIM Provisioning Connector",
  * });
- * const exampleApplication = new azuread.Application("example", {
+ * const exampleApplicationFromTemplate = new azuread.ApplicationFromTemplate("example", {
  *     displayName: "example",
  *     templateId: example.then(example => example.templateId),
- *     featureTags: [{
- *         enterprise: true,
- *         gallery: true,
- *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
- *     clientId: exampleApplication.clientId,
- *     useExisting: true,
+ * const exampleGetServicePrincipal = azuread.getServicePrincipalOutput({
+ *     objectId: exampleApplicationFromTemplate.servicePrincipalObjectId,
  * });
  * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("example", {
- *     servicePrincipalId: exampleServicePrincipal.id,
+ *     servicePrincipalId: exampleGetServicePrincipal.apply(exampleGetServicePrincipal => exampleGetServicePrincipal.id),
  *     credentials: [
  *         {
  *             key: "BaseAddress",
@@ -58,12 +53,12 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const exampleSynchronizationJob = new azuread.SynchronizationJob("example", {
- *     servicePrincipalId: exampleServicePrincipal.id,
+ *     servicePrincipalId: exampleGetServicePrincipal.apply(exampleGetServicePrincipal => exampleGetServicePrincipal.id),
  *     templateId: "dataBricks",
  *     enabled: true,
  * });
  * const exampleSynchronizationJobProvisionOnDemand = new azuread.SynchronizationJobProvisionOnDemand("example", {
- *     servicePrincipalId: exampleServicePrincipal.id,
+ *     servicePrincipalId: exampleSynchronizationJob.servicePrincipalId,
  *     synchronizationJobId: exampleSynchronizationJob.id,
  *     parameters: [{
  *         ruleId: "",
@@ -112,11 +107,11 @@ export class SynchronizationJobProvisionOnDemand extends pulumi.CustomResource {
      */
     public readonly parameters!: pulumi.Output<outputs.SynchronizationJobProvisionOnDemandParameter[]>;
     /**
-     * The object ID of the service principal for the synchronization job.
+     * The ID of the service principal for the synchronization job.
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
     /**
-     * Identifier of the synchronization template this job is based on.
+     * The ID of the synchronization job.
      */
     public readonly synchronizationJobId!: pulumi.Output<string>;
     public readonly triggers!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -168,11 +163,11 @@ export interface SynchronizationJobProvisionOnDemandState {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.SynchronizationJobProvisionOnDemandParameter>[]>;
     /**
-     * The object ID of the service principal for the synchronization job.
+     * The ID of the service principal for the synchronization job.
      */
     servicePrincipalId?: pulumi.Input<string>;
     /**
-     * Identifier of the synchronization template this job is based on.
+     * The ID of the synchronization job.
      */
     synchronizationJobId?: pulumi.Input<string>;
     triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -187,11 +182,11 @@ export interface SynchronizationJobProvisionOnDemandArgs {
      */
     parameters: pulumi.Input<pulumi.Input<inputs.SynchronizationJobProvisionOnDemandParameter>[]>;
     /**
-     * The object ID of the service principal for the synchronization job.
+     * The ID of the service principal for the synchronization job.
      */
     servicePrincipalId: pulumi.Input<string>;
     /**
-     * Identifier of the synchronization template this job is based on.
+     * The ID of the synchronization job.
      */
     synchronizationJobId: pulumi.Input<string>;
     triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

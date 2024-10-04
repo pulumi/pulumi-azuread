@@ -64,6 +64,21 @@ public final class ConditionalAccessPolicyState extends com.pulumi.resources.Res
     }
 
     /**
+     * The object ID of the policy
+     * 
+     */
+    @Import(name="objectId")
+    private @Nullable Output<String> objectId;
+
+    /**
+     * @return The object ID of the policy
+     * 
+     */
+    public Optional<Output<String>> objectId() {
+        return Optional.ofNullable(this.objectId);
+    }
+
+    /**
      * A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
      * 
      * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
@@ -103,6 +118,7 @@ public final class ConditionalAccessPolicyState extends com.pulumi.resources.Res
         this.conditions = $.conditions;
         this.displayName = $.displayName;
         this.grantControls = $.grantControls;
+        this.objectId = $.objectId;
         this.sessionControls = $.sessionControls;
         this.state = $.state;
     }
@@ -186,6 +202,27 @@ public final class ConditionalAccessPolicyState extends com.pulumi.resources.Res
          */
         public Builder grantControls(ConditionalAccessPolicyGrantControlsArgs grantControls) {
             return grantControls(Output.of(grantControls));
+        }
+
+        /**
+         * @param objectId The object ID of the policy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectId(@Nullable Output<String> objectId) {
+            $.objectId = objectId;
+            return this;
+        }
+
+        /**
+         * @param objectId The object ID of the policy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectId(String objectId) {
+            return objectId(Output.of(objectId));
         }
 
         /**

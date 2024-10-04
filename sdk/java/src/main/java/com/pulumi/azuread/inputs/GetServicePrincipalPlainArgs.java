@@ -15,25 +15,6 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     public static final GetServicePrincipalPlainArgs Empty = new GetServicePrincipalPlainArgs();
 
     /**
-     * @deprecated
-     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="applicationId")
-    private @Nullable String applicationId;
-
-    /**
-     * @deprecated
-     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<String> applicationId() {
-        return Optional.ofNullable(this.applicationId);
-    }
-
-    /**
      * The client ID of the application associated with this service principal.
      * 
      */
@@ -85,7 +66,6 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     private GetServicePrincipalPlainArgs() {}
 
     private GetServicePrincipalPlainArgs(GetServicePrincipalPlainArgs $) {
-        this.applicationId = $.applicationId;
         this.clientId = $.clientId;
         this.displayName = $.displayName;
         this.objectId = $.objectId;
@@ -107,19 +87,6 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
 
         public Builder(GetServicePrincipalPlainArgs defaults) {
             $ = new GetServicePrincipalPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationId(@Nullable String applicationId) {
-            $.applicationId = applicationId;
-            return this;
         }
 
         /**

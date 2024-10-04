@@ -28,8 +28,8 @@ class SynchronizationJobProvisionOnDemandArgs:
         """
         The set of arguments for constructing a SynchronizationJobProvisionOnDemand resource.
         :param pulumi.Input[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterArgs']]] parameters: One or more `parameter` blocks as documented below.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the synchronization job.
-        :param pulumi.Input[str] synchronization_job_id: Identifier of the synchronization template this job is based on.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for the synchronization job.
+        :param pulumi.Input[str] synchronization_job_id: The ID of the synchronization job.
         """
         pulumi.set(__self__, "parameters", parameters)
         pulumi.set(__self__, "service_principal_id", service_principal_id)
@@ -53,7 +53,7 @@ class SynchronizationJobProvisionOnDemandArgs:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the service principal for the synchronization job.
+        The ID of the service principal for the synchronization job.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -65,7 +65,7 @@ class SynchronizationJobProvisionOnDemandArgs:
     @pulumi.getter(name="synchronizationJobId")
     def synchronization_job_id(self) -> pulumi.Input[str]:
         """
-        Identifier of the synchronization template this job is based on.
+        The ID of the synchronization job.
         """
         return pulumi.get(self, "synchronization_job_id")
 
@@ -93,8 +93,8 @@ class _SynchronizationJobProvisionOnDemandState:
         """
         Input properties used for looking up and filtering SynchronizationJobProvisionOnDemand resources.
         :param pulumi.Input[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterArgs']]] parameters: One or more `parameter` blocks as documented below.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the synchronization job.
-        :param pulumi.Input[str] synchronization_job_id: Identifier of the synchronization template this job is based on.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for the synchronization job.
+        :param pulumi.Input[str] synchronization_job_id: The ID of the synchronization job.
         """
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
@@ -121,7 +121,7 @@ class _SynchronizationJobProvisionOnDemandState:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the service principal for the synchronization job.
+        The ID of the service principal for the synchronization job.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -133,7 +133,7 @@ class _SynchronizationJobProvisionOnDemandState:
     @pulumi.getter(name="synchronizationJobId")
     def synchronization_job_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier of the synchronization template this job is based on.
+        The ID of the synchronization job.
         """
         return pulumi.get(self, "synchronization_job_id")
 
@@ -184,18 +184,12 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
             owners=[current.object_id],
             security_enabled=True)
         example = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
-        example_application = azuread.Application("example",
+        example_application_from_template = azuread.ApplicationFromTemplate("example",
             display_name="example",
-            template_id=example.template_id,
-            feature_tags=[{
-                "enterprise": True,
-                "gallery": True,
-            }])
-        example_service_principal = azuread.ServicePrincipal("example",
-            client_id=example_application.client_id,
-            use_existing=True)
+            template_id=example.template_id)
+        example_get_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
         example_synchronization_secret = azuread.SynchronizationSecret("example",
-            service_principal_id=example_service_principal.id,
+            service_principal_id=example_get_service_principal.id,
             credentials=[
                 {
                     "key": "BaseAddress",
@@ -207,11 +201,11 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
                 },
             ])
         example_synchronization_job = azuread.SynchronizationJob("example",
-            service_principal_id=example_service_principal.id,
+            service_principal_id=example_get_service_principal.id,
             template_id="dataBricks",
             enabled=True)
         example_synchronization_job_provision_on_demand = azuread.SynchronizationJobProvisionOnDemand("example",
-            service_principal_id=example_service_principal.id,
+            service_principal_id=example_synchronization_job.service_principal_id,
             synchronization_job_id=example_synchronization_job.id,
             parameters=[{
                 "rule_id": "",
@@ -229,8 +223,8 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]] parameters: One or more `parameter` blocks as documented below.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the synchronization job.
-        :param pulumi.Input[str] synchronization_job_id: Identifier of the synchronization template this job is based on.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for the synchronization job.
+        :param pulumi.Input[str] synchronization_job_id: The ID of the synchronization job.
         """
         ...
     @overload
@@ -261,18 +255,12 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
             owners=[current.object_id],
             security_enabled=True)
         example = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
-        example_application = azuread.Application("example",
+        example_application_from_template = azuread.ApplicationFromTemplate("example",
             display_name="example",
-            template_id=example.template_id,
-            feature_tags=[{
-                "enterprise": True,
-                "gallery": True,
-            }])
-        example_service_principal = azuread.ServicePrincipal("example",
-            client_id=example_application.client_id,
-            use_existing=True)
+            template_id=example.template_id)
+        example_get_service_principal = azuread.get_service_principal_output(object_id=example_application_from_template.service_principal_object_id)
         example_synchronization_secret = azuread.SynchronizationSecret("example",
-            service_principal_id=example_service_principal.id,
+            service_principal_id=example_get_service_principal.id,
             credentials=[
                 {
                     "key": "BaseAddress",
@@ -284,11 +272,11 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
                 },
             ])
         example_synchronization_job = azuread.SynchronizationJob("example",
-            service_principal_id=example_service_principal.id,
+            service_principal_id=example_get_service_principal.id,
             template_id="dataBricks",
             enabled=True)
         example_synchronization_job_provision_on_demand = azuread.SynchronizationJobProvisionOnDemand("example",
-            service_principal_id=example_service_principal.id,
+            service_principal_id=example_synchronization_job.service_principal_id,
             synchronization_job_id=example_synchronization_job.id,
             parameters=[{
                 "rule_id": "",
@@ -363,8 +351,8 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]] parameters: One or more `parameter` blocks as documented below.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the synchronization job.
-        :param pulumi.Input[str] synchronization_job_id: Identifier of the synchronization template this job is based on.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for the synchronization job.
+        :param pulumi.Input[str] synchronization_job_id: The ID of the synchronization job.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -388,7 +376,7 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the service principal for the synchronization job.
+        The ID of the service principal for the synchronization job.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -396,7 +384,7 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
     @pulumi.getter(name="synchronizationJobId")
     def synchronization_job_id(self) -> pulumi.Output[str]:
         """
-        Identifier of the synchronization template this job is based on.
+        The ID of the synchronization job.
         """
         return pulumi.get(self, "synchronization_job_id")
 

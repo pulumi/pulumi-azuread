@@ -21,38 +21,15 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
      * The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Import(name="applicationId")
-    private @Nullable Output<String> applicationId;
+    @Import(name="applicationId", required=true)
+    private Output<String> applicationId;
 
     /**
      * @return The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      * 
      */
-    public Optional<Output<String>> applicationId() {
-        return Optional.ofNullable(this.applicationId);
-    }
-
-    /**
-     * The object ID of the application for which this federated identity credential should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="applicationObjectId")
-    private @Nullable Output<String> applicationObjectId;
-
-    /**
-     * @return The object ID of the application for which this federated identity credential should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<Output<String>> applicationObjectId() {
-        return Optional.ofNullable(this.applicationObjectId);
+    public Output<String> applicationId() {
+        return this.applicationId;
     }
 
     /**
@@ -134,7 +111,6 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
 
     private ApplicationFederatedIdentityCredentialArgs(ApplicationFederatedIdentityCredentialArgs $) {
         this.applicationId = $.applicationId;
-        this.applicationObjectId = $.applicationObjectId;
         this.audiences = $.audiences;
         this.description = $.description;
         this.displayName = $.displayName;
@@ -166,7 +142,7 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
          * @return builder
          * 
          */
-        public Builder applicationId(@Nullable Output<String> applicationId) {
+        public Builder applicationId(Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
@@ -179,35 +155,6 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
          */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application for which this federated identity credential should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(@Nullable Output<String> applicationObjectId) {
-            $.applicationObjectId = applicationObjectId;
-            return this;
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application for which this federated identity credential should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(String applicationObjectId) {
-            return applicationObjectId(Output.of(applicationObjectId));
         }
 
         /**
@@ -326,6 +273,9 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
         }
 
         public ApplicationFederatedIdentityCredentialArgs build() {
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("ApplicationFederatedIdentityCredentialArgs", "applicationId");
+            }
             if ($.audiences == null) {
                 throw new MissingRequiredPropertyException("ApplicationFederatedIdentityCredentialArgs", "audiences");
             }

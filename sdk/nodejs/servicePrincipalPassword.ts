@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const example = new azuread.Application("example", {displayName: "example"});
  * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
- * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {servicePrincipalId: exampleServicePrincipal.objectId});
+ * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {servicePrincipalId: exampleServicePrincipal.id});
  * ```
  *
  * *Time-based rotation*
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
  * const exampleRotating = new time.Rotating("example", {rotationDays: 7});
  * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {
- *     servicePrincipalId: exampleServicePrincipal.objectId,
+ *     servicePrincipalId: exampleServicePrincipal.id,
  *     rotateWhenChanged: {
  *         rotation: exampleRotating.id,
  *     },
@@ -78,6 +78,8 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
     public readonly endDate!: pulumi.Output<string>;
     /**
      * A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+     *
+     * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      */
     public readonly endDateRelative!: pulumi.Output<string | undefined>;
     /**
@@ -89,7 +91,7 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
      */
     public readonly rotateWhenChanged!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
     /**
@@ -157,6 +159,8 @@ export interface ServicePrincipalPasswordState {
     endDate?: pulumi.Input<string>;
     /**
      * A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+     *
+     * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      */
     endDateRelative?: pulumi.Input<string>;
     /**
@@ -168,7 +172,7 @@ export interface ServicePrincipalPasswordState {
      */
     rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
      */
     servicePrincipalId?: pulumi.Input<string>;
     /**
@@ -195,6 +199,8 @@ export interface ServicePrincipalPasswordArgs {
     endDate?: pulumi.Input<string>;
     /**
      * A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+     *
+     * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      */
     endDateRelative?: pulumi.Input<string>;
     /**
@@ -202,7 +208,7 @@ export interface ServicePrincipalPasswordArgs {
      */
     rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
      */
     servicePrincipalId: pulumi.Input<string>;
     /**

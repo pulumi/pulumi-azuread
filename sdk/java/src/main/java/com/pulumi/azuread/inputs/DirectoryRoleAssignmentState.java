@@ -31,29 +31,6 @@ public final class DirectoryRoleAssignmentState extends com.pulumi.resources.Res
     }
 
     /**
-     * Identifier of the app-specific scope when the assignment scope is app-specific
-     * 
-     * @deprecated
-     * `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
-     * 
-     */
-    @Deprecated /* `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider */
-    @Import(name="appScopeObjectId")
-    private @Nullable Output<String> appScopeObjectId;
-
-    /**
-     * @return Identifier of the app-specific scope when the assignment scope is app-specific
-     * 
-     * @deprecated
-     * `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
-     * 
-     */
-    @Deprecated /* `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider */
-    public Optional<Output<String>> appScopeObjectId() {
-        return Optional.ofNullable(this.appScopeObjectId);
-    }
-
-    /**
      * Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
      * 
      */
@@ -66,21 +43,6 @@ public final class DirectoryRoleAssignmentState extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> directoryScopeId() {
         return Optional.ofNullable(this.directoryScopeId);
-    }
-
-    /**
-     * Identifier of the directory object representing the scope of the assignment
-     * 
-     */
-    @Import(name="directoryScopeObjectId")
-    private @Nullable Output<String> directoryScopeObjectId;
-
-    /**
-     * @return Identifier of the directory object representing the scope of the assignment
-     * 
-     */
-    public Optional<Output<String>> directoryScopeObjectId() {
-        return Optional.ofNullable(this.directoryScopeObjectId);
     }
 
     /**
@@ -117,9 +79,7 @@ public final class DirectoryRoleAssignmentState extends com.pulumi.resources.Res
 
     private DirectoryRoleAssignmentState(DirectoryRoleAssignmentState $) {
         this.appScopeId = $.appScopeId;
-        this.appScopeObjectId = $.appScopeObjectId;
         this.directoryScopeId = $.directoryScopeId;
-        this.directoryScopeObjectId = $.directoryScopeObjectId;
         this.principalObjectId = $.principalObjectId;
         this.roleId = $.roleId;
     }
@@ -164,35 +124,6 @@ public final class DirectoryRoleAssignmentState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param appScopeObjectId Identifier of the app-specific scope when the assignment scope is app-specific
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
-         * 
-         */
-        @Deprecated /* `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider */
-        public Builder appScopeObjectId(@Nullable Output<String> appScopeObjectId) {
-            $.appScopeObjectId = appScopeObjectId;
-            return this;
-        }
-
-        /**
-         * @param appScopeObjectId Identifier of the app-specific scope when the assignment scope is app-specific
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
-         * 
-         */
-        @Deprecated /* `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider */
-        public Builder appScopeObjectId(String appScopeObjectId) {
-            return appScopeObjectId(Output.of(appScopeObjectId));
-        }
-
-        /**
          * @param directoryScopeId Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
          * 
          * @return builder
@@ -211,27 +142,6 @@ public final class DirectoryRoleAssignmentState extends com.pulumi.resources.Res
          */
         public Builder directoryScopeId(String directoryScopeId) {
             return directoryScopeId(Output.of(directoryScopeId));
-        }
-
-        /**
-         * @param directoryScopeObjectId Identifier of the directory object representing the scope of the assignment
-         * 
-         * @return builder
-         * 
-         */
-        public Builder directoryScopeObjectId(@Nullable Output<String> directoryScopeObjectId) {
-            $.directoryScopeObjectId = directoryScopeObjectId;
-            return this;
-        }
-
-        /**
-         * @param directoryScopeObjectId Identifier of the directory object representing the scope of the assignment
-         * 
-         * @return builder
-         * 
-         */
-        public Builder directoryScopeObjectId(String directoryScopeObjectId) {
-            return directoryScopeObjectId(Output.of(directoryScopeObjectId));
         }
 
         /**

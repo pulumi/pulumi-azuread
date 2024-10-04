@@ -68,7 +68,7 @@ export class ServicePrincipalClaimsMappingPolicyAssignment extends pulumi.Custom
      */
     public readonly claimsMappingPolicyId!: pulumi.Output<string>;
     /**
-     * The object ID of the service principal for the policy assignment.
+     * The ID of the service principal for the policy assignment.
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
 
@@ -112,7 +112,7 @@ export interface ServicePrincipalClaimsMappingPolicyAssignmentState {
      */
     claimsMappingPolicyId?: pulumi.Input<string>;
     /**
-     * The object ID of the service principal for the policy assignment.
+     * The ID of the service principal for the policy assignment.
      */
     servicePrincipalId?: pulumi.Input<string>;
 }
@@ -126,7 +126,7 @@ export interface ServicePrincipalClaimsMappingPolicyAssignmentArgs {
      */
     claimsMappingPolicyId: pulumi.Input<string>;
     /**
-     * The object ID of the service principal for the policy assignment.
+     * The ID of the service principal for the policy assignment.
      */
     servicePrincipalId: pulumi.Input<string>;
 }

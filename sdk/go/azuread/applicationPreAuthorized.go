@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -91,14 +91,6 @@ type ApplicationPreAuthorized struct {
 
 	// The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// The object ID of the application to which this pre-authorized application should be added
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
-	// The application ID of the pre-authorized application
-	//
-	// Deprecated: The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
-	AuthorizedAppId pulumi.StringOutput `pulumi:"authorizedAppId"`
 	// The client ID of the application being authorized. Changing this field forces a new resource to be created.
 	AuthorizedClientId pulumi.StringOutput `pulumi:"authorizedClientId"`
 	// A set of permission scope IDs required by the authorized application.
@@ -112,6 +104,12 @@ func NewApplicationPreAuthorized(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
+	}
+	if args.AuthorizedClientId == nil {
+		return nil, errors.New("invalid value for required argument 'AuthorizedClientId'")
+	}
 	if args.PermissionIds == nil {
 		return nil, errors.New("invalid value for required argument 'PermissionIds'")
 	}
@@ -140,14 +138,6 @@ func GetApplicationPreAuthorized(ctx *pulumi.Context,
 type applicationPreAuthorizedState struct {
 	// The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
 	ApplicationId *string `pulumi:"applicationId"`
-	// The object ID of the application to which this pre-authorized application should be added
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId *string `pulumi:"applicationObjectId"`
-	// The application ID of the pre-authorized application
-	//
-	// Deprecated: The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
-	AuthorizedAppId *string `pulumi:"authorizedAppId"`
 	// The client ID of the application being authorized. Changing this field forces a new resource to be created.
 	AuthorizedClientId *string `pulumi:"authorizedClientId"`
 	// A set of permission scope IDs required by the authorized application.
@@ -157,14 +147,6 @@ type applicationPreAuthorizedState struct {
 type ApplicationPreAuthorizedState struct {
 	// The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
 	ApplicationId pulumi.StringPtrInput
-	// The object ID of the application to which this pre-authorized application should be added
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringPtrInput
-	// The application ID of the pre-authorized application
-	//
-	// Deprecated: The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
-	AuthorizedAppId pulumi.StringPtrInput
 	// The client ID of the application being authorized. Changing this field forces a new resource to be created.
 	AuthorizedClientId pulumi.StringPtrInput
 	// A set of permission scope IDs required by the authorized application.
@@ -177,17 +159,9 @@ func (ApplicationPreAuthorizedState) ElementType() reflect.Type {
 
 type applicationPreAuthorizedArgs struct {
 	// The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
-	ApplicationId *string `pulumi:"applicationId"`
-	// The object ID of the application to which this pre-authorized application should be added
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId *string `pulumi:"applicationObjectId"`
-	// The application ID of the pre-authorized application
-	//
-	// Deprecated: The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
-	AuthorizedAppId *string `pulumi:"authorizedAppId"`
+	ApplicationId string `pulumi:"applicationId"`
 	// The client ID of the application being authorized. Changing this field forces a new resource to be created.
-	AuthorizedClientId *string `pulumi:"authorizedClientId"`
+	AuthorizedClientId string `pulumi:"authorizedClientId"`
 	// A set of permission scope IDs required by the authorized application.
 	PermissionIds []string `pulumi:"permissionIds"`
 }
@@ -195,17 +169,9 @@ type applicationPreAuthorizedArgs struct {
 // The set of arguments for constructing a ApplicationPreAuthorized resource.
 type ApplicationPreAuthorizedArgs struct {
 	// The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
-	ApplicationId pulumi.StringPtrInput
-	// The object ID of the application to which this pre-authorized application should be added
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringPtrInput
-	// The application ID of the pre-authorized application
-	//
-	// Deprecated: The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
-	AuthorizedAppId pulumi.StringPtrInput
+	ApplicationId pulumi.StringInput
 	// The client ID of the application being authorized. Changing this field forces a new resource to be created.
-	AuthorizedClientId pulumi.StringPtrInput
+	AuthorizedClientId pulumi.StringInput
 	// A set of permission scope IDs required by the authorized application.
 	PermissionIds pulumi.StringArrayInput
 }
@@ -300,20 +266,6 @@ func (o ApplicationPreAuthorizedOutput) ToApplicationPreAuthorizedOutputWithCont
 // The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
 func (o ApplicationPreAuthorizedOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPreAuthorized) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
-}
-
-// The object ID of the application to which this pre-authorized application should be added
-//
-// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-func (o ApplicationPreAuthorizedOutput) ApplicationObjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationPreAuthorized) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
-}
-
-// The application ID of the pre-authorized application
-//
-// Deprecated: The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
-func (o ApplicationPreAuthorizedOutput) AuthorizedAppId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationPreAuthorized) pulumi.StringOutput { return v.AuthorizedAppId }).(pulumi.StringOutput)
 }
 
 // The client ID of the application being authorized. Changing this field forces a new resource to be created.

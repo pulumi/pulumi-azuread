@@ -67,7 +67,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ClientId = example.ApplicationId,
+    ///         ClientId = example.ClientId,
     ///     });
     /// 
     ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("example", new()
@@ -112,7 +112,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var internalServicePrincipal = new AzureAD.ServicePrincipal("internal", new()
     ///     {
-    ///         ClientId = @internal.ApplicationId,
+    ///         ClientId = @internal.ClientId,
     ///     });
     /// 
     ///     var example = new AzureAD.Application("example", new()
@@ -122,7 +122,7 @@ namespace Pulumi.AzureAD
     ///         {
     ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
     ///             {
-    ///                 ResourceAppId = @internal.ApplicationId,
+    ///                 ResourceAppId = @internal.ClientId,
     ///                 ResourceAccesses = new[]
     ///                 {
     ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
@@ -137,7 +137,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ClientId = example.ApplicationId,
+    ///         ClientId = example.ClientId,
     ///     });
     /// 
     ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("example", new()

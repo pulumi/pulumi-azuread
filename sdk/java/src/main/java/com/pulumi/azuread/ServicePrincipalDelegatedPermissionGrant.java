@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .clientId(example.applicationId())
+ *             .clientId(example.clientId())
  *             .build());
  * 
  *         var exampleServicePrincipalDelegatedPermissionGrant = new ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", ServicePrincipalDelegatedPermissionGrantArgs.builder()
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .clientId(example.applicationId())
+ *             .clientId(example.clientId())
  *             .build());
  * 
  *         var exampleUser = new User("exampleUser", UserArgs.builder()

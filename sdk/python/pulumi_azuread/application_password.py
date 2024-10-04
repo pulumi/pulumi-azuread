@@ -19,8 +19,7 @@ __all__ = ['ApplicationPasswordInitArgs', 'ApplicationPassword']
 @pulumi.input_type
 class ApplicationPasswordInitArgs:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[str]] = None,
-                 application_object_id: Optional[pulumi.Input[str]] = None,
+                 application_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
                  end_date_relative: Optional[pulumi.Input[str]] = None,
@@ -29,24 +28,20 @@ class ApplicationPasswordInitArgs:
         """
         The set of arguments for constructing a ApplicationPassword resource.
         :param pulumi.Input[str] application_id: The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created
         :param pulumi.Input[str] display_name: A display name for the password. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         """
-        if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
-        if application_object_id is not None:
-            warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-        if application_object_id is not None:
-            pulumi.set(__self__, "application_object_id", application_object_id)
+        pulumi.set(__self__, "application_id", application_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if end_date is not None:
             pulumi.set(__self__, "end_date", end_date)
+        if end_date_relative is not None:
+            warnings.warn("""The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""", DeprecationWarning)
+            pulumi.log.warn("""end_date_relative is deprecated: The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""")
         if end_date_relative is not None:
             pulumi.set(__self__, "end_date_relative", end_date_relative)
         if rotate_when_changed is not None:
@@ -56,28 +51,15 @@ class ApplicationPasswordInitArgs:
 
     @property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[str]]:
+    def application_id(self) -> pulumi.Input[str]:
         """
         The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[str]]):
+    def application_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "application_id", value)
-
-    @property
-    @pulumi.getter(name="applicationObjectId")
-    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_object_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The object ID of the application for which this password should be created
-        """
-        return pulumi.get(self, "application_object_id")
-
-    @application_object_id.setter
-    def application_object_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "application_object_id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -105,6 +87,7 @@ class ApplicationPasswordInitArgs:
 
     @property
     @pulumi.getter(name="endDateRelative")
+    @_utilities.deprecated("""The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""")
     def end_date_relative(self) -> Optional[pulumi.Input[str]]:
         """
         A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -144,7 +127,6 @@ class ApplicationPasswordInitArgs:
 class _ApplicationPasswordState:
     def __init__(__self__, *,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 application_object_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
                  end_date_relative: Optional[pulumi.Input[str]] = None,
@@ -155,7 +137,6 @@ class _ApplicationPasswordState:
         """
         Input properties used for looking up and filtering ApplicationPassword resources.
         :param pulumi.Input[str] application_id: The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created
         :param pulumi.Input[str] display_name: A display name for the password. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -166,15 +147,13 @@ class _ApplicationPasswordState:
         """
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
-        if application_object_id is not None:
-            warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-        if application_object_id is not None:
-            pulumi.set(__self__, "application_object_id", application_object_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if end_date is not None:
             pulumi.set(__self__, "end_date", end_date)
+        if end_date_relative is not None:
+            warnings.warn("""The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""", DeprecationWarning)
+            pulumi.log.warn("""end_date_relative is deprecated: The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""")
         if end_date_relative is not None:
             pulumi.set(__self__, "end_date_relative", end_date_relative)
         if key_id is not None:
@@ -197,19 +176,6 @@ class _ApplicationPasswordState:
     @application_id.setter
     def application_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "application_id", value)
-
-    @property
-    @pulumi.getter(name="applicationObjectId")
-    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_object_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The object ID of the application for which this password should be created
-        """
-        return pulumi.get(self, "application_object_id")
-
-    @application_object_id.setter
-    def application_object_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "application_object_id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -237,6 +203,7 @@ class _ApplicationPasswordState:
 
     @property
     @pulumi.getter(name="endDateRelative")
+    @_utilities.deprecated("""The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""")
     def end_date_relative(self) -> Optional[pulumi.Input[str]]:
         """
         A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -302,7 +269,6 @@ class ApplicationPassword(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 application_object_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
                  end_date_relative: Optional[pulumi.Input[str]] = None,
@@ -345,7 +311,6 @@ class ApplicationPassword(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created
         :param pulumi.Input[str] display_name: A display name for the password. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -356,7 +321,7 @@ class ApplicationPassword(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ApplicationPasswordInitArgs] = None,
+                 args: ApplicationPasswordInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -407,7 +372,6 @@ class ApplicationPassword(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 application_object_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
                  end_date_relative: Optional[pulumi.Input[str]] = None,
@@ -422,8 +386,9 @@ class ApplicationPassword(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApplicationPasswordInitArgs.__new__(ApplicationPasswordInitArgs)
 
+            if application_id is None and not opts.urn:
+                raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
-            __props__.__dict__["application_object_id"] = application_object_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["end_date"] = end_date
             __props__.__dict__["end_date_relative"] = end_date_relative
@@ -444,7 +409,6 @@ class ApplicationPassword(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application_id: Optional[pulumi.Input[str]] = None,
-            application_object_id: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             end_date: Optional[pulumi.Input[str]] = None,
             end_date_relative: Optional[pulumi.Input[str]] = None,
@@ -460,7 +424,6 @@ class ApplicationPassword(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this password should be created
         :param pulumi.Input[str] display_name: A display name for the password. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -474,7 +437,6 @@ class ApplicationPassword(pulumi.CustomResource):
         __props__ = _ApplicationPasswordState.__new__(_ApplicationPasswordState)
 
         __props__.__dict__["application_id"] = application_id
-        __props__.__dict__["application_object_id"] = application_object_id
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["end_date"] = end_date
         __props__.__dict__["end_date_relative"] = end_date_relative
@@ -491,15 +453,6 @@ class ApplicationPassword(pulumi.CustomResource):
         The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "application_id")
-
-    @property
-    @pulumi.getter(name="applicationObjectId")
-    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_object_id(self) -> pulumi.Output[str]:
-        """
-        The object ID of the application for which this password should be created
-        """
-        return pulumi.get(self, "application_object_id")
 
     @property
     @pulumi.getter(name="displayName")
@@ -519,6 +472,7 @@ class ApplicationPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endDateRelative")
+    @_utilities.deprecated("""The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""")
     def end_date_relative(self) -> pulumi.Output[Optional[str]]:
         """
         A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.

@@ -56,7 +56,6 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
-        "applicationId": args.applicationId,
         "clientId": args.clientId,
         "displayName": args.displayName,
         "objectId": args.objectId,
@@ -67,10 +66,6 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
  * A collection of arguments for invoking getServicePrincipal.
  */
 export interface GetServicePrincipalArgs {
-    /**
-     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationId?: string;
     /**
      * The client ID of the application associated with this service principal.
      */
@@ -111,10 +106,6 @@ export interface GetServicePrincipalResult {
      * A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
     readonly appRoles: outputs.GetServicePrincipalAppRole[];
-    /**
-     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    readonly applicationId: string;
     /**
      * The tenant ID where the associated application is registered.
      */
@@ -257,7 +248,6 @@ export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, 
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getServicePrincipal:getServicePrincipal", {
-        "applicationId": args.applicationId,
         "clientId": args.clientId,
         "displayName": args.displayName,
         "objectId": args.objectId,
@@ -268,10 +258,6 @@ export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, 
  * A collection of arguments for invoking getServicePrincipal.
  */
 export interface GetServicePrincipalOutputArgs {
-    /**
-     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationId?: pulumi.Input<string>;
     /**
      * The client ID of the application associated with this service principal.
      */

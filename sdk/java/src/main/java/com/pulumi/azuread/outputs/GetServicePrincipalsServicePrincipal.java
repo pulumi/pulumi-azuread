@@ -23,15 +23,6 @@ public final class GetServicePrincipalsServicePrincipal {
      */
     private Boolean appRoleAssignmentRequired;
     /**
-     * @return The application ID (client ID) for the associated application
-     * 
-     * @deprecated
-     * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
-    private String applicationId;
-    /**
      * @return The tenant ID where the associated application is registered.
      * 
      */
@@ -96,17 +87,6 @@ public final class GetServicePrincipalsServicePrincipal {
      */
     public Boolean appRoleAssignmentRequired() {
         return this.appRoleAssignmentRequired;
-    }
-    /**
-     * @return The application ID (client ID) for the associated application
-     * 
-     * @deprecated
-     * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
-    public String applicationId() {
-        return this.applicationId;
     }
     /**
      * @return The tenant ID where the associated application is registered.
@@ -190,7 +170,6 @@ public final class GetServicePrincipalsServicePrincipal {
     public static final class Builder {
         private Boolean accountEnabled;
         private Boolean appRoleAssignmentRequired;
-        private String applicationId;
         private String applicationTenantId;
         private String clientId;
         private String displayName;
@@ -206,7 +185,6 @@ public final class GetServicePrincipalsServicePrincipal {
     	      Objects.requireNonNull(defaults);
     	      this.accountEnabled = defaults.accountEnabled;
     	      this.appRoleAssignmentRequired = defaults.appRoleAssignmentRequired;
-    	      this.applicationId = defaults.applicationId;
     	      this.applicationTenantId = defaults.applicationTenantId;
     	      this.clientId = defaults.clientId;
     	      this.displayName = defaults.displayName;
@@ -233,14 +211,6 @@ public final class GetServicePrincipalsServicePrincipal {
               throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "appRoleAssignmentRequired");
             }
             this.appRoleAssignmentRequired = appRoleAssignmentRequired;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder applicationId(String applicationId) {
-            if (applicationId == null) {
-              throw new MissingRequiredPropertyException("GetServicePrincipalsServicePrincipal", "applicationId");
-            }
-            this.applicationId = applicationId;
             return this;
         }
         @CustomType.Setter
@@ -333,7 +303,6 @@ public final class GetServicePrincipalsServicePrincipal {
             final var _resultValue = new GetServicePrincipalsServicePrincipal();
             _resultValue.accountEnabled = accountEnabled;
             _resultValue.appRoleAssignmentRequired = appRoleAssignmentRequired;
-            _resultValue.applicationId = applicationId;
             _resultValue.applicationTenantId = applicationTenantId;
             _resultValue.clientId = clientId;
             _resultValue.displayName = displayName;
