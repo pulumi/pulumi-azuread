@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azuread/sdk/v5
+module github.com/pulumi/pulumi-azuread/sdk/v6
 
 go 1.21
 

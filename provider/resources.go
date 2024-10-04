@@ -34,7 +34,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
-	"github.com/pulumi/pulumi-azuread/provider/v5/pkg/version"
+	"github.com/pulumi/pulumi-azuread/provider/v6/pkg/version"
 )
 
 // all of the token components used below.
