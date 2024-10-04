@@ -120,8 +120,8 @@ install_plugins: export PATH := $(WORKING_DIR)/.pulumi/bin:$(PATH)
 install_plugins: .pulumi/bin/pulumi
 	.pulumi/bin/pulumi plugin install resource time 0.0.15
 	.pulumi/bin/pulumi plugin install resource std 1.4.0
-	.pulumi/bin/pulumi plugin install resource azure 5.52.0
-	.pulumi/bin/pulumi plugin install resource random 4.14.0
+	.pulumi/bin/pulumi plugin install resource azure 6.3.0
+	.pulumi/bin/pulumi plugin install resource random 4.16.0
 	.pulumi/bin/pulumi plugin install converter terraform 1.0.15
 
 lint_provider: provider
