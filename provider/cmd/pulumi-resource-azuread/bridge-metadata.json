@@ -1227,9 +1227,6 @@
             "azuread_service_principals": {
                 "current": "azuread:index/getServicePrincipals:getServicePrincipals",
                 "fields": {
-                    "application_ids": {
-                        "maxItemsOne": false
-                    },
                     "client_ids": {
                         "maxItemsOne": false
                     },

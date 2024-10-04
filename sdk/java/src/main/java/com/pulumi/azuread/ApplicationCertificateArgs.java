@@ -20,38 +20,15 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
      * The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Import(name="applicationId")
-    private @Nullable Output<String> applicationId;
+    @Import(name="applicationId", required=true)
+    private Output<String> applicationId;
 
     /**
      * @return The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
-    public Optional<Output<String>> applicationId() {
-        return Optional.ofNullable(this.applicationId);
-    }
-
-    /**
-     * The object ID of the application for which this certificate should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="applicationObjectId")
-    private @Nullable Output<String> applicationObjectId;
-
-    /**
-     * @return The object ID of the application for which this certificate should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<Output<String>> applicationObjectId() {
-        return Optional.ofNullable(this.applicationObjectId);
+    public Output<String> applicationId() {
+        return this.applicationId;
     }
 
     /**
@@ -93,7 +70,11 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
      * 
      * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     @Import(name="endDateRelative")
     private @Nullable Output<String> endDateRelative;
 
@@ -102,7 +83,11 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
      * 
      * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     public Optional<Output<String>> endDateRelative() {
         return Optional.ofNullable(this.endDateRelative);
     }
@@ -171,7 +156,6 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
 
     private ApplicationCertificateArgs(ApplicationCertificateArgs $) {
         this.applicationId = $.applicationId;
-        this.applicationObjectId = $.applicationObjectId;
         this.encoding = $.encoding;
         this.endDate = $.endDate;
         this.endDateRelative = $.endDateRelative;
@@ -205,7 +189,7 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
          * @return builder
          * 
          */
-        public Builder applicationId(@Nullable Output<String> applicationId) {
+        public Builder applicationId(Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
@@ -218,35 +202,6 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
          */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application for which this certificate should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(@Nullable Output<String> applicationObjectId) {
-            $.applicationObjectId = applicationObjectId;
-            return this;
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application for which this certificate should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(String applicationObjectId) {
-            return applicationObjectId(Output.of(applicationObjectId));
         }
 
         /**
@@ -302,7 +257,11 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * 
          */
+        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
         public Builder endDateRelative(@Nullable Output<String> endDateRelative) {
             $.endDateRelative = endDateRelative;
             return this;
@@ -315,7 +274,11 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * 
          */
+        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
         public Builder endDateRelative(String endDateRelative) {
             return endDateRelative(Output.of(endDateRelative));
         }
@@ -405,6 +368,9 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
         }
 
         public ApplicationCertificateArgs build() {
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("ApplicationCertificateArgs", "applicationId");
+            }
             if ($.value == null) {
                 throw new MissingRequiredPropertyException("ApplicationCertificateArgs", "value");
             }

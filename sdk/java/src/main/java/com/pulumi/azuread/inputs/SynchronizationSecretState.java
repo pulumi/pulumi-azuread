@@ -33,14 +33,14 @@ public final class SynchronizationSecretState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      * 
      */
     @Import(name="servicePrincipalId")
     private @Nullable Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+     * @return The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> servicePrincipalId() {
@@ -104,7 +104,7 @@ public final class SynchronizationSecretState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+         * @param servicePrincipalId The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class SynchronizationSecretState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+         * @param servicePrincipalId The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 

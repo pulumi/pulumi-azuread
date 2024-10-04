@@ -19,36 +19,40 @@ __all__ = ['ApplicationFederatedIdentityCredentialArgs', 'ApplicationFederatedId
 @pulumi.input_type
 class ApplicationFederatedIdentityCredentialArgs:
     def __init__(__self__, *,
+                 application_id: pulumi.Input[str],
                  audiences: pulumi.Input[Sequence[pulumi.Input[str]]],
                  display_name: pulumi.Input[str],
                  issuer: pulumi.Input[str],
                  subject: pulumi.Input[str],
-                 application_id: Optional[pulumi.Input[str]] = None,
-                 application_object_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApplicationFederatedIdentityCredential resource.
+        :param pulumi.Input[str] application_id: The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         :param pulumi.Input[str] display_name: A unique display name for the federated identity credential. Changing this forces a new resource to be created.
         :param pulumi.Input[str] issuer: The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
         :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
-        :param pulumi.Input[str] application_id: The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created
         :param pulumi.Input[str] description: A description for the federated identity credential.
         """
+        pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "audiences", audiences)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "issuer", issuer)
         pulumi.set(__self__, "subject", subject)
-        if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
-        if application_object_id is not None:
-            warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-        if application_object_id is not None:
-            pulumi.set(__self__, "application_object_id", application_object_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> pulumi.Input[str]:
+        """
+        The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "application_id", value)
 
     @property
     @pulumi.getter
@@ -99,31 +103,6 @@ class ApplicationFederatedIdentityCredentialArgs:
         pulumi.set(self, "subject", value)
 
     @property
-    @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-        """
-        return pulumi.get(self, "application_id")
-
-    @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "application_id", value)
-
-    @property
-    @pulumi.getter(name="applicationObjectId")
-    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_object_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The object ID of the application for which this federated identity credential should be created
-        """
-        return pulumi.get(self, "application_object_id")
-
-    @application_object_id.setter
-    def application_object_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "application_object_id", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -140,7 +119,6 @@ class ApplicationFederatedIdentityCredentialArgs:
 class _ApplicationFederatedIdentityCredentialState:
     def __init__(__self__, *,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 application_object_id: Optional[pulumi.Input[str]] = None,
                  audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  credential_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -150,7 +128,6 @@ class _ApplicationFederatedIdentityCredentialState:
         """
         Input properties used for looking up and filtering ApplicationFederatedIdentityCredential resources.
         :param pulumi.Input[str] application_id: The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created
         :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         :param pulumi.Input[str] credential_id: A UUID used to uniquely identify this federated identity credential.
         :param pulumi.Input[str] description: A description for the federated identity credential.
@@ -160,11 +137,6 @@ class _ApplicationFederatedIdentityCredentialState:
         """
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
-        if application_object_id is not None:
-            warnings.warn("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""application_object_id is deprecated: The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-        if application_object_id is not None:
-            pulumi.set(__self__, "application_object_id", application_object_id)
         if audiences is not None:
             pulumi.set(__self__, "audiences", audiences)
         if credential_id is not None:
@@ -189,19 +161,6 @@ class _ApplicationFederatedIdentityCredentialState:
     @application_id.setter
     def application_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "application_id", value)
-
-    @property
-    @pulumi.getter(name="applicationObjectId")
-    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_object_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The object ID of the application for which this federated identity credential should be created
-        """
-        return pulumi.get(self, "application_object_id")
-
-    @application_object_id.setter
-    def application_object_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "application_object_id", value)
 
     @property
     @pulumi.getter
@@ -282,7 +241,6 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 application_object_id: Optional[pulumi.Input[str]] = None,
                  audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -319,7 +277,6 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created
         :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         :param pulumi.Input[str] description: A description for the federated identity credential.
         :param pulumi.Input[str] display_name: A unique display name for the federated identity credential. Changing this forces a new resource to be created.
@@ -375,7 +332,6 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 application_object_id: Optional[pulumi.Input[str]] = None,
                  audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -390,8 +346,9 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApplicationFederatedIdentityCredentialArgs.__new__(ApplicationFederatedIdentityCredentialArgs)
 
+            if application_id is None and not opts.urn:
+                raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
-            __props__.__dict__["application_object_id"] = application_object_id
             if audiences is None and not opts.urn:
                 raise TypeError("Missing required property 'audiences'")
             __props__.__dict__["audiences"] = audiences
@@ -417,7 +374,6 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application_id: Optional[pulumi.Input[str]] = None,
-            application_object_id: Optional[pulumi.Input[str]] = None,
             audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             credential_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -432,7 +388,6 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created
         :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         :param pulumi.Input[str] credential_id: A UUID used to uniquely identify this federated identity credential.
         :param pulumi.Input[str] description: A description for the federated identity credential.
@@ -445,7 +400,6 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         __props__ = _ApplicationFederatedIdentityCredentialState.__new__(_ApplicationFederatedIdentityCredentialState)
 
         __props__.__dict__["application_id"] = application_id
-        __props__.__dict__["application_object_id"] = application_object_id
         __props__.__dict__["audiences"] = audiences
         __props__.__dict__["credential_id"] = credential_id
         __props__.__dict__["description"] = description
@@ -461,15 +415,6 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "application_id")
-
-    @property
-    @pulumi.getter(name="applicationObjectId")
-    @_utilities.deprecated("""The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_object_id(self) -> pulumi.Output[str]:
-        """
-        The object ID of the application for which this federated identity credential should be created
-        """
-        return pulumi.get(self, "application_object_id")
 
     @property
     @pulumi.getter

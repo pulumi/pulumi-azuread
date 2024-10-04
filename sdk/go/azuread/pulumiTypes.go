@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1882,7 +1882,7 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput) Inde
 }
 
 type ApplicationApi struct {
-	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+	// A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
 	KnownClientApplications []string `pulumi:"knownClientApplications"`
 	// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
 	MappedClaimsEnabled *bool `pulumi:"mappedClaimsEnabled"`
@@ -1904,7 +1904,7 @@ type ApplicationApiInput interface {
 }
 
 type ApplicationApiArgs struct {
-	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+	// A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
 	KnownClientApplications pulumi.StringArrayInput `pulumi:"knownClientApplications"`
 	// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
 	MappedClaimsEnabled pulumi.BoolPtrInput `pulumi:"mappedClaimsEnabled"`
@@ -1991,7 +1991,7 @@ func (o ApplicationApiOutput) ToApplicationApiPtrOutputWithContext(ctx context.C
 	}).(ApplicationApiPtrOutput)
 }
 
-// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+// A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
 func (o ApplicationApiOutput) KnownClientApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationApi) []string { return v.KnownClientApplications }).(pulumi.StringArrayOutput)
 }
@@ -2035,7 +2035,7 @@ func (o ApplicationApiPtrOutput) Elem() ApplicationApiOutput {
 	}).(ApplicationApiOutput)
 }
 
-// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+// A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
 func (o ApplicationApiPtrOutput) KnownClientApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationApi) []string {
 		if v == nil {
@@ -14746,10 +14746,6 @@ type GetServicePrincipalsServicePrincipal struct {
 	AccountEnabled bool `pulumi:"accountEnabled"`
 	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
 	AppRoleAssignmentRequired bool `pulumi:"appRoleAssignmentRequired"`
-	// The application ID (client ID) for the associated application
-	//
-	// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
-	ApplicationId string `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId string `pulumi:"applicationTenantId"`
 	// The application ID (client ID) for the associated application
@@ -14788,10 +14784,6 @@ type GetServicePrincipalsServicePrincipalArgs struct {
 	AccountEnabled pulumi.BoolInput `pulumi:"accountEnabled"`
 	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
 	AppRoleAssignmentRequired pulumi.BoolInput `pulumi:"appRoleAssignmentRequired"`
-	// The application ID (client ID) for the associated application
-	//
-	// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
-	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId pulumi.StringInput `pulumi:"applicationTenantId"`
 	// The application ID (client ID) for the associated application
@@ -14873,13 +14865,6 @@ func (o GetServicePrincipalsServicePrincipalOutput) AccountEnabled() pulumi.Bool
 // Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
 func (o GetServicePrincipalsServicePrincipalOutput) AppRoleAssignmentRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) bool { return v.AppRoleAssignmentRequired }).(pulumi.BoolOutput)
-}
-
-// The application ID (client ID) for the associated application
-//
-// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
-func (o GetServicePrincipalsServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
 // The tenant ID where the associated application is registered.

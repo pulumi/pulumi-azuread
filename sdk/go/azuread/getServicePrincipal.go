@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -56,7 +56,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -82,7 +82,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -112,8 +112,6 @@ func LookupServicePrincipal(ctx *pulumi.Context, args *LookupServicePrincipalArg
 
 // A collection of arguments for invoking getServicePrincipal.
 type LookupServicePrincipalArgs struct {
-	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationId *string `pulumi:"applicationId"`
 	// The client ID of the application associated with this service principal.
 	ClientId *string `pulumi:"clientId"`
 	// The display name of the application associated with this service principal.
@@ -136,8 +134,6 @@ type LookupServicePrincipalResult struct {
 	AppRoleIds map[string]string `pulumi:"appRoleIds"`
 	// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles []GetServicePrincipalAppRole `pulumi:"appRoles"`
-	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationId string `pulumi:"applicationId"`
 	// The tenant ID where the associated application is registered.
 	ApplicationTenantId string `pulumi:"applicationTenantId"`
 	// The client ID of the application associated with this service principal.
@@ -208,8 +204,6 @@ func LookupServicePrincipalOutput(ctx *pulumi.Context, args LookupServicePrincip
 
 // A collection of arguments for invoking getServicePrincipal.
 type LookupServicePrincipalOutputArgs struct {
-	// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
 	// The client ID of the application associated with this service principal.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// The display name of the application associated with this service principal.
@@ -262,11 +256,6 @@ func (o LookupServicePrincipalResultOutput) AppRoleIds() pulumi.StringMapOutput 
 // A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 func (o LookupServicePrincipalResultOutput) AppRoles() GetServicePrincipalAppRoleArrayOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) []GetServicePrincipalAppRole { return v.AppRoles }).(GetServicePrincipalAppRoleArrayOutput)
-}
-
-// Deprecated: The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
-func (o LookupServicePrincipalResultOutput) ApplicationId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
 // The tenant ID where the associated application is registered.

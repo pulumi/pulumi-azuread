@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -42,28 +42,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+//			exampleApplicationFromTemplate, err := azuread.NewApplicationFromTemplate(ctx, "example", &azuread.ApplicationFromTemplateArgs{
 //				DisplayName: pulumi.String("example"),
 //				TemplateId:  pulumi.String(example.TemplateId),
-//				FeatureTags: azuread.ApplicationFeatureTagArray{
-//					&azuread.ApplicationFeatureTagArgs{
-//						Enterprise: pulumi.Bool(true),
-//						Gallery:    pulumi.Bool(true),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ClientId:    exampleApplication.ApplicationId,
-//				UseExisting: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
+//			exampleGetServicePrincipal := azuread.LookupServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
+//				ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
+//			}, nil)
 //			_, err = azuread.NewSynchronizationSecret(ctx, "example", &azuread.SynchronizationSecretArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
+//				ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
+//					return &exampleGetServicePrincipal.Id, nil
+//				}).(pulumi.StringPtrOutput)),
 //				Credentials: azuread.SynchronizationSecretCredentialArray{
 //					&azuread.SynchronizationSecretCredentialArgs{
 //						Key:   pulumi.String("BaseAddress"),
@@ -92,7 +84,7 @@ type SynchronizationSecret struct {
 
 	// One or more `credential` blocks as documented below.
 	Credentials SynchronizationSecretCredentialArrayOutput `pulumi:"credentials"`
-	// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 }
 
@@ -131,14 +123,14 @@ func GetSynchronizationSecret(ctx *pulumi.Context,
 type synchronizationSecretState struct {
 	// One or more `credential` blocks as documented below.
 	Credentials []SynchronizationSecretCredential `pulumi:"credentials"`
-	// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 }
 
 type SynchronizationSecretState struct {
 	// One or more `credential` blocks as documented below.
 	Credentials SynchronizationSecretCredentialArrayInput
-	// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringPtrInput
 }
 
@@ -149,7 +141,7 @@ func (SynchronizationSecretState) ElementType() reflect.Type {
 type synchronizationSecretArgs struct {
 	// One or more `credential` blocks as documented below.
 	Credentials []SynchronizationSecretCredential `pulumi:"credentials"`
-	// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 }
 
@@ -157,7 +149,7 @@ type synchronizationSecretArgs struct {
 type SynchronizationSecretArgs struct {
 	// One or more `credential` blocks as documented below.
 	Credentials SynchronizationSecretCredentialArrayInput
-	// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringInput
 }
 
@@ -253,7 +245,7 @@ func (o SynchronizationSecretOutput) Credentials() SynchronizationSecretCredenti
 	return o.ApplyT(func(v *SynchronizationSecret) SynchronizationSecretCredentialArrayOutput { return v.Credentials }).(SynchronizationSecretCredentialArrayOutput)
 }
 
-// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 func (o SynchronizationSecretOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationSecret) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }

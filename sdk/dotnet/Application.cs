@@ -47,8 +47,8 @@ namespace Pulumi.AzureAD
     ///             RequestedAccessTokenVersion = 2,
     ///             KnownClientApplications = new[]
     ///             {
-    ///                 known1.ApplicationId,
-    ///                 known2.ApplicationId,
+    ///                 known1.ClientId,
+    ///                 known2.ClientId,
     ///             },
     ///             Oauth2PermissionScopes = new[]
     ///             {
@@ -225,12 +225,6 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("appRoles")]
         public Output<ImmutableArray<Outputs.ApplicationAppRole>> AppRoles { get; private set; } = null!;
-
-        /// <summary>
-        /// The Application ID (also called Client ID)
-        /// </summary>
-        [Output("applicationId")]
-        public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
         /// The Client ID for the application.
@@ -741,12 +735,6 @@ namespace Pulumi.AzureAD
             get => _appRoles ?? (_appRoles = new InputList<Inputs.ApplicationAppRoleGetArgs>());
             set => _appRoles = value;
         }
-
-        /// <summary>
-        /// The Application ID (also called Client ID)
-        /// </summary>
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
         /// The Client ID for the application.

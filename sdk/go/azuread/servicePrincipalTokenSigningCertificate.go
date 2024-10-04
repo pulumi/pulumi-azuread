@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ClientId: example.ApplicationId,
+//				ClientId: example.ClientId,
 //			})
 //			if err != nil {
 //				return err
@@ -59,7 +59,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -73,7 +73,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ClientId: example.ApplicationId,
+//				ClientId: example.ClientId,
 //			})
 //			if err != nil {
 //				return err
@@ -112,7 +112,7 @@ type ServicePrincipalTokenSigningCertificate struct {
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
 	// A UUID used to uniquely identify the verify certificate.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
@@ -167,7 +167,7 @@ type servicePrincipalTokenSigningCertificateState struct {
 	EndDate *string `pulumi:"endDate"`
 	// A UUID used to uniquely identify the verify certificate.
 	KeyId *string `pulumi:"keyId"`
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 	StartDate *string `pulumi:"startDate"`
@@ -186,7 +186,7 @@ type ServicePrincipalTokenSigningCertificateState struct {
 	EndDate pulumi.StringPtrInput
 	// A UUID used to uniquely identify the verify certificate.
 	KeyId pulumi.StringPtrInput
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringPtrInput
 	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 	StartDate pulumi.StringPtrInput
@@ -207,7 +207,7 @@ type servicePrincipalTokenSigningCertificateArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 }
 
@@ -219,7 +219,7 @@ type ServicePrincipalTokenSigningCertificateArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringInput
 }
 
@@ -327,7 +327,7 @@ func (o ServicePrincipalTokenSigningCertificateOutput) KeyId() pulumi.StringOutp
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
 }
 
-// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 func (o ServicePrincipalTokenSigningCertificateOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }

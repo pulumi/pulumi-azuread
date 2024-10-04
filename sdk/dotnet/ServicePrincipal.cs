@@ -181,12 +181,6 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<Outputs.ServicePrincipalAppRole>> AppRoles { get; private set; } = null!;
 
         /// <summary>
-        /// The application ID (client ID) of the application for which to create a service principal
-        /// </summary>
-        [Output("applicationId")]
-        public Output<string> ApplicationId { get; private set; } = null!;
-
-        /// <summary>
         /// The tenant ID where the associated application is registered.
         /// </summary>
         [Output("applicationTenantId")]
@@ -342,7 +336,7 @@ namespace Pulumi.AzureAD
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ServicePrincipal(string name, ServicePrincipalArgs? args = null, CustomResourceOptions? options = null)
+        public ServicePrincipal(string name, ServicePrincipalArgs args, CustomResourceOptions? options = null)
             : base("azuread:index/servicePrincipal:ServicePrincipal", name, args ?? new ServicePrincipalArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -405,16 +399,10 @@ namespace Pulumi.AzureAD
         public Input<bool>? AppRoleAssignmentRequired { get; set; }
 
         /// <summary>
-        /// The application ID (client ID) of the application for which to create a service principal
-        /// </summary>
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
-
-        /// <summary>
         /// The client ID of the application for which to create a service principal.
         /// </summary>
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
+        [Input("clientId", required: true)]
+        public Input<string> ClientId { get; set; } = null!;
 
         /// <summary>
         /// A description of the service principal provided for internal end-users.
@@ -572,12 +560,6 @@ namespace Pulumi.AzureAD
             get => _appRoles ?? (_appRoles = new InputList<Inputs.ServicePrincipalAppRoleGetArgs>());
             set => _appRoles = value;
         }
-
-        /// <summary>
-        /// The application ID (client ID) of the application for which to create a service principal
-        /// </summary>
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
         /// The tenant ID where the associated application is registered.

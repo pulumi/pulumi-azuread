@@ -67,7 +67,6 @@ export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pul
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getServicePrincipals:getServicePrincipals", {
-        "applicationIds": args.applicationIds,
         "clientIds": args.clientIds,
         "displayNames": args.displayNames,
         "ignoreMissing": args.ignoreMissing,
@@ -80,12 +79,6 @@ export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pul
  * A collection of arguments for invoking getServicePrincipals.
  */
 export interface GetServicePrincipalsArgs {
-    /**
-     * A list of client IDs of the applications associated with the service principals.
-     *
-     * @deprecated The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationIds?: string[];
     /**
      * A list of client IDs of the applications associated with the service principals.
      */
@@ -114,12 +107,6 @@ export interface GetServicePrincipalsArgs {
  * A collection of values returned by getServicePrincipals.
  */
 export interface GetServicePrincipalsResult {
-    /**
-     * A list of client IDs of the applications associated with the service principals.
-     *
-     * @deprecated The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    readonly applicationIds: string[];
     /**
      * The client ID of the application associated with this service principal.
      */
@@ -204,7 +191,6 @@ export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getServicePrincipals:getServicePrincipals", {
-        "applicationIds": args.applicationIds,
         "clientIds": args.clientIds,
         "displayNames": args.displayNames,
         "ignoreMissing": args.ignoreMissing,
@@ -217,12 +203,6 @@ export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs
  * A collection of arguments for invoking getServicePrincipals.
  */
 export interface GetServicePrincipalsOutputArgs {
-    /**
-     * A list of client IDs of the applications associated with the service principals.
-     *
-     * @deprecated The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of client IDs of the applications associated with the service principals.
      */

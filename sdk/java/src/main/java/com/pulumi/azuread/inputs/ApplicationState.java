@@ -73,29 +73,6 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Application ID (also called Client ID)
-     * 
-     * @deprecated
-     * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="applicationId")
-    private @Nullable Output<String> applicationId;
-
-    /**
-     * @return The Application ID (also called Client ID)
-     * 
-     * @deprecated
-     * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<Output<String>> applicationId() {
-        return Optional.ofNullable(this.applicationId);
-    }
-
-    /**
      * The Client ID for the application.
      * 
      */
@@ -605,7 +582,6 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         this.api = $.api;
         this.appRoleIds = $.appRoleIds;
         this.appRoles = $.appRoles;
-        this.applicationId = $.applicationId;
         this.clientId = $.clientId;
         this.description = $.description;
         this.deviceOnlyAuthEnabled = $.deviceOnlyAuthEnabled;
@@ -729,35 +705,6 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder appRoles(ApplicationAppRoleArgs... appRoles) {
             return appRoles(List.of(appRoles));
-        }
-
-        /**
-         * @param applicationId The Application ID (also called Client ID)
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationId(@Nullable Output<String> applicationId) {
-            $.applicationId = applicationId;
-            return this;
-        }
-
-        /**
-         * @param applicationId The Application ID (also called Client ID)
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationId(String applicationId) {
-            return applicationId(Output.of(applicationId));
         }
 
         /**

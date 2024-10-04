@@ -20,14 +20,14 @@ public final class ApplicationApiArgs extends com.pulumi.resources.ResourceArgs 
     public static final ApplicationApiArgs Empty = new ApplicationApiArgs();
 
     /**
-     * A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+     * A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
      * 
      */
     @Import(name="knownClientApplications")
     private @Nullable Output<List<String>> knownClientApplications;
 
     /**
-     * @return A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+     * @return A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
      * 
      */
     public Optional<Output<List<String>>> knownClientApplications() {
@@ -107,7 +107,7 @@ public final class ApplicationApiArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param knownClientApplications A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+         * @param knownClientApplications A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class ApplicationApiArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param knownClientApplications A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+         * @param knownClientApplications A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class ApplicationApiArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param knownClientApplications A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+         * @param knownClientApplications A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
          * 
          * @return builder
          * 

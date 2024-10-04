@@ -27,7 +27,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, application_id=None, client_id=None, description=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, feature_tags=None, group_membership_claims=None, id=None, identifier_uri=None, identifier_uris=None, logo_url=None, marketing_url=None, notes=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, service_management_reference=None, sign_in_audience=None, single_page_applications=None, support_url=None, tags=None, terms_of_service_url=None, webs=None):
+    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, client_id=None, description=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, feature_tags=None, group_membership_claims=None, id=None, identifier_uri=None, identifier_uris=None, logo_url=None, marketing_url=None, notes=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, service_management_reference=None, sign_in_audience=None, single_page_applications=None, support_url=None, tags=None, terms_of_service_url=None, webs=None):
         if apis and not isinstance(apis, list):
             raise TypeError("Expected argument 'apis' to be a list")
         pulumi.set(__self__, "apis", apis)
@@ -37,9 +37,6 @@ class GetApplicationResult:
         if app_roles and not isinstance(app_roles, list):
             raise TypeError("Expected argument 'app_roles' to be a list")
         pulumi.set(__self__, "app_roles", app_roles)
-        if application_id and not isinstance(application_id, str):
-            raise TypeError("Expected argument 'application_id' to be a str")
-        pulumi.set(__self__, "application_id", application_id)
         if client_id and not isinstance(client_id, str):
             raise TypeError("Expected argument 'client_id' to be a str")
         pulumi.set(__self__, "client_id", client_id)
@@ -154,12 +151,6 @@ class GetApplicationResult:
         A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         """
         return pulumi.get(self, "app_roles")
-
-    @property
-    @pulumi.getter(name="applicationId")
-    @_utilities.deprecated("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_id(self) -> str:
-        return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="clientId")
@@ -408,7 +399,6 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             apis=self.apis,
             app_role_ids=self.app_role_ids,
             app_roles=self.app_roles,
-            application_id=self.application_id,
             client_id=self.client_id,
             description=self.description,
             device_only_auth_enabled=self.device_only_auth_enabled,
@@ -441,8 +431,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             webs=self.webs)
 
 
-def get_application(application_id: Optional[str] = None,
-                    client_id: Optional[str] = None,
+def get_application(client_id: Optional[str] = None,
                     display_name: Optional[str] = None,
                     identifier_uri: Optional[str] = None,
                     object_id: Optional[str] = None,
@@ -477,7 +466,6 @@ def get_application(application_id: Optional[str] = None,
     :param str object_id: Specifies the Object ID of the application.
     """
     __args__ = dict()
-    __args__['applicationId'] = application_id
     __args__['clientId'] = client_id
     __args__['displayName'] = display_name
     __args__['identifierUri'] = identifier_uri
@@ -489,7 +477,6 @@ def get_application(application_id: Optional[str] = None,
         apis=pulumi.get(__ret__, 'apis'),
         app_role_ids=pulumi.get(__ret__, 'app_role_ids'),
         app_roles=pulumi.get(__ret__, 'app_roles'),
-        application_id=pulumi.get(__ret__, 'application_id'),
         client_id=pulumi.get(__ret__, 'client_id'),
         description=pulumi.get(__ret__, 'description'),
         device_only_auth_enabled=pulumi.get(__ret__, 'device_only_auth_enabled'),
@@ -520,8 +507,7 @@ def get_application(application_id: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         terms_of_service_url=pulumi.get(__ret__, 'terms_of_service_url'),
         webs=pulumi.get(__ret__, 'webs'))
-def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]] = None,
-                           client_id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_application_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
                            display_name: Optional[pulumi.Input[Optional[str]]] = None,
                            identifier_uri: Optional[pulumi.Input[Optional[str]]] = None,
                            object_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -556,7 +542,6 @@ def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]]
     :param str object_id: Specifies the Object ID of the application.
     """
     __args__ = dict()
-    __args__['applicationId'] = application_id
     __args__['clientId'] = client_id
     __args__['displayName'] = display_name
     __args__['identifierUri'] = identifier_uri
@@ -567,7 +552,6 @@ def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]]
         apis=pulumi.get(__response__, 'apis'),
         app_role_ids=pulumi.get(__response__, 'app_role_ids'),
         app_roles=pulumi.get(__response__, 'app_roles'),
-        application_id=pulumi.get(__response__, 'application_id'),
         client_id=pulumi.get(__response__, 'client_id'),
         description=pulumi.get(__response__, 'description'),
         device_only_auth_enabled=pulumi.get(__response__, 'device_only_auth_enabled'),

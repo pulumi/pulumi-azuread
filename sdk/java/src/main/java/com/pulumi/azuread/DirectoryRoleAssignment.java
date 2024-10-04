@@ -160,24 +160,6 @@ public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource
         return this.appScopeId;
     }
     /**
-     * Identifier of the app-specific scope when the assignment scope is app-specific
-     * 
-     * @deprecated
-     * `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
-     * 
-     */
-    @Deprecated /* `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider */
-    @Export(name="appScopeObjectId", refs={String.class}, tree="[0]")
-    private Output<String> appScopeObjectId;
-
-    /**
-     * @return Identifier of the app-specific scope when the assignment scope is app-specific
-     * 
-     */
-    public Output<String> appScopeObjectId() {
-        return this.appScopeObjectId;
-    }
-    /**
      * Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
      * 
      */
@@ -190,20 +172,6 @@ public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource
      */
     public Output<String> directoryScopeId() {
         return this.directoryScopeId;
-    }
-    /**
-     * Identifier of the directory object representing the scope of the assignment
-     * 
-     */
-    @Export(name="directoryScopeObjectId", refs={String.class}, tree="[0]")
-    private Output<String> directoryScopeObjectId;
-
-    /**
-     * @return Identifier of the directory object representing the scope of the assignment
-     * 
-     */
-    public Output<String> directoryScopeObjectId() {
-        return this.directoryScopeObjectId;
     }
     /**
      * The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.

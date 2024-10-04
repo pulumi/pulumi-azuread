@@ -187,12 +187,6 @@ namespace Pulumi.AzureAD
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the application for which this certificate should be created
-        /// </summary>
-        [Output("applicationObjectId")]
-        public Output<string> ApplicationObjectId { get; private set; } = null!;
-
-        /// <summary>
         /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
         /// 
         /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
@@ -291,14 +285,8 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         /// </summary>
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
-
-        /// <summary>
-        /// The object ID of the application for which this certificate should be created
-        /// </summary>
-        [Input("applicationObjectId")]
-        public Input<string>? ApplicationObjectId { get; set; }
+        [Input("applicationId", required: true)]
+        public Input<string> ApplicationId { get; set; } = null!;
 
         /// <summary>
         /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
@@ -369,12 +357,6 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
-
-        /// <summary>
-        /// The object ID of the application for which this certificate should be created
-        /// </summary>
-        [Input("applicationObjectId")]
-        public Input<string>? ApplicationObjectId { get; set; }
 
         /// <summary>
         /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.

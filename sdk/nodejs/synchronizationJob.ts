@@ -26,20 +26,15 @@ import * as utilities from "./utilities";
  * const example = azuread.getApplicationTemplate({
  *     displayName: "Azure Databricks SCIM Provisioning Connector",
  * });
- * const exampleApplication = new azuread.Application("example", {
+ * const exampleApplicationFromTemplate = new azuread.ApplicationFromTemplate("example", {
  *     displayName: "example",
  *     templateId: example.then(example => example.templateId),
- *     featureTags: [{
- *         enterprise: true,
- *         gallery: true,
- *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
- *     clientId: exampleApplication.applicationId,
- *     useExisting: true,
+ * const exampleGetServicePrincipal = azuread.getServicePrincipalOutput({
+ *     objectId: exampleApplicationFromTemplate.servicePrincipalObjectId,
  * });
  * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("example", {
- *     servicePrincipalId: exampleServicePrincipal.id,
+ *     servicePrincipalId: exampleGetServicePrincipal.apply(exampleGetServicePrincipal => exampleGetServicePrincipal.id),
  *     credentials: [
  *         {
  *             key: "BaseAddress",
@@ -52,7 +47,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const exampleSynchronizationJob = new azuread.SynchronizationJob("example", {
- *     servicePrincipalId: exampleServicePrincipal.id,
+ *     servicePrincipalId: exampleGetServicePrincipal.apply(exampleGetServicePrincipal => exampleGetServicePrincipal.id),
  *     templateId: "dataBricks",
  *     enabled: true,
  * });
@@ -97,7 +92,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
     }
 
     /**
-     * Whether or not the provisioning job is enabled. Default state is `true`.
+     * Whether the provisioning job is enabled. Default state is `true`.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -105,7 +100,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly schedules!: pulumi.Output<outputs.SynchronizationJobSchedule[]>;
     /**
-     * The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
     /**
@@ -153,7 +148,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
  */
 export interface SynchronizationJobState {
     /**
-     * Whether or not the provisioning job is enabled. Default state is `true`.
+     * Whether the provisioning job is enabled. Default state is `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -161,7 +156,7 @@ export interface SynchronizationJobState {
      */
     schedules?: pulumi.Input<pulumi.Input<inputs.SynchronizationJobSchedule>[]>;
     /**
-     * The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
      */
     servicePrincipalId?: pulumi.Input<string>;
     /**
@@ -175,11 +170,11 @@ export interface SynchronizationJobState {
  */
 export interface SynchronizationJobArgs {
     /**
-     * Whether or not the provisioning job is enabled. Default state is `true`.
+     * Whether the provisioning job is enabled. Default state is `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
      */
     servicePrincipalId: pulumi.Input<string>;
     /**

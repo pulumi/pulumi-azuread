@@ -31,14 +31,14 @@ public final class ServicePrincipalClaimsMappingPolicyAssignmentState extends co
     }
 
     /**
-     * The object ID of the service principal for the policy assignment.
+     * The ID of the service principal for the policy assignment.
      * 
      */
     @Import(name="servicePrincipalId")
     private @Nullable Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for the policy assignment.
+     * @return The ID of the service principal for the policy assignment.
      * 
      */
     public Optional<Output<String>> servicePrincipalId() {
@@ -92,7 +92,7 @@ public final class ServicePrincipalClaimsMappingPolicyAssignmentState extends co
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for the policy assignment.
+         * @param servicePrincipalId The ID of the service principal for the policy assignment.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ServicePrincipalClaimsMappingPolicyAssignmentState extends co
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for the policy assignment.
+         * @param servicePrincipalId The ID of the service principal for the policy assignment.
          * 
          * @return builder
          * 

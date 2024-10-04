@@ -47,29 +47,20 @@ namespace Pulumi.AzureAD
     ///         DisplayName = "Azure Databricks SCIM Provisioning Connector",
     ///     });
     /// 
-    ///     var exampleApplication = new AzureAD.Application("example", new()
+    ///     var exampleApplicationFromTemplate = new AzureAD.ApplicationFromTemplate("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
-    ///         FeatureTags = new[]
-    ///         {
-    ///             new AzureAD.Inputs.ApplicationFeatureTagArgs
-    ///             {
-    ///                 Enterprise = true,
-    ///                 Gallery = true,
-    ///             },
-    ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleGetServicePrincipal = AzureAD.GetServicePrincipal.Invoke(new()
     ///     {
-    ///         ClientId = exampleApplication.ClientId,
-    ///         UseExisting = true,
+    ///         ObjectId = exampleApplicationFromTemplate.ServicePrincipalObjectId,
     ///     });
     /// 
     ///     var exampleSynchronizationSecret = new AzureAD.SynchronizationSecret("example", new()
     ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.Id,
+    ///         ServicePrincipalId = exampleGetServicePrincipal.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),
     ///         Credentials = new[]
     ///         {
     ///             new AzureAD.Inputs.SynchronizationSecretCredentialArgs
@@ -87,14 +78,14 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleSynchronizationJob = new AzureAD.SynchronizationJob("example", new()
     ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.Id,
+    ///         ServicePrincipalId = exampleGetServicePrincipal.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),
     ///         TemplateId = "dataBricks",
     ///         Enabled = true,
     ///     });
     /// 
     ///     var exampleSynchronizationJobProvisionOnDemand = new AzureAD.SynchronizationJobProvisionOnDemand("example", new()
     ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.Id,
+    ///         ServicePrincipalId = exampleSynchronizationJob.ServicePrincipalId,
     ///         SynchronizationJobId = exampleSynchronizationJob.Id,
     ///         Parameters = new[]
     ///         {
@@ -130,13 +121,13 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<Outputs.SynchronizationJobProvisionOnDemandParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for the synchronization job.
+        /// The ID of the service principal for the synchronization job.
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the synchronization template this job is based on.
+        /// The ID of the synchronization job.
         /// </summary>
         [Output("synchronizationJobId")]
         public Output<string> SynchronizationJobId { get; private set; } = null!;
@@ -203,13 +194,13 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for the synchronization job.
+        /// The ID of the service principal for the synchronization job.
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the synchronization template this job is based on.
+        /// The ID of the synchronization job.
         /// </summary>
         [Input("synchronizationJobId", required: true)]
         public Input<string> SynchronizationJobId { get; set; } = null!;
@@ -243,13 +234,13 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for the synchronization job.
+        /// The ID of the service principal for the synchronization job.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }
 
         /// <summary>
-        /// Identifier of the synchronization template this job is based on.
+        /// The ID of the synchronization job.
         /// </summary>
         [Input("synchronizationJobId")]
         public Input<string>? SynchronizationJobId { get; set; }

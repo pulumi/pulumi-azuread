@@ -27,10 +27,7 @@ class GetServicePrincipalsResult:
     """
     A collection of values returned by getServicePrincipals.
     """
-    def __init__(__self__, application_ids=None, client_ids=None, display_names=None, id=None, ignore_missing=None, object_ids=None, return_all=None, service_principals=None):
-        if application_ids and not isinstance(application_ids, list):
-            raise TypeError("Expected argument 'application_ids' to be a list")
-        pulumi.set(__self__, "application_ids", application_ids)
+    def __init__(__self__, client_ids=None, display_names=None, id=None, ignore_missing=None, object_ids=None, return_all=None, service_principals=None):
         if client_ids and not isinstance(client_ids, list):
             raise TypeError("Expected argument 'client_ids' to be a list")
         pulumi.set(__self__, "client_ids", client_ids)
@@ -52,15 +49,6 @@ class GetServicePrincipalsResult:
         if service_principals and not isinstance(service_principals, list):
             raise TypeError("Expected argument 'service_principals' to be a list")
         pulumi.set(__self__, "service_principals", service_principals)
-
-    @property
-    @pulumi.getter(name="applicationIds")
-    @_utilities.deprecated("""The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_ids(self) -> Sequence[str]:
-        """
-        A list of client IDs of the applications associated with the service principals.
-        """
-        return pulumi.get(self, "application_ids")
 
     @property
     @pulumi.getter(name="clientIds")
@@ -119,7 +107,6 @@ class AwaitableGetServicePrincipalsResult(GetServicePrincipalsResult):
         if False:
             yield self
         return GetServicePrincipalsResult(
-            application_ids=self.application_ids,
             client_ids=self.client_ids,
             display_names=self.display_names,
             id=self.id,
@@ -129,8 +116,7 @@ class AwaitableGetServicePrincipalsResult(GetServicePrincipalsResult):
             service_principals=self.service_principals)
 
 
-def get_service_principals(application_ids: Optional[Sequence[str]] = None,
-                           client_ids: Optional[Sequence[str]] = None,
+def get_service_principals(client_ids: Optional[Sequence[str]] = None,
                            display_names: Optional[Sequence[str]] = None,
                            ignore_missing: Optional[bool] = None,
                            object_ids: Optional[Sequence[str]] = None,
@@ -188,7 +174,6 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
     ```
 
 
-    :param Sequence[str] application_ids: A list of client IDs of the applications associated with the service principals.
     :param Sequence[str] client_ids: A list of client IDs of the applications associated with the service principals.
     :param Sequence[str] display_names: A list of display names of the applications associated with the service principals.
     :param bool ignore_missing: Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
@@ -198,7 +183,6 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
            > Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
     """
     __args__ = dict()
-    __args__['applicationIds'] = application_ids
     __args__['clientIds'] = client_ids
     __args__['displayNames'] = display_names
     __args__['ignoreMissing'] = ignore_missing
@@ -208,7 +192,6 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getServicePrincipals:getServicePrincipals', __args__, opts=opts, typ=GetServicePrincipalsResult).value
 
     return AwaitableGetServicePrincipalsResult(
-        application_ids=pulumi.get(__ret__, 'application_ids'),
         client_ids=pulumi.get(__ret__, 'client_ids'),
         display_names=pulumi.get(__ret__, 'display_names'),
         id=pulumi.get(__ret__, 'id'),
@@ -216,8 +199,7 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
         object_ids=pulumi.get(__ret__, 'object_ids'),
         return_all=pulumi.get(__ret__, 'return_all'),
         service_principals=pulumi.get(__ret__, 'service_principals'))
-def get_service_principals_output(application_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                  client_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+def get_service_principals_output(client_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   display_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   ignore_missing: Optional[pulumi.Input[Optional[bool]]] = None,
                                   object_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -275,7 +257,6 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     ```
 
 
-    :param Sequence[str] application_ids: A list of client IDs of the applications associated with the service principals.
     :param Sequence[str] client_ids: A list of client IDs of the applications associated with the service principals.
     :param Sequence[str] display_names: A list of display names of the applications associated with the service principals.
     :param bool ignore_missing: Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
@@ -285,7 +266,6 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
            > Either `return_all`, or one of `client_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
     """
     __args__ = dict()
-    __args__['applicationIds'] = application_ids
     __args__['clientIds'] = client_ids
     __args__['displayNames'] = display_names
     __args__['ignoreMissing'] = ignore_missing
@@ -294,7 +274,6 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getServicePrincipals:getServicePrincipals', __args__, opts=opts, typ=GetServicePrincipalsResult)
     return __ret__.apply(lambda __response__: GetServicePrincipalsResult(
-        application_ids=pulumi.get(__response__, 'application_ids'),
         client_ids=pulumi.get(__response__, 'client_ids'),
         display_names=pulumi.get(__response__, 'display_names'),
         id=pulumi.get(__response__, 'id'),

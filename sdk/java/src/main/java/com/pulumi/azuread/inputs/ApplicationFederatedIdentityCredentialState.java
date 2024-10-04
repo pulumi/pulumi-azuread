@@ -32,29 +32,6 @@ public final class ApplicationFederatedIdentityCredentialState extends com.pulum
     }
 
     /**
-     * The object ID of the application for which this federated identity credential should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="applicationObjectId")
-    private @Nullable Output<String> applicationObjectId;
-
-    /**
-     * @return The object ID of the application for which this federated identity credential should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<Output<String>> applicationObjectId() {
-        return Optional.ofNullable(this.applicationObjectId);
-    }
-
-    /**
      * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      * 
      */
@@ -148,7 +125,6 @@ public final class ApplicationFederatedIdentityCredentialState extends com.pulum
 
     private ApplicationFederatedIdentityCredentialState(ApplicationFederatedIdentityCredentialState $) {
         this.applicationId = $.applicationId;
-        this.applicationObjectId = $.applicationObjectId;
         this.audiences = $.audiences;
         this.credentialId = $.credentialId;
         this.description = $.description;
@@ -194,35 +170,6 @@ public final class ApplicationFederatedIdentityCredentialState extends com.pulum
          */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application for which this federated identity credential should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(@Nullable Output<String> applicationObjectId) {
-            $.applicationObjectId = applicationObjectId;
-            return this;
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application for which this federated identity credential should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(String applicationObjectId) {
-            return applicationObjectId(Output.of(applicationObjectId));
         }
 
         /**

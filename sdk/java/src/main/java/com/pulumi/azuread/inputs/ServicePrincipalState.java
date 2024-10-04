@@ -99,29 +99,6 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The application ID (client ID) of the application for which to create a service principal
-     * 
-     * @deprecated
-     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="applicationId")
-    private @Nullable Output<String> applicationId;
-
-    /**
-     * @return The application ID (client ID) of the application for which to create a service principal
-     * 
-     * @deprecated
-     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<Output<String>> applicationId() {
-        return Optional.ofNullable(this.applicationId);
-    }
-
-    /**
      * The tenant ID where the associated application is registered.
      * 
      */
@@ -505,7 +482,6 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         this.appRoleAssignmentRequired = $.appRoleAssignmentRequired;
         this.appRoleIds = $.appRoleIds;
         this.appRoles = $.appRoles;
-        this.applicationId = $.applicationId;
         this.applicationTenantId = $.applicationTenantId;
         this.clientId = $.clientId;
         this.description = $.description;
@@ -673,35 +649,6 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
          */
         public Builder appRoles(ServicePrincipalAppRoleArgs... appRoles) {
             return appRoles(List.of(appRoles));
-        }
-
-        /**
-         * @param applicationId The application ID (client ID) of the application for which to create a service principal
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationId(@Nullable Output<String> applicationId) {
-            $.applicationId = applicationId;
-            return this;
-        }
-
-        /**
-         * @param applicationId The application ID (client ID) of the application for which to create a service principal
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationId(String applicationId) {
-            return applicationId(Output.of(applicationId));
         }
 
         /**

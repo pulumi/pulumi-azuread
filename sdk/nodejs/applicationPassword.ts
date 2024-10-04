@@ -71,12 +71,6 @@ export class ApplicationPassword extends pulumi.CustomResource {
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
-     * The object ID of the application for which this password should be created
-     *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    public readonly applicationObjectId!: pulumi.Output<string>;
-    /**
      * A display name for the password. Changing this field forces a new resource to be created.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -86,6 +80,8 @@ export class ApplicationPassword extends pulumi.CustomResource {
     public readonly endDate!: pulumi.Output<string>;
     /**
      * A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+     *
+     * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      */
     public readonly endDateRelative!: pulumi.Output<string | undefined>;
     /**
@@ -112,14 +108,13 @@ export class ApplicationPassword extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ApplicationPasswordArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ApplicationPasswordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationPasswordArgs | ApplicationPasswordState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationPasswordState | undefined;
             resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["endDate"] = state ? state.endDate : undefined;
             resourceInputs["endDateRelative"] = state ? state.endDateRelative : undefined;
@@ -129,8 +124,10 @@ export class ApplicationPassword extends pulumi.CustomResource {
             resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApplicationPasswordArgs | undefined;
+            if ((!args || args.applicationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'applicationId'");
+            }
             resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["endDate"] = args ? args.endDate : undefined;
             resourceInputs["endDateRelative"] = args ? args.endDateRelative : undefined;
@@ -155,12 +152,6 @@ export interface ApplicationPasswordState {
      */
     applicationId?: pulumi.Input<string>;
     /**
-     * The object ID of the application for which this password should be created
-     *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationObjectId?: pulumi.Input<string>;
-    /**
      * A display name for the password. Changing this field forces a new resource to be created.
      */
     displayName?: pulumi.Input<string>;
@@ -170,6 +161,8 @@ export interface ApplicationPasswordState {
     endDate?: pulumi.Input<string>;
     /**
      * A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+     *
+     * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      */
     endDateRelative?: pulumi.Input<string>;
     /**
@@ -197,13 +190,7 @@ export interface ApplicationPasswordArgs {
     /**
      * The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
-    /**
-     * The object ID of the application for which this password should be created
-     *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationObjectId?: pulumi.Input<string>;
+    applicationId: pulumi.Input<string>;
     /**
      * A display name for the password. Changing this field forces a new resource to be created.
      */
@@ -214,6 +201,8 @@ export interface ApplicationPasswordArgs {
     endDate?: pulumi.Input<string>;
     /**
      * A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+     *
+     * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      */
     endDateRelative?: pulumi.Input<string>;
     /**

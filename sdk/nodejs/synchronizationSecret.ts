@@ -26,20 +26,15 @@ import * as utilities from "./utilities";
  * const example = azuread.getApplicationTemplate({
  *     displayName: "Azure Databricks SCIM Provisioning Connector",
  * });
- * const exampleApplication = new azuread.Application("example", {
+ * const exampleApplicationFromTemplate = new azuread.ApplicationFromTemplate("example", {
  *     displayName: "example",
  *     templateId: example.then(example => example.templateId),
- *     featureTags: [{
- *         enterprise: true,
- *         gallery: true,
- *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
- *     clientId: exampleApplication.applicationId,
- *     useExisting: true,
+ * const exampleGetServicePrincipal = azuread.getServicePrincipalOutput({
+ *     objectId: exampleApplicationFromTemplate.servicePrincipalObjectId,
  * });
  * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("example", {
- *     servicePrincipalId: exampleServicePrincipal.id,
+ *     servicePrincipalId: exampleGetServicePrincipal.apply(exampleGetServicePrincipal => exampleGetServicePrincipal.id),
  *     credentials: [
  *         {
  *             key: "BaseAddress",
@@ -90,7 +85,7 @@ export class SynchronizationSecret extends pulumi.CustomResource {
      */
     public readonly credentials!: pulumi.Output<outputs.SynchronizationSecretCredential[] | undefined>;
     /**
-     * The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
 
@@ -131,7 +126,7 @@ export interface SynchronizationSecretState {
      */
     credentials?: pulumi.Input<pulumi.Input<inputs.SynchronizationSecretCredential>[]>;
     /**
-     * The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      */
     servicePrincipalId?: pulumi.Input<string>;
 }
@@ -145,7 +140,7 @@ export interface SynchronizationSecretArgs {
      */
     credentials?: pulumi.Input<pulumi.Input<inputs.SynchronizationSecretCredential>[]>;
     /**
-     * The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      */
     servicePrincipalId: pulumi.Input<string>;
 }

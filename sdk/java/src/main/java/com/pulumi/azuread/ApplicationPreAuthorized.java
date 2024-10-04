@@ -116,42 +116,6 @@ public class ApplicationPreAuthorized extends com.pulumi.resources.CustomResourc
         return this.applicationId;
     }
     /**
-     * The object ID of the application to which this pre-authorized application should be added
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
-    private Output<String> applicationObjectId;
-
-    /**
-     * @return The object ID of the application to which this pre-authorized application should be added
-     * 
-     */
-    public Output<String> applicationObjectId() {
-        return this.applicationObjectId;
-    }
-    /**
-     * The application ID of the pre-authorized application
-     * 
-     * @deprecated
-     * The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Export(name="authorizedAppId", refs={String.class}, tree="[0]")
-    private Output<String> authorizedAppId;
-
-    /**
-     * @return The application ID of the pre-authorized application
-     * 
-     */
-    public Output<String> authorizedAppId() {
-        return this.authorizedAppId;
-    }
-    /**
      * The client ID of the application being authorized. Changing this field forces a new resource to be created.
      * 
      */

@@ -260,6 +260,12 @@ namespace Pulumi.AzureAD
         public Output<Outputs.ConditionalAccessPolicyGrantControls?> GrantControls { get; private set; } = null!;
 
         /// <summary>
+        /// The object ID of the policy
+        /// </summary>
+        [Output("objectId")]
+        public Output<string> ObjectId { get; private set; } = null!;
+
+        /// <summary>
         /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
         /// 
         /// &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
@@ -376,6 +382,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("grantControls")]
         public Input<Inputs.ConditionalAccessPolicyGrantControlsGetArgs>? GrantControls { get; set; }
+
+        /// <summary>
+        /// The object ID of the policy
+        /// </summary>
+        [Input("objectId")]
+        public Input<string>? ObjectId { get; set; }
 
         /// <summary>
         /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.

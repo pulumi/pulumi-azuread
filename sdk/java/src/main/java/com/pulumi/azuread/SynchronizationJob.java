@@ -40,11 +40,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.azuread.AzureadFunctions;
  * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
- * import com.pulumi.azuread.Application;
- * import com.pulumi.azuread.ApplicationArgs;
- * import com.pulumi.azuread.inputs.ApplicationFeatureTagArgs;
- * import com.pulumi.azuread.ServicePrincipal;
- * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import com.pulumi.azuread.ApplicationFromTemplate;
+ * import com.pulumi.azuread.ApplicationFromTemplateArgs;
+ * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
  * import com.pulumi.azuread.SynchronizationSecret;
  * import com.pulumi.azuread.SynchronizationSecretArgs;
  * import com.pulumi.azuread.inputs.SynchronizationSecretCredentialArgs;
@@ -67,22 +65,17 @@ import javax.annotation.Nullable;
  *             .displayName("Azure Databricks SCIM Provisioning Connector")
  *             .build());
  * 
- *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
+ *         var exampleApplicationFromTemplate = new ApplicationFromTemplate("exampleApplicationFromTemplate", ApplicationFromTemplateArgs.builder()
  *             .displayName("example")
  *             .templateId(example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()))
- *             .featureTags(ApplicationFeatureTagArgs.builder()
- *                 .enterprise(true)
- *                 .gallery(true)
- *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .clientId(exampleApplication.applicationId())
- *             .useExisting(true)
+ *         final var exampleGetServicePrincipal = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+ *             .objectId(exampleApplicationFromTemplate.servicePrincipalObjectId())
  *             .build());
  * 
  *         var exampleSynchronizationSecret = new SynchronizationSecret("exampleSynchronizationSecret", SynchronizationSecretArgs.builder()
- *             .servicePrincipalId(exampleServicePrincipal.id())
+ *             .servicePrincipalId(exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult).applyValue(exampleGetServicePrincipal -> exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id())))
  *             .credentials(            
  *                 SynchronizationSecretCredentialArgs.builder()
  *                     .key("BaseAddress")
@@ -95,7 +88,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSynchronizationJob = new SynchronizationJob("exampleSynchronizationJob", SynchronizationJobArgs.builder()
- *             .servicePrincipalId(exampleServicePrincipal.id())
+ *             .servicePrincipalId(exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult).applyValue(exampleGetServicePrincipal -> exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id())))
  *             .templateId("dataBricks")
  *             .enabled(true)
  *             .build());
@@ -120,14 +113,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/synchronizationJob:SynchronizationJob")
 public class SynchronizationJob extends com.pulumi.resources.CustomResource {
     /**
-     * Whether or not the provisioning job is enabled. Default state is `true`.
+     * Whether the provisioning job is enabled. Default state is `true`.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Whether or not the provisioning job is enabled. Default state is `true`.
+     * @return Whether the provisioning job is enabled. Default state is `true`.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
@@ -148,14 +141,14 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return this.schedules;
     }
     /**
-     * The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
      * 
      */
     @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+     * @return The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
      * 
      */
     public Output<String> servicePrincipalId() {

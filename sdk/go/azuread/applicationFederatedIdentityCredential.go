@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -65,10 +65,6 @@ type ApplicationFederatedIdentityCredential struct {
 
 	// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// The object ID of the application for which this federated identity credential should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
 	// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
 	Audiences pulumi.StringArrayOutput `pulumi:"audiences"`
 	// A UUID used to uniquely identify this federated identity credential.
@@ -90,6 +86,9 @@ func NewApplicationFederatedIdentityCredential(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
+	}
 	if args.Audiences == nil {
 		return nil, errors.New("invalid value for required argument 'Audiences'")
 	}
@@ -127,10 +126,6 @@ func GetApplicationFederatedIdentityCredential(ctx *pulumi.Context,
 type applicationFederatedIdentityCredentialState struct {
 	// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
 	ApplicationId *string `pulumi:"applicationId"`
-	// The object ID of the application for which this federated identity credential should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
 	Audiences []string `pulumi:"audiences"`
 	// A UUID used to uniquely identify this federated identity credential.
@@ -148,10 +143,6 @@ type applicationFederatedIdentityCredentialState struct {
 type ApplicationFederatedIdentityCredentialState struct {
 	// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
 	ApplicationId pulumi.StringPtrInput
-	// The object ID of the application for which this federated identity credential should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringPtrInput
 	// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
 	Audiences pulumi.StringArrayInput
 	// A UUID used to uniquely identify this federated identity credential.
@@ -172,11 +163,7 @@ func (ApplicationFederatedIdentityCredentialState) ElementType() reflect.Type {
 
 type applicationFederatedIdentityCredentialArgs struct {
 	// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-	ApplicationId *string `pulumi:"applicationId"`
-	// The object ID of the application for which this federated identity credential should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId *string `pulumi:"applicationObjectId"`
+	ApplicationId string `pulumi:"applicationId"`
 	// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
 	Audiences []string `pulumi:"audiences"`
 	// A description for the federated identity credential.
@@ -192,11 +179,7 @@ type applicationFederatedIdentityCredentialArgs struct {
 // The set of arguments for constructing a ApplicationFederatedIdentityCredential resource.
 type ApplicationFederatedIdentityCredentialArgs struct {
 	// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-	ApplicationId pulumi.StringPtrInput
-	// The object ID of the application for which this federated identity credential should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringPtrInput
+	ApplicationId pulumi.StringInput
 	// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
 	Audiences pulumi.StringArrayInput
 	// A description for the federated identity credential.
@@ -299,13 +282,6 @@ func (o ApplicationFederatedIdentityCredentialOutput) ToApplicationFederatedIden
 // The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
 func (o ApplicationFederatedIdentityCredentialOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
-}
-
-// The object ID of the application for which this federated identity credential should be created
-//
-// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-func (o ApplicationFederatedIdentityCredentialOutput) ApplicationObjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
 }
 
 // List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.

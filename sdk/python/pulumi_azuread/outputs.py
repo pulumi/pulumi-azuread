@@ -1076,7 +1076,7 @@ class ApplicationApi(dict):
                  oauth2_permission_scopes: Optional[Sequence['outputs.ApplicationApiOauth2PermissionScope']] = None,
                  requested_access_token_version: Optional[int] = None):
         """
-        :param Sequence[str] known_client_applications: A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+        :param Sequence[str] known_client_applications: A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
         :param bool mapped_claims_enabled: Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
         :param Sequence['ApplicationApiOauth2PermissionScopeArgs'] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
         :param int requested_access_token_version: The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
@@ -1094,7 +1094,7 @@ class ApplicationApi(dict):
     @pulumi.getter(name="knownClientApplications")
     def known_client_applications(self) -> Optional[Sequence[str]]:
         """
-        A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+        A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
         """
         return pulumi.get(self, "known_client_applications")
 
@@ -6208,7 +6208,6 @@ class GetServicePrincipalsServicePrincipalResult(dict):
     def __init__(__self__, *,
                  account_enabled: bool,
                  app_role_assignment_required: bool,
-                 application_id: str,
                  application_tenant_id: str,
                  client_id: str,
                  display_name: str,
@@ -6222,7 +6221,6 @@ class GetServicePrincipalsServicePrincipalResult(dict):
         """
         :param bool account_enabled: Whether the service principal account is enabled.
         :param bool app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
-        :param str application_id: The application ID (client ID) for the associated application
         :param str application_tenant_id: The tenant ID where the associated application is registered.
         :param str client_id: The application ID (client ID) for the associated application
         :param str display_name: The display name of the application associated with this service principal.
@@ -6236,7 +6234,6 @@ class GetServicePrincipalsServicePrincipalResult(dict):
         """
         pulumi.set(__self__, "account_enabled", account_enabled)
         pulumi.set(__self__, "app_role_assignment_required", app_role_assignment_required)
-        pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "application_tenant_id", application_tenant_id)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -6263,15 +6260,6 @@ class GetServicePrincipalsServicePrincipalResult(dict):
         Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
         """
         return pulumi.get(self, "app_role_assignment_required")
-
-    @property
-    @pulumi.getter(name="applicationId")
-    @_utilities.deprecated("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
-    def application_id(self) -> str:
-        """
-        The application ID (client ID) for the associated application
-        """
-        return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="applicationTenantId")

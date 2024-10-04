@@ -5,6 +5,7 @@ package com.pulumi.azuread;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -20,38 +21,15 @@ public final class ApplicationPasswordArgs extends com.pulumi.resources.Resource
      * The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
      * 
      */
-    @Import(name="applicationId")
-    private @Nullable Output<String> applicationId;
+    @Import(name="applicationId", required=true)
+    private Output<String> applicationId;
 
     /**
      * @return The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
      * 
      */
-    public Optional<Output<String>> applicationId() {
-        return Optional.ofNullable(this.applicationId);
-    }
-
-    /**
-     * The object ID of the application for which this password should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="applicationObjectId")
-    private @Nullable Output<String> applicationObjectId;
-
-    /**
-     * @return The object ID of the application for which this password should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<Output<String>> applicationObjectId() {
-        return Optional.ofNullable(this.applicationObjectId);
+    public Output<String> applicationId() {
+        return this.applicationId;
     }
 
     /**
@@ -87,14 +65,22 @@ public final class ApplicationPasswordArgs extends com.pulumi.resources.Resource
     /**
      * A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     @Import(name="endDateRelative")
     private @Nullable Output<String> endDateRelative;
 
     /**
      * @return A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     public Optional<Output<String>> endDateRelative() {
         return Optional.ofNullable(this.endDateRelative);
     }
@@ -133,7 +119,6 @@ public final class ApplicationPasswordArgs extends com.pulumi.resources.Resource
 
     private ApplicationPasswordArgs(ApplicationPasswordArgs $) {
         this.applicationId = $.applicationId;
-        this.applicationObjectId = $.applicationObjectId;
         this.displayName = $.displayName;
         this.endDate = $.endDate;
         this.endDateRelative = $.endDateRelative;
@@ -165,7 +150,7 @@ public final class ApplicationPasswordArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder applicationId(@Nullable Output<String> applicationId) {
+        public Builder applicationId(Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
@@ -178,35 +163,6 @@ public final class ApplicationPasswordArgs extends com.pulumi.resources.Resource
          */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application for which this password should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(@Nullable Output<String> applicationObjectId) {
-            $.applicationObjectId = applicationObjectId;
-            return this;
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application for which this password should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(String applicationObjectId) {
-            return applicationObjectId(Output.of(applicationObjectId));
         }
 
         /**
@@ -256,7 +212,11 @@ public final class ApplicationPasswordArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * 
          */
+        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
         public Builder endDateRelative(@Nullable Output<String> endDateRelative) {
             $.endDateRelative = endDateRelative;
             return this;
@@ -267,7 +227,11 @@ public final class ApplicationPasswordArgs extends com.pulumi.resources.Resource
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * 
          */
+        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
         public Builder endDateRelative(String endDateRelative) {
             return endDateRelative(Output.of(endDateRelative));
         }
@@ -315,6 +279,9 @@ public final class ApplicationPasswordArgs extends com.pulumi.resources.Resource
         }
 
         public ApplicationPasswordArgs build() {
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("ApplicationPasswordArgs", "applicationId");
+            }
             return $;
         }
     }

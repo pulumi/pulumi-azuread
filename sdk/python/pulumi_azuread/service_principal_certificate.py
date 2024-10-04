@@ -29,7 +29,7 @@ class ServicePrincipalCertificateArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalCertificate resource.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         :param pulumi.Input[str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
                
@@ -49,6 +49,9 @@ class ServicePrincipalCertificateArgs:
         if end_date is not None:
             pulumi.set(__self__, "end_date", end_date)
         if end_date_relative is not None:
+            warnings.warn("""The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""", DeprecationWarning)
+            pulumi.log.warn("""end_date_relative is deprecated: The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""")
+        if end_date_relative is not None:
             pulumi.set(__self__, "end_date_relative", end_date_relative)
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
@@ -61,7 +64,7 @@ class ServicePrincipalCertificateArgs:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -109,6 +112,7 @@ class ServicePrincipalCertificateArgs:
 
     @property
     @pulumi.getter(name="endDateRelative")
+    @_utilities.deprecated("""The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""")
     def end_date_relative(self) -> Optional[pulumi.Input[str]]:
         """
         A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
@@ -179,7 +183,7 @@ class _ServicePrincipalCertificateState:
                
                > One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
         :param pulumi.Input[str] key_id: A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
         :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
@@ -188,6 +192,9 @@ class _ServicePrincipalCertificateState:
             pulumi.set(__self__, "encoding", encoding)
         if end_date is not None:
             pulumi.set(__self__, "end_date", end_date)
+        if end_date_relative is not None:
+            warnings.warn("""The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""", DeprecationWarning)
+            pulumi.log.warn("""end_date_relative is deprecated: The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""")
         if end_date_relative is not None:
             pulumi.set(__self__, "end_date_relative", end_date_relative)
         if key_id is not None:
@@ -229,6 +236,7 @@ class _ServicePrincipalCertificateState:
 
     @property
     @pulumi.getter(name="endDateRelative")
+    @_utilities.deprecated("""The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""")
     def end_date_relative(self) -> Optional[pulumi.Input[str]]:
         """
         A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
@@ -257,7 +265,7 @@ class _ServicePrincipalCertificateState:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -327,7 +335,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         import pulumi_std as std
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_certificate = azuread.ServicePrincipalCertificate("example",
             service_principal_id=example_service_principal.id,
             type="AsymmetricX509Cert",
@@ -343,7 +351,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         import pulumi_std as std
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_certificate = azuread.ServicePrincipalCertificate("example",
             service_principal_id=example_service_principal.id,
             type="AsymmetricX509Cert",
@@ -372,7 +380,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
                
                > One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
         :param pulumi.Input[str] key_id: A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
         :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
@@ -394,7 +402,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         import pulumi_std as std
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_certificate = azuread.ServicePrincipalCertificate("example",
             service_principal_id=example_service_principal.id,
             type="AsymmetricX509Cert",
@@ -410,7 +418,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         import pulumi_std as std
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", application_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_certificate = azuread.ServicePrincipalCertificate("example",
             service_principal_id=example_service_principal.id,
             type="AsymmetricX509Cert",
@@ -508,7 +516,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
                
                > One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
         :param pulumi.Input[str] key_id: A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
         :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
@@ -547,6 +555,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endDateRelative")
+    @_utilities.deprecated("""The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.""")
     def end_date_relative(self) -> pulumi.Output[Optional[str]]:
         """
         A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
@@ -567,7 +576,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_id")
 
