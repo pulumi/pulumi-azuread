@@ -1,0 +1,8 @@
+name: ad-app
+runtime: yaml
+description: Testing that secrets in explicit provider args are secret
+resources:
+  example:
+    type: azuread:Application
+    properties:
+      displayName: example
