@@ -1,0 +1,14 @@
+name: ad-app
+runtime: yaml
+description: Testing that secrets in explicit provider args are secret
+resources:
+  example:
+    type: azuread:Application
+    properties:
+      displayName: example
+  password:
+    type: azuread:ApplicationPassword
+    properties:
+      applicationId: ${example.id}
+      startDate: 2024-10-10T00:00:00Z
+      endDateRelative: 24h
