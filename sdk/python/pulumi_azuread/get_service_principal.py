@@ -472,9 +472,6 @@ def get_service_principal(application_id: Optional[str] = None,
         sign_in_audience=pulumi.get(__ret__, 'sign_in_audience'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_service_principal)
 def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  client_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  display_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -527,4 +524,40 @@ def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[
            
            > One of `client_id`, `display_name` or `object_id` must be specified.
     """
-    ...
+    __args__ = dict()
+    __args__['applicationId'] = application_id
+    __args__['clientId'] = client_id
+    __args__['displayName'] = display_name
+    __args__['objectId'] = object_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts, typ=GetServicePrincipalResult)
+    return __ret__.apply(lambda __response__: GetServicePrincipalResult(
+        account_enabled=pulumi.get(__response__, 'account_enabled'),
+        alternative_names=pulumi.get(__response__, 'alternative_names'),
+        app_role_assignment_required=pulumi.get(__response__, 'app_role_assignment_required'),
+        app_role_ids=pulumi.get(__response__, 'app_role_ids'),
+        app_roles=pulumi.get(__response__, 'app_roles'),
+        application_id=pulumi.get(__response__, 'application_id'),
+        application_tenant_id=pulumi.get(__response__, 'application_tenant_id'),
+        client_id=pulumi.get(__response__, 'client_id'),
+        description=pulumi.get(__response__, 'description'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        feature_tags=pulumi.get(__response__, 'feature_tags'),
+        features=pulumi.get(__response__, 'features'),
+        homepage_url=pulumi.get(__response__, 'homepage_url'),
+        id=pulumi.get(__response__, 'id'),
+        login_url=pulumi.get(__response__, 'login_url'),
+        logout_url=pulumi.get(__response__, 'logout_url'),
+        notes=pulumi.get(__response__, 'notes'),
+        notification_email_addresses=pulumi.get(__response__, 'notification_email_addresses'),
+        oauth2_permission_scope_ids=pulumi.get(__response__, 'oauth2_permission_scope_ids'),
+        oauth2_permission_scopes=pulumi.get(__response__, 'oauth2_permission_scopes'),
+        object_id=pulumi.get(__response__, 'object_id'),
+        preferred_single_sign_on_mode=pulumi.get(__response__, 'preferred_single_sign_on_mode'),
+        redirect_uris=pulumi.get(__response__, 'redirect_uris'),
+        saml_metadata_url=pulumi.get(__response__, 'saml_metadata_url'),
+        saml_single_sign_ons=pulumi.get(__response__, 'saml_single_sign_ons'),
+        service_principal_names=pulumi.get(__response__, 'service_principal_names'),
+        sign_in_audience=pulumi.get(__response__, 'sign_in_audience'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type')))
