@@ -28,6 +28,10 @@ func Test_ad_app(t *testing.T) {
 	test(t, filepath.Join("test-programs", "ad-app"))
 }
 
+func Test_ad_app_password(t *testing.T) {
+	test(t, filepath.Join("test-programs", "ad-app-password"))
+}
+
 func TestUpgradeCoverage(t *testing.T) {
 	providertest.ReportUpgradeCoverage(t)
 }
