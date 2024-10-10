@@ -654,9 +654,6 @@ def get_user(employee_id: Optional[str] = None,
         usage_location=pulumi.get(__ret__, 'usage_location'),
         user_principal_name=pulumi.get(__ret__, 'user_principal_name'),
         user_type=pulumi.get(__ret__, 'user_type'))
-
-
-@_utilities.lift_output_func(get_user)
 def get_user_output(employee_id: Optional[pulumi.Input[Optional[str]]] = None,
                     mail: Optional[pulumi.Input[Optional[str]]] = None,
                     mail_nickname: Optional[pulumi.Input[Optional[str]]] = None,
@@ -692,4 +689,56 @@ def get_user_output(employee_id: Optional[pulumi.Input[Optional[str]]] = None,
            
            > One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
     """
-    ...
+    __args__ = dict()
+    __args__['employeeId'] = employee_id
+    __args__['mail'] = mail
+    __args__['mailNickname'] = mail_nickname
+    __args__['objectId'] = object_id
+    __args__['userPrincipalName'] = user_principal_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
+    return __ret__.apply(lambda __response__: GetUserResult(
+        account_enabled=pulumi.get(__response__, 'account_enabled'),
+        age_group=pulumi.get(__response__, 'age_group'),
+        business_phones=pulumi.get(__response__, 'business_phones'),
+        city=pulumi.get(__response__, 'city'),
+        company_name=pulumi.get(__response__, 'company_name'),
+        consent_provided_for_minor=pulumi.get(__response__, 'consent_provided_for_minor'),
+        cost_center=pulumi.get(__response__, 'cost_center'),
+        country=pulumi.get(__response__, 'country'),
+        creation_type=pulumi.get(__response__, 'creation_type'),
+        department=pulumi.get(__response__, 'department'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        division=pulumi.get(__response__, 'division'),
+        employee_id=pulumi.get(__response__, 'employee_id'),
+        employee_type=pulumi.get(__response__, 'employee_type'),
+        external_user_state=pulumi.get(__response__, 'external_user_state'),
+        fax_number=pulumi.get(__response__, 'fax_number'),
+        given_name=pulumi.get(__response__, 'given_name'),
+        id=pulumi.get(__response__, 'id'),
+        im_addresses=pulumi.get(__response__, 'im_addresses'),
+        job_title=pulumi.get(__response__, 'job_title'),
+        mail=pulumi.get(__response__, 'mail'),
+        mail_nickname=pulumi.get(__response__, 'mail_nickname'),
+        manager_id=pulumi.get(__response__, 'manager_id'),
+        mobile_phone=pulumi.get(__response__, 'mobile_phone'),
+        object_id=pulumi.get(__response__, 'object_id'),
+        office_location=pulumi.get(__response__, 'office_location'),
+        onpremises_distinguished_name=pulumi.get(__response__, 'onpremises_distinguished_name'),
+        onpremises_domain_name=pulumi.get(__response__, 'onpremises_domain_name'),
+        onpremises_immutable_id=pulumi.get(__response__, 'onpremises_immutable_id'),
+        onpremises_sam_account_name=pulumi.get(__response__, 'onpremises_sam_account_name'),
+        onpremises_security_identifier=pulumi.get(__response__, 'onpremises_security_identifier'),
+        onpremises_sync_enabled=pulumi.get(__response__, 'onpremises_sync_enabled'),
+        onpremises_user_principal_name=pulumi.get(__response__, 'onpremises_user_principal_name'),
+        other_mails=pulumi.get(__response__, 'other_mails'),
+        postal_code=pulumi.get(__response__, 'postal_code'),
+        preferred_language=pulumi.get(__response__, 'preferred_language'),
+        proxy_addresses=pulumi.get(__response__, 'proxy_addresses'),
+        show_in_address_list=pulumi.get(__response__, 'show_in_address_list'),
+        state=pulumi.get(__response__, 'state'),
+        street_address=pulumi.get(__response__, 'street_address'),
+        surname=pulumi.get(__response__, 'surname'),
+        usage_location=pulumi.get(__response__, 'usage_location'),
+        user_principal_name=pulumi.get(__response__, 'user_principal_name'),
+        user_type=pulumi.get(__response__, 'user_type')))

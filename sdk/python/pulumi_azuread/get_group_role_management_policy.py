@@ -134,9 +134,6 @@ def get_group_role_management_policy(group_id: Optional[str] = None,
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
         role_id=pulumi.get(__ret__, 'role_id'))
-
-
-@_utilities.lift_output_func(get_group_role_management_policy)
 def get_group_role_management_policy_output(group_id: Optional[pulumi.Input[str]] = None,
                                             role_id: Optional[pulumi.Input[str]] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupRoleManagementPolicyResult]:
@@ -168,4 +165,14 @@ def get_group_role_management_policy_output(group_id: Optional[pulumi.Input[str]
     :param str group_id: The ID of the Azure AD group for which the policy applies.
     :param str role_id: The type of assignment this policy coveres. Can be either `member` or `owner`.
     """
-    ...
+    __args__ = dict()
+    __args__['groupId'] = group_id
+    __args__['roleId'] = role_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy', __args__, opts=opts, typ=GetGroupRoleManagementPolicyResult)
+    return __ret__.apply(lambda __response__: GetGroupRoleManagementPolicyResult(
+        description=pulumi.get(__response__, 'description'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        role_id=pulumi.get(__response__, 'role_id')))

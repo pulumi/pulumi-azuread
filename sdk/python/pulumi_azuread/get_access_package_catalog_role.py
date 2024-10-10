@@ -149,9 +149,6 @@ def get_access_package_catalog_role(display_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
         template_id=pulumi.get(__ret__, 'template_id'))
-
-
-@_utilities.lift_output_func(get_access_package_catalog_role)
 def get_access_package_catalog_role_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                            object_id: Optional[pulumi.Input[Optional[str]]] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPackageCatalogRoleResult]:
@@ -192,4 +189,14 @@ def get_access_package_catalog_role_output(display_name: Optional[pulumi.Input[O
            
            > One of `display_name` or `object_id` must be specified.
     """
-    ...
+    __args__ = dict()
+    __args__['displayName'] = display_name
+    __args__['objectId'] = object_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole', __args__, opts=opts, typ=GetAccessPackageCatalogRoleResult)
+    return __ret__.apply(lambda __response__: GetAccessPackageCatalogRoleResult(
+        description=pulumi.get(__response__, 'description'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        object_id=pulumi.get(__response__, 'object_id'),
+        template_id=pulumi.get(__response__, 'template_id')))

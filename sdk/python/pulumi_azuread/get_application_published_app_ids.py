@@ -109,9 +109,6 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
     return AwaitableGetApplicationPublishedAppIdsResult(
         id=pulumi.get(__ret__, 'id'),
         result=pulumi.get(__ret__, 'result'))
-
-
-@_utilities.lift_output_func(get_application_published_app_ids)
 def get_application_published_app_ids_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationPublishedAppIdsResult]:
     """
     ## Example Usage
@@ -153,4 +150,9 @@ def get_application_published_app_ids_output(opts: Optional[pulumi.InvokeOptions
         }])
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds', __args__, opts=opts, typ=GetApplicationPublishedAppIdsResult)
+    return __ret__.apply(lambda __response__: GetApplicationPublishedAppIdsResult(
+        id=pulumi.get(__response__, 'id'),
+        result=pulumi.get(__response__, 'result')))
