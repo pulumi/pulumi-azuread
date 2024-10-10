@@ -35,29 +35,20 @@ namespace Pulumi.AzureAD
     ///         DisplayName = "Azure Databricks SCIM Provisioning Connector",
     ///     });
     /// 
-    ///     var exampleApplication = new AzureAD.Application("example", new()
+    ///     var exampleApplicationFromTemplate = new AzureAD.ApplicationFromTemplate("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
-    ///         FeatureTags = new[]
-    ///         {
-    ///             new AzureAD.Inputs.ApplicationFeatureTagArgs
-    ///             {
-    ///                 Enterprise = true,
-    ///                 Gallery = true,
-    ///             },
-    ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleGetServicePrincipal = AzureAD.GetServicePrincipal.Invoke(new()
     ///     {
-    ///         ClientId = exampleApplication.ApplicationId,
-    ///         UseExisting = true,
+    ///         ObjectId = exampleApplicationFromTemplate.ServicePrincipalObjectId,
     ///     });
     /// 
     ///     var exampleSynchronizationSecret = new AzureAD.SynchronizationSecret("example", new()
     ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.Id,
+    ///         ServicePrincipalId = exampleGetServicePrincipal.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),
     ///         Credentials = new[]
     ///         {
     ///             new AzureAD.Inputs.SynchronizationSecretCredentialArgs
@@ -90,7 +81,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<Outputs.SynchronizationSecretCredential>> Credentials { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
@@ -154,7 +145,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
@@ -180,7 +171,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .clientId(example.applicationId())
+ *             .clientId(example.clientId())
  *             .build());
  * 
  *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", ServicePrincipalTokenSigningCertificateArgs.builder()
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .clientId(example.applicationId())
+ *             .clientId(example.clientId())
  *             .build());
  * 
  *         var exampleServicePrincipalTokenSigningCertificate = new ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", ServicePrincipalTokenSigningCertificateArgs.builder()
@@ -173,14 +173,14 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
         return this.keyId;
     }
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
     @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * @return The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
     public Output<String> servicePrincipalId() {

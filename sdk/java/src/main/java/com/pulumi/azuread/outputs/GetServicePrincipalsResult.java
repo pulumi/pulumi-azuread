@@ -16,15 +16,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServicePrincipalsResult {
     /**
-     * @return A list of client IDs of the applications associated with the service principals.
-     * 
-     * @deprecated
-     * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
-    private List<String> applicationIds;
-    /**
      * @return The client ID of the application associated with this service principal.
      * 
      */
@@ -53,17 +44,6 @@ public final class GetServicePrincipalsResult {
     private List<GetServicePrincipalsServicePrincipal> servicePrincipals;
 
     private GetServicePrincipalsResult() {}
-    /**
-     * @return A list of client IDs of the applications associated with the service principals.
-     * 
-     * @deprecated
-     * The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider */
-    public List<String> applicationIds() {
-        return this.applicationIds;
-    }
     /**
      * @return The client ID of the application associated with this service principal.
      * 
@@ -115,7 +95,6 @@ public final class GetServicePrincipalsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> applicationIds;
         private List<String> clientIds;
         private List<String> displayNames;
         private String id;
@@ -126,7 +105,6 @@ public final class GetServicePrincipalsResult {
         public Builder() {}
         public Builder(GetServicePrincipalsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.applicationIds = defaults.applicationIds;
     	      this.clientIds = defaults.clientIds;
     	      this.displayNames = defaults.displayNames;
     	      this.id = defaults.id;
@@ -136,17 +114,6 @@ public final class GetServicePrincipalsResult {
     	      this.servicePrincipals = defaults.servicePrincipals;
         }
 
-        @CustomType.Setter
-        public Builder applicationIds(List<String> applicationIds) {
-            if (applicationIds == null) {
-              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "applicationIds");
-            }
-            this.applicationIds = applicationIds;
-            return this;
-        }
-        public Builder applicationIds(String... applicationIds) {
-            return applicationIds(List.of(applicationIds));
-        }
         @CustomType.Setter
         public Builder clientIds(List<String> clientIds) {
             if (clientIds == null) {
@@ -213,7 +180,6 @@ public final class GetServicePrincipalsResult {
         }
         public GetServicePrincipalsResult build() {
             final var _resultValue = new GetServicePrincipalsResult();
-            _resultValue.applicationIds = applicationIds;
             _resultValue.clientIds = clientIds;
             _resultValue.displayNames = displayNames;
             _resultValue.id = id;

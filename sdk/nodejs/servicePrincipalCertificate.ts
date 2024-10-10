@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as std from "@pulumi/std";
  *
  * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
  * const exampleServicePrincipalCertificate = new azuread.ServicePrincipalCertificate("example", {
  *     servicePrincipalId: exampleServicePrincipal.id,
  *     type: "AsymmetricX509Cert",
@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * import * as std from "@pulumi/std";
  *
  * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {applicationId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
  * const exampleServicePrincipalCertificate = new azuread.ServicePrincipalCertificate("example", {
  *     servicePrincipalId: exampleServicePrincipal.id,
  *     type: "AsymmetricX509Cert",
@@ -100,6 +100,8 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
      *
      * > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+     *
+     * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      */
     public readonly endDateRelative!: pulumi.Output<string | undefined>;
     /**
@@ -107,7 +109,7 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
      */
     public readonly keyId!: pulumi.Output<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
     /**
@@ -186,6 +188,8 @@ export interface ServicePrincipalCertificateState {
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
      *
      * > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+     *
+     * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      */
     endDateRelative?: pulumi.Input<string>;
     /**
@@ -193,7 +197,7 @@ export interface ServicePrincipalCertificateState {
      */
     keyId?: pulumi.Input<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      */
     servicePrincipalId?: pulumi.Input<string>;
     /**
@@ -228,6 +232,8 @@ export interface ServicePrincipalCertificateArgs {
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
      *
      * > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+     *
+     * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      */
     endDateRelative?: pulumi.Input<string>;
     /**
@@ -235,7 +241,7 @@ export interface ServicePrincipalCertificateArgs {
      */
     keyId?: pulumi.Input<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      */
     servicePrincipalId: pulumi.Input<string>;
     /**

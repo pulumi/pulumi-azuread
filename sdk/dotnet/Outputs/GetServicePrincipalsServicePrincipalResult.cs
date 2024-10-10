@@ -22,10 +22,6 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly bool AppRoleAssignmentRequired;
         /// <summary>
-        /// The application ID (client ID) for the associated application
-        /// </summary>
-        public readonly string ApplicationId;
-        /// <summary>
         /// The tenant ID where the associated application is registered.
         /// </summary>
         public readonly string ApplicationTenantId;
@@ -72,8 +68,6 @@ namespace Pulumi.AzureAD.Outputs
 
             bool appRoleAssignmentRequired,
 
-            string applicationId,
-
             string applicationTenantId,
 
             string clientId,
@@ -96,7 +90,6 @@ namespace Pulumi.AzureAD.Outputs
         {
             AccountEnabled = accountEnabled;
             AppRoleAssignmentRequired = appRoleAssignmentRequired;
-            ApplicationId = applicationId;
             ApplicationTenantId = applicationTenantId;
             ClientId = clientId;
             DisplayName = displayName;

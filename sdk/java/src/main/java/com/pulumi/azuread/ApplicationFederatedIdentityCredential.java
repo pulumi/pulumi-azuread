@@ -90,24 +90,6 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
         return this.applicationId;
     }
     /**
-     * The object ID of the application for which this federated identity credential should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
-    private Output<String> applicationObjectId;
-
-    /**
-     * @return The object ID of the application for which this federated identity credential should be created
-     * 
-     */
-    public Output<String> applicationObjectId() {
-        return this.applicationObjectId;
-    }
-    /**
      * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      * 
      */

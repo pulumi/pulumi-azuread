@@ -237,24 +237,6 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
         return this.applicationId;
     }
     /**
-     * The object ID of the application for which this certificate should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
-    private Output<String> applicationObjectId;
-
-    /**
-     * @return The object ID of the application for which this certificate should be created
-     * 
-     */
-    public Output<String> applicationObjectId() {
-        return this.applicationObjectId;
-    }
-    /**
      * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
      * 
      * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
@@ -291,7 +273,11 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
      * 
      * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     @Export(name="endDateRelative", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endDateRelative;
 

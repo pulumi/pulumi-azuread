@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewServicePrincipalPassword(ctx, "example", &azuread.ServicePrincipalPasswordArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ObjectId,
+//				ServicePrincipalId: exampleServicePrincipal.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -59,7 +59,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -86,7 +86,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewServicePrincipalPassword(ctx, "example", &azuread.ServicePrincipalPasswordArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ObjectId,
+//				ServicePrincipalId: exampleServicePrincipal.ID(),
 //				RotateWhenChanged: pulumi.StringMap{
 //					"rotation": exampleRotating.ID(),
 //				},
@@ -111,12 +111,14 @@ type ServicePrincipalPassword struct {
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
 	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrOutput `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this password credential.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
 	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
-	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
@@ -166,12 +168,14 @@ type servicePrincipalPasswordState struct {
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this password credential.
 	KeyId *string `pulumi:"keyId"`
 	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
-	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
@@ -185,12 +189,14 @@ type ServicePrincipalPasswordState struct {
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this password credential.
 	KeyId pulumi.StringPtrInput
 	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapInput
-	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringPtrInput
 	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
@@ -208,10 +214,12 @@ type servicePrincipalPasswordArgs struct {
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
-	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
@@ -224,10 +232,12 @@ type ServicePrincipalPasswordArgs struct {
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrInput
 	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapInput
-	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringInput
 	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
@@ -331,6 +341,8 @@ func (o ServicePrincipalPasswordOutput) EndDate() pulumi.StringOutput {
 }
 
 // A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+//
+// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 func (o ServicePrincipalPasswordOutput) EndDateRelative() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipalPassword) pulumi.StringPtrOutput { return v.EndDateRelative }).(pulumi.StringPtrOutput)
 }
@@ -345,7 +357,7 @@ func (o ServicePrincipalPasswordOutput) RotateWhenChanged() pulumi.StringMapOutp
 	return o.ApplyT(func(v *ServicePrincipalPassword) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
-// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+// The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
 func (o ServicePrincipalPasswordOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalPassword) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }

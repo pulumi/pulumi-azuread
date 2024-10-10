@@ -1,5 +1,5 @@
 provider: azuread
-major-version: 5
+major-version: 6
 generate-nightly-test-workflow: true
 env:
   ARM_CLIENT_ID: "d3b6ec3a-36fe-46c9-b3d9-5856a2e0e73c" # test-app
@@ -21,9 +21,9 @@ plugins:
   - name: std
     version: "1.4.0"
   - name: azure
-    version: "5.52.0"
+    version: "6.3.0"
   - name: random
-    version: "4.14.0"
+    version: "4.16.0"
   - name: terraform
     version: "1.0.15"
     kind: converter

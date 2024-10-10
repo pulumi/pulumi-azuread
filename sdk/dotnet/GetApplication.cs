@@ -87,9 +87,6 @@ namespace Pulumi.AzureAD
 
     public sealed class GetApplicationArgs : global::Pulumi.InvokeArgs
     {
-        [Input("applicationId")]
-        public string? ApplicationId { get; set; }
-
         /// <summary>
         /// Specifies the Client ID of the application.
         /// </summary>
@@ -124,9 +121,6 @@ namespace Pulumi.AzureAD
 
     public sealed class GetApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
-
         /// <summary>
         /// Specifies the Client ID of the application.
         /// </summary>
@@ -175,7 +169,6 @@ namespace Pulumi.AzureAD
         /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationAppRoleResult> AppRoles;
-        public readonly string ApplicationId;
         /// <summary>
         /// The Client ID for the application.
         /// </summary>
@@ -302,8 +295,6 @@ namespace Pulumi.AzureAD
 
             ImmutableArray<Outputs.GetApplicationAppRoleResult> appRoles,
 
-            string applicationId,
-
             string clientId,
 
             string description,
@@ -367,7 +358,6 @@ namespace Pulumi.AzureAD
             Apis = apis;
             AppRoleIds = appRoleIds;
             AppRoles = appRoles;
-            ApplicationId = applicationId;
             ClientId = clientId;
             Description = description;
             DeviceOnlyAuthEnabled = deviceOnlyAuthEnabled;

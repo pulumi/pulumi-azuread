@@ -213,7 +213,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     },
                 ],
             }])
-        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("example",
             service_principal_object_id=example_service_principal.object_id,
             resource_service_principal_object_id=msgraph.object_id,
@@ -248,7 +248,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     },
                 ],
             }])
-        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_user = azuread.User("example",
             display_name="J. Doe",
             user_principal_name="jdoe@example.com",
@@ -325,7 +325,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     },
                 ],
             }])
-        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("example",
             service_principal_object_id=example_service_principal.object_id,
             resource_service_principal_object_id=msgraph.object_id,
@@ -360,7 +360,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                     },
                 ],
             }])
-        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_user = azuread.User("example",
             display_name="J. Doe",
             user_principal_name="jdoe@example.com",

@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _knownClientApplications;
 
         /// <summary>
-        /// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+        /// A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
         /// </summary>
         public InputList<string> KnownClientApplications
         {

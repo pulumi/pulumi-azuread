@@ -19,14 +19,14 @@ public final class SynchronizationJobState extends com.pulumi.resources.Resource
     public static final SynchronizationJobState Empty = new SynchronizationJobState();
 
     /**
-     * Whether or not the provisioning job is enabled. Default state is `true`.
+     * Whether the provisioning job is enabled. Default state is `true`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether or not the provisioning job is enabled. Default state is `true`.
+     * @return Whether the provisioning job is enabled. Default state is `true`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -49,14 +49,14 @@ public final class SynchronizationJobState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
      * 
      */
     @Import(name="servicePrincipalId")
     private @Nullable Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+     * @return The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> servicePrincipalId() {
@@ -106,7 +106,7 @@ public final class SynchronizationJobState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Whether or not the provisioning job is enabled. Default state is `true`.
+         * @param enabled Whether the provisioning job is enabled. Default state is `true`.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class SynchronizationJobState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Whether or not the provisioning job is enabled. Default state is `true`.
+         * @param enabled Whether the provisioning job is enabled. Default state is `true`.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class SynchronizationJobState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+         * @param servicePrincipalId The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class SynchronizationJobState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+         * @param servicePrincipalId The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 

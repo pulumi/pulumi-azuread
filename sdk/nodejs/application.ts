@@ -29,8 +29,8 @@ import * as utilities from "./utilities";
  *         mappedClaimsEnabled: true,
  *         requestedAccessTokenVersion: 2,
  *         knownClientApplications: [
- *             known1.applicationId,
- *             known2.applicationId,
+ *             known1.clientId,
+ *             known2.clientId,
  *         ],
  *         oauth2PermissionScopes: [
  *             {
@@ -181,12 +181,6 @@ export class Application extends pulumi.CustomResource {
      * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
     public readonly appRoles!: pulumi.Output<outputs.ApplicationAppRole[] | undefined>;
-    /**
-     * The Application ID (also called Client ID)
-     *
-     * @deprecated The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
-     */
-    public /*out*/ readonly applicationId!: pulumi.Output<string>;
     /**
      * The Client ID for the application.
      */
@@ -344,7 +338,6 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["api"] = state ? state.api : undefined;
             resourceInputs["appRoleIds"] = state ? state.appRoleIds : undefined;
             resourceInputs["appRoles"] = state ? state.appRoles : undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
             resourceInputs["clientId"] = state ? state.clientId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["deviceOnlyAuthEnabled"] = state ? state.deviceOnlyAuthEnabled : undefined;
@@ -411,7 +404,6 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["termsOfServiceUrl"] = args ? args.termsOfServiceUrl : undefined;
             resourceInputs["web"] = args ? args.web : undefined;
             resourceInputs["appRoleIds"] = undefined /*out*/;
-            resourceInputs["applicationId"] = undefined /*out*/;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["disabledByMicrosoft"] = undefined /*out*/;
             resourceInputs["logoUrl"] = undefined /*out*/;
@@ -440,12 +432,6 @@ export interface ApplicationState {
      * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
     appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[]>;
-    /**
-     * The Application ID (also called Client ID)
-     *
-     * @deprecated The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationId?: pulumi.Input<string>;
     /**
      * The Client ID for the application.
      */

@@ -61,12 +61,6 @@ namespace Pulumi.AzureAD
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the application for which this federated identity credential should be created
-        /// </summary>
-        [Output("applicationObjectId")]
-        public Output<string> ApplicationObjectId { get; private set; } = null!;
-
-        /// <summary>
         /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         /// </summary>
         [Output("audiences")]
@@ -151,14 +145,8 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
         /// </summary>
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
-
-        /// <summary>
-        /// The object ID of the application for which this federated identity credential should be created
-        /// </summary>
-        [Input("applicationObjectId")]
-        public Input<string>? ApplicationObjectId { get; set; }
+        [Input("applicationId", required: true)]
+        public Input<string> ApplicationId { get; set; } = null!;
 
         [Input("audiences", required: true)]
         private InputList<string>? _audiences;
@@ -209,12 +197,6 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
-
-        /// <summary>
-        /// The object ID of the application for which this federated identity credential should be created
-        /// </summary>
-        [Input("applicationObjectId")]
-        public Input<string>? ApplicationObjectId { get; set; }
 
         [Input("audiences")]
         private InputList<string>? _audiences;

@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  *         ],
  *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
  * const exampleAppRoleAssignment = new azuread.AppRoleAssignment("example", {
  *     appRoleId: msgraph.appRoleIds["User.Read.All"],
  *     principalObjectId: exampleServicePrincipal.objectId,
@@ -69,18 +69,18 @@ import * as utilities from "./utilities";
  *         value: "Query.All",
  *     }],
  * });
- * const internalServicePrincipal = new azuread.ServicePrincipal("internal", {clientId: internal.applicationId});
+ * const internalServicePrincipal = new azuread.ServicePrincipal("internal", {clientId: internal.clientId});
  * const example = new azuread.Application("example", {
  *     displayName: "example",
  *     requiredResourceAccesses: [{
- *         resourceAppId: internal.applicationId,
+ *         resourceAppId: internal.clientId,
  *         resourceAccesses: [{
  *             id: internalServicePrincipal.appRoleIds["Query.All"],
  *             type: "Role",
  *         }],
  *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
  * const exampleAppRoleAssignment = new azuread.AppRoleAssignment("example", {
  *     appRoleId: internalServicePrincipal.appRoleIds["Query.All"],
  *     principalObjectId: exampleServicePrincipal.objectId,

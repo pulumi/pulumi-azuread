@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .applicationId(example.applicationId())
+ *             .clientId(example.clientId())
  *             .build());
  * 
  *         var exampleServicePrincipalCertificate = new ServicePrincipalCertificate("exampleServicePrincipalCertificate", ServicePrincipalCertificateArgs.builder()
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .applicationId(example.applicationId())
+ *             .clientId(example.clientId())
  *             .build());
  * 
  *         var exampleServicePrincipalCertificate = new ServicePrincipalCertificate("exampleServicePrincipalCertificate", ServicePrincipalCertificateArgs.builder()
@@ -175,7 +175,11 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
      * 
      * &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     @Export(name="endDateRelative", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endDateRelative;
 
@@ -203,14 +207,14 @@ public class ServicePrincipalCertificate extends com.pulumi.resources.CustomReso
         return this.keyId;
     }
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
     @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * @return The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
     public Output<String> servicePrincipalId() {

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -108,7 +108,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -166,7 +166,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -235,6 +235,8 @@ type ConditionalAccessPolicy struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
 	GrantControls ConditionalAccessPolicyGrantControlsPtrOutput `pulumi:"grantControls"`
+	// The object ID of the policy
+	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
 	//
 	// > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
@@ -288,6 +290,8 @@ type conditionalAccessPolicyState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
 	GrantControls *ConditionalAccessPolicyGrantControls `pulumi:"grantControls"`
+	// The object ID of the policy
+	ObjectId *string `pulumi:"objectId"`
 	// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
 	//
 	// > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
@@ -303,6 +307,8 @@ type ConditionalAccessPolicyState struct {
 	DisplayName pulumi.StringPtrInput
 	// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
 	GrantControls ConditionalAccessPolicyGrantControlsPtrInput
+	// The object ID of the policy
+	ObjectId pulumi.StringPtrInput
 	// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
 	//
 	// > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
@@ -446,6 +452,11 @@ func (o ConditionalAccessPolicyOutput) DisplayName() pulumi.StringOutput {
 // A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
 func (o ConditionalAccessPolicyOutput) GrantControls() ConditionalAccessPolicyGrantControlsPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicy) ConditionalAccessPolicyGrantControlsPtrOutput { return v.GrantControls }).(ConditionalAccessPolicyGrantControlsPtrOutput)
+}
+
+// The object ID of the policy
+func (o ConditionalAccessPolicyOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicy) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
 // A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: example.ApplicationId,
+//				ClientId: example.ClientId,
 //			})
 //			if err != nil {
 //				return err
@@ -69,7 +69,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -84,7 +84,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ApplicationId: example.ApplicationId,
+//				ClientId: example.ClientId,
 //			})
 //			if err != nil {
 //				return err
@@ -134,10 +134,12 @@ type ServicePrincipalCertificate struct {
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
 	//
 	// > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrOutput `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
@@ -199,10 +201,12 @@ type servicePrincipalCertificateState struct {
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
 	//
 	// > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
@@ -222,10 +226,12 @@ type ServicePrincipalCertificateState struct {
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
 	//
 	// > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringPtrInput
 	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
@@ -249,10 +255,12 @@ type servicePrincipalCertificateArgs struct {
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
 	//
 	// > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
@@ -273,10 +281,12 @@ type ServicePrincipalCertificateArgs struct {
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
 	//
 	// > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringInput
 	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
@@ -388,6 +398,8 @@ func (o ServicePrincipalCertificateOutput) EndDate() pulumi.StringOutput {
 // A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
 //
 // > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+//
+// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 func (o ServicePrincipalCertificateOutput) EndDateRelative() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringPtrOutput { return v.EndDateRelative }).(pulumi.StringPtrOutput)
 }
@@ -397,7 +409,7 @@ func (o ServicePrincipalCertificateOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
 }
 
-// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 func (o ServicePrincipalCertificateOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }

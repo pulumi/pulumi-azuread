@@ -1,0 +1,164 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2024-10-10T10:17:33.308559+01:00",
+      "magic": "3ee1df7d88e73eabd00b78d7e9adea0e78f7a7ee1e2702f04b35b87d31dbc1bb",
+      "version": "v3.135.1"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:Us8X3BsW8/w=:v1:n5GGST9lDiiM/Q6y:4n7LLG2geJENJK/VXoFOzIK1XkG78w=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::ad-app::pulumi:pulumi:Stack::ad-app-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "created": "2024-10-10T09:17:22.41795Z",
+        "modified": "2024-10-10T09:17:22.41795Z"
+      },
+      {
+        "urn": "urn:pulumi:test::ad-app::pulumi:providers:azuread::default",
+        "custom": true,
+        "id": "0114540b-c098-4ecb-8277-c223b402b317",
+        "type": "pulumi:providers:azuread",
+        "created": "2024-10-10T09:17:23.346837Z",
+        "modified": "2024-10-10T09:17:23.346837Z"
+      },
+      {
+        "urn": "urn:pulumi:test::ad-app::azuread:index/application:Application::example",
+        "custom": true,
+        "id": "/applications/67998fa2-cd3b-4187-9385-ad7788f2637d",
+        "type": "azuread:index/application:Application",
+        "inputs": {
+          "__defaults": [
+            "preventDuplicateNames",
+            "signInAudience"
+          ],
+          "displayName": "example",
+          "preventDuplicateNames": false,
+          "signInAudience": "AzureADMyOrg"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":600000000000,\"delete\":300000000000,\"read\":300000000000,\"update\":600000000000},\"schema_version\":\"2\"}",
+          "api": {
+            "knownClientApplications": [],
+            "mappedClaimsEnabled": false,
+            "oauth2PermissionScopes": [],
+            "requestedAccessTokenVersion": 1
+          },
+          "appRoleIds": {},
+          "appRoles": [],
+          "applicationId": "12697b3b-13f5-4ad4-bfb6-78e3cc5c6c49",
+          "clientId": "12697b3b-13f5-4ad4-bfb6-78e3cc5c6c49",
+          "description": "",
+          "deviceOnlyAuthEnabled": false,
+          "disabledByMicrosoft": "\u003cnil\u003e",
+          "displayName": "example",
+          "fallbackPublicClientEnabled": false,
+          "featureTags": [
+            {
+              "customSingleSignOn": false,
+              "enterprise": false,
+              "gallery": false,
+              "hide": false
+            }
+          ],
+          "groupMembershipClaims": null,
+          "id": "/applications/67998fa2-cd3b-4187-9385-ad7788f2637d",
+          "identifierUris": null,
+          "logoImage": "",
+          "logoUrl": "",
+          "marketingUrl": "",
+          "notes": "",
+          "oauth2PermissionScopeIds": {},
+          "oauth2PostResponseRequired": false,
+          "objectId": "67998fa2-cd3b-4187-9385-ad7788f2637d",
+          "optionalClaims": {
+            "accessTokens": [],
+            "idTokens": [],
+            "saml2Tokens": []
+          },
+          "owners": null,
+          "password": null,
+          "preventDuplicateNames": false,
+          "privacyStatementUrl": "",
+          "publicClient": {
+            "redirectUris": []
+          },
+          "publisherDomain": "pulumi.onmicrosoft.com",
+          "requiredResourceAccesses": [],
+          "serviceManagementReference": "",
+          "signInAudience": "AzureADMyOrg",
+          "singlePageApplication": {
+            "redirectUris": []
+          },
+          "supportUrl": "",
+          "tags": [],
+          "templateId": "",
+          "termsOfServiceUrl": "",
+          "web": {
+            "homepageUrl": "",
+            "implicitGrant": {
+              "accessTokenIssuanceEnabled": false,
+              "idTokenIssuanceEnabled": false
+            },
+            "logoutUrl": "",
+            "redirectUris": []
+          }
+        },
+        "parent": "urn:pulumi:test::ad-app::pulumi:pulumi:Stack::ad-app-test",
+        "provider": "urn:pulumi:test::ad-app::pulumi:providers:azuread::default::0114540b-c098-4ecb-8277-c223b402b317",
+        "propertyDependencies": {
+          "displayName": []
+        },
+        "created": "2024-10-10T09:17:27.490323Z",
+        "modified": "2024-10-10T09:17:27.490323Z"
+      },
+      {
+        "urn": "urn:pulumi:test::ad-app::azuread:index/applicationPassword:ApplicationPassword::password",
+        "custom": true,
+        "id": "67998fa2-cd3b-4187-9385-ad7788f2637d/password/ef482963-8947-4bb9-883d-9742d685d378",
+        "type": "azuread:index/applicationPassword:ApplicationPassword",
+        "inputs": {
+          "__defaults": [],
+          "applicationObjectId": "/applications/67998fa2-cd3b-4187-9385-ad7788f2637d"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":900000000000,\"delete\":300000000000,\"read\":300000000000,\"update\":300000000000},\"schema_version\":\"1\"}",
+          "applicationId": "/applications/67998fa2-cd3b-4187-9385-ad7788f2637d",
+          "applicationObjectId": "/applications/67998fa2-cd3b-4187-9385-ad7788f2637d",
+          "displayName": null,
+          "endDate": "2026-10-10T09:17:27Z",
+          "endDateRelative": null,
+          "id": "67998fa2-cd3b-4187-9385-ad7788f2637d/password/ef482963-8947-4bb9-883d-9742d685d378",
+          "keyId": "ef482963-8947-4bb9-883d-9742d685d378",
+          "rotateWhenChanged": null,
+          "startDate": "2024-10-10T09:17:27Z",
+          "value": {
+            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+            "plaintext": "\"REDACTED BY PROVIDERTEST\""
+          }
+        },
+        "parent": "urn:pulumi:test::ad-app::pulumi:pulumi:Stack::ad-app-test",
+        "dependencies": [
+          "urn:pulumi:test::ad-app::azuread:index/application:Application::example"
+        ],
+        "provider": "urn:pulumi:test::ad-app::pulumi:providers:azuread::default::0114540b-c098-4ecb-8277-c223b402b317",
+        "propertyDependencies": {
+          "applicationObjectId": [
+            "urn:pulumi:test::ad-app::azuread:index/application:Application::example"
+          ]
+        },
+        "additionalSecretOutputs": [
+          "value"
+        ],
+        "created": "2024-10-10T09:17:33.304471Z",
+        "modified": "2024-10-10T09:17:33.304471Z"
+      }
+    ]
+  }
+}

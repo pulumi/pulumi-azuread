@@ -241,7 +241,7 @@ export interface AccessPackageAssignmentPolicyRequestorSettingsRequestor {
 
 export interface ApplicationApi {
     /**
-     * A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+     * A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
      */
     knownClientApplications?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -34,7 +34,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("example", new()
     ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.ObjectId,
+    ///         ServicePrincipalId = exampleServicePrincipal.Id,
     ///     });
     /// 
     /// });
@@ -68,7 +68,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("example", new()
     ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.ObjectId,
+    ///         ServicePrincipalId = exampleServicePrincipal.Id,
     ///         RotateWhenChanged = 
     ///         {
     ///             { "rotation", exampleRotating.Id },
@@ -116,7 +116,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableDictionary<string, string>?> RotateWhenChanged { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
@@ -270,7 +270,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }

@@ -65,14 +65,14 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
     }
 
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
     @Import(name="servicePrincipalId")
     private @Nullable Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * @return The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> servicePrincipalId() {
@@ -222,7 +222,7 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+         * @param servicePrincipalId The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+         * @param servicePrincipalId The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 

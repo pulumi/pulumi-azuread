@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -56,28 +56,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+//			exampleApplicationFromTemplate, err := azuread.NewApplicationFromTemplate(ctx, "example", &azuread.ApplicationFromTemplateArgs{
 //				DisplayName: pulumi.String("example"),
 //				TemplateId:  pulumi.String(example.TemplateId),
-//				FeatureTags: azuread.ApplicationFeatureTagArray{
-//					&azuread.ApplicationFeatureTagArgs{
-//						Enterprise: pulumi.Bool(true),
-//						Gallery:    pulumi.Bool(true),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ClientId:    exampleApplication.ClientId,
-//				UseExisting: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
+//			exampleGetServicePrincipal := azuread.LookupServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
+//				ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
+//			}, nil)
 //			_, err = azuread.NewSynchronizationSecret(ctx, "example", &azuread.SynchronizationSecretArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
+//				ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
+//					return &exampleGetServicePrincipal.Id, nil
+//				}).(pulumi.StringPtrOutput)),
 //				Credentials: azuread.SynchronizationSecretCredentialArray{
 //					&azuread.SynchronizationSecretCredentialArgs{
 //						Key:   pulumi.String("BaseAddress"),
@@ -93,15 +85,17 @@ import (
 //				return err
 //			}
 //			exampleSynchronizationJob, err := azuread.NewSynchronizationJob(ctx, "example", &azuread.SynchronizationJobArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
-//				TemplateId:         pulumi.String("dataBricks"),
-//				Enabled:            pulumi.Bool(true),
+//				ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
+//					return &exampleGetServicePrincipal.Id, nil
+//				}).(pulumi.StringPtrOutput)),
+//				TemplateId: pulumi.String("dataBricks"),
+//				Enabled:    pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = azuread.NewSynchronizationJobProvisionOnDemand(ctx, "example", &azuread.SynchronizationJobProvisionOnDemandArgs{
-//				ServicePrincipalId:   exampleServicePrincipal.ID(),
+//				ServicePrincipalId:   exampleSynchronizationJob.ServicePrincipalId,
 //				SynchronizationJobId: exampleSynchronizationJob.ID(),
 //				Parameters: azuread.SynchronizationJobProvisionOnDemandParameterArray{
 //					&azuread.SynchronizationJobProvisionOnDemandParameterArgs{
@@ -132,9 +126,9 @@ type SynchronizationJobProvisionOnDemand struct {
 
 	// One or more `parameter` blocks as documented below.
 	Parameters SynchronizationJobProvisionOnDemandParameterArrayOutput `pulumi:"parameters"`
-	// The object ID of the service principal for the synchronization job.
+	// The ID of the service principal for the synchronization job.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
-	// Identifier of the synchronization template this job is based on.
+	// The ID of the synchronization job.
 	SynchronizationJobId pulumi.StringOutput    `pulumi:"synchronizationJobId"`
 	Triggers             pulumi.StringMapOutput `pulumi:"triggers"`
 }
@@ -180,9 +174,9 @@ func GetSynchronizationJobProvisionOnDemand(ctx *pulumi.Context,
 type synchronizationJobProvisionOnDemandState struct {
 	// One or more `parameter` blocks as documented below.
 	Parameters []SynchronizationJobProvisionOnDemandParameter `pulumi:"parameters"`
-	// The object ID of the service principal for the synchronization job.
+	// The ID of the service principal for the synchronization job.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
-	// Identifier of the synchronization template this job is based on.
+	// The ID of the synchronization job.
 	SynchronizationJobId *string           `pulumi:"synchronizationJobId"`
 	Triggers             map[string]string `pulumi:"triggers"`
 }
@@ -190,9 +184,9 @@ type synchronizationJobProvisionOnDemandState struct {
 type SynchronizationJobProvisionOnDemandState struct {
 	// One or more `parameter` blocks as documented below.
 	Parameters SynchronizationJobProvisionOnDemandParameterArrayInput
-	// The object ID of the service principal for the synchronization job.
+	// The ID of the service principal for the synchronization job.
 	ServicePrincipalId pulumi.StringPtrInput
-	// Identifier of the synchronization template this job is based on.
+	// The ID of the synchronization job.
 	SynchronizationJobId pulumi.StringPtrInput
 	Triggers             pulumi.StringMapInput
 }
@@ -204,9 +198,9 @@ func (SynchronizationJobProvisionOnDemandState) ElementType() reflect.Type {
 type synchronizationJobProvisionOnDemandArgs struct {
 	// One or more `parameter` blocks as documented below.
 	Parameters []SynchronizationJobProvisionOnDemandParameter `pulumi:"parameters"`
-	// The object ID of the service principal for the synchronization job.
+	// The ID of the service principal for the synchronization job.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
-	// Identifier of the synchronization template this job is based on.
+	// The ID of the synchronization job.
 	SynchronizationJobId string            `pulumi:"synchronizationJobId"`
 	Triggers             map[string]string `pulumi:"triggers"`
 }
@@ -215,9 +209,9 @@ type synchronizationJobProvisionOnDemandArgs struct {
 type SynchronizationJobProvisionOnDemandArgs struct {
 	// One or more `parameter` blocks as documented below.
 	Parameters SynchronizationJobProvisionOnDemandParameterArrayInput
-	// The object ID of the service principal for the synchronization job.
+	// The ID of the service principal for the synchronization job.
 	ServicePrincipalId pulumi.StringInput
-	// Identifier of the synchronization template this job is based on.
+	// The ID of the synchronization job.
 	SynchronizationJobId pulumi.StringInput
 	Triggers             pulumi.StringMapInput
 }
@@ -316,12 +310,12 @@ func (o SynchronizationJobProvisionOnDemandOutput) Parameters() SynchronizationJ
 	}).(SynchronizationJobProvisionOnDemandParameterArrayOutput)
 }
 
-// The object ID of the service principal for the synchronization job.
+// The ID of the service principal for the synchronization job.
 func (o SynchronizationJobProvisionOnDemandOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJobProvisionOnDemand) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }
 
-// Identifier of the synchronization template this job is based on.
+// The ID of the synchronization job.
 func (o SynchronizationJobProvisionOnDemandOutput) SynchronizationJobId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJobProvisionOnDemand) pulumi.StringOutput { return v.SynchronizationJobId }).(pulumi.StringOutput)
 }

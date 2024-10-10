@@ -37,13 +37,6 @@ public final class GetApplicationResult {
      */
     private List<GetApplicationAppRole> appRoles;
     /**
-     * @deprecated
-     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    private String applicationId;
-    /**
      * @return The Client ID for the application.
      * 
      */
@@ -211,15 +204,6 @@ public final class GetApplicationResult {
      */
     public List<GetApplicationAppRole> appRoles() {
         return this.appRoles;
-    }
-    /**
-     * @deprecated
-     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public String applicationId() {
-        return this.applicationId;
     }
     /**
      * @return The Client ID for the application.
@@ -440,7 +424,6 @@ public final class GetApplicationResult {
         private List<GetApplicationApi> apis;
         private Map<String,String> appRoleIds;
         private List<GetApplicationAppRole> appRoles;
-        private String applicationId;
         private String clientId;
         private String description;
         private Boolean deviceOnlyAuthEnabled;
@@ -477,7 +460,6 @@ public final class GetApplicationResult {
     	      this.apis = defaults.apis;
     	      this.appRoleIds = defaults.appRoleIds;
     	      this.appRoles = defaults.appRoles;
-    	      this.applicationId = defaults.applicationId;
     	      this.clientId = defaults.clientId;
     	      this.description = defaults.description;
     	      this.deviceOnlyAuthEnabled = defaults.deviceOnlyAuthEnabled;
@@ -539,14 +521,6 @@ public final class GetApplicationResult {
         }
         public Builder appRoles(GetApplicationAppRole... appRoles) {
             return appRoles(List.of(appRoles));
-        }
-        @CustomType.Setter
-        public Builder applicationId(String applicationId) {
-            if (applicationId == null) {
-              throw new MissingRequiredPropertyException("GetApplicationResult", "applicationId");
-            }
-            this.applicationId = applicationId;
-            return this;
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
@@ -823,7 +797,6 @@ public final class GetApplicationResult {
             _resultValue.apis = apis;
             _resultValue.appRoleIds = appRoleIds;
             _resultValue.appRoles = appRoles;
-            _resultValue.applicationId = applicationId;
             _resultValue.clientId = clientId;
             _resultValue.description = description;
             _resultValue.deviceOnlyAuthEnabled = deviceOnlyAuthEnabled;

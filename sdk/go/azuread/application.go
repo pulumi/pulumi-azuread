@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -53,8 +53,8 @@ import (
 //					MappedClaimsEnabled:         pulumi.Bool(true),
 //					RequestedAccessTokenVersion: pulumi.Int(2),
 //					KnownClientApplications: pulumi.StringArray{
-//						known1.ApplicationId,
-//						known2.ApplicationId,
+//						known1.ClientId,
+//						known2.ClientId,
 //					},
 //					Oauth2PermissionScopes: azuread.ApplicationApiOauth2PermissionScopeArray{
 //						&azuread.ApplicationApiOauth2PermissionScopeArgs{
@@ -194,10 +194,6 @@ type Application struct {
 	AppRoleIds pulumi.StringMapOutput `pulumi:"appRoleIds"`
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles ApplicationAppRoleTypeArrayOutput `pulumi:"appRoles"`
-	// The Application ID (also called Client ID)
-	//
-	// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
-	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// The Client ID for the application.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// A description of the application, as shown to end users.
@@ -315,10 +311,6 @@ type applicationState struct {
 	AppRoleIds map[string]string `pulumi:"appRoleIds"`
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles []ApplicationAppRoleType `pulumi:"appRoles"`
-	// The Application ID (also called Client ID)
-	//
-	// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
-	ApplicationId *string `pulumi:"applicationId"`
 	// The Client ID for the application.
 	ClientId *string `pulumi:"clientId"`
 	// A description of the application, as shown to end users.
@@ -404,10 +396,6 @@ type ApplicationState struct {
 	AppRoleIds pulumi.StringMapInput
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles ApplicationAppRoleTypeArrayInput
-	// The Application ID (also called Client ID)
-	//
-	// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
-	ApplicationId pulumi.StringPtrInput
 	// The Client ID for the application.
 	ClientId pulumi.StringPtrInput
 	// A description of the application, as shown to end users.
@@ -733,13 +721,6 @@ func (o ApplicationOutput) AppRoleIds() pulumi.StringMapOutput {
 // A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 func (o ApplicationOutput) AppRoles() ApplicationAppRoleTypeArrayOutput {
 	return o.ApplyT(func(v *Application) ApplicationAppRoleTypeArrayOutput { return v.AppRoles }).(ApplicationAppRoleTypeArrayOutput)
-}
-
-// The Application ID (also called Client ID)
-//
-// Deprecated: The `applicationId` attribute has been replaced by the `clientId` attribute and will be removed in version 3.0 of the AzureAD provider
-func (o ApplicationOutput) ApplicationId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
 // The Client ID for the application.

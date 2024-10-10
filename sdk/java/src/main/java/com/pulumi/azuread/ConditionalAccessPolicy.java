@@ -279,6 +279,20 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.grantControls);
     }
     /**
+     * The object ID of the policy
+     * 
+     */
+    @Export(name="objectId", refs={String.class}, tree="[0]")
+    private Output<String> objectId;
+
+    /**
+     * @return The object ID of the policy
+     * 
+     */
+    public Output<String> objectId() {
+        return this.objectId;
+    }
+    /**
      * A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
      * 
      * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.

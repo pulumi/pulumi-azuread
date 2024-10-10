@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,7 +30,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,7 +59,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -89,7 +89,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -124,10 +124,6 @@ func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, o
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsArgs struct {
 	// A list of client IDs of the applications associated with the service principals.
-	//
-	// Deprecated: The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationIds []string `pulumi:"applicationIds"`
-	// A list of client IDs of the applications associated with the service principals.
 	ClientIds []string `pulumi:"clientIds"`
 	// A list of display names of the applications associated with the service principals.
 	DisplayNames []string `pulumi:"displayNames"`
@@ -143,10 +139,6 @@ type GetServicePrincipalsArgs struct {
 
 // A collection of values returned by getServicePrincipals.
 type GetServicePrincipalsResult struct {
-	// A list of client IDs of the applications associated with the service principals.
-	//
-	// Deprecated: The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationIds []string `pulumi:"applicationIds"`
 	// The client ID of the application associated with this service principal.
 	ClientIds []string `pulumi:"clientIds"`
 	// A list of display names of the applications associated with the service principals.
@@ -183,10 +175,6 @@ func GetServicePrincipalsOutput(ctx *pulumi.Context, args GetServicePrincipalsOu
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsOutputArgs struct {
 	// A list of client IDs of the applications associated with the service principals.
-	//
-	// Deprecated: The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationIds pulumi.StringArrayInput `pulumi:"applicationIds"`
-	// A list of client IDs of the applications associated with the service principals.
 	ClientIds pulumi.StringArrayInput `pulumi:"clientIds"`
 	// A list of display names of the applications associated with the service principals.
 	DisplayNames pulumi.StringArrayInput `pulumi:"displayNames"`
@@ -217,13 +205,6 @@ func (o GetServicePrincipalsResultOutput) ToGetServicePrincipalsResultOutput() G
 
 func (o GetServicePrincipalsResultOutput) ToGetServicePrincipalsResultOutputWithContext(ctx context.Context) GetServicePrincipalsResultOutput {
 	return o
-}
-
-// A list of client IDs of the applications associated with the service principals.
-//
-// Deprecated: The `applicationIds` property has been replaced with the `clientIds` property and will be removed in version 3.0 of the AzureAD provider
-func (o GetServicePrincipalsResultOutput) ApplicationIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.ApplicationIds }).(pulumi.StringArrayOutput)
 }
 
 // The client ID of the application associated with this service principal.

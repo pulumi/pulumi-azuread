@@ -155,9 +155,6 @@ namespace Pulumi.AzureAD
 
     public sealed class GetServicePrincipalArgs : global::Pulumi.InvokeArgs
     {
-        [Input("applicationId")]
-        public string? ApplicationId { get; set; }
-
         /// <summary>
         /// The client ID of the application associated with this service principal.
         /// </summary>
@@ -186,9 +183,6 @@ namespace Pulumi.AzureAD
 
     public sealed class GetServicePrincipalInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
-
         /// <summary>
         /// The client ID of the application associated with this service principal.
         /// </summary>
@@ -239,7 +233,6 @@ namespace Pulumi.AzureAD
         /// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServicePrincipalAppRoleResult> AppRoles;
-        public readonly string ApplicationId;
         /// <summary>
         /// The tenant ID where the associated application is registered.
         /// </summary>
@@ -342,8 +335,6 @@ namespace Pulumi.AzureAD
 
             ImmutableArray<Outputs.GetServicePrincipalAppRoleResult> appRoles,
 
-            string applicationId,
-
             string applicationTenantId,
 
             string clientId,
@@ -395,7 +386,6 @@ namespace Pulumi.AzureAD
             AppRoleAssignmentRequired = appRoleAssignmentRequired;
             AppRoleIds = appRoleIds;
             AppRoles = appRoles;
-            ApplicationId = applicationId;
             ApplicationTenantId = applicationTenantId;
             ClientId = clientId;
             Description = description;

@@ -32,29 +32,6 @@ public final class ApplicationPasswordState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The object ID of the application for which this password should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="applicationObjectId")
-    private @Nullable Output<String> applicationObjectId;
-
-    /**
-     * @return The object ID of the application for which this password should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<Output<String>> applicationObjectId() {
-        return Optional.ofNullable(this.applicationObjectId);
-    }
-
-    /**
      * A display name for the password. Changing this field forces a new resource to be created.
      * 
      */
@@ -87,14 +64,22 @@ public final class ApplicationPasswordState extends com.pulumi.resources.Resourc
     /**
      * A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     @Import(name="endDateRelative")
     private @Nullable Output<String> endDateRelative;
 
     /**
      * @return A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     public Optional<Output<String>> endDateRelative() {
         return Optional.ofNullable(this.endDateRelative);
     }
@@ -163,7 +148,6 @@ public final class ApplicationPasswordState extends com.pulumi.resources.Resourc
 
     private ApplicationPasswordState(ApplicationPasswordState $) {
         this.applicationId = $.applicationId;
-        this.applicationObjectId = $.applicationObjectId;
         this.displayName = $.displayName;
         this.endDate = $.endDate;
         this.endDateRelative = $.endDateRelative;
@@ -213,35 +197,6 @@ public final class ApplicationPasswordState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param applicationObjectId The object ID of the application for which this password should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(@Nullable Output<String> applicationObjectId) {
-            $.applicationObjectId = applicationObjectId;
-            return this;
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application for which this password should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(String applicationObjectId) {
-            return applicationObjectId(Output.of(applicationObjectId));
-        }
-
-        /**
          * @param displayName A display name for the password. Changing this field forces a new resource to be created.
          * 
          * @return builder
@@ -288,7 +243,11 @@ public final class ApplicationPasswordState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * 
          */
+        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
         public Builder endDateRelative(@Nullable Output<String> endDateRelative) {
             $.endDateRelative = endDateRelative;
             return this;
@@ -299,7 +258,11 @@ public final class ApplicationPasswordState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * 
          */
+        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
         public Builder endDateRelative(String endDateRelative) {
             return endDateRelative(Output.of(endDateRelative));
         }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -63,7 +63,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -110,8 +110,8 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-azure/sdk/v5/go/azure/keyvault"
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/keyvault"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -209,10 +209,6 @@ type ApplicationCertificate struct {
 
 	// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// The object ID of the application for which this certificate should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
 	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
@@ -222,6 +218,8 @@ type ApplicationCertificate struct {
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	//
 	// > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrOutput `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
@@ -240,6 +238,9 @@ func NewApplicationCertificate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
+	}
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
@@ -275,10 +276,6 @@ func GetApplicationCertificate(ctx *pulumi.Context,
 type applicationCertificateState struct {
 	// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationId *string `pulumi:"applicationId"`
-	// The object ID of the application for which this certificate should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
 	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
@@ -288,6 +285,8 @@ type applicationCertificateState struct {
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	//
 	// > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
@@ -302,10 +301,6 @@ type applicationCertificateState struct {
 type ApplicationCertificateState struct {
 	// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationId pulumi.StringPtrInput
-	// The object ID of the application for which this certificate should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringPtrInput
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
 	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
@@ -315,6 +310,8 @@ type ApplicationCertificateState struct {
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	//
 	// > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
@@ -332,11 +329,7 @@ func (ApplicationCertificateState) ElementType() reflect.Type {
 
 type applicationCertificateArgs struct {
 	// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
-	ApplicationId *string `pulumi:"applicationId"`
-	// The object ID of the application for which this certificate should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId *string `pulumi:"applicationObjectId"`
+	ApplicationId string `pulumi:"applicationId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
 	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
@@ -346,6 +339,8 @@ type applicationCertificateArgs struct {
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	//
 	// > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
@@ -360,11 +355,7 @@ type applicationCertificateArgs struct {
 // The set of arguments for constructing a ApplicationCertificate resource.
 type ApplicationCertificateArgs struct {
 	// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
-	ApplicationId pulumi.StringPtrInput
-	// The object ID of the application for which this certificate should be created
-	//
-	// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-	ApplicationObjectId pulumi.StringPtrInput
+	ApplicationId pulumi.StringInput
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//
 	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
@@ -374,6 +365,8 @@ type ApplicationCertificateArgs struct {
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	//
 	// > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
+	//
+	// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
@@ -477,13 +470,6 @@ func (o ApplicationCertificateOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// The object ID of the application for which this certificate should be created
-//
-// Deprecated: The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-func (o ApplicationCertificateOutput) ApplicationObjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
-}
-
 // Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 //
 // > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
@@ -499,6 +485,8 @@ func (o ApplicationCertificateOutput) EndDate() pulumi.StringOutput {
 // A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 //
 // > One of `endDate` or `endDateRelative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
+//
+// Deprecated: The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
 func (o ApplicationCertificateOutput) EndDateRelative() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringPtrOutput { return v.EndDateRelative }).(pulumi.StringPtrOutput)
 }

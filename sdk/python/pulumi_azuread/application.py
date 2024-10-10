@@ -503,7 +503,6 @@ class _ApplicationState:
                  api: Optional[pulumi.Input['ApplicationApiArgs']] = None,
                  app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
-                 application_id: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
@@ -541,7 +540,6 @@ class _ApplicationState:
         :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] application_id: The Application ID (also called Client ID)
         :param pulumi.Input[str] client_id: The Client ID for the application.
         :param pulumi.Input[str] description: A description of the application, as shown to end users.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
@@ -593,11 +591,6 @@ class _ApplicationState:
             pulumi.set(__self__, "app_role_ids", app_role_ids)
         if app_roles is not None:
             pulumi.set(__self__, "app_roles", app_roles)
-        if application_id is not None:
-            warnings.warn("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""application_id is deprecated: The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
-        if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if description is not None:
@@ -698,19 +691,6 @@ class _ApplicationState:
     @app_roles.setter
     def app_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]]):
         pulumi.set(self, "app_roles", value)
-
-    @property
-    @pulumi.getter(name="applicationId")
-    @_utilities.deprecated("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
-    def application_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Application ID (also called Client ID)
-        """
-        return pulumi.get(self, "application_id")
-
-    @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "application_id", value)
 
     @property
     @pulumi.getter(name="clientId")
@@ -1164,8 +1144,8 @@ class Application(pulumi.CustomResource):
                 "mapped_claims_enabled": True,
                 "requested_access_token_version": 2,
                 "known_client_applications": [
-                    known1["applicationId"],
-                    known2["applicationId"],
+                    known1["clientId"],
+                    known2["clientId"],
                 ],
                 "oauth2_permission_scopes": [
                     {
@@ -1345,8 +1325,8 @@ class Application(pulumi.CustomResource):
                 "mapped_claims_enabled": True,
                 "requested_access_token_version": 2,
                 "known_client_applications": [
-                    known1["applicationId"],
-                    known2["applicationId"],
+                    known1["clientId"],
+                    known2["clientId"],
                 ],
                 "oauth2_permission_scopes": [
                     {
@@ -1539,7 +1519,6 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["terms_of_service_url"] = terms_of_service_url
             __props__.__dict__["web"] = web
             __props__.__dict__["app_role_ids"] = None
-            __props__.__dict__["application_id"] = None
             __props__.__dict__["client_id"] = None
             __props__.__dict__["disabled_by_microsoft"] = None
             __props__.__dict__["logo_url"] = None
@@ -1559,7 +1538,6 @@ class Application(pulumi.CustomResource):
             api: Optional[pulumi.Input[Union['ApplicationApiArgs', 'ApplicationApiArgsDict']]] = None,
             app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationAppRoleArgs', 'ApplicationAppRoleArgsDict']]]]] = None,
-            application_id: Optional[pulumi.Input[str]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1602,7 +1580,6 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Union['ApplicationApiArgs', 'ApplicationApiArgsDict']] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationAppRoleArgs', 'ApplicationAppRoleArgsDict']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] application_id: The Application ID (also called Client ID)
         :param pulumi.Input[str] client_id: The Client ID for the application.
         :param pulumi.Input[str] description: A description of the application, as shown to end users.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
@@ -1655,7 +1632,6 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["api"] = api
         __props__.__dict__["app_role_ids"] = app_role_ids
         __props__.__dict__["app_roles"] = app_roles
-        __props__.__dict__["application_id"] = application_id
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["description"] = description
         __props__.__dict__["device_only_auth_enabled"] = device_only_auth_enabled
@@ -1713,15 +1689,6 @@ class Application(pulumi.CustomResource):
         A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         """
         return pulumi.get(self, "app_roles")
-
-    @property
-    @pulumi.getter(name="applicationId")
-    @_utilities.deprecated("""The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider""")
-    def application_id(self) -> pulumi.Output[str]:
-        """
-        The Application ID (also called Client ID)
-        """
-        return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="clientId")
