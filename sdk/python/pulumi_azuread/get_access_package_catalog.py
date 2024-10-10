@@ -157,9 +157,6 @@ def get_access_package_catalog(display_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
         published=pulumi.get(__ret__, 'published'))
-
-
-@_utilities.lift_output_func(get_access_package_catalog)
 def get_access_package_catalog_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                       object_id: Optional[pulumi.Input[Optional[str]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPackageCatalogResult]:
@@ -201,4 +198,15 @@ def get_access_package_catalog_output(display_name: Optional[pulumi.Input[Option
            
            > One of `display_name` or `object_id` must be specified.
     """
-    ...
+    __args__ = dict()
+    __args__['displayName'] = display_name
+    __args__['objectId'] = object_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getAccessPackageCatalog:getAccessPackageCatalog', __args__, opts=opts, typ=GetAccessPackageCatalogResult)
+    return __ret__.apply(lambda __response__: GetAccessPackageCatalogResult(
+        description=pulumi.get(__response__, 'description'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        externally_visible=pulumi.get(__response__, 'externally_visible'),
+        id=pulumi.get(__response__, 'id'),
+        object_id=pulumi.get(__response__, 'object_id'),
+        published=pulumi.get(__response__, 'published')))
