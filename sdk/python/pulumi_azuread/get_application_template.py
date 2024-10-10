@@ -187,9 +187,6 @@ def get_application_template(display_name: Optional[str] = None,
         supported_provisioning_types=pulumi.get(__ret__, 'supported_provisioning_types'),
         supported_single_sign_on_modes=pulumi.get(__ret__, 'supported_single_sign_on_modes'),
         template_id=pulumi.get(__ret__, 'template_id'))
-
-
-@_utilities.lift_output_func(get_application_template)
 def get_application_template_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                     template_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationTemplateResult]:
@@ -216,4 +213,18 @@ def get_application_template_output(display_name: Optional[pulumi.Input[Optional
            
            > One of `template_id` or `display_name` must be specified.
     """
-    ...
+    __args__ = dict()
+    __args__['displayName'] = display_name
+    __args__['templateId'] = template_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getApplicationTemplate:getApplicationTemplate', __args__, opts=opts, typ=GetApplicationTemplateResult)
+    return __ret__.apply(lambda __response__: GetApplicationTemplateResult(
+        categories=pulumi.get(__response__, 'categories'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        homepage_url=pulumi.get(__response__, 'homepage_url'),
+        id=pulumi.get(__response__, 'id'),
+        logo_url=pulumi.get(__response__, 'logo_url'),
+        publisher=pulumi.get(__response__, 'publisher'),
+        supported_provisioning_types=pulumi.get(__response__, 'supported_provisioning_types'),
+        supported_single_sign_on_modes=pulumi.get(__response__, 'supported_single_sign_on_modes'),
+        template_id=pulumi.get(__response__, 'template_id')))

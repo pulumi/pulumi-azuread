@@ -157,9 +157,6 @@ def get_access_package(catalog_id: Optional[str] = None,
         hidden=pulumi.get(__ret__, 'hidden'),
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'))
-
-
-@_utilities.lift_output_func(get_access_package)
 def get_access_package_output(catalog_id: Optional[pulumi.Input[Optional[str]]] = None,
                               display_name: Optional[pulumi.Input[Optional[str]]] = None,
                               object_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -203,4 +200,16 @@ def get_access_package_output(catalog_id: Optional[pulumi.Input[Optional[str]]] 
            
            > Either `object_id`, or both `catalog_id` and `display_name`, must be specified.
     """
-    ...
+    __args__ = dict()
+    __args__['catalogId'] = catalog_id
+    __args__['displayName'] = display_name
+    __args__['objectId'] = object_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getAccessPackage:getAccessPackage', __args__, opts=opts, typ=GetAccessPackageResult)
+    return __ret__.apply(lambda __response__: GetAccessPackageResult(
+        catalog_id=pulumi.get(__response__, 'catalog_id'),
+        description=pulumi.get(__response__, 'description'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        hidden=pulumi.get(__response__, 'hidden'),
+        id=pulumi.get(__response__, 'id'),
+        object_id=pulumi.get(__response__, 'object_id')))

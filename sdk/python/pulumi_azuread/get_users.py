@@ -203,9 +203,6 @@ def get_users(employee_ids: Optional[Sequence[str]] = None,
         return_all=pulumi.get(__ret__, 'return_all'),
         user_principal_names=pulumi.get(__ret__, 'user_principal_names'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_users)
 def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      ignore_missing: Optional[pulumi.Input[Optional[bool]]] = None,
                      mail_nicknames: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -248,4 +245,23 @@ def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[str]]
            
            > Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
     """
-    ...
+    __args__ = dict()
+    __args__['employeeIds'] = employee_ids
+    __args__['ignoreMissing'] = ignore_missing
+    __args__['mailNicknames'] = mail_nicknames
+    __args__['mails'] = mails
+    __args__['objectIds'] = object_ids
+    __args__['returnAll'] = return_all
+    __args__['userPrincipalNames'] = user_principal_names
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
+    return __ret__.apply(lambda __response__: GetUsersResult(
+        employee_ids=pulumi.get(__response__, 'employee_ids'),
+        id=pulumi.get(__response__, 'id'),
+        ignore_missing=pulumi.get(__response__, 'ignore_missing'),
+        mail_nicknames=pulumi.get(__response__, 'mail_nicknames'),
+        mails=pulumi.get(__response__, 'mails'),
+        object_ids=pulumi.get(__response__, 'object_ids'),
+        return_all=pulumi.get(__response__, 'return_all'),
+        user_principal_names=pulumi.get(__response__, 'user_principal_names'),
+        users=pulumi.get(__response__, 'users')))
