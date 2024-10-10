@@ -9,6 +9,4 @@ resources:
   password:
     type: azuread:ApplicationPassword
     properties:
-      applicationId: ${example.id}
-      startDate: 2024-10-10T00:00:00Z
-      endDateRelative: 24h
+      applicationObjectId: ${example.id}
