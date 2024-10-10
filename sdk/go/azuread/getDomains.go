@@ -34,7 +34,8 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
-// aadDomains, err := azuread.GetDomains(ctx, nil, nil);
+// aadDomains, err := azuread.GetDomains(ctx, &azuread.GetDomainsArgs{
+// }, nil);
 // if err != nil {
 // return err
 // }

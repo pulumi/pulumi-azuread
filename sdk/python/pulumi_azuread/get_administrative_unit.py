@@ -162,9 +162,6 @@ def get_administrative_unit(display_name: Optional[str] = None,
         members=pulumi.get(__ret__, 'members'),
         object_id=pulumi.get(__ret__, 'object_id'),
         visibility=pulumi.get(__ret__, 'visibility'))
-
-
-@_utilities.lift_output_func(get_administrative_unit)
 def get_administrative_unit_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                    object_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAdministrativeUnitResult]:
@@ -205,4 +202,15 @@ def get_administrative_unit_output(display_name: Optional[pulumi.Input[Optional[
            
            > One of `display_name` or `object_id` must be specified.
     """
-    ...
+    __args__ = dict()
+    __args__['displayName'] = display_name
+    __args__['objectId'] = object_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getAdministrativeUnit:getAdministrativeUnit', __args__, opts=opts, typ=GetAdministrativeUnitResult)
+    return __ret__.apply(lambda __response__: GetAdministrativeUnitResult(
+        description=pulumi.get(__response__, 'description'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        members=pulumi.get(__response__, 'members'),
+        object_id=pulumi.get(__response__, 'object_id'),
+        visibility=pulumi.get(__response__, 'visibility')))
