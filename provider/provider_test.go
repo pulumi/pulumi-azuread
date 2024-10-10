@@ -25,10 +25,10 @@ func TestSecretsAreEncrypted(t *testing.T) {
 		opttest.SkipInstall(),
 	)
 
-	res := test.Up()
+	res := test.Up(t)
 
 	var d apitype.DeploymentV3
-	require.NoError(t, json.Unmarshal(test.ExportStack().Deployment, &d))
+	require.NoError(t, json.Unmarshal(test.ExportStack(t).Deployment, &d))
 
 	require.Len(t, d.Resources, 2) // [stack, provider]
 	providerState := d.Resources[1]

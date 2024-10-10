@@ -216,9 +216,6 @@ def get_groups(display_name_prefix: Optional[str] = None,
         object_ids=pulumi.get(__ret__, 'object_ids'),
         return_all=pulumi.get(__ret__, 'return_all'),
         security_enabled=pulumi.get(__ret__, 'security_enabled'))
-
-
-@_utilities.lift_output_func(get_groups)
 def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                       display_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       ignore_missing: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -297,4 +294,22 @@ def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]]
            
            > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
     """
-    ...
+    __args__ = dict()
+    __args__['displayNamePrefix'] = display_name_prefix
+    __args__['displayNames'] = display_names
+    __args__['ignoreMissing'] = ignore_missing
+    __args__['mailEnabled'] = mail_enabled
+    __args__['objectIds'] = object_ids
+    __args__['returnAll'] = return_all
+    __args__['securityEnabled'] = security_enabled
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('azuread:index/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult)
+    return __ret__.apply(lambda __response__: GetGroupsResult(
+        display_name_prefix=pulumi.get(__response__, 'display_name_prefix'),
+        display_names=pulumi.get(__response__, 'display_names'),
+        id=pulumi.get(__response__, 'id'),
+        ignore_missing=pulumi.get(__response__, 'ignore_missing'),
+        mail_enabled=pulumi.get(__response__, 'mail_enabled'),
+        object_ids=pulumi.get(__response__, 'object_ids'),
+        return_all=pulumi.get(__response__, 'return_all'),
+        security_enabled=pulumi.get(__response__, 'security_enabled')))
