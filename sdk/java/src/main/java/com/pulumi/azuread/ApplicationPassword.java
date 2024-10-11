@@ -130,24 +130,6 @@ public class ApplicationPassword extends com.pulumi.resources.CustomResource {
         return this.applicationId;
     }
     /**
-     * The object ID of the application for which this password should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Export(name="applicationObjectId", refs={String.class}, tree="[0]")
-    private Output<String> applicationObjectId;
-
-    /**
-     * @return The object ID of the application for which this password should be created
-     * 
-     */
-    public Output<String> applicationObjectId() {
-        return this.applicationObjectId;
-    }
-    /**
      * A display name for the password. Changing this field forces a new resource to be created.
      * 
      */
@@ -178,7 +160,11 @@ public class ApplicationPassword extends com.pulumi.resources.CustomResource {
     /**
      * A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     @Export(name="endDateRelative", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endDateRelative;
 
@@ -258,7 +244,7 @@ public class ApplicationPassword extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApplicationPassword(java.lang.String name, @Nullable ApplicationPasswordArgs args) {
+    public ApplicationPassword(java.lang.String name, ApplicationPasswordArgs args) {
         this(name, args, null);
     }
     /**
@@ -267,7 +253,7 @@ public class ApplicationPassword extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApplicationPassword(java.lang.String name, @Nullable ApplicationPasswordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ApplicationPassword(java.lang.String name, ApplicationPasswordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/applicationPassword:ApplicationPassword", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -275,7 +261,7 @@ public class ApplicationPassword extends com.pulumi.resources.CustomResource {
         super("azuread:index/applicationPassword:ApplicationPassword", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ApplicationPasswordArgs makeArgs(@Nullable ApplicationPasswordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ApplicationPasswordArgs makeArgs(ApplicationPasswordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

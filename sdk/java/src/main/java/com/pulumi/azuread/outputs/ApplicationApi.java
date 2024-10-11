@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApplicationApi {
     /**
-     * @return A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+     * @return A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
      * 
      */
     private @Nullable List<String> knownClientApplications;
@@ -38,7 +38,7 @@ public final class ApplicationApi {
 
     private ApplicationApi() {}
     /**
-     * @return A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+     * @return A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
      * 
      */
     public List<String> knownClientApplications() {

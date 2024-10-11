@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
  * const exampleServicePrincipalTokenSigningCertificate = new azuread.ServicePrincipalTokenSigningCertificate("example", {servicePrincipalId: exampleServicePrincipal.id});
  * ```
  *
@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = new azuread.Application("example", {displayName: "example"});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
  * const exampleServicePrincipalTokenSigningCertificate = new azuread.ServicePrincipalTokenSigningCertificate("example", {
  *     servicePrincipalId: exampleServicePrincipal.id,
  *     displayName: "CN=example.com",
@@ -86,7 +86,7 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
      */
     public /*out*/ readonly keyId!: pulumi.Output<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
     /**
@@ -161,7 +161,7 @@ export interface ServicePrincipalTokenSigningCertificateState {
      */
     keyId?: pulumi.Input<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      */
     servicePrincipalId?: pulumi.Input<string>;
     /**
@@ -193,7 +193,7 @@ export interface ServicePrincipalTokenSigningCertificateArgs {
      */
     endDate?: pulumi.Input<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      */
     servicePrincipalId: pulumi.Input<string>;
 }

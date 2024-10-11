@@ -168,6 +168,10 @@ export class ConditionalAccessPolicy extends pulumi.CustomResource {
      */
     public readonly grantControls!: pulumi.Output<outputs.ConditionalAccessPolicyGrantControls | undefined>;
     /**
+     * The object ID of the policy
+     */
+    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    /**
      * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
      *
      * > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
@@ -194,6 +198,7 @@ export class ConditionalAccessPolicy extends pulumi.CustomResource {
             resourceInputs["conditions"] = state ? state.conditions : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["grantControls"] = state ? state.grantControls : undefined;
+            resourceInputs["objectId"] = state ? state.objectId : undefined;
             resourceInputs["sessionControls"] = state ? state.sessionControls : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
         } else {
@@ -212,6 +217,7 @@ export class ConditionalAccessPolicy extends pulumi.CustomResource {
             resourceInputs["grantControls"] = args ? args.grantControls : undefined;
             resourceInputs["sessionControls"] = args ? args.sessionControls : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["objectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConditionalAccessPolicy.__pulumiType, name, resourceInputs, opts);
@@ -234,6 +240,10 @@ export interface ConditionalAccessPolicyState {
      * A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      */
     grantControls?: pulumi.Input<inputs.ConditionalAccessPolicyGrantControls>;
+    /**
+     * The object ID of the policy
+     */
+    objectId?: pulumi.Input<string>;
     /**
      * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
      *

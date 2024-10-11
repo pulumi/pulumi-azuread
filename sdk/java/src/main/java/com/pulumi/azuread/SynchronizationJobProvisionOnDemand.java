@@ -42,11 +42,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.Group;
  * import com.pulumi.azuread.GroupArgs;
  * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
- * import com.pulumi.azuread.Application;
- * import com.pulumi.azuread.ApplicationArgs;
- * import com.pulumi.azuread.inputs.ApplicationFeatureTagArgs;
- * import com.pulumi.azuread.ServicePrincipal;
- * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import com.pulumi.azuread.ApplicationFromTemplate;
+ * import com.pulumi.azuread.ApplicationFromTemplateArgs;
+ * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
  * import com.pulumi.azuread.SynchronizationSecret;
  * import com.pulumi.azuread.SynchronizationSecretArgs;
  * import com.pulumi.azuread.inputs.SynchronizationSecretCredentialArgs;
@@ -80,22 +78,17 @@ import javax.annotation.Nullable;
  *             .displayName("Azure Databricks SCIM Provisioning Connector")
  *             .build());
  * 
- *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
+ *         var exampleApplicationFromTemplate = new ApplicationFromTemplate("exampleApplicationFromTemplate", ApplicationFromTemplateArgs.builder()
  *             .displayName("example")
  *             .templateId(example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()))
- *             .featureTags(ApplicationFeatureTagArgs.builder()
- *                 .enterprise(true)
- *                 .gallery(true)
- *                 .build())
  *             .build());
  * 
- *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .clientId(exampleApplication.clientId())
- *             .useExisting(true)
+ *         final var exampleGetServicePrincipal = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+ *             .objectId(exampleApplicationFromTemplate.servicePrincipalObjectId())
  *             .build());
  * 
  *         var exampleSynchronizationSecret = new SynchronizationSecret("exampleSynchronizationSecret", SynchronizationSecretArgs.builder()
- *             .servicePrincipalId(exampleServicePrincipal.id())
+ *             .servicePrincipalId(exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult).applyValue(exampleGetServicePrincipal -> exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id())))
  *             .credentials(            
  *                 SynchronizationSecretCredentialArgs.builder()
  *                     .key("BaseAddress")
@@ -108,13 +101,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSynchronizationJob = new SynchronizationJob("exampleSynchronizationJob", SynchronizationJobArgs.builder()
- *             .servicePrincipalId(exampleServicePrincipal.id())
+ *             .servicePrincipalId(exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult).applyValue(exampleGetServicePrincipal -> exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id())))
  *             .templateId("dataBricks")
  *             .enabled(true)
  *             .build());
  * 
  *         var exampleSynchronizationJobProvisionOnDemand = new SynchronizationJobProvisionOnDemand("exampleSynchronizationJobProvisionOnDemand", SynchronizationJobProvisionOnDemandArgs.builder()
- *             .servicePrincipalId(exampleServicePrincipal.id())
+ *             .servicePrincipalId(exampleSynchronizationJob.servicePrincipalId())
  *             .synchronizationJobId(exampleSynchronizationJob.id())
  *             .parameters(SynchronizationJobProvisionOnDemandParameterArgs.builder()
  *                 .ruleId("")
@@ -153,28 +146,28 @@ public class SynchronizationJobProvisionOnDemand extends com.pulumi.resources.Cu
         return this.parameters;
     }
     /**
-     * The object ID of the service principal for the synchronization job.
+     * The ID of the service principal for the synchronization job.
      * 
      */
     @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for the synchronization job.
+     * @return The ID of the service principal for the synchronization job.
      * 
      */
     public Output<String> servicePrincipalId() {
         return this.servicePrincipalId;
     }
     /**
-     * Identifier of the synchronization template this job is based on.
+     * The ID of the synchronization job.
      * 
      */
     @Export(name="synchronizationJobId", refs={String.class}, tree="[0]")
     private Output<String> synchronizationJobId;
 
     /**
-     * @return Identifier of the synchronization template this job is based on.
+     * @return The ID of the synchronization job.
      * 
      */
     public Output<String> synchronizationJobId() {

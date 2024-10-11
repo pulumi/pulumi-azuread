@@ -27,7 +27,7 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, account_enabled=None, alternative_names=None, app_role_assignment_required=None, app_role_ids=None, app_roles=None, application_id=None, application_tenant_id=None, client_id=None, description=None, display_name=None, feature_tags=None, features=None, homepage_url=None, id=None, login_url=None, logout_url=None, notes=None, notification_email_addresses=None, oauth2_permission_scope_ids=None, oauth2_permission_scopes=None, object_id=None, preferred_single_sign_on_mode=None, redirect_uris=None, saml_metadata_url=None, saml_single_sign_ons=None, service_principal_names=None, sign_in_audience=None, tags=None, type=None):
+    def __init__(__self__, account_enabled=None, alternative_names=None, app_role_assignment_required=None, app_role_ids=None, app_roles=None, application_tenant_id=None, client_id=None, description=None, display_name=None, feature_tags=None, features=None, homepage_url=None, id=None, login_url=None, logout_url=None, notes=None, notification_email_addresses=None, oauth2_permission_scope_ids=None, oauth2_permission_scopes=None, object_id=None, preferred_single_sign_on_mode=None, redirect_uris=None, saml_metadata_url=None, saml_single_sign_ons=None, service_principal_names=None, sign_in_audience=None, tags=None, type=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         pulumi.set(__self__, "account_enabled", account_enabled)
@@ -43,9 +43,6 @@ class GetServicePrincipalResult:
         if app_roles and not isinstance(app_roles, list):
             raise TypeError("Expected argument 'app_roles' to be a list")
         pulumi.set(__self__, "app_roles", app_roles)
-        if application_id and not isinstance(application_id, str):
-            raise TypeError("Expected argument 'application_id' to be a str")
-        pulumi.set(__self__, "application_id", application_id)
         if application_tenant_id and not isinstance(application_tenant_id, str):
             raise TypeError("Expected argument 'application_tenant_id' to be a str")
         pulumi.set(__self__, "application_tenant_id", application_tenant_id)
@@ -155,12 +152,6 @@ class GetServicePrincipalResult:
         A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         """
         return pulumi.get(self, "app_roles")
-
-    @property
-    @pulumi.getter(name="applicationId")
-    @_utilities.deprecated("""The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider""")
-    def application_id(self) -> str:
-        return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="applicationTenantId")
@@ -356,7 +347,6 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             app_role_assignment_required=self.app_role_assignment_required,
             app_role_ids=self.app_role_ids,
             app_roles=self.app_roles,
-            application_id=self.application_id,
             application_tenant_id=self.application_tenant_id,
             client_id=self.client_id,
             description=self.description,
@@ -382,8 +372,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             type=self.type)
 
 
-def get_service_principal(application_id: Optional[str] = None,
-                          client_id: Optional[str] = None,
+def get_service_principal(client_id: Optional[str] = None,
                           display_name: Optional[str] = None,
                           object_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
@@ -435,7 +424,6 @@ def get_service_principal(application_id: Optional[str] = None,
            > One of `client_id`, `display_name` or `object_id` must be specified.
     """
     __args__ = dict()
-    __args__['applicationId'] = application_id
     __args__['clientId'] = client_id
     __args__['displayName'] = display_name
     __args__['objectId'] = object_id
@@ -448,7 +436,6 @@ def get_service_principal(application_id: Optional[str] = None,
         app_role_assignment_required=pulumi.get(__ret__, 'app_role_assignment_required'),
         app_role_ids=pulumi.get(__ret__, 'app_role_ids'),
         app_roles=pulumi.get(__ret__, 'app_roles'),
-        application_id=pulumi.get(__ret__, 'application_id'),
         application_tenant_id=pulumi.get(__ret__, 'application_tenant_id'),
         client_id=pulumi.get(__ret__, 'client_id'),
         description=pulumi.get(__ret__, 'description'),
@@ -472,8 +459,7 @@ def get_service_principal(application_id: Optional[str] = None,
         sign_in_audience=pulumi.get(__ret__, 'sign_in_audience'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
-def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                 client_id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_service_principal_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                  object_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalResult]:
@@ -525,7 +511,6 @@ def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[
            > One of `client_id`, `display_name` or `object_id` must be specified.
     """
     __args__ = dict()
-    __args__['applicationId'] = application_id
     __args__['clientId'] = client_id
     __args__['displayName'] = display_name
     __args__['objectId'] = object_id
@@ -537,7 +522,6 @@ def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[
         app_role_assignment_required=pulumi.get(__response__, 'app_role_assignment_required'),
         app_role_ids=pulumi.get(__response__, 'app_role_ids'),
         app_roles=pulumi.get(__response__, 'app_roles'),
-        application_id=pulumi.get(__response__, 'application_id'),
         application_tenant_id=pulumi.get(__response__, 'application_tenant_id'),
         client_id=pulumi.get(__response__, 'client_id'),
         description=pulumi.get(__response__, 'description'),

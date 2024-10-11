@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
+	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +31,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -75,7 +75,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ClientId: example.ApplicationId,
+//				ClientId: example.ClientId,
 //			})
 //			if err != nil {
 //				return err
@@ -103,7 +103,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -129,7 +129,7 @@ import (
 //				return err
 //			}
 //			internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internal", &azuread.ServicePrincipalArgs{
-//				ClientId: internal.ApplicationId,
+//				ClientId: internal.ClientId,
 //			})
 //			if err != nil {
 //				return err
@@ -138,7 +138,7 @@ import (
 //				DisplayName: pulumi.String("example"),
 //				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
 //					&azuread.ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: internal.ApplicationId,
+//						ResourceAppId: internal.ClientId,
 //						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
@@ -154,7 +154,7 @@ import (
 //				return err
 //			}
 //			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
-//				ClientId: example.ApplicationId,
+//				ClientId: example.ClientId,
 //			})
 //			if err != nil {
 //				return err

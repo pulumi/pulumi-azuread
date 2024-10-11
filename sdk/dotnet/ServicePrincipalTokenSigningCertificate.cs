@@ -29,7 +29,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ClientId = example.ApplicationId,
+    ///         ClientId = example.ClientId,
     ///     });
     /// 
     ///     var exampleServicePrincipalTokenSigningCertificate = new AzureAD.ServicePrincipalTokenSigningCertificate("example", new()
@@ -57,7 +57,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
-    ///         ClientId = example.ApplicationId,
+    ///         ClientId = example.ClientId,
     ///     });
     /// 
     ///     var exampleServicePrincipalTokenSigningCertificate = new AzureAD.ServicePrincipalTokenSigningCertificate("example", new()
@@ -104,7 +104,7 @@ namespace Pulumi.AzureAD
         public Output<string> KeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.AzureAD
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.AzureAD
         public Input<string>? KeyId { get; set; }
 
         /// <summary>
-        /// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }

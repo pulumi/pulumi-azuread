@@ -24,7 +24,7 @@ class ServicePrincipalTokenSigningCertificateArgs:
                  end_date: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalTokenSigningCertificate resource.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] display_name: Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
                
                > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
@@ -40,7 +40,7 @@ class ServicePrincipalTokenSigningCertificateArgs:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -92,7 +92,7 @@ class _ServicePrincipalTokenSigningCertificateState:
                > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
         :param pulumi.Input[str] end_date: The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] key_id: A UUID used to uniquely identify the verify certificate.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
         :param pulumi.Input[str] thumbprint: A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
         :param pulumi.Input[str] value: The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\\n` or the footer `\\n-----END CERTIFICATE-----`.
@@ -154,7 +154,7 @@ class _ServicePrincipalTokenSigningCertificateState:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -218,7 +218,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
         ```
 
@@ -229,7 +229,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example",
             service_principal_id=example_service_principal.id,
             display_name="CN=example.com",
@@ -252,7 +252,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
                
                > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
         :param pulumi.Input[str] end_date: The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         """
         ...
     @overload
@@ -270,7 +270,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example", service_principal_id=example_service_principal.id)
         ```
 
@@ -281,7 +281,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example = azuread.Application("example", display_name="example")
-        example_service_principal = azuread.ServicePrincipal("example", client_id=example.application_id)
+        example_service_principal = azuread.ServicePrincipal("example", client_id=example.client_id)
         example_service_principal_token_signing_certificate = azuread.ServicePrincipalTokenSigningCertificate("example",
             service_principal_id=example_service_principal.id,
             display_name="CN=example.com",
@@ -365,7 +365,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
                > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
         :param pulumi.Input[str] end_date: The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] key_id: A UUID used to uniquely identify the verify certificate.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_id: The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
         :param pulumi.Input[str] thumbprint: A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
         :param pulumi.Input[str] value: The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\\n` or the footer `\\n-----END CERTIFICATE-----`.
@@ -413,7 +413,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_id")
 

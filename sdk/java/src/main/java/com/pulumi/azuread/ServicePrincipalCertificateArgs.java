@@ -55,7 +55,11 @@ public final class ServicePrincipalCertificateArgs extends com.pulumi.resources.
      * 
      * &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     @Import(name="endDateRelative")
     private @Nullable Output<String> endDateRelative;
 
@@ -64,7 +68,11 @@ public final class ServicePrincipalCertificateArgs extends com.pulumi.resources.
      * 
      * &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     public Optional<Output<String>> endDateRelative() {
         return Optional.ofNullable(this.endDateRelative);
     }
@@ -85,14 +93,14 @@ public final class ServicePrincipalCertificateArgs extends com.pulumi.resources.
     }
 
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
     @Import(name="servicePrincipalId", required=true)
     private Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * @return The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      * 
      */
     public Output<String> servicePrincipalId() {
@@ -228,7 +236,11 @@ public final class ServicePrincipalCertificateArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * 
          */
+        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
         public Builder endDateRelative(@Nullable Output<String> endDateRelative) {
             $.endDateRelative = endDateRelative;
             return this;
@@ -241,7 +253,11 @@ public final class ServicePrincipalCertificateArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * 
          */
+        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
         public Builder endDateRelative(String endDateRelative) {
             return endDateRelative(Output.of(endDateRelative));
         }
@@ -268,7 +284,7 @@ public final class ServicePrincipalCertificateArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+         * @param servicePrincipalId The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -279,7 +295,7 @@ public final class ServicePrincipalCertificateArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+         * @param servicePrincipalId The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 

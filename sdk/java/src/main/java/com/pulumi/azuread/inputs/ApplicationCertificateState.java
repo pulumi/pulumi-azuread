@@ -31,29 +31,6 @@ public final class ApplicationCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The object ID of the application for which this certificate should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="applicationObjectId")
-    private @Nullable Output<String> applicationObjectId;
-
-    /**
-     * @return The object ID of the application for which this certificate should be created
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<Output<String>> applicationObjectId() {
-        return Optional.ofNullable(this.applicationObjectId);
-    }
-
-    /**
      * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
      * 
      * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
@@ -92,7 +69,11 @@ public final class ApplicationCertificateState extends com.pulumi.resources.Reso
      * 
      * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     @Import(name="endDateRelative")
     private @Nullable Output<String> endDateRelative;
 
@@ -101,7 +82,11 @@ public final class ApplicationCertificateState extends com.pulumi.resources.Reso
      * 
      * &gt; One of `end_date` or `end_date_relative` must be specified. The maximum allowed duration is determined by Azure AD and is typically around 2 years from the creation date.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     public Optional<Output<String>> endDateRelative() {
         return Optional.ofNullable(this.endDateRelative);
     }
@@ -170,7 +155,6 @@ public final class ApplicationCertificateState extends com.pulumi.resources.Reso
 
     private ApplicationCertificateState(ApplicationCertificateState $) {
         this.applicationId = $.applicationId;
-        this.applicationObjectId = $.applicationObjectId;
         this.encoding = $.encoding;
         this.endDate = $.endDate;
         this.endDateRelative = $.endDateRelative;
@@ -217,35 +201,6 @@ public final class ApplicationCertificateState extends com.pulumi.resources.Reso
          */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application for which this certificate should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(@Nullable Output<String> applicationObjectId) {
-            $.applicationObjectId = applicationObjectId;
-            return this;
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application for which this certificate should be created
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(String applicationObjectId) {
-            return applicationObjectId(Output.of(applicationObjectId));
         }
 
         /**
@@ -301,7 +256,11 @@ public final class ApplicationCertificateState extends com.pulumi.resources.Reso
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * 
          */
+        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
         public Builder endDateRelative(@Nullable Output<String> endDateRelative) {
             $.endDateRelative = endDateRelative;
             return this;
@@ -314,7 +273,11 @@ public final class ApplicationCertificateState extends com.pulumi.resources.Reso
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * 
          */
+        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
         public Builder endDateRelative(String endDateRelative) {
             return endDateRelative(Output.of(endDateRelative));
         }

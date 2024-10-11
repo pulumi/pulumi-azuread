@@ -76,8 +76,8 @@ import javax.annotation.Nullable;
  *                 .mappedClaimsEnabled(true)
  *                 .requestedAccessTokenVersion(2)
  *                 .knownClientApplications(                
- *                     known1.applicationId(),
- *                     known2.applicationId())
+ *                     known1.clientId(),
+ *                     known2.clientId())
  *                 .oauth2PermissionScopes(                
  *                     ApplicationApiOauth2PermissionScopeArgs.builder()
  *                         .adminConsentDescription("Allow the application to access example on behalf of the signed-in user.")
@@ -230,24 +230,6 @@ public class Application extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<ApplicationAppRole>>> appRoles() {
         return Codegen.optional(this.appRoles);
-    }
-    /**
-     * The Application ID (also called Client ID)
-     * 
-     * @deprecated
-     * The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` attribute has been replaced by the `client_id` attribute and will be removed in version 3.0 of the AzureAD provider */
-    @Export(name="applicationId", refs={String.class}, tree="[0]")
-    private Output<String> applicationId;
-
-    /**
-     * @return The Application ID (also called Client ID)
-     * 
-     */
-    public Output<String> applicationId() {
-        return this.applicationId;
     }
     /**
      * The Client ID for the application.

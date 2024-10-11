@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .clientId(example.applicationId())
+ *             .clientId(example.clientId())
  *             .build());
  * 
  *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
@@ -140,13 +140,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var internalServicePrincipal = new ServicePrincipal("internalServicePrincipal", ServicePrincipalArgs.builder()
- *             .clientId(internal.applicationId())
+ *             .clientId(internal.clientId())
  *             .build());
  * 
  *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
- *                 .resourceAppId(internal.applicationId())
+ *                 .resourceAppId(internal.clientId())
  *                 .resourceAccesses(ApplicationRequiredResourceAccessResourceAccessArgs.builder()
  *                     .id(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -> appRoleIds.Query.All()))
  *                     .type("Role")
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
- *             .clientId(example.applicationId())
+ *             .clientId(example.clientId())
  *             .build());
  * 
  *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()

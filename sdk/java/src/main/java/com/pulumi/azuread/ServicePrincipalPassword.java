@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipalPassword = new ServicePrincipalPassword("exampleServicePrincipalPassword", ServicePrincipalPasswordArgs.builder()
- *             .servicePrincipalId(exampleServicePrincipal.objectId())
+ *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .build());
  * 
  *     }
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleServicePrincipalPassword = new ServicePrincipalPassword("exampleServicePrincipalPassword", ServicePrincipalPasswordArgs.builder()
- *             .servicePrincipalId(exampleServicePrincipal.objectId())
+ *             .servicePrincipalId(exampleServicePrincipal.id())
  *             .rotateWhenChanged(Map.of("rotation", exampleRotating.id()))
  *             .build());
  * 
@@ -158,7 +158,11 @@ public class ServicePrincipalPassword extends com.pulumi.resources.CustomResourc
     /**
      * A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
+     * @deprecated
+     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * 
      */
+    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
     @Export(name="endDateRelative", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endDateRelative;
 
@@ -198,14 +202,14 @@ public class ServicePrincipalPassword extends com.pulumi.resources.CustomResourc
         return Codegen.optional(this.rotateWhenChanged);
     }
     /**
-     * The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+     * The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
      * 
      */
     @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+     * @return The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
      * 
      */
     public Output<String> servicePrincipalId() {

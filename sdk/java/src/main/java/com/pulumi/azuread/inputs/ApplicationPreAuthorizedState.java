@@ -32,52 +32,6 @@ public final class ApplicationPreAuthorizedState extends com.pulumi.resources.Re
     }
 
     /**
-     * The object ID of the application to which this pre-authorized application should be added
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="applicationObjectId")
-    private @Nullable Output<String> applicationObjectId;
-
-    /**
-     * @return The object ID of the application to which this pre-authorized application should be added
-     * 
-     * @deprecated
-     * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<Output<String>> applicationObjectId() {
-        return Optional.ofNullable(this.applicationObjectId);
-    }
-
-    /**
-     * The application ID of the pre-authorized application
-     * 
-     * @deprecated
-     * The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Import(name="authorizedAppId")
-    private @Nullable Output<String> authorizedAppId;
-
-    /**
-     * @return The application ID of the pre-authorized application
-     * 
-     * @deprecated
-     * The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    public Optional<Output<String>> authorizedAppId() {
-        return Optional.ofNullable(this.authorizedAppId);
-    }
-
-    /**
      * The client ID of the application being authorized. Changing this field forces a new resource to be created.
      * 
      */
@@ -111,8 +65,6 @@ public final class ApplicationPreAuthorizedState extends com.pulumi.resources.Re
 
     private ApplicationPreAuthorizedState(ApplicationPreAuthorizedState $) {
         this.applicationId = $.applicationId;
-        this.applicationObjectId = $.applicationObjectId;
-        this.authorizedAppId = $.authorizedAppId;
         this.authorizedClientId = $.authorizedClientId;
         this.permissionIds = $.permissionIds;
     }
@@ -154,64 +106,6 @@ public final class ApplicationPreAuthorizedState extends com.pulumi.resources.Re
          */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application to which this pre-authorized application should be added
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(@Nullable Output<String> applicationObjectId) {
-            $.applicationObjectId = applicationObjectId;
-            return this;
-        }
-
-        /**
-         * @param applicationObjectId The object ID of the application to which this pre-authorized application should be added
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `application_object_id` property has been replaced with the `application_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder applicationObjectId(String applicationObjectId) {
-            return applicationObjectId(Output.of(applicationObjectId));
-        }
-
-        /**
-         * @param authorizedAppId The application ID of the pre-authorized application
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder authorizedAppId(@Nullable Output<String> authorizedAppId) {
-            $.authorizedAppId = authorizedAppId;
-            return this;
-        }
-
-        /**
-         * @param authorizedAppId The application ID of the pre-authorized application
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider
-         * 
-         */
-        @Deprecated /* The `authorized_app_id` property has been replaced with the `authorized_client_id` property and will be removed in version 3.0 of the AzureAD provider */
-        public Builder authorizedAppId(String authorizedAppId) {
-            return authorizedAppId(Output.of(authorizedAppId));
         }
 
         /**

@@ -34,14 +34,14 @@ public final class SynchronizationJobProvisionOnDemandState extends com.pulumi.r
     }
 
     /**
-     * The object ID of the service principal for the synchronization job.
+     * The ID of the service principal for the synchronization job.
      * 
      */
     @Import(name="servicePrincipalId")
     private @Nullable Output<String> servicePrincipalId;
 
     /**
-     * @return The object ID of the service principal for the synchronization job.
+     * @return The ID of the service principal for the synchronization job.
      * 
      */
     public Optional<Output<String>> servicePrincipalId() {
@@ -49,14 +49,14 @@ public final class SynchronizationJobProvisionOnDemandState extends com.pulumi.r
     }
 
     /**
-     * Identifier of the synchronization template this job is based on.
+     * The ID of the synchronization job.
      * 
      */
     @Import(name="synchronizationJobId")
     private @Nullable Output<String> synchronizationJobId;
 
     /**
-     * @return Identifier of the synchronization template this job is based on.
+     * @return The ID of the synchronization job.
      * 
      */
     public Optional<Output<String>> synchronizationJobId() {
@@ -129,7 +129,7 @@ public final class SynchronizationJobProvisionOnDemandState extends com.pulumi.r
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for the synchronization job.
+         * @param servicePrincipalId The ID of the service principal for the synchronization job.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class SynchronizationJobProvisionOnDemandState extends com.pulumi.r
         }
 
         /**
-         * @param servicePrincipalId The object ID of the service principal for the synchronization job.
+         * @param servicePrincipalId The ID of the service principal for the synchronization job.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class SynchronizationJobProvisionOnDemandState extends com.pulumi.r
         }
 
         /**
-         * @param synchronizationJobId Identifier of the synchronization template this job is based on.
+         * @param synchronizationJobId The ID of the synchronization job.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class SynchronizationJobProvisionOnDemandState extends com.pulumi.r
         }
 
         /**
-         * @param synchronizationJobId Identifier of the synchronization template this job is based on.
+         * @param synchronizationJobId The ID of the synchronization job.
          * 
          * @return builder
          * 

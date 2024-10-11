@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  *         ],
  *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
  * const exampleServicePrincipalDelegatedPermissionGrant = new azuread.ServicePrincipalDelegatedPermissionGrant("example", {
  *     servicePrincipalObjectId: exampleServicePrincipal.objectId,
  *     resourceServicePrincipalObjectId: msgraph.objectId,
@@ -82,7 +82,7 @@ import * as utilities from "./utilities";
  *         ],
  *     }],
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.applicationId});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {clientId: example.clientId});
  * const exampleUser = new azuread.User("example", {
  *     displayName: "J. Doe",
  *     userPrincipalName: "jdoe@example.com",

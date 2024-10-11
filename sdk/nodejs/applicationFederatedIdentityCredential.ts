@@ -65,12 +65,6 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
-     * The object ID of the application for which this federated identity credential should be created
-     *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    public readonly applicationObjectId!: pulumi.Output<string>;
-    /**
      * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      */
     public readonly audiences!: pulumi.Output<string[]>;
@@ -109,7 +103,6 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
         if (opts.id) {
             const state = argsOrState as ApplicationFederatedIdentityCredentialState | undefined;
             resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
             resourceInputs["audiences"] = state ? state.audiences : undefined;
             resourceInputs["credentialId"] = state ? state.credentialId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -118,6 +111,9 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
             resourceInputs["subject"] = state ? state.subject : undefined;
         } else {
             const args = argsOrState as ApplicationFederatedIdentityCredentialArgs | undefined;
+            if ((!args || args.applicationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'applicationId'");
+            }
             if ((!args || args.audiences === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'audiences'");
             }
@@ -131,7 +127,6 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
                 throw new Error("Missing required property 'subject'");
             }
             resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
             resourceInputs["audiences"] = args ? args.audiences : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -152,12 +147,6 @@ export interface ApplicationFederatedIdentityCredentialState {
      * The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      */
     applicationId?: pulumi.Input<string>;
-    /**
-     * The object ID of the application for which this federated identity credential should be created
-     *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationObjectId?: pulumi.Input<string>;
     /**
      * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      */
@@ -191,13 +180,7 @@ export interface ApplicationFederatedIdentityCredentialArgs {
     /**
      * The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
-    /**
-     * The object ID of the application for which this federated identity credential should be created
-     *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationObjectId?: pulumi.Input<string>;
+    applicationId: pulumi.Input<string>;
     /**
      * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      */

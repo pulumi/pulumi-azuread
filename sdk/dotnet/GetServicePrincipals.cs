@@ -183,19 +183,6 @@ namespace Pulumi.AzureAD
 
     public sealed class GetServicePrincipalsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("applicationIds")]
-        private List<string>? _applicationIds;
-
-        /// <summary>
-        /// A list of client IDs of the applications associated with the service principals.
-        /// </summary>
-        [Obsolete(@"The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider")]
-        public List<string> ApplicationIds
-        {
-            get => _applicationIds ?? (_applicationIds = new List<string>());
-            set => _applicationIds = value;
-        }
-
         [Input("clientIds")]
         private List<string>? _clientIds;
 
@@ -254,19 +241,6 @@ namespace Pulumi.AzureAD
 
     public sealed class GetServicePrincipalsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("applicationIds")]
-        private InputList<string>? _applicationIds;
-
-        /// <summary>
-        /// A list of client IDs of the applications associated with the service principals.
-        /// </summary>
-        [Obsolete(@"The `application_ids` property has been replaced with the `client_ids` property and will be removed in version 3.0 of the AzureAD provider")]
-        public InputList<string> ApplicationIds
-        {
-            get => _applicationIds ?? (_applicationIds = new InputList<string>());
-            set => _applicationIds = value;
-        }
-
         [Input("clientIds")]
         private InputList<string>? _clientIds;
 
@@ -328,10 +302,6 @@ namespace Pulumi.AzureAD
     public sealed class GetServicePrincipalsResult
     {
         /// <summary>
-        /// A list of client IDs of the applications associated with the service principals.
-        /// </summary>
-        public readonly ImmutableArray<string> ApplicationIds;
-        /// <summary>
         /// The client ID of the application associated with this service principal.
         /// </summary>
         public readonly ImmutableArray<string> ClientIds;
@@ -356,8 +326,6 @@ namespace Pulumi.AzureAD
 
         [OutputConstructor]
         private GetServicePrincipalsResult(
-            ImmutableArray<string> applicationIds,
-
             ImmutableArray<string> clientIds,
 
             ImmutableArray<string> displayNames,
@@ -372,7 +340,6 @@ namespace Pulumi.AzureAD
 
             ImmutableArray<Outputs.GetServicePrincipalsServicePrincipalResult> servicePrincipals)
         {
-            ApplicationIds = applicationIds;
             ClientIds = clientIds;
             DisplayNames = displayNames;
             Id = id;

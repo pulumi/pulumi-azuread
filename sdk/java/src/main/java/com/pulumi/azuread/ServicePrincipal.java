@@ -294,24 +294,6 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return this.appRoles;
     }
     /**
-     * The application ID (client ID) of the application for which to create a service principal
-     * 
-     * @deprecated
-     * The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider
-     * 
-     */
-    @Deprecated /* The `application_id` property has been replaced with the `client_id` property and will be removed in version 3.0 of the AzureAD provider */
-    @Export(name="applicationId", refs={String.class}, tree="[0]")
-    private Output<String> applicationId;
-
-    /**
-     * @return The application ID (client ID) of the application for which to create a service principal
-     * 
-     */
-    public Output<String> applicationId() {
-        return this.applicationId;
-    }
-    /**
      * The tenant ID where the associated application is registered.
      * 
      */
@@ -672,7 +654,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ServicePrincipal(java.lang.String name, @Nullable ServicePrincipalArgs args) {
+    public ServicePrincipal(java.lang.String name, ServicePrincipalArgs args) {
         this(name, args, null);
     }
     /**
@@ -681,7 +663,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ServicePrincipal(java.lang.String name, @Nullable ServicePrincipalArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public ServicePrincipal(java.lang.String name, ServicePrincipalArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/servicePrincipal:ServicePrincipal", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -689,7 +671,7 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         super("azuread:index/servicePrincipal:ServicePrincipal", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ServicePrincipalArgs makeArgs(@Nullable ServicePrincipalArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ServicePrincipalArgs makeArgs(ServicePrincipalArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

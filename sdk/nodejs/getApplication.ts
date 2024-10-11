@@ -33,7 +33,6 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getApplication:getApplication", {
-        "applicationId": args.applicationId,
         "clientId": args.clientId,
         "displayName": args.displayName,
         "identifierUri": args.identifierUri,
@@ -45,10 +44,6 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getApplication.
  */
 export interface GetApplicationArgs {
-    /**
-     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationId?: string;
     /**
      * Specifies the Client ID of the application.
      */
@@ -85,10 +80,6 @@ export interface GetApplicationResult {
      * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
     readonly appRoles: outputs.GetApplicationAppRole[];
-    /**
-     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    readonly applicationId: string;
     /**
      * The Client ID for the application.
      */
@@ -234,7 +225,6 @@ export function getApplicationOutput(args?: GetApplicationOutputArgs, opts?: pul
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getApplication:getApplication", {
-        "applicationId": args.applicationId,
         "clientId": args.clientId,
         "displayName": args.displayName,
         "identifierUri": args.identifierUri,
@@ -246,10 +236,6 @@ export function getApplicationOutput(args?: GetApplicationOutputArgs, opts?: pul
  * A collection of arguments for invoking getApplication.
  */
 export interface GetApplicationOutputArgs {
-    /**
-     * @deprecated The `applicationId` property has been replaced with the `clientId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationId?: pulumi.Input<string>;
     /**
      * Specifies the Client ID of the application.
      */

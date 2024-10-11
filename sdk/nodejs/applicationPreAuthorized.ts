@@ -90,18 +90,6 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
-     * The object ID of the application to which this pre-authorized application should be added
-     *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    public readonly applicationObjectId!: pulumi.Output<string>;
-    /**
-     * The application ID of the pre-authorized application
-     *
-     * @deprecated The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    public readonly authorizedAppId!: pulumi.Output<string>;
-    /**
      * The client ID of the application being authorized. Changing this field forces a new resource to be created.
      */
     public readonly authorizedClientId!: pulumi.Output<string>;
@@ -124,18 +112,20 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApplicationPreAuthorizedState | undefined;
             resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
-            resourceInputs["authorizedAppId"] = state ? state.authorizedAppId : undefined;
             resourceInputs["authorizedClientId"] = state ? state.authorizedClientId : undefined;
             resourceInputs["permissionIds"] = state ? state.permissionIds : undefined;
         } else {
             const args = argsOrState as ApplicationPreAuthorizedArgs | undefined;
+            if ((!args || args.applicationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'applicationId'");
+            }
+            if ((!args || args.authorizedClientId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'authorizedClientId'");
+            }
             if ((!args || args.permissionIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'permissionIds'");
             }
             resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
-            resourceInputs["authorizedAppId"] = args ? args.authorizedAppId : undefined;
             resourceInputs["authorizedClientId"] = args ? args.authorizedClientId : undefined;
             resourceInputs["permissionIds"] = args ? args.permissionIds : undefined;
         }
@@ -153,18 +143,6 @@ export interface ApplicationPreAuthorizedState {
      */
     applicationId?: pulumi.Input<string>;
     /**
-     * The object ID of the application to which this pre-authorized application should be added
-     *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationObjectId?: pulumi.Input<string>;
-    /**
-     * The application ID of the pre-authorized application
-     *
-     * @deprecated The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    authorizedAppId?: pulumi.Input<string>;
-    /**
      * The client ID of the application being authorized. Changing this field forces a new resource to be created.
      */
     authorizedClientId?: pulumi.Input<string>;
@@ -181,23 +159,11 @@ export interface ApplicationPreAuthorizedArgs {
     /**
      * The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
-    /**
-     * The object ID of the application to which this pre-authorized application should be added
-     *
-     * @deprecated The `applicationObjectId` property has been replaced with the `applicationId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    applicationObjectId?: pulumi.Input<string>;
-    /**
-     * The application ID of the pre-authorized application
-     *
-     * @deprecated The `authorizedAppId` property has been replaced with the `authorizedClientId` property and will be removed in version 3.0 of the AzureAD provider
-     */
-    authorizedAppId?: pulumi.Input<string>;
+    applicationId: pulumi.Input<string>;
     /**
      * The client ID of the application being authorized. Changing this field forces a new resource to be created.
      */
-    authorizedClientId?: pulumi.Input<string>;
+    authorizedClientId: pulumi.Input<string>;
     /**
      * A set of permission scope IDs required by the authorized application.
      */

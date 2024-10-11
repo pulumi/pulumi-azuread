@@ -35,29 +35,20 @@ namespace Pulumi.AzureAD
     ///         DisplayName = "Azure Databricks SCIM Provisioning Connector",
     ///     });
     /// 
-    ///     var exampleApplication = new AzureAD.Application("example", new()
+    ///     var exampleApplicationFromTemplate = new AzureAD.ApplicationFromTemplate("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
-    ///         FeatureTags = new[]
-    ///         {
-    ///             new AzureAD.Inputs.ApplicationFeatureTagArgs
-    ///             {
-    ///                 Enterprise = true,
-    ///                 Gallery = true,
-    ///             },
-    ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleGetServicePrincipal = AzureAD.GetServicePrincipal.Invoke(new()
     ///     {
-    ///         ClientId = exampleApplication.ApplicationId,
-    ///         UseExisting = true,
+    ///         ObjectId = exampleApplicationFromTemplate.ServicePrincipalObjectId,
     ///     });
     /// 
     ///     var exampleSynchronizationSecret = new AzureAD.SynchronizationSecret("example", new()
     ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.Id,
+    ///         ServicePrincipalId = exampleGetServicePrincipal.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),
     ///         Credentials = new[]
     ///         {
     ///             new AzureAD.Inputs.SynchronizationSecretCredentialArgs
@@ -75,7 +66,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleSynchronizationJob = new AzureAD.SynchronizationJob("example", new()
     ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.Id,
+    ///         ServicePrincipalId = exampleGetServicePrincipal.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),
     ///         TemplateId = "dataBricks",
     ///         Enabled = true,
     ///     });
@@ -97,7 +88,7 @@ namespace Pulumi.AzureAD
     public partial class SynchronizationJob : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether or not the provisioning job is enabled. Default state is `true`.
+        /// Whether the provisioning job is enabled. Default state is `true`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -109,7 +100,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<Outputs.SynchronizationJobSchedule>> Schedules { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
@@ -167,13 +158,13 @@ namespace Pulumi.AzureAD
     public sealed class SynchronizationJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not the provisioning job is enabled. Default state is `true`.
+        /// Whether the provisioning job is enabled. Default state is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
@@ -193,7 +184,7 @@ namespace Pulumi.AzureAD
     public sealed class SynchronizationJobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not the provisioning job is enabled. Default state is `true`.
+        /// Whether the provisioning job is enabled. Default state is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -211,7 +202,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+        /// The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }
