@@ -6,7 +6,7 @@ toolchain go1.23.0
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.34.0
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20240927131909-8f628d164c64
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20241004173910-f12931f0baa6
 )
 
 require (
