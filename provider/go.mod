@@ -8,8 +8,8 @@ require (
 	github.com/hashicorp/go-azure-sdk/sdk v0.20240927.1005214
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
 	github.com/pulumi/providertest v0.1.3
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.93.1
-	github.com/pulumi/pulumi/sdk/v3 v3.136.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.93.2-0.20241031090553-ed56fc28cb64
+	github.com/pulumi/pulumi/sdk/v3 v3.137.0
 	github.com/stretchr/testify v1.9.0
 )
 
@@ -118,7 +118,7 @@ require (
 	github.com/hashicorp/go-getter v1.7.5 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
-	github.com/hashicorp/go-plugin v1.6.1 // indirect
+	github.com/hashicorp/go-plugin v1.6.2 // indirect
 	github.com/hashicorp/go-retryablehttp v0.7.7 // indirect
 	github.com/hashicorp/go-rootcerts v1.0.2 // indirect
 	github.com/hashicorp/go-safetemp v1.0.0 // indirect
@@ -134,7 +134,7 @@ require (
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.21.0 // indirect
 	github.com/hashicorp/terraform-json v0.22.1 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.24.0 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.25.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.34.0 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.10.0 // indirect
@@ -189,8 +189,8 @@ require (
 	github.com/pulumi/esc v0.10.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.16.1 // indirect
-	github.com/pulumi/pulumi-yaml v1.10.3 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.136.1 // indirect
+	github.com/pulumi/pulumi-yaml v1.11.1 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.137.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
@@ -249,8 +249,8 @@ require (
 	google.golang.org/genproto v0.0.0-20240311173647-c811ad7063a7 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20240814211410-ddb44dafa142 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240903143218-8af14fe29dc1 // indirect
-	google.golang.org/grpc v1.67.0 // indirect
-	google.golang.org/protobuf v1.34.2 // indirect
+	google.golang.org/grpc v1.67.1 // indirect
+	google.golang.org/protobuf v1.35.1 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
