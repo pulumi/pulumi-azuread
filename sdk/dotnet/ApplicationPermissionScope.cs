@@ -26,7 +26,7 @@ namespace Pulumi.AzureAD
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleAdminister = new Random.RandomUuid("example_administer");
+    ///     var exampleAdminister = new Random.Index.RandomUuid.RandomUuid("example_administer");
     /// 
     ///     var exampleApplicationPermissionScope = new AzureAD.ApplicationPermissionScope("example", new()
     ///     {

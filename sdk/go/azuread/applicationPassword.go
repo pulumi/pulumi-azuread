@@ -67,8 +67,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleRotating, err := time.NewRotating(ctx, "example", &time.RotatingArgs{
-//				RotationDays: pulumi.Int(7),
+//			exampleRotating, err := index / rotating.NewRotating(ctx, "example", &index/rotating.RotatingArgs{
+//				RotationDays: 7,
 //			})
 //			if err != nil {
 //				return err
@@ -76,7 +76,7 @@ import (
 //			_, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
 //				ApplicationId: example.ID(),
 //				RotateWhenChanged: pulumi.StringMap{
-//					"rotation": exampleRotating.ID(),
+//					"rotation": exampleRotating.Id,
 //				},
 //			})
 //			if err != nil {

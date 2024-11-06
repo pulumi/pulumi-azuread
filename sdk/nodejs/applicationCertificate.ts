@@ -9,43 +9,6 @@ import * as utilities from "./utilities";
  *
  * *Using a PEM certificate*
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- * import * as std from "@pulumi/std";
- *
- * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const exampleApplicationCertificate = new azuread.ApplicationCertificate("example", {
- *     applicationId: example.id,
- *     type: "AsymmetricX509Cert",
- *     value: std.file({
- *         input: "cert.pem",
- *     }).then(invoke => invoke.result),
- *     endDate: "2021-05-01T01:02:03Z",
- * });
- * ```
- *
- * *Using a DER certificate*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- * import * as std from "@pulumi/std";
- *
- * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const exampleApplicationCertificate = new azuread.ApplicationCertificate("example", {
- *     applicationId: example.id,
- *     type: "AsymmetricX509Cert",
- *     encoding: "base64",
- *     value: std.file({
- *         input: "cert.der",
- *     }).then(invoke => std.base64encode({
- *         input: invoke.result,
- *     })).then(invoke => invoke.result),
- *     endDate: "2021-05-01T01:02:03Z",
- * });
- * ```
- *
  * ### Using a certificate from Azure Key Vault
  *
  * ```typescript
@@ -54,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const exampleApplication = new azuread.Application("example", {displayName: "example"});
- * const example = new azure.keyvault.Certificate("example", {
+ * const example = new azure.keyvault/certificate.Certificate("example", {
  *     name: "generated-cert",
  *     keyVaultId: exampleAzurermKeyVault.id,
  *     certificatePolicy: {
@@ -102,8 +65,8 @@ import * as utilities from "./utilities";
  *     type: "AsymmetricX509Cert",
  *     encoding: "hex",
  *     value: example.certificateData,
- *     endDate: example.certificateAttributes.apply(certificateAttributes => certificateAttributes[0].expires),
- *     startDate: example.certificateAttributes.apply(certificateAttributes => certificateAttributes[0].notBefore),
+ *     endDate: example.certificateAttributes[0].expires,
+ *     startDate: example.certificateAttributes[0].notBefore,
  * });
  * ```
  *

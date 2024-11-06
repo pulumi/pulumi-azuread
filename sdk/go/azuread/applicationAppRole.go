@@ -20,7 +20,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-random/sdk/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,13 +33,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleAdministrator, err := random.NewRandomUuid(ctx, "example_administrator", nil)
+//			exampleAdministrator, err := index / randomUuid.NewRandomUuid(ctx, "example_administrator", nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
 //				ApplicationId: example.ID(),
-//				RoleId:        exampleAdministrator.ID(),
+//				RoleId:        exampleAdministrator.Id,
 //				AllowedMemberTypes: pulumi.StringArray{
 //					pulumi.String("User"),
 //				},

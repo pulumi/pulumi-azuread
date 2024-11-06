@@ -248,10 +248,10 @@ class ApplicationAppRole(pulumi.CustomResource):
         import pulumi_random as random
 
         example = azuread.ApplicationRegistration("example", display_name="example")
-        example_administrator = random.RandomUuid("example_administrator")
+        example_administrator = random.index.random_uuid.RandomUuid("example_administrator")
         example_administer = azuread.ApplicationAppRole("example_administer",
             application_id=example.id,
-            role_id=example_administrator.id,
+            role_id=example_administrator["id"],
             allowed_member_types=["User"],
             description="My role description",
             display_name="Administer",
@@ -304,10 +304,10 @@ class ApplicationAppRole(pulumi.CustomResource):
         import pulumi_random as random
 
         example = azuread.ApplicationRegistration("example", display_name="example")
-        example_administrator = random.RandomUuid("example_administrator")
+        example_administrator = random.index.random_uuid.RandomUuid("example_administrator")
         example_administer = azuread.ApplicationAppRole("example_administer",
             application_id=example.id,
-            role_id=example_administrator.id,
+            role_id=example_administrator["id"],
             allowed_member_types=["User"],
             description="My role description",
             display_name="Administer",

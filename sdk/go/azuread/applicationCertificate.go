@@ -16,91 +16,6 @@ import (
 //
 // *Using a PEM certificate*
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "cert.pem",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-//				ApplicationId: example.ID(),
-//				Type:          pulumi.String("AsymmetricX509Cert"),
-//				Value:         pulumi.String(invokeFile.Result),
-//				EndDate:       pulumi.String("2021-05-01T01:02:03Z"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// *Using a DER certificate*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.NewApplicationRegistration(ctx, "example", &azuread.ApplicationRegistrationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: std.File(ctx, &std.FileArgs{
-//					Input: "cert.der",
-//				}, nil).Result,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-//				ApplicationId: example.ID(),
-//				Type:          pulumi.String("AsymmetricX509Cert"),
-//				Encoding:      pulumi.String("base64"),
-//				Value:         pulumi.String(invokeBase64encode.Result),
-//				EndDate:       pulumi.String("2021-05-01T01:02:03Z"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ### Using a certificate from Azure Key Vault
 //
 // ```go
@@ -110,7 +25,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/keyvault"
+//	"github.com/pulumi/pulumi-azure/sdk/go/azure/keyvault"
 //	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -124,50 +39,50 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example, err := keyvault.NewCertificate(ctx, "example", &keyvault.CertificateArgs{
-//				Name:       pulumi.String("generated-cert"),
-//				KeyVaultId: pulumi.Any(exampleAzurermKeyVault.Id),
-//				CertificatePolicy: &keyvault.CertificateCertificatePolicyArgs{
-//					IssuerParameters: &keyvault.CertificateCertificatePolicyIssuerParametersArgs{
-//						Name: pulumi.String("Self"),
+//			example, err := keyvault / certificate.NewCertificate(ctx, "example", &keyvault/certificate.CertificateArgs{
+//				Name:       "generated-cert",
+//				KeyVaultId: exampleAzurermKeyVault.Id,
+//				CertificatePolicy: map[string]interface{}{
+//					"issuerParameters": map[string]interface{}{
+//						"name": "Self",
 //					},
-//					KeyProperties: &keyvault.CertificateCertificatePolicyKeyPropertiesArgs{
-//						Exportable: pulumi.Bool(true),
-//						KeySize:    pulumi.Int(2048),
-//						KeyType:    pulumi.String("RSA"),
-//						ReuseKey:   pulumi.Bool(true),
+//					"keyProperties": map[string]interface{}{
+//						"exportable": true,
+//						"keySize":    2048,
+//						"keyType":    "RSA",
+//						"reuseKey":   true,
 //					},
-//					LifetimeActions: keyvault.CertificateCertificatePolicyLifetimeActionArray{
-//						&keyvault.CertificateCertificatePolicyLifetimeActionArgs{
-//							Action: &keyvault.CertificateCertificatePolicyLifetimeActionActionArgs{
-//								ActionType: pulumi.String("AutoRenew"),
+//					"lifetimeActions": []map[string]interface{}{
+//						map[string]interface{}{
+//							"action": map[string]interface{}{
+//								"actionType": "AutoRenew",
 //							},
-//							Trigger: &keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs{
-//								DaysBeforeExpiry: pulumi.Int(30),
-//							},
-//						},
-//					},
-//					SecretProperties: &keyvault.CertificateCertificatePolicySecretPropertiesArgs{
-//						ContentType: pulumi.String("application/x-pkcs12"),
-//					},
-//					X509CertificateProperties: &keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs{
-//						ExtendedKeyUsages: pulumi.StringArray{
-//							pulumi.String("1.3.6.1.5.5.7.3.2"),
-//						},
-//						KeyUsages: pulumi.StringArray{
-//							pulumi.String("dataEncipherment"),
-//							pulumi.String("digitalSignature"),
-//							pulumi.String("keyCertSign"),
-//							pulumi.String("keyEncipherment"),
-//						},
-//						SubjectAlternativeNames: &keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs{
-//							DnsNames: pulumi.StringArray{
-//								pulumi.String("internal.contoso.com"),
-//								pulumi.String("domain.hello.world"),
+//							"trigger": map[string]interface{}{
+//								"daysBeforeExpiry": 30,
 //							},
 //						},
-//						Subject:          pulumi.Sprintf("CN=%v", exampleApplication.Name),
-//						ValidityInMonths: pulumi.Int(12),
+//					},
+//					"secretProperties": map[string]interface{}{
+//						"contentType": "application/x-pkcs12",
+//					},
+//					"x509CertificateProperties": map[string]interface{}{
+//						"extendedKeyUsages": []string{
+//							"1.3.6.1.5.5.7.3.2",
+//						},
+//						"keyUsages": []string{
+//							"dataEncipherment",
+//							"digitalSignature",
+//							"keyCertSign",
+//							"keyEncipherment",
+//						},
+//						"subjectAlternativeNames": map[string]interface{}{
+//							"dnsNames": []string{
+//								"internal.contoso.com",
+//								"domain.hello.world",
+//							},
+//						},
+//						"subject":          fmt.Sprintf("CN=%v", exampleApplication.Name),
+//						"validityInMonths": 12,
 //					},
 //				},
 //			})
@@ -179,12 +94,8 @@ import (
 //				Type:          pulumi.String("AsymmetricX509Cert"),
 //				Encoding:      pulumi.String("hex"),
 //				Value:         example.CertificateData,
-//				EndDate: pulumi.String(example.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (*string, error) {
-//					return &certificateAttributes[0].Expires, nil
-//				}).(pulumi.StringPtrOutput)),
-//				StartDate: pulumi.String(example.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (*string, error) {
-//					return &certificateAttributes[0].NotBefore, nil
-//				}).(pulumi.StringPtrOutput)),
+//				EndDate:       example.CertificateAttributes[0].Expires,
+//				StartDate:     example.CertificateAttributes[0].NotBefore,
 //			})
 //			if err != nil {
 //				return err

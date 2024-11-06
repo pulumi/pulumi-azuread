@@ -20,7 +20,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-random/sdk/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,13 +33,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleAdminister, err := random.NewRandomUuid(ctx, "example_administer", nil)
+//			exampleAdminister, err := index / randomUuid.NewRandomUuid(ctx, "example_administer", nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = azuread.NewApplicationPermissionScope(ctx, "example", &azuread.ApplicationPermissionScopeArgs{
 //				ApplicationId:           pulumi.Any(test.Id),
-//				ScopeId:                 exampleAdminister.ID(),
+//				ScopeId:                 exampleAdminister.Id,
 //				Value:                   pulumi.String("administer"),
 //				AdminConsentDescription: pulumi.String("Administer the application"),
 //				AdminConsentDisplayName: pulumi.String("Administer"),
