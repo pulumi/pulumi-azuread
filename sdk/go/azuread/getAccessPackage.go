@@ -5,6 +5,7 @@ package azuread
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
@@ -77,6 +78,16 @@ import (
 // ```
 func LookupAccessPackage(ctx *pulumi.Context, args *LookupAccessPackageArgs, opts ...pulumi.InvokeOption) (*LookupAccessPackageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAccessPackageResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAccessPackageResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAccessPackage, use LookupAccessPackageOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAccessPackageResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAccessPackage, use LookupAccessPackageOutput instead")
+	}
 	var rv LookupAccessPackageResult
 	err := ctx.Invoke("azuread:index/getAccessPackage:getAccessPackage", args, &rv, opts...)
 	if err != nil {
@@ -111,17 +122,18 @@ type LookupAccessPackageResult struct {
 }
 
 func LookupAccessPackageOutput(ctx *pulumi.Context, args LookupAccessPackageOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPackageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccessPackageResultOutput, error) {
 			args := v.(LookupAccessPackageArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAccessPackageResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getAccessPackage:getAccessPackage", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("azuread:index/getAccessPackage:getAccessPackage", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAccessPackageResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAccessPackageResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAccessPackageResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAccessPackageResultOutput), nil
 			}

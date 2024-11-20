@@ -159,7 +159,7 @@ def get_access_package_catalog(display_name: Optional[str] = None,
         published=pulumi.get(__ret__, 'published'))
 def get_access_package_catalog_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                       object_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPackageCatalogResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessPackageCatalogResult]:
     """
     i
     Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
@@ -201,7 +201,7 @@ def get_access_package_catalog_output(display_name: Optional[pulumi.Input[Option
     __args__ = dict()
     __args__['displayName'] = display_name
     __args__['objectId'] = object_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getAccessPackageCatalog:getAccessPackageCatalog', __args__, opts=opts, typ=GetAccessPackageCatalogResult)
     return __ret__.apply(lambda __response__: GetAccessPackageCatalogResult(
         description=pulumi.get(__response__, 'description'),

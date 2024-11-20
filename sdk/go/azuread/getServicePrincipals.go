@@ -5,6 +5,7 @@ package azuread
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
@@ -113,6 +114,16 @@ import (
 // ```
 func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, opts ...pulumi.InvokeOption) (*GetServicePrincipalsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetServicePrincipalsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetServicePrincipalsResult{}, errors.New("DependsOn is not supported for direct form invoke GetServicePrincipals, use GetServicePrincipalsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetServicePrincipalsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetServicePrincipals, use GetServicePrincipalsOutput instead")
+	}
 	var rv GetServicePrincipalsResult
 	err := ctx.Invoke("azuread:index/getServicePrincipals:getServicePrincipals", args, &rv, opts...)
 	if err != nil {
@@ -154,17 +165,18 @@ type GetServicePrincipalsResult struct {
 }
 
 func GetServicePrincipalsOutput(ctx *pulumi.Context, args GetServicePrincipalsOutputArgs, opts ...pulumi.InvokeOption) GetServicePrincipalsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServicePrincipalsResultOutput, error) {
 			args := v.(GetServicePrincipalsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetServicePrincipalsResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getServicePrincipals:getServicePrincipals", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("azuread:index/getServicePrincipals:getServicePrincipals", args, &rv, "", opts...)
 			if err != nil {
 				return GetServicePrincipalsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetServicePrincipalsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetServicePrincipalsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetServicePrincipalsResultOutput), nil
 			}
