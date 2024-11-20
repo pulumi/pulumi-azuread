@@ -5,6 +5,7 @@ package azuread
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
@@ -76,6 +77,16 @@ import (
 // ```
 func LookupAdministrativeUnit(ctx *pulumi.Context, args *LookupAdministrativeUnitArgs, opts ...pulumi.InvokeOption) (*LookupAdministrativeUnitResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAdministrativeUnitResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAdministrativeUnitResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAdministrativeUnit, use LookupAdministrativeUnitOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAdministrativeUnitResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAdministrativeUnit, use LookupAdministrativeUnitOutput instead")
+	}
 	var rv LookupAdministrativeUnitResult
 	err := ctx.Invoke("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args, &rv, opts...)
 	if err != nil {
@@ -111,17 +122,18 @@ type LookupAdministrativeUnitResult struct {
 }
 
 func LookupAdministrativeUnitOutput(ctx *pulumi.Context, args LookupAdministrativeUnitOutputArgs, opts ...pulumi.InvokeOption) LookupAdministrativeUnitResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAdministrativeUnitResultOutput, error) {
 			args := v.(LookupAdministrativeUnitArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAdministrativeUnitResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAdministrativeUnitResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAdministrativeUnitResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAdministrativeUnitResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAdministrativeUnitResultOutput), nil
 			}

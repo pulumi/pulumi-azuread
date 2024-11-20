@@ -5,6 +5,7 @@ package azuread
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
@@ -45,6 +46,16 @@ import (
 // ```
 func GetApplicationTemplate(ctx *pulumi.Context, args *GetApplicationTemplateArgs, opts ...pulumi.InvokeOption) (*GetApplicationTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetApplicationTemplateResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetApplicationTemplateResult{}, errors.New("DependsOn is not supported for direct form invoke GetApplicationTemplate, use GetApplicationTemplateOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetApplicationTemplateResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetApplicationTemplate, use GetApplicationTemplateOutput instead")
+	}
 	var rv GetApplicationTemplateResult
 	err := ctx.Invoke("azuread:index/getApplicationTemplate:getApplicationTemplate", args, &rv, opts...)
 	if err != nil {
@@ -86,17 +97,18 @@ type GetApplicationTemplateResult struct {
 }
 
 func GetApplicationTemplateOutput(ctx *pulumi.Context, args GetApplicationTemplateOutputArgs, opts ...pulumi.InvokeOption) GetApplicationTemplateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetApplicationTemplateResultOutput, error) {
 			args := v.(GetApplicationTemplateArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetApplicationTemplateResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getApplicationTemplate:getApplicationTemplate", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("azuread:index/getApplicationTemplate:getApplicationTemplate", args, &rv, "", opts...)
 			if err != nil {
 				return GetApplicationTemplateResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetApplicationTemplateResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetApplicationTemplateResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetApplicationTemplateResultOutput), nil
 			}
