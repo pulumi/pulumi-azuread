@@ -5,6 +5,7 @@ package azuread
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
@@ -57,6 +58,16 @@ import (
 // *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
 func GetDirectoryObject(ctx *pulumi.Context, args *GetDirectoryObjectArgs, opts ...pulumi.InvokeOption) (*GetDirectoryObjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetDirectoryObjectResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetDirectoryObjectResult{}, errors.New("DependsOn is not supported for direct form invoke GetDirectoryObject, use GetDirectoryObjectOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetDirectoryObjectResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetDirectoryObject, use GetDirectoryObjectOutput instead")
+	}
 	var rv GetDirectoryObjectResult
 	err := ctx.Invoke("azuread:index/getDirectoryObject:getDirectoryObject", args, &rv, opts...)
 	if err != nil {
@@ -80,17 +91,18 @@ type GetDirectoryObjectResult struct {
 }
 
 func GetDirectoryObjectOutput(ctx *pulumi.Context, args GetDirectoryObjectOutputArgs, opts ...pulumi.InvokeOption) GetDirectoryObjectResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDirectoryObjectResultOutput, error) {
 			args := v.(GetDirectoryObjectArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDirectoryObjectResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getDirectoryObject:getDirectoryObject", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("azuread:index/getDirectoryObject:getDirectoryObject", args, &rv, "", opts...)
 			if err != nil {
 				return GetDirectoryObjectResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDirectoryObjectResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDirectoryObjectResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDirectoryObjectResultOutput), nil
 			}

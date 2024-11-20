@@ -5,6 +5,7 @@ package azuread
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
@@ -53,6 +54,16 @@ import (
 // ```
 func LookupGroupRoleManagementPolicy(ctx *pulumi.Context, args *LookupGroupRoleManagementPolicyArgs, opts ...pulumi.InvokeOption) (*LookupGroupRoleManagementPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupGroupRoleManagementPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupGroupRoleManagementPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupGroupRoleManagementPolicy, use LookupGroupRoleManagementPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupGroupRoleManagementPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupGroupRoleManagementPolicy, use LookupGroupRoleManagementPolicyOutput instead")
+	}
 	var rv LookupGroupRoleManagementPolicyResult
 	err := ctx.Invoke("azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy", args, &rv, opts...)
 	if err != nil {
@@ -82,17 +93,18 @@ type LookupGroupRoleManagementPolicyResult struct {
 }
 
 func LookupGroupRoleManagementPolicyOutput(ctx *pulumi.Context, args LookupGroupRoleManagementPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupGroupRoleManagementPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGroupRoleManagementPolicyResultOutput, error) {
 			args := v.(LookupGroupRoleManagementPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupGroupRoleManagementPolicyResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupGroupRoleManagementPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupGroupRoleManagementPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupGroupRoleManagementPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupGroupRoleManagementPolicyResultOutput), nil
 			}
