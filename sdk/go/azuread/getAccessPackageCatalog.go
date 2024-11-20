@@ -5,6 +5,7 @@ package azuread
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
@@ -77,6 +78,16 @@ import (
 // ```
 func LookupAccessPackageCatalog(ctx *pulumi.Context, args *LookupAccessPackageCatalogArgs, opts ...pulumi.InvokeOption) (*LookupAccessPackageCatalogResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAccessPackageCatalogResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAccessPackageCatalogResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAccessPackageCatalog, use LookupAccessPackageCatalogOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAccessPackageCatalogResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAccessPackageCatalog, use LookupAccessPackageCatalogOutput instead")
+	}
 	var rv LookupAccessPackageCatalogResult
 	err := ctx.Invoke("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", args, &rv, opts...)
 	if err != nil {
@@ -110,17 +121,18 @@ type LookupAccessPackageCatalogResult struct {
 }
 
 func LookupAccessPackageCatalogOutput(ctx *pulumi.Context, args LookupAccessPackageCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPackageCatalogResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccessPackageCatalogResultOutput, error) {
 			args := v.(LookupAccessPackageCatalogArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAccessPackageCatalogResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAccessPackageCatalogResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAccessPackageCatalogResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAccessPackageCatalogResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAccessPackageCatalogResultOutput), nil
 			}

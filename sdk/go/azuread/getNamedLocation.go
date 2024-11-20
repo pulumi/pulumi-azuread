@@ -5,6 +5,7 @@ package azuread
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
@@ -70,6 +71,16 @@ import (
 // * `trusted` - Whether the named location is trusted.
 func LookupNamedLocation(ctx *pulumi.Context, args *LookupNamedLocationArgs, opts ...pulumi.InvokeOption) (*LookupNamedLocationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupNamedLocationResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupNamedLocationResult{}, errors.New("DependsOn is not supported for direct form invoke LookupNamedLocation, use LookupNamedLocationOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupNamedLocationResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupNamedLocation, use LookupNamedLocationOutput instead")
+	}
 	var rv LookupNamedLocationResult
 	err := ctx.Invoke("azuread:index/getNamedLocation:getNamedLocation", args, &rv, opts...)
 	if err != nil {
@@ -94,17 +105,18 @@ type LookupNamedLocationResult struct {
 }
 
 func LookupNamedLocationOutput(ctx *pulumi.Context, args LookupNamedLocationOutputArgs, opts ...pulumi.InvokeOption) LookupNamedLocationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNamedLocationResultOutput, error) {
 			args := v.(LookupNamedLocationArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupNamedLocationResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getNamedLocation:getNamedLocation", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("azuread:index/getNamedLocation:getNamedLocation", args, &rv, "", opts...)
 			if err != nil {
 				return LookupNamedLocationResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupNamedLocationResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupNamedLocationResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupNamedLocationResultOutput), nil
 			}
