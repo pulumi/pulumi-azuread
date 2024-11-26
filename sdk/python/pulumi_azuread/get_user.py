@@ -659,7 +659,7 @@ def get_user_output(employee_id: Optional[pulumi.Input[Optional[str]]] = None,
                     mail_nickname: Optional[pulumi.Input[Optional[str]]] = None,
                     object_id: Optional[pulumi.Input[Optional[str]]] = None,
                     user_principal_name: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Gets information about an Azure Active Directory user.
 
@@ -695,7 +695,7 @@ def get_user_output(employee_id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['mailNickname'] = mail_nickname
     __args__['objectId'] = object_id
     __args__['userPrincipalName'] = user_principal_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
     return __ret__.apply(lambda __response__: GetUserResult(
         account_enabled=pulumi.get(__response__, 'account_enabled'),
