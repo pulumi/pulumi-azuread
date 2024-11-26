@@ -223,7 +223,7 @@ def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]]
                       object_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       return_all: Optional[pulumi.Input[Optional[bool]]] = None,
                       security_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupsResult]:
     """
     Gets Object IDs or Display Names for multiple Azure Active Directory groups.
 
@@ -302,7 +302,7 @@ def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]]
     __args__['objectIds'] = object_ids
     __args__['returnAll'] = return_all
     __args__['securityEnabled'] = security_enabled
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult)
     return __ret__.apply(lambda __response__: GetGroupsResult(
         display_name_prefix=pulumi.get(__response__, 'display_name_prefix'),
