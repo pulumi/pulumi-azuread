@@ -104,7 +104,7 @@ def get_directory_role_templates(opts: Optional[pulumi.InvokeOptions] = None) ->
         id=pulumi.get(__ret__, 'id'),
         object_ids=pulumi.get(__ret__, 'object_ids'),
         role_templates=pulumi.get(__ret__, 'role_templates'))
-def get_directory_role_templates_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoryRoleTemplatesResult]:
+def get_directory_role_templates_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirectoryRoleTemplatesResult]:
     """
     Use this data source to access information about directory role templates within Azure Active Directory.
 
@@ -127,7 +127,7 @@ def get_directory_role_templates_output(opts: Optional[pulumi.InvokeOptions] = N
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates', __args__, opts=opts, typ=GetDirectoryRoleTemplatesResult)
     return __ret__.apply(lambda __response__: GetDirectoryRoleTemplatesResult(
         id=pulumi.get(__response__, 'id'),
