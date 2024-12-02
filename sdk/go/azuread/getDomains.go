@@ -88,17 +88,18 @@ type GetDomainsResult struct {
 }
 
 func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDomainsResultOutput, error) {
 			args := v.(GetDomainsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDomainsResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getDomains:getDomains", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("azuread:index/getDomains:getDomains", args, &rv, "", opts...)
 			if err != nil {
 				return GetDomainsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDomainsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDomainsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDomainsResultOutput), nil
 			}
