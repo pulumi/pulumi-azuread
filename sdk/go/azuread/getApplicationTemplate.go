@@ -86,17 +86,18 @@ type GetApplicationTemplateResult struct {
 }
 
 func GetApplicationTemplateOutput(ctx *pulumi.Context, args GetApplicationTemplateOutputArgs, opts ...pulumi.InvokeOption) GetApplicationTemplateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetApplicationTemplateResultOutput, error) {
 			args := v.(GetApplicationTemplateArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetApplicationTemplateResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getApplicationTemplate:getApplicationTemplate", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("azuread:index/getApplicationTemplate:getApplicationTemplate", args, &rv, "", opts...)
 			if err != nil {
 				return GetApplicationTemplateResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetApplicationTemplateResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetApplicationTemplateResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetApplicationTemplateResultOutput), nil
 			}
