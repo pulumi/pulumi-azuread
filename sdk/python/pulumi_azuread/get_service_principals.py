@@ -204,7 +204,7 @@ def get_service_principals_output(client_ids: Optional[pulumi.Input[Optional[Seq
                                   ignore_missing: Optional[pulumi.Input[Optional[bool]]] = None,
                                   object_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   return_all: Optional[pulumi.Input[Optional[bool]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalsResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalsResult]:
     """
     Gets basic information for multiple Azure Active Directory service principals.
 
@@ -271,7 +271,7 @@ def get_service_principals_output(client_ids: Optional[pulumi.Input[Optional[Seq
     __args__['ignoreMissing'] = ignore_missing
     __args__['objectIds'] = object_ids
     __args__['returnAll'] = return_all
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getServicePrincipals:getServicePrincipals', __args__, opts=opts, typ=GetServicePrincipalsResult)
     return __ret__.apply(lambda __response__: GetServicePrincipalsResult(
         client_ids=pulumi.get(__response__, 'client_ids'),
