@@ -5,6 +5,7 @@ package azuread
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
@@ -47,6 +48,16 @@ import (
 // ```
 func GetDirectoryRoleTemplates(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetDirectoryRoleTemplatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetDirectoryRoleTemplatesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetDirectoryRoleTemplatesResult{}, errors.New("DependsOn is not supported for direct form invoke GetDirectoryRoleTemplates, use GetDirectoryRoleTemplatesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetDirectoryRoleTemplatesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetDirectoryRoleTemplates, use GetDirectoryRoleTemplatesOutput instead")
+	}
 	var rv GetDirectoryRoleTemplatesResult
 	err := ctx.Invoke("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", nil, &rv, opts...)
 	if err != nil {

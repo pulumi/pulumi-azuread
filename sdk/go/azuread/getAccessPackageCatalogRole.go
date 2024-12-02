@@ -5,6 +5,7 @@ package azuread
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread/internal"
@@ -76,6 +77,16 @@ import (
 // ```
 func GetAccessPackageCatalogRole(ctx *pulumi.Context, args *GetAccessPackageCatalogRoleArgs, opts ...pulumi.InvokeOption) (*GetAccessPackageCatalogRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetAccessPackageCatalogRoleResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetAccessPackageCatalogRoleResult{}, errors.New("DependsOn is not supported for direct form invoke GetAccessPackageCatalogRole, use GetAccessPackageCatalogRoleOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetAccessPackageCatalogRoleResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetAccessPackageCatalogRole, use GetAccessPackageCatalogRoleOutput instead")
+	}
 	var rv GetAccessPackageCatalogRoleResult
 	err := ctx.Invoke("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args, &rv, opts...)
 	if err != nil {
@@ -109,17 +120,18 @@ type GetAccessPackageCatalogRoleResult struct {
 }
 
 func GetAccessPackageCatalogRoleOutput(ctx *pulumi.Context, args GetAccessPackageCatalogRoleOutputArgs, opts ...pulumi.InvokeOption) GetAccessPackageCatalogRoleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAccessPackageCatalogRoleResultOutput, error) {
 			args := v.(GetAccessPackageCatalogRoleArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAccessPackageCatalogRoleResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args, &rv, "", opts...)
 			if err != nil {
 				return GetAccessPackageCatalogRoleResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAccessPackageCatalogRoleResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAccessPackageCatalogRoleResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAccessPackageCatalogRoleResultOutput), nil
 			}
