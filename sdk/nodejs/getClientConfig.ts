@@ -65,7 +65,7 @@ export interface GetClientConfigResult {
  * export const objectId = current.then(current => current.objectId);
  * ```
  */
-export function getClientConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientConfigResult> {
+export function getClientConfigOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getClientConfig:getClientConfig", {
     }, opts);
