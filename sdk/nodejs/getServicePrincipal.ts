@@ -244,7 +244,7 @@ export interface GetServicePrincipalResult {
  * });
  * ```
  */
-export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalResult> {
+export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicePrincipalResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getServicePrincipal:getServicePrincipal", {
