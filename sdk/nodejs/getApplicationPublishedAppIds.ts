@@ -107,7 +107,7 @@ export interface GetApplicationPublishedAppIdsResult {
  * });
  * ```
  */
-export function getApplicationPublishedAppIdsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationPublishedAppIdsResult> {
+export function getApplicationPublishedAppIdsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationPublishedAppIdsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", {
     }, opts);
