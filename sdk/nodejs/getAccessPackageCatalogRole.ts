@@ -124,7 +124,7 @@ export interface GetAccessPackageCatalogRoleResult {
  * });
  * ```
  */
-export function getAccessPackageCatalogRoleOutput(args?: GetAccessPackageCatalogRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPackageCatalogRoleResult> {
+export function getAccessPackageCatalogRoleOutput(args?: GetAccessPackageCatalogRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessPackageCatalogRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", {
