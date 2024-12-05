@@ -151,7 +151,7 @@ def get_access_package_catalog_role(display_name: Optional[str] = None,
         template_id=pulumi.get(__ret__, 'template_id'))
 def get_access_package_catalog_role_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                            object_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPackageCatalogRoleResult]:
+                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessPackageCatalogRoleResult]:
     """
     Gets information about an access package catalog role.
 
@@ -192,7 +192,7 @@ def get_access_package_catalog_role_output(display_name: Optional[pulumi.Input[O
     __args__ = dict()
     __args__['displayName'] = display_name
     __args__['objectId'] = object_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole', __args__, opts=opts, typ=GetAccessPackageCatalogRoleResult)
     return __ret__.apply(lambda __response__: GetAccessPackageCatalogRoleResult(
         description=pulumi.get(__response__, 'description'),
