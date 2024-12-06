@@ -75,7 +75,7 @@ export interface GetDirectoryRolesResult {
  * export const roles = current.then(current => current.objectIds);
  * ```
  */
-export function getDirectoryRolesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryRolesResult> {
+export function getDirectoryRolesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDirectoryRolesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getDirectoryRoles:getDirectoryRoles", {
     }, opts);
