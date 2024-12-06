@@ -124,7 +124,7 @@ export interface GetAccessPackageCatalogResult {
  * });
  * ```
  */
-export function getAccessPackageCatalogOutput(args?: GetAccessPackageCatalogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPackageCatalogResult> {
+export function getAccessPackageCatalogOutput(args?: GetAccessPackageCatalogOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessPackageCatalogResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", {

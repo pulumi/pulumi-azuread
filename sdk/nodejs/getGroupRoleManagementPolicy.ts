@@ -99,7 +99,7 @@ export interface GetGroupRoleManagementPolicyResult {
  * });
  * ```
  */
-export function getGroupRoleManagementPolicyOutput(args: GetGroupRoleManagementPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupRoleManagementPolicyResult> {
+export function getGroupRoleManagementPolicyOutput(args: GetGroupRoleManagementPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupRoleManagementPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy", {
         "groupId": args.groupId,
