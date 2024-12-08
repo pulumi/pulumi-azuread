@@ -154,21 +154,11 @@ type GetServicePrincipalsResult struct {
 }
 
 func GetServicePrincipalsOutput(ctx *pulumi.Context, args GetServicePrincipalsOutputArgs, opts ...pulumi.InvokeOption) GetServicePrincipalsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServicePrincipalsResultOutput, error) {
 			args := v.(GetServicePrincipalsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetServicePrincipalsResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getServicePrincipals:getServicePrincipals", args, &rv, "", opts...)
-			if err != nil {
-				return GetServicePrincipalsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetServicePrincipalsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetServicePrincipalsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azuread:index/getServicePrincipals:getServicePrincipals", args, GetServicePrincipalsResultOutput{}, options).(GetServicePrincipalsResultOutput), nil
 		}).(GetServicePrincipalsResultOutput)
 }
 

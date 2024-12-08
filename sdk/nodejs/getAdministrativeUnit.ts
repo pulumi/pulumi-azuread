@@ -128,7 +128,7 @@ export interface GetAdministrativeUnitResult {
  * });
  * ```
  */
-export function getAdministrativeUnitOutput(args?: GetAdministrativeUnitOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdministrativeUnitResult> {
+export function getAdministrativeUnitOutput(args?: GetAdministrativeUnitOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAdministrativeUnitResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getAdministrativeUnit:getAdministrativeUnit", {

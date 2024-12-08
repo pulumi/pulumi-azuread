@@ -110,21 +110,11 @@ type LookupAccessPackageCatalogResult struct {
 }
 
 func LookupAccessPackageCatalogOutput(ctx *pulumi.Context, args LookupAccessPackageCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPackageCatalogResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccessPackageCatalogResultOutput, error) {
 			args := v.(LookupAccessPackageCatalogArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAccessPackageCatalogResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAccessPackageCatalogResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAccessPackageCatalogResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAccessPackageCatalogResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", args, LookupAccessPackageCatalogResultOutput{}, options).(LookupAccessPackageCatalogResultOutput), nil
 		}).(LookupAccessPackageCatalogResultOutput)
 }
 

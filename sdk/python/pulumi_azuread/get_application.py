@@ -511,7 +511,7 @@ def get_application_output(client_id: Optional[pulumi.Input[Optional[str]]] = No
                            display_name: Optional[pulumi.Input[Optional[str]]] = None,
                            identifier_uri: Optional[pulumi.Input[Optional[str]]] = None,
                            object_id: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationResult]:
     """
     Use this data source to access information about an existing Application within Azure Active Directory.
 
@@ -546,7 +546,7 @@ def get_application_output(client_id: Optional[pulumi.Input[Optional[str]]] = No
     __args__['displayName'] = display_name
     __args__['identifierUri'] = identifier_uri
     __args__['objectId'] = object_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getApplication:getApplication', __args__, opts=opts, typ=GetApplicationResult)
     return __ret__.apply(lambda __response__: GetApplicationResult(
         apis=pulumi.get(__response__, 'apis'),

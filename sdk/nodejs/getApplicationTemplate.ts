@@ -108,7 +108,7 @@ export interface GetApplicationTemplateResult {
  * export const applicationTemplateId = example.then(example => example.templateId);
  * ```
  */
-export function getApplicationTemplateOutput(args?: GetApplicationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationTemplateResult> {
+export function getApplicationTemplateOutput(args?: GetApplicationTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationTemplateResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getApplicationTemplate:getApplicationTemplate", {
