@@ -111,7 +111,7 @@ def get_directory_object(object_id: Optional[str] = None,
         object_id=pulumi.get(__ret__, 'object_id'),
         type=pulumi.get(__ret__, 'type'))
 def get_directory_object_output(object_id: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoryObjectResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirectoryObjectResult]:
     """
     Retrieves the OData type for a generic directory object having the provided object ID.
 
@@ -146,7 +146,7 @@ def get_directory_object_output(object_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['objectId'] = object_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getDirectoryObject:getDirectoryObject', __args__, opts=opts, typ=GetDirectoryObjectResult)
     return __ret__.apply(lambda __response__: GetDirectoryObjectResult(
         id=pulumi.get(__response__, 'id'),
