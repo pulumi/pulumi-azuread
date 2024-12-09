@@ -182,7 +182,7 @@ def get_domains_output(admin_managed: Optional[pulumi.Input[Optional[bool]]] = N
                        only_initial: Optional[pulumi.Input[Optional[bool]]] = None,
                        only_root: Optional[pulumi.Input[Optional[bool]]] = None,
                        supports_services: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
     Use this data source to access information about existing Domains within Azure Active Directory.
 
@@ -221,7 +221,7 @@ def get_domains_output(admin_managed: Optional[pulumi.Input[Optional[bool]]] = N
     __args__['onlyInitial'] = only_initial
     __args__['onlyRoot'] = only_root
     __args__['supportsServices'] = supports_services
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult)
     return __ret__.apply(lambda __response__: GetDomainsResult(
         admin_managed=pulumi.get(__response__, 'admin_managed'),

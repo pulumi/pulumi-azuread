@@ -187,7 +187,7 @@ export interface GetServicePrincipalsResult {
  * });
  * ```
  */
-export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalsResult> {
+export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicePrincipalsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getServicePrincipals:getServicePrincipals", {

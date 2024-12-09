@@ -210,7 +210,7 @@ def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[str]]
                      object_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      return_all: Optional[pulumi.Input[Optional[bool]]] = None,
                      user_principal_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     Gets basic information for multiple Azure Active Directory users.
 
@@ -253,7 +253,7 @@ def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[str]]
     __args__['objectIds'] = object_ids
     __args__['returnAll'] = return_all
     __args__['userPrincipalNames'] = user_principal_names
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
     return __ret__.apply(lambda __response__: GetUsersResult(
         employee_ids=pulumi.get(__response__, 'employee_ids'),
