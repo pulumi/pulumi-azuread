@@ -178,6 +178,90 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Output<GetServicePrincipalsResult> Invoke(GetServicePrincipalsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalsResult>("azuread:index/getServicePrincipals:getServicePrincipals", args ?? new GetServicePrincipalsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets basic information for multiple Azure Active Directory service principals.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// *Look up by application display names*
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
+        ///     {
+        ///         DisplayNames = new[]
+        ///         {
+        ///             "example-app",
+        ///             "another-app",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// *Look up by application IDs (client IDs)*
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
+        ///     {
+        ///         ClientIds = new[]
+        ///         {
+        ///             "11111111-0000-0000-0000-000000000000",
+        ///             "22222222-0000-0000-0000-000000000000",
+        ///             "33333333-0000-0000-0000-000000000000",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// *Look up by service principal object IDs*
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
+        ///     {
+        ///         ObjectIds = new[]
+        ///         {
+        ///             "00000000-0000-0000-0000-000000000000",
+        ///             "00000000-0000-0000-0000-111111111111",
+        ///             "00000000-0000-0000-0000-222222222222",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServicePrincipalsResult> Invoke(GetServicePrincipalsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServicePrincipalsResult>("azuread:index/getServicePrincipals:getServicePrincipals", args ?? new GetServicePrincipalsInvokeArgs(), options.WithDefaults());
     }
 
 
