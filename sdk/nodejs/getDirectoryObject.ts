@@ -94,7 +94,7 @@ export interface GetDirectoryObjectResult {
  * *`objectId` - The object ID of the directory object.
  * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
  */
-export function getDirectoryObjectOutput(args: GetDirectoryObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoryObjectResult> {
+export function getDirectoryObjectOutput(args: GetDirectoryObjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDirectoryObjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getDirectoryObject:getDirectoryObject", {
         "objectId": args.objectId,
