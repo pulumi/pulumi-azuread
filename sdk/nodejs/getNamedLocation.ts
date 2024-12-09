@@ -123,7 +123,7 @@ export interface GetNamedLocationResult {
  * * `ipRanges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
  * * `trusted` - Whether the named location is trusted.
  */
-export function getNamedLocationOutput(args: GetNamedLocationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamedLocationResult> {
+export function getNamedLocationOutput(args: GetNamedLocationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNamedLocationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("azuread:index/getNamedLocation:getNamedLocation", {
         "displayName": args.displayName,

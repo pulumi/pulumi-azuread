@@ -114,6 +114,58 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Output<GetAdministrativeUnitResult> Invoke(GetAdministrativeUnitInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an adminisrative unit in Azure Active Directory.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `AdministrativeUnit.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### By Group Display Name)
+        /// 
+        /// *Look up by display name*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
+        ///     {
+        ///         DisplayName = "Example-AU",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// *Look up by object ID*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
+        ///     {
+        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAdministrativeUnitResult> Invoke(GetAdministrativeUnitInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -88,6 +88,45 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Output<GetGroupRoleManagementPolicyResult> Invoke(GetGroupRoleManagementPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupRoleManagementPolicyResult>("azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy", args ?? new GetGroupRoleManagementPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve a role policy for an Azure AD group.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this resource.
+        /// 
+        /// When authenticated with a service principal, this resource requires the `RoleManagementPolicy.Read.AzureADGroup` Microsoft Graph API permissions.
+        /// 
+        /// When authenticated with a user principal, this resource requires `Global Administrator` directory role, or the `Privileged Role Administrator` role in Identity Governance.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = new AzureAD.Group("example", new()
+        ///     {
+        ///         DisplayName = "group-name",
+        ///         SecurityEnabled = true,
+        ///     });
+        /// 
+        ///     var ownersPolicy = AzureAD.GetGroupRoleManagementPolicy.Invoke(new()
+        ///     {
+        ///         GroupId = example.Id,
+        ///         RoleId = "owner",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupRoleManagementPolicyResult> Invoke(GetGroupRoleManagementPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupRoleManagementPolicyResult>("azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy", args ?? new GetGroupRoleManagementPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

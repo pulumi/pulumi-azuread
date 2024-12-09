@@ -152,6 +152,77 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Output<GetApplicationPublishedAppIdsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationPublishedAppIdsResult>("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// *Listing well-known application IDs*
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["publishedAppIds"] = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// *Granting access to an application*
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
+        /// 
+        ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
+        ///     {
+        ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+        ///         UseExisting = true,
+        ///     });
+        /// 
+        ///     var example = new AzureAD.Application("example", new()
+        ///     {
+        ///         DisplayName = "example",
+        ///         RequiredResourceAccesses = new[]
+        ///         {
+        ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+        ///             {
+        ///                 ResourceAppId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+        ///                 ResourceAccesses = new[]
+        ///                 {
+        ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+        ///                     {
+        ///                         Id = msgraph.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.User_Read_All),
+        ///                         Type = "Role",
+        ///                     },
+        ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+        ///                     {
+        ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_ReadWrite),
+        ///                         Type = "Scope",
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApplicationPublishedAppIdsResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationPublishedAppIdsResult>("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

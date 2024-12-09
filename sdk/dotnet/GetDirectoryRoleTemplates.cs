@@ -76,6 +76,39 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Output<GetDirectoryRoleTemplatesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDirectoryRoleTemplatesResult>("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to access information about directory role templates within Azure Active Directory.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this resource.
+        /// 
+        /// When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = AzureAD.GetDirectoryRoleTemplates.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["roles"] = current.Apply(getDirectoryRoleTemplatesResult =&gt; getDirectoryRoleTemplatesResult.ObjectIds),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDirectoryRoleTemplatesResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDirectoryRoleTemplatesResult>("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

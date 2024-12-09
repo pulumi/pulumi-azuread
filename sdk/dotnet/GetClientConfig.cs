@@ -68,6 +68,35 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Output<GetClientConfigResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientConfigResult>("azuread:index/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to access the configuration of the AzureAD provider.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// No additional roles are required to use this data source.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = AzureAD.GetClientConfig.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["objectId"] = current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClientConfigResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClientConfigResult>("azuread:index/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
     }
 
 
