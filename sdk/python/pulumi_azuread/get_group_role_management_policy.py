@@ -136,7 +136,7 @@ def get_group_role_management_policy(group_id: Optional[str] = None,
         role_id=pulumi.get(__ret__, 'role_id'))
 def get_group_role_management_policy_output(group_id: Optional[pulumi.Input[str]] = None,
                                             role_id: Optional[pulumi.Input[str]] = None,
-                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupRoleManagementPolicyResult]:
+                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupRoleManagementPolicyResult]:
     """
     Use this data source to retrieve a role policy for an Azure AD group.
 
@@ -168,7 +168,7 @@ def get_group_role_management_policy_output(group_id: Optional[pulumi.Input[str]
     __args__ = dict()
     __args__['groupId'] = group_id
     __args__['roleId'] = role_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getGroupRoleManagementPolicy:getGroupRoleManagementPolicy', __args__, opts=opts, typ=GetGroupRoleManagementPolicyResult)
     return __ret__.apply(lambda __response__: GetGroupRoleManagementPolicyResult(
         description=pulumi.get(__response__, 'description'),
