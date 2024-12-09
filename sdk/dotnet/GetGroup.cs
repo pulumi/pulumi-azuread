@@ -80,6 +80,41 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("azuread:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an Azure Active Directory group.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### By Group Display Name)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetGroup.Invoke(new()
+        ///     {
+        ///         DisplayName = "MyGroupName",
+        ///         SecurityEnabled = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("azuread:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
     }
 
 

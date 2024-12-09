@@ -117,7 +117,7 @@ def get_directory_roles(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
         object_ids=pulumi.get(__ret__, 'object_ids'),
         roles=pulumi.get(__ret__, 'roles'),
         template_ids=pulumi.get(__ret__, 'template_ids'))
-def get_directory_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoryRolesResult]:
+def get_directory_roles_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirectoryRolesResult]:
     """
     Use this data source to access information about activated directory roles within Azure Active Directory.
 
@@ -140,7 +140,7 @@ def get_directory_roles_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getDirectoryRoles:getDirectoryRoles', __args__, opts=opts, typ=GetDirectoryRolesResult)
     return __ret__.apply(lambda __response__: GetDirectoryRolesResult(
         id=pulumi.get(__response__, 'id'),

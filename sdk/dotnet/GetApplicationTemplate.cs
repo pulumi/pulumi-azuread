@@ -74,6 +74,38 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Output<GetApplicationTemplateResult> Invoke(GetApplicationTemplateInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationTemplateResult>("azuread:index/getApplicationTemplate:getApplicationTemplate", args ?? new GetApplicationTemplateInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).
+        /// 
+        /// ## API Permissions
+        /// 
+        /// This data source does not require any additional roles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
+        ///     {
+        ///         DisplayName = "Marketo",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["applicationTemplateId"] = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApplicationTemplateResult> Invoke(GetApplicationTemplateInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationTemplateResult>("azuread:index/getApplicationTemplate:getApplicationTemplate", args ?? new GetApplicationTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

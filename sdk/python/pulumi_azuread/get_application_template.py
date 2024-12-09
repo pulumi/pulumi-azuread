@@ -189,7 +189,7 @@ def get_application_template(display_name: Optional[str] = None,
         template_id=pulumi.get(__ret__, 'template_id'))
 def get_application_template_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                     template_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationTemplateResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationTemplateResult]:
     """
     Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).
 
@@ -216,7 +216,7 @@ def get_application_template_output(display_name: Optional[pulumi.Input[Optional
     __args__ = dict()
     __args__['displayName'] = display_name
     __args__['templateId'] = template_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('azuread:index/getApplicationTemplate:getApplicationTemplate', __args__, opts=opts, typ=GetApplicationTemplateResult)
     return __ret__.apply(lambda __response__: GetApplicationTemplateResult(
         categories=pulumi.get(__response__, 'categories'),
