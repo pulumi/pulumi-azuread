@@ -111,21 +111,11 @@ type LookupAccessPackageResult struct {
 }
 
 func LookupAccessPackageOutput(ctx *pulumi.Context, args LookupAccessPackageOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPackageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccessPackageResultOutput, error) {
 			args := v.(LookupAccessPackageArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAccessPackageResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getAccessPackage:getAccessPackage", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAccessPackageResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAccessPackageResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAccessPackageResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azuread:index/getAccessPackage:getAccessPackage", args, LookupAccessPackageResultOutput{}, options).(LookupAccessPackageResultOutput), nil
 		}).(LookupAccessPackageResultOutput)
 }
 

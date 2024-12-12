@@ -111,21 +111,11 @@ type LookupAdministrativeUnitResult struct {
 }
 
 func LookupAdministrativeUnitOutput(ctx *pulumi.Context, args LookupAdministrativeUnitOutputArgs, opts ...pulumi.InvokeOption) LookupAdministrativeUnitResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAdministrativeUnitResultOutput, error) {
 			args := v.(LookupAdministrativeUnitArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAdministrativeUnitResult
-			secret, err := ctx.InvokePackageRaw("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAdministrativeUnitResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAdministrativeUnitResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAdministrativeUnitResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args, LookupAdministrativeUnitResultOutput{}, options).(LookupAdministrativeUnitResultOutput), nil
 		}).(LookupAdministrativeUnitResultOutput)
 }
 
