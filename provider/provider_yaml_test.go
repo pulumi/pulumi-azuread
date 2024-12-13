@@ -39,7 +39,8 @@ func TestUpgradeCoverage(t *testing.T) {
 	providertest.ReportUpgradeCoverage(t)
 }
 
-func upgradeTest(t *testing.T, dir string, baselineVersion string, opts ...optproviderupgrade.PreviewProviderUpgradeOpt) {
+func upgradeTest(t *testing.T, dir string, baselineVersion string,
+	opts ...optproviderupgrade.PreviewProviderUpgradeOpt) {
 	t.Helper()
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without cloud credentials")
