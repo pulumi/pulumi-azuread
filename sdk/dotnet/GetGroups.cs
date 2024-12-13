@@ -226,6 +226,114 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("azuread:index/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets Object IDs or Display Names for multiple Azure Active Directory groups.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// *Look up by group name*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetGroups.Invoke(new()
+        ///     {
+        ///         DisplayNames = new[]
+        ///         {
+        ///             "group-a",
+        ///             "group-b",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// *Look up by display name prefix*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sales = AzureAD.GetGroups.Invoke(new()
+        ///     {
+        ///         DisplayNamePrefix = "sales-",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// *Look up all groups*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = AzureAD.GetGroups.Invoke(new()
+        ///     {
+        ///         ReturnAll = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// *Look up all mail-enabled groups*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mailEnabled = AzureAD.GetGroups.Invoke(new()
+        ///     {
+        ///         MailEnabled = true,
+        ///         ReturnAll = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// *Look up all security-enabled groups that are not mail-enabled*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var securityOnly = AzureAD.GetGroups.Invoke(new()
+        ///     {
+        ///         MailEnabled = false,
+        ///         ReturnAll = true,
+        ///         SecurityEnabled = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("azuread:index/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());
     }
 
 
