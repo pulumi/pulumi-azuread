@@ -114,6 +114,58 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Output<GetAccessPackageCatalogRoleResult> Invoke(GetAccessPackageCatalogRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessPackageCatalogRoleResult>("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args ?? new GetAccessPackageCatalogRoleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets information about an access package catalog role.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### By Group Display Name)
+        /// 
+        /// *Look up by display name*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     {
+        ///         DisplayName = "Catalog owner",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// *Look up by object ID*
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     {
+        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccessPackageCatalogRoleResult> Invoke(GetAccessPackageCatalogRoleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessPackageCatalogRoleResult>("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args ?? new GetAccessPackageCatalogRoleInvokeArgs(), options.WithDefaults());
     }
 
 

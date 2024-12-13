@@ -82,6 +82,42 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("azuread:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets basic information for multiple Azure Active Directory users.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var users = AzureAD.GetUsers.Invoke(new()
+        ///     {
+        ///         UserPrincipalNames = new[]
+        ///         {
+        ///             "kat@example.com",
+        ///             "byte@example.com",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("azuread:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
     }
 
 
