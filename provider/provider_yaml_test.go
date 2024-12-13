@@ -25,11 +25,11 @@ import (
 )
 
 func Test_ad_app(t *testing.T) {
-	test(t, filepath.Join("test-programs", "ad-app"))
+	upgradeTest(t, filepath.Join("test-programs", "ad-app"))
 }
 
 func Test_ad_app_password(t *testing.T) {
-	test(t,
+	upgradeTest(t,
 		filepath.Join("test-programs", "ad-app-password"),
 		optproviderupgrade.NewSourcePath(filepath.Join("test-programs", "ad-app-password", "v6")))
 }
@@ -38,7 +38,7 @@ func TestUpgradeCoverage(t *testing.T) {
 	providertest.ReportUpgradeCoverage(t)
 }
 
-func test(t *testing.T, dir string, opts ...optproviderupgrade.PreviewProviderUpgradeOpt) {
+func upgradeTest(t *testing.T, dir string, opts ...optproviderupgrade.PreviewProviderUpgradeOpt) {
 	t.Helper()
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without cloud credentials")
