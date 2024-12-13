@@ -1,0 +1,16 @@
+name: sp-password
+runtime: yaml
+description: Testing that secrets in explicit provider args are secret
+resources:
+  app:
+    type: azuread:Application
+    properties:
+      displayName: example
+  sp:
+    type: azuread:ServicePrincipal
+    properties:
+      clientId: ${app.clientId}
+  spPassword:
+    type: azuread:ServicePrincipalPassword
+    properties:
+      servicePrincipalId: ${sp.id}

@@ -176,10 +176,24 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"azuread_application":                {Tok: makeResource(mainMod, "Application")},
-			"azuread_application_password":       {Tok: makeResource(mainMod, "ApplicationPassword")},
-			"azuread_group":                      {Tok: makeResource(mainMod, "Group")},
-			"azuread_service_principal":          {Tok: makeResource(mainMod, "ServicePrincipal")},
+			"azuread_application":          {Tok: makeResource(mainMod, "Application")},
+			"azuread_application_password": {Tok: makeResource(mainMod, "ApplicationPassword")},
+			"azuread_group":                {Tok: makeResource(mainMod, "Group")},
+			"azuread_service_principal": {
+				Tok: makeResource(mainMod, "ServicePrincipal"),
+				TransformFromState: func(ctx context.Context, pm resource.PropertyMap) (resource.PropertyMap, error) {
+					// if pm.HasValue("id") {
+					// 	id := pm["id"]
+					// 	if id.IsString() {
+					// 		idString := id.StringValue()
+					// 		if !strings.HasPrefix(idString, "/servicePrincipals/") {
+					// 			pm["id"] = resource.NewStringProperty(fmt.Sprintf("/servicePrincipals/%s", idString))
+					// 		}
+					// 	}
+					// }
+					return pm, nil
+				},
+			},
 			"azuread_service_principal_password": {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
 			"azuread_service_principal_delegated_permission_grant": {
 				Tok: makeResource(mainMod, "ServicePrincipalDelegatedPermissionGrant"),

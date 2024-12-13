@@ -34,6 +34,12 @@ func Test_ad_app_password(t *testing.T) {
 		optproviderupgrade.NewSourcePath(filepath.Join("test-programs", "ad-app-password", "v6")))
 }
 
+func Test_sp_password(t *testing.T) {
+	test(t,
+		filepath.Join("test-programs", "sp-password"),
+		optproviderupgrade.NewSourcePath(filepath.Join("test-programs", "sp-password", "v6")))
+}
+
 func TestUpgradeCoverage(t *testing.T) {
 	providertest.ReportUpgradeCoverage(t)
 }
