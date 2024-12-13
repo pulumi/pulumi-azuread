@@ -11,6 +11,7 @@ import (
 
 	"github.com/pulumi/providertest/providers"
 	"github.com/pulumi/providertest/pulumitest"
+	"github.com/pulumi/providertest/pulumitest/assertup"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -44,6 +45,14 @@ func TestSecretsAreEncrypted(t *testing.T) {
 		require.Contains(t, res.Outputs, out)
 		require.True(t, res.Outputs[out].Secret, "%s output should be marked as secret", property)
 	}
+}
+
+func TestGroupImport(t *testing.T) {
+	test := setupTest(t, "group-import")
+
+	res := test.Up(t)
+
+	assertup.HasNoDeletes(t, res)
 }
 
 func setupTest(t *testing.T, testProgramDir string, opts ...opttest.Option) *pulumitest.PulumiTest {

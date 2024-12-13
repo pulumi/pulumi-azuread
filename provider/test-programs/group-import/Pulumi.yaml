@@ -1,0 +1,13 @@
+name: group-import
+runtime: yaml
+description: Testing that secrets in explicit provider args are secret
+resources:
+  exampleGroup:
+    type: azuread:Group
+    properties:
+      displayName: Test
+      securityEnabled: false
+    options:
+      # Change to the line below to fix the import (and use a real GUID)
+      import: 8830ca3c-c6ec-4bc1-9ba1-2e7fbed3c4f8
+      # import: /groups/8830ca3c-c6ec-4bc1-9ba1-2e7fbed3c4f8
