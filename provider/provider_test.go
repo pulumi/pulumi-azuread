@@ -4,12 +4,12 @@ package provider
 
 import (
 	"encoding/json"
-	"os"
 	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/require"
 
+	"github.com/pulumi/providertest/providers"
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
@@ -17,13 +17,7 @@ import (
 )
 
 func TestSecretsAreEncrypted(t *testing.T) {
-	cwd, err := os.Getwd()
-	require.NoError(t, err)
-
-	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "explicit-provider-with-config"),
-		opttest.LocalProviderPath("azuread", filepath.Join(cwd, "..", "bin")),
-		opttest.SkipInstall(),
-	)
+	test := setupTest(t, "explicit-provider-with-config", opttest.SkipInstall())
 
 	res := test.Up(t)
 
@@ -50,4 +44,12 @@ func TestSecretsAreEncrypted(t *testing.T) {
 		require.Contains(t, res.Outputs, out)
 		require.True(t, res.Outputs[out].Secret, "%s output should be marked as secret", property)
 	}
+}
+
+func setupTest(t *testing.T, testProgramDir string, opts ...opttest.Option) *pulumitest.PulumiTest {
+	t.Helper()
+	rpFactory := providers.ResourceProviderFactory(providerServer)
+	dir := filepath.Join("test-programs", testProgramDir)
+	opts = append(opts, opttest.AttachProvider("azuread", rpFactory))
+	return pulumitest.NewPulumiTest(t, dir, opts...)
 }
