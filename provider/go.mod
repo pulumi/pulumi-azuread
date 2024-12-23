@@ -9,7 +9,7 @@ require (
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
 	github.com/pulumi/providertest v0.1.3
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.98.0
-	github.com/pulumi/pulumi/sdk/v3 v3.143.0
+	github.com/pulumi/pulumi/sdk/v3 v3.144.1
 	github.com/stretchr/testify v1.9.0
 )
 
@@ -236,7 +236,7 @@ require (
 	golang.org/x/crypto v0.31.0 // indirect
 	golang.org/x/exp v0.0.0-20240707233637-46b078467d37 // indirect
 	golang.org/x/mod v0.21.0 // indirect
-	golang.org/x/net v0.29.0 // indirect
+	golang.org/x/net v0.33.0 // indirect
 	golang.org/x/oauth2 v0.23.0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/sys v0.28.0 // indirect
@@ -258,3 +258,7 @@ require (
 	lukechampine.com/frand v1.4.2 // indirect
 	software.sslmate.com/src/go-pkcs12 v0.5.0 // indirect
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.144.2-0.20241223075803-92f382b63f57
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.144.2-0.20241223075803-92f382b63f57
