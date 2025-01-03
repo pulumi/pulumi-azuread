@@ -25,12 +25,13 @@ import (
 )
 
 func Test_ad_app(t *testing.T) {
-	test(t, filepath.Join("test-programs", "ad-app"))
+	upgradeTest(t, filepath.Join("test-programs", "ad-app"), "5.53.5")
 }
 
 func Test_ad_app_password(t *testing.T) {
-	test(t,
+	upgradeTest(t,
 		filepath.Join("test-programs", "ad-app-password"),
+		"5.53.5",
 		optproviderupgrade.NewSourcePath(filepath.Join("test-programs", "ad-app-password", "v6")))
 }
 
@@ -38,18 +39,19 @@ func TestUpgradeCoverage(t *testing.T) {
 	providertest.ReportUpgradeCoverage(t)
 }
 
-func test(t *testing.T, dir string, opts ...optproviderupgrade.PreviewProviderUpgradeOpt) {
+func upgradeTest(t *testing.T, dir string, baselineVersion string,
+	opts ...optproviderupgrade.PreviewProviderUpgradeOpt) {
 	t.Helper()
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without cloud credentials")
 		return
 	}
 	rpFactory := providers.ResourceProviderFactory(providerServer)
-	cacheDir := providertest.GetUpgradeCacheDir(filepath.Base(dir), "5.53.5")
+	cacheDir := providertest.GetUpgradeCacheDir(filepath.Base(dir), baselineVersion)
 	pt := pulumitest.NewPulumiTest(t, dir,
 		opttest.AttachProvider("azuread",
 			rpFactory.ReplayInvokes(filepath.Join(cacheDir, "grpc.json"), false /* allowLiveFallback */)))
-	previewResult := providertest.PreviewProviderUpgrade(t, pt, "azuread", "5.53.5", opts...)
+	previewResult := providertest.PreviewProviderUpgrade(t, pt, "azuread", baselineVersion, opts...)
 	assertpreview.HasNoReplacements(t, previewResult)
 	assertpreview.HasNoDeletes(t, previewResult)
 }
