@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * Users can be imported using their object ID, e.g.
  * 
  * ```sh
- * $ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
+ * $ pulumi import azuread:index/user:User my_user /users/00000000-0000-0000-0000-000000000000
  * ```
  * 
  */
@@ -285,6 +285,20 @@ public class User extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> division() {
         return Codegen.optional(this.division);
+    }
+    /**
+     * The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     * 
+     */
+    @Export(name="employeeHireDate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> employeeHireDate;
+
+    /**
+     * @return The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     * 
+     */
+    public Output<Optional<String>> employeeHireDate() {
+        return Codegen.optional(this.employeeHireDate);
     }
     /**
      * The employee identifier assigned to the user by the organisation.

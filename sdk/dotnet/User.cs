@@ -46,7 +46,7 @@ namespace Pulumi.AzureAD
     /// Users can be imported using their object ID, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
+    /// $ pulumi import azuread:index/user:User my_user /users/00000000-0000-0000-0000-000000000000
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/user:User")]
@@ -141,6 +141,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("division")]
         public Output<string?> Division { get; private set; } = null!;
+
+        /// <summary>
+        /// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// </summary>
+        [Output("employeeHireDate")]
+        public Output<string?> EmployeeHireDate { get; private set; } = null!;
 
         /// <summary>
         /// The employee identifier assigned to the user by the organisation.
@@ -476,6 +482,12 @@ namespace Pulumi.AzureAD
         public Input<string>? Division { get; set; }
 
         /// <summary>
+        /// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// </summary>
+        [Input("employeeHireDate")]
+        public Input<string>? EmployeeHireDate { get; set; }
+
+        /// <summary>
         /// The employee identifier assigned to the user by the organisation.
         /// </summary>
         [Input("employeeId")]
@@ -727,6 +739,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("division")]
         public Input<string>? Division { get; set; }
+
+        /// <summary>
+        /// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// </summary>
+        [Input("employeeHireDate")]
+        public Input<string>? EmployeeHireDate { get; set; }
 
         /// <summary>
         /// The employee identifier assigned to the user by the organisation.

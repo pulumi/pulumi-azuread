@@ -524,6 +524,10 @@ export interface ConditionalAccessPolicyConditions {
      */
     devices?: outputs.ConditionalAccessPolicyConditionsDevices;
     /**
+     * The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+     */
+    insiderRiskLevels: string;
+    /**
      * A `locations` block as documented below, which specifies locations included in and excluded from the policy.
      */
     locations?: outputs.ConditionalAccessPolicyConditionsLocations;
@@ -698,7 +702,7 @@ export interface ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalU
 
 export interface ConditionalAccessPolicyGrantControls {
     /**
-     * ID of an Authentication Strength Policy to use in this policy.
+     * ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
      */
     authenticationStrengthPolicyId?: string;
     /**
@@ -1085,6 +1089,7 @@ export interface GetGroupDynamicMembership {
 
 export interface GetNamedLocationCountry {
     countriesAndRegions: string[];
+    countryLookupMethod: string;
     includeUnknownCountriesAndRegions: boolean;
 }
 
@@ -1615,6 +1620,10 @@ export interface NamedLocationCountry {
      * List of countries and/or regions in two-letter format specified by ISO 3166-2.
      */
     countriesAndRegions: string[];
+    /**
+     * Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+     */
+    countryLookupMethod?: string;
     /**
      * Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
      */

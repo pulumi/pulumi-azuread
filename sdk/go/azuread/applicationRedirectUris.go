@@ -51,8 +51,8 @@ import (
 //				ApplicationId: example.ID(),
 //				Type:          pulumi.String("SPA"),
 //				RedirectUris: pulumi.StringArray{
-//					pulumi.String("https://mobile.hashitown.com/"),
-//					pulumi.String("https://beta.hashitown.com/"),
+//					pulumi.String("https://mobile.example.com/"),
+//					pulumi.String("https://beta.example.com/"),
 //				},
 //			})
 //			if err != nil {
@@ -62,8 +62,8 @@ import (
 //				ApplicationId: example.ID(),
 //				Type:          pulumi.String("Web"),
 //				RedirectUris: pulumi.StringArray{
-//					pulumi.String("https://app.hashitown.com/"),
-//					pulumi.String("https://classic.hashitown.com/"),
+//					pulumi.String("https://app.example.com/"),
+//					pulumi.String("https://classic.example.com/"),
 //					pulumi.String("urn:ietf:wg:oauth:2.0:oob"),
 //				},
 //			})

@@ -62,16 +62,16 @@ import javax.annotation.Nullable;
  *             .applicationId(example.id())
  *             .type("SPA")
  *             .redirectUris(            
- *                 "https://mobile.hashitown.com/",
- *                 "https://beta.hashitown.com/")
+ *                 "https://mobile.example.com/",
+ *                 "https://beta.example.com/")
  *             .build());
  * 
  *         var exampleWeb = new ApplicationRedirectUris("exampleWeb", ApplicationRedirectUrisArgs.builder()
  *             .applicationId(example.id())
  *             .type("Web")
  *             .redirectUris(            
- *                 "https://app.hashitown.com/",
- *                 "https://classic.hashitown.com/",
+ *                 "https://app.example.com/",
+ *                 "https://classic.example.com/",
  *                 "urn:ietf:wg:oauth:2.0:oob")
  *             .build());
  * 

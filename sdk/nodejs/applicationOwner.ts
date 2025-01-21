@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
  * const jane = new azuread.User("jane", {
- *     userPrincipalName: "jane.fischer@hashitown.com",
+ *     userPrincipalName: "jane.fischer@example.com",
  *     displayName: "Jane Fischer",
  *     password: "Ch@ngeMe",
  * });

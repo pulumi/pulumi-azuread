@@ -40,6 +40,11 @@ public final class ConditionalAccessPolicyConditions {
      */
     private @Nullable ConditionalAccessPolicyConditionsDevices devices;
     /**
+     * @return The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+     * 
+     */
+    private @Nullable String insiderRiskLevels;
+    /**
      * @return A `locations` block as documented below, which specifies locations included in and excluded from the policy.
      * 
      */
@@ -100,6 +105,13 @@ public final class ConditionalAccessPolicyConditions {
         return Optional.ofNullable(this.devices);
     }
     /**
+     * @return The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+     * 
+     */
+    public Optional<String> insiderRiskLevels() {
+        return Optional.ofNullable(this.insiderRiskLevels);
+    }
+    /**
      * @return A `locations` block as documented below, which specifies locations included in and excluded from the policy.
      * 
      */
@@ -155,6 +167,7 @@ public final class ConditionalAccessPolicyConditions {
         private List<String> clientAppTypes;
         private @Nullable ConditionalAccessPolicyConditionsClientApplications clientApplications;
         private @Nullable ConditionalAccessPolicyConditionsDevices devices;
+        private @Nullable String insiderRiskLevels;
         private @Nullable ConditionalAccessPolicyConditionsLocations locations;
         private @Nullable ConditionalAccessPolicyConditionsPlatforms platforms;
         private @Nullable List<String> servicePrincipalRiskLevels;
@@ -168,6 +181,7 @@ public final class ConditionalAccessPolicyConditions {
     	      this.clientAppTypes = defaults.clientAppTypes;
     	      this.clientApplications = defaults.clientApplications;
     	      this.devices = defaults.devices;
+    	      this.insiderRiskLevels = defaults.insiderRiskLevels;
     	      this.locations = defaults.locations;
     	      this.platforms = defaults.platforms;
     	      this.servicePrincipalRiskLevels = defaults.servicePrincipalRiskLevels;
@@ -205,6 +219,12 @@ public final class ConditionalAccessPolicyConditions {
         public Builder devices(@Nullable ConditionalAccessPolicyConditionsDevices devices) {
 
             this.devices = devices;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder insiderRiskLevels(@Nullable String insiderRiskLevels) {
+
+            this.insiderRiskLevels = insiderRiskLevels;
             return this;
         }
         @CustomType.Setter
@@ -260,6 +280,7 @@ public final class ConditionalAccessPolicyConditions {
             _resultValue.clientAppTypes = clientAppTypes;
             _resultValue.clientApplications = clientApplications;
             _resultValue.devices = devices;
+            _resultValue.insiderRiskLevels = insiderRiskLevels;
             _resultValue.locations = locations;
             _resultValue.platforms = platforms;
             _resultValue.servicePrincipalRiskLevels = servicePrincipalRiskLevels;

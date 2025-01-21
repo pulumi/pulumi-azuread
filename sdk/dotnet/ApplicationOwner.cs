@@ -27,7 +27,7 @@ namespace Pulumi.AzureAD
     /// 
     ///     var jane = new AzureAD.User("jane", new()
     ///     {
-    ///         UserPrincipalName = "jane.fischer@hashitown.com",
+    ///         UserPrincipalName = "jane.fischer@example.com",
     ///         DisplayName = "Jane Fischer",
     ///         Password = "Ch@ngeMe",
     ///     });

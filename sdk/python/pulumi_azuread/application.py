@@ -1838,7 +1838,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> pulumi.Output['outputs.ApplicationPassword']:
+    def password(self) -> pulumi.Output[Optional['outputs.ApplicationPassword']]:
         """
         A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
 

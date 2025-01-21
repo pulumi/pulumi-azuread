@@ -143,10 +143,8 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         Administrative unit members can be imported using the object ID of the administrative unit and the object ID of the member, e.g.
 
         ```sh
-        $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+        $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember example /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/members/11111111-1111-1111-1111-111111111111
         ```
-
-        -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -192,10 +190,8 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         Administrative unit members can be imported using the object ID of the administrative unit and the object ID of the member, e.g.
 
         ```sh
-        $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+        $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember example /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/members/11111111-1111-1111-1111-111111111111
         ```
-
-        -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
 
         :param str resource_name: The name of the resource.
         :param AdministrativeUnitMemberArgs args: The arguments to use to populate this resource's properties.

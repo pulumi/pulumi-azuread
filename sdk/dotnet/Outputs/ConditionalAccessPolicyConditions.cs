@@ -30,6 +30,10 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsDevices? Devices;
         /// <summary>
+        /// The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+        /// </summary>
+        public readonly string? InsiderRiskLevels;
+        /// <summary>
         /// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsLocations? Locations;
@@ -64,6 +68,8 @@ namespace Pulumi.AzureAD.Outputs
 
             Outputs.ConditionalAccessPolicyConditionsDevices? devices,
 
+            string? insiderRiskLevels,
+
             Outputs.ConditionalAccessPolicyConditionsLocations? locations,
 
             Outputs.ConditionalAccessPolicyConditionsPlatforms? platforms,
@@ -80,6 +86,7 @@ namespace Pulumi.AzureAD.Outputs
             ClientAppTypes = clientAppTypes;
             ClientApplications = clientApplications;
             Devices = devices;
+            InsiderRiskLevels = insiderRiskLevels;
             Locations = locations;
             Platforms = platforms;
             ServicePrincipalRiskLevels = servicePrincipalRiskLevels;

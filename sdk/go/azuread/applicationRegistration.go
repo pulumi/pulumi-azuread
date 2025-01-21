@@ -42,12 +42,12 @@ import (
 //				DisplayName:         pulumi.String("Example Application"),
 //				Description:         pulumi.String("My example application"),
 //				SignInAudience:      pulumi.String("AzureADMyOrg"),
-//				HomepageUrl:         pulumi.String("https://app.hashitown.com/"),
-//				LogoutUrl:           pulumi.String("https://app.hashitown.com/logout"),
-//				MarketingUrl:        pulumi.String("https://hashitown.com/"),
-//				PrivacyStatementUrl: pulumi.String("https://hashitown.com/privacy"),
-//				SupportUrl:          pulumi.String("https://support.hashitown.com/"),
-//				TermsOfServiceUrl:   pulumi.String("https://hashitown.com/terms"),
+//				HomepageUrl:         pulumi.String("https://app.example.com/"),
+//				LogoutUrl:           pulumi.String("https://app.example.com/logout"),
+//				MarketingUrl:        pulumi.String("https://example.com/"),
+//				PrivacyStatementUrl: pulumi.String("https://example.com/privacy"),
+//				SupportUrl:          pulumi.String("https://support.example.com/"),
+//				TermsOfServiceUrl:   pulumi.String("https://example.com/terms"),
 //			})
 //			if err != nil {
 //				return err

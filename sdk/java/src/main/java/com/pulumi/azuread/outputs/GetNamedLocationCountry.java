@@ -13,11 +13,15 @@ import java.util.Objects;
 @CustomType
 public final class GetNamedLocationCountry {
     private List<String> countriesAndRegions;
+    private String countryLookupMethod;
     private Boolean includeUnknownCountriesAndRegions;
 
     private GetNamedLocationCountry() {}
     public List<String> countriesAndRegions() {
         return this.countriesAndRegions;
+    }
+    public String countryLookupMethod() {
+        return this.countryLookupMethod;
     }
     public Boolean includeUnknownCountriesAndRegions() {
         return this.includeUnknownCountriesAndRegions;
@@ -33,11 +37,13 @@ public final class GetNamedLocationCountry {
     @CustomType.Builder
     public static final class Builder {
         private List<String> countriesAndRegions;
+        private String countryLookupMethod;
         private Boolean includeUnknownCountriesAndRegions;
         public Builder() {}
         public Builder(GetNamedLocationCountry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.countriesAndRegions = defaults.countriesAndRegions;
+    	      this.countryLookupMethod = defaults.countryLookupMethod;
     	      this.includeUnknownCountriesAndRegions = defaults.includeUnknownCountriesAndRegions;
         }
 
@@ -53,6 +59,14 @@ public final class GetNamedLocationCountry {
             return countriesAndRegions(List.of(countriesAndRegions));
         }
         @CustomType.Setter
+        public Builder countryLookupMethod(String countryLookupMethod) {
+            if (countryLookupMethod == null) {
+              throw new MissingRequiredPropertyException("GetNamedLocationCountry", "countryLookupMethod");
+            }
+            this.countryLookupMethod = countryLookupMethod;
+            return this;
+        }
+        @CustomType.Setter
         public Builder includeUnknownCountriesAndRegions(Boolean includeUnknownCountriesAndRegions) {
             if (includeUnknownCountriesAndRegions == null) {
               throw new MissingRequiredPropertyException("GetNamedLocationCountry", "includeUnknownCountriesAndRegions");
@@ -63,6 +77,7 @@ public final class GetNamedLocationCountry {
         public GetNamedLocationCountry build() {
             final var _resultValue = new GetNamedLocationCountry();
             _resultValue.countriesAndRegions = countriesAndRegions;
+            _resultValue.countryLookupMethod = countryLookupMethod;
             _resultValue.includeUnknownCountriesAndRegions = includeUnknownCountriesAndRegions;
             return _resultValue;
         }

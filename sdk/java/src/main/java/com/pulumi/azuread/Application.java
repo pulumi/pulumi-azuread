@@ -494,7 +494,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="password", refs={ApplicationPassword.class}, tree="[0]")
-    private Output<ApplicationPassword> password;
+    private Output</* @Nullable */ ApplicationPassword> password;
 
     /**
      * @return A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
@@ -502,8 +502,8 @@ public class Application extends com.pulumi.resources.CustomResource {
      * &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
      * 
      */
-    public Output<ApplicationPassword> password() {
-        return this.password;
+    public Output<Optional<ApplicationPassword>> password() {
+        return Codegen.optional(this.password);
     }
     /**
      * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.

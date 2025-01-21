@@ -4126,6 +4126,8 @@ type ConditionalAccessPolicyConditions struct {
 	ClientApplications *ConditionalAccessPolicyConditionsClientApplications `pulumi:"clientApplications"`
 	// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
 	Devices *ConditionalAccessPolicyConditionsDevices `pulumi:"devices"`
+	// The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+	InsiderRiskLevels *string `pulumi:"insiderRiskLevels"`
 	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
 	Locations *ConditionalAccessPolicyConditionsLocations `pulumi:"locations"`
 	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
@@ -4160,6 +4162,8 @@ type ConditionalAccessPolicyConditionsArgs struct {
 	ClientApplications ConditionalAccessPolicyConditionsClientApplicationsPtrInput `pulumi:"clientApplications"`
 	// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
 	Devices ConditionalAccessPolicyConditionsDevicesPtrInput `pulumi:"devices"`
+	// The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+	InsiderRiskLevels pulumi.StringPtrInput `pulumi:"insiderRiskLevels"`
 	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
 	Locations ConditionalAccessPolicyConditionsLocationsPtrInput `pulumi:"locations"`
 	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
@@ -4275,6 +4279,11 @@ func (o ConditionalAccessPolicyConditionsOutput) Devices() ConditionalAccessPoli
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsDevices { return v.Devices }).(ConditionalAccessPolicyConditionsDevicesPtrOutput)
 }
 
+// The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsOutput) InsiderRiskLevels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *string { return v.InsiderRiskLevels }).(pulumi.StringPtrOutput)
+}
+
 // A `locations` block as documented below, which specifies locations included in and excluded from the policy.
 func (o ConditionalAccessPolicyConditionsOutput) Locations() ConditionalAccessPolicyConditionsLocationsPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsLocations {
@@ -4371,6 +4380,16 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Devices() ConditionalAccessP
 		}
 		return v.Devices
 	}).(ConditionalAccessPolicyConditionsDevicesPtrOutput)
+}
+
+// The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsPtrOutput) InsiderRiskLevels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InsiderRiskLevels
+	}).(pulumi.StringPtrOutput)
 }
 
 // A `locations` block as documented below, which specifies locations included in and excluded from the policy.
@@ -6098,7 +6117,7 @@ func (o ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExtern
 }
 
 type ConditionalAccessPolicyGrantControls struct {
-	// ID of an Authentication Strength Policy to use in this policy.
+	// ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
 	AuthenticationStrengthPolicyId *string `pulumi:"authenticationStrengthPolicyId"`
 	// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
 	BuiltInControls []string `pulumi:"builtInControls"`
@@ -6124,7 +6143,7 @@ type ConditionalAccessPolicyGrantControlsInput interface {
 }
 
 type ConditionalAccessPolicyGrantControlsArgs struct {
-	// ID of an Authentication Strength Policy to use in this policy.
+	// ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
 	AuthenticationStrengthPolicyId pulumi.StringPtrInput `pulumi:"authenticationStrengthPolicyId"`
 	// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
 	BuiltInControls pulumi.StringArrayInput `pulumi:"builtInControls"`
@@ -6215,7 +6234,7 @@ func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGra
 	}).(ConditionalAccessPolicyGrantControlsPtrOutput)
 }
 
-// ID of an Authentication Strength Policy to use in this policy.
+// ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
 func (o ConditionalAccessPolicyGrantControlsOutput) AuthenticationStrengthPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) *string { return v.AuthenticationStrengthPolicyId }).(pulumi.StringPtrOutput)
 }
@@ -6266,7 +6285,7 @@ func (o ConditionalAccessPolicyGrantControlsPtrOutput) Elem() ConditionalAccessP
 	}).(ConditionalAccessPolicyGrantControlsOutput)
 }
 
-// ID of an Authentication Strength Policy to use in this policy.
+// ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
 func (o ConditionalAccessPolicyGrantControlsPtrOutput) AuthenticationStrengthPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) *string {
 		if v == nil {
@@ -10283,6 +10302,8 @@ func (o InvitationMessagePtrOutput) Language() pulumi.StringPtrOutput {
 type NamedLocationCountry struct {
 	// List of countries and/or regions in two-letter format specified by ISO 3166-2.
 	CountriesAndRegions []string `pulumi:"countriesAndRegions"`
+	// Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+	CountryLookupMethod *string `pulumi:"countryLookupMethod"`
 	// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
 	IncludeUnknownCountriesAndRegions *bool `pulumi:"includeUnknownCountriesAndRegions"`
 }
@@ -10301,6 +10322,8 @@ type NamedLocationCountryInput interface {
 type NamedLocationCountryArgs struct {
 	// List of countries and/or regions in two-letter format specified by ISO 3166-2.
 	CountriesAndRegions pulumi.StringArrayInput `pulumi:"countriesAndRegions"`
+	// Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+	CountryLookupMethod pulumi.StringPtrInput `pulumi:"countryLookupMethod"`
 	// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
 	IncludeUnknownCountriesAndRegions pulumi.BoolPtrInput `pulumi:"includeUnknownCountriesAndRegions"`
 }
@@ -10387,6 +10410,11 @@ func (o NamedLocationCountryOutput) CountriesAndRegions() pulumi.StringArrayOutp
 	return o.ApplyT(func(v NamedLocationCountry) []string { return v.CountriesAndRegions }).(pulumi.StringArrayOutput)
 }
 
+// Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+func (o NamedLocationCountryOutput) CountryLookupMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamedLocationCountry) *string { return v.CountryLookupMethod }).(pulumi.StringPtrOutput)
+}
+
 // Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
 func (o NamedLocationCountryOutput) IncludeUnknownCountriesAndRegions() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NamedLocationCountry) *bool { return v.IncludeUnknownCountriesAndRegions }).(pulumi.BoolPtrOutput)
@@ -10424,6 +10452,16 @@ func (o NamedLocationCountryPtrOutput) CountriesAndRegions() pulumi.StringArrayO
 		}
 		return v.CountriesAndRegions
 	}).(pulumi.StringArrayOutput)
+}
+
+// Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+func (o NamedLocationCountryPtrOutput) CountryLookupMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamedLocationCountry) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CountryLookupMethod
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
@@ -13896,6 +13934,7 @@ func (o GetGroupDynamicMembershipArrayOutput) Index(i pulumi.IntInput) GetGroupD
 
 type GetNamedLocationCountry struct {
 	CountriesAndRegions               []string `pulumi:"countriesAndRegions"`
+	CountryLookupMethod               string   `pulumi:"countryLookupMethod"`
 	IncludeUnknownCountriesAndRegions bool     `pulumi:"includeUnknownCountriesAndRegions"`
 }
 
@@ -13912,6 +13951,7 @@ type GetNamedLocationCountryInput interface {
 
 type GetNamedLocationCountryArgs struct {
 	CountriesAndRegions               pulumi.StringArrayInput `pulumi:"countriesAndRegions"`
+	CountryLookupMethod               pulumi.StringInput      `pulumi:"countryLookupMethod"`
 	IncludeUnknownCountriesAndRegions pulumi.BoolInput        `pulumi:"includeUnknownCountriesAndRegions"`
 }
 
@@ -13968,6 +14008,10 @@ func (o GetNamedLocationCountryOutput) ToGetNamedLocationCountryOutputWithContex
 
 func (o GetNamedLocationCountryOutput) CountriesAndRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNamedLocationCountry) []string { return v.CountriesAndRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNamedLocationCountryOutput) CountryLookupMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNamedLocationCountry) string { return v.CountryLookupMethod }).(pulumi.StringOutput)
 }
 
 func (o GetNamedLocationCountryOutput) IncludeUnknownCountriesAndRegions() pulumi.BoolOutput {

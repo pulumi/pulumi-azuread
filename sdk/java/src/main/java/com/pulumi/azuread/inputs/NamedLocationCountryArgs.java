@@ -34,6 +34,21 @@ public final class NamedLocationCountryArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+     * 
+     */
+    @Import(name="countryLookupMethod")
+    private @Nullable Output<String> countryLookupMethod;
+
+    /**
+     * @return Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+     * 
+     */
+    public Optional<Output<String>> countryLookupMethod() {
+        return Optional.ofNullable(this.countryLookupMethod);
+    }
+
+    /**
      * Whether IP addresses that don&#39;t map to a country or region should be included in the named location. Defaults to `false`.
      * 
      */
@@ -52,6 +67,7 @@ public final class NamedLocationCountryArgs extends com.pulumi.resources.Resourc
 
     private NamedLocationCountryArgs(NamedLocationCountryArgs $) {
         this.countriesAndRegions = $.countriesAndRegions;
+        this.countryLookupMethod = $.countryLookupMethod;
         this.includeUnknownCountriesAndRegions = $.includeUnknownCountriesAndRegions;
     }
 
@@ -102,6 +118,27 @@ public final class NamedLocationCountryArgs extends com.pulumi.resources.Resourc
          */
         public Builder countriesAndRegions(String... countriesAndRegions) {
             return countriesAndRegions(List.of(countriesAndRegions));
+        }
+
+        /**
+         * @param countryLookupMethod Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder countryLookupMethod(@Nullable Output<String> countryLookupMethod) {
+            $.countryLookupMethod = countryLookupMethod;
+            return this;
+        }
+
+        /**
+         * @param countryLookupMethod Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder countryLookupMethod(String countryLookupMethod) {
+            return countryLookupMethod(Output.of(countryLookupMethod));
         }
 
         /**

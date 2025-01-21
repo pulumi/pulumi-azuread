@@ -73,6 +73,11 @@ public final class GetUserResult {
      */
     private String division;
     /**
+     * @return The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     * 
+     */
+    private String employeeHireDate;
+    /**
      * @return The employee identifier assigned to the user by the organisation.
      * 
      */
@@ -317,6 +322,13 @@ public final class GetUserResult {
      */
     public String division() {
         return this.division;
+    }
+    /**
+     * @return The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     * 
+     */
+    public String employeeHireDate() {
+        return this.employeeHireDate;
     }
     /**
      * @return The employee identifier assigned to the user by the organisation.
@@ -564,6 +576,7 @@ public final class GetUserResult {
         private String department;
         private String displayName;
         private String division;
+        private String employeeHireDate;
         private String employeeId;
         private String employeeType;
         private String externalUserState;
@@ -611,6 +624,7 @@ public final class GetUserResult {
     	      this.department = defaults.department;
     	      this.displayName = defaults.displayName;
     	      this.division = defaults.division;
+    	      this.employeeHireDate = defaults.employeeHireDate;
     	      this.employeeId = defaults.employeeId;
     	      this.employeeType = defaults.employeeType;
     	      this.externalUserState = defaults.externalUserState;
@@ -742,6 +756,14 @@ public final class GetUserResult {
               throw new MissingRequiredPropertyException("GetUserResult", "division");
             }
             this.division = division;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder employeeHireDate(String employeeHireDate) {
+            if (employeeHireDate == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "employeeHireDate");
+            }
+            this.employeeHireDate = employeeHireDate;
             return this;
         }
         @CustomType.Setter
@@ -1023,6 +1045,7 @@ public final class GetUserResult {
             _resultValue.department = department;
             _resultValue.displayName = displayName;
             _resultValue.division = division;
+            _resultValue.employeeHireDate = employeeHireDate;
             _resultValue.employeeId = employeeId;
             _resultValue.employeeType = employeeType;
             _resultValue.externalUserState = externalUserState;

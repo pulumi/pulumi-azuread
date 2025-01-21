@@ -18,6 +18,10 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> CountriesAndRegions;
         /// <summary>
+        /// Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+        /// </summary>
+        public readonly string? CountryLookupMethod;
+        /// <summary>
         /// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
         /// </summary>
         public readonly bool? IncludeUnknownCountriesAndRegions;
@@ -26,9 +30,12 @@ namespace Pulumi.AzureAD.Outputs
         private NamedLocationCountry(
             ImmutableArray<string> countriesAndRegions,
 
+            string? countryLookupMethod,
+
             bool? includeUnknownCountriesAndRegions)
         {
             CountriesAndRegions = countriesAndRegions;
+            CountryLookupMethod = countryLookupMethod;
             IncludeUnknownCountriesAndRegions = includeUnknownCountriesAndRegions;
         }
     }
