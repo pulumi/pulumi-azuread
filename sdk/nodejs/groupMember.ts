@@ -33,8 +33,8 @@ import * as utilities from "./utilities";
  *     securityEnabled: true,
  * });
  * const exampleGroupMember = new azuread.GroupMember("example", {
- *     groupObjectId: exampleGroup.id,
- *     memberObjectId: example.then(example => example.id),
+ *     groupObjectId: exampleGroup.objectId,
+ *     memberObjectId: example.then(example => example.objectId),
  * });
  * ```
  *

@@ -67,8 +67,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleGroupMember = new GroupMember("exampleGroupMember", GroupMemberArgs.builder()
- *             .groupObjectId(exampleGroup.id())
- *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.id()))
+ *             .groupObjectId(exampleGroup.objectId())
+ *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
  *             .build());
  * 
  *     }}{@code

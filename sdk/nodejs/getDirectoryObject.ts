@@ -32,8 +32,8 @@ import * as utilities from "./utilities";
  *
  * The following attributes are exported:
  *
- * *`objectId` - The object ID of the directory object.
- * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+ * * `objectId` - The object ID of the directory object.
+ * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
  */
 export function getDirectoryObject(args: GetDirectoryObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetDirectoryObjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -91,8 +91,8 @@ export interface GetDirectoryObjectResult {
  *
  * The following attributes are exported:
  *
- * *`objectId` - The object ID of the directory object.
- * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+ * * `objectId` - The object ID of the directory object.
+ * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
  */
 export function getDirectoryObjectOutput(args: GetDirectoryObjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDirectoryObjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -43,6 +43,12 @@ namespace Pulumi.AzureAD.Inputs
         public Input<Inputs.ConditionalAccessPolicyConditionsDevicesGetArgs>? Devices { get; set; }
 
         /// <summary>
+        /// The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+        /// </summary>
+        [Input("insiderRiskLevels")]
+        public Input<string>? InsiderRiskLevels { get; set; }
+
+        /// <summary>
         /// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         /// </summary>
         [Input("locations")]

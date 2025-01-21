@@ -119,6 +119,10 @@ export interface GetUserResult {
      */
     readonly division: string;
     /**
+     * The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     */
+    readonly employeeHireDate: string;
+    /**
      * The employee identifier assigned to the user by the organisation.
      */
     readonly employeeId: string;

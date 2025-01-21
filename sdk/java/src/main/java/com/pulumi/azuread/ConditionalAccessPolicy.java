@@ -230,7 +230,7 @@ import javax.annotation.Nullable;
  * Conditional Access Policies can be imported using the `id`, e.g.
  * 
  * ```sh
- * $ pulumi import azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy my_location 00000000-0000-0000-0000-000000000000
+ * $ pulumi import azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy my_location /identity/conditionalAccess/policies/00000000-0000-0000-0000-000000000000
  * ```
  * 
  */

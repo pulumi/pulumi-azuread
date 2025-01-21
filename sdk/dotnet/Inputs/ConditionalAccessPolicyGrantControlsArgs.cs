@@ -13,7 +13,7 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class ConditionalAccessPolicyGrantControlsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of an Authentication Strength Policy to use in this policy.
+        /// ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
         /// </summary>
         [Input("authenticationStrengthPolicyId")]
         public Input<string>? AuthenticationStrengthPolicyId { get; set; }

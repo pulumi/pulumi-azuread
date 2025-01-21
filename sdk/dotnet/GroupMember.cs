@@ -47,8 +47,8 @@ namespace Pulumi.AzureAD
     /// 
     ///     var exampleGroupMember = new AzureAD.GroupMember("example", new()
     ///     {
-    ///         GroupObjectId = exampleGroup.Id,
-    ///         MemberObjectId = example.Apply(getUserResult =&gt; getUserResult.Id),
+    ///         GroupObjectId = exampleGroup.ObjectId,
+    ///         MemberObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
     ///     });
     /// 
     /// });

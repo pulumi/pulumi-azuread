@@ -235,7 +235,7 @@ type Application struct {
 	// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
 	//
 	// > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
-	Password ApplicationPasswordTypeOutput `pulumi:"password"`
+	Password ApplicationPasswordTypePtrOutput `pulumi:"password"`
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
 	PreventDuplicateNames pulumi.BoolPtrOutput `pulumi:"preventDuplicateNames"`
 	// URL of the application's privacy statement.
@@ -818,8 +818,8 @@ func (o ApplicationOutput) Owners() pulumi.StringArrayOutput {
 // A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
 //
 // > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
-func (o ApplicationOutput) Password() ApplicationPasswordTypeOutput {
-	return o.ApplyT(func(v *Application) ApplicationPasswordTypeOutput { return v.Password }).(ApplicationPasswordTypeOutput)
+func (o ApplicationOutput) Password() ApplicationPasswordTypePtrOutput {
+	return o.ApplyT(func(v *Application) ApplicationPasswordTypePtrOutput { return v.Password }).(ApplicationPasswordTypePtrOutput)
 }
 
 // If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.

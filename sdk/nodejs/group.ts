@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
  *
- * When creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.
+ * When creating this resource in administrative units exclusively, the directory role `Groups Administrator` is required to be scoped on any administrative unit used. Additionally, it must be possible to read the administrative units being used, which can be granted through the `AdministrativeUnit.Read.All` or `Directory.Read.All` application roles.
  *
  * The `externalSendersAllowed`, `autoSubscribeNewMembers`, `hideFromAddressLists` and `hideFromOutlookClients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
  *
@@ -76,7 +76,7 @@ import * as utilities from "./utilities";
  * Groups can be imported using their object ID, e.g.
  *
  * ```sh
- * $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
+ * $ pulumi import azuread:index/group:Group my_group /groups/00000000-0000-0000-0000-000000000000
  * ```
  */
 export class Group extends pulumi.CustomResource {

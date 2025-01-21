@@ -28,7 +28,7 @@ namespace Pulumi.AzureAD
     ///     var exampleApplicationIdentifierUri = new AzureAD.ApplicationIdentifierUri("example", new()
     ///     {
     ///         ApplicationId = example.Id,
-    ///         IdentifierUri = "https://app.hashitown.com",
+    ///         IdentifierUri = "https://app.example.com",
     ///     });
     /// 
     /// });

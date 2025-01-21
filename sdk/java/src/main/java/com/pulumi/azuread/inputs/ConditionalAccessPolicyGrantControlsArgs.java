@@ -18,14 +18,14 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
     public static final ConditionalAccessPolicyGrantControlsArgs Empty = new ConditionalAccessPolicyGrantControlsArgs();
 
     /**
-     * ID of an Authentication Strength Policy to use in this policy.
+     * ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
      * 
      */
     @Import(name="authenticationStrengthPolicyId")
     private @Nullable Output<String> authenticationStrengthPolicyId;
 
     /**
-     * @return ID of an Authentication Strength Policy to use in this policy.
+     * @return ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
      * 
      */
     public Optional<Output<String>> authenticationStrengthPolicyId() {
@@ -125,7 +125,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         }
 
         /**
-         * @param authenticationStrengthPolicyId ID of an Authentication Strength Policy to use in this policy.
+         * @param authenticationStrengthPolicyId ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         }
 
         /**
-         * @param authenticationStrengthPolicyId ID of an Authentication Strength Policy to use in this policy.
+         * @param authenticationStrengthPolicyId ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
          * 
          * @return builder
          * 

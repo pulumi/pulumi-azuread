@@ -14,15 +14,19 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetNamedLocationCountryResult
     {
         public readonly ImmutableArray<string> CountriesAndRegions;
+        public readonly string CountryLookupMethod;
         public readonly bool IncludeUnknownCountriesAndRegions;
 
         [OutputConstructor]
         private GetNamedLocationCountryResult(
             ImmutableArray<string> countriesAndRegions,
 
+            string countryLookupMethod,
+
             bool includeUnknownCountriesAndRegions)
         {
             CountriesAndRegions = countriesAndRegions;
+            CountryLookupMethod = countryLookupMethod;
             IncludeUnknownCountriesAndRegions = includeUnknownCountriesAndRegions;
         }
     }

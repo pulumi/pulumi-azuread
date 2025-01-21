@@ -111,7 +111,7 @@ class ApplicationOwner(pulumi.CustomResource):
 
         example = azuread.ApplicationRegistration("example", display_name="example")
         jane = azuread.User("jane",
-            user_principal_name="jane.fischer@hashitown.com",
+            user_principal_name="jane.fischer@example.com",
             display_name="Jane Fischer",
             password="Ch@ngeMe")
         example_jane = azuread.ApplicationOwner("example_jane",
@@ -149,7 +149,7 @@ class ApplicationOwner(pulumi.CustomResource):
 
         example = azuread.ApplicationRegistration("example", display_name="example")
         jane = azuread.User("jane",
-            user_principal_name="jane.fischer@hashitown.com",
+            user_principal_name="jane.fischer@example.com",
             display_name="Jane Fischer",
             password="Ch@ngeMe")
         example_jane = azuread.ApplicationOwner("example_jane",

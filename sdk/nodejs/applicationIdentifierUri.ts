@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
  * const exampleApplicationIdentifierUri = new azuread.ApplicationIdentifierUri("example", {
  *     applicationId: example.id,
- *     identifierUri: "https://app.hashitown.com",
+ *     identifierUri: "https://app.example.com",
  * });
  * ```
  *

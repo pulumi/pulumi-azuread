@@ -26,7 +26,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, account_enabled=None, age_group=None, business_phones=None, city=None, company_name=None, consent_provided_for_minor=None, cost_center=None, country=None, creation_type=None, department=None, display_name=None, division=None, employee_id=None, employee_type=None, external_user_state=None, fax_number=None, given_name=None, id=None, im_addresses=None, job_title=None, mail=None, mail_nickname=None, manager_id=None, mobile_phone=None, object_id=None, office_location=None, onpremises_distinguished_name=None, onpremises_domain_name=None, onpremises_immutable_id=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, onpremises_user_principal_name=None, other_mails=None, postal_code=None, preferred_language=None, proxy_addresses=None, show_in_address_list=None, state=None, street_address=None, surname=None, usage_location=None, user_principal_name=None, user_type=None):
+    def __init__(__self__, account_enabled=None, age_group=None, business_phones=None, city=None, company_name=None, consent_provided_for_minor=None, cost_center=None, country=None, creation_type=None, department=None, display_name=None, division=None, employee_hire_date=None, employee_id=None, employee_type=None, external_user_state=None, fax_number=None, given_name=None, id=None, im_addresses=None, job_title=None, mail=None, mail_nickname=None, manager_id=None, mobile_phone=None, object_id=None, office_location=None, onpremises_distinguished_name=None, onpremises_domain_name=None, onpremises_immutable_id=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, onpremises_user_principal_name=None, other_mails=None, postal_code=None, preferred_language=None, proxy_addresses=None, show_in_address_list=None, state=None, street_address=None, surname=None, usage_location=None, user_principal_name=None, user_type=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         pulumi.set(__self__, "account_enabled", account_enabled)
@@ -63,6 +63,9 @@ class GetUserResult:
         if division and not isinstance(division, str):
             raise TypeError("Expected argument 'division' to be a str")
         pulumi.set(__self__, "division", division)
+        if employee_hire_date and not isinstance(employee_hire_date, str):
+            raise TypeError("Expected argument 'employee_hire_date' to be a str")
+        pulumi.set(__self__, "employee_hire_date", employee_hire_date)
         if employee_id and not isinstance(employee_id, str):
             raise TypeError("Expected argument 'employee_id' to be a str")
         pulumi.set(__self__, "employee_id", employee_id)
@@ -255,6 +258,14 @@ class GetUserResult:
         The name of the division in which the user works.
         """
         return pulumi.get(self, "division")
+
+    @property
+    @pulumi.getter(name="employeeHireDate")
+    def employee_hire_date(self) -> str:
+        """
+        The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        """
+        return pulumi.get(self, "employee_hire_date")
 
     @property
     @pulumi.getter(name="employeeId")
@@ -531,6 +542,7 @@ class AwaitableGetUserResult(GetUserResult):
             department=self.department,
             display_name=self.display_name,
             division=self.division,
+            employee_hire_date=self.employee_hire_date,
             employee_id=self.employee_id,
             employee_type=self.employee_type,
             external_user_state=self.external_user_state,
@@ -622,6 +634,7 @@ def get_user(employee_id: Optional[str] = None,
         department=pulumi.get(__ret__, 'department'),
         display_name=pulumi.get(__ret__, 'display_name'),
         division=pulumi.get(__ret__, 'division'),
+        employee_hire_date=pulumi.get(__ret__, 'employee_hire_date'),
         employee_id=pulumi.get(__ret__, 'employee_id'),
         employee_type=pulumi.get(__ret__, 'employee_type'),
         external_user_state=pulumi.get(__ret__, 'external_user_state'),
@@ -710,6 +723,7 @@ def get_user_output(employee_id: Optional[pulumi.Input[Optional[str]]] = None,
         department=pulumi.get(__response__, 'department'),
         display_name=pulumi.get(__response__, 'display_name'),
         division=pulumi.get(__response__, 'division'),
+        employee_hire_date=pulumi.get(__response__, 'employee_hire_date'),
         employee_id=pulumi.get(__response__, 'employee_id'),
         employee_type=pulumi.get(__response__, 'employee_type'),
         external_user_state=pulumi.get(__response__, 'external_user_state'),

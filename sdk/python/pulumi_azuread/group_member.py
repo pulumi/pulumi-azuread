@@ -128,8 +128,8 @@ class GroupMember(pulumi.CustomResource):
             display_name="my_group",
             security_enabled=True)
         example_group_member = azuread.GroupMember("example",
-            group_object_id=example_group.id,
-            member_object_id=example.id)
+            group_object_id=example_group.object_id,
+            member_object_id=example.object_id)
         ```
 
         ## Import
@@ -179,8 +179,8 @@ class GroupMember(pulumi.CustomResource):
             display_name="my_group",
             security_enabled=True)
         example_group_member = azuread.GroupMember("example",
-            group_object_id=example_group.id,
-            member_object_id=example.id)
+            group_object_id=example_group.object_id,
+            member_object_id=example.object_id)
         ```
 
         ## Import

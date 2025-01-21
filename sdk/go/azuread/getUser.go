@@ -98,6 +98,8 @@ type LookupUserResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The name of the division in which the user works.
 	Division string `pulumi:"division"`
+	// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	EmployeeHireDate string `pulumi:"employeeHireDate"`
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId string `pulumi:"employeeId"`
 	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
@@ -266,6 +268,11 @@ func (o LookupUserResultOutput) DisplayName() pulumi.StringOutput {
 // The name of the division in which the user works.
 func (o LookupUserResultOutput) Division() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Division }).(pulumi.StringOutput)
+}
+
+// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+func (o LookupUserResultOutput) EmployeeHireDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.EmployeeHireDate }).(pulumi.StringOutput)
 }
 
 // The employee identifier assigned to the user by the organisation.

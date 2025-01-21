@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var jane = new User("jane", UserArgs.builder()
- *             .userPrincipalName("jane.fischer}{@literal @}{@code hashitown.com")
+ *             .userPrincipalName("jane.fischer}{@literal @}{@code example.com")
  *             .displayName("Jane Fischer")
  *             .password("Ch}{@literal @}{@code ngeMe")
  *             .build());

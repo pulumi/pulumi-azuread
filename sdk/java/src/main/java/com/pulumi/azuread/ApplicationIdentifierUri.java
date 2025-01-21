@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleApplicationIdentifierUri = new ApplicationIdentifierUri("exampleApplicationIdentifierUri", ApplicationIdentifierUriArgs.builder()
  *             .applicationId(example.id())
- *             .identifierUri("https://app.hashitown.com")
+ *             .identifierUri("https://app.example.com")
  *             .build());
  * 
  *     }

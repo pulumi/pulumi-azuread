@@ -242,6 +242,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Division;
         /// <summary>
+        /// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// </summary>
+        public readonly string EmployeeHireDate;
+        /// <summary>
         /// The employee identifier assigned to the user by the organisation.
         /// </summary>
         public readonly string EmployeeId;
@@ -396,6 +400,8 @@ namespace Pulumi.AzureAD
 
             string division,
 
+            string employeeHireDate,
+
             string employeeId,
 
             string employeeType,
@@ -472,6 +478,7 @@ namespace Pulumi.AzureAD
             Department = department;
             DisplayName = displayName;
             Division = division;
+            EmployeeHireDate = employeeHireDate;
             EmployeeId = employeeId;
             EmployeeType = employeeType;
             ExternalUserState = externalUserState;

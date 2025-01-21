@@ -14,7 +14,7 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ConditionalAccessPolicyGrantControls
     {
         /// <summary>
-        /// ID of an Authentication Strength Policy to use in this policy.
+        /// ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
         /// </summary>
         public readonly string? AuthenticationStrengthPolicyId;
         /// <summary>
