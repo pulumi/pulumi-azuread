@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * Administrative units can be imported using their object ID, e.g.
  * 
  * ```sh
- * $ pulumi import azuread:index/administrativeUnit:AdministrativeUnit example 00000000-0000-0000-0000-000000000000
+ * $ pulumi import azuread:index/administrativeUnit:AdministrativeUnit example /directory/administrativeUnits/00000000-0000-0000-0000-000000000000
  * ```
  * 
  */

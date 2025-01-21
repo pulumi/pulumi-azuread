@@ -157,15 +157,15 @@ class ApplicationRedirectUris(pulumi.CustomResource):
             application_id=example.id,
             type="SPA",
             redirect_uris=[
-                "https://mobile.hashitown.com/",
-                "https://beta.hashitown.com/",
+                "https://mobile.example.com/",
+                "https://beta.example.com/",
             ])
         example_web = azuread.ApplicationRedirectUris("example_web",
             application_id=example.id,
             type="Web",
             redirect_uris=[
-                "https://app.hashitown.com/",
-                "https://classic.hashitown.com/",
+                "https://app.example.com/",
+                "https://classic.example.com/",
                 "urn:ietf:wg:oauth:2.0:oob",
             ])
         ```
@@ -213,15 +213,15 @@ class ApplicationRedirectUris(pulumi.CustomResource):
             application_id=example.id,
             type="SPA",
             redirect_uris=[
-                "https://mobile.hashitown.com/",
-                "https://beta.hashitown.com/",
+                "https://mobile.example.com/",
+                "https://beta.example.com/",
             ])
         example_web = azuread.ApplicationRedirectUris("example_web",
             application_id=example.id,
             type="Web",
             redirect_uris=[
-                "https://app.hashitown.com/",
-                "https://classic.hashitown.com/",
+                "https://app.example.com/",
+                "https://classic.example.com/",
                 "urn:ietf:wg:oauth:2.0:oob",
             ])
         ```

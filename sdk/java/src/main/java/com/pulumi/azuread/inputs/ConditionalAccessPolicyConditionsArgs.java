@@ -84,6 +84,21 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
     }
 
     /**
+     * The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+     * 
+     */
+    @Import(name="insiderRiskLevels")
+    private @Nullable Output<String> insiderRiskLevels;
+
+    /**
+     * @return The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+     * 
+     */
+    public Optional<Output<String>> insiderRiskLevels() {
+        return Optional.ofNullable(this.insiderRiskLevels);
+    }
+
+    /**
      * A `locations` block as documented below, which specifies locations included in and excluded from the policy.
      * 
      */
@@ -180,6 +195,7 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
         this.clientAppTypes = $.clientAppTypes;
         this.clientApplications = $.clientApplications;
         this.devices = $.devices;
+        this.insiderRiskLevels = $.insiderRiskLevels;
         this.locations = $.locations;
         this.platforms = $.platforms;
         this.servicePrincipalRiskLevels = $.servicePrincipalRiskLevels;
@@ -298,6 +314,27 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
          */
         public Builder devices(ConditionalAccessPolicyConditionsDevicesArgs devices) {
             return devices(Output.of(devices));
+        }
+
+        /**
+         * @param insiderRiskLevels The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insiderRiskLevels(@Nullable Output<String> insiderRiskLevels) {
+            $.insiderRiskLevels = insiderRiskLevels;
+            return this;
+        }
+
+        /**
+         * @param insiderRiskLevels The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insiderRiskLevels(String insiderRiskLevels) {
+            return insiderRiskLevels(Output.of(insiderRiskLevels));
         }
 
         /**

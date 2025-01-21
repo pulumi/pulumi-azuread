@@ -53,8 +53,8 @@ import (
 //
 // The following attributes are exported:
 //
-// *`objectId` - The object ID of the directory object.
-// *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+// * `objectId` - The object ID of the directory object.
+// * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
 func GetDirectoryObject(ctx *pulumi.Context, args *GetDirectoryObjectArgs, opts ...pulumi.InvokeOption) (*GetDirectoryObjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDirectoryObjectResult

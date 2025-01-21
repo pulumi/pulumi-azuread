@@ -619,12 +619,12 @@ class ApplicationRegistration(pulumi.CustomResource):
             display_name="Example Application",
             description="My example application",
             sign_in_audience="AzureADMyOrg",
-            homepage_url="https://app.hashitown.com/",
-            logout_url="https://app.hashitown.com/logout",
-            marketing_url="https://hashitown.com/",
-            privacy_statement_url="https://hashitown.com/privacy",
-            support_url="https://support.hashitown.com/",
-            terms_of_service_url="https://hashitown.com/terms")
+            homepage_url="https://app.example.com/",
+            logout_url="https://app.example.com/logout",
+            marketing_url="https://example.com/",
+            privacy_statement_url="https://example.com/privacy",
+            support_url="https://support.example.com/",
+            terms_of_service_url="https://example.com/terms")
         ```
 
         ## Import
@@ -682,12 +682,12 @@ class ApplicationRegistration(pulumi.CustomResource):
             display_name="Example Application",
             description="My example application",
             sign_in_audience="AzureADMyOrg",
-            homepage_url="https://app.hashitown.com/",
-            logout_url="https://app.hashitown.com/logout",
-            marketing_url="https://hashitown.com/",
-            privacy_statement_url="https://hashitown.com/privacy",
-            support_url="https://support.hashitown.com/",
-            terms_of_service_url="https://hashitown.com/terms")
+            homepage_url="https://app.example.com/",
+            logout_url="https://app.example.com/logout",
+            marketing_url="https://example.com/",
+            privacy_statement_url="https://example.com/privacy",
+            support_url="https://support.example.com/",
+            terms_of_service_url="https://example.com/terms")
         ```
 
         ## Import

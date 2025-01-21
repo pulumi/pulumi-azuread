@@ -33,6 +33,7 @@ class UserArgs:
                  disable_password_expiration: Optional[pulumi.Input[bool]] = None,
                  disable_strong_password: Optional[pulumi.Input[bool]] = None,
                  division: Optional[pulumi.Input[str]] = None,
+                 employee_hire_date: Optional[pulumi.Input[str]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
                  employee_type: Optional[pulumi.Input[str]] = None,
                  fax_number: Optional[pulumi.Input[str]] = None,
@@ -70,6 +71,7 @@ class UserArgs:
         :param pulumi.Input[bool] disable_password_expiration: Whether the user's password is exempt from expiring. Defaults to `false`.
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] division: The name of the division in which the user works.
+        :param pulumi.Input[str] employee_hire_date: The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
         :param pulumi.Input[str] employee_type: Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
         :param pulumi.Input[str] fax_number: The fax number of the user.
@@ -119,6 +121,8 @@ class UserArgs:
             pulumi.set(__self__, "disable_strong_password", disable_strong_password)
         if division is not None:
             pulumi.set(__self__, "division", division)
+        if employee_hire_date is not None:
+            pulumi.set(__self__, "employee_hire_date", employee_hire_date)
         if employee_id is not None:
             pulumi.set(__self__, "employee_id", employee_id)
         if employee_type is not None:
@@ -329,6 +333,18 @@ class UserArgs:
     @division.setter
     def division(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "division", value)
+
+    @property
+    @pulumi.getter(name="employeeHireDate")
+    def employee_hire_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        """
+        return pulumi.get(self, "employee_hire_date")
+
+    @employee_hire_date.setter
+    def employee_hire_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "employee_hire_date", value)
 
     @property
     @pulumi.getter(name="employeeId")
@@ -602,6 +618,7 @@ class _UserState:
                  disable_strong_password: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  division: Optional[pulumi.Input[str]] = None,
+                 employee_hire_date: Optional[pulumi.Input[str]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
                  employee_type: Optional[pulumi.Input[str]] = None,
                  external_user_state: Optional[pulumi.Input[str]] = None,
@@ -652,6 +669,7 @@ class _UserState:
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[str] division: The name of the division in which the user works.
+        :param pulumi.Input[str] employee_hire_date: The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
         :param pulumi.Input[str] employee_type: Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
         :param pulumi.Input[str] external_user_state: For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
@@ -717,6 +735,8 @@ class _UserState:
             pulumi.set(__self__, "display_name", display_name)
         if division is not None:
             pulumi.set(__self__, "division", division)
+        if employee_hire_date is not None:
+            pulumi.set(__self__, "employee_hire_date", employee_hire_date)
         if employee_id is not None:
             pulumi.set(__self__, "employee_id", employee_id)
         if employee_type is not None:
@@ -963,6 +983,18 @@ class _UserState:
     @division.setter
     def division(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "division", value)
+
+    @property
+    @pulumi.getter(name="employeeHireDate")
+    def employee_hire_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        """
+        return pulumi.get(self, "employee_hire_date")
+
+    @employee_hire_date.setter
+    def employee_hire_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "employee_hire_date", value)
 
     @property
     @pulumi.getter(name="employeeId")
@@ -1380,6 +1412,7 @@ class User(pulumi.CustomResource):
                  disable_strong_password: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  division: Optional[pulumi.Input[str]] = None,
+                 employee_hire_date: Optional[pulumi.Input[str]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
                  employee_type: Optional[pulumi.Input[str]] = None,
                  fax_number: Optional[pulumi.Input[str]] = None,
@@ -1432,7 +1465,7 @@ class User(pulumi.CustomResource):
         Users can be imported using their object ID, e.g.
 
         ```sh
-        $ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
+        $ pulumi import azuread:index/user:User my_user /users/00000000-0000-0000-0000-000000000000
         ```
 
         :param str resource_name: The name of the resource.
@@ -1450,6 +1483,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[str] division: The name of the division in which the user works.
+        :param pulumi.Input[str] employee_hire_date: The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
         :param pulumi.Input[str] employee_type: Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
         :param pulumi.Input[str] fax_number: The fax number of the user.
@@ -1509,7 +1543,7 @@ class User(pulumi.CustomResource):
         Users can be imported using their object ID, e.g.
 
         ```sh
-        $ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
+        $ pulumi import azuread:index/user:User my_user /users/00000000-0000-0000-0000-000000000000
         ```
 
         :param str resource_name: The name of the resource.
@@ -1540,6 +1574,7 @@ class User(pulumi.CustomResource):
                  disable_strong_password: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  division: Optional[pulumi.Input[str]] = None,
+                 employee_hire_date: Optional[pulumi.Input[str]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
                  employee_type: Optional[pulumi.Input[str]] = None,
                  fax_number: Optional[pulumi.Input[str]] = None,
@@ -1586,6 +1621,7 @@ class User(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["division"] = division
+            __props__.__dict__["employee_hire_date"] = employee_hire_date
             __props__.__dict__["employee_id"] = employee_id
             __props__.__dict__["employee_type"] = employee_type
             __props__.__dict__["fax_number"] = fax_number
@@ -1650,6 +1686,7 @@ class User(pulumi.CustomResource):
             disable_strong_password: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             division: Optional[pulumi.Input[str]] = None,
+            employee_hire_date: Optional[pulumi.Input[str]] = None,
             employee_id: Optional[pulumi.Input[str]] = None,
             employee_type: Optional[pulumi.Input[str]] = None,
             external_user_state: Optional[pulumi.Input[str]] = None,
@@ -1705,6 +1742,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[str] division: The name of the division in which the user works.
+        :param pulumi.Input[str] employee_hire_date: The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
         :param pulumi.Input[str] employee_type: Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
         :param pulumi.Input[str] external_user_state: For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
@@ -1759,6 +1797,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["disable_strong_password"] = disable_strong_password
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["division"] = division
+        __props__.__dict__["employee_hire_date"] = employee_hire_date
         __props__.__dict__["employee_id"] = employee_id
         __props__.__dict__["employee_type"] = employee_type
         __props__.__dict__["external_user_state"] = external_user_state
@@ -1913,6 +1952,14 @@ class User(pulumi.CustomResource):
         The name of the division in which the user works.
         """
         return pulumi.get(self, "division")
+
+    @property
+    @pulumi.getter(name="employeeHireDate")
+    def employee_hire_date(self) -> pulumi.Output[Optional[str]]:
+        """
+        The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        """
+        return pulumi.get(self, "employee_hire_date")
 
     @property
     @pulumi.getter(name="employeeId")

@@ -33,7 +33,7 @@ import (
 //				return err
 //			}
 //			jane, err := azuread.NewUser(ctx, "jane", &azuread.UserArgs{
-//				UserPrincipalName: pulumi.String("jane.fischer@hashitown.com"),
+//				UserPrincipalName: pulumi.String("jane.fischer@example.com"),
 //				DisplayName:       pulumi.String("Jane Fischer"),
 //				Password:          pulumi.String("Ch@ngeMe"),
 //			})

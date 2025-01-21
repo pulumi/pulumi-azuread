@@ -165,10 +165,10 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
 
         ```sh
-        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
+        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example
         ```
 
-        -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.
+        /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/scopedRoleMembers/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -213,10 +213,10 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
 
         ```sh
-        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
+        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example
         ```
 
-        -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.
+        /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/scopedRoleMembers/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
 
         :param str resource_name: The name of the resource.
         :param AdministrativeUnitRoleMemberArgs args: The arguments to use to populate this resource's properties.

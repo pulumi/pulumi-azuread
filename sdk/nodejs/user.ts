@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * Users can be imported using their object ID, e.g.
  *
  * ```sh
- * $ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
+ * $ pulumi import azuread:index/user:User my_user /users/00000000-0000-0000-0000-000000000000
  * ```
  */
 export class User extends pulumi.CustomResource {
@@ -125,6 +125,10 @@ export class User extends pulumi.CustomResource {
      * The name of the division in which the user works.
      */
     public readonly division!: pulumi.Output<string | undefined>;
+    /**
+     * The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     */
+    public readonly employeeHireDate!: pulumi.Output<string | undefined>;
     /**
      * The employee identifier assigned to the user by the organisation.
      */
@@ -287,6 +291,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["disableStrongPassword"] = state ? state.disableStrongPassword : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["division"] = state ? state.division : undefined;
+            resourceInputs["employeeHireDate"] = state ? state.employeeHireDate : undefined;
             resourceInputs["employeeId"] = state ? state.employeeId : undefined;
             resourceInputs["employeeType"] = state ? state.employeeType : undefined;
             resourceInputs["externalUserState"] = state ? state.externalUserState : undefined;
@@ -341,6 +346,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["disableStrongPassword"] = args ? args.disableStrongPassword : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["division"] = args ? args.division : undefined;
+            resourceInputs["employeeHireDate"] = args ? args.employeeHireDate : undefined;
             resourceInputs["employeeId"] = args ? args.employeeId : undefined;
             resourceInputs["employeeType"] = args ? args.employeeType : undefined;
             resourceInputs["faxNumber"] = args ? args.faxNumber : undefined;
@@ -448,6 +454,10 @@ export interface UserState {
      * The name of the division in which the user works.
      */
     division?: pulumi.Input<string>;
+    /**
+     * The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     */
+    employeeHireDate?: pulumi.Input<string>;
     /**
      * The employee identifier assigned to the user by the organisation.
      */
@@ -639,6 +649,10 @@ export interface UserArgs {
      * The name of the division in which the user works.
      */
     division?: pulumi.Input<string>;
+    /**
+     * The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     */
+    employeeHireDate?: pulumi.Input<string>;
     /**
      * The employee identifier assigned to the user by the organisation.
      */

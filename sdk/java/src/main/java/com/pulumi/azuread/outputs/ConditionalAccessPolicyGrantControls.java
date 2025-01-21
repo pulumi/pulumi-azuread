@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConditionalAccessPolicyGrantControls {
     /**
-     * @return ID of an Authentication Strength Policy to use in this policy.
+     * @return ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
      * 
      */
     private @Nullable String authenticationStrengthPolicyId;
@@ -43,7 +43,7 @@ public final class ConditionalAccessPolicyGrantControls {
 
     private ConditionalAccessPolicyGrantControls() {}
     /**
-     * @return ID of an Authentication Strength Policy to use in this policy.
+     * @return ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
      * 
      */
     public Optional<String> authenticationStrengthPolicyId() {

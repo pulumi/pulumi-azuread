@@ -37,12 +37,12 @@ namespace Pulumi.AzureAD
     ///         DisplayName = "Example Application",
     ///         Description = "My example application",
     ///         SignInAudience = "AzureADMyOrg",
-    ///         HomepageUrl = "https://app.hashitown.com/",
-    ///         LogoutUrl = "https://app.hashitown.com/logout",
-    ///         MarketingUrl = "https://hashitown.com/",
-    ///         PrivacyStatementUrl = "https://hashitown.com/privacy",
-    ///         SupportUrl = "https://support.hashitown.com/",
-    ///         TermsOfServiceUrl = "https://hashitown.com/terms",
+    ///         HomepageUrl = "https://app.example.com/",
+    ///         LogoutUrl = "https://app.example.com/logout",
+    ///         MarketingUrl = "https://example.com/",
+    ///         PrivacyStatementUrl = "https://example.com/privacy",
+    ///         SupportUrl = "https://support.example.com/",
+    ///         TermsOfServiceUrl = "https://example.com/terms",
     ///     });
     /// 
     /// });

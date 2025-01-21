@@ -27,12 +27,12 @@ import * as utilities from "./utilities";
  *     displayName: "Example Application",
  *     description: "My example application",
  *     signInAudience: "AzureADMyOrg",
- *     homepageUrl: "https://app.hashitown.com/",
- *     logoutUrl: "https://app.hashitown.com/logout",
- *     marketingUrl: "https://hashitown.com/",
- *     privacyStatementUrl: "https://hashitown.com/privacy",
- *     supportUrl: "https://support.hashitown.com/",
- *     termsOfServiceUrl: "https://hashitown.com/terms",
+ *     homepageUrl: "https://app.example.com/",
+ *     logoutUrl: "https://app.example.com/logout",
+ *     marketingUrl: "https://example.com/",
+ *     privacyStatementUrl: "https://example.com/privacy",
+ *     supportUrl: "https://support.example.com/",
+ *     termsOfServiceUrl: "https://example.com/terms",
  * });
  * ```
  *

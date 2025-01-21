@@ -56,7 +56,7 @@ import (
 // Users can be imported using their object ID, e.g.
 //
 // ```sh
-// $ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
+// $ pulumi import azuread:index/user:User my_user /users/00000000-0000-0000-0000-000000000000
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -91,6 +91,8 @@ type User struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The name of the division in which the user works.
 	Division pulumi.StringPtrOutput `pulumi:"division"`
+	// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	EmployeeHireDate pulumi.StringPtrOutput `pulumi:"employeeHireDate"`
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId pulumi.StringPtrOutput `pulumi:"employeeId"`
 	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
@@ -233,6 +235,8 @@ type userState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The name of the division in which the user works.
 	Division *string `pulumi:"division"`
+	// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	EmployeeHireDate *string `pulumi:"employeeHireDate"`
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId *string `pulumi:"employeeId"`
 	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
@@ -333,6 +337,8 @@ type UserState struct {
 	DisplayName pulumi.StringPtrInput
 	// The name of the division in which the user works.
 	Division pulumi.StringPtrInput
+	// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	EmployeeHireDate pulumi.StringPtrInput
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId pulumi.StringPtrInput
 	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
@@ -433,6 +439,8 @@ type userArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The name of the division in which the user works.
 	Division *string `pulumi:"division"`
+	// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	EmployeeHireDate *string `pulumi:"employeeHireDate"`
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId *string `pulumi:"employeeId"`
 	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
@@ -508,6 +516,8 @@ type UserArgs struct {
 	DisplayName pulumi.StringInput
 	// The name of the division in which the user works.
 	Division pulumi.StringPtrInput
+	// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	EmployeeHireDate pulumi.StringPtrInput
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId pulumi.StringPtrInput
 	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
@@ -715,6 +725,11 @@ func (o UserOutput) DisplayName() pulumi.StringOutput {
 // The name of the division in which the user works.
 func (o UserOutput) Division() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Division }).(pulumi.StringPtrOutput)
+}
+
+// The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+func (o UserOutput) EmployeeHireDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.EmployeeHireDate }).(pulumi.StringPtrOutput)
 }
 
 // The employee identifier assigned to the user by the organisation.

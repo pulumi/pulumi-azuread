@@ -2570,6 +2570,10 @@ if not MYPY:
         """
         A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         """
+        insider_risk_levels: NotRequired[pulumi.Input[str]]
+        """
+        The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+        """
         locations: NotRequired[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgsDict']]
         """
         A `locations` block as documented below, which specifies locations included in and excluded from the policy.
@@ -2601,6 +2605,7 @@ class ConditionalAccessPolicyConditionsArgs:
                  users: pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs'],
                  client_applications: Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs']] = None,
                  devices: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs']] = None,
+                 insider_risk_levels: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs']] = None,
                  platforms: Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs']] = None,
                  service_principal_risk_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2612,6 +2617,7 @@ class ConditionalAccessPolicyConditionsArgs:
         :param pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs'] users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
         :param pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs'] client_applications: An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
         :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs'] devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+        :param pulumi.Input[str] insider_risk_levels: The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
         :param pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs'] locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         :param pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs'] platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_principal_risk_levels: A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
@@ -2625,6 +2631,8 @@ class ConditionalAccessPolicyConditionsArgs:
             pulumi.set(__self__, "client_applications", client_applications)
         if devices is not None:
             pulumi.set(__self__, "devices", devices)
+        if insider_risk_levels is not None:
+            pulumi.set(__self__, "insider_risk_levels", insider_risk_levels)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
         if platforms is not None:
@@ -2695,6 +2703,18 @@ class ConditionalAccessPolicyConditionsArgs:
     @devices.setter
     def devices(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs']]):
         pulumi.set(self, "devices", value)
+
+    @property
+    @pulumi.getter(name="insiderRiskLevels")
+    def insider_risk_levels(self) -> Optional[pulumi.Input[str]]:
+        """
+        The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "insider_risk_levels")
+
+    @insider_risk_levels.setter
+    def insider_risk_levels(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "insider_risk_levels", value)
 
     @property
     @pulumi.getter
@@ -3455,7 +3475,7 @@ if not MYPY:
         """
         authentication_strength_policy_id: NotRequired[pulumi.Input[str]]
         """
-        ID of an Authentication Strength Policy to use in this policy.
+        ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
         """
         built_in_controls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -3484,7 +3504,7 @@ class ConditionalAccessPolicyGrantControlsArgs:
                  terms_of_uses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] operator: Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
-        :param pulumi.Input[str] authentication_strength_policy_id: ID of an Authentication Strength Policy to use in this policy.
+        :param pulumi.Input[str] authentication_strength_policy_id: ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] built_in_controls: List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_authentication_factors: List of custom controls IDs required by the policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] terms_of_uses: List of terms of use IDs required by the policy.
@@ -3517,7 +3537,7 @@ class ConditionalAccessPolicyGrantControlsArgs:
     @pulumi.getter(name="authenticationStrengthPolicyId")
     def authentication_strength_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of an Authentication Strength Policy to use in this policy.
+        ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
         """
         return pulumi.get(self, "authentication_strength_policy_id")
 
@@ -5241,6 +5261,10 @@ if not MYPY:
         """
         List of countries and/or regions in two-letter format specified by ISO 3166-2.
         """
+        country_lookup_method: NotRequired[pulumi.Input[str]]
+        """
+        Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+        """
         include_unknown_countries_and_regions: NotRequired[pulumi.Input[bool]]
         """
         Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
@@ -5252,12 +5276,16 @@ elif False:
 class NamedLocationCountryArgs:
     def __init__(__self__, *,
                  countries_and_regions: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 country_lookup_method: Optional[pulumi.Input[str]] = None,
                  include_unknown_countries_and_regions: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] countries_and_regions: List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        :param pulumi.Input[str] country_lookup_method: Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
         :param pulumi.Input[bool] include_unknown_countries_and_regions: Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
         """
         pulumi.set(__self__, "countries_and_regions", countries_and_regions)
+        if country_lookup_method is not None:
+            pulumi.set(__self__, "country_lookup_method", country_lookup_method)
         if include_unknown_countries_and_regions is not None:
             pulumi.set(__self__, "include_unknown_countries_and_regions", include_unknown_countries_and_regions)
 
@@ -5272,6 +5300,18 @@ class NamedLocationCountryArgs:
     @countries_and_regions.setter
     def countries_and_regions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "countries_and_regions", value)
+
+    @property
+    @pulumi.getter(name="countryLookupMethod")
+    def country_lookup_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+        """
+        return pulumi.get(self, "country_lookup_method")
+
+    @country_lookup_method.setter
+    def country_lookup_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "country_lookup_method", value)
 
     @property
     @pulumi.getter(name="includeUnknownCountriesAndRegions")

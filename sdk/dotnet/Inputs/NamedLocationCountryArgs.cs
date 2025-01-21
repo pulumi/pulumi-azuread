@@ -25,6 +25,12 @@ namespace Pulumi.AzureAD.Inputs
         }
 
         /// <summary>
+        /// Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+        /// </summary>
+        [Input("countryLookupMethod")]
+        public Input<string>? CountryLookupMethod { get; set; }
+
+        /// <summary>
         /// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
         /// </summary>
         [Input("includeUnknownCountriesAndRegions")]

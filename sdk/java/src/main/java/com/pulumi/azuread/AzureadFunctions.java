@@ -4247,8 +4247,8 @@ public final class AzureadFunctions {
      * 
      * The following attributes are exported:
      * 
-     * *`object_id` - The object ID of the directory object.
-     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     * * `object_id` - The object ID of the directory object.
+     * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
     public static Output<GetDirectoryObjectResult> getDirectoryObject(GetDirectoryObjectArgs args) {
@@ -4306,8 +4306,8 @@ public final class AzureadFunctions {
      * 
      * The following attributes are exported:
      * 
-     * *`object_id` - The object ID of the directory object.
-     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     * * `object_id` - The object ID of the directory object.
+     * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
     public static CompletableFuture<GetDirectoryObjectResult> getDirectoryObjectPlain(GetDirectoryObjectPlainArgs args) {
@@ -4365,8 +4365,8 @@ public final class AzureadFunctions {
      * 
      * The following attributes are exported:
      * 
-     * *`object_id` - The object ID of the directory object.
-     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     * * `object_id` - The object ID of the directory object.
+     * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
     public static Output<GetDirectoryObjectResult> getDirectoryObject(GetDirectoryObjectArgs args, InvokeOptions options) {
@@ -4424,8 +4424,8 @@ public final class AzureadFunctions {
      * 
      * The following attributes are exported:
      * 
-     * *`object_id` - The object ID of the directory object.
-     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     * * `object_id` - The object ID of the directory object.
+     * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
     public static Output<GetDirectoryObjectResult> getDirectoryObject(GetDirectoryObjectArgs args, InvokeOutputOptions options) {
@@ -4483,8 +4483,8 @@ public final class AzureadFunctions {
      * 
      * The following attributes are exported:
      * 
-     * *`object_id` - The object ID of the directory object.
-     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     * * `object_id` - The object ID of the directory object.
+     * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
     public static CompletableFuture<GetDirectoryObjectResult> getDirectoryObjectPlain(GetDirectoryObjectPlainArgs args, InvokeOptions options) {

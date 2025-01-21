@@ -2078,6 +2078,8 @@ class ConditionalAccessPolicyConditions(dict):
             suggest = "client_app_types"
         elif key == "clientApplications":
             suggest = "client_applications"
+        elif key == "insiderRiskLevels":
+            suggest = "insider_risk_levels"
         elif key == "servicePrincipalRiskLevels":
             suggest = "service_principal_risk_levels"
         elif key == "signInRiskLevels":
@@ -2102,6 +2104,7 @@ class ConditionalAccessPolicyConditions(dict):
                  users: 'outputs.ConditionalAccessPolicyConditionsUsers',
                  client_applications: Optional['outputs.ConditionalAccessPolicyConditionsClientApplications'] = None,
                  devices: Optional['outputs.ConditionalAccessPolicyConditionsDevices'] = None,
+                 insider_risk_levels: Optional[str] = None,
                  locations: Optional['outputs.ConditionalAccessPolicyConditionsLocations'] = None,
                  platforms: Optional['outputs.ConditionalAccessPolicyConditionsPlatforms'] = None,
                  service_principal_risk_levels: Optional[Sequence[str]] = None,
@@ -2113,6 +2116,7 @@ class ConditionalAccessPolicyConditions(dict):
         :param 'ConditionalAccessPolicyConditionsUsersArgs' users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
         :param 'ConditionalAccessPolicyConditionsClientApplicationsArgs' client_applications: An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
         :param 'ConditionalAccessPolicyConditionsDevicesArgs' devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+        :param str insider_risk_levels: The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
         :param 'ConditionalAccessPolicyConditionsLocationsArgs' locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         :param 'ConditionalAccessPolicyConditionsPlatformsArgs' platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         :param Sequence[str] service_principal_risk_levels: A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
@@ -2126,6 +2130,8 @@ class ConditionalAccessPolicyConditions(dict):
             pulumi.set(__self__, "client_applications", client_applications)
         if devices is not None:
             pulumi.set(__self__, "devices", devices)
+        if insider_risk_levels is not None:
+            pulumi.set(__self__, "insider_risk_levels", insider_risk_levels)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
         if platforms is not None:
@@ -2176,6 +2182,14 @@ class ConditionalAccessPolicyConditions(dict):
         A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         """
         return pulumi.get(self, "devices")
+
+    @property
+    @pulumi.getter(name="insiderRiskLevels")
+    def insider_risk_levels(self) -> Optional[str]:
+        """
+        The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "insider_risk_levels")
 
     @property
     @pulumi.getter
@@ -2841,7 +2855,7 @@ class ConditionalAccessPolicyGrantControls(dict):
                  terms_of_uses: Optional[Sequence[str]] = None):
         """
         :param str operator: Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
-        :param str authentication_strength_policy_id: ID of an Authentication Strength Policy to use in this policy.
+        :param str authentication_strength_policy_id: ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
         :param Sequence[str] built_in_controls: List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
         :param Sequence[str] custom_authentication_factors: List of custom controls IDs required by the policy.
         :param Sequence[str] terms_of_uses: List of terms of use IDs required by the policy.
@@ -2870,7 +2884,7 @@ class ConditionalAccessPolicyGrantControls(dict):
     @pulumi.getter(name="authenticationStrengthPolicyId")
     def authentication_strength_policy_id(self) -> Optional[str]:
         """
-        ID of an Authentication Strength Policy to use in this policy.
+        ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
         """
         return pulumi.get(self, "authentication_strength_policy_id")
 
@@ -4344,6 +4358,8 @@ class NamedLocationCountry(dict):
         suggest = None
         if key == "countriesAndRegions":
             suggest = "countries_and_regions"
+        elif key == "countryLookupMethod":
+            suggest = "country_lookup_method"
         elif key == "includeUnknownCountriesAndRegions":
             suggest = "include_unknown_countries_and_regions"
 
@@ -4360,12 +4376,16 @@ class NamedLocationCountry(dict):
 
     def __init__(__self__, *,
                  countries_and_regions: Sequence[str],
+                 country_lookup_method: Optional[str] = None,
                  include_unknown_countries_and_regions: Optional[bool] = None):
         """
         :param Sequence[str] countries_and_regions: List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        :param str country_lookup_method: Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
         :param bool include_unknown_countries_and_regions: Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
         """
         pulumi.set(__self__, "countries_and_regions", countries_and_regions)
+        if country_lookup_method is not None:
+            pulumi.set(__self__, "country_lookup_method", country_lookup_method)
         if include_unknown_countries_and_regions is not None:
             pulumi.set(__self__, "include_unknown_countries_and_regions", include_unknown_countries_and_regions)
 
@@ -4376,6 +4396,14 @@ class NamedLocationCountry(dict):
         List of countries and/or regions in two-letter format specified by ISO 3166-2.
         """
         return pulumi.get(self, "countries_and_regions")
+
+    @property
+    @pulumi.getter(name="countryLookupMethod")
+    def country_lookup_method(self) -> Optional[str]:
+        """
+        Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
+        """
+        return pulumi.get(self, "country_lookup_method")
 
     @property
     @pulumi.getter(name="includeUnknownCountriesAndRegions")
@@ -5881,14 +5909,21 @@ class GetGroupDynamicMembershipResult(dict):
 class GetNamedLocationCountryResult(dict):
     def __init__(__self__, *,
                  countries_and_regions: Sequence[str],
+                 country_lookup_method: str,
                  include_unknown_countries_and_regions: bool):
         pulumi.set(__self__, "countries_and_regions", countries_and_regions)
+        pulumi.set(__self__, "country_lookup_method", country_lookup_method)
         pulumi.set(__self__, "include_unknown_countries_and_regions", include_unknown_countries_and_regions)
 
     @property
     @pulumi.getter(name="countriesAndRegions")
     def countries_and_regions(self) -> Sequence[str]:
         return pulumi.get(self, "countries_and_regions")
+
+    @property
+    @pulumi.getter(name="countryLookupMethod")
+    def country_lookup_method(self) -> str:
+        return pulumi.get(self, "country_lookup_method")
 
     @property
     @pulumi.getter(name="includeUnknownCountriesAndRegions")

@@ -243,6 +243,21 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     * 
+     */
+    @Import(name="employeeHireDate")
+    private @Nullable Output<String> employeeHireDate;
+
+    /**
+     * @return The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     * 
+     */
+    public Optional<Output<String>> employeeHireDate() {
+        return Optional.ofNullable(this.employeeHireDate);
+    }
+
+    /**
      * The employee identifier assigned to the user by the organisation.
      * 
      */
@@ -757,6 +772,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.disableStrongPassword = $.disableStrongPassword;
         this.displayName = $.displayName;
         this.division = $.division;
+        this.employeeHireDate = $.employeeHireDate;
         this.employeeId = $.employeeId;
         this.employeeType = $.employeeType;
         this.externalUserState = $.externalUserState;
@@ -1133,6 +1149,27 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder division(String division) {
             return division(Output.of(division));
+        }
+
+        /**
+         * @param employeeHireDate The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder employeeHireDate(@Nullable Output<String> employeeHireDate) {
+            $.employeeHireDate = employeeHireDate;
+            return this;
+        }
+
+        /**
+         * @param employeeHireDate The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder employeeHireDate(String employeeHireDate) {
+            return employeeHireDate(Output.of(employeeHireDate));
         }
 
         /**

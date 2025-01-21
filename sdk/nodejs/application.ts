@@ -260,7 +260,7 @@ export class Application extends pulumi.CustomResource {
      *
      * > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
      */
-    public readonly password!: pulumi.Output<outputs.ApplicationPassword>;
+    public readonly password!: pulumi.Output<outputs.ApplicationPassword | undefined>;
     /**
      * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      */
