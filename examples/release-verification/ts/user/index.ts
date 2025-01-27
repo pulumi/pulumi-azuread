@@ -1,11 +1,6 @@
-// Copyright 2016-2017, Pulumi Corporation.  All rights reserved.
-
 import * as azuread from "@pulumi/azuread";
 import * as pulumi from "@pulumi/pulumi";
 import * as random from "@pulumi/random";
-
-// const config = new pulumi.Config();
-// const password = config.require("password");
 
 const serverRandomPet = new random.RandomPet("random-name");
 

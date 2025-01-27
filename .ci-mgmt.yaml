@@ -35,3 +35,4 @@ license:
 pulumiConvert: 1
 releaseVerification:
   nodejs: examples/release-verification/ts/user
+  python: examples/release-verification/py/user
