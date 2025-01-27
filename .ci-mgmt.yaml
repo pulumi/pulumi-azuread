@@ -36,3 +36,5 @@ pulumiConvert: 1
 releaseVerification:
   nodejs: examples/release-verification/ts/user
   python: examples/release-verification/py/user
+  dotnet: examples/release-verification/cs/user
+  go: examples/release-verification/go/user

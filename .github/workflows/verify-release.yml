@@ -102,3 +102,18 @@ jobs:
           provider: azuread
           providerVersion: ${{ inputs.providerVersion }}
           packageVersion: ${{ inputs.pythonVersion || inputs.providerVersion }}
+      - name: Verify dotnet release
+        uses: pulumi/verify-provider-release@v1
+        with:
+          runtime: dotnet
+          directory: examples/release-verification/cs/user
+          provider: azuread
+          providerVersion: ${{ inputs.providerVersion }}
+      - name: Verify go release
+        uses: pulumi/verify-provider-release@v1
+        if: inputs.skipGoSdk == false
+        with:
+          runtime: go
+          directory: examples/release-verification/go/user
+          provider: azuread
+          providerVersion: ${{ inputs.providerVersion }}
