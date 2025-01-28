@@ -1,0 +1,3 @@
+name: aaduser
+runtime: nodejs
+description: AAD user management with Pulumi.
