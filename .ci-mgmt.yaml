@@ -31,6 +31,8 @@ license:
   ignore:
     - github.com/hashicorp/terraform-provider-azuread/shim
 
+allowMissingDocs: false
+
 # Use `pulumi convert` for translating examples from TF to Pulumi.
 pulumiConvert: 1
 releaseVerification:
