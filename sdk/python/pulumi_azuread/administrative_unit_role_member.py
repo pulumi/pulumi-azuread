@@ -165,7 +165,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
 
         ```sh
-        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example
+        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 
         ```
 
         /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/scopedRoleMembers/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
@@ -213,7 +213,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
 
         ```sh
-        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example
+        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 
         ```
 
         /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/scopedRoleMembers/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
