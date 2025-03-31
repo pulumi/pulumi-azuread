@@ -747,6 +747,32 @@
                     }
                 }
             },
+            "azuread_group_without_members": {
+                "current": "azuread:index/groupWithoutMembers:GroupWithoutMembers",
+                "fields": {
+                    "administrative_unit_ids": {
+                        "maxItemsOne": false
+                    },
+                    "behaviors": {
+                        "maxItemsOne": false
+                    },
+                    "dynamic_membership": {
+                        "maxItemsOne": true
+                    },
+                    "owners": {
+                        "maxItemsOne": false
+                    },
+                    "provisioning_options": {
+                        "maxItemsOne": false
+                    },
+                    "proxy_addresses": {
+                        "maxItemsOne": false
+                    },
+                    "types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "azuread_invitation": {
                 "current": "azuread:index/invitation:Invitation",
                 "fields": {

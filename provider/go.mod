@@ -5,7 +5,7 @@ go 1.22.3
 toolchain go1.22.7
 
 require (
-	github.com/hashicorp/go-azure-sdk/sdk v0.20240927.1005214
+	github.com/hashicorp/go-azure-sdk/sdk v0.20250131.1134653
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
 	github.com/pulumi/providertest v0.1.3
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.105.0
@@ -111,7 +111,7 @@ require (
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-azure-helpers v0.71.0 // indirect
-	github.com/hashicorp/go-azure-sdk/microsoft-graph v0.20240927.1005214 // indirect
+	github.com/hashicorp/go-azure-sdk/microsoft-graph v0.20250131.1134653 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320 // indirect
@@ -138,7 +138,7 @@ require (
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.34.0 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.10.0 // indirect
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20250116153758-efb90bd0c4a8 // indirect
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20250321100010-c41d986e3f5b // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.4 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/vault/api v1.12.0 // indirect

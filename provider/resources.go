@@ -103,9 +103,9 @@ func preConfigureCallback(vars resource.PropertyMap, _ tfshim.ResourceConfig) er
 		CustomManagedIdentityEndpoint: tfbridge.ConfigStringValue(vars, "msiEndpoint", []string{"ARM_MSI_ENDPOINT"}),
 
 		// OIDC section. The ACTIONS_ variables are set by GitHub.
-		GitHubOIDCTokenRequestToken: tfbridge.ConfigStringValue(vars, "oidcRequestToken", []string{"ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"}),
-		GitHubOIDCTokenRequestURL:   tfbridge.ConfigStringValue(vars, "oidcRequestUrl", []string{"ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL"}),
-		OIDCAssertionToken:          tfbridge.ConfigStringValue(vars, "oidcToken", []string{"ARM_OIDC_TOKEN"}),
+		OIDCTokenRequestToken: tfbridge.ConfigStringValue(vars, "oidcRequestToken", []string{"ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"}),
+		OIDCTokenRequestURL:   tfbridge.ConfigStringValue(vars, "oidcRequestUrl", []string{"ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL"}),
+		OIDCAssertionToken:    tfbridge.ConfigStringValue(vars, "oidcToken", []string{"ARM_OIDC_TOKEN"}),
 
 		// Feature Toggles
 		EnableAuthenticatingUsingClientCertificate: true,
