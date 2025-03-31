@@ -12,6 +12,13 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("azuread");
 /**
+ * The Azure DevOps Pipeline Service Connection ID.
+ * 
+ */
+    public Optional<String> adoPipelineServiceConnectionId() {
+        return Codegen.stringProp("adoPipelineServiceConnectionId").config(config).get();
+    }
+/**
  * Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
  * 
  */

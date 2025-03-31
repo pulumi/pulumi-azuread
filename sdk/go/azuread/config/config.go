@@ -11,6 +11,11 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// The Azure DevOps Pipeline Service Connection ID.
+func GetAdoPipelineServiceConnectionId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azuread:adoPipelineServiceConnectionId")
+}
+
 // Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
 func GetClientCertificate(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:clientCertificate")

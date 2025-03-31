@@ -1320,7 +1320,7 @@ export interface GroupRoleManagementPolicyActivationRules {
     /**
      * An `approvalStage` block as defined below.
      */
-    approvalStage?: outputs.GroupRoleManagementPolicyActivationRulesApprovalStage;
+    approvalStage: outputs.GroupRoleManagementPolicyActivationRulesApprovalStage;
     /**
      * The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
      */
@@ -1598,6 +1598,19 @@ export interface GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAs
      * What level of notifications are sent
      */
     notificationLevel: string;
+}
+
+export interface GroupWithoutMembersDynamicMembership {
+    /**
+     * Whether rule processing is "On" (true) or "Paused" (false).
+     */
+    enabled: boolean;
+    /**
+     * The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+     *
+     * > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+     */
+    rule: string;
 }
 
 export interface InvitationMessage {

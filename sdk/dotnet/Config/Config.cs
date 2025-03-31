@@ -32,6 +32,16 @@ namespace Pulumi.AzureAD
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("azuread");
 
+        private static readonly __Value<string?> _adoPipelineServiceConnectionId = new __Value<string?>(() => __config.Get("adoPipelineServiceConnectionId"));
+        /// <summary>
+        /// The Azure DevOps Pipeline Service Connection ID.
+        /// </summary>
+        public static string? AdoPipelineServiceConnectionId
+        {
+            get => _adoPipelineServiceConnectionId.Get();
+            set => _adoPipelineServiceConnectionId.Set(value);
+        }
+
         private static readonly __Value<string?> _clientCertificate = new __Value<string?>(() => __config.Get("clientCertificate"));
         /// <summary>
         /// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate

@@ -290,6 +290,11 @@ export type GroupRoleManagementPolicy = import("./groupRoleManagementPolicy").Gr
 export const GroupRoleManagementPolicy: typeof import("./groupRoleManagementPolicy").GroupRoleManagementPolicy = null as any;
 utilities.lazyLoad(exports, ["GroupRoleManagementPolicy"], () => require("./groupRoleManagementPolicy"));
 
+export { GroupWithoutMembersArgs, GroupWithoutMembersState } from "./groupWithoutMembers";
+export type GroupWithoutMembers = import("./groupWithoutMembers").GroupWithoutMembers;
+export const GroupWithoutMembers: typeof import("./groupWithoutMembers").GroupWithoutMembers = null as any;
+utilities.lazyLoad(exports, ["GroupWithoutMembers"], () => require("./groupWithoutMembers"));
+
 export { InvitationArgs, InvitationState } from "./invitation";
 export type Invitation = import("./invitation").Invitation;
 export const Invitation: typeof import("./invitation").Invitation = null as any;
@@ -458,6 +463,8 @@ const _module = {
                 return new GroupMember(name, <any>undefined, { urn })
             case "azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy":
                 return new GroupRoleManagementPolicy(name, <any>undefined, { urn })
+            case "azuread:index/groupWithoutMembers:GroupWithoutMembers":
+                return new GroupWithoutMembers(name, <any>undefined, { urn })
             case "azuread:index/invitation:Invitation":
                 return new Invitation(name, <any>undefined, { urn })
             case "azuread:index/namedLocation:NamedLocation":
@@ -530,6 +537,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleMember", _m
 pulumi.runtime.registerResourceModule("azuread", "index/group", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupRoleManagementPolicy", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/groupWithoutMembers", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/invitation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/namedLocation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/privilegedAccessGroupAssignmentSchedule", _module)

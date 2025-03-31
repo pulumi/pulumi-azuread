@@ -141,6 +141,8 @@ __all__ = [
     'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgsDict',
     'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgs',
     'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgsDict',
+    'GroupWithoutMembersDynamicMembershipArgs',
+    'GroupWithoutMembersDynamicMembershipArgsDict',
     'InvitationMessageArgs',
     'InvitationMessageArgsDict',
     'NamedLocationCountryArgs',
@@ -5181,6 +5183,62 @@ class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotif
     @additional_recipients.setter
     def additional_recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_recipients", value)
+
+
+if not MYPY:
+    class GroupWithoutMembersDynamicMembershipArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether rule processing is "On" (true) or "Paused" (false).
+        """
+        rule: pulumi.Input[str]
+        """
+        The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+
+        > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+        """
+elif False:
+    GroupWithoutMembersDynamicMembershipArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GroupWithoutMembersDynamicMembershipArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 rule: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] enabled: Whether rule processing is "On" (true) or "Paused" (false).
+        :param pulumi.Input[str] rule: The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+               
+               > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "rule", rule)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether rule processing is "On" (true) or "Paused" (false).
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> pulumi.Input[str]:
+        """
+        The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+
+        > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule", value)
 
 
 if not MYPY:

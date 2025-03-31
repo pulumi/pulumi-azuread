@@ -10124,6 +10124,170 @@ func (o GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNot
 	}).(pulumi.StringPtrOutput)
 }
 
+type GroupWithoutMembersDynamicMembership struct {
+	// Whether rule processing is "On" (true) or "Paused" (false).
+	Enabled bool `pulumi:"enabled"`
+	// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+	//
+	// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+	Rule string `pulumi:"rule"`
+}
+
+// GroupWithoutMembersDynamicMembershipInput is an input type that accepts GroupWithoutMembersDynamicMembershipArgs and GroupWithoutMembersDynamicMembershipOutput values.
+// You can construct a concrete instance of `GroupWithoutMembersDynamicMembershipInput` via:
+//
+//	GroupWithoutMembersDynamicMembershipArgs{...}
+type GroupWithoutMembersDynamicMembershipInput interface {
+	pulumi.Input
+
+	ToGroupWithoutMembersDynamicMembershipOutput() GroupWithoutMembersDynamicMembershipOutput
+	ToGroupWithoutMembersDynamicMembershipOutputWithContext(context.Context) GroupWithoutMembersDynamicMembershipOutput
+}
+
+type GroupWithoutMembersDynamicMembershipArgs struct {
+	// Whether rule processing is "On" (true) or "Paused" (false).
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+	//
+	// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+	Rule pulumi.StringInput `pulumi:"rule"`
+}
+
+func (GroupWithoutMembersDynamicMembershipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupWithoutMembersDynamicMembership)(nil)).Elem()
+}
+
+func (i GroupWithoutMembersDynamicMembershipArgs) ToGroupWithoutMembersDynamicMembershipOutput() GroupWithoutMembersDynamicMembershipOutput {
+	return i.ToGroupWithoutMembersDynamicMembershipOutputWithContext(context.Background())
+}
+
+func (i GroupWithoutMembersDynamicMembershipArgs) ToGroupWithoutMembersDynamicMembershipOutputWithContext(ctx context.Context) GroupWithoutMembersDynamicMembershipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupWithoutMembersDynamicMembershipOutput)
+}
+
+func (i GroupWithoutMembersDynamicMembershipArgs) ToGroupWithoutMembersDynamicMembershipPtrOutput() GroupWithoutMembersDynamicMembershipPtrOutput {
+	return i.ToGroupWithoutMembersDynamicMembershipPtrOutputWithContext(context.Background())
+}
+
+func (i GroupWithoutMembersDynamicMembershipArgs) ToGroupWithoutMembersDynamicMembershipPtrOutputWithContext(ctx context.Context) GroupWithoutMembersDynamicMembershipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupWithoutMembersDynamicMembershipOutput).ToGroupWithoutMembersDynamicMembershipPtrOutputWithContext(ctx)
+}
+
+// GroupWithoutMembersDynamicMembershipPtrInput is an input type that accepts GroupWithoutMembersDynamicMembershipArgs, GroupWithoutMembersDynamicMembershipPtr and GroupWithoutMembersDynamicMembershipPtrOutput values.
+// You can construct a concrete instance of `GroupWithoutMembersDynamicMembershipPtrInput` via:
+//
+//	        GroupWithoutMembersDynamicMembershipArgs{...}
+//
+//	or:
+//
+//	        nil
+type GroupWithoutMembersDynamicMembershipPtrInput interface {
+	pulumi.Input
+
+	ToGroupWithoutMembersDynamicMembershipPtrOutput() GroupWithoutMembersDynamicMembershipPtrOutput
+	ToGroupWithoutMembersDynamicMembershipPtrOutputWithContext(context.Context) GroupWithoutMembersDynamicMembershipPtrOutput
+}
+
+type groupWithoutMembersDynamicMembershipPtrType GroupWithoutMembersDynamicMembershipArgs
+
+func GroupWithoutMembersDynamicMembershipPtr(v *GroupWithoutMembersDynamicMembershipArgs) GroupWithoutMembersDynamicMembershipPtrInput {
+	return (*groupWithoutMembersDynamicMembershipPtrType)(v)
+}
+
+func (*groupWithoutMembersDynamicMembershipPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupWithoutMembersDynamicMembership)(nil)).Elem()
+}
+
+func (i *groupWithoutMembersDynamicMembershipPtrType) ToGroupWithoutMembersDynamicMembershipPtrOutput() GroupWithoutMembersDynamicMembershipPtrOutput {
+	return i.ToGroupWithoutMembersDynamicMembershipPtrOutputWithContext(context.Background())
+}
+
+func (i *groupWithoutMembersDynamicMembershipPtrType) ToGroupWithoutMembersDynamicMembershipPtrOutputWithContext(ctx context.Context) GroupWithoutMembersDynamicMembershipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupWithoutMembersDynamicMembershipPtrOutput)
+}
+
+type GroupWithoutMembersDynamicMembershipOutput struct{ *pulumi.OutputState }
+
+func (GroupWithoutMembersDynamicMembershipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupWithoutMembersDynamicMembership)(nil)).Elem()
+}
+
+func (o GroupWithoutMembersDynamicMembershipOutput) ToGroupWithoutMembersDynamicMembershipOutput() GroupWithoutMembersDynamicMembershipOutput {
+	return o
+}
+
+func (o GroupWithoutMembersDynamicMembershipOutput) ToGroupWithoutMembersDynamicMembershipOutputWithContext(ctx context.Context) GroupWithoutMembersDynamicMembershipOutput {
+	return o
+}
+
+func (o GroupWithoutMembersDynamicMembershipOutput) ToGroupWithoutMembersDynamicMembershipPtrOutput() GroupWithoutMembersDynamicMembershipPtrOutput {
+	return o.ToGroupWithoutMembersDynamicMembershipPtrOutputWithContext(context.Background())
+}
+
+func (o GroupWithoutMembersDynamicMembershipOutput) ToGroupWithoutMembersDynamicMembershipPtrOutputWithContext(ctx context.Context) GroupWithoutMembersDynamicMembershipPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupWithoutMembersDynamicMembership) *GroupWithoutMembersDynamicMembership {
+		return &v
+	}).(GroupWithoutMembersDynamicMembershipPtrOutput)
+}
+
+// Whether rule processing is "On" (true) or "Paused" (false).
+func (o GroupWithoutMembersDynamicMembershipOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GroupWithoutMembersDynamicMembership) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+//
+// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+func (o GroupWithoutMembersDynamicMembershipOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupWithoutMembersDynamicMembership) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type GroupWithoutMembersDynamicMembershipPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupWithoutMembersDynamicMembershipPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupWithoutMembersDynamicMembership)(nil)).Elem()
+}
+
+func (o GroupWithoutMembersDynamicMembershipPtrOutput) ToGroupWithoutMembersDynamicMembershipPtrOutput() GroupWithoutMembersDynamicMembershipPtrOutput {
+	return o
+}
+
+func (o GroupWithoutMembersDynamicMembershipPtrOutput) ToGroupWithoutMembersDynamicMembershipPtrOutputWithContext(ctx context.Context) GroupWithoutMembersDynamicMembershipPtrOutput {
+	return o
+}
+
+func (o GroupWithoutMembersDynamicMembershipPtrOutput) Elem() GroupWithoutMembersDynamicMembershipOutput {
+	return o.ApplyT(func(v *GroupWithoutMembersDynamicMembership) GroupWithoutMembersDynamicMembership {
+		if v != nil {
+			return *v
+		}
+		var ret GroupWithoutMembersDynamicMembership
+		return ret
+	}).(GroupWithoutMembersDynamicMembershipOutput)
+}
+
+// Whether rule processing is "On" (true) or "Paused" (false).
+func (o GroupWithoutMembersDynamicMembershipPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupWithoutMembersDynamicMembership) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+//
+// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+func (o GroupWithoutMembersDynamicMembershipPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupWithoutMembersDynamicMembership) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Rule
+	}).(pulumi.StringPtrOutput)
+}
+
 type InvitationMessage struct {
 	// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
 	AdditionalRecipients *string `pulumi:"additionalRecipients"`
@@ -15293,6 +15457,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsPtrInput)(nil)).Elem(), GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsInput)(nil)).Elem(), GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsPtrInput)(nil)).Elem(), GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupWithoutMembersDynamicMembershipInput)(nil)).Elem(), GroupWithoutMembersDynamicMembershipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupWithoutMembersDynamicMembershipPtrInput)(nil)).Elem(), GroupWithoutMembersDynamicMembershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InvitationMessageInput)(nil)).Elem(), InvitationMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InvitationMessagePtrInput)(nil)).Elem(), InvitationMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamedLocationCountryInput)(nil)).Elem(), NamedLocationCountryArgs{})
@@ -15495,6 +15661,8 @@ func init() {
 	pulumi.RegisterOutputType(GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsPtrOutput{})
 	pulumi.RegisterOutputType(GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsOutput{})
 	pulumi.RegisterOutputType(GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsPtrOutput{})
+	pulumi.RegisterOutputType(GroupWithoutMembersDynamicMembershipOutput{})
+	pulumi.RegisterOutputType(GroupWithoutMembersDynamicMembershipPtrOutput{})
 	pulumi.RegisterOutputType(InvitationMessageOutput{})
 	pulumi.RegisterOutputType(InvitationMessagePtrOutput{})
 	pulumi.RegisterOutputType(NamedLocationCountryOutput{})

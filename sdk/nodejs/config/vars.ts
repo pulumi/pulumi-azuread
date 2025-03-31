@@ -8,6 +8,17 @@ declare var exports: any;
 const __config = new pulumi.Config("azuread");
 
 /**
+ * The Azure DevOps Pipeline Service Connection ID.
+ */
+export declare const adoPipelineServiceConnectionId: string | undefined;
+Object.defineProperty(exports, "adoPipelineServiceConnectionId", {
+    get() {
+        return __config.get("adoPipelineServiceConnectionId");
+    },
+    enumerable: true,
+});
+
+/**
  * Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
  */
 export declare const clientCertificate: string | undefined;
