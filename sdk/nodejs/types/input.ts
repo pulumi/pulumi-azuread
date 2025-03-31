@@ -1066,6 +1066,19 @@ export interface GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAs
     notificationLevel: pulumi.Input<string>;
 }
 
+export interface GroupWithoutMembersDynamicMembership {
+    /**
+     * Whether rule processing is "On" (true) or "Paused" (false).
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+     *
+     * > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+     */
+    rule: pulumi.Input<string>;
+}
+
 export interface InvitationMessage {
     /**
      * Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.

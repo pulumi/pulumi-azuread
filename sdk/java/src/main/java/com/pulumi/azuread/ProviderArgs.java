@@ -18,6 +18,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
+     * The Azure DevOps Pipeline Service Connection ID.
+     * 
+     */
+    @Import(name="adoPipelineServiceConnectionId")
+    private @Nullable Output<String> adoPipelineServiceConnectionId;
+
+    /**
+     * @return The Azure DevOps Pipeline Service Connection ID.
+     * 
+     */
+    public Optional<Output<String>> adoPipelineServiceConnectionId() {
+        return Optional.ofNullable(this.adoPipelineServiceConnectionId);
+    }
+
+    /**
      * Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
      * 
      */
@@ -341,6 +356,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
+        this.adoPipelineServiceConnectionId = $.adoPipelineServiceConnectionId;
         this.clientCertificate = $.clientCertificate;
         this.clientCertificatePassword = $.clientCertificatePassword;
         this.clientCertificatePath = $.clientCertificatePath;
@@ -380,6 +396,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProviderArgs defaults) {
             $ = new ProviderArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param adoPipelineServiceConnectionId The Azure DevOps Pipeline Service Connection ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adoPipelineServiceConnectionId(@Nullable Output<String> adoPipelineServiceConnectionId) {
+            $.adoPipelineServiceConnectionId = adoPipelineServiceConnectionId;
+            return this;
+        }
+
+        /**
+         * @param adoPipelineServiceConnectionId The Azure DevOps Pipeline Service Connection ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder adoPipelineServiceConnectionId(String adoPipelineServiceConnectionId) {
+            return adoPipelineServiceConnectionId(Output.of(adoPipelineServiceConnectionId));
         }
 
         /**

@@ -14,6 +14,11 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
+adoPipelineServiceConnectionId: Optional[str]
+"""
+The Azure DevOps Pipeline Service Connection ID.
+"""
+
 clientCertificate: Optional[str]
 """
 Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate

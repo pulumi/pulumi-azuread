@@ -21,6 +21,13 @@ __config__ = pulumi.Config('azuread')
 
 class _ExportableConfig(types.ModuleType):
     @property
+    def ado_pipeline_service_connection_id(self) -> Optional[str]:
+        """
+        The Azure DevOps Pipeline Service Connection ID.
+        """
+        return __config__.get('adoPipelineServiceConnectionId')
+
+    @property
     def client_certificate(self) -> Optional[str]:
         """
         Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate

@@ -72,6 +72,7 @@
         "group.ts",
         "groupMember.ts",
         "groupRoleManagementPolicy.ts",
+        "groupWithoutMembers.ts",
         "index.ts",
         "invitation.ts",
         "namedLocation.ts",

@@ -62,6 +62,7 @@ from .get_users import *
 from .group import *
 from .group_member import *
 from .group_role_management_policy import *
+from .group_without_members import *
 from .invitation import *
 from .named_location import *
 from .privileged_access_group_assignment_schedule import *
@@ -385,6 +386,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy": "GroupRoleManagementPolicy"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/groupWithoutMembers",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/groupWithoutMembers:GroupWithoutMembers": "GroupWithoutMembers"
   }
  },
  {
