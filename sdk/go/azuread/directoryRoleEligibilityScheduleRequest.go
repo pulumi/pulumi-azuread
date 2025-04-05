@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+//			example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
 //				UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
 //			}, nil)
 //			if err != nil {
@@ -50,7 +50,7 @@ import (
 //			}
 //			_, err = azuread.NewDirectoryRoleEligibilityScheduleRequest(ctx, "example", &azuread.DirectoryRoleEligibilityScheduleRequestArgs{
 //				RoleDefinitionId: exampleDirectoryRole.TemplateId,
-//				PrincipalId:      pulumi.Any(exampleAzureadUser.ObjectId),
+//				PrincipalId:      pulumi.String(example.ObjectId),
 //				DirectoryScopeId: pulumi.String("/"),
 //				Justification:    pulumi.String("Example"),
 //			})

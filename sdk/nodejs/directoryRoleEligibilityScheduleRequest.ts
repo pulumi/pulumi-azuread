@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * const exampleDirectoryRole = new azuread.DirectoryRole("example", {displayName: "Application Administrator"});
  * const exampleDirectoryRoleEligibilityScheduleRequest = new azuread.DirectoryRoleEligibilityScheduleRequest("example", {
  *     roleDefinitionId: exampleDirectoryRole.templateId,
- *     principalId: exampleAzureadUser.objectId,
+ *     principalId: example.then(example => example.objectId),
  *     directoryScopeId: "/",
  *     justification: "Example",
  * });
