@@ -12,6 +12,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a single owner of an application registration.
+//
+// > This resource is incompatible with the `Application` resource, instead use this with the `ApplicationRegistration` resource.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+//
+// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Pulumi must be an owner of the application.
+//
+// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+//
 // ## Example Usage
 //
 // ```go

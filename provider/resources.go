@@ -15,9 +15,11 @@
 package provider
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"unicode"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
@@ -143,6 +145,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:    "https://pulumi.io",
 		GitHubOrg:   "hashicorp",
 		Repository:  "https://github.com/pulumi/pulumi-azuread",
+		DocRules:    &tfbridge.DocRuleInfo{EditRules: editRules},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"client_certificate_password": {
 				Secret: tfbridge.True(),
@@ -279,6 +282,30 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustApplyAutoAliases()
 
 	return prov
+}
+
+func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(defaults,
+		rewriteApplicationOwner,
+	)
+}
+
+var rewriteApplicationOwner = tfbridge.DocsEdit{
+	Path: "*application_owner.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		terraformByte := []byte("the principal being used to run Terraform must be an owner of the application")
+		pulumiByte := []byte("the principal being used to run Pulumi must be an owner of the application")
+		if bytes.Contains(content, terraformByte) {
+			appOwnerRegexp := regexp.MustCompile(string(terraformByte))
+			content = appOwnerRegexp.ReplaceAll(content, pulumiByte)
+		} else {
+			// Hard error to ensure we keep this content up to date
+			return nil, fmt.Errorf("could not find text in upstream application_owner.md, "+
+				"please verify upstream application_owner.md contains:\n\n %s", string(terraformByte))
+		}
+
+		return content, nil
+	},
 }
 
 //go:embed cmd/pulumi-resource-azuread/bridge-metadata.json
