@@ -43,7 +43,7 @@ namespace Pulumi.AzureAD
     ///     var exampleDirectoryRoleEligibilityScheduleRequest = new AzureAD.DirectoryRoleEligibilityScheduleRequest("example", new()
     ///     {
     ///         RoleDefinitionId = exampleDirectoryRole.TemplateId,
-    ///         PrincipalId = exampleAzureadUser.ObjectId,
+    ///         PrincipalId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
     ///         DirectoryScopeId = "/",
     ///         Justification = "Example",
     ///     });

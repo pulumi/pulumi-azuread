@@ -187,7 +187,7 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
         example_directory_role = azuread.DirectoryRole("example", display_name="Application Administrator")
         example_directory_role_eligibility_schedule_request = azuread.DirectoryRoleEligibilityScheduleRequest("example",
             role_definition_id=example_directory_role.template_id,
-            principal_id=example_azuread_user["objectId"],
+            principal_id=example.object_id,
             directory_scope_id="/",
             justification="Example")
         ```
@@ -236,7 +236,7 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
         example_directory_role = azuread.DirectoryRole("example", display_name="Application Administrator")
         example_directory_role_eligibility_schedule_request = azuread.DirectoryRoleEligibilityScheduleRequest("example",
             role_definition_id=example_directory_role.template_id,
-            principal_id=example_azuread_user["objectId"],
+            principal_id=example.object_id,
             directory_scope_id="/",
             justification="Example")
         ```

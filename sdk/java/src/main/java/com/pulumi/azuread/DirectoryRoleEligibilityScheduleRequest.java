@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDirectoryRoleEligibilityScheduleRequest = new DirectoryRoleEligibilityScheduleRequest("exampleDirectoryRoleEligibilityScheduleRequest", DirectoryRoleEligibilityScheduleRequestArgs.builder()
  *             .roleDefinitionId(exampleDirectoryRole.templateId())
- *             .principalId(exampleAzureadUser.objectId())
+ *             .principalId(example.applyValue(getUserResult -> getUserResult.objectId()))
  *             .directoryScopeId("/")
  *             .justification("Example")
  *             .build());
