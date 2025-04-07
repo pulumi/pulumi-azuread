@@ -103,6 +103,20 @@ class ApplicationOwner(pulumi.CustomResource):
                  owner_object_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manages a single owner of an application registration.
+
+        > This resource is incompatible with the `Application` resource, instead use this with the `ApplicationRegistration` resource.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Pulumi must be an owner of the application.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         ```python
@@ -141,6 +155,20 @@ class ApplicationOwner(pulumi.CustomResource):
                  args: ApplicationOwnerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a single owner of an application registration.
+
+        > This resource is incompatible with the `Application` resource, instead use this with the `ApplicationRegistration` resource.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Pulumi must be an owner of the application.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         ```python
