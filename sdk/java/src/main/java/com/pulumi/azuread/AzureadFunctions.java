@@ -2555,7 +2555,7 @@ public final class AzureadFunctions {
      *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.objectId());
      *     }
      * }
      * }
@@ -2606,7 +2606,7 @@ public final class AzureadFunctions {
      *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.objectId());
      *     }
      * }
      * }
@@ -2657,7 +2657,7 @@ public final class AzureadFunctions {
      *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.objectId());
      *     }
      * }
      * }
@@ -2708,7 +2708,7 @@ public final class AzureadFunctions {
      *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.objectId());
      *     }
      * }
      * }
@@ -2759,7 +2759,7 @@ public final class AzureadFunctions {
      *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.objectId());
      *     }
      * }
      * }
@@ -2810,7 +2810,7 @@ public final class AzureadFunctions {
      *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.objectId());
      *     }
      * }
      * }
@@ -2861,7 +2861,7 @@ public final class AzureadFunctions {
      *             .displayName("My First AzureAD Application")
      *             .build());
      * 
-     *         ctx.export("applicationObjectId", example.applyValue(getApplicationResult -> getApplicationResult.objectId()));
+     *         ctx.export("applicationObjectId", example.objectId());
      *     }
      * }
      * }
@@ -2899,9 +2899,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.result());
      *     }
      * }
      * }
@@ -2937,24 +2937,24 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.result().MicrosoftGraph())
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -2997,9 +2997,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.result());
      *     }
      * }
      * }
@@ -3035,24 +3035,24 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.result().MicrosoftGraph())
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -3095,9 +3095,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.result());
      *     }
      * }
      * }
@@ -3133,24 +3133,24 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.result().MicrosoftGraph())
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -3193,9 +3193,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.result());
      *     }
      * }
      * }
@@ -3231,24 +3231,24 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.result().MicrosoftGraph())
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -3291,9 +3291,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.result());
      *     }
      * }
      * }
@@ -3329,24 +3329,24 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.result().MicrosoftGraph())
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -3389,9 +3389,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.result());
      *     }
      * }
      * }
@@ -3427,24 +3427,24 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.result().MicrosoftGraph())
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -3487,9 +3487,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("publishedAppIds", wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result()));
+     *         ctx.export("publishedAppIds", wellKnown.result());
      *     }
      * }
      * }
@@ -3525,24 +3525,24 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
-     *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *             .clientId(wellKnown.result().MicrosoftGraph())
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application("example", ApplicationArgs.builder()
      *             .displayName("example")
      *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
-     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+     *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -3594,7 +3594,7 @@ public final class AzureadFunctions {
      *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.templateId());
      *     }
      * }
      * }
@@ -3641,7 +3641,7 @@ public final class AzureadFunctions {
      *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.templateId());
      *     }
      * }
      * }
@@ -3688,7 +3688,7 @@ public final class AzureadFunctions {
      *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.templateId());
      *     }
      * }
      * }
@@ -3735,7 +3735,7 @@ public final class AzureadFunctions {
      *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.templateId());
      *     }
      * }
      * }
@@ -3782,7 +3782,7 @@ public final class AzureadFunctions {
      *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.templateId());
      *     }
      * }
      * }
@@ -3829,7 +3829,7 @@ public final class AzureadFunctions {
      *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.templateId());
      *     }
      * }
      * }
@@ -3876,7 +3876,7 @@ public final class AzureadFunctions {
      *             .displayName("Marketo")
      *             .build());
      * 
-     *         ctx.export("applicationTemplateId", example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()));
+     *         ctx.export("applicationTemplateId", example.templateId());
      *     }
      * }
      * }
@@ -3918,9 +3918,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
+     *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.objectId());
      *     }
      * }
      * }
@@ -3962,9 +3962,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
+     *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.objectId());
      *     }
      * }
      * }
@@ -4006,9 +4006,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
+     *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.objectId());
      *     }
      * }
      * }
@@ -4050,9 +4050,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
+     *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.objectId());
      *     }
      * }
      * }
@@ -4094,9 +4094,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
+     *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.objectId());
      *     }
      * }
      * }
@@ -4138,9 +4138,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
+     *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.objectId());
      *     }
      * }
      * }
@@ -4182,9 +4182,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getClientConfig();
+     *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("objectId", current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()));
+     *         ctx.export("objectId", current.objectId());
      *     }
      * }
      * }
@@ -4236,7 +4236,7 @@ public final class AzureadFunctions {
      *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
-     *         ctx.export("objectType", example.applyValue(getDirectoryObjectResult -> getDirectoryObjectResult.type()));
+     *         ctx.export("objectType", example.type());
      *     }
      * }
      * }
@@ -4295,7 +4295,7 @@ public final class AzureadFunctions {
      *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
-     *         ctx.export("objectType", example.applyValue(getDirectoryObjectResult -> getDirectoryObjectResult.type()));
+     *         ctx.export("objectType", example.type());
      *     }
      * }
      * }
@@ -4354,7 +4354,7 @@ public final class AzureadFunctions {
      *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
-     *         ctx.export("objectType", example.applyValue(getDirectoryObjectResult -> getDirectoryObjectResult.type()));
+     *         ctx.export("objectType", example.type());
      *     }
      * }
      * }
@@ -4413,7 +4413,7 @@ public final class AzureadFunctions {
      *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
-     *         ctx.export("objectType", example.applyValue(getDirectoryObjectResult -> getDirectoryObjectResult.type()));
+     *         ctx.export("objectType", example.type());
      *     }
      * }
      * }
@@ -4472,7 +4472,7 @@ public final class AzureadFunctions {
      *             .objectId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
-     *         ctx.export("objectType", example.applyValue(getDirectoryObjectResult -> getDirectoryObjectResult.type()));
+     *         ctx.export("objectType", example.type());
      *     }
      * }
      * }
@@ -4525,9 +4525,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -4573,9 +4573,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -4621,9 +4621,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -4669,9 +4669,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -4717,9 +4717,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -4765,9 +4765,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -4813,9 +4813,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRoleTemplatesResult -> getDirectoryRoleTemplatesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -4861,9 +4861,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
+     *         final var current = AzureadFunctions.getDirectoryRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -4909,9 +4909,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
+     *         final var current = AzureadFunctions.getDirectoryRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -4957,9 +4957,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
+     *         final var current = AzureadFunctions.getDirectoryRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -5005,9 +5005,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
+     *         final var current = AzureadFunctions.getDirectoryRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -5053,9 +5053,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
+     *         final var current = AzureadFunctions.getDirectoryRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -5101,9 +5101,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
+     *         final var current = AzureadFunctions.getDirectoryRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -5149,9 +5149,9 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = AzureadFunctions.getDirectoryRoles();
+     *         final var current = AzureadFunctions.getDirectoryRoles(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
-     *         ctx.export("roles", current.applyValue(getDirectoryRolesResult -> getDirectoryRolesResult.objectIds()));
+     *         ctx.export("roles", current.objectIds());
      *     }
      * }
      * }
@@ -5198,9 +5198,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
+     *         final var aadDomains = AzureadFunctions.getDomains(GetDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.domains().stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
      * }
@@ -5247,9 +5248,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
+     *         final var aadDomains = AzureadFunctions.getDomains(GetDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.domains().stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
      * }
@@ -5296,9 +5298,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
+     *         final var aadDomains = AzureadFunctions.getDomains(GetDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.domains().stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
      * }
@@ -5345,9 +5348,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
+     *         final var aadDomains = AzureadFunctions.getDomains(GetDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.domains().stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
      * }
@@ -5394,9 +5398,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
+     *         final var aadDomains = AzureadFunctions.getDomains(GetDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.domains().stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
      * }
@@ -5443,9 +5448,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
+     *         final var aadDomains = AzureadFunctions.getDomains(GetDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.domains().stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
      * }
@@ -5492,9 +5498,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = AzureadFunctions.getDomains();
+     *         final var aadDomains = AzureadFunctions.getDomains(GetDomainsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("domainNames", aadDomains.applyValue(getDomainsResult -> getDomainsResult.domains()).stream().map(element -> element.domainName()).collect(toList()));
+     *         ctx.export("domainNames", aadDomains.domains().stream().map(element -> element.domainName()).collect(toList()));
      *     }
      * }
      * }

@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDirectoryRoleMember = new DirectoryRoleMember("exampleDirectoryRoleMember", DirectoryRoleMemberArgs.builder()
  *             .roleObjectId(exampleDirectoryRole.objectId())
- *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
+ *             .memberObjectId(example.objectId())
  *             .build());
  * 
  *     }}{@code

@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.ApplicationRegistrationArgs;
  * import com.pulumi.azuread.ApplicationCertificate;
  * import com.pulumi.azuread.ApplicationCertificateArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -78,6 +80,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.ApplicationRegistrationArgs;
  * import com.pulumi.azuread.ApplicationCertificate;
  * import com.pulumi.azuread.ApplicationCertificateArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -199,8 +204,8 @@ import javax.annotation.Nullable;
  *             .type("AsymmetricX509Cert")
  *             .encoding("hex")
  *             .value(example.certificateData())
- *             .endDate(example.certificateAttributes().applyValue(certificateAttributes -> certificateAttributes[0].expires()))
- *             .startDate(example.certificateAttributes().applyValue(certificateAttributes -> certificateAttributes[0].notBefore()))
+ *             .endDate(example.certificateAttributes().applyValue(_certificateAttributes -> _certificateAttributes[0].expires()))
+ *             .startDate(example.certificateAttributes().applyValue(_certificateAttributes -> _certificateAttributes[0].notBefore()))
  *             .build());
  * 
  *     }
