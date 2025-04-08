@@ -49,6 +49,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
  * import com.pulumi.azuread.inputs.ApplicationWebArgs;
  * import com.pulumi.azuread.inputs.ApplicationWebImplicitGrantArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,7 +64,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = AzureadFunctions.getClientConfig();
+ *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
@@ -70,7 +72,7 @@ import javax.annotation.Nullable;
  *             .logoImage(StdFunctions.filebase64(Filebase64Args.builder()
  *                 .input("/path/to/logo.png")
  *                 .build()).result())
- *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
+ *             .owners(current.objectId())
  *             .signInAudience("AzureADMultipleOrgs")
  *             .api(ApplicationApiArgs.builder()
  *                 .mappedClaimsEnabled(true)

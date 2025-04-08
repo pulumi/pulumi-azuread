@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleAdministrativeUnitMember = new AdministrativeUnitMember("exampleAdministrativeUnitMember", AdministrativeUnitMemberArgs.builder()
  *             .administrativeUnitObjectId(exampleAdministrativeUnit.id())
- *             .memberObjectId(example.applyValue(getUserResult -> getUserResult.id()))
+ *             .memberObjectId(example.id())
  *             .build());
  * 
  *     }}{@code

@@ -59,24 +59,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+ *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
- *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *             .clientId(wellKnown.result().microsoftGraph())
  *             .useExisting(true)
  *             .build());
  * 
  *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
- *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *                 .resourceAppId(wellKnown.result().microsoftGraph())
  *                 .resourceAccesses(                
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.openid()))
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.openid()))
  *                         .type("Scope")
  *                         .build(),
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.Read()))
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.Read()))
  *                         .type("Scope")
  *                         .build())
  *                 .build())
@@ -133,24 +133,24 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+ *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
- *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *             .clientId(wellKnown.result().microsoftGraph())
  *             .useExisting(true)
  *             .build());
  * 
  *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
- *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *                 .resourceAppId(wellKnown.result().microsoftGraph())
  *                 .resourceAccesses(                
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.openid()))
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.openid()))
  *                         .type("Scope")
  *                         .build(),
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.Read()))
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.Read()))
  *                         .type("Scope")
  *                         .build())
  *                 .build())

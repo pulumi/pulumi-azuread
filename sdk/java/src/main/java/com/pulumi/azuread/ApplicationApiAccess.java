@@ -45,10 +45,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+ *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var msgraph = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
- *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+ *             .clientId(wellKnown.result().MicrosoftGraph())
  *             .build());
  * 
  *         var example = new ApplicationRegistration("example", ApplicationRegistrationArgs.builder()
@@ -57,11 +57,11 @@ import javax.annotation.Nullable;
  * 
  *         var exampleMsgraph = new ApplicationApiAccess("exampleMsgraph", ApplicationApiAccessArgs.builder()
  *             .applicationId(example.id())
- *             .apiClientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
+ *             .apiClientId(wellKnown.result().MicrosoftGraph())
  *             .roleIds(            
- *                 msgraph.applyValue(getServicePrincipalResult -> getServicePrincipalResult.appRoleIds().Group.Read.All()),
- *                 msgraph.applyValue(getServicePrincipalResult -> getServicePrincipalResult.appRoleIds().User.Read.All()))
- *             .scopeIds(msgraph.applyValue(getServicePrincipalResult -> getServicePrincipalResult.oauth2PermissionScopeIds().User.ReadWrite()))
+ *                 msgraph.appRoleIds().Group.Read.All(),
+ *                 msgraph.appRoleIds().User.Read.All())
+ *             .scopeIds(msgraph.oauth2PermissionScopeIds().User.ReadWrite())
  *             .build());
  * 
  *     }

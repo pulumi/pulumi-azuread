@@ -66,11 +66,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = AzureadFunctions.getClientConfig();
+ *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
  *             .displayName("example")
- *             .owners(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
+ *             .owners(current.objectId())
  *             .securityEnabled(true)
  *             .build());
  * 
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleApplicationFromTemplate = new ApplicationFromTemplate("exampleApplicationFromTemplate", ApplicationFromTemplateArgs.builder()
  *             .displayName("example")
- *             .templateId(example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()))
+ *             .templateId(example.templateId())
  *             .build());
  * 
  *         final var exampleGetServicePrincipal = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSynchronizationSecret = new SynchronizationSecret("exampleSynchronizationSecret", SynchronizationSecretArgs.builder()
- *             .servicePrincipalId(exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult).applyValue(exampleGetServicePrincipal -> exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id())))
+ *             .servicePrincipalId(exampleGetServicePrincipal.applyValue(_exampleGetServicePrincipal -> _exampleGetServicePrincipal.id()))
  *             .credentials(            
  *                 SynchronizationSecretCredentialArgs.builder()
  *                     .key("BaseAddress")
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSynchronizationJob = new SynchronizationJob("exampleSynchronizationJob", SynchronizationJobArgs.builder()
- *             .servicePrincipalId(exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult).applyValue(exampleGetServicePrincipal -> exampleGetServicePrincipal.applyValue(getServicePrincipalResult -> getServicePrincipalResult.id())))
+ *             .servicePrincipalId(exampleGetServicePrincipal.applyValue(_exampleGetServicePrincipal -> _exampleGetServicePrincipal.id()))
  *             .templateId("dataBricks")
  *             .enabled(true)
  *             .build());
