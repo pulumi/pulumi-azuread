@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleApplicationFromTemplate = new ApplicationFromTemplate("exampleApplicationFromTemplate", ApplicationFromTemplateArgs.builder()
  *             .displayName("Example Application")
- *             .templateId(example.applyValue(getApplicationTemplateResult -> getApplicationTemplateResult.templateId()))
+ *             .templateId(example.templateId())
  *             .build());
  * 
  *         final var exampleGetApplication = AzureadFunctions.getApplication(GetApplicationArgs.builder()

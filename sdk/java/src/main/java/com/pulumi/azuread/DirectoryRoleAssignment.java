@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment("exampleDirectoryRoleAssignment", DirectoryRoleAssignmentArgs.builder()
  *             .roleId(exampleDirectoryRole.templateId())
- *             .principalObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
+ *             .principalObjectId(example.objectId())
  *             .build());
  * 
  *     }}{@code
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment("exampleDirectoryRoleAssignment", DirectoryRoleAssignmentArgs.builder()
  *             .roleId(exampleCustomDirectoryRole.objectId())
- *             .principalObjectId(example.applyValue(getUserResult -> getUserResult.objectId()))
+ *             .principalObjectId(example.objectId())
  *             .build());
  * 
  *     }}{@code

@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = AzureadFunctions.getClientConfig();
+ *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()
  *             .displayName("example policy")
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *                     .includedApplications("All")
  *                     .build())
  *                 .clientApplications(ConditionalAccessPolicyConditionsClientApplicationsArgs.builder()
- *                     .includedServicePrincipals(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
+ *                     .includedServicePrincipals(current.objectId())
  *                     .excludedServicePrincipals()
  *                     .build())
  *                 .users(ConditionalAccessPolicyConditionsUsersArgs.builder()
@@ -195,7 +195,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = AzureadFunctions.getClientConfig();
+ *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()
  *             .displayName("example policy")
@@ -207,7 +207,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .clientApplications(ConditionalAccessPolicyConditionsClientApplicationsArgs.builder()
  *                     .includedServicePrincipals("ServicePrincipalsInMyTenant")
- *                     .excludedServicePrincipals(current.applyValue(getClientConfigResult -> getClientConfigResult.objectId()))
+ *                     .excludedServicePrincipals(current.objectId())
  *                     .build())
  *                 .users(ConditionalAccessPolicyConditionsUsersArgs.builder()
  *                     .includedUsers("None")
