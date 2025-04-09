@@ -57,24 +57,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
+ *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var msgraph = new ServicePrincipal("msgraph", ServicePrincipalArgs.builder()
- *             .clientId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *             .clientId(wellKnown.result().microsoftGraph())
  *             .useExisting(true)
  *             .build());
  * 
  *         var example = new Application("example", ApplicationArgs.builder()
  *             .displayName("example")
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
- *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -> getApplicationPublishedAppIdsResult.result().microsoftGraph()))
+ *                 .resourceAppId(wellKnown.result().microsoftGraph())
  *                 .resourceAccesses(                
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+ *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
  *                         .type("Role")
  *                         .build(),
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -> oauth2PermissionScopeIds.User.ReadWrite()))
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
  *                         .type("Scope")
  *                         .build())
  *                 .build())
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
- *             .appRoleId(msgraph.appRoleIds().applyValue(appRoleIds -> appRoleIds.User.Read.All()))
+ *             .appRoleId(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
  *             .principalObjectId(exampleServicePrincipal.objectId())
  *             .resourceObjectId(msgraph.objectId())
  *             .build());
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
  *                 .resourceAppId(internal.clientId())
  *                 .resourceAccesses(ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                     .id(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -> appRoleIds.Query.All()))
+ *                     .id(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.Query.All()))
  *                     .type("Role")
  *                     .build())
  *                 .build())
@@ -159,7 +159,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
- *             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -> appRoleIds.Query.All()))
+ *             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.Query.All()))
  *             .principalObjectId(exampleServicePrincipal.objectId())
  *             .resourceObjectId(internalServicePrincipal.objectId())
  *             .build());
