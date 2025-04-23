@@ -353,6 +353,9 @@ class _AccessPackageAssignmentPolicyState:
 
 
 class AccessPackageAssignmentPolicy(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

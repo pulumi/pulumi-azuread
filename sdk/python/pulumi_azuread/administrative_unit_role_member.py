@@ -127,6 +127,9 @@ class _AdministrativeUnitRoleMemberState:
 
 
 class AdministrativeUnitRoleMember(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

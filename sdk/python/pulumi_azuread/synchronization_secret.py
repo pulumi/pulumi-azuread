@@ -99,6 +99,9 @@ class _SynchronizationSecretState:
 
 
 class SynchronizationSecret(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/synchronizationSecret:SynchronizationSecret"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

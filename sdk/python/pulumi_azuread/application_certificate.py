@@ -312,6 +312,9 @@ class _ApplicationCertificateState:
 
 
 class ApplicationCertificate(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/applicationCertificate:ApplicationCertificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

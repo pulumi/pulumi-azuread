@@ -105,6 +105,9 @@ class _ApplicationFallbackPublicClientState:
 
 
 class ApplicationFallbackPublicClient(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

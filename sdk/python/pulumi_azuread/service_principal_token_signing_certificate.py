@@ -201,6 +201,9 @@ class _ServicePrincipalTokenSigningCertificateState:
 
 
 class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

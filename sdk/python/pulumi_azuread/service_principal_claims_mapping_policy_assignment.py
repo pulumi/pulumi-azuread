@@ -96,6 +96,9 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
 
 
 class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

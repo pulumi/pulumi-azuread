@@ -175,6 +175,9 @@ class _AppRoleAssignmentState:
 
 
 class AppRoleAssignment(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/appRoleAssignment:AppRoleAssignment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

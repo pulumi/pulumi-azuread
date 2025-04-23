@@ -312,6 +312,9 @@ class _ServicePrincipalCertificateState:
 
 
 class ServicePrincipalCertificate(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

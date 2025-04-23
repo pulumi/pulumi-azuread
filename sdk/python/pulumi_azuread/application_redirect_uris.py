@@ -127,6 +127,9 @@ class _ApplicationRedirectUrisState:
 
 
 class ApplicationRedirectUris(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/applicationRedirectUris:ApplicationRedirectUris"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

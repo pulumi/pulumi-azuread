@@ -237,6 +237,9 @@ class _ApplicationFederatedIdentityCredentialState:
 
 
 class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

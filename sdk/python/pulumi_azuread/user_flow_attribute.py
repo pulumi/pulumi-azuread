@@ -143,6 +143,9 @@ class _UserFlowAttributeState:
 
 
 class UserFlowAttribute(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/userFlowAttribute:UserFlowAttribute"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

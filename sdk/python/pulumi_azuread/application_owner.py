@@ -96,6 +96,9 @@ class _ApplicationOwnerState:
 
 
 class ApplicationOwner(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/applicationOwner:ApplicationOwner"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
