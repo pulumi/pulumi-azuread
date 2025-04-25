@@ -229,6 +229,9 @@ class _ApplicationAppRoleState:
 
 
 class ApplicationAppRole(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/applicationAppRole:ApplicationAppRole"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

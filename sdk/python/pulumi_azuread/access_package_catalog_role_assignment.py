@@ -127,6 +127,9 @@ class _AccessPackageCatalogRoleAssignmentState:
 
 
 class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

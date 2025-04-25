@@ -1396,6 +1396,9 @@ class _UserState:
 
 
 class User(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/user:User"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

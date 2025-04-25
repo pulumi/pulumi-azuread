@@ -168,6 +168,9 @@ class _ApplicationApiAccessState:
 
 
 class ApplicationApiAccess(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/applicationApiAccess:ApplicationApiAccess"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

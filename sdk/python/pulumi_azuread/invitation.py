@@ -226,6 +226,9 @@ class _InvitationState:
 
 
 class Invitation(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/invitation:Invitation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

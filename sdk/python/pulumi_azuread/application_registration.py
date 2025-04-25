@@ -577,6 +577,9 @@ class _ApplicationRegistrationState:
 
 
 class ApplicationRegistration(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/applicationRegistration:ApplicationRegistration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

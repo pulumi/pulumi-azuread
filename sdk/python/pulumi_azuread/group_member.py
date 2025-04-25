@@ -96,6 +96,9 @@ class _GroupMemberState:
 
 
 class GroupMember(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/groupMember:GroupMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
