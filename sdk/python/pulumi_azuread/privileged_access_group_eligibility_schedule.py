@@ -375,6 +375,9 @@ class _PrivilegedAccessGroupEligibilityScheduleState:
 
 
 class PrivilegedAccessGroupEligibilitySchedule(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

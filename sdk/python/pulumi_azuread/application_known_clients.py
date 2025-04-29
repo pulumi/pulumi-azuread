@@ -96,6 +96,9 @@ class _ApplicationKnownClientsState:
 
 
 class ApplicationKnownClients(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/applicationKnownClients:ApplicationKnownClients"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

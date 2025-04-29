@@ -96,6 +96,9 @@ class _ApplicationIdentifierUriState:
 
 
 class ApplicationIdentifierUri(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/applicationIdentifierUri:ApplicationIdentifierUri"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

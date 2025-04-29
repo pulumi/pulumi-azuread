@@ -98,6 +98,9 @@ class _DirectoryRoleMemberState:
 
 
 class DirectoryRoleMember(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/directoryRoleMember:DirectoryRoleMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

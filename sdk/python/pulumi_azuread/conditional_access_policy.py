@@ -217,6 +217,9 @@ class _ConditionalAccessPolicyState:
 
 
 class ConditionalAccessPolicy(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

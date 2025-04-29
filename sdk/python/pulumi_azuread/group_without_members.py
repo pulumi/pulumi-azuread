@@ -907,6 +907,9 @@ class _GroupWithoutMembersState:
 
 
 class GroupWithoutMembers(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/groupWithoutMembers:GroupWithoutMembers"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

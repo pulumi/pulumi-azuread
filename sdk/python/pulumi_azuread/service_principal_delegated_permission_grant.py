@@ -167,6 +167,9 @@ class _ServicePrincipalDelegatedPermissionGrantState:
 
 
 class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

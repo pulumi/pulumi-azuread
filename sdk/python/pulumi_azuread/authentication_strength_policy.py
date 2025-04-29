@@ -128,6 +128,9 @@ class _AuthenticationStrengthPolicyState:
 
 
 class AuthenticationStrengthPolicy(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
