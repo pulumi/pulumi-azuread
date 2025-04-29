@@ -258,6 +258,9 @@ class _GroupRoleManagementPolicyState:
 
 
 class GroupRoleManagementPolicy(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

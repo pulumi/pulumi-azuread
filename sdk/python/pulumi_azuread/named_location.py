@@ -139,6 +139,9 @@ class _NamedLocationState:
 
 
 class NamedLocation(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/namedLocation:NamedLocation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

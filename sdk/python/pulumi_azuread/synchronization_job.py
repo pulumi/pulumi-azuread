@@ -146,6 +146,9 @@ class _SynchronizationJobState:
 
 
 class SynchronizationJob(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/synchronizationJob:SynchronizationJob"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

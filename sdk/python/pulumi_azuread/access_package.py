@@ -159,6 +159,9 @@ class _AccessPackageState:
 
 
 class AccessPackage(pulumi.CustomResource):
+
+    pulumi_type = "azuread:index/accessPackage:AccessPackage"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
