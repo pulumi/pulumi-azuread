@@ -3284,6 +3284,9 @@
                 "type": "boolean",
                 "description": "Allow OpenID Connect to be used for authentication\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:azuread/terraformConfig"
         }
     },
     "resources": {
@@ -11892,6 +11895,35 @@
                     "userPrincipalNames",
                     "users",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:azuread/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:azuread"
+                    }
+                },
+                "type": "pulumi:providers:azuread/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }
