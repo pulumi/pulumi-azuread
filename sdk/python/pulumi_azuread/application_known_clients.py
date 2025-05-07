@@ -95,10 +95,8 @@ class _ApplicationKnownClientsState:
         pulumi.set(self, "known_client_ids", value)
 
 
+@pulumi.type_token("azuread:index/applicationKnownClients:ApplicationKnownClients")
 class ApplicationKnownClients(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/applicationKnownClients:ApplicationKnownClients"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

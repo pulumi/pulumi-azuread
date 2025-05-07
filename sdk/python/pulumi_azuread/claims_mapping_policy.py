@@ -95,10 +95,8 @@ class _ClaimsMappingPolicyState:
         pulumi.set(self, "display_name", value)
 
 
+@pulumi.type_token("azuread:index/claimsMappingPolicy:ClaimsMappingPolicy")
 class ClaimsMappingPolicy(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

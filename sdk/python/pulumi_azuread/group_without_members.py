@@ -906,10 +906,8 @@ class _GroupWithoutMembersState:
         pulumi.set(self, "writeback_enabled", value)
 
 
+@pulumi.type_token("azuread:index/groupWithoutMembers:GroupWithoutMembers")
 class GroupWithoutMembers(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/groupWithoutMembers:GroupWithoutMembers"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

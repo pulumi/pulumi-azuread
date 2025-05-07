@@ -158,10 +158,8 @@ class _AccessPackageState:
         pulumi.set(self, "hidden", value)
 
 
+@pulumi.type_token("azuread:index/accessPackage:AccessPackage")
 class AccessPackage(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/accessPackage:AccessPackage"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

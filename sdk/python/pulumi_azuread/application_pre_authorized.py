@@ -126,10 +126,8 @@ class _ApplicationPreAuthorizedState:
         pulumi.set(self, "permission_ids", value)
 
 
+@pulumi.type_token("azuread:index/applicationPreAuthorized:ApplicationPreAuthorized")
 class ApplicationPreAuthorized(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

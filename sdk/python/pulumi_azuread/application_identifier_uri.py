@@ -95,10 +95,8 @@ class _ApplicationIdentifierUriState:
         pulumi.set(self, "identifier_uri", value)
 
 
+@pulumi.type_token("azuread:index/applicationIdentifierUri:ApplicationIdentifierUri")
 class ApplicationIdentifierUri(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/applicationIdentifierUri:ApplicationIdentifierUri"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

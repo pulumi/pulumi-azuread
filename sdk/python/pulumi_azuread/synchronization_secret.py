@@ -98,10 +98,8 @@ class _SynchronizationSecretState:
         pulumi.set(self, "service_principal_id", value)
 
 
+@pulumi.type_token("azuread:index/synchronizationSecret:SynchronizationSecret")
 class SynchronizationSecret(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/synchronizationSecret:SynchronizationSecret"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

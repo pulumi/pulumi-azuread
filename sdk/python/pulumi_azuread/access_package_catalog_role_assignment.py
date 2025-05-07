@@ -126,10 +126,8 @@ class _AccessPackageCatalogRoleAssignmentState:
         pulumi.set(self, "role_id", value)
 
 
+@pulumi.type_token("azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment")
 class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

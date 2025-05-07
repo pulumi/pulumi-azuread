@@ -292,10 +292,8 @@ class _ApplicationPermissionScopeState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("azuread:index/applicationPermissionScope:ApplicationPermissionScope")
 class ApplicationPermissionScope(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/applicationPermissionScope:ApplicationPermissionScope"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
