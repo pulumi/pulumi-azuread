@@ -97,10 +97,8 @@ class _DirectoryRoleMemberState:
         pulumi.set(self, "role_object_id", value)
 
 
+@pulumi.type_token("azuread:index/directoryRoleMember:DirectoryRoleMember")
 class DirectoryRoleMember(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/directoryRoleMember:DirectoryRoleMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

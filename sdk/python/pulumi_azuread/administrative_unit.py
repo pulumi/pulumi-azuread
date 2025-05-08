@@ -224,10 +224,8 @@ class _AdministrativeUnitState:
         pulumi.set(self, "prevent_duplicate_names", value)
 
 
+@pulumi.type_token("azuread:index/administrativeUnit:AdministrativeUnit")
 class AdministrativeUnit(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/administrativeUnit:AdministrativeUnit"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

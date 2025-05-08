@@ -315,10 +315,8 @@ export type PrivilegedAccessGroupEligibilitySchedule = import("./privilegedAcces
 export const PrivilegedAccessGroupEligibilitySchedule: typeof import("./privilegedAccessGroupEligibilitySchedule").PrivilegedAccessGroupEligibilitySchedule = null as any;
 utilities.lazyLoad(exports, ["PrivilegedAccessGroupEligibilitySchedule"], () => require("./privilegedAccessGroupEligibilitySchedule"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { ServicePrincipalArgs, ServicePrincipalState } from "./servicePrincipal";
 export type ServicePrincipal = import("./servicePrincipal").ServicePrincipal;

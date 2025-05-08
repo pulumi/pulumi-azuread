@@ -264,10 +264,8 @@ class _ServicePrincipalPasswordState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("azuread:index/servicePrincipalPassword:ServicePrincipalPassword")
 class ServicePrincipalPassword(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/servicePrincipalPassword:ServicePrincipalPassword"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

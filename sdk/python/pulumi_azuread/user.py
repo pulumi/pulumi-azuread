@@ -1395,10 +1395,8 @@ class _UserState:
         pulumi.set(self, "user_type", value)
 
 
+@pulumi.type_token("azuread:index/user:User")
 class User(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/user:User"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

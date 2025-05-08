@@ -159,10 +159,8 @@ class _ApplicationFromTemplateState:
         pulumi.set(self, "template_id", value)
 
 
+@pulumi.type_token("azuread:index/applicationFromTemplate:ApplicationFromTemplate")
 class ApplicationFromTemplate(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/applicationFromTemplate:ApplicationFromTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

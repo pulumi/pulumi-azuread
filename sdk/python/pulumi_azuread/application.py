@@ -1090,10 +1090,8 @@ class _ApplicationState:
         pulumi.set(self, "web", value)
 
 
+@pulumi.type_token("azuread:index/application:Application")
 class Application(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/application:Application"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

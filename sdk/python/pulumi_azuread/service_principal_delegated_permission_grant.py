@@ -166,10 +166,8 @@ class _ServicePrincipalDelegatedPermissionGrantState:
         pulumi.set(self, "user_object_id", value)
 
 
+@pulumi.type_token("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant")
 class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

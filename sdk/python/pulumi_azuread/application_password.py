@@ -264,10 +264,8 @@ class _ApplicationPasswordState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("azuread:index/applicationPassword:ApplicationPassword")
 class ApplicationPassword(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/applicationPassword:ApplicationPassword"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

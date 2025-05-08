@@ -159,10 +159,8 @@ class _AccessPackageCatalogState:
         pulumi.set(self, "published", value)
 
 
+@pulumi.type_token("azuread:index/accessPackageCatalog:AccessPackageCatalog")
 class AccessPackageCatalog(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/accessPackageCatalog:AccessPackageCatalog"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
