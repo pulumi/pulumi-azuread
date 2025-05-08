@@ -157,10 +157,8 @@ class _DirectoryRoleEligibilityScheduleRequestState:
         pulumi.set(self, "role_definition_id", value)
 
 
+@pulumi.type_token("azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest")
 class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

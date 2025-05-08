@@ -946,10 +946,8 @@ class _GroupState:
         pulumi.set(self, "writeback_enabled", value)
 
 
+@pulumi.type_token("azuread:index/group:Group")
 class Group(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/group:Group"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

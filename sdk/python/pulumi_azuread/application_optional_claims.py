@@ -170,10 +170,8 @@ class _ApplicationOptionalClaimsState:
         pulumi.set(self, "saml2_tokens", value)
 
 
+@pulumi.type_token("azuread:index/applicationOptionalClaims:ApplicationOptionalClaims")
 class ApplicationOptionalClaims(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/applicationOptionalClaims:ApplicationOptionalClaims"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

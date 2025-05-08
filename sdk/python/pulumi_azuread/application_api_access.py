@@ -167,10 +167,8 @@ class _ApplicationApiAccessState:
         pulumi.set(self, "scope_ids", value)
 
 
+@pulumi.type_token("azuread:index/applicationApiAccess:ApplicationApiAccess")
 class ApplicationApiAccess(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/applicationApiAccess:ApplicationApiAccess"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

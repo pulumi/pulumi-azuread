@@ -152,10 +152,8 @@ class _SynchronizationJobProvisionOnDemandState:
         pulumi.set(self, "triggers", value)
 
 
+@pulumi.type_token("azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand")
 class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

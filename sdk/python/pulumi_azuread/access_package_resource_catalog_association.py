@@ -126,10 +126,8 @@ class _AccessPackageResourceCatalogAssociationState:
         pulumi.set(self, "resource_origin_system", value)
 
 
+@pulumi.type_token("azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation")
 class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -174,10 +174,8 @@ class _AppRoleAssignmentState:
         pulumi.set(self, "resource_object_id", value)
 
 
+@pulumi.type_token("azuread:index/appRoleAssignment:AppRoleAssignment")
 class AppRoleAssignment(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/appRoleAssignment:AppRoleAssignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

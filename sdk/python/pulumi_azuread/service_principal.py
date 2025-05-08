@@ -762,10 +762,8 @@ class _ServicePrincipalState:
         pulumi.set(self, "use_existing", value)
 
 
+@pulumi.type_token("azuread:index/servicePrincipal:ServicePrincipal")
 class ServicePrincipal(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/servicePrincipal:ServicePrincipal"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

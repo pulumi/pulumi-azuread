@@ -95,10 +95,8 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
         pulumi.set(self, "service_principal_id", value)
 
 
+@pulumi.type_token("azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment")
 class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

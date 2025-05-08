@@ -228,10 +228,8 @@ class _ApplicationAppRoleState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("azuread:index/applicationAppRole:ApplicationAppRole")
 class ApplicationAppRole(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/applicationAppRole:ApplicationAppRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

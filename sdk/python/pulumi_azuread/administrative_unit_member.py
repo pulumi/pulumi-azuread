@@ -105,10 +105,8 @@ class _AdministrativeUnitMemberState:
         pulumi.set(self, "member_object_id", value)
 
 
+@pulumi.type_token("azuread:index/administrativeUnitMember:AdministrativeUnitMember")
 class AdministrativeUnitMember(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/administrativeUnitMember:AdministrativeUnitMember"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

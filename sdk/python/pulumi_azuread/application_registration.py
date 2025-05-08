@@ -576,10 +576,8 @@ class _ApplicationRegistrationState:
         pulumi.set(self, "terms_of_service_url", value)
 
 
+@pulumi.type_token("azuread:index/applicationRegistration:ApplicationRegistration")
 class ApplicationRegistration(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/applicationRegistration:ApplicationRegistration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

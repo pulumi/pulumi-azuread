@@ -374,10 +374,8 @@ class _PrivilegedAccessGroupEligibilityScheduleState:
         pulumi.set(self, "ticket_system", value)
 
 
+@pulumi.type_token("azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule")
 class PrivilegedAccessGroupEligibilitySchedule(pulumi.CustomResource):
-
-    pulumi_type = "azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
