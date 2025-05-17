@@ -28,8 +28,8 @@ import * as utilities from "./utilities";
  * const exampleDirectoryRole = new azuread.DirectoryRole("example", {displayName: "Security administrator"});
  * const exampleAdministrativeUnitRoleMember = new azuread.AdministrativeUnitRoleMember("example", {
  *     roleObjectId: exampleDirectoryRole.objectId,
- *     administrativeUnitObjectId: exampleAdministrativeUnit.id,
- *     memberObjectId: example.then(example => example.id),
+ *     administrativeUnitObjectId: exampleAdministrativeUnit.objectId,
+ *     memberObjectId: example.then(example => example.objectId),
  * });
  * ```
  *

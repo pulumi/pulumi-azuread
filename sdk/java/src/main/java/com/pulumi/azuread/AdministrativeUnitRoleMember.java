@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  * 
  *         var exampleAdministrativeUnitRoleMember = new AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember", AdministrativeUnitRoleMemberArgs.builder()
  *             .roleObjectId(exampleDirectoryRole.objectId())
- *             .administrativeUnitObjectId(exampleAdministrativeUnit.id())
- *             .memberObjectId(example.id())
+ *             .administrativeUnitObjectId(exampleAdministrativeUnit.objectId())
+ *             .memberObjectId(example.objectId())
  *             .build());
  * 
  *     }}{@code

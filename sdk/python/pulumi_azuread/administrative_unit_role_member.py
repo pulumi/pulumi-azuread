@@ -158,8 +158,8 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         example_directory_role = azuread.DirectoryRole("example", display_name="Security administrator")
         example_administrative_unit_role_member = azuread.AdministrativeUnitRoleMember("example",
             role_object_id=example_directory_role.object_id,
-            administrative_unit_object_id=example_administrative_unit.id,
-            member_object_id=example.id)
+            administrative_unit_object_id=example_administrative_unit.object_id,
+            member_object_id=example.object_id)
         ```
 
         ## Import
@@ -206,8 +206,8 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         example_directory_role = azuread.DirectoryRole("example", display_name="Security administrator")
         example_administrative_unit_role_member = azuread.AdministrativeUnitRoleMember("example",
             role_object_id=example_directory_role.object_id,
-            administrative_unit_object_id=example_administrative_unit.id,
-            member_object_id=example.id)
+            administrative_unit_object_id=example_administrative_unit.object_id,
+            member_object_id=example.object_id)
         ```
 
         ## Import
