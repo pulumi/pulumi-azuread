@@ -48,8 +48,8 @@ namespace Pulumi.AzureAD
     ///     var exampleAdministrativeUnitRoleMember = new AzureAD.AdministrativeUnitRoleMember("example", new()
     ///     {
     ///         RoleObjectId = exampleDirectoryRole.ObjectId,
-    ///         AdministrativeUnitObjectId = exampleAdministrativeUnit.Id,
-    ///         MemberObjectId = example.Apply(getUserResult =&gt; getUserResult.Id),
+    ///         AdministrativeUnitObjectId = exampleAdministrativeUnit.ObjectId,
+    ///         MemberObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
     ///     });
     /// 
     /// });
