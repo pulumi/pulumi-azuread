@@ -402,6 +402,9 @@
                                             "excluded_service_principals": {
                                                 "maxItemsOne": false
                                             },
+                                            "filter": {
+                                                "maxItemsOne": true
+                                            },
                                             "included_service_principals": {
                                                 "maxItemsOne": false
                                             }

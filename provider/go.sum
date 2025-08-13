@@ -1833,10 +1833,10 @@ github.com/hashicorp/errwrap v1.1.0 h1:OxrOeh75EUXMY8TBjag2fzXGZ40LB6IKw45YeGUDY
 github.com/hashicorp/errwrap v1.1.0/go.mod h1:YH+1FKiLXxHSkmPseP+kNlulaMuP3n2brvKWEqk/Jc4=
 github.com/hashicorp/go-azure-helpers v0.73.0 h1:J++NBrLzwv6U/hSXeC29pWOr+5S+xnoQWVT2r1XAexw=
 github.com/hashicorp/go-azure-helpers v0.73.0/go.mod h1:tAUWC+kwZQsuNAHEIlnbojMMcC6SWQb6W1HfIeluv1E=
-github.com/hashicorp/go-azure-sdk/microsoft-graph v0.20250513.1112057 h1:V6fG/+FkmIWqlLyTr8zkYxuGa1rshHfU7VbWPM6/zNQ=
-github.com/hashicorp/go-azure-sdk/microsoft-graph v0.20250513.1112057/go.mod h1:6kecvS+zhzvq+MY4XsVvTr9mWf0rWyxcBpxWkGZj9Xo=
-github.com/hashicorp/go-azure-sdk/sdk v0.20250513.1112057 h1:J5QEwqbMVV5qPl6uO/she/jX2zXqMD9IJ9VPywHlzKw=
-github.com/hashicorp/go-azure-sdk/sdk v0.20250513.1112057/go.mod h1:/LiVkre6Py4M8+xkSHgJieWkHWv03USdwg5x/zeX9Rc=
+github.com/hashicorp/go-azure-sdk/microsoft-graph v0.20250731.1192335 h1:3RKmlQ8jRTepZSXOiCXzzldkn5zztZaNTysv9KzDfd0=
+github.com/hashicorp/go-azure-sdk/microsoft-graph v0.20250731.1192335/go.mod h1:1BFZ7+9v9RCXbk9F923R/4QRK+D2dXE9PhVjy9Mo940=
+github.com/hashicorp/go-azure-sdk/sdk v0.20250731.1192335 h1:Mbwo0DISwRI0N8Yrb1w/F4Ub1ot71NM1w8DeozbnpKs=
+github.com/hashicorp/go-azure-sdk/sdk v0.20250731.1192335/go.mod h1:eyNClZwQsa4Go51ScU9OYCE2EQvbNt8EjZ4eMxpQ1H8=
 github.com/hashicorp/go-checkpoint v0.5.0 h1:MFYpPZCnQqQTE18jFwSII6eUQrD/oxMFp3mlgcqk5mU=
 github.com/hashicorp/go-checkpoint v0.5.0/go.mod h1:7nfLNL10NsxqO4iWuW6tWW0HjZuDrwkBuEQsVcpCOgg=
 github.com/hashicorp/go-cleanhttp v0.5.0/go.mod h1:JpRdi6/HCYpAwUzNwuwqhbovhLtngrth3wmdIIUrZ80=
@@ -1912,8 +1912,8 @@ github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
 github.com/hashicorp/terraform-plugin-testing v1.12.0 h1:tpIe+T5KBkA1EO6aT704SPLedHUo55RenguLHcaSBdI=
 github.com/hashicorp/terraform-plugin-testing v1.12.0/go.mod h1:jbDQUkT9XRjAh1Bvyufq+PEH1Xs4RqIdpOQumSgSXBM=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20250515112659-6ff88de626ee h1:SLBmJ4f/8Jt7SrxnNh0DNJwgqlCdyCTpawvGYn5EYnk=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20250515112659-6ff88de626ee/go.mod h1:Kd4joVR2JGgAVVOrKOKUxiDTMU2yg4ZB4UQz4Yv1lj4=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20250808143159-388661c62489 h1:ICjOHIN/ryBFexbjDPjB+w/+I/jrMSk4dhgJr+gHdEo=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20250808143159-388661c62489/go.mod h1:aPHV+elrBeY9tu3Aesw4SycVp5fx94d10QZe0TYYXG4=
 github.com/hashicorp/terraform-registry-address v0.2.5 h1:2GTftHqmUhVOeuu9CW3kwDkRe4pcBDq0uuK5VJngU1M=
 github.com/hashicorp/terraform-registry-address v0.2.5/go.mod h1:PpzXWINwB5kuVS5CA7m1+eO2f1jKb5ZDIxrOPfpnGkg=
 github.com/hashicorp/terraform-svchost v0.0.0-20191011084731-65d371908596/go.mod h1:kNDNcF7sN4DocDLBkQYz73HGKwN1ANB1blq4lIYLYvg=
