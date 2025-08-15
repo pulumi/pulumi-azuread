@@ -12,7 +12,6 @@ env:
   ARM_ENVIRONMENT: public
   ARM_SUBSCRIPTION_ID: 0282681f-7a9e-424b-80b2-96babd57a8a1
   ARM_TENANT_ID: 9605c22c-e585-4ea3-9b83-e90339719f8a
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
@@ -35,6 +34,8 @@ jobs:
           cache-go: false
       - run: make prepare_local_workspace
         continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: pulumi/license-check-action@main
         with:
           module-path: provider
