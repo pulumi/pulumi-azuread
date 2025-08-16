@@ -48,6 +48,7 @@ __all__ = [
     'ConditionalAccessPolicyConditions',
     'ConditionalAccessPolicyConditionsApplications',
     'ConditionalAccessPolicyConditionsClientApplications',
+    'ConditionalAccessPolicyConditionsClientApplicationsFilter',
     'ConditionalAccessPolicyConditionsDevices',
     'ConditionalAccessPolicyConditionsDevicesFilter',
     'ConditionalAccessPolicyConditionsLocations',
@@ -2320,13 +2321,19 @@ class ConditionalAccessPolicyConditionsClientApplications(dict):
 
     def __init__(__self__, *,
                  excluded_service_principals: Optional[Sequence[_builtins.str]] = None,
+                 filter: Optional['outputs.ConditionalAccessPolicyConditionsClientApplicationsFilter'] = None,
                  included_service_principals: Optional[Sequence[_builtins.str]] = None):
         """
         :param Sequence[_builtins.str] excluded_service_principals: A list of service principal IDs explicitly excluded in the policy.
+        :param 'ConditionalAccessPolicyConditionsClientApplicationsFilterArgs' filter: A `filter` block as documented below.
+               
+               > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
         :param Sequence[_builtins.str] included_service_principals: A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
         """
         if excluded_service_principals is not None:
             pulumi.set(__self__, "excluded_service_principals", excluded_service_principals)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if included_service_principals is not None:
             pulumi.set(__self__, "included_service_principals", included_service_principals)
 
@@ -2339,6 +2346,16 @@ class ConditionalAccessPolicyConditionsClientApplications(dict):
         return pulumi.get(self, "excluded_service_principals")
 
     @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.ConditionalAccessPolicyConditionsClientApplicationsFilter']:
+        """
+        A `filter` block as documented below.
+
+        > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+        """
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
     @pulumi.getter(name="includedServicePrincipals")
     def included_service_principals(self) -> Optional[Sequence[_builtins.str]]:
         """
@@ -2348,11 +2365,42 @@ class ConditionalAccessPolicyConditionsClientApplications(dict):
 
 
 @pulumi.output_type
+class ConditionalAccessPolicyConditionsClientApplicationsFilter(dict):
+    def __init__(__self__, *,
+                 mode: _builtins.str,
+                 rule: _builtins.str):
+        """
+        :param _builtins.str mode: Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+        :param _builtins.str rule: Condition filter to match items.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "rule", rule)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> _builtins.str:
+        """
+        Condition filter to match items.
+        """
+        return pulumi.get(self, "rule")
+
+
+@pulumi.output_type
 class ConditionalAccessPolicyConditionsDevices(dict):
     def __init__(__self__, *,
                  filter: Optional['outputs.ConditionalAccessPolicyConditionsDevicesFilter'] = None):
         """
-        :param 'ConditionalAccessPolicyConditionsDevicesFilterArgs' filter: A `filter` block as described below.
+        :param 'ConditionalAccessPolicyConditionsDevicesFilterArgs' filter: A `filter` block as documented below.
+               
+               > **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
         """
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
@@ -2361,7 +2409,9 @@ class ConditionalAccessPolicyConditionsDevices(dict):
     @pulumi.getter
     def filter(self) -> Optional['outputs.ConditionalAccessPolicyConditionsDevicesFilter']:
         """
-        A `filter` block as described below.
+        A `filter` block as documented below.
+
+        > **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
         """
         return pulumi.get(self, "filter")
 
@@ -2372,8 +2422,8 @@ class ConditionalAccessPolicyConditionsDevicesFilter(dict):
                  mode: _builtins.str,
                  rule: _builtins.str):
         """
-        :param _builtins.str mode: Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
-        :param _builtins.str rule: Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+        :param _builtins.str mode: Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+        :param _builtins.str rule: Condition filter to match items.
         """
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "rule", rule)
@@ -2382,7 +2432,7 @@ class ConditionalAccessPolicyConditionsDevicesFilter(dict):
     @pulumi.getter
     def mode(self) -> _builtins.str:
         """
-        Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+        Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
         """
         return pulumi.get(self, "mode")
 
@@ -2390,7 +2440,7 @@ class ConditionalAccessPolicyConditionsDevicesFilter(dict):
     @pulumi.getter
     def rule(self) -> _builtins.str:
         """
-        Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+        Condition filter to match items.
         """
         return pulumi.get(self, "rule")
 

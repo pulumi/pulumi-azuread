@@ -16,14 +16,18 @@ public final class ConditionalAccessPolicyConditionsDevicesArgs extends com.pulu
     public static final ConditionalAccessPolicyConditionsDevicesArgs Empty = new ConditionalAccessPolicyConditionsDevicesArgs();
 
     /**
-     * A `filter` block as described below.
+     * A `filter` block as documented below.
+     * 
+     * &gt; **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
      * 
      */
     @Import(name="filter")
     private @Nullable Output<ConditionalAccessPolicyConditionsDevicesFilterArgs> filter;
 
     /**
-     * @return A `filter` block as described below.
+     * @return A `filter` block as documented below.
+     * 
+     * &gt; **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
      * 
      */
     public Optional<Output<ConditionalAccessPolicyConditionsDevicesFilterArgs>> filter() {
@@ -55,7 +59,9 @@ public final class ConditionalAccessPolicyConditionsDevicesArgs extends com.pulu
         }
 
         /**
-         * @param filter A `filter` block as described below.
+         * @param filter A `filter` block as documented below.
+         * 
+         * &gt; **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
          * 
          * @return builder
          * 
@@ -66,7 +72,9 @@ public final class ConditionalAccessPolicyConditionsDevicesArgs extends com.pulu
         }
 
         /**
-         * @param filter A `filter` block as described below.
+         * @param filter A `filter` block as documented below.
+         * 
+         * &gt; **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
          * 
          * @return builder
          * 

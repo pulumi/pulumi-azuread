@@ -24,6 +24,14 @@ namespace Pulumi.AzureAD.Inputs
             set => _excludedServicePrincipals = value;
         }
 
+        /// <summary>
+        /// A `filter` block as documented below.
+        /// 
+        /// &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+        /// </summary>
+        [Input("filter")]
+        public Input<Inputs.ConditionalAccessPolicyConditionsClientApplicationsFilterGetArgs>? Filter { get; set; }
+
         [Input("includedServicePrincipals")]
         private InputList<string>? _includedServicePrincipals;
 
