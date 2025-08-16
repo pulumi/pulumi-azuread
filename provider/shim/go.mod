@@ -6,7 +6,7 @@ toolchain go1.24.2
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.36.1
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20250515112659-6ff88de626ee
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20250808143159-388661c62489
 )
 
 require (
@@ -19,8 +19,8 @@ require (
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-azure-helpers v0.73.0 // indirect
-	github.com/hashicorp/go-azure-sdk/microsoft-graph v0.20250513.1112057 // indirect
-	github.com/hashicorp/go-azure-sdk/sdk v0.20250513.1112057 // indirect
+	github.com/hashicorp/go-azure-sdk/microsoft-graph v0.20250731.1192335 // indirect
+	github.com/hashicorp/go-azure-sdk/sdk v0.20250731.1192335 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-cty v1.5.0 // indirect
@@ -53,13 +53,13 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/zclconf/go-cty v1.16.2 // indirect
-	golang.org/x/crypto v0.38.0 // indirect
-	golang.org/x/mod v0.24.0 // indirect
+	golang.org/x/crypto v0.39.0 // indirect
+	golang.org/x/mod v0.25.0 // indirect
 	golang.org/x/net v0.40.0 // indirect
 	golang.org/x/oauth2 v0.30.0 // indirect
-	golang.org/x/sync v0.14.0 // indirect
+	golang.org/x/sync v0.15.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
-	golang.org/x/text v0.25.0 // indirect
+	golang.org/x/text v0.26.0 // indirect
 	golang.org/x/tools v0.33.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250512202823-5a2f75b736a9 // indirect

@@ -9,7 +9,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class ConditionalAccessPolicyConditionsDevicesFilter {
+public final class ConditionalAccessPolicyConditionsClientApplicationsFilter {
     /**
      * @return Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
      * 
@@ -21,7 +21,7 @@ public final class ConditionalAccessPolicyConditionsDevicesFilter {
      */
     private String rule;
 
-    private ConditionalAccessPolicyConditionsDevicesFilter() {}
+    private ConditionalAccessPolicyConditionsClientApplicationsFilter() {}
     /**
      * @return Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
      * 
@@ -41,7 +41,7 @@ public final class ConditionalAccessPolicyConditionsDevicesFilter {
         return new Builder();
     }
 
-    public static Builder builder(ConditionalAccessPolicyConditionsDevicesFilter defaults) {
+    public static Builder builder(ConditionalAccessPolicyConditionsClientApplicationsFilter defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -49,7 +49,7 @@ public final class ConditionalAccessPolicyConditionsDevicesFilter {
         private String mode;
         private String rule;
         public Builder() {}
-        public Builder(ConditionalAccessPolicyConditionsDevicesFilter defaults) {
+        public Builder(ConditionalAccessPolicyConditionsClientApplicationsFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mode = defaults.mode;
     	      this.rule = defaults.rule;
@@ -58,7 +58,7 @@ public final class ConditionalAccessPolicyConditionsDevicesFilter {
         @CustomType.Setter
         public Builder mode(String mode) {
             if (mode == null) {
-              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsDevicesFilter", "mode");
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsClientApplicationsFilter", "mode");
             }
             this.mode = mode;
             return this;
@@ -66,13 +66,13 @@ public final class ConditionalAccessPolicyConditionsDevicesFilter {
         @CustomType.Setter
         public Builder rule(String rule) {
             if (rule == null) {
-              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsDevicesFilter", "rule");
+              throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsClientApplicationsFilter", "rule");
             }
             this.rule = rule;
             return this;
         }
-        public ConditionalAccessPolicyConditionsDevicesFilter build() {
-            final var _resultValue = new ConditionalAccessPolicyConditionsDevicesFilter();
+        public ConditionalAccessPolicyConditionsClientApplicationsFilter build() {
+            final var _resultValue = new ConditionalAccessPolicyConditionsClientApplicationsFilter();
             _resultValue.mode = mode;
             _resultValue.rule = rule;
             return _resultValue;
