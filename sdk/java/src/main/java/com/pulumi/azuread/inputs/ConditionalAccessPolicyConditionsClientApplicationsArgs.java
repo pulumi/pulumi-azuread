@@ -3,6 +3,7 @@
 
 package com.pulumi.azuread.inputs;
 
+import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsClientApplicationsFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -32,6 +33,25 @@ public final class ConditionalAccessPolicyConditionsClientApplicationsArgs exten
     }
 
     /**
+     * A `filter` block as documented below.
+     * 
+     * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+     * 
+     */
+    @Import(name="filter")
+    private @Nullable Output<ConditionalAccessPolicyConditionsClientApplicationsFilterArgs> filter;
+
+    /**
+     * @return A `filter` block as documented below.
+     * 
+     * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+     * 
+     */
+    public Optional<Output<ConditionalAccessPolicyConditionsClientApplicationsFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    /**
      * A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
      * 
      */
@@ -50,6 +70,7 @@ public final class ConditionalAccessPolicyConditionsClientApplicationsArgs exten
 
     private ConditionalAccessPolicyConditionsClientApplicationsArgs(ConditionalAccessPolicyConditionsClientApplicationsArgs $) {
         this.excludedServicePrincipals = $.excludedServicePrincipals;
+        this.filter = $.filter;
         this.includedServicePrincipals = $.includedServicePrincipals;
     }
 
@@ -100,6 +121,31 @@ public final class ConditionalAccessPolicyConditionsClientApplicationsArgs exten
          */
         public Builder excludedServicePrincipals(String... excludedServicePrincipals) {
             return excludedServicePrincipals(List.of(excludedServicePrincipals));
+        }
+
+        /**
+         * @param filter A `filter` block as documented below.
+         * 
+         * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(@Nullable Output<ConditionalAccessPolicyConditionsClientApplicationsFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param filter A `filter` block as documented below.
+         * 
+         * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(ConditionalAccessPolicyConditionsClientApplicationsFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**

@@ -7,29 +7,26 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.AzureAD.Outputs
+namespace Pulumi.AzureAD.Inputs
 {
 
-    [OutputType]
-    public sealed class ConditionalAccessPolicyConditionsDevicesFilter
+    public sealed class ConditionalAccessPolicyConditionsClientApplicationsFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
         /// </summary>
-        public readonly string Mode;
+        [Input("mode", required: true)]
+        public Input<string> Mode { get; set; } = null!;
+
         /// <summary>
         /// Condition filter to match items.
         /// </summary>
-        public readonly string Rule;
+        [Input("rule", required: true)]
+        public Input<string> Rule { get; set; } = null!;
 
-        [OutputConstructor]
-        private ConditionalAccessPolicyConditionsDevicesFilter(
-            string mode,
-
-            string rule)
+        public ConditionalAccessPolicyConditionsClientApplicationsFilterArgs()
         {
-            Mode = mode;
-            Rule = rule;
         }
+        public static new ConditionalAccessPolicyConditionsClientApplicationsFilterArgs Empty => new ConditionalAccessPolicyConditionsClientApplicationsFilterArgs();
     }
 }
