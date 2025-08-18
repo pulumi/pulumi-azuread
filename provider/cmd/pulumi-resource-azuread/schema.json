@@ -11905,7 +11905,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:azuread"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:azuread/terraformConfig",
