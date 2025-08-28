@@ -57,13 +57,13 @@ export class ApplicationFallbackPublicClient extends pulumi.CustomResource {
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * Whether to enable the application as a fallback public client.
      *
      * > Some configurations may require the Fallback Public Client setting to be `null`, for this case simply destroy this resource (or don't use it)
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ApplicationFallbackPublicClient resource with the given unique name, arguments, and options.
@@ -78,15 +78,15 @@ export class ApplicationFallbackPublicClient extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationFallbackPublicClientState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["enabled"] = state?.enabled;
         } else {
             const args = argsOrState as ApplicationFallbackPublicClientArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["enabled"] = args?.enabled;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationFallbackPublicClient.__pulumiType, name, resourceInputs, opts);

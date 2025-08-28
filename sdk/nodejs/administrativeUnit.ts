@@ -67,15 +67,15 @@ export class AdministrativeUnit extends pulumi.CustomResource {
     /**
      * The description of the administrative unit.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The display name of the administrative unit.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      */
-    public readonly hiddenMembershipEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly hiddenMembershipEnabled: pulumi.Output<boolean | undefined>;
     /**
      * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
      *
@@ -83,15 +83,15 @@ export class AdministrativeUnit extends pulumi.CustomResource {
      *
      * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The object ID of the administrative unit.
      */
-    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly objectId: pulumi.Output<string>;
     /**
      * If `true`, will return an error if an existing administrative unit is found with the same name
      */
-    public readonly preventDuplicateNames!: pulumi.Output<boolean | undefined>;
+    declare public readonly preventDuplicateNames: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AdministrativeUnit resource with the given unique name, arguments, and options.
@@ -106,22 +106,22 @@ export class AdministrativeUnit extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AdministrativeUnitState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["hiddenMembershipEnabled"] = state ? state.hiddenMembershipEnabled : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["hiddenMembershipEnabled"] = state?.hiddenMembershipEnabled;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["preventDuplicateNames"] = state?.preventDuplicateNames;
         } else {
             const args = argsOrState as AdministrativeUnitArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["hiddenMembershipEnabled"] = args ? args.hiddenMembershipEnabled : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["hiddenMembershipEnabled"] = args?.hiddenMembershipEnabled;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["preventDuplicateNames"] = args?.preventDuplicateNames;
             resourceInputs["objectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -102,19 +102,19 @@ export class DirectoryRoleAssignment extends pulumi.CustomResource {
     /**
      * Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
      */
-    public readonly appScopeId!: pulumi.Output<string>;
+    declare public readonly appScopeId: pulumi.Output<string>;
     /**
      * Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
      */
-    public readonly directoryScopeId!: pulumi.Output<string>;
+    declare public readonly directoryScopeId: pulumi.Output<string>;
     /**
      * The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
-    public readonly principalObjectId!: pulumi.Output<string>;
+    declare public readonly principalObjectId: pulumi.Output<string>;
     /**
      * The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
 
     /**
      * Create a DirectoryRoleAssignment resource with the given unique name, arguments, and options.
@@ -129,22 +129,22 @@ export class DirectoryRoleAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DirectoryRoleAssignmentState | undefined;
-            resourceInputs["appScopeId"] = state ? state.appScopeId : undefined;
-            resourceInputs["directoryScopeId"] = state ? state.directoryScopeId : undefined;
-            resourceInputs["principalObjectId"] = state ? state.principalObjectId : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["appScopeId"] = state?.appScopeId;
+            resourceInputs["directoryScopeId"] = state?.directoryScopeId;
+            resourceInputs["principalObjectId"] = state?.principalObjectId;
+            resourceInputs["roleId"] = state?.roleId;
         } else {
             const args = argsOrState as DirectoryRoleAssignmentArgs | undefined;
-            if ((!args || args.principalObjectId === undefined) && !opts.urn) {
+            if (args?.principalObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalObjectId'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["appScopeId"] = args ? args.appScopeId : undefined;
-            resourceInputs["directoryScopeId"] = args ? args.directoryScopeId : undefined;
-            resourceInputs["principalObjectId"] = args ? args.principalObjectId : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["appScopeId"] = args?.appScopeId;
+            resourceInputs["directoryScopeId"] = args?.directoryScopeId;
+            resourceInputs["principalObjectId"] = args?.principalObjectId;
+            resourceInputs["roleId"] = args?.roleId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DirectoryRoleAssignment.__pulumiType, name, resourceInputs, opts);

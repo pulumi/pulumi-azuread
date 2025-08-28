@@ -83,11 +83,11 @@ export class SynchronizationSecret extends pulumi.CustomResource {
     /**
      * One or more `credential` blocks as documented below.
      */
-    public readonly credentials!: pulumi.Output<outputs.SynchronizationSecretCredential[] | undefined>;
+    declare public readonly credentials: pulumi.Output<outputs.SynchronizationSecretCredential[] | undefined>;
     /**
      * The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      */
-    public readonly servicePrincipalId!: pulumi.Output<string>;
+    declare public readonly servicePrincipalId: pulumi.Output<string>;
 
     /**
      * Create a SynchronizationSecret resource with the given unique name, arguments, and options.
@@ -102,15 +102,15 @@ export class SynchronizationSecret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SynchronizationSecretState | undefined;
-            resourceInputs["credentials"] = state ? state.credentials : undefined;
-            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
+            resourceInputs["credentials"] = state?.credentials;
+            resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
         } else {
             const args = argsOrState as SynchronizationSecretArgs | undefined;
-            if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
+            if (args?.servicePrincipalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            resourceInputs["credentials"] = args ? args.credentials : undefined;
-            resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
+            resourceInputs["credentials"] = args?.credentials;
+            resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SynchronizationSecret.__pulumiType, name, resourceInputs, opts);

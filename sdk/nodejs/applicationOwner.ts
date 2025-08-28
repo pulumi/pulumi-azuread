@@ -78,11 +78,11 @@ export class ApplicationOwner extends pulumi.CustomResource {
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
      */
-    public readonly ownerObjectId!: pulumi.Output<string>;
+    declare public readonly ownerObjectId: pulumi.Output<string>;
 
     /**
      * Create a ApplicationOwner resource with the given unique name, arguments, and options.
@@ -97,18 +97,18 @@ export class ApplicationOwner extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationOwnerState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["ownerObjectId"] = state ? state.ownerObjectId : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["ownerObjectId"] = state?.ownerObjectId;
         } else {
             const args = argsOrState as ApplicationOwnerArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.ownerObjectId === undefined) && !opts.urn) {
+            if (args?.ownerObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ownerObjectId'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["ownerObjectId"] = args ? args.ownerObjectId : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["ownerObjectId"] = args?.ownerObjectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationOwner.__pulumiType, name, resourceInputs, opts);

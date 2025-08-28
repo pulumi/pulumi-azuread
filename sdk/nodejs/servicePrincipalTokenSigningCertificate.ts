@@ -76,31 +76,31 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
      *
      * > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
-    public readonly endDate!: pulumi.Output<string>;
+    declare public readonly endDate: pulumi.Output<string>;
     /**
      * A UUID used to uniquely identify the verify certificate.
      */
-    public /*out*/ readonly keyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly keyId: pulumi.Output<string>;
     /**
      * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      */
-    public readonly servicePrincipalId!: pulumi.Output<string>;
+    declare public readonly servicePrincipalId: pulumi.Output<string>;
     /**
      * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
      */
-    public /*out*/ readonly startDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly startDate: pulumi.Output<string>;
     /**
      * A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
      */
-    public /*out*/ readonly thumbprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly thumbprint: pulumi.Output<string>;
     /**
      * The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
      */
-    public /*out*/ readonly value!: pulumi.Output<string>;
+    declare public /*out*/ readonly value: pulumi.Output<string>;
 
     /**
      * Create a ServicePrincipalTokenSigningCertificate resource with the given unique name, arguments, and options.
@@ -115,21 +115,21 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalTokenSigningCertificateState | undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["endDate"] = state ? state.endDate : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
-            resourceInputs["startDate"] = state ? state.startDate : undefined;
-            resourceInputs["thumbprint"] = state ? state.thumbprint : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["endDate"] = state?.endDate;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
+            resourceInputs["startDate"] = state?.startDate;
+            resourceInputs["thumbprint"] = state?.thumbprint;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ServicePrincipalTokenSigningCertificateArgs | undefined;
-            if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
+            if (args?.servicePrincipalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["endDate"] = args ? args.endDate : undefined;
-            resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["endDate"] = args?.endDate;
+            resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
             resourceInputs["keyId"] = undefined /*out*/;
             resourceInputs["startDate"] = undefined /*out*/;
             resourceInputs["thumbprint"] = undefined /*out*/;

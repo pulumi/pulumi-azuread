@@ -69,19 +69,19 @@ export class UserFlowAttribute extends pulumi.CustomResource {
     /**
      * The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
      */
-    public /*out*/ readonly attributeType!: pulumi.Output<string>;
+    declare public /*out*/ readonly attributeType: pulumi.Output<string>;
     /**
      * The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
      */
-    public readonly dataType!: pulumi.Output<string>;
+    declare public readonly dataType: pulumi.Output<string>;
     /**
      * The description of the user flow attribute that is shown to the user at the time of sign-up.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The display name of the user flow attribute. Changing this forces a new resource to be created.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
 
     /**
      * Create a UserFlowAttribute resource with the given unique name, arguments, and options.
@@ -96,24 +96,24 @@ export class UserFlowAttribute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserFlowAttributeState | undefined;
-            resourceInputs["attributeType"] = state ? state.attributeType : undefined;
-            resourceInputs["dataType"] = state ? state.dataType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["attributeType"] = state?.attributeType;
+            resourceInputs["dataType"] = state?.dataType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
         } else {
             const args = argsOrState as UserFlowAttributeArgs | undefined;
-            if ((!args || args.dataType === undefined) && !opts.urn) {
+            if (args?.dataType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataType'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["dataType"] = args ? args.dataType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["dataType"] = args?.dataType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
             resourceInputs["attributeType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -31,15 +31,13 @@ namespace Pulumi.AzureAD
         public Output<string?> ClientCertificate { get; private set; } = null!;
 
         /// <summary>
-        /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-        /// Certificate
+        /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
         /// </summary>
         [Output("clientCertificatePassword")]
         public Output<string?> ClientCertificatePassword { get; private set; } = null!;
 
         /// <summary>
-        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-        /// Principal using a Client Certificate
+        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
         /// </summary>
         [Output("clientCertificatePath")]
         public Output<string?> ClientCertificatePath { get; private set; } = null!;
@@ -63,16 +61,13 @@ namespace Pulumi.AzureAD
         public Output<string?> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-        /// Secret
+        /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
         /// </summary>
         [Output("clientSecretFilePath")]
         public Output<string?> ClientSecretFilePath { get; private set; } = null!;
 
         /// <summary>
-        /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-        /// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-        /// when `metadata_host` is specified.
+        /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
         /// </summary>
         [Output("environment")]
         public Output<string?> Environment { get; private set; } = null!;
@@ -90,15 +85,13 @@ namespace Pulumi.AzureAD
         public Output<string?> MsiEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-        /// Connect.
+        /// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
         /// </summary>
         [Output("oidcRequestToken")]
         public Output<string?> OidcRequestToken { get; private set; } = null!;
 
         /// <summary>
-        /// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-        /// using OpenID Connect.
+        /// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
         /// </summary>
         [Output("oidcRequestUrl")]
         public Output<string?> OidcRequestUrl { get; private set; } = null!;
@@ -183,8 +176,7 @@ namespace Pulumi.AzureAD
         private Input<string>? _clientCertificatePassword;
 
         /// <summary>
-        /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-        /// Certificate
+        /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
         /// </summary>
         public Input<string>? ClientCertificatePassword
         {
@@ -197,8 +189,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-        /// Principal using a Client Certificate
+        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
         /// </summary>
         [Input("clientCertificatePath")]
         public Input<string>? ClientCertificatePath { get; set; }
@@ -242,8 +233,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-        /// Secret
+        /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
         /// </summary>
         [Input("clientSecretFilePath")]
         public Input<string>? ClientSecretFilePath { get; set; }
@@ -252,9 +242,7 @@ namespace Pulumi.AzureAD
         public Input<bool>? DisableTerraformPartnerId { get; set; }
 
         /// <summary>
-        /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-        /// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-        /// when `metadata_host` is specified.
+        /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
@@ -272,15 +260,13 @@ namespace Pulumi.AzureAD
         public Input<string>? MsiEndpoint { get; set; }
 
         /// <summary>
-        /// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-        /// Connect.
+        /// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
         /// </summary>
         [Input("oidcRequestToken")]
         public Input<string>? OidcRequestToken { get; set; }
 
         /// <summary>
-        /// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-        /// using OpenID Connect.
+        /// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
         /// </summary>
         [Input("oidcRequestUrl")]
         public Input<string>? OidcRequestUrl { get; set; }

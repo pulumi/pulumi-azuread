@@ -74,17 +74,17 @@ export class NamedLocation extends pulumi.CustomResource {
     /**
      * A `country` block as documented below, which configures a country-based named location.
      */
-    public readonly country!: pulumi.Output<outputs.NamedLocationCountry | undefined>;
+    declare public readonly country: pulumi.Output<outputs.NamedLocationCountry | undefined>;
     /**
      * The friendly name for this named location.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * An `ip` block as documented below, which configures an IP-based named location.
      *
      * > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
      */
-    public readonly ip!: pulumi.Output<outputs.NamedLocationIp | undefined>;
+    declare public readonly ip: pulumi.Output<outputs.NamedLocationIp | undefined>;
 
     /**
      * Create a NamedLocation resource with the given unique name, arguments, and options.
@@ -99,17 +99,17 @@ export class NamedLocation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamedLocationState | undefined;
-            resourceInputs["country"] = state ? state.country : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["country"] = state?.country;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["ip"] = state?.ip;
         } else {
             const args = argsOrState as NamedLocationArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["country"] = args ? args.country : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["ip"] = args ? args.ip : undefined;
+            resourceInputs["country"] = args?.country;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["ip"] = args?.ip;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NamedLocation.__pulumiType, name, resourceInputs, opts);

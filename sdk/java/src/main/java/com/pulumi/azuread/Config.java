@@ -26,16 +26,14 @@ public final class Config {
         return Codegen.stringProp("clientCertificate").config(config).get();
     }
 /**
- * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
- * Certificate
+ * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
  * 
  */
     public Optional<String> clientCertificatePassword() {
         return Codegen.stringProp("clientCertificatePassword").config(config).get();
     }
 /**
- * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
- * Principal using a Client Certificate
+ * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
  * 
  */
     public Optional<String> clientCertificatePath() {
@@ -63,8 +61,7 @@ public final class Config {
         return Codegen.stringProp("clientSecret").config(config).get();
     }
 /**
- * The path to a file containing the application password to use when authenticating as a Service Principal using a Client
- * Secret
+ * The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
  * 
  */
     public Optional<String> clientSecretFilePath() {
@@ -74,9 +71,7 @@ public final class Config {
         return Codegen.booleanProp("disableTerraformPartnerId").config(config).get();
     }
 /**
- * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
- * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
- * when `metadata_host` is specified.
+ * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
  * 
  */
     public String environment() {
@@ -97,16 +92,14 @@ public final class Config {
         return Codegen.stringProp("msiEndpoint").config(config).env("ARM_MSI_ENDPOINT").get();
     }
 /**
- * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
- * Connect.
+ * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
  * 
  */
     public Optional<String> oidcRequestToken() {
         return Codegen.stringProp("oidcRequestToken").config(config).get();
     }
 /**
- * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
- * using OpenID Connect.
+ * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
  * 
  */
     public Optional<String> oidcRequestUrl() {

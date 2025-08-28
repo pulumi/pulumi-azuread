@@ -82,15 +82,15 @@ export class ApplicationRedirectUris extends pulumi.CustomResource {
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * A set of redirect URIs to assign to the application.
      */
-    public readonly redirectUris!: pulumi.Output<string[]>;
+    declare public readonly redirectUris: pulumi.Output<string[]>;
     /**
      * The type of redirect URIs to manage. Must be one of: `PublicClient`, `SPA`, or `Web`. Changing this forces a new resource to be created.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a ApplicationRedirectUris resource with the given unique name, arguments, and options.
@@ -105,23 +105,23 @@ export class ApplicationRedirectUris extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationRedirectUrisState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["redirectUris"] = state ? state.redirectUris : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["redirectUris"] = state?.redirectUris;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ApplicationRedirectUrisArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.redirectUris === undefined) && !opts.urn) {
+            if (args?.redirectUris === undefined && !opts.urn) {
                 throw new Error("Missing required property 'redirectUris'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["redirectUris"] = args ? args.redirectUris : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["redirectUris"] = args?.redirectUris;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationRedirectUris.__pulumiType, name, resourceInputs, opts);

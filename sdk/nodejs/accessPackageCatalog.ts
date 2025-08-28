@@ -66,19 +66,19 @@ export class AccessPackageCatalog extends pulumi.CustomResource {
     /**
      * The description of the access package catalog.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The display name of the access package catalog.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Whether the access packages in this catalog can be requested by users outside the tenant.
      */
-    public readonly externallyVisible!: pulumi.Output<boolean | undefined>;
+    declare public readonly externallyVisible: pulumi.Output<boolean | undefined>;
     /**
      * Whether the access packages in this catalog are available for management.
      */
-    public readonly published!: pulumi.Output<boolean | undefined>;
+    declare public readonly published: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AccessPackageCatalog resource with the given unique name, arguments, and options.
@@ -93,22 +93,22 @@ export class AccessPackageCatalog extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPackageCatalogState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["externallyVisible"] = state ? state.externallyVisible : undefined;
-            resourceInputs["published"] = state ? state.published : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["externallyVisible"] = state?.externallyVisible;
+            resourceInputs["published"] = state?.published;
         } else {
             const args = argsOrState as AccessPackageCatalogArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["externallyVisible"] = args ? args.externallyVisible : undefined;
-            resourceInputs["published"] = args ? args.published : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["externallyVisible"] = args?.externallyVisible;
+            resourceInputs["published"] = args?.published;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessPackageCatalog.__pulumiType, name, resourceInputs, opts);

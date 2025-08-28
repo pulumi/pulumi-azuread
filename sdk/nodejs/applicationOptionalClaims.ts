@@ -75,21 +75,21 @@ export class ApplicationOptionalClaims extends pulumi.CustomResource {
     /**
      * One or more `accessToken` blocks as documented below.
      */
-    public readonly accessTokens!: pulumi.Output<outputs.ApplicationOptionalClaimsAccessToken[] | undefined>;
+    declare public readonly accessTokens: pulumi.Output<outputs.ApplicationOptionalClaimsAccessToken[] | undefined>;
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * One or more `idToken` blocks as documented below.
      */
-    public readonly idTokens!: pulumi.Output<outputs.ApplicationOptionalClaimsIdToken[] | undefined>;
+    declare public readonly idTokens: pulumi.Output<outputs.ApplicationOptionalClaimsIdToken[] | undefined>;
     /**
      * One or more `saml2Token` blocks as documented below.
      *
      * > At least one of `accessToken`, `idToken` or `saml2Token` must be specified
      */
-    public readonly saml2Tokens!: pulumi.Output<outputs.ApplicationOptionalClaimsSaml2Token[] | undefined>;
+    declare public readonly saml2Tokens: pulumi.Output<outputs.ApplicationOptionalClaimsSaml2Token[] | undefined>;
 
     /**
      * Create a ApplicationOptionalClaims resource with the given unique name, arguments, and options.
@@ -104,19 +104,19 @@ export class ApplicationOptionalClaims extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationOptionalClaimsState | undefined;
-            resourceInputs["accessTokens"] = state ? state.accessTokens : undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["idTokens"] = state ? state.idTokens : undefined;
-            resourceInputs["saml2Tokens"] = state ? state.saml2Tokens : undefined;
+            resourceInputs["accessTokens"] = state?.accessTokens;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["idTokens"] = state?.idTokens;
+            resourceInputs["saml2Tokens"] = state?.saml2Tokens;
         } else {
             const args = argsOrState as ApplicationOptionalClaimsArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            resourceInputs["accessTokens"] = args ? args.accessTokens : undefined;
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["idTokens"] = args ? args.idTokens : undefined;
-            resourceInputs["saml2Tokens"] = args ? args.saml2Tokens : undefined;
+            resourceInputs["accessTokens"] = args?.accessTokens;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["idTokens"] = args?.idTokens;
+            resourceInputs["saml2Tokens"] = args?.saml2Tokens;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationOptionalClaims.__pulumiType, name, resourceInputs, opts);

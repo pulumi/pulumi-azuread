@@ -75,79 +75,79 @@ export class ApplicationRegistration extends pulumi.CustomResource {
     /**
      * The Client ID for the application, which is globally unique.
      */
-    public /*out*/ readonly clientId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientId: pulumi.Output<string>;
     /**
      * A description of the application, as shown to end users.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
      */
-    public /*out*/ readonly disabledByMicrosoft!: pulumi.Output<string>;
+    declare public /*out*/ readonly disabledByMicrosoft: pulumi.Output<string>;
     /**
      * The display name for the application.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
-    public readonly groupMembershipClaims!: pulumi.Output<string[] | undefined>;
+    declare public readonly groupMembershipClaims: pulumi.Output<string[] | undefined>;
     /**
      * Home page or landing page of the application.
      */
-    public readonly homepageUrl!: pulumi.Output<string | undefined>;
+    declare public readonly homepageUrl: pulumi.Output<string | undefined>;
     /**
      * Whether this web application can request an access token using OAuth implicit flow.
      */
-    public readonly implicitAccessTokenIssuanceEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly implicitAccessTokenIssuanceEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Whether this web application can request an ID token using OAuth implicit flow.
      */
-    public readonly implicitIdTokenIssuanceEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly implicitIdTokenIssuanceEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
      */
-    public readonly logoutUrl!: pulumi.Output<string | undefined>;
+    declare public readonly logoutUrl: pulumi.Output<string | undefined>;
     /**
      * URL of the marketing page for the application.
      */
-    public readonly marketingUrl!: pulumi.Output<string | undefined>;
+    declare public readonly marketingUrl: pulumi.Output<string | undefined>;
     /**
      * User-specified notes relevant for the management of the application.
      */
-    public readonly notes!: pulumi.Output<string | undefined>;
+    declare public readonly notes: pulumi.Output<string | undefined>;
     /**
      * The object ID of the application within the tenant.
      */
-    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly objectId: pulumi.Output<string>;
     /**
      * URL of the privacy statement for the application.
      */
-    public readonly privacyStatementUrl!: pulumi.Output<string | undefined>;
+    declare public readonly privacyStatementUrl: pulumi.Output<string | undefined>;
     /**
      * The verified publisher domain for the application.
      */
-    public /*out*/ readonly publisherDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly publisherDomain: pulumi.Output<string>;
     /**
      * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
      */
-    public readonly requestedAccessTokenVersion!: pulumi.Output<number | undefined>;
+    declare public readonly requestedAccessTokenVersion: pulumi.Output<number | undefined>;
     /**
      * References application context information from a Service or Asset Management database.
      */
-    public readonly serviceManagementReference!: pulumi.Output<string | undefined>;
+    declare public readonly serviceManagementReference: pulumi.Output<string | undefined>;
     /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      */
-    public readonly signInAudience!: pulumi.Output<string | undefined>;
+    declare public readonly signInAudience: pulumi.Output<string | undefined>;
     /**
      * URL of the support page for the application.
      */
-    public readonly supportUrl!: pulumi.Output<string | undefined>;
+    declare public readonly supportUrl: pulumi.Output<string | undefined>;
     /**
      * URL of the terms of service statement for the application.
      */
-    public readonly termsOfServiceUrl!: pulumi.Output<string | undefined>;
+    declare public readonly termsOfServiceUrl: pulumi.Output<string | undefined>;
 
     /**
      * Create a ApplicationRegistration resource with the given unique name, arguments, and options.
@@ -162,45 +162,45 @@ export class ApplicationRegistration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationRegistrationState | undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabledByMicrosoft"] = state ? state.disabledByMicrosoft : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["groupMembershipClaims"] = state ? state.groupMembershipClaims : undefined;
-            resourceInputs["homepageUrl"] = state ? state.homepageUrl : undefined;
-            resourceInputs["implicitAccessTokenIssuanceEnabled"] = state ? state.implicitAccessTokenIssuanceEnabled : undefined;
-            resourceInputs["implicitIdTokenIssuanceEnabled"] = state ? state.implicitIdTokenIssuanceEnabled : undefined;
-            resourceInputs["logoutUrl"] = state ? state.logoutUrl : undefined;
-            resourceInputs["marketingUrl"] = state ? state.marketingUrl : undefined;
-            resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["privacyStatementUrl"] = state ? state.privacyStatementUrl : undefined;
-            resourceInputs["publisherDomain"] = state ? state.publisherDomain : undefined;
-            resourceInputs["requestedAccessTokenVersion"] = state ? state.requestedAccessTokenVersion : undefined;
-            resourceInputs["serviceManagementReference"] = state ? state.serviceManagementReference : undefined;
-            resourceInputs["signInAudience"] = state ? state.signInAudience : undefined;
-            resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
-            resourceInputs["termsOfServiceUrl"] = state ? state.termsOfServiceUrl : undefined;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabledByMicrosoft"] = state?.disabledByMicrosoft;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["groupMembershipClaims"] = state?.groupMembershipClaims;
+            resourceInputs["homepageUrl"] = state?.homepageUrl;
+            resourceInputs["implicitAccessTokenIssuanceEnabled"] = state?.implicitAccessTokenIssuanceEnabled;
+            resourceInputs["implicitIdTokenIssuanceEnabled"] = state?.implicitIdTokenIssuanceEnabled;
+            resourceInputs["logoutUrl"] = state?.logoutUrl;
+            resourceInputs["marketingUrl"] = state?.marketingUrl;
+            resourceInputs["notes"] = state?.notes;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["privacyStatementUrl"] = state?.privacyStatementUrl;
+            resourceInputs["publisherDomain"] = state?.publisherDomain;
+            resourceInputs["requestedAccessTokenVersion"] = state?.requestedAccessTokenVersion;
+            resourceInputs["serviceManagementReference"] = state?.serviceManagementReference;
+            resourceInputs["signInAudience"] = state?.signInAudience;
+            resourceInputs["supportUrl"] = state?.supportUrl;
+            resourceInputs["termsOfServiceUrl"] = state?.termsOfServiceUrl;
         } else {
             const args = argsOrState as ApplicationRegistrationArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["groupMembershipClaims"] = args ? args.groupMembershipClaims : undefined;
-            resourceInputs["homepageUrl"] = args ? args.homepageUrl : undefined;
-            resourceInputs["implicitAccessTokenIssuanceEnabled"] = args ? args.implicitAccessTokenIssuanceEnabled : undefined;
-            resourceInputs["implicitIdTokenIssuanceEnabled"] = args ? args.implicitIdTokenIssuanceEnabled : undefined;
-            resourceInputs["logoutUrl"] = args ? args.logoutUrl : undefined;
-            resourceInputs["marketingUrl"] = args ? args.marketingUrl : undefined;
-            resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["privacyStatementUrl"] = args ? args.privacyStatementUrl : undefined;
-            resourceInputs["requestedAccessTokenVersion"] = args ? args.requestedAccessTokenVersion : undefined;
-            resourceInputs["serviceManagementReference"] = args ? args.serviceManagementReference : undefined;
-            resourceInputs["signInAudience"] = args ? args.signInAudience : undefined;
-            resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
-            resourceInputs["termsOfServiceUrl"] = args ? args.termsOfServiceUrl : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["groupMembershipClaims"] = args?.groupMembershipClaims;
+            resourceInputs["homepageUrl"] = args?.homepageUrl;
+            resourceInputs["implicitAccessTokenIssuanceEnabled"] = args?.implicitAccessTokenIssuanceEnabled;
+            resourceInputs["implicitIdTokenIssuanceEnabled"] = args?.implicitIdTokenIssuanceEnabled;
+            resourceInputs["logoutUrl"] = args?.logoutUrl;
+            resourceInputs["marketingUrl"] = args?.marketingUrl;
+            resourceInputs["notes"] = args?.notes;
+            resourceInputs["privacyStatementUrl"] = args?.privacyStatementUrl;
+            resourceInputs["requestedAccessTokenVersion"] = args?.requestedAccessTokenVersion;
+            resourceInputs["serviceManagementReference"] = args?.serviceManagementReference;
+            resourceInputs["signInAudience"] = args?.signInAudience;
+            resourceInputs["supportUrl"] = args?.supportUrl;
+            resourceInputs["termsOfServiceUrl"] = args?.termsOfServiceUrl;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["disabledByMicrosoft"] = undefined /*out*/;
             resourceInputs["objectId"] = undefined /*out*/;

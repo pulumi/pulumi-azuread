@@ -74,21 +74,21 @@ export class DirectoryRole extends pulumi.CustomResource {
     /**
      * The description of the directory role.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * The display name of the directory role to activate. Changing this forces a new resource to be created.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The object ID of the directory role.
      */
-    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly objectId: pulumi.Output<string>;
     /**
      * The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
      *
      * > Either `displayName` or `templateId` must be specified.
      */
-    public readonly templateId!: pulumi.Output<string>;
+    declare public readonly templateId: pulumi.Output<string>;
 
     /**
      * Create a DirectoryRole resource with the given unique name, arguments, and options.
@@ -103,14 +103,14 @@ export class DirectoryRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DirectoryRoleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["templateId"] = state?.templateId;
         } else {
             const args = argsOrState as DirectoryRoleArgs | undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["templateId"] = args?.templateId;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["objectId"] = undefined /*out*/;
         }

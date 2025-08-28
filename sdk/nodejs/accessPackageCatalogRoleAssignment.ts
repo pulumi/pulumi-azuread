@@ -77,15 +77,15 @@ export class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
     /**
      * The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
      */
-    public readonly catalogId!: pulumi.Output<string>;
+    declare public readonly catalogId: pulumi.Output<string>;
     /**
      * The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
-    public readonly principalObjectId!: pulumi.Output<string>;
+    declare public readonly principalObjectId: pulumi.Output<string>;
     /**
      * The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
 
     /**
      * Create a AccessPackageCatalogRoleAssignment resource with the given unique name, arguments, and options.
@@ -100,23 +100,23 @@ export class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPackageCatalogRoleAssignmentState | undefined;
-            resourceInputs["catalogId"] = state ? state.catalogId : undefined;
-            resourceInputs["principalObjectId"] = state ? state.principalObjectId : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["catalogId"] = state?.catalogId;
+            resourceInputs["principalObjectId"] = state?.principalObjectId;
+            resourceInputs["roleId"] = state?.roleId;
         } else {
             const args = argsOrState as AccessPackageCatalogRoleAssignmentArgs | undefined;
-            if ((!args || args.catalogId === undefined) && !opts.urn) {
+            if (args?.catalogId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'catalogId'");
             }
-            if ((!args || args.principalObjectId === undefined) && !opts.urn) {
+            if (args?.principalObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalObjectId'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["catalogId"] = args ? args.catalogId : undefined;
-            resourceInputs["principalObjectId"] = args ? args.principalObjectId : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["catalogId"] = args?.catalogId;
+            resourceInputs["principalObjectId"] = args?.principalObjectId;
+            resourceInputs["roleId"] = args?.roleId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessPackageCatalogRoleAssignment.__pulumiType, name, resourceInputs, opts);

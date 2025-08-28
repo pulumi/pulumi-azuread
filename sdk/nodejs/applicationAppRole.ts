@@ -75,29 +75,29 @@ export class ApplicationAppRole extends pulumi.CustomResource {
     /**
      * A set of values to specify whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications by setting to `Application`, or to both.
      */
-    public readonly allowedMemberTypes!: pulumi.Output<string[]>;
+    declare public readonly allowedMemberTypes: pulumi.Output<string[]>;
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * Description of the app role that appears when the role is being assigned, and if the role functions as an application permissions, during the consent experiences.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Display name for the app role that appears during app role assignment and in consent experiences.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The unique identifier of the app role
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
     /**
      * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
      *
      * > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
      */
-    public readonly value!: pulumi.Output<string | undefined>;
+    declare public readonly value: pulumi.Output<string | undefined>;
 
     /**
      * Create a ApplicationAppRole resource with the given unique name, arguments, and options.
@@ -112,35 +112,35 @@ export class ApplicationAppRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationAppRoleState | undefined;
-            resourceInputs["allowedMemberTypes"] = state ? state.allowedMemberTypes : undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["allowedMemberTypes"] = state?.allowedMemberTypes;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["roleId"] = state?.roleId;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ApplicationAppRoleArgs | undefined;
-            if ((!args || args.allowedMemberTypes === undefined) && !opts.urn) {
+            if (args?.allowedMemberTypes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allowedMemberTypes'");
             }
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["allowedMemberTypes"] = args ? args.allowedMemberTypes : undefined;
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["allowedMemberTypes"] = args?.allowedMemberTypes;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["roleId"] = args?.roleId;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationAppRole.__pulumiType, name, resourceInputs, opts);

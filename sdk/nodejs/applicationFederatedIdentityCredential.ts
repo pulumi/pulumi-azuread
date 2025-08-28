@@ -63,31 +63,31 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
     /**
      * The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      */
-    public readonly audiences!: pulumi.Output<string[]>;
+    declare public readonly audiences: pulumi.Output<string[]>;
     /**
      * A UUID used to uniquely identify this federated identity credential.
      */
-    public /*out*/ readonly credentialId!: pulumi.Output<string>;
+    declare public /*out*/ readonly credentialId: pulumi.Output<string>;
     /**
      * A description for the federated identity credential.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A unique display name for the federated identity credential. Changing this forces a new resource to be created.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
      */
-    public readonly issuer!: pulumi.Output<string>;
+    declare public readonly issuer: pulumi.Output<string>;
     /**
      * The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
      */
-    public readonly subject!: pulumi.Output<string>;
+    declare public readonly subject: pulumi.Output<string>;
 
     /**
      * Create a ApplicationFederatedIdentityCredential resource with the given unique name, arguments, and options.
@@ -102,36 +102,36 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationFederatedIdentityCredentialState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["audiences"] = state ? state.audiences : undefined;
-            resourceInputs["credentialId"] = state ? state.credentialId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["issuer"] = state ? state.issuer : undefined;
-            resourceInputs["subject"] = state ? state.subject : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["audiences"] = state?.audiences;
+            resourceInputs["credentialId"] = state?.credentialId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["issuer"] = state?.issuer;
+            resourceInputs["subject"] = state?.subject;
         } else {
             const args = argsOrState as ApplicationFederatedIdentityCredentialArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.audiences === undefined) && !opts.urn) {
+            if (args?.audiences === undefined && !opts.urn) {
                 throw new Error("Missing required property 'audiences'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.issuer === undefined) && !opts.urn) {
+            if (args?.issuer === undefined && !opts.urn) {
                 throw new Error("Missing required property 'issuer'");
             }
-            if ((!args || args.subject === undefined) && !opts.urn) {
+            if (args?.subject === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subject'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["audiences"] = args ? args.audiences : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["issuer"] = args ? args.issuer : undefined;
-            resourceInputs["subject"] = args ? args.subject : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["audiences"] = args?.audiences;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["issuer"] = args?.issuer;
+            resourceInputs["subject"] = args?.subject;
             resourceInputs["credentialId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

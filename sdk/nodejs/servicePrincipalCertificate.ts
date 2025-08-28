@@ -91,11 +91,11 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
      *
      * > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
      */
-    public readonly encoding!: pulumi.Output<string | undefined>;
+    declare public readonly encoding: pulumi.Output<string | undefined>;
     /**
      * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
-    public readonly endDate!: pulumi.Output<string>;
+    declare public readonly endDate: pulumi.Output<string>;
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
      *
@@ -103,27 +103,27 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
      *
      * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      */
-    public readonly endDateRelative!: pulumi.Output<string | undefined>;
+    declare public readonly endDateRelative: pulumi.Output<string | undefined>;
     /**
      * A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
      */
-    public readonly keyId!: pulumi.Output<string>;
+    declare public readonly keyId: pulumi.Output<string>;
     /**
      * The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      */
-    public readonly servicePrincipalId!: pulumi.Output<string>;
+    declare public readonly servicePrincipalId: pulumi.Output<string>;
     /**
      * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
      */
-    public readonly startDate!: pulumi.Output<string>;
+    declare public readonly startDate: pulumi.Output<string>;
     /**
      * The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a ServicePrincipalCertificate resource with the given unique name, arguments, and options.
@@ -138,29 +138,29 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalCertificateState | undefined;
-            resourceInputs["encoding"] = state ? state.encoding : undefined;
-            resourceInputs["endDate"] = state ? state.endDate : undefined;
-            resourceInputs["endDateRelative"] = state ? state.endDateRelative : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
-            resourceInputs["startDate"] = state ? state.startDate : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["encoding"] = state?.encoding;
+            resourceInputs["endDate"] = state?.endDate;
+            resourceInputs["endDateRelative"] = state?.endDateRelative;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
+            resourceInputs["startDate"] = state?.startDate;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ServicePrincipalCertificateArgs | undefined;
-            if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
+            if (args?.servicePrincipalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["encoding"] = args ? args.encoding : undefined;
-            resourceInputs["endDate"] = args ? args.endDate : undefined;
-            resourceInputs["endDateRelative"] = args ? args.endDateRelative : undefined;
-            resourceInputs["keyId"] = args ? args.keyId : undefined;
-            resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
-            resourceInputs["startDate"] = args ? args.startDate : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["encoding"] = args?.encoding;
+            resourceInputs["endDate"] = args?.endDate;
+            resourceInputs["endDateRelative"] = args?.endDateRelative;
+            resourceInputs["keyId"] = args?.keyId;
+            resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
+            resourceInputs["startDate"] = args?.startDate;
+            resourceInputs["type"] = args?.type;
             resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

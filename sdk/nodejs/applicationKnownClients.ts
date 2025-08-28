@@ -58,11 +58,11 @@ export class ApplicationKnownClients extends pulumi.CustomResource {
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * A set of client IDs for the known applications.
      */
-    public readonly knownClientIds!: pulumi.Output<string[]>;
+    declare public readonly knownClientIds: pulumi.Output<string[]>;
 
     /**
      * Create a ApplicationKnownClients resource with the given unique name, arguments, and options.
@@ -77,18 +77,18 @@ export class ApplicationKnownClients extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationKnownClientsState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["knownClientIds"] = state ? state.knownClientIds : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["knownClientIds"] = state?.knownClientIds;
         } else {
             const args = argsOrState as ApplicationKnownClientsArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.knownClientIds === undefined) && !opts.urn) {
+            if (args?.knownClientIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'knownClientIds'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["knownClientIds"] = args ? args.knownClientIds : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["knownClientIds"] = args?.knownClientIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationKnownClients.__pulumiType, name, resourceInputs, opts);
