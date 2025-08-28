@@ -79,6 +79,8 @@ __all__ = [
     'ConditionalAccessPolicyConditionsApplicationsArgsDict',
     'ConditionalAccessPolicyConditionsClientApplicationsArgs',
     'ConditionalAccessPolicyConditionsClientApplicationsArgsDict',
+    'ConditionalAccessPolicyConditionsClientApplicationsFilterArgs',
+    'ConditionalAccessPolicyConditionsClientApplicationsFilterArgsDict',
     'ConditionalAccessPolicyConditionsDevicesArgs',
     'ConditionalAccessPolicyConditionsDevicesArgsDict',
     'ConditionalAccessPolicyConditionsDevicesFilterArgs',
@@ -2857,6 +2859,12 @@ if not MYPY:
         """
         A list of service principal IDs explicitly excluded in the policy.
         """
+        filter: NotRequired[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsFilterArgsDict']]
+        """
+        A `filter` block as documented below.
+
+        > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+        """
         included_service_principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
@@ -2868,13 +2876,19 @@ elif False:
 class ConditionalAccessPolicyConditionsClientApplicationsArgs:
     def __init__(__self__, *,
                  excluded_service_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filter: Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsFilterArgs']] = None,
                  included_service_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_service_principals: A list of service principal IDs explicitly excluded in the policy.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsFilterArgs'] filter: A `filter` block as documented below.
+               
+               > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_service_principals: A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
         """
         if excluded_service_principals is not None:
             pulumi.set(__self__, "excluded_service_principals", excluded_service_principals)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if included_service_principals is not None:
             pulumi.set(__self__, "included_service_principals", included_service_principals)
 
@@ -2891,6 +2905,20 @@ class ConditionalAccessPolicyConditionsClientApplicationsArgs:
         pulumi.set(self, "excluded_service_principals", value)
 
     @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsFilterArgs']]:
+        """
+        A `filter` block as documented below.
+
+        > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsFilterArgs']]):
+        pulumi.set(self, "filter", value)
+
+    @_builtins.property
     @pulumi.getter(name="includedServicePrincipals")
     def included_service_principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -2904,10 +2932,62 @@ class ConditionalAccessPolicyConditionsClientApplicationsArgs:
 
 
 if not MYPY:
+    class ConditionalAccessPolicyConditionsClientApplicationsFilterArgsDict(TypedDict):
+        mode: pulumi.Input[_builtins.str]
+        """
+        Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+        """
+        rule: pulumi.Input[_builtins.str]
+        """
+        Condition filter to match items.
+        """
+elif False:
+    ConditionalAccessPolicyConditionsClientApplicationsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConditionalAccessPolicyConditionsClientApplicationsFilterArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[_builtins.str],
+                 rule: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] mode: Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+        :param pulumi.Input[_builtins.str] rule: Condition filter to match items.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "rule", rule)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> pulumi.Input[_builtins.str]:
+        """
+        Condition filter to match items.
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "rule", value)
+
+
+if not MYPY:
     class ConditionalAccessPolicyConditionsDevicesArgsDict(TypedDict):
         filter: NotRequired[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgsDict']]
         """
-        A `filter` block as described below.
+        A `filter` block as documented below.
+
+        > **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
         """
 elif False:
     ConditionalAccessPolicyConditionsDevicesArgsDict: TypeAlias = Mapping[str, Any]
@@ -2917,7 +2997,9 @@ class ConditionalAccessPolicyConditionsDevicesArgs:
     def __init__(__self__, *,
                  filter: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs']] = None):
         """
-        :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs'] filter: A `filter` block as described below.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs'] filter: A `filter` block as documented below.
+               
+               > **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
         """
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
@@ -2926,7 +3008,9 @@ class ConditionalAccessPolicyConditionsDevicesArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs']]:
         """
-        A `filter` block as described below.
+        A `filter` block as documented below.
+
+        > **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
         """
         return pulumi.get(self, "filter")
 
@@ -2939,11 +3023,11 @@ if not MYPY:
     class ConditionalAccessPolicyConditionsDevicesFilterArgsDict(TypedDict):
         mode: pulumi.Input[_builtins.str]
         """
-        Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+        Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
         """
         rule: pulumi.Input[_builtins.str]
         """
-        Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+        Condition filter to match items.
         """
 elif False:
     ConditionalAccessPolicyConditionsDevicesFilterArgsDict: TypeAlias = Mapping[str, Any]
@@ -2954,8 +3038,8 @@ class ConditionalAccessPolicyConditionsDevicesFilterArgs:
                  mode: pulumi.Input[_builtins.str],
                  rule: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] mode: Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
-        :param pulumi.Input[_builtins.str] rule: Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+        :param pulumi.Input[_builtins.str] mode: Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+        :param pulumi.Input[_builtins.str] rule: Condition filter to match items.
         """
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "rule", rule)
@@ -2964,7 +3048,7 @@ class ConditionalAccessPolicyConditionsDevicesFilterArgs:
     @pulumi.getter
     def mode(self) -> pulumi.Input[_builtins.str]:
         """
-        Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+        Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
         """
         return pulumi.get(self, "mode")
 
@@ -2976,7 +3060,7 @@ class ConditionalAccessPolicyConditionsDevicesFilterArgs:
     @pulumi.getter
     def rule(self) -> pulumi.Input[_builtins.str]:
         """
-        Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+        Condition filter to match items.
         """
         return pulumi.get(self, "rule")
 

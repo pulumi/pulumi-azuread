@@ -4630,6 +4630,10 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedUserActi
 type ConditionalAccessPolicyConditionsClientApplications struct {
 	// A list of service principal IDs explicitly excluded in the policy.
 	ExcludedServicePrincipals []string `pulumi:"excludedServicePrincipals"`
+	// A `filter` block as documented below.
+	//
+	// > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+	Filter *ConditionalAccessPolicyConditionsClientApplicationsFilter `pulumi:"filter"`
 	// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
 	IncludedServicePrincipals []string `pulumi:"includedServicePrincipals"`
 }
@@ -4648,6 +4652,10 @@ type ConditionalAccessPolicyConditionsClientApplicationsInput interface {
 type ConditionalAccessPolicyConditionsClientApplicationsArgs struct {
 	// A list of service principal IDs explicitly excluded in the policy.
 	ExcludedServicePrincipals pulumi.StringArrayInput `pulumi:"excludedServicePrincipals"`
+	// A `filter` block as documented below.
+	//
+	// > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+	Filter ConditionalAccessPolicyConditionsClientApplicationsFilterPtrInput `pulumi:"filter"`
 	// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
 	IncludedServicePrincipals pulumi.StringArrayInput `pulumi:"includedServicePrincipals"`
 }
@@ -4736,6 +4744,15 @@ func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) ExcludedServi
 	}).(pulumi.StringArrayOutput)
 }
 
+// A `filter` block as documented below.
+//
+// > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) Filter() ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsClientApplications) *ConditionalAccessPolicyConditionsClientApplicationsFilter {
+		return v.Filter
+	}).(ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput)
+}
+
 // A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
 func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) IncludedServicePrincipals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsClientApplications) []string {
@@ -4777,6 +4794,18 @@ func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) ExcludedSe
 	}).(pulumi.StringArrayOutput)
 }
 
+// A `filter` block as documented below.
+//
+// > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) Filter() ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsClientApplications) *ConditionalAccessPolicyConditionsClientApplicationsFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput)
+}
+
 // A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
 func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) IncludedServicePrincipals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsClientApplications) []string {
@@ -4787,8 +4816,166 @@ func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) IncludedSe
 	}).(pulumi.StringArrayOutput)
 }
 
+type ConditionalAccessPolicyConditionsClientApplicationsFilter struct {
+	// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+	Mode string `pulumi:"mode"`
+	// Condition filter to match items.
+	Rule string `pulumi:"rule"`
+}
+
+// ConditionalAccessPolicyConditionsClientApplicationsFilterInput is an input type that accepts ConditionalAccessPolicyConditionsClientApplicationsFilterArgs and ConditionalAccessPolicyConditionsClientApplicationsFilterOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsClientApplicationsFilterInput` via:
+//
+//	ConditionalAccessPolicyConditionsClientApplicationsFilterArgs{...}
+type ConditionalAccessPolicyConditionsClientApplicationsFilterInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsClientApplicationsFilterOutput() ConditionalAccessPolicyConditionsClientApplicationsFilterOutput
+	ToConditionalAccessPolicyConditionsClientApplicationsFilterOutputWithContext(context.Context) ConditionalAccessPolicyConditionsClientApplicationsFilterOutput
+}
+
+type ConditionalAccessPolicyConditionsClientApplicationsFilterArgs struct {
+	// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Condition filter to match items.
+	Rule pulumi.StringInput `pulumi:"rule"`
+}
+
+func (ConditionalAccessPolicyConditionsClientApplicationsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsClientApplicationsFilter)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsClientApplicationsFilterArgs) ToConditionalAccessPolicyConditionsClientApplicationsFilterOutput() ConditionalAccessPolicyConditionsClientApplicationsFilterOutput {
+	return i.ToConditionalAccessPolicyConditionsClientApplicationsFilterOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsClientApplicationsFilterArgs) ToConditionalAccessPolicyConditionsClientApplicationsFilterOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsClientApplicationsFilterOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsClientApplicationsFilterArgs) ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput() ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsClientApplicationsFilterArgs) ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsClientApplicationsFilterOutput).ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutputWithContext(ctx)
+}
+
+// ConditionalAccessPolicyConditionsClientApplicationsFilterPtrInput is an input type that accepts ConditionalAccessPolicyConditionsClientApplicationsFilterArgs, ConditionalAccessPolicyConditionsClientApplicationsFilterPtr and ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsClientApplicationsFilterPtrInput` via:
+//
+//	        ConditionalAccessPolicyConditionsClientApplicationsFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConditionalAccessPolicyConditionsClientApplicationsFilterPtrInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput() ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput
+	ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput
+}
+
+type conditionalAccessPolicyConditionsClientApplicationsFilterPtrType ConditionalAccessPolicyConditionsClientApplicationsFilterArgs
+
+func ConditionalAccessPolicyConditionsClientApplicationsFilterPtr(v *ConditionalAccessPolicyConditionsClientApplicationsFilterArgs) ConditionalAccessPolicyConditionsClientApplicationsFilterPtrInput {
+	return (*conditionalAccessPolicyConditionsClientApplicationsFilterPtrType)(v)
+}
+
+func (*conditionalAccessPolicyConditionsClientApplicationsFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsClientApplicationsFilter)(nil)).Elem()
+}
+
+func (i *conditionalAccessPolicyConditionsClientApplicationsFilterPtrType) ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput() ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionalAccessPolicyConditionsClientApplicationsFilterPtrType) ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput)
+}
+
+type ConditionalAccessPolicyConditionsClientApplicationsFilterOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsClientApplicationsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsClientApplicationsFilter)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsFilterOutput) ToConditionalAccessPolicyConditionsClientApplicationsFilterOutput() ConditionalAccessPolicyConditionsClientApplicationsFilterOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsFilterOutput) ToConditionalAccessPolicyConditionsClientApplicationsFilterOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsFilterOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsFilterOutput) ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput() ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput {
+	return o.ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsFilterOutput) ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditionsClientApplicationsFilter) *ConditionalAccessPolicyConditionsClientApplicationsFilter {
+		return &v
+	}).(ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput)
+}
+
+// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+func (o ConditionalAccessPolicyConditionsClientApplicationsFilterOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsClientApplicationsFilter) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Condition filter to match items.
+func (o ConditionalAccessPolicyConditionsClientApplicationsFilterOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsClientApplicationsFilter) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsClientApplicationsFilter)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput) ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput() ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput) ToConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput) Elem() ConditionalAccessPolicyConditionsClientApplicationsFilterOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsClientApplicationsFilter) ConditionalAccessPolicyConditionsClientApplicationsFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalAccessPolicyConditionsClientApplicationsFilter
+		return ret
+	}).(ConditionalAccessPolicyConditionsClientApplicationsFilterOutput)
+}
+
+// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+func (o ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsClientApplicationsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Condition filter to match items.
+func (o ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsClientApplicationsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Rule
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConditionalAccessPolicyConditionsDevices struct {
-	// A `filter` block as described below.
+	// A `filter` block as documented below.
+	//
+	// > **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
 	Filter *ConditionalAccessPolicyConditionsDevicesFilter `pulumi:"filter"`
 }
 
@@ -4804,7 +4991,9 @@ type ConditionalAccessPolicyConditionsDevicesInput interface {
 }
 
 type ConditionalAccessPolicyConditionsDevicesArgs struct {
-	// A `filter` block as described below.
+	// A `filter` block as documented below.
+	//
+	// > **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
 	Filter ConditionalAccessPolicyConditionsDevicesFilterPtrInput `pulumi:"filter"`
 }
 
@@ -4885,7 +5074,9 @@ func (o ConditionalAccessPolicyConditionsDevicesOutput) ToConditionalAccessPolic
 	}).(ConditionalAccessPolicyConditionsDevicesPtrOutput)
 }
 
-// A `filter` block as described below.
+// A `filter` block as documented below.
+//
+// > **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
 func (o ConditionalAccessPolicyConditionsDevicesOutput) Filter() ConditionalAccessPolicyConditionsDevicesFilterPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsDevices) *ConditionalAccessPolicyConditionsDevicesFilter {
 		return v.Filter
@@ -4916,7 +5107,9 @@ func (o ConditionalAccessPolicyConditionsDevicesPtrOutput) Elem() ConditionalAcc
 	}).(ConditionalAccessPolicyConditionsDevicesOutput)
 }
 
-// A `filter` block as described below.
+// A `filter` block as documented below.
+//
+// > **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
 func (o ConditionalAccessPolicyConditionsDevicesPtrOutput) Filter() ConditionalAccessPolicyConditionsDevicesFilterPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsDevices) *ConditionalAccessPolicyConditionsDevicesFilter {
 		if v == nil {
@@ -4927,9 +5120,9 @@ func (o ConditionalAccessPolicyConditionsDevicesPtrOutput) Filter() ConditionalA
 }
 
 type ConditionalAccessPolicyConditionsDevicesFilter struct {
-	// Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+	// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
 	Mode string `pulumi:"mode"`
-	// Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+	// Condition filter to match items.
 	Rule string `pulumi:"rule"`
 }
 
@@ -4945,9 +5138,9 @@ type ConditionalAccessPolicyConditionsDevicesFilterInput interface {
 }
 
 type ConditionalAccessPolicyConditionsDevicesFilterArgs struct {
-	// Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+	// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
 	Mode pulumi.StringInput `pulumi:"mode"`
-	// Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+	// Condition filter to match items.
 	Rule pulumi.StringInput `pulumi:"rule"`
 }
 
@@ -5028,12 +5221,12 @@ func (o ConditionalAccessPolicyConditionsDevicesFilterOutput) ToConditionalAcces
 	}).(ConditionalAccessPolicyConditionsDevicesFilterPtrOutput)
 }
 
-// Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
 func (o ConditionalAccessPolicyConditionsDevicesFilterOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsDevicesFilter) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+// Condition filter to match items.
 func (o ConditionalAccessPolicyConditionsDevicesFilterOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsDevicesFilter) string { return v.Rule }).(pulumi.StringOutput)
 }
@@ -5062,7 +5255,7 @@ func (o ConditionalAccessPolicyConditionsDevicesFilterPtrOutput) Elem() Conditio
 	}).(ConditionalAccessPolicyConditionsDevicesFilterOutput)
 }
 
-// Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
 func (o ConditionalAccessPolicyConditionsDevicesFilterPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsDevicesFilter) *string {
 		if v == nil {
@@ -5072,7 +5265,7 @@ func (o ConditionalAccessPolicyConditionsDevicesFilterPtrOutput) Mode() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+// Condition filter to match items.
 func (o ConditionalAccessPolicyConditionsDevicesFilterPtrOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsDevicesFilter) *string {
 		if v == nil {
@@ -15395,6 +15588,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsApplicationsPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsApplicationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsClientApplicationsInput)(nil)).Elem(), ConditionalAccessPolicyConditionsClientApplicationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsClientApplicationsPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsClientApplicationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsClientApplicationsFilterInput)(nil)).Elem(), ConditionalAccessPolicyConditionsClientApplicationsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsClientApplicationsFilterPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsClientApplicationsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsDevicesInput)(nil)).Elem(), ConditionalAccessPolicyConditionsDevicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsDevicesPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsDevicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsDevicesFilterInput)(nil)).Elem(), ConditionalAccessPolicyConditionsDevicesFilterArgs{})
@@ -15599,6 +15794,8 @@ func init() {
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsApplicationsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsClientApplicationsOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsClientApplicationsPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsClientApplicationsFilterOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsClientApplicationsFilterPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsDevicesOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsDevicesPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsDevicesFilterOutput{})
