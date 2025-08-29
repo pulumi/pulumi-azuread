@@ -55,45 +55,45 @@
         "variables": {
             "adoPipelineServiceConnectionId": {
                 "type": "string",
-                "description": "The Azure DevOps Pipeline Service Connection ID.\n"
+                "description": "The Azure DevOps Pipeline Service Connection ID."
             },
             "clientCertificate": {
                 "type": "string",
-                "description": "Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate\n"
+                "description": "Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate"
             },
             "clientCertificatePassword": {
                 "type": "string",
-                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client\nCertificate\n",
+                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate",
                 "secret": true
             },
             "clientCertificatePath": {
                 "type": "string",
-                "description": "The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service\nPrincipal using a Client Certificate\n"
+                "description": "The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate"
             },
             "clientId": {
                 "type": "string",
-                "description": "The Client ID which should be used for service principal authentication\n",
+                "description": "The Client ID which should be used for service principal authentication",
                 "secret": true
             },
             "clientIdFilePath": {
                 "type": "string",
-                "description": "The path to a file containing the Client ID which should be used for service principal authentication\n"
+                "description": "The path to a file containing the Client ID which should be used for service principal authentication"
             },
             "clientSecret": {
                 "type": "string",
-                "description": "The application password to use when authenticating as a Service Principal using a Client Secret\n",
+                "description": "The application password to use when authenticating as a Service Principal using a Client Secret",
                 "secret": true
             },
             "clientSecretFilePath": {
                 "type": "string",
-                "description": "The path to a file containing the application password to use when authenticating as a Service Principal using a Client\nSecret\n"
+                "description": "The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret"
             },
             "disableTerraformPartnerId": {
                 "type": "boolean"
             },
             "environment": {
                 "type": "string",
-                "description": "The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also\n`usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified\nwhen `metadata_host` is specified.\n",
+                "description": "The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.",
                 "default": "public",
                 "defaultInfo": {
                     "environment": [
@@ -103,11 +103,11 @@
             },
             "metadataHost": {
                 "type": "string",
-                "description": "The Hostname which should be used for the Azure Metadata Service.\n"
+                "description": "The Hostname which should be used for the Azure Metadata Service."
             },
             "msiEndpoint": {
                 "type": "string",
-                "description": "The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically\n",
+                "description": "The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically",
                 "defaultInfo": {
                     "environment": [
                         "ARM_MSI_ENDPOINT"
@@ -116,39 +116,39 @@
             },
             "oidcRequestToken": {
                 "type": "string",
-                "description": "The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID\nConnect.\n"
+                "description": "The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect."
             },
             "oidcRequestUrl": {
                 "type": "string",
-                "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal\nusing OpenID Connect.\n"
+                "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect."
             },
             "oidcToken": {
                 "type": "string",
-                "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
+                "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect."
             },
             "oidcTokenFilePath": {
                 "type": "string",
-                "description": "The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
+                "description": "The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect."
             },
             "partnerId": {
                 "type": "string",
-                "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution\n"
+                "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution"
             },
             "tenantId": {
                 "type": "string",
-                "description": "The Tenant ID which should be used. Works with all authentication methods except Managed Identity\n"
+                "description": "The Tenant ID which should be used. Works with all authentication methods except Managed Identity"
             },
             "useAksWorkloadIdentity": {
                 "type": "boolean",
-                "description": "Allow Azure AKS Workload Identity to be used for Authentication.\n"
+                "description": "Allow Azure AKS Workload Identity to be used for Authentication."
             },
             "useCli": {
                 "type": "boolean",
-                "description": "Allow Azure CLI to be used for Authentication\n"
+                "description": "Allow Azure CLI to be used for Authentication"
             },
             "useMsi": {
                 "type": "boolean",
-                "description": "Allow Managed Identity to be used for Authentication\n",
+                "description": "Allow Managed Identity to be used for Authentication",
                 "default": false,
                 "defaultInfo": {
                     "environment": [
@@ -158,7 +158,7 @@
             },
             "useOidc": {
                 "type": "boolean",
-                "description": "Allow OpenID Connect to be used for authentication\n"
+                "description": "Allow OpenID Connect to be used for authentication"
             }
         },
         "defaults": [
@@ -3087,137 +3087,137 @@
         "properties": {
             "adoPipelineServiceConnectionId": {
                 "type": "string",
-                "description": "The Azure DevOps Pipeline Service Connection ID.\n"
+                "description": "The Azure DevOps Pipeline Service Connection ID."
             },
             "clientCertificate": {
                 "type": "string",
-                "description": "Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate\n"
+                "description": "Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate"
             },
             "clientCertificatePassword": {
                 "type": "string",
-                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client\nCertificate\n",
+                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate",
                 "secret": true
             },
             "clientCertificatePath": {
                 "type": "string",
-                "description": "The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service\nPrincipal using a Client Certificate\n"
+                "description": "The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate"
             },
             "clientId": {
                 "type": "string",
-                "description": "The Client ID which should be used for service principal authentication\n",
+                "description": "The Client ID which should be used for service principal authentication",
                 "secret": true
             },
             "clientIdFilePath": {
                 "type": "string",
-                "description": "The path to a file containing the Client ID which should be used for service principal authentication\n"
+                "description": "The path to a file containing the Client ID which should be used for service principal authentication"
             },
             "clientSecret": {
                 "type": "string",
-                "description": "The application password to use when authenticating as a Service Principal using a Client Secret\n",
+                "description": "The application password to use when authenticating as a Service Principal using a Client Secret",
                 "secret": true
             },
             "clientSecretFilePath": {
                 "type": "string",
-                "description": "The path to a file containing the application password to use when authenticating as a Service Principal using a Client\nSecret\n"
+                "description": "The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret"
             },
             "disableTerraformPartnerId": {
                 "type": "boolean"
             },
             "environment": {
                 "type": "string",
-                "description": "The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also\n`usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified\nwhen `metadata_host` is specified.\n"
+                "description": "The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified."
             },
             "metadataHost": {
                 "type": "string",
-                "description": "The Hostname which should be used for the Azure Metadata Service.\n"
+                "description": "The Hostname which should be used for the Azure Metadata Service."
             },
             "msiEndpoint": {
                 "type": "string",
-                "description": "The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically\n"
+                "description": "The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically"
             },
             "oidcRequestToken": {
                 "type": "string",
-                "description": "The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID\nConnect.\n"
+                "description": "The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect."
             },
             "oidcRequestUrl": {
                 "type": "string",
-                "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal\nusing OpenID Connect.\n"
+                "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect."
             },
             "oidcToken": {
                 "type": "string",
-                "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
+                "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect."
             },
             "oidcTokenFilePath": {
                 "type": "string",
-                "description": "The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
+                "description": "The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect."
             },
             "partnerId": {
                 "type": "string",
-                "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution\n"
+                "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution"
             },
             "tenantId": {
                 "type": "string",
-                "description": "The Tenant ID which should be used. Works with all authentication methods except Managed Identity\n"
+                "description": "The Tenant ID which should be used. Works with all authentication methods except Managed Identity"
             },
             "useAksWorkloadIdentity": {
                 "type": "boolean",
-                "description": "Allow Azure AKS Workload Identity to be used for Authentication.\n"
+                "description": "Allow Azure AKS Workload Identity to be used for Authentication."
             },
             "useCli": {
                 "type": "boolean",
-                "description": "Allow Azure CLI to be used for Authentication\n"
+                "description": "Allow Azure CLI to be used for Authentication"
             },
             "useMsi": {
                 "type": "boolean",
-                "description": "Allow Managed Identity to be used for Authentication\n"
+                "description": "Allow Managed Identity to be used for Authentication"
             },
             "useOidc": {
                 "type": "boolean",
-                "description": "Allow OpenID Connect to be used for authentication\n"
+                "description": "Allow OpenID Connect to be used for authentication"
             }
         },
         "inputProperties": {
             "adoPipelineServiceConnectionId": {
                 "type": "string",
-                "description": "The Azure DevOps Pipeline Service Connection ID.\n"
+                "description": "The Azure DevOps Pipeline Service Connection ID."
             },
             "clientCertificate": {
                 "type": "string",
-                "description": "Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate\n"
+                "description": "Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate"
             },
             "clientCertificatePassword": {
                 "type": "string",
-                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client\nCertificate\n",
+                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate",
                 "secret": true
             },
             "clientCertificatePath": {
                 "type": "string",
-                "description": "The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service\nPrincipal using a Client Certificate\n"
+                "description": "The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate"
             },
             "clientId": {
                 "type": "string",
-                "description": "The Client ID which should be used for service principal authentication\n",
+                "description": "The Client ID which should be used for service principal authentication",
                 "secret": true
             },
             "clientIdFilePath": {
                 "type": "string",
-                "description": "The path to a file containing the Client ID which should be used for service principal authentication\n"
+                "description": "The path to a file containing the Client ID which should be used for service principal authentication"
             },
             "clientSecret": {
                 "type": "string",
-                "description": "The application password to use when authenticating as a Service Principal using a Client Secret\n",
+                "description": "The application password to use when authenticating as a Service Principal using a Client Secret",
                 "secret": true
             },
             "clientSecretFilePath": {
                 "type": "string",
-                "description": "The path to a file containing the application password to use when authenticating as a Service Principal using a Client\nSecret\n"
+                "description": "The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret"
             },
             "disableTerraformPartnerId": {
                 "type": "boolean"
             },
             "environment": {
                 "type": "string",
-                "description": "The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also\n`usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified\nwhen `metadata_host` is specified.\n",
+                "description": "The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.",
                 "default": "public",
                 "defaultInfo": {
                     "environment": [
@@ -3227,11 +3227,11 @@
             },
             "metadataHost": {
                 "type": "string",
-                "description": "The Hostname which should be used for the Azure Metadata Service.\n"
+                "description": "The Hostname which should be used for the Azure Metadata Service."
             },
             "msiEndpoint": {
                 "type": "string",
-                "description": "The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically\n",
+                "description": "The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically",
                 "defaultInfo": {
                     "environment": [
                         "ARM_MSI_ENDPOINT"
@@ -3240,39 +3240,39 @@
             },
             "oidcRequestToken": {
                 "type": "string",
-                "description": "The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID\nConnect.\n"
+                "description": "The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect."
             },
             "oidcRequestUrl": {
                 "type": "string",
-                "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal\nusing OpenID Connect.\n"
+                "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect."
             },
             "oidcToken": {
                 "type": "string",
-                "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
+                "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect."
             },
             "oidcTokenFilePath": {
                 "type": "string",
-                "description": "The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
+                "description": "The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect."
             },
             "partnerId": {
                 "type": "string",
-                "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution\n"
+                "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution"
             },
             "tenantId": {
                 "type": "string",
-                "description": "The Tenant ID which should be used. Works with all authentication methods except Managed Identity\n"
+                "description": "The Tenant ID which should be used. Works with all authentication methods except Managed Identity"
             },
             "useAksWorkloadIdentity": {
                 "type": "boolean",
-                "description": "Allow Azure AKS Workload Identity to be used for Authentication.\n"
+                "description": "Allow Azure AKS Workload Identity to be used for Authentication."
             },
             "useCli": {
                 "type": "boolean",
-                "description": "Allow Azure CLI to be used for Authentication\n"
+                "description": "Allow Azure CLI to be used for Authentication"
             },
             "useMsi": {
                 "type": "boolean",
-                "description": "Allow Managed Identity to be used for Authentication\n",
+                "description": "Allow Managed Identity to be used for Authentication",
                 "default": false,
                 "defaultInfo": {
                     "environment": [
@@ -3282,7 +3282,7 @@
             },
             "useOidc": {
                 "type": "boolean",
-                "description": "Allow OpenID Connect to be used for authentication\n"
+                "description": "Allow OpenID Connect to be used for authentication"
             }
         },
         "methods": {
@@ -3805,7 +3805,7 @@
                 },
                 "preventDuplicateNames": {
                     "type": "boolean",
-                    "description": "If `true`, will return an error if an existing administrative unit is found with the same name\n"
+                    "description": "If `true`, will return an error if an existing administrative unit is found with the same name"
                 }
             },
             "required": [
@@ -3835,7 +3835,7 @@
                 },
                 "preventDuplicateNames": {
                     "type": "boolean",
-                    "description": "If `true`, will return an error if an existing administrative unit is found with the same name\n"
+                    "description": "If `true`, will return an error if an existing administrative unit is found with the same name"
                 }
             },
             "requiredInputs": [
@@ -3869,7 +3869,7 @@
                     },
                     "preventDuplicateNames": {
                         "type": "boolean",
-                        "description": "If `true`, will return an error if an existing administrative unit is found with the same name\n"
+                        "description": "If `true`, will return an error if an existing administrative unit is found with the same name"
                     }
                 },
                 "type": "object"
@@ -4179,7 +4179,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of object IDs of principals that will be granted ownership of the application\n"
+                    "description": "A list of object IDs of principals that will be granted ownership of the application"
                 },
                 "password": {
                     "$ref": "#/types/azuread:index/ApplicationPassword:ApplicationPassword",
@@ -4331,7 +4331,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of object IDs of principals that will be granted ownership of the application\n"
+                    "description": "A list of object IDs of principals that will be granted ownership of the application"
                 },
                 "password": {
                     "$ref": "#/types/azuread:index/ApplicationPassword:ApplicationPassword",
@@ -4502,7 +4502,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of object IDs of principals that will be granted ownership of the application\n"
+                        "description": "A list of object IDs of principals that will be granted ownership of the application"
                     },
                     "password": {
                         "$ref": "#/types/azuread:index/ApplicationPassword:ApplicationPassword",
@@ -4686,7 +4686,7 @@
                 },
                 "roleId": {
                     "type": "string",
-                    "description": "The unique identifier of the app role\n"
+                    "description": "The unique identifier of the app role"
                 },
                 "value": {
                     "type": "string",
@@ -4723,7 +4723,7 @@
                 },
                 "roleId": {
                     "type": "string",
-                    "description": "The unique identifier of the app role\n",
+                    "description": "The unique identifier of the app role",
                     "willReplaceOnChanges": true
                 },
                 "value": {
@@ -4763,7 +4763,7 @@
                     },
                     "roleId": {
                         "type": "string",
-                        "description": "The unique identifier of the app role\n",
+                        "description": "The unique identifier of the app role",
                         "willReplaceOnChanges": true
                     },
                     "value": {
@@ -5584,7 +5584,7 @@
                 },
                 "userConsentDisplayName": {
                     "type": "string",
-                    "description": "Display name for the delegated permission that appears in the end user consent experience\n"
+                    "description": "Display name for the delegated permission that appears in the end user consent experience"
                 },
                 "value": {
                     "type": "string",
@@ -5627,7 +5627,7 @@
                 },
                 "userConsentDisplayName": {
                     "type": "string",
-                    "description": "Display name for the delegated permission that appears in the end user consent experience\n"
+                    "description": "Display name for the delegated permission that appears in the end user consent experience"
                 },
                 "value": {
                     "type": "string",
@@ -5672,7 +5672,7 @@
                     },
                     "userConsentDisplayName": {
                         "type": "string",
-                        "description": "Display name for the delegated permission that appears in the end user consent experience\n"
+                        "description": "Display name for the delegated permission that appears in the end user consent experience"
                     },
                     "value": {
                         "type": "string",
@@ -6207,7 +6207,7 @@
                 },
                 "objectId": {
                     "type": "string",
-                    "description": "The object ID of the policy\n"
+                    "description": "The object ID of the policy"
                 },
                 "sessionControls": {
                     "$ref": "#/types/azuread:index/ConditionalAccessPolicySessionControls:ConditionalAccessPolicySessionControls",
@@ -6268,7 +6268,7 @@
                     },
                     "objectId": {
                         "type": "string",
-                        "description": "The object ID of the policy\n"
+                        "description": "The object ID of the policy"
                     },
                     "sessionControls": {
                         "$ref": "#/types/azuread:index/ConditionalAccessPolicySessionControls:ConditionalAccessPolicySessionControls",
@@ -6765,7 +6765,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of owners who own this group. Supported object types are Users or Service Principals\n"
+                    "description": "A set of owners who own this group. Supported object types are Users or Service Principals"
                 },
                 "preferredLanguage": {
                     "type": "string",
@@ -6908,7 +6908,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of owners who own this group. Supported object types are Users or Service Principals\n"
+                    "description": "A set of owners who own this group. Supported object types are Users or Service Principals"
                 },
                 "preventDuplicateNames": {
                     "type": "boolean",
@@ -7054,7 +7054,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A set of owners who own this group. Supported object types are Users or Service Principals\n"
+                        "description": "A set of owners who own this group. Supported object types are Users or Service Principals"
                     },
                     "preferredLanguage": {
                         "type": "string",
@@ -7369,7 +7369,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of owners who own this group. Supported object types are Users or Service Principals\n"
+                    "description": "A set of owners who own this group. Supported object types are Users or Service Principals"
                 },
                 "preferredLanguage": {
                     "type": "string",
@@ -7504,7 +7504,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of owners who own this group. Supported object types are Users or Service Principals\n"
+                    "description": "A set of owners who own this group. Supported object types are Users or Service Principals"
                 },
                 "preventDuplicateNames": {
                     "type": "boolean",
@@ -7643,7 +7643,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A set of owners who own this group. Supported object types are Users or Service Principals\n"
+                        "description": "A set of owners who own this group. Supported object types are Users or Service Principals"
                     },
                     "preferredLanguage": {
                         "type": "string",
@@ -8246,7 +8246,7 @@
                     "items": {
                         "$ref": "#/types/azuread:index/ServicePrincipalFeature:ServicePrincipalFeature"
                     },
-                    "description": "Block of features to configure for this service principal using tags\n",
+                    "description": "Block of features to configure for this service principal using tags",
                     "deprecationMessage": "This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider"
                 },
                 "homepageUrl": {
@@ -8295,7 +8295,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of object IDs of principals that will be granted ownership of the service principal\n"
+                    "description": "A list of object IDs of principals that will be granted ownership of the service principal"
                 },
                 "preferredSingleSignOnMode": {
                     "type": "string",
@@ -8340,7 +8340,7 @@
                 },
                 "useExisting": {
                     "type": "boolean",
-                    "description": "When true, the resource will return an existing service principal instead of failing with an error\n"
+                    "description": "When true, the resource will return an existing service principal instead of failing with an error"
                 }
             },
             "required": [
@@ -8400,7 +8400,7 @@
                     "items": {
                         "$ref": "#/types/azuread:index/ServicePrincipalFeature:ServicePrincipalFeature"
                     },
-                    "description": "Block of features to configure for this service principal using tags\n",
+                    "description": "Block of features to configure for this service principal using tags",
                     "deprecationMessage": "This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider"
                 },
                 "loginUrl": {
@@ -8423,7 +8423,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of object IDs of principals that will be granted ownership of the service principal\n"
+                    "description": "A list of object IDs of principals that will be granted ownership of the service principal"
                 },
                 "preferredSingleSignOnMode": {
                     "type": "string",
@@ -8442,7 +8442,7 @@
                 },
                 "useExisting": {
                     "type": "boolean",
-                    "description": "When true, the resource will return an existing service principal instead of failing with an error\n"
+                    "description": "When true, the resource will return an existing service principal instead of failing with an error"
                 }
             },
             "requiredInputs": [
@@ -8509,7 +8509,7 @@
                         "items": {
                             "$ref": "#/types/azuread:index/ServicePrincipalFeature:ServicePrincipalFeature"
                         },
-                        "description": "Block of features to configure for this service principal using tags\n",
+                        "description": "Block of features to configure for this service principal using tags",
                         "deprecationMessage": "This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider"
                     },
                     "homepageUrl": {
@@ -8558,7 +8558,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of object IDs of principals that will be granted ownership of the service principal\n"
+                        "description": "A list of object IDs of principals that will be granted ownership of the service principal"
                     },
                     "preferredSingleSignOnMode": {
                         "type": "string",
@@ -8603,7 +8603,7 @@
                     },
                     "useExisting": {
                         "type": "boolean",
-                        "description": "When true, the resource will return an existing service principal instead of failing with an error\n"
+                        "description": "When true, the resource will return an existing service principal instead of failing with an error"
                     }
                 },
                 "type": "object"
@@ -9354,7 +9354,7 @@
             "properties": {
                 "aboutMe": {
                     "type": "string",
-                    "description": "A freeform field for the user to describe themselves\n"
+                    "description": "A freeform field for the user to describe themselves"
                 },
                 "accountEnabled": {
                     "type": "boolean",
@@ -9515,7 +9515,7 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password for the user. The password must satisfy minimum requirements as specified by the password policy. The\nmaximum length is 256 characters. This property is required when creating a new user\n",
+                    "description": "The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user",
                     "secret": true
                 },
                 "postalCode": {
@@ -9701,7 +9701,7 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password for the user. The password must satisfy minimum requirements as specified by the password policy. The\nmaximum length is 256 characters. This property is required when creating a new user\n",
+                    "description": "The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user",
                     "secret": true
                 },
                 "postalCode": {
@@ -9746,7 +9746,7 @@
                 "properties": {
                     "aboutMe": {
                         "type": "string",
-                        "description": "A freeform field for the user to describe themselves\n"
+                        "description": "A freeform field for the user to describe themselves"
                     },
                     "accountEnabled": {
                         "type": "boolean",
@@ -9907,7 +9907,7 @@
                     },
                     "password": {
                         "type": "string",
-                        "description": "The password for the user. The password must satisfy minimum requirements as specified by the password policy. The\nmaximum length is 256 characters. This property is required when creating a new user\n",
+                        "description": "The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user",
                         "secret": true
                     },
                     "postalCode": {
@@ -10069,7 +10069,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "objectId": {
@@ -10117,7 +10117,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "objectId": {
@@ -10167,7 +10167,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "objectId": {
@@ -10217,7 +10217,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "members": {
@@ -10334,7 +10334,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "identifierUri": {
@@ -10492,7 +10492,7 @@
                 "description": "A collection of values returned by getApplicationPublishedAppIds.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "result": {
@@ -10545,7 +10545,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "logoUrl": {
@@ -10599,7 +10599,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "objectId": {
@@ -10639,7 +10639,7 @@
                 "description": "A collection of values returned by getDirectoryObject.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "objectId": {
@@ -10663,7 +10663,7 @@
                 "description": "A collection of values returned by getDirectoryRoleTemplates.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "objectIds": {
@@ -10695,7 +10695,7 @@
                 "description": "A collection of values returned by getDirectoryRoles.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "objectIds": {
@@ -10779,7 +10779,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "includeUnverified": {
@@ -10886,7 +10886,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "includeTransitiveMembers": {
@@ -11058,7 +11058,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "roleId": {
@@ -11131,7 +11131,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ignoreMissing": {
@@ -11193,7 +11193,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ips": {
@@ -11299,7 +11299,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "loginUrl": {
@@ -11472,7 +11472,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ignoreMissing": {
@@ -11613,7 +11613,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "imAddresses": {
@@ -11842,7 +11842,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ignoreMissing": {
