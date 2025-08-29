@@ -86,15 +86,15 @@ export class AccessPackageResourcePackageAssociation extends pulumi.CustomResour
     /**
      * The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
      */
-    public readonly accessPackageId!: pulumi.Output<string>;
+    declare public readonly accessPackageId: pulumi.Output<string>;
     /**
      * The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
      */
-    public readonly accessType!: pulumi.Output<string | undefined>;
+    declare public readonly accessType: pulumi.Output<string | undefined>;
     /**
      * The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
      */
-    public readonly catalogResourceAssociationId!: pulumi.Output<string>;
+    declare public readonly catalogResourceAssociationId: pulumi.Output<string>;
 
     /**
      * Create a AccessPackageResourcePackageAssociation resource with the given unique name, arguments, and options.
@@ -109,20 +109,20 @@ export class AccessPackageResourcePackageAssociation extends pulumi.CustomResour
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPackageResourcePackageAssociationState | undefined;
-            resourceInputs["accessPackageId"] = state ? state.accessPackageId : undefined;
-            resourceInputs["accessType"] = state ? state.accessType : undefined;
-            resourceInputs["catalogResourceAssociationId"] = state ? state.catalogResourceAssociationId : undefined;
+            resourceInputs["accessPackageId"] = state?.accessPackageId;
+            resourceInputs["accessType"] = state?.accessType;
+            resourceInputs["catalogResourceAssociationId"] = state?.catalogResourceAssociationId;
         } else {
             const args = argsOrState as AccessPackageResourcePackageAssociationArgs | undefined;
-            if ((!args || args.accessPackageId === undefined) && !opts.urn) {
+            if (args?.accessPackageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessPackageId'");
             }
-            if ((!args || args.catalogResourceAssociationId === undefined) && !opts.urn) {
+            if (args?.catalogResourceAssociationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'catalogResourceAssociationId'");
             }
-            resourceInputs["accessPackageId"] = args ? args.accessPackageId : undefined;
-            resourceInputs["accessType"] = args ? args.accessType : undefined;
-            resourceInputs["catalogResourceAssociationId"] = args ? args.catalogResourceAssociationId : undefined;
+            resourceInputs["accessPackageId"] = args?.accessPackageId;
+            resourceInputs["accessType"] = args?.accessType;
+            resourceInputs["catalogResourceAssociationId"] = args?.catalogResourceAssociationId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessPackageResourcePackageAssociation.__pulumiType, name, resourceInputs, opts);

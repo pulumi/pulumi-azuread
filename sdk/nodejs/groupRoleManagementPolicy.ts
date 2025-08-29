@@ -92,35 +92,35 @@ export class GroupRoleManagementPolicy extends pulumi.CustomResource {
     /**
      * An `activationRules` block as defined below.
      */
-    public readonly activationRules!: pulumi.Output<outputs.GroupRoleManagementPolicyActivationRules>;
+    declare public readonly activationRules: pulumi.Output<outputs.GroupRoleManagementPolicyActivationRules>;
     /**
      * An `activeAssignmentRules` block as defined below.
      */
-    public readonly activeAssignmentRules!: pulumi.Output<outputs.GroupRoleManagementPolicyActiveAssignmentRules>;
+    declare public readonly activeAssignmentRules: pulumi.Output<outputs.GroupRoleManagementPolicyActiveAssignmentRules>;
     /**
      * (String) The description of this policy.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * (String) The display name of this policy.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
      * An `eligibleAssignmentRules` block as defined below.
      */
-    public readonly eligibleAssignmentRules!: pulumi.Output<outputs.GroupRoleManagementPolicyEligibleAssignmentRules>;
+    declare public readonly eligibleAssignmentRules: pulumi.Output<outputs.GroupRoleManagementPolicyEligibleAssignmentRules>;
     /**
      * The ID of the Azure AD group for which the policy applies.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * A `notificationRules` block as defined below.
      */
-    public readonly notificationRules!: pulumi.Output<outputs.GroupRoleManagementPolicyNotificationRules>;
+    declare public readonly notificationRules: pulumi.Output<outputs.GroupRoleManagementPolicyNotificationRules>;
     /**
      * The type of assignment this policy coveres. Can be either `member` or `owner`.
      */
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly roleId: pulumi.Output<string>;
 
     /**
      * Create a GroupRoleManagementPolicy resource with the given unique name, arguments, and options.
@@ -135,28 +135,28 @@ export class GroupRoleManagementPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupRoleManagementPolicyState | undefined;
-            resourceInputs["activationRules"] = state ? state.activationRules : undefined;
-            resourceInputs["activeAssignmentRules"] = state ? state.activeAssignmentRules : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["eligibleAssignmentRules"] = state ? state.eligibleAssignmentRules : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["notificationRules"] = state ? state.notificationRules : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["activationRules"] = state?.activationRules;
+            resourceInputs["activeAssignmentRules"] = state?.activeAssignmentRules;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["eligibleAssignmentRules"] = state?.eligibleAssignmentRules;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["notificationRules"] = state?.notificationRules;
+            resourceInputs["roleId"] = state?.roleId;
         } else {
             const args = argsOrState as GroupRoleManagementPolicyArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["activationRules"] = args ? args.activationRules : undefined;
-            resourceInputs["activeAssignmentRules"] = args ? args.activeAssignmentRules : undefined;
-            resourceInputs["eligibleAssignmentRules"] = args ? args.eligibleAssignmentRules : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["notificationRules"] = args ? args.notificationRules : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["activationRules"] = args?.activationRules;
+            resourceInputs["activeAssignmentRules"] = args?.activeAssignmentRules;
+            resourceInputs["eligibleAssignmentRules"] = args?.eligibleAssignmentRules;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["notificationRules"] = args?.notificationRules;
+            resourceInputs["roleId"] = args?.roleId;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
         }

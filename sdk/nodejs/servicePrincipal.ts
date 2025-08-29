@@ -120,125 +120,125 @@ export class ServicePrincipal extends pulumi.CustomResource {
     /**
      * Whether or not the service principal account is enabled. Defaults to `true`.
      */
-    public readonly accountEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly accountEnabled: pulumi.Output<boolean | undefined>;
     /**
      * A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
      */
-    public readonly alternativeNames!: pulumi.Output<string[] | undefined>;
+    declare public readonly alternativeNames: pulumi.Output<string[] | undefined>;
     /**
      * Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
      */
-    public readonly appRoleAssignmentRequired!: pulumi.Output<boolean | undefined>;
+    declare public readonly appRoleAssignmentRequired: pulumi.Output<boolean | undefined>;
     /**
      * A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
      */
-    public /*out*/ readonly appRoleIds!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly appRoleIds: pulumi.Output<{[key: string]: string}>;
     /**
      * A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
-    public /*out*/ readonly appRoles!: pulumi.Output<outputs.ServicePrincipalAppRole[]>;
+    declare public /*out*/ readonly appRoles: pulumi.Output<outputs.ServicePrincipalAppRole[]>;
     /**
      * The tenant ID where the associated application is registered.
      */
-    public /*out*/ readonly applicationTenantId!: pulumi.Output<string>;
+    declare public /*out*/ readonly applicationTenantId: pulumi.Output<string>;
     /**
      * The client ID of the application for which to create a service principal.
      */
-    public readonly clientId!: pulumi.Output<string>;
+    declare public readonly clientId: pulumi.Output<string>;
     /**
      * A description of the service principal provided for internal end-users.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Display name for the app role that appears during app role assignment and in consent experiences.
      */
-    public /*out*/ readonly displayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
      * A `featureTags` block as described below. Cannot be used together with the `tags` property.
      *
      * > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
      */
-    public readonly featureTags!: pulumi.Output<outputs.ServicePrincipalFeatureTag[]>;
+    declare public readonly featureTags: pulumi.Output<outputs.ServicePrincipalFeatureTag[]>;
     /**
      * Block of features to configure for this service principal using tags
      *
      * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      */
-    public readonly features!: pulumi.Output<outputs.ServicePrincipalFeature[]>;
+    declare public readonly features: pulumi.Output<outputs.ServicePrincipalFeature[]>;
     /**
      * Home page or landing page of the associated application.
      */
-    public /*out*/ readonly homepageUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly homepageUrl: pulumi.Output<string>;
     /**
      * The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
      */
-    public readonly loginUrl!: pulumi.Output<string | undefined>;
+    declare public readonly loginUrl: pulumi.Output<string | undefined>;
     /**
      * The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
      */
-    public /*out*/ readonly logoutUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly logoutUrl: pulumi.Output<string>;
     /**
      * A free text field to capture information about the service principal, typically used for operational purposes.
      */
-    public readonly notes!: pulumi.Output<string | undefined>;
+    declare public readonly notes: pulumi.Output<string | undefined>;
     /**
      * A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
      */
-    public readonly notificationEmailAddresses!: pulumi.Output<string[] | undefined>;
+    declare public readonly notificationEmailAddresses: pulumi.Output<string[] | undefined>;
     /**
      * A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
      */
-    public /*out*/ readonly oauth2PermissionScopeIds!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly oauth2PermissionScopeIds: pulumi.Output<{[key: string]: string}>;
     /**
      * A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
      */
-    public /*out*/ readonly oauth2PermissionScopes!: pulumi.Output<outputs.ServicePrincipalOauth2PermissionScope[]>;
+    declare public /*out*/ readonly oauth2PermissionScopes: pulumi.Output<outputs.ServicePrincipalOauth2PermissionScope[]>;
     /**
      * The object ID of the service principal.
      */
-    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly objectId: pulumi.Output<string>;
     /**
      * A list of object IDs of principals that will be granted ownership of the service principal
      */
-    public readonly owners!: pulumi.Output<string[] | undefined>;
+    declare public readonly owners: pulumi.Output<string[] | undefined>;
     /**
      * The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
      */
-    public readonly preferredSingleSignOnMode!: pulumi.Output<string | undefined>;
+    declare public readonly preferredSingleSignOnMode: pulumi.Output<string | undefined>;
     /**
      * A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
      */
-    public /*out*/ readonly redirectUris!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly redirectUris: pulumi.Output<string[]>;
     /**
      * The URL where the service exposes SAML metadata for federation.
      */
-    public /*out*/ readonly samlMetadataUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly samlMetadataUrl: pulumi.Output<string>;
     /**
      * A `samlSingleSignOn` block as documented below.
      */
-    public readonly samlSingleSignOn!: pulumi.Output<outputs.ServicePrincipalSamlSingleSignOn | undefined>;
+    declare public readonly samlSingleSignOn: pulumi.Output<outputs.ServicePrincipalSamlSingleSignOn | undefined>;
     /**
      * A list of identifier URI(s), copied over from the associated application.
      */
-    public /*out*/ readonly servicePrincipalNames!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly servicePrincipalNames: pulumi.Output<string[]>;
     /**
      * The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
      */
-    public /*out*/ readonly signInAudience!: pulumi.Output<string>;
+    declare public /*out*/ readonly signInAudience: pulumi.Output<string>;
     /**
      * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      *
      * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * When true, the resource will return an existing service principal instead of failing with an error
      */
-    public readonly useExisting!: pulumi.Output<boolean | undefined>;
+    declare public readonly useExisting: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ServicePrincipal resource with the given unique name, arguments, and options.
@@ -253,55 +253,55 @@ export class ServicePrincipal extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalState | undefined;
-            resourceInputs["accountEnabled"] = state ? state.accountEnabled : undefined;
-            resourceInputs["alternativeNames"] = state ? state.alternativeNames : undefined;
-            resourceInputs["appRoleAssignmentRequired"] = state ? state.appRoleAssignmentRequired : undefined;
-            resourceInputs["appRoleIds"] = state ? state.appRoleIds : undefined;
-            resourceInputs["appRoles"] = state ? state.appRoles : undefined;
-            resourceInputs["applicationTenantId"] = state ? state.applicationTenantId : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["featureTags"] = state ? state.featureTags : undefined;
-            resourceInputs["features"] = state ? state.features : undefined;
-            resourceInputs["homepageUrl"] = state ? state.homepageUrl : undefined;
-            resourceInputs["loginUrl"] = state ? state.loginUrl : undefined;
-            resourceInputs["logoutUrl"] = state ? state.logoutUrl : undefined;
-            resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["notificationEmailAddresses"] = state ? state.notificationEmailAddresses : undefined;
-            resourceInputs["oauth2PermissionScopeIds"] = state ? state.oauth2PermissionScopeIds : undefined;
-            resourceInputs["oauth2PermissionScopes"] = state ? state.oauth2PermissionScopes : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["owners"] = state ? state.owners : undefined;
-            resourceInputs["preferredSingleSignOnMode"] = state ? state.preferredSingleSignOnMode : undefined;
-            resourceInputs["redirectUris"] = state ? state.redirectUris : undefined;
-            resourceInputs["samlMetadataUrl"] = state ? state.samlMetadataUrl : undefined;
-            resourceInputs["samlSingleSignOn"] = state ? state.samlSingleSignOn : undefined;
-            resourceInputs["servicePrincipalNames"] = state ? state.servicePrincipalNames : undefined;
-            resourceInputs["signInAudience"] = state ? state.signInAudience : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["useExisting"] = state ? state.useExisting : undefined;
+            resourceInputs["accountEnabled"] = state?.accountEnabled;
+            resourceInputs["alternativeNames"] = state?.alternativeNames;
+            resourceInputs["appRoleAssignmentRequired"] = state?.appRoleAssignmentRequired;
+            resourceInputs["appRoleIds"] = state?.appRoleIds;
+            resourceInputs["appRoles"] = state?.appRoles;
+            resourceInputs["applicationTenantId"] = state?.applicationTenantId;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["featureTags"] = state?.featureTags;
+            resourceInputs["features"] = state?.features;
+            resourceInputs["homepageUrl"] = state?.homepageUrl;
+            resourceInputs["loginUrl"] = state?.loginUrl;
+            resourceInputs["logoutUrl"] = state?.logoutUrl;
+            resourceInputs["notes"] = state?.notes;
+            resourceInputs["notificationEmailAddresses"] = state?.notificationEmailAddresses;
+            resourceInputs["oauth2PermissionScopeIds"] = state?.oauth2PermissionScopeIds;
+            resourceInputs["oauth2PermissionScopes"] = state?.oauth2PermissionScopes;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["owners"] = state?.owners;
+            resourceInputs["preferredSingleSignOnMode"] = state?.preferredSingleSignOnMode;
+            resourceInputs["redirectUris"] = state?.redirectUris;
+            resourceInputs["samlMetadataUrl"] = state?.samlMetadataUrl;
+            resourceInputs["samlSingleSignOn"] = state?.samlSingleSignOn;
+            resourceInputs["servicePrincipalNames"] = state?.servicePrincipalNames;
+            resourceInputs["signInAudience"] = state?.signInAudience;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["useExisting"] = state?.useExisting;
         } else {
             const args = argsOrState as ServicePrincipalArgs | undefined;
-            if ((!args || args.clientId === undefined) && !opts.urn) {
+            if (args?.clientId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
-            resourceInputs["accountEnabled"] = args ? args.accountEnabled : undefined;
-            resourceInputs["alternativeNames"] = args ? args.alternativeNames : undefined;
-            resourceInputs["appRoleAssignmentRequired"] = args ? args.appRoleAssignmentRequired : undefined;
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["featureTags"] = args ? args.featureTags : undefined;
-            resourceInputs["features"] = args ? args.features : undefined;
-            resourceInputs["loginUrl"] = args ? args.loginUrl : undefined;
-            resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["notificationEmailAddresses"] = args ? args.notificationEmailAddresses : undefined;
-            resourceInputs["owners"] = args ? args.owners : undefined;
-            resourceInputs["preferredSingleSignOnMode"] = args ? args.preferredSingleSignOnMode : undefined;
-            resourceInputs["samlSingleSignOn"] = args ? args.samlSingleSignOn : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["useExisting"] = args ? args.useExisting : undefined;
+            resourceInputs["accountEnabled"] = args?.accountEnabled;
+            resourceInputs["alternativeNames"] = args?.alternativeNames;
+            resourceInputs["appRoleAssignmentRequired"] = args?.appRoleAssignmentRequired;
+            resourceInputs["clientId"] = args?.clientId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["featureTags"] = args?.featureTags;
+            resourceInputs["features"] = args?.features;
+            resourceInputs["loginUrl"] = args?.loginUrl;
+            resourceInputs["notes"] = args?.notes;
+            resourceInputs["notificationEmailAddresses"] = args?.notificationEmailAddresses;
+            resourceInputs["owners"] = args?.owners;
+            resourceInputs["preferredSingleSignOnMode"] = args?.preferredSingleSignOnMode;
+            resourceInputs["samlSingleSignOn"] = args?.samlSingleSignOn;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["useExisting"] = args?.useExisting;
             resourceInputs["appRoleIds"] = undefined /*out*/;
             resourceInputs["appRoles"] = undefined /*out*/;
             resourceInputs["applicationTenantId"] = undefined /*out*/;

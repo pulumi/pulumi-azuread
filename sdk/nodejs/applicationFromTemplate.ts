@@ -77,27 +77,27 @@ export class ApplicationFromTemplate extends pulumi.CustomResource {
     /**
      * The resource ID for the application.
      */
-    public /*out*/ readonly applicationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly applicationId: pulumi.Output<string>;
     /**
      * The object ID for the application.
      */
-    public /*out*/ readonly applicationObjectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly applicationObjectId: pulumi.Output<string>;
     /**
      * The display name for the application.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The resource ID for the service principal.
      */
-    public /*out*/ readonly servicePrincipalId!: pulumi.Output<string>;
+    declare public /*out*/ readonly servicePrincipalId: pulumi.Output<string>;
     /**
      * The object ID for the service principal.
      */
-    public /*out*/ readonly servicePrincipalObjectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly servicePrincipalObjectId: pulumi.Output<string>;
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      */
-    public readonly templateId!: pulumi.Output<string>;
+    declare public readonly templateId: pulumi.Output<string>;
 
     /**
      * Create a ApplicationFromTemplate resource with the given unique name, arguments, and options.
@@ -112,22 +112,22 @@ export class ApplicationFromTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationFromTemplateState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
-            resourceInputs["servicePrincipalObjectId"] = state ? state.servicePrincipalObjectId : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["applicationObjectId"] = state?.applicationObjectId;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
+            resourceInputs["servicePrincipalObjectId"] = state?.servicePrincipalObjectId;
+            resourceInputs["templateId"] = state?.templateId;
         } else {
             const args = argsOrState as ApplicationFromTemplateArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.templateId === undefined) && !opts.urn) {
+            if (args?.templateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateId'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["templateId"] = args?.templateId;
             resourceInputs["applicationId"] = undefined /*out*/;
             resourceInputs["applicationObjectId"] = undefined /*out*/;
             resourceInputs["servicePrincipalId"] = undefined /*out*/;

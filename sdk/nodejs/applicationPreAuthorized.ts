@@ -88,15 +88,15 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
     /**
      * The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * The client ID of the application being authorized. Changing this field forces a new resource to be created.
      */
-    public readonly authorizedClientId!: pulumi.Output<string>;
+    declare public readonly authorizedClientId: pulumi.Output<string>;
     /**
      * A set of permission scope IDs required by the authorized application.
      */
-    public readonly permissionIds!: pulumi.Output<string[]>;
+    declare public readonly permissionIds: pulumi.Output<string[]>;
 
     /**
      * Create a ApplicationPreAuthorized resource with the given unique name, arguments, and options.
@@ -111,23 +111,23 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationPreAuthorizedState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["authorizedClientId"] = state ? state.authorizedClientId : undefined;
-            resourceInputs["permissionIds"] = state ? state.permissionIds : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["authorizedClientId"] = state?.authorizedClientId;
+            resourceInputs["permissionIds"] = state?.permissionIds;
         } else {
             const args = argsOrState as ApplicationPreAuthorizedArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.authorizedClientId === undefined) && !opts.urn) {
+            if (args?.authorizedClientId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authorizedClientId'");
             }
-            if ((!args || args.permissionIds === undefined) && !opts.urn) {
+            if (args?.permissionIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissionIds'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["authorizedClientId"] = args ? args.authorizedClientId : undefined;
-            resourceInputs["permissionIds"] = args ? args.permissionIds : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["authorizedClientId"] = args?.authorizedClientId;
+            resourceInputs["permissionIds"] = args?.permissionIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationPreAuthorized.__pulumiType, name, resourceInputs, opts);

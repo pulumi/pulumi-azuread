@@ -77,15 +77,15 @@ export class AccessPackageResourceCatalogAssociation extends pulumi.CustomResour
     /**
      * The unique ID of the access package catalog. Changing this forces a new resource to be created.
      */
-    public readonly catalogId!: pulumi.Output<string>;
+    declare public readonly catalogId: pulumi.Output<string>;
     /**
      * The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
      */
-    public readonly resourceOriginId!: pulumi.Output<string>;
+    declare public readonly resourceOriginId: pulumi.Output<string>;
     /**
      * The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
      */
-    public readonly resourceOriginSystem!: pulumi.Output<string>;
+    declare public readonly resourceOriginSystem: pulumi.Output<string>;
 
     /**
      * Create a AccessPackageResourceCatalogAssociation resource with the given unique name, arguments, and options.
@@ -100,23 +100,23 @@ export class AccessPackageResourceCatalogAssociation extends pulumi.CustomResour
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPackageResourceCatalogAssociationState | undefined;
-            resourceInputs["catalogId"] = state ? state.catalogId : undefined;
-            resourceInputs["resourceOriginId"] = state ? state.resourceOriginId : undefined;
-            resourceInputs["resourceOriginSystem"] = state ? state.resourceOriginSystem : undefined;
+            resourceInputs["catalogId"] = state?.catalogId;
+            resourceInputs["resourceOriginId"] = state?.resourceOriginId;
+            resourceInputs["resourceOriginSystem"] = state?.resourceOriginSystem;
         } else {
             const args = argsOrState as AccessPackageResourceCatalogAssociationArgs | undefined;
-            if ((!args || args.catalogId === undefined) && !opts.urn) {
+            if (args?.catalogId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'catalogId'");
             }
-            if ((!args || args.resourceOriginId === undefined) && !opts.urn) {
+            if (args?.resourceOriginId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceOriginId'");
             }
-            if ((!args || args.resourceOriginSystem === undefined) && !opts.urn) {
+            if (args?.resourceOriginSystem === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceOriginSystem'");
             }
-            resourceInputs["catalogId"] = args ? args.catalogId : undefined;
-            resourceInputs["resourceOriginId"] = args ? args.resourceOriginId : undefined;
-            resourceInputs["resourceOriginSystem"] = args ? args.resourceOriginSystem : undefined;
+            resourceInputs["catalogId"] = args?.catalogId;
+            resourceInputs["resourceOriginId"] = args?.resourceOriginId;
+            resourceInputs["resourceOriginSystem"] = args?.resourceOriginSystem;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessPackageResourceCatalogAssociation.__pulumiType, name, resourceInputs, opts);

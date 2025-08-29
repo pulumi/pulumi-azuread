@@ -79,49 +79,49 @@ export class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResour
     /**
      * The type of assignment to the group. Can be either `member` or `owner`.
      */
-    public readonly assignmentType!: pulumi.Output<string>;
+    declare public readonly assignmentType: pulumi.Output<string>;
     /**
      * The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).
      */
-    public readonly duration!: pulumi.Output<string | undefined>;
+    declare public readonly duration: pulumi.Output<string | undefined>;
     /**
      * The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).
      */
-    public readonly expirationDate!: pulumi.Output<string>;
+    declare public readonly expirationDate: pulumi.Output<string>;
     /**
      * The Object ID of the Azure AD group to which the principal will be assigned.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The justification for this assignment. May be required by the role policy.
      */
-    public readonly justification!: pulumi.Output<string | undefined>;
+    declare public readonly justification: pulumi.Output<string | undefined>;
     /**
      * Is this assigment permanently valid.
      *
      * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      */
-    public readonly permanentAssignment!: pulumi.Output<boolean>;
+    declare public readonly permanentAssignment: pulumi.Output<boolean>;
     /**
      * The Object ID of the principal to be assigned to the above group. Can be either a user or a group.
      */
-    public readonly principalId!: pulumi.Output<string>;
+    declare public readonly principalId: pulumi.Output<string>;
     /**
      * The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.
      */
-    public readonly startDate!: pulumi.Output<string>;
+    declare public readonly startDate: pulumi.Output<string>;
     /**
      * (String) The provisioning status of this request.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ticket number in the ticket system approving this assignment. May be required by the role policy.
      */
-    public readonly ticketNumber!: pulumi.Output<string | undefined>;
+    declare public readonly ticketNumber: pulumi.Output<string | undefined>;
     /**
      * The ticket system containing the ticket number approving this assignment. May be required by the role policy.
      */
-    public readonly ticketSystem!: pulumi.Output<string | undefined>;
+    declare public readonly ticketSystem: pulumi.Output<string | undefined>;
 
     /**
      * Create a PrivilegedAccessGroupAssignmentSchedule resource with the given unique name, arguments, and options.
@@ -136,38 +136,38 @@ export class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResour
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrivilegedAccessGroupAssignmentScheduleState | undefined;
-            resourceInputs["assignmentType"] = state ? state.assignmentType : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["expirationDate"] = state ? state.expirationDate : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["justification"] = state ? state.justification : undefined;
-            resourceInputs["permanentAssignment"] = state ? state.permanentAssignment : undefined;
-            resourceInputs["principalId"] = state ? state.principalId : undefined;
-            resourceInputs["startDate"] = state ? state.startDate : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["ticketNumber"] = state ? state.ticketNumber : undefined;
-            resourceInputs["ticketSystem"] = state ? state.ticketSystem : undefined;
+            resourceInputs["assignmentType"] = state?.assignmentType;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["expirationDate"] = state?.expirationDate;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["justification"] = state?.justification;
+            resourceInputs["permanentAssignment"] = state?.permanentAssignment;
+            resourceInputs["principalId"] = state?.principalId;
+            resourceInputs["startDate"] = state?.startDate;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["ticketNumber"] = state?.ticketNumber;
+            resourceInputs["ticketSystem"] = state?.ticketSystem;
         } else {
             const args = argsOrState as PrivilegedAccessGroupAssignmentScheduleArgs | undefined;
-            if ((!args || args.assignmentType === undefined) && !opts.urn) {
+            if (args?.assignmentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'assignmentType'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.principalId === undefined) && !opts.urn) {
+            if (args?.principalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalId'");
             }
-            resourceInputs["assignmentType"] = args ? args.assignmentType : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["expirationDate"] = args ? args.expirationDate : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["justification"] = args ? args.justification : undefined;
-            resourceInputs["permanentAssignment"] = args ? args.permanentAssignment : undefined;
-            resourceInputs["principalId"] = args ? args.principalId : undefined;
-            resourceInputs["startDate"] = args ? args.startDate : undefined;
-            resourceInputs["ticketNumber"] = args ? args.ticketNumber : undefined;
-            resourceInputs["ticketSystem"] = args ? args.ticketSystem : undefined;
+            resourceInputs["assignmentType"] = args?.assignmentType;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["expirationDate"] = args?.expirationDate;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["justification"] = args?.justification;
+            resourceInputs["permanentAssignment"] = args?.permanentAssignment;
+            resourceInputs["principalId"] = args?.principalId;
+            resourceInputs["startDate"] = args?.startDate;
+            resourceInputs["ticketNumber"] = args?.ticketNumber;
+            resourceInputs["ticketSystem"] = args?.ticketSystem;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

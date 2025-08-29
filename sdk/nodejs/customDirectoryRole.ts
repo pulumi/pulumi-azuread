@@ -86,31 +86,31 @@ export class CustomDirectoryRole extends pulumi.CustomResource {
     /**
      * The description of the custom directory role.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The display name of the custom directory role.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Indicates whether the role is enabled for assignment.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The object ID of the custom directory role.
      */
-    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly objectId: pulumi.Output<string>;
     /**
      * A collection of `permissions` blocks as documented below.
      */
-    public readonly permissions!: pulumi.Output<outputs.CustomDirectoryRolePermission[]>;
+    declare public readonly permissions: pulumi.Output<outputs.CustomDirectoryRolePermission[]>;
     /**
      * Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
      */
-    public readonly templateId!: pulumi.Output<string>;
+    declare public readonly templateId: pulumi.Output<string>;
     /**
      * The version of the role definition. This can be any arbitrary string between 1-128 characters.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a CustomDirectoryRole resource with the given unique name, arguments, and options.
@@ -125,33 +125,33 @@ export class CustomDirectoryRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomDirectoryRoleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as CustomDirectoryRoleArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.permissions === undefined) && !opts.urn) {
+            if (args?.permissions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["permissions"] = args ? args.permissions : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["permissions"] = args?.permissions;
+            resourceInputs["templateId"] = args?.templateId;
+            resourceInputs["version"] = args?.version;
             resourceInputs["objectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

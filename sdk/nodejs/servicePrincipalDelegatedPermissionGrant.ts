@@ -139,21 +139,21 @@ export class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResou
     /**
      * A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
      */
-    public readonly claimValues!: pulumi.Output<string[]>;
+    declare public readonly claimValues: pulumi.Output<string[]>;
     /**
      * The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
      */
-    public readonly resourceServicePrincipalObjectId!: pulumi.Output<string>;
+    declare public readonly resourceServicePrincipalObjectId: pulumi.Output<string>;
     /**
      * The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
      */
-    public readonly servicePrincipalObjectId!: pulumi.Output<string>;
+    declare public readonly servicePrincipalObjectId: pulumi.Output<string>;
     /**
      * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      *
      * > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
      */
-    public readonly userObjectId!: pulumi.Output<string | undefined>;
+    declare public readonly userObjectId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServicePrincipalDelegatedPermissionGrant resource with the given unique name, arguments, and options.
@@ -168,25 +168,25 @@ export class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResou
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalDelegatedPermissionGrantState | undefined;
-            resourceInputs["claimValues"] = state ? state.claimValues : undefined;
-            resourceInputs["resourceServicePrincipalObjectId"] = state ? state.resourceServicePrincipalObjectId : undefined;
-            resourceInputs["servicePrincipalObjectId"] = state ? state.servicePrincipalObjectId : undefined;
-            resourceInputs["userObjectId"] = state ? state.userObjectId : undefined;
+            resourceInputs["claimValues"] = state?.claimValues;
+            resourceInputs["resourceServicePrincipalObjectId"] = state?.resourceServicePrincipalObjectId;
+            resourceInputs["servicePrincipalObjectId"] = state?.servicePrincipalObjectId;
+            resourceInputs["userObjectId"] = state?.userObjectId;
         } else {
             const args = argsOrState as ServicePrincipalDelegatedPermissionGrantArgs | undefined;
-            if ((!args || args.claimValues === undefined) && !opts.urn) {
+            if (args?.claimValues === undefined && !opts.urn) {
                 throw new Error("Missing required property 'claimValues'");
             }
-            if ((!args || args.resourceServicePrincipalObjectId === undefined) && !opts.urn) {
+            if (args?.resourceServicePrincipalObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceServicePrincipalObjectId'");
             }
-            if ((!args || args.servicePrincipalObjectId === undefined) && !opts.urn) {
+            if (args?.servicePrincipalObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalObjectId'");
             }
-            resourceInputs["claimValues"] = args ? args.claimValues : undefined;
-            resourceInputs["resourceServicePrincipalObjectId"] = args ? args.resourceServicePrincipalObjectId : undefined;
-            resourceInputs["servicePrincipalObjectId"] = args ? args.servicePrincipalObjectId : undefined;
-            resourceInputs["userObjectId"] = args ? args.userObjectId : undefined;
+            resourceInputs["claimValues"] = args?.claimValues;
+            resourceInputs["resourceServicePrincipalObjectId"] = args?.resourceServicePrincipalObjectId;
+            resourceInputs["servicePrincipalObjectId"] = args?.servicePrincipalObjectId;
+            resourceInputs["userObjectId"] = args?.userObjectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServicePrincipalDelegatedPermissionGrant.__pulumiType, name, resourceInputs, opts);

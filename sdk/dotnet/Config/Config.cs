@@ -54,8 +54,7 @@ namespace Pulumi.AzureAD
 
         private static readonly __Value<string?> _clientCertificatePassword = new __Value<string?>(() => __config.Get("clientCertificatePassword"));
         /// <summary>
-        /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-        /// Certificate
+        /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
         /// </summary>
         public static string? ClientCertificatePassword
         {
@@ -65,8 +64,7 @@ namespace Pulumi.AzureAD
 
         private static readonly __Value<string?> _clientCertificatePath = new __Value<string?>(() => __config.Get("clientCertificatePath"));
         /// <summary>
-        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-        /// Principal using a Client Certificate
+        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
         /// </summary>
         public static string? ClientCertificatePath
         {
@@ -106,8 +104,7 @@ namespace Pulumi.AzureAD
 
         private static readonly __Value<string?> _clientSecretFilePath = new __Value<string?>(() => __config.Get("clientSecretFilePath"));
         /// <summary>
-        /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-        /// Secret
+        /// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
         /// </summary>
         public static string? ClientSecretFilePath
         {
@@ -124,9 +121,7 @@ namespace Pulumi.AzureAD
 
         private static readonly __Value<string?> _environment = new __Value<string?>(() => __config.Get("environment") ?? Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public");
         /// <summary>
-        /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-        /// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-        /// when `metadata_host` is specified.
+        /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
         /// </summary>
         public static string? Environment
         {
@@ -156,8 +151,7 @@ namespace Pulumi.AzureAD
 
         private static readonly __Value<string?> _oidcRequestToken = new __Value<string?>(() => __config.Get("oidcRequestToken"));
         /// <summary>
-        /// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-        /// Connect.
+        /// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
         /// </summary>
         public static string? OidcRequestToken
         {
@@ -167,8 +161,7 @@ namespace Pulumi.AzureAD
 
         private static readonly __Value<string?> _oidcRequestUrl = new __Value<string?>(() => __config.Get("oidcRequestUrl"));
         /// <summary>
-        /// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-        /// using OpenID Connect.
+        /// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
         /// </summary>
         public static string? OidcRequestUrl
         {

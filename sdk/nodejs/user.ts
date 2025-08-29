@@ -68,200 +68,199 @@ export class User extends pulumi.CustomResource {
     /**
      * A freeform field for the user to describe themselves
      */
-    public /*out*/ readonly aboutMe!: pulumi.Output<string>;
+    declare public /*out*/ readonly aboutMe: pulumi.Output<string>;
     /**
      * Whether or not the account should be enabled.
      */
-    public readonly accountEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly accountEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
      */
-    public readonly ageGroup!: pulumi.Output<string | undefined>;
+    declare public readonly ageGroup: pulumi.Output<string | undefined>;
     /**
      * A list of telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure AD Connect.
      */
-    public readonly businessPhones!: pulumi.Output<string[]>;
+    declare public readonly businessPhones: pulumi.Output<string[]>;
     /**
      * The city in which the user is located.
      */
-    public readonly city!: pulumi.Output<string | undefined>;
+    declare public readonly city: pulumi.Output<string | undefined>;
     /**
      * The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
      */
-    public readonly companyName!: pulumi.Output<string | undefined>;
+    declare public readonly companyName: pulumi.Output<string | undefined>;
     /**
      * Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
      */
-    public readonly consentProvidedForMinor!: pulumi.Output<string | undefined>;
+    declare public readonly consentProvidedForMinor: pulumi.Output<string | undefined>;
     /**
      * The cost center associated with the user.
      */
-    public readonly costCenter!: pulumi.Output<string | undefined>;
+    declare public readonly costCenter: pulumi.Output<string | undefined>;
     /**
      * The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
      */
-    public readonly country!: pulumi.Output<string | undefined>;
+    declare public readonly country: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
      */
-    public /*out*/ readonly creationType!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationType: pulumi.Output<string>;
     /**
      * The name for the department in which the user works.
      */
-    public readonly department!: pulumi.Output<string | undefined>;
+    declare public readonly department: pulumi.Output<string | undefined>;
     /**
      * Whether the user's password is exempt from expiring. Defaults to `false`.
      */
-    public readonly disablePasswordExpiration!: pulumi.Output<boolean | undefined>;
+    declare public readonly disablePasswordExpiration: pulumi.Output<boolean | undefined>;
     /**
      * Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
      */
-    public readonly disableStrongPassword!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableStrongPassword: pulumi.Output<boolean | undefined>;
     /**
      * The name to display in the address book for the user.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The name of the division in which the user works.
      */
-    public readonly division!: pulumi.Output<string | undefined>;
+    declare public readonly division: pulumi.Output<string | undefined>;
     /**
      * The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
      */
-    public readonly employeeHireDate!: pulumi.Output<string | undefined>;
+    declare public readonly employeeHireDate: pulumi.Output<string | undefined>;
     /**
      * The employee identifier assigned to the user by the organisation.
      */
-    public readonly employeeId!: pulumi.Output<string | undefined>;
+    declare public readonly employeeId: pulumi.Output<string | undefined>;
     /**
      * Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
      */
-    public readonly employeeType!: pulumi.Output<string | undefined>;
+    declare public readonly employeeType: pulumi.Output<string | undefined>;
     /**
      * For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
      */
-    public /*out*/ readonly externalUserState!: pulumi.Output<string>;
+    declare public /*out*/ readonly externalUserState: pulumi.Output<string>;
     /**
      * The fax number of the user.
      */
-    public readonly faxNumber!: pulumi.Output<string | undefined>;
+    declare public readonly faxNumber: pulumi.Output<string | undefined>;
     /**
      * Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
      */
-    public readonly forcePasswordChange!: pulumi.Output<boolean | undefined>;
+    declare public readonly forcePasswordChange: pulumi.Output<boolean | undefined>;
     /**
      * The given name (first name) of the user.
      */
-    public readonly givenName!: pulumi.Output<string | undefined>;
+    declare public readonly givenName: pulumi.Output<string | undefined>;
     /**
      * A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
      */
-    public /*out*/ readonly imAddresses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly imAddresses: pulumi.Output<string[]>;
     /**
      * The user’s job title.
      */
-    public readonly jobTitle!: pulumi.Output<string | undefined>;
+    declare public readonly jobTitle: pulumi.Output<string | undefined>;
     /**
      * The SMTP address for the user. This property cannot be unset once specified.
      */
-    public readonly mail!: pulumi.Output<string>;
+    declare public readonly mail: pulumi.Output<string>;
     /**
      * The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
      */
-    public readonly mailNickname!: pulumi.Output<string>;
+    declare public readonly mailNickname: pulumi.Output<string>;
     /**
      * The object ID of the user's manager.
      */
-    public readonly managerId!: pulumi.Output<string | undefined>;
+    declare public readonly managerId: pulumi.Output<string | undefined>;
     /**
      * The primary cellular telephone number for the user.
      */
-    public readonly mobilePhone!: pulumi.Output<string | undefined>;
+    declare public readonly mobilePhone: pulumi.Output<string | undefined>;
     /**
      * The object ID of the user.
      */
-    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly objectId: pulumi.Output<string>;
     /**
      * The office location in the user's place of business.
      */
-    public readonly officeLocation!: pulumi.Output<string | undefined>;
+    declare public readonly officeLocation: pulumi.Output<string | undefined>;
     /**
      * The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
      */
-    public /*out*/ readonly onpremisesDistinguishedName!: pulumi.Output<string>;
+    declare public /*out*/ readonly onpremisesDistinguishedName: pulumi.Output<string>;
     /**
      * The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
      */
-    public /*out*/ readonly onpremisesDomainName!: pulumi.Output<string>;
+    declare public /*out*/ readonly onpremisesDomainName: pulumi.Output<string>;
     /**
      * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
      */
-    public readonly onpremisesImmutableId!: pulumi.Output<string>;
+    declare public readonly onpremisesImmutableId: pulumi.Output<string>;
     /**
      * The on-premise SAM account name of the user.
      */
-    public /*out*/ readonly onpremisesSamAccountName!: pulumi.Output<string>;
+    declare public /*out*/ readonly onpremisesSamAccountName: pulumi.Output<string>;
     /**
      * The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
      */
-    public /*out*/ readonly onpremisesSecurityIdentifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly onpremisesSecurityIdentifier: pulumi.Output<string>;
     /**
      * Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
      */
-    public /*out*/ readonly onpremisesSyncEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly onpremisesSyncEnabled: pulumi.Output<boolean>;
     /**
      * The on-premise user principal name of the user.
      */
-    public /*out*/ readonly onpremisesUserPrincipalName!: pulumi.Output<string>;
+    declare public /*out*/ readonly onpremisesUserPrincipalName: pulumi.Output<string>;
     /**
      * A list of additional email addresses for the user.
      */
-    public readonly otherMails!: pulumi.Output<string[] | undefined>;
+    declare public readonly otherMails: pulumi.Output<string[] | undefined>;
     /**
-     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
-     * maximum length is 256 characters. This property is required when creating a new user
+     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
      */
-    public readonly postalCode!: pulumi.Output<string | undefined>;
+    declare public readonly postalCode: pulumi.Output<string | undefined>;
     /**
      * The user's preferred language, in ISO 639-1 notation.
      */
-    public readonly preferredLanguage!: pulumi.Output<string | undefined>;
+    declare public readonly preferredLanguage: pulumi.Output<string | undefined>;
     /**
      * List of email addresses for the user that direct to the same mailbox.
      */
-    public /*out*/ readonly proxyAddresses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly proxyAddresses: pulumi.Output<string[]>;
     /**
      * Whether or not the Outlook global address list should include this user. Defaults to `true`.
      */
-    public readonly showInAddressList!: pulumi.Output<boolean | undefined>;
+    declare public readonly showInAddressList: pulumi.Output<boolean | undefined>;
     /**
      * The state or province in the user's address.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * The street address of the user's place of business.
      */
-    public readonly streetAddress!: pulumi.Output<string | undefined>;
+    declare public readonly streetAddress: pulumi.Output<string | undefined>;
     /**
      * The user's surname (family name or last name).
      */
-    public readonly surname!: pulumi.Output<string | undefined>;
+    declare public readonly surname: pulumi.Output<string | undefined>;
     /**
      * The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
      */
-    public readonly usageLocation!: pulumi.Output<string | undefined>;
+    declare public readonly usageLocation: pulumi.Output<string | undefined>;
     /**
      * The user principal name (UPN) of the user.
      */
-    public readonly userPrincipalName!: pulumi.Output<string>;
+    declare public readonly userPrincipalName: pulumi.Output<string>;
     /**
      * The user type in the directory. Possible values are `Guest` or `Member`.
      */
-    public /*out*/ readonly userType!: pulumi.Output<string>;
+    declare public /*out*/ readonly userType: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -276,99 +275,99 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["aboutMe"] = state ? state.aboutMe : undefined;
-            resourceInputs["accountEnabled"] = state ? state.accountEnabled : undefined;
-            resourceInputs["ageGroup"] = state ? state.ageGroup : undefined;
-            resourceInputs["businessPhones"] = state ? state.businessPhones : undefined;
-            resourceInputs["city"] = state ? state.city : undefined;
-            resourceInputs["companyName"] = state ? state.companyName : undefined;
-            resourceInputs["consentProvidedForMinor"] = state ? state.consentProvidedForMinor : undefined;
-            resourceInputs["costCenter"] = state ? state.costCenter : undefined;
-            resourceInputs["country"] = state ? state.country : undefined;
-            resourceInputs["creationType"] = state ? state.creationType : undefined;
-            resourceInputs["department"] = state ? state.department : undefined;
-            resourceInputs["disablePasswordExpiration"] = state ? state.disablePasswordExpiration : undefined;
-            resourceInputs["disableStrongPassword"] = state ? state.disableStrongPassword : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["division"] = state ? state.division : undefined;
-            resourceInputs["employeeHireDate"] = state ? state.employeeHireDate : undefined;
-            resourceInputs["employeeId"] = state ? state.employeeId : undefined;
-            resourceInputs["employeeType"] = state ? state.employeeType : undefined;
-            resourceInputs["externalUserState"] = state ? state.externalUserState : undefined;
-            resourceInputs["faxNumber"] = state ? state.faxNumber : undefined;
-            resourceInputs["forcePasswordChange"] = state ? state.forcePasswordChange : undefined;
-            resourceInputs["givenName"] = state ? state.givenName : undefined;
-            resourceInputs["imAddresses"] = state ? state.imAddresses : undefined;
-            resourceInputs["jobTitle"] = state ? state.jobTitle : undefined;
-            resourceInputs["mail"] = state ? state.mail : undefined;
-            resourceInputs["mailNickname"] = state ? state.mailNickname : undefined;
-            resourceInputs["managerId"] = state ? state.managerId : undefined;
-            resourceInputs["mobilePhone"] = state ? state.mobilePhone : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["officeLocation"] = state ? state.officeLocation : undefined;
-            resourceInputs["onpremisesDistinguishedName"] = state ? state.onpremisesDistinguishedName : undefined;
-            resourceInputs["onpremisesDomainName"] = state ? state.onpremisesDomainName : undefined;
-            resourceInputs["onpremisesImmutableId"] = state ? state.onpremisesImmutableId : undefined;
-            resourceInputs["onpremisesSamAccountName"] = state ? state.onpremisesSamAccountName : undefined;
-            resourceInputs["onpremisesSecurityIdentifier"] = state ? state.onpremisesSecurityIdentifier : undefined;
-            resourceInputs["onpremisesSyncEnabled"] = state ? state.onpremisesSyncEnabled : undefined;
-            resourceInputs["onpremisesUserPrincipalName"] = state ? state.onpremisesUserPrincipalName : undefined;
-            resourceInputs["otherMails"] = state ? state.otherMails : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["postalCode"] = state ? state.postalCode : undefined;
-            resourceInputs["preferredLanguage"] = state ? state.preferredLanguage : undefined;
-            resourceInputs["proxyAddresses"] = state ? state.proxyAddresses : undefined;
-            resourceInputs["showInAddressList"] = state ? state.showInAddressList : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["streetAddress"] = state ? state.streetAddress : undefined;
-            resourceInputs["surname"] = state ? state.surname : undefined;
-            resourceInputs["usageLocation"] = state ? state.usageLocation : undefined;
-            resourceInputs["userPrincipalName"] = state ? state.userPrincipalName : undefined;
-            resourceInputs["userType"] = state ? state.userType : undefined;
+            resourceInputs["aboutMe"] = state?.aboutMe;
+            resourceInputs["accountEnabled"] = state?.accountEnabled;
+            resourceInputs["ageGroup"] = state?.ageGroup;
+            resourceInputs["businessPhones"] = state?.businessPhones;
+            resourceInputs["city"] = state?.city;
+            resourceInputs["companyName"] = state?.companyName;
+            resourceInputs["consentProvidedForMinor"] = state?.consentProvidedForMinor;
+            resourceInputs["costCenter"] = state?.costCenter;
+            resourceInputs["country"] = state?.country;
+            resourceInputs["creationType"] = state?.creationType;
+            resourceInputs["department"] = state?.department;
+            resourceInputs["disablePasswordExpiration"] = state?.disablePasswordExpiration;
+            resourceInputs["disableStrongPassword"] = state?.disableStrongPassword;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["division"] = state?.division;
+            resourceInputs["employeeHireDate"] = state?.employeeHireDate;
+            resourceInputs["employeeId"] = state?.employeeId;
+            resourceInputs["employeeType"] = state?.employeeType;
+            resourceInputs["externalUserState"] = state?.externalUserState;
+            resourceInputs["faxNumber"] = state?.faxNumber;
+            resourceInputs["forcePasswordChange"] = state?.forcePasswordChange;
+            resourceInputs["givenName"] = state?.givenName;
+            resourceInputs["imAddresses"] = state?.imAddresses;
+            resourceInputs["jobTitle"] = state?.jobTitle;
+            resourceInputs["mail"] = state?.mail;
+            resourceInputs["mailNickname"] = state?.mailNickname;
+            resourceInputs["managerId"] = state?.managerId;
+            resourceInputs["mobilePhone"] = state?.mobilePhone;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["officeLocation"] = state?.officeLocation;
+            resourceInputs["onpremisesDistinguishedName"] = state?.onpremisesDistinguishedName;
+            resourceInputs["onpremisesDomainName"] = state?.onpremisesDomainName;
+            resourceInputs["onpremisesImmutableId"] = state?.onpremisesImmutableId;
+            resourceInputs["onpremisesSamAccountName"] = state?.onpremisesSamAccountName;
+            resourceInputs["onpremisesSecurityIdentifier"] = state?.onpremisesSecurityIdentifier;
+            resourceInputs["onpremisesSyncEnabled"] = state?.onpremisesSyncEnabled;
+            resourceInputs["onpremisesUserPrincipalName"] = state?.onpremisesUserPrincipalName;
+            resourceInputs["otherMails"] = state?.otherMails;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["postalCode"] = state?.postalCode;
+            resourceInputs["preferredLanguage"] = state?.preferredLanguage;
+            resourceInputs["proxyAddresses"] = state?.proxyAddresses;
+            resourceInputs["showInAddressList"] = state?.showInAddressList;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["streetAddress"] = state?.streetAddress;
+            resourceInputs["surname"] = state?.surname;
+            resourceInputs["usageLocation"] = state?.usageLocation;
+            resourceInputs["userPrincipalName"] = state?.userPrincipalName;
+            resourceInputs["userType"] = state?.userType;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.userPrincipalName === undefined) && !opts.urn) {
+            if (args?.userPrincipalName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userPrincipalName'");
             }
-            resourceInputs["accountEnabled"] = args ? args.accountEnabled : undefined;
-            resourceInputs["ageGroup"] = args ? args.ageGroup : undefined;
-            resourceInputs["businessPhones"] = args ? args.businessPhones : undefined;
-            resourceInputs["city"] = args ? args.city : undefined;
-            resourceInputs["companyName"] = args ? args.companyName : undefined;
-            resourceInputs["consentProvidedForMinor"] = args ? args.consentProvidedForMinor : undefined;
-            resourceInputs["costCenter"] = args ? args.costCenter : undefined;
-            resourceInputs["country"] = args ? args.country : undefined;
-            resourceInputs["department"] = args ? args.department : undefined;
-            resourceInputs["disablePasswordExpiration"] = args ? args.disablePasswordExpiration : undefined;
-            resourceInputs["disableStrongPassword"] = args ? args.disableStrongPassword : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["division"] = args ? args.division : undefined;
-            resourceInputs["employeeHireDate"] = args ? args.employeeHireDate : undefined;
-            resourceInputs["employeeId"] = args ? args.employeeId : undefined;
-            resourceInputs["employeeType"] = args ? args.employeeType : undefined;
-            resourceInputs["faxNumber"] = args ? args.faxNumber : undefined;
-            resourceInputs["forcePasswordChange"] = args ? args.forcePasswordChange : undefined;
-            resourceInputs["givenName"] = args ? args.givenName : undefined;
-            resourceInputs["jobTitle"] = args ? args.jobTitle : undefined;
-            resourceInputs["mail"] = args ? args.mail : undefined;
-            resourceInputs["mailNickname"] = args ? args.mailNickname : undefined;
-            resourceInputs["managerId"] = args ? args.managerId : undefined;
-            resourceInputs["mobilePhone"] = args ? args.mobilePhone : undefined;
-            resourceInputs["officeLocation"] = args ? args.officeLocation : undefined;
-            resourceInputs["onpremisesImmutableId"] = args ? args.onpremisesImmutableId : undefined;
-            resourceInputs["otherMails"] = args ? args.otherMails : undefined;
+            resourceInputs["accountEnabled"] = args?.accountEnabled;
+            resourceInputs["ageGroup"] = args?.ageGroup;
+            resourceInputs["businessPhones"] = args?.businessPhones;
+            resourceInputs["city"] = args?.city;
+            resourceInputs["companyName"] = args?.companyName;
+            resourceInputs["consentProvidedForMinor"] = args?.consentProvidedForMinor;
+            resourceInputs["costCenter"] = args?.costCenter;
+            resourceInputs["country"] = args?.country;
+            resourceInputs["department"] = args?.department;
+            resourceInputs["disablePasswordExpiration"] = args?.disablePasswordExpiration;
+            resourceInputs["disableStrongPassword"] = args?.disableStrongPassword;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["division"] = args?.division;
+            resourceInputs["employeeHireDate"] = args?.employeeHireDate;
+            resourceInputs["employeeId"] = args?.employeeId;
+            resourceInputs["employeeType"] = args?.employeeType;
+            resourceInputs["faxNumber"] = args?.faxNumber;
+            resourceInputs["forcePasswordChange"] = args?.forcePasswordChange;
+            resourceInputs["givenName"] = args?.givenName;
+            resourceInputs["jobTitle"] = args?.jobTitle;
+            resourceInputs["mail"] = args?.mail;
+            resourceInputs["mailNickname"] = args?.mailNickname;
+            resourceInputs["managerId"] = args?.managerId;
+            resourceInputs["mobilePhone"] = args?.mobilePhone;
+            resourceInputs["officeLocation"] = args?.officeLocation;
+            resourceInputs["onpremisesImmutableId"] = args?.onpremisesImmutableId;
+            resourceInputs["otherMails"] = args?.otherMails;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["postalCode"] = args ? args.postalCode : undefined;
-            resourceInputs["preferredLanguage"] = args ? args.preferredLanguage : undefined;
-            resourceInputs["showInAddressList"] = args ? args.showInAddressList : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["streetAddress"] = args ? args.streetAddress : undefined;
-            resourceInputs["surname"] = args ? args.surname : undefined;
-            resourceInputs["usageLocation"] = args ? args.usageLocation : undefined;
-            resourceInputs["userPrincipalName"] = args ? args.userPrincipalName : undefined;
+            resourceInputs["postalCode"] = args?.postalCode;
+            resourceInputs["preferredLanguage"] = args?.preferredLanguage;
+            resourceInputs["showInAddressList"] = args?.showInAddressList;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["streetAddress"] = args?.streetAddress;
+            resourceInputs["surname"] = args?.surname;
+            resourceInputs["usageLocation"] = args?.usageLocation;
+            resourceInputs["userPrincipalName"] = args?.userPrincipalName;
             resourceInputs["aboutMe"] = undefined /*out*/;
             resourceInputs["creationType"] = undefined /*out*/;
             resourceInputs["externalUserState"] = undefined /*out*/;
@@ -547,8 +546,7 @@ export interface UserState {
      */
     otherMails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
-     * maximum length is 256 characters. This property is required when creating a new user
+     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
      */
     password?: pulumi.Input<string>;
     /**
@@ -706,8 +704,7 @@ export interface UserArgs {
      */
     otherMails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
-     * maximum length is 256 characters. This property is required when creating a new user
+     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
      */
     password?: pulumi.Input<string>;
     /**

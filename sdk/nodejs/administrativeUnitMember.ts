@@ -72,13 +72,13 @@ export class AdministrativeUnitMember extends pulumi.CustomResource {
     /**
      * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
      */
-    public readonly administrativeUnitObjectId!: pulumi.Output<string | undefined>;
+    declare public readonly administrativeUnitObjectId: pulumi.Output<string | undefined>;
     /**
      * The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
      *
      * > **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      */
-    public readonly memberObjectId!: pulumi.Output<string | undefined>;
+    declare public readonly memberObjectId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AdministrativeUnitMember resource with the given unique name, arguments, and options.
@@ -93,12 +93,12 @@ export class AdministrativeUnitMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AdministrativeUnitMemberState | undefined;
-            resourceInputs["administrativeUnitObjectId"] = state ? state.administrativeUnitObjectId : undefined;
-            resourceInputs["memberObjectId"] = state ? state.memberObjectId : undefined;
+            resourceInputs["administrativeUnitObjectId"] = state?.administrativeUnitObjectId;
+            resourceInputs["memberObjectId"] = state?.memberObjectId;
         } else {
             const args = argsOrState as AdministrativeUnitMemberArgs | undefined;
-            resourceInputs["administrativeUnitObjectId"] = args ? args.administrativeUnitObjectId : undefined;
-            resourceInputs["memberObjectId"] = args ? args.memberObjectId : undefined;
+            resourceInputs["administrativeUnitObjectId"] = args?.administrativeUnitObjectId;
+            resourceInputs["memberObjectId"] = args?.memberObjectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AdministrativeUnitMember.__pulumiType, name, resourceInputs, opts);

@@ -45,24 +45,17 @@ class ProviderArgs:
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[_builtins.str] ado_pipeline_service_connection_id: The Azure DevOps Pipeline Service Connection ID.
         :param pulumi.Input[_builtins.str] client_certificate: Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
-        :param pulumi.Input[_builtins.str] client_certificate_password: The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-               Certificate
-        :param pulumi.Input[_builtins.str] client_certificate_path: The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-               Principal using a Client Certificate
+        :param pulumi.Input[_builtins.str] client_certificate_password: The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
+        :param pulumi.Input[_builtins.str] client_certificate_path: The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
         :param pulumi.Input[_builtins.str] client_id: The Client ID which should be used for service principal authentication
         :param pulumi.Input[_builtins.str] client_id_file_path: The path to a file containing the Client ID which should be used for service principal authentication
         :param pulumi.Input[_builtins.str] client_secret: The application password to use when authenticating as a Service Principal using a Client Secret
-        :param pulumi.Input[_builtins.str] client_secret_file_path: The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-               Secret
-        :param pulumi.Input[_builtins.str] environment: The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-               `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-               when `metadata_host` is specified.
+        :param pulumi.Input[_builtins.str] client_secret_file_path: The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
+        :param pulumi.Input[_builtins.str] environment: The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
         :param pulumi.Input[_builtins.str] metadata_host: The Hostname which should be used for the Azure Metadata Service.
         :param pulumi.Input[_builtins.str] msi_endpoint: The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
-        :param pulumi.Input[_builtins.str] oidc_request_token: The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-               Connect.
-        :param pulumi.Input[_builtins.str] oidc_request_url: The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-               using OpenID Connect.
+        :param pulumi.Input[_builtins.str] oidc_request_token: The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
+        :param pulumi.Input[_builtins.str] oidc_request_url: The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
         :param pulumi.Input[_builtins.str] oidc_token: The ID token for use when authenticating as a Service Principal using OpenID Connect.
         :param pulumi.Input[_builtins.str] oidc_token_file_path: The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.
         :param pulumi.Input[_builtins.str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
@@ -151,8 +144,7 @@ class ProviderArgs:
     @pulumi.getter(name="clientCertificatePassword")
     def client_certificate_password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-        Certificate
+        The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
         """
         return pulumi.get(self, "client_certificate_password")
 
@@ -164,8 +156,7 @@ class ProviderArgs:
     @pulumi.getter(name="clientCertificatePath")
     def client_certificate_path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-        Principal using a Client Certificate
+        The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
         """
         return pulumi.get(self, "client_certificate_path")
 
@@ -213,8 +204,7 @@ class ProviderArgs:
     @pulumi.getter(name="clientSecretFilePath")
     def client_secret_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-        Secret
+        The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
         """
         return pulumi.get(self, "client_secret_file_path")
 
@@ -235,9 +225,7 @@ class ProviderArgs:
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-        `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-        when `metadata_host` is specified.
+        The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
         """
         return pulumi.get(self, "environment")
 
@@ -273,8 +261,7 @@ class ProviderArgs:
     @pulumi.getter(name="oidcRequestToken")
     def oidc_request_token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-        Connect.
+        The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
         """
         return pulumi.get(self, "oidc_request_token")
 
@@ -286,8 +273,7 @@ class ProviderArgs:
     @pulumi.getter(name="oidcRequestUrl")
     def oidc_request_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-        using OpenID Connect.
+        The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
         """
         return pulumi.get(self, "oidc_request_url")
 
@@ -431,24 +417,17 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ado_pipeline_service_connection_id: The Azure DevOps Pipeline Service Connection ID.
         :param pulumi.Input[_builtins.str] client_certificate: Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
-        :param pulumi.Input[_builtins.str] client_certificate_password: The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-               Certificate
-        :param pulumi.Input[_builtins.str] client_certificate_path: The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-               Principal using a Client Certificate
+        :param pulumi.Input[_builtins.str] client_certificate_password: The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
+        :param pulumi.Input[_builtins.str] client_certificate_path: The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
         :param pulumi.Input[_builtins.str] client_id: The Client ID which should be used for service principal authentication
         :param pulumi.Input[_builtins.str] client_id_file_path: The path to a file containing the Client ID which should be used for service principal authentication
         :param pulumi.Input[_builtins.str] client_secret: The application password to use when authenticating as a Service Principal using a Client Secret
-        :param pulumi.Input[_builtins.str] client_secret_file_path: The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-               Secret
-        :param pulumi.Input[_builtins.str] environment: The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-               `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-               when `metadata_host` is specified.
+        :param pulumi.Input[_builtins.str] client_secret_file_path: The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
+        :param pulumi.Input[_builtins.str] environment: The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
         :param pulumi.Input[_builtins.str] metadata_host: The Hostname which should be used for the Azure Metadata Service.
         :param pulumi.Input[_builtins.str] msi_endpoint: The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
-        :param pulumi.Input[_builtins.str] oidc_request_token: The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-               Connect.
-        :param pulumi.Input[_builtins.str] oidc_request_url: The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-               using OpenID Connect.
+        :param pulumi.Input[_builtins.str] oidc_request_token: The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
+        :param pulumi.Input[_builtins.str] oidc_request_url: The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
         :param pulumi.Input[_builtins.str] oidc_token: The ID token for use when authenticating as a Service Principal using OpenID Connect.
         :param pulumi.Input[_builtins.str] oidc_token_file_path: The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.
         :param pulumi.Input[_builtins.str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
@@ -572,8 +551,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="clientCertificatePassword")
     def client_certificate_password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-        Certificate
+        The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
         """
         return pulumi.get(self, "client_certificate_password")
 
@@ -581,8 +559,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="clientCertificatePath")
     def client_certificate_path(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-        Principal using a Client Certificate
+        The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
         """
         return pulumi.get(self, "client_certificate_path")
 
@@ -614,8 +591,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="clientSecretFilePath")
     def client_secret_file_path(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-        Secret
+        The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
         """
         return pulumi.get(self, "client_secret_file_path")
 
@@ -623,9 +599,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def environment(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-        `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-        when `metadata_host` is specified.
+        The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
         """
         return pulumi.get(self, "environment")
 
@@ -649,8 +623,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="oidcRequestToken")
     def oidc_request_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-        Connect.
+        The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
         """
         return pulumi.get(self, "oidc_request_token")
 
@@ -658,8 +631,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="oidcRequestUrl")
     def oidc_request_url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-        using OpenID Connect.
+        The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
         """
         return pulumi.get(self, "oidc_request_url")
 

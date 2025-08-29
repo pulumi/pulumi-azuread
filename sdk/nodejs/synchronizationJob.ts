@@ -94,19 +94,19 @@ export class SynchronizationJob extends pulumi.CustomResource {
     /**
      * Whether the provisioning job is enabled. Default state is `true`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * A `schedule` list as documented below.
      */
-    public /*out*/ readonly schedules!: pulumi.Output<outputs.SynchronizationJobSchedule[]>;
+    declare public /*out*/ readonly schedules: pulumi.Output<outputs.SynchronizationJobSchedule[]>;
     /**
      * The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
      */
-    public readonly servicePrincipalId!: pulumi.Output<string>;
+    declare public readonly servicePrincipalId: pulumi.Output<string>;
     /**
      * Identifier of the synchronization template this job is based on.
      */
-    public readonly templateId!: pulumi.Output<string>;
+    declare public readonly templateId: pulumi.Output<string>;
 
     /**
      * Create a SynchronizationJob resource with the given unique name, arguments, and options.
@@ -121,21 +121,21 @@ export class SynchronizationJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SynchronizationJobState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["schedules"] = state ? state.schedules : undefined;
-            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["schedules"] = state?.schedules;
+            resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
+            resourceInputs["templateId"] = state?.templateId;
         } else {
             const args = argsOrState as SynchronizationJobArgs | undefined;
-            if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
+            if (args?.servicePrincipalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            if ((!args || args.templateId === undefined) && !opts.urn) {
+            if (args?.templateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateId'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
+            resourceInputs["templateId"] = args?.templateId;
             resourceInputs["schedules"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

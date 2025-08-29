@@ -66,11 +66,11 @@ export class ServicePrincipalClaimsMappingPolicyAssignment extends pulumi.Custom
     /**
      * The ID of the claims mapping policy to assign.
      */
-    public readonly claimsMappingPolicyId!: pulumi.Output<string>;
+    declare public readonly claimsMappingPolicyId: pulumi.Output<string>;
     /**
      * The ID of the service principal for the policy assignment.
      */
-    public readonly servicePrincipalId!: pulumi.Output<string>;
+    declare public readonly servicePrincipalId: pulumi.Output<string>;
 
     /**
      * Create a ServicePrincipalClaimsMappingPolicyAssignment resource with the given unique name, arguments, and options.
@@ -85,18 +85,18 @@ export class ServicePrincipalClaimsMappingPolicyAssignment extends pulumi.Custom
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalClaimsMappingPolicyAssignmentState | undefined;
-            resourceInputs["claimsMappingPolicyId"] = state ? state.claimsMappingPolicyId : undefined;
-            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
+            resourceInputs["claimsMappingPolicyId"] = state?.claimsMappingPolicyId;
+            resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
         } else {
             const args = argsOrState as ServicePrincipalClaimsMappingPolicyAssignmentArgs | undefined;
-            if ((!args || args.claimsMappingPolicyId === undefined) && !opts.urn) {
+            if (args?.claimsMappingPolicyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'claimsMappingPolicyId'");
             }
-            if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
+            if (args?.servicePrincipalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            resourceInputs["claimsMappingPolicyId"] = args ? args.claimsMappingPolicyId : undefined;
-            resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
+            resourceInputs["claimsMappingPolicyId"] = args?.claimsMappingPolicyId;
+            resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServicePrincipalClaimsMappingPolicyAssignment.__pulumiType, name, resourceInputs, opts);
