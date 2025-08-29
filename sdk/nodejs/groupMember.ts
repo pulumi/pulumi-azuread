@@ -79,11 +79,11 @@ export class GroupMember extends pulumi.CustomResource {
     /**
      * The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
      */
-    public readonly groupObjectId!: pulumi.Output<string>;
+    declare public readonly groupObjectId: pulumi.Output<string>;
     /**
      * The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
-    public readonly memberObjectId!: pulumi.Output<string>;
+    declare public readonly memberObjectId: pulumi.Output<string>;
 
     /**
      * Create a GroupMember resource with the given unique name, arguments, and options.
@@ -98,18 +98,18 @@ export class GroupMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupMemberState | undefined;
-            resourceInputs["groupObjectId"] = state ? state.groupObjectId : undefined;
-            resourceInputs["memberObjectId"] = state ? state.memberObjectId : undefined;
+            resourceInputs["groupObjectId"] = state?.groupObjectId;
+            resourceInputs["memberObjectId"] = state?.memberObjectId;
         } else {
             const args = argsOrState as GroupMemberArgs | undefined;
-            if ((!args || args.groupObjectId === undefined) && !opts.urn) {
+            if (args?.groupObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupObjectId'");
             }
-            if ((!args || args.memberObjectId === undefined) && !opts.urn) {
+            if (args?.memberObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'memberObjectId'");
             }
-            resourceInputs["groupObjectId"] = args ? args.groupObjectId : undefined;
-            resourceInputs["memberObjectId"] = args ? args.memberObjectId : undefined;
+            resourceInputs["groupObjectId"] = args?.groupObjectId;
+            resourceInputs["memberObjectId"] = args?.memberObjectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupMember.__pulumiType, name, resourceInputs, opts);

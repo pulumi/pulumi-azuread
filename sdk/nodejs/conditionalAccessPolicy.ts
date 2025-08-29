@@ -158,29 +158,29 @@ export class ConditionalAccessPolicy extends pulumi.CustomResource {
     /**
      * A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
      */
-    public readonly conditions!: pulumi.Output<outputs.ConditionalAccessPolicyConditions>;
+    declare public readonly conditions: pulumi.Output<outputs.ConditionalAccessPolicyConditions>;
     /**
      * The friendly name for this Conditional Access Policy.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      */
-    public readonly grantControls!: pulumi.Output<outputs.ConditionalAccessPolicyGrantControls | undefined>;
+    declare public readonly grantControls: pulumi.Output<outputs.ConditionalAccessPolicyGrantControls | undefined>;
     /**
      * The object ID of the policy
      */
-    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly objectId: pulumi.Output<string>;
     /**
      * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
      *
      * > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
      */
-    public readonly sessionControls!: pulumi.Output<outputs.ConditionalAccessPolicySessionControls | undefined>;
+    declare public readonly sessionControls: pulumi.Output<outputs.ConditionalAccessPolicySessionControls | undefined>;
     /**
      * Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
 
     /**
      * Create a ConditionalAccessPolicy resource with the given unique name, arguments, and options.
@@ -195,28 +195,28 @@ export class ConditionalAccessPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConditionalAccessPolicyState | undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["grantControls"] = state ? state.grantControls : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["sessionControls"] = state ? state.sessionControls : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["conditions"] = state?.conditions;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["grantControls"] = state?.grantControls;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["sessionControls"] = state?.sessionControls;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as ConditionalAccessPolicyArgs | undefined;
-            if ((!args || args.conditions === undefined) && !opts.urn) {
+            if (args?.conditions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'conditions'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.state === undefined) && !opts.urn) {
+            if (args?.state === undefined && !opts.urn) {
                 throw new Error("Missing required property 'state'");
             }
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["grantControls"] = args ? args.grantControls : undefined;
-            resourceInputs["sessionControls"] = args ? args.sessionControls : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["conditions"] = args?.conditions;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["grantControls"] = args?.grantControls;
+            resourceInputs["sessionControls"] = args?.sessionControls;
+            resourceInputs["state"] = args?.state;
             resourceInputs["objectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

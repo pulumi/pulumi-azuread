@@ -112,141 +112,141 @@ export class Group extends pulumi.CustomResource {
      *
      * > **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      */
-    public readonly administrativeUnitIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly administrativeUnitIds: pulumi.Output<string[] | undefined>;
     /**
      * Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
      */
-    public readonly assignableToRole!: pulumi.Output<boolean | undefined>;
+    declare public readonly assignableToRole: pulumi.Output<boolean | undefined>;
     /**
      * Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
      *
      * > **Known Permissions Issue** The `autoSubscribeNewMembers` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      */
-    public readonly autoSubscribeNewMembers!: pulumi.Output<boolean>;
+    declare public readonly autoSubscribeNewMembers: pulumi.Output<boolean>;
     /**
      * A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SkipExchangeInstantOn`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
      */
-    public readonly behaviors!: pulumi.Output<string[] | undefined>;
+    declare public readonly behaviors: pulumi.Output<string[] | undefined>;
     /**
      * The description for the group.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The display name for the group.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
      */
-    public readonly dynamicMembership!: pulumi.Output<outputs.GroupDynamicMembership | undefined>;
+    declare public readonly dynamicMembership: pulumi.Output<outputs.GroupDynamicMembership | undefined>;
     /**
      * Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
      *
      * > **Known Permissions Issue** The `externalSendersAllowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      */
-    public readonly externalSendersAllowed!: pulumi.Output<boolean>;
+    declare public readonly externalSendersAllowed: pulumi.Output<boolean>;
     /**
      * Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
      *
      * > **Known Permissions Issue** The `hideFromAddressLists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      */
-    public readonly hideFromAddressLists!: pulumi.Output<boolean>;
+    declare public readonly hideFromAddressLists: pulumi.Output<boolean>;
     /**
      * Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
      *
      * > **Known Permissions Issue** The `hideFromOutlookClients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      */
-    public readonly hideFromOutlookClients!: pulumi.Output<boolean>;
+    declare public readonly hideFromOutlookClients: pulumi.Output<boolean>;
     /**
      * The SMTP address for the group.
      */
-    public /*out*/ readonly mail!: pulumi.Output<string>;
+    declare public /*out*/ readonly mail: pulumi.Output<string>;
     /**
      * Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
      */
-    public readonly mailEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly mailEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
      */
-    public readonly mailNickname!: pulumi.Output<string>;
+    declare public readonly mailNickname: pulumi.Output<string>;
     /**
      * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
      *
      * !> **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
      */
-    public readonly members!: pulumi.Output<string[]>;
+    declare public readonly members: pulumi.Output<string[]>;
     /**
      * The object ID of the group.
      */
-    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly objectId: pulumi.Output<string>;
     /**
      * The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
      */
-    public /*out*/ readonly onpremisesDomainName!: pulumi.Output<string>;
+    declare public /*out*/ readonly onpremisesDomainName: pulumi.Output<string>;
     /**
      * The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
      */
-    public readonly onpremisesGroupType!: pulumi.Output<string>;
+    declare public readonly onpremisesGroupType: pulumi.Output<string>;
     /**
      * The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
      */
-    public /*out*/ readonly onpremisesNetbiosName!: pulumi.Output<string>;
+    declare public /*out*/ readonly onpremisesNetbiosName: pulumi.Output<string>;
     /**
      * The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
      */
-    public /*out*/ readonly onpremisesSamAccountName!: pulumi.Output<string>;
+    declare public /*out*/ readonly onpremisesSamAccountName: pulumi.Output<string>;
     /**
      * The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
      */
-    public /*out*/ readonly onpremisesSecurityIdentifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly onpremisesSecurityIdentifier: pulumi.Output<string>;
     /**
      * Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
      */
-    public /*out*/ readonly onpremisesSyncEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly onpremisesSyncEnabled: pulumi.Output<boolean>;
     /**
      * A set of owners who own this group. Supported object types are Users or Service Principals
      */
-    public readonly owners!: pulumi.Output<string[]>;
+    declare public readonly owners: pulumi.Output<string[]>;
     /**
      * The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
      */
-    public /*out*/ readonly preferredLanguage!: pulumi.Output<string>;
+    declare public /*out*/ readonly preferredLanguage: pulumi.Output<string>;
     /**
      * If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
      */
-    public readonly preventDuplicateNames!: pulumi.Output<boolean | undefined>;
+    declare public readonly preventDuplicateNames: pulumi.Output<boolean | undefined>;
     /**
      * A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
      */
-    public readonly provisioningOptions!: pulumi.Output<string[] | undefined>;
+    declare public readonly provisioningOptions: pulumi.Output<string[] | undefined>;
     /**
      * List of email addresses for the group that direct to the same group mailbox.
      */
-    public /*out*/ readonly proxyAddresses!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly proxyAddresses: pulumi.Output<string[]>;
     /**
      * Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
      */
-    public readonly securityEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly securityEnabled: pulumi.Output<boolean | undefined>;
     /**
      * The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
      */
-    public readonly theme!: pulumi.Output<string | undefined>;
+    declare public readonly theme: pulumi.Output<string | undefined>;
     /**
      * A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
      *
      * > **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
      */
-    public readonly types!: pulumi.Output<string[] | undefined>;
+    declare public readonly types: pulumi.Output<string[] | undefined>;
     /**
      * The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
      *
      * > **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing groups if you want to avoid name collisions.
      */
-    public readonly visibility!: pulumi.Output<string>;
+    declare public readonly visibility: pulumi.Output<string>;
     /**
      * Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
      */
-    public readonly writebackEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly writebackEnabled: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -261,64 +261,64 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["administrativeUnitIds"] = state ? state.administrativeUnitIds : undefined;
-            resourceInputs["assignableToRole"] = state ? state.assignableToRole : undefined;
-            resourceInputs["autoSubscribeNewMembers"] = state ? state.autoSubscribeNewMembers : undefined;
-            resourceInputs["behaviors"] = state ? state.behaviors : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["dynamicMembership"] = state ? state.dynamicMembership : undefined;
-            resourceInputs["externalSendersAllowed"] = state ? state.externalSendersAllowed : undefined;
-            resourceInputs["hideFromAddressLists"] = state ? state.hideFromAddressLists : undefined;
-            resourceInputs["hideFromOutlookClients"] = state ? state.hideFromOutlookClients : undefined;
-            resourceInputs["mail"] = state ? state.mail : undefined;
-            resourceInputs["mailEnabled"] = state ? state.mailEnabled : undefined;
-            resourceInputs["mailNickname"] = state ? state.mailNickname : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["onpremisesDomainName"] = state ? state.onpremisesDomainName : undefined;
-            resourceInputs["onpremisesGroupType"] = state ? state.onpremisesGroupType : undefined;
-            resourceInputs["onpremisesNetbiosName"] = state ? state.onpremisesNetbiosName : undefined;
-            resourceInputs["onpremisesSamAccountName"] = state ? state.onpremisesSamAccountName : undefined;
-            resourceInputs["onpremisesSecurityIdentifier"] = state ? state.onpremisesSecurityIdentifier : undefined;
-            resourceInputs["onpremisesSyncEnabled"] = state ? state.onpremisesSyncEnabled : undefined;
-            resourceInputs["owners"] = state ? state.owners : undefined;
-            resourceInputs["preferredLanguage"] = state ? state.preferredLanguage : undefined;
-            resourceInputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
-            resourceInputs["provisioningOptions"] = state ? state.provisioningOptions : undefined;
-            resourceInputs["proxyAddresses"] = state ? state.proxyAddresses : undefined;
-            resourceInputs["securityEnabled"] = state ? state.securityEnabled : undefined;
-            resourceInputs["theme"] = state ? state.theme : undefined;
-            resourceInputs["types"] = state ? state.types : undefined;
-            resourceInputs["visibility"] = state ? state.visibility : undefined;
-            resourceInputs["writebackEnabled"] = state ? state.writebackEnabled : undefined;
+            resourceInputs["administrativeUnitIds"] = state?.administrativeUnitIds;
+            resourceInputs["assignableToRole"] = state?.assignableToRole;
+            resourceInputs["autoSubscribeNewMembers"] = state?.autoSubscribeNewMembers;
+            resourceInputs["behaviors"] = state?.behaviors;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["dynamicMembership"] = state?.dynamicMembership;
+            resourceInputs["externalSendersAllowed"] = state?.externalSendersAllowed;
+            resourceInputs["hideFromAddressLists"] = state?.hideFromAddressLists;
+            resourceInputs["hideFromOutlookClients"] = state?.hideFromOutlookClients;
+            resourceInputs["mail"] = state?.mail;
+            resourceInputs["mailEnabled"] = state?.mailEnabled;
+            resourceInputs["mailNickname"] = state?.mailNickname;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["onpremisesDomainName"] = state?.onpremisesDomainName;
+            resourceInputs["onpremisesGroupType"] = state?.onpremisesGroupType;
+            resourceInputs["onpremisesNetbiosName"] = state?.onpremisesNetbiosName;
+            resourceInputs["onpremisesSamAccountName"] = state?.onpremisesSamAccountName;
+            resourceInputs["onpremisesSecurityIdentifier"] = state?.onpremisesSecurityIdentifier;
+            resourceInputs["onpremisesSyncEnabled"] = state?.onpremisesSyncEnabled;
+            resourceInputs["owners"] = state?.owners;
+            resourceInputs["preferredLanguage"] = state?.preferredLanguage;
+            resourceInputs["preventDuplicateNames"] = state?.preventDuplicateNames;
+            resourceInputs["provisioningOptions"] = state?.provisioningOptions;
+            resourceInputs["proxyAddresses"] = state?.proxyAddresses;
+            resourceInputs["securityEnabled"] = state?.securityEnabled;
+            resourceInputs["theme"] = state?.theme;
+            resourceInputs["types"] = state?.types;
+            resourceInputs["visibility"] = state?.visibility;
+            resourceInputs["writebackEnabled"] = state?.writebackEnabled;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["administrativeUnitIds"] = args ? args.administrativeUnitIds : undefined;
-            resourceInputs["assignableToRole"] = args ? args.assignableToRole : undefined;
-            resourceInputs["autoSubscribeNewMembers"] = args ? args.autoSubscribeNewMembers : undefined;
-            resourceInputs["behaviors"] = args ? args.behaviors : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["dynamicMembership"] = args ? args.dynamicMembership : undefined;
-            resourceInputs["externalSendersAllowed"] = args ? args.externalSendersAllowed : undefined;
-            resourceInputs["hideFromAddressLists"] = args ? args.hideFromAddressLists : undefined;
-            resourceInputs["hideFromOutlookClients"] = args ? args.hideFromOutlookClients : undefined;
-            resourceInputs["mailEnabled"] = args ? args.mailEnabled : undefined;
-            resourceInputs["mailNickname"] = args ? args.mailNickname : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["onpremisesGroupType"] = args ? args.onpremisesGroupType : undefined;
-            resourceInputs["owners"] = args ? args.owners : undefined;
-            resourceInputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
-            resourceInputs["provisioningOptions"] = args ? args.provisioningOptions : undefined;
-            resourceInputs["securityEnabled"] = args ? args.securityEnabled : undefined;
-            resourceInputs["theme"] = args ? args.theme : undefined;
-            resourceInputs["types"] = args ? args.types : undefined;
-            resourceInputs["visibility"] = args ? args.visibility : undefined;
-            resourceInputs["writebackEnabled"] = args ? args.writebackEnabled : undefined;
+            resourceInputs["administrativeUnitIds"] = args?.administrativeUnitIds;
+            resourceInputs["assignableToRole"] = args?.assignableToRole;
+            resourceInputs["autoSubscribeNewMembers"] = args?.autoSubscribeNewMembers;
+            resourceInputs["behaviors"] = args?.behaviors;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["dynamicMembership"] = args?.dynamicMembership;
+            resourceInputs["externalSendersAllowed"] = args?.externalSendersAllowed;
+            resourceInputs["hideFromAddressLists"] = args?.hideFromAddressLists;
+            resourceInputs["hideFromOutlookClients"] = args?.hideFromOutlookClients;
+            resourceInputs["mailEnabled"] = args?.mailEnabled;
+            resourceInputs["mailNickname"] = args?.mailNickname;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["onpremisesGroupType"] = args?.onpremisesGroupType;
+            resourceInputs["owners"] = args?.owners;
+            resourceInputs["preventDuplicateNames"] = args?.preventDuplicateNames;
+            resourceInputs["provisioningOptions"] = args?.provisioningOptions;
+            resourceInputs["securityEnabled"] = args?.securityEnabled;
+            resourceInputs["theme"] = args?.theme;
+            resourceInputs["types"] = args?.types;
+            resourceInputs["visibility"] = args?.visibility;
+            resourceInputs["writebackEnabled"] = args?.writebackEnabled;
             resourceInputs["mail"] = undefined /*out*/;
             resourceInputs["objectId"] = undefined /*out*/;
             resourceInputs["onpremisesDomainName"] = undefined /*out*/;

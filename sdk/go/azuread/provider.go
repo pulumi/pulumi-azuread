@@ -22,11 +22,9 @@ type Provider struct {
 	AdoPipelineServiceConnectionId pulumi.StringPtrOutput `pulumi:"adoPipelineServiceConnectionId"`
 	// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
 	ClientCertificate pulumi.StringPtrOutput `pulumi:"clientCertificate"`
-	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-	// Certificate
+	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
 	ClientCertificatePassword pulumi.StringPtrOutput `pulumi:"clientCertificatePassword"`
-	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-	// Principal using a Client Certificate
+	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
 	ClientCertificatePath pulumi.StringPtrOutput `pulumi:"clientCertificatePath"`
 	// The Client ID which should be used for service principal authentication
 	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
@@ -34,22 +32,17 @@ type Provider struct {
 	ClientIdFilePath pulumi.StringPtrOutput `pulumi:"clientIdFilePath"`
 	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
-	// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-	// Secret
+	// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecretFilePath pulumi.StringPtrOutput `pulumi:"clientSecretFilePath"`
-	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-	// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-	// when `metadataHost` is specified.
+	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
 	// The Hostname which should be used for the Azure Metadata Service.
 	MetadataHost pulumi.StringPtrOutput `pulumi:"metadataHost"`
 	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint pulumi.StringPtrOutput `pulumi:"msiEndpoint"`
-	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-	// Connect.
+	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
 	OidcRequestToken pulumi.StringPtrOutput `pulumi:"oidcRequestToken"`
-	// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-	// using OpenID Connect.
+	// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
 	OidcRequestUrl pulumi.StringPtrOutput `pulumi:"oidcRequestUrl"`
 	// The ID token for use when authenticating as a Service Principal using OpenID Connect.
 	OidcToken pulumi.StringPtrOutput `pulumi:"oidcToken"`
@@ -112,11 +105,9 @@ type providerArgs struct {
 	AdoPipelineServiceConnectionId *string `pulumi:"adoPipelineServiceConnectionId"`
 	// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
 	ClientCertificate *string `pulumi:"clientCertificate"`
-	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-	// Certificate
+	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
 	ClientCertificatePassword *string `pulumi:"clientCertificatePassword"`
-	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-	// Principal using a Client Certificate
+	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
 	ClientCertificatePath *string `pulumi:"clientCertificatePath"`
 	// The Client ID which should be used for service principal authentication
 	ClientId *string `pulumi:"clientId"`
@@ -124,23 +115,18 @@ type providerArgs struct {
 	ClientIdFilePath *string `pulumi:"clientIdFilePath"`
 	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret *string `pulumi:"clientSecret"`
-	// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-	// Secret
+	// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecretFilePath      *string `pulumi:"clientSecretFilePath"`
 	DisableTerraformPartnerId *bool   `pulumi:"disableTerraformPartnerId"`
-	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-	// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-	// when `metadataHost` is specified.
+	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
 	Environment *string `pulumi:"environment"`
 	// The Hostname which should be used for the Azure Metadata Service.
 	MetadataHost *string `pulumi:"metadataHost"`
 	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint *string `pulumi:"msiEndpoint"`
-	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-	// Connect.
+	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
 	OidcRequestToken *string `pulumi:"oidcRequestToken"`
-	// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-	// using OpenID Connect.
+	// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
 	OidcRequestUrl *string `pulumi:"oidcRequestUrl"`
 	// The ID token for use when authenticating as a Service Principal using OpenID Connect.
 	OidcToken *string `pulumi:"oidcToken"`
@@ -166,11 +152,9 @@ type ProviderArgs struct {
 	AdoPipelineServiceConnectionId pulumi.StringPtrInput
 	// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
 	ClientCertificate pulumi.StringPtrInput
-	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-	// Certificate
+	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
 	ClientCertificatePassword pulumi.StringPtrInput
-	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-	// Principal using a Client Certificate
+	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
 	ClientCertificatePath pulumi.StringPtrInput
 	// The Client ID which should be used for service principal authentication
 	ClientId pulumi.StringPtrInput
@@ -178,23 +162,18 @@ type ProviderArgs struct {
 	ClientIdFilePath pulumi.StringPtrInput
 	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret pulumi.StringPtrInput
-	// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-	// Secret
+	// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecretFilePath      pulumi.StringPtrInput
 	DisableTerraformPartnerId pulumi.BoolPtrInput
-	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-	// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-	// when `metadataHost` is specified.
+	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
 	Environment pulumi.StringPtrInput
 	// The Hostname which should be used for the Azure Metadata Service.
 	MetadataHost pulumi.StringPtrInput
 	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint pulumi.StringPtrInput
-	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-	// Connect.
+	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
 	OidcRequestToken pulumi.StringPtrInput
-	// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-	// using OpenID Connect.
+	// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
 	OidcRequestUrl pulumi.StringPtrInput
 	// The ID token for use when authenticating as a Service Principal using OpenID Connect.
 	OidcToken pulumi.StringPtrInput
@@ -284,14 +263,12 @@ func (o ProviderOutput) ClientCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
-// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-// Certificate
+// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
 func (o ProviderOutput) ClientCertificatePassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientCertificatePassword }).(pulumi.StringPtrOutput)
 }
 
-// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-// Principal using a Client Certificate
+// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
 func (o ProviderOutput) ClientCertificatePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientCertificatePath }).(pulumi.StringPtrOutput)
 }
@@ -311,15 +288,12 @@ func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-// Secret
+// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
 func (o ProviderOutput) ClientSecretFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecretFilePath }).(pulumi.StringPtrOutput)
 }
 
-// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-// when `metadataHost` is specified.
+// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
 func (o ProviderOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Environment }).(pulumi.StringPtrOutput)
 }
@@ -334,14 +308,12 @@ func (o ProviderOutput) MsiEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MsiEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-// Connect.
+// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
 func (o ProviderOutput) OidcRequestToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OidcRequestToken }).(pulumi.StringPtrOutput)
 }
 
-// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-// using OpenID Connect.
+// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
 func (o ProviderOutput) OidcRequestUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OidcRequestUrl }).(pulumi.StringPtrOutput)
 }

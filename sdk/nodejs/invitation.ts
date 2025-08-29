@@ -98,31 +98,31 @@ export class Invitation extends pulumi.CustomResource {
     /**
      * A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
      */
-    public readonly message!: pulumi.Output<outputs.InvitationMessage | undefined>;
+    declare public readonly message: pulumi.Output<outputs.InvitationMessage | undefined>;
     /**
      * The URL the user can use to redeem their invitation.
      */
-    public /*out*/ readonly redeemUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly redeemUrl: pulumi.Output<string>;
     /**
      * The URL that the user should be redirected to once the invitation is redeemed.
      */
-    public readonly redirectUrl!: pulumi.Output<string>;
+    declare public readonly redirectUrl: pulumi.Output<string>;
     /**
      * The display name of the user being invited.
      */
-    public readonly userDisplayName!: pulumi.Output<string | undefined>;
+    declare public readonly userDisplayName: pulumi.Output<string | undefined>;
     /**
      * The email address of the user being invited.
      */
-    public readonly userEmailAddress!: pulumi.Output<string>;
+    declare public readonly userEmailAddress: pulumi.Output<string>;
     /**
      * Object ID of the invited user.
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
     /**
      * The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
      */
-    public readonly userType!: pulumi.Output<string | undefined>;
+    declare public readonly userType: pulumi.Output<string | undefined>;
 
     /**
      * Create a Invitation resource with the given unique name, arguments, and options.
@@ -137,26 +137,26 @@ export class Invitation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InvitationState | undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["redeemUrl"] = state ? state.redeemUrl : undefined;
-            resourceInputs["redirectUrl"] = state ? state.redirectUrl : undefined;
-            resourceInputs["userDisplayName"] = state ? state.userDisplayName : undefined;
-            resourceInputs["userEmailAddress"] = state ? state.userEmailAddress : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["userType"] = state ? state.userType : undefined;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["redeemUrl"] = state?.redeemUrl;
+            resourceInputs["redirectUrl"] = state?.redirectUrl;
+            resourceInputs["userDisplayName"] = state?.userDisplayName;
+            resourceInputs["userEmailAddress"] = state?.userEmailAddress;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["userType"] = state?.userType;
         } else {
             const args = argsOrState as InvitationArgs | undefined;
-            if ((!args || args.redirectUrl === undefined) && !opts.urn) {
+            if (args?.redirectUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'redirectUrl'");
             }
-            if ((!args || args.userEmailAddress === undefined) && !opts.urn) {
+            if (args?.userEmailAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userEmailAddress'");
             }
-            resourceInputs["message"] = args ? args.message : undefined;
-            resourceInputs["redirectUrl"] = args ? args.redirectUrl : undefined;
-            resourceInputs["userDisplayName"] = args ? args.userDisplayName : undefined;
-            resourceInputs["userEmailAddress"] = args ? args.userEmailAddress : undefined;
-            resourceInputs["userType"] = args ? args.userType : undefined;
+            resourceInputs["message"] = args?.message;
+            resourceInputs["redirectUrl"] = args?.redirectUrl;
+            resourceInputs["userDisplayName"] = args?.userDisplayName;
+            resourceInputs["userEmailAddress"] = args?.userEmailAddress;
+            resourceInputs["userType"] = args?.userType;
             resourceInputs["redeemUrl"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;
         }

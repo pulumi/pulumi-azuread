@@ -108,43 +108,43 @@ export class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     /**
      * The ID of the access package that will contain the policy.
      */
-    public readonly accessPackageId!: pulumi.Output<string>;
+    declare public readonly accessPackageId: pulumi.Output<string>;
     /**
      * An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
      */
-    public readonly approvalSettings!: pulumi.Output<outputs.AccessPackageAssignmentPolicyApprovalSettings | undefined>;
+    declare public readonly approvalSettings: pulumi.Output<outputs.AccessPackageAssignmentPolicyApprovalSettings | undefined>;
     /**
      * An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
      */
-    public readonly assignmentReviewSettings!: pulumi.Output<outputs.AccessPackageAssignmentPolicyAssignmentReviewSettings | undefined>;
+    declare public readonly assignmentReviewSettings: pulumi.Output<outputs.AccessPackageAssignmentPolicyAssignmentReviewSettings | undefined>;
     /**
      * The description of the policy.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The display name of the policy.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * How many days this assignment is valid for.
      */
-    public readonly durationInDays!: pulumi.Output<number | undefined>;
+    declare public readonly durationInDays: pulumi.Output<number | undefined>;
     /**
      * The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
      */
-    public readonly expirationDate!: pulumi.Output<string | undefined>;
+    declare public readonly expirationDate: pulumi.Output<string | undefined>;
     /**
      * Whether users will be able to request extension of their access to this package before their access expires.
      */
-    public readonly extensionEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly extensionEnabled: pulumi.Output<boolean | undefined>;
     /**
      * One or more `question` blocks for the requestor, as documented below.
      */
-    public readonly questions!: pulumi.Output<outputs.AccessPackageAssignmentPolicyQuestion[] | undefined>;
+    declare public readonly questions: pulumi.Output<outputs.AccessPackageAssignmentPolicyQuestion[] | undefined>;
     /**
      * A `requestorSettings` block to configure the users who can request access, as documented below.
      */
-    public readonly requestorSettings!: pulumi.Output<outputs.AccessPackageAssignmentPolicyRequestorSettings | undefined>;
+    declare public readonly requestorSettings: pulumi.Output<outputs.AccessPackageAssignmentPolicyRequestorSettings | undefined>;
 
     /**
      * Create a AccessPackageAssignmentPolicy resource with the given unique name, arguments, and options.
@@ -159,37 +159,37 @@ export class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPackageAssignmentPolicyState | undefined;
-            resourceInputs["accessPackageId"] = state ? state.accessPackageId : undefined;
-            resourceInputs["approvalSettings"] = state ? state.approvalSettings : undefined;
-            resourceInputs["assignmentReviewSettings"] = state ? state.assignmentReviewSettings : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["durationInDays"] = state ? state.durationInDays : undefined;
-            resourceInputs["expirationDate"] = state ? state.expirationDate : undefined;
-            resourceInputs["extensionEnabled"] = state ? state.extensionEnabled : undefined;
-            resourceInputs["questions"] = state ? state.questions : undefined;
-            resourceInputs["requestorSettings"] = state ? state.requestorSettings : undefined;
+            resourceInputs["accessPackageId"] = state?.accessPackageId;
+            resourceInputs["approvalSettings"] = state?.approvalSettings;
+            resourceInputs["assignmentReviewSettings"] = state?.assignmentReviewSettings;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["durationInDays"] = state?.durationInDays;
+            resourceInputs["expirationDate"] = state?.expirationDate;
+            resourceInputs["extensionEnabled"] = state?.extensionEnabled;
+            resourceInputs["questions"] = state?.questions;
+            resourceInputs["requestorSettings"] = state?.requestorSettings;
         } else {
             const args = argsOrState as AccessPackageAssignmentPolicyArgs | undefined;
-            if ((!args || args.accessPackageId === undefined) && !opts.urn) {
+            if (args?.accessPackageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessPackageId'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["accessPackageId"] = args ? args.accessPackageId : undefined;
-            resourceInputs["approvalSettings"] = args ? args.approvalSettings : undefined;
-            resourceInputs["assignmentReviewSettings"] = args ? args.assignmentReviewSettings : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["durationInDays"] = args ? args.durationInDays : undefined;
-            resourceInputs["expirationDate"] = args ? args.expirationDate : undefined;
-            resourceInputs["extensionEnabled"] = args ? args.extensionEnabled : undefined;
-            resourceInputs["questions"] = args ? args.questions : undefined;
-            resourceInputs["requestorSettings"] = args ? args.requestorSettings : undefined;
+            resourceInputs["accessPackageId"] = args?.accessPackageId;
+            resourceInputs["approvalSettings"] = args?.approvalSettings;
+            resourceInputs["assignmentReviewSettings"] = args?.assignmentReviewSettings;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["durationInDays"] = args?.durationInDays;
+            resourceInputs["expirationDate"] = args?.expirationDate;
+            resourceInputs["extensionEnabled"] = args?.extensionEnabled;
+            resourceInputs["questions"] = args?.questions;
+            resourceInputs["requestorSettings"] = args?.requestorSettings;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessPackageAssignmentPolicy.__pulumiType, name, resourceInputs, opts);

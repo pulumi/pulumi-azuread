@@ -131,27 +131,27 @@ export class AppRoleAssignment extends pulumi.CustomResource {
     /**
      * The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
      */
-    public readonly appRoleId!: pulumi.Output<string>;
+    declare public readonly appRoleId: pulumi.Output<string>;
     /**
      * The display name of the principal to which the app role is assigned.
      */
-    public /*out*/ readonly principalDisplayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly principalDisplayName: pulumi.Output<string>;
     /**
      * The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
-    public readonly principalObjectId!: pulumi.Output<string>;
+    declare public readonly principalObjectId: pulumi.Output<string>;
     /**
      * The object type of the principal to which the app role is assigned.
      */
-    public /*out*/ readonly principalType!: pulumi.Output<string>;
+    declare public /*out*/ readonly principalType: pulumi.Output<string>;
     /**
      * The display name of the application representing the resource.
      */
-    public /*out*/ readonly resourceDisplayName!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceDisplayName: pulumi.Output<string>;
     /**
      * The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
      */
-    public readonly resourceObjectId!: pulumi.Output<string>;
+    declare public readonly resourceObjectId: pulumi.Output<string>;
 
     /**
      * Create a AppRoleAssignment resource with the given unique name, arguments, and options.
@@ -166,26 +166,26 @@ export class AppRoleAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppRoleAssignmentState | undefined;
-            resourceInputs["appRoleId"] = state ? state.appRoleId : undefined;
-            resourceInputs["principalDisplayName"] = state ? state.principalDisplayName : undefined;
-            resourceInputs["principalObjectId"] = state ? state.principalObjectId : undefined;
-            resourceInputs["principalType"] = state ? state.principalType : undefined;
-            resourceInputs["resourceDisplayName"] = state ? state.resourceDisplayName : undefined;
-            resourceInputs["resourceObjectId"] = state ? state.resourceObjectId : undefined;
+            resourceInputs["appRoleId"] = state?.appRoleId;
+            resourceInputs["principalDisplayName"] = state?.principalDisplayName;
+            resourceInputs["principalObjectId"] = state?.principalObjectId;
+            resourceInputs["principalType"] = state?.principalType;
+            resourceInputs["resourceDisplayName"] = state?.resourceDisplayName;
+            resourceInputs["resourceObjectId"] = state?.resourceObjectId;
         } else {
             const args = argsOrState as AppRoleAssignmentArgs | undefined;
-            if ((!args || args.appRoleId === undefined) && !opts.urn) {
+            if (args?.appRoleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appRoleId'");
             }
-            if ((!args || args.principalObjectId === undefined) && !opts.urn) {
+            if (args?.principalObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalObjectId'");
             }
-            if ((!args || args.resourceObjectId === undefined) && !opts.urn) {
+            if (args?.resourceObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceObjectId'");
             }
-            resourceInputs["appRoleId"] = args ? args.appRoleId : undefined;
-            resourceInputs["principalObjectId"] = args ? args.principalObjectId : undefined;
-            resourceInputs["resourceObjectId"] = args ? args.resourceObjectId : undefined;
+            resourceInputs["appRoleId"] = args?.appRoleId;
+            resourceInputs["principalObjectId"] = args?.principalObjectId;
+            resourceInputs["resourceObjectId"] = args?.resourceObjectId;
             resourceInputs["principalDisplayName"] = undefined /*out*/;
             resourceInputs["principalType"] = undefined /*out*/;
             resourceInputs["resourceDisplayName"] = undefined /*out*/;

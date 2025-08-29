@@ -74,37 +74,37 @@ export class ApplicationPermissionScope extends pulumi.CustomResource {
     /**
      * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    public readonly adminConsentDescription!: pulumi.Output<string>;
+    declare public readonly adminConsentDescription: pulumi.Output<string>;
     /**
      * Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    public readonly adminConsentDisplayName!: pulumi.Output<string>;
+    declare public readonly adminConsentDisplayName: pulumi.Output<string>;
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * The unique identifier of the permission scope. Must be a valid UUID. Changing this forces a new resource to be created.
      */
-    public readonly scopeId!: pulumi.Output<string>;
+    declare public readonly scopeId: pulumi.Output<string>;
     /**
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
      */
-    public readonly userConsentDescription!: pulumi.Output<string | undefined>;
+    declare public readonly userConsentDescription: pulumi.Output<string | undefined>;
     /**
      * Display name for the delegated permission that appears in the end user consent experience
      */
-    public readonly userConsentDisplayName!: pulumi.Output<string | undefined>;
+    declare public readonly userConsentDisplayName: pulumi.Output<string | undefined>;
     /**
      * The value that is used for the `scp` claim in OAuth access tokens.
      *
      * > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a ApplicationPermissionScope resource with the given unique name, arguments, and options.
@@ -119,39 +119,39 @@ export class ApplicationPermissionScope extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationPermissionScopeState | undefined;
-            resourceInputs["adminConsentDescription"] = state ? state.adminConsentDescription : undefined;
-            resourceInputs["adminConsentDisplayName"] = state ? state.adminConsentDisplayName : undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["scopeId"] = state ? state.scopeId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["userConsentDescription"] = state ? state.userConsentDescription : undefined;
-            resourceInputs["userConsentDisplayName"] = state ? state.userConsentDisplayName : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["adminConsentDescription"] = state?.adminConsentDescription;
+            resourceInputs["adminConsentDisplayName"] = state?.adminConsentDisplayName;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["scopeId"] = state?.scopeId;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["userConsentDescription"] = state?.userConsentDescription;
+            resourceInputs["userConsentDisplayName"] = state?.userConsentDisplayName;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as ApplicationPermissionScopeArgs | undefined;
-            if ((!args || args.adminConsentDescription === undefined) && !opts.urn) {
+            if (args?.adminConsentDescription === undefined && !opts.urn) {
                 throw new Error("Missing required property 'adminConsentDescription'");
             }
-            if ((!args || args.adminConsentDisplayName === undefined) && !opts.urn) {
+            if (args?.adminConsentDisplayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'adminConsentDisplayName'");
             }
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.scopeId === undefined) && !opts.urn) {
+            if (args?.scopeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopeId'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["adminConsentDescription"] = args ? args.adminConsentDescription : undefined;
-            resourceInputs["adminConsentDisplayName"] = args ? args.adminConsentDisplayName : undefined;
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["scopeId"] = args ? args.scopeId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["userConsentDescription"] = args ? args.userConsentDescription : undefined;
-            resourceInputs["userConsentDisplayName"] = args ? args.userConsentDisplayName : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["adminConsentDescription"] = args?.adminConsentDescription;
+            resourceInputs["adminConsentDisplayName"] = args?.adminConsentDisplayName;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["scopeId"] = args?.scopeId;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["userConsentDescription"] = args?.userConsentDescription;
+            resourceInputs["userConsentDisplayName"] = args?.userConsentDisplayName;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationPermissionScope.__pulumiType, name, resourceInputs, opts);

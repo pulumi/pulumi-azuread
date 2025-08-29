@@ -69,11 +69,11 @@ export class ApplicationIdentifierUri extends pulumi.CustomResource {
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
      */
-    public readonly identifierUri!: pulumi.Output<string>;
+    declare public readonly identifierUri: pulumi.Output<string>;
 
     /**
      * Create a ApplicationIdentifierUri resource with the given unique name, arguments, and options.
@@ -88,18 +88,18 @@ export class ApplicationIdentifierUri extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationIdentifierUriState | undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["identifierUri"] = state ? state.identifierUri : undefined;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["identifierUri"] = state?.identifierUri;
         } else {
             const args = argsOrState as ApplicationIdentifierUriArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.identifierUri === undefined) && !opts.urn) {
+            if (args?.identifierUri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifierUri'");
             }
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["identifierUri"] = args ? args.identifierUri : undefined;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["identifierUri"] = args?.identifierUri;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationIdentifierUri.__pulumiType, name, resourceInputs, opts);

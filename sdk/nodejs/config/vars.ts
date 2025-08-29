@@ -30,8 +30,7 @@ Object.defineProperty(exports, "clientCertificate", {
 });
 
 /**
- * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
- * Certificate
+ * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
  */
 export declare const clientCertificatePassword: string | undefined;
 Object.defineProperty(exports, "clientCertificatePassword", {
@@ -42,8 +41,7 @@ Object.defineProperty(exports, "clientCertificatePassword", {
 });
 
 /**
- * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
- * Principal using a Client Certificate
+ * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
  */
 export declare const clientCertificatePath: string | undefined;
 Object.defineProperty(exports, "clientCertificatePath", {
@@ -87,8 +85,7 @@ Object.defineProperty(exports, "clientSecret", {
 });
 
 /**
- * The path to a file containing the application password to use when authenticating as a Service Principal using a Client
- * Secret
+ * The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
  */
 export declare const clientSecretFilePath: string | undefined;
 Object.defineProperty(exports, "clientSecretFilePath", {
@@ -107,9 +104,7 @@ Object.defineProperty(exports, "disableTerraformPartnerId", {
 });
 
 /**
- * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
- * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
- * when `metadataHost` is specified.
+ * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
  */
 export declare const environment: string;
 Object.defineProperty(exports, "environment", {
@@ -142,8 +137,7 @@ Object.defineProperty(exports, "msiEndpoint", {
 });
 
 /**
- * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
- * Connect.
+ * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
  */
 export declare const oidcRequestToken: string | undefined;
 Object.defineProperty(exports, "oidcRequestToken", {
@@ -154,8 +148,7 @@ Object.defineProperty(exports, "oidcRequestToken", {
 });
 
 /**
- * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
- * using OpenID Connect.
+ * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
  */
 export declare const oidcRequestUrl: string | undefined;
 Object.defineProperty(exports, "oidcRequestUrl", {

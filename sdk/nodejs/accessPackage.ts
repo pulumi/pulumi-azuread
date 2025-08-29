@@ -71,19 +71,19 @@ export class AccessPackage extends pulumi.CustomResource {
     /**
      * The ID of the Catalog this access package will be created in.
      */
-    public readonly catalogId!: pulumi.Output<string>;
+    declare public readonly catalogId: pulumi.Output<string>;
     /**
      * The description of the access package.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The display name of the access package.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Whether the access package is hidden from the requestor.
      */
-    public readonly hidden!: pulumi.Output<boolean | undefined>;
+    declare public readonly hidden: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AccessPackage resource with the given unique name, arguments, and options.
@@ -98,25 +98,25 @@ export class AccessPackage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPackageState | undefined;
-            resourceInputs["catalogId"] = state ? state.catalogId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["hidden"] = state ? state.hidden : undefined;
+            resourceInputs["catalogId"] = state?.catalogId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["hidden"] = state?.hidden;
         } else {
             const args = argsOrState as AccessPackageArgs | undefined;
-            if ((!args || args.catalogId === undefined) && !opts.urn) {
+            if (args?.catalogId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'catalogId'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["catalogId"] = args ? args.catalogId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["hidden"] = args ? args.hidden : undefined;
+            resourceInputs["catalogId"] = args?.catalogId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["hidden"] = args?.hidden;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessPackage.__pulumiType, name, resourceInputs, opts);

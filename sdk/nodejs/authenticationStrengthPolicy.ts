@@ -97,15 +97,15 @@ export class AuthenticationStrengthPolicy extends pulumi.CustomResource {
     /**
      * List of allowed authentication methods for this authentication strength policy.
      */
-    public readonly allowedCombinations!: pulumi.Output<string[]>;
+    declare public readonly allowedCombinations: pulumi.Output<string[]>;
     /**
      * The description for this authentication strength policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The friendly name for this authentication strength policy.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
 
     /**
      * Create a AuthenticationStrengthPolicy resource with the given unique name, arguments, and options.
@@ -120,20 +120,20 @@ export class AuthenticationStrengthPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthenticationStrengthPolicyState | undefined;
-            resourceInputs["allowedCombinations"] = state ? state.allowedCombinations : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["allowedCombinations"] = state?.allowedCombinations;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["displayName"] = state?.displayName;
         } else {
             const args = argsOrState as AuthenticationStrengthPolicyArgs | undefined;
-            if ((!args || args.allowedCombinations === undefined) && !opts.urn) {
+            if (args?.allowedCombinations === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allowedCombinations'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["allowedCombinations"] = args ? args.allowedCombinations : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["allowedCombinations"] = args?.allowedCombinations;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["displayName"] = args?.displayName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AuthenticationStrengthPolicy.__pulumiType, name, resourceInputs, opts);

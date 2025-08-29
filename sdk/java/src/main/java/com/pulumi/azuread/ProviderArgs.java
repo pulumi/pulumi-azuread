@@ -48,16 +48,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-     * Certificate
+     * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
      * 
      */
     @Import(name="clientCertificatePassword")
     private @Nullable Output<String> clientCertificatePassword;
 
     /**
-     * @return The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-     * Certificate
+     * @return The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
      * 
      */
     public Optional<Output<String>> clientCertificatePassword() {
@@ -65,16 +63,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-     * Principal using a Client Certificate
+     * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
      * 
      */
     @Import(name="clientCertificatePath")
     private @Nullable Output<String> clientCertificatePath;
 
     /**
-     * @return The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-     * Principal using a Client Certificate
+     * @return The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
      * 
      */
     public Optional<Output<String>> clientCertificatePath() {
@@ -127,16 +123,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-     * Secret
+     * The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
      * 
      */
     @Import(name="clientSecretFilePath")
     private @Nullable Output<String> clientSecretFilePath;
 
     /**
-     * @return The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-     * Secret
+     * @return The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
      * 
      */
     public Optional<Output<String>> clientSecretFilePath() {
@@ -151,18 +145,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-     * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-     * when `metadata_host` is specified.
+     * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
      * 
      */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
-     * @return The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-     * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-     * when `metadata_host` is specified.
+     * @return The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
      * 
      */
     public Optional<Output<String>> environment() {
@@ -200,16 +190,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-     * Connect.
+     * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
      * 
      */
     @Import(name="oidcRequestToken")
     private @Nullable Output<String> oidcRequestToken;
 
     /**
-     * @return The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-     * Connect.
+     * @return The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
      * 
      */
     public Optional<Output<String>> oidcRequestToken() {
@@ -217,16 +205,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-     * using OpenID Connect.
+     * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
      * 
      */
     @Import(name="oidcRequestUrl")
     private @Nullable Output<String> oidcRequestUrl;
 
     /**
-     * @return The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-     * using OpenID Connect.
+     * @return The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
      * 
      */
     public Optional<Output<String>> oidcRequestUrl() {
@@ -441,8 +427,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientCertificatePassword The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-         * Certificate
+         * @param clientCertificatePassword The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
          * 
          * @return builder
          * 
@@ -453,8 +438,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientCertificatePassword The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-         * Certificate
+         * @param clientCertificatePassword The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
          * 
          * @return builder
          * 
@@ -464,8 +448,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientCertificatePath The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-         * Principal using a Client Certificate
+         * @param clientCertificatePath The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
          * 
          * @return builder
          * 
@@ -476,8 +459,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientCertificatePath The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-         * Principal using a Client Certificate
+         * @param clientCertificatePath The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
          * 
          * @return builder
          * 
@@ -550,8 +532,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientSecretFilePath The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-         * Secret
+         * @param clientSecretFilePath The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
          * 
          * @return builder
          * 
@@ -562,8 +543,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientSecretFilePath The path to a file containing the application password to use when authenticating as a Service Principal using a Client
-         * Secret
+         * @param clientSecretFilePath The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
          * 
          * @return builder
          * 
@@ -582,9 +562,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-         * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-         * when `metadata_host` is specified.
+         * @param environment The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
          * 
          * @return builder
          * 
@@ -595,9 +573,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
-         * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified
-         * when `metadata_host` is specified.
+         * @param environment The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
          * 
          * @return builder
          * 
@@ -649,8 +625,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oidcRequestToken The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-         * Connect.
+         * @param oidcRequestToken The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
          * 
          * @return builder
          * 
@@ -661,8 +636,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oidcRequestToken The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
-         * Connect.
+         * @param oidcRequestToken The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
          * 
          * @return builder
          * 
@@ -672,8 +646,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oidcRequestUrl The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-         * using OpenID Connect.
+         * @param oidcRequestUrl The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
          * 
          * @return builder
          * 
@@ -684,8 +657,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oidcRequestUrl The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
-         * using OpenID Connect.
+         * @param oidcRequestUrl The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
          * 
          * @return builder
          * 

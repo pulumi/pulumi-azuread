@@ -74,19 +74,19 @@ export class DirectoryRoleEligibilityScheduleRequest extends pulumi.CustomResour
     /**
      * Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.
      */
-    public readonly directoryScopeId!: pulumi.Output<string>;
+    declare public readonly directoryScopeId: pulumi.Output<string>;
     /**
      * Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.
      */
-    public readonly justification!: pulumi.Output<string>;
+    declare public readonly justification: pulumi.Output<string>;
     /**
      * The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
      */
-    public readonly principalId!: pulumi.Output<string>;
+    declare public readonly principalId: pulumi.Output<string>;
     /**
      * The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
      */
-    public readonly roleDefinitionId!: pulumi.Output<string>;
+    declare public readonly roleDefinitionId: pulumi.Output<string>;
 
     /**
      * Create a DirectoryRoleEligibilityScheduleRequest resource with the given unique name, arguments, and options.
@@ -101,28 +101,28 @@ export class DirectoryRoleEligibilityScheduleRequest extends pulumi.CustomResour
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DirectoryRoleEligibilityScheduleRequestState | undefined;
-            resourceInputs["directoryScopeId"] = state ? state.directoryScopeId : undefined;
-            resourceInputs["justification"] = state ? state.justification : undefined;
-            resourceInputs["principalId"] = state ? state.principalId : undefined;
-            resourceInputs["roleDefinitionId"] = state ? state.roleDefinitionId : undefined;
+            resourceInputs["directoryScopeId"] = state?.directoryScopeId;
+            resourceInputs["justification"] = state?.justification;
+            resourceInputs["principalId"] = state?.principalId;
+            resourceInputs["roleDefinitionId"] = state?.roleDefinitionId;
         } else {
             const args = argsOrState as DirectoryRoleEligibilityScheduleRequestArgs | undefined;
-            if ((!args || args.directoryScopeId === undefined) && !opts.urn) {
+            if (args?.directoryScopeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'directoryScopeId'");
             }
-            if ((!args || args.justification === undefined) && !opts.urn) {
+            if (args?.justification === undefined && !opts.urn) {
                 throw new Error("Missing required property 'justification'");
             }
-            if ((!args || args.principalId === undefined) && !opts.urn) {
+            if (args?.principalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'principalId'");
             }
-            if ((!args || args.roleDefinitionId === undefined) && !opts.urn) {
+            if (args?.roleDefinitionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleDefinitionId'");
             }
-            resourceInputs["directoryScopeId"] = args ? args.directoryScopeId : undefined;
-            resourceInputs["justification"] = args ? args.justification : undefined;
-            resourceInputs["principalId"] = args ? args.principalId : undefined;
-            resourceInputs["roleDefinitionId"] = args ? args.roleDefinitionId : undefined;
+            resourceInputs["directoryScopeId"] = args?.directoryScopeId;
+            resourceInputs["justification"] = args?.justification;
+            resourceInputs["principalId"] = args?.principalId;
+            resourceInputs["roleDefinitionId"] = args?.roleDefinitionId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DirectoryRoleEligibilityScheduleRequest.__pulumiType, name, resourceInputs, opts);

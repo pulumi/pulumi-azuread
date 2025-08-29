@@ -74,15 +74,15 @@ export class AdministrativeUnitRoleMember extends pulumi.CustomResource {
     /**
      * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
      */
-    public readonly administrativeUnitObjectId!: pulumi.Output<string>;
+    declare public readonly administrativeUnitObjectId: pulumi.Output<string>;
     /**
      * The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
      */
-    public readonly memberObjectId!: pulumi.Output<string>;
+    declare public readonly memberObjectId: pulumi.Output<string>;
     /**
      * The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
      */
-    public readonly roleObjectId!: pulumi.Output<string>;
+    declare public readonly roleObjectId: pulumi.Output<string>;
 
     /**
      * Create a AdministrativeUnitRoleMember resource with the given unique name, arguments, and options.
@@ -97,23 +97,23 @@ export class AdministrativeUnitRoleMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AdministrativeUnitRoleMemberState | undefined;
-            resourceInputs["administrativeUnitObjectId"] = state ? state.administrativeUnitObjectId : undefined;
-            resourceInputs["memberObjectId"] = state ? state.memberObjectId : undefined;
-            resourceInputs["roleObjectId"] = state ? state.roleObjectId : undefined;
+            resourceInputs["administrativeUnitObjectId"] = state?.administrativeUnitObjectId;
+            resourceInputs["memberObjectId"] = state?.memberObjectId;
+            resourceInputs["roleObjectId"] = state?.roleObjectId;
         } else {
             const args = argsOrState as AdministrativeUnitRoleMemberArgs | undefined;
-            if ((!args || args.administrativeUnitObjectId === undefined) && !opts.urn) {
+            if (args?.administrativeUnitObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'administrativeUnitObjectId'");
             }
-            if ((!args || args.memberObjectId === undefined) && !opts.urn) {
+            if (args?.memberObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'memberObjectId'");
             }
-            if ((!args || args.roleObjectId === undefined) && !opts.urn) {
+            if (args?.roleObjectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleObjectId'");
             }
-            resourceInputs["administrativeUnitObjectId"] = args ? args.administrativeUnitObjectId : undefined;
-            resourceInputs["memberObjectId"] = args ? args.memberObjectId : undefined;
-            resourceInputs["roleObjectId"] = args ? args.roleObjectId : undefined;
+            resourceInputs["administrativeUnitObjectId"] = args?.administrativeUnitObjectId;
+            resourceInputs["memberObjectId"] = args?.memberObjectId;
+            resourceInputs["roleObjectId"] = args?.roleObjectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AdministrativeUnitRoleMember.__pulumiType, name, resourceInputs, opts);

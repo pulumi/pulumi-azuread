@@ -78,21 +78,21 @@ export class ApplicationApiAccess extends pulumi.CustomResource {
     /**
      * The client ID of the API to which access is being granted. Changing this forces a new resource to be created.
      */
-    public readonly apiClientId!: pulumi.Output<string>;
+    declare public readonly apiClientId: pulumi.Output<string>;
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * A set of role IDs to be granted to the application, as published by the API.
      */
-    public readonly roleIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly roleIds: pulumi.Output<string[] | undefined>;
     /**
      * A set of scope IDs to be granted to the application, as published by the API.
      *
      * > At least one of `roleIds` or `scopeIds` must be specified.
      */
-    public readonly scopeIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly scopeIds: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ApplicationApiAccess resource with the given unique name, arguments, and options.
@@ -107,22 +107,22 @@ export class ApplicationApiAccess extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationApiAccessState | undefined;
-            resourceInputs["apiClientId"] = state ? state.apiClientId : undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["roleIds"] = state ? state.roleIds : undefined;
-            resourceInputs["scopeIds"] = state ? state.scopeIds : undefined;
+            resourceInputs["apiClientId"] = state?.apiClientId;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["roleIds"] = state?.roleIds;
+            resourceInputs["scopeIds"] = state?.scopeIds;
         } else {
             const args = argsOrState as ApplicationApiAccessArgs | undefined;
-            if ((!args || args.apiClientId === undefined) && !opts.urn) {
+            if (args?.apiClientId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiClientId'");
             }
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            resourceInputs["apiClientId"] = args ? args.apiClientId : undefined;
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["roleIds"] = args ? args.roleIds : undefined;
-            resourceInputs["scopeIds"] = args ? args.scopeIds : undefined;
+            resourceInputs["apiClientId"] = args?.apiClientId;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["roleIds"] = args?.roleIds;
+            resourceInputs["scopeIds"] = args?.scopeIds;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApplicationApiAccess.__pulumiType, name, resourceInputs, opts);

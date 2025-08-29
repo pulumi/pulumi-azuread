@@ -172,155 +172,155 @@ export class Application extends pulumi.CustomResource {
     /**
      * An `api` block as documented below, which configures API related settings for this application.
      */
-    public readonly api!: pulumi.Output<outputs.ApplicationApi | undefined>;
+    declare public readonly api: pulumi.Output<outputs.ApplicationApi | undefined>;
     /**
      * A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
      */
-    public /*out*/ readonly appRoleIds!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly appRoleIds: pulumi.Output<{[key: string]: string}>;
     /**
      * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
-    public readonly appRoles!: pulumi.Output<outputs.ApplicationAppRole[] | undefined>;
+    declare public readonly appRoles: pulumi.Output<outputs.ApplicationAppRole[] | undefined>;
     /**
      * The Client ID for the application.
      */
-    public /*out*/ readonly clientId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientId: pulumi.Output<string>;
     /**
      * A description of the application, as shown to end users.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      */
-    public readonly deviceOnlyAuthEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly deviceOnlyAuthEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
      */
-    public /*out*/ readonly disabledByMicrosoft!: pulumi.Output<string>;
+    declare public /*out*/ readonly disabledByMicrosoft: pulumi.Output<string>;
     /**
      * The display name for the application.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
      */
-    public readonly fallbackPublicClientEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly fallbackPublicClientEnabled: pulumi.Output<boolean | undefined>;
     /**
      * A `featureTags` block as described below. Cannot be used together with the `tags` property.
      *
      * > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
      */
-    public readonly featureTags!: pulumi.Output<outputs.ApplicationFeatureTag[]>;
+    declare public readonly featureTags: pulumi.Output<outputs.ApplicationFeatureTag[]>;
     /**
      * A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
-    public readonly groupMembershipClaims!: pulumi.Output<string[] | undefined>;
+    declare public readonly groupMembershipClaims: pulumi.Output<string[] | undefined>;
     /**
      * A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      */
-    public readonly identifierUris!: pulumi.Output<string[] | undefined>;
+    declare public readonly identifierUris: pulumi.Output<string[] | undefined>;
     /**
      * A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
      */
-    public readonly logoImage!: pulumi.Output<string | undefined>;
+    declare public readonly logoImage: pulumi.Output<string | undefined>;
     /**
      * CDN URL to the application's logo, as uploaded with the `logoImage` property.
      */
-    public /*out*/ readonly logoUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly logoUrl: pulumi.Output<string>;
     /**
      * URL of the application's marketing page.
      */
-    public readonly marketingUrl!: pulumi.Output<string | undefined>;
+    declare public readonly marketingUrl: pulumi.Output<string | undefined>;
     /**
      * User-specified notes relevant for the management of the application.
      */
-    public readonly notes!: pulumi.Output<string | undefined>;
+    declare public readonly notes: pulumi.Output<string | undefined>;
     /**
      * A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
      */
-    public /*out*/ readonly oauth2PermissionScopeIds!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly oauth2PermissionScopeIds: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
      */
-    public readonly oauth2PostResponseRequired!: pulumi.Output<boolean | undefined>;
+    declare public readonly oauth2PostResponseRequired: pulumi.Output<boolean | undefined>;
     /**
      * The application's object ID.
      */
-    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly objectId: pulumi.Output<string>;
     /**
      * An `optionalClaims` block as documented below.
      */
-    public readonly optionalClaims!: pulumi.Output<outputs.ApplicationOptionalClaims | undefined>;
+    declare public readonly optionalClaims: pulumi.Output<outputs.ApplicationOptionalClaims | undefined>;
     /**
      * A list of object IDs of principals that will be granted ownership of the application
      */
-    public readonly owners!: pulumi.Output<string[] | undefined>;
+    declare public readonly owners: pulumi.Output<string[] | undefined>;
     /**
      * A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
      *
      * > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
      */
-    public readonly password!: pulumi.Output<outputs.ApplicationPassword | undefined>;
+    declare public readonly password: pulumi.Output<outputs.ApplicationPassword | undefined>;
     /**
      * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      */
-    public readonly preventDuplicateNames!: pulumi.Output<boolean | undefined>;
+    declare public readonly preventDuplicateNames: pulumi.Output<boolean | undefined>;
     /**
      * URL of the application's privacy statement.
      */
-    public readonly privacyStatementUrl!: pulumi.Output<string | undefined>;
+    declare public readonly privacyStatementUrl: pulumi.Output<string | undefined>;
     /**
      * A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
      */
-    public readonly publicClient!: pulumi.Output<outputs.ApplicationPublicClient | undefined>;
+    declare public readonly publicClient: pulumi.Output<outputs.ApplicationPublicClient | undefined>;
     /**
      * The verified publisher domain for the application.
      */
-    public /*out*/ readonly publisherDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly publisherDomain: pulumi.Output<string>;
     /**
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
-    public readonly requiredResourceAccesses!: pulumi.Output<outputs.ApplicationRequiredResourceAccess[] | undefined>;
+    declare public readonly requiredResourceAccesses: pulumi.Output<outputs.ApplicationRequiredResourceAccess[] | undefined>;
     /**
      * References application context information from a Service or Asset Management database.
      */
-    public readonly serviceManagementReference!: pulumi.Output<string | undefined>;
+    declare public readonly serviceManagementReference: pulumi.Output<string | undefined>;
     /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      *
      * > **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
      */
-    public readonly signInAudience!: pulumi.Output<string | undefined>;
+    declare public readonly signInAudience: pulumi.Output<string | undefined>;
     /**
      * A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
      */
-    public readonly singlePageApplication!: pulumi.Output<outputs.ApplicationSinglePageApplication | undefined>;
+    declare public readonly singlePageApplication: pulumi.Output<outputs.ApplicationSinglePageApplication | undefined>;
     /**
      * URL of the application's support page.
      */
-    public readonly supportUrl!: pulumi.Output<string | undefined>;
+    declare public readonly supportUrl: pulumi.Output<string | undefined>;
     /**
      * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      *
      * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      *
      * > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
      */
-    public readonly templateId!: pulumi.Output<string>;
+    declare public readonly templateId: pulumi.Output<string>;
     /**
      * URL of the application's terms of service statement.
      */
-    public readonly termsOfServiceUrl!: pulumi.Output<string | undefined>;
+    declare public readonly termsOfServiceUrl: pulumi.Output<string | undefined>;
     /**
      * A `web` block as documented below, which configures web related settings for this application.
      *
      * > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
      */
-    public readonly web!: pulumi.Output<outputs.ApplicationWeb | undefined>;
+    declare public readonly web: pulumi.Output<outputs.ApplicationWeb | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -335,74 +335,74 @@ export class Application extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            resourceInputs["api"] = state ? state.api : undefined;
-            resourceInputs["appRoleIds"] = state ? state.appRoleIds : undefined;
-            resourceInputs["appRoles"] = state ? state.appRoles : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["deviceOnlyAuthEnabled"] = state ? state.deviceOnlyAuthEnabled : undefined;
-            resourceInputs["disabledByMicrosoft"] = state ? state.disabledByMicrosoft : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["fallbackPublicClientEnabled"] = state ? state.fallbackPublicClientEnabled : undefined;
-            resourceInputs["featureTags"] = state ? state.featureTags : undefined;
-            resourceInputs["groupMembershipClaims"] = state ? state.groupMembershipClaims : undefined;
-            resourceInputs["identifierUris"] = state ? state.identifierUris : undefined;
-            resourceInputs["logoImage"] = state ? state.logoImage : undefined;
-            resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
-            resourceInputs["marketingUrl"] = state ? state.marketingUrl : undefined;
-            resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["oauth2PermissionScopeIds"] = state ? state.oauth2PermissionScopeIds : undefined;
-            resourceInputs["oauth2PostResponseRequired"] = state ? state.oauth2PostResponseRequired : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["optionalClaims"] = state ? state.optionalClaims : undefined;
-            resourceInputs["owners"] = state ? state.owners : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
-            resourceInputs["privacyStatementUrl"] = state ? state.privacyStatementUrl : undefined;
-            resourceInputs["publicClient"] = state ? state.publicClient : undefined;
-            resourceInputs["publisherDomain"] = state ? state.publisherDomain : undefined;
-            resourceInputs["requiredResourceAccesses"] = state ? state.requiredResourceAccesses : undefined;
-            resourceInputs["serviceManagementReference"] = state ? state.serviceManagementReference : undefined;
-            resourceInputs["signInAudience"] = state ? state.signInAudience : undefined;
-            resourceInputs["singlePageApplication"] = state ? state.singlePageApplication : undefined;
-            resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
-            resourceInputs["termsOfServiceUrl"] = state ? state.termsOfServiceUrl : undefined;
-            resourceInputs["web"] = state ? state.web : undefined;
+            resourceInputs["api"] = state?.api;
+            resourceInputs["appRoleIds"] = state?.appRoleIds;
+            resourceInputs["appRoles"] = state?.appRoles;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["deviceOnlyAuthEnabled"] = state?.deviceOnlyAuthEnabled;
+            resourceInputs["disabledByMicrosoft"] = state?.disabledByMicrosoft;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["fallbackPublicClientEnabled"] = state?.fallbackPublicClientEnabled;
+            resourceInputs["featureTags"] = state?.featureTags;
+            resourceInputs["groupMembershipClaims"] = state?.groupMembershipClaims;
+            resourceInputs["identifierUris"] = state?.identifierUris;
+            resourceInputs["logoImage"] = state?.logoImage;
+            resourceInputs["logoUrl"] = state?.logoUrl;
+            resourceInputs["marketingUrl"] = state?.marketingUrl;
+            resourceInputs["notes"] = state?.notes;
+            resourceInputs["oauth2PermissionScopeIds"] = state?.oauth2PermissionScopeIds;
+            resourceInputs["oauth2PostResponseRequired"] = state?.oauth2PostResponseRequired;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["optionalClaims"] = state?.optionalClaims;
+            resourceInputs["owners"] = state?.owners;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["preventDuplicateNames"] = state?.preventDuplicateNames;
+            resourceInputs["privacyStatementUrl"] = state?.privacyStatementUrl;
+            resourceInputs["publicClient"] = state?.publicClient;
+            resourceInputs["publisherDomain"] = state?.publisherDomain;
+            resourceInputs["requiredResourceAccesses"] = state?.requiredResourceAccesses;
+            resourceInputs["serviceManagementReference"] = state?.serviceManagementReference;
+            resourceInputs["signInAudience"] = state?.signInAudience;
+            resourceInputs["singlePageApplication"] = state?.singlePageApplication;
+            resourceInputs["supportUrl"] = state?.supportUrl;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["termsOfServiceUrl"] = state?.termsOfServiceUrl;
+            resourceInputs["web"] = state?.web;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["api"] = args ? args.api : undefined;
-            resourceInputs["appRoles"] = args ? args.appRoles : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["deviceOnlyAuthEnabled"] = args ? args.deviceOnlyAuthEnabled : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["fallbackPublicClientEnabled"] = args ? args.fallbackPublicClientEnabled : undefined;
-            resourceInputs["featureTags"] = args ? args.featureTags : undefined;
-            resourceInputs["groupMembershipClaims"] = args ? args.groupMembershipClaims : undefined;
-            resourceInputs["identifierUris"] = args ? args.identifierUris : undefined;
-            resourceInputs["logoImage"] = args ? args.logoImage : undefined;
-            resourceInputs["marketingUrl"] = args ? args.marketingUrl : undefined;
-            resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["oauth2PostResponseRequired"] = args ? args.oauth2PostResponseRequired : undefined;
-            resourceInputs["optionalClaims"] = args ? args.optionalClaims : undefined;
-            resourceInputs["owners"] = args ? args.owners : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
-            resourceInputs["privacyStatementUrl"] = args ? args.privacyStatementUrl : undefined;
-            resourceInputs["publicClient"] = args ? args.publicClient : undefined;
-            resourceInputs["requiredResourceAccesses"] = args ? args.requiredResourceAccesses : undefined;
-            resourceInputs["serviceManagementReference"] = args ? args.serviceManagementReference : undefined;
-            resourceInputs["signInAudience"] = args ? args.signInAudience : undefined;
-            resourceInputs["singlePageApplication"] = args ? args.singlePageApplication : undefined;
-            resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
-            resourceInputs["termsOfServiceUrl"] = args ? args.termsOfServiceUrl : undefined;
-            resourceInputs["web"] = args ? args.web : undefined;
+            resourceInputs["api"] = args?.api;
+            resourceInputs["appRoles"] = args?.appRoles;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["deviceOnlyAuthEnabled"] = args?.deviceOnlyAuthEnabled;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["fallbackPublicClientEnabled"] = args?.fallbackPublicClientEnabled;
+            resourceInputs["featureTags"] = args?.featureTags;
+            resourceInputs["groupMembershipClaims"] = args?.groupMembershipClaims;
+            resourceInputs["identifierUris"] = args?.identifierUris;
+            resourceInputs["logoImage"] = args?.logoImage;
+            resourceInputs["marketingUrl"] = args?.marketingUrl;
+            resourceInputs["notes"] = args?.notes;
+            resourceInputs["oauth2PostResponseRequired"] = args?.oauth2PostResponseRequired;
+            resourceInputs["optionalClaims"] = args?.optionalClaims;
+            resourceInputs["owners"] = args?.owners;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["preventDuplicateNames"] = args?.preventDuplicateNames;
+            resourceInputs["privacyStatementUrl"] = args?.privacyStatementUrl;
+            resourceInputs["publicClient"] = args?.publicClient;
+            resourceInputs["requiredResourceAccesses"] = args?.requiredResourceAccesses;
+            resourceInputs["serviceManagementReference"] = args?.serviceManagementReference;
+            resourceInputs["signInAudience"] = args?.signInAudience;
+            resourceInputs["singlePageApplication"] = args?.singlePageApplication;
+            resourceInputs["supportUrl"] = args?.supportUrl;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateId"] = args?.templateId;
+            resourceInputs["termsOfServiceUrl"] = args?.termsOfServiceUrl;
+            resourceInputs["web"] = args?.web;
             resourceInputs["appRoleIds"] = undefined /*out*/;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["disabledByMicrosoft"] = undefined /*out*/;

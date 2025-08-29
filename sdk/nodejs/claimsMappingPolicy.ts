@@ -85,11 +85,11 @@ export class ClaimsMappingPolicy extends pulumi.CustomResource {
     /**
      * The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
      */
-    public readonly definitions!: pulumi.Output<string[]>;
+    declare public readonly definitions: pulumi.Output<string[]>;
     /**
      * The display name for this Claims Mapping Policy.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
 
     /**
      * Create a ClaimsMappingPolicy resource with the given unique name, arguments, and options.
@@ -104,18 +104,18 @@ export class ClaimsMappingPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClaimsMappingPolicyState | undefined;
-            resourceInputs["definitions"] = state ? state.definitions : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["definitions"] = state?.definitions;
+            resourceInputs["displayName"] = state?.displayName;
         } else {
             const args = argsOrState as ClaimsMappingPolicyArgs | undefined;
-            if ((!args || args.definitions === undefined) && !opts.urn) {
+            if (args?.definitions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'definitions'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["definitions"] = args ? args.definitions : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["definitions"] = args?.definitions;
+            resourceInputs["displayName"] = args?.displayName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClaimsMappingPolicy.__pulumiType, name, resourceInputs, opts);

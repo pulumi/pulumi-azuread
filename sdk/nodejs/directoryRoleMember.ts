@@ -74,11 +74,11 @@ export class DirectoryRoleMember extends pulumi.CustomResource {
     /**
      * The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
-    public readonly memberObjectId!: pulumi.Output<string | undefined>;
+    declare public readonly memberObjectId: pulumi.Output<string | undefined>;
     /**
      * The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
      */
-    public readonly roleObjectId!: pulumi.Output<string | undefined>;
+    declare public readonly roleObjectId: pulumi.Output<string | undefined>;
 
     /**
      * Create a DirectoryRoleMember resource with the given unique name, arguments, and options.
@@ -93,12 +93,12 @@ export class DirectoryRoleMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DirectoryRoleMemberState | undefined;
-            resourceInputs["memberObjectId"] = state ? state.memberObjectId : undefined;
-            resourceInputs["roleObjectId"] = state ? state.roleObjectId : undefined;
+            resourceInputs["memberObjectId"] = state?.memberObjectId;
+            resourceInputs["roleObjectId"] = state?.roleObjectId;
         } else {
             const args = argsOrState as DirectoryRoleMemberArgs | undefined;
-            resourceInputs["memberObjectId"] = args ? args.memberObjectId : undefined;
-            resourceInputs["roleObjectId"] = args ? args.roleObjectId : undefined;
+            resourceInputs["memberObjectId"] = args?.memberObjectId;
+            resourceInputs["roleObjectId"] = args?.roleObjectId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DirectoryRoleMember.__pulumiType, name, resourceInputs, opts);

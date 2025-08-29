@@ -105,16 +105,16 @@ export class SynchronizationJobProvisionOnDemand extends pulumi.CustomResource {
     /**
      * One or more `parameter` blocks as documented below.
      */
-    public readonly parameters!: pulumi.Output<outputs.SynchronizationJobProvisionOnDemandParameter[]>;
+    declare public readonly parameters: pulumi.Output<outputs.SynchronizationJobProvisionOnDemandParameter[]>;
     /**
      * The ID of the service principal for the synchronization job.
      */
-    public readonly servicePrincipalId!: pulumi.Output<string>;
+    declare public readonly servicePrincipalId: pulumi.Output<string>;
     /**
      * The ID of the synchronization job.
      */
-    public readonly synchronizationJobId!: pulumi.Output<string>;
-    public readonly triggers!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly synchronizationJobId: pulumi.Output<string>;
+    declare public readonly triggers: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a SynchronizationJobProvisionOnDemand resource with the given unique name, arguments, and options.
@@ -129,25 +129,25 @@ export class SynchronizationJobProvisionOnDemand extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SynchronizationJobProvisionOnDemandState | undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
-            resourceInputs["synchronizationJobId"] = state ? state.synchronizationJobId : undefined;
-            resourceInputs["triggers"] = state ? state.triggers : undefined;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["servicePrincipalId"] = state?.servicePrincipalId;
+            resourceInputs["synchronizationJobId"] = state?.synchronizationJobId;
+            resourceInputs["triggers"] = state?.triggers;
         } else {
             const args = argsOrState as SynchronizationJobProvisionOnDemandArgs | undefined;
-            if ((!args || args.parameters === undefined) && !opts.urn) {
+            if (args?.parameters === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameters'");
             }
-            if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
+            if (args?.servicePrincipalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            if ((!args || args.synchronizationJobId === undefined) && !opts.urn) {
+            if (args?.synchronizationJobId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'synchronizationJobId'");
             }
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
-            resourceInputs["synchronizationJobId"] = args ? args.synchronizationJobId : undefined;
-            resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["servicePrincipalId"] = args?.servicePrincipalId;
+            resourceInputs["synchronizationJobId"] = args?.synchronizationJobId;
+            resourceInputs["triggers"] = args?.triggers;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SynchronizationJobProvisionOnDemand.__pulumiType, name, resourceInputs, opts);
