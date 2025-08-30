@@ -574,25 +574,44 @@ export interface ConditionalAccessPolicyConditionsClientApplications {
      */
     excludedServicePrincipals?: string[];
     /**
+     * A `filter` block as documented below.
+     *
+     * > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+     */
+    filter?: outputs.ConditionalAccessPolicyConditionsClientApplicationsFilter;
+    /**
      * A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
      */
     includedServicePrincipals?: string[];
 }
 
+export interface ConditionalAccessPolicyConditionsClientApplicationsFilter {
+    /**
+     * Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+     */
+    mode: string;
+    /**
+     * Condition filter to match items.
+     */
+    rule: string;
+}
+
 export interface ConditionalAccessPolicyConditionsDevices {
     /**
-     * A `filter` block as described below.
+     * A `filter` block as documented below.
+     *
+     * > **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
      */
     filter?: outputs.ConditionalAccessPolicyConditionsDevicesFilter;
 }
 
 export interface ConditionalAccessPolicyConditionsDevicesFilter {
     /**
-     * Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+     * Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
      */
     mode: string;
     /**
-     * Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+     * Condition filter to match items.
      */
     rule: string;
 }
