@@ -970,6 +970,10 @@
                     },
                     "description": "A list of service principal IDs explicitly excluded in the policy.\n"
                 },
+                "filter": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditionsClientApplicationsFilter:ConditionalAccessPolicyConditionsClientApplicationsFilter",
+                    "description": "A `filter` block as documented below.\n\n\u003e **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.\n"
+                },
                 "includedServicePrincipals": {
                     "type": "array",
                     "items": {
@@ -980,11 +984,28 @@
             },
             "type": "object"
         },
+        "azuread:index/ConditionalAccessPolicyConditionsClientApplicationsFilter:ConditionalAccessPolicyConditionsClientApplicationsFilter": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.\n"
+                },
+                "rule": {
+                    "type": "string",
+                    "description": "Condition filter to match items.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode",
+                "rule"
+            ]
+        },
         "azuread:index/ConditionalAccessPolicyConditionsDevices:ConditionalAccessPolicyConditionsDevices": {
             "properties": {
                 "filter": {
                     "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditionsDevicesFilter:ConditionalAccessPolicyConditionsDevicesFilter",
-                    "description": "A `filter` block as described below.\n"
+                    "description": "A `filter` block as documented below.\n\n\u003e **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).\n"
                 }
             },
             "type": "object"
@@ -993,11 +1014,11 @@
             "properties": {
                 "mode": {
                     "type": "string",
-                    "description": "Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.\n"
+                    "description": "Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.\n"
                 },
                 "rule": {
                     "type": "string",
-                    "description": "Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).\n"
+                    "description": "Condition filter to match items.\n"
                 }
             },
             "type": "object",
