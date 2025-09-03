@@ -10,9 +10,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class ConditionalAccessPolicyConditionsDevicesFilterArgs extends com.pulumi.resources.ResourceArgs {
+public final class ConditionalAccessPolicyConditionsClientApplicationsFilterArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ConditionalAccessPolicyConditionsDevicesFilterArgs Empty = new ConditionalAccessPolicyConditionsDevicesFilterArgs();
+    public static final ConditionalAccessPolicyConditionsClientApplicationsFilterArgs Empty = new ConditionalAccessPolicyConditionsClientApplicationsFilterArgs();
 
     /**
      * Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
@@ -44,9 +44,9 @@ public final class ConditionalAccessPolicyConditionsDevicesFilterArgs extends co
         return this.rule;
     }
 
-    private ConditionalAccessPolicyConditionsDevicesFilterArgs() {}
+    private ConditionalAccessPolicyConditionsClientApplicationsFilterArgs() {}
 
-    private ConditionalAccessPolicyConditionsDevicesFilterArgs(ConditionalAccessPolicyConditionsDevicesFilterArgs $) {
+    private ConditionalAccessPolicyConditionsClientApplicationsFilterArgs(ConditionalAccessPolicyConditionsClientApplicationsFilterArgs $) {
         this.mode = $.mode;
         this.rule = $.rule;
     }
@@ -54,19 +54,19 @@ public final class ConditionalAccessPolicyConditionsDevicesFilterArgs extends co
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ConditionalAccessPolicyConditionsDevicesFilterArgs defaults) {
+    public static Builder builder(ConditionalAccessPolicyConditionsClientApplicationsFilterArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ConditionalAccessPolicyConditionsDevicesFilterArgs $;
+        private ConditionalAccessPolicyConditionsClientApplicationsFilterArgs $;
 
         public Builder() {
-            $ = new ConditionalAccessPolicyConditionsDevicesFilterArgs();
+            $ = new ConditionalAccessPolicyConditionsClientApplicationsFilterArgs();
         }
 
-        public Builder(ConditionalAccessPolicyConditionsDevicesFilterArgs defaults) {
-            $ = new ConditionalAccessPolicyConditionsDevicesFilterArgs(Objects.requireNonNull(defaults));
+        public Builder(ConditionalAccessPolicyConditionsClientApplicationsFilterArgs defaults) {
+            $ = new ConditionalAccessPolicyConditionsClientApplicationsFilterArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -111,12 +111,12 @@ public final class ConditionalAccessPolicyConditionsDevicesFilterArgs extends co
             return rule(Output.of(rule));
         }
 
-        public ConditionalAccessPolicyConditionsDevicesFilterArgs build() {
+        public ConditionalAccessPolicyConditionsClientApplicationsFilterArgs build() {
             if ($.mode == null) {
-                throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsDevicesFilterArgs", "mode");
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsClientApplicationsFilterArgs", "mode");
             }
             if ($.rule == null) {
-                throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsDevicesFilterArgs", "rule");
+                throw new MissingRequiredPropertyException("ConditionalAccessPolicyConditionsClientApplicationsFilterArgs", "rule");
             }
             return $;
         }

@@ -3,10 +3,12 @@
 
 package com.pulumi.azuread.outputs;
 
+import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsClientApplicationsFilter;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -16,6 +18,13 @@ public final class ConditionalAccessPolicyConditionsClientApplications {
      * 
      */
     private @Nullable List<String> excludedServicePrincipals;
+    /**
+     * @return A `filter` block as documented below.
+     * 
+     * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+     * 
+     */
+    private @Nullable ConditionalAccessPolicyConditionsClientApplicationsFilter filter;
     /**
      * @return A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
      * 
@@ -29,6 +38,15 @@ public final class ConditionalAccessPolicyConditionsClientApplications {
      */
     public List<String> excludedServicePrincipals() {
         return this.excludedServicePrincipals == null ? List.of() : this.excludedServicePrincipals;
+    }
+    /**
+     * @return A `filter` block as documented below.
+     * 
+     * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+     * 
+     */
+    public Optional<ConditionalAccessPolicyConditionsClientApplicationsFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
@@ -48,11 +66,13 @@ public final class ConditionalAccessPolicyConditionsClientApplications {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludedServicePrincipals;
+        private @Nullable ConditionalAccessPolicyConditionsClientApplicationsFilter filter;
         private @Nullable List<String> includedServicePrincipals;
         public Builder() {}
         public Builder(ConditionalAccessPolicyConditionsClientApplications defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedServicePrincipals = defaults.excludedServicePrincipals;
+    	      this.filter = defaults.filter;
     	      this.includedServicePrincipals = defaults.includedServicePrincipals;
         }
 
@@ -66,6 +86,12 @@ public final class ConditionalAccessPolicyConditionsClientApplications {
             return excludedServicePrincipals(List.of(excludedServicePrincipals));
         }
         @CustomType.Setter
+        public Builder filter(@Nullable ConditionalAccessPolicyConditionsClientApplicationsFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder includedServicePrincipals(@Nullable List<String> includedServicePrincipals) {
 
             this.includedServicePrincipals = includedServicePrincipals;
@@ -77,6 +103,7 @@ public final class ConditionalAccessPolicyConditionsClientApplications {
         public ConditionalAccessPolicyConditionsClientApplications build() {
             final var _resultValue = new ConditionalAccessPolicyConditionsClientApplications();
             _resultValue.excludedServicePrincipals = excludedServicePrincipals;
+            _resultValue.filter = filter;
             _resultValue.includedServicePrincipals = includedServicePrincipals;
             return _resultValue;
         }
