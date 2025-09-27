@@ -47,7 +47,8 @@ namespace Pulumi.AzureAD
         /// * `country` - A `country` block as documented below, which describes a country-based named location.
         /// * `id` - The ID of the named location.
         /// * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-        /// * 
+        /// * `object_id` - The object ID of the named location.
+        /// 
         /// ---
         /// 
         /// `country` block exports the following:
@@ -101,7 +102,8 @@ namespace Pulumi.AzureAD
         /// * `country` - A `country` block as documented below, which describes a country-based named location.
         /// * `id` - The ID of the named location.
         /// * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-        /// * 
+        /// * `object_id` - The object ID of the named location.
+        /// 
         /// ---
         /// 
         /// `country` block exports the following:
@@ -155,7 +157,8 @@ namespace Pulumi.AzureAD
         /// * `country` - A `country` block as documented below, which describes a country-based named location.
         /// * `id` - The ID of the named location.
         /// * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-        /// * 
+        /// * `object_id` - The object ID of the named location.
+        /// 
         /// ---
         /// 
         /// `country` block exports the following:
@@ -214,6 +217,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetNamedLocationIpResult> Ips;
+        public readonly string ObjectId;
 
         [OutputConstructor]
         private GetNamedLocationResult(
@@ -223,12 +227,15 @@ namespace Pulumi.AzureAD
 
             string id,
 
-            ImmutableArray<Outputs.GetNamedLocationIpResult> ips)
+            ImmutableArray<Outputs.GetNamedLocationIpResult> ips,
+
+            string objectId)
         {
             Countries = countries;
             DisplayName = displayName;
             Id = id;
             Ips = ips;
+            ObjectId = objectId;
         }
     }
 }
