@@ -54,7 +54,8 @@ import (
 // * `country` - A `country` block as documented below, which describes a country-based named location.
 // * `id` - The ID of the named location.
 // * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-// *
+// * `objectId` - The object ID of the named location.
+//
 // ***
 //
 // `country` block exports the following:
@@ -89,8 +90,9 @@ type LookupNamedLocationResult struct {
 	Countries   []GetNamedLocationCountry `pulumi:"countries"`
 	DisplayName string                    `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id  string               `pulumi:"id"`
-	Ips []GetNamedLocationIp `pulumi:"ips"`
+	Id       string               `pulumi:"id"`
+	Ips      []GetNamedLocationIp `pulumi:"ips"`
+	ObjectId string               `pulumi:"objectId"`
 }
 
 func LookupNamedLocationOutput(ctx *pulumi.Context, args LookupNamedLocationOutputArgs, opts ...pulumi.InvokeOption) LookupNamedLocationResultOutput {
@@ -142,6 +144,10 @@ func (o LookupNamedLocationResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupNamedLocationResultOutput) Ips() GetNamedLocationIpArrayOutput {
 	return o.ApplyT(func(v LookupNamedLocationResult) []GetNamedLocationIp { return v.Ips }).(GetNamedLocationIpArrayOutput)
+}
+
+func (o LookupNamedLocationResultOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamedLocationResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
 func init() {

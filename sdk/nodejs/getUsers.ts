@@ -59,6 +59,8 @@ export interface GetUsersArgs {
     ignoreMissing?: boolean;
     /**
      * The email aliases of the users.
+     *
+     * > **Note:** `mailNicknames` are not a unique identifier for users. If multiple users share the same `mailNickname`, all matching users will be returned.
      */
     mailNicknames?: string[];
     /**
@@ -169,6 +171,8 @@ export interface GetUsersOutputArgs {
     ignoreMissing?: pulumi.Input<boolean>;
     /**
      * The email aliases of the users.
+     *
+     * > **Note:** `mailNicknames` are not a unique identifier for users. If multiple users share the same `mailNickname`, all matching users will be returned.
      */
     mailNicknames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
