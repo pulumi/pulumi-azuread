@@ -66,12 +66,28 @@ public final class NamedLocationState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.ip);
     }
 
+    /**
+     * The object ID of the named location.
+     * 
+     */
+    @Import(name="objectId")
+    private @Nullable Output<String> objectId;
+
+    /**
+     * @return The object ID of the named location.
+     * 
+     */
+    public Optional<Output<String>> objectId() {
+        return Optional.ofNullable(this.objectId);
+    }
+
     private NamedLocationState() {}
 
     private NamedLocationState(NamedLocationState $) {
         this.country = $.country;
         this.displayName = $.displayName;
         this.ip = $.ip;
+        this.objectId = $.objectId;
     }
 
     public static Builder builder() {
@@ -157,6 +173,27 @@ public final class NamedLocationState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder ip(NamedLocationIpArgs ip) {
             return ip(Output.of(ip));
+        }
+
+        /**
+         * @param objectId The object ID of the named location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectId(@Nullable Output<String> objectId) {
+            $.objectId = objectId;
+            return this;
+        }
+
+        /**
+         * @param objectId The object ID of the named location.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectId(String objectId) {
+            return objectId(Output.of(objectId));
         }
 
         public NamedLocationState build() {

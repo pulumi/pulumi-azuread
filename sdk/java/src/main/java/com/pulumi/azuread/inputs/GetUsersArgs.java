@@ -50,12 +50,16 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The email aliases of the users.
      * 
+     * &gt; **Note:** `mail_nicknames` are not a unique identifier for users. If multiple users share the same `mail_nickname`, all matching users will be returned.
+     * 
      */
     @Import(name="mailNicknames")
     private @Nullable Output<List<String>> mailNicknames;
 
     /**
      * @return The email aliases of the users.
+     * 
+     * &gt; **Note:** `mail_nicknames` are not a unique identifier for users. If multiple users share the same `mail_nickname`, all matching users will be returned.
      * 
      */
     public Optional<Output<List<String>>> mailNicknames() {
@@ -211,6 +215,8 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param mailNicknames The email aliases of the users.
          * 
+         * &gt; **Note:** `mail_nicknames` are not a unique identifier for users. If multiple users share the same `mail_nickname`, all matching users will be returned.
+         * 
          * @return builder
          * 
          */
@@ -222,6 +228,8 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param mailNicknames The email aliases of the users.
          * 
+         * &gt; **Note:** `mail_nicknames` are not a unique identifier for users. If multiple users share the same `mail_nickname`, all matching users will be returned.
+         * 
          * @return builder
          * 
          */
@@ -231,6 +239,8 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param mailNicknames The email aliases of the users.
+         * 
+         * &gt; **Note:** `mail_nicknames` are not a unique identifier for users. If multiple users share the same `mail_nickname`, all matching users will be returned.
          * 
          * @return builder
          * 
