@@ -25,7 +25,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? AdminConsentDisplayName { get; set; }
 
         /// <summary>
-        /// Determines if the permission scope is enabled. Defaults to `true`.
+        /// Determines if the permission scope is enabled. Defaults to `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -33,7 +33,7 @@ namespace Pulumi.AzureAD.Inputs
         /// <summary>
         /// The unique identifier of the delegated permission. Must be a valid UUID.
         /// 
-        /// &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+        /// &gt; **Tip: Generating a UUID for the `Id` field** To generate a value for the `Id` field in cases where the actual UUID is not important, you can use the `RandomUuid` resource. See the application example in the provider repository.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -57,7 +57,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? UserConsentDisplayName { get; set; }
 
         /// <summary>
-        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens
+        /// The value that is used for the `Scp` claim in OAuth 2.0 access tokens
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

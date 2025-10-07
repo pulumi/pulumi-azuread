@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GroupRoleManagementPolicyActivationRules {
     /**
-     * @return An `approval_stage` block as defined below.
+     * @return An `approvalStage` block as defined below.
      * 
      */
     private @Nullable GroupRoleManagementPolicyActivationRulesApprovalStage approvalStage;
@@ -24,7 +24,7 @@ public final class GroupRoleManagementPolicyActivationRules {
      */
     private @Nullable String maximumDuration;
     /**
-     * @return Is approval required for activation. If `true` an `approval_stage` block must be provided.
+     * @return Is approval required for activation. If `true` an `approvalStage` block must be provided.
      * 
      */
     private @Nullable Boolean requireApproval;
@@ -34,7 +34,7 @@ public final class GroupRoleManagementPolicyActivationRules {
      */
     private @Nullable Boolean requireJustification;
     /**
-     * @return Is multi-factor authentication required to activate the role. Conflicts with `required_conditional_access_authentication_context`.
+     * @return Is multi-factor authentication required to activate the role. Conflicts with `requiredConditionalAccessAuthenticationContext`.
      * 
      */
     private @Nullable Boolean requireMultifactorAuthentication;
@@ -44,14 +44,14 @@ public final class GroupRoleManagementPolicyActivationRules {
      */
     private @Nullable Boolean requireTicketInfo;
     /**
-     * @return The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
+     * @return The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `requireMultifactorAuthentication`.
      * 
      */
     private @Nullable String requiredConditionalAccessAuthenticationContext;
 
     private GroupRoleManagementPolicyActivationRules() {}
     /**
-     * @return An `approval_stage` block as defined below.
+     * @return An `approvalStage` block as defined below.
      * 
      */
     public Optional<GroupRoleManagementPolicyActivationRulesApprovalStage> approvalStage() {
@@ -65,7 +65,7 @@ public final class GroupRoleManagementPolicyActivationRules {
         return Optional.ofNullable(this.maximumDuration);
     }
     /**
-     * @return Is approval required for activation. If `true` an `approval_stage` block must be provided.
+     * @return Is approval required for activation. If `true` an `approvalStage` block must be provided.
      * 
      */
     public Optional<Boolean> requireApproval() {
@@ -79,7 +79,7 @@ public final class GroupRoleManagementPolicyActivationRules {
         return Optional.ofNullable(this.requireJustification);
     }
     /**
-     * @return Is multi-factor authentication required to activate the role. Conflicts with `required_conditional_access_authentication_context`.
+     * @return Is multi-factor authentication required to activate the role. Conflicts with `requiredConditionalAccessAuthenticationContext`.
      * 
      */
     public Optional<Boolean> requireMultifactorAuthentication() {
@@ -93,7 +93,7 @@ public final class GroupRoleManagementPolicyActivationRules {
         return Optional.ofNullable(this.requireTicketInfo);
     }
     /**
-     * @return The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
+     * @return The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `requireMultifactorAuthentication`.
      * 
      */
     public Optional<String> requiredConditionalAccessAuthenticationContext() {

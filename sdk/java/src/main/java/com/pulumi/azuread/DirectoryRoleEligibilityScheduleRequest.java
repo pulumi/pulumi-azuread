@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * &gt; Note the use of the `template_id` attribute when referencing built-in roles.
+ * &gt; Note the use of the `templateId` attribute when referencing built-in roles.
  * 
  * ## Import
  * 

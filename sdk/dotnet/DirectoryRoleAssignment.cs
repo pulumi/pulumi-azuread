@@ -51,7 +51,7 @@ namespace Pulumi.AzureAD
     /// });
     /// ```
     /// 
-    /// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
+    /// &gt; Note the use of the `TemplateId` attribute when referencing built-in roles.
     /// 
     /// *Assignment for a custom role*
     /// 
@@ -109,13 +109,13 @@ namespace Pulumi.AzureAD
     public partial class DirectoryRoleAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+        /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `DirectoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
         /// </summary>
         [Output("appScopeId")]
         public Output<string> AppScopeId { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+        /// Identifier of the directory object representing the scope of the assignment. Cannot be used with `AppScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
         /// </summary>
         [Output("directoryScopeId")]
         public Output<string> DirectoryScopeId { get; private set; } = null!;
@@ -179,13 +179,13 @@ namespace Pulumi.AzureAD
     public sealed class DirectoryRoleAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+        /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `DirectoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
         /// </summary>
         [Input("appScopeId")]
         public Input<string>? AppScopeId { get; set; }
 
         /// <summary>
-        /// Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+        /// Identifier of the directory object representing the scope of the assignment. Cannot be used with `AppScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
         /// </summary>
         [Input("directoryScopeId")]
         public Input<string>? DirectoryScopeId { get; set; }
@@ -211,13 +211,13 @@ namespace Pulumi.AzureAD
     public sealed class DirectoryRoleAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+        /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `DirectoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
         /// </summary>
         [Input("appScopeId")]
         public Input<string>? AppScopeId { get; set; }
 
         /// <summary>
-        /// Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+        /// Identifier of the directory object representing the scope of the assignment. Cannot be used with `AppScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
         /// </summary>
         [Input("directoryScopeId")]
         public Input<string>? DirectoryScopeId { get; set; }

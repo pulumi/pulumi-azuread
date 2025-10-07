@@ -43,7 +43,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+        /// This will determine how often the access review campaign runs, valid values are `Weekly`, `Monthly`, `Quarterly`, `Halfyearly`, or `Annual`.
         /// </summary>
         [Input("reviewFrequency")]
         public Input<string>? ReviewFrequency { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerGetArgs>? _reviewers;
 
         /// <summary>
-        /// One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+        /// One or more `Reviewer` blocks to specify the users who will be reviewers (when `ReviewType` is `Reviewers`), as documented below.
         /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerGetArgs> Reviewers
         {

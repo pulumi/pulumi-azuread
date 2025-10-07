@@ -21,14 +21,14 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
     public static final GroupRoleManagementPolicyArgs Empty = new GroupRoleManagementPolicyArgs();
 
     /**
-     * An `activation_rules` block as defined below.
+     * An `activationRules` block as defined below.
      * 
      */
     @Import(name="activationRules")
     private @Nullable Output<GroupRoleManagementPolicyActivationRulesArgs> activationRules;
 
     /**
-     * @return An `activation_rules` block as defined below.
+     * @return An `activationRules` block as defined below.
      * 
      */
     public Optional<Output<GroupRoleManagementPolicyActivationRulesArgs>> activationRules() {
@@ -36,14 +36,14 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * An `active_assignment_rules` block as defined below.
+     * An `activeAssignmentRules` block as defined below.
      * 
      */
     @Import(name="activeAssignmentRules")
     private @Nullable Output<GroupRoleManagementPolicyActiveAssignmentRulesArgs> activeAssignmentRules;
 
     /**
-     * @return An `active_assignment_rules` block as defined below.
+     * @return An `activeAssignmentRules` block as defined below.
      * 
      */
     public Optional<Output<GroupRoleManagementPolicyActiveAssignmentRulesArgs>> activeAssignmentRules() {
@@ -51,14 +51,14 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * An `eligible_assignment_rules` block as defined below.
+     * An `eligibleAssignmentRules` block as defined below.
      * 
      */
     @Import(name="eligibleAssignmentRules")
     private @Nullable Output<GroupRoleManagementPolicyEligibleAssignmentRulesArgs> eligibleAssignmentRules;
 
     /**
-     * @return An `eligible_assignment_rules` block as defined below.
+     * @return An `eligibleAssignmentRules` block as defined below.
      * 
      */
     public Optional<Output<GroupRoleManagementPolicyEligibleAssignmentRulesArgs>> eligibleAssignmentRules() {
@@ -81,14 +81,14 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * A `notification_rules` block as defined below.
+     * A `notificationRules` block as defined below.
      * 
      */
     @Import(name="notificationRules")
     private @Nullable Output<GroupRoleManagementPolicyNotificationRulesArgs> notificationRules;
 
     /**
-     * @return A `notification_rules` block as defined below.
+     * @return A `notificationRules` block as defined below.
      * 
      */
     public Optional<Output<GroupRoleManagementPolicyNotificationRulesArgs>> notificationRules() {
@@ -140,7 +140,7 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param activationRules An `activation_rules` block as defined below.
+         * @param activationRules An `activationRules` block as defined below.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param activationRules An `activation_rules` block as defined below.
+         * @param activationRules An `activationRules` block as defined below.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param activeAssignmentRules An `active_assignment_rules` block as defined below.
+         * @param activeAssignmentRules An `activeAssignmentRules` block as defined below.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param activeAssignmentRules An `active_assignment_rules` block as defined below.
+         * @param activeAssignmentRules An `activeAssignmentRules` block as defined below.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param eligibleAssignmentRules An `eligible_assignment_rules` block as defined below.
+         * @param eligibleAssignmentRules An `eligibleAssignmentRules` block as defined below.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param eligibleAssignmentRules An `eligible_assignment_rules` block as defined below.
+         * @param eligibleAssignmentRules An `eligibleAssignmentRules` block as defined below.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param notificationRules A `notification_rules` block as defined below.
+         * @param notificationRules A `notificationRules` block as defined below.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class GroupRoleManagementPolicyArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param notificationRules A `notification_rules` block as defined below.
+         * @param notificationRules A `notificationRules` block as defined below.
          * 
          * @return builder
          * 

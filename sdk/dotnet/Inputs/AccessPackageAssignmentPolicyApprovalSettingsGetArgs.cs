@@ -28,7 +28,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageGetArgs>? _approvalStages;
 
         /// <summary>
-        /// An `approval_stage` block specifying the process to obtain an approval, as documented below.
+        /// An `ApprovalStage` block specifying the process to obtain an approval, as documented below.
         /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageGetArgs> ApprovalStages
         {

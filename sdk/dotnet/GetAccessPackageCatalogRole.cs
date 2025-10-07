@@ -180,7 +180,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Specifies the object ID of the role.
         /// 
-        /// &gt; One of `display_name` or `object_id` must be specified.
+        /// &gt; One of `DisplayName` or `ObjectId` must be specified.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -202,7 +202,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Specifies the object ID of the role.
         /// 
-        /// &gt; One of `display_name` or `object_id` must be specified.
+        /// &gt; One of `DisplayName` or `ObjectId` must be specified.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }

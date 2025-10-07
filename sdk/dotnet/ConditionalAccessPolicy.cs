@@ -242,7 +242,7 @@ namespace Pulumi.AzureAD
     public partial class ConditionalAccessPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
+        /// A `Conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         /// </summary>
         [Output("conditions")]
         public Output<Outputs.ConditionalAccessPolicyConditions> Conditions { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+        /// A `GrantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
         /// </summary>
         [Output("grantControls")]
         public Output<Outputs.ConditionalAccessPolicyGrantControls?> GrantControls { get; private set; } = null!;
@@ -266,15 +266,15 @@ namespace Pulumi.AzureAD
         public Output<string> ObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        /// A `SessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
         /// 
-        /// &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+        /// &gt; Note: At least one of `GrantControls` and/or `SessionControls` blocks must be specified.
         /// </summary>
         [Output("sessionControls")]
         public Output<Outputs.ConditionalAccessPolicySessionControls?> SessionControls { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
+        /// Specifies the state of the policy object. Possible values are: `Enabled`, `Disabled` and `enabledForReportingButNotEnforced`
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -326,7 +326,7 @@ namespace Pulumi.AzureAD
     public sealed class ConditionalAccessPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
+        /// A `Conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         /// </summary>
         [Input("conditions", required: true)]
         public Input<Inputs.ConditionalAccessPolicyConditionsArgs> Conditions { get; set; } = null!;
@@ -338,21 +338,21 @@ namespace Pulumi.AzureAD
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+        /// A `GrantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
         /// </summary>
         [Input("grantControls")]
         public Input<Inputs.ConditionalAccessPolicyGrantControlsArgs>? GrantControls { get; set; }
 
         /// <summary>
-        /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        /// A `SessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
         /// 
-        /// &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+        /// &gt; Note: At least one of `GrantControls` and/or `SessionControls` blocks must be specified.
         /// </summary>
         [Input("sessionControls")]
         public Input<Inputs.ConditionalAccessPolicySessionControlsArgs>? SessionControls { get; set; }
 
         /// <summary>
-        /// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
+        /// Specifies the state of the policy object. Possible values are: `Enabled`, `Disabled` and `enabledForReportingButNotEnforced`
         /// </summary>
         [Input("state", required: true)]
         public Input<string> State { get; set; } = null!;
@@ -366,7 +366,7 @@ namespace Pulumi.AzureAD
     public sealed class ConditionalAccessPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
+        /// A `Conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         /// </summary>
         [Input("conditions")]
         public Input<Inputs.ConditionalAccessPolicyConditionsGetArgs>? Conditions { get; set; }
@@ -378,7 +378,7 @@ namespace Pulumi.AzureAD
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+        /// A `GrantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
         /// </summary>
         [Input("grantControls")]
         public Input<Inputs.ConditionalAccessPolicyGrantControlsGetArgs>? GrantControls { get; set; }
@@ -390,15 +390,15 @@ namespace Pulumi.AzureAD
         public Input<string>? ObjectId { get; set; }
 
         /// <summary>
-        /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        /// A `SessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
         /// 
-        /// &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+        /// &gt; Note: At least one of `GrantControls` and/or `SessionControls` blocks must be specified.
         /// </summary>
         [Input("sessionControls")]
         public Input<Inputs.ConditionalAccessPolicySessionControlsGetArgs>? SessionControls { get; set; }
 
         /// <summary>
-        /// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
+        /// Specifies the state of the policy object. Possible values are: `Enabled`, `Disabled` and `enabledForReportingButNotEnforced`
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

@@ -34,7 +34,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+        /// This will determine how often the access review campaign runs, valid values are `Weekly`, `Monthly`, `Quarterly`, `Halfyearly`, or `Annual`.
         /// </summary>
         public readonly string? ReviewFrequency;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? ReviewType;
         /// <summary>
-        /// One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+        /// One or more `Reviewer` blocks to specify the users who will be reviewers (when `ReviewType` is `Reviewers`), as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer> Reviewers;
         /// <summary>

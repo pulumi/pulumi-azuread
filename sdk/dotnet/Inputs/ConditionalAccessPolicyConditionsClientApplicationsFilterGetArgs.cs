@@ -13,7 +13,7 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class ConditionalAccessPolicyConditionsClientApplicationsFilterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+        /// Whether to include in, or exclude from, matching items from the policy. Supported values are `Include` or `Exclude`.
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;

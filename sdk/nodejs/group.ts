@@ -71,6 +71,44 @@ import * as utilities from "./utilities";
  *
  * *Group with members*
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getClientConfig({});
+ * const example = new azuread.User("example", {
+ *     displayName: "J Doe",
+ *     owners: [current.then(current => current.objectId)],
+ *     password: "notSecure123",
+ *     userPrincipalName: "jdoe@example.com",
+ * });
+ * const exampleGroup = new azuread.Group("example", {
+ *     displayName: "MyGroup",
+ *     owners: [current.then(current => current.objectId)],
+ *     securityEnabled: true,
+ *     members: [example.objectId],
+ * });
+ * ```
+ *
+ * *Group with dynamic membership*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getClientConfig({});
+ * const example = new azuread.Group("example", {
+ *     displayName: "MyGroup",
+ *     owners: [current.then(current => current.objectId)],
+ *     securityEnabled: true,
+ *     types: ["DynamicMembership"],
+ *     dynamicMembership: {
+ *         enabled: true,
+ *         rule: "user.department -eq \"Sales\"",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Groups can be imported using their object ID, e.g.

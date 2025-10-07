@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetApplicationRequiredResourceAccess {
     /**
-     * @return A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
+     * @return A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
      * 
      */
     private List<GetApplicationRequiredResourceAccessResourceAccess> resourceAccesses;
@@ -25,7 +25,7 @@ public final class GetApplicationRequiredResourceAccess {
 
     private GetApplicationRequiredResourceAccess() {}
     /**
-     * @return A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
+     * @return A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
      * 
      */
     public List<GetApplicationRequiredResourceAccessResourceAccess> resourceAccesses() {

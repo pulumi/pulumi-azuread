@@ -240,7 +240,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The object ID of the service principal.
         /// 
-        /// &gt; One of `client_id`, `display_name` or `object_id` must be specified.
+        /// &gt; One of `ClientId`, `DisplayName` or `ObjectId` must be specified.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -268,7 +268,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The object ID of the service principal.
         /// 
-        /// &gt; One of `client_id`, `display_name` or `object_id` must be specified.
+        /// &gt; One of `ClientId`, `DisplayName` or `ObjectId` must be specified.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
@@ -321,7 +321,7 @@ namespace Pulumi.AzureAD
         public readonly string DisplayName;
         public readonly ImmutableArray<Outputs.GetServicePrincipalFeatureTagResult> FeatureTags;
         /// <summary>
-        /// A `features` block as described below.
+        /// A `Features` block as described below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServicePrincipalFeatureResult> Features;
         /// <summary>
@@ -353,7 +353,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableDictionary<string, string> Oauth2PermissionScopeIds;
         /// <summary>
-        /// A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        /// A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `Oauth2PermissionScopes` block as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServicePrincipalOauth2PermissionScopeResult> Oauth2PermissionScopes;
         /// <summary>
@@ -373,7 +373,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string SamlMetadataUrl;
         /// <summary>
-        /// A `saml_single_sign_on` block as documented below.
+        /// A `SamlSingleSignOn` block as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServicePrincipalSamlSingleSignOnResult> SamlSingleSignOns;
         /// <summary>

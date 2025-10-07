@@ -1036,6 +1036,41 @@ class Group(pulumi.CustomResource):
 
         *Group with members*
 
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.User("example",
+            display_name="J Doe",
+            owners=[current.object_id],
+            password="notSecure123",
+            user_principal_name="jdoe@example.com")
+        example_group = azuread.Group("example",
+            display_name="MyGroup",
+            owners=[current.object_id],
+            security_enabled=True,
+            members=[example.object_id])
+        ```
+
+        *Group with dynamic membership*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.Group("example",
+            display_name="MyGroup",
+            owners=[current.object_id],
+            security_enabled=True,
+            types=["DynamicMembership"],
+            dynamic_membership={
+                "enabled": True,
+                "rule": "user.department -eq \\"Sales\\"",
+            })
+        ```
+
         ## Import
 
         Groups can be imported using their object ID, e.g.
@@ -1152,6 +1187,41 @@ class Group(pulumi.CustomResource):
         ```
 
         *Group with members*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.User("example",
+            display_name="J Doe",
+            owners=[current.object_id],
+            password="notSecure123",
+            user_principal_name="jdoe@example.com")
+        example_group = azuread.Group("example",
+            display_name="MyGroup",
+            owners=[current.object_id],
+            security_enabled=True,
+            members=[example.object_id])
+        ```
+
+        *Group with dynamic membership*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.Group("example",
+            display_name="MyGroup",
+            owners=[current.object_id],
+            security_enabled=True,
+            types=["DynamicMembership"],
+            dynamic_membership={
+                "enabled": True,
+                "rule": "user.department -eq \\"Sales\\"",
+            })
+        ```
 
         ## Import
 
