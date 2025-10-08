@@ -19,7 +19,7 @@ public final class ApplicationWeb {
      */
     private @Nullable String homepageUrl;
     /**
-     * @return An `implicit_grant` block as documented above.
+     * @return An `implicitGrant` block as documented above.
      * 
      */
     private @Nullable ApplicationWebImplicitGrant implicitGrant;
@@ -43,7 +43,7 @@ public final class ApplicationWeb {
         return Optional.ofNullable(this.homepageUrl);
     }
     /**
-     * @return An `implicit_grant` block as documented above.
+     * @return An `implicitGrant` block as documented above.
      * 
      */
     public Optional<ApplicationWebImplicitGrant> implicitGrant() {

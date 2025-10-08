@@ -26,17 +26,17 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Determines if the app role is enabled. Defaults to `true`.
+        /// Determines if the app role is enabled. Defaults to `True`.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// The unique identifier of the app role. Must be a valid UUID.
         /// 
-        /// &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+        /// &gt; **Tip: Generating a UUID for the `Id` field** To generate a value for the `Id` field in cases where the actual UUID is not important, you can use the `RandomUuid` resource. See the application example in the provider repository.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+        /// The value that is used for the `Roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
         /// </summary>
         public readonly string? Value;
 

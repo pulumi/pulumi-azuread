@@ -14,42 +14,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GroupRoleManagementPolicyNotificationRules {
     /**
-     * @return A `notification_target` block as defined below to configure notfications on active role assignments.
+     * @return A `notificationTarget` block as defined below to configure notfications on active role assignments.
      * 
      */
     private @Nullable GroupRoleManagementPolicyNotificationRulesActiveAssignments activeAssignments;
     /**
-     * @return A `notification_target` block as defined below for configuring notifications on activation of eligible role.
+     * @return A `notificationTarget` block as defined below for configuring notifications on activation of eligible role.
      * 
      */
     private @Nullable GroupRoleManagementPolicyNotificationRulesEligibleActivations eligibleActivations;
     /**
-     * @return A `notification_target` block as defined below to configure notification on eligible role assignments.
+     * @return A `notificationTarget` block as defined below to configure notification on eligible role assignments.
      * 
-     * At least one `notification_target` block must be provided.
+     * At least one `notificationTarget` block must be provided.
      * 
      */
     private @Nullable GroupRoleManagementPolicyNotificationRulesEligibleAssignments eligibleAssignments;
 
     private GroupRoleManagementPolicyNotificationRules() {}
     /**
-     * @return A `notification_target` block as defined below to configure notfications on active role assignments.
+     * @return A `notificationTarget` block as defined below to configure notfications on active role assignments.
      * 
      */
     public Optional<GroupRoleManagementPolicyNotificationRulesActiveAssignments> activeAssignments() {
         return Optional.ofNullable(this.activeAssignments);
     }
     /**
-     * @return A `notification_target` block as defined below for configuring notifications on activation of eligible role.
+     * @return A `notificationTarget` block as defined below for configuring notifications on activation of eligible role.
      * 
      */
     public Optional<GroupRoleManagementPolicyNotificationRulesEligibleActivations> eligibleActivations() {
         return Optional.ofNullable(this.eligibleActivations);
     }
     /**
-     * @return A `notification_target` block as defined below to configure notification on eligible role assignments.
+     * @return A `notificationTarget` block as defined below to configure notification on eligible role assignments.
      * 
-     * At least one `notification_target` block must be provided.
+     * At least one `notificationTarget` block must be provided.
      * 
      */
     public Optional<GroupRoleManagementPolicyNotificationRulesEligibleAssignments> eligibleAssignments() {

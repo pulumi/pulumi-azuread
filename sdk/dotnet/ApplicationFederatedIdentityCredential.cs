@@ -61,7 +61,7 @@ namespace Pulumi.AzureAD
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
+        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `Aud` claim of incoming tokens.
         /// </summary>
         [Output("audiences")]
         public Output<ImmutableArray<string>> Audiences { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _audiences;
 
         /// <summary>
-        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
+        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `Aud` claim of incoming tokens.
         /// </summary>
         public InputList<string> Audiences
         {
@@ -202,7 +202,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _audiences;
 
         /// <summary>
-        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
+        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `Aud` claim of incoming tokens.
         /// </summary>
         public InputList<string> Audiences
         {

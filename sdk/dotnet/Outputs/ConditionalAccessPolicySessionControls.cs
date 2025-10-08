@@ -14,7 +14,7 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ConditionalAccessPolicySessionControls
     {
         /// <summary>
-        /// Whether application enforced restrictions are enabled. Defaults to `false`.
+        /// Whether application enforced restrictions are enabled. Defaults to `False`.
         /// 
         /// &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
         /// </summary>
@@ -24,15 +24,15 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? CloudAppSecurityPolicy;
         /// <summary>
-        /// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+        /// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `False`.
         /// </summary>
         public readonly bool? DisableResilienceDefaults;
         /// <summary>
-        /// Session control to define whether to persist cookies. Possible values are: `always` or `never`.
+        /// Session control to define whether to persist cookies. Possible values are: `Always` or `Never`.
         /// </summary>
         public readonly string? PersistentBrowserMode;
         /// <summary>
-        /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+        /// Number of days or hours to enforce sign-in frequency. Required when `SignInFrequencyPeriod` is specified.
         /// </summary>
         public readonly int? SignInFrequency;
         /// <summary>
@@ -44,7 +44,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? SignInFrequencyInterval;
         /// <summary>
-        /// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+        /// The time period to enforce sign-in frequency. Possible values are: `Hours` or `Days`. Required when `SignInFrequencyPeriod` is specified.
         /// </summary>
         public readonly string? SignInFrequencyPeriod;
 

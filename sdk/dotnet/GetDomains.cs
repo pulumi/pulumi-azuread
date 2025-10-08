@@ -115,31 +115,31 @@ namespace Pulumi.AzureAD
     public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+        /// Set to `True` to only return domains whose DNS is managed by Microsoft 365. Defaults to `False`.
         /// </summary>
         [Input("adminManaged")]
         public bool? AdminManaged { get; set; }
 
         /// <summary>
-        /// Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
+        /// Set to `True` if unverified Azure AD domains should be included. Defaults to `False`.
         /// </summary>
         [Input("includeUnverified")]
         public bool? IncludeUnverified { get; set; }
 
         /// <summary>
-        /// Set to `true` to only return the default domain.
+        /// Set to `True` to only return the default domain.
         /// </summary>
         [Input("onlyDefault")]
         public bool? OnlyDefault { get; set; }
 
         /// <summary>
-        /// Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
+        /// Set to `True` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `False`.
         /// </summary>
         [Input("onlyInitial")]
         public bool? OnlyInitial { get; set; }
 
         /// <summary>
-        /// Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
+        /// Set to `True` to only return verified root domains. Excludes subdomains and unverified domains.
         /// </summary>
         [Input("onlyRoot")]
         public bool? OnlyRoot { get; set; }
@@ -150,7 +150,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
         /// 
-        /// &gt; **Note on filters** If `include_unverified` is set to `true`, you cannot specify `only_default` or `only_initial`. Additionally, you cannot combine `only_default` with `only_initial`.
+        /// &gt; **Note on filters** If `IncludeUnverified` is set to `True`, you cannot specify `OnlyDefault` or `OnlyInitial`. Additionally, you cannot combine `OnlyDefault` with `OnlyInitial`.
         /// </summary>
         public List<string> SupportsServices
         {
@@ -167,31 +167,31 @@ namespace Pulumi.AzureAD
     public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+        /// Set to `True` to only return domains whose DNS is managed by Microsoft 365. Defaults to `False`.
         /// </summary>
         [Input("adminManaged")]
         public Input<bool>? AdminManaged { get; set; }
 
         /// <summary>
-        /// Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
+        /// Set to `True` if unverified Azure AD domains should be included. Defaults to `False`.
         /// </summary>
         [Input("includeUnverified")]
         public Input<bool>? IncludeUnverified { get; set; }
 
         /// <summary>
-        /// Set to `true` to only return the default domain.
+        /// Set to `True` to only return the default domain.
         /// </summary>
         [Input("onlyDefault")]
         public Input<bool>? OnlyDefault { get; set; }
 
         /// <summary>
-        /// Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
+        /// Set to `True` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `False`.
         /// </summary>
         [Input("onlyInitial")]
         public Input<bool>? OnlyInitial { get; set; }
 
         /// <summary>
-        /// Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
+        /// Set to `True` to only return verified root domains. Excludes subdomains and unverified domains.
         /// </summary>
         [Input("onlyRoot")]
         public Input<bool>? OnlyRoot { get; set; }
@@ -202,7 +202,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
         /// 
-        /// &gt; **Note on filters** If `include_unverified` is set to `true`, you cannot specify `only_default` or `only_initial`. Additionally, you cannot combine `only_default` with `only_initial`.
+        /// &gt; **Note on filters** If `IncludeUnverified` is set to `True`, you cannot specify `OnlyDefault` or `OnlyInitial`. Additionally, you cannot combine `OnlyDefault` with `OnlyInitial`.
         /// </summary>
         public InputList<string> SupportsServices
         {
@@ -225,7 +225,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly bool? AdminManaged;
         /// <summary>
-        /// A list of tenant domains. Each `domain` object provides the attributes documented below.
+        /// A list of tenant domains. Each `Domain` object provides the attributes documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
         /// <summary>

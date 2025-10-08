@@ -22,7 +22,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.SynchronizationJobProvisionOnDemandParameterSubjectArgs>? _subjects;
 
         /// <summary>
-        /// One or more `subject` blocks as documented below.
+        /// One or more `Subject` blocks as documented below.
         /// </summary>
         public InputList<Inputs.SynchronizationJobProvisionOnDemandParameterSubjectArgs> Subjects
         {

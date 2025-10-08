@@ -18,7 +18,7 @@ public final class GetApplicationWeb {
      */
     private String homepageUrl;
     /**
-     * @return An `implicit_grant` block as documented above.
+     * @return An `implicitGrant` block as documented above.
      * 
      */
     private List<GetApplicationWebImplicitGrant> implicitGrants;
@@ -42,7 +42,7 @@ public final class GetApplicationWeb {
         return this.homepageUrl;
     }
     /**
-     * @return An `implicit_grant` block as documented above.
+     * @return An `implicitGrant` block as documented above.
      * 
      */
     public List<GetApplicationWebImplicitGrant> implicitGrants() {

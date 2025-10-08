@@ -20,14 +20,14 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
     public static final ApplicationOptionalClaimsState Empty = new ApplicationOptionalClaimsState();
 
     /**
-     * One or more `access_token` blocks as documented below.
+     * One or more `accessToken` blocks as documented below.
      * 
      */
     @Import(name="accessTokens")
     private @Nullable Output<List<ApplicationOptionalClaimsAccessTokenArgs>> accessTokens;
 
     /**
-     * @return One or more `access_token` blocks as documented below.
+     * @return One or more `accessToken` blocks as documented below.
      * 
      */
     public Optional<Output<List<ApplicationOptionalClaimsAccessTokenArgs>>> accessTokens() {
@@ -50,14 +50,14 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
     }
 
     /**
-     * One or more `id_token` blocks as documented below.
+     * One or more `idToken` blocks as documented below.
      * 
      */
     @Import(name="idTokens")
     private @Nullable Output<List<ApplicationOptionalClaimsIdTokenArgs>> idTokens;
 
     /**
-     * @return One or more `id_token` blocks as documented below.
+     * @return One or more `idToken` blocks as documented below.
      * 
      */
     public Optional<Output<List<ApplicationOptionalClaimsIdTokenArgs>>> idTokens() {
@@ -65,18 +65,18 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
     }
 
     /**
-     * One or more `saml2_token` blocks as documented below.
+     * One or more `saml2Token` blocks as documented below.
      * 
-     * &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+     * &gt; At least one of `accessToken`, `idToken` or `saml2Token` must be specified
      * 
      */
     @Import(name="saml2Tokens")
     private @Nullable Output<List<ApplicationOptionalClaimsSaml2TokenArgs>> saml2Tokens;
 
     /**
-     * @return One or more `saml2_token` blocks as documented below.
+     * @return One or more `saml2Token` blocks as documented below.
      * 
-     * &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+     * &gt; At least one of `accessToken`, `idToken` or `saml2Token` must be specified
      * 
      */
     public Optional<Output<List<ApplicationOptionalClaimsSaml2TokenArgs>>> saml2Tokens() {
@@ -111,7 +111,7 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accessTokens One or more `access_token` blocks as documented below.
+         * @param accessTokens One or more `accessToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accessTokens One or more `access_token` blocks as documented below.
+         * @param accessTokens One or more `accessToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accessTokens One or more `access_token` blocks as documented below.
+         * @param accessTokens One or more `accessToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param idTokens One or more `id_token` blocks as documented below.
+         * @param idTokens One or more `idToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param idTokens One or more `id_token` blocks as documented below.
+         * @param idTokens One or more `idToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param idTokens One or more `id_token` blocks as documented below.
+         * @param idTokens One or more `idToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -194,9 +194,9 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param saml2Tokens One or more `saml2_token` blocks as documented below.
+         * @param saml2Tokens One or more `saml2Token` blocks as documented below.
          * 
-         * &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+         * &gt; At least one of `accessToken`, `idToken` or `saml2Token` must be specified
          * 
          * @return builder
          * 
@@ -207,9 +207,9 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param saml2Tokens One or more `saml2_token` blocks as documented below.
+         * @param saml2Tokens One or more `saml2Token` blocks as documented below.
          * 
-         * &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+         * &gt; At least one of `accessToken`, `idToken` or `saml2Token` must be specified
          * 
          * @return builder
          * 
@@ -219,9 +219,9 @@ public final class ApplicationOptionalClaimsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param saml2Tokens One or more `saml2_token` blocks as documented below.
+         * @param saml2Tokens One or more `saml2Token` blocks as documented below.
          * 
-         * &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+         * &gt; At least one of `accessToken`, `idToken` or `saml2Token` must be specified
          * 
          * @return builder
          * 

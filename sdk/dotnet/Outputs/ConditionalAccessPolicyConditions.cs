@@ -14,47 +14,47 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ConditionalAccessPolicyConditions
     {
         /// <summary>
-        /// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+        /// An `Applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsApplications Applications;
         /// <summary>
-        /// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+        /// A list of client application types included in the policy. Possible values are: `All`, `Browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `Other`.
         /// </summary>
         public readonly ImmutableArray<string> ClientAppTypes;
         /// <summary>
-        /// An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+        /// An `ClientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsClientApplications? ClientApplications;
         /// <summary>
-        /// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+        /// A `Devices` block as documented below, which describes devices to be included in and excluded from the policy. A `Devices` block can be added to an existing policy, but removing the `Devices` block forces a new resource to be created.
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsDevices? Devices;
         /// <summary>
-        /// The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+        /// The insider risk level in the policy. Possible values are: `Minor`, `Moderate`, `Elevated`, `unknownFutureValue`.
         /// </summary>
         public readonly string? InsiderRiskLevels;
         /// <summary>
-        /// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+        /// A `Locations` block as documented below, which specifies locations included in and excluded from the policy.
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsLocations? Locations;
         /// <summary>
-        /// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+        /// A `Platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsPlatforms? Platforms;
         /// <summary>
-        /// A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+        /// A list of service principal sign-in risk levels included in the policy. Possible values are: `Low`, `Medium`, `High`, `None`, `unknownFutureValue`.
         /// </summary>
         public readonly ImmutableArray<string> ServicePrincipalRiskLevels;
         /// <summary>
-        /// A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        /// A list of user sign-in risk levels included in the policy. Possible values are: `Low`, `Medium`, `High`, `Hidden`, `None`, `unknownFutureValue`.
         /// </summary>
         public readonly ImmutableArray<string> SignInRiskLevels;
         /// <summary>
-        /// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        /// A list of user risk levels included in the policy. Possible values are: `Low`, `Medium`, `High`, `Hidden`, `None`, `unknownFutureValue`.
         /// </summary>
         public readonly ImmutableArray<string> UserRiskLevels;
         /// <summary>
-        /// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        /// A `Users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsUsers Users;
 

@@ -93,7 +93,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Whether the group is a security group.
      * 
-     * &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
+     * &gt; One of `displayName`, `objectId` or `mailNickname` must be specified.
      * 
      */
     @Import(name="securityEnabled")
@@ -102,7 +102,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return Whether the group is a security group.
      * 
-     * &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
+     * &gt; One of `displayName`, `objectId` or `mailNickname` must be specified.
      * 
      */
     public Optional<Boolean> securityEnabled() {
@@ -196,7 +196,7 @@ public final class GetGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param securityEnabled Whether the group is a security group.
          * 
-         * &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
+         * &gt; One of `displayName`, `objectId` or `mailNickname` must be specified.
          * 
          * @return builder
          * 
