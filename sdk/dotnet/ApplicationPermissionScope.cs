@@ -119,7 +119,7 @@ namespace Pulumi.AzureAD
         public Output<string?> UserConsentDisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The value that is used for the `scp` claim in OAuth access tokens.
+        /// The value that is used for the `Scp` claim in OAuth access tokens.
         /// 
         /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
         /// </summary>
@@ -215,7 +215,7 @@ namespace Pulumi.AzureAD
         public Input<string>? UserConsentDisplayName { get; set; }
 
         /// <summary>
-        /// The value that is used for the `scp` claim in OAuth access tokens.
+        /// The value that is used for the `Scp` claim in OAuth access tokens.
         /// 
         /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
         /// </summary>
@@ -273,7 +273,7 @@ namespace Pulumi.AzureAD
         public Input<string>? UserConsentDisplayName { get; set; }
 
         /// <summary>
-        /// The value that is used for the `scp` claim in OAuth access tokens.
+        /// The value that is used for the `Scp` claim in OAuth access tokens.
         /// 
         /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
         /// </summary>

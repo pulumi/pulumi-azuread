@@ -54,7 +54,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Whether to enable the application as a fallback public client.
         /// 
-        /// &gt; Some configurations may require the Fallback Public Client setting to be `null`, for this case simply destroy this resource (or don't use it)
+        /// &gt; Some configurations may require the Fallback Public Client setting to be `Null`, for this case simply destroy this resource (or don't use it)
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Whether to enable the application as a fallback public client.
         /// 
-        /// &gt; Some configurations may require the Fallback Public Client setting to be `null`, for this case simply destroy this resource (or don't use it)
+        /// &gt; Some configurations may require the Fallback Public Client setting to be `Null`, for this case simply destroy this resource (or don't use it)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Whether to enable the application as a fallback public client.
         /// 
-        /// &gt; Some configurations may require the Fallback Public Client setting to be `null`, for this case simply destroy this resource (or don't use it)
+        /// &gt; Some configurations may require the Fallback Public Client setting to be `Null`, for this case simply destroy this resource (or don't use it)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

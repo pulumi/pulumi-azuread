@@ -342,18 +342,18 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+     * A `featureTags` block as described below. Cannot be used together with the `tags` property.
      * 
-     * &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+     * &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
      * 
      */
     @Export(name="featureTags", refs={List.class,ServicePrincipalFeatureTag.class}, tree="[0,1]")
     private Output<List<ServicePrincipalFeatureTag>> featureTags;
 
     /**
-     * @return A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+     * @return A `featureTags` block as described below. Cannot be used together with the `tags` property.
      * 
-     * &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+     * &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
      * 
      */
     public Output<List<ServicePrincipalFeatureTag>> featureTags() {
@@ -363,10 +363,10 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
      * Block of features to configure for this service principal using tags
      * 
      * @deprecated
-     * This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+     * This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      * 
      */
-    @Deprecated /* This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider */
+    @Deprecated /* This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider */
     @Export(name="features", refs={List.class,ServicePrincipalFeature.class}, tree="[0,1]")
     private Output<List<ServicePrincipalFeature>> features;
 
@@ -546,14 +546,14 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return this.samlMetadataUrl;
     }
     /**
-     * A `saml_single_sign_on` block as documented below.
+     * A `samlSingleSignOn` block as documented below.
      * 
      */
     @Export(name="samlSingleSignOn", refs={ServicePrincipalSamlSingleSignOn.class}, tree="[0]")
     private Output</* @Nullable */ ServicePrincipalSamlSingleSignOn> samlSingleSignOn;
 
     /**
-     * @return A `saml_single_sign_on` block as documented below.
+     * @return A `samlSingleSignOn` block as documented below.
      * 
      */
     public Output<Optional<ServicePrincipalSamlSingleSignOn>> samlSingleSignOn() {
@@ -588,18 +588,18 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return this.signInAudience;
     }
     /**
-     * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+     * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      * 
-     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
 
     /**
-     * @return A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+     * @return A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      * 
-     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      * 
      */
     public Output<List<String>> tags() {

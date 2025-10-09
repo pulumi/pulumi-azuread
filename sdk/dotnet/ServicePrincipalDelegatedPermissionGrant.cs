@@ -187,7 +187,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         /// 
-        /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+        /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `UserObjectId` property.
         /// </summary>
         [Output("userObjectId")]
         public Output<string?> UserObjectId { get; private set; } = null!;
@@ -265,7 +265,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         /// 
-        /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+        /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `UserObjectId` property.
         /// </summary>
         [Input("userObjectId")]
         public Input<string>? UserObjectId { get; set; }
@@ -305,7 +305,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         /// 
-        /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+        /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `UserObjectId` property.
         /// </summary>
         [Input("userObjectId")]
         public Input<string>? UserObjectId { get; set; }

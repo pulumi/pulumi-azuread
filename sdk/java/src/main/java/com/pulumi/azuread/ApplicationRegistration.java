@@ -279,14 +279,14 @@ public class ApplicationRegistration extends com.pulumi.resources.CustomResource
         return this.publisherDomain;
     }
     /**
-     * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+     * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
      * 
      */
     @Export(name="requestedAccessTokenVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> requestedAccessTokenVersion;
 
     /**
-     * @return The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+     * @return The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
      * 
      */
     public Output<Optional<Integer>> requestedAccessTokenVersion() {

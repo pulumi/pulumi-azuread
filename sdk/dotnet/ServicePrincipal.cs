@@ -151,7 +151,7 @@ namespace Pulumi.AzureAD
     public partial class ServicePrincipal : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether or not the service principal account is enabled. Defaults to `true`.
+        /// Whether or not the service principal account is enabled. Defaults to `True`.
         /// </summary>
         [Output("accountEnabled")]
         public Output<bool?> AccountEnabled { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<string>> AlternativeNames { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `False`.
         /// </summary>
         [Output("appRoleAssignmentRequired")]
         public Output<bool?> AppRoleAssignmentRequired { get; private set; } = null!;
@@ -205,9 +205,9 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// A `FeatureTags` block as described below. Cannot be used together with the `Tags` property.
         /// 
-        /// &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+        /// &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `FeatureTags` and `Tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `Tags` property instead. Any tags configured for the linked application will propagate to this service principal.
         /// </summary>
         [Output("featureTags")]
         public Output<ImmutableArray<Outputs.ServicePrincipalFeatureTag>> FeatureTags { get; private set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<string>> Owners { get; private set; } = null!;
 
         /// <summary>
-        /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `Oidc`, `Password`, `Saml` or `notSupported`. Omit this property or specify a blank string to unset.
         /// </summary>
         [Output("preferredSingleSignOnMode")]
         public Output<string?> PreferredSingleSignOnMode { get; private set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.AzureAD
         public Output<string> SamlMetadataUrl { get; private set; } = null!;
 
         /// <summary>
-        /// A `saml_single_sign_on` block as documented below.
+        /// A `SamlSingleSignOn` block as documented below.
         /// </summary>
         [Output("samlSingleSignOn")]
         public Output<Outputs.ServicePrincipalSamlSingleSignOn?> SamlSingleSignOn { get; private set; } = null!;
@@ -309,9 +309,9 @@ namespace Pulumi.AzureAD
         public Output<string> SignInAudience { get; private set; } = null!;
 
         /// <summary>
-        /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `FeatureTags` block.
         /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values set for the linked application will also propagate to this service principal.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -375,7 +375,7 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not the service principal account is enabled. Defaults to `true`.
+        /// Whether or not the service principal account is enabled. Defaults to `True`.
         /// </summary>
         [Input("accountEnabled")]
         public Input<bool>? AccountEnabled { get; set; }
@@ -393,7 +393,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `False`.
         /// </summary>
         [Input("appRoleAssignmentRequired")]
         public Input<bool>? AppRoleAssignmentRequired { get; set; }
@@ -414,9 +414,9 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ServicePrincipalFeatureTagArgs>? _featureTags;
 
         /// <summary>
-        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// A `FeatureTags` block as described below. Cannot be used together with the `Tags` property.
         /// 
-        /// &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+        /// &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `FeatureTags` and `Tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `Tags` property instead. Any tags configured for the linked application will propagate to this service principal.
         /// </summary>
         public InputList<Inputs.ServicePrincipalFeatureTagArgs> FeatureTags
         {
@@ -430,7 +430,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Block of features to configure for this service principal using tags
         /// </summary>
-        [Obsolete(@"This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider")]
+        [Obsolete(@"This block has been renamed to `FeatureTags` and will be removed in version 3.0 of the provider")]
         public InputList<Inputs.ServicePrincipalFeatureArgs> Features
         {
             get => _features ?? (_features = new InputList<Inputs.ServicePrincipalFeatureArgs>());
@@ -474,13 +474,13 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `Oidc`, `Password`, `Saml` or `notSupported`. Omit this property or specify a blank string to unset.
         /// </summary>
         [Input("preferredSingleSignOnMode")]
         public Input<string>? PreferredSingleSignOnMode { get; set; }
 
         /// <summary>
-        /// A `saml_single_sign_on` block as documented below.
+        /// A `SamlSingleSignOn` block as documented below.
         /// </summary>
         [Input("samlSingleSignOn")]
         public Input<Inputs.ServicePrincipalSamlSingleSignOnArgs>? SamlSingleSignOn { get; set; }
@@ -489,9 +489,9 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `FeatureTags` block.
         /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values set for the linked application will also propagate to this service principal.
         /// </summary>
         public InputList<string> Tags
         {
@@ -514,7 +514,7 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not the service principal account is enabled. Defaults to `true`.
+        /// Whether or not the service principal account is enabled. Defaults to `True`.
         /// </summary>
         [Input("accountEnabled")]
         public Input<bool>? AccountEnabled { get; set; }
@@ -532,7 +532,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `False`.
         /// </summary>
         [Input("appRoleAssignmentRequired")]
         public Input<bool>? AppRoleAssignmentRequired { get; set; }
@@ -589,9 +589,9 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ServicePrincipalFeatureTagGetArgs>? _featureTags;
 
         /// <summary>
-        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// A `FeatureTags` block as described below. Cannot be used together with the `Tags` property.
         /// 
-        /// &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+        /// &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `FeatureTags` and `Tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `Tags` property instead. Any tags configured for the linked application will propagate to this service principal.
         /// </summary>
         public InputList<Inputs.ServicePrincipalFeatureTagGetArgs> FeatureTags
         {
@@ -605,7 +605,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Block of features to configure for this service principal using tags
         /// </summary>
-        [Obsolete(@"This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider")]
+        [Obsolete(@"This block has been renamed to `FeatureTags` and will be removed in version 3.0 of the provider")]
         public InputList<Inputs.ServicePrincipalFeatureGetArgs> Features
         {
             get => _features ?? (_features = new InputList<Inputs.ServicePrincipalFeatureGetArgs>());
@@ -691,7 +691,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `Oidc`, `Password`, `Saml` or `notSupported`. Omit this property or specify a blank string to unset.
         /// </summary>
         [Input("preferredSingleSignOnMode")]
         public Input<string>? PreferredSingleSignOnMode { get; set; }
@@ -715,7 +715,7 @@ namespace Pulumi.AzureAD
         public Input<string>? SamlMetadataUrl { get; set; }
 
         /// <summary>
-        /// A `saml_single_sign_on` block as documented below.
+        /// A `SamlSingleSignOn` block as documented below.
         /// </summary>
         [Input("samlSingleSignOn")]
         public Input<Inputs.ServicePrincipalSamlSingleSignOnGetArgs>? SamlSingleSignOn { get; set; }
@@ -742,9 +742,9 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `FeatureTags` block.
         /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values set for the linked application will also propagate to this service principal.
         /// </summary>
         public InputList<string> Tags
         {

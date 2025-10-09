@@ -13,25 +13,25 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class ServicePrincipalFeatureTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+        /// Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `False`.
         /// </summary>
         [Input("customSingleSignOn")]
         public Input<bool>? CustomSingleSignOn { get; set; }
 
         /// <summary>
-        /// Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+        /// Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `False`.
         /// </summary>
         [Input("enterprise")]
         public Input<bool>? Enterprise { get; set; }
 
         /// <summary>
-        /// Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+        /// Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `False`.
         /// </summary>
         [Input("gallery")]
         public Input<bool>? Gallery { get; set; }
 
         /// <summary>
-        /// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+        /// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `False`.
         /// </summary>
         [Input("hide")]
         public Input<bool>? Hide { get; set; }

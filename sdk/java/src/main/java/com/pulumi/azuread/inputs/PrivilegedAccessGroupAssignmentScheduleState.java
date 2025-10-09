@@ -94,7 +94,7 @@ public final class PrivilegedAccessGroupAssignmentScheduleState extends com.pulu
     /**
      * Is this assigment permanently valid.
      * 
-     * At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
+     * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      * 
      */
     @Import(name="permanentAssignment")
@@ -103,7 +103,7 @@ public final class PrivilegedAccessGroupAssignmentScheduleState extends com.pulu
     /**
      * @return Is this assigment permanently valid.
      * 
-     * At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
+     * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      * 
      */
     public Optional<Output<Boolean>> permanentAssignment() {
@@ -327,7 +327,7 @@ public final class PrivilegedAccessGroupAssignmentScheduleState extends com.pulu
         /**
          * @param permanentAssignment Is this assigment permanently valid.
          * 
-         * At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
+         * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class PrivilegedAccessGroupAssignmentScheduleState extends com.pulu
         /**
          * @param permanentAssignment Is this assigment permanently valid.
          * 
-         * At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
+         * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
          * 
          * @return builder
          * 

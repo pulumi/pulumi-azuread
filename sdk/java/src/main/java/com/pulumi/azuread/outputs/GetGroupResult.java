@@ -41,7 +41,7 @@ public final class GetGroupResult {
      */
     private String displayName;
     /**
-     * @return A `dynamic_membership` block as documented below.
+     * @return A `dynamicMembership` block as documented below.
      * 
      */
     private List<GetGroupDynamicMembership> dynamicMemberships;
@@ -82,7 +82,7 @@ public final class GetGroupResult {
      */
     private String mailNickname;
     /**
-     * @return List of object IDs of the group members. When `include_transitive_members` is `true`, contains a list of object IDs of all transitive group members.
+     * @return List of object IDs of the group members. When `includeTransitiveMembers` is `true`, contains a list of object IDs of all transitive group members.
      * 
      */
     private List<String> members;
@@ -204,7 +204,7 @@ public final class GetGroupResult {
         return this.displayName;
     }
     /**
-     * @return A `dynamic_membership` block as documented below.
+     * @return A `dynamicMembership` block as documented below.
      * 
      */
     public List<GetGroupDynamicMembership> dynamicMemberships() {
@@ -263,7 +263,7 @@ public final class GetGroupResult {
         return this.mailNickname;
     }
     /**
-     * @return List of object IDs of the group members. When `include_transitive_members` is `true`, contains a list of object IDs of all transitive group members.
+     * @return List of object IDs of the group members. When `includeTransitiveMembers` is `true`, contains a list of object IDs of all transitive group members.
      * 
      */
     public List<String> members() {

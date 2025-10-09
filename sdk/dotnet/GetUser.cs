@@ -138,7 +138,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal name (UPN) of the user.
         /// 
-        /// &gt; One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
+        /// &gt; One of `UserPrincipalName`, `ObjectId`, `Mail`, `MailNickname` or `EmployeeId` must be specified.
         /// </summary>
         [Input("userPrincipalName")]
         public string? UserPrincipalName { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal name (UPN) of the user.
         /// 
-        /// &gt; One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
+        /// &gt; One of `UserPrincipalName`, `ObjectId`, `Mail`, `MailNickname` or `EmployeeId` must be specified.
         /// </summary>
         [Input("userPrincipalName")]
         public Input<string>? UserPrincipalName { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Country;
         /// <summary>
-        /// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
+        /// Indicates whether the user account was created as a regular school or work account (`Null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
         /// </summary>
         public readonly string CreationType;
         /// <summary>
@@ -322,7 +322,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string OnpremisesSecurityIdentifier;
         /// <summary>
-        /// Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        /// Whether this user is synchronised from an on-premises directory (`True`), no longer synchronised (`False`), or has never been synchronised (`Null`).
         /// </summary>
         public readonly bool OnpremisesSyncEnabled;
         /// <summary>

@@ -31,7 +31,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? CountryLookupMethod { get; set; }
 
         /// <summary>
-        /// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+        /// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `False`.
         /// </summary>
         [Input("includeUnknownCountriesAndRegions")]
         public Input<bool>? IncludeUnknownCountriesAndRegions { get; set; }

@@ -19,13 +19,13 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? AdditionalRecipients { get; set; }
 
         /// <summary>
-        /// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+        /// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `Language`.
         /// </summary>
         [Input("body")]
         public Input<string>? Body { get; set; }
 
         /// <summary>
-        /// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+        /// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `Body`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }

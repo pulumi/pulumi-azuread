@@ -43,14 +43,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+     * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      * 
      */
     @Import(name="appRoles")
     private @Nullable Output<List<ApplicationAppRoleArgs>> appRoles;
 
     /**
-     * @return A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+     * @return A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      * 
      */
     public Optional<Output<List<ApplicationAppRoleArgs>>> appRoles() {
@@ -118,18 +118,18 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+     * A `featureTags` block as described below. Cannot be used together with the `tags` property.
      * 
-     * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+     * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
      * 
      */
     @Import(name="featureTags")
     private @Nullable Output<List<ApplicationFeatureTagArgs>> featureTags;
 
     /**
-     * @return A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+     * @return A `featureTags` block as described below. Cannot be used together with the `tags` property.
      * 
-     * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+     * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
      * 
      */
     public Optional<Output<List<ApplicationFeatureTagArgs>>> featureTags() {
@@ -227,14 +227,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An `optional_claims` block as documented below.
+     * An `optionalClaims` block as documented below.
      * 
      */
     @Import(name="optionalClaims")
     private @Nullable Output<ApplicationOptionalClaimsArgs> optionalClaims;
 
     /**
-     * @return An `optional_claims` block as documented below.
+     * @return An `optionalClaims` block as documented below.
      * 
      */
     public Optional<Output<ApplicationOptionalClaimsArgs>> optionalClaims() {
@@ -306,14 +306,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+     * A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
      * 
      */
     @Import(name="publicClient")
     private @Nullable Output<ApplicationPublicClientArgs> publicClient;
 
     /**
-     * @return A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+     * @return A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
      * 
      */
     public Optional<Output<ApplicationPublicClientArgs>> publicClient() {
@@ -321,14 +321,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A collection of `required_resource_access` blocks as documented below.
+     * A collection of `requiredResourceAccess` blocks as documented below.
      * 
      */
     @Import(name="requiredResourceAccesses")
     private @Nullable Output<List<ApplicationRequiredResourceAccessArgs>> requiredResourceAccesses;
 
     /**
-     * @return A collection of `required_resource_access` blocks as documented below.
+     * @return A collection of `requiredResourceAccess` blocks as documented below.
      * 
      */
     public Optional<Output<List<ApplicationRequiredResourceAccessArgs>>> requiredResourceAccesses() {
@@ -353,7 +353,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      * 
-     * &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+     * &gt; **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
      * 
      */
     @Import(name="signInAudience")
@@ -362,7 +362,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      * 
-     * &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+     * &gt; **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
      * 
      */
     public Optional<Output<String>> signInAudience() {
@@ -370,14 +370,14 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+     * A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
      * 
      */
     @Import(name="singlePageApplication")
     private @Nullable Output<ApplicationSinglePageApplicationArgs> singlePageApplication;
 
     /**
-     * @return A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+     * @return A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
      * 
      */
     public Optional<Output<ApplicationSinglePageApplicationArgs>> singlePageApplication() {
@@ -400,18 +400,18 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+     * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      * 
-     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+     * @return A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      * 
-     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -455,7 +455,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A `web` block as documented below, which configures web related settings for this application.
      * 
-     * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+     * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
      * 
      */
     @Import(name="web")
@@ -464,7 +464,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A `web` block as documented below, which configures web related settings for this application.
      * 
-     * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+     * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
      * 
      */
     public Optional<Output<ApplicationWebArgs>> web() {
@@ -544,7 +544,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appRoles A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+         * @param appRoles A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appRoles A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+         * @param appRoles A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appRoles A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+         * @param appRoles A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
          * 
          * @return builder
          * 
@@ -659,9 +659,9 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param featureTags A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+         * @param featureTags A `featureTags` block as described below. Cannot be used together with the `tags` property.
          * 
-         * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+         * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
          * 
          * @return builder
          * 
@@ -672,9 +672,9 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param featureTags A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+         * @param featureTags A `featureTags` block as described below. Cannot be used together with the `tags` property.
          * 
-         * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+         * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
          * 
          * @return builder
          * 
@@ -684,9 +684,9 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param featureTags A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+         * @param featureTags A `featureTags` block as described below. Cannot be used together with the `tags` property.
          * 
-         * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+         * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
          * 
          * @return builder
          * 
@@ -842,7 +842,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param optionalClaims An `optional_claims` block as documented below.
+         * @param optionalClaims An `optionalClaims` block as documented below.
          * 
          * @return builder
          * 
@@ -853,7 +853,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param optionalClaims An `optional_claims` block as documented below.
+         * @param optionalClaims An `optionalClaims` block as documented below.
          * 
          * @return builder
          * 
@@ -961,7 +961,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicClient A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+         * @param publicClient A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
          * 
          * @return builder
          * 
@@ -972,7 +972,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicClient A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+         * @param publicClient A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
          * 
          * @return builder
          * 
@@ -982,7 +982,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requiredResourceAccesses A collection of `required_resource_access` blocks as documented below.
+         * @param requiredResourceAccesses A collection of `requiredResourceAccess` blocks as documented below.
          * 
          * @return builder
          * 
@@ -993,7 +993,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requiredResourceAccesses A collection of `required_resource_access` blocks as documented below.
+         * @param requiredResourceAccesses A collection of `requiredResourceAccess` blocks as documented below.
          * 
          * @return builder
          * 
@@ -1003,7 +1003,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requiredResourceAccesses A collection of `required_resource_access` blocks as documented below.
+         * @param requiredResourceAccesses A collection of `requiredResourceAccess` blocks as documented below.
          * 
          * @return builder
          * 
@@ -1036,7 +1036,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param signInAudience The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
          * 
-         * &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+         * &gt; **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
          * 
          * @return builder
          * 
@@ -1049,7 +1049,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param signInAudience The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
          * 
-         * &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+         * &gt; **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
          * 
          * @return builder
          * 
@@ -1059,7 +1059,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param singlePageApplication A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+         * @param singlePageApplication A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
          * 
          * @return builder
          * 
@@ -1070,7 +1070,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param singlePageApplication A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+         * @param singlePageApplication A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
          * 
          * @return builder
          * 
@@ -1101,9 +1101,9 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+         * @param tags A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
          * 
-         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
          * 
          * @return builder
          * 
@@ -1114,9 +1114,9 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+         * @param tags A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
          * 
-         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
          * 
          * @return builder
          * 
@@ -1126,9 +1126,9 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+         * @param tags A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
          * 
-         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
          * 
          * @return builder
          * 
@@ -1186,7 +1186,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param web A `web` block as documented below, which configures web related settings for this application.
          * 
-         * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+         * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
          * 
          * @return builder
          * 
@@ -1199,7 +1199,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param web A `web` block as documented below, which configures web related settings for this application.
          * 
-         * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+         * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
          * 
          * @return builder
          * 

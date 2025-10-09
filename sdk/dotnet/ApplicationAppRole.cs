@@ -111,7 +111,7 @@ namespace Pulumi.AzureAD
         public Output<string> RoleId { get; private set; } = null!;
 
         /// <summary>
-        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+        /// The value that is used for the `Roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// 
         /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
         /// </summary>
@@ -201,7 +201,7 @@ namespace Pulumi.AzureAD
         public Input<string> RoleId { get; set; } = null!;
 
         /// <summary>
-        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+        /// The value that is used for the `Roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// 
         /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
         /// </summary>
@@ -253,7 +253,7 @@ namespace Pulumi.AzureAD
         public Input<string>? RoleId { get; set; }
 
         /// <summary>
-        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+        /// The value that is used for the `Roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// 
         /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
         /// </summary>

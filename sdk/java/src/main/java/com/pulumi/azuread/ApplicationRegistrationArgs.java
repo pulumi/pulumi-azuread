@@ -170,14 +170,14 @@ public final class ApplicationRegistrationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+     * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
      * 
      */
     @Import(name="requestedAccessTokenVersion")
     private @Nullable Output<Integer> requestedAccessTokenVersion;
 
     /**
-     * @return The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+     * @return The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
      * 
      */
     public Optional<Output<Integer>> requestedAccessTokenVersion() {
@@ -503,7 +503,7 @@ public final class ApplicationRegistrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param requestedAccessTokenVersion The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+         * @param requestedAccessTokenVersion The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class ApplicationRegistrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param requestedAccessTokenVersion The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+         * @param requestedAccessTokenVersion The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
          * 
          * @return builder
          * 

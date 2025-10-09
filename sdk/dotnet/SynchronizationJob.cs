@@ -88,13 +88,13 @@ namespace Pulumi.AzureAD
     public partial class SynchronizationJob : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the provisioning job is enabled. Default state is `true`.
+        /// Whether the provisioning job is enabled. Default state is `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// A `schedule` list as documented below.
+        /// A `Schedule` list as documented below.
         /// </summary>
         [Output("schedules")]
         public Output<ImmutableArray<Outputs.SynchronizationJobSchedule>> Schedules { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.AzureAD
     public sealed class SynchronizationJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the provisioning job is enabled. Default state is `true`.
+        /// Whether the provisioning job is enabled. Default state is `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.AzureAD
     public sealed class SynchronizationJobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the provisioning job is enabled. Default state is `true`.
+        /// Whether the provisioning job is enabled. Default state is `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.SynchronizationJobScheduleGetArgs>? _schedules;
 
         /// <summary>
-        /// A `schedule` list as documented below.
+        /// A `Schedule` list as documented below.
         /// </summary>
         public InputList<Inputs.SynchronizationJobScheduleGetArgs> Schedules
         {

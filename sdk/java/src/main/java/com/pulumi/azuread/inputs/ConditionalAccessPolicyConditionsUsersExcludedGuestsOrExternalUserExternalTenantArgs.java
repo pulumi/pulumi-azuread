@@ -18,14 +18,14 @@ public final class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExterna
     public static final ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs Empty = new ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs();
 
     /**
-     * A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+     * A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
      * 
      */
     @Import(name="members")
     private @Nullable Output<List<String>> members;
 
     /**
-     * @return A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+     * @return A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
      * 
      */
     public Optional<Output<List<String>>> members() {
@@ -73,7 +73,7 @@ public final class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExterna
         }
 
         /**
-         * @param members A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+         * @param members A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExterna
         }
 
         /**
-         * @param members A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+         * @param members A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExterna
         }
 
         /**
-         * @param members A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+         * @param members A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
          * 
          * @return builder
          * 

@@ -139,7 +139,7 @@ namespace Pulumi.AzureAD
         public string GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The type of assignment this policy coveres. Can be either `member` or `owner`.
+        /// The type of assignment this policy coveres. Can be either `Member` or `Owner`.
         /// </summary>
         [Input("roleId", required: true)]
         public string RoleId { get; set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.AzureAD
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The type of assignment this policy coveres. Can be either `member` or `owner`.
+        /// The type of assignment this policy coveres. Can be either `Member` or `Owner`.
         /// </summary>
         [Input("roleId", required: true)]
         public Input<string> RoleId { get; set; } = null!;

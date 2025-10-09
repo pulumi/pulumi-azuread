@@ -13,7 +13,7 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class ConditionalAccessPolicyConditionsDevicesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A `filter` block as documented below.
+        /// A `Filter` block as documented below.
         /// 
         /// &gt; **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
         /// </summary>

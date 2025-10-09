@@ -14,11 +14,11 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant
     {
         /// <summary>
-        /// A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+        /// A list tenant IDs. Can only be specified if `MembershipKind` is `Enumerated`.
         /// </summary>
         public readonly ImmutableArray<string> Members;
         /// <summary>
-        /// The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+        /// The external tenant membership kind. Possible values are: `All`, `Enumerated`, `unknownFutureValue`.
         /// </summary>
         public readonly string MembershipKind;
 

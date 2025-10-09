@@ -18,7 +18,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string HomepageUrl;
         /// <summary>
-        /// An `implicit_grant` block as documented above.
+        /// An `ImplicitGrant` block as documented above.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationWebImplicitGrantResult> ImplicitGrants;
         /// <summary>
