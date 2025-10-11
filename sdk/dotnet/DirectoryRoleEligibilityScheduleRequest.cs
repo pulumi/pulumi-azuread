@@ -51,7 +51,7 @@ namespace Pulumi.AzureAD
     /// });
     /// ```
     /// 
-    /// &gt; Note the use of the `template_id` attribute when referencing built-in roles.
+    /// &gt; Note the use of the `TemplateId` attribute when referencing built-in roles.
     /// 
     /// ## Import
     /// 

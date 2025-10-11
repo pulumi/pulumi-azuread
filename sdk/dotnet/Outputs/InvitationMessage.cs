@@ -18,11 +18,11 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? AdditionalRecipients;
         /// <summary>
-        /// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+        /// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `Language`.
         /// </summary>
         public readonly string? Body;
         /// <summary>
-        /// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+        /// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `Body`.
         /// </summary>
         public readonly string? Language;
 

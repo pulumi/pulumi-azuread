@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant {
     /**
-     * @return A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+     * @return A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
      * 
      */
     private @Nullable List<String> members;
@@ -25,7 +25,7 @@ public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExterna
 
     private ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant() {}
     /**
-     * @return A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+     * @return A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
      * 
      */
     public List<String> members() {

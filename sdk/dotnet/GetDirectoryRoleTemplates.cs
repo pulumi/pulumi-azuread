@@ -124,7 +124,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
         /// <summary>
-        /// A list of role templates. Each `role_template` object provides the attributes documented below.
+        /// A list of role templates. Each `RoleTemplate` object provides the attributes documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDirectoryRoleTemplatesRoleTemplateResult> RoleTemplates;
 

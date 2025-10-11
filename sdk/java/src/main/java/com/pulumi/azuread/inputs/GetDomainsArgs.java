@@ -95,7 +95,7 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
      * 
-     * &gt; **Note on filters** If `include_unverified` is set to `true`, you cannot specify `only_default` or `only_initial`. Additionally, you cannot combine `only_default` with `only_initial`.
+     * &gt; **Note on filters** If `includeUnverified` is set to `true`, you cannot specify `onlyDefault` or `onlyInitial`. Additionally, you cannot combine `onlyDefault` with `onlyInitial`.
      * 
      */
     @Import(name="supportsServices")
@@ -104,7 +104,7 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
      * 
-     * &gt; **Note on filters** If `include_unverified` is set to `true`, you cannot specify `only_default` or `only_initial`. Additionally, you cannot combine `only_default` with `only_initial`.
+     * &gt; **Note on filters** If `includeUnverified` is set to `true`, you cannot specify `onlyDefault` or `onlyInitial`. Additionally, you cannot combine `onlyDefault` with `onlyInitial`.
      * 
      */
     public Optional<Output<List<String>>> supportsServices() {
@@ -248,7 +248,7 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param supportsServices A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
          * 
-         * &gt; **Note on filters** If `include_unverified` is set to `true`, you cannot specify `only_default` or `only_initial`. Additionally, you cannot combine `only_default` with `only_initial`.
+         * &gt; **Note on filters** If `includeUnverified` is set to `true`, you cannot specify `onlyDefault` or `onlyInitial`. Additionally, you cannot combine `onlyDefault` with `onlyInitial`.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param supportsServices A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
          * 
-         * &gt; **Note on filters** If `include_unverified` is set to `true`, you cannot specify `only_default` or `only_initial`. Additionally, you cannot combine `only_default` with `only_initial`.
+         * &gt; **Note on filters** If `includeUnverified` is set to `true`, you cannot specify `onlyDefault` or `onlyInitial`. Additionally, you cannot combine `onlyDefault` with `onlyInitial`.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class GetDomainsArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param supportsServices A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
          * 
-         * &gt; **Note on filters** If `include_unverified` is set to `true`, you cannot specify `only_default` or `only_initial`. Additionally, you cannot combine `only_default` with `only_initial`.
+         * &gt; **Note on filters** If `includeUnverified` is set to `true`, you cannot specify `onlyDefault` or `onlyInitial`. Additionally, you cannot combine `onlyDefault` with `onlyInitial`.
          * 
          * @return builder
          * 

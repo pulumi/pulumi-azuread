@@ -119,6 +119,47 @@ import (
 //
 // *Group with members*
 //
+// *Group with dynamic membership*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := azuread.GetClientConfig(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
+//				DisplayName: pulumi.String("MyGroup"),
+//				Owners: pulumi.StringArray{
+//					pulumi.String(current.ObjectId),
+//				},
+//				SecurityEnabled: pulumi.Bool(true),
+//				Types: pulumi.StringArray{
+//					pulumi.String("DynamicMembership"),
+//				},
+//				DynamicMembership: &azuread.GroupDynamicMembershipArgs{
+//					Enabled: pulumi.Bool(true),
+//					Rule:    pulumi.String("user.department -eq \"Sales\""),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Groups can be imported using their object ID, e.g.

@@ -14,7 +14,7 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ConditionalAccessPolicyConditionsDevicesFilter
     {
         /// <summary>
-        /// Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+        /// Whether to include in, or exclude from, matching items from the policy. Supported values are `Include` or `Exclude`.
         /// </summary>
         public readonly string Mode;
         /// <summary>

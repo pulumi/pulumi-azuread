@@ -28,7 +28,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs>? _excludedGuestsOrExternalUsers;
 
         /// <summary>
-        /// A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+        /// A `GuestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
         /// </summary>
         public InputList<Inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs> ExcludedGuestsOrExternalUsers
         {
@@ -76,7 +76,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs>? _includedGuestsOrExternalUsers;
 
         /// <summary>
-        /// A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+        /// A `GuestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
         /// </summary>
         public InputList<Inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs> IncludedGuestsOrExternalUsers
         {
@@ -102,7 +102,7 @@ namespace Pulumi.AzureAD.Inputs
         /// <summary>
         /// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
         /// 
-        /// &gt; At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
+        /// &gt; At least one of `IncludedGroups`, `IncludedGuestsOrExternalUsers`, `IncludedRoles` or `IncludedUsers` must be specified.
         /// </summary>
         public InputList<string> IncludedUsers
         {

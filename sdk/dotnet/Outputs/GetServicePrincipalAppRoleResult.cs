@@ -34,7 +34,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+        /// The value that is used for the `Scp` claim in OAuth 2.0 access tokens.
         /// </summary>
         public readonly string Value;
 

@@ -19,14 +19,14 @@ public final class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExterna
     public static final ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs Empty = new ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs();
 
     /**
-     * An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+     * An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
      * 
      */
     @Import(name="externalTenants")
     private @Nullable Output<List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs>> externalTenants;
 
     /**
-     * @return An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+     * @return An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
      * 
      */
     public Optional<Output<List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs>>> externalTenants() {
@@ -74,7 +74,7 @@ public final class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExterna
         }
 
         /**
-         * @param externalTenants An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+         * @param externalTenants An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExterna
         }
 
         /**
-         * @param externalTenants An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+         * @param externalTenants An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExterna
         }
 
         /**
-         * @param externalTenants An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+         * @param externalTenants An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
          * 
          * @return builder
          * 

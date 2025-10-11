@@ -68,10 +68,10 @@ public final class GetServicePrincipalResult {
      * @return A `features` block as described below.
      * 
      * @deprecated
-     * This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+     * This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      * 
      */
-    @Deprecated /* This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider */
+    @Deprecated /* This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider */
     private List<GetServicePrincipalFeature> features;
     /**
      * @return Home page or landing page of the associated application.
@@ -109,7 +109,7 @@ public final class GetServicePrincipalResult {
      */
     private Map<String,String> oauth2PermissionScopeIds;
     /**
-     * @return A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+     * @return A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
      * 
      */
     private List<GetServicePrincipalOauth2PermissionScope> oauth2PermissionScopes;
@@ -134,7 +134,7 @@ public final class GetServicePrincipalResult {
      */
     private String samlMetadataUrl;
     /**
-     * @return A `saml_single_sign_on` block as documented below.
+     * @return A `samlSingleSignOn` block as documented below.
      * 
      */
     private List<GetServicePrincipalSamlSingleSignOn> samlSingleSignOns;
@@ -230,10 +230,10 @@ public final class GetServicePrincipalResult {
      * @return A `features` block as described below.
      * 
      * @deprecated
-     * This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+     * This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      * 
      */
-    @Deprecated /* This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider */
+    @Deprecated /* This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider */
     public List<GetServicePrincipalFeature> features() {
         return this.features;
     }
@@ -287,7 +287,7 @@ public final class GetServicePrincipalResult {
         return this.oauth2PermissionScopeIds;
     }
     /**
-     * @return A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+     * @return A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
      * 
      */
     public List<GetServicePrincipalOauth2PermissionScope> oauth2PermissionScopes() {
@@ -322,7 +322,7 @@ public final class GetServicePrincipalResult {
         return this.samlMetadataUrl;
     }
     /**
-     * @return A `saml_single_sign_on` block as documented below.
+     * @return A `samlSingleSignOn` block as documented below.
      * 
      */
     public List<GetServicePrincipalSamlSingleSignOn> samlSingleSignOns() {
