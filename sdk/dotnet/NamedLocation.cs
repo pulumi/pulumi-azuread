@@ -82,6 +82,12 @@ namespace Pulumi.AzureAD
         [Output("ip")]
         public Output<Outputs.NamedLocationIp?> Ip { get; private set; } = null!;
 
+        /// <summary>
+        /// The object ID of the named location.
+        /// </summary>
+        [Output("objectId")]
+        public Output<string> ObjectId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a NamedLocation resource with the given unique name, arguments, and options.
@@ -175,6 +181,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("ip")]
         public Input<Inputs.NamedLocationIpGetArgs>? Ip { get; set; }
+
+        /// <summary>
+        /// The object ID of the named location.
+        /// </summary>
+        [Input("objectId")]
+        public Input<string>? ObjectId { get; set; }
 
         public NamedLocationState()
         {

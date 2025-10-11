@@ -146,6 +146,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The email aliases of the users.
+        /// 
+        /// &gt; **Note:** `mail_nicknames` are not a unique identifier for users. If multiple users share the same `mail_nickname`, all matching users will be returned.
         /// </summary>
         public List<string> MailNicknames
         {
@@ -228,6 +230,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The email aliases of the users.
+        /// 
+        /// &gt; **Note:** `mail_nicknames` are not a unique identifier for users. If multiple users share the same `mail_nickname`, all matching users will be returned.
         /// </summary>
         public InputList<string> MailNicknames
         {
