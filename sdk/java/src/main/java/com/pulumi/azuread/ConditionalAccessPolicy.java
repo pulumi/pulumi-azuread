@@ -259,14 +259,14 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
         return this.displayName;
     }
     /**
-     * A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+     * A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      * 
      */
     @Export(name="grantControls", refs={ConditionalAccessPolicyGrantControls.class}, tree="[0]")
     private Output</* @Nullable */ ConditionalAccessPolicyGrantControls> grantControls;
 
     /**
-     * @return A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+     * @return A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      * 
      */
     public Output<Optional<ConditionalAccessPolicyGrantControls>> grantControls() {
@@ -287,18 +287,18 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
         return this.objectId;
     }
     /**
-     * A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
      * 
-     * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+     * &gt; Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
      * 
      */
     @Export(name="sessionControls", refs={ConditionalAccessPolicySessionControls.class}, tree="[0]")
     private Output</* @Nullable */ ConditionalAccessPolicySessionControls> sessionControls;
 
     /**
-     * @return A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     * @return A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
      * 
-     * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+     * &gt; Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
      * 
      */
     public Output<Optional<ConditionalAccessPolicySessionControls>> sessionControls() {

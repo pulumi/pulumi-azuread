@@ -65,7 +65,7 @@ public final class ApplicationApiAccessArgs extends com.pulumi.resources.Resourc
     /**
      * A set of scope IDs to be granted to the application, as published by the API.
      * 
-     * &gt; At least one of `role_ids` or `scope_ids` must be specified.
+     * &gt; At least one of `roleIds` or `scopeIds` must be specified.
      * 
      */
     @Import(name="scopeIds")
@@ -74,7 +74,7 @@ public final class ApplicationApiAccessArgs extends com.pulumi.resources.Resourc
     /**
      * @return A set of scope IDs to be granted to the application, as published by the API.
      * 
-     * &gt; At least one of `role_ids` or `scope_ids` must be specified.
+     * &gt; At least one of `roleIds` or `scopeIds` must be specified.
      * 
      */
     public Optional<Output<List<String>>> scopeIds() {
@@ -184,7 +184,7 @@ public final class ApplicationApiAccessArgs extends com.pulumi.resources.Resourc
         /**
          * @param scopeIds A set of scope IDs to be granted to the application, as published by the API.
          * 
-         * &gt; At least one of `role_ids` or `scope_ids` must be specified.
+         * &gt; At least one of `roleIds` or `scopeIds` must be specified.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class ApplicationApiAccessArgs extends com.pulumi.resources.Resourc
         /**
          * @param scopeIds A set of scope IDs to be granted to the application, as published by the API.
          * 
-         * &gt; At least one of `role_ids` or `scope_ids` must be specified.
+         * &gt; At least one of `roleIds` or `scopeIds` must be specified.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class ApplicationApiAccessArgs extends com.pulumi.resources.Resourc
         /**
          * @param scopeIds A set of scope IDs to be granted to the application, as published by the API.
          * 
-         * &gt; At least one of `role_ids` or `scope_ids` must be specified.
+         * &gt; At least one of `roleIds` or `scopeIds` must be specified.
          * 
          * @return builder
          * 

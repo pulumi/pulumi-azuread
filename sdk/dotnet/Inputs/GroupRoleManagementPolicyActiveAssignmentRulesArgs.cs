@@ -13,7 +13,7 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class GroupRoleManagementPolicyActiveAssignmentRulesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Must an assignment have an expiry date. `false` allows permanent assignment.
+        /// Must an assignment have an expiry date. `False` allows permanent assignment.
         /// </summary>
         [Input("expirationRequired")]
         public Input<bool>? ExpirationRequired { get; set; }
@@ -39,7 +39,7 @@ namespace Pulumi.AzureAD.Inputs
         /// <summary>
         /// Is ticket information required to create new assignments.
         /// 
-        /// One of `expiration_required` or `expire_after` must be provided.
+        /// One of `ExpirationRequired` or `ExpireAfter` must be provided.
         /// </summary>
         [Input("requireTicketInfo")]
         public Input<bool>? RequireTicketInfo { get; set; }

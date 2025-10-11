@@ -24,7 +24,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettings {
      */
     private @Nullable Boolean approvalRequiredForExtension;
     /**
-     * @return An `approval_stage` block specifying the process to obtain an approval, as documented below.
+     * @return An `approvalStage` block specifying the process to obtain an approval, as documented below.
      * 
      */
     private @Nullable List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStage> approvalStages;
@@ -50,7 +50,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettings {
         return Optional.ofNullable(this.approvalRequiredForExtension);
     }
     /**
-     * @return An `approval_stage` block specifying the process to obtain an approval, as documented below.
+     * @return An `approvalStage` block specifying the process to obtain an approval, as documented below.
      * 
      */
     public List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStage> approvalStages() {

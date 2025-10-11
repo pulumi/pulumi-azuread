@@ -14,7 +14,7 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetDomainsDomainResult
     {
         /// <summary>
-        /// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+        /// Set to `True` to only return domains whose DNS is managed by Microsoft 365. Defaults to `False`.
         /// </summary>
         public readonly bool AdminManaged;
         /// <summary>

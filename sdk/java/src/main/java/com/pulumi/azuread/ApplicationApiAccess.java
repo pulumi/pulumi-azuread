@@ -165,7 +165,7 @@ public class ApplicationApiAccess extends com.pulumi.resources.CustomResource {
     /**
      * A set of scope IDs to be granted to the application, as published by the API.
      * 
-     * &gt; At least one of `role_ids` or `scope_ids` must be specified.
+     * &gt; At least one of `roleIds` or `scopeIds` must be specified.
      * 
      */
     @Export(name="scopeIds", refs={List.class,String.class}, tree="[0,1]")
@@ -174,7 +174,7 @@ public class ApplicationApiAccess extends com.pulumi.resources.CustomResource {
     /**
      * @return A set of scope IDs to be granted to the application, as published by the API.
      * 
-     * &gt; At least one of `role_ids` or `scope_ids` must be specified.
+     * &gt; At least one of `roleIds` or `scopeIds` must be specified.
      * 
      */
     public Output<Optional<List<String>>> scopeIds() {

@@ -26,7 +26,7 @@ public final class ConditionalAccessPolicyConditionsClientApplications {
      */
     private @Nullable ConditionalAccessPolicyConditionsClientApplicationsFilter filter;
     /**
-     * @return A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+     * @return A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
      * 
      */
     private @Nullable List<String> includedServicePrincipals;
@@ -49,7 +49,7 @@ public final class ConditionalAccessPolicyConditionsClientApplications {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+     * @return A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
      * 
      */
     public List<String> includedServicePrincipals() {

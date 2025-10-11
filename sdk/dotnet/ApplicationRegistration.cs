@@ -84,7 +84,7 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        /// Configures the `Groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         [Output("groupMembershipClaims")]
         public Output<ImmutableArray<string>> GroupMembershipClaims { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.AzureAD
         public Output<string> PublisherDomain { get; private set; } = null!;
 
         /// <summary>
-        /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+        /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `SignInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
         /// </summary>
         [Output("requestedAccessTokenVersion")]
         public Output<int?> RequestedAccessTokenVersion { get; private set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _groupMembershipClaims;
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        /// Configures the `Groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         public InputList<string> GroupMembershipClaims
         {
@@ -286,7 +286,7 @@ namespace Pulumi.AzureAD
         public Input<string>? PrivacyStatementUrl { get; set; }
 
         /// <summary>
-        /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+        /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `SignInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
         /// </summary>
         [Input("requestedAccessTokenVersion")]
         public Input<int>? RequestedAccessTokenVersion { get; set; }
@@ -351,7 +351,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _groupMembershipClaims;
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        /// Configures the `Groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         public InputList<string> GroupMembershipClaims
         {
@@ -414,7 +414,7 @@ namespace Pulumi.AzureAD
         public Input<string>? PublisherDomain { get; set; }
 
         /// <summary>
-        /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
+        /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `SignInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
         /// </summary>
         [Input("requestedAccessTokenVersion")]
         public Input<int>? RequestedAccessTokenVersion { get; set; }

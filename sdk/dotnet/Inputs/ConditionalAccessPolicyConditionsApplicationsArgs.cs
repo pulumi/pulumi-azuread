@@ -28,7 +28,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _includedApplications;
 
         /// <summary>
-        /// A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+        /// A list of application IDs the policy applies to, unless explicitly excluded (in `ExcludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `IncludedUserActions`. One of `IncludedApplications` or `IncludedUserActions` must be specified.
         /// </summary>
         public InputList<string> IncludedApplications
         {
@@ -40,7 +40,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _includedUserActions;
 
         /// <summary>
-        /// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
+        /// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `IncludedApplications`. One of `IncludedApplications` or `IncludedUserActions` must be specified.
         /// </summary>
         public InputList<string> IncludedUserActions
         {

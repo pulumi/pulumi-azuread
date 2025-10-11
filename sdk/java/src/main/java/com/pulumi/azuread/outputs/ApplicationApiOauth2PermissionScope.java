@@ -31,7 +31,7 @@ public final class ApplicationApiOauth2PermissionScope {
     /**
      * @return The unique identifier of the delegated permission. Must be a valid UUID.
      * 
-     * &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+     * &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
      * 
      */
     private String id;
@@ -81,7 +81,7 @@ public final class ApplicationApiOauth2PermissionScope {
     /**
      * @return The unique identifier of the delegated permission. Must be a valid UUID.
      * 
-     * &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
+     * &gt; **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
      * 
      */
     public String id() {

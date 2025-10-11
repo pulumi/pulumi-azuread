@@ -90,7 +90,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
         /// 
-        /// &gt; Either `display_name` or `template_id` must be specified.
+        /// &gt; Either `DisplayName` or `TemplateId` must be specified.
         /// </summary>
         [Output("templateId")]
         public Output<string> TemplateId { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
         /// 
-        /// &gt; Either `display_name` or `template_id` must be specified.
+        /// &gt; Either `DisplayName` or `TemplateId` must be specified.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
         /// 
-        /// &gt; Either `display_name` or `template_id` must be specified.
+        /// &gt; Either `DisplayName` or `TemplateId` must be specified.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }

@@ -50,14 +50,14 @@ public final class ApplicationApiArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+     * One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
      * 
      */
     @Import(name="oauth2PermissionScopes")
     private @Nullable Output<List<ApplicationApiOauth2PermissionScopeArgs>> oauth2PermissionScopes;
 
     /**
-     * @return One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+     * @return One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
      * 
      */
     public Optional<Output<List<ApplicationApiOauth2PermissionScopeArgs>>> oauth2PermissionScopes() {
@@ -65,14 +65,14 @@ public final class ApplicationApiArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+     * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
      * 
      */
     @Import(name="requestedAccessTokenVersion")
     private @Nullable Output<Integer> requestedAccessTokenVersion;
 
     /**
-     * @return The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+     * @return The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
      * 
      */
     public Optional<Output<Integer>> requestedAccessTokenVersion() {
@@ -159,7 +159,7 @@ public final class ApplicationApiArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param oauth2PermissionScopes One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+         * @param oauth2PermissionScopes One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class ApplicationApiArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param oauth2PermissionScopes One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+         * @param oauth2PermissionScopes One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ApplicationApiArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param oauth2PermissionScopes One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+         * @param oauth2PermissionScopes One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class ApplicationApiArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param requestedAccessTokenVersion The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+         * @param requestedAccessTokenVersion The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class ApplicationApiArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param requestedAccessTokenVersion The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+         * @param requestedAccessTokenVersion The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
          * 
          * @return builder
          * 

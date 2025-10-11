@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApplicationOptionalClaimsSaml2Token {
     /**
-     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
+     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
      * 
      */
     private @Nullable List<String> additionalProperties;
@@ -37,7 +37,7 @@ public final class ApplicationOptionalClaimsSaml2Token {
 
     private ApplicationOptionalClaimsSaml2Token() {}
     /**
-     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
+     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
      * 
      */
     public List<String> additionalProperties() {

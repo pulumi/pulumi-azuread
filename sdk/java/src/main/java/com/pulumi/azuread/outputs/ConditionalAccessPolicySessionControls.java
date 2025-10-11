@@ -36,7 +36,7 @@ public final class ConditionalAccessPolicySessionControls {
      */
     private @Nullable String persistentBrowserMode;
     /**
-     * @return Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+     * @return Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
      * 
      */
     private @Nullable Integer signInFrequency;
@@ -51,7 +51,7 @@ public final class ConditionalAccessPolicySessionControls {
      */
     private @Nullable String signInFrequencyInterval;
     /**
-     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
      * 
      */
     private @Nullable String signInFrequencyPeriod;
@@ -88,7 +88,7 @@ public final class ConditionalAccessPolicySessionControls {
         return Optional.ofNullable(this.persistentBrowserMode);
     }
     /**
-     * @return Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+     * @return Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
      * 
      */
     public Optional<Integer> signInFrequency() {
@@ -109,7 +109,7 @@ public final class ConditionalAccessPolicySessionControls {
         return Optional.ofNullable(this.signInFrequencyInterval);
     }
     /**
-     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
      * 
      */
     public Optional<String> signInFrequencyPeriod() {

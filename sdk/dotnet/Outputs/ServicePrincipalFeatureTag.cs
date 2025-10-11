@@ -14,19 +14,19 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ServicePrincipalFeatureTag
     {
         /// <summary>
-        /// Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+        /// Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `False`.
         /// </summary>
         public readonly bool? CustomSingleSignOn;
         /// <summary>
-        /// Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+        /// Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `False`.
         /// </summary>
         public readonly bool? Enterprise;
         /// <summary>
-        /// Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+        /// Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `False`.
         /// </summary>
         public readonly bool? Gallery;
         /// <summary>
-        /// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+        /// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `False`.
         /// </summary>
         public readonly bool? Hide;
 

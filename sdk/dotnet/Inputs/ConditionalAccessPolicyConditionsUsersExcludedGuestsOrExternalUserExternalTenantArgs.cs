@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _members;
 
         /// <summary>
-        /// A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
+        /// A list tenant IDs. Can only be specified if `MembershipKind` is `Enumerated`.
         /// </summary>
         public InputList<string> Members
         {
@@ -25,7 +25,7 @@ namespace Pulumi.AzureAD.Inputs
         }
 
         /// <summary>
-        /// The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
+        /// The external tenant membership kind. Possible values are: `All`, `Enumerated`, `unknownFutureValue`.
         /// </summary>
         [Input("membershipKind", required: true)]
         public Input<string> MembershipKind { get; set; } = null!;

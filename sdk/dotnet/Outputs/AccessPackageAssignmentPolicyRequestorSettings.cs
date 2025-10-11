@@ -18,7 +18,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyRequestorSettingsRequestor> Requestors;
         /// <summary>
-        /// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+        /// Whether to accept requests using this policy. When `False`, no new requests can be made using this policy.
         /// </summary>
         public readonly bool? RequestsAccepted;
         /// <summary>

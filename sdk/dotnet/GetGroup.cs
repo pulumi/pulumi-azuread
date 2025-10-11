@@ -127,7 +127,7 @@ namespace Pulumi.AzureAD
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+        /// Whether to include transitive members (a flat list of all nested members). Defaults to `False`.
         /// </summary>
         [Input("includeTransitiveMembers")]
         public bool? IncludeTransitiveMembers { get; set; }
@@ -153,7 +153,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Whether the group is a security group.
         /// 
-        /// &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
+        /// &gt; One of `DisplayName`, `ObjectId` or `MailNickname` must be specified.
         /// </summary>
         [Input("securityEnabled")]
         public bool? SecurityEnabled { get; set; }
@@ -173,7 +173,7 @@ namespace Pulumi.AzureAD
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
+        /// Whether to include transitive members (a flat list of all nested members). Defaults to `False`.
         /// </summary>
         [Input("includeTransitiveMembers")]
         public Input<bool>? IncludeTransitiveMembers { get; set; }
@@ -199,7 +199,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Whether the group is a security group.
         /// 
-        /// &gt; One of `display_name`, `object_id` or `mail_nickname` must be specified.
+        /// &gt; One of `DisplayName`, `ObjectId` or `MailNickname` must be specified.
         /// </summary>
         [Input("securityEnabled")]
         public Input<bool>? SecurityEnabled { get; set; }
@@ -235,7 +235,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// A `dynamic_membership` block as documented below.
+        /// A `DynamicMembership` block as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupDynamicMembershipResult> DynamicMemberships;
         /// <summary>
@@ -268,7 +268,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string MailNickname;
         /// <summary>
-        /// List of object IDs of the group members. When `include_transitive_members` is `true`, contains a list of object IDs of all transitive group members.
+        /// List of object IDs of the group members. When `IncludeTransitiveMembers` is `True`, contains a list of object IDs of all transitive group members.
         /// </summary>
         public readonly ImmutableArray<string> Members;
         /// <summary>
@@ -296,7 +296,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string OnpremisesSecurityIdentifier;
         /// <summary>
-        /// Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        /// Whether this group is synchronised from an on-premises directory (`True`), no longer synchronised (`False`), or has never been synchronised (`Null`).
         /// </summary>
         public readonly bool OnpremisesSyncEnabled;
         /// <summary>
@@ -320,7 +320,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly bool SecurityEnabled;
         /// <summary>
-        /// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. When no theme is set, the value is `null`.
+        /// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. When no theme is set, the value is `Null`.
         /// </summary>
         public readonly string Theme;
         /// <summary>

@@ -14,15 +14,15 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetApplicationOptionalClaimResult
     {
         /// <summary>
-        /// One or more `access_token` blocks as documented below.
+        /// One or more `AccessToken` blocks as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationOptionalClaimAccessTokenResult> AccessTokens;
         /// <summary>
-        /// One or more `id_token` blocks as documented below.
+        /// One or more `IdToken` blocks as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationOptionalClaimIdTokenResult> IdTokens;
         /// <summary>
-        /// One or more `saml2_token` blocks as documented below.
+        /// One or more `Saml2Token` blocks as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationOptionalClaimSaml2TokenResult> Saml2Tokens;
 

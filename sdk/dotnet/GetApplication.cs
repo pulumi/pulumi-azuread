@@ -136,9 +136,9 @@ namespace Pulumi.AzureAD
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
+        /// Specifies any identifier URI of the application. See also the `IdentifierUris` attribute which contains a list of all identifier URIs for the application.
         /// 
-        /// &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+        /// &gt; One of `ClientId`, `DisplayName`, `ObjectId`, or `IdentifierUri` must be specified.
         /// </summary>
         [Input("identifierUri")]
         public string? IdentifierUri { get; set; }
@@ -170,9 +170,9 @@ namespace Pulumi.AzureAD
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
+        /// Specifies any identifier URI of the application. See also the `IdentifierUris` attribute which contains a list of all identifier URIs for the application.
         /// 
-        /// &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+        /// &gt; One of `ClientId`, `DisplayName`, `ObjectId`, or `IdentifierUri` must be specified.
         /// </summary>
         [Input("identifierUri")]
         public Input<string>? IdentifierUri { get; set; }
@@ -194,7 +194,7 @@ namespace Pulumi.AzureAD
     public sealed class GetApplicationResult
     {
         /// <summary>
-        /// An `api` block as documented below.
+        /// An `Api` block as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationApiResult> Apis;
         /// <summary>
@@ -202,7 +202,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableDictionary<string, string> AppRoleIds;
         /// <summary>
-        /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        /// A collection of `AppRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationAppRoleResult> AppRoles;
         /// <summary>
@@ -230,11 +230,11 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly bool FallbackPublicClientEnabled;
         /// <summary>
-        /// A `features` block as described below.
+        /// A `Features` block as described below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationFeatureTagResult> FeatureTags;
         /// <summary>
-        /// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
+        /// The `Groups` claim issued in a user or OAuth 2.0 access token that the app expects.
         /// </summary>
         public readonly ImmutableArray<string> GroupMembershipClaims;
         /// <summary>
@@ -263,7 +263,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableDictionary<string, string> Oauth2PermissionScopeIds;
         /// <summary>
-        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `false`, only GET requests are allowed.
+        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `False`, only GET requests are allowed.
         /// </summary>
         public readonly bool Oauth2PostResponseRequired;
         /// <summary>
@@ -271,7 +271,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string ObjectId;
         /// <summary>
-        /// An `optional_claims` block as documented below.
+        /// An `OptionalClaims` block as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationOptionalClaimResult> OptionalClaims;
         /// <summary>
@@ -283,7 +283,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string PrivacyStatementUrl;
         /// <summary>
-        /// A `public_client` block as documented below.
+        /// A `PublicClient` block as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationPublicClientResult> PublicClients;
         /// <summary>
@@ -291,7 +291,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string PublisherDomain;
         /// <summary>
-        /// A collection of `required_resource_access` blocks as documented below.
+        /// A collection of `RequiredResourceAccess` blocks as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationRequiredResourceAccessResult> RequiredResourceAccesses;
         /// <summary>
@@ -303,7 +303,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string SignInAudience;
         /// <summary>
-        /// A `single_page_application` block as documented below.
+        /// A `SinglePageApplication` block as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationSinglePageApplicationResult> SinglePageApplications;
         /// <summary>
@@ -319,7 +319,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string TermsOfServiceUrl;
         /// <summary>
-        /// A `web` block as documented below.
+        /// A `Web` block as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationWebResult> Webs;
 

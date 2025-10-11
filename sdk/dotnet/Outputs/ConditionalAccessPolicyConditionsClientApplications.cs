@@ -18,13 +18,13 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExcludedServicePrincipals;
         /// <summary>
-        /// A `filter` block as documented below.
+        /// A `Filter` block as documented below.
         /// 
-        /// &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+        /// &gt; **Note:** Specifying `Filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsClientApplicationsFilter? Filter;
         /// <summary>
-        /// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+        /// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `ExcludedServicePrincipals` is set.
         /// </summary>
         public readonly ImmutableArray<string> IncludedServicePrincipals;
 

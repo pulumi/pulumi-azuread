@@ -20,7 +20,7 @@ namespace Pulumi.AzureAD.Outputs
         /// <summary>
         /// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
         /// 
-        /// &gt; **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+        /// &gt; **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `Types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
         /// </summary>
         public readonly string Rule;
 

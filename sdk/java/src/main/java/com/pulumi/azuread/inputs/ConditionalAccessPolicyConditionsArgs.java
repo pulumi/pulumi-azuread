@@ -54,14 +54,14 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
     }
 
     /**
-     * An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+     * An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
      * 
      */
     @Import(name="clientApplications")
     private @Nullable Output<ConditionalAccessPolicyConditionsClientApplicationsArgs> clientApplications;
 
     /**
-     * @return An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+     * @return An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
      * 
      */
     public Optional<Output<ConditionalAccessPolicyConditionsClientApplicationsArgs>> clientApplications() {
@@ -275,7 +275,7 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param clientApplications An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+         * @param clientApplications An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param clientApplications An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+         * @param clientApplications An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
          * 
          * @return builder
          * 

@@ -108,28 +108,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy")
 public class GroupRoleManagementPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * An `activation_rules` block as defined below.
+     * An `activationRules` block as defined below.
      * 
      */
     @Export(name="activationRules", refs={GroupRoleManagementPolicyActivationRules.class}, tree="[0]")
     private Output<GroupRoleManagementPolicyActivationRules> activationRules;
 
     /**
-     * @return An `activation_rules` block as defined below.
+     * @return An `activationRules` block as defined below.
      * 
      */
     public Output<GroupRoleManagementPolicyActivationRules> activationRules() {
         return this.activationRules;
     }
     /**
-     * An `active_assignment_rules` block as defined below.
+     * An `activeAssignmentRules` block as defined below.
      * 
      */
     @Export(name="activeAssignmentRules", refs={GroupRoleManagementPolicyActiveAssignmentRules.class}, tree="[0]")
     private Output<GroupRoleManagementPolicyActiveAssignmentRules> activeAssignmentRules;
 
     /**
-     * @return An `active_assignment_rules` block as defined below.
+     * @return An `activeAssignmentRules` block as defined below.
      * 
      */
     public Output<GroupRoleManagementPolicyActiveAssignmentRules> activeAssignmentRules() {
@@ -164,14 +164,14 @@ public class GroupRoleManagementPolicy extends com.pulumi.resources.CustomResour
         return this.displayName;
     }
     /**
-     * An `eligible_assignment_rules` block as defined below.
+     * An `eligibleAssignmentRules` block as defined below.
      * 
      */
     @Export(name="eligibleAssignmentRules", refs={GroupRoleManagementPolicyEligibleAssignmentRules.class}, tree="[0]")
     private Output<GroupRoleManagementPolicyEligibleAssignmentRules> eligibleAssignmentRules;
 
     /**
-     * @return An `eligible_assignment_rules` block as defined below.
+     * @return An `eligibleAssignmentRules` block as defined below.
      * 
      */
     public Output<GroupRoleManagementPolicyEligibleAssignmentRules> eligibleAssignmentRules() {
@@ -192,14 +192,14 @@ public class GroupRoleManagementPolicy extends com.pulumi.resources.CustomResour
         return this.groupId;
     }
     /**
-     * A `notification_rules` block as defined below.
+     * A `notificationRules` block as defined below.
      * 
      */
     @Export(name="notificationRules", refs={GroupRoleManagementPolicyNotificationRules.class}, tree="[0]")
     private Output<GroupRoleManagementPolicyNotificationRules> notificationRules;
 
     /**
-     * @return A `notification_rules` block as defined below.
+     * @return A `notificationRules` block as defined below.
      * 
      */
     public Output<GroupRoleManagementPolicyNotificationRules> notificationRules() {

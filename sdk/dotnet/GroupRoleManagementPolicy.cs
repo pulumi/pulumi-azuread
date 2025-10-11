@@ -85,13 +85,13 @@ namespace Pulumi.AzureAD
     public partial class GroupRoleManagementPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// An `activation_rules` block as defined below.
+        /// An `ActivationRules` block as defined below.
         /// </summary>
         [Output("activationRules")]
         public Output<Outputs.GroupRoleManagementPolicyActivationRules> ActivationRules { get; private set; } = null!;
 
         /// <summary>
-        /// An `active_assignment_rules` block as defined below.
+        /// An `ActiveAssignmentRules` block as defined below.
         /// </summary>
         [Output("activeAssignmentRules")]
         public Output<Outputs.GroupRoleManagementPolicyActiveAssignmentRules> ActiveAssignmentRules { get; private set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// An `eligible_assignment_rules` block as defined below.
+        /// An `EligibleAssignmentRules` block as defined below.
         /// </summary>
         [Output("eligibleAssignmentRules")]
         public Output<Outputs.GroupRoleManagementPolicyEligibleAssignmentRules> EligibleAssignmentRules { get; private set; } = null!;
@@ -121,13 +121,13 @@ namespace Pulumi.AzureAD
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// A `notification_rules` block as defined below.
+        /// A `NotificationRules` block as defined below.
         /// </summary>
         [Output("notificationRules")]
         public Output<Outputs.GroupRoleManagementPolicyNotificationRules> NotificationRules { get; private set; } = null!;
 
         /// <summary>
-        /// The type of assignment this policy coveres. Can be either `member` or `owner`.
+        /// The type of assignment this policy coveres. Can be either `Member` or `Owner`.
         /// </summary>
         [Output("roleId")]
         public Output<string> RoleId { get; private set; } = null!;
@@ -179,19 +179,19 @@ namespace Pulumi.AzureAD
     public sealed class GroupRoleManagementPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An `activation_rules` block as defined below.
+        /// An `ActivationRules` block as defined below.
         /// </summary>
         [Input("activationRules")]
         public Input<Inputs.GroupRoleManagementPolicyActivationRulesArgs>? ActivationRules { get; set; }
 
         /// <summary>
-        /// An `active_assignment_rules` block as defined below.
+        /// An `ActiveAssignmentRules` block as defined below.
         /// </summary>
         [Input("activeAssignmentRules")]
         public Input<Inputs.GroupRoleManagementPolicyActiveAssignmentRulesArgs>? ActiveAssignmentRules { get; set; }
 
         /// <summary>
-        /// An `eligible_assignment_rules` block as defined below.
+        /// An `EligibleAssignmentRules` block as defined below.
         /// </summary>
         [Input("eligibleAssignmentRules")]
         public Input<Inputs.GroupRoleManagementPolicyEligibleAssignmentRulesArgs>? EligibleAssignmentRules { get; set; }
@@ -203,13 +203,13 @@ namespace Pulumi.AzureAD
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// A `notification_rules` block as defined below.
+        /// A `NotificationRules` block as defined below.
         /// </summary>
         [Input("notificationRules")]
         public Input<Inputs.GroupRoleManagementPolicyNotificationRulesArgs>? NotificationRules { get; set; }
 
         /// <summary>
-        /// The type of assignment this policy coveres. Can be either `member` or `owner`.
+        /// The type of assignment this policy coveres. Can be either `Member` or `Owner`.
         /// </summary>
         [Input("roleId", required: true)]
         public Input<string> RoleId { get; set; } = null!;
@@ -223,13 +223,13 @@ namespace Pulumi.AzureAD
     public sealed class GroupRoleManagementPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An `activation_rules` block as defined below.
+        /// An `ActivationRules` block as defined below.
         /// </summary>
         [Input("activationRules")]
         public Input<Inputs.GroupRoleManagementPolicyActivationRulesGetArgs>? ActivationRules { get; set; }
 
         /// <summary>
-        /// An `active_assignment_rules` block as defined below.
+        /// An `ActiveAssignmentRules` block as defined below.
         /// </summary>
         [Input("activeAssignmentRules")]
         public Input<Inputs.GroupRoleManagementPolicyActiveAssignmentRulesGetArgs>? ActiveAssignmentRules { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.AzureAD
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// An `eligible_assignment_rules` block as defined below.
+        /// An `EligibleAssignmentRules` block as defined below.
         /// </summary>
         [Input("eligibleAssignmentRules")]
         public Input<Inputs.GroupRoleManagementPolicyEligibleAssignmentRulesGetArgs>? EligibleAssignmentRules { get; set; }
@@ -259,13 +259,13 @@ namespace Pulumi.AzureAD
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// A `notification_rules` block as defined below.
+        /// A `NotificationRules` block as defined below.
         /// </summary>
         [Input("notificationRules")]
         public Input<Inputs.GroupRoleManagementPolicyNotificationRulesGetArgs>? NotificationRules { get; set; }
 
         /// <summary>
-        /// The type of assignment this policy coveres. Can be either `member` or `owner`.
+        /// The type of assignment this policy coveres. Can be either `Member` or `Owner`.
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }

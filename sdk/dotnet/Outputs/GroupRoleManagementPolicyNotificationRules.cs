@@ -14,17 +14,17 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GroupRoleManagementPolicyNotificationRules
     {
         /// <summary>
-        /// A `notification_target` block as defined below to configure notfications on active role assignments.
+        /// A `NotificationTarget` block as defined below to configure notfications on active role assignments.
         /// </summary>
         public readonly Outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignments? ActiveAssignments;
         /// <summary>
-        /// A `notification_target` block as defined below for configuring notifications on activation of eligible role.
+        /// A `NotificationTarget` block as defined below for configuring notifications on activation of eligible role.
         /// </summary>
         public readonly Outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivations? EligibleActivations;
         /// <summary>
-        /// A `notification_target` block as defined below to configure notification on eligible role assignments.
+        /// A `NotificationTarget` block as defined below to configure notification on eligible role assignments.
         /// 
-        /// At least one `notification_target` block must be provided.
+        /// At least one `NotificationTarget` block must be provided.
         /// </summary>
         public readonly Outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignments? EligibleAssignments;
 

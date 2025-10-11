@@ -18,7 +18,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string RuleId;
         /// <summary>
-        /// One or more `subject` blocks as documented below.
+        /// One or more `Subject` blocks as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SynchronizationJobProvisionOnDemandParameterSubject> Subjects;
 

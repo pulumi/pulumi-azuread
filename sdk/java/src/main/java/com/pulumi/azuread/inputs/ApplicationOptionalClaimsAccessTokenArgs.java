@@ -19,14 +19,14 @@ public final class ApplicationOptionalClaimsAccessTokenArgs extends com.pulumi.r
     public static final ApplicationOptionalClaimsAccessTokenArgs Empty = new ApplicationOptionalClaimsAccessTokenArgs();
 
     /**
-     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
+     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
      * 
      */
     @Import(name="additionalProperties")
     private @Nullable Output<List<String>> additionalProperties;
 
     /**
-     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
+     * @return List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
      * 
      */
     public Optional<Output<List<String>>> additionalProperties() {
@@ -106,7 +106,7 @@ public final class ApplicationOptionalClaimsAccessTokenArgs extends com.pulumi.r
         }
 
         /**
-         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
+         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ApplicationOptionalClaimsAccessTokenArgs extends com.pulumi.r
         }
 
         /**
-         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
+         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class ApplicationOptionalClaimsAccessTokenArgs extends com.pulumi.r
         }
 
         /**
-         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
+         * @param additionalProperties List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
          * 
          * @return builder
          * 

@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _additionalProperties;
 
         /// <summary>
-        /// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloud_displayname`, `dns_domain_and_sam_account_name`, `emit_as_roles`, `include_externally_authenticated_upn_without_hash`, `include_externally_authenticated_upn`, `max_size_limit`, `netbios_domain_and_sam_account_name`, `on_premise_security_identifier`, `sam_account_name`, and `use_guid`.
+        /// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `CloudDisplayname`, `DnsDomainAndSamAccountName`, `EmitAsRoles`, `IncludeExternallyAuthenticatedUpnWithoutHash`, `IncludeExternallyAuthenticatedUpn`, `MaxSizeLimit`, `NetbiosDomainAndSamAccountName`, `OnPremiseSecurityIdentifier`, `SamAccountName`, and `UseGuid`.
         /// </summary>
         public InputList<string> AdditionalProperties
         {
@@ -37,7 +37,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+        /// The source of the claim. If `Source` is absent, the claim is a predefined optional claim. If `Source` is `User`, the value of `Name` is the extension property from the user object.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

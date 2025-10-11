@@ -17,12 +17,12 @@ public final class ConditionalAccessPolicyConditionsApplications {
      */
     private @Nullable List<String> excludedApplications;
     /**
-     * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+     * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
      * 
      */
     private @Nullable List<String> includedApplications;
     /**
-     * @return A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
+     * @return A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
      * 
      */
     private @Nullable List<String> includedUserActions;
@@ -36,14 +36,14 @@ public final class ConditionalAccessPolicyConditionsApplications {
         return this.excludedApplications == null ? List.of() : this.excludedApplications;
     }
     /**
-     * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+     * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
      * 
      */
     public List<String> includedApplications() {
         return this.includedApplications == null ? List.of() : this.includedApplications;
     }
     /**
-     * @return A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
+     * @return A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
      * 
      */
     public List<String> includedUserActions() {

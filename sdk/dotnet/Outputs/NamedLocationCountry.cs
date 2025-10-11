@@ -22,7 +22,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? CountryLookupMethod;
         /// <summary>
-        /// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+        /// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `False`.
         /// </summary>
         public readonly bool? IncludeUnknownCountriesAndRegions;
 

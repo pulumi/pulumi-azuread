@@ -49,8 +49,8 @@ namespace Pulumi.AzureAD
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `object_id` - The object ID of the directory object.
-        /// * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+        /// * `ObjectId` - The object ID of the directory object.
+        /// * `Type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
         /// </summary>
         public static Task<GetDirectoryObjectResult> InvokeAsync(GetDirectoryObjectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDirectoryObjectResult>("azuread:index/getDirectoryObject:getDirectoryObject", args ?? new GetDirectoryObjectArgs(), options.WithDefaults());
@@ -93,8 +93,8 @@ namespace Pulumi.AzureAD
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `object_id` - The object ID of the directory object.
-        /// * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+        /// * `ObjectId` - The object ID of the directory object.
+        /// * `Type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
         /// </summary>
         public static Output<GetDirectoryObjectResult> Invoke(GetDirectoryObjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDirectoryObjectResult>("azuread:index/getDirectoryObject:getDirectoryObject", args ?? new GetDirectoryObjectInvokeArgs(), options.WithDefaults());
@@ -137,8 +137,8 @@ namespace Pulumi.AzureAD
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `object_id` - The object ID of the directory object.
-        /// * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+        /// * `ObjectId` - The object ID of the directory object.
+        /// * `Type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
         /// </summary>
         public static Output<GetDirectoryObjectResult> Invoke(GetDirectoryObjectInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDirectoryObjectResult>("azuread:index/getDirectoryObject:getDirectoryObject", args ?? new GetDirectoryObjectInvokeArgs(), options.WithDefaults());

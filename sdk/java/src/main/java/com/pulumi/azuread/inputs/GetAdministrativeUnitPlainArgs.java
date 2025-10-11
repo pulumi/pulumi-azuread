@@ -32,7 +32,7 @@ public final class GetAdministrativeUnitPlainArgs extends com.pulumi.resources.I
     /**
      * Specifies the object ID of the administrative unit.
      * 
-     * &gt; One of `display_name` or `object_id` must be specified.
+     * &gt; One of `displayName` or `objectId` must be specified.
      * 
      */
     @Import(name="objectId")
@@ -41,7 +41,7 @@ public final class GetAdministrativeUnitPlainArgs extends com.pulumi.resources.I
     /**
      * @return Specifies the object ID of the administrative unit.
      * 
-     * &gt; One of `display_name` or `object_id` must be specified.
+     * &gt; One of `displayName` or `objectId` must be specified.
      * 
      */
     public Optional<String> objectId() {
@@ -87,7 +87,7 @@ public final class GetAdministrativeUnitPlainArgs extends com.pulumi.resources.I
         /**
          * @param objectId Specifies the object ID of the administrative unit.
          * 
-         * &gt; One of `display_name` or `object_id` must be specified.
+         * &gt; One of `displayName` or `objectId` must be specified.
          * 
          * @return builder
          * 

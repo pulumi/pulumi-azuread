@@ -30,7 +30,7 @@ public final class ConditionalAccessPolicyConditions {
      */
     private List<String> clientAppTypes;
     /**
-     * @return An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+     * @return An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
      * 
      */
     private @Nullable ConditionalAccessPolicyConditionsClientApplications clientApplications;
@@ -91,7 +91,7 @@ public final class ConditionalAccessPolicyConditions {
         return this.clientAppTypes;
     }
     /**
-     * @return An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+     * @return An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
      * 
      */
     public Optional<ConditionalAccessPolicyConditionsClientApplications> clientApplications() {

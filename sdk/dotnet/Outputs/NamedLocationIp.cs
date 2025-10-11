@@ -18,7 +18,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpRanges;
         /// <summary>
-        /// Whether the named location is trusted. Defaults to `false`.
+        /// Whether the named location is trusted. Defaults to `False`.
         /// </summary>
         public readonly bool? Trusted;
 

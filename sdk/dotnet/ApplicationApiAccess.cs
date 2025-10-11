@@ -107,7 +107,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A set of scope IDs to be granted to the application, as published by the API.
         /// 
-        /// &gt; At least one of `role_ids` or `scope_ids` must be specified.
+        /// &gt; At least one of `RoleIds` or `ScopeIds` must be specified.
         /// </summary>
         [Output("scopeIds")]
         public Output<ImmutableArray<string>> ScopeIds { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A set of scope IDs to be granted to the application, as published by the API.
         /// 
-        /// &gt; At least one of `role_ids` or `scope_ids` must be specified.
+        /// &gt; At least one of `RoleIds` or `ScopeIds` must be specified.
         /// </summary>
         public InputList<string> ScopeIds
         {
@@ -234,7 +234,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A set of scope IDs to be granted to the application, as published by the API.
         /// 
-        /// &gt; At least one of `role_ids` or `scope_ids` must be specified.
+        /// &gt; At least one of `RoleIds` or `ScopeIds` must be specified.
         /// </summary>
         public InputList<string> ScopeIds
         {

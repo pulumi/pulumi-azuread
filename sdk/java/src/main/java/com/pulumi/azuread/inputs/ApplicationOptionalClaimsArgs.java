@@ -19,14 +19,14 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
     public static final ApplicationOptionalClaimsArgs Empty = new ApplicationOptionalClaimsArgs();
 
     /**
-     * One or more `access_token` blocks as documented below.
+     * One or more `accessToken` blocks as documented below.
      * 
      */
     @Import(name="accessTokens")
     private @Nullable Output<List<ApplicationOptionalClaimsAccessTokenArgs>> accessTokens;
 
     /**
-     * @return One or more `access_token` blocks as documented below.
+     * @return One or more `accessToken` blocks as documented below.
      * 
      */
     public Optional<Output<List<ApplicationOptionalClaimsAccessTokenArgs>>> accessTokens() {
@@ -34,14 +34,14 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * One or more `id_token` blocks as documented below.
+     * One or more `idToken` blocks as documented below.
      * 
      */
     @Import(name="idTokens")
     private @Nullable Output<List<ApplicationOptionalClaimsIdTokenArgs>> idTokens;
 
     /**
-     * @return One or more `id_token` blocks as documented below.
+     * @return One or more `idToken` blocks as documented below.
      * 
      */
     public Optional<Output<List<ApplicationOptionalClaimsIdTokenArgs>>> idTokens() {
@@ -49,14 +49,14 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * One or more `saml2_token` blocks as documented below.
+     * One or more `saml2Token` blocks as documented below.
      * 
      */
     @Import(name="saml2Tokens")
     private @Nullable Output<List<ApplicationOptionalClaimsSaml2TokenArgs>> saml2Tokens;
 
     /**
-     * @return One or more `saml2_token` blocks as documented below.
+     * @return One or more `saml2Token` blocks as documented below.
      * 
      */
     public Optional<Output<List<ApplicationOptionalClaimsSaml2TokenArgs>>> saml2Tokens() {
@@ -90,7 +90,7 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accessTokens One or more `access_token` blocks as documented below.
+         * @param accessTokens One or more `accessToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accessTokens One or more `access_token` blocks as documented below.
+         * @param accessTokens One or more `accessToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accessTokens One or more `access_token` blocks as documented below.
+         * @param accessTokens One or more `accessToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param idTokens One or more `id_token` blocks as documented below.
+         * @param idTokens One or more `idToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param idTokens One or more `id_token` blocks as documented below.
+         * @param idTokens One or more `idToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param idTokens One or more `id_token` blocks as documented below.
+         * @param idTokens One or more `idToken` blocks as documented below.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param saml2Tokens One or more `saml2_token` blocks as documented below.
+         * @param saml2Tokens One or more `saml2Token` blocks as documented below.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param saml2Tokens One or more `saml2_token` blocks as documented below.
+         * @param saml2Tokens One or more `saml2Token` blocks as documented below.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ApplicationOptionalClaimsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param saml2Tokens One or more `saml2_token` blocks as documented below.
+         * @param saml2Tokens One or more `saml2Token` blocks as documented below.
          * 
          * @return builder
          * 

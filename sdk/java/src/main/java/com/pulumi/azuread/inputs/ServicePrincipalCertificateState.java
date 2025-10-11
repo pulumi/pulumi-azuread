@@ -18,7 +18,7 @@ public final class ServicePrincipalCertificateState extends com.pulumi.resources
     /**
      * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
      * 
-     * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+     * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
      * 
      */
     @Import(name="encoding")
@@ -27,7 +27,7 @@ public final class ServicePrincipalCertificateState extends com.pulumi.resources
     /**
      * @return Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
      * 
-     * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+     * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
      * 
      */
     public Optional<Output<String>> encoding() {
@@ -52,26 +52,26 @@ public final class ServicePrincipalCertificateState extends com.pulumi.resources
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;, &#34;h&#34;. Changing this field forces a new resource to be created.
      * 
-     * &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
+     * &gt; One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
      * 
      * @deprecated
-     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      * 
      */
-    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
+    @Deprecated /* The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property. */
     @Import(name="endDateRelative")
     private @Nullable Output<String> endDateRelative;
 
     /**
      * @return A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;, &#34;h&#34;. Changing this field forces a new resource to be created.
      * 
-     * &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
+     * &gt; One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
      * 
      * @deprecated
-     * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+     * The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      * 
      */
-    @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
+    @Deprecated /* The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property. */
     public Optional<Output<String>> endDateRelative() {
         return Optional.ofNullable(this.endDateRelative);
     }
@@ -185,7 +185,7 @@ public final class ServicePrincipalCertificateState extends com.pulumi.resources
         /**
          * @param encoding Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
          * 
-         * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+         * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class ServicePrincipalCertificateState extends com.pulumi.resources
         /**
          * @param encoding Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
          * 
-         * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+         * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
          * 
          * @return builder
          * 
@@ -231,15 +231,15 @@ public final class ServicePrincipalCertificateState extends com.pulumi.resources
         /**
          * @param endDateRelative A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;, &#34;h&#34;. Changing this field forces a new resource to be created.
          * 
-         * &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
+         * &gt; One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
          * 
          * @return builder
          * 
          * @deprecated
-         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
          * 
          */
-        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
+        @Deprecated /* The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property. */
         public Builder endDateRelative(@Nullable Output<String> endDateRelative) {
             $.endDateRelative = endDateRelative;
             return this;
@@ -248,15 +248,15 @@ public final class ServicePrincipalCertificateState extends com.pulumi.resources
         /**
          * @param endDateRelative A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;, &#34;h&#34;. Changing this field forces a new resource to be created.
          * 
-         * &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
+         * &gt; One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
          * 
          * @return builder
          * 
          * @deprecated
-         * The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property.
+         * The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
          * 
          */
-        @Deprecated /* The `end_date_relative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `end_date` property. */
+        @Deprecated /* The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property. */
         public Builder endDateRelative(String endDateRelative) {
             return endDateRelative(Output.of(endDateRelative));
         }

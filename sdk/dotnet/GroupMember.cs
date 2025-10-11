@@ -12,7 +12,7 @@ namespace Pulumi.AzureAD
     /// <summary>
     /// Manages a single group membership within Azure Active Directory.
     /// 
-    /// &gt; **Warning** Do not use this resource at the same time as the `members` property of the `azuread.Group` resource for the same group. Doing so will cause a conflict and group members will be removed.
+    /// &gt; **Warning** Do not use this resource at the same time as the `Members` property of the `azuread.Group` resource for the same group. Doing so will cause a conflict and group members will be removed.
     /// 
     /// ## API Permissions
     /// 

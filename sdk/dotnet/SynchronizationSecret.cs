@@ -75,7 +75,7 @@ namespace Pulumi.AzureAD
     public partial class SynchronizationSecret : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// One or more `credential` blocks as documented below.
+        /// One or more `Credential` blocks as documented below.
         /// </summary>
         [Output("credentials")]
         public Output<ImmutableArray<Outputs.SynchronizationSecretCredential>> Credentials { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.SynchronizationSecretCredentialArgs>? _credentials;
 
         /// <summary>
-        /// One or more `credential` blocks as documented below.
+        /// One or more `Credential` blocks as documented below.
         /// </summary>
         public InputList<Inputs.SynchronizationSecretCredentialArgs> Credentials
         {
@@ -162,7 +162,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.SynchronizationSecretCredentialGetArgs>? _credentials;
 
         /// <summary>
-        /// One or more `credential` blocks as documented below.
+        /// One or more `Credential` blocks as documented below.
         /// </summary>
         public InputList<Inputs.SynchronizationSecretCredentialGetArgs> Credentials
         {

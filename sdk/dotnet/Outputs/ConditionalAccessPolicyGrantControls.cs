@@ -18,7 +18,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? AuthenticationStrengthPolicyId;
         /// <summary>
-        /// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
+        /// List of built-in controls required by the policy. Possible values are: `Block`, `Mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
         /// </summary>
         public readonly ImmutableArray<string> BuiltInControls;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.AzureAD.Outputs
         /// <summary>
         /// List of terms of use IDs required by the policy.
         /// 
-        /// &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
+        /// &gt; At least one of `AuthenticationStrengthPolicyId`, `BuiltInControls` or `TermsOfUse` must be specified.
         /// </summary>
         public readonly ImmutableArray<string> TermsOfUses;
 

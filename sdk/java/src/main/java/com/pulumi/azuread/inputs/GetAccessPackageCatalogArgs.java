@@ -33,7 +33,7 @@ public final class GetAccessPackageCatalogArgs extends com.pulumi.resources.Invo
     /**
      * The ID of this access package catalog.
      * 
-     * &gt; One of `display_name` or `object_id` must be specified.
+     * &gt; One of `displayName` or `objectId` must be specified.
      * 
      */
     @Import(name="objectId")
@@ -42,7 +42,7 @@ public final class GetAccessPackageCatalogArgs extends com.pulumi.resources.Invo
     /**
      * @return The ID of this access package catalog.
      * 
-     * &gt; One of `display_name` or `object_id` must be specified.
+     * &gt; One of `displayName` or `objectId` must be specified.
      * 
      */
     public Optional<Output<String>> objectId() {
@@ -98,7 +98,7 @@ public final class GetAccessPackageCatalogArgs extends com.pulumi.resources.Invo
         /**
          * @param objectId The ID of this access package catalog.
          * 
-         * &gt; One of `display_name` or `object_id` must be specified.
+         * &gt; One of `displayName` or `objectId` must be specified.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class GetAccessPackageCatalogArgs extends com.pulumi.resources.Invo
         /**
          * @param objectId The ID of this access package catalog.
          * 
-         * &gt; One of `display_name` or `object_id` must be specified.
+         * &gt; One of `displayName` or `objectId` must be specified.
          * 
          * @return builder
          * 

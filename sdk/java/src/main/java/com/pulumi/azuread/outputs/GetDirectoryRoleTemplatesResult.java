@@ -23,7 +23,7 @@ public final class GetDirectoryRoleTemplatesResult {
      */
     private List<String> objectIds;
     /**
-     * @return A list of role templates. Each `role_template` object provides the attributes documented below.
+     * @return A list of role templates. Each `roleTemplate` object provides the attributes documented below.
      * 
      */
     private List<GetDirectoryRoleTemplatesRoleTemplate> roleTemplates;
@@ -44,7 +44,7 @@ public final class GetDirectoryRoleTemplatesResult {
         return this.objectIds;
     }
     /**
-     * @return A list of role templates. Each `role_template` object provides the attributes documented below.
+     * @return A list of role templates. Each `roleTemplate` object provides the attributes documented below.
      * 
      */
     public List<GetDirectoryRoleTemplatesRoleTemplate> roleTemplates() {

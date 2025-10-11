@@ -52,14 +52,14 @@ public final class ConditionalAccessPolicyConditionsClientApplicationsArgs exten
     }
 
     /**
-     * A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+     * A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
      * 
      */
     @Import(name="includedServicePrincipals")
     private @Nullable Output<List<String>> includedServicePrincipals;
 
     /**
-     * @return A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+     * @return A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
      * 
      */
     public Optional<Output<List<String>>> includedServicePrincipals() {
@@ -149,7 +149,7 @@ public final class ConditionalAccessPolicyConditionsClientApplicationsArgs exten
         }
 
         /**
-         * @param includedServicePrincipals A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+         * @param includedServicePrincipals A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class ConditionalAccessPolicyConditionsClientApplicationsArgs exten
         }
 
         /**
-         * @param includedServicePrincipals A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+         * @param includedServicePrincipals A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class ConditionalAccessPolicyConditionsClientApplicationsArgs exten
         }
 
         /**
-         * @param includedServicePrincipals A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+         * @param includedServicePrincipals A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
          * 
          * @return builder
          * 

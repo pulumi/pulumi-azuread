@@ -100,9 +100,9 @@ namespace Pulumi.AzureAD
     public partial class ServicePrincipalCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+        /// Specifies the encoding used for the supplied certificate data. Must be one of `Pem`, `Base64` or `Hex`. Defaults to `Pem`.
         /// 
-        /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+        /// &gt; **Tip for Azure Key Vault** The `Hex` encoding option is useful for consuming certificate data from the AzurermKeyVaultCertificate resource.
         /// </summary>
         [Output("encoding")]
         public Output<string?> Encoding { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
         /// 
-        /// &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
+        /// &gt; One of `EndDate` or `EndDateRelative` must be set. The maximum duration is determined by Azure AD.
         /// </summary>
         [Output("endDateRelative")]
         public Output<string?> EndDateRelative { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.AzureAD
         public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
+        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `Encoding` argument.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -202,9 +202,9 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+        /// Specifies the encoding used for the supplied certificate data. Must be one of `Pem`, `Base64` or `Hex`. Defaults to `Pem`.
         /// 
-        /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+        /// &gt; **Tip for Azure Key Vault** The `Hex` encoding option is useful for consuming certificate data from the AzurermKeyVaultCertificate resource.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
@@ -218,7 +218,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
         /// 
-        /// &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
+        /// &gt; One of `EndDate` or `EndDateRelative` must be set. The maximum duration is determined by Azure AD.
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
@@ -251,7 +251,7 @@ namespace Pulumi.AzureAD
         private Input<string>? _value;
 
         /// <summary>
-        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
+        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `Encoding` argument.
         /// </summary>
         public Input<string>? Value
         {
@@ -272,9 +272,9 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+        /// Specifies the encoding used for the supplied certificate data. Must be one of `Pem`, `Base64` or `Hex`. Defaults to `Pem`.
         /// 
-        /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+        /// &gt; **Tip for Azure Key Vault** The `Hex` encoding option is useful for consuming certificate data from the AzurermKeyVaultCertificate resource.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
@@ -288,7 +288,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
         /// 
-        /// &gt; One of `end_date` or `end_date_relative` must be set. The maximum duration is determined by Azure AD.
+        /// &gt; One of `EndDate` or `EndDateRelative` must be set. The maximum duration is determined by Azure AD.
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
@@ -321,7 +321,7 @@ namespace Pulumi.AzureAD
         private Input<string>? _value;
 
         /// <summary>
-        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
+        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `Encoding` argument.
         /// </summary>
         public Input<string>? Value
         {

@@ -18,15 +18,15 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> KnownClientApplications;
         /// <summary>
-        /// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
+        /// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `False`.
         /// </summary>
         public readonly bool? MappedClaimsEnabled;
         /// <summary>
-        /// One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+        /// One or more `Oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
         /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationApiOauth2PermissionScope> Oauth2PermissionScopes;
         /// <summary>
-        /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+        /// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `SignInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
         /// </summary>
         public readonly int? RequestedAccessTokenVersion;
 

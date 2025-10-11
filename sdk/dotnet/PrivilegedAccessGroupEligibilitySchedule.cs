@@ -68,7 +68,7 @@ namespace Pulumi.AzureAD
     public partial class PrivilegedAccessGroupEligibilitySchedule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of assignment to the group. Can be either `member` or `owner`.
+        /// The type of assignment to the group. Can be either `Member` or `Owner`.
         /// </summary>
         [Output("assignmentType")]
         public Output<string> AssignmentType { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Is this assigment permanently valid.
         /// 
-        /// At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
+        /// At least one of `ExpirationDate`, `Duration`, or `PermanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         /// </summary>
         [Output("permanentAssignment")]
         public Output<bool> PermanentAssignment { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.AzureAD
     public sealed class PrivilegedAccessGroupEligibilityScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of assignment to the group. Can be either `member` or `owner`.
+        /// The type of assignment to the group. Can be either `Member` or `Owner`.
         /// </summary>
         [Input("assignmentType", required: true)]
         public Input<string> AssignmentType { get; set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Is this assigment permanently valid.
         /// 
-        /// At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
+        /// At least one of `ExpirationDate`, `Duration`, or `PermanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         /// </summary>
         [Input("permanentAssignment")]
         public Input<bool>? PermanentAssignment { get; set; }
@@ -252,7 +252,7 @@ namespace Pulumi.AzureAD
     public sealed class PrivilegedAccessGroupEligibilityScheduleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of assignment to the group. Can be either `member` or `owner`.
+        /// The type of assignment to the group. Can be either `Member` or `Owner`.
         /// </summary>
         [Input("assignmentType")]
         public Input<string>? AssignmentType { get; set; }
@@ -284,7 +284,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Is this assigment permanently valid.
         /// 
-        /// At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
+        /// At least one of `ExpirationDate`, `Duration`, or `PermanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         /// </summary>
         [Input("permanentAssignment")]
         public Input<bool>? PermanentAssignment { get; set; }

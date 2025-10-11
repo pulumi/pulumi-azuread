@@ -146,28 +146,28 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
         return this.accessPackageId;
     }
     /**
-     * An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+     * An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
      * 
      */
     @Export(name="approvalSettings", refs={AccessPackageAssignmentPolicyApprovalSettings.class}, tree="[0]")
     private Output</* @Nullable */ AccessPackageAssignmentPolicyApprovalSettings> approvalSettings;
 
     /**
-     * @return An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+     * @return An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
      * 
      */
     public Output<Optional<AccessPackageAssignmentPolicyApprovalSettings>> approvalSettings() {
         return Codegen.optional(this.approvalSettings);
     }
     /**
-     * An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+     * An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
      * 
      */
     @Export(name="assignmentReviewSettings", refs={AccessPackageAssignmentPolicyAssignmentReviewSettings.class}, tree="[0]")
     private Output</* @Nullable */ AccessPackageAssignmentPolicyAssignmentReviewSettings> assignmentReviewSettings;
 
     /**
-     * @return An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+     * @return An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
      * 
      */
     public Output<Optional<AccessPackageAssignmentPolicyAssignmentReviewSettings>> assignmentReviewSettings() {
@@ -258,14 +258,14 @@ public class AccessPackageAssignmentPolicy extends com.pulumi.resources.CustomRe
         return Codegen.optional(this.questions);
     }
     /**
-     * A `requestor_settings` block to configure the users who can request access, as documented below.
+     * A `requestorSettings` block to configure the users who can request access, as documented below.
      * 
      */
     @Export(name="requestorSettings", refs={AccessPackageAssignmentPolicyRequestorSettings.class}, tree="[0]")
     private Output</* @Nullable */ AccessPackageAssignmentPolicyRequestorSettings> requestorSettings;
 
     /**
-     * @return A `requestor_settings` block to configure the users who can request access, as documented below.
+     * @return A `requestorSettings` block to configure the users who can request access, as documented below.
      * 
      */
     public Output<Optional<AccessPackageAssignmentPolicyRequestorSettings>> requestorSettings() {

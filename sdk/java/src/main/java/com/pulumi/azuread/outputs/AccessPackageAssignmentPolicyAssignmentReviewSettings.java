@@ -51,7 +51,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettings {
      */
     private @Nullable String reviewType;
     /**
-     * @return One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+     * @return One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
      * 
      */
     private @Nullable List<AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer> reviewers;
@@ -112,7 +112,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettings {
         return Optional.ofNullable(this.reviewType);
     }
     /**
-     * @return One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+     * @return One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
      * 
      */
     public List<AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer> reviewers() {

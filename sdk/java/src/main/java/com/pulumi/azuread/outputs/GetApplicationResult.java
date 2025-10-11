@@ -32,7 +32,7 @@ public final class GetApplicationResult {
      */
     private Map<String,String> appRoleIds;
     /**
-     * @return A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+     * @return A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      * 
      */
     private List<GetApplicationAppRole> appRoles;
@@ -118,7 +118,7 @@ public final class GetApplicationResult {
      */
     private String objectId;
     /**
-     * @return An `optional_claims` block as documented below.
+     * @return An `optionalClaims` block as documented below.
      * 
      */
     private List<GetApplicationOptionalClaim> optionalClaims;
@@ -133,7 +133,7 @@ public final class GetApplicationResult {
      */
     private String privacyStatementUrl;
     /**
-     * @return A `public_client` block as documented below.
+     * @return A `publicClient` block as documented below.
      * 
      */
     private List<GetApplicationPublicClient> publicClients;
@@ -143,7 +143,7 @@ public final class GetApplicationResult {
      */
     private String publisherDomain;
     /**
-     * @return A collection of `required_resource_access` blocks as documented below.
+     * @return A collection of `requiredResourceAccess` blocks as documented below.
      * 
      */
     private List<GetApplicationRequiredResourceAccess> requiredResourceAccesses;
@@ -158,7 +158,7 @@ public final class GetApplicationResult {
      */
     private String signInAudience;
     /**
-     * @return A `single_page_application` block as documented below.
+     * @return A `singlePageApplication` block as documented below.
      * 
      */
     private List<GetApplicationSinglePageApplication> singlePageApplications;
@@ -199,7 +199,7 @@ public final class GetApplicationResult {
         return this.appRoleIds;
     }
     /**
-     * @return A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+     * @return A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      * 
      */
     public List<GetApplicationAppRole> appRoles() {
@@ -321,7 +321,7 @@ public final class GetApplicationResult {
         return this.objectId;
     }
     /**
-     * @return An `optional_claims` block as documented below.
+     * @return An `optionalClaims` block as documented below.
      * 
      */
     public List<GetApplicationOptionalClaim> optionalClaims() {
@@ -342,7 +342,7 @@ public final class GetApplicationResult {
         return this.privacyStatementUrl;
     }
     /**
-     * @return A `public_client` block as documented below.
+     * @return A `publicClient` block as documented below.
      * 
      */
     public List<GetApplicationPublicClient> publicClients() {
@@ -356,7 +356,7 @@ public final class GetApplicationResult {
         return this.publisherDomain;
     }
     /**
-     * @return A collection of `required_resource_access` blocks as documented below.
+     * @return A collection of `requiredResourceAccess` blocks as documented below.
      * 
      */
     public List<GetApplicationRequiredResourceAccess> requiredResourceAccesses() {
@@ -377,7 +377,7 @@ public final class GetApplicationResult {
         return this.signInAudience;
     }
     /**
-     * @return A `single_page_application` block as documented below.
+     * @return A `singlePageApplication` block as documented below.
      * 
      */
     public List<GetApplicationSinglePageApplication> singlePageApplications() {

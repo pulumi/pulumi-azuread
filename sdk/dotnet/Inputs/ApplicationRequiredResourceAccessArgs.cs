@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.ApplicationRequiredResourceAccessResourceAccessArgs>? _resourceAccesses;
 
         /// <summary>
-        /// A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
+        /// A collection of `ResourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         /// </summary>
         public InputList<Inputs.ApplicationRequiredResourceAccessResourceAccessArgs> ResourceAccesses
         {
@@ -27,7 +27,7 @@ namespace Pulumi.AzureAD.Inputs
         /// <summary>
         /// The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
         /// 
-        /// &gt; **Note:** Documentation on `resource_app_id` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
+        /// &gt; **Note:** Documentation on `ResourceAppId` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
         /// </summary>
         [Input("resourceAppId", required: true)]
         public Input<string> ResourceAppId { get; set; } = null!;

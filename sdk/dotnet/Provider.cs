@@ -67,7 +67,7 @@ namespace Pulumi.AzureAD
         public Output<string?> ClientSecretFilePath { get; private set; } = null!;
 
         /// <summary>
-        /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
+        /// The cloud environment which should be used. Possible values are: `Global` (also `Public`), `Usgovernmentl4` (also `Usgovernment`), `Usgovernmentl5` (also `Dod`), and `China`. Defaults to `Global`. Not used and should not be specified when `MetadataHost` is specified.
         /// </summary>
         [Output("environment")]
         public Output<string?> Environment { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.AzureAD
         public Input<bool>? DisableTerraformPartnerId { get; set; }
 
         /// <summary>
-        /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadata_host` is specified.
+        /// The cloud environment which should be used. Possible values are: `Global` (also `Public`), `Usgovernmentl4` (also `Usgovernment`), `Usgovernmentl5` (also `Dod`), and `China`. Defaults to `Global`. Not used and should not be specified when `MetadataHost` is specified.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }

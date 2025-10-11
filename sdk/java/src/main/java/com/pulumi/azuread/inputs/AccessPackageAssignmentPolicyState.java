@@ -38,14 +38,14 @@ public final class AccessPackageAssignmentPolicyState extends com.pulumi.resourc
     }
 
     /**
-     * An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+     * An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
      * 
      */
     @Import(name="approvalSettings")
     private @Nullable Output<AccessPackageAssignmentPolicyApprovalSettingsArgs> approvalSettings;
 
     /**
-     * @return An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+     * @return An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
      * 
      */
     public Optional<Output<AccessPackageAssignmentPolicyApprovalSettingsArgs>> approvalSettings() {
@@ -53,14 +53,14 @@ public final class AccessPackageAssignmentPolicyState extends com.pulumi.resourc
     }
 
     /**
-     * An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+     * An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
      * 
      */
     @Import(name="assignmentReviewSettings")
     private @Nullable Output<AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs> assignmentReviewSettings;
 
     /**
-     * @return An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+     * @return An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
      * 
      */
     public Optional<Output<AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs>> assignmentReviewSettings() {
@@ -158,14 +158,14 @@ public final class AccessPackageAssignmentPolicyState extends com.pulumi.resourc
     }
 
     /**
-     * A `requestor_settings` block to configure the users who can request access, as documented below.
+     * A `requestorSettings` block to configure the users who can request access, as documented below.
      * 
      */
     @Import(name="requestorSettings")
     private @Nullable Output<AccessPackageAssignmentPolicyRequestorSettingsArgs> requestorSettings;
 
     /**
-     * @return A `requestor_settings` block to configure the users who can request access, as documented below.
+     * @return A `requestorSettings` block to configure the users who can request access, as documented below.
      * 
      */
     public Optional<Output<AccessPackageAssignmentPolicyRequestorSettingsArgs>> requestorSettings() {
@@ -227,7 +227,7 @@ public final class AccessPackageAssignmentPolicyState extends com.pulumi.resourc
         }
 
         /**
-         * @param approvalSettings An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+         * @param approvalSettings An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class AccessPackageAssignmentPolicyState extends com.pulumi.resourc
         }
 
         /**
-         * @param approvalSettings An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+         * @param approvalSettings An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class AccessPackageAssignmentPolicyState extends com.pulumi.resourc
         }
 
         /**
-         * @param assignmentReviewSettings An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+         * @param assignmentReviewSettings An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class AccessPackageAssignmentPolicyState extends com.pulumi.resourc
         }
 
         /**
-         * @param assignmentReviewSettings An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+         * @param assignmentReviewSettings An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class AccessPackageAssignmentPolicyState extends com.pulumi.resourc
         }
 
         /**
-         * @param requestorSettings A `requestor_settings` block to configure the users who can request access, as documented below.
+         * @param requestorSettings A `requestorSettings` block to configure the users who can request access, as documented below.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class AccessPackageAssignmentPolicyState extends com.pulumi.resourc
         }
 
         /**
-         * @param requestorSettings A `requestor_settings` block to configure the users who can request access, as documented below.
+         * @param requestorSettings A `requestorSettings` block to configure the users who can request access, as documented below.
          * 
          * @return builder
          * 

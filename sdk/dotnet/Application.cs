@@ -209,7 +209,7 @@ namespace Pulumi.AzureAD
     public partial class Application : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// An `api` block as documented below, which configures API related settings for this application.
+        /// An `Api` block as documented below, which configures API related settings for this application.
         /// </summary>
         [Output("api")]
         public Output<Outputs.ApplicationApi?> Api { get; private set; } = null!;
@@ -221,7 +221,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableDictionary<string, string>> AppRoleIds { get; private set; } = null!;
 
         /// <summary>
-        /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        /// A collection of `AppRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         [Output("appRoles")]
         public Output<ImmutableArray<Outputs.ApplicationAppRole>> AppRoles { get; private set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.AzureAD
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether this application supports device authentication without a user. Defaults to `false`.
+        /// Specifies whether this application supports device authentication without a user. Defaults to `False`.
         /// </summary>
         [Output("deviceOnlyAuthEnabled")]
         public Output<bool?> DeviceOnlyAuthEnabled { get; private set; } = null!;
@@ -257,15 +257,15 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `False`.
         /// </summary>
         [Output("fallbackPublicClientEnabled")]
         public Output<bool?> FallbackPublicClientEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// A `FeatureTags` block as described below. Cannot be used together with the `Tags` property.
         /// 
-        /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+        /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `FeatureTags` and `Tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `Tags` property instead. Tag values also propagate to any linked service principals.
         /// </summary>
         [Output("featureTags")]
         public Output<ImmutableArray<Outputs.ApplicationFeatureTag>> FeatureTags { get; private set; } = null!;
@@ -289,7 +289,7 @@ namespace Pulumi.AzureAD
         public Output<string?> LogoImage { get; private set; } = null!;
 
         /// <summary>
-        /// CDN URL to the application's logo, as uploaded with the `logo_image` property.
+        /// CDN URL to the application's logo, as uploaded with the `LogoImage` property.
         /// </summary>
         [Output("logoUrl")]
         public Output<string> LogoUrl { get; private set; } = null!;
@@ -313,7 +313,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableDictionary<string, string>> Oauth2PermissionScopeIds { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `False`, which specifies that only GET requests are allowed.
         /// </summary>
         [Output("oauth2PostResponseRequired")]
         public Output<bool?> Oauth2PostResponseRequired { get; private set; } = null!;
@@ -325,7 +325,7 @@ namespace Pulumi.AzureAD
         public Output<string> ObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// An `optional_claims` block as documented below.
+        /// An `OptionalClaims` block as documented below.
         /// </summary>
         [Output("optionalClaims")]
         public Output<Outputs.ApplicationOptionalClaims?> OptionalClaims { get; private set; } = null!;
@@ -337,15 +337,15 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<string>> Owners { get; private set; } = null!;
 
         /// <summary>
-        /// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+        /// A single `Password` block as documented below. The password is generated during creation. By default, no password is generated.
         /// 
-        /// &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+        /// &gt; **Creating a Password** The `Password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
         /// </summary>
         [Output("password")]
         public Output<Outputs.ApplicationPassword?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
+        /// If `True`, will return an error if an existing application is found with the same name. Defaults to `False`.
         /// </summary>
         [Output("preventDuplicateNames")]
         public Output<bool?> PreventDuplicateNames { get; private set; } = null!;
@@ -357,7 +357,7 @@ namespace Pulumi.AzureAD
         public Output<string?> PrivacyStatementUrl { get; private set; } = null!;
 
         /// <summary>
-        /// A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+        /// A `PublicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         /// </summary>
         [Output("publicClient")]
         public Output<Outputs.ApplicationPublicClient?> PublicClient { get; private set; } = null!;
@@ -369,7 +369,7 @@ namespace Pulumi.AzureAD
         public Output<string> PublisherDomain { get; private set; } = null!;
 
         /// <summary>
-        /// A collection of `required_resource_access` blocks as documented below.
+        /// A collection of `RequiredResourceAccess` blocks as documented below.
         /// </summary>
         [Output("requiredResourceAccesses")]
         public Output<ImmutableArray<Outputs.ApplicationRequiredResourceAccess>> RequiredResourceAccesses { get; private set; } = null!;
@@ -383,13 +383,13 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         /// 
-        /// &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+        /// &gt; **Changing `SignInAudience` for existing applications** When updating an existing application to use a `SignInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
         /// </summary>
         [Output("signInAudience")]
         public Output<string?> SignInAudience { get; private set; } = null!;
 
         /// <summary>
-        /// A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        /// A `SinglePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
         /// </summary>
         [Output("singlePageApplication")]
         public Output<Outputs.ApplicationSinglePageApplication?> SinglePageApplication { get; private set; } = null!;
@@ -401,9 +401,9 @@ namespace Pulumi.AzureAD
         public Output<string?> SupportUrl { get; private set; } = null!;
 
         /// <summary>
-        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `FeatureTags` block.
         /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values also propagate to any linked service principals.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -423,9 +423,9 @@ namespace Pulumi.AzureAD
         public Output<string?> TermsOfServiceUrl { get; private set; } = null!;
 
         /// <summary>
-        /// A `web` block as documented below, which configures web related settings for this application.
+        /// A `Web` block as documented below, which configures web related settings for this application.
         /// 
-        /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+        /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `PreventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
         /// </summary>
         [Output("web")]
         public Output<Outputs.ApplicationWeb?> Web { get; private set; } = null!;
@@ -477,7 +477,7 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An `api` block as documented below, which configures API related settings for this application.
+        /// An `Api` block as documented below, which configures API related settings for this application.
         /// </summary>
         [Input("api")]
         public Input<Inputs.ApplicationApiArgs>? Api { get; set; }
@@ -486,7 +486,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationAppRoleArgs>? _appRoles;
 
         /// <summary>
-        /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        /// A collection of `AppRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         public InputList<Inputs.ApplicationAppRoleArgs> AppRoles
         {
@@ -501,7 +501,7 @@ namespace Pulumi.AzureAD
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether this application supports device authentication without a user. Defaults to `false`.
+        /// Specifies whether this application supports device authentication without a user. Defaults to `False`.
         /// </summary>
         [Input("deviceOnlyAuthEnabled")]
         public Input<bool>? DeviceOnlyAuthEnabled { get; set; }
@@ -513,7 +513,7 @@ namespace Pulumi.AzureAD
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `False`.
         /// </summary>
         [Input("fallbackPublicClientEnabled")]
         public Input<bool>? FallbackPublicClientEnabled { get; set; }
@@ -522,9 +522,9 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationFeatureTagArgs>? _featureTags;
 
         /// <summary>
-        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// A `FeatureTags` block as described below. Cannot be used together with the `Tags` property.
         /// 
-        /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+        /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `FeatureTags` and `Tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `Tags` property instead. Tag values also propagate to any linked service principals.
         /// </summary>
         public InputList<Inputs.ApplicationFeatureTagArgs> FeatureTags
         {
@@ -575,13 +575,13 @@ namespace Pulumi.AzureAD
         public Input<string>? Notes { get; set; }
 
         /// <summary>
-        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `False`, which specifies that only GET requests are allowed.
         /// </summary>
         [Input("oauth2PostResponseRequired")]
         public Input<bool>? Oauth2PostResponseRequired { get; set; }
 
         /// <summary>
-        /// An `optional_claims` block as documented below.
+        /// An `OptionalClaims` block as documented below.
         /// </summary>
         [Input("optionalClaims")]
         public Input<Inputs.ApplicationOptionalClaimsArgs>? OptionalClaims { get; set; }
@@ -599,15 +599,15 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+        /// A single `Password` block as documented below. The password is generated during creation. By default, no password is generated.
         /// 
-        /// &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+        /// &gt; **Creating a Password** The `Password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
         /// </summary>
         [Input("password")]
         public Input<Inputs.ApplicationPasswordArgs>? Password { get; set; }
 
         /// <summary>
-        /// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
+        /// If `True`, will return an error if an existing application is found with the same name. Defaults to `False`.
         /// </summary>
         [Input("preventDuplicateNames")]
         public Input<bool>? PreventDuplicateNames { get; set; }
@@ -619,7 +619,7 @@ namespace Pulumi.AzureAD
         public Input<string>? PrivacyStatementUrl { get; set; }
 
         /// <summary>
-        /// A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+        /// A `PublicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         /// </summary>
         [Input("publicClient")]
         public Input<Inputs.ApplicationPublicClientArgs>? PublicClient { get; set; }
@@ -628,7 +628,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationRequiredResourceAccessArgs>? _requiredResourceAccesses;
 
         /// <summary>
-        /// A collection of `required_resource_access` blocks as documented below.
+        /// A collection of `RequiredResourceAccess` blocks as documented below.
         /// </summary>
         public InputList<Inputs.ApplicationRequiredResourceAccessArgs> RequiredResourceAccesses
         {
@@ -645,13 +645,13 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         /// 
-        /// &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+        /// &gt; **Changing `SignInAudience` for existing applications** When updating an existing application to use a `SignInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
         /// </summary>
         [Input("signInAudience")]
         public Input<string>? SignInAudience { get; set; }
 
         /// <summary>
-        /// A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        /// A `SinglePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
         /// </summary>
         [Input("singlePageApplication")]
         public Input<Inputs.ApplicationSinglePageApplicationArgs>? SinglePageApplication { get; set; }
@@ -666,9 +666,9 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `FeatureTags` block.
         /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values also propagate to any linked service principals.
         /// </summary>
         public InputList<string> Tags
         {
@@ -691,9 +691,9 @@ namespace Pulumi.AzureAD
         public Input<string>? TermsOfServiceUrl { get; set; }
 
         /// <summary>
-        /// A `web` block as documented below, which configures web related settings for this application.
+        /// A `Web` block as documented below, which configures web related settings for this application.
         /// 
-        /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+        /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `PreventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
         /// </summary>
         [Input("web")]
         public Input<Inputs.ApplicationWebArgs>? Web { get; set; }
@@ -707,7 +707,7 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An `api` block as documented below, which configures API related settings for this application.
+        /// An `Api` block as documented below, which configures API related settings for this application.
         /// </summary>
         [Input("api")]
         public Input<Inputs.ApplicationApiGetArgs>? Api { get; set; }
@@ -728,7 +728,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationAppRoleGetArgs>? _appRoles;
 
         /// <summary>
-        /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        /// A collection of `AppRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         public InputList<Inputs.ApplicationAppRoleGetArgs> AppRoles
         {
@@ -749,7 +749,7 @@ namespace Pulumi.AzureAD
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether this application supports device authentication without a user. Defaults to `false`.
+        /// Specifies whether this application supports device authentication without a user. Defaults to `False`.
         /// </summary>
         [Input("deviceOnlyAuthEnabled")]
         public Input<bool>? DeviceOnlyAuthEnabled { get; set; }
@@ -767,7 +767,7 @@ namespace Pulumi.AzureAD
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `False`.
         /// </summary>
         [Input("fallbackPublicClientEnabled")]
         public Input<bool>? FallbackPublicClientEnabled { get; set; }
@@ -776,9 +776,9 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationFeatureTagGetArgs>? _featureTags;
 
         /// <summary>
-        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// A `FeatureTags` block as described below. Cannot be used together with the `Tags` property.
         /// 
-        /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+        /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `FeatureTags` and `Tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `Tags` property instead. Tag values also propagate to any linked service principals.
         /// </summary>
         public InputList<Inputs.ApplicationFeatureTagGetArgs> FeatureTags
         {
@@ -817,7 +817,7 @@ namespace Pulumi.AzureAD
         public Input<string>? LogoImage { get; set; }
 
         /// <summary>
-        /// CDN URL to the application's logo, as uploaded with the `logo_image` property.
+        /// CDN URL to the application's logo, as uploaded with the `LogoImage` property.
         /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }
@@ -847,7 +847,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `False`, which specifies that only GET requests are allowed.
         /// </summary>
         [Input("oauth2PostResponseRequired")]
         public Input<bool>? Oauth2PostResponseRequired { get; set; }
@@ -859,7 +859,7 @@ namespace Pulumi.AzureAD
         public Input<string>? ObjectId { get; set; }
 
         /// <summary>
-        /// An `optional_claims` block as documented below.
+        /// An `OptionalClaims` block as documented below.
         /// </summary>
         [Input("optionalClaims")]
         public Input<Inputs.ApplicationOptionalClaimsGetArgs>? OptionalClaims { get; set; }
@@ -877,15 +877,15 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
+        /// A single `Password` block as documented below. The password is generated during creation. By default, no password is generated.
         /// 
-        /// &gt; **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
+        /// &gt; **Creating a Password** The `Password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
         /// </summary>
         [Input("password")]
         public Input<Inputs.ApplicationPasswordGetArgs>? Password { get; set; }
 
         /// <summary>
-        /// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
+        /// If `True`, will return an error if an existing application is found with the same name. Defaults to `False`.
         /// </summary>
         [Input("preventDuplicateNames")]
         public Input<bool>? PreventDuplicateNames { get; set; }
@@ -897,7 +897,7 @@ namespace Pulumi.AzureAD
         public Input<string>? PrivacyStatementUrl { get; set; }
 
         /// <summary>
-        /// A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+        /// A `PublicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         /// </summary>
         [Input("publicClient")]
         public Input<Inputs.ApplicationPublicClientGetArgs>? PublicClient { get; set; }
@@ -912,7 +912,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationRequiredResourceAccessGetArgs>? _requiredResourceAccesses;
 
         /// <summary>
-        /// A collection of `required_resource_access` blocks as documented below.
+        /// A collection of `RequiredResourceAccess` blocks as documented below.
         /// </summary>
         public InputList<Inputs.ApplicationRequiredResourceAccessGetArgs> RequiredResourceAccesses
         {
@@ -929,13 +929,13 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         /// 
-        /// &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+        /// &gt; **Changing `SignInAudience` for existing applications** When updating an existing application to use a `SignInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
         /// </summary>
         [Input("signInAudience")]
         public Input<string>? SignInAudience { get; set; }
 
         /// <summary>
-        /// A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        /// A `SinglePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
         /// </summary>
         [Input("singlePageApplication")]
         public Input<Inputs.ApplicationSinglePageApplicationGetArgs>? SinglePageApplication { get; set; }
@@ -950,9 +950,9 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `FeatureTags` block.
         /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values also propagate to any linked service principals.
         /// </summary>
         public InputList<string> Tags
         {
@@ -975,9 +975,9 @@ namespace Pulumi.AzureAD
         public Input<string>? TermsOfServiceUrl { get; set; }
 
         /// <summary>
-        /// A `web` block as documented below, which configures web related settings for this application.
+        /// A `Web` block as documented below, which configures web related settings for this application.
         /// 
-        /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+        /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `PreventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
         /// </summary>
         [Input("web")]
         public Input<Inputs.ApplicationWebGetArgs>? Web { get; set; }

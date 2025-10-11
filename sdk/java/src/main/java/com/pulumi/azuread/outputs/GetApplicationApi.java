@@ -25,7 +25,7 @@ public final class GetApplicationApi {
      */
     private Boolean mappedClaimsEnabled;
     /**
-     * @return One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+     * @return One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
      * 
      */
     private List<GetApplicationApiOauth2PermissionScope> oauth2PermissionScopes;
@@ -51,7 +51,7 @@ public final class GetApplicationApi {
         return this.mappedClaimsEnabled;
     }
     /**
-     * @return One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+     * @return One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
      * 
      */
     public List<GetApplicationApiOauth2PermissionScope> oauth2PermissionScopes() {

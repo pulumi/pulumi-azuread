@@ -76,7 +76,7 @@ namespace Pulumi.AzureAD
     public partial class ApplicationOptionalClaims : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// One or more `access_token` blocks as documented below.
+        /// One or more `AccessToken` blocks as documented below.
         /// </summary>
         [Output("accessTokens")]
         public Output<ImmutableArray<Outputs.ApplicationOptionalClaimsAccessToken>> AccessTokens { get; private set; } = null!;
@@ -88,15 +88,15 @@ namespace Pulumi.AzureAD
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// One or more `id_token` blocks as documented below.
+        /// One or more `IdToken` blocks as documented below.
         /// </summary>
         [Output("idTokens")]
         public Output<ImmutableArray<Outputs.ApplicationOptionalClaimsIdToken>> IdTokens { get; private set; } = null!;
 
         /// <summary>
-        /// One or more `saml2_token` blocks as documented below.
+        /// One or more `Saml2Token` blocks as documented below.
         /// 
-        /// &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+        /// &gt; At least one of `AccessToken`, `IdToken` or `Saml2Token` must be specified
         /// </summary>
         [Output("saml2Tokens")]
         public Output<ImmutableArray<Outputs.ApplicationOptionalClaimsSaml2Token>> Saml2Tokens { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationOptionalClaimsAccessTokenArgs>? _accessTokens;
 
         /// <summary>
-        /// One or more `access_token` blocks as documented below.
+        /// One or more `AccessToken` blocks as documented below.
         /// </summary>
         public InputList<Inputs.ApplicationOptionalClaimsAccessTokenArgs> AccessTokens
         {
@@ -169,7 +169,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationOptionalClaimsIdTokenArgs>? _idTokens;
 
         /// <summary>
-        /// One or more `id_token` blocks as documented below.
+        /// One or more `IdToken` blocks as documented below.
         /// </summary>
         public InputList<Inputs.ApplicationOptionalClaimsIdTokenArgs> IdTokens
         {
@@ -181,9 +181,9 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationOptionalClaimsSaml2TokenArgs>? _saml2Tokens;
 
         /// <summary>
-        /// One or more `saml2_token` blocks as documented below.
+        /// One or more `Saml2Token` blocks as documented below.
         /// 
-        /// &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+        /// &gt; At least one of `AccessToken`, `IdToken` or `Saml2Token` must be specified
         /// </summary>
         public InputList<Inputs.ApplicationOptionalClaimsSaml2TokenArgs> Saml2Tokens
         {
@@ -203,7 +203,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationOptionalClaimsAccessTokenGetArgs>? _accessTokens;
 
         /// <summary>
-        /// One or more `access_token` blocks as documented below.
+        /// One or more `AccessToken` blocks as documented below.
         /// </summary>
         public InputList<Inputs.ApplicationOptionalClaimsAccessTokenGetArgs> AccessTokens
         {
@@ -221,7 +221,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationOptionalClaimsIdTokenGetArgs>? _idTokens;
 
         /// <summary>
-        /// One or more `id_token` blocks as documented below.
+        /// One or more `IdToken` blocks as documented below.
         /// </summary>
         public InputList<Inputs.ApplicationOptionalClaimsIdTokenGetArgs> IdTokens
         {
@@ -233,9 +233,9 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationOptionalClaimsSaml2TokenGetArgs>? _saml2Tokens;
 
         /// <summary>
-        /// One or more `saml2_token` blocks as documented below.
+        /// One or more `Saml2Token` blocks as documented below.
         /// 
-        /// &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+        /// &gt; At least one of `AccessToken`, `IdToken` or `Saml2Token` must be specified
         /// </summary>
         public InputList<Inputs.ApplicationOptionalClaimsSaml2TokenGetArgs> Saml2Tokens
         {

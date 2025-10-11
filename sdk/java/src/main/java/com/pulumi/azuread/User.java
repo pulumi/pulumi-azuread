@@ -523,14 +523,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.onpremisesDomainName;
     }
     /**
-     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `user_principal_name` property when creating a new user account.
+     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `userPrincipalName` property when creating a new user account.
      * 
      */
     @Export(name="onpremisesImmutableId", refs={String.class}, tree="[0]")
     private Output<String> onpremisesImmutableId;
 
     /**
-     * @return The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `user_principal_name` property when creating a new user account.
+     * @return The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `userPrincipalName` property when creating a new user account.
      * 
      */
     public Output<String> onpremisesImmutableId() {

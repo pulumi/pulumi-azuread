@@ -124,7 +124,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
         /// <summary>
-        /// A list of users. Each `role` object provides the attributes documented below.
+        /// A list of users. Each `Role` object provides the attributes documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDirectoryRolesRoleResult> Roles;
         /// <summary>

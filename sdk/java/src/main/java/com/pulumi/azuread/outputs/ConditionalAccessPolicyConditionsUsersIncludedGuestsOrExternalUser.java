@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser {
     /**
-     * @return An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+     * @return An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
      * 
      */
     private @Nullable List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant> externalTenants;
@@ -26,7 +26,7 @@ public final class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExterna
 
     private ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser() {}
     /**
-     * @return An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+     * @return An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
      * 
      */
     public List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant> externalTenants() {

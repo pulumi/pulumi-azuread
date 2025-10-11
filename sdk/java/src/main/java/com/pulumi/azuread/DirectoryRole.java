@@ -148,7 +148,7 @@ public class DirectoryRole extends com.pulumi.resources.CustomResource {
     /**
      * The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
      * 
-     * &gt; Either `display_name` or `template_id` must be specified.
+     * &gt; Either `displayName` or `templateId` must be specified.
      * 
      */
     @Export(name="templateId", refs={String.class}, tree="[0]")
@@ -157,7 +157,7 @@ public class DirectoryRole extends com.pulumi.resources.CustomResource {
     /**
      * @return The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
      * 
-     * &gt; Either `display_name` or `template_id` must be specified.
+     * &gt; Either `displayName` or `templateId` must be specified.
      * 
      */
     public Output<String> templateId() {

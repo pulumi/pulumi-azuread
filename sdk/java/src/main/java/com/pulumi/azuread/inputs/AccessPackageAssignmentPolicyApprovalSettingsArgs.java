@@ -48,14 +48,14 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsArgs extends com
     }
 
     /**
-     * An `approval_stage` block specifying the process to obtain an approval, as documented below.
+     * An `approvalStage` block specifying the process to obtain an approval, as documented below.
      * 
      */
     @Import(name="approvalStages")
     private @Nullable Output<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs>> approvalStages;
 
     /**
-     * @return An `approval_stage` block specifying the process to obtain an approval, as documented below.
+     * @return An `approvalStage` block specifying the process to obtain an approval, as documented below.
      * 
      */
     public Optional<Output<List<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs>>> approvalStages() {
@@ -147,7 +147,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsArgs extends com
         }
 
         /**
-         * @param approvalStages An `approval_stage` block specifying the process to obtain an approval, as documented below.
+         * @param approvalStages An `approvalStage` block specifying the process to obtain an approval, as documented below.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsArgs extends com
         }
 
         /**
-         * @param approvalStages An `approval_stage` block specifying the process to obtain an approval, as documented below.
+         * @param approvalStages An `approvalStage` block specifying the process to obtain an approval, as documented below.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class AccessPackageAssignmentPolicyApprovalSettingsArgs extends com
         }
 
         /**
-         * @param approvalStages An `approval_stage` block specifying the process to obtain an approval, as documented below.
+         * @param approvalStages An `approvalStage` block specifying the process to obtain an approval, as documented below.
          * 
          * @return builder
          * 

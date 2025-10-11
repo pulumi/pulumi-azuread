@@ -26,12 +26,12 @@ public final class ApplicationApi {
      */
     private @Nullable Boolean mappedClaimsEnabled;
     /**
-     * @return One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+     * @return One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
      * 
      */
     private @Nullable List<ApplicationApiOauth2PermissionScope> oauth2PermissionScopes;
     /**
-     * @return The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+     * @return The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
      * 
      */
     private @Nullable Integer requestedAccessTokenVersion;
@@ -52,14 +52,14 @@ public final class ApplicationApi {
         return Optional.ofNullable(this.mappedClaimsEnabled);
     }
     /**
-     * @return One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+     * @return One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
      * 
      */
     public List<ApplicationApiOauth2PermissionScope> oauth2PermissionScopes() {
         return this.oauth2PermissionScopes == null ? List.of() : this.oauth2PermissionScopes;
     }
     /**
-     * @return The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+     * @return The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
      * 
      */
     public Optional<Integer> requestedAccessTokenVersion() {

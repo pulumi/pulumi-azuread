@@ -498,14 +498,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `user_principal_name` property when creating a new user account.
+     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `userPrincipalName` property when creating a new user account.
      * 
      */
     @Import(name="onpremisesImmutableId")
     private @Nullable Output<String> onpremisesImmutableId;
 
     /**
-     * @return The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `user_principal_name` property when creating a new user account.
+     * @return The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `userPrincipalName` property when creating a new user account.
      * 
      */
     public Optional<Output<String>> onpremisesImmutableId() {
@@ -1517,7 +1517,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param onpremisesImmutableId The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `user_principal_name` property when creating a new user account.
+         * @param onpremisesImmutableId The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `userPrincipalName` property when creating a new user account.
          * 
          * @return builder
          * 
@@ -1528,7 +1528,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param onpremisesImmutableId The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `user_principal_name` property when creating a new user account.
+         * @param onpremisesImmutableId The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user&#39;s `userPrincipalName` property when creating a new user account.
          * 
          * @return builder
          * 

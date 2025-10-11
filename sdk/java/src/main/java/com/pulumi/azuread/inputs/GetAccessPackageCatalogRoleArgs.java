@@ -33,7 +33,7 @@ public final class GetAccessPackageCatalogRoleArgs extends com.pulumi.resources.
     /**
      * Specifies the object ID of the role.
      * 
-     * &gt; One of `display_name` or `object_id` must be specified.
+     * &gt; One of `displayName` or `objectId` must be specified.
      * 
      */
     @Import(name="objectId")
@@ -42,7 +42,7 @@ public final class GetAccessPackageCatalogRoleArgs extends com.pulumi.resources.
     /**
      * @return Specifies the object ID of the role.
      * 
-     * &gt; One of `display_name` or `object_id` must be specified.
+     * &gt; One of `displayName` or `objectId` must be specified.
      * 
      */
     public Optional<Output<String>> objectId() {
@@ -98,7 +98,7 @@ public final class GetAccessPackageCatalogRoleArgs extends com.pulumi.resources.
         /**
          * @param objectId Specifies the object ID of the role.
          * 
-         * &gt; One of `display_name` or `object_id` must be specified.
+         * &gt; One of `displayName` or `objectId` must be specified.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class GetAccessPackageCatalogRoleArgs extends com.pulumi.resources.
         /**
          * @param objectId Specifies the object ID of the role.
          * 
-         * &gt; One of `display_name` or `object_id` must be specified.
+         * &gt; One of `displayName` or `objectId` must be specified.
          * 
          * @return builder
          * 

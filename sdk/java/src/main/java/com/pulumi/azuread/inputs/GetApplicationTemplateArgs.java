@@ -33,7 +33,7 @@ public final class GetApplicationTemplateArgs extends com.pulumi.resources.Invok
     /**
      * Specifies the ID of the templated application.
      * 
-     * &gt; One of `template_id` or `display_name` must be specified.
+     * &gt; One of `templateId` or `displayName` must be specified.
      * 
      */
     @Import(name="templateId")
@@ -42,7 +42,7 @@ public final class GetApplicationTemplateArgs extends com.pulumi.resources.Invok
     /**
      * @return Specifies the ID of the templated application.
      * 
-     * &gt; One of `template_id` or `display_name` must be specified.
+     * &gt; One of `templateId` or `displayName` must be specified.
      * 
      */
     public Optional<Output<String>> templateId() {
@@ -98,7 +98,7 @@ public final class GetApplicationTemplateArgs extends com.pulumi.resources.Invok
         /**
          * @param templateId Specifies the ID of the templated application.
          * 
-         * &gt; One of `template_id` or `display_name` must be specified.
+         * &gt; One of `templateId` or `displayName` must be specified.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class GetApplicationTemplateArgs extends com.pulumi.resources.Invok
         /**
          * @param templateId Specifies the ID of the templated application.
          * 
-         * &gt; One of `template_id` or `display_name` must be specified.
+         * &gt; One of `templateId` or `displayName` must be specified.
          * 
          * @return builder
          * 

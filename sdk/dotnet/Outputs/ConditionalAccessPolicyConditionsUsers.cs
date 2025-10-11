@@ -18,7 +18,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExcludedGroups;
         /// <summary>
-        /// A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
+        /// A `GuestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
         /// </summary>
         public readonly ImmutableArray<Outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser> ExcludedGuestsOrExternalUsers;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IncludedGroups;
         /// <summary>
-        /// A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
+        /// A `GuestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
         /// </summary>
         public readonly ImmutableArray<Outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser> IncludedGuestsOrExternalUsers;
         /// <summary>
@@ -44,7 +44,7 @@ namespace Pulumi.AzureAD.Outputs
         /// <summary>
         /// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
         /// 
-        /// &gt; At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
+        /// &gt; At least one of `IncludedGroups`, `IncludedGuestsOrExternalUsers`, `IncludedRoles` or `IncludedUsers` must be specified.
         /// </summary>
         public readonly ImmutableArray<string> IncludedUsers;
 

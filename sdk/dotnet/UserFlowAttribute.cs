@@ -54,13 +54,13 @@ namespace Pulumi.AzureAD
     public partial class UserFlowAttribute : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+        /// The type of the user flow attribute. Values include `builtIn`, `Custom` or `Required`.
         /// </summary>
         [Output("attributeType")]
         public Output<string> AttributeType { get; private set; } = null!;
 
         /// <summary>
-        /// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+        /// The data type of the user flow attribute. Possible values are `Boolean`, `dateTime`, `Int64`, `String` or `stringCollection`. Changing this forces a new resource to be created.
         /// </summary>
         [Output("dataType")]
         public Output<string> DataType { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.AzureAD
     public sealed class UserFlowAttributeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+        /// The data type of the user flow attribute. Possible values are `Boolean`, `dateTime`, `Int64`, `String` or `stringCollection`. Changing this forces a new resource to be created.
         /// </summary>
         [Input("dataType", required: true)]
         public Input<string> DataType { get; set; } = null!;
@@ -150,13 +150,13 @@ namespace Pulumi.AzureAD
     public sealed class UserFlowAttributeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+        /// The type of the user flow attribute. Values include `builtIn`, `Custom` or `Required`.
         /// </summary>
         [Input("attributeType")]
         public Input<string>? AttributeType { get; set; }
 
         /// <summary>
-        /// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+        /// The data type of the user flow attribute. Possible values are `Boolean`, `dateTime`, `Int64`, `String` or `stringCollection`. Changing this forces a new resource to be created.
         /// </summary>
         [Input("dataType")]
         public Input<string>? DataType { get; set; }

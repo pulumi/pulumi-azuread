@@ -55,7 +55,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? UserConsentDisplayName { get; set; }
 
         /// <summary>
-        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+        /// The value that is used for the `Scp` claim in OAuth 2.0 access tokens.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

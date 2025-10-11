@@ -4063,7 +4063,7 @@ public final class AzureadFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `object_id` - The object ID of the directory object.
+     * * `objectId` - The object ID of the directory object.
      * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
@@ -4120,7 +4120,7 @@ public final class AzureadFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `object_id` - The object ID of the directory object.
+     * * `objectId` - The object ID of the directory object.
      * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
@@ -4177,7 +4177,7 @@ public final class AzureadFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `object_id` - The object ID of the directory object.
+     * * `objectId` - The object ID of the directory object.
      * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
@@ -4234,7 +4234,7 @@ public final class AzureadFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `object_id` - The object ID of the directory object.
+     * * `objectId` - The object ID of the directory object.
      * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
@@ -4291,7 +4291,7 @@ public final class AzureadFunctions {
      * 
      * The following attributes are exported:
      * 
-     * * `object_id` - The object ID of the directory object.
+     * * `objectId` - The object ID of the directory object.
      * * `type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
      * 
      */
@@ -7245,14 +7245,14 @@ public final class AzureadFunctions {
      * 
      * `country` block exports the following:
      * 
-     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
+     * * `countriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     * * `includeUnknownCountriesAndRegions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
      * 
      * ***
      * 
      * `ip` block exports the following:
      * 
-     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * * `ipRanges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
      * * `trusted` - Whether the named location is trusted.
      * 
      */
@@ -7315,14 +7315,14 @@ public final class AzureadFunctions {
      * 
      * `country` block exports the following:
      * 
-     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
+     * * `countriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     * * `includeUnknownCountriesAndRegions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
      * 
      * ***
      * 
      * `ip` block exports the following:
      * 
-     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * * `ipRanges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
      * * `trusted` - Whether the named location is trusted.
      * 
      */
@@ -7385,14 +7385,14 @@ public final class AzureadFunctions {
      * 
      * `country` block exports the following:
      * 
-     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
+     * * `countriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     * * `includeUnknownCountriesAndRegions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
      * 
      * ***
      * 
      * `ip` block exports the following:
      * 
-     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * * `ipRanges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
      * * `trusted` - Whether the named location is trusted.
      * 
      */
@@ -7455,14 +7455,14 @@ public final class AzureadFunctions {
      * 
      * `country` block exports the following:
      * 
-     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
+     * * `countriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     * * `includeUnknownCountriesAndRegions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
      * 
      * ***
      * 
      * `ip` block exports the following:
      * 
-     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * * `ipRanges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
      * * `trusted` - Whether the named location is trusted.
      * 
      */
@@ -7525,14 +7525,14 @@ public final class AzureadFunctions {
      * 
      * `country` block exports the following:
      * 
-     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
+     * * `countriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     * * `includeUnknownCountriesAndRegions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
      * 
      * ***
      * 
      * `ip` block exports the following:
      * 
-     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * * `ipRanges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
      * * `trusted` - Whether the named location is trusted.
      * 
      */

@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantGetArgs>? _externalTenants;
 
         /// <summary>
-        /// An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
+        /// An `ExternalTenants` block as documented below, which specifies external tenants in a policy scope.
         /// </summary>
         public InputList<Inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantGetArgs> ExternalTenants
         {
@@ -28,7 +28,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _guestOrExternalUserTypes;
 
         /// <summary>
-        /// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
+        /// A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `None`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
         /// </summary>
         public InputList<string> GuestOrExternalUserTypes
         {

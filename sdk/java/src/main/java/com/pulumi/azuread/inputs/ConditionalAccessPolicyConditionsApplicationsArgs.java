@@ -32,14 +32,14 @@ public final class ConditionalAccessPolicyConditionsApplicationsArgs extends com
     }
 
     /**
-     * A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+     * A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
      * 
      */
     @Import(name="includedApplications")
     private @Nullable Output<List<String>> includedApplications;
 
     /**
-     * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+     * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
      * 
      */
     public Optional<Output<List<String>>> includedApplications() {
@@ -47,14 +47,14 @@ public final class ConditionalAccessPolicyConditionsApplicationsArgs extends com
     }
 
     /**
-     * A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
+     * A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
      * 
      */
     @Import(name="includedUserActions")
     private @Nullable Output<List<String>> includedUserActions;
 
     /**
-     * @return A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
+     * @return A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
      * 
      */
     public Optional<Output<List<String>>> includedUserActions() {
@@ -119,7 +119,7 @@ public final class ConditionalAccessPolicyConditionsApplicationsArgs extends com
         }
 
         /**
-         * @param includedApplications A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+         * @param includedApplications A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ConditionalAccessPolicyConditionsApplicationsArgs extends com
         }
 
         /**
-         * @param includedApplications A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+         * @param includedApplications A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ConditionalAccessPolicyConditionsApplicationsArgs extends com
         }
 
         /**
-         * @param includedApplications A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+         * @param includedApplications A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class ConditionalAccessPolicyConditionsApplicationsArgs extends com
         }
 
         /**
-         * @param includedUserActions A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
+         * @param includedUserActions A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class ConditionalAccessPolicyConditionsApplicationsArgs extends com
         }
 
         /**
-         * @param includedUserActions A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
+         * @param includedUserActions A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class ConditionalAccessPolicyConditionsApplicationsArgs extends com
         }
 
         /**
-         * @param includedUserActions A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
+         * @param includedUserActions A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
          * 
          * @return builder
          * 
