@@ -38,7 +38,7 @@ public final class GetServicePrincipalsResult {
     private List<String> objectIds;
     private @Nullable Boolean returnAll;
     /**
-     * @return A list of service principals. Each `service_principal` object provides the attributes documented below.
+     * @return A list of service principals. Each `servicePrincipal` object provides the attributes documented below.
      * 
      */
     private List<GetServicePrincipalsServicePrincipal> servicePrincipals;
@@ -79,7 +79,7 @@ public final class GetServicePrincipalsResult {
         return Optional.ofNullable(this.returnAll);
     }
     /**
-     * @return A list of service principals. Each `service_principal` object provides the attributes documented below.
+     * @return A list of service principals. Each `servicePrincipal` object provides the attributes documented below.
      * 
      */
     public List<GetServicePrincipalsServicePrincipal> servicePrincipals() {

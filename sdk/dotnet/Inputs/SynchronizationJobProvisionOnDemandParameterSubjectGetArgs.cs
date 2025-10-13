@@ -19,7 +19,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string> ObjectId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the object to which a synchronization job is to be applied. Can be one of the following: `user` for synchronizing between Active Directory and Azure AD, `User` for synchronizing a user between Azure AD and a third-party application, `Worker` for synchronization a user between Workday and either Active Directory or Azure AD, `Group` for synchronizing a group between Azure AD and a third-party application.
+        /// The type of the object to which a synchronization job is to be applied. Can be one of the following: `User` for synchronizing between Active Directory and Azure AD, `User` for synchronizing a user between Azure AD and a third-party application, `Worker` for synchronization a user between Workday and either Active Directory or Azure AD, `Group` for synchronizing a group between Azure AD and a third-party application.
         /// </summary>
         [Input("objectTypeName", required: true)]
         public Input<string> ObjectTypeName { get; set; } = null!;

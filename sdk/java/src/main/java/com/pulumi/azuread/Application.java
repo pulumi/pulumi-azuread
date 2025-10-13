@@ -218,14 +218,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.appRoleIds;
     }
     /**
-     * A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+     * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      * 
      */
     @Export(name="appRoles", refs={List.class,ApplicationAppRole.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApplicationAppRole>> appRoles;
 
     /**
-     * @return A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+     * @return A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      * 
      */
     public Output<Optional<List<ApplicationAppRole>>> appRoles() {
@@ -316,18 +316,18 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.fallbackPublicClientEnabled);
     }
     /**
-     * A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+     * A `featureTags` block as described below. Cannot be used together with the `tags` property.
      * 
-     * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+     * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
      * 
      */
     @Export(name="featureTags", refs={List.class,ApplicationFeatureTag.class}, tree="[0,1]")
     private Output<List<ApplicationFeatureTag>> featureTags;
 
     /**
-     * @return A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+     * @return A `featureTags` block as described below. Cannot be used together with the `tags` property.
      * 
-     * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+     * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
      * 
      */
     public Output<List<ApplicationFeatureTag>> featureTags() {
@@ -376,14 +376,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logoImage);
     }
     /**
-     * CDN URL to the application&#39;s logo, as uploaded with the `logo_image` property.
+     * CDN URL to the application&#39;s logo, as uploaded with the `logoImage` property.
      * 
      */
     @Export(name="logoUrl", refs={String.class}, tree="[0]")
     private Output<String> logoUrl;
 
     /**
-     * @return CDN URL to the application&#39;s logo, as uploaded with the `logo_image` property.
+     * @return CDN URL to the application&#39;s logo, as uploaded with the `logoImage` property.
      * 
      */
     public Output<String> logoUrl() {
@@ -460,14 +460,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.objectId;
     }
     /**
-     * An `optional_claims` block as documented below.
+     * An `optionalClaims` block as documented below.
      * 
      */
     @Export(name="optionalClaims", refs={ApplicationOptionalClaims.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationOptionalClaims> optionalClaims;
 
     /**
-     * @return An `optional_claims` block as documented below.
+     * @return An `optionalClaims` block as documented below.
      * 
      */
     public Output<Optional<ApplicationOptionalClaims>> optionalClaims() {
@@ -534,14 +534,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.privacyStatementUrl);
     }
     /**
-     * A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+     * A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
      * 
      */
     @Export(name="publicClient", refs={ApplicationPublicClient.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationPublicClient> publicClient;
 
     /**
-     * @return A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+     * @return A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
      * 
      */
     public Output<Optional<ApplicationPublicClient>> publicClient() {
@@ -562,14 +562,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.publisherDomain;
     }
     /**
-     * A collection of `required_resource_access` blocks as documented below.
+     * A collection of `requiredResourceAccess` blocks as documented below.
      * 
      */
     @Export(name="requiredResourceAccesses", refs={List.class,ApplicationRequiredResourceAccess.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApplicationRequiredResourceAccess>> requiredResourceAccesses;
 
     /**
-     * @return A collection of `required_resource_access` blocks as documented below.
+     * @return A collection of `requiredResourceAccess` blocks as documented below.
      * 
      */
     public Output<Optional<List<ApplicationRequiredResourceAccess>>> requiredResourceAccesses() {
@@ -592,7 +592,7 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      * 
-     * &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+     * &gt; **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
      * 
      */
     @Export(name="signInAudience", refs={String.class}, tree="[0]")
@@ -601,21 +601,21 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * @return The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      * 
-     * &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+     * &gt; **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
      * 
      */
     public Output<Optional<String>> signInAudience() {
         return Codegen.optional(this.signInAudience);
     }
     /**
-     * A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+     * A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
      * 
      */
     @Export(name="singlePageApplication", refs={ApplicationSinglePageApplication.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationSinglePageApplication> singlePageApplication;
 
     /**
-     * @return A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+     * @return A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
      * 
      */
     public Output<Optional<ApplicationSinglePageApplication>> singlePageApplication() {
@@ -636,18 +636,18 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.supportUrl);
     }
     /**
-     * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+     * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      * 
-     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
 
     /**
-     * @return A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+     * @return A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      * 
-     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      * 
      */
     public Output<List<String>> tags() {
@@ -688,7 +688,7 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * A `web` block as documented below, which configures web related settings for this application.
      * 
-     * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+     * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
      * 
      */
     @Export(name="web", refs={ApplicationWeb.class}, tree="[0]")
@@ -697,7 +697,7 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * @return A `web` block as documented below, which configures web related settings for this application.
      * 
-     * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+     * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
      * 
      */
     public Output<Optional<ApplicationWeb>> web() {

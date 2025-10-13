@@ -33,14 +33,14 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+     * Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
      * 
      */
     @Import(name="ignoreMissing")
     private @Nullable Output<Boolean> ignoreMissing;
 
     /**
-     * @return Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+     * @return Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> ignoreMissing() {
@@ -93,14 +93,14 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+     * When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
      * 
      */
     @Import(name="returnAll")
     private @Nullable Output<Boolean> returnAll;
 
     /**
-     * @return When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+     * @return When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> returnAll() {
@@ -110,7 +110,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The user principal names (UPNs) of the users.
      * 
-     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     @Import(name="userPrincipalNames")
@@ -119,7 +119,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The user principal names (UPNs) of the users.
      * 
-     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     public Optional<Output<List<String>>> userPrincipalNames() {
@@ -188,7 +188,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ignoreMissing Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+         * @param ignoreMissing Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ignoreMissing Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+         * @param ignoreMissing Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param returnAll When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+         * @param returnAll When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param returnAll When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+         * @param returnAll When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param userPrincipalNames The user principal names (UPNs) of the users.
          * 
-         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * &gt; Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param userPrincipalNames The user principal names (UPNs) of the users.
          * 
-         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * &gt; Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param userPrincipalNames The user principal names (UPNs) of the users.
          * 
-         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * &gt; Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 

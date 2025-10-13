@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.ApplicationOptionalClaimsAccessTokenGetArgs>? _accessTokens;
 
         /// <summary>
-        /// One or more `access_token` blocks as documented below.
+        /// One or more `AccessToken` blocks as documented below.
         /// </summary>
         public InputList<Inputs.ApplicationOptionalClaimsAccessTokenGetArgs> AccessTokens
         {
@@ -28,7 +28,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.ApplicationOptionalClaimsIdTokenGetArgs>? _idTokens;
 
         /// <summary>
-        /// One or more `id_token` blocks as documented below.
+        /// One or more `IdToken` blocks as documented below.
         /// </summary>
         public InputList<Inputs.ApplicationOptionalClaimsIdTokenGetArgs> IdTokens
         {
@@ -40,7 +40,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.ApplicationOptionalClaimsSaml2TokenGetArgs>? _saml2Tokens;
 
         /// <summary>
-        /// One or more `saml2_token` blocks as documented below.
+        /// One or more `Saml2Token` blocks as documented below.
         /// </summary>
         public InputList<Inputs.ApplicationOptionalClaimsSaml2TokenGetArgs> Saml2Tokens
         {

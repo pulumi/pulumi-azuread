@@ -63,7 +63,7 @@ namespace Pulumi.AzureAD
     public partial class NamedLocation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A `country` block as documented below, which configures a country-based named location.
+        /// A `Country` block as documented below, which configures a country-based named location.
         /// </summary>
         [Output("country")]
         public Output<Outputs.NamedLocationCountry?> Country { get; private set; } = null!;
@@ -75,9 +75,9 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// An `ip` block as documented below, which configures an IP-based named location.
+        /// An `Ip` block as documented below, which configures an IP-based named location.
         /// 
-        /// &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
+        /// &gt; Exactly one of `Ip` or `Country` must be specified. Changing between these forces a new resource to be created.
         /// </summary>
         [Output("ip")]
         public Output<Outputs.NamedLocationIp?> Ip { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.AzureAD
     public sealed class NamedLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A `country` block as documented below, which configures a country-based named location.
+        /// A `Country` block as documented below, which configures a country-based named location.
         /// </summary>
         [Input("country")]
         public Input<Inputs.NamedLocationCountryArgs>? Country { get; set; }
@@ -141,9 +141,9 @@ namespace Pulumi.AzureAD
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// An `ip` block as documented below, which configures an IP-based named location.
+        /// An `Ip` block as documented below, which configures an IP-based named location.
         /// 
-        /// &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
+        /// &gt; Exactly one of `Ip` or `Country` must be specified. Changing between these forces a new resource to be created.
         /// </summary>
         [Input("ip")]
         public Input<Inputs.NamedLocationIpArgs>? Ip { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumi.AzureAD
     public sealed class NamedLocationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A `country` block as documented below, which configures a country-based named location.
+        /// A `Country` block as documented below, which configures a country-based named location.
         /// </summary>
         [Input("country")]
         public Input<Inputs.NamedLocationCountryGetArgs>? Country { get; set; }
@@ -169,9 +169,9 @@ namespace Pulumi.AzureAD
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// An `ip` block as documented below, which configures an IP-based named location.
+        /// An `Ip` block as documented below, which configures an IP-based named location.
         /// 
-        /// &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
+        /// &gt; Exactly one of `Ip` or `Country` must be specified. Changing between these forces a new resource to be created.
         /// </summary>
         [Input("ip")]
         public Input<Inputs.NamedLocationIpGetArgs>? Ip { get; set; }

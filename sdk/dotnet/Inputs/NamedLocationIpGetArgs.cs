@@ -25,7 +25,7 @@ namespace Pulumi.AzureAD.Inputs
         }
 
         /// <summary>
-        /// Whether the named location is trusted. Defaults to `false`.
+        /// Whether the named location is trusted. Defaults to `False`.
         /// </summary>
         [Input("trusted")]
         public Input<bool>? Trusted { get; set; }

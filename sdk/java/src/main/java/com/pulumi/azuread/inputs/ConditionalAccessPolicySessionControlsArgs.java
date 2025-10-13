@@ -82,14 +82,14 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
     }
 
     /**
-     * Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+     * Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
      * 
      */
     @Import(name="signInFrequency")
     private @Nullable Output<Integer> signInFrequency;
 
     /**
-     * @return Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+     * @return Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
      * 
      */
     public Optional<Output<Integer>> signInFrequency() {
@@ -127,14 +127,14 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
     }
 
     /**
-     * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+     * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
      * 
      */
     @Import(name="signInFrequencyPeriod")
     private @Nullable Output<String> signInFrequencyPeriod;
 
     /**
-     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+     * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
      * 
      */
     public Optional<Output<String>> signInFrequencyPeriod() {
@@ -261,7 +261,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param signInFrequency Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+         * @param signInFrequency Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param signInFrequency Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+         * @param signInFrequency Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param signInFrequencyPeriod The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+         * @param signInFrequencyPeriod The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         }
 
         /**
-         * @param signInFrequencyPeriod The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+         * @param signInFrequencyPeriod The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
          * 
          * @return builder
          * 

@@ -65,7 +65,7 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
     /**
      * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      * 
-     * &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+     * &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
      * 
      */
     @Import(name="userObjectId")
@@ -74,7 +74,7 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
     /**
      * @return The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      * 
-     * &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+     * &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
      * 
      */
     public Optional<Output<String>> userObjectId() {
@@ -184,7 +184,7 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
         /**
          * @param userObjectId The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
          * 
-         * &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+         * &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
         /**
          * @param userObjectId The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
          * 
-         * &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+         * &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
          * 
          * @return builder
          * 

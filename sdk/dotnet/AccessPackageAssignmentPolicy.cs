@@ -119,13 +119,13 @@ namespace Pulumi.AzureAD
         public Output<string> AccessPackageId { get; private set; } = null!;
 
         /// <summary>
-        /// An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+        /// An `ApprovalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
         /// </summary>
         [Output("approvalSettings")]
         public Output<Outputs.AccessPackageAssignmentPolicyApprovalSettings?> ApprovalSettings { get; private set; } = null!;
 
         /// <summary>
-        /// An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+        /// An `AssignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
         /// </summary>
         [Output("assignmentReviewSettings")]
         public Output<Outputs.AccessPackageAssignmentPolicyAssignmentReviewSettings?> AssignmentReviewSettings { get; private set; } = null!;
@@ -161,13 +161,13 @@ namespace Pulumi.AzureAD
         public Output<bool?> ExtensionEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// One or more `question` blocks for the requestor, as documented below.
+        /// One or more `Question` blocks for the requestor, as documented below.
         /// </summary>
         [Output("questions")]
         public Output<ImmutableArray<Outputs.AccessPackageAssignmentPolicyQuestion>> Questions { get; private set; } = null!;
 
         /// <summary>
-        /// A `requestor_settings` block to configure the users who can request access, as documented below.
+        /// A `RequestorSettings` block to configure the users who can request access, as documented below.
         /// </summary>
         [Output("requestorSettings")]
         public Output<Outputs.AccessPackageAssignmentPolicyRequestorSettings?> RequestorSettings { get; private set; } = null!;
@@ -225,13 +225,13 @@ namespace Pulumi.AzureAD
         public Input<string> AccessPackageId { get; set; } = null!;
 
         /// <summary>
-        /// An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+        /// An `ApprovalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
         /// </summary>
         [Input("approvalSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyApprovalSettingsArgs>? ApprovalSettings { get; set; }
 
         /// <summary>
-        /// An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+        /// An `AssignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
         /// </summary>
         [Input("assignmentReviewSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs>? AssignmentReviewSettings { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.AccessPackageAssignmentPolicyQuestionArgs>? _questions;
 
         /// <summary>
-        /// One or more `question` blocks for the requestor, as documented below.
+        /// One or more `Question` blocks for the requestor, as documented below.
         /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyQuestionArgs> Questions
         {
@@ -279,7 +279,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A `requestor_settings` block to configure the users who can request access, as documented below.
+        /// A `RequestorSettings` block to configure the users who can request access, as documented below.
         /// </summary>
         [Input("requestorSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyRequestorSettingsArgs>? RequestorSettings { get; set; }
@@ -299,13 +299,13 @@ namespace Pulumi.AzureAD
         public Input<string>? AccessPackageId { get; set; }
 
         /// <summary>
-        /// An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+        /// An `ApprovalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
         /// </summary>
         [Input("approvalSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyApprovalSettingsGetArgs>? ApprovalSettings { get; set; }
 
         /// <summary>
-        /// An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+        /// An `AssignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
         /// </summary>
         [Input("assignmentReviewSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsGetArgs>? AssignmentReviewSettings { get; set; }
@@ -344,7 +344,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.AccessPackageAssignmentPolicyQuestionGetArgs>? _questions;
 
         /// <summary>
-        /// One or more `question` blocks for the requestor, as documented below.
+        /// One or more `Question` blocks for the requestor, as documented below.
         /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyQuestionGetArgs> Questions
         {
@@ -353,7 +353,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A `requestor_settings` block to configure the users who can request access, as documented below.
+        /// A `RequestorSettings` block to configure the users who can request access, as documented below.
         /// </summary>
         [Input("requestorSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyRequestorSettingsGetArgs>? RequestorSettings { get; set; }

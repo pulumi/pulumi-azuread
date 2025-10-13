@@ -115,7 +115,7 @@ namespace Pulumi.AzureAD
     public partial class SynchronizationJobProvisionOnDemand : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// One or more `parameter` blocks as documented below.
+        /// One or more `Parameter` blocks as documented below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.SynchronizationJobProvisionOnDemandParameter>> Parameters { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.SynchronizationJobProvisionOnDemandParameterArgs>? _parameters;
 
         /// <summary>
-        /// One or more `parameter` blocks as documented below.
+        /// One or more `Parameter` blocks as documented below.
         /// </summary>
         public InputList<Inputs.SynchronizationJobProvisionOnDemandParameterArgs> Parameters
         {
@@ -225,7 +225,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.SynchronizationJobProvisionOnDemandParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// One or more `parameter` blocks as documented below.
+        /// One or more `Parameter` blocks as documented below.
         /// </summary>
         public InputList<Inputs.SynchronizationJobProvisionOnDemandParameterGetArgs> Parameters
         {

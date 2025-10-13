@@ -71,6 +71,25 @@ import * as utilities from "./utilities";
  *
  * *Group with members*
  *
+ * *Group with dynamic membership*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getClientConfig({});
+ * const example = new azuread.Group("example", {
+ *     displayName: "MyGroup",
+ *     owners: [current.then(current => current.objectId)],
+ *     securityEnabled: true,
+ *     types: ["DynamicMembership"],
+ *     dynamicMembership: {
+ *         enabled: true,
+ *         rule: "user.department -eq \"Sales\"",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Groups can be imported using their object ID, e.g.

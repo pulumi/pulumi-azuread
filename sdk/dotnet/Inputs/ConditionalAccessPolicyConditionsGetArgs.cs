@@ -13,7 +13,7 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class ConditionalAccessPolicyConditionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+        /// An `Applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         /// </summary>
         [Input("applications", required: true)]
         public Input<Inputs.ConditionalAccessPolicyConditionsApplicationsGetArgs> Applications { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _clientAppTypes;
 
         /// <summary>
-        /// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+        /// A list of client application types included in the policy. Possible values are: `All`, `Browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `Other`.
         /// </summary>
         public InputList<string> ClientAppTypes
         {
@@ -31,31 +31,31 @@ namespace Pulumi.AzureAD.Inputs
         }
 
         /// <summary>
-        /// An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+        /// An `ClientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
         /// </summary>
         [Input("clientApplications")]
         public Input<Inputs.ConditionalAccessPolicyConditionsClientApplicationsGetArgs>? ClientApplications { get; set; }
 
         /// <summary>
-        /// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+        /// A `Devices` block as documented below, which describes devices to be included in and excluded from the policy. A `Devices` block can be added to an existing policy, but removing the `Devices` block forces a new resource to be created.
         /// </summary>
         [Input("devices")]
         public Input<Inputs.ConditionalAccessPolicyConditionsDevicesGetArgs>? Devices { get; set; }
 
         /// <summary>
-        /// The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
+        /// The insider risk level in the policy. Possible values are: `Minor`, `Moderate`, `Elevated`, `unknownFutureValue`.
         /// </summary>
         [Input("insiderRiskLevels")]
         public Input<string>? InsiderRiskLevels { get; set; }
 
         /// <summary>
-        /// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+        /// A `Locations` block as documented below, which specifies locations included in and excluded from the policy.
         /// </summary>
         [Input("locations")]
         public Input<Inputs.ConditionalAccessPolicyConditionsLocationsGetArgs>? Locations { get; set; }
 
         /// <summary>
-        /// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+        /// A `Platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         /// </summary>
         [Input("platforms")]
         public Input<Inputs.ConditionalAccessPolicyConditionsPlatformsGetArgs>? Platforms { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _servicePrincipalRiskLevels;
 
         /// <summary>
-        /// A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+        /// A list of service principal sign-in risk levels included in the policy. Possible values are: `Low`, `Medium`, `High`, `None`, `unknownFutureValue`.
         /// </summary>
         public InputList<string> ServicePrincipalRiskLevels
         {
@@ -76,7 +76,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _signInRiskLevels;
 
         /// <summary>
-        /// A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        /// A list of user sign-in risk levels included in the policy. Possible values are: `Low`, `Medium`, `High`, `Hidden`, `None`, `unknownFutureValue`.
         /// </summary>
         public InputList<string> SignInRiskLevels
         {
@@ -88,7 +88,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _userRiskLevels;
 
         /// <summary>
-        /// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        /// A list of user risk levels included in the policy. Possible values are: `Low`, `Medium`, `High`, `Hidden`, `None`, `unknownFutureValue`.
         /// </summary>
         public InputList<string> UserRiskLevels
         {
@@ -97,7 +97,7 @@ namespace Pulumi.AzureAD.Inputs
         }
 
         /// <summary>
-        /// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        /// A `Users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
         /// </summary>
         [Input("users", required: true)]
         public Input<Inputs.ConditionalAccessPolicyConditionsUsersGetArgs> Users { get; set; } = null!;

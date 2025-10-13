@@ -98,7 +98,7 @@ namespace Pulumi.AzureAD
         public Output<string> ObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// A collection of `permissions` blocks as documented below.
+        /// A collection of `Permissions` blocks as documented below.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.CustomDirectoryRolePermission>> Permissions { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.CustomDirectoryRolePermissionArgs>? _permissions;
 
         /// <summary>
-        /// A collection of `permissions` blocks as documented below.
+        /// A collection of `Permissions` blocks as documented below.
         /// </summary>
         public InputList<Inputs.CustomDirectoryRolePermissionArgs> Permissions
         {
@@ -239,7 +239,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.CustomDirectoryRolePermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// A collection of `permissions` blocks as documented below.
+        /// A collection of `Permissions` blocks as documented below.
         /// </summary>
         public InputList<Inputs.CustomDirectoryRolePermissionGetArgs> Permissions
         {

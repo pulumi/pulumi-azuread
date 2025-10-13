@@ -26,7 +26,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+        /// The source of the claim. If `Source` is absent, the claim is a predefined optional claim. If `Source` is `User`, the value of `Name` is the extension property from the user object.
         /// </summary>
         public readonly string? Source;
 

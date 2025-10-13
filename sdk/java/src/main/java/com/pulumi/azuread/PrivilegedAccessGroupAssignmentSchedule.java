@@ -163,7 +163,7 @@ public class PrivilegedAccessGroupAssignmentSchedule extends com.pulumi.resource
     /**
      * Is this assigment permanently valid.
      * 
-     * At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
+     * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      * 
      */
     @Export(name="permanentAssignment", refs={Boolean.class}, tree="[0]")
@@ -172,7 +172,7 @@ public class PrivilegedAccessGroupAssignmentSchedule extends com.pulumi.resource
     /**
      * @return Is this assigment permanently valid.
      * 
-     * At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
+     * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      * 
      */
     public Output<Boolean> permanentAssignment() {

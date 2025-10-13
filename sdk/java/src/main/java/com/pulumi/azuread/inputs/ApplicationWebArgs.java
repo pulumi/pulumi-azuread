@@ -33,14 +33,14 @@ public final class ApplicationWebArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * An `implicit_grant` block as documented above.
+     * An `implicitGrant` block as documented above.
      * 
      */
     @Import(name="implicitGrant")
     private @Nullable Output<ApplicationWebImplicitGrantArgs> implicitGrant;
 
     /**
-     * @return An `implicit_grant` block as documented above.
+     * @return An `implicitGrant` block as documented above.
      * 
      */
     public Optional<Output<ApplicationWebImplicitGrantArgs>> implicitGrant() {
@@ -126,7 +126,7 @@ public final class ApplicationWebArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param implicitGrant An `implicit_grant` block as documented above.
+         * @param implicitGrant An `implicitGrant` block as documented above.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ApplicationWebArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param implicitGrant An `implicit_grant` block as documented above.
+         * @param implicitGrant An `implicitGrant` block as documented above.
          * 
          * @return builder
          * 
