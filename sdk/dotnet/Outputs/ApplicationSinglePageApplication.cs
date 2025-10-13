@@ -14,7 +14,7 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ApplicationSinglePageApplication
     {
         /// <summary>
-        /// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
+        /// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `Https` URL.
         /// </summary>
         public readonly ImmutableArray<string> RedirectUris;
 

@@ -125,14 +125,14 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs ext
     }
 
     /**
-     * One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+     * One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
      * 
      */
     @Import(name="reviewers")
     private @Nullable Output<List<AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs>> reviewers;
 
     /**
-     * @return One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+     * @return One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
      * 
      */
     public Optional<Output<List<AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs>>> reviewers() {
@@ -334,7 +334,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs ext
         }
 
         /**
-         * @param reviewers One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+         * @param reviewers One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs ext
         }
 
         /**
-         * @param reviewers One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+         * @param reviewers One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs ext
         }
 
         /**
-         * @param reviewers One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+         * @param reviewers One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
          * 
          * @return builder
          * 

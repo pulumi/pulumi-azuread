@@ -358,13 +358,13 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
+        /// Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `ReturnAll`. Defaults to `False`.
         /// </summary>
         [Input("ignoreMissing")]
         public bool? IgnoreMissing { get; set; }
 
         /// <summary>
-        /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `True` ensures all groups are mail-enabled, and setting to `False` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `ObjectIds`.
         /// </summary>
         [Input("mailEnabled")]
         public bool? MailEnabled { get; set; }
@@ -382,15 +382,15 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
+        /// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `IgnoreMissing`. Defaults to `False`.
         /// </summary>
         [Input("returnAll")]
         public bool? ReturnAll { get; set; }
 
         /// <summary>
-        /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `True` ensures all groups are security-enabled, and setting to `False` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `ObjectIds`.
         /// 
-        /// &gt; One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; One of `DisplayNames`, `DisplayNamePrefix`, `ObjectIds` or `ReturnAll` should be specified. Either `DisplayName` or `ObjectIds` _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         [Input("securityEnabled")]
         public bool? SecurityEnabled { get; set; }
@@ -422,13 +422,13 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
+        /// Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `ReturnAll`. Defaults to `False`.
         /// </summary>
         [Input("ignoreMissing")]
         public Input<bool>? IgnoreMissing { get; set; }
 
         /// <summary>
-        /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `True` ensures all groups are mail-enabled, and setting to `False` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `ObjectIds`.
         /// </summary>
         [Input("mailEnabled")]
         public Input<bool>? MailEnabled { get; set; }
@@ -446,15 +446,15 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
+        /// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `IgnoreMissing`. Defaults to `False`.
         /// </summary>
         [Input("returnAll")]
         public Input<bool>? ReturnAll { get; set; }
 
         /// <summary>
-        /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `True` ensures all groups are security-enabled, and setting to `False` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `ObjectIds`.
         /// 
-        /// &gt; One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; One of `DisplayNames`, `DisplayNamePrefix`, `ObjectIds` or `ReturnAll` should be specified. Either `DisplayName` or `ObjectIds` _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         [Input("securityEnabled")]
         public Input<bool>? SecurityEnabled { get; set; }

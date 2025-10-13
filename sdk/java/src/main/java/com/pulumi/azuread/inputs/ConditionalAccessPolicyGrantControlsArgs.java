@@ -80,7 +80,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
     /**
      * List of terms of use IDs required by the policy.
      * 
-     * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
+     * &gt; At least one of `authenticationStrengthPolicyId`, `builtInControls` or `termsOfUse` must be specified.
      * 
      */
     @Import(name="termsOfUses")
@@ -89,7 +89,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
     /**
      * @return List of terms of use IDs required by the policy.
      * 
-     * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
+     * &gt; At least one of `authenticationStrengthPolicyId`, `builtInControls` or `termsOfUse` must be specified.
      * 
      */
     public Optional<Output<List<String>>> termsOfUses() {
@@ -231,7 +231,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         /**
          * @param termsOfUses List of terms of use IDs required by the policy.
          * 
-         * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
+         * &gt; At least one of `authenticationStrengthPolicyId`, `builtInControls` or `termsOfUse` must be specified.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         /**
          * @param termsOfUses List of terms of use IDs required by the policy.
          * 
-         * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
+         * &gt; At least one of `authenticationStrengthPolicyId`, `builtInControls` or `termsOfUse` must be specified.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class ConditionalAccessPolicyGrantControlsArgs extends com.pulumi.r
         /**
          * @param termsOfUses List of terms of use IDs required by the policy.
          * 
-         * &gt; At least one of `authentication_strength_policy_id`, `built_in_controls` or `terms_of_use` must be specified.
+         * &gt; At least one of `authenticationStrengthPolicyId`, `builtInControls` or `termsOfUse` must be specified.
          * 
          * @return builder
          * 

@@ -89,14 +89,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/applicationOptionalClaims:ApplicationOptionalClaims")
 public class ApplicationOptionalClaims extends com.pulumi.resources.CustomResource {
     /**
-     * One or more `access_token` blocks as documented below.
+     * One or more `accessToken` blocks as documented below.
      * 
      */
     @Export(name="accessTokens", refs={List.class,ApplicationOptionalClaimsAccessToken.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApplicationOptionalClaimsAccessToken>> accessTokens;
 
     /**
-     * @return One or more `access_token` blocks as documented below.
+     * @return One or more `accessToken` blocks as documented below.
      * 
      */
     public Output<Optional<List<ApplicationOptionalClaimsAccessToken>>> accessTokens() {
@@ -117,32 +117,32 @@ public class ApplicationOptionalClaims extends com.pulumi.resources.CustomResour
         return this.applicationId;
     }
     /**
-     * One or more `id_token` blocks as documented below.
+     * One or more `idToken` blocks as documented below.
      * 
      */
     @Export(name="idTokens", refs={List.class,ApplicationOptionalClaimsIdToken.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApplicationOptionalClaimsIdToken>> idTokens;
 
     /**
-     * @return One or more `id_token` blocks as documented below.
+     * @return One or more `idToken` blocks as documented below.
      * 
      */
     public Output<Optional<List<ApplicationOptionalClaimsIdToken>>> idTokens() {
         return Codegen.optional(this.idTokens);
     }
     /**
-     * One or more `saml2_token` blocks as documented below.
+     * One or more `saml2Token` blocks as documented below.
      * 
-     * &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+     * &gt; At least one of `accessToken`, `idToken` or `saml2Token` must be specified
      * 
      */
     @Export(name="saml2Tokens", refs={List.class,ApplicationOptionalClaimsSaml2Token.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApplicationOptionalClaimsSaml2Token>> saml2Tokens;
 
     /**
-     * @return One or more `saml2_token` blocks as documented below.
+     * @return One or more `saml2Token` blocks as documented below.
      * 
-     * &gt; At least one of `access_token`, `id_token` or `saml2_token` must be specified
+     * &gt; At least one of `accessToken`, `idToken` or `saml2Token` must be specified
      * 
      */
     public Output<Optional<List<ApplicationOptionalClaimsSaml2Token>>> saml2Tokens() {

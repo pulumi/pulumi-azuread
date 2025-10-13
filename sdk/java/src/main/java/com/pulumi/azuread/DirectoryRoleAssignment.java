@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * &gt; Note the use of the `template_id` attribute when referencing built-in roles.
+ * &gt; Note the use of the `templateId` attribute when referencing built-in roles.
  * 
  * *Assignment for a custom role*
  * 
@@ -142,28 +142,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/directoryRoleAssignment:DirectoryRoleAssignment")
 public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+     * Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="appScopeId", refs={String.class}, tree="[0]")
     private Output<String> appScopeId;
 
     /**
-     * @return Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+     * @return Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
      * 
      */
     public Output<String> appScopeId() {
         return this.appScopeId;
     }
     /**
-     * Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+     * Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="directoryScopeId", refs={String.class}, tree="[0]")
     private Output<String> directoryScopeId;
 
     /**
-     * @return Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+     * @return Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
      * 
      */
     public Output<String> directoryScopeId() {

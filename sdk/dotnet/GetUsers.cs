@@ -136,7 +136,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `ReturnAll`. Defaults to `False`.
         /// </summary>
         [Input("ignoreMissing")]
         public bool? IgnoreMissing { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+        /// When `True`, the data source will return all users. Cannot be used with `IgnoreMissing`. Defaults to `False`.
         /// </summary>
         [Input("returnAll")]
         public bool? ReturnAll { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal names (UPNs) of the users.
         /// 
-        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; Either `ReturnAll`, or one of `UserPrincipalNames`, `ObjectIds`, `MailNicknames`, `Mails`, or `EmployeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         public List<string> UserPrincipalNames
         {
@@ -218,7 +218,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `ReturnAll`. Defaults to `False`.
         /// </summary>
         [Input("ignoreMissing")]
         public Input<bool>? IgnoreMissing { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+        /// When `True`, the data source will return all users. Cannot be used with `IgnoreMissing`. Defaults to `False`.
         /// </summary>
         [Input("returnAll")]
         public Input<bool>? ReturnAll { get; set; }
@@ -271,7 +271,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal names (UPNs) of the users.
         /// 
-        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames`, `mails`, or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; Either `ReturnAll`, or one of `UserPrincipalNames`, `ObjectIds`, `MailNicknames`, `Mails`, or `EmployeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         public InputList<string> UserPrincipalNames
         {
@@ -316,7 +316,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<string> UserPrincipalNames;
         /// <summary>
-        /// A list of users. Each `user` object provides the attributes documented below.
+        /// A list of users. Each `User` object provides the attributes documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 

@@ -47,14 +47,14 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
+     * Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `returnAll`. Defaults to `false`.
      * 
      */
     @Import(name="ignoreMissing")
     private @Nullable Boolean ignoreMissing;
 
     /**
-     * @return Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
+     * @return Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `returnAll`. Defaults to `false`.
      * 
      */
     public Optional<Boolean> ignoreMissing() {
@@ -62,14 +62,14 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+     * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      * 
      */
     @Import(name="mailEnabled")
     private @Nullable Boolean mailEnabled;
 
     /**
-     * @return Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+     * @return Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      * 
      */
     public Optional<Boolean> mailEnabled() {
@@ -92,14 +92,14 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
+     * A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
      * 
      */
     @Import(name="returnAll")
     private @Nullable Boolean returnAll;
 
     /**
-     * @return A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
+     * @return A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
      * 
      */
     public Optional<Boolean> returnAll() {
@@ -107,18 +107,18 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+     * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      * 
-     * &gt; One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     @Import(name="securityEnabled")
     private @Nullable Boolean securityEnabled;
 
     /**
-     * @return Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+     * @return Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      * 
-     * &gt; One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     public Optional<Boolean> securityEnabled() {
@@ -188,7 +188,7 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ignoreMissing Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
+         * @param ignoreMissing Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `returnAll`. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param mailEnabled Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+         * @param mailEnabled Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param returnAll A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
+         * @param returnAll A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -242,9 +242,9 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param securityEnabled Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+         * @param securityEnabled Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
          * 
-         * &gt; One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+         * &gt; One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 

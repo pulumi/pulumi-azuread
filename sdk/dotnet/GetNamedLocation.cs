@@ -44,23 +44,23 @@ namespace Pulumi.AzureAD
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `country` - A `country` block as documented below, which describes a country-based named location.
-        /// * `id` - The ID of the named location.
-        /// * `ip` - An `ip` block as documented below, which describes an IP-based named location.
+        /// * `Country` - A `Country` block as documented below, which describes a country-based named location.
+        /// * `Id` - The ID of the named location.
+        /// * `Ip` - An `Ip` block as documented below, which describes an IP-based named location.
         /// * 
         /// ---
         /// 
-        /// `country` block exports the following:
+        /// `Country` block exports the following:
         /// 
-        /// * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-        /// * `include_unknown_countries_and_regions` - Whether IP addresses that don't map to a country or region are included in the named location.
+        /// * `CountriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        /// * `IncludeUnknownCountriesAndRegions` - Whether IP addresses that don't map to a country or region are included in the named location.
         /// 
         /// ---
         /// 
-        /// `ip` block exports the following:
+        /// `Ip` block exports the following:
         /// 
-        /// * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
-        /// * `trusted` - Whether the named location is trusted.
+        /// * `IpRanges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+        /// * `Trusted` - Whether the named location is trusted.
         /// </summary>
         public static Task<GetNamedLocationResult> InvokeAsync(GetNamedLocationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamedLocationResult>("azuread:index/getNamedLocation:getNamedLocation", args ?? new GetNamedLocationArgs(), options.WithDefaults());
@@ -98,23 +98,23 @@ namespace Pulumi.AzureAD
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `country` - A `country` block as documented below, which describes a country-based named location.
-        /// * `id` - The ID of the named location.
-        /// * `ip` - An `ip` block as documented below, which describes an IP-based named location.
+        /// * `Country` - A `Country` block as documented below, which describes a country-based named location.
+        /// * `Id` - The ID of the named location.
+        /// * `Ip` - An `Ip` block as documented below, which describes an IP-based named location.
         /// * 
         /// ---
         /// 
-        /// `country` block exports the following:
+        /// `Country` block exports the following:
         /// 
-        /// * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-        /// * `include_unknown_countries_and_regions` - Whether IP addresses that don't map to a country or region are included in the named location.
+        /// * `CountriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        /// * `IncludeUnknownCountriesAndRegions` - Whether IP addresses that don't map to a country or region are included in the named location.
         /// 
         /// ---
         /// 
-        /// `ip` block exports the following:
+        /// `Ip` block exports the following:
         /// 
-        /// * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
-        /// * `trusted` - Whether the named location is trusted.
+        /// * `IpRanges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+        /// * `Trusted` - Whether the named location is trusted.
         /// </summary>
         public static Output<GetNamedLocationResult> Invoke(GetNamedLocationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNamedLocationResult>("azuread:index/getNamedLocation:getNamedLocation", args ?? new GetNamedLocationInvokeArgs(), options.WithDefaults());
@@ -152,23 +152,23 @@ namespace Pulumi.AzureAD
         /// 
         /// The following attributes are exported:
         /// 
-        /// * `country` - A `country` block as documented below, which describes a country-based named location.
-        /// * `id` - The ID of the named location.
-        /// * `ip` - An `ip` block as documented below, which describes an IP-based named location.
+        /// * `Country` - A `Country` block as documented below, which describes a country-based named location.
+        /// * `Id` - The ID of the named location.
+        /// * `Ip` - An `Ip` block as documented below, which describes an IP-based named location.
         /// * 
         /// ---
         /// 
-        /// `country` block exports the following:
+        /// `Country` block exports the following:
         /// 
-        /// * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
-        /// * `include_unknown_countries_and_regions` - Whether IP addresses that don't map to a country or region are included in the named location.
+        /// * `CountriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        /// * `IncludeUnknownCountriesAndRegions` - Whether IP addresses that don't map to a country or region are included in the named location.
         /// 
         /// ---
         /// 
-        /// `ip` block exports the following:
+        /// `Ip` block exports the following:
         /// 
-        /// * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
-        /// * `trusted` - Whether the named location is trusted.
+        /// * `IpRanges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+        /// * `Trusted` - Whether the named location is trusted.
         /// </summary>
         public static Output<GetNamedLocationResult> Invoke(GetNamedLocationInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNamedLocationResult>("azuread:index/getNamedLocation:getNamedLocation", args ?? new GetNamedLocationInvokeArgs(), options.WithDefaults());

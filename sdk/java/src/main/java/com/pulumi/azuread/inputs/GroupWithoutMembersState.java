@@ -21,7 +21,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
      * 
-     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      * 
      */
     @Import(name="administrativeUnitIds")
@@ -30,7 +30,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * @return The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
      * 
-     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+     * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      * 
      */
     public Optional<Output<List<String>>> administrativeUnitIds() {
@@ -55,7 +55,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
      * 
-     * &gt; **Known Permissions Issue** The `auto_subscribe_new_members` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+     * &gt; **Known Permissions Issue** The `autoSubscribeNewMembers` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
     @Import(name="autoSubscribeNewMembers")
@@ -64,7 +64,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * @return Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
      * 
-     * &gt; **Known Permissions Issue** The `auto_subscribe_new_members` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+     * &gt; **Known Permissions Issue** The `autoSubscribeNewMembers` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
     public Optional<Output<Boolean>> autoSubscribeNewMembers() {
@@ -117,14 +117,14 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+     * A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
      * 
      */
     @Import(name="dynamicMembership")
     private @Nullable Output<GroupWithoutMembersDynamicMembershipArgs> dynamicMembership;
 
     /**
-     * @return A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+     * @return A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
      * 
      */
     public Optional<Output<GroupWithoutMembersDynamicMembershipArgs>> dynamicMembership() {
@@ -134,7 +134,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
      * 
-     * &gt; **Known Permissions Issue** The `external_senders_allowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+     * &gt; **Known Permissions Issue** The `externalSendersAllowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
     @Import(name="externalSendersAllowed")
@@ -143,7 +143,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * @return Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
      * 
-     * &gt; **Known Permissions Issue** The `external_senders_allowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+     * &gt; **Known Permissions Issue** The `externalSendersAllowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
     public Optional<Output<Boolean>> externalSendersAllowed() {
@@ -153,7 +153,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
      * 
-     * &gt; **Known Permissions Issue** The `hide_from_address_lists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+     * &gt; **Known Permissions Issue** The `hideFromAddressLists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
     @Import(name="hideFromAddressLists")
@@ -162,7 +162,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * @return Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
      * 
-     * &gt; **Known Permissions Issue** The `hide_from_address_lists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+     * &gt; **Known Permissions Issue** The `hideFromAddressLists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
     public Optional<Output<Boolean>> hideFromAddressLists() {
@@ -172,7 +172,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
      * 
-     * &gt; **Known Permissions Issue** The `hide_from_outlook_clients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+     * &gt; **Known Permissions Issue** The `hideFromOutlookClients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
     @Import(name="hideFromOutlookClients")
@@ -181,7 +181,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * @return Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
      * 
-     * &gt; **Known Permissions Issue** The `hide_from_outlook_clients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+     * &gt; **Known Permissions Issue** The `hideFromOutlookClients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
      * 
      */
     public Optional<Output<Boolean>> hideFromOutlookClients() {
@@ -204,14 +204,14 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+     * Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
      * 
      */
     @Import(name="mailEnabled")
     private @Nullable Output<Boolean> mailEnabled;
 
     /**
-     * @return Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+     * @return Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
      * 
      */
     public Optional<Output<Boolean>> mailEnabled() {
@@ -414,14 +414,14 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+     * Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
      * 
      */
     @Import(name="securityEnabled")
     private @Nullable Output<Boolean> securityEnabled;
 
     /**
-     * @return Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+     * @return Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
      * 
      */
     public Optional<Output<Boolean>> securityEnabled() {
@@ -444,7 +444,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+     * A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
      * 
      * &gt; **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
      * 
@@ -453,7 +453,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     private @Nullable Output<List<String>> types;
 
     /**
-     * @return A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+     * @return A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
      * 
      * &gt; **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
      * 
@@ -465,7 +465,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
      * 
-     * &gt; **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing groups if you want to avoid name collisions.
+     * &gt; **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing groups if you want to avoid name collisions.
      * 
      */
     @Import(name="visibility")
@@ -474,7 +474,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
     /**
      * @return The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
      * 
-     * &gt; **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing groups if you want to avoid name collisions.
+     * &gt; **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing groups if you want to avoid name collisions.
      * 
      */
     public Optional<Output<String>> visibility() {
@@ -552,7 +552,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param administrativeUnitIds The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
          * 
-         * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+         * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param administrativeUnitIds The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
          * 
-         * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+         * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
          * 
          * @return builder
          * 
@@ -577,7 +577,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param administrativeUnitIds The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
          * 
-         * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
+         * &gt; **Caution** When using the azuread.AdministrativeUnitMember resource, or the `members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
          * 
          * @return builder
          * 
@@ -610,7 +610,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param autoSubscribeNewMembers Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
          * 
-         * &gt; **Known Permissions Issue** The `auto_subscribe_new_members` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+         * &gt; **Known Permissions Issue** The `autoSubscribeNewMembers` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
          * 
          * @return builder
          * 
@@ -623,7 +623,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param autoSubscribeNewMembers Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
          * 
-         * &gt; **Known Permissions Issue** The `auto_subscribe_new_members` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+         * &gt; **Known Permissions Issue** The `autoSubscribeNewMembers` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
          * 
          * @return builder
          * 
@@ -706,7 +706,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dynamicMembership A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+         * @param dynamicMembership A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
          * 
          * @return builder
          * 
@@ -717,7 +717,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dynamicMembership A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+         * @param dynamicMembership A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
          * 
          * @return builder
          * 
@@ -729,7 +729,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param externalSendersAllowed Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
          * 
-         * &gt; **Known Permissions Issue** The `external_senders_allowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+         * &gt; **Known Permissions Issue** The `externalSendersAllowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
          * 
          * @return builder
          * 
@@ -742,7 +742,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param externalSendersAllowed Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
          * 
-         * &gt; **Known Permissions Issue** The `external_senders_allowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+         * &gt; **Known Permissions Issue** The `externalSendersAllowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
          * 
          * @return builder
          * 
@@ -754,7 +754,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param hideFromAddressLists Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
          * 
-         * &gt; **Known Permissions Issue** The `hide_from_address_lists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+         * &gt; **Known Permissions Issue** The `hideFromAddressLists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
          * 
          * @return builder
          * 
@@ -767,7 +767,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param hideFromAddressLists Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
          * 
-         * &gt; **Known Permissions Issue** The `hide_from_address_lists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+         * &gt; **Known Permissions Issue** The `hideFromAddressLists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
          * 
          * @return builder
          * 
@@ -779,7 +779,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param hideFromOutlookClients Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
          * 
-         * &gt; **Known Permissions Issue** The `hide_from_outlook_clients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+         * &gt; **Known Permissions Issue** The `hideFromOutlookClients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
          * 
          * @return builder
          * 
@@ -792,7 +792,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param hideFromOutlookClients Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
          * 
-         * &gt; **Known Permissions Issue** The `hide_from_outlook_clients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+         * &gt; **Known Permissions Issue** The `hideFromOutlookClients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
          * 
          * @return builder
          * 
@@ -823,7 +823,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mailEnabled Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+         * @param mailEnabled Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
          * 
          * @return builder
          * 
@@ -834,7 +834,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mailEnabled Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+         * @param mailEnabled Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
          * 
          * @return builder
          * 
@@ -1147,7 +1147,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityEnabled Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+         * @param securityEnabled Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
          * 
          * @return builder
          * 
@@ -1158,7 +1158,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param securityEnabled Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+         * @param securityEnabled Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
          * 
          * @return builder
          * 
@@ -1189,7 +1189,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param types A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+         * @param types A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
          * 
          * &gt; **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
          * 
@@ -1202,7 +1202,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param types A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+         * @param types A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
          * 
          * &gt; **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
          * 
@@ -1214,7 +1214,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param types A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+         * @param types A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
          * 
          * &gt; **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
          * 
@@ -1228,7 +1228,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param visibility The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
          * 
-         * &gt; **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing groups if you want to avoid name collisions.
+         * &gt; **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing groups if you want to avoid name collisions.
          * 
          * @return builder
          * 
@@ -1241,7 +1241,7 @@ public final class GroupWithoutMembersState extends com.pulumi.resources.Resourc
         /**
          * @param visibility The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
          * 
-         * &gt; **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing groups if you want to avoid name collisions.
+         * &gt; **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing groups if you want to avoid name collisions.
          * 
          * @return builder
          * 

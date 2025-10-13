@@ -18,7 +18,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? HomepageUrl;
         /// <summary>
-        /// An `implicit_grant` block as documented above.
+        /// An `ImplicitGrant` block as documented above.
         /// </summary>
         public readonly Outputs.ApplicationWebImplicitGrant? ImplicitGrant;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? LogoutUrl;
         /// <summary>
-        /// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
+        /// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `Http` URL or a URN.
         /// </summary>
         public readonly ImmutableArray<string> RedirectUris;
 

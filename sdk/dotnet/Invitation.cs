@@ -97,7 +97,7 @@ namespace Pulumi.AzureAD
     public partial class Invitation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        /// A `Message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         /// </summary>
         [Output("message")]
         public Output<Outputs.InvitationMessage?> Message { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AzureAD
     public sealed class InvitationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        /// A `Message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         /// </summary>
         [Input("message")]
         public Input<Inputs.InvitationMessageArgs>? Message { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.AzureAD
     public sealed class InvitationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        /// A `Message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         /// </summary>
         [Input("message")]
         public Input<Inputs.InvitationMessageGetArgs>? Message { get; set; }

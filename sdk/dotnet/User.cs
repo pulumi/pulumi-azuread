@@ -107,7 +107,7 @@ namespace Pulumi.AzureAD
         public Output<string?> Country { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
+        /// Indicates whether the user account was created as a regular school or work account (`Null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
         /// </summary>
         [Output("creationType")]
         public Output<string> CreationType { get; private set; } = null!;
@@ -119,13 +119,13 @@ namespace Pulumi.AzureAD
         public Output<string?> Department { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the user's password is exempt from expiring. Defaults to `false`.
+        /// Whether the user's password is exempt from expiring. Defaults to `False`.
         /// </summary>
         [Output("disablePasswordExpiration")]
         public Output<bool?> DisablePasswordExpiration { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+        /// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `False`.
         /// </summary>
         [Output("disableStrongPassword")]
         public Output<bool?> DisableStrongPassword { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.AzureAD
         public Output<string?> FaxNumber { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
+        /// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `False`.
         /// </summary>
         [Output("forcePasswordChange")]
         public Output<bool?> ForcePasswordChange { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.AzureAD
         public Output<string> OnpremisesDomainName { get; private set; } = null!;
 
         /// <summary>
-        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `UserPrincipalName` property when creating a new user account.
         /// </summary>
         [Output("onpremisesImmutableId")]
         public Output<string> OnpremisesImmutableId { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.AzureAD
         public Output<string> OnpremisesSecurityIdentifier { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        /// Whether this user is synchronised from an on-premises directory (`True`), no longer synchronised (`False`), or has never been synchronised (`Null`).
         /// </summary>
         [Output("onpremisesSyncEnabled")]
         public Output<bool> OnpremisesSyncEnabled { get; private set; } = null!;
@@ -305,7 +305,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<string>> ProxyAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not the Outlook global address list should include this user. Defaults to `true`.
+        /// Whether or not the Outlook global address list should include this user. Defaults to `True`.
         /// </summary>
         [Output("showInAddressList")]
         public Output<bool?> ShowInAddressList { get; private set; } = null!;
@@ -457,13 +457,13 @@ namespace Pulumi.AzureAD
         public Input<string>? Department { get; set; }
 
         /// <summary>
-        /// Whether the user's password is exempt from expiring. Defaults to `false`.
+        /// Whether the user's password is exempt from expiring. Defaults to `False`.
         /// </summary>
         [Input("disablePasswordExpiration")]
         public Input<bool>? DisablePasswordExpiration { get; set; }
 
         /// <summary>
-        /// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+        /// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `False`.
         /// </summary>
         [Input("disableStrongPassword")]
         public Input<bool>? DisableStrongPassword { get; set; }
@@ -505,7 +505,7 @@ namespace Pulumi.AzureAD
         public Input<string>? FaxNumber { get; set; }
 
         /// <summary>
-        /// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
+        /// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `False`.
         /// </summary>
         [Input("forcePasswordChange")]
         public Input<bool>? ForcePasswordChange { get; set; }
@@ -553,7 +553,7 @@ namespace Pulumi.AzureAD
         public Input<string>? OfficeLocation { get; set; }
 
         /// <summary>
-        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `UserPrincipalName` property when creating a new user account.
         /// </summary>
         [Input("onpremisesImmutableId")]
         public Input<string>? OnpremisesImmutableId { get; set; }
@@ -599,7 +599,7 @@ namespace Pulumi.AzureAD
         public Input<string>? PreferredLanguage { get; set; }
 
         /// <summary>
-        /// Whether or not the Outlook global address list should include this user. Defaults to `true`.
+        /// Whether or not the Outlook global address list should include this user. Defaults to `True`.
         /// </summary>
         [Input("showInAddressList")]
         public Input<bool>? ShowInAddressList { get; set; }
@@ -703,7 +703,7 @@ namespace Pulumi.AzureAD
         public Input<string>? Country { get; set; }
 
         /// <summary>
-        /// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
+        /// Indicates whether the user account was created as a regular school or work account (`Null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
         /// </summary>
         [Input("creationType")]
         public Input<string>? CreationType { get; set; }
@@ -715,13 +715,13 @@ namespace Pulumi.AzureAD
         public Input<string>? Department { get; set; }
 
         /// <summary>
-        /// Whether the user's password is exempt from expiring. Defaults to `false`.
+        /// Whether the user's password is exempt from expiring. Defaults to `False`.
         /// </summary>
         [Input("disablePasswordExpiration")]
         public Input<bool>? DisablePasswordExpiration { get; set; }
 
         /// <summary>
-        /// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+        /// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `False`.
         /// </summary>
         [Input("disableStrongPassword")]
         public Input<bool>? DisableStrongPassword { get; set; }
@@ -769,7 +769,7 @@ namespace Pulumi.AzureAD
         public Input<string>? FaxNumber { get; set; }
 
         /// <summary>
-        /// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
+        /// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `False`.
         /// </summary>
         [Input("forcePasswordChange")]
         public Input<bool>? ForcePasswordChange { get; set; }
@@ -847,7 +847,7 @@ namespace Pulumi.AzureAD
         public Input<string>? OnpremisesDomainName { get; set; }
 
         /// <summary>
-        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `UserPrincipalName` property when creating a new user account.
         /// </summary>
         [Input("onpremisesImmutableId")]
         public Input<string>? OnpremisesImmutableId { get; set; }
@@ -865,7 +865,7 @@ namespace Pulumi.AzureAD
         public Input<string>? OnpremisesSecurityIdentifier { get; set; }
 
         /// <summary>
-        /// Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        /// Whether this user is synchronised from an on-premises directory (`True`), no longer synchronised (`False`), or has never been synchronised (`Null`).
         /// </summary>
         [Input("onpremisesSyncEnabled")]
         public Input<bool>? OnpremisesSyncEnabled { get; set; }
@@ -929,7 +929,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Whether or not the Outlook global address list should include this user. Defaults to `true`.
+        /// Whether or not the Outlook global address list should include this user. Defaults to `True`.
         /// </summary>
         [Input("showInAddressList")]
         public Input<bool>? ShowInAddressList { get; set; }

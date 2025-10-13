@@ -22,7 +22,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly bool? ApprovalRequiredForExtension;
         /// <summary>
-        /// An `approval_stage` block specifying the process to obtain an approval, as documented below.
+        /// An `ApprovalStage` block specifying the process to obtain an approval, as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStage> ApprovalStages;
         /// <summary>

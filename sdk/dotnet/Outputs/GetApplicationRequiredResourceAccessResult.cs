@@ -14,7 +14,7 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetApplicationRequiredResourceAccessResult
     {
         /// <summary>
-        /// A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
+        /// A collection of `ResourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationRequiredResourceAccessResourceAccessResult> ResourceAccesses;
         /// <summary>

@@ -50,14 +50,14 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+     * A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      * 
      */
     @Import(name="grantControls")
     private @Nullable Output<ConditionalAccessPolicyGrantControlsArgs> grantControls;
 
     /**
-     * @return A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+     * @return A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      * 
      */
     public Optional<Output<ConditionalAccessPolicyGrantControlsArgs>> grantControls() {
@@ -65,18 +65,18 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
      * 
-     * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+     * &gt; Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
      * 
      */
     @Import(name="sessionControls")
     private @Nullable Output<ConditionalAccessPolicySessionControlsArgs> sessionControls;
 
     /**
-     * @return A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     * @return A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
      * 
-     * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+     * &gt; Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
      * 
      */
     public Optional<Output<ConditionalAccessPolicySessionControlsArgs>> sessionControls() {
@@ -169,7 +169,7 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param grantControls A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+         * @param grantControls A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param grantControls A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+         * @param grantControls A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
          * 
          * @return builder
          * 
@@ -190,9 +190,9 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sessionControls A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+         * @param sessionControls A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
          * 
-         * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+         * &gt; Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
          * 
          * @return builder
          * 
@@ -203,9 +203,9 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sessionControls A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+         * @param sessionControls A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
          * 
-         * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+         * &gt; Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
          * 
          * @return builder
          * 

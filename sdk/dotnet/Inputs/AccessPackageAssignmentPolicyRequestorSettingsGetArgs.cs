@@ -25,7 +25,7 @@ namespace Pulumi.AzureAD.Inputs
         }
 
         /// <summary>
-        /// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+        /// Whether to accept requests using this policy. When `False`, no new requests can be made using this policy.
         /// </summary>
         [Input("requestsAccepted")]
         public Input<bool>? RequestsAccepted { get; set; }

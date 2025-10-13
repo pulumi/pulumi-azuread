@@ -45,18 +45,18 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
+     * Specifies any identifier URI of the application. See also the `identifierUris` attribute which contains a list of all identifier URIs for the application.
      * 
-     * &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+     * &gt; One of `clientId`, `displayName`, `objectId`, or `identifierUri` must be specified.
      * 
      */
     @Import(name="identifierUri")
     private @Nullable String identifierUri;
 
     /**
-     * @return Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
+     * @return Specifies any identifier URI of the application. See also the `identifierUris` attribute which contains a list of all identifier URIs for the application.
      * 
-     * &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+     * &gt; One of `clientId`, `displayName`, `objectId`, or `identifierUri` must be specified.
      * 
      */
     public Optional<String> identifierUri() {
@@ -128,9 +128,9 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param identifierUri Specifies any identifier URI of the application. See also the `identifier_uris` attribute which contains a list of all identifier URIs for the application.
+         * @param identifierUri Specifies any identifier URI of the application. See also the `identifierUris` attribute which contains a list of all identifier URIs for the application.
          * 
-         * &gt; One of `client_id`, `display_name`, `object_id`, or `identifier_uri` must be specified.
+         * &gt; One of `clientId`, `displayName`, `objectId`, or `identifierUri` must be specified.
          * 
          * @return builder
          * 

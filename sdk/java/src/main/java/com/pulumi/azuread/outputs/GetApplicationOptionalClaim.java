@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetApplicationOptionalClaim {
     /**
-     * @return One or more `access_token` blocks as documented below.
+     * @return One or more `accessToken` blocks as documented below.
      * 
      */
     private @Nullable List<GetApplicationOptionalClaimAccessToken> accessTokens;
     /**
-     * @return One or more `id_token` blocks as documented below.
+     * @return One or more `idToken` blocks as documented below.
      * 
      */
     private @Nullable List<GetApplicationOptionalClaimIdToken> idTokens;
     /**
-     * @return One or more `saml2_token` blocks as documented below.
+     * @return One or more `saml2Token` blocks as documented below.
      * 
      */
     private @Nullable List<GetApplicationOptionalClaimSaml2Token> saml2Tokens;
 
     private GetApplicationOptionalClaim() {}
     /**
-     * @return One or more `access_token` blocks as documented below.
+     * @return One or more `accessToken` blocks as documented below.
      * 
      */
     public List<GetApplicationOptionalClaimAccessToken> accessTokens() {
         return this.accessTokens == null ? List.of() : this.accessTokens;
     }
     /**
-     * @return One or more `id_token` blocks as documented below.
+     * @return One or more `idToken` blocks as documented below.
      * 
      */
     public List<GetApplicationOptionalClaimIdToken> idTokens() {
         return this.idTokens == null ? List.of() : this.idTokens;
     }
     /**
-     * @return One or more `saml2_token` blocks as documented below.
+     * @return One or more `saml2Token` blocks as documented below.
      * 
      */
     public List<GetApplicationOptionalClaimSaml2Token> saml2Tokens() {
