@@ -147,10 +147,10 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Claims Mapping Policy can be imported using the `id`, e.g.
+        Claims Mapping Policies can be imported using the `id`, e.g.
 
         ```sh
-        $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
+        $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy /policies/claimsMappingPolicies/00000000-0000-0000-0000-000000000000
         ```
 
         :param str resource_name: The name of the resource.
@@ -208,10 +208,10 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Claims Mapping Policy can be imported using the `id`, e.g.
+        Claims Mapping Policies can be imported using the `id`, e.g.
 
         ```sh
-        $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
+        $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy /policies/claimsMappingPolicies/00000000-0000-0000-0000-000000000000
         ```
 
         :param str resource_name: The name of the resource.
