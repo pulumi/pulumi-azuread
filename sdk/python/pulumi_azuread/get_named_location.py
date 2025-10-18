@@ -27,7 +27,7 @@ class GetNamedLocationResult:
     """
     A collection of values returned by getNamedLocation.
     """
-    def __init__(__self__, countries=None, display_name=None, id=None, ips=None):
+    def __init__(__self__, countries=None, display_name=None, id=None, ips=None, object_id=None):
         if countries and not isinstance(countries, list):
             raise TypeError("Expected argument 'countries' to be a list")
         pulumi.set(__self__, "countries", countries)
@@ -40,6 +40,9 @@ class GetNamedLocationResult:
         if ips and not isinstance(ips, list):
             raise TypeError("Expected argument 'ips' to be a list")
         pulumi.set(__self__, "ips", ips)
+        if object_id and not isinstance(object_id, str):
+            raise TypeError("Expected argument 'object_id' to be a str")
+        pulumi.set(__self__, "object_id", object_id)
 
     @_builtins.property
     @pulumi.getter
@@ -64,6 +67,11 @@ class GetNamedLocationResult:
     def ips(self) -> Sequence['outputs.GetNamedLocationIpResult']:
         return pulumi.get(self, "ips")
 
+    @_builtins.property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> _builtins.str:
+        return pulumi.get(self, "object_id")
+
 
 class AwaitableGetNamedLocationResult(GetNamedLocationResult):
     # pylint: disable=using-constant-test
@@ -74,7 +82,8 @@ class AwaitableGetNamedLocationResult(GetNamedLocationResult):
             countries=self.countries,
             display_name=self.display_name,
             id=self.id,
-            ips=self.ips)
+            ips=self.ips,
+            object_id=self.object_id)
 
 
 def get_named_location(display_name: Optional[_builtins.str] = None,
@@ -106,7 +115,8 @@ def get_named_location(display_name: Optional[_builtins.str] = None,
     * `country` - A `country` block as documented below, which describes a country-based named location.
     * `id` - The ID of the named location.
     * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-    * 
+    * `object_id` - The object ID of the named location.
+
     ***
 
     `country` block exports the following:
@@ -133,7 +143,8 @@ def get_named_location(display_name: Optional[_builtins.str] = None,
         countries=pulumi.get(__ret__, 'countries'),
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
-        ips=pulumi.get(__ret__, 'ips'))
+        ips=pulumi.get(__ret__, 'ips'),
+        object_id=pulumi.get(__ret__, 'object_id'))
 def get_named_location_output(display_name: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNamedLocationResult]:
     """
@@ -163,7 +174,8 @@ def get_named_location_output(display_name: Optional[pulumi.Input[_builtins.str]
     * `country` - A `country` block as documented below, which describes a country-based named location.
     * `id` - The ID of the named location.
     * `ip` - An `ip` block as documented below, which describes an IP-based named location.
-    * 
+    * `object_id` - The object ID of the named location.
+
     ***
 
     `country` block exports the following:
@@ -189,4 +201,5 @@ def get_named_location_output(display_name: Optional[pulumi.Input[_builtins.str]
         countries=pulumi.get(__response__, 'countries'),
         display_name=pulumi.get(__response__, 'display_name'),
         id=pulumi.get(__response__, 'id'),
-        ips=pulumi.get(__response__, 'ips')))
+        ips=pulumi.get(__response__, 'ips'),
+        object_id=pulumi.get(__response__, 'object_id')))
