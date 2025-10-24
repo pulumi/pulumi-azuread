@@ -35,7 +35,8 @@ import * as utilities from "./utilities";
  * * `country` - A `country` block as documented below, which describes a country-based named location.
  * * `id` - The ID of the named location.
  * * `ip` - An `ip` block as documented below, which describes an IP-based named location.
- * * 
+ * * `objectId` - The object ID of the named location.
+ *
  * ***
  *
  * `country` block exports the following:
@@ -78,6 +79,7 @@ export interface GetNamedLocationResult {
      */
     readonly id: string;
     readonly ips: outputs.GetNamedLocationIp[];
+    readonly objectId: string;
 }
 /**
  * Gets information about a Named Location within Azure Active Directory.
@@ -108,7 +110,8 @@ export interface GetNamedLocationResult {
  * * `country` - A `country` block as documented below, which describes a country-based named location.
  * * `id` - The ID of the named location.
  * * `ip` - An `ip` block as documented below, which describes an IP-based named location.
- * * 
+ * * `objectId` - The object ID of the named location.
+ *
  * ***
  *
  * `country` block exports the following:
