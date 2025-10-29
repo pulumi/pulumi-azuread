@@ -104,7 +104,7 @@ require (
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.36.1 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.12.0 // indirect
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20250808143159-388661c62489 // indirect
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20250925202509-9a1c898e5872 // indirect
 	github.com/hashicorp/terraform-registry-address v0.4.0 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/yamux v0.1.2 // indirect
