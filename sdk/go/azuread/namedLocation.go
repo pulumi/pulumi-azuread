@@ -76,6 +76,8 @@ type NamedLocation struct {
 	//
 	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
 	Ip NamedLocationIpPtrOutput `pulumi:"ip"`
+	// The object ID of the named location.
+	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 }
 
 // NewNamedLocation registers a new resource with the given unique name, arguments, and options.
@@ -119,6 +121,8 @@ type namedLocationState struct {
 	//
 	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
 	Ip *NamedLocationIp `pulumi:"ip"`
+	// The object ID of the named location.
+	ObjectId *string `pulumi:"objectId"`
 }
 
 type NamedLocationState struct {
@@ -130,6 +134,8 @@ type NamedLocationState struct {
 	//
 	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
 	Ip NamedLocationIpPtrInput
+	// The object ID of the named location.
+	ObjectId pulumi.StringPtrInput
 }
 
 func (NamedLocationState) ElementType() reflect.Type {
@@ -261,6 +267,11 @@ func (o NamedLocationOutput) DisplayName() pulumi.StringOutput {
 // > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
 func (o NamedLocationOutput) Ip() NamedLocationIpPtrOutput {
 	return o.ApplyT(func(v *NamedLocation) NamedLocationIpPtrOutput { return v.Ip }).(NamedLocationIpPtrOutput)
+}
+
+// The object ID of the named location.
+func (o NamedLocationOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamedLocation) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
 type NamedLocationArrayOutput struct{ *pulumi.OutputState }
