@@ -16,18 +16,6 @@ env:
     RUN_OIDC_TESTS: ${{ github.event_name == 'pull_request' && 'true' || '' }}
 makeTemplate: bridged
 team: ecosystem
-plugins:
-    - name: time
-      version: "0.0.15"
-    - name: std
-      version: "1.4.0"
-    - name: azure
-      version: "6.3.0"
-    - name: random
-      version: "4.16.0"
-    - name: terraform
-      version: "1.0.15"
-      kind: converter
 license:
     ignore:
         - github.com/hashicorp/terraform-provider-azuread/shim
