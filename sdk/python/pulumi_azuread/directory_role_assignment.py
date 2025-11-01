@@ -221,6 +221,23 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
 
         *Scoped assignment for an application*
 
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_std as std
+
+        example_directory_role = azuread.DirectoryRole("example", display_name="Cloud application administrator")
+        example_application = azuread.Application("example", display_name="My Application")
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
+            role_id=example_directory_role.template_id,
+            principal_object_id=example.object_id,
+            directory_scope_id=std.format(input="/%s",
+                args=[example_application.object_id]).result)
+        ```
+
+        > Note the use of the `template_id` attribute when referencing built-in roles.
+
         ## Import
 
         Directory role assignments can be imported using the ID of the assignment, e.g.
@@ -293,6 +310,23 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
         ```
 
         *Scoped assignment for an application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_std as std
+
+        example_directory_role = azuread.DirectoryRole("example", display_name="Cloud application administrator")
+        example_application = azuread.Application("example", display_name="My Application")
+        example = azuread.get_user(user_principal_name="jdoe@example.com")
+        example_directory_role_assignment = azuread.DirectoryRoleAssignment("example",
+            role_id=example_directory_role.template_id,
+            principal_object_id=example.object_id,
+            directory_scope_id=std.format(input="/%s",
+                args=[example_application.object_id]).result)
+        ```
+
+        > Note the use of the `template_id` attribute when referencing built-in roles.
 
         ## Import
 

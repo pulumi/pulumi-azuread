@@ -63,6 +63,28 @@ import * as utilities from "./utilities";
  *
  * *Scoped assignment for an application*
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * import * as std from "@pulumi/std";
+ *
+ * const exampleDirectoryRole = new azuread.DirectoryRole("example", {displayName: "Cloud application administrator"});
+ * const exampleApplication = new azuread.Application("example", {displayName: "My Application"});
+ * const example = azuread.getUser({
+ *     userPrincipalName: "jdoe@example.com",
+ * });
+ * const exampleDirectoryRoleAssignment = new azuread.DirectoryRoleAssignment("example", {
+ *     roleId: exampleDirectoryRole.templateId,
+ *     principalObjectId: example.then(example => example.objectId),
+ *     directoryScopeId: std.format({
+ *         input: "/%s",
+ *         args: [exampleApplication.objectId],
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ *
+ * > Note the use of the `templateId` attribute when referencing built-in roles.
+ *
  * ## Import
  *
  * Directory role assignments can be imported using the ID of the assignment, e.g.

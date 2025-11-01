@@ -125,6 +125,20 @@ public class NamedLocation extends com.pulumi.resources.CustomResource {
     public Output<Optional<NamedLocationIp>> ip() {
         return Codegen.optional(this.ip);
     }
+    /**
+     * The object ID of the named location.
+     * 
+     */
+    @Export(name="objectId", refs={String.class}, tree="[0]")
+    private Output<String> objectId;
+
+    /**
+     * @return The object ID of the named location.
+     * 
+     */
+    public Output<String> objectId() {
+        return this.objectId;
+    }
 
     /**
      *

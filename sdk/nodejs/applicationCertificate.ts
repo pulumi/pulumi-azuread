@@ -50,60 +50,60 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as azure from "@pulumi/azure";
  * import * as azuread from "@pulumi/azuread";
+ * import * as azurerm from "@pulumi/azurerm";
  *
  * const exampleApplication = new azuread.Application("example", {displayName: "example"});
- * const example = new azure.keyvault.Certificate("example", {
+ * const example = new azurerm.index.KeyVaultCertificate("example", {
  *     name: "generated-cert",
  *     keyVaultId: exampleAzurermKeyVault.id,
- *     certificatePolicy: {
- *         issuerParameters: {
+ *     certificatePolicy: [{
+ *         issuerParameters: [{
  *             name: "Self",
- *         },
- *         keyProperties: {
+ *         }],
+ *         keyProperties: [{
  *             exportable: true,
  *             keySize: 2048,
  *             keyType: "RSA",
  *             reuseKey: true,
- *         },
- *         lifetimeActions: [{
- *             action: {
- *                 actionType: "AutoRenew",
- *             },
- *             trigger: {
- *                 daysBeforeExpiry: 30,
- *             },
  *         }],
- *         secretProperties: {
+ *         lifetimeAction: [{
+ *             action: [{
+ *                 actionType: "AutoRenew",
+ *             }],
+ *             trigger: [{
+ *                 daysBeforeExpiry: 30,
+ *             }],
+ *         }],
+ *         secretProperties: [{
  *             contentType: "application/x-pkcs12",
- *         },
- *         x509CertificateProperties: {
- *             extendedKeyUsages: ["1.3.6.1.5.5.7.3.2"],
- *             keyUsages: [
+ *         }],
+ *         x509CertificateProperties: [{
+ *             extendedKeyUsage: ["1.3.6.1.5.5.7.3.2"],
+ *             keyUsage: [
  *                 "dataEncipherment",
  *                 "digitalSignature",
  *                 "keyCertSign",
  *                 "keyEncipherment",
  *             ],
- *             subjectAlternativeNames: {
+ *             subjectAlternativeNames: [{
  *                 dnsNames: [
  *                     "internal.contoso.com",
  *                     "domain.hello.world",
  *                 ],
- *             },
+ *             }],
  *             subject: `CN=${exampleApplication.name}`,
  *             validityInMonths: 12,
- *         },
- *     },
+ *         }],
+ *     }],
  * });
  * const exampleApplicationCertificate = new azuread.ApplicationCertificate("example", {
  *     applicationId: exampleApplication.id,
  *     type: "AsymmetricX509Cert",
  *     encoding: "hex",
  *     value: example.certificateData,
- *     endDate: example.certificateAttributes.apply(certificateAttributes => certificateAttributes[0].expires),
- *     startDate: example.certificateAttributes.apply(certificateAttributes => certificateAttributes[0].notBefore),
+ *     endDate: example.certificateAttribute[0].expires,
+ *     startDate: example.certificateAttribute[0].notBefore,
  * });
  * ```
  *
