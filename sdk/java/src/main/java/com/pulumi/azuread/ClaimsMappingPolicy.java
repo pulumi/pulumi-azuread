@@ -53,23 +53,23 @@ import javax.annotation.Nullable;
  *         var myPolicy = new ClaimsMappingPolicy("myPolicy", ClaimsMappingPolicyArgs.builder()
  *             .definitions(serializeJson(
  *                 jsonObject(
- *                     jsonProperty("claimsMappingPolicy", jsonObject(
- *                         jsonProperty("claimsSchema", jsonArray(
+ *                     jsonProperty("ClaimsMappingPolicy", jsonObject(
+ *                         jsonProperty("ClaimsSchema", jsonArray(
  *                             jsonObject(
  *                                 jsonProperty("ID", "employeeid"),
- *                                 jsonProperty("jwtClaimType", "name"),
- *                                 jsonProperty("samlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
- *                                 jsonProperty("source", "user")
+ *                                 jsonProperty("JwtClaimType", "name"),
+ *                                 jsonProperty("SamlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"),
+ *                                 jsonProperty("Source", "user")
  *                             ), 
  *                             jsonObject(
  *                                 jsonProperty("ID", "tenantcountry"),
- *                                 jsonProperty("jwtClaimType", "country"),
- *                                 jsonProperty("samlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country"),
- *                                 jsonProperty("source", "company")
+ *                                 jsonProperty("JwtClaimType", "country"),
+ *                                 jsonProperty("SamlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country"),
+ *                                 jsonProperty("Source", "company")
  *                             )
  *                         )),
- *                         jsonProperty("includeBasicClaimSet", "true"),
- *                         jsonProperty("version", 1)
+ *                         jsonProperty("IncludeBasicClaimSet", "true"),
+ *                         jsonProperty("Version", 1)
  *                     ))
  *                 )))
  *             .displayName("My Policy")
@@ -82,10 +82,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Claims Mapping Policy can be imported using the `id`, e.g.
+ * Claims Mapping Policies can be imported using the `id`, e.g.
  * 
  * ```sh
- * $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
+ * $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy /policies/claimsMappingPolicies/00000000-0000-0000-0000-000000000000
  * ```
  * 
  */

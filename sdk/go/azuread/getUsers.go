@@ -66,6 +66,8 @@ type GetUsersArgs struct {
 	// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
 	IgnoreMissing *bool `pulumi:"ignoreMissing"`
 	// The email aliases of the users.
+	//
+	// > **Note:** `mailNicknames` are not a unique identifier for users. If multiple users share the same `mailNickname`, all matching users will be returned.
 	MailNicknames []string `pulumi:"mailNicknames"`
 	// The SMTP email addresses of the users.
 	Mails []string `pulumi:"mails"`
@@ -115,6 +117,8 @@ type GetUsersOutputArgs struct {
 	// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
 	IgnoreMissing pulumi.BoolPtrInput `pulumi:"ignoreMissing"`
 	// The email aliases of the users.
+	//
+	// > **Note:** `mailNicknames` are not a unique identifier for users. If multiple users share the same `mailNickname`, all matching users will be returned.
 	MailNicknames pulumi.StringArrayInput `pulumi:"mailNicknames"`
 	// The SMTP email addresses of the users.
 	Mails pulumi.StringArrayInput `pulumi:"mails"`

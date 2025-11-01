@@ -175,6 +175,8 @@ def get_users(employee_ids: Optional[Sequence[_builtins.str]] = None,
     :param Sequence[_builtins.str] employee_ids: The employee identifiers assigned to the users by the organisation.
     :param _builtins.bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
     :param Sequence[_builtins.str] mail_nicknames: The email aliases of the users.
+           
+           > **Note:** `mail_nicknames` are not a unique identifier for users. If multiple users share the same `mail_nickname`, all matching users will be returned.
     :param Sequence[_builtins.str] mails: The SMTP email addresses of the users.
     :param Sequence[_builtins.str] object_ids: The object IDs of the users.
     :param _builtins.bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
@@ -238,6 +240,8 @@ def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[_buil
     :param Sequence[_builtins.str] employee_ids: The employee identifiers assigned to the users by the organisation.
     :param _builtins.bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
     :param Sequence[_builtins.str] mail_nicknames: The email aliases of the users.
+           
+           > **Note:** `mail_nicknames` are not a unique identifier for users. If multiple users share the same `mail_nickname`, all matching users will be returned.
     :param Sequence[_builtins.str] mails: The SMTP email addresses of the users.
     :param Sequence[_builtins.str] object_ids: The object IDs of the users.
     :param _builtins.bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.

@@ -21,6 +21,7 @@ public final class GetNamedLocationResult {
      */
     private String id;
     private List<GetNamedLocationIp> ips;
+    private String objectId;
 
     private GetNamedLocationResult() {}
     public List<GetNamedLocationCountry> countries() {
@@ -39,6 +40,9 @@ public final class GetNamedLocationResult {
     public List<GetNamedLocationIp> ips() {
         return this.ips;
     }
+    public String objectId() {
+        return this.objectId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -53,6 +57,7 @@ public final class GetNamedLocationResult {
         private String displayName;
         private String id;
         private List<GetNamedLocationIp> ips;
+        private String objectId;
         public Builder() {}
         public Builder(GetNamedLocationResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -60,6 +65,7 @@ public final class GetNamedLocationResult {
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
     	      this.ips = defaults.ips;
+    	      this.objectId = defaults.objectId;
         }
 
         @CustomType.Setter
@@ -100,12 +106,21 @@ public final class GetNamedLocationResult {
         public Builder ips(GetNamedLocationIp... ips) {
             return ips(List.of(ips));
         }
+        @CustomType.Setter
+        public Builder objectId(String objectId) {
+            if (objectId == null) {
+              throw new MissingRequiredPropertyException("GetNamedLocationResult", "objectId");
+            }
+            this.objectId = objectId;
+            return this;
+        }
         public GetNamedLocationResult build() {
             final var _resultValue = new GetNamedLocationResult();
             _resultValue.countries = countries;
             _resultValue.displayName = displayName;
             _resultValue.id = id;
             _resultValue.ips = ips;
+            _resultValue.objectId = objectId;
             return _resultValue;
         }
     }

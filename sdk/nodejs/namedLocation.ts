@@ -85,6 +85,10 @@ export class NamedLocation extends pulumi.CustomResource {
      * > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
      */
     declare public readonly ip: pulumi.Output<outputs.NamedLocationIp | undefined>;
+    /**
+     * The object ID of the named location.
+     */
+    declare public /*out*/ readonly objectId: pulumi.Output<string>;
 
     /**
      * Create a NamedLocation resource with the given unique name, arguments, and options.
@@ -102,6 +106,7 @@ export class NamedLocation extends pulumi.CustomResource {
             resourceInputs["country"] = state?.country;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["ip"] = state?.ip;
+            resourceInputs["objectId"] = state?.objectId;
         } else {
             const args = argsOrState as NamedLocationArgs | undefined;
             if (args?.displayName === undefined && !opts.urn) {
@@ -110,6 +115,7 @@ export class NamedLocation extends pulumi.CustomResource {
             resourceInputs["country"] = args?.country;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["ip"] = args?.ip;
+            resourceInputs["objectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NamedLocation.__pulumiType, name, resourceInputs, opts);
@@ -134,6 +140,10 @@ export interface NamedLocationState {
      * > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
      */
     ip?: pulumi.Input<inputs.NamedLocationIp>;
+    /**
+     * The object ID of the named location.
+     */
+    objectId?: pulumi.Input<string>;
 }
 
 /**
