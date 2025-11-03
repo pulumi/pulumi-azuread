@@ -130,6 +130,64 @@ import javax.annotation.Nullable;
  * 
  * *Scoped assignment for an application*
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.DirectoryRole;
+ * import com.pulumi.azuread.DirectoryRoleArgs;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.inputs.GetUserArgs;
+ * import com.pulumi.azuread.DirectoryRoleAssignment;
+ * import com.pulumi.azuread.DirectoryRoleAssignmentArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FormatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var exampleDirectoryRole = new DirectoryRole("exampleDirectoryRole", DirectoryRoleArgs.builder()
+ *             .displayName("Cloud application administrator")
+ *             .build());
+ * 
+ *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
+ *             .displayName("My Application")
+ *             .build());
+ * 
+ *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
+ *             .userPrincipalName("jdoe}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment("exampleDirectoryRoleAssignment", DirectoryRoleAssignmentArgs.builder()
+ *             .roleId(exampleDirectoryRole.templateId())
+ *             .principalObjectId(example.objectId())
+ *             .directoryScopeId(StdFunctions.format(FormatArgs.builder()
+ *                 .input("/%s")
+ *                 .args(exampleApplication.objectId())
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * &gt; Note the use of the `templateId` attribute when referencing built-in roles.
+ * 
  * ## Import
  * 
  * Directory role assignments can be imported using the ID of the assignment, e.g.

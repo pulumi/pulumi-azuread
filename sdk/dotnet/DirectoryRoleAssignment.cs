@@ -97,6 +97,49 @@ namespace Pulumi.AzureAD
     /// 
     /// *Scoped assignment for an application*
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("example", new()
+    ///     {
+    ///         DisplayName = "Cloud application administrator",
+    ///     });
+    /// 
+    ///     var exampleApplication = new AzureAD.Application("example", new()
+    ///     {
+    ///         DisplayName = "My Application",
+    ///     });
+    /// 
+    ///     var example = AzureAD.GetUser.Invoke(new()
+    ///     {
+    ///         UserPrincipalName = "jdoe@example.com",
+    ///     });
+    /// 
+    ///     var exampleDirectoryRoleAssignment = new AzureAD.DirectoryRoleAssignment("example", new()
+    ///     {
+    ///         RoleId = exampleDirectoryRole.TemplateId,
+    ///         PrincipalObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
+    ///         DirectoryScopeId = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "/%s",
+    ///             Args = new[]
+    ///             {
+    ///                 exampleApplication.ObjectId,
+    ///             },
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; Note the use of the `TemplateId` attribute when referencing built-in roles.
+    /// 
     /// ## Import
     /// 
     /// Directory role assignments can be imported using the ID of the assignment, e.g.
