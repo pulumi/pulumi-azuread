@@ -199,10 +199,10 @@ class SynchronizationJob(pulumi.CustomResource):
         Synchronization jobs can be imported using the `id`, e.g.
 
         ```sh
-        $ pulumi import azuread:index/synchronizationJob:SynchronizationJob example 00000000-0000-0000-0000-000000000000/job/dataBricks.f5532fc709734b1a90e8a1fa9fd03a82.8442fd39-2183-419c-8732-74b6ce866bd5
+        $ pulumi import azuread:index/synchronizationJob:SynchronizationJob example /servicePrincipals/00000000-0000-0000-0000-000000000000/synchronization/jobs/dataBricks.f5532fc709734b1a90e8a1fa9fd03a82.8442fd39-2183-419c-8732-74b6ce866bd5
         ```
 
-        -> This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `{servicePrincipalId}/job/{jobId}`.
+        -> This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `/servicePrincipals/{servicePrincipalId}/synchronization/jobs/{synchronizationJobId}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -261,10 +261,10 @@ class SynchronizationJob(pulumi.CustomResource):
         Synchronization jobs can be imported using the `id`, e.g.
 
         ```sh
-        $ pulumi import azuread:index/synchronizationJob:SynchronizationJob example 00000000-0000-0000-0000-000000000000/job/dataBricks.f5532fc709734b1a90e8a1fa9fd03a82.8442fd39-2183-419c-8732-74b6ce866bd5
+        $ pulumi import azuread:index/synchronizationJob:SynchronizationJob example /servicePrincipals/00000000-0000-0000-0000-000000000000/synchronization/jobs/dataBricks.f5532fc709734b1a90e8a1fa9fd03a82.8442fd39-2183-419c-8732-74b6ce866bd5
         ```
 
-        -> This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `{servicePrincipalId}/job/{jobId}`.
+        -> This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `/servicePrincipals/{servicePrincipalId}/synchronization/jobs/{synchronizationJobId}`.
 
         :param str resource_name: The name of the resource.
         :param SynchronizationJobArgs args: The arguments to use to populate this resource's properties.
