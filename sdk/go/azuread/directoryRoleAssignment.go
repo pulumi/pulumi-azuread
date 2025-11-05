@@ -116,6 +116,62 @@ import (
 //
 // *Scoped assignment for an application*
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
+//				DisplayName: pulumi.String("Cloud application administrator"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("My Application"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+//				UserPrincipalName: pulumi.StringRef("jdoe@example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFormat, err := std.Format(ctx, &std.FormatArgs{
+//				Input: "/%s",
+//				Args: pulumi.StringArray{
+//					exampleApplication.ObjectId,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewDirectoryRoleAssignment(ctx, "example", &azuread.DirectoryRoleAssignmentArgs{
+//				RoleId:            exampleDirectoryRole.TemplateId,
+//				PrincipalObjectId: pulumi.String(example.ObjectId),
+//				DirectoryScopeId:  pulumi.String(invokeFormat.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > Note the use of the `templateId` attribute when referencing built-in roles.
+//
 // ## Import
 //
 // Directory role assignments can be imported using the ID of the assignment, e.g.

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as random from "@pulumi/random";
  *
  * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const exampleAdministrator = new random.RandomUuid("example_administrator", {});
+ * const exampleAdministrator = new random.index.Uuid("example_administrator", {});
  * const exampleAdminister = new azuread.ApplicationAppRole("example_administer", {
  *     applicationId: example.id,
  *     roleId: exampleAdministrator.id,
