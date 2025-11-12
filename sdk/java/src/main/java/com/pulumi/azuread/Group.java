@@ -132,6 +132,52 @@ import javax.annotation.Nullable;
  * 
  * *Group with members*
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.User;
+ * import com.pulumi.azuread.UserArgs;
+ * import com.pulumi.azuread.Group;
+ * import com.pulumi.azuread.GroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var example = new User("example", UserArgs.builder()
+ *             .displayName("J Doe")
+ *             .owners(List.of(current.objectId()))
+ *             .password("notSecure123")
+ *             .userPrincipalName("jdoe}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *         var exampleGroup = new Group("exampleGroup", GroupArgs.builder()
+ *             .displayName("MyGroup")
+ *             .owners(current.objectId())
+ *             .securityEnabled(true)
+ *             .members(example.objectId())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * *Group with dynamic membership*
  * 
  * <pre>
