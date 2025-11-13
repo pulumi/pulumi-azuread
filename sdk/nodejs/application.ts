@@ -133,6 +133,48 @@ import * as utilities from "./utilities";
  *
  * *Create application and generate a password*
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * import * as std from "@pulumi/std";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const current = azuread.getClientConfig({});
+ * const example = new time.Rotating("example", {rotationDays: 180});
+ * const exampleApplication = new azuread.Application("example", {
+ *     displayName: "example",
+ *     owners: [current.then(current => current.objectId)],
+ *     password: {
+ *         displayName: "MySecret-1",
+ *         startDate: example.id,
+ *         endDate: std.timeaddOutput({
+ *             duration: example.id,
+ *             timestamp: "4320h",
+ *         }).apply(invoke => invoke.result),
+ *     },
+ * });
+ * export const examplePassword = exampleApplication.password.apply(password => password?.[0]?.value);
+ * ```
+ *
+ * *Create application from a gallery template*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getApplicationTemplate({
+ *     displayName: "Marketo",
+ * });
+ * const exampleApplication = new azuread.Application("example", {
+ *     displayName: "example",
+ *     templateId: example.then(example => example.templateId),
+ * });
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
+ *     clientId: exampleApplication.clientId,
+ *     useExisting: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Applications can be imported using the object ID of the application, in the following format.

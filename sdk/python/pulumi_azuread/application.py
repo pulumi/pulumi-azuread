@@ -1248,6 +1248,41 @@ class Application(pulumi.CustomResource):
 
         *Create application and generate a password*
 
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_std as std
+        import pulumiverse_time as time
+
+        current = azuread.get_client_config()
+        example = time.Rotating("example", rotation_days=180)
+        example_application = azuread.Application("example",
+            display_name="example",
+            owners=[current.object_id],
+            password={
+                "display_name": "MySecret-1",
+                "start_date": example.id,
+                "end_date": std.timeadd_output(duration=example.id,
+                    timestamp="4320h").apply(lambda invoke: invoke.result),
+            })
+        pulumi.export("examplePassword", example_application.password[0]["value"])
+        ```
+
+        *Create application from a gallery template*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("example",
+            display_name="example",
+            template_id=example.template_id)
+        example_service_principal = azuread.ServicePrincipal("example",
+            client_id=example_application.client_id,
+            use_existing=True)
+        ```
+
         ## Import
 
         Applications can be imported using the object ID of the application, in the following format.
@@ -1428,6 +1463,41 @@ class Application(pulumi.CustomResource):
         ```
 
         *Create application and generate a password*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumi_std as std
+        import pulumiverse_time as time
+
+        current = azuread.get_client_config()
+        example = time.Rotating("example", rotation_days=180)
+        example_application = azuread.Application("example",
+            display_name="example",
+            owners=[current.object_id],
+            password={
+                "display_name": "MySecret-1",
+                "start_date": example.id,
+                "end_date": std.timeadd_output(duration=example.id,
+                    timestamp="4320h").apply(lambda invoke: invoke.result),
+            })
+        pulumi.export("examplePassword", example_application.password[0]["value"])
+        ```
+
+        *Create application from a gallery template*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("example",
+            display_name="example",
+            template_id=example.template_id)
+        example_service_principal = azuread.ServicePrincipal("example",
+            client_id=example_application.client_id,
+            use_existing=True)
+        ```
 
         ## Import
 

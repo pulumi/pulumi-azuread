@@ -99,6 +99,44 @@ namespace Pulumi.AzureAD
     /// 
     /// *Group with members*
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = AzureAD.GetClientConfig.Invoke();
+    /// 
+    ///     var example = new AzureAD.User("example", new()
+    ///     {
+    ///         DisplayName = "J Doe",
+    ///         Owners = new[]
+    ///         {
+    ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///         },
+    ///         Password = "notSecure123",
+    ///         UserPrincipalName = "jdoe@example.com",
+    ///     });
+    /// 
+    ///     var exampleGroup = new AzureAD.Group("example", new()
+    ///     {
+    ///         DisplayName = "MyGroup",
+    ///         Owners = new[]
+    ///         {
+    ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///         },
+    ///         SecurityEnabled = true,
+    ///         Members = new[]
+    ///         {
+    ///             example.ObjectId,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// *Group with dynamic membership*
     /// 
     /// ```csharp

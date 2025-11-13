@@ -178,6 +178,106 @@ import javax.annotation.Nullable;
  * 
  * *Create application and generate a password*
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumiverse.time.Rotating;
+ * import com.pulumiverse.time.RotatingArgs;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.inputs.ApplicationPasswordArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.TimeaddArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var example = new Rotating("example", RotatingArgs.builder()
+ *             .rotationDays(180)
+ *             .build());
+ * 
+ *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
+ *             .displayName("example")
+ *             .owners(current.objectId())
+ *             .password(ApplicationPasswordArgs.builder()
+ *                 .displayName("MySecret-1")
+ *                 .startDate(example.id())
+ *                 .endDate(StdFunctions.timeadd(TimeaddArgs.builder()
+ *                     .duration(example.id())
+ *                     .timestamp("4320h")
+ *                     .build()).applyValue(_invoke -> _invoke.result()))
+ *                 .build())
+ *             .build());
+ * 
+ *         ctx.export("examplePassword", exampleApplication.password().applyValue(_password -> _password[0].value()));
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * *Create application from a gallery template*
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+ *             .displayName("Marketo")
+ *             .build());
+ * 
+ *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
+ *             .displayName("example")
+ *             .templateId(example.templateId())
+ *             .build());
+ * 
+ *         var exampleServicePrincipal = new ServicePrincipal("exampleServicePrincipal", ServicePrincipalArgs.builder()
+ *             .clientId(exampleApplication.clientId())
+ *             .useExisting(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Applications can be imported using the object ID of the application, in the following format.
