@@ -178,6 +178,97 @@ import (
 //
 // *Create application and generate a password*
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// current, err := azuread.GetClientConfig(ctx, map[string]interface{}{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// example, err := time.NewRotating(ctx, "example", &time.RotatingArgs{
+// RotationDays: pulumi.Int(180),
+// })
+// if err != nil {
+// return err
+// }
+// exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+// DisplayName: pulumi.String("example"),
+// Owners: pulumi.StringArray{
+// pulumi.String(current.ObjectId),
+// },
+// Password: &azuread.ApplicationPasswordTypeArgs{
+// DisplayName: pulumi.String("MySecret-1"),
+// StartDate: example.ID(),
+// EndDate: std.TimeaddOutput(ctx, std.TimeaddOutputArgs{
+// Duration: example.ID(),
+// Timestamp: pulumi.String("4320h"),
+// }, nil).ApplyT(func(invoke std.TimeaddResult) (*string, error) {
+// return invoke.Result, nil
+// }).(pulumi.StringPtrOutput),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// ctx.Export("examplePassword", exampleApplication.Password.ApplyT(func(password azuread.ApplicationPasswordType) (*interface{}, error) {
+// return &password[0].Value, nil
+// }).(pulumi.Interface{}PtrOutput))
+// return nil
+// })
+// }
+// ```
+//
+// *Create application from a gallery template*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
+//				DisplayName: pulumi.StringRef("Marketo"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				TemplateId:  pulumi.String(example.TemplateId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewServicePrincipal(ctx, "example", &azuread.ServicePrincipalArgs{
+//				ClientId:    exampleApplication.ClientId,
+//				UseExisting: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Applications can be imported using the object ID of the application, in the following format.

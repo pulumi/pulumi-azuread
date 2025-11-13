@@ -197,6 +197,79 @@ namespace Pulumi.AzureAD
     /// 
     /// *Create application and generate a password*
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// using Std = Pulumi.Std;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = AzureAD.GetClientConfig.Invoke();
+    /// 
+    ///     var example = new Time.Rotating("example", new()
+    ///     {
+    ///         RotationDays = 180,
+    ///     });
+    /// 
+    ///     var exampleApplication = new AzureAD.Application("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         Owners = new[]
+    ///         {
+    ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///         },
+    ///         Password = new AzureAD.Inputs.ApplicationPasswordArgs
+    ///         {
+    ///             DisplayName = "MySecret-1",
+    ///             StartDate = example.Id,
+    ///             EndDate = Std.Timeadd.Invoke(new()
+    ///             {
+    ///                 Duration = example.Id,
+    ///                 Timestamp = "4320h",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["examplePassword"] = exampleApplication.Password.Apply(password =&gt; password[0]?.Value),
+    ///     };
+    /// });
+    /// ```
+    /// 
+    /// *Create application from a gallery template*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
+    ///     {
+    ///         DisplayName = "Marketo",
+    ///     });
+    /// 
+    ///     var exampleApplication = new AzureAD.Application("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
+    ///     });
+    /// 
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     {
+    ///         ClientId = exampleApplication.ClientId,
+    ///         UseExisting = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Applications can be imported using the object ID of the application, in the following format.
