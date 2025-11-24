@@ -1,0 +1,2 @@
+[tools]
+"go:github.com/pulumi/pulumictl/cmd/pulumictl" = 'latest'
