@@ -1,2 +1,10 @@
 [tools]
-"go:github.com/pulumi/pulumictl/cmd/pulumictl" = 'latest'
+
+[tools."http:pulumi-java"]
+version = "0.16.1"
+
+[tools."http:pulumi-java".platforms]
+linux-arm64 = { url = 'https://github.com/pulumi/pulumi-java/releases/download/v0.16.1/pulumi-language-java-v0.16.1-linux-arm64.tar.gz'}
+linux-x64 = { url = 'https://github.com/pulumi/pulumi-java/releases/download/v0.16.1/pulumi-language-java-v0.16.1-linux-amd64.tar.gz' }
+macos-arm64 = { url = 'https://github.com/pulumi/pulumi-java/releases/download/v0.16.1/pulumi-language-java-v0.16.1-darwin-arm64.tar.gz' }
+macos-x64 = { url = 'https://github.com/pulumi/pulumi-java/releases/download/v0.16.1/pulumi-language-java-v0.16.1-darwin-amd64.tar.gz' }
