@@ -80,7 +80,7 @@ import (
 //				return err
 //			}
 //			exampleRotating, err := time.NewRotating(ctx, "example", &time.RotatingArgs{
-//				RotationDays: pulumi.Int(7),
+//				RotationDays: 7,
 //			})
 //			if err != nil {
 //				return err
@@ -88,7 +88,7 @@ import (
 //			_, err = azuread.NewServicePrincipalPassword(ctx, "example", &azuread.ServicePrincipalPasswordArgs{
 //				ServicePrincipalId: exampleServicePrincipal.ObjectId,
 //				RotateWhenChanged: pulumi.StringMap{
-//					"rotation": exampleRotating.ID(),
+//					"rotation": exampleRotating.Id,
 //				},
 //			})
 //			if err != nil {

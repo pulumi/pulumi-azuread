@@ -47,7 +47,7 @@ namespace Pulumi.AzureAD
     /// using System.Linq;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
-    /// using Time = Pulumiverse.Time;
+    /// using Time = Pulumi.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -61,7 +61,7 @@ namespace Pulumi.AzureAD
     ///         ClientId = example.ClientId,
     ///     });
     /// 
-    ///     var exampleRotating = new Time.Rotating("example", new()
+    ///     var exampleRotating = new Time.Index.Rotating("example", new()
     ///     {
     ///         RotationDays = 7,
     ///     });
