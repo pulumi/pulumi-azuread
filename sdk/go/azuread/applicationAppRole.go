@@ -33,13 +33,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleAdministrator, err := random.NewRandomUuid(ctx, "example_administrator", nil)
+//			exampleAdministrator, err := random.NewUuid(ctx, "example_administrator", nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
 //				ApplicationId: example.ID(),
-//				RoleId:        exampleAdministrator.ID(),
+//				RoleId:        exampleAdministrator.Id,
 //				AllowedMemberTypes: pulumi.StringArray{
 //					pulumi.String("User"),
 //				},

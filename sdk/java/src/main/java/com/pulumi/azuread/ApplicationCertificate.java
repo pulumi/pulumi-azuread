@@ -125,14 +125,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.azuread.Application;
  * import com.pulumi.azuread.ApplicationArgs;
- * import com.pulumi.azure.keyvault.Certificate;
- * import com.pulumi.azure.keyvault.CertificateArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyIssuerParametersArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyKeyPropertiesArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicySecretPropertiesArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyX509CertificatePropertiesArgs;
- * import com.pulumi.azure.keyvault.inputs.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs;
+ * import com.pulumi.azurerm.keyVaultCertificate;
+ * import com.pulumi.azurerm.KeyVaultCertificateArgs;
  * import com.pulumi.azuread.ApplicationCertificate;
  * import com.pulumi.azuread.ApplicationCertificateArgs;
  * import java.util.List;
@@ -152,46 +146,10 @@ import javax.annotation.Nullable;
  *             .displayName("example")
  *             .build());
  * 
- *         var example = new Certificate("example", CertificateArgs.builder()
+ *         var example = new KeyVaultCertificate("example", KeyVaultCertificateArgs.builder()
  *             .name("generated-cert")
  *             .keyVaultId(exampleAzurermKeyVault.id())
- *             .certificatePolicy(CertificateCertificatePolicyArgs.builder()
- *                 .issuerParameters(CertificateCertificatePolicyIssuerParametersArgs.builder()
- *                     .name("Self")
- *                     .build())
- *                 .keyProperties(CertificateCertificatePolicyKeyPropertiesArgs.builder()
- *                     .exportable(true)
- *                     .keySize(2048)
- *                     .keyType("RSA")
- *                     .reuseKey(true)
- *                     .build())
- *                 .lifetimeActions(CertificateCertificatePolicyLifetimeActionArgs.builder()
- *                     .action(CertificateCertificatePolicyLifetimeActionActionArgs.builder()
- *                         .actionType("AutoRenew")
- *                         .build())
- *                     .trigger(CertificateCertificatePolicyLifetimeActionTriggerArgs.builder()
- *                         .daysBeforeExpiry(30)
- *                         .build())
- *                     .build())
- *                 .secretProperties(CertificateCertificatePolicySecretPropertiesArgs.builder()
- *                     .contentType("application/x-pkcs12")
- *                     .build())
- *                 .x509CertificateProperties(CertificateCertificatePolicyX509CertificatePropertiesArgs.builder()
- *                     .extendedKeyUsages("1.3.6.1.5.5.7.3.2")
- *                     .keyUsages(                    
- *                         "dataEncipherment",
- *                         "digitalSignature",
- *                         "keyCertSign",
- *                         "keyEncipherment")
- *                     .subjectAlternativeNames(CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs.builder()
- *                         .dnsNames(                        
- *                             "internal.contoso.com",
- *                             "domain.hello.world")
- *                         .build())
- *                     .subject(String.format("CN=%s", exampleApplication.name()))
- *                     .validityInMonths(12)
- *                     .build())
- *                 .build())
+ *             .certificatePolicy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *         var exampleApplicationCertificate = new ApplicationCertificate("exampleApplicationCertificate", ApplicationCertificateArgs.builder()
@@ -199,8 +157,8 @@ import javax.annotation.Nullable;
  *             .type("AsymmetricX509Cert")
  *             .encoding("hex")
  *             .value(example.certificateData())
- *             .endDate(example.certificateAttributes().applyValue(certificateAttributes -> certificateAttributes[0].expires()))
- *             .startDate(example.certificateAttributes().applyValue(certificateAttributes -> certificateAttributes[0].notBefore()))
+ *             .endDate(example.certificateAttribute()[0].expires())
+ *             .startDate(example.certificateAttribute()[0].notBefore())
  *             .build());
  * 
  *     }

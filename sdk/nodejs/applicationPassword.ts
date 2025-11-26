@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
- * import * as time from "@pulumiverse/time";
+ * import * as time from "@pulumi/time";
  *
  * const example = new azuread.ApplicationRegistration("example", {displayName: "example"});
- * const exampleRotating = new time.Rotating("example", {rotationDays: 7});
+ * const exampleRotating = new time.index.Rotating("example", {rotationDays: 7});
  * const exampleApplicationPassword = new azuread.ApplicationPassword("example", {
  *     applicationId: example.id,
  *     rotateWhenChanged: {

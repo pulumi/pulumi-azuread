@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.ApplicationArgs;
  * import com.pulumi.azuread.ServicePrincipal;
  * import com.pulumi.azuread.ServicePrincipalArgs;
- * import com.pulumi.time.Rotating;
+ * import com.pulumi.time.rotating;
  * import com.pulumi.time.RotatingArgs;
  * import com.pulumi.azuread.ServicePrincipalPassword;
  * import com.pulumi.azuread.ServicePrincipalPasswordArgs;
