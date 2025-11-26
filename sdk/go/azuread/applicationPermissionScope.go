@@ -33,13 +33,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleAdminister, err := random.NewRandomUuid(ctx, "example_administer", nil)
+//			exampleAdminister, err := random.NewUuid(ctx, "example_administer", nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = azuread.NewApplicationPermissionScope(ctx, "example", &azuread.ApplicationPermissionScopeArgs{
 //				ApplicationId:           pulumi.Any(test.Id),
-//				ScopeId:                 exampleAdminister.ID(),
+//				ScopeId:                 exampleAdminister.Id,
 //				Value:                   pulumi.String("administer"),
 //				AdminConsentDescription: pulumi.String("Administer the application"),
 //				AdminConsentDisplayName: pulumi.String("Administer"),

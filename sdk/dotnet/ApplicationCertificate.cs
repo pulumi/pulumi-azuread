@@ -82,8 +82,8 @@ namespace Pulumi.AzureAD
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
     /// using AzureAD = Pulumi.AzureAD;
+    /// using Azurerm = Pulumi.Azurerm;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -92,64 +92,88 @@ namespace Pulumi.AzureAD
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var example = new Azure.KeyVault.Certificate("example", new()
+    ///     var example = new Azurerm.Index.KeyVaultCertificate("example", new()
     ///     {
     ///         Name = "generated-cert",
     ///         KeyVaultId = exampleAzurermKeyVault.Id,
-    ///         CertificatePolicy = new Azure.KeyVault.Inputs.CertificateCertificatePolicyArgs
+    ///         CertificatePolicy = new[]
     ///         {
-    ///             IssuerParameters = new Azure.KeyVault.Inputs.CertificateCertificatePolicyIssuerParametersArgs
+    ///             
     ///             {
-    ///                 Name = "Self",
-    ///             },
-    ///             KeyProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicyKeyPropertiesArgs
-    ///             {
-    ///                 Exportable = true,
-    ///                 KeySize = 2048,
-    ///                 KeyType = "RSA",
-    ///                 ReuseKey = true,
-    ///             },
-    ///             LifetimeActions = new[]
-    ///             {
-    ///                 new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionArgs
+    ///                 { "issuerParameters", new[]
     ///                 {
-    ///                     Action = new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionActionArgs
+    ///                     
     ///                     {
-    ///                         ActionType = "AutoRenew",
+    ///                         { "name", "Self" },
     ///                     },
-    ///                     Trigger = new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionTriggerArgs
+    ///                 } },
+    ///                 { "keyProperties", new[]
+    ///                 {
+    ///                     
     ///                     {
-    ///                         DaysBeforeExpiry = 30,
+    ///                         { "exportable", true },
+    ///                         { "keySize", 2048 },
+    ///                         { "keyType", "RSA" },
+    ///                         { "reuseKey", true },
     ///                     },
-    ///                 },
-    ///             },
-    ///             SecretProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicySecretPropertiesArgs
-    ///             {
-    ///                 ContentType = "application/x-pkcs12",
-    ///             },
-    ///             X509CertificateProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicyX509CertificatePropertiesArgs
-    ///             {
-    ///                 ExtendedKeyUsages = new[]
+    ///                 } },
+    ///                 { "lifetimeAction", new[]
     ///                 {
-    ///                     "1.3.6.1.5.5.7.3.2",
-    ///                 },
-    ///                 KeyUsages = new[]
-    ///                 {
-    ///                     "dataEncipherment",
-    ///                     "digitalSignature",
-    ///                     "keyCertSign",
-    ///                     "keyEncipherment",
-    ///                 },
-    ///                 SubjectAlternativeNames = new Azure.KeyVault.Inputs.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs
-    ///                 {
-    ///                     DnsNames = new[]
+    ///                     
     ///                     {
-    ///                         "internal.contoso.com",
-    ///                         "domain.hello.world",
+    ///                         { "action", new[]
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "actionType", "AutoRenew" },
+    ///                             },
+    ///                         } },
+    ///                         { "trigger", new[]
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "daysBeforeExpiry", 30 },
+    ///                             },
+    ///                         } },
     ///                     },
-    ///                 },
-    ///                 Subject = $"CN={exampleApplication.Name}",
-    ///                 ValidityInMonths = 12,
+    ///                 } },
+    ///                 { "secretProperties", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "contentType", "application/x-pkcs12" },
+    ///                     },
+    ///                 } },
+    ///                 { "x509CertificateProperties", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "extendedKeyUsage", new[]
+    ///                         {
+    ///                             "1.3.6.1.5.5.7.3.2",
+    ///                         } },
+    ///                         { "keyUsage", new[]
+    ///                         {
+    ///                             "dataEncipherment",
+    ///                             "digitalSignature",
+    ///                             "keyCertSign",
+    ///                             "keyEncipherment",
+    ///                         } },
+    ///                         { "subjectAlternativeNames", new[]
+    ///                         {
+    ///                             
+    ///                             {
+    ///                                 { "dnsNames", new[]
+    ///                                 {
+    ///                                     "internal.contoso.com",
+    ///                                     "domain.hello.world",
+    ///                                 } },
+    ///                             },
+    ///                         } },
+    ///                         { "subject", $"CN={exampleApplication.Name}" },
+    ///                         { "validityInMonths", 12 },
+    ///                     },
+    ///                 } },
     ///             },
     ///         },
     ///     });
@@ -160,8 +184,8 @@ namespace Pulumi.AzureAD
     ///         Type = "AsymmetricX509Cert",
     ///         Encoding = "hex",
     ///         Value = example.CertificateData,
-    ///         EndDate = example.CertificateAttributes.Apply(certificateAttributes =&gt; certificateAttributes[0].Expires),
-    ///         StartDate = example.CertificateAttributes.Apply(certificateAttributes =&gt; certificateAttributes[0].NotBefore),
+    ///         EndDate = example.CertificateAttribute[0].Expires,
+    ///         StartDate = example.CertificateAttribute[0].NotBefore,
     ///     });
     /// 
     /// });
