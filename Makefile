@@ -147,6 +147,10 @@ build_java: .make/build_java
 	@touch $@
 .make/build_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
 .make/build_java: .make/generate_java
+	cd sdk/java/ && \
+		gradle --console=plain build && \
+		gradle --console=plain javadoc
+	@touch $@
 .PHONY: generate_java build_java
 
 generate_nodejs: .make/generate_nodejs
