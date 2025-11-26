@@ -13,6 +13,7 @@ WORKING_DIR := $(shell pwd)
 PULUMI_PROVIDER_BUILD_PARALLELISM ?=
 PULUMI_CONVERT := 1
 PULUMI_MISSING_DOCS_ERROR := false
+PULUMI_JAVA_GEN := pulumi-java-gen
 
 # Override during CI using `make [TARGET] PROVIDER_VERSION=""` or by setting a PROVIDER_VERSION environment variable
 # Local & branch builds will just used this fixed default version unless specified
@@ -140,17 +141,12 @@ build_go: .make/build_go
 generate_java: .make/generate_java
 build_java: .make/build_java
 .make/generate_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
-.make/generate_java: .make/mise_install bin/$(CODEGEN)
-.make/generate_java: | mise_env
-	$(GEN_ENVS) $(WORKING_DIR)/bin/$(CODEGEN) java --out sdk/java/
+.make/generate_java: .make/schema
+	$(PULUMI_JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java --build gradle-nexus
 	printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > sdk/java/go.mod
 	@touch $@
 .make/build_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
 .make/build_java: .make/generate_java
-	cd sdk/java/ && \
-		gradle --console=plain build && \
-		gradle --console=plain javadoc
-	@touch $@
 .PHONY: generate_java build_java
 
 generate_nodejs: .make/generate_nodejs
