@@ -22,6 +22,7 @@ from .application_app_role import *
 from .application_certificate import *
 from .application_fallback_public_client import *
 from .application_federated_identity_credential import *
+from .application_flexible_federated_identity_credential import *
 from .application_from_template import *
 from .application_identifier_uri import *
 from .application_known_clients import *
@@ -219,6 +220,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential": "ApplicationFederatedIdentityCredential"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/applicationFlexibleFederatedIdentityCredential",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential": "ApplicationFlexibleFederatedIdentityCredential"
   }
  },
  {

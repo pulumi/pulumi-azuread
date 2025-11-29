@@ -25,6 +25,11 @@ public final class ConditionalAccessPolicyConditions {
      */
     private ConditionalAccessPolicyConditionsApplications applications;
     /**
+     * @return A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+     * 
+     */
+    private @Nullable List<String> authenticationFlowTransferMethods;
+    /**
      * @return A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
      * 
      */
@@ -82,6 +87,13 @@ public final class ConditionalAccessPolicyConditions {
      */
     public ConditionalAccessPolicyConditionsApplications applications() {
         return this.applications;
+    }
+    /**
+     * @return A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+     * 
+     */
+    public List<String> authenticationFlowTransferMethods() {
+        return this.authenticationFlowTransferMethods == null ? List.of() : this.authenticationFlowTransferMethods;
     }
     /**
      * @return A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
@@ -164,6 +176,7 @@ public final class ConditionalAccessPolicyConditions {
     @CustomType.Builder
     public static final class Builder {
         private ConditionalAccessPolicyConditionsApplications applications;
+        private @Nullable List<String> authenticationFlowTransferMethods;
         private List<String> clientAppTypes;
         private @Nullable ConditionalAccessPolicyConditionsClientApplications clientApplications;
         private @Nullable ConditionalAccessPolicyConditionsDevices devices;
@@ -178,6 +191,7 @@ public final class ConditionalAccessPolicyConditions {
         public Builder(ConditionalAccessPolicyConditions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applications = defaults.applications;
+    	      this.authenticationFlowTransferMethods = defaults.authenticationFlowTransferMethods;
     	      this.clientAppTypes = defaults.clientAppTypes;
     	      this.clientApplications = defaults.clientApplications;
     	      this.devices = defaults.devices;
@@ -197,6 +211,15 @@ public final class ConditionalAccessPolicyConditions {
             }
             this.applications = applications;
             return this;
+        }
+        @CustomType.Setter
+        public Builder authenticationFlowTransferMethods(@Nullable List<String> authenticationFlowTransferMethods) {
+
+            this.authenticationFlowTransferMethods = authenticationFlowTransferMethods;
+            return this;
+        }
+        public Builder authenticationFlowTransferMethods(String... authenticationFlowTransferMethods) {
+            return authenticationFlowTransferMethods(List.of(authenticationFlowTransferMethods));
         }
         @CustomType.Setter
         public Builder clientAppTypes(List<String> clientAppTypes) {
@@ -277,6 +300,7 @@ public final class ConditionalAccessPolicyConditions {
         public ConditionalAccessPolicyConditions build() {
             final var _resultValue = new ConditionalAccessPolicyConditions();
             _resultValue.applications = applications;
+            _resultValue.authenticationFlowTransferMethods = authenticationFlowTransferMethods;
             _resultValue.clientAppTypes = clientAppTypes;
             _resultValue.clientApplications = clientApplications;
             _resultValue.devices = devices;
