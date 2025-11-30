@@ -39,6 +39,21 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
     }
 
     /**
+     * A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+     * 
+     */
+    @Import(name="authenticationFlowTransferMethods")
+    private @Nullable Output<List<String>> authenticationFlowTransferMethods;
+
+    /**
+     * @return A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+     * 
+     */
+    public Optional<Output<List<String>>> authenticationFlowTransferMethods() {
+        return Optional.ofNullable(this.authenticationFlowTransferMethods);
+    }
+
+    /**
      * A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
      * 
      */
@@ -192,6 +207,7 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
 
     private ConditionalAccessPolicyConditionsArgs(ConditionalAccessPolicyConditionsArgs $) {
         this.applications = $.applications;
+        this.authenticationFlowTransferMethods = $.authenticationFlowTransferMethods;
         this.clientAppTypes = $.clientAppTypes;
         this.clientApplications = $.clientApplications;
         this.devices = $.devices;
@@ -241,6 +257,37 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
          */
         public Builder applications(ConditionalAccessPolicyConditionsApplicationsArgs applications) {
             return applications(Output.of(applications));
+        }
+
+        /**
+         * @param authenticationFlowTransferMethods A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationFlowTransferMethods(@Nullable Output<List<String>> authenticationFlowTransferMethods) {
+            $.authenticationFlowTransferMethods = authenticationFlowTransferMethods;
+            return this;
+        }
+
+        /**
+         * @param authenticationFlowTransferMethods A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationFlowTransferMethods(List<String> authenticationFlowTransferMethods) {
+            return authenticationFlowTransferMethods(Output.of(authenticationFlowTransferMethods));
+        }
+
+        /**
+         * @param authenticationFlowTransferMethods A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authenticationFlowTransferMethods(String... authenticationFlowTransferMethods) {
+            return authenticationFlowTransferMethods(List.of(authenticationFlowTransferMethods));
         }
 
         /**

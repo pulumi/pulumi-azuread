@@ -29,6 +29,7 @@
         "applicationCertificate.ts",
         "applicationFallbackPublicClient.ts",
         "applicationFederatedIdentityCredential.ts",
+        "applicationFlexibleFederatedIdentityCredential.ts",
         "applicationFromTemplate.ts",
         "applicationIdentifierUri.ts",
         "applicationKnownClients.ts",

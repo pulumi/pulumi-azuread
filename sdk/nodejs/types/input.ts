@@ -512,6 +512,10 @@ export interface ConditionalAccessPolicyConditions {
      */
     applications: pulumi.Input<inputs.ConditionalAccessPolicyConditionsApplications>;
     /**
+     * A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+     */
+    authenticationFlowTransferMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
      */
     clientAppTypes: pulumi.Input<pulumi.Input<string>[]>;

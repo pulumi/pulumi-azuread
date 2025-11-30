@@ -18,6 +18,18 @@ namespace Pulumi.AzureAD.Inputs
         [Input("applications", required: true)]
         public Input<Inputs.ConditionalAccessPolicyConditionsApplicationsArgs> Applications { get; set; } = null!;
 
+        [Input("authenticationFlowTransferMethods")]
+        private InputList<string>? _authenticationFlowTransferMethods;
+
+        /// <summary>
+        /// A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+        /// </summary>
+        public InputList<string> AuthenticationFlowTransferMethods
+        {
+            get => _authenticationFlowTransferMethods ?? (_authenticationFlowTransferMethods = new InputList<string>());
+            set => _authenticationFlowTransferMethods = value;
+        }
+
         [Input("clientAppTypes", required: true)]
         private InputList<string>? _clientAppTypes;
 
