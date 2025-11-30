@@ -2566,6 +2566,10 @@ if not MYPY:
         """
         A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
         """
+        authentication_flow_transfer_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+        """
         client_applications: NotRequired[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgsDict']]
         """
         An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
@@ -2607,6 +2611,7 @@ class ConditionalAccessPolicyConditionsArgs:
                  applications: pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs'],
                  client_app_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  users: pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs'],
+                 authentication_flow_transfer_methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_applications: Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs']] = None,
                  devices: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs']] = None,
                  insider_risk_levels: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2619,6 +2624,7 @@ class ConditionalAccessPolicyConditionsArgs:
         :param pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs'] applications: An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_app_types: A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
         :param pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs'] users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authentication_flow_transfer_methods: A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
         :param pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs'] client_applications: An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
         :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs'] devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         :param pulumi.Input[_builtins.str] insider_risk_levels: The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
@@ -2631,6 +2637,8 @@ class ConditionalAccessPolicyConditionsArgs:
         pulumi.set(__self__, "applications", applications)
         pulumi.set(__self__, "client_app_types", client_app_types)
         pulumi.set(__self__, "users", users)
+        if authentication_flow_transfer_methods is not None:
+            pulumi.set(__self__, "authentication_flow_transfer_methods", authentication_flow_transfer_methods)
         if client_applications is not None:
             pulumi.set(__self__, "client_applications", client_applications)
         if devices is not None:
@@ -2683,6 +2691,18 @@ class ConditionalAccessPolicyConditionsArgs:
     @users.setter
     def users(self, value: pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs']):
         pulumi.set(self, "users", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationFlowTransferMethods")
+    def authentication_flow_transfer_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+        """
+        return pulumi.get(self, "authentication_flow_transfer_methods")
+
+    @authentication_flow_transfer_methods.setter
+    def authentication_flow_transfer_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "authentication_flow_transfer_methods", value)
 
     @_builtins.property
     @pulumi.getter(name="clientApplications")

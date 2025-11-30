@@ -85,6 +85,11 @@ export type ApplicationFederatedIdentityCredential = import("./applicationFedera
 export const ApplicationFederatedIdentityCredential: typeof import("./applicationFederatedIdentityCredential").ApplicationFederatedIdentityCredential = null as any;
 utilities.lazyLoad(exports, ["ApplicationFederatedIdentityCredential"], () => require("./applicationFederatedIdentityCredential"));
 
+export { ApplicationFlexibleFederatedIdentityCredentialArgs, ApplicationFlexibleFederatedIdentityCredentialState } from "./applicationFlexibleFederatedIdentityCredential";
+export type ApplicationFlexibleFederatedIdentityCredential = import("./applicationFlexibleFederatedIdentityCredential").ApplicationFlexibleFederatedIdentityCredential;
+export const ApplicationFlexibleFederatedIdentityCredential: typeof import("./applicationFlexibleFederatedIdentityCredential").ApplicationFlexibleFederatedIdentityCredential = null as any;
+utilities.lazyLoad(exports, ["ApplicationFlexibleFederatedIdentityCredential"], () => require("./applicationFlexibleFederatedIdentityCredential"));
+
 export { ApplicationFromTemplateArgs, ApplicationFromTemplateState } from "./applicationFromTemplate";
 export type ApplicationFromTemplate = import("./applicationFromTemplate").ApplicationFromTemplate;
 export const ApplicationFromTemplate: typeof import("./applicationFromTemplate").ApplicationFromTemplate = null as any;
@@ -419,6 +424,8 @@ const _module = {
                 return new ApplicationFallbackPublicClient(name, <any>undefined, { urn })
             case "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential":
                 return new ApplicationFederatedIdentityCredential(name, <any>undefined, { urn })
+            case "azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential":
+                return new ApplicationFlexibleFederatedIdentityCredential(name, <any>undefined, { urn })
             case "azuread:index/applicationFromTemplate:ApplicationFromTemplate":
                 return new ApplicationFromTemplate(name, <any>undefined, { urn })
             case "azuread:index/applicationIdentifierUri:ApplicationIdentifierUri":
@@ -514,6 +521,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/applicationAppRole", _mo
 pulumi.runtime.registerResourceModule("azuread", "index/applicationCertificate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationFallbackPublicClient", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationFederatedIdentityCredential", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationFlexibleFederatedIdentityCredential", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationFromTemplate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationIdentifierUri", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationKnownClients", _module)

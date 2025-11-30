@@ -53,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApplicationFallbackPublicClient{}
 	case "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential":
 		r = &ApplicationFederatedIdentityCredential{}
+	case "azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential":
+		r = &ApplicationFlexibleFederatedIdentityCredential{}
 	case "azuread:index/applicationFromTemplate:ApplicationFromTemplate":
 		r = &ApplicationFromTemplate{}
 	case "azuread:index/applicationIdentifierUri:ApplicationIdentifierUri":
@@ -236,6 +238,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/applicationFederatedIdentityCredential",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/applicationFlexibleFederatedIdentityCredential",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
