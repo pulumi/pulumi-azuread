@@ -1,8 +1,6 @@
 provider: azuread
 major-version: 5
 generate-nightly-test-workflow: true
-esc:
-    enabled: true
 env:
     ARM_CLIENT_ID: "d3b6ec3a-36fe-46c9-b3d9-5856a2e0e73c" # test-app
     ARM_ENVIRONMENT: "public"
