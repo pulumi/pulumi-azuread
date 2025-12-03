@@ -167,7 +167,7 @@ jobs:
     # Use direct npm publish with explicit tag to avoid tagging as 'latest'
     # which would incorrectly mark this backport as the default version.
     - name: Download nodejs SDK
-        uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v4
       with:
         name: nodejs-sdk.tar.gz
         path: ${{ github.workspace }}/sdk/
