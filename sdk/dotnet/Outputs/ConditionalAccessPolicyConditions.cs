@@ -18,6 +18,10 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsApplications Applications;
         /// <summary>
+        /// A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+        /// </summary>
+        public readonly ImmutableArray<string> AuthenticationFlowTransferMethods;
+        /// <summary>
         /// A list of client application types included in the policy. Possible values are: `All`, `Browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `Other`.
         /// </summary>
         public readonly ImmutableArray<string> ClientAppTypes;
@@ -62,6 +66,8 @@ namespace Pulumi.AzureAD.Outputs
         private ConditionalAccessPolicyConditions(
             Outputs.ConditionalAccessPolicyConditionsApplications applications,
 
+            ImmutableArray<string> authenticationFlowTransferMethods,
+
             ImmutableArray<string> clientAppTypes,
 
             Outputs.ConditionalAccessPolicyConditionsClientApplications? clientApplications,
@@ -83,6 +89,7 @@ namespace Pulumi.AzureAD.Outputs
             Outputs.ConditionalAccessPolicyConditionsUsers users)
         {
             Applications = applications;
+            AuthenticationFlowTransferMethods = authenticationFlowTransferMethods;
             ClientAppTypes = clientAppTypes;
             ClientApplications = clientApplications;
             Devices = devices;
