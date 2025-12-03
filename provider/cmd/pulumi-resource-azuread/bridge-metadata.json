@@ -271,6 +271,9 @@
                     }
                 }
             },
+            "azuread_application_flexible_federated_identity_credential": {
+                "current": "azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential"
+            },
             "azuread_application_from_template": {
                 "current": "azuread:index/applicationFromTemplate:ApplicationFromTemplate"
             },
@@ -391,6 +394,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "authentication_flow_transfer_methods": {
+                                    "maxItemsOne": false
                                 },
                                 "client_app_types": {
                                     "maxItemsOne": false
