@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.azuread.ApplicationRegistration;
  * import com.pulumi.azuread.ApplicationRegistrationArgs;
- * import com.pulumi.time.Rotating;
+ * import com.pulumi.time.rotating;
  * import com.pulumi.time.RotatingArgs;
  * import com.pulumi.azuread.ApplicationPassword;
  * import com.pulumi.azuread.ApplicationPasswordArgs;
