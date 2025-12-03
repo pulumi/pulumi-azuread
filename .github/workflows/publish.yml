@@ -25,28 +25,12 @@ on:
 env:
   IS_PRERELEASE: ${{ inputs.isPrerelease }}
   ARM_CLIENT_ID: d3b6ec3a-36fe-46c9-b3d9-5856a2e0e73c
-  ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET_CI }}
   ARM_ENVIRONMENT: public
   ARM_SUBSCRIPTION_ID: 0282681f-7a9e-424b-80b2-96babd57a8a1
   ARM_TENANT_ID: 9605c22c-e585-4ea3-9b83-e90339719f8a
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_UPLOAD_ROLE_ARN: ${{ secrets.AWS_UPLOAD_ROLE_ARN }}
-  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-  JAVA_SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
-  JAVA_SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
-  JAVA_SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
-  OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-  OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
   PULUMI_API: https://api.pulumi-staging.io
-  PULUMI_BOT_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
-  PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
-  RELEASE_BOT_ENDPOINT: ${{ secrets.RELEASE_BOT_ENDPOINT }}
-  RELEASE_BOT_KEY: ${{ secrets.RELEASE_BOT_KEY }}
   RUN_OIDC_TESTS: ${{ github.event_name == 'pull_request' && 'true' || '' }}
   TF_APPEND_USER_AGENT: pulumi
 
@@ -65,9 +49,15 @@ jobs:
       uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
       with:
         persist-credentials: false    
-    - id: esc-secrets
-      name: Map environment to ESC outputs
-      uses: ./.github/actions/esc-action
+    - env:
+        ESC_ACTION_ENVIRONMENT: github-secrets/${{ github.repository_owner }}-${{ github.event.repository.name }}
+        ESC_ACTION_EXPORT_ENVIRONMENT_VARIABLES: "false"
+        ESC_ACTION_OIDC_AUTH: "true"
+        ESC_ACTION_OIDC_ORGANIZATION: pulumi
+        ESC_ACTION_OIDC_REQUESTED_TOKEN_TYPE: urn:pulumi:token-type:access_token:organization
+      id: esc-secrets
+      name: Fetch secrets from ESC
+      uses: pulumi/esc-action@9eb774255b1a4afb7855678ae8d4a77359da0d9b
     - name: Setup mise
       uses: jdx/mise-action@v3
       env:
@@ -149,9 +139,15 @@ jobs:
       with:
         # Persist credentials so we can push back to the repo
         persist-credentials: true    
-    - id: esc-secrets
-      name: Map environment to ESC outputs
-      uses: ./.github/actions/esc-action
+    - env:
+        ESC_ACTION_ENVIRONMENT: github-secrets/${{ github.repository_owner }}-${{ github.event.repository.name }}
+        ESC_ACTION_EXPORT_ENVIRONMENT_VARIABLES: "false"
+        ESC_ACTION_OIDC_AUTH: "true"
+        ESC_ACTION_OIDC_ORGANIZATION: pulumi
+        ESC_ACTION_OIDC_REQUESTED_TOKEN_TYPE: urn:pulumi:token-type:access_token:organization
+      id: esc-secrets
+      name: Fetch secrets from ESC
+      uses: pulumi/esc-action@9eb774255b1a4afb7855678ae8d4a77359da0d9b
     - name: Setup mise
       uses: jdx/mise-action@v3
       env:
@@ -167,11 +163,28 @@ jobs:
         # we don't set node-version because we install with mise.
         # this step is needed to setup npm auth
         registry-url: https://registry.npmjs.org
-    - name: Publish SDKs
+    # ===== NodeJS SDK (direct npm with backport tag) =====
+    # Use direct npm publish with explicit tag to avoid tagging as 'latest'
+    # which would incorrectly mark this backport as the default version.
+    - name: Download nodejs SDK
+        uses: actions/download-artifact@v4
+      with:
+        name: nodejs-sdk.tar.gz
+        path: ${{ github.workspace }}/sdk/
+    - name: Uncompress nodejs SDK
+      run: mkdir -p ${{ github.workspace }}/sdk/nodejs && tar -zxf ${{ github.workspace }}/sdk/nodejs.tar.gz -C ${{ github.workspace }}/sdk/nodejs
+      shell: bash
+    - name: Publish Node SDK
+      working-directory: ${{ github.workspace }}/sdk/nodejs/bin
+      run: npm publish --tag latest-v5
+      env:
+        NODE_AUTH_TOKEN: ${{ steps.esc-secrets.outputs.NPM_TOKEN }}
+    # ===== Other SDKs via pulumi-package-publisher (excluding nodejs) =====
+    - name: Publish SDKs (Python, .NET, Java)
       if: inputs.skipJavaSdk == false
       uses: pulumi/pulumi-package-publisher@c1672c7928591d563dccb12729e05e315c21f8c2 # v0.0.22
       with:
-        sdk: all
+        sdk: all,!nodejs
         version: ${{ inputs.version }}
       env:
         PYPI_USERNAME: __token__
@@ -183,7 +196,7 @@ jobs:
         PUBLISH_REPO_PASSWORD: ${{ steps.esc-secrets.outputs.OSSRH_PASSWORD }}
         PUBLISH_REPO_USERNAME: ${{ steps.esc-secrets.outputs.OSSRH_USERNAME }}
         NUGET_PUBLISH_KEY: ${{ steps.esc-secrets.outputs.NUGET_PUBLISH_KEY }}
-    - name: Publish SDKs (except Java)
+    - name: Publish SDKs (Python, .NET - no Java)
       if: inputs.skipJavaSdk == true
       uses: pulumi/pulumi-package-publisher@c1672c7928591d563dccb12729e05e315c21f8c2 # v0.0.22
       with:
@@ -233,9 +246,15 @@ jobs:
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
         with:
           persist-credentials: false      
-      - id: esc-secrets
-        name: Map environment to ESC outputs
-        uses: ./.github/actions/esc-action
+      - env:
+          ESC_ACTION_ENVIRONMENT: github-secrets/${{ github.repository_owner }}-${{ github.event.repository.name }}
+          ESC_ACTION_EXPORT_ENVIRONMENT_VARIABLES: "false"
+          ESC_ACTION_OIDC_AUTH: "true"
+          ESC_ACTION_OIDC_ORGANIZATION: pulumi
+          ESC_ACTION_OIDC_REQUESTED_TOKEN_TYPE: urn:pulumi:token-type:access_token:organization
+        id: esc-secrets
+        name: Fetch secrets from ESC
+        uses: pulumi/esc-action@9eb774255b1a4afb7855678ae8d4a77359da0d9b
       - name: Dispatch Metadata build
         uses: peter-evans/repository-dispatch@28959ce8df70de7be546dd1250a005dd32156697 # v4
         with:
@@ -261,9 +280,15 @@ jobs:
       uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
       with:
         persist-credentials: false    
-    - id: esc-secrets
-      name: Map environment to ESC outputs
-      uses: ./.github/actions/esc-action
+    - env:
+        ESC_ACTION_ENVIRONMENT: github-secrets/${{ github.repository_owner }}-${{ github.event.repository.name }}
+        ESC_ACTION_EXPORT_ENVIRONMENT_VARIABLES: "false"
+        ESC_ACTION_OIDC_AUTH: "true"
+        ESC_ACTION_OIDC_ORGANIZATION: pulumi
+        ESC_ACTION_OIDC_REQUESTED_TOKEN_TYPE: urn:pulumi:token-type:access_token:organization
+      id: esc-secrets
+      name: Fetch secrets from ESC
+      uses: pulumi/esc-action@9eb774255b1a4afb7855678ae8d4a77359da0d9b
     - name: Clean up release labels
       uses: pulumi/action-release-by-pr-label@main
       with:
