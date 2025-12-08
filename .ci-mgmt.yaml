@@ -9,7 +9,7 @@ env:
     ARM_SUBSCRIPTION_ID: "0282681f-7a9e-424b-80b2-96babd57a8a1"
     ARM_TENANT_ID: "9605c22c-e585-4ea3-9b83-e90339719f8a" # pulumici.onmicrosoft.com
     # How to rotate this secret? See: https://github.com/pulumi/platform-providers-team/blob/main/playbooks/Rotate%20Azure%20AD%20Credentials.md
-    ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET_CI }}
+    ARM_CLIENT_SECRET: ${{ steps.esc-secrets.outputs.ARM_CLIENT_SECRET }}
     # Setting this variable will cause the OIDC test(s) to run against this app.
     # We limit running the OIDC tests to PRs because the AD configuration requires an "Entity type" of Environment,
     # Branch, Pull request, or Tag. See
