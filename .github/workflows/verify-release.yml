@@ -123,7 +123,7 @@ jobs:
           providerVersion: ${{ inputs.providerVersion }}
         env:
           NODE_AUTH_TOKEN: ${{ steps.esc-secrets.outputs.NPM_TOKEN }}
-          ARM_CLIENT_SECRET: ${{ steps.esc-secrets.outputs.ARM_CLIENT_SECRET_CI }}
+          ARM_CLIENT_SECRET: ${{ steps.esc-secrets.outputs.ARM_CLIENT_SECRET }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Verify python release
         uses: pulumi/verify-provider-release@679d5e6838ac4f68696bfa1bf9e2c5da94509dd6 # v1.3.1
@@ -134,7 +134,7 @@ jobs:
           providerVersion: ${{ inputs.providerVersion }}
           packageVersion: ${{ inputs.pythonVersion || inputs.providerVersion }}
         env:
-          ARM_CLIENT_SECRET: ${{ steps.esc-secrets.outputs.ARM_CLIENT_SECRET_CI }}
+          ARM_CLIENT_SECRET: ${{ steps.esc-secrets.outputs.ARM_CLIENT_SECRET }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Verify dotnet release
         uses: pulumi/verify-provider-release@679d5e6838ac4f68696bfa1bf9e2c5da94509dd6 # v1.3.1
@@ -144,7 +144,7 @@ jobs:
           provider: azuread
           providerVersion: ${{ inputs.providerVersion }}
         env:
-          ARM_CLIENT_SECRET: ${{ steps.esc-secrets.outputs.ARM_CLIENT_SECRET_CI }}
+          ARM_CLIENT_SECRET: ${{ steps.esc-secrets.outputs.ARM_CLIENT_SECRET }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Verify go release
         uses: pulumi/verify-provider-release@679d5e6838ac4f68696bfa1bf9e2c5da94509dd6 # v1.3.1
@@ -155,5 +155,5 @@ jobs:
           provider: azuread
           providerVersion: ${{ inputs.providerVersion }}
         env:
-          ARM_CLIENT_SECRET: ${{ steps.esc-secrets.outputs.ARM_CLIENT_SECRET_CI }}
+          ARM_CLIENT_SECRET: ${{ steps.esc-secrets.outputs.ARM_CLIENT_SECRET }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
