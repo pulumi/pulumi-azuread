@@ -1,12 +1,10 @@
 module github.com/hashicorp/terraform-provider-azuread/shim
 
-go 1.24.1
-
-toolchain go1.24.2
+go 1.25.3
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.36.1
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20250925202509-9a1c898e5872
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20251118193153-72ee4ffe4628
 )
 
 require (
@@ -19,8 +17,8 @@ require (
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-azure-helpers v0.73.0 // indirect
-	github.com/hashicorp/go-azure-sdk/microsoft-graph v0.20250731.1192335 // indirect
-	github.com/hashicorp/go-azure-sdk/sdk v0.20250731.1192335 // indirect
+	github.com/hashicorp/go-azure-sdk/microsoft-graph v0.20251107.1191907 // indirect
+	github.com/hashicorp/go-azure-sdk/sdk v0.20251107.1191907 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-cty v1.5.0 // indirect
