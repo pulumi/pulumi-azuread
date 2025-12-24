@@ -865,6 +865,13 @@
                     "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditionsApplications:ConditionalAccessPolicyConditionsApplications",
                     "description": "An \u003cspan pulumi-lang-nodejs=\"`applications`\" pulumi-lang-dotnet=\"`Applications`\" pulumi-lang-go=\"`applications`\" pulumi-lang-python=\"`applications`\" pulumi-lang-yaml=\"`applications`\" pulumi-lang-java=\"`applications`\"\u003e`applications`\u003c/span\u003e block as documented below, which specifies applications and user actions included in and excluded from the policy.\n"
                 },
+                "authenticationFlowTransferMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.\n"
+                },
                 "clientAppTypes": {
                     "type": "array",
                     "items": {
@@ -5100,6 +5107,118 @@
                     "subject": {
                         "type": "string",
                         "description": "The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.ApplicationRegistration(\"example\", {displayName: \"example\"});\nconst exampleApplicationFlexibleFederatedIdentityCredential = new azuread.ApplicationFlexibleFederatedIdentityCredential(\"example\", {\n    applicationId: example.id,\n    claimsMatchingExpression: \"claims['sub'] matches 'repo:contoso/contoso-repo:ref:refs/heads/*' and claims['job_workflow_ref'] matches 'contoso/contoso-prod/.github/workflows/*.yml@refs/heads/main'\",\n    displayName: \"my-repo-deploy\",\n    description: \"Deployments for my-repo\",\n    audience: \"api://AzureADTokenExchange\",\n    issuer: \"https://token.actions.githubusercontent.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.ApplicationRegistration(\"example\", display_name=\"example\")\nexample_application_flexible_federated_identity_credential = azuread.ApplicationFlexibleFederatedIdentityCredential(\"example\",\n    application_id=example.id,\n    claims_matching_expression=\"claims['sub'] matches 'repo:contoso/contoso-repo:ref:refs/heads/*' and claims['job_workflow_ref'] matches 'contoso/contoso-prod/.github/workflows/*.yml@refs/heads/main'\",\n    display_name=\"my-repo-deploy\",\n    description=\"Deployments for my-repo\",\n    audience=\"api://AzureADTokenExchange\",\n    issuer=\"https://token.actions.githubusercontent.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new AzureAD.ApplicationRegistration(\"example\", new()\n    {\n        DisplayName = \"example\",\n    });\n\n    var exampleApplicationFlexibleFederatedIdentityCredential = new AzureAD.ApplicationFlexibleFederatedIdentityCredential(\"example\", new()\n    {\n        ApplicationId = example.Id,\n        ClaimsMatchingExpression = \"claims['sub'] matches 'repo:contoso/contoso-repo:ref:refs/heads/*' and claims['job_workflow_ref'] matches 'contoso/contoso-prod/.github/workflows/*.yml@refs/heads/main'\",\n        DisplayName = \"my-repo-deploy\",\n        Description = \"Deployments for my-repo\",\n        Audience = \"api://AzureADTokenExchange\",\n        Issuer = \"https://token.actions.githubusercontent.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v6/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := azuread.NewApplicationRegistration(ctx, \"example\", \u0026azuread.ApplicationRegistrationArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewApplicationFlexibleFederatedIdentityCredential(ctx, \"example\", \u0026azuread.ApplicationFlexibleFederatedIdentityCredentialArgs{\n\t\t\tApplicationId:            example.ID(),\n\t\t\tClaimsMatchingExpression: pulumi.String(\"claims['sub'] matches 'repo:contoso/contoso-repo:ref:refs/heads/*' and claims['job_workflow_ref'] matches 'contoso/contoso-prod/.github/workflows/*.yml@refs/heads/main'\"),\n\t\t\tDisplayName:              pulumi.String(\"my-repo-deploy\"),\n\t\t\tDescription:              pulumi.String(\"Deployments for my-repo\"),\n\t\t\tAudience:                 pulumi.String(\"api://AzureADTokenExchange\"),\n\t\t\tIssuer:                   pulumi.String(\"https://token.actions.githubusercontent.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.ApplicationRegistration;\nimport com.pulumi.azuread.ApplicationRegistrationArgs;\nimport com.pulumi.azuread.ApplicationFlexibleFederatedIdentityCredential;\nimport com.pulumi.azuread.ApplicationFlexibleFederatedIdentityCredentialArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ApplicationRegistration(\"example\", ApplicationRegistrationArgs.builder()\n            .displayName(\"example\")\n            .build());\n\n        var exampleApplicationFlexibleFederatedIdentityCredential = new ApplicationFlexibleFederatedIdentityCredential(\"exampleApplicationFlexibleFederatedIdentityCredential\", ApplicationFlexibleFederatedIdentityCredentialArgs.builder()\n            .applicationId(example.id())\n            .claimsMatchingExpression(\"claims['sub'] matches 'repo:contoso/contoso-repo:ref:refs/heads/*' and claims['job_workflow_ref'] matches 'contoso/contoso-prod/.github/workflows/*.yml@refs/heads/main'\")\n            .displayName(\"my-repo-deploy\")\n            .description(\"Deployments for my-repo\")\n            .audience(\"api://AzureADTokenExchange\")\n            .issuer(\"https://token.actions.githubusercontent.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:ApplicationRegistration\n    properties:\n      displayName: example\n  exampleApplicationFlexibleFederatedIdentityCredential:\n    type: azuread:ApplicationFlexibleFederatedIdentityCredential\n    name: example\n    properties:\n      applicationId: ${example.id}\n      claimsMatchingExpression: claims['sub'] matches 'repo:contoso/contoso-repo:ref:refs/heads/*' and claims['job_workflow_ref'] matches 'contoso/contoso-prod/.github/workflows/*.yml@refs/heads/main'\n      displayName: my-repo-deploy\n      description: Deployments for my-repo\n      audience: api://AzureADTokenExchange\n      issuer: https://token.actions.githubusercontent.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nFlexible Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the flexible federated identity credential, e.g.\n\n```sh\n$ pulumi import azuread:index/applicationFlexibleFederatedIdentityCredential:ApplicationFlexibleFederatedIdentityCredential example 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111\n```\n\n-\u003e This ID format is unique to Terraform and is composed of the application's object ID, the string \"federatedIdentityCredential\" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.\n\n",
+            "properties": {
+                "applicationId": {
+                    "type": "string",
+                    "description": "The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "audience": {
+                    "type": "string",
+                    "description": "The audience that can appear in the external token. This specifies what should be accepted in the \u003cspan pulumi-lang-nodejs=\"`aud`\" pulumi-lang-dotnet=\"`Aud`\" pulumi-lang-go=\"`aud`\" pulumi-lang-python=\"`aud`\" pulumi-lang-yaml=\"`aud`\" pulumi-lang-java=\"`aud`\"\u003e`aud`\u003c/span\u003e claim of incoming tokens.\n"
+                },
+                "claimsMatchingExpression": {
+                    "type": "string",
+                    "description": "The expression to match for claims. See the Preview Documentation for more information.\n"
+                },
+                "credentialId": {
+                    "type": "string",
+                    "description": "A UUID used to uniquely identify this federated identity credential.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description for the federated identity credential.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "A unique display name for the federated identity credential. Changing this forces a new resource to be created.\n"
+                },
+                "issuer": {
+                    "type": "string",
+                    "description": "The URL of the external identity provider, which must match the issuer claim of the external token being exchanged.\n"
+                }
+            },
+            "required": [
+                "applicationId",
+                "audience",
+                "claimsMatchingExpression",
+                "credentialId",
+                "displayName",
+                "issuer"
+            ],
+            "inputProperties": {
+                "applicationId": {
+                    "type": "string",
+                    "description": "The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "audience": {
+                    "type": "string",
+                    "description": "The audience that can appear in the external token. This specifies what should be accepted in the \u003cspan pulumi-lang-nodejs=\"`aud`\" pulumi-lang-dotnet=\"`Aud`\" pulumi-lang-go=\"`aud`\" pulumi-lang-python=\"`aud`\" pulumi-lang-yaml=\"`aud`\" pulumi-lang-java=\"`aud`\"\u003e`aud`\u003c/span\u003e claim of incoming tokens.\n"
+                },
+                "claimsMatchingExpression": {
+                    "type": "string",
+                    "description": "The expression to match for claims. See the Preview Documentation for more information.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description for the federated identity credential.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "A unique display name for the federated identity credential. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "issuer": {
+                    "type": "string",
+                    "description": "The URL of the external identity provider, which must match the issuer claim of the external token being exchanged.\n"
+                }
+            },
+            "requiredInputs": [
+                "applicationId",
+                "audience",
+                "claimsMatchingExpression",
+                "displayName",
+                "issuer"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApplicationFlexibleFederatedIdentityCredential resources.\n",
+                "properties": {
+                    "applicationId": {
+                        "type": "string",
+                        "description": "The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "audience": {
+                        "type": "string",
+                        "description": "The audience that can appear in the external token. This specifies what should be accepted in the \u003cspan pulumi-lang-nodejs=\"`aud`\" pulumi-lang-dotnet=\"`Aud`\" pulumi-lang-go=\"`aud`\" pulumi-lang-python=\"`aud`\" pulumi-lang-yaml=\"`aud`\" pulumi-lang-java=\"`aud`\"\u003e`aud`\u003c/span\u003e claim of incoming tokens.\n"
+                    },
+                    "claimsMatchingExpression": {
+                        "type": "string",
+                        "description": "The expression to match for claims. See the Preview Documentation for more information.\n"
+                    },
+                    "credentialId": {
+                        "type": "string",
+                        "description": "A UUID used to uniquely identify this federated identity credential.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description for the federated identity credential.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "A unique display name for the federated identity credential. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "issuer": {
+                        "type": "string",
+                        "description": "The URL of the external identity provider, which must match the issuer claim of the external token being exchanged.\n"
                     }
                 },
                 "type": "object"

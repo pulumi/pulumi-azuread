@@ -4120,6 +4120,8 @@ func (o ApplicationWebImplicitGrantPtrOutput) IdTokenIssuanceEnabled() pulumi.Bo
 type ConditionalAccessPolicyConditions struct {
 	// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
 	Applications ConditionalAccessPolicyConditionsApplications `pulumi:"applications"`
+	// A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+	AuthenticationFlowTransferMethods []string `pulumi:"authenticationFlowTransferMethods"`
 	// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
 	ClientAppTypes []string `pulumi:"clientAppTypes"`
 	// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
@@ -4156,6 +4158,8 @@ type ConditionalAccessPolicyConditionsInput interface {
 type ConditionalAccessPolicyConditionsArgs struct {
 	// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
 	Applications ConditionalAccessPolicyConditionsApplicationsInput `pulumi:"applications"`
+	// A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+	AuthenticationFlowTransferMethods pulumi.StringArrayInput `pulumi:"authenticationFlowTransferMethods"`
 	// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
 	ClientAppTypes pulumi.StringArrayInput `pulumi:"clientAppTypes"`
 	// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
@@ -4262,6 +4266,11 @@ func (o ConditionalAccessPolicyConditionsOutput) Applications() ConditionalAcces
 	}).(ConditionalAccessPolicyConditionsApplicationsOutput)
 }
 
+// A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+func (o ConditionalAccessPolicyConditionsOutput) AuthenticationFlowTransferMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) []string { return v.AuthenticationFlowTransferMethods }).(pulumi.StringArrayOutput)
+}
+
 // A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
 func (o ConditionalAccessPolicyConditionsOutput) ClientAppTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) []string { return v.ClientAppTypes }).(pulumi.StringArrayOutput)
@@ -4350,6 +4359,16 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Applications() ConditionalAc
 		}
 		return &v.Applications
 	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
+}
+
+// A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
+func (o ConditionalAccessPolicyConditionsPtrOutput) AuthenticationFlowTransferMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationFlowTransferMethods
+	}).(pulumi.StringArrayOutput)
 }
 
 // A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
