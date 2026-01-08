@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.azuread.ApplicationRegistration;
  * import com.pulumi.azuread.ApplicationRegistrationArgs;
- * import com.pulumi.random.Uuid;
+ * import com.pulumi.random.RandomUuid;
  * import com.pulumi.azuread.ApplicationAppRole;
  * import com.pulumi.azuread.ApplicationAppRoleArgs;
  * import java.util.List;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleAdministrator = new Uuid("exampleAdministrator");
+ *         var exampleAdministrator = new RandomUuid("exampleAdministrator");
  * 
  *         var exampleAdminister = new ApplicationAppRole("exampleAdminister", ApplicationAppRoleArgs.builder()
  *             .applicationId(example.id())
