@@ -7,7 +7,7 @@ require (
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
 	github.com/pulumi/providertest v0.6.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.119.0
-	github.com/pulumi/pulumi/sdk/v3 v3.215.0
+	github.com/pulumi/pulumi/sdk/v3 v3.213.0
 	github.com/stretchr/testify v1.10.0
 )
 
@@ -154,7 +154,7 @@ require (
 	github.com/pulumi/inflector v0.2.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v1.20.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.26.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.215.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.213.0 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
