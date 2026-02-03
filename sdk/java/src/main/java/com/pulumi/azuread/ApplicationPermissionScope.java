@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.azuread.ApplicationRegistration;
  * import com.pulumi.azuread.ApplicationRegistrationArgs;
- * import com.pulumi.random.RandomUuid;
+ * import com.pulumi.random.Uuid;
  * import com.pulumi.azuread.ApplicationPermissionScope;
  * import com.pulumi.azuread.ApplicationPermissionScopeArgs;
  * import java.util.List;
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *             .displayName("example")
  *             .build());
  * 
- *         var exampleAdminister = new RandomUuid("exampleAdminister");
+ *         var exampleAdminister = new Uuid("exampleAdminister");
  * 
  *         var exampleApplicationPermissionScope = new ApplicationPermissionScope("exampleApplicationPermissionScope", ApplicationPermissionScopeArgs.builder()
  *             .applicationId(test.id())
