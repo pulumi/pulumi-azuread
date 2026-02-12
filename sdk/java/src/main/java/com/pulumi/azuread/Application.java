@@ -27,6 +27,22 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages an application registration within Azure Active Directory.
+ * 
+ * For a more lightweight alternative, please see the azuread.ApplicationRegistration resource. Please note that this resource should not be used together with the `azuread.ApplicationRegistration` resource when managing the same application.
+ * 
+ * ## API Permissions
+ * 
+ * The following API permissions are required in order to use this resource.
+ * 
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+ * 
+ * &gt; When using the `Application.ReadWrite.OwnedBy` application role, you should ensure that the principal being used to run Terraform is included in the `owners` property.
+ * 
+ * Additionally, you may need the `User.Read.All` application role when including user principals in the `owners` property.
+ * 
+ * When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+ * 
  * ## Example Usage
  * 
  * *Create an application*
@@ -574,14 +590,18 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.optionalClaims);
     }
     /**
-     * A list of object IDs of principals that will be granted ownership of the application
+     * A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     * 
+     * &gt; **Ownership of Applications** It&#39;s recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
      * 
      */
     @Export(name="owners", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> owners;
 
     /**
-     * @return A list of object IDs of principals that will be granted ownership of the application
+     * @return A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     * 
+     * &gt; **Ownership of Applications** It&#39;s recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
      * 
      */
     public Output<Optional<List<String>>> owners() {

@@ -137,7 +137,9 @@ type User struct {
 	OnpremisesUserPrincipalName pulumi.StringOutput `pulumi:"onpremisesUserPrincipalName"`
 	// A list of additional email addresses for the user.
 	OtherMails pulumi.StringArrayOutput `pulumi:"otherMails"`
-	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
+	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+	//
+	// > **Passwords and importing users** Passwords can be changed but not cleared. Removing the `password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode pulumi.StringPtrOutput `pulumi:"postalCode"`
@@ -280,7 +282,9 @@ type userState struct {
 	OnpremisesUserPrincipalName *string `pulumi:"onpremisesUserPrincipalName"`
 	// A list of additional email addresses for the user.
 	OtherMails []string `pulumi:"otherMails"`
-	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
+	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+	//
+	// > **Passwords and importing users** Passwords can be changed but not cleared. Removing the `password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
 	Password *string `pulumi:"password"`
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode *string `pulumi:"postalCode"`
@@ -381,7 +385,9 @@ type UserState struct {
 	OnpremisesUserPrincipalName pulumi.StringPtrInput
 	// A list of additional email addresses for the user.
 	OtherMails pulumi.StringArrayInput
-	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
+	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+	//
+	// > **Passwords and importing users** Passwords can be changed but not cleared. Removing the `password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
 	Password pulumi.StringPtrInput
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode pulumi.StringPtrInput
@@ -464,7 +470,9 @@ type userArgs struct {
 	OnpremisesImmutableId *string `pulumi:"onpremisesImmutableId"`
 	// A list of additional email addresses for the user.
 	OtherMails []string `pulumi:"otherMails"`
-	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
+	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+	//
+	// > **Passwords and importing users** Passwords can be changed but not cleared. Removing the `password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
 	Password *string `pulumi:"password"`
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode *string `pulumi:"postalCode"`
@@ -540,7 +548,9 @@ type UserArgs struct {
 	OnpremisesImmutableId pulumi.StringPtrInput
 	// A list of additional email addresses for the user.
 	OtherMails pulumi.StringArrayInput
-	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
+	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+	//
+	// > **Passwords and importing users** Passwords can be changed but not cleared. Removing the `password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
 	Password pulumi.StringPtrInput
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode pulumi.StringPtrInput
@@ -837,7 +847,9 @@ func (o UserOutput) OtherMails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.OtherMails }).(pulumi.StringArrayOutput)
 }
 
-// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
+// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+//
+// > **Passwords and importing users** Passwords can be changed but not cleared. Removing the `password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
 func (o UserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }

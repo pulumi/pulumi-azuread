@@ -2092,7 +2092,11 @@ type ApplicationApiOauth2PermissionScope struct {
 	UserConsentDescription *string `pulumi:"userConsentDescription"`
 	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
-	// The value that is used for the `scp` claim in OAuth 2.0 access tokens
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+	//
+	// > **Default `userImpersonation` Scope** Unlike the Azure Portal, applications created with the Terraform AzureAD provider do not get assigned a default `userImpersonation` scope. You will need to include a block for the `userImpersonation` scope if you need it for your application.
+	//
+	// > **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
 	Value *string `pulumi:"value"`
 }
 
@@ -2124,7 +2128,11 @@ type ApplicationApiOauth2PermissionScopeArgs struct {
 	UserConsentDescription pulumi.StringPtrInput `pulumi:"userConsentDescription"`
 	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
-	// The value that is used for the `scp` claim in OAuth 2.0 access tokens
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+	//
+	// > **Default `userImpersonation` Scope** Unlike the Azure Portal, applications created with the Terraform AzureAD provider do not get assigned a default `userImpersonation` scope. You will need to include a block for the `userImpersonation` scope if you need it for your application.
+	//
+	// > **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2216,7 +2224,11 @@ func (o ApplicationApiOauth2PermissionScopeOutput) UserConsentDisplayName() pulu
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.UserConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The value that is used for the `scp` claim in OAuth 2.0 access tokens
+// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+//
+// > **Default `userImpersonation` Scope** Unlike the Azure Portal, applications created with the Terraform AzureAD provider do not get assigned a default `userImpersonation` scope. You will need to include a block for the `userImpersonation` scope if you need it for your application.
+//
+// > **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
 func (o ApplicationApiOauth2PermissionScopeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2254,7 +2266,9 @@ type ApplicationAppRoleType struct {
 	//
 	// > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
 	Id string `pulumi:"id"`
-	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+	//
+	// > **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
 	Value *string `pulumi:"value"`
 }
 
@@ -2282,7 +2296,9 @@ type ApplicationAppRoleTypeArgs struct {
 	//
 	// > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `randomUuid` resource. See the application example in the provider repository.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+	//
+	// > **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2364,7 +2380,9 @@ func (o ApplicationAppRoleTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationAppRoleType) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+//
+// > **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
 func (o ApplicationAppRoleTypeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationAppRoleType) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

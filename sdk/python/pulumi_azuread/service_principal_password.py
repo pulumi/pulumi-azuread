@@ -277,6 +277,18 @@ class ServicePrincipalPassword(pulumi.CustomResource):
                  start_date: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages a password credential associated with a service principal within Azure Active Directory. See also the ApplicationPassword resource.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of _both_ the linked application registration, _and_ the service principal being managed.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         *Basic example*
@@ -327,6 +339,18 @@ class ServicePrincipalPassword(pulumi.CustomResource):
                  args: ServicePrincipalPasswordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a password credential associated with a service principal within Azure Active Directory. See also the ApplicationPassword resource.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of _both_ the linked application registration, _and_ the service principal being managed.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         *Basic example*

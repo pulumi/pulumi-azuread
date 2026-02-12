@@ -12,6 +12,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a permission scope for an application registration.
+//
+// This resource is analogous to the `oauth2PermissionScope` block in the `api` block of the  `Application` resource. When using these resources together, you should use the `ignoreChanges` lifecycle meta-argument (see example below).
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+//
+// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+//
+// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+//
 // ## Example Usage
 //
 // ```go
@@ -109,7 +123,9 @@ type ApplicationPermissionScope struct {
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription pulumi.StringPtrOutput `pulumi:"userConsentDescription"`
-	// Display name for the delegated permission that appears in the end user consent experience
+	// Display name for the delegated permission that appears in the end user consent experience.
+	//
+	// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
 	UserConsentDisplayName pulumi.StringPtrOutput `pulumi:"userConsentDisplayName"`
 	// The value that is used for the `scp` claim in OAuth access tokens.
 	//
@@ -174,7 +190,9 @@ type applicationPermissionScopeState struct {
 	Type *string `pulumi:"type"`
 	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription *string `pulumi:"userConsentDescription"`
-	// Display name for the delegated permission that appears in the end user consent experience
+	// Display name for the delegated permission that appears in the end user consent experience.
+	//
+	// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
 	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
 	// The value that is used for the `scp` claim in OAuth access tokens.
 	//
@@ -195,7 +213,9 @@ type ApplicationPermissionScopeState struct {
 	Type pulumi.StringPtrInput
 	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription pulumi.StringPtrInput
-	// Display name for the delegated permission that appears in the end user consent experience
+	// Display name for the delegated permission that appears in the end user consent experience.
+	//
+	// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
 	UserConsentDisplayName pulumi.StringPtrInput
 	// The value that is used for the `scp` claim in OAuth access tokens.
 	//
@@ -220,7 +240,9 @@ type applicationPermissionScopeArgs struct {
 	Type *string `pulumi:"type"`
 	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription *string `pulumi:"userConsentDescription"`
-	// Display name for the delegated permission that appears in the end user consent experience
+	// Display name for the delegated permission that appears in the end user consent experience.
+	//
+	// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
 	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
 	// The value that is used for the `scp` claim in OAuth access tokens.
 	//
@@ -242,7 +264,9 @@ type ApplicationPermissionScopeArgs struct {
 	Type pulumi.StringPtrInput
 	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription pulumi.StringPtrInput
-	// Display name for the delegated permission that appears in the end user consent experience
+	// Display name for the delegated permission that appears in the end user consent experience.
+	//
+	// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
 	UserConsentDisplayName pulumi.StringPtrInput
 	// The value that is used for the `scp` claim in OAuth access tokens.
 	//
@@ -367,7 +391,9 @@ func (o ApplicationPermissionScopeOutput) UserConsentDescription() pulumi.String
 	return o.ApplyT(func(v *ApplicationPermissionScope) pulumi.StringPtrOutput { return v.UserConsentDescription }).(pulumi.StringPtrOutput)
 }
 
-// Display name for the delegated permission that appears in the end user consent experience
+// Display name for the delegated permission that appears in the end user consent experience.
+//
+// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
 func (o ApplicationPermissionScopeOutput) UserConsentDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationPermissionScope) pulumi.StringPtrOutput { return v.UserConsentDisplayName }).(pulumi.StringPtrOutput)
 }

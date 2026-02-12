@@ -129,8 +129,9 @@ type SynchronizationJobProvisionOnDemand struct {
 	// The ID of the service principal for the synchronization job.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 	// The ID of the synchronization job.
-	SynchronizationJobId pulumi.StringOutput    `pulumi:"synchronizationJobId"`
-	Triggers             pulumi.StringMapOutput `pulumi:"triggers"`
+	SynchronizationJobId pulumi.StringOutput `pulumi:"synchronizationJobId"`
+	// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+	Triggers pulumi.StringMapOutput `pulumi:"triggers"`
 }
 
 // NewSynchronizationJobProvisionOnDemand registers a new resource with the given unique name, arguments, and options.
@@ -177,8 +178,9 @@ type synchronizationJobProvisionOnDemandState struct {
 	// The ID of the service principal for the synchronization job.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// The ID of the synchronization job.
-	SynchronizationJobId *string           `pulumi:"synchronizationJobId"`
-	Triggers             map[string]string `pulumi:"triggers"`
+	SynchronizationJobId *string `pulumi:"synchronizationJobId"`
+	// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+	Triggers map[string]string `pulumi:"triggers"`
 }
 
 type SynchronizationJobProvisionOnDemandState struct {
@@ -188,7 +190,8 @@ type SynchronizationJobProvisionOnDemandState struct {
 	ServicePrincipalId pulumi.StringPtrInput
 	// The ID of the synchronization job.
 	SynchronizationJobId pulumi.StringPtrInput
-	Triggers             pulumi.StringMapInput
+	// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+	Triggers pulumi.StringMapInput
 }
 
 func (SynchronizationJobProvisionOnDemandState) ElementType() reflect.Type {
@@ -201,8 +204,9 @@ type synchronizationJobProvisionOnDemandArgs struct {
 	// The ID of the service principal for the synchronization job.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 	// The ID of the synchronization job.
-	SynchronizationJobId string            `pulumi:"synchronizationJobId"`
-	Triggers             map[string]string `pulumi:"triggers"`
+	SynchronizationJobId string `pulumi:"synchronizationJobId"`
+	// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+	Triggers map[string]string `pulumi:"triggers"`
 }
 
 // The set of arguments for constructing a SynchronizationJobProvisionOnDemand resource.
@@ -213,7 +217,8 @@ type SynchronizationJobProvisionOnDemandArgs struct {
 	ServicePrincipalId pulumi.StringInput
 	// The ID of the synchronization job.
 	SynchronizationJobId pulumi.StringInput
-	Triggers             pulumi.StringMapInput
+	// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+	Triggers pulumi.StringMapInput
 }
 
 func (SynchronizationJobProvisionOnDemandArgs) ElementType() reflect.Type {
@@ -320,6 +325,7 @@ func (o SynchronizationJobProvisionOnDemandOutput) SynchronizationJobId() pulumi
 	return o.ApplyT(func(v *SynchronizationJobProvisionOnDemand) pulumi.StringOutput { return v.SynchronizationJobId }).(pulumi.StringOutput)
 }
 
+// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
 func (o SynchronizationJobProvisionOnDemandOutput) Triggers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SynchronizationJobProvisionOnDemand) pulumi.StringMapOutput { return v.Triggers }).(pulumi.StringMapOutput)
 }

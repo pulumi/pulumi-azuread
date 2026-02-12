@@ -76,7 +76,7 @@ namespace Pulumi.AzureAD
     /// 
     /// ## Import
     /// 
-    /// Authentication Strength Policies can be imported using the `id`, e.g.
+    /// Authentication Strength Policies can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy my_policy /policies/authenticationStrengthPolicies/00000000-0000-0000-0000-000000000000

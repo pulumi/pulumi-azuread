@@ -132,6 +132,9 @@ namespace Pulumi.AzureAD
         [Output("synchronizationJobId")]
         public Output<string> SynchronizationJobId { get; private set; } = null!;
 
+        /// <summary>
+        /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+        /// </summary>
         [Output("triggers")]
         public Output<ImmutableDictionary<string, string>?> Triggers { get; private set; } = null!;
 
@@ -207,6 +210,10 @@ namespace Pulumi.AzureAD
 
         [Input("triggers")]
         private InputMap<string>? _triggers;
+
+        /// <summary>
+        /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+        /// </summary>
         public InputMap<string> Triggers
         {
             get => _triggers ?? (_triggers = new InputMap<string>());
@@ -247,6 +254,10 @@ namespace Pulumi.AzureAD
 
         [Input("triggers")]
         private InputMap<string>? _triggers;
+
+        /// <summary>
+        /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+        /// </summary>
         public InputMap<string> Triggers
         {
             get => _triggers ?? (_triggers = new InputMap<string>());

@@ -113,6 +113,9 @@ namespace Pulumi.AzureAD
         }
 
         private static readonly __Value<bool?> _disableTerraformPartnerId = new __Value<bool?>(() => __config.GetBoolean("disableTerraformPartnerId"));
+        /// <summary>
+        /// Disable the Terraform Partner ID, which is used if a custom `PartnerId` isn't specified
+        /// </summary>
         public static bool? DisableTerraformPartnerId
         {
             get => _disableTerraformPartnerId.Get();

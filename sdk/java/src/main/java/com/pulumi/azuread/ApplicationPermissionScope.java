@@ -15,6 +15,20 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a permission scope for an application registration.
+ * 
+ * This resource is analogous to the `oauth2PermissionScope` block in the `api` block of the  `azuread.Application` resource. When using these resources together, you should use the `ignoreChanges` lifecycle meta-argument (see example below).
+ * 
+ * ## API Permissions
+ * 
+ * The following API permissions are required in order to use this resource.
+ * 
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+ * 
+ * &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+ * 
+ * When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -198,14 +212,18 @@ public class ApplicationPermissionScope extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.userConsentDescription);
     }
     /**
-     * Display name for the delegated permission that appears in the end user consent experience
+     * Display name for the delegated permission that appears in the end user consent experience.
+     * 
+     * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
      * 
      */
     @Export(name="userConsentDisplayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userConsentDisplayName;
 
     /**
-     * @return Display name for the delegated permission that appears in the end user consent experience
+     * @return Display name for the delegated permission that appears in the end user consent experience.
+     * 
+     * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
      * 
      */
     public Output<Optional<String>> userConsentDisplayName() {

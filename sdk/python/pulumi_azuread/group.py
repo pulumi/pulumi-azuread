@@ -71,7 +71,9 @@ class GroupArgs:
                
                !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         :param pulumi.Input[_builtins.str] onpremises_group_type: The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+               
+               > **Group Ownership**  It's recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
         :param pulumi.Input[_builtins.bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.bool] security_enabled: Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
@@ -312,7 +314,9 @@ class GroupArgs:
     @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A set of owners who own this group. Supported object types are Users or Service Principals
+        A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+
+        > **Group Ownership**  It's recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
         """
         return pulumi.get(self, "owners")
 
@@ -478,7 +482,9 @@ class _GroupState:
         :param pulumi.Input[_builtins.str] onpremises_sam_account_name: The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[_builtins.str] onpremises_security_identifier: The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[_builtins.bool] onpremises_sync_enabled: Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+               
+               > **Group Ownership**  It's recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
         :param pulumi.Input[_builtins.str] preferred_language: The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
         :param pulumi.Input[_builtins.bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
@@ -824,7 +830,9 @@ class _GroupState:
     @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A set of owners who own this group. Supported object types are Users or Service Principals
+        A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+
+        > **Group Ownership**  It's recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
         """
         return pulumi.get(self, "owners")
 
@@ -1107,7 +1115,9 @@ class Group(pulumi.CustomResource):
                
                !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         :param pulumi.Input[_builtins.str] onpremises_group_type: The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+               
+               > **Group Ownership**  It's recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
         :param pulumi.Input[_builtins.bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.bool] security_enabled: Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
@@ -1391,7 +1401,9 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] onpremises_sam_account_name: The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[_builtins.str] onpremises_security_identifier: The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[_builtins.bool] onpremises_sync_enabled: Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+               
+               > **Group Ownership**  It's recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
         :param pulumi.Input[_builtins.str] preferred_language: The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
         :param pulumi.Input[_builtins.bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
@@ -1627,7 +1639,9 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def owners(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A set of owners who own this group. Supported object types are Users or Service Principals
+        A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+
+        > **Group Ownership**  It's recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
         """
         return pulumi.get(self, "owners")
 

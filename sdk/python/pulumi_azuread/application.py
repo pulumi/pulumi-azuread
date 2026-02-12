@@ -67,7 +67,9 @@ class ApplicationArgs:
         :param pulumi.Input[_builtins.str] notes: User-specified notes relevant for the management of the application.
         :param pulumi.Input[_builtins.bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A list of object IDs of principals that will be granted ownership of the application
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+               
+               > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
         :param pulumi.Input['ApplicationPasswordArgs'] password: A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
                
                > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
@@ -322,7 +324,9 @@ class ApplicationArgs:
     @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of object IDs of principals that will be granted ownership of the application
+        A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+
+        > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
         """
         return pulumi.get(self, "owners")
 
@@ -559,7 +563,9 @@ class _ApplicationState:
         :param pulumi.Input[_builtins.bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[_builtins.str] object_id: The application's object ID.
         :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A list of object IDs of principals that will be granted ownership of the application
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+               
+               > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
         :param pulumi.Input['ApplicationPasswordArgs'] password: A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
                
                > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
@@ -902,7 +908,9 @@ class _ApplicationState:
     @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of object IDs of principals that will be granted ownership of the application
+        A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+
+        > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
         """
         return pulumi.get(self, "owners")
 
@@ -1125,6 +1133,22 @@ class Application(pulumi.CustomResource):
                  web: Optional[pulumi.Input[Union['ApplicationWebArgs', 'ApplicationWebArgsDict']]] = None,
                  __props__=None):
         """
+        Manages an application registration within Azure Active Directory.
+
+        For a more lightweight alternative, please see the ApplicationRegistration resource. Please note that this resource should not be used together with the `ApplicationRegistration` resource when managing the same application.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, you should ensure that the principal being used to run Terraform is included in the `owners` property.
+
+        Additionally, you may need the `User.Read.All` application role when including user principals in the `owners` property.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         *Create an application*
@@ -1309,7 +1333,9 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] notes: User-specified notes relevant for the management of the application.
         :param pulumi.Input[_builtins.bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[Union['ApplicationOptionalClaimsArgs', 'ApplicationOptionalClaimsArgsDict']] optional_claims: An `optional_claims` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A list of object IDs of principals that will be granted ownership of the application
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+               
+               > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
         :param pulumi.Input[Union['ApplicationPasswordArgs', 'ApplicationPasswordArgsDict']] password: A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
                
                > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
@@ -1341,6 +1367,22 @@ class Application(pulumi.CustomResource):
                  args: ApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages an application registration within Azure Active Directory.
+
+        For a more lightweight alternative, please see the ApplicationRegistration resource. Please note that this resource should not be used together with the `ApplicationRegistration` resource when managing the same application.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, you should ensure that the principal being used to run Terraform is included in the `owners` property.
+
+        Additionally, you may need the `User.Read.All` application role when including user principals in the `owners` property.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         *Create an application*
@@ -1670,7 +1712,9 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[_builtins.str] object_id: The application's object ID.
         :param pulumi.Input[Union['ApplicationOptionalClaimsArgs', 'ApplicationOptionalClaimsArgsDict']] optional_claims: An `optional_claims` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A list of object IDs of principals that will be granted ownership of the application
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+               
+               > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
         :param pulumi.Input[Union['ApplicationPasswordArgs', 'ApplicationPasswordArgsDict']] password: A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
                
                > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the ApplicationPassword resource.
@@ -1903,7 +1947,9 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def owners(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        A list of object IDs of principals that will be granted ownership of the application
+        A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+
+        > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
         """
         return pulumi.get(self, "owners")
 

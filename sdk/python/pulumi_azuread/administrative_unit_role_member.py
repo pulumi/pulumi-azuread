@@ -166,10 +166,9 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
 
         ```sh
-        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 
-        ```
-
+        terraform import azuread_administrative_unit_role_member.example 
         /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/scopedRoleMembers/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -214,10 +213,9 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
 
         ```sh
-        $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember example 
-        ```
-
+        terraform import azuread_administrative_unit_role_member.example 
         /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/scopedRoleMembers/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
+        ```
 
         :param str resource_name: The name of the resource.
         :param AdministrativeUnitRoleMemberArgs args: The arguments to use to populate this resource's properties.

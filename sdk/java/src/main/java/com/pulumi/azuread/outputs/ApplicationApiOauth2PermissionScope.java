@@ -51,7 +51,11 @@ public final class ApplicationApiOauth2PermissionScope {
      */
     private @Nullable String userConsentDisplayName;
     /**
-     * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens
+     * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+     * 
+     * &gt; **Default `userImpersonation` Scope** Unlike the Azure Portal, applications created with the Terraform AzureAD provider do not get assigned a default `userImpersonation` scope. You will need to include a block for the `userImpersonation` scope if you need it for your application.
+     * 
+     * &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
      * 
      */
     private @Nullable String value;
@@ -109,7 +113,11 @@ public final class ApplicationApiOauth2PermissionScope {
         return Optional.ofNullable(this.userConsentDisplayName);
     }
     /**
-     * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens
+     * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+     * 
+     * &gt; **Default `userImpersonation` Scope** Unlike the Azure Portal, applications created with the Terraform AzureAD provider do not get assigned a default `userImpersonation` scope. You will need to include a block for the `userImpersonation` scope if you need it for your application.
+     * 
+     * &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
      * 
      */
     public Optional<String> value() {

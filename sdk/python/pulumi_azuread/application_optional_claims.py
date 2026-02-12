@@ -181,6 +181,20 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
                  saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsSaml2TokenArgs', 'ApplicationOptionalClaimsSaml2TokenArgsDict']]]]] = None,
                  __props__=None):
         """
+        Manages optional claims for an application registration.
+
+        This resource is analogous to the `optional_claims` block in the `Application` resource. When using these resources together, you should use the `ignore_changes` lifecycle meta-argument (see example below).
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         ```python
@@ -233,6 +247,20 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
                  args: ApplicationOptionalClaimsInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages optional claims for an application registration.
+
+        This resource is analogous to the `optional_claims` block in the `Application` resource. When using these resources together, you should use the `ignore_changes` lifecycle meta-argument (see example below).
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         ```python

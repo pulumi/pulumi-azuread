@@ -50,13 +50,17 @@ class ServicePrincipalArgs:
         :param pulumi.Input[_builtins.str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         :param pulumi.Input[_builtins.str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A list of object IDs of principals that will be granted ownership of the service principal
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+               
+               > **Ownership of Service Principals** It's recommended to always specify one or more service principal owners, including the principal being used to execute Terraform, such as in the example above.
         :param pulumi.Input[_builtins.str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
         :param pulumi.Input['ServicePrincipalSamlSingleSignOnArgs'] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
                
                > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
-        :param pulumi.Input[_builtins.bool] use_existing: When true, the resource will return an existing service principal instead of failing with an error
+        :param pulumi.Input[_builtins.bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+               
+               > **Caveats of `use_existing`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `use_existing` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
         """
         pulumi.set(__self__, "client_id", client_id)
         if account_enabled is not None:
@@ -218,7 +222,9 @@ class ServicePrincipalArgs:
     @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of object IDs of principals that will be granted ownership of the service principal
+        A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+
+        > **Ownership of Service Principals** It's recommended to always specify one or more service principal owners, including the principal being used to execute Terraform, such as in the example above.
         """
         return pulumi.get(self, "owners")
 
@@ -268,7 +274,9 @@ class ServicePrincipalArgs:
     @pulumi.getter(name="useExisting")
     def use_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When true, the resource will return an existing service principal instead of failing with an error
+        When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+
+        > **Caveats of `use_existing`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `use_existing` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
         """
         return pulumi.get(self, "use_existing")
 
@@ -332,7 +340,9 @@ class _ServicePrincipalState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]] oauth2_permission_scopes: A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
         :param pulumi.Input[_builtins.str] object_id: The object ID of the service principal.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A list of object IDs of principals that will be granted ownership of the service principal
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+               
+               > **Ownership of Service Principals** It's recommended to always specify one or more service principal owners, including the principal being used to execute Terraform, such as in the example above.
         :param pulumi.Input[_builtins.str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redirect_uris: A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
         :param pulumi.Input[_builtins.str] saml_metadata_url: The URL where the service exposes SAML metadata for federation.
@@ -343,7 +353,9 @@ class _ServicePrincipalState:
                
                > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
         :param pulumi.Input[_builtins.str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
-        :param pulumi.Input[_builtins.bool] use_existing: When true, the resource will return an existing service principal instead of failing with an error
+        :param pulumi.Input[_builtins.bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+               
+               > **Caveats of `use_existing`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `use_existing` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
         """
         if account_enabled is not None:
             pulumi.set(__self__, "account_enabled", account_enabled)
@@ -642,7 +654,9 @@ class _ServicePrincipalState:
     @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of object IDs of principals that will be granted ownership of the service principal
+        A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+
+        > **Ownership of Service Principals** It's recommended to always specify one or more service principal owners, including the principal being used to execute Terraform, such as in the example above.
         """
         return pulumi.get(self, "owners")
 
@@ -752,7 +766,9 @@ class _ServicePrincipalState:
     @pulumi.getter(name="useExisting")
     def use_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        When true, the resource will return an existing service principal instead of failing with an error
+        When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+
+        > **Caveats of `use_existing`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `use_existing` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
         """
         return pulumi.get(self, "use_existing")
 
@@ -784,6 +800,18 @@ class ServicePrincipal(pulumi.CustomResource):
                  use_existing: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        Manages a service principal associated with an application within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of _both_ the linked application registration, _and_ the service principal being managed.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         *Create a service principal for an application*
@@ -871,13 +899,17 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         :param pulumi.Input[_builtins.str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A list of object IDs of principals that will be granted ownership of the service principal
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+               
+               > **Ownership of Service Principals** It's recommended to always specify one or more service principal owners, including the principal being used to execute Terraform, such as in the example above.
         :param pulumi.Input[_builtins.str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
                
                > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
-        :param pulumi.Input[_builtins.bool] use_existing: When true, the resource will return an existing service principal instead of failing with an error
+        :param pulumi.Input[_builtins.bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+               
+               > **Caveats of `use_existing`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `use_existing` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
         """
         ...
     @overload
@@ -886,6 +918,18 @@ class ServicePrincipal(pulumi.CustomResource):
                  args: ServicePrincipalArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a service principal associated with an application within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of _both_ the linked application registration, _and_ the service principal being managed.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         *Create a service principal for an application*
@@ -1096,7 +1140,9 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalOauth2PermissionScopeArgs', 'ServicePrincipalOauth2PermissionScopeArgsDict']]]] oauth2_permission_scopes: A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
         :param pulumi.Input[_builtins.str] object_id: The object ID of the service principal.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A list of object IDs of principals that will be granted ownership of the service principal
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+               
+               > **Ownership of Service Principals** It's recommended to always specify one or more service principal owners, including the principal being used to execute Terraform, such as in the example above.
         :param pulumi.Input[_builtins.str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] redirect_uris: A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
         :param pulumi.Input[_builtins.str] saml_metadata_url: The URL where the service exposes SAML metadata for federation.
@@ -1107,7 +1153,9 @@ class ServicePrincipal(pulumi.CustomResource):
                
                > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
         :param pulumi.Input[_builtins.str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
-        :param pulumi.Input[_builtins.bool] use_existing: When true, the resource will return an existing service principal instead of failing with an error
+        :param pulumi.Input[_builtins.bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+               
+               > **Caveats of `use_existing`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `use_existing` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1303,7 +1351,9 @@ class ServicePrincipal(pulumi.CustomResource):
     @pulumi.getter
     def owners(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        A list of object IDs of principals that will be granted ownership of the service principal
+        A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+
+        > **Ownership of Service Principals** It's recommended to always specify one or more service principal owners, including the principal being used to execute Terraform, such as in the example above.
         """
         return pulumi.get(self, "owners")
 
@@ -1377,7 +1427,9 @@ class ServicePrincipal(pulumi.CustomResource):
     @pulumi.getter(name="useExisting")
     def use_existing(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        When true, the resource will return an existing service principal instead of failing with an error
+        When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+
+        > **Caveats of `use_existing`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `use_existing` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
         """
         return pulumi.get(self, "use_existing")
 

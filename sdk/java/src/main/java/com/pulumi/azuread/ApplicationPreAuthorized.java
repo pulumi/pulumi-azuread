@@ -15,6 +15,18 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * Manages client applications that are pre-authorized with the specified permissions to access an application&#39;s APIs without requiring user consent.
+ * 
+ * ## API Permissions
+ * 
+ * The following API permissions are required in order to use this resource.
+ * 
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+ * 
+ * &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+ * 
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -94,7 +106,7 @@ import javax.annotation.Nullable;
  * $ pulumi import azuread:index/applicationPreAuthorized:ApplicationPreAuthorized example 00000000-0000-0000-0000-000000000000/preAuthorizedApplication/11111111-1111-1111-1111-111111111111
  * ```
  * 
- * -&gt; This ID format is unique to Terraform and is composed of the authorizing application&#39;s object ID, the string &#34;preAuthorizedApplication&#34; and the authorized application&#39;s application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
+ * &gt; This ID format is unique to Terraform and is composed of the authorizing application&#39;s object ID, the string &#34;preAuthorizedApplication&#34; and the authorized application&#39;s application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
  * 
  */
 @ResourceType(type="azuread:index/applicationPreAuthorized:ApplicationPreAuthorized")

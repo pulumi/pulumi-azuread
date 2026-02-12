@@ -67,6 +67,10 @@ public final class Config {
     public Optional<String> clientSecretFilePath() {
         return Codegen.stringProp("clientSecretFilePath").config(config).get();
     }
+/**
+ * Disable the Terraform Partner ID, which is used if a custom `partnerId` isn&#39;t specified
+ * 
+ */
     public Optional<Boolean> disableTerraformPartnerId() {
         return Codegen.booleanProp("disableTerraformPartnerId").config(config).get();
     }

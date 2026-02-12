@@ -57,7 +57,11 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? UserConsentDisplayName { get; set; }
 
         /// <summary>
-        /// The value that is used for the `Scp` claim in OAuth 2.0 access tokens
+        /// The value that is used for the `Scp` claim in OAuth 2.0 access tokens.
+        /// 
+        /// &gt; **Default `UserImpersonation` Scope** Unlike the Azure Portal, applications created with the Terraform AzureAD provider do not get assigned a default `UserImpersonation` scope. You will need to include a block for the `UserImpersonation` scope if you need it for your application.
+        /// 
+        /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles (`AppRole`) and permission scopes (`Oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `Value`s. Terraform will attempt to detect this during a plan or apply operation.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

@@ -281,7 +281,9 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<string>> OtherMails { get; private set; } = null!;
 
         /// <summary>
-        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
+        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        /// 
+        /// &gt; **Passwords and importing users** Passwords can be changed but not cleared. Removing the `Password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -574,7 +576,9 @@ namespace Pulumi.AzureAD
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
+        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        /// 
+        /// &gt; **Passwords and importing users** Passwords can be changed but not cleared. Removing the `Password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
         /// </summary>
         public Input<string>? Password
         {
@@ -892,7 +896,9 @@ namespace Pulumi.AzureAD
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user
+        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        /// 
+        /// &gt; **Passwords and importing users** Passwords can be changed but not cleared. Removing the `Password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
         /// </summary>
         public Input<string>? Password
         {

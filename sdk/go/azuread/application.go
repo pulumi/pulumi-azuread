@@ -12,6 +12,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages an application registration within Azure Active Directory.
+//
+// For a more lightweight alternative, please see the ApplicationRegistration resource. Please note that this resource should not be used together with the `ApplicationRegistration` resource when managing the same application.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+//
+// > When using the `Application.ReadWrite.OwnedBy` application role, you should ensure that the principal being used to run Terraform is included in the `owners` property.
+//
+// Additionally, you may need the `User.Read.All` application role when including user principals in the `owners` property.
+//
+// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+//
 // ## Example Usage
 //
 // *Create an application*
@@ -321,7 +337,9 @@ type Application struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// An `optionalClaims` block as documented below.
 	OptionalClaims ApplicationOptionalClaimsTypePtrOutput `pulumi:"optionalClaims"`
-	// A list of object IDs of principals that will be granted ownership of the application
+	// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+	//
+	// > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
 	// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
 	//
@@ -438,7 +456,9 @@ type applicationState struct {
 	ObjectId *string `pulumi:"objectId"`
 	// An `optionalClaims` block as documented below.
 	OptionalClaims *ApplicationOptionalClaimsType `pulumi:"optionalClaims"`
-	// A list of object IDs of principals that will be granted ownership of the application
+	// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+	//
+	// > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
 	Owners []string `pulumi:"owners"`
 	// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
 	//
@@ -523,7 +543,9 @@ type ApplicationState struct {
 	ObjectId pulumi.StringPtrInput
 	// An `optionalClaims` block as documented below.
 	OptionalClaims ApplicationOptionalClaimsTypePtrInput
-	// A list of object IDs of principals that will be granted ownership of the application
+	// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+	//
+	// > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
 	Owners pulumi.StringArrayInput
 	// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
 	//
@@ -600,7 +622,9 @@ type applicationArgs struct {
 	Oauth2PostResponseRequired *bool `pulumi:"oauth2PostResponseRequired"`
 	// An `optionalClaims` block as documented below.
 	OptionalClaims *ApplicationOptionalClaimsType `pulumi:"optionalClaims"`
-	// A list of object IDs of principals that will be granted ownership of the application
+	// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+	//
+	// > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
 	Owners []string `pulumi:"owners"`
 	// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
 	//
@@ -672,7 +696,9 @@ type ApplicationArgs struct {
 	Oauth2PostResponseRequired pulumi.BoolPtrInput
 	// An `optionalClaims` block as documented below.
 	OptionalClaims ApplicationOptionalClaimsTypePtrInput
-	// A list of object IDs of principals that will be granted ownership of the application
+	// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+	//
+	// > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
 	Owners pulumi.StringArrayInput
 	// A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
 	//
@@ -901,7 +927,9 @@ func (o ApplicationOutput) OptionalClaims() ApplicationOptionalClaimsTypePtrOutp
 	return o.ApplyT(func(v *Application) ApplicationOptionalClaimsTypePtrOutput { return v.OptionalClaims }).(ApplicationOptionalClaimsTypePtrOutput)
 }
 
-// A list of object IDs of principals that will be granted ownership of the application
+// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+//
+// > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
 func (o ApplicationOutput) Owners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringArrayOutput { return v.Owners }).(pulumi.StringArrayOutput)
 }

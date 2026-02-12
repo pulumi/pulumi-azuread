@@ -332,14 +332,18 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of object IDs of principals that will be granted ownership of the application
+     * A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     * 
+     * &gt; **Ownership of Applications** It&#39;s recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
      * 
      */
     @Import(name="owners")
     private @Nullable Output<List<String>> owners;
 
     /**
-     * @return A list of object IDs of principals that will be granted ownership of the application
+     * @return A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     * 
+     * &gt; **Ownership of Applications** It&#39;s recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
      * 
      */
     public Optional<Output<List<String>>> owners() {
@@ -1101,7 +1105,9 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owners A list of object IDs of principals that will be granted ownership of the application
+         * @param owners A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+         * 
+         * &gt; **Ownership of Applications** It&#39;s recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
          * 
          * @return builder
          * 
@@ -1112,7 +1118,9 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owners A list of object IDs of principals that will be granted ownership of the application
+         * @param owners A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+         * 
+         * &gt; **Ownership of Applications** It&#39;s recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
          * 
          * @return builder
          * 
@@ -1122,7 +1130,9 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owners A list of object IDs of principals that will be granted ownership of the application
+         * @param owners A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+         * 
+         * &gt; **Ownership of Applications** It&#39;s recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
          * 
          * @return builder
          * 

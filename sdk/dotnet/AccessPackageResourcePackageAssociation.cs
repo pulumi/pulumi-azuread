@@ -73,7 +73,7 @@ namespace Pulumi.AzureAD
     /// $ pulumi import azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111_22222222-2222-2222-2222-22222222/33333333-3333-3333-3333-33333333/Member
     /// ```
     /// 
-    /// -&gt; This ID format is unique to Terraform and is composed of the Access Package ID, the access package ResourceRoleScope (in the format Role_Scope), the Resource Origin ID, and the Access Type, in the format `{AccessPackageID}/{ResourceRoleScope}/{ResourceOriginID}/{AccessType}`.
+    /// &gt; This ID format is unique to Terraform and is composed of the Access Package ID, the access package ResourceRoleScope (in the format Role_Scope), the Resource Origin ID, and the Access Type, in the format `{AccessPackageID}/{ResourceRoleScope}/{ResourceOriginID}/{AccessType}`.
     /// </summary>
     [AzureADResourceType("azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation")]
     public partial class AccessPackageResourcePackageAssociation : global::Pulumi.CustomResource

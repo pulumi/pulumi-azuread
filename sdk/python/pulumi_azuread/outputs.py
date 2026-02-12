@@ -1169,7 +1169,11 @@ class ApplicationApiOauth2PermissionScope(dict):
         :param _builtins.str type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
         :param _builtins.str user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         :param _builtins.str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
-        :param _builtins.str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens
+        :param _builtins.str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+               
+               > **Default `user_impersonation` Scope** Unlike the Azure Portal, applications created with the Terraform AzureAD provider do not get assigned a default `user_impersonation` scope. You will need to include a block for the `user_impersonation` scope if you need it for your application.
+               
+               > **Roles and Permission Scopes** In Azure Active Directory, application roles (`app_role`) and permission scopes (`oauth2_permission_scope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
         """
         pulumi.set(__self__, "id", id)
         if admin_consent_description is not None:
@@ -1249,7 +1253,11 @@ class ApplicationApiOauth2PermissionScope(dict):
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
         """
-        The value that is used for the `scp` claim in OAuth 2.0 access tokens
+        The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+
+        > **Default `user_impersonation` Scope** Unlike the Azure Portal, applications created with the Terraform AzureAD provider do not get assigned a default `user_impersonation` scope. You will need to include a block for the `user_impersonation` scope if you need it for your application.
+
+        > **Roles and Permission Scopes** In Azure Active Directory, application roles (`app_role`) and permission scopes (`oauth2_permission_scope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
         """
         return pulumi.get(self, "value")
 
@@ -1290,7 +1298,9 @@ class ApplicationAppRole(dict):
                
                > **Tip: Generating a UUID for the `id` field** To generate a value for the `id` field in cases where the actual UUID is not important, you can use the `random_uuid` resource. See the application example in the provider repository.
         :param _builtins.bool enabled: Determines if the app role is enabled. Defaults to `true`.
-        :param _builtins.str value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+        :param _builtins.str value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+               
+               > **Roles and Permission Scopes** In Azure Active Directory, application roles (`app_role`) and permission scopes (`oauth2_permission_scope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
         """
         pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         pulumi.set(__self__, "description", description)
@@ -1347,7 +1357,9 @@ class ApplicationAppRole(dict):
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
         """
-        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+
+        > **Roles and Permission Scopes** In Azure Active Directory, application roles (`app_role`) and permission scopes (`oauth2_permission_scope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
         """
         return pulumi.get(self, "value")
 
