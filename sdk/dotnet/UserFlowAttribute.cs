@@ -42,13 +42,13 @@ namespace Pulumi.AzureAD
     /// 
     /// ## Import
     /// 
-    /// User flow attributes can be imported using the `id`, e.g.
+    /// User flow attributes can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import azuread:index/userFlowAttribute:UserFlowAttribute example extension_ecc9f88db2924942b8a96f44873616fe_Hobbyjkorv
     /// ```
     /// 
-    /// -&gt; This ID can be queried using the [User Flow Attributes API](https://learn.microsoft.com/en-us/graph/api/identityuserflowattribute-list?view=graph-rest-1.0&amp;tabs=http).
+    /// &gt; This ID can be queried using the [User Flow Attributes API](https://learn.microsoft.com/en-us/graph/api/identityuserflowattribute-list?view=graph-rest-1.0&amp;tabs=http).
     /// </summary>
     [AzureADResourceType("azuread:index/userFlowAttribute:UserFlowAttribute")]
     public partial class UserFlowAttribute : global::Pulumi.CustomResource

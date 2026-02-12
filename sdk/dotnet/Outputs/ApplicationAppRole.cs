@@ -36,7 +36,9 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The value that is used for the `Roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+        /// The value that is used for the `Roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+        /// 
+        /// &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles (`AppRole`) and permission scopes (`Oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `Value`s. Terraform will attempt to detect this during a plan or apply operation.
         /// </summary>
         public readonly string? Value;
 

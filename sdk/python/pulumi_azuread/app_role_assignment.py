@@ -271,7 +271,7 @@ class AppRoleAssignment(pulumi.CustomResource):
         $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example /servicePrincipals/00000000-0000-0000-0000-000000000000/appRoleAssignedTo/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
         ```
 
-        -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `/servicePrincipals/{ResourcePrincipalID}/appRoleAssignedTo/{AppRoleAssignmentID}`.
+        > This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `/servicePrincipals/{ResourcePrincipalID}/appRoleAssignedTo/{AppRoleAssignmentID}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -373,7 +373,7 @@ class AppRoleAssignment(pulumi.CustomResource):
         $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example /servicePrincipals/00000000-0000-0000-0000-000000000000/appRoleAssignedTo/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
         ```
 
-        -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `/servicePrincipals/{ResourcePrincipalID}/appRoleAssignedTo/{AppRoleAssignmentID}`.
+        > This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `/servicePrincipals/{ResourcePrincipalID}/appRoleAssignedTo/{AppRoleAssignmentID}`.
 
         :param str resource_name: The name of the resource.
         :param AppRoleAssignmentArgs args: The arguments to use to populate this resource's properties.

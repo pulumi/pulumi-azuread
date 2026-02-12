@@ -77,14 +77,18 @@ public final class ApplicationAppRoleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The unique identifier of the app role
+     * The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+     * 
+     * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
      * 
      */
     @Import(name="roleId")
     private @Nullable Output<String> roleId;
 
     /**
-     * @return The unique identifier of the app role
+     * @return The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+     * 
+     * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
      * 
      */
     public Optional<Output<String>> roleId() {
@@ -234,7 +238,9 @@ public final class ApplicationAppRoleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param roleId The unique identifier of the app role
+         * @param roleId The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+         * 
+         * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
          * 
          * @return builder
          * 
@@ -245,7 +251,9 @@ public final class ApplicationAppRoleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param roleId The unique identifier of the app role
+         * @param roleId The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+         * 
+         * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
          * 
          * @return builder
          * 

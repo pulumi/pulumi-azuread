@@ -235,14 +235,18 @@ public final class GroupWithoutMembersArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * A set of owners who own this group. Supported object types are Users or Service Principals
+     * A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+     * 
+     * &gt; **Group Ownership**  It&#39;s recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
      * 
      */
     @Import(name="owners")
     private @Nullable Output<List<String>> owners;
 
     /**
-     * @return A set of owners who own this group. Supported object types are Users or Service Principals
+     * @return A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+     * 
+     * &gt; **Group Ownership**  It&#39;s recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
      * 
      */
     public Optional<Output<List<String>>> owners() {
@@ -722,7 +726,9 @@ public final class GroupWithoutMembersArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param owners A set of owners who own this group. Supported object types are Users or Service Principals
+         * @param owners A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+         * 
+         * &gt; **Group Ownership**  It&#39;s recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
          * 
          * @return builder
          * 
@@ -733,7 +739,9 @@ public final class GroupWithoutMembersArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param owners A set of owners who own this group. Supported object types are Users or Service Principals
+         * @param owners A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+         * 
+         * &gt; **Group Ownership**  It&#39;s recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
          * 
          * @return builder
          * 
@@ -743,7 +751,9 @@ public final class GroupWithoutMembersArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param owners A set of owners who own this group. Supported object types are Users or Service Principals
+         * @param owners A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
+         * 
+         * &gt; **Group Ownership**  It&#39;s recommended to always specify one or more group owners, including the principal being used to execute Terraform, such as in the example above. When removing group owners, if a user principal has been assigned ownership, the last user cannot be removed as an owner. Microsoft 365 groups are required to always have at least one owner which _must be a user_ (i.e. not a service principal).
          * 
          * @return builder
          * 

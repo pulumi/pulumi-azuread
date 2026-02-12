@@ -160,7 +160,7 @@ namespace Pulumi.AzureAD
     /// $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example /servicePrincipals/00000000-0000-0000-0000-000000000000/appRoleAssignedTo/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
     /// ```
     /// 
-    /// -&gt; This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `/servicePrincipals/{ResourcePrincipalID}/appRoleAssignedTo/{AppRoleAssignmentID}`.
+    /// &gt; This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `/servicePrincipals/{ResourcePrincipalID}/appRoleAssignedTo/{AppRoleAssignmentID}`.
     /// </summary>
     [AzureADResourceType("azuread:index/appRoleAssignment:AppRoleAssignment")]
     public partial class AppRoleAssignment : global::Pulumi.CustomResource

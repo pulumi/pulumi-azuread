@@ -78,6 +78,9 @@ class _ExportableConfig(types.ModuleType):
 
     @_builtins.property
     def disable_terraform_partner_id(self) -> Optional[bool]:
+        """
+        Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
+        """
         return __config__.get_bool('disableTerraformPartnerId')
 
     @_builtins.property

@@ -2747,6 +2747,12 @@ public final class AzureadFunctions {
         return Deployment.getInstance().invokeAsync("azuread:index/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to discover application IDs for APIs published by Microsoft.
+     * 
+     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
+     * 
+     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
+     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -2841,6 +2847,12 @@ public final class AzureadFunctions {
         return getApplicationPublishedAppIds(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to discover application IDs for APIs published by Microsoft.
+     * 
+     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
+     * 
+     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
+     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -2935,6 +2947,12 @@ public final class AzureadFunctions {
         return getApplicationPublishedAppIdsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to discover application IDs for APIs published by Microsoft.
+     * 
+     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
+     * 
+     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
+     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -3029,6 +3047,12 @@ public final class AzureadFunctions {
         return getApplicationPublishedAppIds(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to discover application IDs for APIs published by Microsoft.
+     * 
+     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
+     * 
+     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
+     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -3123,6 +3147,12 @@ public final class AzureadFunctions {
         return getApplicationPublishedAppIdsPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to discover application IDs for APIs published by Microsoft.
+     * 
+     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
+     * 
+     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
+     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -3217,6 +3247,12 @@ public final class AzureadFunctions {
         return Deployment.getInstance().invoke("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", TypeShape.of(GetApplicationPublishedAppIdsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to discover application IDs for APIs published by Microsoft.
+     * 
+     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
+     * 
+     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
+     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*
@@ -3311,6 +3347,12 @@ public final class AzureadFunctions {
         return Deployment.getInstance().invoke("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", TypeShape.of(GetApplicationPublishedAppIdsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to discover application IDs for APIs published by Microsoft.
+     * 
+     * This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
+     * 
+     * The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
+     * 
      * ## Example Usage
      * 
      * *Listing well-known application IDs*

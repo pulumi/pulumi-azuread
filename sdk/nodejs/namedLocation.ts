@@ -7,6 +7,18 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Manages a Named Location within Azure Active Directory.
+ *
+ * > **API Limits** This resource is subject to a restrictive API request limit of 1 request/second. Whilst Terraform will automatically back-off and retry throttled requests, if you have a large number of resource changes to make, you may wish to reduce parallelism or specify extended custom resource timeouts.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`
+ *
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
+ *
  * ## Example Usage
  *
  * ```typescript

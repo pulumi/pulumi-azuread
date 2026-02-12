@@ -38,7 +38,9 @@ class ApplicationPermissionScopeArgs:
                > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
         :param pulumi.Input[_builtins.str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
         :param pulumi.Input[_builtins.str] user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-        :param pulumi.Input[_builtins.str] user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience
+        :param pulumi.Input[_builtins.str] user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
+               
+               > **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
         """
         pulumi.set(__self__, "admin_consent_description", admin_consent_description)
         pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
@@ -142,7 +144,9 @@ class ApplicationPermissionScopeArgs:
     @pulumi.getter(name="userConsentDisplayName")
     def user_consent_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Display name for the delegated permission that appears in the end user consent experience
+        Display name for the delegated permission that appears in the end user consent experience.
+
+        > **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
         """
         return pulumi.get(self, "user_consent_display_name")
 
@@ -170,7 +174,9 @@ class _ApplicationPermissionScopeState:
         :param pulumi.Input[_builtins.str] scope_id: The unique identifier of the permission scope. Must be a valid UUID. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
         :param pulumi.Input[_builtins.str] user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-        :param pulumi.Input[_builtins.str] user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience
+        :param pulumi.Input[_builtins.str] user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
+               
+               > **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
         :param pulumi.Input[_builtins.str] value: The value that is used for the `scp` claim in OAuth access tokens.
                
                > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
@@ -268,7 +274,9 @@ class _ApplicationPermissionScopeState:
     @pulumi.getter(name="userConsentDisplayName")
     def user_consent_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Display name for the delegated permission that appears in the end user consent experience
+        Display name for the delegated permission that appears in the end user consent experience.
+
+        > **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
         """
         return pulumi.get(self, "user_consent_display_name")
 
@@ -307,6 +315,20 @@ class ApplicationPermissionScope(pulumi.CustomResource):
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages a permission scope for an application registration.
+
+        This resource is analogous to the `oauth2_permission_scope` block in the `api` block of the  `Application` resource. When using these resources together, you should use the `ignore_changes` lifecycle meta-argument (see example below).
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         ```python
@@ -352,7 +374,9 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] scope_id: The unique identifier of the permission scope. Must be a valid UUID. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
         :param pulumi.Input[_builtins.str] user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-        :param pulumi.Input[_builtins.str] user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience
+        :param pulumi.Input[_builtins.str] user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
+               
+               > **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
         :param pulumi.Input[_builtins.str] value: The value that is used for the `scp` claim in OAuth access tokens.
                
                > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
@@ -364,6 +388,20 @@ class ApplicationPermissionScope(pulumi.CustomResource):
                  args: ApplicationPermissionScopeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a permission scope for an application registration.
+
+        This resource is analogous to the `oauth2_permission_scope` block in the `api` block of the  `Application` resource. When using these resources together, you should use the `ignore_changes` lifecycle meta-argument (see example below).
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         ```python
@@ -482,7 +520,9 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] scope_id: The unique identifier of the permission scope. Must be a valid UUID. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
         :param pulumi.Input[_builtins.str] user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-        :param pulumi.Input[_builtins.str] user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience
+        :param pulumi.Input[_builtins.str] user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
+               
+               > **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
         :param pulumi.Input[_builtins.str] value: The value that is used for the `scp` claim in OAuth access tokens.
                
                > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
@@ -553,7 +593,9 @@ class ApplicationPermissionScope(pulumi.CustomResource):
     @pulumi.getter(name="userConsentDisplayName")
     def user_consent_display_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Display name for the delegated permission that appears in the end user consent experience
+        Display name for the delegated permission that appears in the end user consent experience.
+
+        > **Tip** Use the `random_uuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
         """
         return pulumi.get(self, "user_consent_display_name")
 

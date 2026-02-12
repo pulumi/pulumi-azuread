@@ -16,6 +16,20 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages an app role for an application registration.
+ * 
+ * This resource is analogous to the `appRole` block in the `azuread.Application` resource. When using these resources together, you should use the `ignoreChanges` lifecycle meta-argument (see example below).
+ * 
+ * ## API Permissions
+ * 
+ * The following API permissions are required in order to use this resource.
+ * 
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+ * 
+ * &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+ * 
+ * When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -172,14 +186,18 @@ public class ApplicationAppRole extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * The unique identifier of the app role
+     * The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+     * 
+     * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
      * 
      */
     @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
-     * @return The unique identifier of the app role
+     * @return The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+     * 
+     * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
      * 
      */
     public Output<String> roleId() {

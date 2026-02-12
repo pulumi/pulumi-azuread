@@ -326,6 +326,18 @@ class ApplicationCertificate(pulumi.CustomResource):
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages a certificate associated with an application within Azure Active Directory. These are also referred to as client certificates during authentication.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         *Using a PEM certificate*
@@ -426,7 +438,7 @@ class ApplicationCertificate(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
 
-        -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
+        > This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -450,6 +462,18 @@ class ApplicationCertificate(pulumi.CustomResource):
                  args: ApplicationCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a certificate associated with an application within Azure Active Directory. These are also referred to as client certificates during authentication.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+
+        When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         *Using a PEM certificate*
@@ -550,7 +574,7 @@ class ApplicationCertificate(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate example 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
 
-        -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
+        > This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
         :param ApplicationCertificateArgs args: The arguments to use to populate this resource's properties.

@@ -12,6 +12,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages an app role for an application registration.
+//
+// This resource is analogous to the `appRole` block in the `Application` resource. When using these resources together, you should use the `ignoreChanges` lifecycle meta-argument (see example below).
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+//
+// > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+//
+// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+//
 // ## Example Usage
 //
 // ```go
@@ -108,7 +122,9 @@ type ApplicationAppRole struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The unique identifier of the app role
+	// The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+	//
+	// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	//
@@ -169,7 +185,9 @@ type applicationAppRoleState struct {
 	Description *string `pulumi:"description"`
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName *string `pulumi:"displayName"`
-	// The unique identifier of the app role
+	// The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+	//
+	// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
 	RoleId *string `pulumi:"roleId"`
 	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	//
@@ -186,7 +204,9 @@ type ApplicationAppRoleState struct {
 	Description pulumi.StringPtrInput
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringPtrInput
-	// The unique identifier of the app role
+	// The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+	//
+	// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
 	RoleId pulumi.StringPtrInput
 	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	//
@@ -207,7 +227,9 @@ type applicationAppRoleArgs struct {
 	Description string `pulumi:"description"`
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName string `pulumi:"displayName"`
-	// The unique identifier of the app role
+	// The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+	//
+	// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
 	RoleId string `pulumi:"roleId"`
 	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	//
@@ -225,7 +247,9 @@ type ApplicationAppRoleArgs struct {
 	Description pulumi.StringInput
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringInput
-	// The unique identifier of the app role
+	// The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+	//
+	// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
 	RoleId pulumi.StringInput
 	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	//
@@ -340,7 +364,9 @@ func (o ApplicationAppRoleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationAppRole) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the app role
+// The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+//
+// > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
 func (o ApplicationAppRoleOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationAppRole) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
 }

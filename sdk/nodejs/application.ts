@@ -7,6 +7,22 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Manages an application registration within Azure Active Directory.
+ *
+ * For a more lightweight alternative, please see the azuread.ApplicationRegistration resource. Please note that this resource should not be used together with the `azuread.ApplicationRegistration` resource when managing the same application.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+ *
+ * > When using the `Application.ReadWrite.OwnedBy` application role, you should ensure that the principal being used to run Terraform is included in the `owners` property.
+ *
+ * Additionally, you may need the `User.Read.All` application role when including user principals in the `owners` property.
+ *
+ * When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+ *
  * ## Example Usage
  *
  * *Create an application*
@@ -294,7 +310,9 @@ export class Application extends pulumi.CustomResource {
      */
     declare public readonly optionalClaims: pulumi.Output<outputs.ApplicationOptionalClaims | undefined>;
     /**
-     * A list of object IDs of principals that will be granted ownership of the application
+     * A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     *
+     * > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
      */
     declare public readonly owners: pulumi.Output<string[] | undefined>;
     /**
@@ -545,7 +563,9 @@ export interface ApplicationState {
      */
     optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims>;
     /**
-     * A list of object IDs of principals that will be granted ownership of the application
+     * A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     *
+     * > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
      */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -679,7 +699,9 @@ export interface ApplicationArgs {
      */
     optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims>;
     /**
-     * A list of object IDs of principals that will be granted ownership of the application
+     * A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     *
+     * > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
      */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**

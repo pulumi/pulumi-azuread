@@ -10,6 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
+    /// Manages a permission scope for an application registration.
+    /// 
+    /// This resource is analogous to the `Oauth2PermissionScope` block in the `Api` block of the  `azuread.Application` resource. When using these resources together, you should use the `IgnoreChanges` lifecycle meta-argument (see example below).
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+    /// 
+    /// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+    /// 
+    /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -113,7 +127,9 @@ namespace Pulumi.AzureAD
         public Output<string?> UserConsentDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Display name for the delegated permission that appears in the end user consent experience
+        /// Display name for the delegated permission that appears in the end user consent experience.
+        /// 
+        /// &gt; **Tip** Use the `RandomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
         /// </summary>
         [Output("userConsentDisplayName")]
         public Output<string?> UserConsentDisplayName { get; private set; } = null!;
@@ -209,7 +225,9 @@ namespace Pulumi.AzureAD
         public Input<string>? UserConsentDescription { get; set; }
 
         /// <summary>
-        /// Display name for the delegated permission that appears in the end user consent experience
+        /// Display name for the delegated permission that appears in the end user consent experience.
+        /// 
+        /// &gt; **Tip** Use the `RandomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
         /// </summary>
         [Input("userConsentDisplayName")]
         public Input<string>? UserConsentDisplayName { get; set; }
@@ -267,7 +285,9 @@ namespace Pulumi.AzureAD
         public Input<string>? UserConsentDescription { get; set; }
 
         /// <summary>
-        /// Display name for the delegated permission that appears in the end user consent experience
+        /// Display name for the delegated permission that appears in the end user consent experience.
+        /// 
+        /// &gt; **Tip** Use the `RandomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
         /// </summary>
         [Input("userConsentDisplayName")]
         public Input<string>? UserConsentDisplayName { get; set; }

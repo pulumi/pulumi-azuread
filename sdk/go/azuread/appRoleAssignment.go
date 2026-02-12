@@ -185,7 +185,7 @@ import (
 // $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example /servicePrincipals/00000000-0000-0000-0000-000000000000/appRoleAssignedTo/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
 // ```
 //
-// -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `/servicePrincipals/{ResourcePrincipalID}/appRoleAssignedTo/{AppRoleAssignmentID}`.
+// > This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `/servicePrincipals/{ResourcePrincipalID}/appRoleAssignedTo/{AppRoleAssignmentID}`.
 type AppRoleAssignment struct {
 	pulumi.CustomResourceState
 

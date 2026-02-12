@@ -249,6 +249,18 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
                  subject: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages a federated identity credential associated with an application within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         ```python
@@ -273,7 +285,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential example 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
         ```
 
-        -> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
+        > This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -291,6 +303,18 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
                  args: ApplicationFederatedIdentityCredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a federated identity credential associated with an application within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+
+        > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+
         ## Example Usage
 
         ```python
@@ -315,7 +339,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential example 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
         ```
 
-        -> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
+        > This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
 
         :param str resource_name: The name of the resource.
         :param ApplicationFederatedIdentityCredentialArgs args: The arguments to use to populate this resource's properties.

@@ -15,6 +15,18 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a token signing certificate associated with a service principal within Azure Active Directory.
+ * 
+ * ## API Permissions
+ * 
+ * The following API permissions are required in order to use this resource.
+ * 
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+ * 
+ * &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of _both_ the linked application registration, _and_ the service principal being managed.
+ * 
+ * When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+ * 
  * ## Example Usage
  * 
  * *Using default settings*
@@ -117,7 +129,7 @@ import javax.annotation.Nullable;
  * $ pulumi import azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate example 00000000-0000-0000-0000-000000000000/tokenSigningCertificate/11111111-1111-1111-1111-111111111111
  * ```
  * 
- * -&gt; This ID format is unique to Terraform and is composed of the service principal&#39;s object ID, the string &#34;tokenSigningCertificate&#34; and the verify certificate&#39;s key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
+ * &gt; This ID format is unique to Terraform and is composed of the service principal&#39;s object ID, the string &#34;tokenSigningCertificate&#34; and the verify certificate&#39;s key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
  * 
  */
 @ResourceType(type="azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate")

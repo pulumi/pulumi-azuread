@@ -55,6 +55,9 @@ The path to a file containing the application password to use when authenticatin
 """
 
 disableTerraformPartnerId: Optional[bool]
+"""
+Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
+"""
 
 environment: str
 """

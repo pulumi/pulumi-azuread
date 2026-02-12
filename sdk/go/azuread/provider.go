@@ -116,8 +116,9 @@ type providerArgs struct {
 	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret *string `pulumi:"clientSecret"`
 	// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
-	ClientSecretFilePath      *string `pulumi:"clientSecretFilePath"`
-	DisableTerraformPartnerId *bool   `pulumi:"disableTerraformPartnerId"`
+	ClientSecretFilePath *string `pulumi:"clientSecretFilePath"`
+	// Disable the Terraform Partner ID, which is used if a custom `partnerId` isn't specified
+	DisableTerraformPartnerId *bool `pulumi:"disableTerraformPartnerId"`
 	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
 	Environment *string `pulumi:"environment"`
 	// The Hostname which should be used for the Azure Metadata Service.
@@ -163,7 +164,8 @@ type ProviderArgs struct {
 	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret pulumi.StringPtrInput
 	// The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
-	ClientSecretFilePath      pulumi.StringPtrInput
+	ClientSecretFilePath pulumi.StringPtrInput
+	// Disable the Terraform Partner ID, which is used if a custom `partnerId` isn't specified
 	DisableTerraformPartnerId pulumi.BoolPtrInput
 	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
 	Environment pulumi.StringPtrInput

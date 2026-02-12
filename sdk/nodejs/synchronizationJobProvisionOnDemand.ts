@@ -114,6 +114,9 @@ export class SynchronizationJobProvisionOnDemand extends pulumi.CustomResource {
      * The ID of the synchronization job.
      */
     declare public readonly synchronizationJobId: pulumi.Output<string>;
+    /**
+     * Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+     */
     declare public readonly triggers: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -170,6 +173,9 @@ export interface SynchronizationJobProvisionOnDemandState {
      * The ID of the synchronization job.
      */
     synchronizationJobId?: pulumi.Input<string>;
+    /**
+     * Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+     */
     triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -189,5 +195,8 @@ export interface SynchronizationJobProvisionOnDemandArgs {
      * The ID of the synchronization job.
      */
     synchronizationJobId: pulumi.Input<string>;
+    /**
+     * Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+     */
     triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

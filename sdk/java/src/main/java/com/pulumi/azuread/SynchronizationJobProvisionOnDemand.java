@@ -171,9 +171,17 @@ public class SynchronizationJobProvisionOnDemand extends com.pulumi.resources.Cu
     public Output<String> synchronizationJobId() {
         return this.synchronizationJobId;
     }
+    /**
+     * Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+     * 
+     */
     @Export(name="triggers", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> triggers;
 
+    /**
+     * @return Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+     * 
+     */
     public Output<Optional<Map<String,String>>> triggers() {
         return Codegen.optional(this.triggers);
     }

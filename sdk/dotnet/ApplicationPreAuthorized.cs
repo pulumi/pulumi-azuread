@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
+    /// Manages client applications that are pre-authorized with the specified permissions to access an application's APIs without requiring user consent.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+    /// 
+    /// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+    /// 
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -78,7 +90,7 @@ namespace Pulumi.AzureAD
     /// $ pulumi import azuread:index/applicationPreAuthorized:ApplicationPreAuthorized example 00000000-0000-0000-0000-000000000000/preAuthorizedApplication/11111111-1111-1111-1111-111111111111
     /// ```
     /// 
-    /// -&gt; This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
+    /// &gt; This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
     /// </summary>
     [AzureADResourceType("azuread:index/applicationPreAuthorized:ApplicationPreAuthorized")]
     public partial class ApplicationPreAuthorized : global::Pulumi.CustomResource

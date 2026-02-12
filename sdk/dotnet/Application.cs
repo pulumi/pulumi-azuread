@@ -10,6 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
+    /// Manages an application registration within Azure Active Directory.
+    /// 
+    /// For a more lightweight alternative, please see the azuread.ApplicationRegistration resource. Please note that this resource should not be used together with the `azuread.ApplicationRegistration` resource when managing the same application.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+    /// 
+    /// &gt; When using the `Application.ReadWrite.OwnedBy` application role, you should ensure that the principal being used to run Terraform is included in the `Owners` property.
+    /// 
+    /// Additionally, you may need the `User.Read.All` application role when including user principals in the `Owners` property.
+    /// 
+    /// When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+    /// 
     /// ## Example Usage
     /// 
     /// *Create an application*
@@ -404,7 +420,9 @@ namespace Pulumi.AzureAD
         public Output<Outputs.ApplicationOptionalClaims?> OptionalClaims { get; private set; } = null!;
 
         /// <summary>
-        /// A list of object IDs of principals that will be granted ownership of the application
+        /// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        /// 
+        /// &gt; **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
         /// </summary>
         [Output("owners")]
         public Output<ImmutableArray<string>> Owners { get; private set; } = null!;
@@ -663,7 +681,9 @@ namespace Pulumi.AzureAD
         private InputList<string>? _owners;
 
         /// <summary>
-        /// A list of object IDs of principals that will be granted ownership of the application
+        /// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        /// 
+        /// &gt; **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
         /// </summary>
         public InputList<string> Owners
         {
@@ -941,7 +961,9 @@ namespace Pulumi.AzureAD
         private InputList<string>? _owners;
 
         /// <summary>
-        /// A list of object IDs of principals that will be granted ownership of the application
+        /// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        /// 
+        /// &gt; **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
         /// </summary>
         public InputList<string> Owners
         {

@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
+    /// Manages a password credential associated with an application within Azure Active Directory. These are also referred to as client secrets during authentication.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+    /// 
+    /// &gt; When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+    /// 
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+    /// 
     /// ## Example Usage
     /// 
     /// *Basic example*

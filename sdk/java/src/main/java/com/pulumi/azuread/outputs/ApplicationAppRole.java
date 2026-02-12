@@ -42,7 +42,9 @@ public final class ApplicationAppRole {
      */
     private String id;
     /**
-     * @return The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+     * @return The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+     * 
+     * &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
      * 
      */
     private @Nullable String value;
@@ -86,7 +88,9 @@ public final class ApplicationAppRole {
         return this.id;
     }
     /**
-     * @return The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+     * @return The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+     * 
+     * &gt; **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
      * 
      */
     public Optional<String> value() {

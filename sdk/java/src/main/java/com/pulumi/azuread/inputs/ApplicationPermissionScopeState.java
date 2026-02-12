@@ -106,14 +106,18 @@ public final class ApplicationPermissionScopeState extends com.pulumi.resources.
     }
 
     /**
-     * Display name for the delegated permission that appears in the end user consent experience
+     * Display name for the delegated permission that appears in the end user consent experience.
+     * 
+     * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
      * 
      */
     @Import(name="userConsentDisplayName")
     private @Nullable Output<String> userConsentDisplayName;
 
     /**
-     * @return Display name for the delegated permission that appears in the end user consent experience
+     * @return Display name for the delegated permission that appears in the end user consent experience.
+     * 
+     * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
      * 
      */
     public Optional<Output<String>> userConsentDisplayName() {
@@ -297,7 +301,9 @@ public final class ApplicationPermissionScopeState extends com.pulumi.resources.
         }
 
         /**
-         * @param userConsentDisplayName Display name for the delegated permission that appears in the end user consent experience
+         * @param userConsentDisplayName Display name for the delegated permission that appears in the end user consent experience.
+         * 
+         * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
          * 
          * @return builder
          * 
@@ -308,7 +314,9 @@ public final class ApplicationPermissionScopeState extends com.pulumi.resources.
         }
 
         /**
-         * @param userConsentDisplayName Display name for the delegated permission that appears in the end user consent experience
+         * @param userConsentDisplayName Display name for the delegated permission that appears in the end user consent experience.
+         * 
+         * &gt; **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
          * 
          * @return builder
          * 

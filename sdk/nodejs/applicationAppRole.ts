@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Manages an app role for an application registration.
+ *
+ * This resource is analogous to the `appRole` block in the `azuread.Application` resource. When using these resources together, you should use the `ignoreChanges` lifecycle meta-argument (see example below).
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+ *
+ * > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of the application.
+ *
+ * When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -89,7 +103,9 @@ export class ApplicationAppRole extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
-     * The unique identifier of the app role
+     * The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+     *
+     * > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
      */
     declare public readonly roleId: pulumi.Output<string>;
     /**
@@ -168,7 +184,9 @@ export interface ApplicationAppRoleState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The unique identifier of the app role
+     * The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+     *
+     * > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
      */
     roleId?: pulumi.Input<string>;
     /**
@@ -200,7 +218,9 @@ export interface ApplicationAppRoleArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * The unique identifier of the app role
+     * The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
+     *
+     * > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
      */
     roleId: pulumi.Input<string>;
     /**

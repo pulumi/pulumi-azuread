@@ -290,7 +290,11 @@ export interface ApplicationApiOauth2PermissionScope {
      */
     userConsentDisplayName?: string;
     /**
-     * The value that is used for the `scp` claim in OAuth 2.0 access tokens
+     * The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+     *
+     * > **Default `userImpersonation` Scope** Unlike the Azure Portal, applications created with the Terraform AzureAD provider do not get assigned a default `userImpersonation` scope. You will need to include a block for the `userImpersonation` scope if you need it for your application.
+     *
+     * > **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
      */
     value?: string;
 }
@@ -319,7 +323,9 @@ export interface ApplicationAppRole {
      */
     id: string;
     /**
-     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal
+     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+     *
+     * > **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
      */
     value?: string;
 }

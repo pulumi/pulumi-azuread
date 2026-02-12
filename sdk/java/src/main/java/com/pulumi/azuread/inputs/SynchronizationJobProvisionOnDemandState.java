@@ -63,9 +63,17 @@ public final class SynchronizationJobProvisionOnDemandState extends com.pulumi.r
         return Optional.ofNullable(this.synchronizationJobId);
     }
 
+    /**
+     * Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+     * 
+     */
     @Import(name="triggers")
     private @Nullable Output<Map<String,String>> triggers;
 
+    /**
+     * @return Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+     * 
+     */
     public Optional<Output<Map<String,String>>> triggers() {
         return Optional.ofNullable(this.triggers);
     }
@@ -170,11 +178,23 @@ public final class SynchronizationJobProvisionOnDemandState extends com.pulumi.r
             return synchronizationJobId(Output.of(synchronizationJobId));
         }
 
+        /**
+         * @param triggers Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+         * 
+         * @return builder
+         * 
+         */
         public Builder triggers(@Nullable Output<Map<String,String>> triggers) {
             $.triggers = triggers;
             return this;
         }
 
+        /**
+         * @param triggers Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
+         * 
+         * @return builder
+         * 
+         */
         public Builder triggers(Map<String,String> triggers) {
             return triggers(Output.of(triggers));
         }

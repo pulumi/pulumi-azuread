@@ -7,6 +7,18 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Manages a service principal associated with an application within Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.OwnedBy` or `Application.ReadWrite.All`
+ *
+ * > When using the `Application.ReadWrite.OwnedBy` application role, the principal being used to run Terraform must be an owner of _both_ the linked application registration, _and_ the service principal being managed.
+ *
+ * When authenticated with a user principal, this resource may require one of the following directory roles: `Application Administrator` or `Global Administrator`
+ *
  * ## Example Usage
  *
  * *Create a service principal for an application*
@@ -198,7 +210,9 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly objectId: pulumi.Output<string>;
     /**
-     * A list of object IDs of principals that will be granted ownership of the service principal
+     * A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+     *
+     * > **Ownership of Service Principals** It's recommended to always specify one or more service principal owners, including the principal being used to execute Terraform, such as in the example above.
      */
     declare public readonly owners: pulumi.Output<string[] | undefined>;
     /**
@@ -236,7 +250,9 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
-     * When true, the resource will return an existing service principal instead of failing with an error
+     * When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+     *
+     * > **Caveats of `useExisting`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `useExisting` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
      */
     declare public readonly useExisting: pulumi.Output<boolean | undefined>;
 
@@ -407,7 +423,9 @@ export interface ServicePrincipalState {
      */
     objectId?: pulumi.Input<string>;
     /**
-     * A list of object IDs of principals that will be granted ownership of the service principal
+     * A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+     *
+     * > **Ownership of Service Principals** It's recommended to always specify one or more service principal owners, including the principal being used to execute Terraform, such as in the example above.
      */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -445,7 +463,9 @@ export interface ServicePrincipalState {
      */
     type?: pulumi.Input<string>;
     /**
-     * When true, the resource will return an existing service principal instead of failing with an error
+     * When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+     *
+     * > **Caveats of `useExisting`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `useExisting` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
      */
     useExisting?: pulumi.Input<boolean>;
 }
@@ -499,7 +519,9 @@ export interface ServicePrincipalArgs {
      */
     notificationEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of object IDs of principals that will be granted ownership of the service principal
+     * A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+     *
+     * > **Ownership of Service Principals** It's recommended to always specify one or more service principal owners, including the principal being used to execute Terraform, such as in the example above.
      */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -517,7 +539,9 @@ export interface ServicePrincipalArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * When true, the resource will return an existing service principal instead of failing with an error
+     * When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+     *
+     * > **Caveats of `useExisting`** Enabling this behaviour is useful for managing existing service principals that may already be installed in your tenant for Microsoft-published APIs, as it allows you to make changes where permitted, and then also reference them in your Terraform configuration. However, the behaviour of delete operations is also affected - when `useExisting` is `true`, Terraform will still attempt to delete the service principal on destroy, although it will not raise an error if the deletion fails (as it often the case for first-party Microsoft applications).
      */
     useExisting?: pulumi.Input<boolean>;
 }

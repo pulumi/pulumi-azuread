@@ -62,7 +62,7 @@ namespace Pulumi.AzureAD
     /// $ pulumi import azuread:index/groupMember:GroupMember example 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
     /// ```
     /// 
-    /// -&gt; This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
+    /// &gt; This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
     /// </summary>
     [AzureADResourceType("azuread:index/groupMember:GroupMember")]
     public partial class GroupMember : global::Pulumi.CustomResource
