@@ -26,6 +26,7 @@ class AdministrativeUnitArgs:
                  prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AdministrativeUnit resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the administrative unit.
         :param pulumi.Input[_builtins.str] description: The description of the administrative unit.
         :param pulumi.Input[_builtins.bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
@@ -122,6 +123,7 @@ class _AdministrativeUnitState:
                  prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AdministrativeUnit resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the administrative unit.
         :param pulumi.Input[_builtins.str] display_name: The display name of the administrative unit.
         :param pulumi.Input[_builtins.bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
@@ -266,6 +268,7 @@ class AdministrativeUnit(pulumi.CustomResource):
         $ pulumi import azuread:index/administrativeUnit:AdministrativeUnit example /directory/administrativeUnits/00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the administrative unit.
@@ -314,6 +317,7 @@ class AdministrativeUnit(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/administrativeUnit:AdministrativeUnit example /directory/administrativeUnits/00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AdministrativeUnitArgs args: The arguments to use to populate this resource's properties.

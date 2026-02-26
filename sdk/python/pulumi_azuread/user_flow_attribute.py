@@ -24,6 +24,7 @@ class UserFlowAttributeArgs:
                  display_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UserFlowAttribute resource.
+
         :param pulumi.Input[_builtins.str] data_type: The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] description: The description of the user flow attribute that is shown to the user at the time of sign-up.
         :param pulumi.Input[_builtins.str] display_name: The display name of the user flow attribute. Changing this forces a new resource to be created.
@@ -78,6 +79,7 @@ class _UserFlowAttributeState:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserFlowAttribute resources.
+
         :param pulumi.Input[_builtins.str] attribute_type: The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
         :param pulumi.Input[_builtins.str] data_type: The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] description: The description of the user flow attribute that is shown to the user at the time of sign-up.
@@ -184,6 +186,7 @@ class UserFlowAttribute(pulumi.CustomResource):
 
         > This ID can be queried using the [User Flow Attributes API](https://learn.microsoft.com/en-us/graph/api/identityuserflowattribute-list?view=graph-rest-1.0&tabs=http).
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] data_type: The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
@@ -228,6 +231,7 @@ class UserFlowAttribute(pulumi.CustomResource):
         ```
 
         > This ID can be queried using the [User Flow Attributes API](https://learn.microsoft.com/en-us/graph/api/identityuserflowattribute-list?view=graph-rest-1.0&tabs=http).
+
 
         :param str resource_name: The name of the resource.
         :param UserFlowAttributeArgs args: The arguments to use to populate this resource's properties.

@@ -51,6 +51,7 @@ class ApplicationArgs:
                  web: Optional[pulumi.Input['ApplicationWebArgs']] = None):
         """
         The set of arguments for constructing a Application resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name for the application.
         :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
@@ -541,6 +542,7 @@ class _ApplicationState:
                  web: Optional[pulumi.Input['ApplicationWebArgs']] = None):
         """
         Input properties used for looking up and filtering Application resources.
+
         :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
@@ -1315,6 +1317,7 @@ class Application(pulumi.CustomResource):
         $ pulumi import azuread:index/application:Application example /applications/00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ApplicationApiArgs', 'ApplicationApiArgsDict']] api: An `api` block as documented below, which configures API related settings for this application.
@@ -1548,6 +1551,7 @@ class Application(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/application:Application example /applications/00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationArgs args: The arguments to use to populate this resource's properties.

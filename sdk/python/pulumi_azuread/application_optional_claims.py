@@ -27,6 +27,7 @@ class ApplicationOptionalClaimsInitArgs:
                  saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]] = None):
         """
         The set of arguments for constructing a ApplicationOptionalClaims resource.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]] access_tokens: One or more `access_token` blocks as documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]] id_tokens: One or more `id_token` blocks as documented below.
@@ -102,6 +103,7 @@ class _ApplicationOptionalClaimsState:
                  saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]] = None):
         """
         Input properties used for looking up and filtering ApplicationOptionalClaims resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]] access_tokens: One or more `access_token` blocks as documented below.
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]] id_tokens: One or more `id_token` blocks as documented below.
@@ -231,6 +233,7 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationOptionalClaims:ApplicationOptionalClaims example /applications/00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsAccessTokenArgs', 'ApplicationOptionalClaimsAccessTokenArgsDict']]]] access_tokens: One or more `access_token` blocks as documented below.
@@ -296,6 +299,7 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/applicationOptionalClaims:ApplicationOptionalClaims example /applications/00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationOptionalClaimsInitArgs args: The arguments to use to populate this resource's properties.

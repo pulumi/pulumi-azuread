@@ -31,6 +31,7 @@ class PrivilegedAccessGroupAssignmentScheduleArgs:
                  ticket_system: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrivilegedAccessGroupAssignmentSchedule resource.
+
         :param pulumi.Input[_builtins.str] assignment_type: The type of assignment to the group. Can be either `member` or `owner`.
         :param pulumi.Input[_builtins.str] group_id: The Object ID of the Azure AD group to which the principal will be assigned.
         :param pulumi.Input[_builtins.str] principal_id: The Object ID of the principal to be assigned to the above group. Can be either a user or a group.
@@ -201,6 +202,7 @@ class _PrivilegedAccessGroupAssignmentScheduleState:
                  ticket_system: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrivilegedAccessGroupAssignmentSchedule resources.
+
         :param pulumi.Input[_builtins.str] assignment_type: The type of assignment to the group. Can be either `member` or `owner`.
         :param pulumi.Input[_builtins.str] duration: The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).
         :param pulumi.Input[_builtins.str] expiration_date: The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).
@@ -431,6 +433,7 @@ class PrivilegedAccessGroupAssignmentSchedule(pulumi.CustomResource):
         $ pulumi import azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule example 00000000-0000-0000-0000-000000000000_member_00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] assignment_type: The type of assignment to the group. Can be either `member` or `owner`.
@@ -492,6 +495,7 @@ class PrivilegedAccessGroupAssignmentSchedule(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/privilegedAccessGroupAssignmentSchedule:PrivilegedAccessGroupAssignmentSchedule example 00000000-0000-0000-0000-000000000000_member_00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrivilegedAccessGroupAssignmentScheduleArgs args: The arguments to use to populate this resource's properties.

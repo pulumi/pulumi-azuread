@@ -45,6 +45,7 @@ class GroupArgs:
                  writeback_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name for the group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
                
@@ -449,6 +450,7 @@ class _GroupState:
                  writeback_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
                
                > **Caution** When using the AdministrativeUnitMember resource, or the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
@@ -1087,6 +1089,7 @@ class Group(pulumi.CustomResource):
         $ pulumi import azuread:index/group:Group my_group /groups/00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
@@ -1240,6 +1243,7 @@ class Group(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/group:Group my_group /groups/00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

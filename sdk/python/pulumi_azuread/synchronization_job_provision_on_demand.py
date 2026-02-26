@@ -27,6 +27,7 @@ class SynchronizationJobProvisionOnDemandArgs:
                  triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SynchronizationJobProvisionOnDemand resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterArgs']]] parameters: One or more `parameter` blocks as documented below.
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for the synchronization job.
         :param pulumi.Input[_builtins.str] synchronization_job_id: The ID of the synchronization job.
@@ -96,6 +97,7 @@ class _SynchronizationJobProvisionOnDemandState:
                  triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SynchronizationJobProvisionOnDemand resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterArgs']]] parameters: One or more `parameter` blocks as documented below.
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for the synchronization job.
         :param pulumi.Input[_builtins.str] synchronization_job_id: The ID of the synchronization job.
@@ -229,6 +231,7 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
 
         This resource does not support importing.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]] parameters: One or more `parameter` blocks as documented below.
@@ -300,6 +303,7 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
         ## Import
 
         This resource does not support importing.
+
 
         :param str resource_name: The name of the resource.
         :param SynchronizationJobProvisionOnDemandArgs args: The arguments to use to populate this resource's properties.

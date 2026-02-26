@@ -29,6 +29,7 @@ class ApplicationPermissionScopeArgs:
                  user_consent_display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationPermissionScope resource.
+
         :param pulumi.Input[_builtins.str] admin_consent_description: Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         :param pulumi.Input[_builtins.str] admin_consent_display_name: Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
@@ -168,6 +169,7 @@ class _ApplicationPermissionScopeState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationPermissionScope resources.
+
         :param pulumi.Input[_builtins.str] admin_consent_description: Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         :param pulumi.Input[_builtins.str] admin_consent_display_name: Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
@@ -366,6 +368,7 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationPermissionScope:ApplicationPermissionScope example /applications/00000000-0000-0000-0000-000000000000/permissionScopes/11111111-1111-1111-1111-111111111111
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] admin_consent_description: Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
@@ -438,6 +441,7 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/applicationPermissionScope:ApplicationPermissionScope example /applications/00000000-0000-0000-0000-000000000000/permissionScopes/11111111-1111-1111-1111-111111111111
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationPermissionScopeArgs args: The arguments to use to populate this resource's properties.

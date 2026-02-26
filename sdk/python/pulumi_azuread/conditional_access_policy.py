@@ -28,6 +28,7 @@ class ConditionalAccessPolicyArgs:
                  session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None):
         """
         The set of arguments for constructing a ConditionalAccessPolicy resource.
+
         :param pulumi.Input['ConditionalAccessPolicyConditionsArgs'] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         :param pulumi.Input[_builtins.str] display_name: The friendly name for this Conditional Access Policy.
         :param pulumi.Input[_builtins.str] state: Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
@@ -118,6 +119,7 @@ class _ConditionalAccessPolicyState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConditionalAccessPolicy resources.
+
         :param pulumi.Input['ConditionalAccessPolicyConditionsArgs'] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         :param pulumi.Input[_builtins.str] display_name: The friendly name for this Conditional Access Policy.
         :param pulumi.Input['ConditionalAccessPolicyGrantControlsArgs'] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
@@ -359,6 +361,7 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         $ pulumi import azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy my_location /identity/conditionalAccess/policies/00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
@@ -506,6 +509,7 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy my_location /identity/conditionalAccess/policies/00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConditionalAccessPolicyArgs args: The arguments to use to populate this resource's properties.

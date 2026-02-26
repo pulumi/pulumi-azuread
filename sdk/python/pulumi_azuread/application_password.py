@@ -27,6 +27,7 @@ class ApplicationPasswordInitArgs:
                  start_date: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationPassword resource.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] display_name: A display name for the password. Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -136,6 +137,7 @@ class _ApplicationPasswordState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationPassword resources.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] display_name: A display name for the password. Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -321,6 +323,7 @@ class ApplicationPassword(pulumi.CustomResource):
 
         This resource does not support importing.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
@@ -380,6 +383,7 @@ class ApplicationPassword(pulumi.CustomResource):
         ## Import
 
         This resource does not support importing.
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationPasswordInitArgs args: The arguments to use to populate this resource's properties.

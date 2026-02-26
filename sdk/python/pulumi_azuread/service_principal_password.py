@@ -27,6 +27,7 @@ class ServicePrincipalPasswordArgs:
                  start_date: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalPassword resource.
+
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] display_name: A display name for the password.
         :param pulumi.Input[_builtins.str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -136,6 +137,7 @@ class _ServicePrincipalPasswordState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalPassword resources.
+
         :param pulumi.Input[_builtins.str] display_name: A display name for the password.
         :param pulumi.Input[_builtins.str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -323,6 +325,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
         This resource does not support importing.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: A display name for the password.
@@ -384,6 +387,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         ## Import
 
         This resource does not support importing.
+
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalPasswordArgs args: The arguments to use to populate this resource's properties.

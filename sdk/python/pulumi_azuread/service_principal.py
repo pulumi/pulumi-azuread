@@ -38,6 +38,7 @@ class ServicePrincipalArgs:
                  use_existing: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ServicePrincipal resource.
+
         :param pulumi.Input[_builtins.str] client_id: The client ID of the application for which to create a service principal.
         :param pulumi.Input[_builtins.bool] account_enabled: Whether or not the service principal account is enabled. Defaults to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternative_names: A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
@@ -319,6 +320,7 @@ class _ServicePrincipalState:
                  use_existing: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipal resources.
+
         :param pulumi.Input[_builtins.bool] account_enabled: Whether or not the service principal account is enabled. Defaults to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternative_names: A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
         :param pulumi.Input[_builtins.bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
@@ -885,6 +887,7 @@ class ServicePrincipal(pulumi.CustomResource):
         $ pulumi import azuread:index/servicePrincipal:ServicePrincipal example /servicePrincipals/00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] account_enabled: Whether or not the service principal account is enabled. Defaults to `true`.
@@ -1002,6 +1005,7 @@ class ServicePrincipal(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/servicePrincipal:ServicePrincipal example /servicePrincipals/00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalArgs args: The arguments to use to populate this resource's properties.

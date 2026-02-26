@@ -23,6 +23,7 @@ class ApplicationIdentifierUriArgs:
                  identifier_uri: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ApplicationIdentifierUri resource.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] identifier_uri: The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
         """
@@ -61,6 +62,7 @@ class _ApplicationIdentifierUriState:
                  identifier_uri: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationIdentifierUri resources.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] identifier_uri: The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
         """
@@ -150,6 +152,7 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationIdentifierUri:ApplicationIdentifierUri example /applications/00000000-0000-0000-0000-000000000000/identifierUris/aHR0cHM6Ly9leGFtcGxlLm5ldC8=
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
@@ -207,6 +210,7 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/applicationIdentifierUri:ApplicationIdentifierUri example /applications/00000000-0000-0000-0000-000000000000/identifierUris/aHR0cHM6Ly9leGFtcGxlLm5ldC8=
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationIdentifierUriArgs args: The arguments to use to populate this resource's properties.

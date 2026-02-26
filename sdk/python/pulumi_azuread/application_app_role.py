@@ -27,6 +27,7 @@ class ApplicationAppRoleInitArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationAppRole resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_member_types: A set of values to specify whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications by setting to `Application`, or to both.
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] description: Description of the app role that appears when the role is being assigned, and if the role functions as an application permissions, during the consent experiences.
@@ -134,6 +135,7 @@ class _ApplicationAppRoleState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationAppRole resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_member_types: A set of values to specify whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications by setting to `Application`, or to both.
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] description: Description of the app role that appears when the role is being assigned, and if the role functions as an application permissions, during the consent experiences.
@@ -301,6 +303,7 @@ class ApplicationAppRole(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationAppRole:ApplicationAppRole example /applications/00000000-0000-0000-0000-000000000000/appRoles/11111111-1111-1111-1111-111111111111
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_member_types: A set of values to specify whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications by setting to `Application`, or to both.
@@ -372,6 +375,7 @@ class ApplicationAppRole(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/applicationAppRole:ApplicationAppRole example /applications/00000000-0000-0000-0000-000000000000/appRoles/11111111-1111-1111-1111-111111111111
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationAppRoleInitArgs args: The arguments to use to populate this resource's properties.

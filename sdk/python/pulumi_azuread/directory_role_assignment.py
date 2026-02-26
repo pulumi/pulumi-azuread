@@ -25,6 +25,7 @@ class DirectoryRoleAssignmentArgs:
                  directory_scope_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DirectoryRoleAssignment resource.
+
         :param pulumi.Input[_builtins.str] principal_object_id: The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] role_id: The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] app_scope_id: Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
@@ -95,6 +96,7 @@ class _DirectoryRoleAssignmentState:
                  role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DirectoryRoleAssignment resources.
+
         :param pulumi.Input[_builtins.str] app_scope_id: Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] directory_scope_id: Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] principal_object_id: The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
@@ -246,6 +248,7 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
         $ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment example ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_scope_id: Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
@@ -335,6 +338,7 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment example ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DirectoryRoleAssignmentArgs args: The arguments to use to populate this resource's properties.

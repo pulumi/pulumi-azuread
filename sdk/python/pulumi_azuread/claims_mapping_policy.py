@@ -23,6 +23,7 @@ class ClaimsMappingPolicyArgs:
                  display_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ClaimsMappingPolicy resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         :param pulumi.Input[_builtins.str] display_name: The display name for this Claims Mapping Policy.
         """
@@ -61,6 +62,7 @@ class _ClaimsMappingPolicyState:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClaimsMappingPolicy resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         :param pulumi.Input[_builtins.str] display_name: The display name for this Claims Mapping Policy.
         """
@@ -153,6 +155,7 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy /policies/claimsMappingPolicies/00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
@@ -213,6 +216,7 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy /policies/claimsMappingPolicies/00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClaimsMappingPolicyArgs args: The arguments to use to populate this resource's properties.

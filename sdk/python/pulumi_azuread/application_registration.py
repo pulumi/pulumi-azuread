@@ -36,6 +36,7 @@ class ApplicationRegistrationArgs:
                  terms_of_service_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationRegistration resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name for the application.
         :param pulumi.Input[_builtins.str] description: A description of the application, as shown to end users.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
@@ -287,6 +288,7 @@ class _ApplicationRegistrationState:
                  terms_of_service_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationRegistration resources.
+
         :param pulumi.Input[_builtins.str] client_id: The Client ID for the application, which is globally unique.
         :param pulumi.Input[_builtins.str] description: A description of the application, as shown to end users.
         :param pulumi.Input[_builtins.str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
@@ -636,6 +638,7 @@ class ApplicationRegistration(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationRegistration:ApplicationRegistration example /applications/00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the application, as shown to end users.
@@ -698,6 +701,7 @@ class ApplicationRegistration(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/applicationRegistration:ApplicationRegistration example /applications/00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationRegistrationArgs args: The arguments to use to populate this resource's properties.

@@ -28,6 +28,7 @@ class InvitationArgs:
                  user_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Invitation resource.
+
         :param pulumi.Input[_builtins.str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
         :param pulumi.Input[_builtins.str] user_email_address: The email address of the user being invited.
         :param pulumi.Input['InvitationMessageArgs'] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
@@ -116,6 +117,7 @@ class _InvitationState:
                  user_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Invitation resources.
+
         :param pulumi.Input['InvitationMessageArgs'] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         :param pulumi.Input[_builtins.str] redeem_url: The URL the user can use to redeem their invitation.
         :param pulumi.Input[_builtins.str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
@@ -294,6 +296,7 @@ class Invitation(pulumi.CustomResource):
 
         This resource does not support importing.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
@@ -365,6 +368,7 @@ class Invitation(pulumi.CustomResource):
         ## Import
 
         This resource does not support importing.
+
 
         :param str resource_name: The name of the resource.
         :param InvitationArgs args: The arguments to use to populate this resource's properties.

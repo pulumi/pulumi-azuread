@@ -25,6 +25,7 @@ class AccessPackageCatalogArgs:
                  published: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AccessPackageCatalog resource.
+
         :param pulumi.Input[_builtins.str] description: The description of the access package catalog.
         :param pulumi.Input[_builtins.str] display_name: The display name of the access package catalog.
         :param pulumi.Input[_builtins.bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant.
@@ -95,6 +96,7 @@ class _AccessPackageCatalogState:
                  published: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AccessPackageCatalog resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the access package catalog.
         :param pulumi.Input[_builtins.str] display_name: The display name of the access package catalog.
         :param pulumi.Input[_builtins.bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant.
@@ -199,6 +201,7 @@ class AccessPackageCatalog(pulumi.CustomResource):
         $ pulumi import azuread:index/accessPackageCatalog:AccessPackageCatalog example 00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the access package catalog.
@@ -241,6 +244,7 @@ class AccessPackageCatalog(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/accessPackageCatalog:AccessPackageCatalog example 00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessPackageCatalogArgs args: The arguments to use to populate this resource's properties.

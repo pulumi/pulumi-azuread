@@ -23,6 +23,7 @@ class ApplicationOwnerArgs:
                  owner_object_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ApplicationOwner resource.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] owner_object_id: The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
         """
@@ -61,6 +62,7 @@ class _ApplicationOwnerState:
                  owner_object_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationOwner resources.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] owner_object_id: The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
         """
@@ -144,6 +146,7 @@ class ApplicationOwner(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationOwner:ApplicationOwner example /applications/00000000-0000-0000-0000-000000000000/owners/11111111-1111-1111-1111-111111111111
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
@@ -195,6 +198,7 @@ class ApplicationOwner(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/applicationOwner:ApplicationOwner example /applications/00000000-0000-0000-0000-000000000000/owners/11111111-1111-1111-1111-111111111111
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationOwnerArgs args: The arguments to use to populate this resource's properties.

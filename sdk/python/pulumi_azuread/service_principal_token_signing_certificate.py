@@ -24,6 +24,7 @@ class ServicePrincipalTokenSigningCertificateArgs:
                  end_date: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalTokenSigningCertificate resource.
+
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] display_name: Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
                
@@ -87,6 +88,7 @@ class _ServicePrincipalTokenSigningCertificateState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalTokenSigningCertificate resources.
+
         :param pulumi.Input[_builtins.str] display_name: Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
                
                > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
@@ -259,6 +261,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
 
         > This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
@@ -322,6 +325,7 @@ class ServicePrincipalTokenSigningCertificate(pulumi.CustomResource):
         ```
 
         > This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
+
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalTokenSigningCertificateArgs args: The arguments to use to populate this resource's properties.
