@@ -29,6 +29,7 @@ class CustomDirectoryRoleArgs:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomDirectoryRole resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the custom directory role.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the role is enabled for assignment.
         :param pulumi.Input[Sequence[pulumi.Input['CustomDirectoryRolePermissionArgs']]] permissions: A collection of `permissions` blocks as documented below.
@@ -130,6 +131,7 @@ class _CustomDirectoryRoleState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomDirectoryRole resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the custom directory role.
         :param pulumi.Input[_builtins.str] display_name: The display name of the custom directory role.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the role is enabled for assignment.
@@ -299,6 +301,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
 
         This resource does not support importing.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the custom directory role.
@@ -361,6 +364,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
         ## Import
 
         This resource does not support importing.
+
 
         :param str resource_name: The name of the resource.
         :param CustomDirectoryRoleArgs args: The arguments to use to populate this resource's properties.

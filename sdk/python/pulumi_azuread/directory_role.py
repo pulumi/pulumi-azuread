@@ -23,6 +23,7 @@ class DirectoryRoleArgs:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DirectoryRole resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name of the directory role to activate. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] template_id: The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
                
@@ -69,6 +70,7 @@ class _DirectoryRoleState:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DirectoryRole resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the directory role.
         :param pulumi.Input[_builtins.str] display_name: The display name of the directory role to activate. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] object_id: The object ID of the directory role.
@@ -184,6 +186,7 @@ class DirectoryRole(pulumi.CustomResource):
 
         This resource does not support importing.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name of the directory role to activate. Changing this forces a new resource to be created.
@@ -235,6 +238,7 @@ class DirectoryRole(pulumi.CustomResource):
         ## Import
 
         This resource does not support importing.
+
 
         :param str resource_name: The name of the resource.
         :param DirectoryRoleArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
                  service_principal_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ServicePrincipalClaimsMappingPolicyAssignment resource.
+
         :param pulumi.Input[_builtins.str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for the policy assignment.
         """
@@ -61,6 +62,7 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalClaimsMappingPolicyAssignment resources.
+
         :param pulumi.Input[_builtins.str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for the policy assignment.
         """
@@ -133,6 +135,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         $ pulumi import azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment app /servicePrincipals/00000000-0000-0000-0000-000000000000/claimsMappingPolicies/11111111-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
@@ -173,6 +176,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment app /servicePrincipals/00000000-0000-0000-0000-000000000000/claimsMappingPolicies/11111111-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalClaimsMappingPolicyAssignmentArgs args: The arguments to use to populate this resource's properties.

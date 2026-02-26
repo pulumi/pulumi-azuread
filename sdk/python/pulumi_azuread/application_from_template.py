@@ -23,6 +23,7 @@ class ApplicationFromTemplateArgs:
                  template_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ApplicationFromTemplate resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name for the application.
         :param pulumi.Input[_builtins.str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         """
@@ -65,6 +66,7 @@ class _ApplicationFromTemplateState:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationFromTemplate resources.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID for the application.
         :param pulumi.Input[_builtins.str] application_object_id: The object ID for the application.
         :param pulumi.Input[_builtins.str] display_name: The display name for the application.
@@ -202,6 +204,7 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationFromTemplate:ApplicationFromTemplate example /applicationTemplates/00000000-0000-0000-0000-000000000000/instantiate/11111111-1111-1111-1111-111111111111/22222222-2222-2222-2222-222222222222
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name for the application.
@@ -247,6 +250,7 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/applicationFromTemplate:ApplicationFromTemplate example /applicationTemplates/00000000-0000-0000-0000-000000000000/instantiate/11111111-1111-1111-1111-111111111111/22222222-2222-2222-2222-222222222222
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationFromTemplateArgs args: The arguments to use to populate this resource's properties.

@@ -57,6 +57,7 @@ class UserArgs:
                  usage_location: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[_builtins.str] user_principal_name: The user principal name (UPN) of the user.
         :param pulumi.Input[_builtins.bool] account_enabled: Whether or not the account should be enabled.
@@ -656,6 +657,7 @@ class _UserState:
                  user_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] about_me: A freeform field for the user to describe themselves
         :param pulumi.Input[_builtins.bool] account_enabled: Whether or not the account should be enabled.
         :param pulumi.Input[_builtins.str] age_group: The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
@@ -1473,6 +1475,7 @@ class User(pulumi.CustomResource):
         $ pulumi import azuread:index/user:User my_user /users/00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] account_enabled: Whether or not the account should be enabled.
@@ -1551,6 +1554,7 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/user:User my_user /users/00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

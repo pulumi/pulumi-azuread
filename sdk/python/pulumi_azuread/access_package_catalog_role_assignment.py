@@ -24,6 +24,7 @@ class AccessPackageCatalogRoleAssignmentArgs:
                  role_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AccessPackageCatalogRoleAssignment resource.
+
         :param pulumi.Input[_builtins.str] catalog_id: The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] principal_object_id: The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] role_id: The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
@@ -77,6 +78,7 @@ class _AccessPackageCatalogRoleAssignmentState:
                  role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessPackageCatalogRoleAssignment resources.
+
         :param pulumi.Input[_builtins.str] catalog_id: The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] principal_object_id: The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] role_id: The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
@@ -171,6 +173,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment example 00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog_id: The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
@@ -218,6 +221,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment example 00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessPackageCatalogRoleAssignmentArgs args: The arguments to use to populate this resource's properties.

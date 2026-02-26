@@ -29,6 +29,7 @@ class GroupRoleManagementPolicyArgs:
                  notification_rules: Optional[pulumi.Input['GroupRoleManagementPolicyNotificationRulesArgs']] = None):
         """
         The set of arguments for constructing a GroupRoleManagementPolicy resource.
+
         :param pulumi.Input[_builtins.str] group_id: The ID of the Azure AD group for which the policy applies.
         :param pulumi.Input[_builtins.str] role_id: The type of assignment this policy coveres. Can be either `member` or `owner`.
         :param pulumi.Input['GroupRoleManagementPolicyActivationRulesArgs'] activation_rules: An `activation_rules` block as defined below.
@@ -133,6 +134,7 @@ class _GroupRoleManagementPolicyState:
                  role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupRoleManagementPolicy resources.
+
         :param pulumi.Input['GroupRoleManagementPolicyActivationRulesArgs'] activation_rules: An `activation_rules` block as defined below.
         :param pulumi.Input['GroupRoleManagementPolicyActiveAssignmentRulesArgs'] active_assignment_rules: An `active_assignment_rules` block as defined below.
         :param pulumi.Input[_builtins.str] description: (String) The description of this policy.
@@ -321,6 +323,7 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
 
         Because these policies are created automatically by Entra ID, they will auto-import on first use.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['GroupRoleManagementPolicyActivationRulesArgs', 'GroupRoleManagementPolicyActivationRulesArgsDict']] activation_rules: An `activation_rules` block as defined below.
@@ -387,6 +390,7 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
         ## Import
 
         Because these policies are created automatically by Entra ID, they will auto-import on first use.
+
 
         :param str resource_name: The name of the resource.
         :param GroupRoleManagementPolicyArgs args: The arguments to use to populate this resource's properties.

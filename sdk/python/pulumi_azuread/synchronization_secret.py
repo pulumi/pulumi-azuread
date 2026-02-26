@@ -25,6 +25,7 @@ class SynchronizationSecretArgs:
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None):
         """
         The set of arguments for constructing a SynchronizationSecret resource.
+
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]] credentials: One or more `credential` blocks as documented below.
         """
@@ -64,6 +65,7 @@ class _SynchronizationSecretState:
                  service_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SynchronizationSecret resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]] credentials: One or more `credential` blocks as documented below.
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
@@ -146,6 +148,7 @@ class SynchronizationSecret(pulumi.CustomResource):
 
         This resource does not support importing.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationSecretCredentialArgs', 'SynchronizationSecretCredentialArgsDict']]]] credentials: One or more `credential` blocks as documented below.
@@ -196,6 +199,7 @@ class SynchronizationSecret(pulumi.CustomResource):
         ## Import
 
         This resource does not support importing.
+
 
         :param str resource_name: The name of the resource.
         :param SynchronizationSecretArgs args: The arguments to use to populate this resource's properties.

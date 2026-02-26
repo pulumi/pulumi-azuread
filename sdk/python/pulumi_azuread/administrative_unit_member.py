@@ -23,6 +23,7 @@ class AdministrativeUnitMemberArgs:
                  member_object_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AdministrativeUnitMember resource.
+
         :param pulumi.Input[_builtins.str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
                
@@ -67,6 +68,7 @@ class _AdministrativeUnitMemberState:
                  member_object_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AdministrativeUnitMember resources.
+
         :param pulumi.Input[_builtins.str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
                
@@ -147,6 +149,7 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember example /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/members/11111111-1111-1111-1111-111111111111
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
@@ -193,6 +196,7 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember example /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/members/11111111-1111-1111-1111-111111111111
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AdministrativeUnitMemberArgs args: The arguments to use to populate this resource's properties.

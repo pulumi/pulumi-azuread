@@ -26,6 +26,7 @@ class NamedLocationArgs:
                  ip: Optional[pulumi.Input['NamedLocationIpArgs']] = None):
         """
         The set of arguments for constructing a NamedLocation resource.
+
         :param pulumi.Input[_builtins.str] display_name: The friendly name for this named location.
         :param pulumi.Input['NamedLocationCountryArgs'] country: A `country` block as documented below, which configures a country-based named location.
         :param pulumi.Input['NamedLocationIpArgs'] ip: An `ip` block as documented below, which configures an IP-based named location.
@@ -86,6 +87,7 @@ class _NamedLocationState:
                  object_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NamedLocation resources.
+
         :param pulumi.Input['NamedLocationCountryArgs'] country: A `country` block as documented below, which configures a country-based named location.
         :param pulumi.Input[_builtins.str] display_name: The friendly name for this named location.
         :param pulumi.Input['NamedLocationIpArgs'] ip: An `ip` block as documented below, which configures an IP-based named location.
@@ -210,6 +212,7 @@ class NamedLocation(pulumi.CustomResource):
         $ pulumi import azuread:index/namedLocation:NamedLocation my_location /identity/conditionalAccess/namedLocations/00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NamedLocationCountryArgs', 'NamedLocationCountryArgsDict']] country: A `country` block as documented below, which configures a country-based named location.
@@ -270,6 +273,7 @@ class NamedLocation(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/namedLocation:NamedLocation my_location /identity/conditionalAccess/namedLocations/00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NamedLocationArgs args: The arguments to use to populate this resource's properties.

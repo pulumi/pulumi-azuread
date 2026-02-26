@@ -24,6 +24,7 @@ class AdministrativeUnitRoleMemberArgs:
                  role_object_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AdministrativeUnitRoleMember resource.
+
         :param pulumi.Input[_builtins.str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] member_object_id: The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] role_object_id: The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
@@ -77,6 +78,7 @@ class _AdministrativeUnitRoleMemberState:
                  role_object_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AdministrativeUnitRoleMember resources.
+
         :param pulumi.Input[_builtins.str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] member_object_id: The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] role_object_id: The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
@@ -170,6 +172,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/scopedRoleMembers/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
@@ -216,6 +219,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         terraform import azuread_administrative_unit_role_member.example 
         /directory/administrativeUnits/00000000-0000-0000-0000-000000000000/scopedRoleMembers/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AdministrativeUnitRoleMemberArgs args: The arguments to use to populate this resource's properties.

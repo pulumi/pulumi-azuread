@@ -25,6 +25,7 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
                  user_object_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalDelegatedPermissionGrant resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         :param pulumi.Input[_builtins.str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
@@ -98,6 +99,7 @@ class _ServicePrincipalDelegatedPermissionGrantState:
                  user_object_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalDelegatedPermissionGrant resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         :param pulumi.Input[_builtins.str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
@@ -273,6 +275,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         $ pulumi import azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant example /oauth2PermissionGrants/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
@@ -384,6 +387,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant example /oauth2PermissionGrants/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalDelegatedPermissionGrantArgs args: The arguments to use to populate this resource's properties.

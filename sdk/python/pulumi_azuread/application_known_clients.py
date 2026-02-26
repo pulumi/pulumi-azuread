@@ -23,6 +23,7 @@ class ApplicationKnownClientsArgs:
                  known_client_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a ApplicationKnownClients resource.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] known_client_ids: A set of client IDs for the known applications.
         """
@@ -61,6 +62,7 @@ class _ApplicationKnownClientsState:
                  known_client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ApplicationKnownClients resources.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] known_client_ids: A set of client IDs for the known applications.
         """
@@ -139,6 +141,7 @@ class ApplicationKnownClients(pulumi.CustomResource):
         $ pulumi import azuread:index/applicationKnownClients:ApplicationKnownClients example /applications/00000000-0000-0000-0000-000000000000/knownClients
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application registration. Changing this forces a new resource to be created.
@@ -185,6 +188,7 @@ class ApplicationKnownClients(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/applicationKnownClients:ApplicationKnownClients example /applications/00000000-0000-0000-0000-000000000000/knownClients
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationKnownClientsArgs args: The arguments to use to populate this resource's properties.

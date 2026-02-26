@@ -26,6 +26,7 @@ class SynchronizationJobArgs:
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SynchronizationJob resource.
+
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] template_id: Identifier of the synchronization template this job is based on.
         :param pulumi.Input[_builtins.bool] enabled: Whether the provisioning job is enabled. Default state is `true`.
@@ -81,6 +82,7 @@ class _SynchronizationJobState:
                  template_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SynchronizationJob resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Whether the provisioning job is enabled. Default state is `true`.
         :param pulumi.Input[Sequence[pulumi.Input['SynchronizationJobScheduleArgs']]] schedules: A `schedule` list as documented below.
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
@@ -204,6 +206,7 @@ class SynchronizationJob(pulumi.CustomResource):
 
         > This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `/servicePrincipals/{servicePrincipalId}/synchronization/jobs/{synchronizationJobId}`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the provisioning job is enabled. Default state is `true`.
@@ -265,6 +268,7 @@ class SynchronizationJob(pulumi.CustomResource):
         ```
 
         > This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `/servicePrincipals/{servicePrincipalId}/synchronization/jobs/{synchronizationJobId}`.
+
 
         :param str resource_name: The name of the resource.
         :param SynchronizationJobArgs args: The arguments to use to populate this resource's properties.

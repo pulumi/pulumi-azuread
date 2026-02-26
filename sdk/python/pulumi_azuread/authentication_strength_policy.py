@@ -24,6 +24,7 @@ class AuthenticationStrengthPolicyArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthenticationStrengthPolicy resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_combinations: List of allowed authentication methods for this authentication strength policy.
         :param pulumi.Input[_builtins.str] display_name: The friendly name for this authentication strength policy.
         :param pulumi.Input[_builtins.str] description: The description for this authentication strength policy.
@@ -78,6 +79,7 @@ class _AuthenticationStrengthPolicyState:
                  display_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthenticationStrengthPolicy resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_combinations: List of allowed authentication methods for this authentication strength policy.
         :param pulumi.Input[_builtins.str] description: The description for this authentication strength policy.
         :param pulumi.Input[_builtins.str] display_name: The friendly name for this authentication strength policy.
@@ -196,6 +198,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         $ pulumi import azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy my_policy /policies/authenticationStrengthPolicies/00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_combinations: List of allowed authentication methods for this authentication strength policy.
@@ -267,6 +270,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy my_policy /policies/authenticationStrengthPolicies/00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthenticationStrengthPolicyArgs args: The arguments to use to populate this resource's properties.

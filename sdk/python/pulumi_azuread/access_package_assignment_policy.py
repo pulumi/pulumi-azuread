@@ -33,6 +33,7 @@ class AccessPackageAssignmentPolicyArgs:
                  requestor_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsArgs']] = None):
         """
         The set of arguments for constructing a AccessPackageAssignmentPolicy resource.
+
         :param pulumi.Input[_builtins.str] access_package_id: The ID of the access package that will contain the policy.
         :param pulumi.Input[_builtins.str] description: The description of the policy.
         :param pulumi.Input[_builtins.str] display_name: The display name of the policy.
@@ -198,6 +199,7 @@ class _AccessPackageAssignmentPolicyState:
                  requestor_settings: Optional[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering AccessPackageAssignmentPolicy resources.
+
         :param pulumi.Input[_builtins.str] access_package_id: The ID of the access package that will contain the policy.
         :param pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsArgs'] approval_settings: An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
         :param pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs'] assignment_review_settings: An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
@@ -435,6 +437,7 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         $ pulumi import azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy example 00000000-0000-0000-0000-000000000000
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_package_id: The ID of the access package that will contain the policy.
@@ -520,6 +523,7 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy example 00000000-0000-0000-0000-000000000000
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AccessPackageAssignmentPolicyArgs args: The arguments to use to populate this resource's properties.

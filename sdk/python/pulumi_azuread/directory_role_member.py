@@ -23,6 +23,7 @@ class DirectoryRoleMemberArgs:
                  role_object_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DirectoryRoleMember resource.
+
         :param pulumi.Input[_builtins.str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] role_object_id: The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
@@ -63,6 +64,7 @@ class _DirectoryRoleMemberState:
                  role_object_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DirectoryRoleMember resources.
+
         :param pulumi.Input[_builtins.str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] role_object_id: The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
@@ -141,6 +143,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
 
         > This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
@@ -187,6 +190,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
         ```
 
         > This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
+
 
         :param str resource_name: The name of the resource.
         :param DirectoryRoleMemberArgs args: The arguments to use to populate this resource's properties.

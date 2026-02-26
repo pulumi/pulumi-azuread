@@ -24,6 +24,7 @@ class ApplicationPreAuthorizedArgs:
                  permission_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a ApplicationPreAuthorized resource.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] authorized_client_id: The client ID of the application being authorized. Changing this field forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permission_ids: A set of permission scope IDs required by the authorized application.
@@ -77,6 +78,7 @@ class _ApplicationPreAuthorizedState:
                  permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ApplicationPreAuthorized resources.
+
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] authorized_client_id: The client ID of the application being authorized. Changing this field forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permission_ids: A set of permission scope IDs required by the authorized application.
@@ -198,6 +200,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
 
         > This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
@@ -272,6 +275,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         ```
 
         > This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
+
 
         :param str resource_name: The name of the resource.
         :param ApplicationPreAuthorizedArgs args: The arguments to use to populate this resource's properties.

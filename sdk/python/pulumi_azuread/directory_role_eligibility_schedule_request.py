@@ -25,6 +25,7 @@ class DirectoryRoleEligibilityScheduleRequestArgs:
                  role_definition_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DirectoryRoleEligibilityScheduleRequest resource.
+
         :param pulumi.Input[_builtins.str] directory_scope_id: Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] justification: Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] principal_id: The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
@@ -93,6 +94,7 @@ class _DirectoryRoleEligibilityScheduleRequestState:
                  role_definition_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DirectoryRoleEligibilityScheduleRequest resources.
+
         :param pulumi.Input[_builtins.str] directory_scope_id: Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] justification: Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] principal_id: The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
@@ -203,6 +205,7 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
         $ pulumi import azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest example 822ec710-4c9f-4f71-a27a-451759cc7522
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] directory_scope_id: Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.
@@ -251,6 +254,7 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
         ```sh
         $ pulumi import azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest example 822ec710-4c9f-4f71-a27a-451759cc7522
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DirectoryRoleEligibilityScheduleRequestArgs args: The arguments to use to populate this resource's properties.

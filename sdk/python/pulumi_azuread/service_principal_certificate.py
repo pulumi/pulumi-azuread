@@ -29,6 +29,7 @@ class ServicePrincipalCertificateArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalCertificate resource.
+
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         :param pulumi.Input[_builtins.str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
@@ -175,6 +176,7 @@ class _ServicePrincipalCertificateState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalCertificate resources.
+
         :param pulumi.Input[_builtins.str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
                
                > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
@@ -383,6 +385,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
 
         > This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
@@ -461,6 +464,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         ```
 
         > This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
+
 
         :param str resource_name: The name of the resource.
         :param ServicePrincipalCertificateArgs args: The arguments to use to populate this resource's properties.
