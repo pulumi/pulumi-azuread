@@ -43,7 +43,7 @@ import (
 //			exampleGroup, err := azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
 //				DisplayName: pulumi.String("example"),
 //				Owners: pulumi.StringArray{
-//					pulumi.String(current.ObjectId),
+//					pulumi.String(pulumi.String(current.ObjectId)),
 //				},
 //				SecurityEnabled: pulumi.Bool(true),
 //			})
@@ -58,7 +58,7 @@ import (
 //			}
 //			exampleApplicationFromTemplate, err := azuread.NewApplicationFromTemplate(ctx, "example", &azuread.ApplicationFromTemplateArgs{
 //				DisplayName: pulumi.String("example"),
-//				TemplateId:  pulumi.String(example.TemplateId),
+//				TemplateId:  pulumi.String(pulumi.String(example.TemplateId)),
 //			})
 //			if err != nil {
 //				return err

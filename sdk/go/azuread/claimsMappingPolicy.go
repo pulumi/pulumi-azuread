@@ -64,7 +64,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = azuread.NewClaimsMappingPolicy(ctx, "my_policy", &azuread.ClaimsMappingPolicyArgs{
 //				Definitions: pulumi.StringArray{
-//					pulumi.String(json0),
+//					pulumi.String(pulumi.String(json0)),
 //				},
 //				DisplayName: pulumi.String("My Policy"),
 //			})

@@ -55,7 +55,7 @@ import (
 //			_, err = azuread.NewGroupWithoutMembers(ctx, "example", &azuread.GroupWithoutMembersArgs{
 //				DisplayName: pulumi.String("example"),
 //				Owners: pulumi.StringArray{
-//					pulumi.String(current.ObjectId),
+//					pulumi.String(pulumi.String(current.ObjectId)),
 //				},
 //				SecurityEnabled: pulumi.Bool(true),
 //			})
@@ -104,7 +104,7 @@ import (
 //					pulumi.String("Unified"),
 //				},
 //				Owners: pulumi.StringArray{
-//					pulumi.String(current.ObjectId),
+//					pulumi.String(pulumi.String(current.ObjectId)),
 //					groupOwner.ObjectId,
 //				},
 //			})
@@ -138,7 +138,7 @@ import (
 //			_, err = azuread.NewGroupWithoutMembers(ctx, "example", &azuread.GroupWithoutMembersArgs{
 //				DisplayName: pulumi.String("MyGroup"),
 //				Owners: pulumi.StringArray{
-//					pulumi.String(current.ObjectId),
+//					pulumi.String(pulumi.String(current.ObjectId)),
 //				},
 //				SecurityEnabled: pulumi.Bool(true),
 //				Types: pulumi.StringArray{
