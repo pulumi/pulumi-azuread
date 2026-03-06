@@ -52,7 +52,7 @@ import (
 //			}
 //			_, err = azuread.NewDirectoryRoleAssignment(ctx, "example", &azuread.DirectoryRoleAssignmentArgs{
 //				RoleId:            exampleDirectoryRole.TemplateId,
-//				PrincipalObjectId: pulumi.String(example.ObjectId),
+//				PrincipalObjectId: pulumi.String(pulumi.String(example.ObjectId)),
 //			})
 //			if err != nil {
 //				return err
@@ -103,7 +103,7 @@ import (
 //			}
 //			_, err = azuread.NewDirectoryRoleAssignment(ctx, "example", &azuread.DirectoryRoleAssignmentArgs{
 //				RoleId:            exampleCustomDirectoryRole.ObjectId,
-//				PrincipalObjectId: pulumi.String(example.ObjectId),
+//				PrincipalObjectId: pulumi.String(pulumi.String(example.ObjectId)),
 //			})
 //			if err != nil {
 //				return err
@@ -158,7 +158,7 @@ import (
 //			}
 //			_, err = azuread.NewDirectoryRoleAssignment(ctx, "example", &azuread.DirectoryRoleAssignmentArgs{
 //				RoleId:            exampleDirectoryRole.TemplateId,
-//				PrincipalObjectId: pulumi.String(example.ObjectId),
+//				PrincipalObjectId: pulumi.String(pulumi.String(example.ObjectId)),
 //				DirectoryScopeId:  pulumi.String(invokeFormat.Result),
 //			})
 //			if err != nil {

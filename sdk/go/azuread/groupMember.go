@@ -55,7 +55,7 @@ import (
 //			}
 //			_, err = azuread.NewGroupMember(ctx, "example", &azuread.GroupMemberArgs{
 //				GroupObjectId:  exampleGroup.ObjectId,
-//				MemberObjectId: pulumi.String(example.ObjectId),
+//				MemberObjectId: pulumi.String(pulumi.String(example.ObjectId)),
 //			})
 //			if err != nil {
 //				return err

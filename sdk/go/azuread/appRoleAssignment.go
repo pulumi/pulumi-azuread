@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ClientId:    pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				ClientId:    pulumi.String(pulumi.String(wellKnown.Result.MicrosoftGraph)),
 //				UseExisting: pulumi.Bool(true),
 //			})
 //			if err != nil {

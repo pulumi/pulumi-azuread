@@ -57,7 +57,7 @@ import (
 //			_, err = azuread.NewAdministrativeUnitRoleMember(ctx, "example", &azuread.AdministrativeUnitRoleMemberArgs{
 //				RoleObjectId:               exampleDirectoryRole.ObjectId,
 //				AdministrativeUnitObjectId: exampleAdministrativeUnit.ObjectId,
-//				MemberObjectId:             pulumi.String(example.ObjectId),
+//				MemberObjectId:             pulumi.String(pulumi.String(example.ObjectId)),
 //			})
 //			if err != nil {
 //				return err
