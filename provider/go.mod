@@ -6,7 +6,7 @@ require (
 	github.com/hashicorp/go-azure-sdk/sdk v0.20251107.1191907
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
 	github.com/pulumi/providertest v0.6.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.122.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.123.0
 	github.com/pulumi/pulumi/sdk/v3 v3.225.1
 	github.com/stretchr/testify v1.11.1
 )
@@ -102,7 +102,7 @@ require (
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.24.0 // indirect
 	github.com/hashicorp/terraform-json v0.27.1 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.29.0 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.30.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.36.1 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.12.0 // indirect
@@ -142,7 +142,10 @@ require (
 	github.com/natefinch/atomic v1.0.1 // indirect
 	github.com/nxadm/tail v1.4.11 // indirect
 	github.com/oklog/run v1.1.0 // indirect
-	github.com/olekukonko/tablewriter v0.0.5 // indirect
+	github.com/olekukonko/cat v0.0.0-20250911104152-50322a0618f6 // indirect
+	github.com/olekukonko/errors v1.1.0 // indirect
+	github.com/olekukonko/ll v0.1.4-0.20260115111900-9e59c2286df0 // indirect
+	github.com/olekukonko/tablewriter v1.1.3 // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
