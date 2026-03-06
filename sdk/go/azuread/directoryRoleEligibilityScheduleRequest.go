@@ -50,7 +50,7 @@ import (
 //			}
 //			_, err = azuread.NewDirectoryRoleEligibilityScheduleRequest(ctx, "example", &azuread.DirectoryRoleEligibilityScheduleRequestArgs{
 //				RoleDefinitionId: exampleDirectoryRole.TemplateId,
-//				PrincipalId:      pulumi.String(example.ObjectId),
+//				PrincipalId:      pulumi.String(pulumi.String(example.ObjectId)),
 //				DirectoryScopeId: pulumi.String("/"),
 //				Justification:    pulumi.String("Example"),
 //			})
