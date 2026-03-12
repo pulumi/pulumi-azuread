@@ -157,11 +157,11 @@ require (
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
-	github.com/pulumi/esc v0.22.0 // indirect
+	github.com/pulumi/esc v0.23.0 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
-	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.101.2 // indirect
-	github.com/pulumi/pulumi-java/pkg v1.21.2 // indirect
-	github.com/pulumi/pulumi-yaml v1.30.0 // indirect
+	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.102.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v1.21.3 // indirect
+	github.com/pulumi/pulumi-yaml v1.30.1 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.225.1 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
