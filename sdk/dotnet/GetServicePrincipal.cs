@@ -34,7 +34,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
+        ///     var example = AzureAD.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         DisplayName = "my-awesome-application",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
+        ///     var example = AzureAD.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         ClientId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -70,7 +70,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
+        ///     var example = AzureAD.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -104,7 +104,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
+        ///     var example = AzureAD.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         DisplayName = "my-awesome-application",
         ///     });
@@ -122,7 +122,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
+        ///     var example = AzureAD.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         ClientId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -140,7 +140,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
+        ///     var example = AzureAD.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -174,7 +174,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
+        ///     var example = AzureAD.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         DisplayName = "my-awesome-application",
         ///     });
@@ -192,7 +192,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
+        ///     var example = AzureAD.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         ClientId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -210,7 +210,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
+        ///     var example = AzureAD.Index.GetServicePrincipal.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });

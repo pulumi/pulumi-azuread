@@ -31,7 +31,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myPolicy = new AzureAD.ClaimsMappingPolicy("my_policy", new()
+    ///     var myPolicy = new AzureAD.Index.ClaimsMappingPolicy("my_policy", new()
     ///     {
     ///         Definitions = new[]
     ///         {

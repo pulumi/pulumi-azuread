@@ -51,10 +51,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = azuread.LookupApplicationOutput(ctx, azuread.GetApplicationOutputArgs{
+//			_ = azuread.GetApplicationOutput(ctx, azuread.GetApplicationOutputArgs{
 //				ObjectId: exampleApplicationFromTemplate.ApplicationObjectId,
 //			}, nil)
-//			_ = azuread.LookupServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
+//			_ = azuread.GetServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
 //				ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
 //			}, nil)
 //			return nil

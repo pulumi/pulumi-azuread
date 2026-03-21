@@ -34,17 +34,17 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var client = new AzureAD.ApplicationRegistration("client", new()
+    ///     var client = new AzureAD.Index.ApplicationRegistration("client", new()
     ///     {
     ///         DisplayName = "example client",
     ///     });
     /// 
-    ///     var exampleApplicationKnownClients = new AzureAD.ApplicationKnownClients("example", new()
+    ///     var exampleApplicationKnownClients = new AzureAD.Index.ApplicationKnownClients("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         KnownClientIds = new[]

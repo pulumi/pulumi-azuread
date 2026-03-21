@@ -35,7 +35,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     var example = AzureAD.Index.GetAccessPackageCatalogRole.Invoke(new()
         ///     {
         ///         DisplayName = "Catalog owner",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     var example = AzureAD.Index.GetAccessPackageCatalogRole.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -87,7 +87,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     var example = AzureAD.Index.GetAccessPackageCatalogRole.Invoke(new()
         ///     {
         ///         DisplayName = "Catalog owner",
         ///     });
@@ -104,7 +104,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     var example = AzureAD.Index.GetAccessPackageCatalogRole.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -139,7 +139,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     var example = AzureAD.Index.GetAccessPackageCatalogRole.Invoke(new()
         ///     {
         ///         DisplayName = "Catalog owner",
         ///     });
@@ -156,7 +156,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+        ///     var example = AzureAD.Index.GetAccessPackageCatalogRole.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });

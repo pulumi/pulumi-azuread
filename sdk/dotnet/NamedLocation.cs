@@ -32,7 +32,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example_ip = new AzureAD.NamedLocation("example-ip", new()
+    ///     var example_ip = new AzureAD.Index.NamedLocation("example-ip", new()
     ///     {
     ///         DisplayName = "IP Named Location",
     ///         Ip = new AzureAD.Inputs.NamedLocationIpArgs
@@ -46,7 +46,7 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var example_country = new AzureAD.NamedLocation("example-country", new()
+    ///     var example_country = new AzureAD.Index.NamedLocation("example-country", new()
     ///     {
     ///         DisplayName = "Country Named Location",
     ///         Country = new AzureAD.Inputs.NamedLocationCountryArgs
