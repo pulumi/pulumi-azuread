@@ -1,7 +1,0 @@
-[tools]
-"vfox-pulumi:pulumiverse/pulumi-time" = "0.1.1"
-"vfox-pulumi:pulumi/pulumi-std" = "2.2.0"
-"vfox-pulumi:pulumi/pulumi-azure" = "6.31.0"
-"vfox-pulumi:pulumi/pulumi-random" = "4.18.5"
-"vfox-pulumi:pulumi/pulumi-converter-terraform" = "1.2.4"
-golangci-lint = "2.7.2"

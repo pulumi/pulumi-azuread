@@ -1,3 +1,0 @@
-name: azuread
-description: A Pulumi resource provider for azuread.
-language: python
