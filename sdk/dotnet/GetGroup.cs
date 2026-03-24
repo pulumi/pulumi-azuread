@@ -34,7 +34,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetGroup.Invoke(new()
+        ///     var example = AzureAD.Index.GetGroup.Invoke(new()
         ///     {
         ///         DisplayName = "MyGroupName",
         ///         SecurityEnabled = true,
@@ -69,7 +69,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetGroup.Invoke(new()
+        ///     var example = AzureAD.Index.GetGroup.Invoke(new()
         ///     {
         ///         DisplayName = "MyGroupName",
         ///         SecurityEnabled = true,
@@ -104,7 +104,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetGroup.Invoke(new()
+        ///     var example = AzureAD.Index.GetGroup.Invoke(new()
         ///     {
         ///         DisplayName = "MyGroupName",
         ///         SecurityEnabled = true,

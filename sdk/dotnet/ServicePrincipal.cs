@@ -34,9 +34,9 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
+    ///     var current = AzureAD.Index.GetClientConfig.Invoke();
     /// 
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new AzureAD.Index.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         Owners = new[]
@@ -45,7 +45,7 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = example.ClientId,
     ///         AppRoleAssignmentRequired = false,
@@ -68,9 +68,9 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
+    ///     var current = AzureAD.Index.GetClientConfig.Invoke();
     /// 
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new AzureAD.Index.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         Owners = new[]
@@ -79,7 +79,7 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = example.ClientId,
     ///         AppRoleAssignmentRequired = false,
@@ -110,9 +110,9 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
+    ///     var wellKnown = AzureAD.Index.GetApplicationPublishedAppIds.Invoke();
     /// 
-    ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
+    ///     var msgraph = new AzureAD.Index.ServicePrincipal("msgraph", new()
     ///     {
     ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
     ///         UseExisting = true,
@@ -131,18 +131,18 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
+    ///     var example = AzureAD.Index.GetApplicationTemplate.Invoke(new()
     ///     {
     ///         DisplayName = "Marketo",
     ///     });
     /// 
-    ///     var exampleApplication = new AzureAD.Application("example", new()
+    ///     var exampleApplication = new AzureAD.Index.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = exampleApplication.ClientId,
     ///         UseExisting = true,

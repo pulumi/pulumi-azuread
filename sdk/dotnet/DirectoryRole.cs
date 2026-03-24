@@ -36,7 +36,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.DirectoryRole("example", new()
+    ///     var example = new AzureAD.Index.DirectoryRole("example", new()
     ///     {
     ///         TemplateId = "00000000-0000-0000-0000-000000000000",
     ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.DirectoryRole("example", new()
+    ///     var example = new AzureAD.Index.DirectoryRole("example", new()
     ///     {
     ///         DisplayName = "Printer administrator",
     ///     });

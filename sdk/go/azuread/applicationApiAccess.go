@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			msgraph, err := azuread.LookupServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
+//			msgraph, err := azuread.GetServicePrincipal(ctx, &azuread.LookupServicePrincipalArgs{
 //				ClientId: pulumi.StringRef(wellKnown.Result.MicrosoftGraph),
 //			}, nil)
 //			if err != nil {

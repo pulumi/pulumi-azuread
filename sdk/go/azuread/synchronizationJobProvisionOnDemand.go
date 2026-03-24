@@ -63,7 +63,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleGetServicePrincipal := azuread.LookupServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
+//			exampleGetServicePrincipal := azuread.GetServicePrincipalOutput(ctx, azuread.GetServicePrincipalOutputArgs{
 //				ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
 //			}, nil)
 //			_, err = azuread.NewSynchronizationSecret(ctx, "example", &azuread.SynchronizationSecretArgs{

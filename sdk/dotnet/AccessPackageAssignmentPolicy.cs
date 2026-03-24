@@ -30,26 +30,26 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Group("example", new()
+    ///     var example = new AzureAD.Index.Group("example", new()
     ///     {
     ///         DisplayName = "group-name",
     ///         SecurityEnabled = true,
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("example", new()
+    ///     var exampleAccessPackageCatalog = new AzureAD.Index.AccessPackageCatalog("example", new()
     ///     {
     ///         DisplayName = "example-catalog",
     ///         Description = "Example catalog",
     ///     });
     /// 
-    ///     var exampleAccessPackage = new AzureAD.AccessPackage("example", new()
+    ///     var exampleAccessPackage = new AzureAD.Index.AccessPackage("example", new()
     ///     {
     ///         CatalogId = exampleAccessPackageCatalog.Id,
     ///         DisplayName = "access-package",
     ///         Description = "Access Package",
     ///     });
     /// 
-    ///     var exampleAccessPackageAssignmentPolicy = new AzureAD.AccessPackageAssignmentPolicy("example", new()
+    ///     var exampleAccessPackageAssignmentPolicy = new AzureAD.Index.AccessPackageAssignmentPolicy("example", new()
     ///     {
     ///         AccessPackageId = exampleAccessPackage.Id,
     ///         DisplayName = "assignment-policy",

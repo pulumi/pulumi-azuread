@@ -34,19 +34,19 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var jane = new AzureAD.User("jane", new()
+    ///     var jane = new AzureAD.Index.User("jane", new()
     ///     {
     ///         UserPrincipalName = "jane.fischer@example.com",
     ///         DisplayName = "Jane Fischer",
     ///         Password = "Ch@ngeMe",
     ///     });
     /// 
-    ///     var exampleJane = new AzureAD.ApplicationOwner("example_jane", new()
+    ///     var exampleJane = new AzureAD.Index.ApplicationOwner("example_jane", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         OwnerObjectId = jane.ObjectId,

@@ -36,7 +36,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ConditionalAccessPolicy("example", new()
+    ///     var example = new AzureAD.Index.ConditionalAccessPolicy("example", new()
     ///     {
     ///         DisplayName = "example policy",
     ///         State = "disabled",
@@ -135,9 +135,9 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
+    ///     var current = AzureAD.Index.GetClientConfig.Invoke();
     /// 
-    ///     var example = new AzureAD.ConditionalAccessPolicy("example", new()
+    ///     var example = new AzureAD.Index.ConditionalAccessPolicy("example", new()
     ///     {
     ///         DisplayName = "example policy",
     ///         State = "disabled",
@@ -193,9 +193,9 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
+    ///     var current = AzureAD.Index.GetClientConfig.Invoke();
     /// 
-    ///     var example = new AzureAD.ConditionalAccessPolicy("example", new()
+    ///     var example = new AzureAD.Index.ConditionalAccessPolicy("example", new()
     ///     {
     ///         DisplayName = "example policy",
     ///         State = "disabled",

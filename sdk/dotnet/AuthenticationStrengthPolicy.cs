@@ -30,7 +30,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.AuthenticationStrengthPolicy("example", new()
+    ///     var example = new AzureAD.Index.AuthenticationStrengthPolicy("example", new()
     ///     {
     ///         DisplayName = "Example Authentication Strength Policy",
     ///         Description = "Policy for demo purposes",
@@ -41,7 +41,7 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var example2 = new AzureAD.AuthenticationStrengthPolicy("example2", new()
+    ///     var example2 = new AzureAD.Index.AuthenticationStrengthPolicy("example2", new()
     ///     {
     ///         DisplayName = "Example Authentication Strength Policy",
     ///         Description = "Policy for demo purposes with all possible combinations",

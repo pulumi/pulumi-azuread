@@ -33,7 +33,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetDirectoryObject.Invoke(new()
+        ///     var example = AzureAD.Index.GetDirectoryObject.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -77,7 +77,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetDirectoryObject.Invoke(new()
+        ///     var example = AzureAD.Index.GetDirectoryObject.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -121,7 +121,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetDirectoryObject.Invoke(new()
+        ///     var example = AzureAD.Index.GetDirectoryObject.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });

@@ -381,7 +381,7 @@ class ApplicationCertificate(pulumi.CustomResource):
         import pulumi_azurerm as azurerm
 
         example_application = azuread.Application("example", display_name="example")
-        example = azurerm.index.KeyVaultCertificate("example",
+        example = azurerm.KeyVaultCertificate("example",
             name=generated-cert,
             key_vault_id=example_azurerm_key_vault.id,
             certificate_policy=[{
@@ -518,7 +518,7 @@ class ApplicationCertificate(pulumi.CustomResource):
         import pulumi_azurerm as azurerm
 
         example_application = azuread.Application("example", display_name="example")
-        example = azurerm.index.KeyVaultCertificate("example",
+        example = azurerm.KeyVaultCertificate("example",
             name=generated-cert,
             key_vault_id=example_azurerm_key_vault.id,
             certificate_policy=[{

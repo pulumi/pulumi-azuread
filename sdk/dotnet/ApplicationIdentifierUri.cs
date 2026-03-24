@@ -34,12 +34,12 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationIdentifierUri = new AzureAD.ApplicationIdentifierUri("example", new()
+    ///     var exampleApplicationIdentifierUri = new AzureAD.Index.ApplicationIdentifierUri("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         IdentifierUri = "https://app.example.com",
@@ -60,12 +60,12 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new AzureAD.Index.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationIdentifierUri = new AzureAD.ApplicationIdentifierUri("example", new()
+    ///     var exampleApplicationIdentifierUri = new AzureAD.Index.ApplicationIdentifierUri("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///     });

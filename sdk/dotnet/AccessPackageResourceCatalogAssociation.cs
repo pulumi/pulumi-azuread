@@ -30,19 +30,19 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Group("example", new()
+    ///     var example = new AzureAD.Index.Group("example", new()
     ///     {
     ///         DisplayName = "example-group",
     ///         SecurityEnabled = true,
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("example", new()
+    ///     var exampleAccessPackageCatalog = new AzureAD.Index.AccessPackageCatalog("example", new()
     ///     {
     ///         DisplayName = "example-catalog",
     ///         Description = "Example catalog",
     ///     });
     /// 
-    ///     var exampleAccessPackageResourceCatalogAssociation = new AzureAD.AccessPackageResourceCatalogAssociation("example", new()
+    ///     var exampleAccessPackageResourceCatalogAssociation = new AzureAD.Index.AccessPackageResourceCatalogAssociation("example", new()
     ///     {
     ///         CatalogId = exampleCatalog.Id,
     ///         ResourceOriginId = exampleGroup.ObjectId,

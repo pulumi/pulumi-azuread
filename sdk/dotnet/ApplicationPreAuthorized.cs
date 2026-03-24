@@ -32,12 +32,12 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var authorized = new AzureAD.ApplicationRegistration("authorized", new()
+    ///     var authorized = new AzureAD.Index.ApplicationRegistration("authorized", new()
     ///     {
     ///         DisplayName = "example-authorized-app",
     ///     });
     /// 
-    ///     var authorizer = new AzureAD.Application("authorizer", new()
+    ///     var authorizer = new AzureAD.Index.Application("authorizer", new()
     ///     {
     ///         DisplayName = "example-authorizing-app",
     ///         Api = new AzureAD.Inputs.ApplicationApiArgs
@@ -68,7 +68,7 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var example = new AzureAD.ApplicationPreAuthorized("example", new()
+    ///     var example = new AzureAD.Index.ApplicationPreAuthorized("example", new()
     ///     {
     ///         ApplicationId = authorizer.Id,
     ///         AuthorizedClientId = authorized.ClientId,

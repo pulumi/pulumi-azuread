@@ -32,15 +32,15 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
+    ///     var wellKnown = AzureAD.Index.GetApplicationPublishedAppIds.Invoke();
     /// 
-    ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
+    ///     var msgraph = new AzureAD.Index.ServicePrincipal("msgraph", new()
     ///     {
     ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
     ///         UseExisting = true,
     ///     });
     /// 
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new AzureAD.Index.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         RequiredResourceAccesses = new[]
@@ -65,12 +65,12 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = example.ClientId,
     ///     });
     /// 
-    ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("example", new()
+    ///     var exampleAppRoleAssignment = new AzureAD.Index.AppRoleAssignment("example", new()
     ///     {
     ///         AppRoleId = msgraph.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.User_Read_All),
     ///         PrincipalObjectId = exampleServicePrincipal.ObjectId,
@@ -90,7 +90,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @internal = new AzureAD.Application("internal", new()
+    ///     var @internal = new AzureAD.Index.Application("internal", new()
     ///     {
     ///         DisplayName = "internal",
     ///         AppRoles = new[]
@@ -110,12 +110,12 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var internalServicePrincipal = new AzureAD.ServicePrincipal("internal", new()
+    ///     var internalServicePrincipal = new AzureAD.Index.ServicePrincipal("internal", new()
     ///     {
     ///         ClientId = @internal.ClientId,
     ///     });
     /// 
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new AzureAD.Index.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         RequiredResourceAccesses = new[]
@@ -135,12 +135,12 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = example.ClientId,
     ///     });
     /// 
-    ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("example", new()
+    ///     var exampleAppRoleAssignment = new AzureAD.Index.AppRoleAssignment("example", new()
     ///     {
     ///         AppRoleId = internalServicePrincipal.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.Query_All),
     ///         PrincipalObjectId = exampleServicePrincipal.ObjectId,
