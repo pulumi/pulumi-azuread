@@ -30,13 +30,13 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Group("example", new()
+    ///     var example = new AzureAD.Index.Group("example", new()
     ///     {
     ///         DisplayName = "group-name",
     ///         SecurityEnabled = true,
     ///     });
     /// 
-    ///     var member = new AzureAD.User("member", new()
+    ///     var member = new AzureAD.Index.User("member", new()
     ///     {
     ///         UserPrincipalName = "jdoe@example.com",
     ///         DisplayName = "J. Doe",
@@ -44,7 +44,7 @@ namespace Pulumi.AzureAD
     ///         Password = "SecretP@sswd99!",
     ///     });
     /// 
-    ///     var examplePrivilegedAccessGroupEligibilitySchedule = new AzureAD.PrivilegedAccessGroupEligibilitySchedule("example", new()
+    ///     var examplePrivilegedAccessGroupEligibilitySchedule = new AzureAD.Index.PrivilegedAccessGroupEligibilitySchedule("example", new()
     ///     {
     ///         GroupId = pim.Id,
     ///         PrincipalId = member.Id,

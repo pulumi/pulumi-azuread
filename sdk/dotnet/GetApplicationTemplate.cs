@@ -28,7 +28,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
+        ///     var example = AzureAD.Index.GetApplicationTemplate.Invoke(new()
         ///     {
         ///         DisplayName = "Marketo",
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
+        ///     var example = AzureAD.Index.GetApplicationTemplate.Invoke(new()
         ///     {
         ///         DisplayName = "Marketo",
         ///     });
@@ -92,7 +92,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
+        ///     var example = AzureAD.Index.GetApplicationTemplate.Invoke(new()
         ///     {
         ///         DisplayName = "Marketo",
         ///     });

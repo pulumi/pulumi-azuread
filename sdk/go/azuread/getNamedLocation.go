@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.LookupNamedLocation(ctx, &azuread.LookupNamedLocationArgs{
+//			_, err := azuread.GetNamedLocation(ctx, &azuread.LookupNamedLocationArgs{
 //				DisplayName: "My Named Location",
 //			}, nil)
 //			if err != nil {

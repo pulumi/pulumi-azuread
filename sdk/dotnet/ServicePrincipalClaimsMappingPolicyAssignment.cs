@@ -30,7 +30,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var app = new AzureAD.ServicePrincipalClaimsMappingPolicyAssignment("app", new()
+    ///     var app = new AzureAD.Index.ServicePrincipalClaimsMappingPolicyAssignment("app", new()
     ///     {
     ///         ClaimsMappingPolicyId = myPolicy.Id,
     ///         ServicePrincipalId = myPrincipal.Id,

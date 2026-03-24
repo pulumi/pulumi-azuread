@@ -42,9 +42,9 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
+    ///     var current = AzureAD.Index.GetClientConfig.Invoke();
     /// 
-    ///     var example = new AzureAD.Group("example", new()
+    ///     var example = new AzureAD.Index.Group("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         Owners = new[]
@@ -67,9 +67,9 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
+    ///     var current = AzureAD.Index.GetClientConfig.Invoke();
     /// 
-    ///     var groupOwner = new AzureAD.User("group_owner", new()
+    ///     var groupOwner = new AzureAD.Index.User("group_owner", new()
     ///     {
     ///         UserPrincipalName = "example-group-owner@example.com",
     ///         DisplayName = "Group Owner",
@@ -77,7 +77,7 @@ namespace Pulumi.AzureAD
     ///         Password = "SecretP@sswd99!",
     ///     });
     /// 
-    ///     var example = new AzureAD.Group("example", new()
+    ///     var example = new AzureAD.Index.Group("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         MailEnabled = true,
@@ -107,9 +107,9 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
+    ///     var current = AzureAD.Index.GetClientConfig.Invoke();
     /// 
-    ///     var example = new AzureAD.User("example", new()
+    ///     var example = new AzureAD.Index.User("example", new()
     ///     {
     ///         DisplayName = "J Doe",
     ///         Owners = new[]
@@ -120,7 +120,7 @@ namespace Pulumi.AzureAD
     ///         UserPrincipalName = "jdoe@example.com",
     ///     });
     /// 
-    ///     var exampleGroup = new AzureAD.Group("example", new()
+    ///     var exampleGroup = new AzureAD.Index.Group("example", new()
     ///     {
     ///         DisplayName = "MyGroup",
     ///         Owners = new[]
@@ -147,9 +147,9 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
+    ///     var current = AzureAD.Index.GetClientConfig.Invoke();
     /// 
-    ///     var example = new AzureAD.Group("example", new()
+    ///     var example = new AzureAD.Index.Group("example", new()
     ///     {
     ///         DisplayName = "MyGroup",
     ///         Owners = new[]

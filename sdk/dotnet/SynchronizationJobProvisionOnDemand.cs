@@ -30,9 +30,9 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
+    ///     var current = AzureAD.Index.GetClientConfig.Invoke();
     /// 
-    ///     var exampleGroup = new AzureAD.Group("example", new()
+    ///     var exampleGroup = new AzureAD.Index.Group("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         Owners = new[]
@@ -42,23 +42,23 @@ namespace Pulumi.AzureAD
     ///         SecurityEnabled = true,
     ///     });
     /// 
-    ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
+    ///     var example = AzureAD.Index.GetApplicationTemplate.Invoke(new()
     ///     {
     ///         DisplayName = "Azure Databricks SCIM Provisioning Connector",
     ///     });
     /// 
-    ///     var exampleApplicationFromTemplate = new AzureAD.ApplicationFromTemplate("example", new()
+    ///     var exampleApplicationFromTemplate = new AzureAD.Index.ApplicationFromTemplate("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
     ///     });
     /// 
-    ///     var exampleGetServicePrincipal = AzureAD.GetServicePrincipal.Invoke(new()
+    ///     var exampleGetServicePrincipal = AzureAD.Index.GetServicePrincipal.Invoke(new()
     ///     {
     ///         ObjectId = exampleApplicationFromTemplate.ServicePrincipalObjectId,
     ///     });
     /// 
-    ///     var exampleSynchronizationSecret = new AzureAD.SynchronizationSecret("example", new()
+    ///     var exampleSynchronizationSecret = new AzureAD.Index.SynchronizationSecret("example", new()
     ///     {
     ///         ServicePrincipalId = exampleGetServicePrincipal.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),
     ///         Credentials = new[]
@@ -76,14 +76,14 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleSynchronizationJob = new AzureAD.SynchronizationJob("example", new()
+    ///     var exampleSynchronizationJob = new AzureAD.Index.SynchronizationJob("example", new()
     ///     {
     ///         ServicePrincipalId = exampleGetServicePrincipal.Apply(getServicePrincipalResult =&gt; getServicePrincipalResult.Id),
     ///         TemplateId = "dataBricks",
     ///         Enabled = true,
     ///     });
     /// 
-    ///     var exampleSynchronizationJobProvisionOnDemand = new AzureAD.SynchronizationJobProvisionOnDemand("example", new()
+    ///     var exampleSynchronizationJobProvisionOnDemand = new AzureAD.Index.SynchronizationJobProvisionOnDemand("example", new()
     ///     {
     ///         ServicePrincipalId = exampleSynchronizationJob.ServicePrincipalId,
     ///         SynchronizationJobId = exampleSynchronizationJob.Id,

@@ -34,19 +34,19 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
+    ///     var wellKnown = AzureAD.Index.GetApplicationPublishedAppIds.Invoke();
     /// 
-    ///     var msgraph = AzureAD.GetServicePrincipal.Invoke(new()
+    ///     var msgraph = AzureAD.Index.GetServicePrincipal.Invoke(new()
     ///     {
     ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
     ///     });
     /// 
-    ///     var example = new AzureAD.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleMsgraph = new AzureAD.ApplicationApiAccess("example_msgraph", new()
+    ///     var exampleMsgraph = new AzureAD.Index.ApplicationApiAccess("example_msgraph", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         ApiClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
@@ -76,12 +76,12 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Application("example", new()
+    ///     var example = new AzureAD.Index.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationApiAccess = new AzureAD.ApplicationApiAccess("example", new()
+    ///     var exampleApplicationApiAccess = new AzureAD.Index.ApplicationApiAccess("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///     });

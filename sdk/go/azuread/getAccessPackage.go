@@ -37,7 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.LookupAccessPackage(ctx, &azuread.LookupAccessPackageArgs{
+//			_, err := azuread.GetAccessPackage(ctx, &azuread.LookupAccessPackageArgs{
 //				ObjectId: pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
 //			}, nil)
 //			if err != nil {
@@ -63,7 +63,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.LookupAccessPackage(ctx, &azuread.LookupAccessPackageArgs{
+//			_, err := azuread.GetAccessPackage(ctx, &azuread.LookupAccessPackageArgs{
 //				CatalogId:   pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
 //				DisplayName: pulumi.StringRef("My access package Catalog"),
 //			}, nil)
