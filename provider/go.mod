@@ -1,8 +1,6 @@
 module github.com/pulumi/pulumi-azuread/provider/v5
 
-go 1.22.0
-
-toolchain go1.25.5
+go 1.25.5
 
 require (
 	github.com/hashicorp/go-azure-sdk/sdk v0.20240411.1104331
