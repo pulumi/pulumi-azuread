@@ -35,7 +35,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAdministrativeUnit.Invoke(new()
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
         ///     {
         ///         DisplayName = "Example-AU",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAdministrativeUnit.Invoke(new()
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -87,7 +87,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAdministrativeUnit.Invoke(new()
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
         ///     {
         ///         DisplayName = "Example-AU",
         ///     });
@@ -104,7 +104,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAdministrativeUnit.Invoke(new()
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -139,7 +139,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAdministrativeUnit.Invoke(new()
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
         ///     {
         ///         DisplayName = "Example-AU",
         ///     });
@@ -156,7 +156,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAdministrativeUnit.Invoke(new()
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });

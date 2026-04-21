@@ -57,13 +57,13 @@ import (
 //						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.Openid, nil
+//									return oauth2PermissionScopeIds["openid"], nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Scope"),
 //							},
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.User.Read, nil
+//									return oauth2PermissionScopeIds["User.Read"], nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Scope"),
 //							},
@@ -130,13 +130,13 @@ import (
 //						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.Openid, nil
+//									return oauth2PermissionScopeIds["openid"], nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Scope"),
 //							},
 //							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.User.Read, nil
+//									return oauth2PermissionScopeIds["User.Read"], nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Scope"),
 //							},

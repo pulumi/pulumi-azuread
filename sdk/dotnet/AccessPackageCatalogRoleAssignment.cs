@@ -30,23 +30,23 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AzureAD.Index.GetUser.Invoke(new()
+    ///     var example = AzureAD.GetUser.Invoke(new()
     ///     {
     ///         UserPrincipalName = "jdoe@example.com",
     ///     });
     /// 
-    ///     var exampleGetAccessPackageCatalogRole = AzureAD.Index.GetAccessPackageCatalogRole.Invoke(new()
+    ///     var exampleGetAccessPackageCatalogRole = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
     ///     {
     ///         DisplayName = "Catalog owner",
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.Index.AccessPackageCatalog("example", new()
+    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("example", new()
     ///     {
     ///         DisplayName = "example-access-package-catalog",
     ///         Description = "Example access package catalog",
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalogRoleAssignment = new AzureAD.Index.AccessPackageCatalogRoleAssignment("example", new()
+    ///     var exampleAccessPackageCatalogRoleAssignment = new AzureAD.AccessPackageCatalogRoleAssignment("example", new()
     ///     {
     ///         RoleId = exampleGetAccessPackageCatalogRole.Apply(getAccessPackageCatalogRoleResult =&gt; getAccessPackageCatalogRoleResult.ObjectId),
     ///         PrincipalObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),

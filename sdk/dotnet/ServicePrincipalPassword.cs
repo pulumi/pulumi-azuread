@@ -34,17 +34,17 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.Application("example", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = example.ClientId,
     ///     });
     /// 
-    ///     var exampleServicePrincipalPassword = new AzureAD.Index.ServicePrincipalPassword("example", new()
+    ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("example", new()
     ///     {
     ///         ServicePrincipalId = exampleServicePrincipal.Id,
     ///     });
@@ -63,22 +63,22 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.Application("example", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = example.ClientId,
     ///     });
     /// 
-    ///     var exampleRotating = new Time.Index.Rotating("example", new()
+    ///     var exampleRotating = new Time.Rotating("example", new()
     ///     {
     ///         RotationDays = 7,
     ///     });
     /// 
-    ///     var exampleServicePrincipalPassword = new AzureAD.Index.ServicePrincipalPassword("example", new()
+    ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("example", new()
     ///     {
     ///         ServicePrincipalId = exampleServicePrincipal.Id,
     ///         RotateWhenChanged = 

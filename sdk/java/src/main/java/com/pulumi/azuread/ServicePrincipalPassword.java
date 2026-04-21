@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleRotating = new Rotating("exampleRotating", RotatingArgs.builder()
- *             .rotationDays(7)
+ *             .rotationDays(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:11,19-20)))
  *             .build());
  * 
  *         var exampleServicePrincipalPassword = new ServicePrincipalPassword("exampleServicePrincipalPassword", ServicePrincipalPasswordArgs.builder()

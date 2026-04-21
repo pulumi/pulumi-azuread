@@ -30,13 +30,13 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.AccessPackageCatalog("example", new()
+    ///     var example = new AzureAD.AccessPackageCatalog("example", new()
     ///     {
     ///         DisplayName = "example-catalog",
     ///         Description = "Example catalog",
     ///     });
     /// 
-    ///     var exampleAccessPackage = new AzureAD.Index.AccessPackage("example", new()
+    ///     var exampleAccessPackage = new AzureAD.AccessPackage("example", new()
     ///     {
     ///         CatalogId = example.Id,
     ///         DisplayName = "access-package",

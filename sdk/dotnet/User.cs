@@ -30,7 +30,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.User("example", new()
+    ///     var example = new AzureAD.User("example", new()
     ///     {
     ///         UserPrincipalName = "jdoe@example.com",
     ///         DisplayName = "J. Doe",

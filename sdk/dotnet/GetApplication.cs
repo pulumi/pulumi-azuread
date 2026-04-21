@@ -32,7 +32,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetApplication.Invoke(new()
+        ///     var example = AzureAD.GetApplication.Invoke(new()
         ///     {
         ///         DisplayName = "My First AzureAD Application",
         ///     });
@@ -68,7 +68,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetApplication.Invoke(new()
+        ///     var example = AzureAD.GetApplication.Invoke(new()
         ///     {
         ///         DisplayName = "My First AzureAD Application",
         ///     });
@@ -104,7 +104,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetApplication.Invoke(new()
+        ///     var example = AzureAD.GetApplication.Invoke(new()
         ///     {
         ///         DisplayName = "My First AzureAD Application",
         ///     });

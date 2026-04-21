@@ -32,7 +32,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.Invitation("example", new()
+    ///     var example = new AzureAD.Invitation("example", new()
     ///     {
     ///         UserEmailAddress = "jdoe@example.com",
     ///         RedirectUrl = "https://portal.azure.com",
@@ -51,7 +51,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.Invitation("example", new()
+    ///     var example = new AzureAD.Invitation("example", new()
     ///     {
     ///         UserEmailAddress = "jdoe@example.com",
     ///         RedirectUrl = "https://portal.azure.com",
@@ -74,7 +74,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.Invitation("example", new()
+    ///     var example = new AzureAD.Invitation("example", new()
     ///     {
     ///         UserDisplayName = "Bob Bobson",
     ///         UserEmailAddress = "bbobson@example.com",

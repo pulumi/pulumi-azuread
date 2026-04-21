@@ -32,12 +32,12 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationFlexibleFederatedIdentityCredential = new AzureAD.Index.ApplicationFlexibleFederatedIdentityCredential("example", new()
+    ///     var exampleApplicationFlexibleFederatedIdentityCredential = new AzureAD.ApplicationFlexibleFederatedIdentityCredential("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         ClaimsMatchingExpression = "claims['sub'] matches 'repo:contoso/contoso-repo:ref:refs/heads/*' and claims['job_workflow_ref'] matches 'contoso/contoso-prod/.github/workflows/*.yml@refs/heads/main'",

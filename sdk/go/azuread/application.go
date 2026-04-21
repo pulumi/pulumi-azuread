@@ -230,7 +230,8 @@ import (
 // Duration: example.ID(),
 // Timestamp: pulumi.String("4320h"),
 // }, nil).ApplyT(func(invoke std.TimeaddResult) (*string, error) {
-// return invoke.Result, nil
+// val := invoke.Result
+// return &val, nil
 // }).(pulumi.StringPtrOutput),
 // },
 // })

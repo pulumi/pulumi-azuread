@@ -32,12 +32,12 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationFederatedIdentityCredential = new AzureAD.Index.ApplicationFederatedIdentityCredential("example", new()
+    ///     var exampleApplicationFederatedIdentityCredential = new AzureAD.ApplicationFederatedIdentityCredential("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         DisplayName = "my-repo-deploy",

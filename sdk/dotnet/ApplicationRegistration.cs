@@ -32,7 +32,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "Example Application",
     ///         Description = "My example application",

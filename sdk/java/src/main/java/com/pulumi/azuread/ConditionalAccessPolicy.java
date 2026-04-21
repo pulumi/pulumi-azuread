@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *             .sessionControls(ConditionalAccessPolicySessionControlsArgs.builder()
  *                 .applicationEnforcedRestrictionsEnabled(true)
  *                 .disableResilienceDefaults(false)
- *                 .signInFrequency(10)
+ *                 .signInFrequency(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(10) (example.pp:37,46-48)))
  *                 .signInFrequencyPeriod("hours")
  *                 .cloudAppSecurityPolicy("monitorOnly")
  *                 .build())
