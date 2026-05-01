@@ -35,21 +35,21 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.Application("example", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = example.ClientId,
     ///     });
     /// 
-    ///     var exampleServicePrincipalCertificate = new AzureAD.Index.ServicePrincipalCertificate("example", new()
+    ///     var exampleServicePrincipalCertificate = new AzureAD.ServicePrincipalCertificate("example", new()
     ///     {
     ///         ServicePrincipalId = exampleServicePrincipal.Id,
     ///         Type = "AsymmetricX509Cert",
-    ///         Value = Std.Index.File.Invoke(new()
+    ///         Value = Std.File.Invoke(new()
     ///         {
     ///             Input = "cert.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -70,25 +70,25 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.Application("example", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = example.ClientId,
     ///     });
     /// 
-    ///     var exampleServicePrincipalCertificate = new AzureAD.Index.ServicePrincipalCertificate("example", new()
+    ///     var exampleServicePrincipalCertificate = new AzureAD.ServicePrincipalCertificate("example", new()
     ///     {
     ///         ServicePrincipalId = exampleServicePrincipal.Id,
     ///         Type = "AsymmetricX509Cert",
     ///         Encoding = "base64",
-    ///         Value = Std.Index.File.Invoke(new()
+    ///         Value = Std.File.Invoke(new()
     ///         {
     ///             Input = "cert.der",
-    ///         }).Apply(invoke =&gt; Std.Index.Base64encode.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Base64encode.Invoke(new()
     ///         {
     ///             Input = invoke.Result,
     ///         })).Apply(invoke =&gt; invoke.Result),

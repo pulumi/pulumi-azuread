@@ -165,13 +165,13 @@ import javax.annotation.Nullable;
  *                 Map.entry("issuerParameters", List.of(Map.of("name", "Self"))),
  *                 Map.entry("keyProperties", List.of(Map.ofEntries(
  *                     Map.entry("exportable", true),
- *                     Map.entry("keySize", 2048),
+ *                     Map.entry("keySize", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:9,20-24))),
  *                     Map.entry("keyType", "RSA"),
  *                     Map.entry("reuseKey", true)
  *                 ))),
  *                 Map.entry("lifetimeAction", List.of(Map.ofEntries(
  *                     Map.entry("action", List.of(Map.of("actionType", "AutoRenew"))),
- *                     Map.entry("trigger", List.of(Map.of("daysBeforeExpiry", 30)))
+ *                     Map.entry("trigger", List.of(Map.of("daysBeforeExpiry", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(30) (example.pp:18,28-30)))))
  *                 ))),
  *                 Map.entry("secretProperties", List.of(Map.of("contentType", "application/x-pkcs12"))),
  *                 Map.entry("x509CertificateProperties", List.of(Map.ofEntries(
@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *                         "internal.contoso.com",
  *                         "domain.hello.world")))),
  *                     Map.entry("subject", String.format("CN=%s", exampleApplication.name())),
- *                     Map.entry("validityInMonths", 12)
+ *                     Map.entry("validityInMonths", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(12) (example.pp:31,26-28)))
  *                 )))
  *             )))
  *             .build());

@@ -32,7 +32,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var aadDomains = AzureAD.Index.GetDomains.Invoke();
+        ///     var aadDomains = AzureAD.GetDomains.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -65,7 +65,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var aadDomains = AzureAD.Index.GetDomains.Invoke();
+        ///     var aadDomains = AzureAD.GetDomains.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -98,7 +98,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var aadDomains = AzureAD.Index.GetDomains.Invoke();
+        ///     var aadDomains = AzureAD.GetDomains.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

@@ -35,7 +35,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAccessPackageCatalog.Invoke(new()
+        ///     var example = AzureAD.GetAccessPackageCatalog.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -53,7 +53,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAccessPackageCatalog.Invoke(new()
+        ///     var example = AzureAD.GetAccessPackageCatalog.Invoke(new()
         ///     {
         ///         DisplayName = "My access package Catalog",
         ///     });
@@ -88,7 +88,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAccessPackageCatalog.Invoke(new()
+        ///     var example = AzureAD.GetAccessPackageCatalog.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -106,7 +106,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAccessPackageCatalog.Invoke(new()
+        ///     var example = AzureAD.GetAccessPackageCatalog.Invoke(new()
         ///     {
         ///         DisplayName = "My access package Catalog",
         ///     });
@@ -141,7 +141,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAccessPackageCatalog.Invoke(new()
+        ///     var example = AzureAD.GetAccessPackageCatalog.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -159,7 +159,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetAccessPackageCatalog.Invoke(new()
+        ///     var example = AzureAD.GetAccessPackageCatalog.Invoke(new()
         ///     {
         ///         DisplayName = "My access package Catalog",
         ///     });

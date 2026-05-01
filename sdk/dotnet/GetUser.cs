@@ -32,7 +32,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetUser.Invoke(new()
+        ///     var example = AzureAD.GetUser.Invoke(new()
         ///     {
         ///         UserPrincipalName = "user@example.com",
         ///     });
@@ -64,7 +64,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetUser.Invoke(new()
+        ///     var example = AzureAD.GetUser.Invoke(new()
         ///     {
         ///         UserPrincipalName = "user@example.com",
         ///     });
@@ -96,7 +96,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetUser.Invoke(new()
+        ///     var example = AzureAD.GetUser.Invoke(new()
         ///     {
         ///         UserPrincipalName = "user@example.com",
         ///     });

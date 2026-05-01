@@ -39,16 +39,16 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AzureAD.Index.GetClientConfig.Invoke();
+    ///     var current = AzureAD.GetClientConfig.Invoke();
     /// 
-    ///     var example = new AzureAD.Index.Application("example", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         IdentifierUris = new[]
     ///         {
     ///             "api://example-app",
     ///         },
-    ///         LogoImage = Std.Index.Filebase64.Invoke(new()
+    ///         LogoImage = Std.Filebase64.Invoke(new()
     ///         {
     ///             Input = "/path/to/logo.png",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -223,14 +223,14 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AzureAD.Index.GetClientConfig.Invoke();
+    ///     var current = AzureAD.GetClientConfig.Invoke();
     /// 
-    ///     var example = new Time.Index.Rotating("example", new()
+    ///     var example = new Time.Rotating("example", new()
     ///     {
     ///         RotationDays = 180,
     ///     });
     /// 
-    ///     var exampleApplication = new AzureAD.Index.Application("example", new()
+    ///     var exampleApplication = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         Owners = new[]
@@ -241,7 +241,7 @@ namespace Pulumi.AzureAD
     ///         {
     ///             DisplayName = "MySecret-1",
     ///             StartDate = example.Id,
-    ///             EndDate = Std.Index.Timeadd.Invoke(new()
+    ///             EndDate = Std.Timeadd.Invoke(new()
     ///             {
     ///                 Duration = example.Id,
     ///                 Timestamp = "4320h",
@@ -266,18 +266,18 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AzureAD.Index.GetApplicationTemplate.Invoke(new()
+    ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
     ///     {
     ///         DisplayName = "Marketo",
     ///     });
     /// 
-    ///     var exampleApplication = new AzureAD.Index.Application("example", new()
+    ///     var exampleApplication = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         TemplateId = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = exampleApplication.ClientId,
     ///         UseExisting = true,

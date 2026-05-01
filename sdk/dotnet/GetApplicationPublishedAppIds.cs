@@ -30,7 +30,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var wellKnown = AzureAD.Index.GetApplicationPublishedAppIds.Invoke();
+        ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -49,15 +49,15 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var wellKnown = AzureAD.Index.GetApplicationPublishedAppIds.Invoke();
+        ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
         /// 
-        ///     var msgraph = new AzureAD.Index.ServicePrincipal("msgraph", new()
+        ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
         ///     {
         ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
         ///         UseExisting = true,
         ///     });
         /// 
-        ///     var example = new AzureAD.Index.Application("example", new()
+        ///     var example = new AzureAD.Application("example", new()
         ///     {
         ///         DisplayName = "example",
         ///         RequiredResourceAccesses = new[]
@@ -107,7 +107,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var wellKnown = AzureAD.Index.GetApplicationPublishedAppIds.Invoke();
+        ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -126,15 +126,15 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var wellKnown = AzureAD.Index.GetApplicationPublishedAppIds.Invoke();
+        ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
         /// 
-        ///     var msgraph = new AzureAD.Index.ServicePrincipal("msgraph", new()
+        ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
         ///     {
         ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
         ///         UseExisting = true,
         ///     });
         /// 
-        ///     var example = new AzureAD.Index.Application("example", new()
+        ///     var example = new AzureAD.Application("example", new()
         ///     {
         ///         DisplayName = "example",
         ///         RequiredResourceAccesses = new[]
@@ -184,7 +184,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var wellKnown = AzureAD.Index.GetApplicationPublishedAppIds.Invoke();
+        ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -203,15 +203,15 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var wellKnown = AzureAD.Index.GetApplicationPublishedAppIds.Invoke();
+        ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
         /// 
-        ///     var msgraph = new AzureAD.Index.ServicePrincipal("msgraph", new()
+        ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
         ///     {
         ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
         ///         UseExisting = true,
         ///     });
         /// 
-        ///     var example = new AzureAD.Index.Application("example", new()
+        ///     var example = new AzureAD.Application("example", new()
         ///     {
         ///         DisplayName = "example",
         ///         RequiredResourceAccesses = new[]

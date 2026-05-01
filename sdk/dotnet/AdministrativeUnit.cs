@@ -30,7 +30,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.AdministrativeUnit("example", new()
+    ///     var example = new AzureAD.AdministrativeUnit("example", new()
     ///     {
     ///         DisplayName = "Example-AU",
     ///         Description = "Just an example",

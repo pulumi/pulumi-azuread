@@ -30,33 +30,33 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.Group("example", new()
+    ///     var example = new AzureAD.Group("example", new()
     ///     {
     ///         DisplayName = "example-group",
     ///         SecurityEnabled = true,
     ///     });
     /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.Index.AccessPackageCatalog("example", new()
+    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("example", new()
     ///     {
     ///         DisplayName = "example-catalog",
     ///         Description = "Example catalog",
     ///     });
     /// 
-    ///     var exampleAccessPackageResourceCatalogAssociation = new AzureAD.Index.AccessPackageResourceCatalogAssociation("example", new()
+    ///     var exampleAccessPackageResourceCatalogAssociation = new AzureAD.AccessPackageResourceCatalogAssociation("example", new()
     ///     {
     ///         CatalogId = exampleCatalog.Id,
     ///         ResourceOriginId = exampleGroup.ObjectId,
     ///         ResourceOriginSystem = "AadGroup",
     ///     });
     /// 
-    ///     var exampleAccessPackage = new AzureAD.Index.AccessPackage("example", new()
+    ///     var exampleAccessPackage = new AzureAD.AccessPackage("example", new()
     ///     {
     ///         DisplayName = "example-package",
     ///         Description = "Example Package",
     ///         CatalogId = exampleCatalog.Id,
     ///     });
     /// 
-    ///     var exampleAccessPackageResourcePackageAssociation = new AzureAD.Index.AccessPackageResourcePackageAssociation("example", new()
+    ///     var exampleAccessPackageResourcePackageAssociation = new AzureAD.AccessPackageResourcePackageAssociation("example", new()
     ///     {
     ///         AccessPackageId = exampleAccessPackage.Id,
     ///         CatalogResourceAssociationId = exampleAccessPackageResourceCatalogAssociation.Id,

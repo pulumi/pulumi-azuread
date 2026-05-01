@@ -32,7 +32,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.CustomDirectoryRole("example", new()
+    ///     var example = new AzureAD.CustomDirectoryRole("example", new()
     ///     {
     ///         DisplayName = "My Custom Role",
     ///         Description = "Allows reading applications and updating groups",

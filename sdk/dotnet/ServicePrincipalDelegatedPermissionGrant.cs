@@ -32,15 +32,15 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var wellKnown = AzureAD.Index.GetApplicationPublishedAppIds.Invoke();
+    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
     /// 
-    ///     var msgraph = new AzureAD.Index.ServicePrincipal("msgraph", new()
+    ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
     ///     {
     ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
     ///         UseExisting = true,
     ///     });
     /// 
-    ///     var example = new AzureAD.Index.Application("example", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         RequiredResourceAccesses = new[]
@@ -65,12 +65,12 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = example.ClientId,
     ///     });
     /// 
-    ///     var exampleServicePrincipalDelegatedPermissionGrant = new AzureAD.Index.ServicePrincipalDelegatedPermissionGrant("example", new()
+    ///     var exampleServicePrincipalDelegatedPermissionGrant = new AzureAD.ServicePrincipalDelegatedPermissionGrant("example", new()
     ///     {
     ///         ServicePrincipalObjectId = exampleServicePrincipal.ObjectId,
     ///         ResourceServicePrincipalObjectId = msgraph.ObjectId,
@@ -94,15 +94,15 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var wellKnown = AzureAD.Index.GetApplicationPublishedAppIds.Invoke();
+    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
     /// 
-    ///     var msgraph = new AzureAD.Index.ServicePrincipal("msgraph", new()
+    ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
     ///     {
     ///         ClientId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
     ///         UseExisting = true,
     ///     });
     /// 
-    ///     var example = new AzureAD.Index.Application("example", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///         RequiredResourceAccesses = new[]
@@ -127,12 +127,12 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleServicePrincipal = new AzureAD.Index.ServicePrincipal("example", new()
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("example", new()
     ///     {
     ///         ClientId = example.ClientId,
     ///     });
     /// 
-    ///     var exampleUser = new AzureAD.Index.User("example", new()
+    ///     var exampleUser = new AzureAD.User("example", new()
     ///     {
     ///         DisplayName = "J. Doe",
     ///         UserPrincipalName = "jdoe@example.com",
@@ -140,7 +140,7 @@ namespace Pulumi.AzureAD
     ///         Password = "SecretP@sswd99!",
     ///     });
     /// 
-    ///     var exampleServicePrincipalDelegatedPermissionGrant = new AzureAD.Index.ServicePrincipalDelegatedPermissionGrant("example", new()
+    ///     var exampleServicePrincipalDelegatedPermissionGrant = new AzureAD.ServicePrincipalDelegatedPermissionGrant("example", new()
     ///     {
     ///         ServicePrincipalObjectId = exampleServicePrincipal.ObjectId,
     ///         ResourceServicePrincipalObjectId = msgraph.ObjectId,

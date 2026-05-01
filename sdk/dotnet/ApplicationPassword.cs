@@ -34,12 +34,12 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationPassword = new AzureAD.Index.ApplicationPassword("example", new()
+    ///     var exampleApplicationPassword = new AzureAD.ApplicationPassword("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///     });
@@ -58,17 +58,17 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleRotating = new Time.Index.Rotating("example", new()
+    ///     var exampleRotating = new Time.Rotating("example", new()
     ///     {
     ///         RotationDays = 7,
     ///     });
     /// 
-    ///     var exampleApplicationPassword = new AzureAD.Index.ApplicationPassword("example", new()
+    ///     var exampleApplicationPassword = new AzureAD.ApplicationPassword("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         RotateWhenChanged = 

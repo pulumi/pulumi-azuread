@@ -30,7 +30,7 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.UserFlowAttribute("example", new()
+    ///     var example = new AzureAD.UserFlowAttribute("example", new()
     ///     {
     ///         DisplayName = "Hobby",
     ///         Description = "Your hobby",

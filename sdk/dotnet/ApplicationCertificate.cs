@@ -35,16 +35,16 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationCertificate = new AzureAD.Index.ApplicationCertificate("example", new()
+    ///     var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         Type = "AsymmetricX509Cert",
-    ///         Value = Std.Index.File.Invoke(new()
+    ///         Value = Std.File.Invoke(new()
     ///         {
     ///             Input = "cert.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -65,20 +65,20 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationCertificate = new AzureAD.Index.ApplicationCertificate("example", new()
+    ///     var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         Type = "AsymmetricX509Cert",
     ///         Encoding = "base64",
-    ///         Value = Std.Index.File.Invoke(new()
+    ///         Value = Std.File.Invoke(new()
     ///         {
     ///             Input = "cert.der",
-    ///         }).Apply(invoke =&gt; Std.Index.Base64encode.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Base64encode.Invoke(new()
     ///         {
     ///             Input = invoke.Result,
     ///         })).Apply(invoke =&gt; invoke.Result),
@@ -99,12 +99,12 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApplication = new AzureAD.Index.Application("example", new()
+    ///     var exampleApplication = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var example = new Azurerm.Index.KeyVaultCertificate("example", new()
+    ///     var example = new Azurerm.KeyVaultCertificate("example", new()
     ///     {
     ///         Name = "generated-cert",
     ///         KeyVaultId = exampleAzurermKeyVault.Id,
@@ -190,7 +190,7 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleApplicationCertificate = new AzureAD.Index.ApplicationCertificate("example", new()
+    ///     var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("example", new()
     ///     {
     ///         ApplicationId = exampleApplication.Id,
     ///         Type = "AsymmetricX509Cert",

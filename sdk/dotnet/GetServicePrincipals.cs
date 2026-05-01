@@ -34,7 +34,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetServicePrincipals.Invoke(new()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
         ///         DisplayNames = new[]
         ///         {
@@ -56,7 +56,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetServicePrincipals.Invoke(new()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
         ///         ClientIds = new[]
         ///         {
@@ -79,7 +79,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetServicePrincipals.Invoke(new()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
         ///         ObjectIds = new[]
         ///         {
@@ -118,7 +118,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetServicePrincipals.Invoke(new()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
         ///         DisplayNames = new[]
         ///         {
@@ -140,7 +140,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetServicePrincipals.Invoke(new()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
         ///         ClientIds = new[]
         ///         {
@@ -163,7 +163,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetServicePrincipals.Invoke(new()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
         ///         ObjectIds = new[]
         ///         {
@@ -202,7 +202,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetServicePrincipals.Invoke(new()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
         ///         DisplayNames = new[]
         ///         {
@@ -224,7 +224,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetServicePrincipals.Invoke(new()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
         ///         ClientIds = new[]
         ///         {
@@ -247,7 +247,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetServicePrincipals.Invoke(new()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
         ///         ObjectIds = new[]
         ///         {

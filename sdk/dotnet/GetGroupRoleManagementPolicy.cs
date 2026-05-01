@@ -32,13 +32,13 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = new AzureAD.Index.Group("example", new()
+        ///     var example = new AzureAD.Group("example", new()
         ///     {
         ///         DisplayName = "group-name",
         ///         SecurityEnabled = true,
         ///     });
         /// 
-        ///     var ownersPolicy = AzureAD.Index.GetGroupRoleManagementPolicy.Invoke(new()
+        ///     var ownersPolicy = AzureAD.GetGroupRoleManagementPolicy.Invoke(new()
         ///     {
         ///         GroupId = example.Id,
         ///         RoleId = "owner",
@@ -71,13 +71,13 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = new AzureAD.Index.Group("example", new()
+        ///     var example = new AzureAD.Group("example", new()
         ///     {
         ///         DisplayName = "group-name",
         ///         SecurityEnabled = true,
         ///     });
         /// 
-        ///     var ownersPolicy = AzureAD.Index.GetGroupRoleManagementPolicy.Invoke(new()
+        ///     var ownersPolicy = AzureAD.GetGroupRoleManagementPolicy.Invoke(new()
         ///     {
         ///         GroupId = example.Id,
         ///         RoleId = "owner",
@@ -110,13 +110,13 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = new AzureAD.Index.Group("example", new()
+        ///     var example = new AzureAD.Group("example", new()
         ///     {
         ///         DisplayName = "group-name",
         ///         SecurityEnabled = true,
         ///     });
         /// 
-        ///     var ownersPolicy = AzureAD.Index.GetGroupRoleManagementPolicy.Invoke(new()
+        ///     var ownersPolicy = AzureAD.GetGroupRoleManagementPolicy.Invoke(new()
         ///     {
         ///         GroupId = example.Id,
         ///         RoleId = "owner",
