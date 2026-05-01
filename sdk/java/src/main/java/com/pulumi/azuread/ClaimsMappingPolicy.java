@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *                             )
  *                         )),
  *                         jsonProperty("IncludeBasicClaimSet", "true"),
- *                         jsonProperty("Version", 1)
+ *                         jsonProperty("Version", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:16,32-33)))
  *                     ))
  *                 )))
  *             .displayName("My Policy")

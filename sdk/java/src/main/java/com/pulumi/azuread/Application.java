@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .signInAudience("AzureADMultipleOrgs")
  *             .api(ApplicationApiArgs.builder()
  *                 .mappedClaimsEnabled(true)
- *                 .requestedAccessTokenVersion(2)
+ *                 .requestedAccessTokenVersion(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:12,35-36)))
  *                 .knownClientApplications(                
  *                     known1.clientId(),
  *                     known2.clientId())
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var example = new Rotating("example", RotatingArgs.builder()
- *             .rotationDays(180)
+ *             .rotationDays(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(180) (example.pp:3,18-21)))
  *             .build());
  * 
  *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()

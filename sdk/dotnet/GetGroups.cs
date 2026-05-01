@@ -33,7 +33,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var example = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         DisplayNames = new[]
         ///         {
@@ -54,7 +54,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sales = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var sales = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         DisplayNamePrefix = "sales-",
         ///     });
@@ -71,7 +71,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var all = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         ReturnAll = true,
         ///     });
@@ -88,7 +88,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mailEnabled = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var mailEnabled = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         MailEnabled = true,
         ///         ReturnAll = true,
@@ -106,7 +106,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityOnly = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var securityOnly = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         MailEnabled = false,
         ///         ReturnAll = true,
@@ -141,7 +141,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var example = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         DisplayNames = new[]
         ///         {
@@ -162,7 +162,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sales = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var sales = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         DisplayNamePrefix = "sales-",
         ///     });
@@ -179,7 +179,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var all = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         ReturnAll = true,
         ///     });
@@ -196,7 +196,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mailEnabled = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var mailEnabled = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         MailEnabled = true,
         ///         ReturnAll = true,
@@ -214,7 +214,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityOnly = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var securityOnly = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         MailEnabled = false,
         ///         ReturnAll = true,
@@ -249,7 +249,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var example = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         DisplayNames = new[]
         ///         {
@@ -270,7 +270,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sales = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var sales = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         DisplayNamePrefix = "sales-",
         ///     });
@@ -287,7 +287,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var all = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         ReturnAll = true,
         ///     });
@@ -304,7 +304,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mailEnabled = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var mailEnabled = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         MailEnabled = true,
         ///         ReturnAll = true,
@@ -322,7 +322,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var securityOnly = AzureAD.Index.GetGroups.Invoke(new()
+        ///     var securityOnly = AzureAD.GetGroups.Invoke(new()
         ///     {
         ///         MailEnabled = false,
         ///         ReturnAll = true,

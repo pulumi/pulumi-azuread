@@ -28,7 +28,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var current = AzureAD.Index.GetClientConfig.Invoke();
+        ///     var current = AzureAD.GetClientConfig.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -57,7 +57,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var current = AzureAD.Index.GetClientConfig.Invoke();
+        ///     var current = AzureAD.GetClientConfig.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -86,7 +86,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var current = AzureAD.Index.GetClientConfig.Invoke();
+        ///     var current = AzureAD.GetClientConfig.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

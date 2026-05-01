@@ -32,17 +32,17 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AzureAD.Index.GetUser.Invoke(new()
+    ///     var example = AzureAD.GetUser.Invoke(new()
     ///     {
     ///         UserPrincipalName = "jdoe@example.com",
     ///     });
     /// 
-    ///     var exampleDirectoryRole = new AzureAD.Index.DirectoryRole("example", new()
+    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("example", new()
     ///     {
     ///         DisplayName = "Security administrator",
     ///     });
     /// 
-    ///     var exampleDirectoryRoleAssignment = new AzureAD.Index.DirectoryRoleAssignment("example", new()
+    ///     var exampleDirectoryRoleAssignment = new AzureAD.DirectoryRoleAssignment("example", new()
     ///     {
     ///         RoleId = exampleDirectoryRole.TemplateId,
     ///         PrincipalObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
@@ -63,12 +63,12 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AzureAD.Index.GetUser.Invoke(new()
+    ///     var example = AzureAD.GetUser.Invoke(new()
     ///     {
     ///         UserPrincipalName = "jdoe@example.com",
     ///     });
     /// 
-    ///     var exampleCustomDirectoryRole = new AzureAD.Index.CustomDirectoryRole("example", new()
+    ///     var exampleCustomDirectoryRole = new AzureAD.CustomDirectoryRole("example", new()
     ///     {
     ///         DisplayName = "My Custom Role",
     ///         Enabled = true,
@@ -86,7 +86,7 @@ namespace Pulumi.AzureAD
     ///         },
     ///     });
     /// 
-    ///     var exampleDirectoryRoleAssignment = new AzureAD.Index.DirectoryRoleAssignment("example", new()
+    ///     var exampleDirectoryRoleAssignment = new AzureAD.DirectoryRoleAssignment("example", new()
     ///     {
     ///         RoleId = exampleCustomDirectoryRole.ObjectId,
     ///         PrincipalObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
@@ -106,26 +106,26 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDirectoryRole = new AzureAD.Index.DirectoryRole("example", new()
+    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("example", new()
     ///     {
     ///         DisplayName = "Cloud application administrator",
     ///     });
     /// 
-    ///     var exampleApplication = new AzureAD.Index.Application("example", new()
+    ///     var exampleApplication = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "My Application",
     ///     });
     /// 
-    ///     var example = AzureAD.Index.GetUser.Invoke(new()
+    ///     var example = AzureAD.GetUser.Invoke(new()
     ///     {
     ///         UserPrincipalName = "jdoe@example.com",
     ///     });
     /// 
-    ///     var exampleDirectoryRoleAssignment = new AzureAD.Index.DirectoryRoleAssignment("example", new()
+    ///     var exampleDirectoryRoleAssignment = new AzureAD.DirectoryRoleAssignment("example", new()
     ///     {
     ///         RoleId = exampleDirectoryRole.TemplateId,
     ///         PrincipalObjectId = example.Apply(getUserResult =&gt; getUserResult.ObjectId),
-    ///         DirectoryScopeId = Std.Index.Format.Invoke(new()
+    ///         DirectoryScopeId = Std.Format.Invoke(new()
     ///         {
     ///             Input = "/%s",
     ///             Args = new[]

@@ -32,17 +32,17 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AzureAD.Index.GetUser.Invoke(new()
+    ///     var example = AzureAD.GetUser.Invoke(new()
     ///     {
     ///         UserPrincipalName = "jdoe@example.com",
     ///     });
     /// 
-    ///     var exampleAdministrativeUnit = new AzureAD.Index.AdministrativeUnit("example", new()
+    ///     var exampleAdministrativeUnit = new AzureAD.AdministrativeUnit("example", new()
     ///     {
     ///         DisplayName = "Example-AU",
     ///     });
     /// 
-    ///     var exampleAdministrativeUnitMember = new AzureAD.Index.AdministrativeUnitMember("example", new()
+    ///     var exampleAdministrativeUnitMember = new AzureAD.AdministrativeUnitMember("example", new()
     ///     {
     ///         AdministrativeUnitObjectId = exampleAdministrativeUnit.Id,
     ///         MemberObjectId = example.Apply(getUserResult =&gt; getUserResult.Id),

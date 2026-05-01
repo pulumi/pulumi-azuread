@@ -34,12 +34,12 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleApplicationOptionalClaims = new AzureAD.Index.ApplicationOptionalClaims("example", new()
+    ///     var exampleApplicationOptionalClaims = new AzureAD.ApplicationOptionalClaims("example", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         AccessTokens = new[]

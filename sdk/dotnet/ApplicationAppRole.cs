@@ -35,14 +35,14 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.ApplicationRegistration("example", new()
+    ///     var example = new AzureAD.ApplicationRegistration("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleAdministrator = new Random.Index.Uuid("example_administrator");
+    ///     var exampleAdministrator = new Random.Uuid("example_administrator");
     /// 
-    ///     var exampleAdminister = new AzureAD.Index.ApplicationAppRole("example_administer", new()
+    ///     var exampleAdminister = new AzureAD.ApplicationAppRole("example_administer", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///         RoleId = exampleAdministrator.Id,
@@ -70,12 +70,12 @@ namespace Pulumi.AzureAD
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AzureAD.Index.Application("example", new()
+    ///     var example = new AzureAD.Application("example", new()
     ///     {
     ///         DisplayName = "example",
     ///     });
     /// 
-    ///     var exampleAdminister = new AzureAD.Index.ApplicationAppRole("example_administer", new()
+    ///     var exampleAdminister = new AzureAD.ApplicationAppRole("example_administer", new()
     ///     {
     ///         ApplicationId = example.Id,
     ///     });

@@ -32,7 +32,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetNamedLocation.Invoke(new()
+        ///     var example = AzureAD.GetNamedLocation.Invoke(new()
         ///     {
         ///         DisplayName = "My Named Location",
         ///     });
@@ -87,7 +87,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetNamedLocation.Invoke(new()
+        ///     var example = AzureAD.GetNamedLocation.Invoke(new()
         ///     {
         ///         DisplayName = "My Named Location",
         ///     });
@@ -142,7 +142,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.Index.GetNamedLocation.Invoke(new()
+        ///     var example = AzureAD.GetNamedLocation.Invoke(new()
         ///     {
         ///         DisplayName = "My Named Location",
         ///     });
