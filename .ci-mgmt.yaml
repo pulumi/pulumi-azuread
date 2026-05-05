@@ -1,5 +1,6 @@
 provider: azuread
 major-version: 6
+disableMajorProviderUpgrades: true
 generate-nightly-test-workflow: true
 esc:
     enabled: true
