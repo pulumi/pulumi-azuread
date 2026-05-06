@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs;
  * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionArgs;
  * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionTextArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -87,14 +87,14 @@ import javax.annotation.Nullable;
  *             .accessPackageId(exampleAccessPackage.id())
  *             .displayName("assignment-policy")
  *             .description("My assignment policy")
- *             .durationInDays(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(90) (example.pp:23,21-23)))
+ *             .durationInDays(90)
  *             .requestorSettings(AccessPackageAssignmentPolicyRequestorSettingsArgs.builder()
  *                 .scopeType("AllExistingDirectoryMemberUsers")
  *                 .build())
  *             .approvalSettings(AccessPackageAssignmentPolicyApprovalSettingsArgs.builder()
  *                 .approvalRequired(true)
  *                 .approvalStages(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs.builder()
- *                     .approvalTimeoutInDays(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(14) (example.pp:32,31-33)))
+ *                     .approvalTimeoutInDays(14)
  *                     .primaryApprovers(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs.builder()
  *                         .objectId(example.objectId())
  *                         .subjectType("groupMembers")
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *             .assignmentReviewSettings(AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs.builder()
  *                 .enabled(true)
  *                 .reviewFrequency("weekly")
- *                 .durationInDays(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(3) (example.pp:43,35-36)))
+ *                 .durationInDays(3)
  *                 .reviewType("Self")
  *                 .accessReviewTimeoutBehavior("keepAccess")
  *                 .build())
