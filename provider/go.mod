@@ -5,7 +5,7 @@ go 1.25.9
 require (
 	github.com/hashicorp/go-azure-sdk/sdk v0.20260212.1143955
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
-	github.com/pulumi/providertest v0.6.0
+	github.com/pulumi/providertest v0.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.129.2
 	github.com/pulumi/pulumi/sdk/v3 v3.236.0
 	github.com/stretchr/testify v1.11.1
@@ -187,9 +187,9 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.23.0 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
-	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.105.0 // indirect
-	github.com/pulumi/pulumi-java v1.26.0 // indirect
-	github.com/pulumi/pulumi-yaml v1.33.0 // indirect
+	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.106.1 // indirect
+	github.com/pulumi/pulumi-java v1.26.1 // indirect
+	github.com/pulumi/pulumi-yaml v1.33.1 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.236.0 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
