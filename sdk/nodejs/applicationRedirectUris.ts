@@ -149,15 +149,15 @@ export interface ApplicationRedirectUrisState {
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * A set of redirect URIs to assign to the application.
      */
-    redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
+    redirectUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of redirect URIs to manage. Must be one of: `PublicClient`, `SPA`, or `Web`. Changing this forces a new resource to be created.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**

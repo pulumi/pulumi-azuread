@@ -122,11 +122,11 @@ export interface ApplicationOwnerState {
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
      */
-    ownerObjectId?: pulumi.Input<string>;
+    ownerObjectId?: pulumi.Input<string | undefined>;
 }
 
 /**

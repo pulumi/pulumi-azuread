@@ -9,30 +9,30 @@ export interface AccessPackageAssignmentPolicyApprovalSettings {
     /**
      * Whether an approval is required.
      */
-    approvalRequired?: pulumi.Input<boolean>;
+    approvalRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
      */
-    approvalRequiredForExtension?: pulumi.Input<boolean>;
+    approvalRequiredForExtension?: pulumi.Input<boolean | undefined>;
     /**
      * An `approvalStage` block specifying the process to obtain an approval, as documented below.
      */
-    approvalStages?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStage>[]>;
+    approvalStages?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStage>[] | undefined>;
     /**
      * Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
      */
-    requestorJustificationRequired?: pulumi.Input<boolean>;
+    requestorJustificationRequired?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
     /**
      * If no action taken, forward to alternate approvers?
      */
-    alternativeApprovalEnabled?: pulumi.Input<boolean>;
+    alternativeApprovalEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
      */
-    alternativeApprovers?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover>[]>;
+    alternativeApprovers?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover>[] | undefined>;
     /**
      * Decision must be made in how many days? If a request is not approved within this time period after it is made, it will be automatically rejected
      */
@@ -40,26 +40,26 @@ export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
     /**
      * Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
      */
-    approverJustificationRequired?: pulumi.Input<boolean>;
+    approverJustificationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Forward to alternate approver(s) after how many days?
      */
-    enableAlternativeApprovalInDays?: pulumi.Input<number>;
+    enableAlternativeApprovalInDays?: pulumi.Input<number | undefined>;
     /**
      * The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
      */
-    primaryApprovers?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover>[]>;
+    primaryApprovers?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover>[] | undefined>;
 }
 
 export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover {
     /**
      * For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      */
-    backup?: pulumi.Input<boolean>;
+    backup?: pulumi.Input<boolean | undefined>;
     /**
      * The object ID of the subject
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Type of users
      */
@@ -70,11 +70,11 @@ export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrima
     /**
      * For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      */
-    backup?: pulumi.Input<boolean>;
+    backup?: pulumi.Input<boolean | undefined>;
     /**
      * The object ID of the subject
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Type of users
      */
@@ -85,50 +85,50 @@ export interface AccessPackageAssignmentPolicyAssignmentReviewSettings {
     /**
      * Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
      */
-    accessRecommendationEnabled?: pulumi.Input<boolean>;
+    accessRecommendationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
      */
-    accessReviewTimeoutBehavior?: pulumi.Input<string>;
+    accessReviewTimeoutBehavior?: pulumi.Input<string | undefined>;
     /**
      * Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
      */
-    approverJustificationRequired?: pulumi.Input<boolean>;
+    approverJustificationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * How many days each occurrence of the access review series will run.
      */
-    durationInDays?: pulumi.Input<number>;
+    durationInDays?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable assignment review.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
      */
-    reviewFrequency?: pulumi.Input<string>;
+    reviewFrequency?: pulumi.Input<string | undefined>;
     /**
      * Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
      */
-    reviewType?: pulumi.Input<string>;
+    reviewType?: pulumi.Input<string | undefined>;
     /**
      * One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
      */
-    reviewers?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer>[]>;
+    reviewers?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer>[] | undefined>;
     /**
      * This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
      */
-    startingOn?: pulumi.Input<string>;
+    startingOn?: pulumi.Input<string | undefined>;
 }
 
 export interface AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer {
     /**
      * For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      */
-    backup?: pulumi.Input<boolean>;
+    backup?: pulumi.Input<boolean | undefined>;
     /**
      * The object ID of the subject
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Type of users
      */
@@ -139,15 +139,15 @@ export interface AccessPackageAssignmentPolicyQuestion {
     /**
      * One or more blocks configuring a choice to the question, as documented below.
      */
-    choices?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionChoice>[]>;
+    choices?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionChoice>[] | undefined>;
     /**
      * Whether this question is required.
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
     /**
      * The sequence number of this question.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * A block describing the content of this question, as documented below.
      */
@@ -173,7 +173,7 @@ export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
     /**
      * The localized text of this question
      */
-    localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>[]>;
+    localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>[] | undefined>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
@@ -195,7 +195,7 @@ export interface AccessPackageAssignmentPolicyQuestionText {
     /**
      * The localized text of this question
      */
-    localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText>[]>;
+    localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText>[] | undefined>;
 }
 
 export interface AccessPackageAssignmentPolicyQuestionTextLocalizedText {
@@ -213,26 +213,26 @@ export interface AccessPackageAssignmentPolicyRequestorSettings {
     /**
      * A block specifying the users who are allowed to request on this policy, as documented below.
      */
-    requestors?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyRequestorSettingsRequestor>[]>;
+    requestors?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyRequestorSettingsRequestor>[] | undefined>;
     /**
      * Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
      */
-    requestsAccepted?: pulumi.Input<boolean>;
+    requestsAccepted?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
      */
-    scopeType?: pulumi.Input<string>;
+    scopeType?: pulumi.Input<string | undefined>;
 }
 
 export interface AccessPackageAssignmentPolicyRequestorSettingsRequestor {
     /**
      * For a user in an approval stage, this property indicates whether the user is a backup fallback approver
      */
-    backup?: pulumi.Input<boolean>;
+    backup?: pulumi.Input<boolean | undefined>;
     /**
      * The object ID of the subject
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Type of users
      */
@@ -243,34 +243,34 @@ export interface ApplicationApi {
     /**
      * A set of client IDs, used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
      */
-    knownClientApplications?: pulumi.Input<pulumi.Input<string>[]>;
+    knownClientApplications?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
      */
-    mappedClaimsEnabled?: pulumi.Input<boolean>;
+    mappedClaimsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
      */
-    oauth2PermissionScopes?: pulumi.Input<pulumi.Input<inputs.ApplicationApiOauth2PermissionScope>[]>;
+    oauth2PermissionScopes?: pulumi.Input<pulumi.Input<inputs.ApplicationApiOauth2PermissionScope>[] | undefined>;
     /**
      * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
      */
-    requestedAccessTokenVersion?: pulumi.Input<number>;
+    requestedAccessTokenVersion?: pulumi.Input<number | undefined>;
 }
 
 export interface ApplicationApiOauth2PermissionScope {
     /**
      * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    adminConsentDescription?: pulumi.Input<string>;
+    adminConsentDescription?: pulumi.Input<string | undefined>;
     /**
      * Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    adminConsentDisplayName?: pulumi.Input<string>;
+    adminConsentDisplayName?: pulumi.Input<string | undefined>;
     /**
      * Determines if the permission scope is enabled. Defaults to `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the delegated permission. Must be a valid UUID.
      *
@@ -280,15 +280,15 @@ export interface ApplicationApiOauth2PermissionScope {
     /**
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
      */
-    userConsentDescription?: pulumi.Input<string>;
+    userConsentDescription?: pulumi.Input<string | undefined>;
     /**
      * Display name for the delegated permission that appears in the end user consent experience.
      */
-    userConsentDisplayName?: pulumi.Input<string>;
+    userConsentDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The value that is used for the `scp` claim in OAuth 2.0 access tokens.
      *
@@ -296,7 +296,7 @@ export interface ApplicationApiOauth2PermissionScope {
      *
      * > **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ApplicationAppRole {
@@ -315,7 +315,7 @@ export interface ApplicationAppRole {
     /**
      * Determines if the app role is enabled. Defaults to `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the app role. Must be a valid UUID.
      *
@@ -327,52 +327,52 @@ export interface ApplicationAppRole {
      *
      * > **Roles and Permission Scopes** In Azure Active Directory, application roles (`appRole`) and permission scopes (`oauth2PermissionScope`) exported by an application share the same namespace and cannot contain duplicate `value`s. Terraform will attempt to detect this during a plan or apply operation.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ApplicationFeatureTag {
     /**
      * Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
      */
-    customSingleSignOn?: pulumi.Input<boolean>;
+    customSingleSignOn?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
      */
-    enterprise?: pulumi.Input<boolean>;
+    enterprise?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
      */
-    gallery?: pulumi.Input<boolean>;
+    gallery?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
      */
-    hide?: pulumi.Input<boolean>;
+    hide?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ApplicationOptionalClaims {
     /**
      * One or more `accessToken` blocks as documented below.
      */
-    accessTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsAccessToken>[]>;
+    accessTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsAccessToken>[] | undefined>;
     /**
      * One or more `idToken` blocks as documented below.
      */
-    idTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsIdToken>[]>;
+    idTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsIdToken>[] | undefined>;
     /**
      * One or more `saml2Token` blocks as documented below.
      */
-    saml2Tokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsSaml2Token>[]>;
+    saml2Tokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsSaml2Token>[] | undefined>;
 }
 
 export interface ApplicationOptionalClaimsAccessToken {
     /**
      * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
      */
-    additionalProperties?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalProperties?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
      */
-    essential?: pulumi.Input<boolean>;
+    essential?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the optional claim.
      */
@@ -380,18 +380,18 @@ export interface ApplicationOptionalClaimsAccessToken {
     /**
      * The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface ApplicationOptionalClaimsIdToken {
     /**
      * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
      */
-    additionalProperties?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalProperties?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
      */
-    essential?: pulumi.Input<boolean>;
+    essential?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the optional claim.
      */
@@ -399,18 +399,18 @@ export interface ApplicationOptionalClaimsIdToken {
     /**
      * The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface ApplicationOptionalClaimsSaml2Token {
     /**
      * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim. Possible values are: `cloudDisplayname`, `dnsDomainAndSamAccountName`, `emitAsRoles`, `includeExternallyAuthenticatedUpnWithoutHash`, `includeExternallyAuthenticatedUpn`, `maxSizeLimit`, `netbiosDomainAndSamAccountName`, `onPremiseSecurityIdentifier`, `samAccountName`, and `useGuid`.
      */
-    additionalProperties?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalProperties?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
      */
-    essential?: pulumi.Input<boolean>;
+    essential?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the optional claim.
      */
@@ -418,7 +418,7 @@ export interface ApplicationOptionalClaimsSaml2Token {
     /**
      * The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface ApplicationPassword {
@@ -429,26 +429,26 @@ export interface ApplicationPassword {
     /**
      * The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
-    endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string | undefined>;
     /**
      * (Required) The unique key ID for the generated password.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * (Required) The generated password for the application.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ApplicationPublicClient {
     /**
      * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
      */
-    redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
+    redirectUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ApplicationRequiredResourceAccess {
@@ -479,37 +479,37 @@ export interface ApplicationSinglePageApplication {
     /**
      * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
      */
-    redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
+    redirectUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ApplicationWeb {
     /**
      * Home page or landing page of the application.
      */
-    homepageUrl?: pulumi.Input<string>;
+    homepageUrl?: pulumi.Input<string | undefined>;
     /**
      * An `implicitGrant` block as documented above.
      */
-    implicitGrant?: pulumi.Input<inputs.ApplicationWebImplicitGrant>;
+    implicitGrant?: pulumi.Input<inputs.ApplicationWebImplicitGrant | undefined>;
     /**
      * The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
      */
-    logoutUrl?: pulumi.Input<string>;
+    logoutUrl?: pulumi.Input<string | undefined>;
     /**
      * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
      */
-    redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
+    redirectUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ApplicationWebImplicitGrant {
     /**
      * Whether this web application can request an access token using OAuth 2.0 implicit flow.
      */
-    accessTokenIssuanceEnabled?: pulumi.Input<boolean>;
+    accessTokenIssuanceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this web application can request an ID token using OAuth 2.0 implicit flow.
      */
-    idTokenIssuanceEnabled?: pulumi.Input<boolean>;
+    idTokenIssuanceEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConditionalAccessPolicyConditions {
@@ -520,7 +520,7 @@ export interface ConditionalAccessPolicyConditions {
     /**
      * A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
      */
-    authenticationFlowTransferMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    authenticationFlowTransferMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
      */
@@ -528,35 +528,35 @@ export interface ConditionalAccessPolicyConditions {
     /**
      * An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
      */
-    clientApplications?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsClientApplications>;
+    clientApplications?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsClientApplications | undefined>;
     /**
      * A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
      */
-    devices?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsDevices>;
+    devices?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsDevices | undefined>;
     /**
      * The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
      */
-    insiderRiskLevels?: pulumi.Input<string>;
+    insiderRiskLevels?: pulumi.Input<string | undefined>;
     /**
      * A `locations` block as documented below, which specifies locations included in and excluded from the policy.
      */
-    locations?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsLocations>;
+    locations?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsLocations | undefined>;
     /**
      * A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
      */
-    platforms?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsPlatforms>;
+    platforms?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsPlatforms | undefined>;
     /**
      * A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
      */
-    servicePrincipalRiskLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    servicePrincipalRiskLevels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      */
-    signInRiskLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    signInRiskLevels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      */
-    userRiskLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    userRiskLevels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
      */
@@ -567,32 +567,32 @@ export interface ConditionalAccessPolicyConditionsApplications {
     /**
      * A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
      */
-    excludedApplications?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedApplications?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
      */
-    includedApplications?: pulumi.Input<pulumi.Input<string>[]>;
+    includedApplications?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
      */
-    includedUserActions?: pulumi.Input<pulumi.Input<string>[]>;
+    includedUserActions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConditionalAccessPolicyConditionsClientApplications {
     /**
      * A list of service principal IDs explicitly excluded in the policy.
      */
-    excludedServicePrincipals?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedServicePrincipals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A `filter` block as documented below.
      *
      * > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
      */
-    filter?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsClientApplicationsFilter>;
+    filter?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsClientApplicationsFilter | undefined>;
     /**
      * A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
      */
-    includedServicePrincipals?: pulumi.Input<pulumi.Input<string>[]>;
+    includedServicePrincipals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConditionalAccessPolicyConditionsClientApplicationsFilter {
@@ -612,7 +612,7 @@ export interface ConditionalAccessPolicyConditionsDevices {
      *
      * > **Note:** For more information on device filters, see the [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
      */
-    filter?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsDevicesFilter>;
+    filter?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsDevicesFilter | undefined>;
 }
 
 export interface ConditionalAccessPolicyConditionsDevicesFilter {
@@ -630,7 +630,7 @@ export interface ConditionalAccessPolicyConditionsLocations {
     /**
      * A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
      */
-    excludedLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedLocations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
      */
@@ -641,7 +641,7 @@ export interface ConditionalAccessPolicyConditionsPlatforms {
     /**
      * A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
      */
-    excludedPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedPlatforms?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
      */
@@ -652,44 +652,44 @@ export interface ConditionalAccessPolicyConditionsUsers {
     /**
      * A list of group IDs excluded from scope of policy.
      */
-    excludedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
      */
-    excludedGuestsOrExternalUsers?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser>[]>;
+    excludedGuestsOrExternalUsers?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser>[] | undefined>;
     /**
      * A list of role IDs excluded from scope of policy.
      */
-    excludedRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
      */
-    excludedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of group IDs in scope of policy unless explicitly excluded.
      */
-    includedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    includedGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
      */
-    includedGuestsOrExternalUsers?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser>[]>;
+    includedGuestsOrExternalUsers?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser>[] | undefined>;
     /**
      * A list of role IDs in scope of policy unless explicitly excluded.
      */
-    includedRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    includedRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
      *
      * > At least one of `includedGroups`, `includedGuestsOrExternalUsers`, `includedRoles` or `includedUsers` must be specified.
      */
-    includedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    includedUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser {
     /**
      * An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
      */
-    externalTenants?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant>[]>;
+    externalTenants?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant>[] | undefined>;
     /**
      * A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
      */
@@ -700,7 +700,7 @@ export interface ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalU
     /**
      * A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
      */
@@ -711,7 +711,7 @@ export interface ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalU
     /**
      * An `externalTenants` block as documented below, which specifies external tenants in a policy scope.
      */
-    externalTenants?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant>[]>;
+    externalTenants?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant>[] | undefined>;
     /**
      * A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
      */
@@ -722,7 +722,7 @@ export interface ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalU
     /**
      * A list tenant IDs. Can only be specified if `membershipKind` is `enumerated`.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
      */
@@ -733,15 +733,15 @@ export interface ConditionalAccessPolicyGrantControls {
     /**
      * ID of an Authentication Strength Policy to use in this policy. When using a hard-coded ID, the UUID value should be prefixed with: `/policies/authenticationStrengthPolicies/`.
      */
-    authenticationStrengthPolicyId?: pulumi.Input<string>;
+    authenticationStrengthPolicyId?: pulumi.Input<string | undefined>;
     /**
      * List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      */
-    builtInControls?: pulumi.Input<pulumi.Input<string>[]>;
+    builtInControls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of custom controls IDs required by the policy.
      */
-    customAuthenticationFactors?: pulumi.Input<pulumi.Input<string>[]>;
+    customAuthenticationFactors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
      */
@@ -751,7 +751,7 @@ export interface ConditionalAccessPolicyGrantControls {
      *
      * > At least one of `authenticationStrengthPolicyId`, `builtInControls` or `termsOfUse` must be specified.
      */
-    termsOfUses?: pulumi.Input<pulumi.Input<string>[]>;
+    termsOfUses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ConditionalAccessPolicySessionControls {
@@ -760,35 +760,35 @@ export interface ConditionalAccessPolicySessionControls {
      *
      * > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
      */
-    applicationEnforcedRestrictionsEnabled?: pulumi.Input<boolean>;
+    applicationEnforcedRestrictionsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
      */
-    cloudAppSecurityPolicy?: pulumi.Input<string>;
+    cloudAppSecurityPolicy?: pulumi.Input<string | undefined>;
     /**
      * Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
      */
-    disableResilienceDefaults?: pulumi.Input<boolean>;
+    disableResilienceDefaults?: pulumi.Input<boolean | undefined>;
     /**
      * Session control to define whether to persist cookies. Possible values are: `always` or `never`.
      */
-    persistentBrowserMode?: pulumi.Input<string>;
+    persistentBrowserMode?: pulumi.Input<string | undefined>;
     /**
      * Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
      */
-    signInFrequency?: pulumi.Input<number>;
+    signInFrequency?: pulumi.Input<number | undefined>;
     /**
      * Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
      */
-    signInFrequencyAuthenticationType?: pulumi.Input<string>;
+    signInFrequencyAuthenticationType?: pulumi.Input<string | undefined>;
     /**
      * The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
      */
-    signInFrequencyInterval?: pulumi.Input<string>;
+    signInFrequencyInterval?: pulumi.Input<string | undefined>;
     /**
      * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
      */
-    signInFrequencyPeriod?: pulumi.Input<string>;
+    signInFrequencyPeriod?: pulumi.Input<string | undefined>;
 }
 
 export interface CustomDirectoryRolePermission {
@@ -815,31 +815,31 @@ export interface GroupRoleManagementPolicyActivationRules {
     /**
      * An `approvalStage` block as defined below.
      */
-    approvalStage?: pulumi.Input<inputs.GroupRoleManagementPolicyActivationRulesApprovalStage>;
+    approvalStage?: pulumi.Input<inputs.GroupRoleManagementPolicyActivationRulesApprovalStage | undefined>;
     /**
      * The maximum length of time an activated role can be valid, in an ISO8601 Duration format (e.g. `PT8H`). Valid range is `PT30M` to `PT23H30M`, in 30 minute increments, or `PT1D`.
      */
-    maximumDuration?: pulumi.Input<string>;
+    maximumDuration?: pulumi.Input<string | undefined>;
     /**
      * Is approval required for activation. If `true` an `approvalStage` block must be provided.
      */
-    requireApproval?: pulumi.Input<boolean>;
+    requireApproval?: pulumi.Input<boolean | undefined>;
     /**
      * Is a justification required during activation of the role.
      */
-    requireJustification?: pulumi.Input<boolean>;
+    requireJustification?: pulumi.Input<boolean | undefined>;
     /**
      * Is multi-factor authentication required to activate the role. Conflicts with `requiredConditionalAccessAuthenticationContext`.
      */
-    requireMultifactorAuthentication?: pulumi.Input<boolean>;
+    requireMultifactorAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * Is ticket information requrired during activation of the role.
      */
-    requireTicketInfo?: pulumi.Input<boolean>;
+    requireTicketInfo?: pulumi.Input<boolean | undefined>;
     /**
      * The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `requireMultifactorAuthentication`.
      */
-    requiredConditionalAccessAuthenticationContext?: pulumi.Input<string>;
+    requiredConditionalAccessAuthenticationContext?: pulumi.Input<string | undefined>;
 }
 
 export interface GroupRoleManagementPolicyActivationRulesApprovalStage {
@@ -857,84 +857,84 @@ export interface GroupRoleManagementPolicyActivationRulesApprovalStagePrimaryApp
     /**
      * The type of object acting as an approver. Possible options are `singleUser` and `groupMembers`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface GroupRoleManagementPolicyActiveAssignmentRules {
     /**
      * Must an assignment have an expiry date. `false` allows permanent assignment.
      */
-    expirationRequired?: pulumi.Input<boolean>;
+    expirationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
      */
-    expireAfter?: pulumi.Input<string>;
+    expireAfter?: pulumi.Input<string | undefined>;
     /**
      * Is a justification required to create new assignments.
      */
-    requireJustification?: pulumi.Input<boolean>;
+    requireJustification?: pulumi.Input<boolean | undefined>;
     /**
      * Is multi-factor authentication required to create new assignments.
      */
-    requireMultifactorAuthentication?: pulumi.Input<boolean>;
+    requireMultifactorAuthentication?: pulumi.Input<boolean | undefined>;
     /**
      * Is ticket information required to create new assignments.
      *
      * One of `expirationRequired` or `expireAfter` must be provided.
      */
-    requireTicketInfo?: pulumi.Input<boolean>;
+    requireTicketInfo?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GroupRoleManagementPolicyEligibleAssignmentRules {
     /**
      * Must an assignment have an expiry date. `false` allows permanent assignment.
      */
-    expirationRequired?: pulumi.Input<boolean>;
+    expirationRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
      *
      * One of `expirationRequired` or `expireAfter` must be provided.
      */
-    expireAfter?: pulumi.Input<string>;
+    expireAfter?: pulumi.Input<string | undefined>;
 }
 
 export interface GroupRoleManagementPolicyNotificationRules {
     /**
      * A `notificationTarget` block as defined below to configure notfications on active role assignments.
      */
-    activeAssignments?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesActiveAssignments>;
+    activeAssignments?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesActiveAssignments | undefined>;
     /**
      * A `notificationTarget` block as defined below for configuring notifications on activation of eligible role.
      */
-    eligibleActivations?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleActivations>;
+    eligibleActivations?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleActivations | undefined>;
     /**
      * A `notificationTarget` block as defined below to configure notification on eligible role assignments.
      *
      * At least one `notificationTarget` block must be provided.
      */
-    eligibleAssignments?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignments>;
+    eligibleAssignments?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignments | undefined>;
 }
 
 export interface GroupRoleManagementPolicyNotificationRulesActiveAssignments {
     /**
      * Admin notification settings
      */
-    adminNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications>;
+    adminNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications | undefined>;
     /**
      * Approver notification settings
      */
-    approverNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications>;
+    approverNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotifications | undefined>;
     /**
      * Assignee notification settings
      */
-    assigneeNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications>;
+    assigneeNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotifications | undefined>;
 }
 
 export interface GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications {
     /**
      * The additional recipients to notify
      */
-    additionalRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalRecipients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the default recipients are notified
      */
@@ -949,7 +949,7 @@ export interface GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAppr
     /**
      * The additional recipients to notify
      */
-    additionalRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalRecipients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the default recipients are notified
      */
@@ -964,7 +964,7 @@ export interface GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssi
     /**
      * The additional recipients to notify
      */
-    additionalRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalRecipients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the default recipients are notified
      */
@@ -979,22 +979,22 @@ export interface GroupRoleManagementPolicyNotificationRulesEligibleActivations {
     /**
      * Admin notification settings
      */
-    adminNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications>;
+    adminNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications | undefined>;
     /**
      * Approver notification settings
      */
-    approverNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications>;
+    approverNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications | undefined>;
     /**
      * Assignee notification settings
      */
-    assigneeNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications>;
+    assigneeNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications | undefined>;
 }
 
 export interface GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications {
     /**
      * The additional recipients to notify
      */
-    additionalRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalRecipients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the default recipients are notified
      */
@@ -1009,7 +1009,7 @@ export interface GroupRoleManagementPolicyNotificationRulesEligibleActivationsAp
     /**
      * The additional recipients to notify
      */
-    additionalRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalRecipients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the default recipients are notified
      */
@@ -1024,7 +1024,7 @@ export interface GroupRoleManagementPolicyNotificationRulesEligibleActivationsAs
     /**
      * The additional recipients to notify
      */
-    additionalRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalRecipients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the default recipients are notified
      */
@@ -1039,22 +1039,22 @@ export interface GroupRoleManagementPolicyNotificationRulesEligibleAssignments {
     /**
      * Admin notification settings
      */
-    adminNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications>;
+    adminNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications | undefined>;
     /**
      * Approver notification settings
      */
-    approverNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications>;
+    approverNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotifications | undefined>;
     /**
      * Assignee notification settings
      */
-    assigneeNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications>;
+    assigneeNotifications?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotifications | undefined>;
 }
 
 export interface GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotifications {
     /**
      * The additional recipients to notify
      */
-    additionalRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalRecipients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the default recipients are notified
      */
@@ -1069,7 +1069,7 @@ export interface GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAp
     /**
      * The additional recipients to notify
      */
-    additionalRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalRecipients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the default recipients are notified
      */
@@ -1084,7 +1084,7 @@ export interface GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAs
     /**
      * The additional recipients to notify
      */
-    additionalRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+    additionalRecipients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the default recipients are notified
      */
@@ -1112,15 +1112,15 @@ export interface InvitationMessage {
     /**
      * Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
      */
-    additionalRecipients?: pulumi.Input<string>;
+    additionalRecipients?: pulumi.Input<string | undefined>;
     /**
      * Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
      */
-    body?: pulumi.Input<string>;
+    body?: pulumi.Input<string | undefined>;
     /**
      * The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
 }
 
 export interface NamedLocationCountry {
@@ -1131,11 +1131,11 @@ export interface NamedLocationCountry {
     /**
      * Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
      */
-    countryLookupMethod?: pulumi.Input<string>;
+    countryLookupMethod?: pulumi.Input<string | undefined>;
     /**
      * Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
      */
-    includeUnknownCountriesAndRegions?: pulumi.Input<boolean>;
+    includeUnknownCountriesAndRegions?: pulumi.Input<boolean | undefined>;
 }
 
 export interface NamedLocationIp {
@@ -1146,114 +1146,114 @@ export interface NamedLocationIp {
     /**
      * Whether the named location is trusted. Defaults to `false`.
      */
-    trusted?: pulumi.Input<boolean>;
+    trusted?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ServicePrincipalAppRole {
     /**
      * Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
      */
-    allowedMemberTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedMemberTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A description of the service principal provided for internal end-users.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name for the app role that appears during app role assignment and in consent experiences.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the permission scope is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the delegated permission.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The value that is used for the `scp` claim in OAuth 2.0 access tokens.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ServicePrincipalFeature {
     /**
      * Whether this service principal represents a custom SAML application
      */
-    customSingleSignOnApp?: pulumi.Input<boolean>;
+    customSingleSignOnApp?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this service principal represents an Enterprise Application
      */
-    enterpriseApplication?: pulumi.Input<boolean>;
+    enterpriseApplication?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this service principal represents a gallery application
      */
-    galleryApplication?: pulumi.Input<boolean>;
+    galleryApplication?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this app is visible to users in My Apps and Office 365 Launcher
      */
-    visibleToUsers?: pulumi.Input<boolean>;
+    visibleToUsers?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ServicePrincipalFeatureTag {
     /**
      * Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
      */
-    customSingleSignOn?: pulumi.Input<boolean>;
+    customSingleSignOn?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
      */
-    enterprise?: pulumi.Input<boolean>;
+    enterprise?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
      */
-    gallery?: pulumi.Input<boolean>;
+    gallery?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
      */
-    hide?: pulumi.Input<boolean>;
+    hide?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ServicePrincipalOauth2PermissionScope {
     /**
      * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    adminConsentDescription?: pulumi.Input<string>;
+    adminConsentDescription?: pulumi.Input<string | undefined>;
     /**
      * Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    adminConsentDisplayName?: pulumi.Input<string>;
+    adminConsentDisplayName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the permission scope is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the delegated permission.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
      */
-    userConsentDescription?: pulumi.Input<string>;
+    userConsentDescription?: pulumi.Input<string | undefined>;
     /**
      * Display name for the delegated permission that appears in the end user consent experience.
      */
-    userConsentDisplayName?: pulumi.Input<string>;
+    userConsentDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The value that is used for the `scp` claim in OAuth 2.0 access tokens.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ServicePrincipalSamlSingleSignOn {
     /**
      * The relative URI the service provider would redirect to after completion of the single sign-on flow.
      */
-    relayState?: pulumi.Input<string>;
+    relayState?: pulumi.Input<string | undefined>;
 }
 
 export interface SynchronizationJobProvisionOnDemandParameter {
@@ -1282,15 +1282,15 @@ export interface SynchronizationJobSchedule {
     /**
      * Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
      */
-    expiration?: pulumi.Input<string>;
+    expiration?: pulumi.Input<string | undefined>;
     /**
      * The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * State of the job.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface SynchronizationSecretCredential {

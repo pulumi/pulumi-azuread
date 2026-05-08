@@ -140,11 +140,11 @@ export interface GetAccessPackageCatalogRoleOutputArgs {
     /**
      * Specifies the display name of the role.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Specifies the object ID of the role.
      *
      * > One of `displayName` or `objectId` must be specified.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
 }

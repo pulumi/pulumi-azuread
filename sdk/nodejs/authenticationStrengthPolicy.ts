@@ -147,15 +147,15 @@ export interface AuthenticationStrengthPolicyState {
     /**
      * List of allowed authentication methods for this authentication strength policy.
      */
-    allowedCombinations?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedCombinations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description for this authentication strength policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The friendly name for this authentication strength policy.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -169,7 +169,7 @@ export interface AuthenticationStrengthPolicyArgs {
     /**
      * The description for this authentication strength policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The friendly name for this authentication strength policy.
      */

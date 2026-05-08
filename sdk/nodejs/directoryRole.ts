@@ -126,21 +126,21 @@ export interface DirectoryRoleState {
     /**
      * The description of the directory role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the directory role to activate. Changing this forces a new resource to be created.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the directory role.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
      *
      * > Either `displayName` or `templateId` must be specified.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -150,11 +150,11 @@ export interface DirectoryRoleArgs {
     /**
      * The display name of the directory role to activate. Changing this forces a new resource to be created.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
      *
      * > Either `displayName` or `templateId` must be specified.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
 }

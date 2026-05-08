@@ -24,9 +24,9 @@ class ApplicationPermissionScopeArgs:
                  application_id: pulumi.Input[_builtins.str],
                  scope_id: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_consent_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_consent_display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_consent_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_consent_display_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationPermissionScope resource.
 
@@ -119,31 +119,31 @@ class ApplicationPermissionScopeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="userConsentDescription")
-    def user_consent_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_consent_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         """
         return pulumi.get(self, "user_consent_description")
 
     @user_consent_description.setter
-    def user_consent_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_consent_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_consent_description", value)
 
     @_builtins.property
     @pulumi.getter(name="userConsentDisplayName")
-    def user_consent_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_consent_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name for the delegated permission that appears in the end user consent experience.
 
@@ -152,21 +152,21 @@ class ApplicationPermissionScopeArgs:
         return pulumi.get(self, "user_consent_display_name")
 
     @user_consent_display_name.setter
-    def user_consent_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_consent_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_consent_display_name", value)
 
 
 @pulumi.input_type
 class _ApplicationPermissionScopeState:
     def __init__(__self__, *,
-                 admin_consent_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_consent_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_consent_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_consent_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin_consent_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_consent_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_consent_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_consent_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationPermissionScope resources.
 
@@ -202,79 +202,79 @@ class _ApplicationPermissionScopeState:
 
     @_builtins.property
     @pulumi.getter(name="adminConsentDescription")
-    def admin_consent_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin_consent_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         """
         return pulumi.get(self, "admin_consent_description")
 
     @admin_consent_description.setter
-    def admin_consent_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin_consent_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin_consent_description", value)
 
     @_builtins.property
     @pulumi.getter(name="adminConsentDisplayName")
-    def admin_consent_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin_consent_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         """
         return pulumi.get(self, "admin_consent_display_name")
 
     @admin_consent_display_name.setter
-    def admin_consent_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin_consent_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin_consent_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource ID of the application registration. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeId")
-    def scope_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the permission scope. Must be a valid UUID. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "scope_id")
 
     @scope_id.setter
-    def scope_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="userConsentDescription")
-    def user_consent_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_consent_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         """
         return pulumi.get(self, "user_consent_description")
 
     @user_consent_description.setter
-    def user_consent_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_consent_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_consent_description", value)
 
     @_builtins.property
     @pulumi.getter(name="userConsentDisplayName")
-    def user_consent_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_consent_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name for the delegated permission that appears in the end user consent experience.
 
@@ -283,12 +283,12 @@ class _ApplicationPermissionScopeState:
         return pulumi.get(self, "user_consent_display_name")
 
     @user_consent_display_name.setter
-    def user_consent_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_consent_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_consent_display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value that is used for the `scp` claim in OAuth access tokens.
 
@@ -297,7 +297,7 @@ class _ApplicationPermissionScopeState:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -307,14 +307,14 @@ class ApplicationPermissionScope(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_consent_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_consent_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_consent_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_consent_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_consent_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_consent_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_consent_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_consent_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a permission scope for an application registration.
@@ -458,14 +458,14 @@ class ApplicationPermissionScope(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_consent_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_consent_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_consent_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_consent_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin_consent_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 admin_consent_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_consent_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_consent_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -503,14 +503,14 @@ class ApplicationPermissionScope(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_consent_description: Optional[pulumi.Input[_builtins.str]] = None,
-            admin_consent_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            application_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            user_consent_description: Optional[pulumi.Input[_builtins.str]] = None,
-            user_consent_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApplicationPermissionScope':
+            admin_consent_description: pulumi.Input[Optional[_builtins.str]] = None,
+            admin_consent_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_consent_description: pulumi.Input[Optional[_builtins.str]] = None,
+            user_consent_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationPermissionScope':
         """
         Get an existing ApplicationPermissionScope resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

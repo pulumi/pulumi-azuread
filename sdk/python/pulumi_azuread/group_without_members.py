@@ -22,26 +22,26 @@ __all__ = ['GroupWithoutMembersArgs', 'GroupWithoutMembers']
 class GroupWithoutMembersArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 assignable_to_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_subscribe_new_members: Optional[pulumi.Input[_builtins.bool]] = None,
-                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dynamic_membership: Optional[pulumi.Input['GroupWithoutMembersDynamicMembershipArgs']] = None,
-                 external_senders_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hide_from_address_lists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hide_from_outlook_clients: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mail_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mail_nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 onpremises_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 theme: Optional[pulumi.Input[_builtins.str]] = None,
-                 types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 writeback_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 administrative_unit_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 assignable_to_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_subscribe_new_members: pulumi.Input[Optional[_builtins.bool]] = None,
+                 behaviors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dynamic_membership: pulumi.Input[Optional['GroupWithoutMembersDynamicMembershipArgs']] = None,
+                 external_senders_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hide_from_address_lists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hide_from_outlook_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mail_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mail_nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 onpremises_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provisioning_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 theme: pulumi.Input[Optional[_builtins.str]] = None,
+                 types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 writeback_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GroupWithoutMembers resource.
 
@@ -139,7 +139,7 @@ class GroupWithoutMembersArgs:
 
     @_builtins.property
     @pulumi.getter(name="administrativeUnitIds")
-    def administrative_unit_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def administrative_unit_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 
@@ -148,24 +148,24 @@ class GroupWithoutMembersArgs:
         return pulumi.get(self, "administrative_unit_ids")
 
     @administrative_unit_ids.setter
-    def administrative_unit_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def administrative_unit_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "administrative_unit_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="assignableToRole")
-    def assignable_to_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def assignable_to_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "assignable_to_role")
 
     @assignable_to_role.setter
-    def assignable_to_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def assignable_to_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "assignable_to_role", value)
 
     @_builtins.property
     @pulumi.getter(name="autoSubscribeNewMembers")
-    def auto_subscribe_new_members(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_subscribe_new_members(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 
@@ -174,48 +174,48 @@ class GroupWithoutMembersArgs:
         return pulumi.get(self, "auto_subscribe_new_members")
 
     @auto_subscribe_new_members.setter
-    def auto_subscribe_new_members(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_subscribe_new_members(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_subscribe_new_members", value)
 
     @_builtins.property
     @pulumi.getter
-    def behaviors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def behaviors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SkipExchangeInstantOn`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "behaviors")
 
     @behaviors.setter
-    def behaviors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def behaviors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "behaviors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description for the group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dynamicMembership")
-    def dynamic_membership(self) -> Optional[pulumi.Input['GroupWithoutMembersDynamicMembershipArgs']]:
+    def dynamic_membership(self) -> pulumi.Input[Optional['GroupWithoutMembersDynamicMembershipArgs']]:
         """
         A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         """
         return pulumi.get(self, "dynamic_membership")
 
     @dynamic_membership.setter
-    def dynamic_membership(self, value: Optional[pulumi.Input['GroupWithoutMembersDynamicMembershipArgs']]):
+    def dynamic_membership(self, value: pulumi.Input[Optional['GroupWithoutMembersDynamicMembershipArgs']]):
         pulumi.set(self, "dynamic_membership", value)
 
     @_builtins.property
     @pulumi.getter(name="externalSendersAllowed")
-    def external_senders_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external_senders_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
 
@@ -224,12 +224,12 @@ class GroupWithoutMembersArgs:
         return pulumi.get(self, "external_senders_allowed")
 
     @external_senders_allowed.setter
-    def external_senders_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external_senders_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external_senders_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="hideFromAddressLists")
-    def hide_from_address_lists(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hide_from_address_lists(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
 
@@ -238,12 +238,12 @@ class GroupWithoutMembersArgs:
         return pulumi.get(self, "hide_from_address_lists")
 
     @hide_from_address_lists.setter
-    def hide_from_address_lists(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hide_from_address_lists(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hide_from_address_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="hideFromOutlookClients")
-    def hide_from_outlook_clients(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hide_from_outlook_clients(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
 
@@ -252,48 +252,48 @@ class GroupWithoutMembersArgs:
         return pulumi.get(self, "hide_from_outlook_clients")
 
     @hide_from_outlook_clients.setter
-    def hide_from_outlook_clients(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hide_from_outlook_clients(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hide_from_outlook_clients", value)
 
     @_builtins.property
     @pulumi.getter(name="mailEnabled")
-    def mail_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mail_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         """
         return pulumi.get(self, "mail_enabled")
 
     @mail_enabled.setter
-    def mail_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mail_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mail_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mailNickname")
-    def mail_nickname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mail_nickname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "mail_nickname")
 
     @mail_nickname.setter
-    def mail_nickname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mail_nickname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mail_nickname", value)
 
     @_builtins.property
     @pulumi.getter(name="onpremisesGroupType")
-    def onpremises_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onpremises_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
         """
         return pulumi.get(self, "onpremises_group_type")
 
     @onpremises_group_type.setter
-    def onpremises_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onpremises_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onpremises_group_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
 
@@ -302,60 +302,60 @@ class GroupWithoutMembersArgs:
         return pulumi.get(self, "owners")
 
     @owners.setter
-    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "owners", value)
 
     @_builtins.property
     @pulumi.getter(name="preventDuplicateNames")
-    def prevent_duplicate_names(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_duplicate_names(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         """
         return pulumi.get(self, "prevent_duplicate_names")
 
     @prevent_duplicate_names.setter
-    def prevent_duplicate_names(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_duplicate_names(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_duplicate_names", value)
 
     @_builtins.property
     @pulumi.getter(name="provisioningOptions")
-    def provisioning_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def provisioning_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "provisioning_options")
 
     @provisioning_options.setter
-    def provisioning_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def provisioning_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "provisioning_options", value)
 
     @_builtins.property
     @pulumi.getter(name="securityEnabled")
-    def security_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def security_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
         """
         return pulumi.get(self, "security_enabled")
 
     @security_enabled.setter
-    def security_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def security_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "security_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def theme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def theme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
         """
         return pulumi.get(self, "theme")
 
     @theme.setter
-    def theme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def theme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "theme", value)
 
     @_builtins.property
     @pulumi.getter
-    def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
 
@@ -364,12 +364,12 @@ class GroupWithoutMembersArgs:
         return pulumi.get(self, "types")
 
     @types.setter
-    def types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "types", value)
 
     @_builtins.property
     @pulumi.getter
-    def visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 
@@ -378,55 +378,55 @@ class GroupWithoutMembersArgs:
         return pulumi.get(self, "visibility")
 
     @visibility.setter
-    def visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="writebackEnabled")
-    def writeback_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def writeback_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
         """
         return pulumi.get(self, "writeback_enabled")
 
     @writeback_enabled.setter
-    def writeback_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def writeback_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "writeback_enabled", value)
 
 
 @pulumi.input_type
 class _GroupWithoutMembersState:
     def __init__(__self__, *,
-                 administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 assignable_to_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_subscribe_new_members: Optional[pulumi.Input[_builtins.bool]] = None,
-                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dynamic_membership: Optional[pulumi.Input['GroupWithoutMembersDynamicMembershipArgs']] = None,
-                 external_senders_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hide_from_address_lists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hide_from_outlook_clients: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mail: Optional[pulumi.Input[_builtins.str]] = None,
-                 mail_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mail_nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 onpremises_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 onpremises_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 onpremises_netbios_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 onpremises_sam_account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 onpremises_security_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 onpremises_sync_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_language: Optional[pulumi.Input[_builtins.str]] = None,
-                 prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proxy_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 theme: Optional[pulumi.Input[_builtins.str]] = None,
-                 types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 writeback_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 administrative_unit_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 assignable_to_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_subscribe_new_members: pulumi.Input[Optional[_builtins.bool]] = None,
+                 behaviors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dynamic_membership: pulumi.Input[Optional['GroupWithoutMembersDynamicMembershipArgs']] = None,
+                 external_senders_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hide_from_address_lists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hide_from_outlook_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mail: pulumi.Input[Optional[_builtins.str]] = None,
+                 mail_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mail_nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 onpremises_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 onpremises_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 onpremises_netbios_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 onpremises_sam_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 onpremises_security_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 onpremises_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_language: pulumi.Input[Optional[_builtins.str]] = None,
+                 prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provisioning_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proxy_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 theme: pulumi.Input[Optional[_builtins.str]] = None,
+                 types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 writeback_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering GroupWithoutMembers resources.
 
@@ -540,7 +540,7 @@ class _GroupWithoutMembersState:
 
     @_builtins.property
     @pulumi.getter(name="administrativeUnitIds")
-    def administrative_unit_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def administrative_unit_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 
@@ -549,24 +549,24 @@ class _GroupWithoutMembersState:
         return pulumi.get(self, "administrative_unit_ids")
 
     @administrative_unit_ids.setter
-    def administrative_unit_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def administrative_unit_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "administrative_unit_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="assignableToRole")
-    def assignable_to_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def assignable_to_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "assignable_to_role")
 
     @assignable_to_role.setter
-    def assignable_to_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def assignable_to_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "assignable_to_role", value)
 
     @_builtins.property
     @pulumi.getter(name="autoSubscribeNewMembers")
-    def auto_subscribe_new_members(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_subscribe_new_members(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 
@@ -575,60 +575,60 @@ class _GroupWithoutMembersState:
         return pulumi.get(self, "auto_subscribe_new_members")
 
     @auto_subscribe_new_members.setter
-    def auto_subscribe_new_members(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_subscribe_new_members(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_subscribe_new_members", value)
 
     @_builtins.property
     @pulumi.getter
-    def behaviors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def behaviors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SkipExchangeInstantOn`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "behaviors")
 
     @behaviors.setter
-    def behaviors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def behaviors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "behaviors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description for the group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for the group.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dynamicMembership")
-    def dynamic_membership(self) -> Optional[pulumi.Input['GroupWithoutMembersDynamicMembershipArgs']]:
+    def dynamic_membership(self) -> pulumi.Input[Optional['GroupWithoutMembersDynamicMembershipArgs']]:
         """
         A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         """
         return pulumi.get(self, "dynamic_membership")
 
     @dynamic_membership.setter
-    def dynamic_membership(self, value: Optional[pulumi.Input['GroupWithoutMembersDynamicMembershipArgs']]):
+    def dynamic_membership(self, value: pulumi.Input[Optional['GroupWithoutMembersDynamicMembershipArgs']]):
         pulumi.set(self, "dynamic_membership", value)
 
     @_builtins.property
     @pulumi.getter(name="externalSendersAllowed")
-    def external_senders_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external_senders_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
 
@@ -637,12 +637,12 @@ class _GroupWithoutMembersState:
         return pulumi.get(self, "external_senders_allowed")
 
     @external_senders_allowed.setter
-    def external_senders_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external_senders_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external_senders_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="hideFromAddressLists")
-    def hide_from_address_lists(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hide_from_address_lists(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
 
@@ -651,12 +651,12 @@ class _GroupWithoutMembersState:
         return pulumi.get(self, "hide_from_address_lists")
 
     @hide_from_address_lists.setter
-    def hide_from_address_lists(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hide_from_address_lists(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hide_from_address_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="hideFromOutlookClients")
-    def hide_from_outlook_clients(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hide_from_outlook_clients(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
 
@@ -665,132 +665,132 @@ class _GroupWithoutMembersState:
         return pulumi.get(self, "hide_from_outlook_clients")
 
     @hide_from_outlook_clients.setter
-    def hide_from_outlook_clients(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hide_from_outlook_clients(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hide_from_outlook_clients", value)
 
     @_builtins.property
     @pulumi.getter
-    def mail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SMTP address for the group.
         """
         return pulumi.get(self, "mail")
 
     @mail.setter
-    def mail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mail", value)
 
     @_builtins.property
     @pulumi.getter(name="mailEnabled")
-    def mail_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mail_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         """
         return pulumi.get(self, "mail_enabled")
 
     @mail_enabled.setter
-    def mail_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mail_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mail_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="mailNickname")
-    def mail_nickname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mail_nickname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "mail_nickname")
 
     @mail_nickname.setter
-    def mail_nickname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mail_nickname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mail_nickname", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the group.
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="onpremisesDomainName")
-    def onpremises_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onpremises_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
         """
         return pulumi.get(self, "onpremises_domain_name")
 
     @onpremises_domain_name.setter
-    def onpremises_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onpremises_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onpremises_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="onpremisesGroupType")
-    def onpremises_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onpremises_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
         """
         return pulumi.get(self, "onpremises_group_type")
 
     @onpremises_group_type.setter
-    def onpremises_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onpremises_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onpremises_group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="onpremisesNetbiosName")
-    def onpremises_netbios_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onpremises_netbios_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
         """
         return pulumi.get(self, "onpremises_netbios_name")
 
     @onpremises_netbios_name.setter
-    def onpremises_netbios_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onpremises_netbios_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onpremises_netbios_name", value)
 
     @_builtins.property
     @pulumi.getter(name="onpremisesSamAccountName")
-    def onpremises_sam_account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onpremises_sam_account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
         """
         return pulumi.get(self, "onpremises_sam_account_name")
 
     @onpremises_sam_account_name.setter
-    def onpremises_sam_account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onpremises_sam_account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onpremises_sam_account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="onpremisesSecurityIdentifier")
-    def onpremises_security_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onpremises_security_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
         """
         return pulumi.get(self, "onpremises_security_identifier")
 
     @onpremises_security_identifier.setter
-    def onpremises_security_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onpremises_security_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onpremises_security_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="onpremisesSyncEnabled")
-    def onpremises_sync_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def onpremises_sync_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
         """
         return pulumi.get(self, "onpremises_sync_enabled")
 
     @onpremises_sync_enabled.setter
-    def onpremises_sync_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def onpremises_sync_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "onpremises_sync_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
 
@@ -799,84 +799,84 @@ class _GroupWithoutMembersState:
         return pulumi.get(self, "owners")
 
     @owners.setter
-    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "owners", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredLanguage")
-    def preferred_language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
         """
         return pulumi.get(self, "preferred_language")
 
     @preferred_language.setter
-    def preferred_language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_language", value)
 
     @_builtins.property
     @pulumi.getter(name="preventDuplicateNames")
-    def prevent_duplicate_names(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_duplicate_names(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         """
         return pulumi.get(self, "prevent_duplicate_names")
 
     @prevent_duplicate_names.setter
-    def prevent_duplicate_names(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_duplicate_names(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_duplicate_names", value)
 
     @_builtins.property
     @pulumi.getter(name="provisioningOptions")
-    def provisioning_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def provisioning_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "provisioning_options")
 
     @provisioning_options.setter
-    def provisioning_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def provisioning_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "provisioning_options", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyAddresses")
-    def proxy_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def proxy_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of email addresses for the group that direct to the same group mailbox.
         """
         return pulumi.get(self, "proxy_addresses")
 
     @proxy_addresses.setter
-    def proxy_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def proxy_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "proxy_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="securityEnabled")
-    def security_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def security_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
         """
         return pulumi.get(self, "security_enabled")
 
     @security_enabled.setter
-    def security_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def security_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "security_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def theme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def theme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
         """
         return pulumi.get(self, "theme")
 
     @theme.setter
-    def theme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def theme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "theme", value)
 
     @_builtins.property
     @pulumi.getter
-    def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
 
@@ -885,12 +885,12 @@ class _GroupWithoutMembersState:
         return pulumi.get(self, "types")
 
     @types.setter
-    def types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "types", value)
 
     @_builtins.property
     @pulumi.getter
-    def visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 
@@ -899,19 +899,19 @@ class _GroupWithoutMembersState:
         return pulumi.get(self, "visibility")
 
     @visibility.setter
-    def visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="writebackEnabled")
-    def writeback_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def writeback_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
         """
         return pulumi.get(self, "writeback_enabled")
 
     @writeback_enabled.setter
-    def writeback_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def writeback_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "writeback_enabled", value)
 
 
@@ -921,27 +921,27 @@ class GroupWithoutMembers(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 assignable_to_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_subscribe_new_members: Optional[pulumi.Input[_builtins.bool]] = None,
-                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dynamic_membership: Optional[pulumi.Input[Union['GroupWithoutMembersDynamicMembershipArgs', 'GroupWithoutMembersDynamicMembershipArgsDict']]] = None,
-                 external_senders_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hide_from_address_lists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hide_from_outlook_clients: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mail_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mail_nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 onpremises_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 theme: Optional[pulumi.Input[_builtins.str]] = None,
-                 types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 writeback_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 administrative_unit_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 assignable_to_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_subscribe_new_members: pulumi.Input[Optional[_builtins.bool]] = None,
+                 behaviors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dynamic_membership: pulumi.Input[Optional[Union['GroupWithoutMembersDynamicMembershipArgs', 'GroupWithoutMembersDynamicMembershipArgsDict']]] = None,
+                 external_senders_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hide_from_address_lists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hide_from_outlook_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mail_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mail_nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 onpremises_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provisioning_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 theme: pulumi.Input[Optional[_builtins.str]] = None,
+                 types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 writeback_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages a group within Azure Active Directory. Does not directly manage or expose members of the group.
@@ -1178,27 +1178,27 @@ class GroupWithoutMembers(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 assignable_to_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_subscribe_new_members: Optional[pulumi.Input[_builtins.bool]] = None,
-                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dynamic_membership: Optional[pulumi.Input[Union['GroupWithoutMembersDynamicMembershipArgs', 'GroupWithoutMembersDynamicMembershipArgsDict']]] = None,
-                 external_senders_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hide_from_address_lists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hide_from_outlook_clients: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mail_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mail_nickname: Optional[pulumi.Input[_builtins.str]] = None,
-                 onpremises_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 theme: Optional[pulumi.Input[_builtins.str]] = None,
-                 types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 writeback_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 administrative_unit_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 assignable_to_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_subscribe_new_members: pulumi.Input[Optional[_builtins.bool]] = None,
+                 behaviors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dynamic_membership: pulumi.Input[Optional[Union['GroupWithoutMembersDynamicMembershipArgs', 'GroupWithoutMembersDynamicMembershipArgsDict']]] = None,
+                 external_senders_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hide_from_address_lists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hide_from_outlook_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mail_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mail_nickname: pulumi.Input[Optional[_builtins.str]] = None,
+                 onpremises_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provisioning_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 theme: pulumi.Input[Optional[_builtins.str]] = None,
+                 types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 writeback_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1250,36 +1250,36 @@ class GroupWithoutMembers(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            assignable_to_role: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_subscribe_new_members: Optional[pulumi.Input[_builtins.bool]] = None,
-            behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            dynamic_membership: Optional[pulumi.Input[Union['GroupWithoutMembersDynamicMembershipArgs', 'GroupWithoutMembersDynamicMembershipArgsDict']]] = None,
-            external_senders_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            hide_from_address_lists: Optional[pulumi.Input[_builtins.bool]] = None,
-            hide_from_outlook_clients: Optional[pulumi.Input[_builtins.bool]] = None,
-            mail: Optional[pulumi.Input[_builtins.str]] = None,
-            mail_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            mail_nickname: Optional[pulumi.Input[_builtins.str]] = None,
-            object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            onpremises_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            onpremises_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-            onpremises_netbios_name: Optional[pulumi.Input[_builtins.str]] = None,
-            onpremises_sam_account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            onpremises_security_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            onpremises_sync_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            preferred_language: Optional[pulumi.Input[_builtins.str]] = None,
-            prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
-            provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            proxy_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            security_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            theme: Optional[pulumi.Input[_builtins.str]] = None,
-            types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            visibility: Optional[pulumi.Input[_builtins.str]] = None,
-            writeback_enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'GroupWithoutMembers':
+            administrative_unit_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            assignable_to_role: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_subscribe_new_members: pulumi.Input[Optional[_builtins.bool]] = None,
+            behaviors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dynamic_membership: pulumi.Input[Optional[Union['GroupWithoutMembersDynamicMembershipArgs', 'GroupWithoutMembersDynamicMembershipArgsDict']]] = None,
+            external_senders_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            hide_from_address_lists: pulumi.Input[Optional[_builtins.bool]] = None,
+            hide_from_outlook_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+            mail: pulumi.Input[Optional[_builtins.str]] = None,
+            mail_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            mail_nickname: pulumi.Input[Optional[_builtins.str]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_netbios_name: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_sam_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_security_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_language: pulumi.Input[Optional[_builtins.str]] = None,
+            prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+            provisioning_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            proxy_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            theme: pulumi.Input[Optional[_builtins.str]] = None,
+            types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            writeback_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GroupWithoutMembers':
         """
         Get an existing GroupWithoutMembers resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

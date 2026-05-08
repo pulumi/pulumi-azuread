@@ -172,31 +172,31 @@ export interface InvitationState {
     /**
      * A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
      */
-    message?: pulumi.Input<inputs.InvitationMessage>;
+    message?: pulumi.Input<inputs.InvitationMessage | undefined>;
     /**
      * The URL the user can use to redeem their invitation.
      */
-    redeemUrl?: pulumi.Input<string>;
+    redeemUrl?: pulumi.Input<string | undefined>;
     /**
      * The URL that the user should be redirected to once the invitation is redeemed.
      */
-    redirectUrl?: pulumi.Input<string>;
+    redirectUrl?: pulumi.Input<string | undefined>;
     /**
      * The display name of the user being invited.
      */
-    userDisplayName?: pulumi.Input<string>;
+    userDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The email address of the user being invited.
      */
-    userEmailAddress?: pulumi.Input<string>;
+    userEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * Object ID of the invited user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
      */
-    userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,7 +206,7 @@ export interface InvitationArgs {
     /**
      * A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
      */
-    message?: pulumi.Input<inputs.InvitationMessage>;
+    message?: pulumi.Input<inputs.InvitationMessage | undefined>;
     /**
      * The URL that the user should be redirected to once the invitation is redeemed.
      */
@@ -214,7 +214,7 @@ export interface InvitationArgs {
     /**
      * The display name of the user being invited.
      */
-    userDisplayName?: pulumi.Input<string>;
+    userDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The email address of the user being invited.
      */
@@ -222,5 +222,5 @@ export interface InvitationArgs {
     /**
      * The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
      */
-    userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string | undefined>;
 }

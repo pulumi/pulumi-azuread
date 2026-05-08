@@ -141,21 +141,21 @@ export interface NamedLocationState {
     /**
      * A `country` block as documented below, which configures a country-based named location.
      */
-    country?: pulumi.Input<inputs.NamedLocationCountry>;
+    country?: pulumi.Input<inputs.NamedLocationCountry | undefined>;
     /**
      * The friendly name for this named location.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * An `ip` block as documented below, which configures an IP-based named location.
      *
      * > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
      */
-    ip?: pulumi.Input<inputs.NamedLocationIp>;
+    ip?: pulumi.Input<inputs.NamedLocationIp | undefined>;
     /**
      * The object ID of the named location.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,7 +165,7 @@ export interface NamedLocationArgs {
     /**
      * A `country` block as documented below, which configures a country-based named location.
      */
-    country?: pulumi.Input<inputs.NamedLocationCountry>;
+    country?: pulumi.Input<inputs.NamedLocationCountry | undefined>;
     /**
      * The friendly name for this named location.
      */
@@ -175,5 +175,5 @@ export interface NamedLocationArgs {
      *
      * > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
      */
-    ip?: pulumi.Input<inputs.NamedLocationIp>;
+    ip?: pulumi.Input<inputs.NamedLocationIp | undefined>;
 }

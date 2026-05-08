@@ -73,12 +73,12 @@ class AppRoleAssignmentArgs:
 @pulumi.input_type
 class _AppRoleAssignmentState:
     def __init__(__self__, *,
-                 app_role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_object_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_object_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppRoleAssignment resources.
 
@@ -104,74 +104,74 @@ class _AppRoleAssignmentState:
 
     @_builtins.property
     @pulumi.getter(name="appRoleId")
-    def app_role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "app_role_id")
 
     @app_role_id.setter
-    def app_role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="principalDisplayName")
-    def principal_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the principal to which the app role is assigned.
         """
         return pulumi.get(self, "principal_display_name")
 
     @principal_display_name.setter
-    def principal_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="principalObjectId")
-    def principal_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "principal_object_id")
 
     @principal_object_id.setter
-    def principal_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="principalType")
-    def principal_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object type of the principal to which the app role is assigned.
         """
         return pulumi.get(self, "principal_type")
 
     @principal_type.setter
-    def principal_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceDisplayName")
-    def resource_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the application representing the resource.
         """
         return pulumi.get(self, "resource_display_name")
 
     @resource_display_name.setter
-    def resource_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceObjectId")
-    def resource_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_object_id")
 
     @resource_object_id.setter
-    def resource_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_object_id", value)
 
 
@@ -181,9 +181,9 @@ class AppRoleAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_object_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages an app role assignment for a group, user or service principal. Can be used to grant admin consent for application permissions.
@@ -394,9 +394,9 @@ class AppRoleAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_object_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -428,12 +428,12 @@ class AppRoleAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_role_id: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_type: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_object_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AppRoleAssignment':
+            app_role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_object_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppRoleAssignment':
         """
         Get an existing AppRoleAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

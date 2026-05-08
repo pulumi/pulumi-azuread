@@ -22,9 +22,9 @@ __all__ = ['ApplicationOptionalClaimsInitArgs', 'ApplicationOptionalClaims']
 class ApplicationOptionalClaimsInitArgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[_builtins.str],
-                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]] = None,
-                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]] = None,
-                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]] = None):
+                 access_tokens: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]] = None,
+                 id_tokens: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]] = None,
+                 saml2_tokens: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]] = None):
         """
         The set of arguments for constructing a ApplicationOptionalClaims resource.
 
@@ -57,31 +57,31 @@ class ApplicationOptionalClaimsInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessTokens")
-    def access_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]:
+    def access_tokens(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]:
         """
         One or more `access_token` blocks as documented below.
         """
         return pulumi.get(self, "access_tokens")
 
     @access_tokens.setter
-    def access_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]):
+    def access_tokens(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]):
         pulumi.set(self, "access_tokens", value)
 
     @_builtins.property
     @pulumi.getter(name="idTokens")
-    def id_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]:
+    def id_tokens(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]:
         """
         One or more `id_token` blocks as documented below.
         """
         return pulumi.get(self, "id_tokens")
 
     @id_tokens.setter
-    def id_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]):
+    def id_tokens(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]):
         pulumi.set(self, "id_tokens", value)
 
     @_builtins.property
     @pulumi.getter(name="saml2Tokens")
-    def saml2_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]:
+    def saml2_tokens(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]:
         """
         One or more `saml2_token` blocks as documented below.
 
@@ -90,17 +90,17 @@ class ApplicationOptionalClaimsInitArgs:
         return pulumi.get(self, "saml2_tokens")
 
     @saml2_tokens.setter
-    def saml2_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]):
+    def saml2_tokens(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]):
         pulumi.set(self, "saml2_tokens", value)
 
 
 @pulumi.input_type
 class _ApplicationOptionalClaimsState:
     def __init__(__self__, *,
-                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]] = None,
-                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]] = None):
+                 access_tokens: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 id_tokens: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]] = None,
+                 saml2_tokens: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]] = None):
         """
         Input properties used for looking up and filtering ApplicationOptionalClaims resources.
 
@@ -122,43 +122,43 @@ class _ApplicationOptionalClaimsState:
 
     @_builtins.property
     @pulumi.getter(name="accessTokens")
-    def access_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]:
+    def access_tokens(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]:
         """
         One or more `access_token` blocks as documented below.
         """
         return pulumi.get(self, "access_tokens")
 
     @access_tokens.setter
-    def access_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]):
+    def access_tokens(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]):
         pulumi.set(self, "access_tokens", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource ID of the application registration. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="idTokens")
-    def id_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]:
+    def id_tokens(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]:
         """
         One or more `id_token` blocks as documented below.
         """
         return pulumi.get(self, "id_tokens")
 
     @id_tokens.setter
-    def id_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]):
+    def id_tokens(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]):
         pulumi.set(self, "id_tokens", value)
 
     @_builtins.property
     @pulumi.getter(name="saml2Tokens")
-    def saml2_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]:
+    def saml2_tokens(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]:
         """
         One or more `saml2_token` blocks as documented below.
 
@@ -167,7 +167,7 @@ class _ApplicationOptionalClaimsState:
         return pulumi.get(self, "saml2_tokens")
 
     @saml2_tokens.setter
-    def saml2_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]):
+    def saml2_tokens(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]):
         pulumi.set(self, "saml2_tokens", value)
 
 
@@ -177,10 +177,10 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsAccessTokenArgs', 'ApplicationOptionalClaimsAccessTokenArgsDict']]]]] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsIdTokenArgs', 'ApplicationOptionalClaimsIdTokenArgsDict']]]]] = None,
-                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsSaml2TokenArgs', 'ApplicationOptionalClaimsSaml2TokenArgsDict']]]]] = None,
+                 access_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsAccessTokenArgs', 'ApplicationOptionalClaimsAccessTokenArgsDict']]]]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 id_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsIdTokenArgs', 'ApplicationOptionalClaimsIdTokenArgsDict']]]]] = None,
+                 saml2_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsSaml2TokenArgs', 'ApplicationOptionalClaimsSaml2TokenArgsDict']]]]] = None,
                  __props__=None):
         """
         Manages optional claims for an application registration.
@@ -316,10 +316,10 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsAccessTokenArgs', 'ApplicationOptionalClaimsAccessTokenArgsDict']]]]] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsIdTokenArgs', 'ApplicationOptionalClaimsIdTokenArgsDict']]]]] = None,
-                 saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsSaml2TokenArgs', 'ApplicationOptionalClaimsSaml2TokenArgsDict']]]]] = None,
+                 access_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsAccessTokenArgs', 'ApplicationOptionalClaimsAccessTokenArgsDict']]]]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 id_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsIdTokenArgs', 'ApplicationOptionalClaimsIdTokenArgsDict']]]]] = None,
+                 saml2_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsSaml2TokenArgs', 'ApplicationOptionalClaimsSaml2TokenArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -345,10 +345,10 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsAccessTokenArgs', 'ApplicationOptionalClaimsAccessTokenArgsDict']]]]] = None,
-            application_id: Optional[pulumi.Input[_builtins.str]] = None,
-            id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsIdTokenArgs', 'ApplicationOptionalClaimsIdTokenArgsDict']]]]] = None,
-            saml2_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsSaml2TokenArgs', 'ApplicationOptionalClaimsSaml2TokenArgsDict']]]]] = None) -> 'ApplicationOptionalClaims':
+            access_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsAccessTokenArgs', 'ApplicationOptionalClaimsAccessTokenArgsDict']]]]] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            id_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsIdTokenArgs', 'ApplicationOptionalClaimsIdTokenArgsDict']]]]] = None,
+            saml2_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsSaml2TokenArgs', 'ApplicationOptionalClaimsSaml2TokenArgsDict']]]]] = None) -> 'ApplicationOptionalClaims':
         """
         Get an existing ApplicationOptionalClaims resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.ClaimsMappingPolicy;
  * import com.pulumi.azuread.ClaimsMappingPolicyArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *                             )
  *                         )),
  *                         jsonProperty("IncludeBasicClaimSet", "true"),
- *                         jsonProperty("Version", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:16,32-33)))
+ *                         jsonProperty("Version", 1)
  *                     ))
  *                 )))
  *             .displayName("My Policy")

@@ -24,8 +24,8 @@ class ConditionalAccessPolicyArgs:
                  conditions: pulumi.Input['ConditionalAccessPolicyConditionsArgs'],
                  display_name: pulumi.Input[_builtins.str],
                  state: pulumi.Input[_builtins.str],
-                 grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
-                 session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None):
+                 grant_controls: pulumi.Input[Optional['ConditionalAccessPolicyGrantControlsArgs']] = None,
+                 session_controls: pulumi.Input[Optional['ConditionalAccessPolicySessionControlsArgs']] = None):
         """
         The set of arguments for constructing a ConditionalAccessPolicy resource.
 
@@ -83,19 +83,19 @@ class ConditionalAccessPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="grantControls")
-    def grant_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']]:
+    def grant_controls(self) -> pulumi.Input[Optional['ConditionalAccessPolicyGrantControlsArgs']]:
         """
         A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
         """
         return pulumi.get(self, "grant_controls")
 
     @grant_controls.setter
-    def grant_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']]):
+    def grant_controls(self, value: pulumi.Input[Optional['ConditionalAccessPolicyGrantControlsArgs']]):
         pulumi.set(self, "grant_controls", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionControls")
-    def session_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']]:
+    def session_controls(self) -> pulumi.Input[Optional['ConditionalAccessPolicySessionControlsArgs']]:
         """
         A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
 
@@ -104,19 +104,19 @@ class ConditionalAccessPolicyArgs:
         return pulumi.get(self, "session_controls")
 
     @session_controls.setter
-    def session_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']]):
+    def session_controls(self, value: pulumi.Input[Optional['ConditionalAccessPolicySessionControlsArgs']]):
         pulumi.set(self, "session_controls", value)
 
 
 @pulumi.input_type
 class _ConditionalAccessPolicyState:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input['ConditionalAccessPolicyConditionsArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 grant_controls: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_controls: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditions: pulumi.Input[Optional['ConditionalAccessPolicyConditionsArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant_controls: pulumi.Input[Optional['ConditionalAccessPolicyGrantControlsArgs']] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_controls: pulumi.Input[Optional['ConditionalAccessPolicySessionControlsArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConditionalAccessPolicy resources.
 
@@ -144,55 +144,55 @@ class _ConditionalAccessPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsArgs']]:
+    def conditions(self) -> pulumi.Input[Optional['ConditionalAccessPolicyConditionsArgs']]:
         """
         A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsArgs']]):
+    def conditions(self, value: pulumi.Input[Optional['ConditionalAccessPolicyConditionsArgs']]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The friendly name for this Conditional Access Policy.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="grantControls")
-    def grant_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']]:
+    def grant_controls(self) -> pulumi.Input[Optional['ConditionalAccessPolicyGrantControlsArgs']]:
         """
         A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
         """
         return pulumi.get(self, "grant_controls")
 
     @grant_controls.setter
-    def grant_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicyGrantControlsArgs']]):
+    def grant_controls(self, value: pulumi.Input[Optional['ConditionalAccessPolicyGrantControlsArgs']]):
         pulumi.set(self, "grant_controls", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the policy
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionControls")
-    def session_controls(self) -> Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']]:
+    def session_controls(self) -> pulumi.Input[Optional['ConditionalAccessPolicySessionControlsArgs']]:
         """
         A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
 
@@ -201,19 +201,19 @@ class _ConditionalAccessPolicyState:
         return pulumi.get(self, "session_controls")
 
     @session_controls.setter
-    def session_controls(self, value: Optional[pulumi.Input['ConditionalAccessPolicySessionControlsArgs']]):
+    def session_controls(self, value: pulumi.Input[Optional['ConditionalAccessPolicySessionControlsArgs']]):
         pulumi.set(self, "session_controls", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -223,11 +223,11 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: Optional[pulumi.Input[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 grant_controls: Optional[pulumi.Input[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict']]] = None,
-                 session_controls: Optional[pulumi.Input[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict']]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict']]] = None,
+                 session_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict']]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Conditional Access Policy within Azure Active Directory.
@@ -526,11 +526,11 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: Optional[pulumi.Input[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 grant_controls: Optional[pulumi.Input[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict']]] = None,
-                 session_controls: Optional[pulumi.Input[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict']]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict']]] = None,
+                 session_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict']]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -562,12 +562,12 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            conditions: Optional[pulumi.Input[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            grant_controls: Optional[pulumi.Input[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict']]] = None,
-            object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            session_controls: Optional[pulumi.Input[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConditionalAccessPolicy':
+            conditions: pulumi.Input[Optional[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            grant_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict']]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            session_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConditionalAccessPolicy':
         """
         Get an existing ConditionalAccessPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

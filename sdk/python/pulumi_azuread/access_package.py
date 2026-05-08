@@ -22,7 +22,7 @@ class AccessPackageArgs:
                  catalog_id: pulumi.Input[_builtins.str],
                  description: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None):
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AccessPackage resource.
 
@@ -75,24 +75,24 @@ class AccessPackageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the access package is hidden from the requestor.
         """
         return pulumi.get(self, "hidden")
 
     @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden", value)
 
 
 @pulumi.input_type
 class _AccessPackageState:
     def __init__(__self__, *,
-                 catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None):
+                 catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AccessPackage resources.
 
@@ -112,50 +112,50 @@ class _AccessPackageState:
 
     @_builtins.property
     @pulumi.getter(name="catalogId")
-    def catalog_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Catalog this access package will be created in.
         """
         return pulumi.get(self, "catalog_id")
 
     @catalog_id.setter
-    def catalog_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the access package.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the access package.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the access package is hidden from the requestor.
         """
         return pulumi.get(self, "hidden")
 
     @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden", value)
 
 
@@ -165,10 +165,10 @@ class AccessPackage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
+                 catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages an Access Package within Identity Governance in Azure Active Directory.
@@ -268,10 +268,10 @@ class AccessPackage(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
+                 catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -301,10 +301,10 @@ class AccessPackage(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            hidden: Optional[pulumi.Input[_builtins.bool]] = None) -> 'AccessPackage':
+            catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            hidden: pulumi.Input[Optional[_builtins.bool]] = None) -> 'AccessPackage':
         """
         Get an existing AccessPackage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

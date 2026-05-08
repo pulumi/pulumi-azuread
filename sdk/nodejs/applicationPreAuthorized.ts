@@ -153,15 +153,15 @@ export interface ApplicationPreAuthorizedState {
     /**
      * The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The client ID of the application being authorized. Changing this field forces a new resource to be created.
      */
-    authorizedClientId?: pulumi.Input<string>;
+    authorizedClientId?: pulumi.Input<string | undefined>;
     /**
      * A set of permission scope IDs required by the authorized application.
      */
-    permissionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    permissionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

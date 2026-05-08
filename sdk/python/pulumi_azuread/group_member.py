@@ -58,8 +58,8 @@ class GroupMemberArgs:
 @pulumi.input_type
 class _GroupMemberState:
     def __init__(__self__, *,
-                 group_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_object_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_object_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupMember resources.
 
@@ -73,26 +73,26 @@ class _GroupMemberState:
 
     @_builtins.property
     @pulumi.getter(name="groupObjectId")
-    def group_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "group_object_id")
 
     @group_object_id.setter
-    def group_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="memberObjectId")
-    def member_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 
     @member_object_id.setter
-    def member_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_object_id", value)
 
 
@@ -102,8 +102,8 @@ class GroupMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_object_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a single group membership within Azure Active Directory.
@@ -213,8 +213,8 @@ class GroupMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_object_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -240,8 +240,8 @@ class GroupMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            member_object_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupMember':
+            group_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            member_object_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupMember':
         """
         Get an existing GroupMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

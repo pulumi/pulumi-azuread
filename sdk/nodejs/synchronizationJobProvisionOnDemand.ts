@@ -164,19 +164,19 @@ export interface SynchronizationJobProvisionOnDemandState {
     /**
      * One or more `parameter` blocks as documented below.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.SynchronizationJobProvisionOnDemandParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.SynchronizationJobProvisionOnDemandParameter>[] | undefined>;
     /**
      * The ID of the service principal for the synchronization job.
      */
-    servicePrincipalId?: pulumi.Input<string>;
+    servicePrincipalId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the synchronization job.
      */
-    synchronizationJobId?: pulumi.Input<string>;
+    synchronizationJobId?: pulumi.Input<string | undefined>;
     /**
      * Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
      */
-    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -198,5 +198,5 @@ export interface SynchronizationJobProvisionOnDemandArgs {
     /**
      * Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
      */
-    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    triggers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

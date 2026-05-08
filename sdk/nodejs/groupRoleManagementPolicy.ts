@@ -172,35 +172,35 @@ export interface GroupRoleManagementPolicyState {
     /**
      * An `activationRules` block as defined below.
      */
-    activationRules?: pulumi.Input<inputs.GroupRoleManagementPolicyActivationRules>;
+    activationRules?: pulumi.Input<inputs.GroupRoleManagementPolicyActivationRules | undefined>;
     /**
      * An `activeAssignmentRules` block as defined below.
      */
-    activeAssignmentRules?: pulumi.Input<inputs.GroupRoleManagementPolicyActiveAssignmentRules>;
+    activeAssignmentRules?: pulumi.Input<inputs.GroupRoleManagementPolicyActiveAssignmentRules | undefined>;
     /**
      * (String) The description of this policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (String) The display name of this policy.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * An `eligibleAssignmentRules` block as defined below.
      */
-    eligibleAssignmentRules?: pulumi.Input<inputs.GroupRoleManagementPolicyEligibleAssignmentRules>;
+    eligibleAssignmentRules?: pulumi.Input<inputs.GroupRoleManagementPolicyEligibleAssignmentRules | undefined>;
     /**
      * The ID of the Azure AD group for which the policy applies.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * A `notificationRules` block as defined below.
      */
-    notificationRules?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRules>;
+    notificationRules?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRules | undefined>;
     /**
      * The type of assignment this policy coveres. Can be either `member` or `owner`.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -210,15 +210,15 @@ export interface GroupRoleManagementPolicyArgs {
     /**
      * An `activationRules` block as defined below.
      */
-    activationRules?: pulumi.Input<inputs.GroupRoleManagementPolicyActivationRules>;
+    activationRules?: pulumi.Input<inputs.GroupRoleManagementPolicyActivationRules | undefined>;
     /**
      * An `activeAssignmentRules` block as defined below.
      */
-    activeAssignmentRules?: pulumi.Input<inputs.GroupRoleManagementPolicyActiveAssignmentRules>;
+    activeAssignmentRules?: pulumi.Input<inputs.GroupRoleManagementPolicyActiveAssignmentRules | undefined>;
     /**
      * An `eligibleAssignmentRules` block as defined below.
      */
-    eligibleAssignmentRules?: pulumi.Input<inputs.GroupRoleManagementPolicyEligibleAssignmentRules>;
+    eligibleAssignmentRules?: pulumi.Input<inputs.GroupRoleManagementPolicyEligibleAssignmentRules | undefined>;
     /**
      * The ID of the Azure AD group for which the policy applies.
      */
@@ -226,7 +226,7 @@ export interface GroupRoleManagementPolicyArgs {
     /**
      * A `notificationRules` block as defined below.
      */
-    notificationRules?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRules>;
+    notificationRules?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRules | undefined>;
     /**
      * The type of assignment this policy coveres. Can be either `member` or `owner`.
      */

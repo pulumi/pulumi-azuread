@@ -73,9 +73,9 @@ class AccessPackageResourceCatalogAssociationArgs:
 @pulumi.input_type
 class _AccessPackageResourceCatalogAssociationState:
     def __init__(__self__, *,
-                 catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_origin_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_origin_system: Optional[pulumi.Input[_builtins.str]] = None):
+                 catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_origin_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_origin_system: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessPackageResourceCatalogAssociation resources.
 
@@ -92,38 +92,38 @@ class _AccessPackageResourceCatalogAssociationState:
 
     @_builtins.property
     @pulumi.getter(name="catalogId")
-    def catalog_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ID of the access package catalog. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "catalog_id")
 
     @catalog_id.setter
-    def catalog_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceOriginId")
-    def resource_origin_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_origin_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_origin_id")
 
     @resource_origin_id.setter
-    def resource_origin_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_origin_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_origin_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceOriginSystem")
-    def resource_origin_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_origin_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_origin_system")
 
     @resource_origin_system.setter
-    def resource_origin_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_origin_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_origin_system", value)
 
 
@@ -133,9 +133,9 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_origin_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_origin_system: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_origin_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_origin_system: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages the resources added to access package catalogs within Identity Governance in Azure Active Directory.
@@ -244,9 +244,9 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_origin_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_origin_system: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_origin_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_origin_system: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -275,9 +275,9 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_origin_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_origin_system: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessPackageResourceCatalogAssociation':
+            catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_origin_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_origin_system: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessPackageResourceCatalogAssociation':
         """
         Get an existing AccessPackageResourceCatalogAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

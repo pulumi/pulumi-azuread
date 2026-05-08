@@ -151,91 +151,91 @@ export interface ProviderArgs {
     /**
      * The Azure DevOps Pipeline Service Connection ID.
      */
-    adoPipelineServiceConnectionId?: pulumi.Input<string>;
+    adoPipelineServiceConnectionId?: pulumi.Input<string | undefined>;
     /**
      * Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
      */
-    clientCertificate?: pulumi.Input<string>;
+    clientCertificate?: pulumi.Input<string | undefined>;
     /**
      * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
      */
-    clientCertificatePassword?: pulumi.Input<string>;
+    clientCertificatePassword?: pulumi.Input<string | undefined>;
     /**
      * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate
      */
-    clientCertificatePath?: pulumi.Input<string>;
+    clientCertificatePath?: pulumi.Input<string | undefined>;
     /**
      * The Client ID which should be used for service principal authentication
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The path to a file containing the Client ID which should be used for service principal authentication
      */
-    clientIdFilePath?: pulumi.Input<string>;
+    clientIdFilePath?: pulumi.Input<string | undefined>;
     /**
      * The application password to use when authenticating as a Service Principal using a Client Secret
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * The path to a file containing the application password to use when authenticating as a Service Principal using a Client Secret
      */
-    clientSecretFilePath?: pulumi.Input<string>;
+    clientSecretFilePath?: pulumi.Input<string | undefined>;
     /**
      * Disable the Terraform Partner ID, which is used if a custom `partnerId` isn't specified
      */
-    disableTerraformPartnerId?: pulumi.Input<boolean>;
+    disableTerraformPartnerId?: pulumi.Input<boolean | undefined>;
     /**
      * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`. Not used and should not be specified when `metadataHost` is specified.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The Hostname which should be used for the Azure Metadata Service.
      */
-    metadataHost?: pulumi.Input<string>;
+    metadataHost?: pulumi.Input<string | undefined>;
     /**
      * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
      */
-    msiEndpoint?: pulumi.Input<string>;
+    msiEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
      */
-    oidcRequestToken?: pulumi.Input<string>;
+    oidcRequestToken?: pulumi.Input<string | undefined>;
     /**
      * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
      */
-    oidcRequestUrl?: pulumi.Input<string>;
+    oidcRequestUrl?: pulumi.Input<string | undefined>;
     /**
      * The ID token for use when authenticating as a Service Principal using OpenID Connect.
      */
-    oidcToken?: pulumi.Input<string>;
+    oidcToken?: pulumi.Input<string | undefined>;
     /**
      * The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.
      */
-    oidcTokenFilePath?: pulumi.Input<string>;
+    oidcTokenFilePath?: pulumi.Input<string | undefined>;
     /**
      * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
      */
-    partnerId?: pulumi.Input<string>;
+    partnerId?: pulumi.Input<string | undefined>;
     /**
      * The Tenant ID which should be used. Works with all authentication methods except Managed Identity
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Allow Azure AKS Workload Identity to be used for Authentication.
      */
-    useAksWorkloadIdentity?: pulumi.Input<boolean>;
+    useAksWorkloadIdentity?: pulumi.Input<boolean | undefined>;
     /**
      * Allow Azure CLI to be used for Authentication
      */
-    useCli?: pulumi.Input<boolean>;
+    useCli?: pulumi.Input<boolean | undefined>;
     /**
      * Allow Managed Identity to be used for Authentication
      */
-    useMsi?: pulumi.Input<boolean>;
+    useMsi?: pulumi.Input<boolean | undefined>;
     /**
      * Allow OpenID Connect to be used for authentication
      */
-    useOidc?: pulumi.Input<boolean>;
+    useOidc?: pulumi.Input<boolean | undefined>;
 }
 
 export namespace Provider {

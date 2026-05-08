@@ -247,27 +247,27 @@ export interface GetGroupOutputArgs {
     /**
      * The display name for the group.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether to include transitive members (a flat list of all nested members). Defaults to `false`.
      */
-    includeTransitiveMembers?: pulumi.Input<boolean>;
+    includeTransitiveMembers?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the group is mail-enabled.
      */
-    mailEnabled?: pulumi.Input<boolean>;
+    mailEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The mail alias for the group, unique in the organisation.
      */
-    mailNickname?: pulumi.Input<string>;
+    mailNickname?: pulumi.Input<string | undefined>;
     /**
      * Specifies the object ID of the group.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * Whether the group is a security group.
      *
      * > One of `displayName`, `objectId` or `mailNickname` must be specified.
      */
-    securityEnabled?: pulumi.Input<boolean>;
+    securityEnabled?: pulumi.Input<boolean | undefined>;
 }

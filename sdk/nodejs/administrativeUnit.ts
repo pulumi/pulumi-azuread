@@ -136,15 +136,15 @@ export interface AdministrativeUnitState {
     /**
      * The description of the administrative unit.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the administrative unit.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      */
-    hiddenMembershipEnabled?: pulumi.Input<boolean>;
+    hiddenMembershipEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
      *
@@ -152,15 +152,15 @@ export interface AdministrativeUnitState {
      *
      * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The object ID of the administrative unit.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * If `true`, will return an error if an existing administrative unit is found with the same name
      */
-    preventDuplicateNames?: pulumi.Input<boolean>;
+    preventDuplicateNames?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -170,7 +170,7 @@ export interface AdministrativeUnitArgs {
     /**
      * The description of the administrative unit.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the administrative unit.
      */
@@ -178,7 +178,7 @@ export interface AdministrativeUnitArgs {
     /**
      * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      */
-    hiddenMembershipEnabled?: pulumi.Input<boolean>;
+    hiddenMembershipEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
      *
@@ -186,9 +186,9 @@ export interface AdministrativeUnitArgs {
      *
      * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If `true`, will return an error if an existing administrative unit is found with the same name
      */
-    preventDuplicateNames?: pulumi.Input<boolean>;
+    preventDuplicateNames?: pulumi.Input<boolean | undefined>;
 }

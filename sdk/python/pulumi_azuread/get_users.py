@@ -205,13 +205,13 @@ def get_users(employee_ids: Optional[Sequence[_builtins.str]] = None,
         return_all=pulumi.get(__ret__, 'return_all'),
         user_principal_names=pulumi.get(__ret__, 'user_principal_names'),
         users=pulumi.get(__ret__, 'users'))
-def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                     ignore_missing: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     mail_nicknames: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                     mails: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                     object_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                     return_all: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     user_principal_names: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_users_output(employee_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                     ignore_missing: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     mail_nicknames: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                     mails: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                     object_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                     return_all: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     user_principal_names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     Gets basic information for multiple Azure Active Directory users.

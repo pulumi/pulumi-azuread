@@ -157,9 +157,9 @@ def get_access_package(catalog_id: Optional[_builtins.str] = None,
         hidden=pulumi.get(__ret__, 'hidden'),
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'))
-def get_access_package_output(catalog_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              object_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_access_package_output(catalog_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              object_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessPackageResult]:
     """
     Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.

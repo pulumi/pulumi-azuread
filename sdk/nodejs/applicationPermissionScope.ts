@@ -181,39 +181,39 @@ export interface ApplicationPermissionScopeState {
     /**
      * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    adminConsentDescription?: pulumi.Input<string>;
+    adminConsentDescription?: pulumi.Input<string | undefined>;
     /**
      * Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    adminConsentDisplayName?: pulumi.Input<string>;
+    adminConsentDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the permission scope. Must be a valid UUID. Changing this forces a new resource to be created.
      */
-    scopeId?: pulumi.Input<string>;
+    scopeId?: pulumi.Input<string | undefined>;
     /**
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
      */
-    userConsentDescription?: pulumi.Input<string>;
+    userConsentDescription?: pulumi.Input<string | undefined>;
     /**
      * Display name for the delegated permission that appears in the end user consent experience.
      *
      * > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
      */
-    userConsentDisplayName?: pulumi.Input<string>;
+    userConsentDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The value that is used for the `scp` claim in OAuth access tokens.
      *
      * > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -239,17 +239,17 @@ export interface ApplicationPermissionScopeArgs {
     /**
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
      */
-    userConsentDescription?: pulumi.Input<string>;
+    userConsentDescription?: pulumi.Input<string | undefined>;
     /**
      * Display name for the delegated permission that appears in the end user consent experience.
      *
      * > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for permission scopes within your Terraform configuration
      */
-    userConsentDisplayName?: pulumi.Input<string>;
+    userConsentDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The value that is used for the `scp` claim in OAuth access tokens.
      *

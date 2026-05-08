@@ -88,10 +88,10 @@ class DirectoryRoleEligibilityScheduleRequestArgs:
 @pulumi.input_type
 class _DirectoryRoleEligibilityScheduleRequestState:
     def __init__(__self__, *,
-                 directory_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_definition_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 directory_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_definition_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DirectoryRoleEligibilityScheduleRequest resources.
 
@@ -111,50 +111,50 @@ class _DirectoryRoleEligibilityScheduleRequestState:
 
     @_builtins.property
     @pulumi.getter(name="directoryScopeId")
-    def directory_scope_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_scope_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "directory_scope_id")
 
     @directory_scope_id.setter
-    def directory_scope_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_scope_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_scope_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def justification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def justification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "justification")
 
     @justification.setter
-    def justification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def justification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "justification", value)
 
     @_builtins.property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
-    def principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleDefinitionId")
-    def role_definition_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_definition_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "role_definition_id")
 
     @role_definition_id.setter
-    def role_definition_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_definition_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_definition_id", value)
 
 
@@ -164,10 +164,10 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 directory_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_definition_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 directory_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_definition_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a single directory role eligibility schedule request within Azure Active Directory.
@@ -271,10 +271,10 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 directory_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_definition_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 directory_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_definition_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -306,10 +306,10 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            directory_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-            justification: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_definition_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DirectoryRoleEligibilityScheduleRequest':
+            directory_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+            justification: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_definition_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DirectoryRoleEligibilityScheduleRequest':
         """
         Get an existing DirectoryRoleEligibilityScheduleRequest resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

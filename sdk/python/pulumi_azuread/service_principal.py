@@ -22,20 +22,20 @@ __all__ = ['ServicePrincipalArgs', 'ServicePrincipal']
 class ServicePrincipalArgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[_builtins.str],
-                 account_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_role_assignment_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]] = None,
-                 login_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_single_sign_on_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_single_sign_on: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_existing: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_role_assignment_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_tags: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]] = None,
+                 features: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]] = None,
+                 login_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_email_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_single_sign_on_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_single_sign_on: pulumi.Input[Optional['ServicePrincipalSamlSingleSignOnArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_existing: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ServicePrincipal resource.
 
@@ -110,55 +110,55 @@ class ServicePrincipalArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountEnabled")
-    def account_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def account_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the service principal account is enabled. Defaults to `true`.
         """
         return pulumi.get(self, "account_enabled")
 
     @account_enabled.setter
-    def account_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def account_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "account_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="alternativeNames")
-    def alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alternative_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
         """
         return pulumi.get(self, "alternative_names")
 
     @alternative_names.setter
-    def alternative_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alternative_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternative_names", value)
 
     @_builtins.property
     @pulumi.getter(name="appRoleAssignmentRequired")
-    def app_role_assignment_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def app_role_assignment_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         """
         return pulumi.get(self, "app_role_assignment_required")
 
     @app_role_assignment_required.setter
-    def app_role_assignment_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def app_role_assignment_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "app_role_assignment_required", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the service principal provided for internal end-users.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="featureTags")
-    def feature_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]]:
+    def feature_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]]:
         """
         A `feature_tags` block as described below. Cannot be used together with the `tags` property.
 
@@ -167,61 +167,61 @@ class ServicePrincipalArgs:
         return pulumi.get(self, "feature_tags")
 
     @feature_tags.setter
-    def feature_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]]):
+    def feature_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]]):
         pulumi.set(self, "feature_tags", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
-    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]:
+    def features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]:
         """
         Block of features to configure for this service principal using tags
         """
         return pulumi.get(self, "features")
 
     @features.setter
-    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]):
+    def features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]):
         pulumi.set(self, "features", value)
 
     @_builtins.property
     @pulumi.getter(name="loginUrl")
-    def login_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         """
         return pulumi.get(self, "login_url")
 
     @login_url.setter
-    def login_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A free text field to capture information about the service principal, typically used for operational purposes.
         """
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationEmailAddresses")
-    def notification_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notification_email_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
         """
         return pulumi.get(self, "notification_email_addresses")
 
     @notification_email_addresses.setter
-    def notification_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notification_email_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notification_email_addresses", value)
 
     @_builtins.property
     @pulumi.getter
-    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
 
@@ -230,36 +230,36 @@ class ServicePrincipalArgs:
         return pulumi.get(self, "owners")
 
     @owners.setter
-    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "owners", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredSingleSignOnMode")
-    def preferred_single_sign_on_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_single_sign_on_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
         """
         return pulumi.get(self, "preferred_single_sign_on_mode")
 
     @preferred_single_sign_on_mode.setter
-    def preferred_single_sign_on_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_single_sign_on_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_single_sign_on_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="samlSingleSignOn")
-    def saml_single_sign_on(self) -> Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']]:
+    def saml_single_sign_on(self) -> pulumi.Input[Optional['ServicePrincipalSamlSingleSignOnArgs']]:
         """
         A `saml_single_sign_on` block as documented below.
         """
         return pulumi.get(self, "saml_single_sign_on")
 
     @saml_single_sign_on.setter
-    def saml_single_sign_on(self, value: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']]):
+    def saml_single_sign_on(self, value: pulumi.Input[Optional['ServicePrincipalSamlSingleSignOnArgs']]):
         pulumi.set(self, "saml_single_sign_on", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
 
@@ -268,12 +268,12 @@ class ServicePrincipalArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="useExisting")
-    def use_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
 
@@ -282,42 +282,42 @@ class ServicePrincipalArgs:
         return pulumi.get(self, "use_existing")
 
     @use_existing.setter
-    def use_existing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_existing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_existing", value)
 
 
 @pulumi.input_type
 class _ServicePrincipalState:
     def __init__(__self__, *,
-                 account_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_role_assignment_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]] = None,
-                 application_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]] = None,
-                 homepage_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_single_sign_on_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 saml_metadata_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_single_sign_on: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']] = None,
-                 service_principal_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sign_in_audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_existing: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_role_assignment_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 app_role_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 app_roles: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]] = None,
+                 application_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_tags: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]] = None,
+                 features: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]] = None,
+                 homepage_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_email_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oauth2_permission_scope_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 oauth2_permission_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_single_sign_on_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 saml_metadata_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_single_sign_on: pulumi.Input[Optional['ServicePrincipalSamlSingleSignOnArgs']] = None,
+                 service_principal_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sign_in_audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_existing: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipal resources.
 
@@ -423,115 +423,115 @@ class _ServicePrincipalState:
 
     @_builtins.property
     @pulumi.getter(name="accountEnabled")
-    def account_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def account_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the service principal account is enabled. Defaults to `true`.
         """
         return pulumi.get(self, "account_enabled")
 
     @account_enabled.setter
-    def account_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def account_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "account_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="alternativeNames")
-    def alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alternative_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
         """
         return pulumi.get(self, "alternative_names")
 
     @alternative_names.setter
-    def alternative_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alternative_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternative_names", value)
 
     @_builtins.property
     @pulumi.getter(name="appRoleAssignmentRequired")
-    def app_role_assignment_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def app_role_assignment_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         """
         return pulumi.get(self, "app_role_assignment_required")
 
     @app_role_assignment_required.setter
-    def app_role_assignment_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def app_role_assignment_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "app_role_assignment_required", value)
 
     @_builtins.property
     @pulumi.getter(name="appRoleIds")
-    def app_role_ids(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def app_role_ids(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
         """
         return pulumi.get(self, "app_role_ids")
 
     @app_role_ids.setter
-    def app_role_ids(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def app_role_ids(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "app_role_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="appRoles")
-    def app_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]]:
+    def app_roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]]:
         """
         A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         """
         return pulumi.get(self, "app_roles")
 
     @app_roles.setter
-    def app_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]]):
+    def app_roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]]):
         pulumi.set(self, "app_roles", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationTenantId")
-    def application_tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tenant ID where the associated application is registered.
         """
         return pulumi.get(self, "application_tenant_id")
 
     @application_tenant_id.setter
-    def application_tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client ID of the application for which to create a service principal.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the service principal provided for internal end-users.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name for the app role that appears during app role assignment and in consent experiences.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="featureTags")
-    def feature_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]]:
+    def feature_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]]:
         """
         A `feature_tags` block as described below. Cannot be used together with the `tags` property.
 
@@ -540,121 +540,121 @@ class _ServicePrincipalState:
         return pulumi.get(self, "feature_tags")
 
     @feature_tags.setter
-    def feature_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]]):
+    def feature_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureTagArgs']]]]):
         pulumi.set(self, "feature_tags", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
-    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]:
+    def features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]:
         """
         Block of features to configure for this service principal using tags
         """
         return pulumi.get(self, "features")
 
     @features.setter
-    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]):
+    def features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]):
         pulumi.set(self, "features", value)
 
     @_builtins.property
     @pulumi.getter(name="homepageUrl")
-    def homepage_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def homepage_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Home page or landing page of the associated application.
         """
         return pulumi.get(self, "homepage_url")
 
     @homepage_url.setter
-    def homepage_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def homepage_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "homepage_url", value)
 
     @_builtins.property
     @pulumi.getter(name="loginUrl")
-    def login_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         """
         return pulumi.get(self, "login_url")
 
     @login_url.setter
-    def login_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_url", value)
 
     @_builtins.property
     @pulumi.getter(name="logoutUrl")
-    def logout_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logout_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
         """
         return pulumi.get(self, "logout_url")
 
     @logout_url.setter
-    def logout_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logout_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logout_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A free text field to capture information about the service principal, typically used for operational purposes.
         """
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationEmailAddresses")
-    def notification_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notification_email_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
         """
         return pulumi.get(self, "notification_email_addresses")
 
     @notification_email_addresses.setter
-    def notification_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notification_email_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notification_email_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2PermissionScopeIds")
-    def oauth2_permission_scope_ids(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def oauth2_permission_scope_ids(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
         """
         return pulumi.get(self, "oauth2_permission_scope_ids")
 
     @oauth2_permission_scope_ids.setter
-    def oauth2_permission_scope_ids(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def oauth2_permission_scope_ids(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "oauth2_permission_scope_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2PermissionScopes")
-    def oauth2_permission_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]]:
+    def oauth2_permission_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]]:
         """
         A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
         """
         return pulumi.get(self, "oauth2_permission_scopes")
 
     @oauth2_permission_scopes.setter
-    def oauth2_permission_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]]):
+    def oauth2_permission_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]]):
         pulumi.set(self, "oauth2_permission_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the service principal.
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
 
@@ -663,84 +663,84 @@ class _ServicePrincipalState:
         return pulumi.get(self, "owners")
 
     @owners.setter
-    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "owners", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredSingleSignOnMode")
-    def preferred_single_sign_on_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_single_sign_on_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
         """
         return pulumi.get(self, "preferred_single_sign_on_mode")
 
     @preferred_single_sign_on_mode.setter
-    def preferred_single_sign_on_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_single_sign_on_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_single_sign_on_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectUris")
-    def redirect_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def redirect_uris(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
         """
         return pulumi.get(self, "redirect_uris")
 
     @redirect_uris.setter
-    def redirect_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def redirect_uris(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "redirect_uris", value)
 
     @_builtins.property
     @pulumi.getter(name="samlMetadataUrl")
-    def saml_metadata_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_metadata_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL where the service exposes SAML metadata for federation.
         """
         return pulumi.get(self, "saml_metadata_url")
 
     @saml_metadata_url.setter
-    def saml_metadata_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_metadata_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_metadata_url", value)
 
     @_builtins.property
     @pulumi.getter(name="samlSingleSignOn")
-    def saml_single_sign_on(self) -> Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']]:
+    def saml_single_sign_on(self) -> pulumi.Input[Optional['ServicePrincipalSamlSingleSignOnArgs']]:
         """
         A `saml_single_sign_on` block as documented below.
         """
         return pulumi.get(self, "saml_single_sign_on")
 
     @saml_single_sign_on.setter
-    def saml_single_sign_on(self, value: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']]):
+    def saml_single_sign_on(self, value: pulumi.Input[Optional['ServicePrincipalSamlSingleSignOnArgs']]):
         pulumi.set(self, "saml_single_sign_on", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalNames")
-    def service_principal_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def service_principal_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of identifier URI(s), copied over from the associated application.
         """
         return pulumi.get(self, "service_principal_names")
 
     @service_principal_names.setter
-    def service_principal_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def service_principal_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_principal_names", value)
 
     @_builtins.property
     @pulumi.getter(name="signInAudience")
-    def sign_in_audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sign_in_audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
         """
         return pulumi.get(self, "sign_in_audience")
 
     @sign_in_audience.setter
-    def sign_in_audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sign_in_audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sign_in_audience", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
 
@@ -749,24 +749,24 @@ class _ServicePrincipalState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="useExisting")
-    def use_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
 
@@ -775,7 +775,7 @@ class _ServicePrincipalState:
         return pulumi.get(self, "use_existing")
 
     @use_existing.setter
-    def use_existing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_existing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_existing", value)
 
 
@@ -785,21 +785,21 @@ class ServicePrincipal(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_role_assignment_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict']]]]] = None,
-                 login_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_single_sign_on_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_single_sign_on: Optional[pulumi.Input[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_existing: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_role_assignment_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]]] = None,
+                 features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict']]]]] = None,
+                 login_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_email_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_single_sign_on_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_single_sign_on: pulumi.Input[Optional[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages a service principal associated with an application within Azure Active Directory.
@@ -1022,21 +1022,21 @@ class ServicePrincipal(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_role_assignment_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict']]]]] = None,
-                 login_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preferred_single_sign_on_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_single_sign_on: Optional[pulumi.Input[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_existing: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_role_assignment_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]]] = None,
+                 features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict']]]]] = None,
+                 login_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_email_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preferred_single_sign_on_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_single_sign_on: pulumi.Input[Optional[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1087,35 +1087,35 @@ class ServicePrincipal(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            app_role_assignment_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalAppRoleArgs', 'ServicePrincipalAppRoleArgsDict']]]]] = None,
-            application_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]]] = None,
-            features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict']]]]] = None,
-            homepage_url: Optional[pulumi.Input[_builtins.str]] = None,
-            login_url: Optional[pulumi.Input[_builtins.str]] = None,
-            logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-            notes: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePrincipalOauth2PermissionScopeArgs', 'ServicePrincipalOauth2PermissionScopeArgsDict']]]]] = None,
-            object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            preferred_single_sign_on_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            saml_metadata_url: Optional[pulumi.Input[_builtins.str]] = None,
-            saml_single_sign_on: Optional[pulumi.Input[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']]] = None,
-            service_principal_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            sign_in_audience: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            use_existing: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ServicePrincipal':
+            account_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_role_assignment_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            app_role_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            app_roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalAppRoleArgs', 'ServicePrincipalAppRoleArgsDict']]]]] = None,
+            application_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict']]]]] = None,
+            features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict']]]]] = None,
+            homepage_url: pulumi.Input[Optional[_builtins.str]] = None,
+            login_url: pulumi.Input[Optional[_builtins.str]] = None,
+            logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_email_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            oauth2_permission_scope_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            oauth2_permission_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalOauth2PermissionScopeArgs', 'ServicePrincipalOauth2PermissionScopeArgsDict']]]]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_single_sign_on_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            saml_metadata_url: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_single_sign_on: pulumi.Input[Optional[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict']]] = None,
+            service_principal_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sign_in_audience: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            use_existing: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ServicePrincipal':
         """
         Get an existing ServicePrincipal resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

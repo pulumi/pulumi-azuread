@@ -176,12 +176,12 @@ def get_domains(admin_managed: Optional[_builtins.bool] = None,
         only_initial=pulumi.get(__ret__, 'only_initial'),
         only_root=pulumi.get(__ret__, 'only_root'),
         supports_services=pulumi.get(__ret__, 'supports_services'))
-def get_domains_output(admin_managed: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       include_unverified: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       only_default: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       only_initial: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       only_root: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       supports_services: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_domains_output(admin_managed: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       include_unverified: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       only_default: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       only_initial: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       only_root: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       supports_services: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
     Use this data source to access information about existing Domains within Azure Active Directory.

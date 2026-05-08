@@ -199,11 +199,11 @@ def get_service_principals(client_ids: Optional[Sequence[_builtins.str]] = None,
         object_ids=pulumi.get(__ret__, 'object_ids'),
         return_all=pulumi.get(__ret__, 'return_all'),
         service_principals=pulumi.get(__ret__, 'service_principals'))
-def get_service_principals_output(client_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                  display_names: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                  ignore_missing: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                  object_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                  return_all: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_service_principals_output(client_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                  display_names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                  ignore_missing: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                  object_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                  return_all: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalsResult]:
     """
     Gets basic information for multiple Azure Active Directory service principals.

@@ -145,27 +145,27 @@ export interface ApplicationFromTemplateState {
     /**
      * The resource ID for the application.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The object ID for the application.
      */
-    applicationObjectId?: pulumi.Input<string>;
+    applicationObjectId?: pulumi.Input<string | undefined>;
     /**
      * The display name for the application.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The resource ID for the service principal.
      */
-    servicePrincipalId?: pulumi.Input<string>;
+    servicePrincipalId?: pulumi.Input<string | undefined>;
     /**
      * The object ID for the service principal.
      */
-    servicePrincipalObjectId?: pulumi.Input<string>;
+    servicePrincipalObjectId?: pulumi.Input<string | undefined>;
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
 }
 
 /**

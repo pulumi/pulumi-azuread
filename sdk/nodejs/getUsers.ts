@@ -164,33 +164,33 @@ export interface GetUsersOutputArgs {
     /**
      * The employee identifiers assigned to the users by the organisation.
      */
-    employeeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    employeeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
      */
-    ignoreMissing?: pulumi.Input<boolean>;
+    ignoreMissing?: pulumi.Input<boolean | undefined>;
     /**
      * The email aliases of the users.
      *
      * > **Note:** `mailNicknames` are not a unique identifier for users. If multiple users share the same `mailNickname`, all matching users will be returned.
      */
-    mailNicknames?: pulumi.Input<pulumi.Input<string>[]>;
+    mailNicknames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The SMTP email addresses of the users.
      */
-    mails?: pulumi.Input<pulumi.Input<string>[]>;
+    mails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The object IDs of the users.
      */
-    objectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    objectIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
      */
-    returnAll?: pulumi.Input<boolean>;
+    returnAll?: pulumi.Input<boolean | undefined>;
     /**
      * The user principal names (UPNs) of the users.
      *
      * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames`, `mails`, or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      */
-    userPrincipalNames?: pulumi.Input<pulumi.Input<string>[]>;
+    userPrincipalNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -459,9 +459,9 @@ def get_service_principal(client_id: Optional[_builtins.str] = None,
         sign_in_audience=pulumi.get(__ret__, 'sign_in_audience'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
-def get_service_principal_output(client_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 object_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_service_principal_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 object_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalResult]:
     """
     Gets information about an existing service principal associated with an application within Azure Active Directory.

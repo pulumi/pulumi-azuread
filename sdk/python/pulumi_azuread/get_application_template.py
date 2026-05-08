@@ -187,8 +187,8 @@ def get_application_template(display_name: Optional[_builtins.str] = None,
         supported_provisioning_types=pulumi.get(__ret__, 'supported_provisioning_types'),
         supported_single_sign_on_modes=pulumi.get(__ret__, 'supported_single_sign_on_modes'),
         template_id=pulumi.get(__ret__, 'template_id'))
-def get_application_template_output(display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    template_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_application_template_output(display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    template_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationTemplateResult]:
     """
     Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).

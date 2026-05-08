@@ -24,7 +24,7 @@ class ApplicationFlexibleFederatedIdentityCredentialArgs:
                  claims_matching_expression: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
                  issuer: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationFlexibleFederatedIdentityCredential resource.
 
@@ -105,27 +105,27 @@ class ApplicationFlexibleFederatedIdentityCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the federated identity credential.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _ApplicationFlexibleFederatedIdentityCredentialState:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 claims_matching_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 claims_matching_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationFlexibleFederatedIdentityCredential resources.
 
@@ -154,86 +154,86 @@ class _ApplicationFlexibleFederatedIdentityCredentialState:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The audience that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter(name="claimsMatchingExpression")
-    def claims_matching_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def claims_matching_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expression to match for claims. See the Preview Documentation for more information.
         """
         return pulumi.get(self, "claims_matching_expression")
 
     @claims_matching_expression.setter
-    def claims_matching_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def claims_matching_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "claims_matching_expression", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialId")
-    def credential_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credential_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A UUID used to uniquely identify this federated identity credential.
         """
         return pulumi.get(self, "credential_id")
 
     @credential_id.setter
-    def credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credential_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credential_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the federated identity credential.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique display name for the federated identity credential. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the external identity provider, which must match the issuer claim of the external token being exchanged.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
 
@@ -243,12 +243,12 @@ class ApplicationFlexibleFederatedIdentityCredential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 claims_matching_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 claims_matching_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a flexible federated identity credential associated with an application within Azure Active Directory.
@@ -360,12 +360,12 @@ class ApplicationFlexibleFederatedIdentityCredential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 claims_matching_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 claims_matching_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -402,13 +402,13 @@ class ApplicationFlexibleFederatedIdentityCredential(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_id: Optional[pulumi.Input[_builtins.str]] = None,
-            audience: Optional[pulumi.Input[_builtins.str]] = None,
-            claims_matching_expression: Optional[pulumi.Input[_builtins.str]] = None,
-            credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            issuer: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApplicationFlexibleFederatedIdentityCredential':
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            audience: pulumi.Input[Optional[_builtins.str]] = None,
+            claims_matching_expression: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationFlexibleFederatedIdentityCredential':
         """
         Get an existing ApplicationFlexibleFederatedIdentityCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

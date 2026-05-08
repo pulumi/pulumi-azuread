@@ -116,11 +116,11 @@ export interface ApplicationKnownClientsState {
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * A set of client IDs for the known applications.
      */
-    knownClientIds?: pulumi.Input<pulumi.Input<string>[]>;
+    knownClientIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

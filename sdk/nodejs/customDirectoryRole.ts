@@ -166,31 +166,31 @@ export interface CustomDirectoryRoleState {
     /**
      * The description of the custom directory role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the custom directory role.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the role is enabled for assignment.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The object ID of the custom directory role.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * A collection of `permissions` blocks as documented below.
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.CustomDirectoryRolePermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.CustomDirectoryRolePermission>[] | undefined>;
     /**
      * Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * The version of the role definition. This can be any arbitrary string between 1-128 characters.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,7 +200,7 @@ export interface CustomDirectoryRoleArgs {
     /**
      * The description of the custom directory role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the custom directory role.
      */
@@ -216,7 +216,7 @@ export interface CustomDirectoryRoleArgs {
     /**
      * Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * The version of the role definition. This can be any arbitrary string between 1-128 characters.
      */

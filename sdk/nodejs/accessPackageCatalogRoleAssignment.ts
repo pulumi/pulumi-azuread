@@ -130,15 +130,15 @@ export interface AccessPackageCatalogRoleAssignmentState {
     /**
      * The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
      */
-    catalogId?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
-    principalObjectId?: pulumi.Input<string>;
+    principalObjectId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -21,8 +21,8 @@ class DirectoryRoleAssignmentArgs:
     def __init__(__self__, *,
                  principal_object_id: pulumi.Input[_builtins.str],
                  role_id: pulumi.Input[_builtins.str],
-                 app_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_scope_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_scope_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DirectoryRoleAssignment resource.
 
@@ -64,36 +64,36 @@ class DirectoryRoleAssignmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="appScopeId")
-    def app_scope_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_scope_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "app_scope_id")
 
     @app_scope_id.setter
-    def app_scope_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_scope_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_scope_id", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryScopeId")
-    def directory_scope_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_scope_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "directory_scope_id")
 
     @directory_scope_id.setter
-    def directory_scope_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_scope_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_scope_id", value)
 
 
 @pulumi.input_type
 class _DirectoryRoleAssignmentState:
     def __init__(__self__, *,
-                 app_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DirectoryRoleAssignment resources.
 
@@ -113,50 +113,50 @@ class _DirectoryRoleAssignmentState:
 
     @_builtins.property
     @pulumi.getter(name="appScopeId")
-    def app_scope_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_scope_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "app_scope_id")
 
     @app_scope_id.setter
-    def app_scope_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_scope_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_scope_id", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryScopeId")
-    def directory_scope_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_scope_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "directory_scope_id")
 
     @directory_scope_id.setter
-    def directory_scope_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_scope_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_scope_id", value)
 
     @_builtins.property
     @pulumi.getter(name="principalObjectId")
-    def principal_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "principal_object_id")
 
     @principal_object_id.setter
-    def principal_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
 
@@ -166,10 +166,10 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a single directory role assignment within Azure Active Directory.
@@ -355,10 +355,10 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,10 +386,10 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-            principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DirectoryRoleAssignment':
+            app_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DirectoryRoleAssignment':
         """
         Get an existing DirectoryRoleAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -507,10 +507,10 @@ def get_application(client_id: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         terms_of_service_url=pulumi.get(__ret__, 'terms_of_service_url'),
         webs=pulumi.get(__ret__, 'webs'))
-def get_application_output(client_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           identifier_uri: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           object_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_application_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           identifier_uri: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           object_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationResult]:
     """
     Use this data source to access information about an existing Application within Azure Active Directory.

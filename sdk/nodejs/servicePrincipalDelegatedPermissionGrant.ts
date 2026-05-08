@@ -200,21 +200,21 @@ export interface ServicePrincipalDelegatedPermissionGrantState {
     /**
      * A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
      */
-    claimValues?: pulumi.Input<pulumi.Input<string>[]>;
+    claimValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
      */
-    resourceServicePrincipalObjectId?: pulumi.Input<string>;
+    resourceServicePrincipalObjectId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
      */
-    servicePrincipalObjectId?: pulumi.Input<string>;
+    servicePrincipalObjectId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      *
      * > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
      */
-    userObjectId?: pulumi.Input<string>;
+    userObjectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -238,5 +238,5 @@ export interface ServicePrincipalDelegatedPermissionGrantArgs {
      *
      * > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
      */
-    userObjectId?: pulumi.Input<string>;
+    userObjectId?: pulumi.Input<string | undefined>;
 }

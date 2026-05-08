@@ -170,31 +170,31 @@ export interface ApplicationAppRoleState {
     /**
      * A set of values to specify whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications by setting to `Application`, or to both.
      */
-    allowedMemberTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedMemberTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Description of the app role that appears when the role is being assigned, and if the role functions as an application permissions, during the consent experiences.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name for the app role that appears during app role assignment and in consent experiences.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
      *
      * > **Tip** Use the `randomUuid` resource to generate UUIDs and save them to state for app roles within your Terraform configuration
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
      *
      * > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,5 +228,5 @@ export interface ApplicationAppRoleArgs {
      *
      * > **Roles and Permission Scopes** In Azure Active Directory, application roles and permission scopes exported by an application share the same namespace and cannot contain duplicate values.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

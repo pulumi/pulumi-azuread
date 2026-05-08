@@ -126,15 +126,15 @@ export interface AdministrativeUnitRoleMemberState {
     /**
      * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
      */
-    administrativeUnitObjectId?: pulumi.Input<string>;
+    administrativeUnitObjectId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
      */
-    memberObjectId?: pulumi.Input<string>;
+    memberObjectId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
      */
-    roleObjectId?: pulumi.Input<string>;
+    roleObjectId?: pulumi.Input<string | undefined>;
 }
 
 /**

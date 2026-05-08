@@ -20,20 +20,20 @@ __all__ = ['ApplicationRegistrationArgs', 'ApplicationRegistration']
 class ApplicationRegistrationArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 homepage_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 implicit_access_token_issuance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 implicit_id_token_issuance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 marketing_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 privacy_statement_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_access_token_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_management_reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_in_audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 terms_of_service_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_membership_claims: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 homepage_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 implicit_access_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 implicit_id_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 marketing_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 privacy_statement_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_access_token_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_management_reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_in_audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 terms_of_service_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApplicationRegistration resource.
 
@@ -97,195 +97,195 @@ class ApplicationRegistrationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the application, as shown to end users.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMembershipClaims")
-    def group_membership_claims(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_membership_claims(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         """
         return pulumi.get(self, "group_membership_claims")
 
     @group_membership_claims.setter
-    def group_membership_claims(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_membership_claims(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_membership_claims", value)
 
     @_builtins.property
     @pulumi.getter(name="homepageUrl")
-    def homepage_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def homepage_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Home page or landing page of the application.
         """
         return pulumi.get(self, "homepage_url")
 
     @homepage_url.setter
-    def homepage_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def homepage_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "homepage_url", value)
 
     @_builtins.property
     @pulumi.getter(name="implicitAccessTokenIssuanceEnabled")
-    def implicit_access_token_issuance_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def implicit_access_token_issuance_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this web application can request an access token using OAuth implicit flow.
         """
         return pulumi.get(self, "implicit_access_token_issuance_enabled")
 
     @implicit_access_token_issuance_enabled.setter
-    def implicit_access_token_issuance_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def implicit_access_token_issuance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "implicit_access_token_issuance_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="implicitIdTokenIssuanceEnabled")
-    def implicit_id_token_issuance_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def implicit_id_token_issuance_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this web application can request an ID token using OAuth implicit flow.
         """
         return pulumi.get(self, "implicit_id_token_issuance_enabled")
 
     @implicit_id_token_issuance_enabled.setter
-    def implicit_id_token_issuance_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def implicit_id_token_issuance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "implicit_id_token_issuance_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="logoutUrl")
-    def logout_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logout_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
         """
         return pulumi.get(self, "logout_url")
 
     @logout_url.setter
-    def logout_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logout_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logout_url", value)
 
     @_builtins.property
     @pulumi.getter(name="marketingUrl")
-    def marketing_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def marketing_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the marketing page for the application.
         """
         return pulumi.get(self, "marketing_url")
 
     @marketing_url.setter
-    def marketing_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def marketing_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "marketing_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-specified notes relevant for the management of the application.
         """
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="privacyStatementUrl")
-    def privacy_statement_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privacy_statement_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the privacy statement for the application.
         """
         return pulumi.get(self, "privacy_statement_url")
 
     @privacy_statement_url.setter
-    def privacy_statement_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privacy_statement_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privacy_statement_url", value)
 
     @_builtins.property
     @pulumi.getter(name="requestedAccessTokenVersion")
-    def requested_access_token_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def requested_access_token_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
         """
         return pulumi.get(self, "requested_access_token_version")
 
     @requested_access_token_version.setter
-    def requested_access_token_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def requested_access_token_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "requested_access_token_version", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceManagementReference")
-    def service_management_reference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_management_reference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         References application context information from a Service or Asset Management database.
         """
         return pulumi.get(self, "service_management_reference")
 
     @service_management_reference.setter
-    def service_management_reference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_management_reference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_management_reference", value)
 
     @_builtins.property
     @pulumi.getter(name="signInAudience")
-    def sign_in_audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sign_in_audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         """
         return pulumi.get(self, "sign_in_audience")
 
     @sign_in_audience.setter
-    def sign_in_audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sign_in_audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sign_in_audience", value)
 
     @_builtins.property
     @pulumi.getter(name="supportUrl")
-    def support_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def support_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the support page for the application.
         """
         return pulumi.get(self, "support_url")
 
     @support_url.setter
-    def support_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def support_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "support_url", value)
 
     @_builtins.property
     @pulumi.getter(name="termsOfServiceUrl")
-    def terms_of_service_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def terms_of_service_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the terms of service statement for the application.
         """
         return pulumi.get(self, "terms_of_service_url")
 
     @terms_of_service_url.setter
-    def terms_of_service_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def terms_of_service_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "terms_of_service_url", value)
 
 
 @pulumi.input_type
 class _ApplicationRegistrationState:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled_by_microsoft: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 homepage_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 implicit_access_token_issuance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 implicit_id_token_issuance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 marketing_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 privacy_statement_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 publisher_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_access_token_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_management_reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_in_audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 terms_of_service_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled_by_microsoft: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_membership_claims: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 homepage_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 implicit_access_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 implicit_id_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 marketing_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 privacy_statement_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 publisher_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_access_token_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_management_reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_in_audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 terms_of_service_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationRegistration resources.
 
@@ -350,230 +350,230 @@ class _ApplicationRegistrationState:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Client ID for the application, which is globally unique.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the application, as shown to end users.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disabledByMicrosoft")
-    def disabled_by_microsoft(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disabled_by_microsoft(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         """
         return pulumi.get(self, "disabled_by_microsoft")
 
     @disabled_by_microsoft.setter
-    def disabled_by_microsoft(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disabled_by_microsoft(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disabled_by_microsoft", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for the application.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMembershipClaims")
-    def group_membership_claims(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def group_membership_claims(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         """
         return pulumi.get(self, "group_membership_claims")
 
     @group_membership_claims.setter
-    def group_membership_claims(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def group_membership_claims(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_membership_claims", value)
 
     @_builtins.property
     @pulumi.getter(name="homepageUrl")
-    def homepage_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def homepage_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Home page or landing page of the application.
         """
         return pulumi.get(self, "homepage_url")
 
     @homepage_url.setter
-    def homepage_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def homepage_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "homepage_url", value)
 
     @_builtins.property
     @pulumi.getter(name="implicitAccessTokenIssuanceEnabled")
-    def implicit_access_token_issuance_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def implicit_access_token_issuance_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this web application can request an access token using OAuth implicit flow.
         """
         return pulumi.get(self, "implicit_access_token_issuance_enabled")
 
     @implicit_access_token_issuance_enabled.setter
-    def implicit_access_token_issuance_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def implicit_access_token_issuance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "implicit_access_token_issuance_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="implicitIdTokenIssuanceEnabled")
-    def implicit_id_token_issuance_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def implicit_id_token_issuance_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this web application can request an ID token using OAuth implicit flow.
         """
         return pulumi.get(self, "implicit_id_token_issuance_enabled")
 
     @implicit_id_token_issuance_enabled.setter
-    def implicit_id_token_issuance_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def implicit_id_token_issuance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "implicit_id_token_issuance_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="logoutUrl")
-    def logout_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logout_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
         """
         return pulumi.get(self, "logout_url")
 
     @logout_url.setter
-    def logout_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logout_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logout_url", value)
 
     @_builtins.property
     @pulumi.getter(name="marketingUrl")
-    def marketing_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def marketing_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the marketing page for the application.
         """
         return pulumi.get(self, "marketing_url")
 
     @marketing_url.setter
-    def marketing_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def marketing_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "marketing_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def notes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-specified notes relevant for the management of the application.
         """
         return pulumi.get(self, "notes")
 
     @notes.setter
-    def notes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the application within the tenant.
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="privacyStatementUrl")
-    def privacy_statement_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privacy_statement_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the privacy statement for the application.
         """
         return pulumi.get(self, "privacy_statement_url")
 
     @privacy_statement_url.setter
-    def privacy_statement_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privacy_statement_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privacy_statement_url", value)
 
     @_builtins.property
     @pulumi.getter(name="publisherDomain")
-    def publisher_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def publisher_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The verified publisher domain for the application.
         """
         return pulumi.get(self, "publisher_domain")
 
     @publisher_domain.setter
-    def publisher_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def publisher_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "publisher_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="requestedAccessTokenVersion")
-    def requested_access_token_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def requested_access_token_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
         """
         return pulumi.get(self, "requested_access_token_version")
 
     @requested_access_token_version.setter
-    def requested_access_token_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def requested_access_token_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "requested_access_token_version", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceManagementReference")
-    def service_management_reference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_management_reference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         References application context information from a Service or Asset Management database.
         """
         return pulumi.get(self, "service_management_reference")
 
     @service_management_reference.setter
-    def service_management_reference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_management_reference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_management_reference", value)
 
     @_builtins.property
     @pulumi.getter(name="signInAudience")
-    def sign_in_audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sign_in_audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         """
         return pulumi.get(self, "sign_in_audience")
 
     @sign_in_audience.setter
-    def sign_in_audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sign_in_audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sign_in_audience", value)
 
     @_builtins.property
     @pulumi.getter(name="supportUrl")
-    def support_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def support_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the support page for the application.
         """
         return pulumi.get(self, "support_url")
 
     @support_url.setter
-    def support_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def support_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "support_url", value)
 
     @_builtins.property
     @pulumi.getter(name="termsOfServiceUrl")
-    def terms_of_service_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def terms_of_service_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the terms of service statement for the application.
         """
         return pulumi.get(self, "terms_of_service_url")
 
     @terms_of_service_url.setter
-    def terms_of_service_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def terms_of_service_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "terms_of_service_url", value)
 
 
@@ -583,21 +583,21 @@ class ApplicationRegistration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 homepage_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 implicit_access_token_issuance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 implicit_id_token_issuance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 marketing_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 privacy_statement_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_access_token_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_management_reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_in_audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 terms_of_service_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_membership_claims: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 homepage_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 implicit_access_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 implicit_id_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 marketing_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 privacy_statement_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_access_token_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_management_reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_in_audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 terms_of_service_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages an application registration within Azure Active Directory.
@@ -718,21 +718,21 @@ class ApplicationRegistration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 homepage_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 implicit_access_token_issuance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 implicit_id_token_issuance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 marketing_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes: Optional[pulumi.Input[_builtins.str]] = None,
-                 privacy_statement_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_access_token_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_management_reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_in_audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 terms_of_service_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_membership_claims: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 homepage_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 implicit_access_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 implicit_id_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 marketing_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes: pulumi.Input[Optional[_builtins.str]] = None,
+                 privacy_statement_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_access_token_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_management_reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_in_audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 terms_of_service_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -773,25 +773,25 @@ class ApplicationRegistration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled_by_microsoft: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            homepage_url: Optional[pulumi.Input[_builtins.str]] = None,
-            implicit_access_token_issuance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            implicit_id_token_issuance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            logout_url: Optional[pulumi.Input[_builtins.str]] = None,
-            marketing_url: Optional[pulumi.Input[_builtins.str]] = None,
-            notes: Optional[pulumi.Input[_builtins.str]] = None,
-            object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            privacy_statement_url: Optional[pulumi.Input[_builtins.str]] = None,
-            publisher_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            requested_access_token_version: Optional[pulumi.Input[_builtins.int]] = None,
-            service_management_reference: Optional[pulumi.Input[_builtins.str]] = None,
-            sign_in_audience: Optional[pulumi.Input[_builtins.str]] = None,
-            support_url: Optional[pulumi.Input[_builtins.str]] = None,
-            terms_of_service_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApplicationRegistration':
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled_by_microsoft: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_membership_claims: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            homepage_url: pulumi.Input[Optional[_builtins.str]] = None,
+            implicit_access_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            implicit_id_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+            marketing_url: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            privacy_statement_url: pulumi.Input[Optional[_builtins.str]] = None,
+            publisher_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            requested_access_token_version: pulumi.Input[Optional[_builtins.int]] = None,
+            service_management_reference: pulumi.Input[Optional[_builtins.str]] = None,
+            sign_in_audience: pulumi.Input[Optional[_builtins.str]] = None,
+            support_url: pulumi.Input[Optional[_builtins.str]] = None,
+            terms_of_service_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationRegistration':
         """
         Get an existing ApplicationRegistration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

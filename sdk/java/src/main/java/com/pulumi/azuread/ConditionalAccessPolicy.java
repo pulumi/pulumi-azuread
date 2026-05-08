@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersArgs;
  * import com.pulumi.azuread.inputs.ConditionalAccessPolicyGrantControlsArgs;
  * import com.pulumi.azuread.inputs.ConditionalAccessPolicySessionControlsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *             .sessionControls(ConditionalAccessPolicySessionControlsArgs.builder()
  *                 .applicationEnforcedRestrictionsEnabled(true)
  *                 .disableResilienceDefaults(false)
- *                 .signInFrequency(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(10) (example.pp:37,46-48)))
+ *                 .signInFrequency(10)
  *                 .signInFrequencyPeriod("hours")
  *                 .cloudAppSecurityPolicy("monitorOnly")
  *                 .build())
@@ -132,8 +132,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsClientApplicationsArgs;
  * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersArgs;
  * import com.pulumi.azuread.inputs.ConditionalAccessPolicyGrantControlsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -191,8 +191,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsClientApplicationsArgs;
  * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersArgs;
  * import com.pulumi.azuread.inputs.ConditionalAccessPolicyGrantControlsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

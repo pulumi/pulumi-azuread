@@ -143,15 +143,15 @@ export interface GetAccessPackageOutputArgs {
     /**
      * The ID of the Catalog this access package is in.
      */
-    catalogId?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string | undefined>;
     /**
      * The display name of the access package.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of this access package.
      *
      * > Either `objectId`, or both `catalogId` and `displayName`, must be specified.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
 }

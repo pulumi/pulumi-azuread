@@ -398,201 +398,201 @@ export interface UserState {
     /**
      * A freeform field for the user to describe themselves
      */
-    aboutMe?: pulumi.Input<string>;
+    aboutMe?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the account should be enabled.
      */
-    accountEnabled?: pulumi.Input<boolean>;
+    accountEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
      */
-    ageGroup?: pulumi.Input<string>;
+    ageGroup?: pulumi.Input<string | undefined>;
     /**
      * A list of telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure AD Connect.
      */
-    businessPhones?: pulumi.Input<pulumi.Input<string>[]>;
+    businessPhones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The city in which the user is located.
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
      * The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
      */
-    companyName?: pulumi.Input<string>;
+    companyName?: pulumi.Input<string | undefined>;
     /**
      * Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
      */
-    consentProvidedForMinor?: pulumi.Input<string>;
+    consentProvidedForMinor?: pulumi.Input<string | undefined>;
     /**
      * The cost center associated with the user.
      */
-    costCenter?: pulumi.Input<string>;
+    costCenter?: pulumi.Input<string | undefined>;
     /**
      * The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
      */
-    country?: pulumi.Input<string>;
+    country?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
      */
-    creationType?: pulumi.Input<string>;
+    creationType?: pulumi.Input<string | undefined>;
     /**
      * The name for the department in which the user works.
      */
-    department?: pulumi.Input<string>;
+    department?: pulumi.Input<string | undefined>;
     /**
      * Whether the user's password is exempt from expiring. Defaults to `false`.
      */
-    disablePasswordExpiration?: pulumi.Input<boolean>;
+    disablePasswordExpiration?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
      */
-    disableStrongPassword?: pulumi.Input<boolean>;
+    disableStrongPassword?: pulumi.Input<boolean | undefined>;
     /**
      * The name to display in the address book for the user.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the division in which the user works.
      */
-    division?: pulumi.Input<string>;
+    division?: pulumi.Input<string | undefined>;
     /**
      * The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
      */
-    employeeHireDate?: pulumi.Input<string>;
+    employeeHireDate?: pulumi.Input<string | undefined>;
     /**
      * The employee identifier assigned to the user by the organisation.
      */
-    employeeId?: pulumi.Input<string>;
+    employeeId?: pulumi.Input<string | undefined>;
     /**
      * Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
      */
-    employeeType?: pulumi.Input<string>;
+    employeeType?: pulumi.Input<string | undefined>;
     /**
      * For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
      */
-    externalUserState?: pulumi.Input<string>;
+    externalUserState?: pulumi.Input<string | undefined>;
     /**
      * The fax number of the user.
      */
-    faxNumber?: pulumi.Input<string>;
+    faxNumber?: pulumi.Input<string | undefined>;
     /**
      * Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
      */
-    forcePasswordChange?: pulumi.Input<boolean>;
+    forcePasswordChange?: pulumi.Input<boolean | undefined>;
     /**
      * The given name (first name) of the user.
      */
-    givenName?: pulumi.Input<string>;
+    givenName?: pulumi.Input<string | undefined>;
     /**
      * A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
      */
-    imAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    imAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The user’s job title.
      */
-    jobTitle?: pulumi.Input<string>;
+    jobTitle?: pulumi.Input<string | undefined>;
     /**
      * The SMTP address for the user. This property cannot be unset once specified.
      */
-    mail?: pulumi.Input<string>;
+    mail?: pulumi.Input<string | undefined>;
     /**
      * The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
      */
-    mailNickname?: pulumi.Input<string>;
+    mailNickname?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the user's manager.
      */
-    managerId?: pulumi.Input<string>;
+    managerId?: pulumi.Input<string | undefined>;
     /**
      * The primary cellular telephone number for the user.
      */
-    mobilePhone?: pulumi.Input<string>;
+    mobilePhone?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the user.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * The office location in the user's place of business.
      */
-    officeLocation?: pulumi.Input<string>;
+    officeLocation?: pulumi.Input<string | undefined>;
     /**
      * The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
      */
-    onpremisesDistinguishedName?: pulumi.Input<string>;
+    onpremisesDistinguishedName?: pulumi.Input<string | undefined>;
     /**
      * The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
      */
-    onpremisesDomainName?: pulumi.Input<string>;
+    onpremisesDomainName?: pulumi.Input<string | undefined>;
     /**
      * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
      */
-    onpremisesImmutableId?: pulumi.Input<string>;
+    onpremisesImmutableId?: pulumi.Input<string | undefined>;
     /**
      * The on-premise SAM account name of the user.
      */
-    onpremisesSamAccountName?: pulumi.Input<string>;
+    onpremisesSamAccountName?: pulumi.Input<string | undefined>;
     /**
      * The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
      */
-    onpremisesSecurityIdentifier?: pulumi.Input<string>;
+    onpremisesSecurityIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
      */
-    onpremisesSyncEnabled?: pulumi.Input<boolean>;
+    onpremisesSyncEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The on-premise user principal name of the user.
      */
-    onpremisesUserPrincipalName?: pulumi.Input<string>;
+    onpremisesUserPrincipalName?: pulumi.Input<string | undefined>;
     /**
      * A list of additional email addresses for the user.
      */
-    otherMails?: pulumi.Input<pulumi.Input<string>[]>;
+    otherMails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
      *
      * > **Passwords and importing users** Passwords can be changed but not cleared. Removing the `password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
      */
-    postalCode?: pulumi.Input<string>;
+    postalCode?: pulumi.Input<string | undefined>;
     /**
      * The user's preferred language, in ISO 639-1 notation.
      */
-    preferredLanguage?: pulumi.Input<string>;
+    preferredLanguage?: pulumi.Input<string | undefined>;
     /**
      * List of email addresses for the user that direct to the same mailbox.
      */
-    proxyAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    proxyAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether or not the Outlook global address list should include this user. Defaults to `true`.
      */
-    showInAddressList?: pulumi.Input<boolean>;
+    showInAddressList?: pulumi.Input<boolean | undefined>;
     /**
      * The state or province in the user's address.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The street address of the user's place of business.
      */
-    streetAddress?: pulumi.Input<string>;
+    streetAddress?: pulumi.Input<string | undefined>;
     /**
      * The user's surname (family name or last name).
      */
-    surname?: pulumi.Input<string>;
+    surname?: pulumi.Input<string | undefined>;
     /**
      * The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
      */
-    usageLocation?: pulumi.Input<string>;
+    usageLocation?: pulumi.Input<string | undefined>;
     /**
      * The user principal name (UPN) of the user.
      */
-    userPrincipalName?: pulumi.Input<string>;
+    userPrincipalName?: pulumi.Input<string | undefined>;
     /**
      * The user type in the directory. Possible values are `Guest` or `Member`.
      */
-    userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -602,47 +602,47 @@ export interface UserArgs {
     /**
      * Whether or not the account should be enabled.
      */
-    accountEnabled?: pulumi.Input<boolean>;
+    accountEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
      */
-    ageGroup?: pulumi.Input<string>;
+    ageGroup?: pulumi.Input<string | undefined>;
     /**
      * A list of telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure AD Connect.
      */
-    businessPhones?: pulumi.Input<pulumi.Input<string>[]>;
+    businessPhones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The city in which the user is located.
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
      * The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
      */
-    companyName?: pulumi.Input<string>;
+    companyName?: pulumi.Input<string | undefined>;
     /**
      * Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
      */
-    consentProvidedForMinor?: pulumi.Input<string>;
+    consentProvidedForMinor?: pulumi.Input<string | undefined>;
     /**
      * The cost center associated with the user.
      */
-    costCenter?: pulumi.Input<string>;
+    costCenter?: pulumi.Input<string | undefined>;
     /**
      * The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
      */
-    country?: pulumi.Input<string>;
+    country?: pulumi.Input<string | undefined>;
     /**
      * The name for the department in which the user works.
      */
-    department?: pulumi.Input<string>;
+    department?: pulumi.Input<string | undefined>;
     /**
      * Whether the user's password is exempt from expiring. Defaults to `false`.
      */
-    disablePasswordExpiration?: pulumi.Input<boolean>;
+    disablePasswordExpiration?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
      */
-    disableStrongPassword?: pulumi.Input<boolean>;
+    disableStrongPassword?: pulumi.Input<boolean | undefined>;
     /**
      * The name to display in the address book for the user.
      */
@@ -650,97 +650,97 @@ export interface UserArgs {
     /**
      * The name of the division in which the user works.
      */
-    division?: pulumi.Input<string>;
+    division?: pulumi.Input<string | undefined>;
     /**
      * The hire date of the user, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
      */
-    employeeHireDate?: pulumi.Input<string>;
+    employeeHireDate?: pulumi.Input<string | undefined>;
     /**
      * The employee identifier assigned to the user by the organisation.
      */
-    employeeId?: pulumi.Input<string>;
+    employeeId?: pulumi.Input<string | undefined>;
     /**
      * Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
      */
-    employeeType?: pulumi.Input<string>;
+    employeeType?: pulumi.Input<string | undefined>;
     /**
      * The fax number of the user.
      */
-    faxNumber?: pulumi.Input<string>;
+    faxNumber?: pulumi.Input<string | undefined>;
     /**
      * Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
      */
-    forcePasswordChange?: pulumi.Input<boolean>;
+    forcePasswordChange?: pulumi.Input<boolean | undefined>;
     /**
      * The given name (first name) of the user.
      */
-    givenName?: pulumi.Input<string>;
+    givenName?: pulumi.Input<string | undefined>;
     /**
      * The user’s job title.
      */
-    jobTitle?: pulumi.Input<string>;
+    jobTitle?: pulumi.Input<string | undefined>;
     /**
      * The SMTP address for the user. This property cannot be unset once specified.
      */
-    mail?: pulumi.Input<string>;
+    mail?: pulumi.Input<string | undefined>;
     /**
      * The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
      */
-    mailNickname?: pulumi.Input<string>;
+    mailNickname?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the user's manager.
      */
-    managerId?: pulumi.Input<string>;
+    managerId?: pulumi.Input<string | undefined>;
     /**
      * The primary cellular telephone number for the user.
      */
-    mobilePhone?: pulumi.Input<string>;
+    mobilePhone?: pulumi.Input<string | undefined>;
     /**
      * The office location in the user's place of business.
      */
-    officeLocation?: pulumi.Input<string>;
+    officeLocation?: pulumi.Input<string | undefined>;
     /**
      * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
      */
-    onpremisesImmutableId?: pulumi.Input<string>;
+    onpremisesImmutableId?: pulumi.Input<string | undefined>;
     /**
      * A list of additional email addresses for the user.
      */
-    otherMails?: pulumi.Input<pulumi.Input<string>[]>;
+    otherMails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
      *
      * > **Passwords and importing users** Passwords can be changed but not cleared. Removing the `password` property for an existing user resource, or setting the password value to a blank string, will not remove the password. When importing a user, Terraform will not reset the password unless the value is subsequently changed in your configuration.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
      */
-    postalCode?: pulumi.Input<string>;
+    postalCode?: pulumi.Input<string | undefined>;
     /**
      * The user's preferred language, in ISO 639-1 notation.
      */
-    preferredLanguage?: pulumi.Input<string>;
+    preferredLanguage?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the Outlook global address list should include this user. Defaults to `true`.
      */
-    showInAddressList?: pulumi.Input<boolean>;
+    showInAddressList?: pulumi.Input<boolean | undefined>;
     /**
      * The state or province in the user's address.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The street address of the user's place of business.
      */
-    streetAddress?: pulumi.Input<string>;
+    streetAddress?: pulumi.Input<string | undefined>;
     /**
      * The user's surname (family name or last name).
      */
-    surname?: pulumi.Input<string>;
+    surname?: pulumi.Input<string | undefined>;
     /**
      * The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
      */
-    usageLocation?: pulumi.Input<string>;
+    usageLocation?: pulumi.Input<string | undefined>;
     /**
      * The user principal name (UPN) of the user.
      */

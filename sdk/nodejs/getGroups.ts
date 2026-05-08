@@ -235,31 +235,31 @@ export interface GetGroupsOutputArgs {
     /**
      * A common display name prefix to match when returning groups.
      */
-    displayNamePrefix?: pulumi.Input<string>;
+    displayNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * The display names of the groups.
      */
-    displayNames?: pulumi.Input<pulumi.Input<string>[]>;
+    displayNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `returnAll`. Defaults to `false`.
      */
-    ignoreMissing?: pulumi.Input<boolean>;
+    ignoreMissing?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      */
-    mailEnabled?: pulumi.Input<boolean>;
+    mailEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The object IDs of the groups.
      */
-    objectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    objectIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
      */
-    returnAll?: pulumi.Input<boolean>;
+    returnAll?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      *
      * > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
      */
-    securityEnabled?: pulumi.Input<boolean>;
+    securityEnabled?: pulumi.Input<boolean | undefined>;
 }

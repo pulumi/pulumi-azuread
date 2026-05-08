@@ -218,79 +218,79 @@ export interface ApplicationRegistrationState {
     /**
      * The Client ID for the application, which is globally unique.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * A description of the application, as shown to end users.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
      */
-    disabledByMicrosoft?: pulumi.Input<string>;
+    disabledByMicrosoft?: pulumi.Input<string | undefined>;
     /**
      * The display name for the application.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
-    groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[]>;
+    groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Home page or landing page of the application.
      */
-    homepageUrl?: pulumi.Input<string>;
+    homepageUrl?: pulumi.Input<string | undefined>;
     /**
      * Whether this web application can request an access token using OAuth implicit flow.
      */
-    implicitAccessTokenIssuanceEnabled?: pulumi.Input<boolean>;
+    implicitAccessTokenIssuanceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this web application can request an ID token using OAuth implicit flow.
      */
-    implicitIdTokenIssuanceEnabled?: pulumi.Input<boolean>;
+    implicitIdTokenIssuanceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
      */
-    logoutUrl?: pulumi.Input<string>;
+    logoutUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the marketing page for the application.
      */
-    marketingUrl?: pulumi.Input<string>;
+    marketingUrl?: pulumi.Input<string | undefined>;
     /**
      * User-specified notes relevant for the management of the application.
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the application within the tenant.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * URL of the privacy statement for the application.
      */
-    privacyStatementUrl?: pulumi.Input<string>;
+    privacyStatementUrl?: pulumi.Input<string | undefined>;
     /**
      * The verified publisher domain for the application.
      */
-    publisherDomain?: pulumi.Input<string>;
+    publisherDomain?: pulumi.Input<string | undefined>;
     /**
      * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
      */
-    requestedAccessTokenVersion?: pulumi.Input<number>;
+    requestedAccessTokenVersion?: pulumi.Input<number | undefined>;
     /**
      * References application context information from a Service or Asset Management database.
      */
-    serviceManagementReference?: pulumi.Input<string>;
+    serviceManagementReference?: pulumi.Input<string | undefined>;
     /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      */
-    signInAudience?: pulumi.Input<string>;
+    signInAudience?: pulumi.Input<string | undefined>;
     /**
      * URL of the support page for the application.
      */
-    supportUrl?: pulumi.Input<string>;
+    supportUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the terms of service statement for the application.
      */
-    termsOfServiceUrl?: pulumi.Input<string>;
+    termsOfServiceUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -300,7 +300,7 @@ export interface ApplicationRegistrationArgs {
     /**
      * A description of the application, as shown to end users.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name for the application.
      */
@@ -308,53 +308,53 @@ export interface ApplicationRegistrationArgs {
     /**
      * Configures the `groups` claim issued in a user or OAuth access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
-    groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[]>;
+    groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Home page or landing page of the application.
      */
-    homepageUrl?: pulumi.Input<string>;
+    homepageUrl?: pulumi.Input<string | undefined>;
     /**
      * Whether this web application can request an access token using OAuth implicit flow.
      */
-    implicitAccessTokenIssuanceEnabled?: pulumi.Input<boolean>;
+    implicitAccessTokenIssuanceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this web application can request an ID token using OAuth implicit flow.
      */
-    implicitIdTokenIssuanceEnabled?: pulumi.Input<boolean>;
+    implicitIdTokenIssuanceEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
      */
-    logoutUrl?: pulumi.Input<string>;
+    logoutUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the marketing page for the application.
      */
-    marketingUrl?: pulumi.Input<string>;
+    marketingUrl?: pulumi.Input<string | undefined>;
     /**
      * User-specified notes relevant for the management of the application.
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * URL of the privacy statement for the application.
      */
-    privacyStatementUrl?: pulumi.Input<string>;
+    privacyStatementUrl?: pulumi.Input<string | undefined>;
     /**
      * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `2`.
      */
-    requestedAccessTokenVersion?: pulumi.Input<number>;
+    requestedAccessTokenVersion?: pulumi.Input<number | undefined>;
     /**
      * References application context information from a Service or Asset Management database.
      */
-    serviceManagementReference?: pulumi.Input<string>;
+    serviceManagementReference?: pulumi.Input<string | undefined>;
     /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      */
-    signInAudience?: pulumi.Input<string>;
+    signInAudience?: pulumi.Input<string | undefined>;
     /**
      * URL of the support page for the application.
      */
-    supportUrl?: pulumi.Input<string>;
+    supportUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the terms of service statement for the application.
      */
-    termsOfServiceUrl?: pulumi.Input<string>;
+    termsOfServiceUrl?: pulumi.Input<string | undefined>;
 }

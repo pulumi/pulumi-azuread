@@ -135,27 +135,27 @@ export interface GetDomainsOutputArgs {
     /**
      * Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
      */
-    adminManaged?: pulumi.Input<boolean>;
+    adminManaged?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
      */
-    includeUnverified?: pulumi.Input<boolean>;
+    includeUnverified?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` to only return the default domain.
      */
-    onlyDefault?: pulumi.Input<boolean>;
+    onlyDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
      */
-    onlyInitial?: pulumi.Input<boolean>;
+    onlyInitial?: pulumi.Input<boolean | undefined>;
     /**
      * Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
      */
-    onlyRoot?: pulumi.Input<boolean>;
+    onlyRoot?: pulumi.Input<boolean | undefined>;
     /**
      * A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
      *
      * > **Note on filters** If `includeUnverified` is set to `true`, you cannot specify `onlyDefault` or `onlyInitial`. Additionally, you cannot combine `onlyDefault` with `onlyInitial`.
      */
-    supportsServices?: pulumi.Input<pulumi.Input<string>[]>;
+    supportsServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -21,8 +21,8 @@ class AccessPackageCatalogArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
-                 externally_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 published: Optional[pulumi.Input[_builtins.bool]] = None):
+                 externally_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 published: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AccessPackageCatalog resource.
 
@@ -64,36 +64,36 @@ class AccessPackageCatalogArgs:
 
     @_builtins.property
     @pulumi.getter(name="externallyVisible")
-    def externally_visible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def externally_visible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the access packages in this catalog can be requested by users outside the tenant.
         """
         return pulumi.get(self, "externally_visible")
 
     @externally_visible.setter
-    def externally_visible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def externally_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "externally_visible", value)
 
     @_builtins.property
     @pulumi.getter
-    def published(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def published(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the access packages in this catalog are available for management.
         """
         return pulumi.get(self, "published")
 
     @published.setter
-    def published(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def published(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "published", value)
 
 
 @pulumi.input_type
 class _AccessPackageCatalogState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 externally_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 published: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 externally_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 published: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AccessPackageCatalog resources.
 
@@ -113,50 +113,50 @@ class _AccessPackageCatalogState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the access package catalog.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the access package catalog.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="externallyVisible")
-    def externally_visible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def externally_visible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the access packages in this catalog can be requested by users outside the tenant.
         """
         return pulumi.get(self, "externally_visible")
 
     @externally_visible.setter
-    def externally_visible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def externally_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "externally_visible", value)
 
     @_builtins.property
     @pulumi.getter
-    def published(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def published(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the access packages in this catalog are available for management.
         """
         return pulumi.get(self, "published")
 
     @published.setter
-    def published(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def published(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "published", value)
 
 
@@ -166,10 +166,10 @@ class AccessPackageCatalog(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 externally_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 published: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 externally_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 published: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages an access package catalog within Identity Governance in Azure Active Directory.
@@ -261,10 +261,10 @@ class AccessPackageCatalog(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 externally_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 published: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 externally_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 published: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -292,10 +292,10 @@ class AccessPackageCatalog(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            externally_visible: Optional[pulumi.Input[_builtins.bool]] = None,
-            published: Optional[pulumi.Input[_builtins.bool]] = None) -> 'AccessPackageCatalog':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            externally_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+            published: pulumi.Input[Optional[_builtins.bool]] = None) -> 'AccessPackageCatalog':
         """
         Get an existing AccessPackageCatalog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

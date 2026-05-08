@@ -144,21 +144,21 @@ export interface ApplicationOptionalClaimsState {
     /**
      * One or more `accessToken` blocks as documented below.
      */
-    accessTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsAccessToken>[]>;
+    accessTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsAccessToken>[] | undefined>;
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * One or more `idToken` blocks as documented below.
      */
-    idTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsIdToken>[]>;
+    idTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsIdToken>[] | undefined>;
     /**
      * One or more `saml2Token` blocks as documented below.
      *
      * > At least one of `accessToken`, `idToken` or `saml2Token` must be specified
      */
-    saml2Tokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsSaml2Token>[]>;
+    saml2Tokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsSaml2Token>[] | undefined>;
 }
 
 /**
@@ -168,7 +168,7 @@ export interface ApplicationOptionalClaimsArgs {
     /**
      * One or more `accessToken` blocks as documented below.
      */
-    accessTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsAccessToken>[]>;
+    accessTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsAccessToken>[] | undefined>;
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
@@ -176,11 +176,11 @@ export interface ApplicationOptionalClaimsArgs {
     /**
      * One or more `idToken` blocks as documented below.
      */
-    idTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsIdToken>[]>;
+    idTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsIdToken>[] | undefined>;
     /**
      * One or more `saml2Token` blocks as documented below.
      *
      * > At least one of `accessToken`, `idToken` or `saml2Token` must be specified
      */
-    saml2Tokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsSaml2Token>[]>;
+    saml2Tokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsSaml2Token>[] | undefined>;
 }

@@ -22,8 +22,8 @@ __all__ = ['NamedLocationArgs', 'NamedLocation']
 class NamedLocationArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 country: Optional[pulumi.Input['NamedLocationCountryArgs']] = None,
-                 ip: Optional[pulumi.Input['NamedLocationIpArgs']] = None):
+                 country: pulumi.Input[Optional['NamedLocationCountryArgs']] = None,
+                 ip: pulumi.Input[Optional['NamedLocationIpArgs']] = None):
         """
         The set of arguments for constructing a NamedLocation resource.
 
@@ -53,19 +53,19 @@ class NamedLocationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def country(self) -> Optional[pulumi.Input['NamedLocationCountryArgs']]:
+    def country(self) -> pulumi.Input[Optional['NamedLocationCountryArgs']]:
         """
         A `country` block as documented below, which configures a country-based named location.
         """
         return pulumi.get(self, "country")
 
     @country.setter
-    def country(self, value: Optional[pulumi.Input['NamedLocationCountryArgs']]):
+    def country(self, value: pulumi.Input[Optional['NamedLocationCountryArgs']]):
         pulumi.set(self, "country", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input['NamedLocationIpArgs']]:
+    def ip(self) -> pulumi.Input[Optional['NamedLocationIpArgs']]:
         """
         An `ip` block as documented below, which configures an IP-based named location.
 
@@ -74,17 +74,17 @@ class NamedLocationArgs:
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input['NamedLocationIpArgs']]):
+    def ip(self, value: pulumi.Input[Optional['NamedLocationIpArgs']]):
         pulumi.set(self, "ip", value)
 
 
 @pulumi.input_type
 class _NamedLocationState:
     def __init__(__self__, *,
-                 country: Optional[pulumi.Input['NamedLocationCountryArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input['NamedLocationIpArgs']] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 country: pulumi.Input[Optional['NamedLocationCountryArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional['NamedLocationIpArgs']] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NamedLocation resources.
 
@@ -106,31 +106,31 @@ class _NamedLocationState:
 
     @_builtins.property
     @pulumi.getter
-    def country(self) -> Optional[pulumi.Input['NamedLocationCountryArgs']]:
+    def country(self) -> pulumi.Input[Optional['NamedLocationCountryArgs']]:
         """
         A `country` block as documented below, which configures a country-based named location.
         """
         return pulumi.get(self, "country")
 
     @country.setter
-    def country(self, value: Optional[pulumi.Input['NamedLocationCountryArgs']]):
+    def country(self, value: pulumi.Input[Optional['NamedLocationCountryArgs']]):
         pulumi.set(self, "country", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The friendly name for this named location.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input['NamedLocationIpArgs']]:
+    def ip(self) -> pulumi.Input[Optional['NamedLocationIpArgs']]:
         """
         An `ip` block as documented below, which configures an IP-based named location.
 
@@ -139,19 +139,19 @@ class _NamedLocationState:
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input['NamedLocationIpArgs']]):
+    def ip(self, value: pulumi.Input[Optional['NamedLocationIpArgs']]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the named location.
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_id", value)
 
 
@@ -161,9 +161,9 @@ class NamedLocation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 country: Optional[pulumi.Input[Union['NamedLocationCountryArgs', 'NamedLocationCountryArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[Union['NamedLocationIpArgs', 'NamedLocationIpArgsDict']]] = None,
+                 country: pulumi.Input[Optional[Union['NamedLocationCountryArgs', 'NamedLocationCountryArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[Union['NamedLocationIpArgs', 'NamedLocationIpArgsDict']]] = None,
                  __props__=None):
         """
         Manages a Named Location within Azure Active Directory.
@@ -290,9 +290,9 @@ class NamedLocation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 country: Optional[pulumi.Input[Union['NamedLocationCountryArgs', 'NamedLocationCountryArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[Union['NamedLocationIpArgs', 'NamedLocationIpArgsDict']]] = None,
+                 country: pulumi.Input[Optional[Union['NamedLocationCountryArgs', 'NamedLocationCountryArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[Union['NamedLocationIpArgs', 'NamedLocationIpArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -318,10 +318,10 @@ class NamedLocation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            country: Optional[pulumi.Input[Union['NamedLocationCountryArgs', 'NamedLocationCountryArgsDict']]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ip: Optional[pulumi.Input[Union['NamedLocationIpArgs', 'NamedLocationIpArgsDict']]] = None,
-            object_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'NamedLocation':
+            country: pulumi.Input[Optional[Union['NamedLocationCountryArgs', 'NamedLocationCountryArgsDict']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip: pulumi.Input[Optional[Union['NamedLocationIpArgs', 'NamedLocationIpArgsDict']]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NamedLocation':
         """
         Get an existing NamedLocation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

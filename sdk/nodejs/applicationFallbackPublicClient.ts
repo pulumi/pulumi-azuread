@@ -114,13 +114,13 @@ export interface ApplicationFallbackPublicClientState {
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable the application as a fallback public client.
      *
      * > Some configurations may require the Fallback Public Client setting to be `null`, for this case simply destroy this resource (or don't use it)
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -136,5 +136,5 @@ export interface ApplicationFallbackPublicClientArgs {
      *
      * > Some configurations may require the Fallback Public Client setting to be `null`, for this case simply destroy this resource (or don't use it)
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }

@@ -158,31 +158,31 @@ export interface ApplicationFederatedIdentityCredentialState {
     /**
      * The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      */
-    audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    audiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A UUID used to uniquely identify this federated identity credential.
      */
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * A description for the federated identity credential.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A unique display name for the federated identity credential. Changing this forces a new resource to be created.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
      */
-    subject?: pulumi.Input<string>;
+    subject?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,7 +200,7 @@ export interface ApplicationFederatedIdentityCredentialArgs {
     /**
      * A description for the federated identity credential.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A unique display name for the federated identity credential. Changing this forces a new resource to be created.
      */
