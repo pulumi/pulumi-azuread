@@ -667,11 +667,11 @@ def get_user(employee_id: Optional[_builtins.str] = None,
         usage_location=pulumi.get(__ret__, 'usage_location'),
         user_principal_name=pulumi.get(__ret__, 'user_principal_name'),
         user_type=pulumi.get(__ret__, 'user_type'))
-def get_user_output(employee_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    mail: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    mail_nickname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    object_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    user_principal_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_output(employee_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    mail: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    mail_nickname: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    object_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    user_principal_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Gets information about an Azure Active Directory user.

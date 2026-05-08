@@ -58,8 +58,8 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
 @pulumi.input_type
 class _ServicePrincipalClaimsMappingPolicyAssignmentState:
     def __init__(__self__, *,
-                 claims_mapping_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 claims_mapping_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalClaimsMappingPolicyAssignment resources.
 
@@ -73,26 +73,26 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
 
     @_builtins.property
     @pulumi.getter(name="claimsMappingPolicyId")
-    def claims_mapping_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def claims_mapping_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the claims mapping policy to assign.
         """
         return pulumi.get(self, "claims_mapping_policy_id")
 
     @claims_mapping_policy_id.setter
-    def claims_mapping_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def claims_mapping_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "claims_mapping_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
-    def service_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the service principal for the policy assignment.
         """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
-    def service_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_id", value)
 
 
@@ -102,8 +102,8 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 claims_mapping_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 claims_mapping_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Claims Mapping Policy Assignment within Azure Active Directory.
@@ -193,8 +193,8 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 claims_mapping_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 claims_mapping_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -220,8 +220,8 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            claims_mapping_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_principal_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServicePrincipalClaimsMappingPolicyAssignment':
+            claims_mapping_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServicePrincipalClaimsMappingPolicyAssignment':
         """
         Get an existing ServicePrincipalClaimsMappingPolicyAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

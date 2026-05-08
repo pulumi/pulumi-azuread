@@ -22,7 +22,7 @@ __all__ = ['SynchronizationSecretArgs', 'SynchronizationSecret']
 class SynchronizationSecretArgs:
     def __init__(__self__, *,
                  service_principal_id: pulumi.Input[_builtins.str],
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None):
+                 credentials: pulumi.Input[Optional[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None):
         """
         The set of arguments for constructing a SynchronizationSecret resource.
 
@@ -47,22 +47,22 @@ class SynchronizationSecretArgs:
 
     @_builtins.property
     @pulumi.getter
-    def credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]:
+    def credentials(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]:
         """
         One or more `credential` blocks as documented below.
         """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
-    def credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]):
+    def credentials(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]):
         pulumi.set(self, "credentials", value)
 
 
 @pulumi.input_type
 class _SynchronizationSecretState:
     def __init__(__self__, *,
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 credentials: pulumi.Input[Optional[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SynchronizationSecret resources.
 
@@ -76,26 +76,26 @@ class _SynchronizationSecretState:
 
     @_builtins.property
     @pulumi.getter
-    def credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]:
+    def credentials(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]:
         """
         One or more `credential` blocks as documented below.
         """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
-    def credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]):
+    def credentials(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]):
         pulumi.set(self, "credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
-    def service_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
-    def service_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_id", value)
 
 
@@ -105,8 +105,8 @@ class SynchronizationSecret(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationSecretCredentialArgs', 'SynchronizationSecretCredentialArgsDict']]]]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SynchronizationSecretCredentialArgs', 'SynchronizationSecretCredentialArgsDict']]]]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages synchronization secrets associated with a service principal (enterprise application) within Azure Active Directory.
@@ -216,8 +216,8 @@ class SynchronizationSecret(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationSecretCredentialArgs', 'SynchronizationSecretCredentialArgsDict']]]]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SynchronizationSecretCredentialArgs', 'SynchronizationSecretCredentialArgsDict']]]]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -241,8 +241,8 @@ class SynchronizationSecret(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationSecretCredentialArgs', 'SynchronizationSecretCredentialArgsDict']]]]] = None,
-            service_principal_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SynchronizationSecret':
+            credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SynchronizationSecretCredentialArgs', 'SynchronizationSecretCredentialArgsDict']]]]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SynchronizationSecret':
         """
         Get an existing SynchronizationSecret resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

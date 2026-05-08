@@ -144,11 +144,11 @@ export interface GetAdministrativeUnitOutputArgs {
     /**
      * Specifies the display name of the administrative unit.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Specifies the object ID of the administrative unit.
      *
      * > One of `displayName` or `objectId` must be specified.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
 }

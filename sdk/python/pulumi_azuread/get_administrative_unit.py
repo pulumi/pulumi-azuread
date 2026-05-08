@@ -162,8 +162,8 @@ def get_administrative_unit(display_name: Optional[_builtins.str] = None,
         members=pulumi.get(__ret__, 'members'),
         object_id=pulumi.get(__ret__, 'object_id'),
         visibility=pulumi.get(__ret__, 'visibility'))
-def get_administrative_unit_output(display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   object_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_administrative_unit_output(display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   object_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAdministrativeUnitResult]:
     """
     Gets information about an adminisrative unit in Azure Active Directory.

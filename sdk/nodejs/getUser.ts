@@ -292,23 +292,23 @@ export interface GetUserOutputArgs {
     /**
      * The employee identifier assigned to the user by the organisation.
      */
-    employeeId?: pulumi.Input<string>;
+    employeeId?: pulumi.Input<string | undefined>;
     /**
      * The SMTP address for the user.
      */
-    mail?: pulumi.Input<string>;
+    mail?: pulumi.Input<string | undefined>;
     /**
      * The email alias of the user.
      */
-    mailNickname?: pulumi.Input<string>;
+    mailNickname?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the user.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * The user principal name (UPN) of the user.
      *
      * > One of `userPrincipalName`, `objectId`, `mail`, `mailNickname` or `employeeId` must be specified.
      */
-    userPrincipalName?: pulumi.Input<string>;
+    userPrincipalName?: pulumi.Input<string | undefined>;
 }

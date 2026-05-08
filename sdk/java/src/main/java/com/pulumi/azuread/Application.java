@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.inputs.ApplicationWebImplicitGrantArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.Filebase64Args;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .signInAudience("AzureADMultipleOrgs")
  *             .api(ApplicationApiArgs.builder()
  *                 .mappedClaimsEnabled(true)
- *                 .requestedAccessTokenVersion(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:12,35-36)))
+ *                 .requestedAccessTokenVersion(2)
  *                 .knownClientApplications(                
  *                     known1.clientId(),
  *                     known2.clientId())
@@ -209,8 +209,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.inputs.ApplicationPasswordArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.TimeaddArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var example = new Rotating("example", RotatingArgs.builder()
- *             .rotationDays(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(180) (example.pp:3,18-21)))
+ *             .rotationDays(180)
  *             .build());
  * 
  *         var exampleApplication = new Application("exampleApplication", ApplicationArgs.builder()
@@ -262,8 +262,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.ApplicationArgs;
  * import com.pulumi.azuread.ServicePrincipal;
  * import com.pulumi.azuread.ServicePrincipalArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

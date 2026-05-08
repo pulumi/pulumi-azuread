@@ -149,8 +149,8 @@ def get_access_package_catalog_role(display_name: Optional[_builtins.str] = None
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
         template_id=pulumi.get(__ret__, 'template_id'))
-def get_access_package_catalog_role_output(display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                           object_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_access_package_catalog_role_output(display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                           object_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessPackageCatalogRoleResult]:
     """
     Gets information about an access package catalog role.

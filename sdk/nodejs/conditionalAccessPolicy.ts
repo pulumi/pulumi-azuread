@@ -245,29 +245,29 @@ export interface ConditionalAccessPolicyState {
     /**
      * A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
      */
-    conditions?: pulumi.Input<inputs.ConditionalAccessPolicyConditions>;
+    conditions?: pulumi.Input<inputs.ConditionalAccessPolicyConditions | undefined>;
     /**
      * The friendly name for this Conditional Access Policy.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      */
-    grantControls?: pulumi.Input<inputs.ConditionalAccessPolicyGrantControls>;
+    grantControls?: pulumi.Input<inputs.ConditionalAccessPolicyGrantControls | undefined>;
     /**
      * The object ID of the policy
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
      *
      * > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
      */
-    sessionControls?: pulumi.Input<inputs.ConditionalAccessPolicySessionControls>;
+    sessionControls?: pulumi.Input<inputs.ConditionalAccessPolicySessionControls | undefined>;
     /**
      * Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -285,13 +285,13 @@ export interface ConditionalAccessPolicyArgs {
     /**
      * A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      */
-    grantControls?: pulumi.Input<inputs.ConditionalAccessPolicyGrantControls>;
+    grantControls?: pulumi.Input<inputs.ConditionalAccessPolicyGrantControls | undefined>;
     /**
      * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
      *
      * > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
      */
-    sessionControls?: pulumi.Input<inputs.ConditionalAccessPolicySessionControls>;
+    sessionControls?: pulumi.Input<inputs.ConditionalAccessPolicySessionControls | undefined>;
     /**
      * Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
      */

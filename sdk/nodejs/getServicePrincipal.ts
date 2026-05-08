@@ -261,15 +261,15 @@ export interface GetServicePrincipalOutputArgs {
     /**
      * The client ID of the application associated with this service principal.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The display name of the application associated with this service principal.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the service principal.
      *
      * > One of `clientId`, `displayName` or `objectId` must be specified.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
 }

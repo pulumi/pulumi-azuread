@@ -239,19 +239,19 @@ export interface GetApplicationOutputArgs {
     /**
      * Specifies the Client ID of the application.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the display name of the application.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Specifies any identifier URI of the application. See also the `identifierUris` attribute which contains a list of all identifier URIs for the application.
      *
      * > One of `clientId`, `displayName`, `objectId`, or `identifierUri` must be specified.
      */
-    identifierUri?: pulumi.Input<string>;
+    identifierUri?: pulumi.Input<string | undefined>;
     /**
      * Specifies the Object ID of the application.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
 }

@@ -89,8 +89,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -122,8 +122,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -173,8 +173,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -206,8 +206,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -257,8 +257,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -290,8 +290,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -341,8 +341,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -374,8 +374,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -425,8 +425,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -458,8 +458,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -509,8 +509,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -542,8 +542,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -593,8 +593,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -626,8 +626,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -678,8 +678,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -711,8 +711,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -762,8 +762,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -795,8 +795,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -846,8 +846,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -879,8 +879,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -930,8 +930,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -963,8 +963,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1014,8 +1014,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1047,8 +1047,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1098,8 +1098,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1131,8 +1131,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1182,8 +1182,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1215,8 +1215,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1266,8 +1266,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1298,8 +1298,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1349,8 +1349,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1381,8 +1381,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1432,8 +1432,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1464,8 +1464,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1515,8 +1515,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1547,8 +1547,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1598,8 +1598,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1630,8 +1630,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1681,8 +1681,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1713,8 +1713,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1764,8 +1764,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1796,8 +1796,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAccessPackageCatalogRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1847,8 +1847,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1879,8 +1879,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1930,8 +1930,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1962,8 +1962,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2013,8 +2013,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2045,8 +2045,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2096,8 +2096,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2128,8 +2128,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2179,8 +2179,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2211,8 +2211,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2262,8 +2262,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2294,8 +2294,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2345,8 +2345,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2377,8 +2377,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2425,8 +2425,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2474,8 +2474,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2523,8 +2523,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2572,8 +2572,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2621,8 +2621,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2670,8 +2670,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2719,8 +2719,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2765,8 +2765,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2801,8 +2801,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2865,8 +2865,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2901,8 +2901,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2965,8 +2965,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3001,8 +3001,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3065,8 +3065,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3101,8 +3101,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3165,8 +3165,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3201,8 +3201,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3265,8 +3265,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3301,8 +3301,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3365,8 +3365,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3401,8 +3401,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3464,8 +3464,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3509,8 +3509,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3554,8 +3554,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3599,8 +3599,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3644,8 +3644,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3689,8 +3689,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3734,8 +3734,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3778,8 +3778,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3820,8 +3820,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3862,8 +3862,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3904,8 +3904,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3946,8 +3946,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3988,8 +3988,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4030,8 +4030,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4078,8 +4078,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4135,8 +4135,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4192,8 +4192,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4249,8 +4249,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4306,8 +4306,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4361,8 +4361,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4407,8 +4407,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4453,8 +4453,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4499,8 +4499,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4545,8 +4545,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4591,8 +4591,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4637,8 +4637,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4683,8 +4683,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4729,8 +4729,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4775,8 +4775,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4821,8 +4821,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4867,8 +4867,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4913,8 +4913,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4959,8 +4959,8 @@ public final class AzureadFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5006,8 +5006,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5054,8 +5054,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5102,8 +5102,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5150,8 +5150,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5198,8 +5198,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5246,8 +5246,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5294,8 +5294,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5344,8 +5344,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5395,8 +5395,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5446,8 +5446,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5497,8 +5497,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5548,8 +5548,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5599,8 +5599,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5650,8 +5650,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5701,8 +5701,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.GroupArgs;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5757,8 +5757,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.GroupArgs;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5813,8 +5813,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.GroupArgs;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5869,8 +5869,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.GroupArgs;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5925,8 +5925,8 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.GroupArgs;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupRoleManagementPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5980,8 +5980,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6014,8 +6014,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6046,8 +6046,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6078,8 +6078,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6111,8 +6111,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6162,8 +6162,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6196,8 +6196,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6228,8 +6228,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6260,8 +6260,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6293,8 +6293,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6344,8 +6344,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6378,8 +6378,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6410,8 +6410,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6442,8 +6442,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6475,8 +6475,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6526,8 +6526,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6560,8 +6560,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6592,8 +6592,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6624,8 +6624,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6657,8 +6657,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6708,8 +6708,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6742,8 +6742,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6774,8 +6774,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6806,8 +6806,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6839,8 +6839,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6890,8 +6890,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6924,8 +6924,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6956,8 +6956,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6988,8 +6988,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7021,8 +7021,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7072,8 +7072,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7106,8 +7106,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7138,8 +7138,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7170,8 +7170,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7203,8 +7203,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7253,8 +7253,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7324,8 +7324,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7395,8 +7395,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7466,8 +7466,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7537,8 +7537,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7610,8 +7610,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7643,8 +7643,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7676,8 +7676,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7726,8 +7726,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7759,8 +7759,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7792,8 +7792,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7842,8 +7842,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7875,8 +7875,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7908,8 +7908,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7958,8 +7958,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7991,8 +7991,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8024,8 +8024,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8074,8 +8074,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8107,8 +8107,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8140,8 +8140,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8190,8 +8190,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8223,8 +8223,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8256,8 +8256,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8306,8 +8306,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8339,8 +8339,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8372,8 +8372,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8422,8 +8422,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8457,8 +8457,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8493,8 +8493,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8546,8 +8546,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8581,8 +8581,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8617,8 +8617,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8670,8 +8670,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8705,8 +8705,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8741,8 +8741,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8794,8 +8794,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8829,8 +8829,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8865,8 +8865,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8918,8 +8918,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8953,8 +8953,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8989,8 +8989,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9042,8 +9042,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9077,8 +9077,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9113,8 +9113,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9166,8 +9166,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9201,8 +9201,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9237,8 +9237,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9288,8 +9288,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9336,8 +9336,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9384,8 +9384,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9432,8 +9432,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9480,8 +9480,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9528,8 +9528,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9576,8 +9576,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9624,8 +9624,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9674,8 +9674,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9724,8 +9724,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9774,8 +9774,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9824,8 +9824,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9874,8 +9874,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9924,8 +9924,8 @@ public final class AzureadFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.azuread.AzureadFunctions;
      * import com.pulumi.azuread.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

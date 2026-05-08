@@ -21,7 +21,7 @@ class AccessPackageResourcePackageAssociationArgs:
     def __init__(__self__, *,
                  access_package_id: pulumi.Input[_builtins.str],
                  catalog_resource_association_id: pulumi.Input[_builtins.str],
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessPackageResourcePackageAssociation resource.
 
@@ -60,23 +60,23 @@ class AccessPackageResourcePackageAssociationArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
 
 @pulumi.input_type
 class _AccessPackageResourcePackageAssociationState:
     def __init__(__self__, *,
-                 access_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 catalog_resource_association_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog_resource_association_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessPackageResourcePackageAssociation resources.
 
@@ -93,38 +93,38 @@ class _AccessPackageResourcePackageAssociationState:
 
     @_builtins.property
     @pulumi.getter(name="accessPackageId")
-    def access_package_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_package_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "access_package_id")
 
     @access_package_id.setter
-    def access_package_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_package_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_package_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="catalogResourceAssociationId")
-    def catalog_resource_association_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog_resource_association_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "catalog_resource_association_id")
 
     @catalog_resource_association_id.setter
-    def catalog_resource_association_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog_resource_association_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog_resource_association_id", value)
 
 
@@ -134,9 +134,9 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 catalog_resource_association_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog_resource_association_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages the resources added to access packages within Identity Governance in Azure Active Directory.
@@ -259,9 +259,9 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 catalog_resource_association_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog_resource_association_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -288,9 +288,9 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_package_id: Optional[pulumi.Input[_builtins.str]] = None,
-            access_type: Optional[pulumi.Input[_builtins.str]] = None,
-            catalog_resource_association_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessPackageResourcePackageAssociation':
+            access_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            catalog_resource_association_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessPackageResourcePackageAssociation':
         """
         Get an existing AccessPackageResourcePackageAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

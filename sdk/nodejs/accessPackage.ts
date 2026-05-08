@@ -130,19 +130,19 @@ export interface AccessPackageState {
     /**
      * The ID of the Catalog this access package will be created in.
      */
-    catalogId?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string | undefined>;
     /**
      * The description of the access package.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the access package.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether the access package is hidden from the requestor.
      */
-    hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -164,5 +164,5 @@ export interface AccessPackageArgs {
     /**
      * Whether the access package is hidden from the requestor.
      */
-    hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean | undefined>;
 }

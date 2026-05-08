@@ -58,8 +58,8 @@ class ApplicationIdentifierUriArgs:
 @pulumi.input_type
 class _ApplicationIdentifierUriState:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApplicationIdentifierUri resources.
 
@@ -73,26 +73,26 @@ class _ApplicationIdentifierUriState:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource ID of the application registration. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="identifierUri")
-    def identifier_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "identifier_uri")
 
     @identifier_uri.setter
-    def identifier_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier_uri", value)
 
 
@@ -102,8 +102,8 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a single Identifier URI for an application registration.
@@ -227,8 +227,8 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -254,8 +254,8 @@ class ApplicationIdentifierUri(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_id: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier_uri: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApplicationIdentifierUri':
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier_uri: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationIdentifierUri':
         """
         Get an existing ApplicationIdentifierUri resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

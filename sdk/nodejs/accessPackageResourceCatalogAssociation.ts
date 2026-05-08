@@ -130,15 +130,15 @@ export interface AccessPackageResourceCatalogAssociationState {
     /**
      * The unique ID of the access package catalog. Changing this forces a new resource to be created.
      */
-    catalogId?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
      */
-    resourceOriginId?: pulumi.Input<string>;
+    resourceOriginId?: pulumi.Input<string | undefined>;
     /**
      * The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
      */
-    resourceOriginSystem?: pulumi.Input<string>;
+    resourceOriginSystem?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -19,8 +19,8 @@ __all__ = ['DirectoryRoleMemberArgs', 'DirectoryRoleMember']
 @pulumi.input_type
 class DirectoryRoleMemberArgs:
     def __init__(__self__, *,
-                 member_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_object_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 member_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_object_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DirectoryRoleMember resource.
 
@@ -34,34 +34,34 @@ class DirectoryRoleMemberArgs:
 
     @_builtins.property
     @pulumi.getter(name="memberObjectId")
-    def member_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 
     @member_object_id.setter
-    def member_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleObjectId")
-    def role_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "role_object_id")
 
     @role_object_id.setter
-    def role_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_object_id", value)
 
 
 @pulumi.input_type
 class _DirectoryRoleMemberState:
     def __init__(__self__, *,
-                 member_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_object_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 member_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_object_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DirectoryRoleMember resources.
 
@@ -75,26 +75,26 @@ class _DirectoryRoleMemberState:
 
     @_builtins.property
     @pulumi.getter(name="memberObjectId")
-    def member_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 
     @member_object_id.setter
-    def member_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleObjectId")
-    def role_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "role_object_id")
 
     @role_object_id.setter
-    def role_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_object_id", value)
 
 
@@ -104,8 +104,8 @@ class DirectoryRoleMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 member_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_object_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 member_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a single directory role membership (assignment) within Azure Active Directory.
@@ -207,8 +207,8 @@ class DirectoryRoleMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 member_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_object_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 member_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -230,8 +230,8 @@ class DirectoryRoleMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            member_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_object_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DirectoryRoleMember':
+            member_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_object_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DirectoryRoleMember':
         """
         Get an existing DirectoryRoleMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -52,8 +52,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.AzureadFunctions;
  * import com.pulumi.azuread.Group;
  * import com.pulumi.azuread.GroupArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -92,8 +92,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.UserArgs;
  * import com.pulumi.azuread.Group;
  * import com.pulumi.azuread.GroupArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -144,8 +144,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.UserArgs;
  * import com.pulumi.azuread.Group;
  * import com.pulumi.azuread.GroupArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  * 
  *         var example = new User("example", UserArgs.builder()
  *             .displayName("J Doe")
- *             .owners(List.of(current.objectId()))
+ *             .owners(Arrays.asList(current.objectId()))
  *             .password("notSecure123")
  *             .userPrincipalName("jdoe}{@literal @}{@code example.com")
  *             .build());
@@ -191,8 +191,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.Group;
  * import com.pulumi.azuread.GroupArgs;
  * import com.pulumi.azuread.inputs.GroupDynamicMembershipArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

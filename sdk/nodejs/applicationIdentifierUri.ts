@@ -127,11 +127,11 @@ export interface ApplicationIdentifierUriState {
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
      */
-    identifierUri?: pulumi.Input<string>;
+    identifierUri?: pulumi.Input<string | undefined>;
 }
 
 /**

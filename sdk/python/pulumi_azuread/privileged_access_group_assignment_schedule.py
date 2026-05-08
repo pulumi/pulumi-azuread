@@ -22,13 +22,13 @@ class PrivilegedAccessGroupAssignmentScheduleArgs:
                  assignment_type: pulumi.Input[_builtins.str],
                  group_id: pulumi.Input[_builtins.str],
                  principal_id: pulumi.Input[_builtins.str],
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanent_assignment: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 ticket_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 ticket_system: Optional[pulumi.Input[_builtins.str]] = None):
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanent_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 ticket_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 ticket_system: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrivilegedAccessGroupAssignmentSchedule resource.
 
@@ -101,43 +101,43 @@ class PrivilegedAccessGroupAssignmentScheduleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationDate")
-    def expiration_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).
         """
         return pulumi.get(self, "expiration_date")
 
     @expiration_date.setter
-    def expiration_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def justification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def justification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The justification for this assignment. May be required by the role policy.
         """
         return pulumi.get(self, "justification")
 
     @justification.setter
-    def justification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def justification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "justification", value)
 
     @_builtins.property
     @pulumi.getter(name="permanentAssignment")
-    def permanent_assignment(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def permanent_assignment(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is this assigment permanently valid.
 
@@ -146,60 +146,60 @@ class PrivilegedAccessGroupAssignmentScheduleArgs:
         return pulumi.get(self, "permanent_assignment")
 
     @permanent_assignment.setter
-    def permanent_assignment(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def permanent_assignment(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "permanent_assignment", value)
 
     @_builtins.property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.
         """
         return pulumi.get(self, "start_date")
 
     @start_date.setter
-    def start_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_date", value)
 
     @_builtins.property
     @pulumi.getter(name="ticketNumber")
-    def ticket_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ticket_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ticket number in the ticket system approving this assignment. May be required by the role policy.
         """
         return pulumi.get(self, "ticket_number")
 
     @ticket_number.setter
-    def ticket_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ticket_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ticket_number", value)
 
     @_builtins.property
     @pulumi.getter(name="ticketSystem")
-    def ticket_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ticket_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ticket system containing the ticket number approving this assignment. May be required by the role policy.
         """
         return pulumi.get(self, "ticket_system")
 
     @ticket_system.setter
-    def ticket_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ticket_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ticket_system", value)
 
 
 @pulumi.input_type
 class _PrivilegedAccessGroupAssignmentScheduleState:
     def __init__(__self__, *,
-                 assignment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanent_assignment: Optional[pulumi.Input[_builtins.bool]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 ticket_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 ticket_system: Optional[pulumi.Input[_builtins.str]] = None):
+                 assignment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanent_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 ticket_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 ticket_system: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrivilegedAccessGroupAssignmentSchedule resources.
 
@@ -242,67 +242,67 @@ class _PrivilegedAccessGroupAssignmentScheduleState:
 
     @_builtins.property
     @pulumi.getter(name="assignmentType")
-    def assignment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assignment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of assignment to the group. Can be either `member` or `owner`.
         """
         return pulumi.get(self, "assignment_type")
 
     @assignment_type.setter
-    def assignment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assignment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assignment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationDate")
-    def expiration_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).
         """
         return pulumi.get(self, "expiration_date")
 
     @expiration_date.setter
-    def expiration_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_date", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Object ID of the Azure AD group to which the principal will be assigned.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def justification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def justification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The justification for this assignment. May be required by the role policy.
         """
         return pulumi.get(self, "justification")
 
     @justification.setter
-    def justification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def justification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "justification", value)
 
     @_builtins.property
     @pulumi.getter(name="permanentAssignment")
-    def permanent_assignment(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def permanent_assignment(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is this assigment permanently valid.
 
@@ -311,67 +311,67 @@ class _PrivilegedAccessGroupAssignmentScheduleState:
         return pulumi.get(self, "permanent_assignment")
 
     @permanent_assignment.setter
-    def permanent_assignment(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def permanent_assignment(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "permanent_assignment", value)
 
     @_builtins.property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Object ID of the principal to be assigned to the above group. Can be either a user or a group.
         """
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
-    def principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.
         """
         return pulumi.get(self, "start_date")
 
     @start_date.setter
-    def start_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) The provisioning status of this request.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="ticketNumber")
-    def ticket_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ticket_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ticket number in the ticket system approving this assignment. May be required by the role policy.
         """
         return pulumi.get(self, "ticket_number")
 
     @ticket_number.setter
-    def ticket_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ticket_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ticket_number", value)
 
     @_builtins.property
     @pulumi.getter(name="ticketSystem")
-    def ticket_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ticket_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ticket system containing the ticket number approving this assignment. May be required by the role policy.
         """
         return pulumi.get(self, "ticket_system")
 
     @ticket_system.setter
-    def ticket_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ticket_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ticket_system", value)
 
 
@@ -381,16 +381,16 @@ class PrivilegedAccessGroupAssignmentSchedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanent_assignment: Optional[pulumi.Input[_builtins.bool]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 ticket_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 ticket_system: Optional[pulumi.Input[_builtins.str]] = None,
+                 assignment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanent_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 ticket_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 ticket_system: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages an active assignment to a privileged access group.
@@ -512,16 +512,16 @@ class PrivilegedAccessGroupAssignmentSchedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 justification: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanent_assignment: Optional[pulumi.Input[_builtins.bool]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 ticket_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 ticket_system: Optional[pulumi.Input[_builtins.str]] = None,
+                 assignment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 justification: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanent_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 ticket_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 ticket_system: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -558,17 +558,17 @@ class PrivilegedAccessGroupAssignmentSchedule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assignment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            justification: Optional[pulumi.Input[_builtins.str]] = None,
-            permanent_assignment: Optional[pulumi.Input[_builtins.bool]] = None,
-            principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            start_date: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            ticket_number: Optional[pulumi.Input[_builtins.str]] = None,
-            ticket_system: Optional[pulumi.Input[_builtins.str]] = None) -> 'PrivilegedAccessGroupAssignmentSchedule':
+            assignment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            justification: pulumi.Input[Optional[_builtins.str]] = None,
+            permanent_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
+            principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            start_date: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            ticket_number: pulumi.Input[Optional[_builtins.str]] = None,
+            ticket_system: pulumi.Input[Optional[_builtins.str]] = None) -> 'PrivilegedAccessGroupAssignmentSchedule':
         """
         Get an existing PrivilegedAccessGroupAssignmentSchedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

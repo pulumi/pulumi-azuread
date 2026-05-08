@@ -110,7 +110,7 @@ def get_directory_object(object_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         object_id=pulumi.get(__ret__, 'object_id'),
         type=pulumi.get(__ret__, 'type'))
-def get_directory_object_output(object_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_directory_object_output(object_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirectoryObjectResult]:
     """
     Retrieves the OData type for a generic directory object having the provided object ID.

@@ -122,19 +122,19 @@ export interface AccessPackageCatalogState {
     /**
      * The description of the access package catalog.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the access package catalog.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether the access packages in this catalog can be requested by users outside the tenant.
      */
-    externallyVisible?: pulumi.Input<boolean>;
+    externallyVisible?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the access packages in this catalog are available for management.
      */
-    published?: pulumi.Input<boolean>;
+    published?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -152,9 +152,9 @@ export interface AccessPackageCatalogArgs {
     /**
      * Whether the access packages in this catalog can be requested by users outside the tenant.
      */
-    externallyVisible?: pulumi.Input<boolean>;
+    externallyVisible?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the access packages in this catalog are available for management.
      */
-    published?: pulumi.Input<boolean>;
+    published?: pulumi.Input<boolean | undefined>;
 }

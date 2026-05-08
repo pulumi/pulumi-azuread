@@ -20,10 +20,10 @@ __all__ = ['AdministrativeUnitArgs', 'AdministrativeUnit']
 class AdministrativeUnitArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden_membership_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AdministrativeUnit resource.
 
@@ -61,31 +61,31 @@ class AdministrativeUnitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the administrative unit.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="hiddenMembershipEnabled")
-    def hidden_membership_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden_membership_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         """
         return pulumi.get(self, "hidden_membership_enabled")
 
     @hidden_membership_enabled.setter
-    def hidden_membership_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden_membership_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden_membership_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
 
@@ -96,31 +96,31 @@ class AdministrativeUnitArgs:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter(name="preventDuplicateNames")
-    def prevent_duplicate_names(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_duplicate_names(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, will return an error if an existing administrative unit is found with the same name
         """
         return pulumi.get(self, "prevent_duplicate_names")
 
     @prevent_duplicate_names.setter
-    def prevent_duplicate_names(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_duplicate_names(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_duplicate_names", value)
 
 
 @pulumi.input_type
 class _AdministrativeUnitState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden_membership_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AdministrativeUnit resources.
 
@@ -150,43 +150,43 @@ class _AdministrativeUnitState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the administrative unit.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the administrative unit.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="hiddenMembershipEnabled")
-    def hidden_membership_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden_membership_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         """
         return pulumi.get(self, "hidden_membership_enabled")
 
     @hidden_membership_enabled.setter
-    def hidden_membership_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden_membership_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden_membership_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
 
@@ -197,31 +197,31 @@ class _AdministrativeUnitState:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the administrative unit.
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="preventDuplicateNames")
-    def prevent_duplicate_names(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_duplicate_names(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, will return an error if an existing administrative unit is found with the same name
         """
         return pulumi.get(self, "prevent_duplicate_names")
 
     @prevent_duplicate_names.setter
-    def prevent_duplicate_names(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_duplicate_names(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_duplicate_names", value)
 
 
@@ -231,11 +231,11 @@ class AdministrativeUnit(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden_membership_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages an Administrative Unit within Azure Active Directory.
@@ -334,11 +334,11 @@ class AdministrativeUnit(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hidden_membership_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hidden_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -366,12 +366,12 @@ class AdministrativeUnit(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            hidden_membership_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            prevent_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None) -> 'AdministrativeUnit':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            hidden_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None) -> 'AdministrativeUnit':
         """
         Get an existing AdministrativeUnit resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

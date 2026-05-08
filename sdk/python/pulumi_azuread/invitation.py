@@ -23,9 +23,9 @@ class InvitationArgs:
     def __init__(__self__, *,
                  redirect_url: pulumi.Input[_builtins.str],
                  user_email_address: pulumi.Input[_builtins.str],
-                 message: Optional[pulumi.Input['InvitationMessageArgs']] = None,
-                 user_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 message: pulumi.Input[Optional['InvitationMessageArgs']] = None,
+                 user_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Invitation resource.
 
@@ -70,51 +70,51 @@ class InvitationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input['InvitationMessageArgs']]:
+    def message(self) -> pulumi.Input[Optional['InvitationMessageArgs']]:
         """
         A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input['InvitationMessageArgs']]):
+    def message(self, value: pulumi.Input[Optional['InvitationMessageArgs']]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter(name="userDisplayName")
-    def user_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the user being invited.
         """
         return pulumi.get(self, "user_display_name")
 
     @user_display_name.setter
-    def user_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userType")
-    def user_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
         return pulumi.get(self, "user_type")
 
     @user_type.setter
-    def user_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_type", value)
 
 
 @pulumi.input_type
 class _InvitationState:
     def __init__(__self__, *,
-                 message: Optional[pulumi.Input['InvitationMessageArgs']] = None,
-                 redeem_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_email_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 message: pulumi.Input[Optional['InvitationMessageArgs']] = None,
+                 redeem_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_email_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Invitation resources.
 
@@ -143,86 +143,86 @@ class _InvitationState:
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input['InvitationMessageArgs']]:
+    def message(self) -> pulumi.Input[Optional['InvitationMessageArgs']]:
         """
         A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input['InvitationMessageArgs']]):
+    def message(self, value: pulumi.Input[Optional['InvitationMessageArgs']]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter(name="redeemUrl")
-    def redeem_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redeem_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL the user can use to redeem their invitation.
         """
         return pulumi.get(self, "redeem_url")
 
     @redeem_url.setter
-    def redeem_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redeem_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redeem_url", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectUrl")
-    def redirect_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL that the user should be redirected to once the invitation is redeemed.
         """
         return pulumi.get(self, "redirect_url")
 
     @redirect_url.setter
-    def redirect_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_url", value)
 
     @_builtins.property
     @pulumi.getter(name="userDisplayName")
-    def user_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the user being invited.
         """
         return pulumi.get(self, "user_display_name")
 
     @user_display_name.setter
-    def user_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userEmailAddress")
-    def user_email_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_email_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address of the user being invited.
         """
         return pulumi.get(self, "user_email_address")
 
     @user_email_address.setter
-    def user_email_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_email_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_email_address", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Object ID of the invited user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userType")
-    def user_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
         return pulumi.get(self, "user_type")
 
     @user_type.setter
-    def user_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_type", value)
 
 
@@ -232,11 +232,11 @@ class Invitation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 message: Optional[pulumi.Input[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']]] = None,
-                 redirect_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_email_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']]] = None,
+                 redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_email_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages an invitation of a guest user within Azure Active Directory.
@@ -385,11 +385,11 @@ class Invitation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 message: Optional[pulumi.Input[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']]] = None,
-                 redirect_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_email_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']]] = None,
+                 redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_email_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -420,13 +420,13 @@ class Invitation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            message: Optional[pulumi.Input[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']]] = None,
-            redeem_url: Optional[pulumi.Input[_builtins.str]] = None,
-            redirect_url: Optional[pulumi.Input[_builtins.str]] = None,
-            user_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user_email_address: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Invitation':
+            message: pulumi.Input[Optional[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']]] = None,
+            redeem_url: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
+            user_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_email_address: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Invitation':
         """
         Get an existing Invitation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

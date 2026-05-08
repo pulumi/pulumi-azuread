@@ -182,49 +182,49 @@ export interface PrivilegedAccessGroupEligibilityScheduleState {
     /**
      * The type of assignment to the group. Can be either `member` or `owner`.
      */
-    assignmentType?: pulumi.Input<string>;
+    assignmentType?: pulumi.Input<string | undefined>;
     /**
      * The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * The Object ID of the Azure AD group to which the principal will be assigned.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The justification for this assignment. May be required by the role policy.
      */
-    justification?: pulumi.Input<string>;
+    justification?: pulumi.Input<string | undefined>;
     /**
      * Is this assigment permanently valid.
      *
      * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      */
-    permanentAssignment?: pulumi.Input<boolean>;
+    permanentAssignment?: pulumi.Input<boolean | undefined>;
     /**
      * The Object ID of the principal to be assigned to the above group. Can be either a user or a group.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * (String) The provisioning status of this request.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ticket number in the ticket system approving this assignment. May be required by the role policy.
      */
-    ticketNumber?: pulumi.Input<string>;
+    ticketNumber?: pulumi.Input<string | undefined>;
     /**
      * The ticket system containing the ticket number approving this assignment. May be required by the role policy.
      */
-    ticketSystem?: pulumi.Input<string>;
+    ticketSystem?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -238,11 +238,11 @@ export interface PrivilegedAccessGroupEligibilityScheduleArgs {
     /**
      * The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * The Object ID of the Azure AD group to which the principal will be assigned.
      */
@@ -250,13 +250,13 @@ export interface PrivilegedAccessGroupEligibilityScheduleArgs {
     /**
      * The justification for this assignment. May be required by the role policy.
      */
-    justification?: pulumi.Input<string>;
+    justification?: pulumi.Input<string | undefined>;
     /**
      * Is this assigment permanently valid.
      *
      * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      */
-    permanentAssignment?: pulumi.Input<boolean>;
+    permanentAssignment?: pulumi.Input<boolean | undefined>;
     /**
      * The Object ID of the principal to be assigned to the above group. Can be either a user or a group.
      */
@@ -264,13 +264,13 @@ export interface PrivilegedAccessGroupEligibilityScheduleArgs {
     /**
      * The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * The ticket number in the ticket system approving this assignment. May be required by the role policy.
      */
-    ticketNumber?: pulumi.Input<string>;
+    ticketNumber?: pulumi.Input<string | undefined>;
     /**
      * The ticket system containing the ticket number approving this assignment. May be required by the role policy.
      */
-    ticketSystem?: pulumi.Input<string>;
+    ticketSystem?: pulumi.Input<string | undefined>;
 }

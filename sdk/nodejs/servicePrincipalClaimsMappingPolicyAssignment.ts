@@ -110,11 +110,11 @@ export interface ServicePrincipalClaimsMappingPolicyAssignmentState {
     /**
      * The ID of the claims mapping policy to assign.
      */
-    claimsMappingPolicyId?: pulumi.Input<string>;
+    claimsMappingPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the service principal for the policy assignment.
      */
-    servicePrincipalId?: pulumi.Input<string>;
+    servicePrincipalId?: pulumi.Input<string | undefined>;
 }
 
 /**

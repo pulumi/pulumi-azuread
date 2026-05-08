@@ -112,13 +112,13 @@ export interface AdministrativeUnitMemberState {
     /**
      * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
      */
-    administrativeUnitObjectId?: pulumi.Input<string>;
+    administrativeUnitObjectId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
      *
      * > **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      */
-    memberObjectId?: pulumi.Input<string>;
+    memberObjectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -128,11 +128,11 @@ export interface AdministrativeUnitMemberArgs {
     /**
      * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
      */
-    administrativeUnitObjectId?: pulumi.Input<string>;
+    administrativeUnitObjectId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
      *
      * > **Caution** When using the azuread.AdministrativeUnitMember resource to manage Administrative Unit membership for a group, you will need to use an `ignoreChanges = [administrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
      */
-    memberObjectId?: pulumi.Input<string>;
+    memberObjectId?: pulumi.Input<string | undefined>;
 }

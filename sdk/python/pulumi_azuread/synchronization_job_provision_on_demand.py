@@ -24,7 +24,7 @@ class SynchronizationJobProvisionOnDemandArgs:
                  parameters: pulumi.Input[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterArgs']]],
                  service_principal_id: pulumi.Input[_builtins.str],
                  synchronization_job_id: pulumi.Input[_builtins.str],
-                 triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SynchronizationJobProvisionOnDemand resource.
 
@@ -77,24 +77,24 @@ class SynchronizationJobProvisionOnDemandArgs:
 
     @_builtins.property
     @pulumi.getter
-    def triggers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def triggers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
         """
         return pulumi.get(self, "triggers")
 
     @triggers.setter
-    def triggers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def triggers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "triggers", value)
 
 
 @pulumi.input_type
 class _SynchronizationJobProvisionOnDemandState:
     def __init__(__self__, *,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterArgs']]]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronization_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterArgs']]]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronization_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SynchronizationJobProvisionOnDemand resources.
 
@@ -114,50 +114,50 @@ class _SynchronizationJobProvisionOnDemandState:
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterArgs']]]]:
         """
         One or more `parameter` blocks as documented below.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SynchronizationJobProvisionOnDemandParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
-    def service_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the service principal for the synchronization job.
         """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
-    def service_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="synchronizationJobId")
-    def synchronization_job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def synchronization_job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the synchronization job.
         """
         return pulumi.get(self, "synchronization_job_id")
 
     @synchronization_job_id.setter
-    def synchronization_job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def synchronization_job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "synchronization_job_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def triggers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def triggers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of arbitrary keys and values that, when changed, will trigger a re-invocation. To force a re-invocation without changing these keys/values, use the `terraform taint` command.
         """
         return pulumi.get(self, "triggers")
 
     @triggers.setter
-    def triggers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def triggers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "triggers", value)
 
 
@@ -167,10 +167,10 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronization_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronization_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages synchronization job on demand provisioning associated with a service principal (enterprise application) within Azure Active Directory.
@@ -320,10 +320,10 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 synchronization_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 synchronization_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -353,10 +353,10 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]]] = None,
-            service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            synchronization_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-            triggers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'SynchronizationJobProvisionOnDemand':
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict']]]]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            synchronization_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'SynchronizationJobProvisionOnDemand':
         """
         Get an existing SynchronizationJobProvisionOnDemand resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

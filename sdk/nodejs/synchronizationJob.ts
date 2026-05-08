@@ -150,19 +150,19 @@ export interface SynchronizationJobState {
     /**
      * Whether the provisioning job is enabled. Default state is `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A `schedule` list as documented below.
      */
-    schedules?: pulumi.Input<pulumi.Input<inputs.SynchronizationJobSchedule>[]>;
+    schedules?: pulumi.Input<pulumi.Input<inputs.SynchronizationJobSchedule>[] | undefined>;
     /**
      * The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
      */
-    servicePrincipalId?: pulumi.Input<string>;
+    servicePrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the synchronization template this job is based on.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -172,7 +172,7 @@ export interface SynchronizationJobArgs {
     /**
      * Whether the provisioning job is enabled. Default state is `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
      */

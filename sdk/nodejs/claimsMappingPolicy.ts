@@ -129,11 +129,11 @@ export interface ClaimsMappingPolicyState {
     /**
      * The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
      */
-    definitions?: pulumi.Input<pulumi.Input<string>[]>;
+    definitions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The display name for this Claims Mapping Policy.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
 }
 
 /**

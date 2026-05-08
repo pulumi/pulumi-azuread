@@ -124,11 +124,11 @@ export interface SynchronizationSecretState {
     /**
      * One or more `credential` blocks as documented below.
      */
-    credentials?: pulumi.Input<pulumi.Input<inputs.SynchronizationSecretCredential>[]>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.SynchronizationSecretCredential>[] | undefined>;
     /**
      * The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      */
-    servicePrincipalId?: pulumi.Input<string>;
+    servicePrincipalId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -138,7 +138,7 @@ export interface SynchronizationSecretArgs {
     /**
      * One or more `credential` blocks as documented below.
      */
-    credentials?: pulumi.Input<pulumi.Input<inputs.SynchronizationSecretCredential>[]>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.SynchronizationSecretCredential>[] | undefined>;
     /**
      * The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      */

@@ -203,43 +203,43 @@ export interface AccessPackageAssignmentPolicyState {
     /**
      * The ID of the access package that will contain the policy.
      */
-    accessPackageId?: pulumi.Input<string>;
+    accessPackageId?: pulumi.Input<string | undefined>;
     /**
      * An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
      */
-    approvalSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettings>;
+    approvalSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettings | undefined>;
     /**
      * An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
      */
-    assignmentReviewSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyAssignmentReviewSettings>;
+    assignmentReviewSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyAssignmentReviewSettings | undefined>;
     /**
      * The description of the policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the policy.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * How many days this assignment is valid for.
      */
-    durationInDays?: pulumi.Input<number>;
+    durationInDays?: pulumi.Input<number | undefined>;
     /**
      * The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * Whether users will be able to request extension of their access to this package before their access expires.
      */
-    extensionEnabled?: pulumi.Input<boolean>;
+    extensionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * One or more `question` blocks for the requestor, as documented below.
      */
-    questions?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestion>[]>;
+    questions?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestion>[] | undefined>;
     /**
      * A `requestorSettings` block to configure the users who can request access, as documented below.
      */
-    requestorSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyRequestorSettings>;
+    requestorSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyRequestorSettings | undefined>;
 }
 
 /**
@@ -253,11 +253,11 @@ export interface AccessPackageAssignmentPolicyArgs {
     /**
      * An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
      */
-    approvalSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettings>;
+    approvalSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettings | undefined>;
     /**
      * An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
      */
-    assignmentReviewSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyAssignmentReviewSettings>;
+    assignmentReviewSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyAssignmentReviewSettings | undefined>;
     /**
      * The description of the policy.
      */
@@ -269,21 +269,21 @@ export interface AccessPackageAssignmentPolicyArgs {
     /**
      * How many days this assignment is valid for.
      */
-    durationInDays?: pulumi.Input<number>;
+    durationInDays?: pulumi.Input<number | undefined>;
     /**
      * The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * Whether users will be able to request extension of their access to this package before their access expires.
      */
-    extensionEnabled?: pulumi.Input<boolean>;
+    extensionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * One or more `question` blocks for the requestor, as documented below.
      */
-    questions?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestion>[]>;
+    questions?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestion>[] | undefined>;
     /**
      * A `requestorSettings` block to configure the users who can request access, as documented below.
      */
-    requestorSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyRequestorSettings>;
+    requestorSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyRequestorSettings | undefined>;
 }

@@ -150,21 +150,21 @@ export interface ApplicationApiAccessState {
     /**
      * The client ID of the API to which access is being granted. Changing this forces a new resource to be created.
      */
-    apiClientId?: pulumi.Input<string>;
+    apiClientId?: pulumi.Input<string | undefined>;
     /**
      * The resource ID of the application registration. Changing this forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * A set of role IDs to be granted to the application, as published by the API.
      */
-    roleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    roleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of scope IDs to be granted to the application, as published by the API.
      *
      * > At least one of `roleIds` or `scopeIds` must be specified.
      */
-    scopeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    scopeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -182,11 +182,11 @@ export interface ApplicationApiAccessArgs {
     /**
      * A set of role IDs to be granted to the application, as published by the API.
      */
-    roleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    roleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of scope IDs to be granted to the application, as published by the API.
      *
      * > At least one of `roleIds` or `scopeIds` must be specified.
      */
-    scopeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    scopeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

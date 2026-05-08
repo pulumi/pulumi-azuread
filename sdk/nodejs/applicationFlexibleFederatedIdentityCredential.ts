@@ -158,31 +158,31 @@ export interface ApplicationFlexibleFederatedIdentityCredentialState {
     /**
      * The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The audience that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * The expression to match for claims. See the Preview Documentation for more information.
      */
-    claimsMatchingExpression?: pulumi.Input<string>;
+    claimsMatchingExpression?: pulumi.Input<string | undefined>;
     /**
      * A UUID used to uniquely identify this federated identity credential.
      */
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * A description for the federated identity credential.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A unique display name for the federated identity credential. Changing this forces a new resource to be created.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The URL of the external identity provider, which must match the issuer claim of the external token being exchanged.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -204,7 +204,7 @@ export interface ApplicationFlexibleFederatedIdentityCredentialArgs {
     /**
      * A description for the federated identity credential.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A unique display name for the federated identity credential. Changing this forces a new resource to be created.
      */

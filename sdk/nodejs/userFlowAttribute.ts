@@ -128,19 +128,19 @@ export interface UserFlowAttributeState {
     /**
      * The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
      */
-    attributeType?: pulumi.Input<string>;
+    attributeType?: pulumi.Input<string | undefined>;
     /**
      * The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
      */
-    dataType?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string | undefined>;
     /**
      * The description of the user flow attribute that is shown to the user at the time of sign-up.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the user flow attribute. Changing this forces a new resource to be created.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
 }
 
 /**

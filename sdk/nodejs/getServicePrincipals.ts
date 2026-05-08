@@ -206,23 +206,23 @@ export interface GetServicePrincipalsOutputArgs {
     /**
      * A list of client IDs of the applications associated with the service principals.
      */
-    clientIds?: pulumi.Input<pulumi.Input<string>[]>;
+    clientIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of display names of the applications associated with the service principals.
      */
-    displayNames?: pulumi.Input<pulumi.Input<string>[]>;
+    displayNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
      */
-    ignoreMissing?: pulumi.Input<boolean>;
+    ignoreMissing?: pulumi.Input<boolean | undefined>;
     /**
      * The object IDs of the service principals.
      */
-    objectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    objectIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
      *
      * > Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      */
-    returnAll?: pulumi.Input<boolean>;
+    returnAll?: pulumi.Input<boolean | undefined>;
 }

@@ -22,7 +22,7 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
                  claim_values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  resource_service_principal_object_id: pulumi.Input[_builtins.str],
                  service_principal_object_id: pulumi.Input[_builtins.str],
-                 user_object_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 user_object_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalDelegatedPermissionGrant resource.
 
@@ -77,7 +77,7 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
 
     @_builtins.property
     @pulumi.getter(name="userObjectId")
-    def user_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
 
@@ -86,17 +86,17 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
         return pulumi.get(self, "user_object_id")
 
     @user_object_id.setter
-    def user_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_object_id", value)
 
 
 @pulumi.input_type
 class _ServicePrincipalDelegatedPermissionGrantState:
     def __init__(__self__, *,
-                 claim_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_service_principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_object_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 claim_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_service_principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_object_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalDelegatedPermissionGrant resources.
 
@@ -118,43 +118,43 @@ class _ServicePrincipalDelegatedPermissionGrantState:
 
     @_builtins.property
     @pulumi.getter(name="claimValues")
-    def claim_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def claim_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         """
         return pulumi.get(self, "claim_values")
 
     @claim_values.setter
-    def claim_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def claim_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "claim_values", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceServicePrincipalObjectId")
-    def resource_service_principal_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_service_principal_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_service_principal_object_id")
 
     @resource_service_principal_object_id.setter
-    def resource_service_principal_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_service_principal_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_service_principal_object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalObjectId")
-    def service_principal_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_object_id")
 
     @service_principal_object_id.setter
-    def service_principal_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userObjectId")
-    def user_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
 
@@ -163,7 +163,7 @@ class _ServicePrincipalDelegatedPermissionGrantState:
         return pulumi.get(self, "user_object_id")
 
     @user_object_id.setter
-    def user_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_object_id", value)
 
 
@@ -173,10 +173,10 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 claim_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_service_principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_object_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 claim_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_service_principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a delegated permission grant for a service principal, on behalf of a single user, or all users.
@@ -404,10 +404,10 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 claim_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_service_principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_object_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 claim_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_service_principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -437,10 +437,10 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            claim_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_service_principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_principal_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_object_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServicePrincipalDelegatedPermissionGrant':
+            claim_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_service_principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_object_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServicePrincipalDelegatedPermissionGrant':
         """
         Get an existing ServicePrincipalDelegatedPermissionGrant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

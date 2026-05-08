@@ -112,11 +112,11 @@ export interface DirectoryRoleMemberState {
     /**
      * The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
-    memberObjectId?: pulumi.Input<string>;
+    memberObjectId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
      */
-    roleObjectId?: pulumi.Input<string>;
+    roleObjectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -126,9 +126,9 @@ export interface DirectoryRoleMemberArgs {
     /**
      * The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
-    memberObjectId?: pulumi.Input<string>;
+    memberObjectId?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
      */
-    roleObjectId?: pulumi.Input<string>;
+    roleObjectId?: pulumi.Input<string | undefined>;
 }

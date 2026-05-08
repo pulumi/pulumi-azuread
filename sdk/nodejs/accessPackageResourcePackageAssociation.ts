@@ -136,15 +136,15 @@ export interface AccessPackageResourcePackageAssociationState {
     /**
      * The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
      */
-    accessPackageId?: pulumi.Input<string>;
+    accessPackageId?: pulumi.Input<string | undefined>;
     /**
      * The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
      */
-    catalogResourceAssociationId?: pulumi.Input<string>;
+    catalogResourceAssociationId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -158,7 +158,7 @@ export interface AccessPackageResourcePackageAssociationArgs {
     /**
      * The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
      */

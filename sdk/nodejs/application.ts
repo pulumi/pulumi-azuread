@@ -483,157 +483,157 @@ export interface ApplicationState {
     /**
      * An `api` block as documented below, which configures API related settings for this application.
      */
-    api?: pulumi.Input<inputs.ApplicationApi>;
+    api?: pulumi.Input<inputs.ApplicationApi | undefined>;
     /**
      * A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
      */
-    appRoleIds?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    appRoleIds?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
-    appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[]>;
+    appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[] | undefined>;
     /**
      * The Client ID for the application.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * A description of the application, as shown to end users.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      */
-    deviceOnlyAuthEnabled?: pulumi.Input<boolean>;
+    deviceOnlyAuthEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
      */
-    disabledByMicrosoft?: pulumi.Input<string>;
+    disabledByMicrosoft?: pulumi.Input<string | undefined>;
     /**
      * The display name for the application.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
      */
-    fallbackPublicClientEnabled?: pulumi.Input<boolean>;
+    fallbackPublicClientEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A `featureTags` block as described below. Cannot be used together with the `tags` property.
      *
      * > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
      */
-    featureTags?: pulumi.Input<pulumi.Input<inputs.ApplicationFeatureTag>[]>;
+    featureTags?: pulumi.Input<pulumi.Input<inputs.ApplicationFeatureTag>[] | undefined>;
     /**
      * A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
-    groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[]>;
+    groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      */
-    identifierUris?: pulumi.Input<pulumi.Input<string>[]>;
+    identifierUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
      */
-    logoImage?: pulumi.Input<string>;
+    logoImage?: pulumi.Input<string | undefined>;
     /**
      * CDN URL to the application's logo, as uploaded with the `logoImage` property.
      */
-    logoUrl?: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string | undefined>;
     /**
      * URL of the application's marketing page.
      */
-    marketingUrl?: pulumi.Input<string>;
+    marketingUrl?: pulumi.Input<string | undefined>;
     /**
      * User-specified notes relevant for the management of the application.
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
      */
-    oauth2PermissionScopeIds?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    oauth2PermissionScopeIds?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
      */
-    oauth2PostResponseRequired?: pulumi.Input<boolean>;
+    oauth2PostResponseRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The application's object ID.
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * An `optionalClaims` block as documented below.
      */
-    optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims>;
+    optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims | undefined>;
     /**
      * A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
      *
      * > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
      */
-    owners?: pulumi.Input<pulumi.Input<string>[]>;
+    owners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
      *
      * > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
      */
-    password?: pulumi.Input<inputs.ApplicationPassword>;
+    password?: pulumi.Input<inputs.ApplicationPassword | undefined>;
     /**
      * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      */
-    preventDuplicateNames?: pulumi.Input<boolean>;
+    preventDuplicateNames?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the application's privacy statement.
      */
-    privacyStatementUrl?: pulumi.Input<string>;
+    privacyStatementUrl?: pulumi.Input<string | undefined>;
     /**
      * A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
      */
-    publicClient?: pulumi.Input<inputs.ApplicationPublicClient>;
+    publicClient?: pulumi.Input<inputs.ApplicationPublicClient | undefined>;
     /**
      * The verified publisher domain for the application.
      */
-    publisherDomain?: pulumi.Input<string>;
+    publisherDomain?: pulumi.Input<string | undefined>;
     /**
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
-    requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[]>;
+    requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[] | undefined>;
     /**
      * References application context information from a Service or Asset Management database.
      */
-    serviceManagementReference?: pulumi.Input<string>;
+    serviceManagementReference?: pulumi.Input<string | undefined>;
     /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      *
      * > **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
      */
-    signInAudience?: pulumi.Input<string>;
+    signInAudience?: pulumi.Input<string | undefined>;
     /**
      * A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
      */
-    singlePageApplication?: pulumi.Input<inputs.ApplicationSinglePageApplication>;
+    singlePageApplication?: pulumi.Input<inputs.ApplicationSinglePageApplication | undefined>;
     /**
      * URL of the application's support page.
      */
-    supportUrl?: pulumi.Input<string>;
+    supportUrl?: pulumi.Input<string | undefined>;
     /**
      * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      *
      * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      *
      * > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * URL of the application's terms of service statement.
      */
-    termsOfServiceUrl?: pulumi.Input<string>;
+    termsOfServiceUrl?: pulumi.Input<string | undefined>;
     /**
      * A `web` block as documented below, which configures web related settings for this application.
      *
      * > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
      */
-    web?: pulumi.Input<inputs.ApplicationWeb>;
+    web?: pulumi.Input<inputs.ApplicationWeb | undefined>;
 }
 
 /**
@@ -643,19 +643,19 @@ export interface ApplicationArgs {
     /**
      * An `api` block as documented below, which configures API related settings for this application.
      */
-    api?: pulumi.Input<inputs.ApplicationApi>;
+    api?: pulumi.Input<inputs.ApplicationApi | undefined>;
     /**
      * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
-    appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[]>;
+    appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[] | undefined>;
     /**
      * A description of the application, as shown to end users.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      */
-    deviceOnlyAuthEnabled?: pulumi.Input<boolean>;
+    deviceOnlyAuthEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The display name for the application.
      */
@@ -663,107 +663,107 @@ export interface ApplicationArgs {
     /**
      * Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
      */
-    fallbackPublicClientEnabled?: pulumi.Input<boolean>;
+    fallbackPublicClientEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * A `featureTags` block as described below. Cannot be used together with the `tags` property.
      *
      * > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
      */
-    featureTags?: pulumi.Input<pulumi.Input<inputs.ApplicationFeatureTag>[]>;
+    featureTags?: pulumi.Input<pulumi.Input<inputs.ApplicationFeatureTag>[] | undefined>;
     /**
      * A set of strings containing membership claims issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
-    groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[]>;
+    groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      */
-    identifierUris?: pulumi.Input<pulumi.Input<string>[]>;
+    identifierUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
      */
-    logoImage?: pulumi.Input<string>;
+    logoImage?: pulumi.Input<string | undefined>;
     /**
      * URL of the application's marketing page.
      */
-    marketingUrl?: pulumi.Input<string>;
+    marketingUrl?: pulumi.Input<string | undefined>;
     /**
      * User-specified notes relevant for the management of the application.
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
      */
-    oauth2PostResponseRequired?: pulumi.Input<boolean>;
+    oauth2PostResponseRequired?: pulumi.Input<boolean | undefined>;
     /**
      * An `optionalClaims` block as documented below.
      */
-    optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims>;
+    optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims | undefined>;
     /**
      * A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
      *
      * > **Ownership of Applications** It's recommended to always specify one or more application owners, including the principal being used to execute Terraform, such as in the example above.
      */
-    owners?: pulumi.Input<pulumi.Input<string>[]>;
+    owners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A single `password` block as documented below. The password is generated during creation. By default, no password is generated.
      *
      * > **Creating a Password** The `password` block supports a single password for the application, and is provided so that a password can be generated when a new application is created. This helps to make new applications available for authentication more quickly. To add additional passwords to an application, see the azuread.ApplicationPassword resource.
      */
-    password?: pulumi.Input<inputs.ApplicationPassword>;
+    password?: pulumi.Input<inputs.ApplicationPassword | undefined>;
     /**
      * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      */
-    preventDuplicateNames?: pulumi.Input<boolean>;
+    preventDuplicateNames?: pulumi.Input<boolean | undefined>;
     /**
      * URL of the application's privacy statement.
      */
-    privacyStatementUrl?: pulumi.Input<string>;
+    privacyStatementUrl?: pulumi.Input<string | undefined>;
     /**
      * A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
      */
-    publicClient?: pulumi.Input<inputs.ApplicationPublicClient>;
+    publicClient?: pulumi.Input<inputs.ApplicationPublicClient | undefined>;
     /**
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
-    requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[]>;
+    requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[] | undefined>;
     /**
      * References application context information from a Service or Asset Management database.
      */
-    serviceManagementReference?: pulumi.Input<string>;
+    serviceManagementReference?: pulumi.Input<string | undefined>;
     /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      *
      * > **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
      */
-    signInAudience?: pulumi.Input<string>;
+    signInAudience?: pulumi.Input<string | undefined>;
     /**
      * A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
      */
-    singlePageApplication?: pulumi.Input<inputs.ApplicationSinglePageApplication>;
+    singlePageApplication?: pulumi.Input<inputs.ApplicationSinglePageApplication | undefined>;
     /**
      * URL of the application's support page.
      */
-    supportUrl?: pulumi.Input<string>;
+    supportUrl?: pulumi.Input<string | undefined>;
     /**
      * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      *
      * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      *
      * > **Tip for Gallery Applications** This resource can  be used to instantiate a gallery application, however it will also attempt to manage the properties of the resulting application. If this is not desired, consider using the azuread.ApplicationRegistration resource instead.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * URL of the application's terms of service statement.
      */
-    termsOfServiceUrl?: pulumi.Input<string>;
+    termsOfServiceUrl?: pulumi.Input<string | undefined>;
     /**
      * A `web` block as documented below, which configures web related settings for this application.
      *
      * > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
      */
-    web?: pulumi.Input<inputs.ApplicationWeb>;
+    web?: pulumi.Input<inputs.ApplicationWeb | undefined>;
 }

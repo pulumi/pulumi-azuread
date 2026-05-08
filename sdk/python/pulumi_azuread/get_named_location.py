@@ -145,7 +145,7 @@ def get_named_location(display_name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ips=pulumi.get(__ret__, 'ips'),
         object_id=pulumi.get(__ret__, 'object_id'))
-def get_named_location_output(display_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_named_location_output(display_name: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNamedLocationResult]:
     """
     Gets information about a Named Location within Azure Active Directory.

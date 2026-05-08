@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.ApplicationRegistrationArgs;
  * import com.pulumi.azuread.ApplicationPassword;
  * import com.pulumi.azuread.ApplicationPasswordArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  * import com.pulumiverse.time.RotatingArgs;
  * import com.pulumi.azuread.ApplicationPassword;
  * import com.pulumi.azuread.ApplicationPasswordArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleRotating = new Rotating("exampleRotating", RotatingArgs.builder()
- *             .rotationDays(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:6,19-20)))
+ *             .rotationDays(7)
  *             .build());
  * 
  *         var exampleApplicationPassword = new ApplicationPassword("exampleApplicationPassword", ApplicationPasswordArgs.builder()

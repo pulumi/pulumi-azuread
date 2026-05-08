@@ -489,12 +489,12 @@ def get_group(display_name: Optional[_builtins.str] = None,
         types=pulumi.get(__ret__, 'types'),
         visibility=pulumi.get(__ret__, 'visibility'),
         writeback_enabled=pulumi.get(__ret__, 'writeback_enabled'))
-def get_group_output(display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     include_transitive_members: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     mail_enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     mail_nickname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     object_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     security_enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_group_output(display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     include_transitive_members: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     mail_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     mail_nickname: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     object_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     security_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupResult]:
     """
     Gets information about an Azure Active Directory group.

@@ -19,8 +19,8 @@ __all__ = ['AdministrativeUnitMemberArgs', 'AdministrativeUnitMember']
 @pulumi.input_type
 class AdministrativeUnitMemberArgs:
     def __init__(__self__, *,
-                 administrative_unit_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_object_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 administrative_unit_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_object_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AdministrativeUnitMember resource.
 
@@ -36,19 +36,19 @@ class AdministrativeUnitMemberArgs:
 
     @_builtins.property
     @pulumi.getter(name="administrativeUnitObjectId")
-    def administrative_unit_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def administrative_unit_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "administrative_unit_object_id")
 
     @administrative_unit_object_id.setter
-    def administrative_unit_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def administrative_unit_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "administrative_unit_object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="memberObjectId")
-    def member_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
 
@@ -57,15 +57,15 @@ class AdministrativeUnitMemberArgs:
         return pulumi.get(self, "member_object_id")
 
     @member_object_id.setter
-    def member_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_object_id", value)
 
 
 @pulumi.input_type
 class _AdministrativeUnitMemberState:
     def __init__(__self__, *,
-                 administrative_unit_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_object_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 administrative_unit_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_object_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AdministrativeUnitMember resources.
 
@@ -81,19 +81,19 @@ class _AdministrativeUnitMemberState:
 
     @_builtins.property
     @pulumi.getter(name="administrativeUnitObjectId")
-    def administrative_unit_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def administrative_unit_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "administrative_unit_object_id")
 
     @administrative_unit_object_id.setter
-    def administrative_unit_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def administrative_unit_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "administrative_unit_object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="memberObjectId")
-    def member_object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
 
@@ -102,7 +102,7 @@ class _AdministrativeUnitMemberState:
         return pulumi.get(self, "member_object_id")
 
     @member_object_id.setter
-    def member_object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_object_id", value)
 
 
@@ -112,8 +112,8 @@ class AdministrativeUnitMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 administrative_unit_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_object_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 administrative_unit_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a single administrative unit membership within Azure Active Directory.
@@ -213,8 +213,8 @@ class AdministrativeUnitMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 administrative_unit_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_object_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 administrative_unit_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_object_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -236,8 +236,8 @@ class AdministrativeUnitMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            administrative_unit_object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            member_object_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AdministrativeUnitMember':
+            administrative_unit_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            member_object_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AdministrativeUnitMember':
         """
         Get an existing AdministrativeUnitMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

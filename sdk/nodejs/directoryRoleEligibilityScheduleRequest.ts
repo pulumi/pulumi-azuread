@@ -136,19 +136,19 @@ export interface DirectoryRoleEligibilityScheduleRequestState {
     /**
      * Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.
      */
-    directoryScopeId?: pulumi.Input<string>;
+    directoryScopeId?: pulumi.Input<string | undefined>;
     /**
      * Justification for why the principal is granted the role eligibility. Changing this forces a new resource to be created.
      */
-    justification?: pulumi.Input<string>;
+    justification?: pulumi.Input<string | undefined>;
     /**
      * The object ID of the principal to granted the role eligibility. Changing this forces a new resource to be created.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
      */
-    roleDefinitionId?: pulumi.Input<string>;
+    roleDefinitionId?: pulumi.Input<string | undefined>;
 }
 
 /**
