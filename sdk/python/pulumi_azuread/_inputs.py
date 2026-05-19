@@ -180,7 +180,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsArgsDict(TypedDict):
     """
     Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
     """
-    approval_stages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs']]]]]
+    approval_stages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgsDict']]]]]
     """
     An `approval_stage` block specifying the process to obtain an approval, as documented below.
     """
@@ -269,7 +269,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgsDict(TypedDi
     """
     If no action taken, forward to alternate approvers?
     """
-    alternative_approvers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs']]]]]
+    alternative_approvers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgsDict']]]]]
     """
     If escalation is enabled and the primary approvers do not respond before the escalation time, the escalationApprovers are the users who will be asked to approve requests. This can be a collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, if there are no escalation approvers, or escalation approvers are not required for the stage, the value of this property should be an empty collection
     """
@@ -281,7 +281,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgsDict(TypedDi
     """
     Forward to alternate approver(s) after how many days?
     """
-    primary_approvers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs']]]]]
+    primary_approvers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgsDict']]]]]
     """
     The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
     """
@@ -553,7 +553,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict(TypedDict):
     """
     Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
     """
-    reviewers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs']]]]]
+    reviewers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgsDict']]]]]
     """
     One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
     """
@@ -786,7 +786,7 @@ class AccessPackageAssignmentPolicyQuestionArgsDict(TypedDict):
     """
     A block describing the content of this question, as documented below.
     """
-    choices: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArgs']]]]]
+    choices: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArgsDict']]]]]
     """
     One or more blocks configuring a choice to the question, as documented below.
     """
@@ -921,7 +921,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgsDict(TypedDict)
     """
     The default text of this question
     """
-    localized_texts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs']]]]]
+    localized_texts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgsDict']]]]]
     """
     The localized text of this question
     """
@@ -1016,7 +1016,7 @@ class AccessPackageAssignmentPolicyQuestionTextArgsDict(TypedDict):
     """
     The default text of this question
     """
-    localized_texts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs']]]]]
+    localized_texts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgsDict']]]]]
     """
     The localized text of this question
     """
@@ -1107,7 +1107,7 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs:
 
 
 class AccessPackageAssignmentPolicyRequestorSettingsArgsDict(TypedDict):
-    requestors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs']]]]]
+    requestors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgsDict']]]]]
     """
     A block specifying the users who are allowed to request on this policy, as documented below.
     """
@@ -1252,7 +1252,7 @@ class ApplicationApiArgsDict(TypedDict):
     """
     Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
     """
-    oauth2_permission_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationApiOauth2PermissionScopeArgs']]]]]
+    oauth2_permission_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationApiOauth2PermissionScopeArgsDict']]]]]
     """
     One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
     """
@@ -1745,15 +1745,15 @@ class ApplicationFeatureTagArgs:
 
 
 class ApplicationOptionalClaimsArgsDict(TypedDict):
-    access_tokens: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]]
+    access_tokens: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgsDict']]]]]
     """
     One or more `access_token` blocks as documented below.
     """
-    id_tokens: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]]
+    id_tokens: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgsDict']]]]]
     """
     One or more `id_token` blocks as documented below.
     """
-    saml2_tokens: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgs']]]]]
+    saml2_tokens: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationOptionalClaimsSaml2TokenArgsDict']]]]]
     """
     One or more `saml2_token` blocks as documented below.
     """
@@ -2348,7 +2348,7 @@ class ApplicationWebArgsDict(TypedDict):
     """
     Home page or landing page of the application.
     """
-    implicit_grant: NotRequired[pulumi.Input[Optional['ApplicationWebImplicitGrantArgs']]]
+    implicit_grant: NotRequired[pulumi.Input[Optional['ApplicationWebImplicitGrantArgsDict']]]
     """
     An `implicit_grant` block as documented above.
     """
@@ -2498,11 +2498,11 @@ class ConditionalAccessPolicyConditionsArgsDict(TypedDict):
     """
     A list of authentication flow transfer methods included in the policy. Possible values are: `authenticationTransfer` and `deviceCodeFlow`.
     """
-    client_applications: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsClientApplicationsArgs']]]
+    client_applications: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsClientApplicationsArgsDict']]]
     """
     An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
     """
-    devices: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsDevicesArgs']]]
+    devices: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsDevicesArgsDict']]]
     """
     A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
     """
@@ -2510,11 +2510,11 @@ class ConditionalAccessPolicyConditionsArgsDict(TypedDict):
     """
     The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
     """
-    locations: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsLocationsArgs']]]
+    locations: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsLocationsArgsDict']]]
     """
     A `locations` block as documented below, which specifies locations included in and excluded from the policy.
     """
-    platforms: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsPlatformsArgs']]]
+    platforms: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsPlatformsArgsDict']]]
     """
     A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
     """
@@ -2801,7 +2801,7 @@ class ConditionalAccessPolicyConditionsClientApplicationsArgsDict(TypedDict):
     """
     A list of service principal IDs explicitly excluded in the policy.
     """
-    filter: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsClientApplicationsFilterArgs']]]
+    filter: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsClientApplicationsFilterArgsDict']]]
     """
     A `filter` block as documented below.
 
@@ -2919,7 +2919,7 @@ class ConditionalAccessPolicyConditionsClientApplicationsFilterArgs:
 
 
 class ConditionalAccessPolicyConditionsDevicesArgsDict(TypedDict):
-    filter: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsDevicesFilterArgs']]]
+    filter: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsDevicesFilterArgsDict']]]
     """
     A `filter` block as documented below.
 
@@ -3101,7 +3101,7 @@ class ConditionalAccessPolicyConditionsUsersArgsDict(TypedDict):
     """
     A list of group IDs excluded from scope of policy.
     """
-    excluded_guests_or_external_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs']]]]]
+    excluded_guests_or_external_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgsDict']]]]]
     """
     A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
     """
@@ -3117,7 +3117,7 @@ class ConditionalAccessPolicyConditionsUsersArgsDict(TypedDict):
     """
     A list of group IDs in scope of policy unless explicitly excluded.
     """
-    included_guests_or_external_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs']]]]]
+    included_guests_or_external_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgsDict']]]]]
     """
     A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
     """
@@ -3276,7 +3276,7 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgsDict
     """
     A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
     """
-    external_tenants: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgs']]]]]
+    external_tenants: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenantArgsDict']]]]]
     """
     An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
     """
@@ -3372,7 +3372,7 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgsDict
     """
     A list of guest or external user types. Possible values are: `b2bCollaborationGuest`, `b2bCollaborationMember`, `b2bDirectConnectUser`, `internalGuest`, `none`, `otherExternalUser`, `serviceProvider`, `unknownFutureValue`.
     """
-    external_tenants: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgs']]]]]
+    external_tenants: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenantArgsDict']]]]]
     """
     An `external_tenants` block as documented below, which specifies external tenants in a policy scope.
     """
@@ -3834,7 +3834,7 @@ class GroupDynamicMembershipArgs:
 
 
 class GroupRoleManagementPolicyActivationRulesArgsDict(TypedDict):
-    approval_stage: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyActivationRulesApprovalStageArgs']]]
+    approval_stage: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyActivationRulesApprovalStageArgsDict']]]
     """
     An `approval_stage` block as defined below.
     """
@@ -4229,15 +4229,15 @@ class GroupRoleManagementPolicyEligibleAssignmentRulesArgs:
 
 
 class GroupRoleManagementPolicyNotificationRulesArgsDict(TypedDict):
-    active_assignments: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs']]]
+    active_assignments: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgsDict']]]
     """
     A `notification_target` block as defined below to configure notfications on active role assignments.
     """
-    eligible_activations: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgs']]]
+    eligible_activations: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgsDict']]]
     """
     A `notification_target` block as defined below for configuring notifications on activation of eligible role.
     """
-    eligible_assignments: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs']]]
+    eligible_assignments: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgsDict']]]
     """
     A `notification_target` block as defined below to configure notification on eligible role assignments.
 
@@ -4304,15 +4304,15 @@ class GroupRoleManagementPolicyNotificationRulesArgs:
 
 
 class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgsDict(TypedDict):
-    admin_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgs']]]
+    admin_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotificationsArgsDict']]]
     """
     Admin notification settings
     """
-    approver_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotificationsArgs']]]
+    approver_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsApproverNotificationsArgsDict']]]
     """
     Approver notification settings
     """
-    assignee_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotificationsArgs']]]
+    assignee_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotificationsArgsDict']]]
     """
     Assignee notification settings
     """
@@ -4574,15 +4574,15 @@ class GroupRoleManagementPolicyNotificationRulesActiveAssignmentsAssigneeNotific
 
 
 class GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgsDict(TypedDict):
-    admin_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotificationsArgs']]]
+    admin_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotificationsArgsDict']]]
     """
     Admin notification settings
     """
-    approver_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotificationsArgs']]]
+    approver_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleActivationsApproverNotificationsArgsDict']]]
     """
     Approver notification settings
     """
-    assignee_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotificationsArgs']]]
+    assignee_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotificationsArgsDict']]]
     """
     Assignee notification settings
     """
@@ -4844,15 +4844,15 @@ class GroupRoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotif
 
 
 class GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgsDict(TypedDict):
-    admin_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotificationsArgs']]]
+    admin_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAdminNotificationsArgsDict']]]
     """
     Admin notification settings
     """
-    approver_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgs']]]
+    approver_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsApproverNotificationsArgsDict']]]
     """
     Approver notification settings
     """
-    assignee_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgs']]]
+    assignee_notifications: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsAssigneeNotificationsArgsDict']]]
     """
     Assignee notification settings
     """
