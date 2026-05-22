@@ -51,6 +51,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.AccessPackageAssignmentPolicyArgs;
  * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyRequestorSettingsArgs;
  * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyApprovalSettingsArgs;
+ * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs;
+ * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs;
  * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs;
  * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionArgs;
  * import com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionTextArgs;
