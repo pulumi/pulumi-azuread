@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.SynchronizationJobProvisionOnDemand;
  * import com.pulumi.azuread.SynchronizationJobProvisionOnDemandArgs;
  * import com.pulumi.azuread.inputs.SynchronizationJobProvisionOnDemandParameterArgs;
+ * import com.pulumi.azuread.inputs.SynchronizationJobProvisionOnDemandParameterSubjectArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

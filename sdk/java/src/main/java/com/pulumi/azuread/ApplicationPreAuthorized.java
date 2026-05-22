@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.azuread.Application;
  * import com.pulumi.azuread.ApplicationArgs;
  * import com.pulumi.azuread.inputs.ApplicationApiArgs;
+ * import com.pulumi.azuread.inputs.ApplicationApiOauth2PermissionScopeArgs;
  * import com.pulumi.azuread.ApplicationPreAuthorized;
  * import com.pulumi.azuread.ApplicationPreAuthorizedArgs;
  * import java.util.ArrayList;

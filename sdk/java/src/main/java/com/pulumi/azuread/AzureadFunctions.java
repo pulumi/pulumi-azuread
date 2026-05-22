@@ -2801,6 +2801,7 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -2901,6 +2902,7 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3001,6 +3003,7 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3101,6 +3104,7 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3201,6 +3205,7 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3301,6 +3306,7 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -3401,6 +3407,7 @@ public final class AzureadFunctions {
      * import com.pulumi.azuread.Application;
      * import com.pulumi.azuread.ApplicationArgs;
      * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessResourceAccessArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
