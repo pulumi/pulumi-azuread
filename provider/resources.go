@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"unicode"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
@@ -129,6 +130,49 @@ func preConfigureCallback(vars resource.PropertyMap, _ tfshim.ResourceConfig) er
 	return nil
 }
 
+// migrateApplicationState carries v5 state through the v2→v3 rename of applicationId to
+// clientId and the bare-UUID to /applications/{id} format change.
+func migrateApplicationState(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
+	backfillClientIDFromApplicationID(state)
+	prefixID(state, "/applications/")
+	return state, nil
+}
+
+// migrateServicePrincipalState carries v5 state through the same rename and the bare-UUID to
+// /servicePrincipals/{id} format change.
+func migrateServicePrincipalState(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
+	backfillClientIDFromApplicationID(state)
+	prefixID(state, "/servicePrincipals/")
+	return state, nil
+}
+
+func backfillClientIDFromApplicationID(state resource.PropertyMap) {
+	const appIDKey = resource.PropertyKey("applicationId")
+	const clientIDKey = resource.PropertyKey("clientId")
+
+	appID, hasAppID := state[appIDKey]
+	if !hasAppID || !appID.IsString() || appID.StringValue() == "" {
+		return
+	}
+	if existing, hasClientID := state[clientIDKey]; hasClientID && existing.IsString() && existing.StringValue() != "" {
+		return
+	}
+	state[clientIDKey] = appID
+}
+
+func prefixID(state resource.PropertyMap, prefix string) {
+	const idKey = resource.PropertyKey("id")
+	id, hasID := state[idKey]
+	if !hasID || !id.IsString() {
+		return
+	}
+	s := id.StringValue()
+	if s == "" || strings.HasPrefix(s, prefix) {
+		return
+	}
+	state[idKey] = resource.NewStringProperty(prefix + s)
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
@@ -179,10 +223,16 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"azuread_application":                {Tok: makeResource(mainMod, "Application")},
-			"azuread_application_password":       {Tok: makeResource(mainMod, "ApplicationPassword")},
-			"azuread_group":                      {Tok: makeResource(mainMod, "Group")},
-			"azuread_service_principal":          {Tok: makeResource(mainMod, "ServicePrincipal")},
+			"azuread_application": {
+				Tok:                makeResource(mainMod, "Application"),
+				TransformFromState: migrateApplicationState,
+			},
+			"azuread_application_password": {Tok: makeResource(mainMod, "ApplicationPassword")},
+			"azuread_group":                {Tok: makeResource(mainMod, "Group")},
+			"azuread_service_principal": {
+				Tok:                makeResource(mainMod, "ServicePrincipal"),
+				TransformFromState: migrateServicePrincipalState,
+			},
 			"azuread_service_principal_password": {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
 			"azuread_service_principal_delegated_permission_grant": {
 				Tok: makeResource(mainMod, "ServicePrincipalDelegatedPermissionGrant"),
