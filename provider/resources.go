@@ -129,6 +129,23 @@ func preConfigureCallback(vars resource.PropertyMap, _ tfshim.ResourceConfig) er
 	return nil
 }
 
+// migrateApplicationIdToClientId backfills clientId from applicationId in state from
+// before the upstream v2→v3 rename.
+func migrateApplicationIdToClientId(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
+	const appIDKey = resource.PropertyKey("applicationId")
+	const clientIDKey = resource.PropertyKey("clientId")
+
+	appID, hasAppID := state[appIDKey]
+	if !hasAppID || !appID.IsString() || appID.StringValue() == "" {
+		return state, nil
+	}
+	if existing, hasClientID := state[clientIDKey]; hasClientID && existing.IsString() && existing.StringValue() != "" {
+		return state, nil
+	}
+	state[clientIDKey] = appID
+	return state, nil
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
@@ -179,10 +196,16 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"azuread_application":                {Tok: makeResource(mainMod, "Application")},
-			"azuread_application_password":       {Tok: makeResource(mainMod, "ApplicationPassword")},
-			"azuread_group":                      {Tok: makeResource(mainMod, "Group")},
-			"azuread_service_principal":          {Tok: makeResource(mainMod, "ServicePrincipal")},
+			"azuread_application": {
+				Tok:                makeResource(mainMod, "Application"),
+				TransformFromState: migrateApplicationIdToClientId,
+			},
+			"azuread_application_password": {Tok: makeResource(mainMod, "ApplicationPassword")},
+			"azuread_group":                {Tok: makeResource(mainMod, "Group")},
+			"azuread_service_principal": {
+				Tok:                makeResource(mainMod, "ServicePrincipal"),
+				TransformFromState: migrateApplicationIdToClientId,
+			},
 			"azuread_service_principal_password": {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
 			"azuread_service_principal_delegated_permission_grant": {
 				Tok: makeResource(mainMod, "ServicePrincipalDelegatedPermissionGrant"),
