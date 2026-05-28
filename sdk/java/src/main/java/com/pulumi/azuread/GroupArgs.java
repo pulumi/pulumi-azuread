@@ -222,7 +222,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
      * 
-     * !&gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+     * &gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
      * 
      */
     @Import(name="members")
@@ -231,7 +231,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
      * 
-     * !&gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+     * &gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
      * 
      */
     public Optional<Output<List<String>>> members() {
@@ -727,7 +727,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param members A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
          * 
-         * !&gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+         * &gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
          * 
          * @return builder
          * 
@@ -740,7 +740,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param members A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
          * 
-         * !&gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+         * &gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
          * 
          * @return builder
          * 
@@ -752,7 +752,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param members A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
          * 
-         * !&gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+         * &gt; **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
          * 
          * @return builder
          * 

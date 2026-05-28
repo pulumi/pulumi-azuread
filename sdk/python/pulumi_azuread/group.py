@@ -70,7 +70,7 @@ class GroupArgs:
         :param pulumi.Input[_builtins.str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
                
-               !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+               > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         :param pulumi.Input[_builtins.str] onpremises_group_type: The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
                
@@ -291,7 +291,7 @@ class GroupArgs:
         """
         A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
 
-        !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+        > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         """
         return pulumi.get(self, "members")
 
@@ -476,7 +476,7 @@ class _GroupState:
         :param pulumi.Input[_builtins.str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
                
-               !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+               > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         :param pulumi.Input[_builtins.str] object_id: The object ID of the group.
         :param pulumi.Input[_builtins.str] onpremises_domain_name: The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[_builtins.str] onpremises_group_type: The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
@@ -736,7 +736,7 @@ class _GroupState:
         """
         A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
 
-        !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+        > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         """
         return pulumi.get(self, "members")
 
@@ -1116,7 +1116,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
                
-               !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+               > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         :param pulumi.Input[_builtins.str] onpremises_group_type: The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: A set of object IDs of principals that will be granted ownership of the group. Supported object types are users or service principals. By default, the principal being used to execute Terraform is assigned as the sole owner. Groups cannot be created with no owners or have all their owners removed.
                
@@ -1397,7 +1397,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
                
-               !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+               > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         :param pulumi.Input[_builtins.str] object_id: The object ID of the group.
         :param pulumi.Input[_builtins.str] onpremises_domain_name: The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[_builtins.str] onpremises_group_type: The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
@@ -1579,7 +1579,7 @@ class Group(pulumi.CustomResource):
         """
         A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
 
-        !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+        > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         """
         return pulumi.get(self, "members")
 
