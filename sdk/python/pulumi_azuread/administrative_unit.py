@@ -34,7 +34,7 @@ class AdministrativeUnitArgs:
                
                > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
                
-               !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+               > **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         :param pulumi.Input[_builtins.bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -91,7 +91,7 @@ class AdministrativeUnitArgs:
 
         > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 
-        !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+        > **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         """
         return pulumi.get(self, "members")
 
@@ -131,7 +131,7 @@ class _AdministrativeUnitState:
                
                > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
                
-               !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+               > **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         :param pulumi.Input[_builtins.str] object_id: The object ID of the administrative unit.
         :param pulumi.Input[_builtins.bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
         """
@@ -192,7 +192,7 @@ class _AdministrativeUnitState:
 
         > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 
-        !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+        > **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         """
         return pulumi.get(self, "members")
 
@@ -278,7 +278,7 @@ class AdministrativeUnit(pulumi.CustomResource):
                
                > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
                
-               !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+               > **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         :param pulumi.Input[_builtins.bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
         """
         ...
@@ -386,7 +386,7 @@ class AdministrativeUnit(pulumi.CustomResource):
                
                > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
                
-               !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+               > **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         :param pulumi.Input[_builtins.str] object_id: The object ID of the administrative unit.
         :param pulumi.Input[_builtins.bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
         """
@@ -434,7 +434,7 @@ class AdministrativeUnit(pulumi.CustomResource):
 
         > **Caution** When using the `members` property of the AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `ignore_changes = [administrative_unit_ids]` lifecycle meta argument for the `Group` resource, in order to avoid a persistent diff.
 
-        !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+        > **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         """
         return pulumi.get(self, "members")
 

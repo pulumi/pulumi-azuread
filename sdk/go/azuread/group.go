@@ -254,7 +254,7 @@ type Group struct {
 	MailNickname pulumi.StringOutput `pulumi:"mailNickname"`
 	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	//
-	// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+	// > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The object ID of the group.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
@@ -369,7 +369,7 @@ type groupState struct {
 	MailNickname *string `pulumi:"mailNickname"`
 	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	//
-	// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+	// > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
 	Members []string `pulumi:"members"`
 	// The object ID of the group.
 	ObjectId *string `pulumi:"objectId"`
@@ -452,7 +452,7 @@ type GroupState struct {
 	MailNickname pulumi.StringPtrInput
 	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	//
-	// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+	// > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
 	Members pulumi.StringArrayInput
 	// The object ID of the group.
 	ObjectId pulumi.StringPtrInput
@@ -537,7 +537,7 @@ type groupArgs struct {
 	MailNickname *string `pulumi:"mailNickname"`
 	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	//
-	// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+	// > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
 	Members []string `pulumi:"members"`
 	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
 	OnpremisesGroupType *string `pulumi:"onpremisesGroupType"`
@@ -603,7 +603,7 @@ type GroupArgs struct {
 	MailNickname pulumi.StringPtrInput
 	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	//
-	// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+	// > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
 	Members pulumi.StringArrayInput
 	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
 	OnpremisesGroupType pulumi.StringPtrInput
@@ -795,7 +795,7 @@ func (o GroupOutput) MailNickname() pulumi.StringOutput {
 
 // A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 //
-// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+// > **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
 func (o GroupOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }

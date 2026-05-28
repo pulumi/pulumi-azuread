@@ -74,7 +74,7 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; **Caution** When using the `Members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `IgnoreChanges = [AdministrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
         /// 
-        /// !&gt; **Warning** Do not use the `Members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+        /// &gt; **Warning** Do not use the `Members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; **Caution** When using the `Members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `IgnoreChanges = [AdministrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
         /// 
-        /// !&gt; **Warning** Do not use the `Members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+        /// &gt; **Warning** Do not use the `Members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         /// </summary>
         public InputList<string> Members
         {
@@ -211,7 +211,7 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; **Caution** When using the `Members` property of the azuread.AdministrativeUnit resource, to manage Administrative Unit membership for a group, you will need to use an `IgnoreChanges = [AdministrativeUnitIds]` lifecycle meta argument for the `azuread.Group` resource, in order to avoid a persistent diff.
         /// 
-        /// !&gt; **Warning** Do not use the `Members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+        /// &gt; **Warning** Do not use the `Members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         /// </summary>
         public InputList<string> Members
         {

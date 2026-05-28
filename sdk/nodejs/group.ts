@@ -210,7 +210,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
      *
-     * !> **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+     * > **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
      */
     declare public readonly members: pulumi.Output<string[]>;
     /**
@@ -443,7 +443,7 @@ export interface GroupState {
     /**
      * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
      *
-     * !> **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+     * > **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
      */
     members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -587,7 +587,7 @@ export interface GroupArgs {
     /**
      * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
      *
-     * !> **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+     * > **Warning** Do not use the `members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
      */
     members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

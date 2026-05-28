@@ -273,7 +273,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `DynamicMembership` block.
         /// 
-        /// !&gt; **Warning** Do not use the `Members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+        /// &gt; **Warning** Do not use the `Members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -532,7 +532,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `DynamicMembership` block.
         /// 
-        /// !&gt; **Warning** Do not use the `Members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+        /// &gt; **Warning** Do not use the `Members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         /// </summary>
         public InputList<string> Members
         {
@@ -732,7 +732,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `DynamicMembership` block.
         /// 
-        /// !&gt; **Warning** Do not use the `Members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+        /// &gt; **Warning** Do not use the `Members` property at the same time as the azuread.GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
         /// </summary>
         public InputList<string> Members
         {

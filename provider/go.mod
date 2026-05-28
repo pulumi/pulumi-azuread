@@ -6,7 +6,7 @@ require (
 	github.com/hashicorp/go-azure-sdk/sdk v0.20260212.1143955
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
 	github.com/pulumi/providertest v0.7.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.130.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.131.0
 	github.com/pulumi/pulumi/sdk/v3 v3.243.0
 	github.com/stretchr/testify v1.11.1
 )
