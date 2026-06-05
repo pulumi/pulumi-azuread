@@ -206,6 +206,13 @@ build_python: .make/build_python
 	@touch $@
 .PHONY: generate_python build_python
 
+# TEMPORARY (pre-merge trial): shadow-gen diff target, refs pinned to the
+# ci-mgmt PR stack. See pulumi/ci-mgmt#2300.
+compare_sdks: compare_sdk_nodejs compare_sdk_python compare_sdk_dotnet compare_sdk_go compare_sdk_java
+compare_sdk_%: .make/mise_install bin/$(CODEGEN) .make/schema | mise_env
+	GOPROXY=direct GOSUMDB=off go run github.com/pulumi/ci-mgmt/provider-ci@216aafe9c4758833f6d551549de870073ee4799f compare-sdk --language $*
+.PHONY: compare_sdks
+
 clean:
 	rm -rf sdk/{dotnet,nodejs,go,python}
 	rm -rf bin/*
