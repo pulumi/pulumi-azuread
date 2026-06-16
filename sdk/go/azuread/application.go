@@ -62,7 +62,7 @@ import (
 //				},
 //				LogoImage: pulumi.String(invokeFilebase64.Result),
 //				Owners: pulumi.StringArray{
-//					pulumi.String(pulumi.String(current.ObjectId)),
+//					pulumi.String(current.ObjectId),
 //				},
 //				SignInAudience: pulumi.String("AzureADMultipleOrgs"),
 //				Api: &azuread.ApplicationApiArgs{
@@ -221,7 +221,7 @@ import (
 // exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 // DisplayName: pulumi.String("example"),
 // Owners: pulumi.StringArray{
-// pulumi.String(pulumi.String(current.ObjectId)),
+// pulumi.String(current.ObjectId),
 // },
 // Password: &azuread.ApplicationPasswordTypeArgs{
 // DisplayName: pulumi.String("MySecret-1"),
@@ -268,7 +268,7 @@ import (
 //			}
 //			exampleApplication, err := azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				TemplateId:  pulumi.String(pulumi.String(example.TemplateId)),
+//				TemplateId:  pulumi.String(example.TemplateId),
 //			})
 //			if err != nil {
 //				return err
