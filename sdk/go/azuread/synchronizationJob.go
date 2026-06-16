@@ -44,7 +44,7 @@ import (
 //			}
 //			exampleApplicationFromTemplate, err := azuread.NewApplicationFromTemplate(ctx, "example", &azuread.ApplicationFromTemplateArgs{
 //				DisplayName: pulumi.String("example"),
-//				TemplateId:  pulumi.String(pulumi.String(example.TemplateId)),
+//				TemplateId:  pulumi.String(example.TemplateId),
 //			})
 //			if err != nil {
 //				return err
@@ -54,7 +54,7 @@ import (
 //			}, nil)
 //			_, err = azuread.NewSynchronizationSecret(ctx, "example", &azuread.SynchronizationSecretArgs{
 //				ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-//					return &exampleGetServicePrincipal.Id, nil
+//					return exampleGetServicePrincipal.Id, nil
 //				}).(pulumi.StringPtrOutput)),
 //				Credentials: azuread.SynchronizationSecretCredentialArray{
 //					&azuread.SynchronizationSecretCredentialArgs{
@@ -72,7 +72,7 @@ import (
 //			}
 //			_, err = azuread.NewSynchronizationJob(ctx, "example", &azuread.SynchronizationJobArgs{
 //				ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-//					return &exampleGetServicePrincipal.Id, nil
+//					return exampleGetServicePrincipal.Id, nil
 //				}).(pulumi.StringPtrOutput)),
 //				TemplateId: pulumi.String("dataBricks"),
 //				Enabled:    pulumi.Bool(true),
