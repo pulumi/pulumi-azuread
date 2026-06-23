@@ -3,10 +3,12 @@
 
 package com.pulumi.azuread.outputs;
 
+import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsApplicationsFilter;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -16,6 +18,13 @@ public final class ConditionalAccessPolicyConditionsApplications {
      * 
      */
     private @Nullable List<String> excludedApplications;
+    /**
+     * @return A `filter` block as documented below.
+     * 
+     * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+     * 
+     */
+    private @Nullable ConditionalAccessPolicyConditionsApplicationsFilter filter;
     /**
      * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
      * 
@@ -34,6 +43,15 @@ public final class ConditionalAccessPolicyConditionsApplications {
      */
     public List<String> excludedApplications() {
         return this.excludedApplications == null ? List.of() : this.excludedApplications;
+    }
+    /**
+     * @return A `filter` block as documented below.
+     * 
+     * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+     * 
+     */
+    public Optional<ConditionalAccessPolicyConditionsApplicationsFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
     /**
      * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
@@ -60,12 +78,14 @@ public final class ConditionalAccessPolicyConditionsApplications {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludedApplications;
+        private @Nullable ConditionalAccessPolicyConditionsApplicationsFilter filter;
         private @Nullable List<String> includedApplications;
         private @Nullable List<String> includedUserActions;
         public Builder() {}
         public Builder(ConditionalAccessPolicyConditionsApplications defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedApplications = defaults.excludedApplications;
+    	      this.filter = defaults.filter;
     	      this.includedApplications = defaults.includedApplications;
     	      this.includedUserActions = defaults.includedUserActions;
         }
@@ -78,6 +98,12 @@ public final class ConditionalAccessPolicyConditionsApplications {
         }
         public Builder excludedApplications(String... excludedApplications) {
             return excludedApplications(List.of(excludedApplications));
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable ConditionalAccessPolicyConditionsApplicationsFilter filter) {
+
+            this.filter = filter;
+            return this;
         }
         @CustomType.Setter
         public Builder includedApplications(@Nullable List<String> includedApplications) {
@@ -100,6 +126,7 @@ public final class ConditionalAccessPolicyConditionsApplications {
         public ConditionalAccessPolicyConditionsApplications build() {
             final var _resultValue = new ConditionalAccessPolicyConditionsApplications();
             _resultValue.excludedApplications = excludedApplications;
+            _resultValue.filter = filter;
             _resultValue.includedApplications = includedApplications;
             _resultValue.includedUserActions = includedUserActions;
             return _resultValue;
