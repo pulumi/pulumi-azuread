@@ -386,6 +386,9 @@
                                             "excluded_applications": {
                                                 "maxItemsOne": false
                                             },
+                                            "filter": {
+                                                "maxItemsOne": true
+                                            },
                                             "included_applications": {
                                                 "maxItemsOne": false
                                             },
