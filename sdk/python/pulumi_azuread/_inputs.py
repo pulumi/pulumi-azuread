@@ -77,6 +77,8 @@ __all__ = [
     'ConditionalAccessPolicyConditionsArgsDict',
     'ConditionalAccessPolicyConditionsApplicationsArgs',
     'ConditionalAccessPolicyConditionsApplicationsArgsDict',
+    'ConditionalAccessPolicyConditionsApplicationsFilterArgs',
+    'ConditionalAccessPolicyConditionsApplicationsFilterArgsDict',
     'ConditionalAccessPolicyConditionsClientApplicationsArgs',
     'ConditionalAccessPolicyConditionsClientApplicationsArgsDict',
     'ConditionalAccessPolicyConditionsClientApplicationsFilterArgs',
@@ -2732,6 +2734,12 @@ class ConditionalAccessPolicyConditionsApplicationsArgsDict(TypedDict):
     """
     A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
     """
+    filter: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsApplicationsFilterArgsDict']]]
+    """
+    A `filter` block as documented below.
+
+    > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+    """
     included_applications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
@@ -2745,15 +2753,21 @@ class ConditionalAccessPolicyConditionsApplicationsArgsDict(TypedDict):
 class ConditionalAccessPolicyConditionsApplicationsArgs:
     def __init__(__self__, *,
                  excluded_applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filter: pulumi.Input[Optional['ConditionalAccessPolicyConditionsApplicationsFilterArgs']] = None,
                  included_applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  included_user_actions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_applications: A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsApplicationsFilterArgs'] filter: A `filter` block as documented below.
+               
+               > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_applications: A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_user_actions: A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
         """
         if excluded_applications is not None:
             pulumi.set(__self__, "excluded_applications", excluded_applications)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if included_applications is not None:
             pulumi.set(__self__, "included_applications", included_applications)
         if included_user_actions is not None:
@@ -2770,6 +2784,20 @@ class ConditionalAccessPolicyConditionsApplicationsArgs:
     @excluded_applications.setter
     def excluded_applications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excluded_applications", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[Optional['ConditionalAccessPolicyConditionsApplicationsFilterArgs']]:
+        """
+        A `filter` block as documented below.
+
+        > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[Optional['ConditionalAccessPolicyConditionsApplicationsFilterArgs']]):
+        pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="includedApplications")
@@ -2794,6 +2822,53 @@ class ConditionalAccessPolicyConditionsApplicationsArgs:
     @included_user_actions.setter
     def included_user_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "included_user_actions", value)
+
+
+class ConditionalAccessPolicyConditionsApplicationsFilterArgsDict(TypedDict):
+    mode: pulumi.Input[_builtins.str]
+    """
+    Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+    """
+    rule: pulumi.Input[_builtins.str]
+    """
+    Condition filter to match items.
+    """
+
+@pulumi.input_type
+class ConditionalAccessPolicyConditionsApplicationsFilterArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[_builtins.str],
+                 rule: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] mode: Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+        :param pulumi.Input[_builtins.str] rule: Condition filter to match items.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "rule", rule)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> pulumi.Input[_builtins.str]:
+        """
+        Condition filter to match items.
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "rule", value)
 
 
 class ConditionalAccessPolicyConditionsClientApplicationsArgsDict(TypedDict):
