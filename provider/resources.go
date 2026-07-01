@@ -233,7 +233,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"use_cli": {
 				Default: &tfbridge.DefaultInfo{
-					Value:   false,
+					Value:   true,
 					EnvVars: []string{"ARM_USE_CLI"},
 				},
 			},
@@ -243,8 +243,26 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"ARM_USE_MSI"},
 				},
 			},
+			"use_oidc": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   false,
+					EnvVars: []string{"ARM_USE_OIDC"},
+				},
+			},
+			"oidc_request_token": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"},
+				},
+			},
+			"oidc_request_url": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL "},
+				},				
+			},
 			"oidc_token_file_path": {
-				MarkAsOptional: tfbridge.True(),
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ARM_OIDC_TOKEN_FILE_PATH"},
+				},	
 			},
 		},
 		PreConfigureCallback: preConfigureCallback,

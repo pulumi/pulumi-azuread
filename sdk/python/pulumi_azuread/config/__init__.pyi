@@ -109,7 +109,7 @@ useAksWorkloadIdentity: Optional[bool]
 Allow Azure AKS Workload Identity to be used for Authentication.
 """
 
-useCli: Optional[bool]
+useCli: bool
 """
 Allow Azure CLI to be used for Authentication
 """
@@ -119,7 +119,7 @@ useMsi: bool
 Allow Managed Identity to be used for Authentication
 """
 
-useOidc: Optional[bool]
+useOidc: bool
 """
 Allow OpenID Connect to be used for authentication
 """

@@ -71,9 +71,34 @@ func NewProvider(ctx *pulumi.Context,
 			args.MsiEndpoint = pulumi.StringPtr(d.(string))
 		}
 	}
+	if args.OidcRequestToken == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"); d != nil {
+			args.OidcRequestToken = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.OidcRequestUrl == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL "); d != nil {
+			args.OidcRequestUrl = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.OidcTokenFilePath == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ARM_OIDC_TOKEN_FILE_PATH"); d != nil {
+			args.OidcTokenFilePath = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.UseCli == nil {
+		if d := internal.GetEnvOrDefault(true, internal.ParseEnvBool, "ARM_USE_CLI"); d != nil {
+			args.UseCli = pulumi.BoolPtr(d.(bool))
+		}
+	}
 	if args.UseMsi == nil {
 		if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "ARM_USE_MSI"); d != nil {
 			args.UseMsi = pulumi.BoolPtr(d.(bool))
+		}
+	}
+	if args.UseOidc == nil {
+		if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "ARM_USE_OIDC"); d != nil {
+			args.UseOidc = pulumi.BoolPtr(d.(bool))
 		}
 	}
 	if args.ClientCertificatePassword != nil {

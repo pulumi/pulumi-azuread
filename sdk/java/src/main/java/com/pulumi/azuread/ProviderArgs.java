@@ -857,7 +857,12 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         public ProviderArgs build() {
             $.environment = Codegen.stringProp("environment").output().arg($.environment).env("ARM_ENVIRONMENT").def("public").getNullable();
             $.msiEndpoint = Codegen.stringProp("msiEndpoint").output().arg($.msiEndpoint).env("ARM_MSI_ENDPOINT").getNullable();
+            $.oidcRequestToken = Codegen.stringProp("oidcRequestToken").output().arg($.oidcRequestToken).env("ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN").getNullable();
+            $.oidcRequestUrl = Codegen.stringProp("oidcRequestUrl").output().arg($.oidcRequestUrl).env("ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL ").getNullable();
+            $.oidcTokenFilePath = Codegen.stringProp("oidcTokenFilePath").output().arg($.oidcTokenFilePath).env("ARM_OIDC_TOKEN_FILE_PATH").getNullable();
+            $.useCli = Codegen.booleanProp("useCli").output().arg($.useCli).env("ARM_USE_CLI").def(true).getNullable();
             $.useMsi = Codegen.booleanProp("useMsi").output().arg($.useMsi).env("ARM_USE_MSI").def(false).getNullable();
+            $.useOidc = Codegen.booleanProp("useOidc").output().arg($.useOidc).env("ARM_USE_OIDC").def(false).getNullable();
             return $;
         }
     }

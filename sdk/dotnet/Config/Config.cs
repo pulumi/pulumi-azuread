@@ -152,7 +152,7 @@ namespace Pulumi.AzureAD
             set => _msiEndpoint.Set(value);
         }
 
-        private static readonly __Value<string?> _oidcRequestToken = new __Value<string?>(() => __config.Get("oidcRequestToken"));
+        private static readonly __Value<string?> _oidcRequestToken = new __Value<string?>(() => __config.Get("oidcRequestToken") ?? Utilities.GetEnv("ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"));
         /// <summary>
         /// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
         /// </summary>
@@ -162,7 +162,7 @@ namespace Pulumi.AzureAD
             set => _oidcRequestToken.Set(value);
         }
 
-        private static readonly __Value<string?> _oidcRequestUrl = new __Value<string?>(() => __config.Get("oidcRequestUrl"));
+        private static readonly __Value<string?> _oidcRequestUrl = new __Value<string?>(() => __config.Get("oidcRequestUrl") ?? Utilities.GetEnv("ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL "));
         /// <summary>
         /// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
         /// </summary>
@@ -182,7 +182,7 @@ namespace Pulumi.AzureAD
             set => _oidcToken.Set(value);
         }
 
-        private static readonly __Value<string?> _oidcTokenFilePath = new __Value<string?>(() => __config.Get("oidcTokenFilePath"));
+        private static readonly __Value<string?> _oidcTokenFilePath = new __Value<string?>(() => __config.Get("oidcTokenFilePath") ?? Utilities.GetEnv("ARM_OIDC_TOKEN_FILE_PATH"));
         /// <summary>
         /// The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.
         /// </summary>
@@ -222,7 +222,7 @@ namespace Pulumi.AzureAD
             set => _useAksWorkloadIdentity.Set(value);
         }
 
-        private static readonly __Value<bool?> _useCli = new __Value<bool?>(() => __config.GetBoolean("useCli"));
+        private static readonly __Value<bool?> _useCli = new __Value<bool?>(() => __config.GetBoolean("useCli") ?? Utilities.GetEnvBoolean("ARM_USE_CLI") ?? true);
         /// <summary>
         /// Allow Azure CLI to be used for Authentication
         /// </summary>
@@ -242,7 +242,7 @@ namespace Pulumi.AzureAD
             set => _useMsi.Set(value);
         }
 
-        private static readonly __Value<bool?> _useOidc = new __Value<bool?>(() => __config.GetBoolean("useOidc"));
+        private static readonly __Value<bool?> _useOidc = new __Value<bool?>(() => __config.GetBoolean("useOidc") ?? Utilities.GetEnvBoolean("ARM_USE_OIDC") ?? false);
         /// <summary>
         /// Allow OpenID Connect to be used for authentication
         /// </summary>

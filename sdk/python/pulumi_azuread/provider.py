@@ -95,12 +95,18 @@ class ProviderArgs:
             msi_endpoint = _utilities.get_env('ARM_MSI_ENDPOINT')
         if msi_endpoint is not None:
             pulumi.set(__self__, "msi_endpoint", msi_endpoint)
+        if oidc_request_token is None:
+            oidc_request_token = _utilities.get_env('ARM_OIDC_REQUEST_TOKEN', 'ACTIONS_ID_TOKEN_REQUEST_TOKEN')
         if oidc_request_token is not None:
             pulumi.set(__self__, "oidc_request_token", oidc_request_token)
+        if oidc_request_url is None:
+            oidc_request_url = _utilities.get_env('ARM_OIDC_REQUEST_URL', 'ACTIONS_ID_TOKEN_REQUEST_URL ')
         if oidc_request_url is not None:
             pulumi.set(__self__, "oidc_request_url", oidc_request_url)
         if oidc_token is not None:
             pulumi.set(__self__, "oidc_token", oidc_token)
+        if oidc_token_file_path is None:
+            oidc_token_file_path = _utilities.get_env('ARM_OIDC_TOKEN_FILE_PATH')
         if oidc_token_file_path is not None:
             pulumi.set(__self__, "oidc_token_file_path", oidc_token_file_path)
         if partner_id is not None:
@@ -109,12 +115,16 @@ class ProviderArgs:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if use_aks_workload_identity is not None:
             pulumi.set(__self__, "use_aks_workload_identity", use_aks_workload_identity)
+        if use_cli is None:
+            use_cli = (_utilities.get_env_bool('ARM_USE_CLI') or True)
         if use_cli is not None:
             pulumi.set(__self__, "use_cli", use_cli)
         if use_msi is None:
             use_msi = (_utilities.get_env_bool('ARM_USE_MSI') or False)
         if use_msi is not None:
             pulumi.set(__self__, "use_msi", use_msi)
+        if use_oidc is None:
+            use_oidc = (_utilities.get_env_bool('ARM_USE_OIDC') or False)
         if use_oidc is not None:
             pulumi.set(__self__, "use_oidc", use_oidc)
 
@@ -519,17 +529,27 @@ class Provider(pulumi.ProviderResource):
             if msi_endpoint is None:
                 msi_endpoint = _utilities.get_env('ARM_MSI_ENDPOINT')
             __props__.__dict__["msi_endpoint"] = msi_endpoint
+            if oidc_request_token is None:
+                oidc_request_token = _utilities.get_env('ARM_OIDC_REQUEST_TOKEN', 'ACTIONS_ID_TOKEN_REQUEST_TOKEN')
             __props__.__dict__["oidc_request_token"] = oidc_request_token
+            if oidc_request_url is None:
+                oidc_request_url = _utilities.get_env('ARM_OIDC_REQUEST_URL', 'ACTIONS_ID_TOKEN_REQUEST_URL ')
             __props__.__dict__["oidc_request_url"] = oidc_request_url
             __props__.__dict__["oidc_token"] = oidc_token
+            if oidc_token_file_path is None:
+                oidc_token_file_path = _utilities.get_env('ARM_OIDC_TOKEN_FILE_PATH')
             __props__.__dict__["oidc_token_file_path"] = oidc_token_file_path
             __props__.__dict__["partner_id"] = partner_id
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["use_aks_workload_identity"] = pulumi.Output.from_input(use_aks_workload_identity).apply(pulumi.runtime.to_json) if use_aks_workload_identity is not None else None
+            if use_cli is None:
+                use_cli = (_utilities.get_env_bool('ARM_USE_CLI') or True)
             __props__.__dict__["use_cli"] = pulumi.Output.from_input(use_cli).apply(pulumi.runtime.to_json) if use_cli is not None else None
             if use_msi is None:
                 use_msi = (_utilities.get_env_bool('ARM_USE_MSI') or False)
             __props__.__dict__["use_msi"] = pulumi.Output.from_input(use_msi).apply(pulumi.runtime.to_json) if use_msi is not None else None
+            if use_oidc is None:
+                use_oidc = (_utilities.get_env_bool('ARM_USE_OIDC') or False)
             __props__.__dict__["use_oidc"] = pulumi.Output.from_input(use_oidc).apply(pulumi.runtime.to_json) if use_oidc is not None else None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientCertificatePassword", "clientId", "clientSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
