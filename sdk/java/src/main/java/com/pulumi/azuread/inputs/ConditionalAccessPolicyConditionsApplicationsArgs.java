@@ -3,6 +3,7 @@
 
 package com.pulumi.azuread.inputs;
 
+import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsApplicationsFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -29,6 +30,25 @@ public final class ConditionalAccessPolicyConditionsApplicationsArgs extends com
      */
     public Optional<Output<List<String>>> excludedApplications() {
         return Optional.ofNullable(this.excludedApplications);
+    }
+
+    /**
+     * A `filter` block as documented below.
+     * 
+     * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+     * 
+     */
+    @Import(name="filter")
+    private @Nullable Output<ConditionalAccessPolicyConditionsApplicationsFilterArgs> filter;
+
+    /**
+     * @return A `filter` block as documented below.
+     * 
+     * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+     * 
+     */
+    public Optional<Output<ConditionalAccessPolicyConditionsApplicationsFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
@@ -65,6 +85,7 @@ public final class ConditionalAccessPolicyConditionsApplicationsArgs extends com
 
     private ConditionalAccessPolicyConditionsApplicationsArgs(ConditionalAccessPolicyConditionsApplicationsArgs $) {
         this.excludedApplications = $.excludedApplications;
+        this.filter = $.filter;
         this.includedApplications = $.includedApplications;
         this.includedUserActions = $.includedUserActions;
     }
@@ -116,6 +137,31 @@ public final class ConditionalAccessPolicyConditionsApplicationsArgs extends com
          */
         public Builder excludedApplications(String... excludedApplications) {
             return excludedApplications(List.of(excludedApplications));
+        }
+
+        /**
+         * @param filter A `filter` block as documented below.
+         * 
+         * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(@Nullable Output<ConditionalAccessPolicyConditionsApplicationsFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param filter A `filter` block as documented below.
+         * 
+         * &gt; **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(ConditionalAccessPolicyConditionsApplicationsFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**
