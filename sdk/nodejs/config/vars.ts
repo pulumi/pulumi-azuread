@@ -145,7 +145,7 @@ Object.defineProperty(exports, "msiEndpoint", {
 export declare const oidcRequestToken: string | undefined;
 Object.defineProperty(exports, "oidcRequestToken", {
     get() {
-        return __config.get("oidcRequestToken");
+        return __config.get("oidcRequestToken") ?? utilities.getEnv("ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN");
     },
     enumerable: true,
 });
@@ -156,7 +156,7 @@ Object.defineProperty(exports, "oidcRequestToken", {
 export declare const oidcRequestUrl: string | undefined;
 Object.defineProperty(exports, "oidcRequestUrl", {
     get() {
-        return __config.get("oidcRequestUrl");
+        return __config.get("oidcRequestUrl") ?? utilities.getEnv("ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL ");
     },
     enumerable: true,
 });
@@ -178,7 +178,7 @@ Object.defineProperty(exports, "oidcToken", {
 export declare const oidcTokenFilePath: string | undefined;
 Object.defineProperty(exports, "oidcTokenFilePath", {
     get() {
-        return __config.get("oidcTokenFilePath");
+        return __config.get("oidcTokenFilePath") ?? utilities.getEnv("ARM_OIDC_TOKEN_FILE_PATH");
     },
     enumerable: true,
 });
@@ -219,10 +219,10 @@ Object.defineProperty(exports, "useAksWorkloadIdentity", {
 /**
  * Allow Azure CLI to be used for Authentication
  */
-export declare const useCli: boolean | undefined;
+export declare const useCli: boolean;
 Object.defineProperty(exports, "useCli", {
     get() {
-        return __config.getObject<boolean>("useCli");
+        return __config.getObject<boolean>("useCli") ?? (utilities.getEnvBoolean("ARM_USE_CLI") || true);
     },
     enumerable: true,
 });
@@ -241,10 +241,10 @@ Object.defineProperty(exports, "useMsi", {
 /**
  * Allow OpenID Connect to be used for authentication
  */
-export declare const useOidc: boolean | undefined;
+export declare const useOidc: boolean;
 Object.defineProperty(exports, "useOidc", {
     get() {
-        return __config.getObject<boolean>("useOidc");
+        return __config.getObject<boolean>("useOidc") ?? (utilities.getEnvBoolean("ARM_USE_OIDC") || false);
     },
     enumerable: true,
 });

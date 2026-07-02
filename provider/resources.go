@@ -18,6 +18,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
@@ -92,6 +93,22 @@ func preConfigureCallback(vars resource.PropertyMap, _ tfshim.ResourceConfig) er
 	}
 
 	useOIDC := tfbridge.ConfigBoolValue(vars, "useOidc", []string{"ARM_USE_OIDC"})
+	useCLI := tfbridge.ConfigBoolValue(vars, "useCli", []string{"ARM_USE_CLI"})
+	
+	// Handle OIDC token - prioritize file, then fallback to config value
+	var oidcToken string
+	oidcTokenFilePath := tfbridge.ConfigStringValue(vars, "oidcTokenFilePath", []string{"ARM_OIDC_TOKEN_FILE_PATH"})
+	if oidcTokenFilePath != "" {
+		tokenContent, err := os.ReadFile(oidcTokenFilePath)
+		if err != nil {
+			return fmt.Errorf("failed to read OIDC token from file \"%s\": %v", oidcTokenFilePath, err)
+		}
+		oidcToken = string(bytes.TrimSpace(tokenContent))
+	} else {
+		// Fallback to oidcToken config if file path is not set
+		oidcToken = tfbridge.ConfigStringValue(vars, "oidcToken", []string{"ARM_OIDC_TOKEN"})
+	}
+	
 	authConfig := auth.Credentials{
 		Environment:        *env,
 		ClientID:           tfbridge.ConfigStringValue(vars, "clientId", []string{"ARM_CLIENT_ID"}),
@@ -108,13 +125,13 @@ func preConfigureCallback(vars resource.PropertyMap, _ tfshim.ResourceConfig) er
 		// OIDC section. The ACTIONS_ variables are set by GitHub.
 		OIDCTokenRequestToken: tfbridge.ConfigStringValue(vars, "oidcRequestToken", []string{"ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"}),
 		OIDCTokenRequestURL:   tfbridge.ConfigStringValue(vars, "oidcRequestUrl", []string{"ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL"}),
-		OIDCAssertionToken:    tfbridge.ConfigStringValue(vars, "oidcToken", []string{"ARM_OIDC_TOKEN"}),
+		OIDCAssertionToken:    oidcToken,
 
 		// Feature Toggles
 		EnableAuthenticatingUsingClientCertificate: true,
 		EnableAuthenticatingUsingClientSecret:      true,
 		EnableAuthenticatingUsingManagedIdentity:   tfbridge.ConfigBoolValue(vars, "useMsi", []string{"ARM_USE_MSI"}),
-		EnableAuthenticatingUsingAzureCLI:          true,
+		EnableAuthenticatingUsingAzureCLI:          useCLI,
 		EnableAuthenticationUsingOIDC:              useOIDC,
 		EnableAuthenticationUsingGitHubOIDC:        useOIDC,
 	}
@@ -214,11 +231,38 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"ARM_MSI_ENDPOINT"},
 				},
 			},
+			"use_cli": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   true,
+					EnvVars: []string{"ARM_USE_CLI"},
+				},
+			},
 			"use_msi": {
 				Default: &tfbridge.DefaultInfo{
 					Value:   false,
 					EnvVars: []string{"ARM_USE_MSI"},
 				},
+			},
+			"use_oidc": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   false,
+					EnvVars: []string{"ARM_USE_OIDC"},
+				},
+			},
+			"oidc_request_token": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"},
+				},
+			},
+			"oidc_request_url": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL "},
+				},				
+			},
+			"oidc_token_file_path": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ARM_OIDC_TOKEN_FILE_PATH"},
+				},	
 			},
 		},
 		PreConfigureCallback: preConfigureCallback,

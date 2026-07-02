@@ -100,14 +100,14 @@ public final class Config {
  * 
  */
     public Optional<String> oidcRequestToken() {
-        return Codegen.stringProp("oidcRequestToken").config(config).get();
+        return Codegen.stringProp("oidcRequestToken").config(config).env("ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN").get();
     }
 /**
  * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
  * 
  */
     public Optional<String> oidcRequestUrl() {
-        return Codegen.stringProp("oidcRequestUrl").config(config).get();
+        return Codegen.stringProp("oidcRequestUrl").config(config).env("ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL ").get();
     }
 /**
  * The ID token for use when authenticating as a Service Principal using OpenID Connect.
@@ -121,7 +121,7 @@ public final class Config {
  * 
  */
     public Optional<String> oidcTokenFilePath() {
-        return Codegen.stringProp("oidcTokenFilePath").config(config).get();
+        return Codegen.stringProp("oidcTokenFilePath").config(config).env("ARM_OIDC_TOKEN_FILE_PATH").get();
     }
 /**
  * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
@@ -149,7 +149,7 @@ public final class Config {
  * 
  */
     public Optional<Boolean> useCli() {
-        return Codegen.booleanProp("useCli").config(config).get();
+        return Codegen.booleanProp("useCli").config(config).env("ARM_USE_CLI").def(true).get();
     }
 /**
  * Allow Managed Identity to be used for Authentication
@@ -163,6 +163,6 @@ public final class Config {
  * 
  */
     public Optional<Boolean> useOidc() {
-        return Codegen.booleanProp("useOidc").config(config).get();
+        return Codegen.booleanProp("useOidc").config(config).env("ARM_USE_OIDC").def(false).get();
     }
 }

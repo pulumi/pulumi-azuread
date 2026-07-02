@@ -89,12 +89,28 @@ func GetMsiEndpoint(ctx *pulumi.Context) string {
 
 // The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
 func GetOidcRequestToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:oidcRequestToken")
+	v, err := config.Try(ctx, "azuread:oidcRequestToken")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
 func GetOidcRequestUrl(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:oidcRequestUrl")
+	v, err := config.Try(ctx, "azuread:oidcRequestUrl")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL "); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The ID token for use when authenticating as a Service Principal using OpenID Connect.
@@ -104,7 +120,15 @@ func GetOidcToken(ctx *pulumi.Context) string {
 
 // The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.
 func GetOidcTokenFilePath(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:oidcTokenFilePath")
+	v, err := config.Try(ctx, "azuread:oidcTokenFilePath")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "ARM_OIDC_TOKEN_FILE_PATH"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
@@ -124,7 +148,15 @@ func GetUseAksWorkloadIdentity(ctx *pulumi.Context) bool {
 
 // Allow Azure CLI to be used for Authentication
 func GetUseCli(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "azuread:useCli")
+	v, err := config.TryBool(ctx, "azuread:useCli")
+	if err == nil {
+		return v
+	}
+	var value bool
+	if d := internal.GetEnvOrDefault(true, internal.ParseEnvBool, "ARM_USE_CLI"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 
 // Allow Managed Identity to be used for Authentication
@@ -142,5 +174,13 @@ func GetUseMsi(ctx *pulumi.Context) bool {
 
 // Allow OpenID Connect to be used for authentication
 func GetUseOidc(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "azuread:useOidc")
+	v, err := config.TryBool(ctx, "azuread:useOidc")
+	if err == nil {
+		return v
+	}
+	var value bool
+	if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "ARM_USE_OIDC"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }

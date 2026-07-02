@@ -326,7 +326,12 @@ namespace Pulumi.AzureAD
         {
             Environment = Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public";
             MsiEndpoint = Utilities.GetEnv("ARM_MSI_ENDPOINT");
+            OidcRequestToken = Utilities.GetEnv("ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN");
+            OidcRequestUrl = Utilities.GetEnv("ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL ");
+            OidcTokenFilePath = Utilities.GetEnv("ARM_OIDC_TOKEN_FILE_PATH");
+            UseCli = Utilities.GetEnvBoolean("ARM_USE_CLI") ?? true;
             UseMsi = Utilities.GetEnvBoolean("ARM_USE_MSI") ?? false;
+            UseOidc = Utilities.GetEnvBoolean("ARM_USE_OIDC") ?? false;
         }
         public static new ProviderArgs Empty => new ProviderArgs();
     }

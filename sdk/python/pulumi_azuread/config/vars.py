@@ -109,14 +109,14 @@ class _ExportableConfig(types.ModuleType):
         """
         The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID Connect.
         """
-        return __config__.get('oidcRequestToken')
+        return __config__.get('oidcRequestToken') or _utilities.get_env('ARM_OIDC_REQUEST_TOKEN', 'ACTIONS_ID_TOKEN_REQUEST_TOKEN')
 
     @_builtins.property
     def oidc_request_url(self) -> Optional[str]:
         """
         The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal using OpenID Connect.
         """
-        return __config__.get('oidcRequestUrl')
+        return __config__.get('oidcRequestUrl') or _utilities.get_env('ARM_OIDC_REQUEST_URL', 'ACTIONS_ID_TOKEN_REQUEST_URL ')
 
     @_builtins.property
     def oidc_token(self) -> Optional[str]:
@@ -130,7 +130,7 @@ class _ExportableConfig(types.ModuleType):
         """
         The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.
         """
-        return __config__.get('oidcTokenFilePath')
+        return __config__.get('oidcTokenFilePath') or _utilities.get_env('ARM_OIDC_TOKEN_FILE_PATH')
 
     @_builtins.property
     def partner_id(self) -> Optional[str]:
@@ -154,11 +154,11 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('useAksWorkloadIdentity')
 
     @_builtins.property
-    def use_cli(self) -> Optional[bool]:
+    def use_cli(self) -> bool:
         """
         Allow Azure CLI to be used for Authentication
         """
-        return __config__.get_bool('useCli')
+        return __config__.get_bool('useCli') or (_utilities.get_env_bool('ARM_USE_CLI') or True)
 
     @_builtins.property
     def use_msi(self) -> bool:
@@ -168,9 +168,9 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('useMsi') or (_utilities.get_env_bool('ARM_USE_MSI') or False)
 
     @_builtins.property
-    def use_oidc(self) -> Optional[bool]:
+    def use_oidc(self) -> bool:
         """
         Allow OpenID Connect to be used for authentication
         """
-        return __config__.get_bool('useOidc')
+        return __config__.get_bool('useOidc') or (_utilities.get_env_bool('ARM_USE_OIDC') or False)
 

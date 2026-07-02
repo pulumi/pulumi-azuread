@@ -117,16 +117,16 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["environment"] = (args?.environment) ?? (utilities.getEnv("ARM_ENVIRONMENT") || "public");
             resourceInputs["metadataHost"] = args?.metadataHost;
             resourceInputs["msiEndpoint"] = (args?.msiEndpoint) ?? utilities.getEnv("ARM_MSI_ENDPOINT");
-            resourceInputs["oidcRequestToken"] = args?.oidcRequestToken;
-            resourceInputs["oidcRequestUrl"] = args?.oidcRequestUrl;
+            resourceInputs["oidcRequestToken"] = (args?.oidcRequestToken) ?? utilities.getEnv("ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN");
+            resourceInputs["oidcRequestUrl"] = (args?.oidcRequestUrl) ?? utilities.getEnv("ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL ");
             resourceInputs["oidcToken"] = args?.oidcToken;
-            resourceInputs["oidcTokenFilePath"] = args?.oidcTokenFilePath;
+            resourceInputs["oidcTokenFilePath"] = (args?.oidcTokenFilePath) ?? utilities.getEnv("ARM_OIDC_TOKEN_FILE_PATH");
             resourceInputs["partnerId"] = args?.partnerId;
             resourceInputs["tenantId"] = args?.tenantId;
             resourceInputs["useAksWorkloadIdentity"] = pulumi.output(args?.useAksWorkloadIdentity).apply(JSON.stringify);
-            resourceInputs["useCli"] = pulumi.output(args?.useCli).apply(JSON.stringify);
+            resourceInputs["useCli"] = pulumi.output((args?.useCli) ?? (utilities.getEnvBoolean("ARM_USE_CLI") || true)).apply(JSON.stringify);
             resourceInputs["useMsi"] = pulumi.output((args?.useMsi) ?? (utilities.getEnvBoolean("ARM_USE_MSI") || false)).apply(JSON.stringify);
-            resourceInputs["useOidc"] = pulumi.output(args?.useOidc).apply(JSON.stringify);
+            resourceInputs["useOidc"] = pulumi.output((args?.useOidc) ?? (utilities.getEnvBoolean("ARM_USE_OIDC") || false)).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["clientCertificatePassword", "clientId", "clientSecret"] };
