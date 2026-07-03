@@ -569,6 +569,12 @@ export interface ConditionalAccessPolicyConditionsApplications {
      */
     excludedApplications?: string[];
     /**
+     * A `filter` block as documented below.
+     *
+     * > **Note:** Specifying `filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+     */
+    filter?: outputs.ConditionalAccessPolicyConditionsApplicationsFilter;
+    /**
      * A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
      */
     includedApplications?: string[];
@@ -576,6 +582,17 @@ export interface ConditionalAccessPolicyConditionsApplications {
      * A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
      */
     includedUserActions?: string[];
+}
+
+export interface ConditionalAccessPolicyConditionsApplicationsFilter {
+    /**
+     * Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
+     */
+    mode: string;
+    /**
+     * Condition filter to match items.
+     */
+    rule: string;
 }
 
 export interface ConditionalAccessPolicyConditionsClientApplications {
