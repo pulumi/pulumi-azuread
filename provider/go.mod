@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-azuread/provider/v6
 
-go 1.25.9
+go 1.26.4
 
 require (
 	github.com/hashicorp/go-azure-sdk/sdk v0.20260212.1143955
@@ -110,7 +110,7 @@ require (
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
 	github.com/hashicorp/aws-sdk-go-base/v2 v2.0.0-beta.72 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
-	github.com/hashicorp/go-azure-helpers v0.76.2 // indirect
+	github.com/hashicorp/go-azure-helpers v0.80.0 // indirect
 	github.com/hashicorp/go-azure-sdk/microsoft-graph v0.20260212.1143955 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
@@ -133,7 +133,7 @@ require (
 	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.38.2 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.14.0 // indirect
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20260219201236-38d1993a1ea6 // indirect
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20260618210114-df2a07a33712 // indirect
 	github.com/hashicorp/terraform-registry-address v0.4.0 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/yamux v0.1.2 // indirect
