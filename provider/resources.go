@@ -181,7 +181,7 @@ func Provider() tfbridge.ProviderInfo {
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:           p,
-		Name:        "azuread",
+		Name:        mainPkg,
 		DisplayName: "Azure Active Directory (Azure AD)",
 		Description: "A Pulumi package for creating and managing Azure Active Directory (Azure AD) cloud resources.",
 		Keywords:    []string{"pulumi", "azuread"},
