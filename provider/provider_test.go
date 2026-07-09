@@ -16,6 +16,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
+//nolint:goconst // repeated "clientId" literal keeps the assertions self-contained
 func TestSecretsAreEncrypted(t *testing.T) {
 	test := setupTest(t, "explicit-provider-with-config", opttest.SkipInstall())
 
