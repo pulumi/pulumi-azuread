@@ -3,9 +3,9 @@ module user-go
 go 1.25.8
 
 require (
-	github.com/pulumi/pulumi-azuread/sdk/v6 v6.9.1
+	github.com/pulumi/pulumi-azuread/sdk/v6 v6.10.0
 	github.com/pulumi/pulumi-random/sdk/v4 v4.21.0
-	github.com/pulumi/pulumi/sdk/v3 v3.243.0
+	github.com/pulumi/pulumi/sdk/v3 v3.246.0
 )
 
 require (
@@ -75,7 +75,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
-	github.com/pulumi/esc v0.25.0 // indirect
+	github.com/pulumi/esc v0.26.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/santhosh-tekuri/jsonschema/v5 v5.0.0 // indirect
