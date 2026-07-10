@@ -952,6 +952,10 @@
                     },
                     "description": "A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.\n"
                 },
+                "filter": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditionsApplicationsFilter:ConditionalAccessPolicyConditionsApplicationsFilter",
+                    "description": "A \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\" pulumi-lang-hcl=\"`filter`\"\u003e`filter`\u003c/span\u003e block as documented below.\n\n\u003e **Note:** Specifying \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\" pulumi-lang-hcl=\"`filter`\"\u003e`filter`\u003c/span\u003e requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.\n"
+                },
                 "includedApplications": {
                     "type": "array",
                     "items": {
@@ -968,6 +972,23 @@
                 }
             },
             "type": "object"
+        },
+        "azuread:index/ConditionalAccessPolicyConditionsApplicationsFilter:ConditionalAccessPolicyConditionsApplicationsFilter": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Whether to include in, or exclude from, matching items from the policy. Supported values are \u003cspan pulumi-lang-nodejs=\"`include`\" pulumi-lang-dotnet=\"`Include`\" pulumi-lang-go=\"`include`\" pulumi-lang-python=\"`include`\" pulumi-lang-yaml=\"`include`\" pulumi-lang-java=\"`include`\" pulumi-lang-hcl=\"`include`\"\u003e`include`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`exclude`\" pulumi-lang-dotnet=\"`Exclude`\" pulumi-lang-go=\"`exclude`\" pulumi-lang-python=\"`exclude`\" pulumi-lang-yaml=\"`exclude`\" pulumi-lang-java=\"`exclude`\" pulumi-lang-hcl=\"`exclude`\"\u003e`exclude`\u003c/span\u003e.\n"
+                },
+                "rule": {
+                    "type": "string",
+                    "description": "Condition filter to match items.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode",
+                "rule"
+            ]
         },
         "azuread:index/ConditionalAccessPolicyConditionsClientApplications:ConditionalAccessPolicyConditionsClientApplications": {
             "properties": {
