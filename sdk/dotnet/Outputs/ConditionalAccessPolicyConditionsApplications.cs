@@ -18,6 +18,12 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExcludedApplications;
         /// <summary>
+        /// A `Filter` block as documented below.
+        /// 
+        /// &gt; **Note:** Specifying `Filter` requires the `Attribute Definition Reader` role, this is not included in the `Global Administrator` or other administrator roles and must be separately assigned.
+        /// </summary>
+        public readonly Outputs.ConditionalAccessPolicyConditionsApplicationsFilter? Filter;
+        /// <summary>
         /// A list of application IDs the policy applies to, unless explicitly excluded (in `ExcludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `IncludedUserActions`. One of `IncludedApplications` or `IncludedUserActions` must be specified.
         /// </summary>
         public readonly ImmutableArray<string> IncludedApplications;
@@ -30,11 +36,14 @@ namespace Pulumi.AzureAD.Outputs
         private ConditionalAccessPolicyConditionsApplications(
             ImmutableArray<string> excludedApplications,
 
+            Outputs.ConditionalAccessPolicyConditionsApplicationsFilter? filter,
+
             ImmutableArray<string> includedApplications,
 
             ImmutableArray<string> includedUserActions)
         {
             ExcludedApplications = excludedApplications;
+            Filter = filter;
             IncludedApplications = includedApplications;
             IncludedUserActions = includedUserActions;
         }
