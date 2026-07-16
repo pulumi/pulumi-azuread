@@ -18,8 +18,10 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"unicode"
 
@@ -46,6 +48,13 @@ const (
 	mainPkg = "azuread"
 	// modules:
 	mainMod = "index" // the y module
+
+	armUseCLIEnv       = "ARM_USE_CLI"
+	clientIDConfigKey  = "clientId"
+	oidcTokenConfigKey = "oidcToken"
+	// This is a provider configuration key, not a credential.
+	oidcTokenFilePathConfigKey = "oidcTokenFilePath" //nolint:gosec
+	useCLIConfigKey            = "useCli"
 )
 
 // makeMember manufactures a type token for the package and the given module and type.
@@ -77,24 +86,75 @@ func makeResource(mod string, res string) tokens.Type {
 // managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
 // var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
-// preConfigureCallback returns an error when cloud provider setup is misconfigured
+func configBoolValue(
+	vars resource.PropertyMap,
+	prop resource.PropertyKey,
+	envs []string,
+	defaultValue bool,
+) (bool, error) {
+	if value, ok := vars[prop]; ok && value.IsBool() {
+		return value.BoolValue(), nil
+	}
+
+	for _, env := range envs {
+		if value := os.Getenv(env); value != "" {
+			parsed, err := strconv.ParseBool(value)
+			if err != nil {
+				return false, fmt.Errorf("parsing %s as a boolean: %w", env, err)
+			}
+			return parsed, nil
+		}
+	}
+
+	return defaultValue, nil
+}
+
+// getOIDCToken matches the upstream provider's handling of oidc_token and oidc_token_file_path.
+func getOIDCToken(vars resource.PropertyMap) (string, error) {
+	token := tfbridge.ConfigStringValue(vars, oidcTokenConfigKey, []string{"ARM_OIDC_TOKEN"})
+	tokenFilePath := tfbridge.ConfigStringValue(
+		vars,
+		oidcTokenFilePathConfigKey,
+		[]string{"ARM_OIDC_TOKEN_FILE_PATH"},
+	)
+	if tokenFilePath == "" {
+		return token, nil
+	}
+
+	contents, err := os.ReadFile(tokenFilePath)
+	if err != nil {
+		return "", fmt.Errorf("reading OIDC token from file %q: %w", tokenFilePath, err)
+	}
+
+	fileToken := string(bytes.TrimSpace(contents))
+	if token != "" && token != fileToken {
+		return "", fmt.Errorf(
+			"mismatch between supplied OIDC token and supplied OIDC token file contents - " +
+				"please either remove one or ensure they match",
+		)
+	}
+
+	return fileToken, nil
+}
+
+// getAuthConfig builds the credentials used by the Pulumi-specific pre-configuration check.
 //
 // nolint: lll
-func preConfigureCallback(vars resource.PropertyMap, _ tfshim.ResourceConfig) error {
-	envName := tfbridge.ConfigStringValue(vars, "environment", []string{"ARM_ENVIRONMENT"})
-	if envName == "" {
-		envName = "public"
-	}
-
-	env, err := environments.FromName(envName)
-	if err != nil {
-		return fmt.Errorf("failed to read Azure environment \"%s\": %v", envName, err)
-	}
-
+func getAuthConfig(vars resource.PropertyMap, environment environments.Environment) (auth.Credentials, error) {
 	useOIDC := tfbridge.ConfigBoolValue(vars, "useOidc", []string{"ARM_USE_OIDC"})
-	authConfig := auth.Credentials{
-		Environment:        *env,
-		ClientID:           tfbridge.ConfigStringValue(vars, "clientId", []string{"ARM_CLIENT_ID"}),
+	useCLI, err := configBoolValue(vars, useCLIConfigKey, []string{armUseCLIEnv}, true)
+	if err != nil {
+		return auth.Credentials{}, err
+	}
+
+	oidcToken, err := getOIDCToken(vars)
+	if err != nil {
+		return auth.Credentials{}, err
+	}
+
+	return auth.Credentials{
+		Environment:        environment,
+		ClientID:           tfbridge.ConfigStringValue(vars, clientIDConfigKey, []string{"ARM_CLIENT_ID"}),
 		ClientSecret:       tfbridge.ConfigStringValue(vars, "clientSecret", []string{"ARM_CLIENT_SECRET"}),
 		TenantID:           tfbridge.ConfigStringValue(vars, "tenantId", []string{"ARM_TENANT_ID"}),
 		AuxiliaryTenantIDs: tfbridge.ConfigArrayValue(vars, "auxiliaryTenantIDs", []string{"ARM_AUXILIARY_TENANT_IDS"}),
@@ -108,15 +168,33 @@ func preConfigureCallback(vars resource.PropertyMap, _ tfshim.ResourceConfig) er
 		// OIDC section. The ACTIONS_ variables are set by GitHub.
 		OIDCTokenRequestToken: tfbridge.ConfigStringValue(vars, "oidcRequestToken", []string{"ARM_OIDC_REQUEST_TOKEN", "ACTIONS_ID_TOKEN_REQUEST_TOKEN"}),
 		OIDCTokenRequestURL:   tfbridge.ConfigStringValue(vars, "oidcRequestUrl", []string{"ARM_OIDC_REQUEST_URL", "ACTIONS_ID_TOKEN_REQUEST_URL"}),
-		OIDCAssertionToken:    tfbridge.ConfigStringValue(vars, "oidcToken", []string{"ARM_OIDC_TOKEN"}),
+		OIDCAssertionToken:    oidcToken,
 
 		// Feature Toggles
 		EnableAuthenticatingUsingClientCertificate: true,
 		EnableAuthenticatingUsingClientSecret:      true,
 		EnableAuthenticatingUsingManagedIdentity:   tfbridge.ConfigBoolValue(vars, "useMsi", []string{"ARM_USE_MSI"}),
-		EnableAuthenticatingUsingAzureCLI:          true,
+		EnableAuthenticatingUsingAzureCLI:          useCLI,
 		EnableAuthenticationUsingOIDC:              useOIDC,
 		EnableAuthenticationUsingGitHubOIDC:        useOIDC,
+	}, nil
+}
+
+// preConfigureCallback returns an error when cloud provider setup is misconfigured
+func preConfigureCallback(vars resource.PropertyMap, _ tfshim.ResourceConfig) error {
+	envName := tfbridge.ConfigStringValue(vars, "environment", []string{"ARM_ENVIRONMENT"})
+	if envName == "" {
+		envName = "public"
+	}
+
+	env, err := environments.FromName(envName)
+	if err != nil {
+		return fmt.Errorf("failed to read Azure environment \"%s\": %v", envName, err)
+	}
+
+	authConfig, err := getAuthConfig(vars, *env)
+	if err != nil {
+		return err
 	}
 
 	_, err = auth.NewAuthorizerFromCredentials(context.Background(), authConfig, env.MicrosoftGraph)
