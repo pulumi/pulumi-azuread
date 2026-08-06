@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationOwner(ctx, "example_jane", &azuread.ApplicationOwnerArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				OwnerObjectId: jane.ObjectId,
 //			})
 //			if err != nil {

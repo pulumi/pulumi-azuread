@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -86,9 +86,9 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationPassword(ctx, "example", &azuread.ApplicationPasswordArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				RotateWhenChanged: pulumi.StringMap{
-//					"rotation": exampleRotating.ID(),
+//					"rotation": exampleRotating.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

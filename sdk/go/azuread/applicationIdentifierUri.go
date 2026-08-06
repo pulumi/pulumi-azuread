@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationIdentifierUri(ctx, "example", &azuread.ApplicationIdentifierUriArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				IdentifierUri: pulumi.String("https://app.example.com"),
 //			})
 //			if err != nil {
@@ -82,7 +82,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationIdentifierUri(ctx, "example", &azuread.ApplicationIdentifierUriArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

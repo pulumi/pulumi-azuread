@@ -73,7 +73,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationPreAuthorized(ctx, "example", &azuread.ApplicationPreAuthorizedArgs{
-//				ApplicationId:      authorizer.ID(),
+//				ApplicationId:      authorizer.ID().ToIDOutput().ToStringOutput(),
 //				AuthorizedClientId: authorized.ClientId,
 //				PermissionIds: pulumi.StringArray{
 //					pulumi.String("00000000-0000-0000-0000-000000000000"),

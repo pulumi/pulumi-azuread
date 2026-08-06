@@ -1289,7 +1289,7 @@ class Application(pulumi.CustomResource):
                 "display_name": "MySecret-1",
                 "start_date": example.id,
                 "end_date": std.timeadd_output(duration=example.id,
-                    timestamp="4320h").apply(lambda invoke: invoke.result),
+                    timestamp="4320h").result,
             })
         pulumi.export("examplePassword", example_application.password[0]["value"])
         ```
@@ -1524,7 +1524,7 @@ class Application(pulumi.CustomResource):
                 "display_name": "MySecret-1",
                 "start_date": example.id,
                 "end_date": std.timeadd_output(duration=example.id,
-                    timestamp="4320h").apply(lambda invoke: invoke.result),
+                    timestamp="4320h").result,
             })
         pulumi.export("examplePassword", example_application.password[0]["value"])
         ```

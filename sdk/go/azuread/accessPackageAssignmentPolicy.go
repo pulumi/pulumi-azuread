@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			exampleAccessPackage, err := azuread.NewAccessPackage(ctx, "example", &azuread.AccessPackageArgs{
-//				CatalogId:   exampleAccessPackageCatalog.ID(),
+//				CatalogId:   exampleAccessPackageCatalog.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("access-package"),
 //				Description: pulumi.String("Access Package"),
 //			})
@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewAccessPackageAssignmentPolicy(ctx, "example", &azuread.AccessPackageAssignmentPolicyArgs{
-//				AccessPackageId: exampleAccessPackage.ID(),
+//				AccessPackageId: exampleAccessPackage.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName:     pulumi.String("assignment-policy"),
 //				Description:     pulumi.String("My assignment policy"),
 //				DurationInDays:  pulumi.Int(90),

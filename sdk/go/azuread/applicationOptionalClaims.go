@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationOptionalClaims(ctx, "example", &azuread.ApplicationOptionalClaimsArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				AccessTokens: azuread.ApplicationOptionalClaimsAccessTokenArray{
 //					&azuread.ApplicationOptionalClaimsAccessTokenArgs{
 //						Name: pulumi.String("myclaim"),

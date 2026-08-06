@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewServicePrincipalCertificate(ctx, "example", &azuread.ServicePrincipalCertificateArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
+//				ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
 //				Type:               pulumi.String("AsymmetricX509Cert"),
 //				Value:              pulumi.String(invokeFile.Result),
 //				EndDate:            pulumi.String("2021-05-01T01:02:03Z"),
@@ -102,7 +102,7 @@ import (
 //				return err
 //			}
 //			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: std.File(ctx, &std.FileArgs{
+//				Input: std.File(ctx, std.FileArgs{
 //					Input: "cert.der",
 //				}, nil).Result,
 //			}, nil)
@@ -110,7 +110,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewServicePrincipalCertificate(ctx, "example", &azuread.ServicePrincipalCertificateArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
+//				ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
 //				Type:               pulumi.String("AsymmetricX509Cert"),
 //				Encoding:           pulumi.String("base64"),
 //				Value:              pulumi.String(invokeBase64encode.Result),

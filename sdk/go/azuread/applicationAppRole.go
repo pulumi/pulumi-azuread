@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				RoleId:        exampleAdministrator.Id,
 //				AllowedMemberTypes: pulumi.StringArray{
 //					pulumi.String("User"),
@@ -93,7 +93,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

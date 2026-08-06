@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *     objectId: exampleApplicationFromTemplate.servicePrincipalObjectId,
  * });
  * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("example", {
- *     servicePrincipalId: exampleGetServicePrincipal.apply(exampleGetServicePrincipal => exampleGetServicePrincipal.id),
+ *     servicePrincipalId: exampleGetServicePrincipal.id,
  *     credentials: [
  *         {
  *             key: "BaseAddress",
