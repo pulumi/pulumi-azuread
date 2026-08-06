@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewAccessPackage(ctx, "example", &azuread.AccessPackageArgs{
-//				CatalogId:   example.ID(),
+//				CatalogId:   example.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("access-package"),
 //				Description: pulumi.String("Access Package"),
 //			})

@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationKnownClients(ctx, "example", &azuread.ApplicationKnownClientsArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				KnownClientIds: pulumi.StringArray{
 //					client.ClientId,
 //				},

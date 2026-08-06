@@ -166,7 +166,7 @@ import * as utilities from "./utilities";
  *         endDate: std.timeaddOutput({
  *             duration: example.id,
  *             timestamp: "4320h",
- *         }).apply(invoke => invoke.result),
+ *         }).result,
  *     },
  * });
  * export const examplePassword = exampleApplication.password.apply(password => password?.[0]?.value);

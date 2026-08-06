@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationFallbackPublicClient(ctx, "example", &azuread.ApplicationFallbackPublicClientArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				Enabled:       pulumi.Bool(true),
 //			})
 //			if err != nil {

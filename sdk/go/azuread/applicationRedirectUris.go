@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationRedirectUris(ctx, "example_public", &azuread.ApplicationRedirectUrisArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				Type:          pulumi.String("PublicClient"),
 //				RedirectUris: pulumi.StringArray{
 //					pulumi.String("myapp://auth"),
@@ -62,7 +62,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationRedirectUris(ctx, "example_spa", &azuread.ApplicationRedirectUrisArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				Type:          pulumi.String("SPA"),
 //				RedirectUris: pulumi.StringArray{
 //					pulumi.String("https://mobile.example.com/"),
@@ -73,7 +73,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationRedirectUris(ctx, "example_web", &azuread.ApplicationRedirectUrisArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				Type:          pulumi.String("Web"),
 //				RedirectUris: pulumi.StringArray{
 //					pulumi.String("https://app.example.com/"),

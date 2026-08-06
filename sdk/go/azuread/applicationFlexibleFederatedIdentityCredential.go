@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationFlexibleFederatedIdentityCredential(ctx, "example", &azuread.ApplicationFlexibleFederatedIdentityCredentialArgs{
-//				ApplicationId:            example.ID(),
+//				ApplicationId:            example.ID().ToIDOutput().ToStringOutput(),
 //				ClaimsMatchingExpression: pulumi.String("claims['sub'] matches 'repo:contoso/contoso-repo:ref:refs/heads/*' and claims['job_workflow_ref'] matches 'contoso/contoso-prod/.github/workflows/*.yml@refs/heads/main'"),
 //				DisplayName:              pulumi.String("my-repo-deploy"),
 //				Description:              pulumi.String("Deployments for my-repo"),

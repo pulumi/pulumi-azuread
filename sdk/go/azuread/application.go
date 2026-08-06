@@ -225,14 +225,11 @@ import (
 // },
 // Password: &azuread.ApplicationPasswordTypeArgs{
 // DisplayName: pulumi.String("MySecret-1"),
-// StartDate: example.ID(),
+// StartDate: example.ID().ToIDOutput().ToStringOutput(),
 // EndDate: std.TimeaddOutput(ctx, std.TimeaddOutputArgs{
-// Duration: example.ID(),
+// Duration: example.ID().ToIDOutput().ToStringOutput(),
 // Timestamp: pulumi.String("4320h"),
-// }, nil).ApplyT(func(invoke std.TimeaddResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput),
+// }, nil).Result(),
 // },
 // })
 // if err != nil {

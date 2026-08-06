@@ -38,16 +38,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]interface{}{
 //				"ClaimsMappingPolicy": map[string]interface{}{
-//					"ClaimsSchema": []map[string]interface{}{
-//						map[string]interface{}{
+//					"ClaimsSchema": []map[string]string{
+//						{
 //							"ID":            "employeeid",
 //							"JwtClaimType":  "name",
 //							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
 //							"Source":        "user",
 //						},
-//						map[string]interface{}{
+//						{
 //							"ID":            "tenantcountry",
 //							"JwtClaimType":  "country",
 //							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",

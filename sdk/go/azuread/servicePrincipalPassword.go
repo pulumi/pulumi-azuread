@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewServicePrincipalPassword(ctx, "example", &azuread.ServicePrincipalPasswordArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
+//				ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -98,9 +98,9 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewServicePrincipalPassword(ctx, "example", &azuread.ServicePrincipalPasswordArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
+//				ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
 //				RotateWhenChanged: pulumi.StringMap{
-//					"rotation": exampleRotating.ID(),
+//					"rotation": exampleRotating.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

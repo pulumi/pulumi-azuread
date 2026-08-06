@@ -67,9 +67,7 @@ import (
 //				ObjectId: exampleApplicationFromTemplate.ServicePrincipalObjectId,
 //			}, nil)
 //			_, err = azuread.NewSynchronizationSecret(ctx, "example", &azuread.SynchronizationSecretArgs{
-//				ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-//					return exampleGetServicePrincipal.Id, nil
-//				}).(pulumi.StringPtrOutput)),
+//				ServicePrincipalId: exampleGetServicePrincipal.Id(),
 //				Credentials: azuread.SynchronizationSecretCredentialArray{
 //					&azuread.SynchronizationSecretCredentialArgs{
 //						Key:   pulumi.String("BaseAddress"),
@@ -85,18 +83,16 @@ import (
 //				return err
 //			}
 //			exampleSynchronizationJob, err := azuread.NewSynchronizationJob(ctx, "example", &azuread.SynchronizationJobArgs{
-//				ServicePrincipalId: pulumi.String(exampleGetServicePrincipal.ApplyT(func(exampleGetServicePrincipal azuread.GetServicePrincipalResult) (*string, error) {
-//					return exampleGetServicePrincipal.Id, nil
-//				}).(pulumi.StringPtrOutput)),
-//				TemplateId: pulumi.String("dataBricks"),
-//				Enabled:    pulumi.Bool(true),
+//				ServicePrincipalId: exampleGetServicePrincipal.Id(),
+//				TemplateId:         pulumi.String("dataBricks"),
+//				Enabled:            pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = azuread.NewSynchronizationJobProvisionOnDemand(ctx, "example", &azuread.SynchronizationJobProvisionOnDemandArgs{
 //				ServicePrincipalId:   exampleSynchronizationJob.ServicePrincipalId,
-//				SynchronizationJobId: exampleSynchronizationJob.ID(),
+//				SynchronizationJobId: exampleSynchronizationJob.ID().ToIDOutput().ToStringOutput(),
 //				Parameters: azuread.SynchronizationJobProvisionOnDemandParameterArray{
 //					&azuread.SynchronizationJobProvisionOnDemandParameterArgs{
 //						RuleId: pulumi.String(""),

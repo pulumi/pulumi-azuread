@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewGroupRoleManagementPolicy(ctx, "example", &azuread.GroupRoleManagementPolicyArgs{
-//				GroupId: example.ID(),
+//				GroupId: example.ID().ToIDOutput().ToStringOutput(),
 //				RoleId:  pulumi.String("member"),
 //				ActiveAssignmentRules: &azuread.GroupRoleManagementPolicyActiveAssignmentRulesArgs{
 //					ExpireAfter: pulumi.String("P365D"),

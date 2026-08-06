@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				Type:          pulumi.String("AsymmetricX509Cert"),
 //				Value:         pulumi.String(invokeFile.Result),
 //				EndDate:       pulumi.String("2021-05-01T01:02:03Z"),
@@ -90,7 +90,7 @@ import (
 //				return err
 //			}
 //			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: std.File(ctx, &std.FileArgs{
+//				Input: std.File(ctx, std.FileArgs{
 //					Input: "cert.der",
 //				}, nil).Result,
 //			}, nil)
@@ -98,7 +98,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-//				ApplicationId: example.ID(),
+//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 //				Type:          pulumi.String("AsymmetricX509Cert"),
 //				Encoding:      pulumi.String("base64"),
 //				Value:         pulumi.String(invokeBase64encode.Result),
@@ -141,8 +141,8 @@ import (
 //				KeyVaultId: exampleAzurermKeyVault.Id,
 //				CertificatePolicy: []map[string]interface{}{
 //					map[string]interface{}{
-//						"issuerParameters": []map[string]interface{}{
-//							map[string]interface{}{
+//						"issuerParameters": []map[string]string{
+//							{
 //								"name": "Self",
 //							},
 //						},
@@ -156,20 +156,20 @@ import (
 //						},
 //						"lifetimeAction": []map[string]interface{}{
 //							map[string]interface{}{
-//								"action": []map[string]interface{}{
-//									map[string]interface{}{
+//								"action": []map[string]string{
+//									{
 //										"actionType": "AutoRenew",
 //									},
 //								},
-//								"trigger": []map[string]interface{}{
-//									map[string]interface{}{
+//								"trigger": []map[string]int{
+//									{
 //										"daysBeforeExpiry": 30,
 //									},
 //								},
 //							},
 //						},
-//						"secretProperties": []map[string]interface{}{
-//							map[string]interface{}{
+//						"secretProperties": []map[string]string{
+//							{
 //								"contentType": "application/x-pkcs12",
 //							},
 //						},
@@ -184,8 +184,8 @@ import (
 //									"keyCertSign",
 //									"keyEncipherment",
 //								},
-//								"subjectAlternativeNames": []map[string]interface{}{
-//									map[string]interface{}{
+//								"subjectAlternativeNames": []map[string][]string{
+//									{
 //										"dnsNames": []string{
 //											"internal.contoso.com",
 //											"domain.hello.world",
@@ -203,7 +203,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-//				ApplicationId: exampleApplication.ID(),
+//				ApplicationId: exampleApplication.ID().ToIDOutput().ToStringOutput(),
 //				Type:          pulumi.String("AsymmetricX509Cert"),
 //				Encoding:      pulumi.String("hex"),
 //				Value:         example.CertificateData,

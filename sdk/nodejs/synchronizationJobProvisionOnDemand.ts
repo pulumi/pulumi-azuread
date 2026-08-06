@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  *     objectId: exampleApplicationFromTemplate.servicePrincipalObjectId,
  * });
  * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("example", {
- *     servicePrincipalId: exampleGetServicePrincipal.apply(exampleGetServicePrincipal => exampleGetServicePrincipal.id),
+ *     servicePrincipalId: exampleGetServicePrincipal.id,
  *     credentials: [
  *         {
  *             key: "BaseAddress",
@@ -53,7 +53,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const exampleSynchronizationJob = new azuread.SynchronizationJob("example", {
- *     servicePrincipalId: exampleGetServicePrincipal.apply(exampleGetServicePrincipal => exampleGetServicePrincipal.id),
+ *     servicePrincipalId: exampleGetServicePrincipal.id,
  *     templateId: "dataBricks",
  *     enabled: true,
  * });

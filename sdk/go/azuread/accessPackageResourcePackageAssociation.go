@@ -67,8 +67,8 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewAccessPackageResourcePackageAssociation(ctx, "example", &azuread.AccessPackageResourcePackageAssociationArgs{
-//				AccessPackageId:              exampleAccessPackage.ID(),
-//				CatalogResourceAssociationId: exampleAccessPackageResourceCatalogAssociation.ID(),
+//				AccessPackageId:              exampleAccessPackage.ID().ToIDOutput().ToStringOutput(),
+//				CatalogResourceAssociationId: exampleAccessPackageResourceCatalogAssociation.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
