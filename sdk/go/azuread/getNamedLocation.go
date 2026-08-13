@@ -96,12 +96,8 @@ type LookupNamedLocationResult struct {
 }
 
 func LookupNamedLocationOutput(ctx *pulumi.Context, args LookupNamedLocationOutputArgs, opts ...pulumi.InvokeOption) LookupNamedLocationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNamedLocationResultOutput, error) {
-			args := v.(LookupNamedLocationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azuread:index/getNamedLocation:getNamedLocation", args, LookupNamedLocationResultOutput{}, options).(LookupNamedLocationResultOutput), nil
-		}).(LookupNamedLocationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azuread:index/getNamedLocation:getNamedLocation", args, LookupNamedLocationResultOutput{}, options).(LookupNamedLocationResultOutput)
 }
 
 // A collection of arguments for invoking getNamedLocation.

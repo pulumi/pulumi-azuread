@@ -109,12 +109,8 @@ type GetAccessPackageCatalogRoleResult struct {
 }
 
 func GetAccessPackageCatalogRoleOutput(ctx *pulumi.Context, args GetAccessPackageCatalogRoleOutputArgs, opts ...pulumi.InvokeOption) GetAccessPackageCatalogRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccessPackageCatalogRoleResultOutput, error) {
-			args := v.(GetAccessPackageCatalogRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args, GetAccessPackageCatalogRoleResultOutput{}, options).(GetAccessPackageCatalogRoleResultOutput), nil
-		}).(GetAccessPackageCatalogRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args, GetAccessPackageCatalogRoleResultOutput{}, options).(GetAccessPackageCatalogRoleResultOutput)
 }
 
 // A collection of arguments for invoking getAccessPackageCatalogRole.

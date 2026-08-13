@@ -80,12 +80,8 @@ type GetDirectoryObjectResult struct {
 }
 
 func GetDirectoryObjectOutput(ctx *pulumi.Context, args GetDirectoryObjectOutputArgs, opts ...pulumi.InvokeOption) GetDirectoryObjectResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDirectoryObjectResultOutput, error) {
-			args := v.(GetDirectoryObjectArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azuread:index/getDirectoryObject:getDirectoryObject", args, GetDirectoryObjectResultOutput{}, options).(GetDirectoryObjectResultOutput), nil
-		}).(GetDirectoryObjectResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azuread:index/getDirectoryObject:getDirectoryObject", args, GetDirectoryObjectResultOutput{}, options).(GetDirectoryObjectResultOutput)
 }
 
 // A collection of arguments for invoking getDirectoryObject.

@@ -111,12 +111,8 @@ type LookupAdministrativeUnitResult struct {
 }
 
 func LookupAdministrativeUnitOutput(ctx *pulumi.Context, args LookupAdministrativeUnitOutputArgs, opts ...pulumi.InvokeOption) LookupAdministrativeUnitResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAdministrativeUnitResultOutput, error) {
-			args := v.(LookupAdministrativeUnitArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args, LookupAdministrativeUnitResultOutput{}, options).(LookupAdministrativeUnitResultOutput), nil
-		}).(LookupAdministrativeUnitResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args, LookupAdministrativeUnitResultOutput{}, options).(LookupAdministrativeUnitResultOutput)
 }
 
 // A collection of arguments for invoking getAdministrativeUnit.

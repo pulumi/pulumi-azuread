@@ -111,12 +111,8 @@ type LookupAccessPackageResult struct {
 }
 
 func LookupAccessPackageOutput(ctx *pulumi.Context, args LookupAccessPackageOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPackageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccessPackageResultOutput, error) {
-			args := v.(LookupAccessPackageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azuread:index/getAccessPackage:getAccessPackage", args, LookupAccessPackageResultOutput{}, options).(LookupAccessPackageResultOutput), nil
-		}).(LookupAccessPackageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azuread:index/getAccessPackage:getAccessPackage", args, LookupAccessPackageResultOutput{}, options).(LookupAccessPackageResultOutput)
 }
 
 // A collection of arguments for invoking getAccessPackage.

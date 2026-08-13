@@ -66,10 +66,8 @@ type GetDirectoryRoleTemplatesResult struct {
 }
 
 func GetDirectoryRoleTemplatesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDirectoryRoleTemplatesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetDirectoryRoleTemplatesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", nil, GetDirectoryRoleTemplatesResultOutput{}, options).(GetDirectoryRoleTemplatesResultOutput), nil
-	}).(GetDirectoryRoleTemplatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", nil, GetDirectoryRoleTemplatesResultOutput{}, options).(GetDirectoryRoleTemplatesResultOutput)
 }
 
 // A collection of values returned by getDirectoryRoleTemplates.
