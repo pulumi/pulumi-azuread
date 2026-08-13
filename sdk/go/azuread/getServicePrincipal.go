@@ -184,12 +184,8 @@ type LookupServicePrincipalResult struct {
 }
 
 func LookupServicePrincipalOutput(ctx *pulumi.Context, args LookupServicePrincipalOutputArgs, opts ...pulumi.InvokeOption) LookupServicePrincipalResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServicePrincipalResultOutput, error) {
-			args := v.(LookupServicePrincipalArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("azuread:index/getServicePrincipal:getServicePrincipal", args, LookupServicePrincipalResultOutput{}, options).(LookupServicePrincipalResultOutput), nil
-		}).(LookupServicePrincipalResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("azuread:index/getServicePrincipal:getServicePrincipal", args, LookupServicePrincipalResultOutput{}, options).(LookupServicePrincipalResultOutput)
 }
 
 // A collection of arguments for invoking getServicePrincipal.
