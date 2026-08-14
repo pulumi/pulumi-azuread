@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  *         var exampleAdminister = new Uuid("exampleAdminister");
  * 
  *         var exampleApplicationPermissionScope = new ApplicationPermissionScope("exampleApplicationPermissionScope", ApplicationPermissionScopeArgs.builder()
- *             .applicationId(test.id())
- *             .scopeId(exampleAdminister.id())
+ *             .applicationId(test.get("id"))
+ *             .scopeId(exampleAdminister.get("id"))
  *             .value("administer")
  *             .adminConsentDescription("Administer the application")
  *             .adminConsentDisplayName("Administer")

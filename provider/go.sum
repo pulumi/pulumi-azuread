@@ -3104,8 +3104,8 @@ github.com/go-git/go-git-fixtures/v4 v4.3.2-0.20231010084843-55a94097c399/go.mod
 github.com/go-git/go-git-fixtures/v6 v6.0.0-alpha.1 h1:gmqi2jvsreu0s8JMLylYDFq4sbjHwwlhktMw0DUg3mA=
 github.com/go-git/go-git-fixtures/v6 v6.0.0-alpha.1/go.mod h1:ECf1MqJlBdYpKggBrOXjo/0EnvRZx6D++I86UYjPgAQ=
 github.com/go-git/go-git/v5 v5.16.5/go.mod h1:QOMLpNf1qxuSY4StA/ArOdfFR2TrKEjJiye2kel2m+M=
-github.com/go-git/go-git/v5 v5.19.1 h1:nX27AnaU43/K5bKktKwgBmR9lawoYVe1Ckg0rgzzN00=
-github.com/go-git/go-git/v5 v5.19.1/go.mod h1:Pb1v0c7/g8aGQJwx9Us09W85yGoyvSwuhEGMH7zjDKQ=
+github.com/go-git/go-git/v5 v5.19.2 h1:wkfn7vOlUBu8ivAWKBWisTiwJK4jYHzTF8Ndv1LyGqY=
+github.com/go-git/go-git/v5 v5.19.2/go.mod h1:QqCBE1EFN5ddFmrliLQ3/ntRCUjZU3EJuwuB/jWEHjk=
 github.com/go-git/go-git/v6 v6.0.0-alpha.5 h1:sE+OlkHgYWNMVmN1s9sR7uyFgsWLtxcNWse/vBYKxRE=
 github.com/go-git/go-git/v6 v6.0.0-alpha.5/go.mod h1:3IjhiZnM+uBmUrOGSeqrJpsmi4Vd0H2NZO/uK2a7d0s=
 github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1/go.mod h1:vR7hzQXu2zJy9AVAgeJqvqgH9Q5CA+iKCZ2gyEVpxRU=
@@ -3889,8 +3889,8 @@ github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.111.1 h1:4XIALK6ci8
 github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.111.1/go.mod h1:ABBfL+B6Hj0w9yfdE4QD7dwQCTkW6NB+U7Rbm13XD/o=
 github.com/pulumi/pulumi-java v1.36.0 h1:GGUMCftNU/KF4hPkaemEOD4RC3Yt8FVNdxyMhH72NqA=
 github.com/pulumi/pulumi-java v1.36.0/go.mod h1:EFNX9ntKIawIr51Sqp/9Rb17Mbi5GH5egKBt2AwyIsM=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.136.0 h1:MB+m/Rg1NKCAcxICoDR0nAE7SzjE7W7NnBBSOZouwc4=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.136.0/go.mod h1:XOQPUACb9ZTlly/7t7w4r2VnanhjnhlgZJOvMxfeTU0=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.137.0 h1:y9HaS9/ylx52g0Ur4uxgfCYCl9b7Q9/i9a6tJhdUJsY=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.137.0/go.mod h1:rZdu5D+qO0/J+An51FVlMRucYZLgPkrdfKlBYv8R+As=
 github.com/pulumi/pulumi-yaml v1.38.2 h1:pIHr89vfLLdomEE2KDUgImffEbJXkDJlU8gFb2YiF2k=
 github.com/pulumi/pulumi-yaml v1.38.2/go.mod h1:yEsmAeFUdW2Qa29VeqEMZ66l1LuO0b2IoBFTvhKmirQ=
 github.com/pulumi/pulumi/pkg/v3 v3.257.0 h1:FwXFF6lpQqP/rVFaGrcJP5kRahK+jnL9LqAM5aPS9vI=

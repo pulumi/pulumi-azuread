@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAccessPackageResourceCatalogAssociation = new AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", AccessPackageResourceCatalogAssociationArgs.builder()
- *             .catalogId(exampleCatalog.id())
- *             .resourceOriginId(exampleGroup.objectId())
+ *             .catalogId(exampleCatalog.get("id"))
+ *             .resourceOriginId(exampleGroup.get("objectId"))
  *             .resourceOriginSystem("AadGroup")
  *             .build());
  * 

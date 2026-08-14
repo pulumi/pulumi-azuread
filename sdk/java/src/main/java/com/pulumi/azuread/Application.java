@@ -98,8 +98,8 @@ import javax.annotation.Nullable;
  *                 .mappedClaimsEnabled(true)
  *                 .requestedAccessTokenVersion(2)
  *                 .knownClientApplications(                
- *                     known1.clientId(),
- *                     known2.clientId())
+ *                     known1.get("clientId"),
+ *                     known2.get("clientId"))
  *                 .oauth2PermissionScopes(                
  *                     ApplicationApiOauth2PermissionScopeArgs.builder()
  *                         .adminConsentDescription("Allow the application to access example on behalf of the signed-in user.")
@@ -246,7 +246,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         ctx.export("examplePassword", exampleApplication.password().applyValue(_password -> _password[0].value()));
+ *         ctx.export("examplePassword", exampleApplication.password().applyValue(_password -> _password[0].get("value")));
  *     }
  * }
  * }

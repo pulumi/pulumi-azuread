@@ -2828,11 +2828,11 @@ public final class AzureadFunctions {
      *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -2929,11 +2929,11 @@ public final class AzureadFunctions {
      *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -3030,11 +3030,11 @@ public final class AzureadFunctions {
      *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -3131,11 +3131,11 @@ public final class AzureadFunctions {
      *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -3232,11 +3232,11 @@ public final class AzureadFunctions {
      *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -3333,11 +3333,11 @@ public final class AzureadFunctions {
      *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
      *                         .type("Scope")
      *                         .build())
      *                 .build())
@@ -3434,11 +3434,11 @@ public final class AzureadFunctions {
      *                 .resourceAppId(wellKnown.result().MicrosoftGraph())
      *                 .resourceAccesses(                
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+     *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
      *                         .type("Role")
      *                         .build(),
      *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
-     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
      *                         .type("Scope")
      *                         .build())
      *                 .build())

@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var examplePrivilegedAccessGroupEligibilitySchedule = new PrivilegedAccessGroupEligibilitySchedule("examplePrivilegedAccessGroupEligibilitySchedule", PrivilegedAccessGroupEligibilityScheduleArgs.builder()
- *             .groupId(pim.id())
+ *             .groupId(pim.get("id"))
  *             .principalId(member.id())
  *             .assignmentType("member")
  *             .duration("P30D")

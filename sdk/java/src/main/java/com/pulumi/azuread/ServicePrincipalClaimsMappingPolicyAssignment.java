@@ -49,8 +49,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var app = new ServicePrincipalClaimsMappingPolicyAssignment("app", ServicePrincipalClaimsMappingPolicyAssignmentArgs.builder()
- *             .claimsMappingPolicyId(myPolicy.id())
- *             .servicePrincipalId(myPrincipal.id())
+ *             .claimsMappingPolicyId(myPolicy.get("id"))
+ *             .servicePrincipalId(myPrincipal.get("id"))
  *             .build());
  * 
  *     }

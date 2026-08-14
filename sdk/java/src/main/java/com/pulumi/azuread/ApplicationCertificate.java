@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  * 
  *         var example = new KeyVaultCertificate("example", KeyVaultCertificateArgs.builder()
  *             .name("generated-cert")
- *             .keyVaultId(exampleAzurermKeyVault.id())
+ *             .keyVaultId(exampleAzurermKeyVault.get("id"))
  *             .certificatePolicy(Arrays.asList(Map.ofEntries(
  *                 Map.entry("issuerParameters", Arrays.asList(Map.of("name", "Self"))),
  *                 Map.entry("keyProperties", Arrays.asList(Map.ofEntries(
@@ -194,9 +194,9 @@ import javax.annotation.Nullable;
  *             .applicationId(exampleApplication.id())
  *             .type("AsymmetricX509Cert")
  *             .encoding("hex")
- *             .value(example.certificateData())
- *             .endDate(example.certificateAttribute()[0].expires())
- *             .startDate(example.certificateAttribute()[0].notBefore())
+ *             .value(example.get("certificateData"))
+ *             .endDate(example.get("certificateAttribute")[0].get("expires"))
+ *             .startDate(example.get("certificateAttribute")[0].get("notBefore"))
  *             .build());
  * 
  *     }

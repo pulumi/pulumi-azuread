@@ -72,11 +72,11 @@ import javax.annotation.Nullable;
  *                 .resourceAppId(wellKnown.result().microsoftGraph())
  *                 .resourceAccesses(                
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.openid()))
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("openid")))
  *                         .type("Scope")
  *                         .build(),
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.Read()))
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.Read")))
  *                         .type("Scope")
  *                         .build())
  *                 .build())
@@ -145,11 +145,11 @@ import javax.annotation.Nullable;
  *                 .resourceAppId(wellKnown.result().microsoftGraph())
  *                 .resourceAccesses(                
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.openid()))
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("openid")))
  *                         .type("Scope")
  *                         .build(),
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.Read()))
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.Read")))
  *                         .type("Scope")
  *                         .build())
  *                 .build())

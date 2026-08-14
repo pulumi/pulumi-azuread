@@ -68,15 +68,15 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAccessPackageResourceCatalogAssociation = new AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", AccessPackageResourceCatalogAssociationArgs.builder()
- *             .catalogId(exampleCatalog.id())
- *             .resourceOriginId(exampleGroup.objectId())
+ *             .catalogId(exampleCatalog.get("id"))
+ *             .resourceOriginId(exampleGroup.get("objectId"))
  *             .resourceOriginSystem("AadGroup")
  *             .build());
  * 
  *         var exampleAccessPackage = new AccessPackage("exampleAccessPackage", AccessPackageArgs.builder()
  *             .displayName("example-package")
  *             .description("Example Package")
- *             .catalogId(exampleCatalog.id())
+ *             .catalogId(exampleCatalog.get("id"))
  *             .build());
  * 
  *         var exampleAccessPackageResourcePackageAssociation = new AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation", AccessPackageResourcePackageAssociationArgs.builder()
