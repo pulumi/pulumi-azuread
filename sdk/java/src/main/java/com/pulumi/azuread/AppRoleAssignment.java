@@ -70,11 +70,11 @@ import javax.annotation.Nullable;
  *                 .resourceAppId(wellKnown.result().microsoftGraph())
  *                 .resourceAccesses(                
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+ *                         .id(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
  *                         .type("Role")
  *                         .build(),
  *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.User.ReadWrite()))
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(_oauth2PermissionScopeIds -> _oauth2PermissionScopeIds.get("User.ReadWrite")))
  *                         .type("Scope")
  *                         .build())
  *                 .build())
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
- *             .appRoleId(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.User.Read.All()))
+ *             .appRoleId(msgraph.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("User.Read.All")))
  *             .principalObjectId(exampleServicePrincipal.objectId())
  *             .resourceObjectId(msgraph.objectId())
  *             .build());
@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
  *                 .resourceAppId(internal.clientId())
  *                 .resourceAccesses(ApplicationRequiredResourceAccessResourceAccessArgs.builder()
- *                     .id(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.Query.All()))
+ *                     .id(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("Query.All")))
  *                     .type("Role")
  *                     .build())
  *                 .build())
@@ -158,7 +158,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAppRoleAssignment = new AppRoleAssignment("exampleAppRoleAssignment", AppRoleAssignmentArgs.builder()
- *             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.Query.All()))
+ *             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(_appRoleIds -> _appRoleIds.get("Query.All")))
  *             .principalObjectId(exampleServicePrincipal.objectId())
  *             .resourceObjectId(internalServicePrincipal.objectId())
  *             .build());

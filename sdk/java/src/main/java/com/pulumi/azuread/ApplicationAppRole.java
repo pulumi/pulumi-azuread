@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleAdminister = new ApplicationAppRole("exampleAdminister", ApplicationAppRoleArgs.builder()
  *             .applicationId(example.id())
- *             .roleId(exampleAdministrator.id())
+ *             .roleId(exampleAdministrator.get("id"))
  *             .allowedMemberTypes("User")
  *             .description("My role description")
  *             .displayName("Administer")
