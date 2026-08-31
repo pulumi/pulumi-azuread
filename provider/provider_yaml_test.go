@@ -7,18 +7,25 @@ package provider
 
 import (
 	"context"
+	"encoding/json"
+	"os"
 	"path/filepath"
 	"testing"
 
 	_ "embed"
+
+	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/providertest"
 	"github.com/pulumi/providertest/optproviderupgrade"
 	"github.com/pulumi/providertest/providers"
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/assertpreview"
+	"github.com/pulumi/providertest/pulumitest/optnewstack"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto/optpreview"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 
 	"github.com/pulumi/pulumi-azuread/provider/v6/pkg/version"
@@ -33,6 +40,27 @@ func Test_ad_app_password(t *testing.T) {
 		filepath.Join("test-programs", "ad-app-password"),
 		"5.53.5",
 		optproviderupgrade.NewSourcePath(filepath.Join("test-programs", "ad-app-password", "v6")))
+}
+
+func TestServicePrincipalPasswordAcceptsBareUUIDFromV5State(t *testing.T) {
+	const program = "ad-sp-password"
+
+	rpFactory := providers.ResourceProviderFactory(providerServer)
+	pt := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", program),
+		opttest.AttachProvider("azuread", rpFactory),
+		opttest.NewStackOptions(optnewstack.DisableAutoDestroy()))
+
+	raw, err := os.ReadFile(filepath.Join(providertest.GetUpgradeCacheDir(program, "5.53.5"), "stack.json"))
+	require.NoError(t, err)
+
+	var stack apitype.UntypedDeployment
+	require.NoError(t, json.Unmarshal(raw, &stack))
+	pt.ImportStack(t, stack)
+
+	previewResult := pt.Preview(t, optpreview.Diff())
+	assertpreview.HasNoReplacements(t, previewResult)
+	assertpreview.HasNoDeletes(t, previewResult)
+	require.NotContains(t, previewResult.StdErr, "error:")
 }
 
 func TestUpgradeCoverage(t *testing.T) {

@@ -30,6 +30,7 @@ import (
 
 	"github.com/hashicorp/go-azure-sdk/sdk/auth"
 	"github.com/hashicorp/go-azure-sdk/sdk/environments"
+	"github.com/hashicorp/go-uuid"
 	"github.com/hashicorp/terraform-provider-azuread/shim"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -220,7 +221,6 @@ func migrateApplicationState(_ context.Context, state resource.PropertyMap) (res
 // /servicePrincipals/{id} format change.
 func migrateServicePrincipalState(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
 	backfillClientIDFromApplicationID(state)
-	prefixID(state, "/servicePrincipals/")
 	return state, nil
 }
 
@@ -236,6 +236,38 @@ func backfillClientIDFromApplicationID(state resource.PropertyMap) {
 		return
 	}
 	state[clientIDKey] = appID
+}
+
+func normalizeIDField(props resource.PropertyMap, field, prefix string) {
+	key := resource.PropertyKey(field)
+	v, ok := props[key]
+	if !ok || !v.IsString() {
+		return
+	}
+	s := v.StringValue()
+	if _, err := uuid.ParseUUID(s); err != nil {
+		return
+	}
+	props[key] = resource.NewStringProperty(prefix + s)
+}
+
+// v5 stored a ServicePrincipal's id as a bare UUID and only a refresh rewrites it, so
+// servicePrincipalId still arrives in that form after an upgrade and upstream rejects it.
+// Normalize the incoming value and the one already in state: the field is ForceNew, so
+// normalizing only one side would register as a change and force a replacement.
+func upgradeV5ServicePrincipalID(tok string) *tfbridge.ResourceInfo {
+	const field, prefix = "servicePrincipalId", "/servicePrincipals/"
+	return &tfbridge.ResourceInfo{
+		Tok: makeResource(mainMod, tok),
+		PreCheckCallback: func(_ context.Context, config, _ resource.PropertyMap) (resource.PropertyMap, error) {
+			normalizeIDField(config, field, prefix)
+			return config, nil
+		},
+		TransformFromState: func(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
+			normalizeIDField(state, field, prefix)
+			return state, nil
+		},
+	}
 }
 
 func prefixID(state resource.PropertyMap, prefix string) {
@@ -311,7 +343,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:                makeResource(mainMod, "ServicePrincipal"),
 				TransformFromState: migrateServicePrincipalState,
 			},
-			"azuread_service_principal_password": {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
+			"azuread_service_principal_password": upgradeV5ServicePrincipalID("ServicePrincipalPassword"),
 			"azuread_service_principal_delegated_permission_grant": {
 				Tok: makeResource(mainMod, "ServicePrincipalDelegatedPermissionGrant"),
 			},
