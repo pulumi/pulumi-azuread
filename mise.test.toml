@@ -1,0 +1,6 @@
+# Overrides for test workflows. These live here rather than in
+# .config/mise.test.toml, which ci-mgmt regenerates and would overwrite.
+
+[env]
+# Acceptance (specifically providertest) tests require that PULUMI_HOME be the default
+PULUMI_HOME = "{{ env.HOME }}/.pulumi"
