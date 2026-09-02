@@ -1,4 +1,12 @@
 [tools]
+# Plugins needed by `pulumi convert` when tfgen translates upstream examples
+# (pulumiConvert is enabled in .ci-mgmt.yaml). These live here rather than in
+# .config/mise.toml, which ci-mgmt regenerates and would overwrite.
+"vfox-pulumi:pulumiverse/pulumi-time" = "0.0.15"
+"vfox-pulumi:pulumi/pulumi-std" = "1.4.0"
+"vfox-pulumi:pulumi/pulumi-azure" = "5.52.0"
+"vfox-pulumi:pulumi/pulumi-random" = "4.14.0"
+"vfox-pulumi:pulumi/pulumi-converter-terraform" = "1.0.15"
 
 [tools."http:pulumi-java"]
 version = "0.16.1"
