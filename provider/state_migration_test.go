@@ -140,28 +140,24 @@ func TestMigrateServicePrincipalState(t *testing.T) {
 		want resource.PropertyMap
 	}{
 		{
-			name: "v5 state is fully migrated",
+			name: "clientId is backfilled from applicationId",
 			in: resource.PropertyMap{
 				"applicationId": resource.NewStringProperty(guid),
-				"id":            resource.NewStringProperty(guid),
 			},
 			want: resource.PropertyMap{
 				"applicationId": resource.NewStringProperty(guid),
 				"clientId":      resource.NewStringProperty(guid),
-				"id":            resource.NewStringProperty("/servicePrincipals/" + guid),
 			},
 		},
 		{
-			name: "already-migrated state is unchanged",
+			name: "existing clientId is preserved",
 			in: resource.PropertyMap{
 				"applicationId": resource.NewStringProperty(guid),
-				"clientId":      resource.NewStringProperty(guid),
-				"id":            resource.NewStringProperty("/servicePrincipals/" + guid),
+				"clientId":      resource.NewStringProperty("custom"),
 			},
 			want: resource.PropertyMap{
 				"applicationId": resource.NewStringProperty(guid),
-				"clientId":      resource.NewStringProperty(guid),
-				"id":            resource.NewStringProperty("/servicePrincipals/" + guid),
+				"clientId":      resource.NewStringProperty("custom"),
 			},
 		},
 	}

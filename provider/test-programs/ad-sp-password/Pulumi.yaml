@@ -1,0 +1,12 @@
+name: ad-sp-password
+runtime: yaml
+description: Upgrading v5 ServicePrincipal state, whose id is a bare UUID
+resources:
+  example:
+    type: azuread:ServicePrincipal
+    properties:
+      clientId: 12697b3b-13f5-4ad4-bfb6-78e3cc5c6c49
+  password:
+    type: azuread:ServicePrincipalPassword
+    properties:
+      servicePrincipalId: ${example.id}

@@ -1,0 +1,122 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2024-10-10T10:17:33.308559+01:00",
+      "magic": "3ee1df7d88e73eabd00b78d7e9adea0e78f7a7ee1e2702f04b35b87d31dbc1bb",
+      "version": "v3.135.1"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:Us8X3BsW8/w=:v1:n5GGST9lDiiM/Q6y:4n7LLG2geJENJK/VXoFOzIK1XkG78w=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::ad-sp-password::pulumi:pulumi:Stack::ad-sp-password-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "created": "2024-10-10T09:17:22.41795Z",
+        "modified": "2024-10-10T09:17:22.41795Z"
+      },
+      {
+        "urn": "urn:pulumi:test::ad-sp-password::pulumi:providers:azuread::default",
+        "custom": true,
+        "id": "0114540b-c098-4ecb-8277-c223b402b317",
+        "type": "pulumi:providers:azuread",
+        "created": "2024-10-10T09:17:23.346837Z",
+        "modified": "2024-10-10T09:17:23.346837Z"
+      },
+      {
+        "urn": "urn:pulumi:test::ad-sp-password::azuread:index/servicePrincipal:ServicePrincipal::example",
+        "custom": true,
+        "id": "bbcb3cdf-4757-43be-a600-cb2bdad3455b",
+        "type": "azuread:index/servicePrincipal:ServicePrincipal",
+        "inputs": {
+          "__defaults": [
+            "accountEnabled",
+            "appRoleAssignmentRequired"
+          ],
+          "accountEnabled": true,
+          "appRoleAssignmentRequired": false,
+          "clientId": "12697b3b-13f5-4ad4-bfb6-78e3cc5c6c49"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\": {\"create\": 600000000000, \"read\": 300000000000, \"update\": 600000000000, \"delete\": 300000000000}, \"schema_version\": \"0\"}",
+          "accountEnabled": true,
+          "alternativeNames": [],
+          "appRoleAssignmentRequired": false,
+          "appRoleIds": {},
+          "appRoles": [],
+          "applicationId": "12697b3b-13f5-4ad4-bfb6-78e3cc5c6c49",
+          "applicationTenantId": "3c7f2a1e-9d84-4b6f-8e21-5a0c7d93bf14",
+          "clientId": "12697b3b-13f5-4ad4-bfb6-78e3cc5c6c49",
+          "description": "",
+          "displayName": "example",
+          "featureTags": [],
+          "features": [],
+          "homepageUrl": "",
+          "id": "bbcb3cdf-4757-43be-a600-cb2bdad3455b",
+          "loginUrl": "",
+          "logoutUrl": "",
+          "notes": "",
+          "notificationEmailAddresses": [],
+          "oauth2PermissionScopeIds": {},
+          "oauth2PermissionScopes": [],
+          "objectId": "bbcb3cdf-4757-43be-a600-cb2bdad3455b",
+          "owners": [],
+          "preferredSingleSignOnMode": "",
+          "redirectUris": [],
+          "samlMetadataUrl": "",
+          "samlSingleSignOns": [],
+          "servicePrincipalNames": [
+            "12697b3b-13f5-4ad4-bfb6-78e3cc5c6c49"
+          ],
+          "signInAudience": "AzureADMyOrg",
+          "tags": [],
+          "type": "Application",
+          "useExisting": false
+        },
+        "parent": "urn:pulumi:test::ad-sp-password::pulumi:pulumi:Stack::ad-sp-password-test",
+        "provider": "urn:pulumi:test::ad-sp-password::pulumi:providers:azuread::default::0114540b-c098-4ecb-8277-c223b402b317",
+        "propertyDependencies": {
+          "clientId": []
+        },
+        "created": "2024-10-10T09:17:27.490323Z",
+        "modified": "2024-10-10T09:17:27.490323Z"
+      },
+      {
+        "urn": "urn:pulumi:test::ad-sp-password::azuread:index/servicePrincipalPassword:ServicePrincipalPassword::password",
+        "custom": true,
+        "id": "bbcb3cdf-4757-43be-a600-cb2bdad3455b/password/ef482963-8947-4bb9-883d-9742d685d378",
+        "type": "azuread:index/servicePrincipalPassword:ServicePrincipalPassword",
+        "inputs": {
+          "__defaults": [],
+          "servicePrincipalId": "bbcb3cdf-4757-43be-a600-cb2bdad3455b"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\": {\"create\": 300000000000, \"read\": 300000000000, \"delete\": 300000000000}, \"schema_version\": \"1\"}",
+          "displayName": "example",
+          "endDate": "2026-10-10T09:17:33Z",
+          "id": "bbcb3cdf-4757-43be-a600-cb2bdad3455b/password/ef482963-8947-4bb9-883d-9742d685d378",
+          "keyId": "ef482963-8947-4bb9-883d-9742d685d378",
+          "servicePrincipalId": "bbcb3cdf-4757-43be-a600-cb2bdad3455b",
+          "startDate": "2024-10-10T09:17:33Z"
+        },
+        "parent": "urn:pulumi:test::ad-sp-password::pulumi:pulumi:Stack::ad-sp-password-test",
+        "dependencies": [
+          "urn:pulumi:test::ad-sp-password::azuread:index/servicePrincipal:ServicePrincipal::example"
+        ],
+        "provider": "urn:pulumi:test::ad-sp-password::pulumi:providers:azuread::default::0114540b-c098-4ecb-8277-c223b402b317",
+        "propertyDependencies": {
+          "servicePrincipalId": [
+            "urn:pulumi:test::ad-sp-password::azuread:index/servicePrincipal:ServicePrincipal::example"
+          ]
+        },
+        "created": "2024-10-10T09:17:33.304471Z",
+        "modified": "2024-10-10T09:17:33.304471Z"
+      }
+    ]
+  }
+}
