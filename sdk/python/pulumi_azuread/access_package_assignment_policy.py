@@ -360,15 +360,15 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_package_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 approval_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyApprovalSettingsArgs', 'AccessPackageAssignmentPolicyApprovalSettingsArgsDict']]] = None,
-                 assignment_review_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs', 'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict']]] = None,
+                 approval_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyApprovalSettingsArgs', 'AccessPackageAssignmentPolicyApprovalSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyApprovalSettings']]] = None,
+                 assignment_review_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs', 'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyAssignmentReviewSettings']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  duration_in_days: pulumi.Input[Optional[_builtins.int]] = None,
                  expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
                  extension_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPackageAssignmentPolicyQuestionArgs', 'AccessPackageAssignmentPolicyQuestionArgsDict']]]]] = None,
-                 requestor_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyRequestorSettingsArgs', 'AccessPackageAssignmentPolicyRequestorSettingsArgsDict']]] = None,
+                 questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPackageAssignmentPolicyQuestionArgs', 'AccessPackageAssignmentPolicyQuestionArgsDict', 'outputs.AccessPackageAssignmentPolicyQuestion']]]]] = None,
+                 requestor_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyRequestorSettingsArgs', 'AccessPackageAssignmentPolicyRequestorSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyRequestorSettings']]] = None,
                  __props__=None):
         """
         Manages an assignment policy for an access package within Identity Governance in Azure Active Directory.
@@ -441,15 +441,15 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_package_id: The ID of the access package that will contain the policy.
-        :param pulumi.Input[Union['AccessPackageAssignmentPolicyApprovalSettingsArgs', 'AccessPackageAssignmentPolicyApprovalSettingsArgsDict']] approval_settings: An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
-        :param pulumi.Input[Union['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs', 'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict']] assignment_review_settings: An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+        :param pulumi.Input[Union['AccessPackageAssignmentPolicyApprovalSettingsArgs', 'AccessPackageAssignmentPolicyApprovalSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyApprovalSettings']] approval_settings: An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+        :param pulumi.Input[Union['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs', 'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyAssignmentReviewSettings']] assignment_review_settings: An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
         :param pulumi.Input[_builtins.str] description: The description of the policy.
         :param pulumi.Input[_builtins.str] display_name: The display name of the policy.
         :param pulumi.Input[_builtins.int] duration_in_days: How many days this assignment is valid for.
         :param pulumi.Input[_builtins.str] expiration_date: The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
         :param pulumi.Input[_builtins.bool] extension_enabled: Whether users will be able to request extension of their access to this package before their access expires.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPackageAssignmentPolicyQuestionArgs', 'AccessPackageAssignmentPolicyQuestionArgsDict']]]] questions: One or more `question` blocks for the requestor, as documented below.
-        :param pulumi.Input[Union['AccessPackageAssignmentPolicyRequestorSettingsArgs', 'AccessPackageAssignmentPolicyRequestorSettingsArgsDict']] requestor_settings: A `requestor_settings` block to configure the users who can request access, as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPackageAssignmentPolicyQuestionArgs', 'AccessPackageAssignmentPolicyQuestionArgsDict', 'outputs.AccessPackageAssignmentPolicyQuestion']]]] questions: One or more `question` blocks for the requestor, as documented below.
+        :param pulumi.Input[Union['AccessPackageAssignmentPolicyRequestorSettingsArgs', 'AccessPackageAssignmentPolicyRequestorSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyRequestorSettings']] requestor_settings: A `requestor_settings` block to configure the users who can request access, as documented below.
         """
         ...
     @overload
@@ -541,15 +541,15 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_package_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 approval_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyApprovalSettingsArgs', 'AccessPackageAssignmentPolicyApprovalSettingsArgsDict']]] = None,
-                 assignment_review_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs', 'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict']]] = None,
+                 approval_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyApprovalSettingsArgs', 'AccessPackageAssignmentPolicyApprovalSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyApprovalSettings']]] = None,
+                 assignment_review_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs', 'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyAssignmentReviewSettings']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  duration_in_days: pulumi.Input[Optional[_builtins.int]] = None,
                  expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
                  extension_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPackageAssignmentPolicyQuestionArgs', 'AccessPackageAssignmentPolicyQuestionArgsDict']]]]] = None,
-                 requestor_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyRequestorSettingsArgs', 'AccessPackageAssignmentPolicyRequestorSettingsArgsDict']]] = None,
+                 questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPackageAssignmentPolicyQuestionArgs', 'AccessPackageAssignmentPolicyQuestionArgsDict', 'outputs.AccessPackageAssignmentPolicyQuestion']]]]] = None,
+                 requestor_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyRequestorSettingsArgs', 'AccessPackageAssignmentPolicyRequestorSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyRequestorSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -586,15 +586,15 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_package_id: pulumi.Input[Optional[_builtins.str]] = None,
-            approval_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyApprovalSettingsArgs', 'AccessPackageAssignmentPolicyApprovalSettingsArgsDict']]] = None,
-            assignment_review_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs', 'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict']]] = None,
+            approval_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyApprovalSettingsArgs', 'AccessPackageAssignmentPolicyApprovalSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyApprovalSettings']]] = None,
+            assignment_review_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs', 'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyAssignmentReviewSettings']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             duration_in_days: pulumi.Input[Optional[_builtins.int]] = None,
             expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
             extension_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPackageAssignmentPolicyQuestionArgs', 'AccessPackageAssignmentPolicyQuestionArgsDict']]]]] = None,
-            requestor_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyRequestorSettingsArgs', 'AccessPackageAssignmentPolicyRequestorSettingsArgsDict']]] = None) -> 'AccessPackageAssignmentPolicy':
+            questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPackageAssignmentPolicyQuestionArgs', 'AccessPackageAssignmentPolicyQuestionArgsDict', 'outputs.AccessPackageAssignmentPolicyQuestion']]]]] = None,
+            requestor_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyRequestorSettingsArgs', 'AccessPackageAssignmentPolicyRequestorSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyRequestorSettings']]] = None) -> 'AccessPackageAssignmentPolicy':
         """
         Get an existing AccessPackageAssignmentPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -603,15 +603,15 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_package_id: The ID of the access package that will contain the policy.
-        :param pulumi.Input[Union['AccessPackageAssignmentPolicyApprovalSettingsArgs', 'AccessPackageAssignmentPolicyApprovalSettingsArgsDict']] approval_settings: An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
-        :param pulumi.Input[Union['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs', 'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict']] assignment_review_settings: An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
+        :param pulumi.Input[Union['AccessPackageAssignmentPolicyApprovalSettingsArgs', 'AccessPackageAssignmentPolicyApprovalSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyApprovalSettings']] approval_settings: An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
+        :param pulumi.Input[Union['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs', 'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyAssignmentReviewSettings']] assignment_review_settings: An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
         :param pulumi.Input[_builtins.str] description: The description of the policy.
         :param pulumi.Input[_builtins.str] display_name: The display name of the policy.
         :param pulumi.Input[_builtins.int] duration_in_days: How many days this assignment is valid for.
         :param pulumi.Input[_builtins.str] expiration_date: The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
         :param pulumi.Input[_builtins.bool] extension_enabled: Whether users will be able to request extension of their access to this package before their access expires.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPackageAssignmentPolicyQuestionArgs', 'AccessPackageAssignmentPolicyQuestionArgsDict']]]] questions: One or more `question` blocks for the requestor, as documented below.
-        :param pulumi.Input[Union['AccessPackageAssignmentPolicyRequestorSettingsArgs', 'AccessPackageAssignmentPolicyRequestorSettingsArgsDict']] requestor_settings: A `requestor_settings` block to configure the users who can request access, as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPackageAssignmentPolicyQuestionArgs', 'AccessPackageAssignmentPolicyQuestionArgsDict', 'outputs.AccessPackageAssignmentPolicyQuestion']]]] questions: One or more `question` blocks for the requestor, as documented below.
+        :param pulumi.Input[Union['AccessPackageAssignmentPolicyRequestorSettingsArgs', 'AccessPackageAssignmentPolicyRequestorSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyRequestorSettings']] requestor_settings: A `requestor_settings` block to configure the users who can request access, as documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

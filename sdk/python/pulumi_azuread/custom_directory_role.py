@@ -249,7 +249,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict', 'outputs.CustomDirectoryRolePermission']]]]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -307,7 +307,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the custom directory role.
         :param pulumi.Input[_builtins.str] display_name: The display name of the custom directory role.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the role is enabled for assignment.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict']]]] permissions: A collection of `permissions` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict', 'outputs.CustomDirectoryRolePermission']]]] permissions: A collection of `permissions` blocks as documented below.
         :param pulumi.Input[_builtins.str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] version: The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """
@@ -384,7 +384,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict', 'outputs.CustomDirectoryRolePermission']]]]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -425,7 +425,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             object_id: pulumi.Input[Optional[_builtins.str]] = None,
-            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict']]]]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict', 'outputs.CustomDirectoryRolePermission']]]]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomDirectoryRole':
         """
@@ -439,7 +439,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name of the custom directory role.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the role is enabled for assignment.
         :param pulumi.Input[_builtins.str] object_id: The object ID of the custom directory role.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict']]]] permissions: A collection of `permissions` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDirectoryRolePermissionArgs', 'CustomDirectoryRolePermissionArgsDict', 'outputs.CustomDirectoryRolePermission']]]] permissions: A collection of `permissions` blocks as documented below.
         :param pulumi.Input[_builtins.str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] version: The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """
