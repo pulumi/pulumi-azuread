@@ -223,10 +223,10 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: pulumi.Input[Optional[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']]] = None,
+                 conditions: pulumi.Input[Optional[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict', 'outputs.ConditionalAccessPolicyConditions']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 grant_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict']]] = None,
-                 session_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict']]] = None,
+                 grant_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict', 'outputs.ConditionalAccessPolicyGrantControls']]] = None,
+                 session_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict', 'outputs.ConditionalAccessPolicySessionControls']]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -364,10 +364,10 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
+        :param pulumi.Input[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict', 'outputs.ConditionalAccessPolicyConditions']] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         :param pulumi.Input[_builtins.str] display_name: The friendly name for this Conditional Access Policy.
-        :param pulumi.Input[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict']] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-        :param pulumi.Input[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict']] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        :param pulumi.Input[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict', 'outputs.ConditionalAccessPolicyGrantControls']] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+        :param pulumi.Input[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict', 'outputs.ConditionalAccessPolicySessionControls']] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
                
                > Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
         :param pulumi.Input[_builtins.str] state: Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
@@ -526,10 +526,10 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: pulumi.Input[Optional[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']]] = None,
+                 conditions: pulumi.Input[Optional[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict', 'outputs.ConditionalAccessPolicyConditions']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 grant_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict']]] = None,
-                 session_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict']]] = None,
+                 grant_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict', 'outputs.ConditionalAccessPolicyGrantControls']]] = None,
+                 session_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict', 'outputs.ConditionalAccessPolicySessionControls']]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -562,11 +562,11 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            conditions: pulumi.Input[Optional[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']]] = None,
+            conditions: pulumi.Input[Optional[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict', 'outputs.ConditionalAccessPolicyConditions']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            grant_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict']]] = None,
+            grant_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict', 'outputs.ConditionalAccessPolicyGrantControls']]] = None,
             object_id: pulumi.Input[Optional[_builtins.str]] = None,
-            session_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict']]] = None,
+            session_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict', 'outputs.ConditionalAccessPolicySessionControls']]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConditionalAccessPolicy':
         """
         Get an existing ConditionalAccessPolicy resource's state with the given name, id, and optional extra
@@ -575,11 +575,11 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict']] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
+        :param pulumi.Input[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict', 'outputs.ConditionalAccessPolicyConditions']] conditions: A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
         :param pulumi.Input[_builtins.str] display_name: The friendly name for this Conditional Access Policy.
-        :param pulumi.Input[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict']] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+        :param pulumi.Input[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict', 'outputs.ConditionalAccessPolicyGrantControls']] grant_controls: A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
         :param pulumi.Input[_builtins.str] object_id: The object ID of the policy
-        :param pulumi.Input[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict']] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        :param pulumi.Input[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict', 'outputs.ConditionalAccessPolicySessionControls']] session_controls: A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
                
                > Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
         :param pulumi.Input[_builtins.str] state: Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`

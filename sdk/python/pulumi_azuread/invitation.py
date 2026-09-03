@@ -232,7 +232,7 @@ class Invitation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 message: pulumi.Input[Optional[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']]] = None,
+                 message: pulumi.Input[Optional[Union['InvitationMessageArgs', 'InvitationMessageArgsDict', 'outputs.InvitationMessage']]] = None,
                  redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
                  user_display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  user_email_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -299,7 +299,7 @@ class Invitation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        :param pulumi.Input[Union['InvitationMessageArgs', 'InvitationMessageArgsDict', 'outputs.InvitationMessage']] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         :param pulumi.Input[_builtins.str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
         :param pulumi.Input[_builtins.str] user_display_name: The display name of the user being invited.
         :param pulumi.Input[_builtins.str] user_email_address: The email address of the user being invited.
@@ -385,7 +385,7 @@ class Invitation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 message: pulumi.Input[Optional[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']]] = None,
+                 message: pulumi.Input[Optional[Union['InvitationMessageArgs', 'InvitationMessageArgsDict', 'outputs.InvitationMessage']]] = None,
                  redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
                  user_display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  user_email_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -420,7 +420,7 @@ class Invitation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            message: pulumi.Input[Optional[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']]] = None,
+            message: pulumi.Input[Optional[Union['InvitationMessageArgs', 'InvitationMessageArgsDict', 'outputs.InvitationMessage']]] = None,
             redeem_url: pulumi.Input[Optional[_builtins.str]] = None,
             redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
             user_display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -434,7 +434,7 @@ class Invitation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InvitationMessageArgs', 'InvitationMessageArgsDict']] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        :param pulumi.Input[Union['InvitationMessageArgs', 'InvitationMessageArgsDict', 'outputs.InvitationMessage']] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         :param pulumi.Input[_builtins.str] redeem_url: The URL the user can use to redeem their invitation.
         :param pulumi.Input[_builtins.str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
         :param pulumi.Input[_builtins.str] user_display_name: The display name of the user being invited.

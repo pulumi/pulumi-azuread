@@ -316,7 +316,7 @@ class SynchronizationJob(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SynchronizationJobScheduleArgs', 'SynchronizationJobScheduleArgsDict']]]]] = None,
+            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SynchronizationJobScheduleArgs', 'SynchronizationJobScheduleArgsDict', 'outputs.SynchronizationJobSchedule']]]]] = None,
             service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SynchronizationJob':
         """
@@ -327,7 +327,7 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether the provisioning job is enabled. Default state is `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobScheduleArgs', 'SynchronizationJobScheduleArgsDict']]]] schedules: A `schedule` list as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SynchronizationJobScheduleArgs', 'SynchronizationJobScheduleArgsDict', 'outputs.SynchronizationJobSchedule']]]] schedules: A `schedule` list as documented below.
         :param pulumi.Input[_builtins.str] service_principal_id: The ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[_builtins.str] template_id: Identifier of the synchronization template this job is based on.
         """
