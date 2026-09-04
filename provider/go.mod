@@ -7,7 +7,7 @@ require (
 	github.com/hashicorp/go-uuid v1.0.3
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
 	github.com/pulumi/providertest v0.7.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.138.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.139.0
 	github.com/pulumi/pulumi/sdk/v3 v3.261.0
 	github.com/stretchr/testify v1.12.1
 )
