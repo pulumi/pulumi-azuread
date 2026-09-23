@@ -8,7 +8,6 @@ resources:
       clientId: clientIdValue
       clientSecret: clientSecretValue
       clientCertificatePassword: clientCertificatePasswordValue
-      metadataHost: metadataHostValue
 variables: {}
 outputs:
   clientIdOut: ${provider.clientId}
