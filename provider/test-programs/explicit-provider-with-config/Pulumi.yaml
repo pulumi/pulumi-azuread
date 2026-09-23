@@ -1,12 +1,18 @@
 name: explicit-provider-with-config
 runtime: yaml
 description: Testing that secrets in explicit provider args are secret
+config:
+  clientId:
+    type: string
+  clientSecret:
+    type: string
+    secret: true
 resources:
   provider:
     type: pulumi:providers:azuread
     properties:
-      clientId: clientIdValue
-      clientSecret: clientSecretValue
+      clientId: ${clientId}
+      clientSecret: ${clientSecret}
       clientCertificatePassword: clientCertificatePasswordValue
 variables: {}
 outputs:

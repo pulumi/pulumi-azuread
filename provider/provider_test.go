@@ -4,6 +4,7 @@ package provider
 
 import (
 	"encoding/json"
+	"os"
 	"path/filepath"
 	"testing"
 
@@ -12,13 +13,26 @@ import (
 	"github.com/pulumi/providertest/providers"
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/opttest"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
 //nolint:goconst // repeated "clientId" literal keeps the assertions self-contained
 func TestSecretsAreEncrypted(t *testing.T) {
+	// Configuring an explicit provider resource actually authenticates against Azure AD (the bridge
+	// now correctly threads explicit provider config through to the underlying Terraform provider's
+	// Configure call), so real credentials are required to create it successfully.
+	clientID := os.Getenv("ARM_CLIENT_ID")
+	clientSecret := os.Getenv("ARM_CLIENT_SECRET")
+	if clientID == "" || clientSecret == "" {
+		t.Skip("ARM_CLIENT_ID and ARM_CLIENT_SECRET must be set to exercise a real provider Configure call")
+	}
+
 	test := setupTest(t, "explicit-provider-with-config", opttest.SkipInstall())
+	test.SetConfig(t, "clientId", clientID)
+	require.NoError(t, test.CurrentStack().SetConfig(test.Context(), "clientSecret",
+		auto.ConfigValue{Value: clientSecret, Secret: true}))
 
 	res := test.Up(t)
 
