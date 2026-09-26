@@ -206,14 +206,14 @@ public class GroupRoleManagementPolicy extends com.pulumi.resources.CustomResour
         return this.notificationRules;
     }
     /**
-     * The type of assignment this policy coveres. Can be either `member` or `owner`.
+     * The type of assignment this policy covers. Can be either `member` or `owner`.
      * 
      */
     @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
-     * @return The type of assignment this policy coveres. Can be either `member` or `owner`.
+     * @return The type of assignment this policy covers. Can be either `member` or `owner`.
      * 
      */
     public Output<String> roleId() {

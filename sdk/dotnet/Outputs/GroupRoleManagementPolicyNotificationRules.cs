@@ -14,7 +14,7 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GroupRoleManagementPolicyNotificationRules
     {
         /// <summary>
-        /// A `NotificationTarget` block as defined below to configure notfications on active role assignments.
+        /// A `NotificationTarget` block as defined below to configure notifications on active role assignments.
         /// </summary>
         public readonly Outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignments? ActiveAssignments;
         /// <summary>

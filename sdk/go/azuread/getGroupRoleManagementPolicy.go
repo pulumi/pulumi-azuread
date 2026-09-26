@@ -65,7 +65,7 @@ func LookupGroupRoleManagementPolicy(ctx *pulumi.Context, args *LookupGroupRoleM
 type LookupGroupRoleManagementPolicyArgs struct {
 	// The ID of the Azure AD group for which the policy applies.
 	GroupId string `pulumi:"groupId"`
-	// The type of assignment this policy coveres. Can be either `member` or `owner`.
+	// The type of assignment this policy covers. Can be either `member` or `owner`.
 	RoleId string `pulumi:"roleId"`
 }
 
@@ -90,7 +90,7 @@ func LookupGroupRoleManagementPolicyOutput(ctx *pulumi.Context, args LookupGroup
 type LookupGroupRoleManagementPolicyOutputArgs struct {
 	// The ID of the Azure AD group for which the policy applies.
 	GroupId pulumi.StringInput `pulumi:"groupId"`
-	// The type of assignment this policy coveres. Can be either `member` or `owner`.
+	// The type of assignment this policy covers. Can be either `member` or `owner`.
 	RoleId pulumi.StringInput `pulumi:"roleId"`
 }
 

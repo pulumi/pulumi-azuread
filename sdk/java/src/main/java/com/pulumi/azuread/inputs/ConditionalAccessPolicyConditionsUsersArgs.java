@@ -49,14 +49,14 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
     }
 
     /**
-     * A list of role IDs excluded from scope of policy.
+     * A list of role template IDs excluded from scope of policy.
      * 
      */
     @Import(name="excludedRoles")
     private @Nullable Output<List<String>> excludedRoles;
 
     /**
-     * @return A list of role IDs excluded from scope of policy.
+     * @return A list of role template IDs excluded from scope of policy.
      * 
      */
     public Optional<Output<List<String>>> excludedRoles() {
@@ -109,14 +109,14 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
     }
 
     /**
-     * A list of role IDs in scope of policy unless explicitly excluded.
+     * A list of role template IDs in scope of policy unless explicitly excluded.
      * 
      */
     @Import(name="includedRoles")
     private @Nullable Output<List<String>> includedRoles;
 
     /**
-     * @return A list of role IDs in scope of policy unless explicitly excluded.
+     * @return A list of role template IDs in scope of policy unless explicitly excluded.
      * 
      */
     public Optional<Output<List<String>>> includedRoles() {
@@ -236,7 +236,7 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         }
 
         /**
-         * @param excludedRoles A list of role IDs excluded from scope of policy.
+         * @param excludedRoles A list of role template IDs excluded from scope of policy.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         }
 
         /**
-         * @param excludedRoles A list of role IDs excluded from scope of policy.
+         * @param excludedRoles A list of role template IDs excluded from scope of policy.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         }
 
         /**
-         * @param excludedRoles A list of role IDs excluded from scope of policy.
+         * @param excludedRoles A list of role template IDs excluded from scope of policy.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         }
 
         /**
-         * @param includedRoles A list of role IDs in scope of policy unless explicitly excluded.
+         * @param includedRoles A list of role template IDs in scope of policy unless explicitly excluded.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         }
 
         /**
-         * @param includedRoles A list of role IDs in scope of policy unless explicitly excluded.
+         * @param includedRoles A list of role template IDs in scope of policy unless explicitly excluded.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         }
 
         /**
-         * @param includedRoles A list of role IDs in scope of policy unless explicitly excluded.
+         * @param includedRoles A list of role template IDs in scope of policy unless explicitly excluded.
          * 
          * @return builder
          * 

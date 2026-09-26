@@ -48,7 +48,7 @@ export interface GetGroupRoleManagementPolicyArgs {
      */
     groupId: string;
     /**
-     * The type of assignment this policy coveres. Can be either `member` or `owner`.
+     * The type of assignment this policy covers. Can be either `member` or `owner`.
      */
     roleId: string;
 }
@@ -116,7 +116,7 @@ export interface GetGroupRoleManagementPolicyOutputArgs {
      */
     groupId: pulumi.Input<string>;
     /**
-     * The type of assignment this policy coveres. Can be either `member` or `owner`.
+     * The type of assignment this policy covers. Can be either `member` or `owner`.
      */
     roleId: pulumi.Input<string>;
 }

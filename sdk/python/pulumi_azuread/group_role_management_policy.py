@@ -31,7 +31,7 @@ class GroupRoleManagementPolicyArgs:
         The set of arguments for constructing a GroupRoleManagementPolicy resource.
 
         :param pulumi.Input[_builtins.str] group_id: The ID of the Azure AD group for which the policy applies.
-        :param pulumi.Input[_builtins.str] role_id: The type of assignment this policy coveres. Can be either `member` or `owner`.
+        :param pulumi.Input[_builtins.str] role_id: The type of assignment this policy covers. Can be either `member` or `owner`.
         :param pulumi.Input['GroupRoleManagementPolicyActivationRulesArgs'] activation_rules: An `activation_rules` block as defined below.
         :param pulumi.Input['GroupRoleManagementPolicyActiveAssignmentRulesArgs'] active_assignment_rules: An `active_assignment_rules` block as defined below.
         :param pulumi.Input['GroupRoleManagementPolicyEligibleAssignmentRulesArgs'] eligible_assignment_rules: An `eligible_assignment_rules` block as defined below.
@@ -64,7 +64,7 @@ class GroupRoleManagementPolicyArgs:
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of assignment this policy coveres. Can be either `member` or `owner`.
+        The type of assignment this policy covers. Can be either `member` or `owner`.
         """
         return pulumi.get(self, "role_id")
 
@@ -142,7 +142,7 @@ class _GroupRoleManagementPolicyState:
         :param pulumi.Input['GroupRoleManagementPolicyEligibleAssignmentRulesArgs'] eligible_assignment_rules: An `eligible_assignment_rules` block as defined below.
         :param pulumi.Input[_builtins.str] group_id: The ID of the Azure AD group for which the policy applies.
         :param pulumi.Input['GroupRoleManagementPolicyNotificationRulesArgs'] notification_rules: A `notification_rules` block as defined below.
-        :param pulumi.Input[_builtins.str] role_id: The type of assignment this policy coveres. Can be either `member` or `owner`.
+        :param pulumi.Input[_builtins.str] role_id: The type of assignment this policy covers. Can be either `member` or `owner`.
         """
         if activation_rules is not None:
             pulumi.set(__self__, "activation_rules", activation_rules)
@@ -249,7 +249,7 @@ class _GroupRoleManagementPolicyState:
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of assignment this policy coveres. Can be either `member` or `owner`.
+        The type of assignment this policy covers. Can be either `member` or `owner`.
         """
         return pulumi.get(self, "role_id")
 
@@ -331,7 +331,7 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['GroupRoleManagementPolicyEligibleAssignmentRulesArgs', 'GroupRoleManagementPolicyEligibleAssignmentRulesArgsDict', 'outputs.GroupRoleManagementPolicyEligibleAssignmentRules']] eligible_assignment_rules: An `eligible_assignment_rules` block as defined below.
         :param pulumi.Input[_builtins.str] group_id: The ID of the Azure AD group for which the policy applies.
         :param pulumi.Input[Union['GroupRoleManagementPolicyNotificationRulesArgs', 'GroupRoleManagementPolicyNotificationRulesArgsDict', 'outputs.GroupRoleManagementPolicyNotificationRules']] notification_rules: A `notification_rules` block as defined below.
-        :param pulumi.Input[_builtins.str] role_id: The type of assignment this policy coveres. Can be either `member` or `owner`.
+        :param pulumi.Input[_builtins.str] role_id: The type of assignment this policy covers. Can be either `member` or `owner`.
         """
         ...
     @overload
@@ -466,7 +466,7 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['GroupRoleManagementPolicyEligibleAssignmentRulesArgs', 'GroupRoleManagementPolicyEligibleAssignmentRulesArgsDict', 'outputs.GroupRoleManagementPolicyEligibleAssignmentRules']] eligible_assignment_rules: An `eligible_assignment_rules` block as defined below.
         :param pulumi.Input[_builtins.str] group_id: The ID of the Azure AD group for which the policy applies.
         :param pulumi.Input[Union['GroupRoleManagementPolicyNotificationRulesArgs', 'GroupRoleManagementPolicyNotificationRulesArgsDict', 'outputs.GroupRoleManagementPolicyNotificationRules']] notification_rules: A `notification_rules` block as defined below.
-        :param pulumi.Input[_builtins.str] role_id: The type of assignment this policy coveres. Can be either `member` or `owner`.
+        :param pulumi.Input[_builtins.str] role_id: The type of assignment this policy covers. Can be either `member` or `owner`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -542,7 +542,7 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of assignment this policy coveres. Can be either `member` or `owner`.
+        The type of assignment this policy covers. Can be either `member` or `owner`.
         """
         return pulumi.get(self, "role_id")
 

@@ -99,6 +99,8 @@ type AuthenticationStrengthPolicy struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The friendly name for this authentication strength policy.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The object ID of the authentication strength policy.
+	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 }
 
 // NewAuthenticationStrengthPolicy registers a new resource with the given unique name, arguments, and options.
@@ -143,6 +145,8 @@ type authenticationStrengthPolicyState struct {
 	Description *string `pulumi:"description"`
 	// The friendly name for this authentication strength policy.
 	DisplayName *string `pulumi:"displayName"`
+	// The object ID of the authentication strength policy.
+	ObjectId *string `pulumi:"objectId"`
 }
 
 type AuthenticationStrengthPolicyState struct {
@@ -152,6 +156,8 @@ type AuthenticationStrengthPolicyState struct {
 	Description pulumi.StringPtrInput
 	// The friendly name for this authentication strength policy.
 	DisplayName pulumi.StringPtrInput
+	// The object ID of the authentication strength policy.
+	ObjectId pulumi.StringPtrInput
 }
 
 func (AuthenticationStrengthPolicyState) ElementType() reflect.Type {
@@ -277,6 +283,11 @@ func (o AuthenticationStrengthPolicyOutput) Description() pulumi.StringPtrOutput
 // The friendly name for this authentication strength policy.
 func (o AuthenticationStrengthPolicyOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticationStrengthPolicy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The object ID of the authentication strength policy.
+func (o AuthenticationStrengthPolicyOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticationStrengthPolicy) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
 type AuthenticationStrengthPolicyArrayOutput struct{ *pulumi.OutputState }

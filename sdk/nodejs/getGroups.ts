@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -112,7 +114,7 @@ export interface GetGroupsArgs {
      */
     objectIds?: string[];
     /**
-     * A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
+     * A flag to denote if all groups should be fetched and returned. Cannot be specified with `ignoreMissing`. Defaults to `false`.
      */
     returnAll?: boolean;
     /**
@@ -133,16 +135,26 @@ export interface GetGroupsResult {
      */
     readonly displayNames: string[];
     /**
+     * A list of groups. Each `group` object provides the attributes documented below.
+     */
+    readonly groups: outputs.GetGroupsGroup[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ignoreMissing?: boolean;
+    /**
+     * Whether the group is mail-enabled.
+     */
     readonly mailEnabled: boolean;
     /**
      * The object IDs of the groups.
      */
     readonly objectIds: string[];
     readonly returnAll?: boolean;
+    /**
+     * Whether the group is security-enabled.
+     */
     readonly securityEnabled: boolean;
 }
 /**
@@ -253,7 +265,7 @@ export interface GetGroupsOutputArgs {
      */
     objectIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
+     * A flag to denote if all groups should be fetched and returned. Cannot be specified with `ignoreMissing`. Defaults to `false`.
      */
     returnAll?: pulumi.Input<boolean | undefined>;
     /**

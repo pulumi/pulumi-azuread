@@ -24,7 +24,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
      */
     private @Nullable List<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser> excludedGuestsOrExternalUsers;
     /**
-     * @return A list of role IDs excluded from scope of policy.
+     * @return A list of role template IDs excluded from scope of policy.
      * 
      */
     private @Nullable List<String> excludedRoles;
@@ -44,7 +44,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
      */
     private @Nullable List<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser> includedGuestsOrExternalUsers;
     /**
-     * @return A list of role IDs in scope of policy unless explicitly excluded.
+     * @return A list of role template IDs in scope of policy unless explicitly excluded.
      * 
      */
     private @Nullable List<String> includedRoles;
@@ -72,7 +72,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         return this.excludedGuestsOrExternalUsers == null ? List.of() : this.excludedGuestsOrExternalUsers;
     }
     /**
-     * @return A list of role IDs excluded from scope of policy.
+     * @return A list of role template IDs excluded from scope of policy.
      * 
      */
     public List<String> excludedRoles() {
@@ -100,7 +100,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         return this.includedGuestsOrExternalUsers == null ? List.of() : this.includedGuestsOrExternalUsers;
     }
     /**
-     * @return A list of role IDs in scope of policy unless explicitly excluded.
+     * @return A list of role template IDs in scope of policy unless explicitly excluded.
      * 
      */
     public List<String> includedRoles() {

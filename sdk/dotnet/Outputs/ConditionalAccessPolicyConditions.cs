@@ -38,7 +38,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? InsiderRiskLevels;
         /// <summary>
-        /// A `Locations` block as documented below, which specifies locations included in and excluded from the policy.
+        /// A `Locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsLocations? Locations;
         /// <summary>

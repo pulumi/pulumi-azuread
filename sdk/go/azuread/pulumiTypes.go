@@ -4148,7 +4148,7 @@ type ConditionalAccessPolicyConditions struct {
 	Devices *ConditionalAccessPolicyConditionsDevices `pulumi:"devices"`
 	// The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
 	InsiderRiskLevels *string `pulumi:"insiderRiskLevels"`
-	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+	// A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
 	Locations *ConditionalAccessPolicyConditionsLocations `pulumi:"locations"`
 	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
 	Platforms *ConditionalAccessPolicyConditionsPlatforms `pulumi:"platforms"`
@@ -4186,7 +4186,7 @@ type ConditionalAccessPolicyConditionsArgs struct {
 	Devices ConditionalAccessPolicyConditionsDevicesPtrInput `pulumi:"devices"`
 	// The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
 	InsiderRiskLevels pulumi.StringPtrInput `pulumi:"insiderRiskLevels"`
-	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+	// A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
 	Locations ConditionalAccessPolicyConditionsLocationsPtrInput `pulumi:"locations"`
 	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
 	Platforms ConditionalAccessPolicyConditionsPlatformsPtrInput `pulumi:"platforms"`
@@ -4311,7 +4311,7 @@ func (o ConditionalAccessPolicyConditionsOutput) InsiderRiskLevels() pulumi.Stri
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *string { return v.InsiderRiskLevels }).(pulumi.StringPtrOutput)
 }
 
-// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+// A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
 func (o ConditionalAccessPolicyConditionsOutput) Locations() ConditionalAccessPolicyConditionsLocationsPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsLocations {
 		return v.Locations
@@ -4429,7 +4429,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) InsiderRiskLevels() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+// A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
 func (o ConditionalAccessPolicyConditionsPtrOutput) Locations() ConditionalAccessPolicyConditionsLocationsPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsLocations {
 		if v == nil {
@@ -5814,7 +5814,7 @@ type ConditionalAccessPolicyConditionsUsers struct {
 	ExcludedGroups []string `pulumi:"excludedGroups"`
 	// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
 	ExcludedGuestsOrExternalUsers []ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser `pulumi:"excludedGuestsOrExternalUsers"`
-	// A list of role IDs excluded from scope of policy.
+	// A list of role template IDs excluded from scope of policy.
 	ExcludedRoles []string `pulumi:"excludedRoles"`
 	// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
 	ExcludedUsers []string `pulumi:"excludedUsers"`
@@ -5822,7 +5822,7 @@ type ConditionalAccessPolicyConditionsUsers struct {
 	IncludedGroups []string `pulumi:"includedGroups"`
 	// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
 	IncludedGuestsOrExternalUsers []ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser `pulumi:"includedGuestsOrExternalUsers"`
-	// A list of role IDs in scope of policy unless explicitly excluded.
+	// A list of role template IDs in scope of policy unless explicitly excluded.
 	IncludedRoles []string `pulumi:"includedRoles"`
 	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
 	//
@@ -5846,7 +5846,7 @@ type ConditionalAccessPolicyConditionsUsersArgs struct {
 	ExcludedGroups pulumi.StringArrayInput `pulumi:"excludedGroups"`
 	// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users excluded from scope of policy.
 	ExcludedGuestsOrExternalUsers ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayInput `pulumi:"excludedGuestsOrExternalUsers"`
-	// A list of role IDs excluded from scope of policy.
+	// A list of role template IDs excluded from scope of policy.
 	ExcludedRoles pulumi.StringArrayInput `pulumi:"excludedRoles"`
 	// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
 	ExcludedUsers pulumi.StringArrayInput `pulumi:"excludedUsers"`
@@ -5854,7 +5854,7 @@ type ConditionalAccessPolicyConditionsUsersArgs struct {
 	IncludedGroups pulumi.StringArrayInput `pulumi:"includedGroups"`
 	// A `guestsOrExternalUsers` block as documented below, which specifies internal guests and external users in scope of policy.
 	IncludedGuestsOrExternalUsers ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayInput `pulumi:"includedGuestsOrExternalUsers"`
-	// A list of role IDs in scope of policy unless explicitly excluded.
+	// A list of role template IDs in scope of policy unless explicitly excluded.
 	IncludedRoles pulumi.StringArrayInput `pulumi:"includedRoles"`
 	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
 	//
@@ -5951,7 +5951,7 @@ func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedGuestsOrExternalUs
 	}).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput)
 }
 
-// A list of role IDs excluded from scope of policy.
+// A list of role template IDs excluded from scope of policy.
 func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.ExcludedRoles }).(pulumi.StringArrayOutput)
 }
@@ -5973,7 +5973,7 @@ func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedGuestsOrExternalUs
 	}).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput)
 }
 
-// A list of role IDs in scope of policy unless explicitly excluded.
+// A list of role template IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedRoles }).(pulumi.StringArrayOutput)
 }
@@ -6029,7 +6029,7 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedGuestsOrExterna
 	}).(ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArrayOutput)
 }
 
-// A list of role IDs excluded from scope of policy.
+// A list of role template IDs excluded from scope of policy.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -6069,7 +6069,7 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedGuestsOrExterna
 	}).(ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArrayOutput)
 }
 
-// A list of role IDs in scope of policy unless explicitly excluded.
+// A list of role template IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -7302,7 +7302,7 @@ type GroupRoleManagementPolicyActivationRules struct {
 	RequireJustification *bool `pulumi:"requireJustification"`
 	// Is multi-factor authentication required to activate the role. Conflicts with `requiredConditionalAccessAuthenticationContext`.
 	RequireMultifactorAuthentication *bool `pulumi:"requireMultifactorAuthentication"`
-	// Is ticket information requrired during activation of the role.
+	// Is ticket information required during activation of the role.
 	RequireTicketInfo *bool `pulumi:"requireTicketInfo"`
 	// The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `requireMultifactorAuthentication`.
 	RequiredConditionalAccessAuthenticationContext *string `pulumi:"requiredConditionalAccessAuthenticationContext"`
@@ -7330,7 +7330,7 @@ type GroupRoleManagementPolicyActivationRulesArgs struct {
 	RequireJustification pulumi.BoolPtrInput `pulumi:"requireJustification"`
 	// Is multi-factor authentication required to activate the role. Conflicts with `requiredConditionalAccessAuthenticationContext`.
 	RequireMultifactorAuthentication pulumi.BoolPtrInput `pulumi:"requireMultifactorAuthentication"`
-	// Is ticket information requrired during activation of the role.
+	// Is ticket information required during activation of the role.
 	RequireTicketInfo pulumi.BoolPtrInput `pulumi:"requireTicketInfo"`
 	// The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `requireMultifactorAuthentication`.
 	RequiredConditionalAccessAuthenticationContext pulumi.StringPtrInput `pulumi:"requiredConditionalAccessAuthenticationContext"`
@@ -7440,7 +7440,7 @@ func (o GroupRoleManagementPolicyActivationRulesOutput) RequireMultifactorAuthen
 	return o.ApplyT(func(v GroupRoleManagementPolicyActivationRules) *bool { return v.RequireMultifactorAuthentication }).(pulumi.BoolPtrOutput)
 }
 
-// Is ticket information requrired during activation of the role.
+// Is ticket information required during activation of the role.
 func (o GroupRoleManagementPolicyActivationRulesOutput) RequireTicketInfo() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GroupRoleManagementPolicyActivationRules) *bool { return v.RequireTicketInfo }).(pulumi.BoolPtrOutput)
 }
@@ -7526,7 +7526,7 @@ func (o GroupRoleManagementPolicyActivationRulesPtrOutput) RequireMultifactorAut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Is ticket information requrired during activation of the role.
+// Is ticket information required during activation of the role.
 func (o GroupRoleManagementPolicyActivationRulesPtrOutput) RequireTicketInfo() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GroupRoleManagementPolicyActivationRules) *bool {
 		if v == nil {
@@ -8179,7 +8179,7 @@ func (o GroupRoleManagementPolicyEligibleAssignmentRulesPtrOutput) ExpireAfter()
 }
 
 type GroupRoleManagementPolicyNotificationRules struct {
-	// A `notificationTarget` block as defined below to configure notfications on active role assignments.
+	// A `notificationTarget` block as defined below to configure notifications on active role assignments.
 	ActiveAssignments *GroupRoleManagementPolicyNotificationRulesActiveAssignments `pulumi:"activeAssignments"`
 	// A `notificationTarget` block as defined below for configuring notifications on activation of eligible role.
 	EligibleActivations *GroupRoleManagementPolicyNotificationRulesEligibleActivations `pulumi:"eligibleActivations"`
@@ -8201,7 +8201,7 @@ type GroupRoleManagementPolicyNotificationRulesInput interface {
 }
 
 type GroupRoleManagementPolicyNotificationRulesArgs struct {
-	// A `notificationTarget` block as defined below to configure notfications on active role assignments.
+	// A `notificationTarget` block as defined below to configure notifications on active role assignments.
 	ActiveAssignments GroupRoleManagementPolicyNotificationRulesActiveAssignmentsPtrInput `pulumi:"activeAssignments"`
 	// A `notificationTarget` block as defined below for configuring notifications on activation of eligible role.
 	EligibleActivations GroupRoleManagementPolicyNotificationRulesEligibleActivationsPtrInput `pulumi:"eligibleActivations"`
@@ -8288,7 +8288,7 @@ func (o GroupRoleManagementPolicyNotificationRulesOutput) ToGroupRoleManagementP
 	}).(GroupRoleManagementPolicyNotificationRulesPtrOutput)
 }
 
-// A `notificationTarget` block as defined below to configure notfications on active role assignments.
+// A `notificationTarget` block as defined below to configure notifications on active role assignments.
 func (o GroupRoleManagementPolicyNotificationRulesOutput) ActiveAssignments() GroupRoleManagementPolicyNotificationRulesActiveAssignmentsPtrOutput {
 	return o.ApplyT(func(v GroupRoleManagementPolicyNotificationRules) *GroupRoleManagementPolicyNotificationRulesActiveAssignments {
 		return v.ActiveAssignments
@@ -8335,7 +8335,7 @@ func (o GroupRoleManagementPolicyNotificationRulesPtrOutput) Elem() GroupRoleMan
 	}).(GroupRoleManagementPolicyNotificationRulesOutput)
 }
 
-// A `notificationTarget` block as defined below to configure notfications on active role assignments.
+// A `notificationTarget` block as defined below to configure notifications on active role assignments.
 func (o GroupRoleManagementPolicyNotificationRulesPtrOutput) ActiveAssignments() GroupRoleManagementPolicyNotificationRulesActiveAssignmentsPtrOutput {
 	return o.ApplyT(func(v *GroupRoleManagementPolicyNotificationRules) *GroupRoleManagementPolicyNotificationRulesActiveAssignments {
 		if v == nil {
@@ -14006,6 +14006,162 @@ func (o GetApplicationWebImplicitGrantArrayOutput) Index(i pulumi.IntInput) GetA
 	}).(GetApplicationWebImplicitGrantOutput)
 }
 
+type GetAuthenticationStrengthPolicyCombinationConfiguration struct {
+	// A list of AAGUIDs allowed by this combination configuration. Only populated when `type` is `fido2CombinationConfiguration`.
+	AllowedAaguids []string `pulumi:"allowedAaguids"`
+	// A list of allowed certificate issuer subject key identifier values. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+	AllowedIssuerSkis []string `pulumi:"allowedIssuerSkis"`
+	// A list of allowed certificate policy OIDs. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+	AllowedPolicyOids []string `pulumi:"allowedPolicyOids"`
+	// A list of authentication method combinations this configuration applies to, for example `fido2` or `x509CertificateSingleFactor`. This is distinct from `type`, which identifies the kind of combination configuration.
+	AppliesToCombinations []string `pulumi:"appliesToCombinations"`
+	// The object ID of the authentication strength policy.
+	//
+	// > One of `displayName` or `objectId` must be specified.
+	//
+	// > **Tip** Display names are expected to be unique within a tenant, however this is not guaranteed by the API. Specify `objectId` where you need to be certain of matching a specific policy.
+	ObjectId string `pulumi:"objectId"`
+	// The type of this combination configuration, either `fido2CombinationConfiguration` or `x509CertificateCombinationConfiguration`.
+	Type string `pulumi:"type"`
+}
+
+// GetAuthenticationStrengthPolicyCombinationConfigurationInput is an input type that accepts GetAuthenticationStrengthPolicyCombinationConfigurationArgs and GetAuthenticationStrengthPolicyCombinationConfigurationOutput values.
+// You can construct a concrete instance of `GetAuthenticationStrengthPolicyCombinationConfigurationInput` via:
+//
+//	GetAuthenticationStrengthPolicyCombinationConfigurationArgs{...}
+type GetAuthenticationStrengthPolicyCombinationConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAuthenticationStrengthPolicyCombinationConfigurationOutput() GetAuthenticationStrengthPolicyCombinationConfigurationOutput
+	ToGetAuthenticationStrengthPolicyCombinationConfigurationOutputWithContext(context.Context) GetAuthenticationStrengthPolicyCombinationConfigurationOutput
+}
+
+type GetAuthenticationStrengthPolicyCombinationConfigurationArgs struct {
+	// A list of AAGUIDs allowed by this combination configuration. Only populated when `type` is `fido2CombinationConfiguration`.
+	AllowedAaguids pulumi.StringArrayInput `pulumi:"allowedAaguids"`
+	// A list of allowed certificate issuer subject key identifier values. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+	AllowedIssuerSkis pulumi.StringArrayInput `pulumi:"allowedIssuerSkis"`
+	// A list of allowed certificate policy OIDs. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+	AllowedPolicyOids pulumi.StringArrayInput `pulumi:"allowedPolicyOids"`
+	// A list of authentication method combinations this configuration applies to, for example `fido2` or `x509CertificateSingleFactor`. This is distinct from `type`, which identifies the kind of combination configuration.
+	AppliesToCombinations pulumi.StringArrayInput `pulumi:"appliesToCombinations"`
+	// The object ID of the authentication strength policy.
+	//
+	// > One of `displayName` or `objectId` must be specified.
+	//
+	// > **Tip** Display names are expected to be unique within a tenant, however this is not guaranteed by the API. Specify `objectId` where you need to be certain of matching a specific policy.
+	ObjectId pulumi.StringInput `pulumi:"objectId"`
+	// The type of this combination configuration, either `fido2CombinationConfiguration` or `x509CertificateCombinationConfiguration`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAuthenticationStrengthPolicyCombinationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthenticationStrengthPolicyCombinationConfiguration)(nil)).Elem()
+}
+
+func (i GetAuthenticationStrengthPolicyCombinationConfigurationArgs) ToGetAuthenticationStrengthPolicyCombinationConfigurationOutput() GetAuthenticationStrengthPolicyCombinationConfigurationOutput {
+	return i.ToGetAuthenticationStrengthPolicyCombinationConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAuthenticationStrengthPolicyCombinationConfigurationArgs) ToGetAuthenticationStrengthPolicyCombinationConfigurationOutputWithContext(ctx context.Context) GetAuthenticationStrengthPolicyCombinationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthenticationStrengthPolicyCombinationConfigurationOutput)
+}
+
+// GetAuthenticationStrengthPolicyCombinationConfigurationArrayInput is an input type that accepts GetAuthenticationStrengthPolicyCombinationConfigurationArray and GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetAuthenticationStrengthPolicyCombinationConfigurationArrayInput` via:
+//
+//	GetAuthenticationStrengthPolicyCombinationConfigurationArray{ GetAuthenticationStrengthPolicyCombinationConfigurationArgs{...} }
+type GetAuthenticationStrengthPolicyCombinationConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput() GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput
+	ToGetAuthenticationStrengthPolicyCombinationConfigurationArrayOutputWithContext(context.Context) GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput
+}
+
+type GetAuthenticationStrengthPolicyCombinationConfigurationArray []GetAuthenticationStrengthPolicyCombinationConfigurationInput
+
+func (GetAuthenticationStrengthPolicyCombinationConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthenticationStrengthPolicyCombinationConfiguration)(nil)).Elem()
+}
+
+func (i GetAuthenticationStrengthPolicyCombinationConfigurationArray) ToGetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput() GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput {
+	return i.ToGetAuthenticationStrengthPolicyCombinationConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuthenticationStrengthPolicyCombinationConfigurationArray) ToGetAuthenticationStrengthPolicyCombinationConfigurationArrayOutputWithContext(ctx context.Context) GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput)
+}
+
+type GetAuthenticationStrengthPolicyCombinationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAuthenticationStrengthPolicyCombinationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuthenticationStrengthPolicyCombinationConfiguration)(nil)).Elem()
+}
+
+func (o GetAuthenticationStrengthPolicyCombinationConfigurationOutput) ToGetAuthenticationStrengthPolicyCombinationConfigurationOutput() GetAuthenticationStrengthPolicyCombinationConfigurationOutput {
+	return o
+}
+
+func (o GetAuthenticationStrengthPolicyCombinationConfigurationOutput) ToGetAuthenticationStrengthPolicyCombinationConfigurationOutputWithContext(ctx context.Context) GetAuthenticationStrengthPolicyCombinationConfigurationOutput {
+	return o
+}
+
+// A list of AAGUIDs allowed by this combination configuration. Only populated when `type` is `fido2CombinationConfiguration`.
+func (o GetAuthenticationStrengthPolicyCombinationConfigurationOutput) AllowedAaguids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthenticationStrengthPolicyCombinationConfiguration) []string { return v.AllowedAaguids }).(pulumi.StringArrayOutput)
+}
+
+// A list of allowed certificate issuer subject key identifier values. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+func (o GetAuthenticationStrengthPolicyCombinationConfigurationOutput) AllowedIssuerSkis() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthenticationStrengthPolicyCombinationConfiguration) []string { return v.AllowedIssuerSkis }).(pulumi.StringArrayOutput)
+}
+
+// A list of allowed certificate policy OIDs. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+func (o GetAuthenticationStrengthPolicyCombinationConfigurationOutput) AllowedPolicyOids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthenticationStrengthPolicyCombinationConfiguration) []string { return v.AllowedPolicyOids }).(pulumi.StringArrayOutput)
+}
+
+// A list of authentication method combinations this configuration applies to, for example `fido2` or `x509CertificateSingleFactor`. This is distinct from `type`, which identifies the kind of combination configuration.
+func (o GetAuthenticationStrengthPolicyCombinationConfigurationOutput) AppliesToCombinations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuthenticationStrengthPolicyCombinationConfiguration) []string {
+		return v.AppliesToCombinations
+	}).(pulumi.StringArrayOutput)
+}
+
+// The object ID of the authentication strength policy.
+//
+// > One of `displayName` or `objectId` must be specified.
+//
+// > **Tip** Display names are expected to be unique within a tenant, however this is not guaranteed by the API. Specify `objectId` where you need to be certain of matching a specific policy.
+func (o GetAuthenticationStrengthPolicyCombinationConfigurationOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthenticationStrengthPolicyCombinationConfiguration) string { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// The type of this combination configuration, either `fido2CombinationConfiguration` or `x509CertificateCombinationConfiguration`.
+func (o GetAuthenticationStrengthPolicyCombinationConfigurationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthenticationStrengthPolicyCombinationConfiguration) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuthenticationStrengthPolicyCombinationConfiguration)(nil)).Elem()
+}
+
+func (o GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput) ToGetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput() GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput {
+	return o
+}
+
+func (o GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput) ToGetAuthenticationStrengthPolicyCombinationConfigurationArrayOutputWithContext(ctx context.Context) GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput {
+	return o
+}
+
+func (o GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput) Index(i pulumi.IntInput) GetAuthenticationStrengthPolicyCombinationConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuthenticationStrengthPolicyCombinationConfiguration {
+		return vs[0].([]GetAuthenticationStrengthPolicyCombinationConfiguration)[vs[1].(int)]
+	}).(GetAuthenticationStrengthPolicyCombinationConfigurationOutput)
+}
+
 type GetDirectoryRoleTemplatesRoleTemplate struct {
 	// The description of the directory role template.
 	Description string `pulumi:"description"`
@@ -14509,6 +14665,136 @@ func (o GetGroupDynamicMembershipArrayOutput) Index(i pulumi.IntInput) GetGroupD
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupDynamicMembership {
 		return vs[0].([]GetGroupDynamicMembership)[vs[1].(int)]
 	}).(GetGroupDynamicMembershipOutput)
+}
+
+type GetGroupsGroup struct {
+	// The display name of the group.
+	DisplayName string `pulumi:"displayName"`
+	// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+	MailEnabled bool `pulumi:"mailEnabled"`
+	// The object ID of the group.
+	ObjectId string `pulumi:"objectId"`
+	// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+	//
+	// > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
+	SecurityEnabled bool `pulumi:"securityEnabled"`
+}
+
+// GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
+// You can construct a concrete instance of `GetGroupsGroupInput` via:
+//
+//	GetGroupsGroupArgs{...}
+type GetGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetGroupsGroupOutput() GetGroupsGroupOutput
+	ToGetGroupsGroupOutputWithContext(context.Context) GetGroupsGroupOutput
+}
+
+type GetGroupsGroupArgs struct {
+	// The display name of the group.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+	MailEnabled pulumi.BoolInput `pulumi:"mailEnabled"`
+	// The object ID of the group.
+	ObjectId pulumi.StringInput `pulumi:"objectId"`
+	// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+	//
+	// > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
+	SecurityEnabled pulumi.BoolInput `pulumi:"securityEnabled"`
+}
+
+func (GetGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
+}
+
+func (i GetGroupsGroupArgs) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
+	return i.ToGetGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupOutput)
+}
+
+// GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
+//
+//	GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
+type GetGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput
+	ToGetGroupsGroupArrayOutputWithContext(context.Context) GetGroupsGroupArrayOutput
+}
+
+type GetGroupsGroupArray []GetGroupsGroupInput
+
+func (GetGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
+}
+
+func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput {
+	return i.ToGetGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
+}
+
+type GetGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
+}
+
+func (o GetGroupsGroupOutput) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
+	return o
+}
+
+func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
+	return o
+}
+
+// The display name of the group.
+func (o GetGroupsGroupOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+func (o GetGroupsGroupOutput) MailEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.MailEnabled }).(pulumi.BoolOutput)
+}
+
+// The object ID of the group.
+func (o GetGroupsGroupOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+//
+// > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
+func (o GetGroupsGroupOutput) SecurityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupsGroup) bool { return v.SecurityEnabled }).(pulumi.BoolOutput)
+}
+
+type GetGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
+}
+
+func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroup {
+		return vs[0].([]GetGroupsGroup)[vs[1].(int)]
+	}).(GetGroupsGroupOutput)
 }
 
 type GetNamedLocationCountry struct {
@@ -15930,6 +16216,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationWebArrayInput)(nil)).Elem(), GetApplicationWebArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationWebImplicitGrantInput)(nil)).Elem(), GetApplicationWebImplicitGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationWebImplicitGrantArrayInput)(nil)).Elem(), GetApplicationWebImplicitGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthenticationStrengthPolicyCombinationConfigurationInput)(nil)).Elem(), GetAuthenticationStrengthPolicyCombinationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthenticationStrengthPolicyCombinationConfigurationArrayInput)(nil)).Elem(), GetAuthenticationStrengthPolicyCombinationConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoryRoleTemplatesRoleTemplateInput)(nil)).Elem(), GetDirectoryRoleTemplatesRoleTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoryRoleTemplatesRoleTemplateArrayInput)(nil)).Elem(), GetDirectoryRoleTemplatesRoleTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoryRolesRoleInput)(nil)).Elem(), GetDirectoryRolesRoleArgs{})
@@ -15938,6 +16226,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupDynamicMembershipInput)(nil)).Elem(), GetGroupDynamicMembershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupDynamicMembershipArrayInput)(nil)).Elem(), GetGroupDynamicMembershipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamedLocationCountryInput)(nil)).Elem(), GetNamedLocationCountryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamedLocationCountryArrayInput)(nil)).Elem(), GetNamedLocationCountryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNamedLocationIpInput)(nil)).Elem(), GetNamedLocationIpArgs{})
@@ -16138,6 +16428,8 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationWebArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationWebImplicitGrantOutput{})
 	pulumi.RegisterOutputType(GetApplicationWebImplicitGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetAuthenticationStrengthPolicyCombinationConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAuthenticationStrengthPolicyCombinationConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDirectoryRoleTemplatesRoleTemplateOutput{})
 	pulumi.RegisterOutputType(GetDirectoryRoleTemplatesRoleTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetDirectoryRolesRoleOutput{})
@@ -16146,6 +16438,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupDynamicMembershipOutput{})
 	pulumi.RegisterOutputType(GetGroupDynamicMembershipArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetNamedLocationCountryOutput{})
 	pulumi.RegisterOutputType(GetNamedLocationCountryArrayOutput{})
 	pulumi.RegisterOutputType(GetNamedLocationIpOutput{})

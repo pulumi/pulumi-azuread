@@ -98,7 +98,7 @@ import * as utilities from "./utilities";
  * Service principals can be imported using their object ID, e.g.
  *
  * ```sh
- * $ pulumi import azuread:index/servicePrincipal:ServicePrincipal example /servicePrincipals/00000000-0000-0000-0000-000000000000
+ * $ pulumi import azuread:index/servicePrincipal:ServicePrincipal example 00000000-0000-0000-0000-000000000000
  * ```
  */
 export class ServicePrincipal extends pulumi.CustomResource {
@@ -242,7 +242,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
     /**
      * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      *
-     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      */
     declare public readonly tags: pulumi.Output<string[]>;
     /**
@@ -455,7 +455,7 @@ export interface ServicePrincipalState {
     /**
      * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      *
-     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -535,7 +535,7 @@ export interface ServicePrincipalArgs {
     /**
      * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      *
-     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

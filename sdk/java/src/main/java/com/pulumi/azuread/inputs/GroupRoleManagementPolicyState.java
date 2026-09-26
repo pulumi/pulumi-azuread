@@ -125,14 +125,14 @@ public final class GroupRoleManagementPolicyState extends com.pulumi.resources.R
     }
 
     /**
-     * The type of assignment this policy coveres. Can be either `member` or `owner`.
+     * The type of assignment this policy covers. Can be either `member` or `owner`.
      * 
      */
     @Import(name="roleId")
     private @Nullable Output<String> roleId;
 
     /**
-     * @return The type of assignment this policy coveres. Can be either `member` or `owner`.
+     * @return The type of assignment this policy covers. Can be either `member` or `owner`.
      * 
      */
     public Optional<Output<String>> roleId() {
@@ -318,7 +318,7 @@ public final class GroupRoleManagementPolicyState extends com.pulumi.resources.R
         }
 
         /**
-         * @param roleId The type of assignment this policy coveres. Can be either `member` or `owner`.
+         * @param roleId The type of assignment this policy covers. Can be either `member` or `owner`.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class GroupRoleManagementPolicyState extends com.pulumi.resources.R
         }
 
         /**
-         * @param roleId The type of assignment this policy coveres. Can be either `member` or `owner`.
+         * @param roleId The type of assignment this policy covers. Can be either `member` or `owner`.
          * 
          * @return builder
          * 

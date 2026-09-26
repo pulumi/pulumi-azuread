@@ -77,6 +77,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApplicationRegistration{}
 	case "azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy":
 		r = &AuthenticationStrengthPolicy{}
+	case "azuread:index/authenticationStrengthPolicyFido2CombinationConfiguration:AuthenticationStrengthPolicyFido2CombinationConfiguration":
+		r = &AuthenticationStrengthPolicyFido2CombinationConfiguration{}
+	case "azuread:index/authenticationStrengthPolicyX509CombinationConfiguration:AuthenticationStrengthPolicyX509CombinationConfiguration":
+		r = &AuthenticationStrengthPolicyX509CombinationConfiguration{}
 	case "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy":
 		r = &ClaimsMappingPolicy{}
 	case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
@@ -93,6 +97,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DirectoryRoleMember{}
 	case "azuread:index/group:Group":
 		r = &Group{}
+	case "azuread:index/groupLicense:GroupLicense":
+		r = &GroupLicense{}
 	case "azuread:index/groupMember:GroupMember":
 		r = &GroupMember{}
 	case "azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy":
@@ -129,6 +135,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &User{}
 	case "azuread:index/userFlowAttribute:UserFlowAttribute":
 		r = &UserFlowAttribute{}
+	case "azuread:index/userLicense:UserLicense":
+		r = &UserLicense{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -302,6 +310,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"azuread",
+		"index/authenticationStrengthPolicyFido2CombinationConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/authenticationStrengthPolicyX509CombinationConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
 		"index/claimsMappingPolicy",
 		&module{version},
 	)
@@ -338,6 +356,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/group",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/groupLicense",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -428,6 +451,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/userFlowAttribute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/userLicense",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

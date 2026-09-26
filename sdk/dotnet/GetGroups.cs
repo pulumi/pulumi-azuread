@@ -382,7 +382,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `IgnoreMissing`. Defaults to `False`.
+        /// A flag to denote if all groups should be fetched and returned. Cannot be specified with `IgnoreMissing`. Defaults to `False`.
         /// </summary>
         [Input("returnAll")]
         public bool? ReturnAll { get; set; }
@@ -446,7 +446,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `IgnoreMissing`. Defaults to `False`.
+        /// A flag to denote if all groups should be fetched and returned. Cannot be specified with `IgnoreMissing`. Defaults to `False`.
         /// </summary>
         [Input("returnAll")]
         public Input<bool>? ReturnAll { get; set; }
@@ -475,16 +475,26 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<string> DisplayNames;
         /// <summary>
+        /// A list of groups. Each `Group` object provides the attributes documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGroupsGroupResult> Groups;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly bool? IgnoreMissing;
+        /// <summary>
+        /// Whether the group is mail-enabled.
+        /// </summary>
         public readonly bool MailEnabled;
         /// <summary>
         /// The object IDs of the groups.
         /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
         public readonly bool? ReturnAll;
+        /// <summary>
+        /// Whether the group is security-enabled.
+        /// </summary>
         public readonly bool SecurityEnabled;
 
         [OutputConstructor]
@@ -492,6 +502,8 @@ namespace Pulumi.AzureAD
             string displayNamePrefix,
 
             ImmutableArray<string> displayNames,
+
+            ImmutableArray<Outputs.GetGroupsGroupResult> groups,
 
             string id,
 
@@ -507,6 +519,7 @@ namespace Pulumi.AzureAD
         {
             DisplayNamePrefix = displayNamePrefix;
             DisplayNames = displayNames;
+            Groups = groups;
             Id = id;
             IgnoreMissing = ignoreMissing;
             MailEnabled = mailEnabled;

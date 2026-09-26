@@ -103,6 +103,12 @@ namespace Pulumi.AzureAD
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
+        /// <summary>
+        /// The object ID of the authentication strength policy.
+        /// </summary>
+        [Output("objectId")]
+        public Output<string> ObjectId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a AuthenticationStrengthPolicy resource with the given unique name, arguments, and options.
@@ -204,6 +210,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The object ID of the authentication strength policy.
+        /// </summary>
+        [Input("objectId")]
+        public Input<string>? ObjectId { get; set; }
 
         public AuthenticationStrengthPolicyState()
         {

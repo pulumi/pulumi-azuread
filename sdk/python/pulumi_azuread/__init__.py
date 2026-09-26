@@ -34,6 +34,8 @@ from .application_pre_authorized import *
 from .application_redirect_uris import *
 from .application_registration import *
 from .authentication_strength_policy import *
+from .authentication_strength_policy_fido2_combination_configuration import *
+from .authentication_strength_policy_x509_combination_configuration import *
 from .claims_mapping_policy import *
 from .conditional_access_policy import *
 from .custom_directory_role import *
@@ -48,6 +50,7 @@ from .get_administrative_unit import *
 from .get_application import *
 from .get_application_published_app_ids import *
 from .get_application_template import *
+from .get_authentication_strength_policy import *
 from .get_client_config import *
 from .get_directory_object import *
 from .get_directory_role_templates import *
@@ -62,6 +65,7 @@ from .get_service_principals import *
 from .get_user import *
 from .get_users import *
 from .group import *
+from .group_license import *
 from .group_member import *
 from .group_role_management_policy import *
 from .group_without_members import *
@@ -81,6 +85,7 @@ from .synchronization_job_provision_on_demand import *
 from .synchronization_secret import *
 from .user import *
 from .user_flow_attribute import *
+from .user_license import *
 from ._inputs import *
 from . import outputs
 
@@ -320,6 +325,22 @@ _utilities.register(
  },
  {
   "pkg": "azuread",
+  "mod": "index/authenticationStrengthPolicyFido2CombinationConfiguration",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/authenticationStrengthPolicyFido2CombinationConfiguration:AuthenticationStrengthPolicyFido2CombinationConfiguration": "AuthenticationStrengthPolicyFido2CombinationConfiguration"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/authenticationStrengthPolicyX509CombinationConfiguration",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/authenticationStrengthPolicyX509CombinationConfiguration:AuthenticationStrengthPolicyX509CombinationConfiguration": "AuthenticationStrengthPolicyX509CombinationConfiguration"
+  }
+ },
+ {
+  "pkg": "azuread",
   "mod": "index/claimsMappingPolicy",
   "fqn": "pulumi_azuread",
   "classes": {
@@ -380,6 +401,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/group:Group": "Group"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/groupLicense",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/groupLicense:GroupLicense": "GroupLicense"
   }
  },
  {
@@ -524,6 +553,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/userFlowAttribute:UserFlowAttribute": "UserFlowAttribute"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/userLicense",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/userLicense:UserLicense": "UserLicense"
   }
  }
 ]
