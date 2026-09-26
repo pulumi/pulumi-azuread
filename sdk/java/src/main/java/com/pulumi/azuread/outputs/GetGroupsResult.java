@@ -3,6 +3,7 @@
 
 package com.pulumi.azuread.outputs;
 
+import com.pulumi.azuread.outputs.GetGroupsGroup;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -21,11 +22,20 @@ public final class GetGroupsResult {
      */
     private List<String> displayNames;
     /**
+     * @return A list of groups. Each `group` object provides the attributes documented below.
+     * 
+     */
+    private List<GetGroupsGroup> groups;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     private @Nullable Boolean ignoreMissing;
+    /**
+     * @return Whether the group is mail-enabled.
+     * 
+     */
     private Boolean mailEnabled;
     /**
      * @return The object IDs of the groups.
@@ -33,6 +43,10 @@ public final class GetGroupsResult {
      */
     private List<String> objectIds;
     private @Nullable Boolean returnAll;
+    /**
+     * @return Whether the group is security-enabled.
+     * 
+     */
     private Boolean securityEnabled;
 
     private GetGroupsResult() {}
@@ -47,6 +61,13 @@ public final class GetGroupsResult {
         return this.displayNames;
     }
     /**
+     * @return A list of groups. Each `group` object provides the attributes documented below.
+     * 
+     */
+    public List<GetGroupsGroup> groups() {
+        return this.groups;
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -56,6 +77,10 @@ public final class GetGroupsResult {
     public Optional<Boolean> ignoreMissing() {
         return Optional.ofNullable(this.ignoreMissing);
     }
+    /**
+     * @return Whether the group is mail-enabled.
+     * 
+     */
     public Boolean mailEnabled() {
         return this.mailEnabled;
     }
@@ -69,6 +94,10 @@ public final class GetGroupsResult {
     public Optional<Boolean> returnAll() {
         return Optional.ofNullable(this.returnAll);
     }
+    /**
+     * @return Whether the group is security-enabled.
+     * 
+     */
     public Boolean securityEnabled() {
         return this.securityEnabled;
     }
@@ -84,6 +113,7 @@ public final class GetGroupsResult {
     public static final class Builder {
         private String displayNamePrefix;
         private List<String> displayNames;
+        private List<GetGroupsGroup> groups;
         private String id;
         private @Nullable Boolean ignoreMissing;
         private Boolean mailEnabled;
@@ -95,6 +125,7 @@ public final class GetGroupsResult {
     	      Objects.requireNonNull(defaults);
     	      this.displayNamePrefix = defaults.displayNamePrefix;
     	      this.displayNames = defaults.displayNames;
+    	      this.groups = defaults.groups;
     	      this.id = defaults.id;
     	      this.ignoreMissing = defaults.ignoreMissing;
     	      this.mailEnabled = defaults.mailEnabled;
@@ -121,6 +152,17 @@ public final class GetGroupsResult {
         }
         public Builder displayNames(String... displayNames) {
             return displayNames(List.of(displayNames));
+        }
+        @CustomType.Setter
+        public Builder groups(List<GetGroupsGroup> groups) {
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetGroupsResult", "groups");
+            }
+            this.groups = groups;
+            return this;
+        }
+        public Builder groups(GetGroupsGroup... groups) {
+            return groups(List.of(groups));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -173,6 +215,7 @@ public final class GetGroupsResult {
             final var _resultValue = new GetGroupsResult();
             _resultValue.displayNamePrefix = displayNamePrefix;
             _resultValue.displayNames = displayNames;
+            _resultValue.groups = groups;
             _resultValue.id = id;
             _resultValue.ignoreMissing = ignoreMissing;
             _resultValue.mailEnabled = mailEnabled;

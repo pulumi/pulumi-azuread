@@ -538,7 +538,7 @@ export interface ConditionalAccessPolicyConditions {
      */
     insiderRiskLevels?: pulumi.Input<string | undefined>;
     /**
-     * A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+     * A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
      */
     locations?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsLocations | undefined>;
     /**
@@ -675,7 +675,7 @@ export interface ConditionalAccessPolicyConditionsUsers {
      */
     excludedGuestsOrExternalUsers?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser>[] | undefined>;
     /**
-     * A list of role IDs excluded from scope of policy.
+     * A list of role template IDs excluded from scope of policy.
      */
     excludedRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -691,7 +691,7 @@ export interface ConditionalAccessPolicyConditionsUsers {
      */
     includedGuestsOrExternalUsers?: pulumi.Input<pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser>[] | undefined>;
     /**
-     * A list of role IDs in scope of policy unless explicitly excluded.
+     * A list of role template IDs in scope of policy unless explicitly excluded.
      */
     includedRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -850,7 +850,7 @@ export interface GroupRoleManagementPolicyActivationRules {
      */
     requireMultifactorAuthentication?: pulumi.Input<boolean | undefined>;
     /**
-     * Is ticket information requrired during activation of the role.
+     * Is ticket information required during activation of the role.
      */
     requireTicketInfo?: pulumi.Input<boolean | undefined>;
     /**
@@ -917,7 +917,7 @@ export interface GroupRoleManagementPolicyEligibleAssignmentRules {
 
 export interface GroupRoleManagementPolicyNotificationRules {
     /**
-     * A `notificationTarget` block as defined below to configure notfications on active role assignments.
+     * A `notificationTarget` block as defined below to configure notifications on active role assignments.
      */
     activeAssignments?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRulesActiveAssignments | undefined>;
     /**

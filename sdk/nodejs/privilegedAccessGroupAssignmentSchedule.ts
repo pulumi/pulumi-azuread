@@ -97,7 +97,7 @@ export class PrivilegedAccessGroupAssignmentSchedule extends pulumi.CustomResour
      */
     declare public readonly justification: pulumi.Output<string | undefined>;
     /**
-     * Is this assigment permanently valid.
+     * Is this assignment permanently valid.
      *
      * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      */
@@ -200,7 +200,7 @@ export interface PrivilegedAccessGroupAssignmentScheduleState {
      */
     justification?: pulumi.Input<string | undefined>;
     /**
-     * Is this assigment permanently valid.
+     * Is this assignment permanently valid.
      *
      * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      */
@@ -252,7 +252,7 @@ export interface PrivilegedAccessGroupAssignmentScheduleArgs {
      */
     justification?: pulumi.Input<string | undefined>;
     /**
-     * Is this assigment permanently valid.
+     * Is this assignment permanently valid.
      *
      * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      */

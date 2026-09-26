@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetGroupsResult',
@@ -26,13 +27,16 @@ class GetGroupsResult:
     """
     A collection of values returned by getGroups.
     """
-    def __init__(__self__, display_name_prefix=None, display_names=None, id=None, ignore_missing=None, mail_enabled=None, object_ids=None, return_all=None, security_enabled=None):
+    def __init__(__self__, display_name_prefix=None, display_names=None, groups=None, id=None, ignore_missing=None, mail_enabled=None, object_ids=None, return_all=None, security_enabled=None):
         if display_name_prefix and not isinstance(display_name_prefix, str):
             raise TypeError("Expected argument 'display_name_prefix' to be a str")
         pulumi.set(__self__, "display_name_prefix", display_name_prefix)
         if display_names and not isinstance(display_names, list):
             raise TypeError("Expected argument 'display_names' to be a list")
         pulumi.set(__self__, "display_names", display_names)
+        if groups and not isinstance(groups, list):
+            raise TypeError("Expected argument 'groups' to be a list")
+        pulumi.set(__self__, "groups", groups)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -67,6 +71,14 @@ class GetGroupsResult:
 
     @_builtins.property
     @pulumi.getter
+    def groups(self) -> Sequence['outputs.GetGroupsGroupResult']:
+        """
+        A list of groups. Each `group` object provides the attributes documented below.
+        """
+        return pulumi.get(self, "groups")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
         """
         The provider-assigned unique ID for this managed resource.
@@ -81,6 +93,9 @@ class GetGroupsResult:
     @_builtins.property
     @pulumi.getter(name="mailEnabled")
     def mail_enabled(self) -> _builtins.bool:
+        """
+        Whether the group is mail-enabled.
+        """
         return pulumi.get(self, "mail_enabled")
 
     @_builtins.property
@@ -99,6 +114,9 @@ class GetGroupsResult:
     @_builtins.property
     @pulumi.getter(name="securityEnabled")
     def security_enabled(self) -> _builtins.bool:
+        """
+        Whether the group is security-enabled.
+        """
         return pulumi.get(self, "security_enabled")
 
 
@@ -110,6 +128,7 @@ class AwaitableGetGroupsResult(GetGroupsResult):
         return GetGroupsResult(
             display_name_prefix=self.display_name_prefix,
             display_names=self.display_names,
+            groups=self.groups,
             id=self.id,
             ignore_missing=self.ignore_missing,
             mail_enabled=self.mail_enabled,
@@ -191,7 +210,7 @@ def get_groups(display_name_prefix: Optional[_builtins.str] = None,
     :param _builtins.bool ignore_missing: Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
     :param _builtins.bool mail_enabled: Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
     :param Sequence[_builtins.str] object_ids: The object IDs of the groups.
-    :param _builtins.bool return_all: A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
+    :param _builtins.bool return_all: A flag to denote if all groups should be fetched and returned. Cannot be specified with `ignore_missing`. Defaults to `false`.
     :param _builtins.bool security_enabled: Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
            
            > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
@@ -210,6 +229,7 @@ def get_groups(display_name_prefix: Optional[_builtins.str] = None,
     return AwaitableGetGroupsResult(
         display_name_prefix=pulumi.get(__ret__, 'display_name_prefix'),
         display_names=pulumi.get(__ret__, 'display_names'),
+        groups=pulumi.get(__ret__, 'groups'),
         id=pulumi.get(__ret__, 'id'),
         ignore_missing=pulumi.get(__ret__, 'ignore_missing'),
         mail_enabled=pulumi.get(__ret__, 'mail_enabled'),
@@ -289,7 +309,7 @@ def get_groups_output(display_name_prefix: pulumi.Input[Optional[Optional[_built
     :param _builtins.bool ignore_missing: Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
     :param _builtins.bool mail_enabled: Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
     :param Sequence[_builtins.str] object_ids: The object IDs of the groups.
-    :param _builtins.bool return_all: A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
+    :param _builtins.bool return_all: A flag to denote if all groups should be fetched and returned. Cannot be specified with `ignore_missing`. Defaults to `false`.
     :param _builtins.bool security_enabled: Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
            
            > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
@@ -307,6 +327,7 @@ def get_groups_output(display_name_prefix: pulumi.Input[Optional[Optional[_built
     return __ret__.apply(lambda __response__: GetGroupsResult(
         display_name_prefix=pulumi.get(__response__, 'display_name_prefix'),
         display_names=pulumi.get(__response__, 'display_names'),
+        groups=pulumi.get(__response__, 'groups'),
         id=pulumi.get(__response__, 'id'),
         ignore_missing=pulumi.get(__response__, 'ignore_missing'),
         mail_enabled=pulumi.get(__response__, 'mail_enabled'),

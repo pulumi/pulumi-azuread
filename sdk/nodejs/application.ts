@@ -362,7 +362,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      *
-     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      */
     declare public readonly tags: pulumi.Output<string[]>;
     /**
@@ -615,7 +615,7 @@ export interface ApplicationState {
     /**
      * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      *
-     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -747,7 +747,7 @@ export interface ApplicationArgs {
     /**
      * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      *
-     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

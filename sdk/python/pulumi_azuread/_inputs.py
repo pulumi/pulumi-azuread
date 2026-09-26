@@ -2514,7 +2514,7 @@ class ConditionalAccessPolicyConditionsArgsDict(TypedDict):
     """
     locations: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsLocationsArgsDict']]]
     """
-    A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+    A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
     """
     platforms: NotRequired[pulumi.Input[Optional['ConditionalAccessPolicyConditionsPlatformsArgsDict']]]
     """
@@ -2556,7 +2556,7 @@ class ConditionalAccessPolicyConditionsArgs:
         :param pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs'] client_applications: An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
         :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs'] devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         :param pulumi.Input[_builtins.str] insider_risk_levels: The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
-        :param pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs'] locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs'] locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
         :param pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs'] platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_principal_risk_levels: A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sign_in_risk_levels: A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
@@ -2672,7 +2672,7 @@ class ConditionalAccessPolicyConditionsArgs:
     @pulumi.getter
     def locations(self) -> pulumi.Input[Optional['ConditionalAccessPolicyConditionsLocationsArgs']]:
         """
-        A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+        A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
         """
         return pulumi.get(self, "locations")
 
@@ -3182,7 +3182,7 @@ class ConditionalAccessPolicyConditionsUsersArgsDict(TypedDict):
     """
     excluded_roles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of role IDs excluded from scope of policy.
+    A list of role template IDs excluded from scope of policy.
     """
     excluded_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -3198,7 +3198,7 @@ class ConditionalAccessPolicyConditionsUsersArgsDict(TypedDict):
     """
     included_roles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
-    A list of role IDs in scope of policy unless explicitly excluded.
+    A list of role template IDs in scope of policy unless explicitly excluded.
     """
     included_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -3221,11 +3221,11 @@ class ConditionalAccessPolicyConditionsUsersArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_groups: A list of group IDs excluded from scope of policy.
         :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs']]] excluded_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_roles: A list of role IDs excluded from scope of policy.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_roles: A list of role template IDs excluded from scope of policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_users: A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_groups: A list of group IDs in scope of policy unless explicitly excluded.
         :param pulumi.Input[Sequence[pulumi.Input['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs']]] included_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_roles: A list of role IDs in scope of policy unless explicitly excluded.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_roles: A list of role template IDs in scope of policy unless explicitly excluded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] included_users: A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
                
                > At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
@@ -3275,7 +3275,7 @@ class ConditionalAccessPolicyConditionsUsersArgs:
     @pulumi.getter(name="excludedRoles")
     def excluded_roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of role IDs excluded from scope of policy.
+        A list of role template IDs excluded from scope of policy.
         """
         return pulumi.get(self, "excluded_roles")
 
@@ -3323,7 +3323,7 @@ class ConditionalAccessPolicyConditionsUsersArgs:
     @pulumi.getter(name="includedRoles")
     def included_roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of role IDs in scope of policy unless explicitly excluded.
+        A list of role template IDs in scope of policy unless explicitly excluded.
         """
         return pulumi.get(self, "included_roles")
 
@@ -3931,7 +3931,7 @@ class GroupRoleManagementPolicyActivationRulesArgsDict(TypedDict):
     """
     require_ticket_info: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Is ticket information requrired during activation of the role.
+    Is ticket information required during activation of the role.
     """
     required_conditional_access_authentication_context: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -3954,7 +3954,7 @@ class GroupRoleManagementPolicyActivationRulesArgs:
         :param pulumi.Input[_builtins.bool] require_approval: Is approval required for activation. If `true` an `approval_stage` block must be provided.
         :param pulumi.Input[_builtins.bool] require_justification: Is a justification required during activation of the role.
         :param pulumi.Input[_builtins.bool] require_multifactor_authentication: Is multi-factor authentication required to activate the role. Conflicts with `required_conditional_access_authentication_context`.
-        :param pulumi.Input[_builtins.bool] require_ticket_info: Is ticket information requrired during activation of the role.
+        :param pulumi.Input[_builtins.bool] require_ticket_info: Is ticket information required during activation of the role.
         :param pulumi.Input[_builtins.str] required_conditional_access_authentication_context: The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
         """
         if approval_stage is not None:
@@ -4036,7 +4036,7 @@ class GroupRoleManagementPolicyActivationRulesArgs:
     @pulumi.getter(name="requireTicketInfo")
     def require_ticket_info(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Is ticket information requrired during activation of the role.
+        Is ticket information required during activation of the role.
         """
         return pulumi.get(self, "require_ticket_info")
 
@@ -4306,7 +4306,7 @@ class GroupRoleManagementPolicyEligibleAssignmentRulesArgs:
 class GroupRoleManagementPolicyNotificationRulesArgsDict(TypedDict):
     active_assignments: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgsDict']]]
     """
-    A `notification_target` block as defined below to configure notfications on active role assignments.
+    A `notification_target` block as defined below to configure notifications on active role assignments.
     """
     eligible_activations: NotRequired[pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgsDict']]]
     """
@@ -4326,7 +4326,7 @@ class GroupRoleManagementPolicyNotificationRulesArgs:
                  eligible_activations: pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgs']] = None,
                  eligible_assignments: pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs']] = None):
         """
-        :param pulumi.Input['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs'] active_assignments: A `notification_target` block as defined below to configure notfications on active role assignments.
+        :param pulumi.Input['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs'] active_assignments: A `notification_target` block as defined below to configure notifications on active role assignments.
         :param pulumi.Input['GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgs'] eligible_activations: A `notification_target` block as defined below for configuring notifications on activation of eligible role.
         :param pulumi.Input['GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs'] eligible_assignments: A `notification_target` block as defined below to configure notification on eligible role assignments.
                
@@ -4343,7 +4343,7 @@ class GroupRoleManagementPolicyNotificationRulesArgs:
     @pulumi.getter(name="activeAssignments")
     def active_assignments(self) -> pulumi.Input[Optional['GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs']]:
         """
-        A `notification_target` block as defined below to configure notfications on active role assignments.
+        A `notification_target` block as defined below to configure notifications on active role assignments.
         """
         return pulumi.get(self, "active_assignments")
 

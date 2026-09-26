@@ -145,6 +145,16 @@ export type AuthenticationStrengthPolicy = import("./authenticationStrengthPolic
 export const AuthenticationStrengthPolicy: typeof import("./authenticationStrengthPolicy").AuthenticationStrengthPolicy = null as any;
 utilities.lazyLoad(exports, ["AuthenticationStrengthPolicy"], () => require("./authenticationStrengthPolicy"));
 
+export { AuthenticationStrengthPolicyFido2CombinationConfigurationArgs, AuthenticationStrengthPolicyFido2CombinationConfigurationState } from "./authenticationStrengthPolicyFido2CombinationConfiguration";
+export type AuthenticationStrengthPolicyFido2CombinationConfiguration = import("./authenticationStrengthPolicyFido2CombinationConfiguration").AuthenticationStrengthPolicyFido2CombinationConfiguration;
+export const AuthenticationStrengthPolicyFido2CombinationConfiguration: typeof import("./authenticationStrengthPolicyFido2CombinationConfiguration").AuthenticationStrengthPolicyFido2CombinationConfiguration = null as any;
+utilities.lazyLoad(exports, ["AuthenticationStrengthPolicyFido2CombinationConfiguration"], () => require("./authenticationStrengthPolicyFido2CombinationConfiguration"));
+
+export { AuthenticationStrengthPolicyX509CombinationConfigurationArgs, AuthenticationStrengthPolicyX509CombinationConfigurationState } from "./authenticationStrengthPolicyX509CombinationConfiguration";
+export type AuthenticationStrengthPolicyX509CombinationConfiguration = import("./authenticationStrengthPolicyX509CombinationConfiguration").AuthenticationStrengthPolicyX509CombinationConfiguration;
+export const AuthenticationStrengthPolicyX509CombinationConfiguration: typeof import("./authenticationStrengthPolicyX509CombinationConfiguration").AuthenticationStrengthPolicyX509CombinationConfiguration = null as any;
+utilities.lazyLoad(exports, ["AuthenticationStrengthPolicyX509CombinationConfiguration"], () => require("./authenticationStrengthPolicyX509CombinationConfiguration"));
+
 export { ClaimsMappingPolicyArgs, ClaimsMappingPolicyState } from "./claimsMappingPolicy";
 export type ClaimsMappingPolicy = import("./claimsMappingPolicy").ClaimsMappingPolicy;
 export const ClaimsMappingPolicy: typeof import("./claimsMappingPolicy").ClaimsMappingPolicy = null as any;
@@ -215,6 +225,11 @@ export const getApplicationTemplate: typeof import("./getApplicationTemplate").g
 export const getApplicationTemplateOutput: typeof import("./getApplicationTemplate").getApplicationTemplateOutput = null as any;
 utilities.lazyLoad(exports, ["getApplicationTemplate","getApplicationTemplateOutput"], () => require("./getApplicationTemplate"));
 
+export { GetAuthenticationStrengthPolicyArgs, GetAuthenticationStrengthPolicyResult, GetAuthenticationStrengthPolicyOutputArgs } from "./getAuthenticationStrengthPolicy";
+export const getAuthenticationStrengthPolicy: typeof import("./getAuthenticationStrengthPolicy").getAuthenticationStrengthPolicy = null as any;
+export const getAuthenticationStrengthPolicyOutput: typeof import("./getAuthenticationStrengthPolicy").getAuthenticationStrengthPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthenticationStrengthPolicy","getAuthenticationStrengthPolicyOutput"], () => require("./getAuthenticationStrengthPolicy"));
+
 export { GetClientConfigResult } from "./getClientConfig";
 export const getClientConfig: typeof import("./getClientConfig").getClientConfig = null as any;
 export const getClientConfigOutput: typeof import("./getClientConfig").getClientConfigOutput = null as any;
@@ -284,6 +299,11 @@ export { GroupArgs, GroupState } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
 utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { GroupLicenseArgs, GroupLicenseState } from "./groupLicense";
+export type GroupLicense = import("./groupLicense").GroupLicense;
+export const GroupLicense: typeof import("./groupLicense").GroupLicense = null as any;
+utilities.lazyLoad(exports, ["GroupLicense"], () => require("./groupLicense"));
 
 export { GroupMemberArgs, GroupMemberState } from "./groupMember";
 export type GroupMember = import("./groupMember").GroupMember;
@@ -378,6 +398,11 @@ export type UserFlowAttribute = import("./userFlowAttribute").UserFlowAttribute;
 export const UserFlowAttribute: typeof import("./userFlowAttribute").UserFlowAttribute = null as any;
 utilities.lazyLoad(exports, ["UserFlowAttribute"], () => require("./userFlowAttribute"));
 
+export { UserLicenseArgs, UserLicenseState } from "./userLicense";
+export type UserLicense = import("./userLicense").UserLicense;
+export const UserLicense: typeof import("./userLicense").UserLicense = null as any;
+utilities.lazyLoad(exports, ["UserLicense"], () => require("./userLicense"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -448,6 +473,10 @@ const _module = {
                 return new ApplicationRegistration(name, <any>undefined, { urn })
             case "azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy":
                 return new AuthenticationStrengthPolicy(name, <any>undefined, { urn })
+            case "azuread:index/authenticationStrengthPolicyFido2CombinationConfiguration:AuthenticationStrengthPolicyFido2CombinationConfiguration":
+                return new AuthenticationStrengthPolicyFido2CombinationConfiguration(name, <any>undefined, { urn })
+            case "azuread:index/authenticationStrengthPolicyX509CombinationConfiguration:AuthenticationStrengthPolicyX509CombinationConfiguration":
+                return new AuthenticationStrengthPolicyX509CombinationConfiguration(name, <any>undefined, { urn })
             case "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy":
                 return new ClaimsMappingPolicy(name, <any>undefined, { urn })
             case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
@@ -464,6 +493,8 @@ const _module = {
                 return new DirectoryRoleMember(name, <any>undefined, { urn })
             case "azuread:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
+            case "azuread:index/groupLicense:GroupLicense":
+                return new GroupLicense(name, <any>undefined, { urn })
             case "azuread:index/groupMember:GroupMember":
                 return new GroupMember(name, <any>undefined, { urn })
             case "azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy":
@@ -500,6 +531,8 @@ const _module = {
                 return new User(name, <any>undefined, { urn })
             case "azuread:index/userFlowAttribute:UserFlowAttribute":
                 return new UserFlowAttribute(name, <any>undefined, { urn })
+            case "azuread:index/userLicense:UserLicense":
+                return new UserLicense(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -533,6 +566,8 @@ pulumi.runtime.registerResourceModule("azuread", "index/applicationPreAuthorized
 pulumi.runtime.registerResourceModule("azuread", "index/applicationRedirectUris", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationRegistration", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/authenticationStrengthPolicy", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/authenticationStrengthPolicyFido2CombinationConfiguration", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/authenticationStrengthPolicyX509CombinationConfiguration", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/claimsMappingPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/conditionalAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/customDirectoryRole", _module)
@@ -541,6 +576,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleAssignment"
 pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleEligibilityScheduleRequest", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/group", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/groupLicense", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupRoleManagementPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupWithoutMembers", _module)
@@ -559,6 +595,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/synchronizationJobProvis
 pulumi.runtime.registerResourceModule("azuread", "index/synchronizationSecret", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/user", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/userFlowAttribute", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/userLicense", _module)
 pulumi.runtime.registerResourcePackage("azuread", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

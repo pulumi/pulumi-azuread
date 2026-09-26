@@ -494,7 +494,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `FeatureTags` block.
         /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values also propagate to any linked service principals.
+        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of applications. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values also propagate to any linked service principals.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -761,7 +761,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `FeatureTags` block.
         /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values also propagate to any linked service principals.
+        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of applications. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values also propagate to any linked service principals.
         /// </summary>
         public InputList<string> Tags
         {
@@ -1047,7 +1047,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `FeatureTags` block.
         /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values also propagate to any linked service principals.
+        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of applications. These can be specified using either the `Tags` property or with the `FeatureTags` block. If you need to set any custom tag values not supported by the `FeatureTags` block, it's recommended to use the `Tags` property. Tag values also propagate to any linked service principals.
         /// </summary>
         public InputList<string> Tags
         {

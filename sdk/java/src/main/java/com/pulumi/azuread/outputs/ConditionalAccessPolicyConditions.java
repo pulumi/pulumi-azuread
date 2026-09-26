@@ -50,7 +50,7 @@ public final class ConditionalAccessPolicyConditions {
      */
     private @Nullable String insiderRiskLevels;
     /**
-     * @return A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+     * @return A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
      * 
      */
     private @Nullable ConditionalAccessPolicyConditionsLocations locations;
@@ -124,7 +124,7 @@ public final class ConditionalAccessPolicyConditions {
         return Optional.ofNullable(this.insiderRiskLevels);
     }
     /**
-     * @return A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+     * @return A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
      * 
      */
     public Optional<ConditionalAccessPolicyConditionsLocations> locations() {
